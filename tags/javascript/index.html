@@ -118,7 +118,7 @@ GitHubにアップロードした方はバイナリデータにも対応。 こ�
 		</header>
 		<div class="list__excerpt">
 			Nov. 29 2015:
- JavaScriptで実装した優先度付きキューをGitHubで公開→https://github.com/330k/priorityqueue_js/ 各ヒープのベンチマーク → http://www.330k.info/priorityqueue_js/benchmark.html  これにはFibonacci Heapも比較対象に入れてある  折れ線を間引くで書いたように、 Douglas-Peuckerアルゴリズムを改良して指定した点数まで点を削減して折れ線を簡略化する場合、 優先度付きキューを使うことになる。
+ JavaScriptで実装した優先度付きキューをGitHubで公開→https://github.com/330k/priorityqueue_js/ 各ヒープのベンチマーク → http://330k.github.io/priorityqueue_js/benchmark.html  これにはFibonacci Heapも比較対象に入れてある  折れ線を間引くで書いたように、 Douglas-Peuckerアルゴリズムを改良して指定した点数まで点を削減して折れ線を簡略化する場合、 優先度付きキューを使うことになる。
 このアルゴリズムでは
  始点と終点を結ぶ線分で最も距離が大きな点P1を選ぶ 始点と点P1を結ぶ線分で距離最大となる点P2をキューに登録(優先度は点P2と線分の距離) 点P1と終点を結ぶ線分で距離最大となる点P3をキューに登録(優先度は点P3と線分の距離) キューから距離が最大(=優先度最大)の点を選んで、2に戻る  という手順となるため、「キューに2つ登録して、1つ取り出す」ということを繰り返すことになる。
 そこで今回はランダムな優先度のデータを
