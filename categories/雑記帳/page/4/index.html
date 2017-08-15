@@ -55,6 +55,42 @@ ga('send', 'pageview');
 			<h1 class="page-header__title">雑記帳</h1>
 		</header>
 				<article class="list__item post clearfix">
+	<figure class="list__thumbnail">
+		<a href="https://www.330k.info/essay/how-to-create-graphs-for-papers-with-mathematica/">
+			<img src="/essay/how-to-create-graphs-for-papers-with-mathematica/graph001.png" alt="Mathematicaで論文用の図やグラフを作成するときのまとめ" />
+		</a>
+	</figure>
+	<div class="list__content clearfix">
+		<header class="list__header">
+			<h3 class="list__title post__title ">
+				<a href="/essay/how-to-create-graphs-for-papers-with-mathematica/" rel="bookmark">Mathematicaで論文用の図やグラフを作成するときのまとめ</a>
+			</h3>
+			<div class="list__meta meta">
+				<svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
+				<time class="list__meta-date" datetime="2014-12-14T00:00:00">December 14, 2014</time>
+			</div>
+		</header>
+		<div class="list__excerpt">
+			Mathematicaで作る図やグラフは美しいんだ！ということを伝えたいので、 もう数年も前になるが、修士論文を書くときにMathematicaで作るグラフにこだわった点を思い出しながらまとめてみる。
+論文を書くために使うソフトウェア 私はpLaTeXで論文を書いたが、研究室ではWordが推奨されていた。 図表の番号を管理する必要や図表の位置がずれて飛んでいってしまうといった事態も起きないし、目次や索引、参考文献リストの作成も自動でできる。 ただ、Wordだと添削をしやすいのは確か。
+MathematicaでExportする画像の形式 Mathematicaでは多様な画像ファイル形式でExportできるが、論文用のグラフでは多分PNG、EPS、PDFから選択することになると思う。 各画像形式を比較すると、それぞれ以下の特徴がある。
+ PNG  ラスタ形式のため、印刷に耐えられるようにするには予め解像度を計算して作成する必要がある 半透過色に対応 Word、pLaTeXどちらでも使える  EPS  ベクタ形式で保存できるため、印刷では自動的にプリンタの解像度で印刷してくれる 半透過色には非対応 pLaTeXで使用可 あまりにEPS画像が多いと、dvipdfm(x)が重くなるので注意  PDF  ベクタ形式で保存できる 半透過色に対応 pLaTeXで使用可 pLaTeXで使うには、予めebbやxbbで.bbファイルや.xbbファイルを作成して、pLaTeXに画像の大きさを知らせる必要がある   したがって、Wordでは基本的に画像をPNG形式で作ることになるが、pLaTeXではEPSやPDFといったベクタ形式の画像フォーマットが使えるのでおすすめ。
+私は基本的にMathematicaからPDFでグラフを作成し、 すべての画像に対してpLaTeXについてくるebbを実行するPerlスクリプトを作って実行してからpLaTeXでコンパイルしていた。
+もちろん写真はJPEG形式を使用したが、写真にいろいろ矢印や記号を書き加えるときはOpenOffice.orgのImpressでJPEG画像の上にいろいろ矢印などを書き込んでPDFにエクスポートしたものを使った。 当時はPowerPointではPDF出力できなかったためOpenOffice.orgを使ったが、今ではPowerPointでいいと思う。
+図・グラフの論文におけるサイズを決め、ImageSizeオプションを指定 おそらくほとんどの論文はA4サイズ(210mm×297mm)で作成されると思う。
+そこから左右の余白をそれぞれ30mmとすると、本文の幅は150mmとなる。 図やグラフの幅は本文より少し小さくしたいので、私は基本的に横幅140mmでグラフを作成した。
+縦幅はMathematicaではデフォルトで黄金比(GoldenRatio)を使ってくれるので、そのままで良いと思う。 2段組のときは半分の70mmとか65mmとなる。
+したがってMathematicaでは、PlotやShowなどのオプションImageSizeに
+ImageSize -&gt; 140 * 72 / 25.4  と指定する。これは140mmの横幅で、72dpi(dots per inch)、1 inch = 25.4mmという意味である。
+論文用のグラフでは絶対にFrame -&gt; Trueを指定する 論文用のグラフでは流儀として
+Frame -&gt; True  を指定して枠のついたグラフにする。
+これはExcelなどでグラフを作るときも同様。
+枠についた目盛りを細かく調整したい場合は、FrameTicksオプションとFrameTickesStyleオプションを指定する。 また、FrameLabelで各軸のラベルと単位を書き入れるのも忘れずに。
+		</div>
+	</div>
+</article>
+
+				<article class="list__item post clearfix">
 	<div class="list__content clearfix">
 		<header class="list__header">
 			<h3 class="list__title post__title ">
@@ -271,29 +307,11 @@ Thank you for your report and we look forward to a continued, productive relatio
 	</div>
 </article>
 
-				<article class="list__item post clearfix">
-	<div class="list__content clearfix">
-		<header class="list__header">
-			<h3 class="list__title post__title ">
-				<a href="/essay/how-to-read-and-write-24bit-bitmap-files-with-vba/" rel="bookmark">VBAでビットマップ(bmp)を読み書き</a>
-			</h3>
-			<div class="list__meta meta">
-				<svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
-				<time class="list__meta-date" datetime="2010-09-22T00:00:00">September 22, 2010</time>
-			</div>
-		</header>
-		<div class="list__excerpt">
-			会社のPCでは自由にソフトウェアをインストールすることができないので、業務で使いそうなものはExcel VBAで自作していくことにした。 まずは手始めに24ビットビットマップの読み書きを行う標準モジュールを作成した。 VBAの機能のみで実装しており、外部のライブラリには依存しない。
-使い方  以下のソースをOfficeのマクロで標準モジュールとしてプロジェクトへ追加する。 ReadBitmap(&ldquo;C:***.bmp&rdquo;)で、RGBTRIPLE型の2次元配列が返る。 読み込みは一応1, 4, 8, 24, 32ビットのビットマップファイルに対応。 WriteBitmap24(&ldquo;C:***.bmp&rdquo;)で24ビットのビットマップファイルを書き込む。 おまけ機能として、ReadGIFJPEGでGIFとJPEGファイルも読み込みにも対応。  ' Bitmap module by 330k ' Copyright (C) 2010 330k, All rights reserved. Option Explicit Public Type RGBTRIPLE rgbBlue As Byte rgbGreen As Byte rgbRed As Byte End Type Private Type RGBQUAD rgbBlue As Byte rgbGreen As Byte rgbRed As Byte rgbReserved As Byte End Type Private Type BITMAPFILEHEADER bfType As String * 2 bfSize As Long bfReserved1 As Integer bfReserved2 As Integer bjOffBits As Long End Type Private Type BitmapInfoHeader biSize As Long biWidth As Long biHeight As Long biPlanes As Integer biBitCount As Integer biCompression As Long biSizeImaze As Long biXPixPerMeter As Long biYPixPerMeter As Long biClrUsed As Long biClrImporant As Long End Type ' Read a bitmap file (1, 4, 8, 24 and 32 bit) and return image as 2-dimension array of RGBTriple Public Function ReadBitmap(strFileName As String) As RGBTRIPLE() Dim i As Long Dim j As Long Dim n As Long Dim intFileNumber As Integer Dim bjHeader As BITMAPFILEHEADER Dim biHeader As BitmapInfoHeader Dim lngColors As Long Dim rgbData() As RGBTRIPLE Dim rgbTemp As RGBTRIPLE Dim rgbTable3() As RGBTRIPLE Dim rgbTable4() As RGBQUAD Dim bytTemp As Byte intFileNumber = FreeFile() Open strFileName For Binary As intFileNumber Get intFileNumber, , bjHeader Get intFileNumber, , biHeader ReDim rgbData(0 To biHeader.
-		</div>
-	</div>
-</article>
-
 
 		
 <div class="pagination clearfix">
 	<a class="pagination__item pagination__item--prev" href="/categories/%E9%9B%91%E8%A8%98%E5%B8%B3/page/3/">«</a>
-	<span class="pagination__item pagination__item--current">4/5</span>
+	<span class="pagination__item pagination__item--current">4/6</span>
 	<a class="pagination__item pagination__item--next" href="/categories/%E9%9B%91%E8%A8%98%E5%B8%B3/page/5/">»</a>
 </div>
 
@@ -316,6 +334,7 @@ Thank you for your report and we look forward to a continued, productive relatio
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/essay/move_to_github_pages_hugo_from_google_sites/">Hugo &#43; GitHub Pages &#43; CloudFlareにGoogleサイトから移転</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20170729-0806_hokkaido/">2017年7月29日〜8月6日 北海道 道東→道北(襟裳岬、納沙布岬、知床、宗谷岬)</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/author_dvd_from_movie_file_on_windows/">動画ファイルからDVDオーサリング</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/random_distribution_sphere_surface/">球面上の一様分布</a></li>
@@ -325,7 +344,6 @@ Thank you for your report and we look forward to a continued, productive relatio
 			<li class="widget__item"><a class="widget__link" href="/bicycle/equipments/">携行品・装備品</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/introduction/">自転車について</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/input_backslach_with_us_keyboard_layout/">英語版Windows PE環境でバックスラッシュを入力</a></li>
-			<li class="widget__item"><a class="widget__link" href="/essay/xubuntu1604_snort_base/">Xubuntu 16.04 &#43; Snortで簡易IDS構築</a></li>
 		</ul>
 	</div>
 </div>
@@ -362,6 +380,7 @@ Thank you for your report and we look forward to a continued, productive relatio
 		<a class="widget__link widget__link--taglist" href="/tags/bat" title="bat">bat (2)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/chrome" title="chrome">chrome (1)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/gmail" title="gmail">gmail (2)</a>
+		<a class="widget__link widget__link--taglist" href="/tags/google" title="google">google (1)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/google-maps" title="google-maps">google-maps (1)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/gps" title="gps">gps (1)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/gpx" title="gpx">gpx (5)</a>

@@ -6,10 +6,29 @@
     <description>Recent content in 雑記帳 on 330k info</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 27 Jul 2017 21:21:29 +0900</lastBuildDate>
+    <lastBuildDate>Tue, 08 Aug 2017 19:24:04 +0900</lastBuildDate>
     
 	<atom:link href="https://www.330k.info/categories/%E9%9B%91%E8%A8%98%E5%B8%B3/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Hugo &#43; GitHub Pages &#43; CloudFlareにGoogleサイトから移転</title>
+      <link>https://www.330k.info/essay/move_to_github_pages_hugo_from_google_sites/</link>
+      <pubDate>Tue, 08 Aug 2017 19:24:04 +0900</pubDate>
+      
+      <guid>https://www.330k.info/essay/move_to_github_pages_hugo_from_google_sites/</guid>
+      <description>今まで独自ドメインでGoogleサイトを利用してきたが、
+ 「新しいGoogleサイト」の機能が全然ダメ(特にガジェットが使えなくなる)で使い物にならない Google自身が推進している常時SSL化も独自ドメインでは機能しない 無駄に色々と読み込むせいで遅い(Google自身のPageSpeed Insightでも低得点)  ということで他のサービスへの移転を決断。
+無料で使える組み合わせとして、以下の構成にした。
+ Hugoを使って静的にサイトを生成 GitHub Pagesにアップロード CloudFlareを使って常時HTTPS化に対応  Hugo + GitHub Pagesの部分は Hugo + Github Pagesでブログを公開してみた を参考にした。
+Hugo Ubuntuではapt-getでHugoをインストールできる(最新版とは限らないので注意)。
+$ sudo apt-get install hugo  テーマは、少し古いバージョンのHugoでも動作するMainroadに決定。 後は以下の作業を実施。
+ 今までGoogleサイトのガジェットで行っていたGoogle MapsでのKMLファイルの表示を行うShortcodeを作成。 CSSファイルをいじって横幅を拡大。 コードのシンタックスハイライトを行うため、highlight.jsを読み込むようlayouts/partials/header.htmlを修正。  GitHub GitHubにGitHub Pages用のリポジトリを作成。 参考サイトにならい、Hugo自体のリポジトリも作成。
+User Pagesで作成すると、GitHubの他のリポジトリにも独自ドメインの設定が反映される。 これでは既存のプロジェクトページすべてのURLが変更になってしまうし、 今後GitHub Pagesから別のサービスに移行するときにも困るので、 User Pages(リポジトリ名: ユーザ名.github.io)は作成せず、Project Pagesとして作成する。
+c.f. Custom domain redirects for GitHub Pages sites
+テーマを選ぶために色々変えていたら、一度リポジトリが壊れてしまってpushもpullもできなくなってしまった。 仕方がないので、
+ ローカルの.gitディレクトリを削除して、残りを別ディレクトリに退避 GitHub上のリポジトリを削除 GitHub上でリポジトリを再度作成 ローカルにgit clone 別ディレクトリに退避しておいたデータを戻してgit add→git push  として対応(もっとうまいやり方はあるとは思うが、git submoduleの動作について理解不足)。</description>
+    </item>
     
     <item>
       <title>動画ファイルからDVDオーサリング</title>
