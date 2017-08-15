@@ -67,9 +67,9 @@ Chromeウェブストア: EMLとして保存(Gmail)
       <description>概要 ゼロ幅文字を使ってUnicodeのプレーンテキストにステガノグラフィを施す、 ブラウザのJavaScriptで動作するライブラリを書いてみた。 参考にしたのは以下のサイト
  ZERO WIDTH SPACE を使って Unicode ステガノグラフィ Unicode Text Steganography Encoders/Decoders  特徴としては以下の通り。
  デフォルトではゼロ幅文字として4種類を使用(U+200C, U+200D, U+202C, U+FEFF)し、2種類の時よりもエンコード後の文字数を減少(それでも1文字埋め込むために8文字増える) 使用する文字種はライブラリの使用者側で指定可能 使用する文字種に応じて自動的にコード長を変更(例: 2種類のときは1字(16bit)が16字になり、8種類のときは6字になる) 漢字とひらがな、カタカナの間や英単語間にゼロ幅文字を埋め込むことで、できる限り単語検索を邪魔しない(厳密には異なるUnicodeブロック間に挿入する。非英語の欧州の言語や、サロゲートペアを使用する文字の前後には単語内でも挿入される) 埋め込む位置は毎回ランダム 元の文章、隠しテキストともに多言語対応(全部UTF-16としてJavaScriptで扱っているため) GitHubのものは任意のバイナリデータにも対応  ダウンロードや、サイトに使用する際は以下のURLからどうぞ。
-https://www.330k.info/misc_tools/unicode_steganography.js
+https://330k.github.io/misc_tools/unicode_steganography.js
 ライセンスはMITライセンス。
-使い方は https://www.330k.info/misc_tools/unicode_steganography.html に書きました(英語です)。
+使い方は https://330k.github.io/misc_tools/unicode_steganography.html に書きました(英語です)。
 動作サンプル:  デフォルトで使用する4種の文字(U+200C, U+200D, U+202C, U+FEFF)は、 GmailやOutlook 2010、iPhoneの標準メールアプリにおいて
  ゼロ幅として表示 文字化けしない(豆腐にならない) コピー&amp;amp;ペースト時に保存されるもの  として選定した。
 U+200B(ZERO WIDTH SPACE)はブラウザからGmailで送信するときに削除される。 ただ、メーラを使ってSMTPサーバ(smtp.gmail.com)から送信するときは削除されない。
