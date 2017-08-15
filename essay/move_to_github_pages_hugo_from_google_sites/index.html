@@ -75,7 +75,8 @@ ga('send', 'pageview');
 
 <p>ということで他のサービスへの移転を決断。</p>
 
-<p>無料で使える組み合わせとして、以下の構成にした。</p>
+<p>AWSやGCP上に構築することも考えたものの、
+大したPVでもないので無料で使える組み合わせとして、以下の構成にした。</p>
 
 <ul>
 <li>Hugoを使って静的にサイトを生成</li>
@@ -108,10 +109,12 @@ ga('send', 'pageview');
 <p>GitHubにGitHub Pages用のリポジトリを作成。
 参考サイトにならい、Hugo自体のリポジトリも作成。</p>
 
-<p>User Pagesで作成すると、GitHubの他のリポジトリにも独自ドメインの設定が反映される。
-これでは既存のプロジェクトページすべてのURLが変更になってしまうし、
-今後GitHub Pagesから別のサービスに移行するときにも困るので、
-User Pages(リポジトリ名: <code>ユーザ名.github.io</code>)は作成せず、Project Pagesとして作成する。</p>
+<p>ここでUser Pages(リポジトリ名: <code>ユーザ名.github.io</code>)で作成すると、
+GitHubの他のリポジトリにも独自ドメインの設定が反映される。</p>
+
+<p>これでは既存のプロジェクトページすべてのURLが変更になってしまうし、
+今後GitHub Pagesから別のサービスに移行するかもしれないので、そのときにも困る。
+そこでUser Pagesは作成せず、Project Pagesとして作成する。</p>
 
 <p>c.f. <a href="https://help.github.com/articles/custom-domain-redirects-for-github-pages-sites/">Custom domain redirects for GitHub Pages sites</a></p>
 
@@ -153,12 +156,13 @@ User Pages(リポジトリ名: <code>ユーザ名.github.io</code>)は作成せ�
 
 <h2 id="cnameファイルのアップロード">CNAMEファイルのアップロード</h2>
 
-<p>新サイトの構築が完了したら、最後にGitHub Pagesに<code>www.330k.info</code>と記入したCNAMEファイルをコミットして移転作業完了。</p>
+<p>新サイトの構築が完了したら、最後にGitHubリポジトリに<code>www.330k.info</code>と記入したCNAMEファイルをコミットして移転作業完了。</p>
 
 <h2 id="その他">その他</h2>
 
 <ul>
 <li>HugoではURLがすべて小文字になるので、旧URLに大文字を含むページではFront Matterに<code>aliases = [(元のURL)]</code>を追加。</li>
+<li>User PagesにするかProject Pagesにするかでかなり迷って、少しダウンタイムが発生してしまった。</li>
 </ul>
 
 		</div>
@@ -167,6 +171,7 @@ User Pages(リポジトリ名: <code>ユーザ名.github.io</code>)は作成せ�
 	<svg class="icon icon-tag" width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="m4.73135 3.3795002q0-.5597-.39604-.9557-.39604-.3961-.95577-.3961-.55974 0-.95578.3961-.39604.396-.39604.9557 0 .5598.39604.9558.39604.3961.95578.3961.55973 0 .95577-.3961.39604-.396.39604-.9558zm11.26865 6.0832q0 .5596998-.39076.9504998l-5.18548 5.196q-.41188.3908-.9610504.3908-.55974 0-.9505-.3908l-7.5511496-7.5616998q-.40132-.3907-.68119-1.0666-.27987-.6759-.27987-1.2357v-4.3934q0-.54920004.40132-.95050004.40132-.4013.9505-.4013h4.39339q.55974 0 1.23565.2799.67591.2798 1.07723.6812l7.55115 7.54060004q.39076.4118.39076.961z"/></svg>
 	<ul class="tags__list">
 		<li class="tags__item"><a class="tags__link" href="/tags/google/" rel="tag">Google</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/github/" rel="tag">GitHub</a></li>
 	</ul>
 </div>
 
@@ -244,9 +249,9 @@ User Pages(リポジトリ名: <code>ユーザ名.github.io</code>)は作成せ�
 		<a class="widget__link widget__link--taglist" href="/tags/.net" title=".net">.net (1)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/bat" title="bat">bat (2)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/chrome" title="chrome">chrome (1)</a>
+		<a class="widget__link widget__link--taglist" href="/tags/github" title="github">github (1)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/gmail" title="gmail">gmail (2)</a>
-		<a class="widget__link widget__link--taglist" href="/tags/google" title="google">google (1)</a>
-		<a class="widget__link widget__link--taglist" href="/tags/google-maps" title="google-maps">google-maps (1)</a>
+		<a class="widget__link widget__link--taglist" href="/tags/google" title="google">google (2)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/gps" title="gps">gps (1)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/gpx" title="gpx">gpx (5)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/hta" title="hta">hta (1)</a>
