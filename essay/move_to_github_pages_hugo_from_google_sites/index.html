@@ -129,20 +129,23 @@ GitHubの他のリポジトリにも独自ドメインの設定が反映され�
 <li>別ディレクトリに退避しておいたデータを戻して<code>git add</code>→<code>git push</code></li>
 </ol>
 
-<p>として対応(もっとうまいやり方はあるとは思うが、git submoduleの動作について理解不足)。</p>
+<p>として対応(もっとうまいやり方はあるとは思うがgit submoduleの動作について理解不足)。</p>
 
 <h2 id="ページ移転作業">ページ移転作業</h2>
 
-<p>各ページを手作業でコピペ。</p>
+<p>各ページを手作業でコピペ。
+1日5ページ〜10ページくらい移行作業した。</p>
 
 <p>画像については、Chromeの開発者ツールで、</p>
 
 <pre><code class="language-js">document.querySelectorAll('a[href*=&quot;.jpg&quot;]').forEach(function(e){e.download=e.href;e.click()});
 </code></pre>
 
-<p>とすることで、リンク先のJPEGファイルを一気にダウンロード。</p>
+<p>とすることで、元のページのリンク先JPEGファイルを一気にダウンロード。</p>
 
 <h2 id="cloudflare">CloudFlare</h2>
+
+<p>新サイトの構築が完了したら、CloudFlareのDNSを設定変更。</p>
 
 <p>Googleサイト利用時からCloudFlareをネームサーバとして利用していたので、以下の作業を実施。</p>
 
@@ -156,7 +159,7 @@ GitHubの他のリポジトリにも独自ドメインの設定が反映され�
 
 <h2 id="cnameファイルのアップロード">CNAMEファイルのアップロード</h2>
 
-<p>新サイトの構築が完了したら、最後にGitHubリポジトリに<code>www.330k.info</code>と記入したCNAMEファイルをコミットして移転作業完了。</p>
+<p>最後にGitHubリポジトリに<code>www.330k.info</code>と記入したCNAMEファイルをコミットして移転作業完了。</p>
 
 <h2 id="その他">その他</h2>
 
