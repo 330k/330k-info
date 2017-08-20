@@ -105,38 +105,6 @@ ga('send', 'pageview');
 </article>
 
 				<article class="list__item post clearfix">
-	<figure class="list__thumbnail">
-		<a href="https://www.330k.info/essay/precision-of-mathematica-geodistance-and-geographical-distance-formula/">
-			<img src="/essay/precision-of-mathematica-geodistance-and-geographical-distance-formula/hubeny_graph002.png" alt="GeoDistanceとその他の測地線距離算出式の精度" />
-		</a>
-	</figure>
-	<div class="list__content clearfix">
-		<header class="list__header">
-			<h3 class="list__title post__title ">
-				<a href="/essay/precision-of-mathematica-geodistance-and-geographical-distance-formula/" rel="bookmark">GeoDistanceとその他の測地線距離算出式の精度</a>
-			</h3>
-			<div class="list__meta meta">
-				<svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
-				<time class="list__meta-date" datetime="2014-06-07T00:00:00">June 07, 2014</time>
-			</div>
-		</header>
-		<div class="list__excerpt">
-			Mathematicaには2点の緯度と経度を与えて、その間の測地線距離を返す関数としてGeoDistanceがある。 しかしながら、ここで書かれているように、その精度には疑問が呈されているようだ。
-他の有名な測地線距離の計算方法として、
- ヒュベニの式(カシミール3Dが採用しているが、英語圏では情報が見つからない) 国土地理院の測量計算サイトの計算式のついてのドキュメントを実装したもの 完全な球体とみなして計算(Google EarthやGoogle Maps API v3のcomputeDistanceBetweenが採用、haversine formula)  が見つかったので、GeoDistanceのMethodオプション3種類(&ldquo;Vincenty75&rdquo;, &ldquo;Robbin61&rdquo;, &ldquo;ExtendedNewtonRaphson&rdquo;)と上記の3種類の計算方法の合計6種類について精度を評価してみた。
-正確な距離としては、GeographicLib (Wikipediaによると誤差15nmらしい)をJLink経由で使って計算したもの採用し、準拠楕円体はWGS84とした。
-ただし、完全な球体とした場合の半径はGoogle EarthやGoogle Mapsにあわせて6378137 mとした。
-ランダムな2点間の距離の精度 地球表面上で一様分布となるよう、ランダムに2点を選び、その間の距離の精度を評価した。
- 上図は横軸がGeographicLibで計算した正確な距離、縦軸が各計算方法で計算した距離である。
-y = xの直線上にあれば正確ということだが、GeoDistanceの&rdquo;Robbin61&rdquo;では1万kmを超えると実際よりも極端に短く計算してしまうようだ。
-またヒュベニの式は実際よりも長く計算することが多く、そのような場合について調べてみると高緯度になるほど誤差が大きくなることが分かった。
-同じ計算結果を誤差についてプロットしたものが下図である。また表は各計算方法の最大誤差である。
-    計算方法 誤差の絶対値     GeoDistance(&ldquo;Vincenty75&rdquo;) 7.119 * 10^-12   GeoDistance(&ldquo;Robbin61&rdquo;) 9.536 * 10^-1   GeoDistance(&ldquo;ExtendedNewtonRaphson&rdquo;) 1.247 * 10^-6   ヒュベニの式 2.022 * 10^1   測量計算サイト計算式 6.682 * 10^-3   完全球体モデル 6.
-		</div>
-	</div>
-</article>
-
-				<article class="list__item post clearfix">
 	<div class="list__content clearfix">
 		<header class="list__header">
 			<h3 class="list__title post__title ">
@@ -245,11 +213,11 @@ Mathematica 8からは標準でGPXをImport可能になった。
 		<a class="widget__link widget__link--taglist" href="/tags/.net" title=".net">.net (1)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/bat" title="bat">bat (2)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/chrome" title="chrome">chrome (1)</a>
-		<a class="widget__link widget__link--taglist" href="/tags/github" title="github">github (1)</a>
+		<a class="widget__link widget__link--taglist" href="/tags/github" title="github">github (5)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/gmail" title="gmail">gmail (2)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/google" title="google">google (2)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/gps" title="gps">gps (1)</a>
-		<a class="widget__link widget__link--taglist" href="/tags/gpx" title="gpx">gpx (5)</a>
+		<a class="widget__link widget__link--taglist" href="/tags/gpx" title="gpx">gpx (4)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/hta" title="hta">hta (1)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/java" title="java">java (2)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/javascript" title="javascript">javascript (3)</a>
@@ -260,6 +228,7 @@ Mathematica 8からは標準でGPXをImport可能になった。
 		<a class="widget__link widget__link--taglist" href="/tags/vba" title="vba">vba (3)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/windows" title="windows">windows (9)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/wsh" title="wsh">wsh (2)</a>
+		<a class="widget__link widget__link--taglist" href="/tags/zabbix" title="zabbix">zabbix (1)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/%e3%82%a2%e3%83%ab%e3%82%b4%e3%83%aa%e3%82%ba%e3%83%a0" title="アルゴリズム">アルゴリズム (5)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/%e3%83%84%e3%83%bc%e3%83%aa%e3%83%b3%e3%82%b0" title="ツーリング">ツーリング (42)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/%e3%83%91%e3%83%af%e3%83%8f%e3%83%a9" title="パワハラ">パワハラ (5)</a>

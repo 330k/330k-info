@@ -18,17 +18,82 @@
       
       <guid>https://www.330k.info/essay/move_to_github_pages_hugo_from_google_sites/</guid>
       <description>今まで独自ドメインでGoogleサイトを利用してきたが、
- 「新しいGoogleサイト」の機能が全然ダメ(特にガジェットが使えなくなる)で使い物にならない Google自身が推進している常時SSL化も独自ドメインでは機能しない 無駄に色々と読み込むせいで遅い(Google自身のPageSpeed Insightでも低得点)  ということで他のサービスへの移転を決断。
+ 「新しいGoogleサイト」の機能が全然ダメ(特にガジェットが使えなくなる)で使い物にならない Google自身が推進している常時SSL化も独自ドメインでは機能しない(正確にはMixed Contentsを修正できない) 無駄に色々と読み込むせいで遅い  ということで他のサービスへの移転を決断。
 AWSやGCP上に構築することも考えたものの、 大したPVでもないので無料で使える組み合わせとして、以下の構成にした。
  Hugoを使って静的にサイトを生成 GitHub Pagesにアップロード CloudFlareを使って常時HTTPS化に対応  Hugo + GitHub Pagesの部分は Hugo + Github Pagesでブログを公開してみた を参考にした。
 Hugo Ubuntuではapt-getでHugoをインストールできる(最新版とは限らないので注意)。
 $ sudo apt-get install hugo  テーマは、少し古いバージョンのHugoでも動作するMainroadに決定。 後は以下の作業を実施。
  今までGoogleサイトのガジェットで行っていたGoogle MapsでのKMLファイルの表示を行うShortcodeを作成。 CSSファイルをいじって横幅を拡大。 コードのシンタックスハイライトを行うため、highlight.jsを読み込むようlayouts/partials/header.htmlを修正。  GitHub GitHubにGitHub Pages用のリポジトリを作成。 参考サイトにならい、Hugo自体のリポジトリも作成。
-ここでUser Pages(リポジトリ名: ユーザ名.github.io)で作成すると、 GitHubの他のリポジトリにも独自ドメインの設定が反映される。
-これでは既存のプロジェクトページすべてのURLが変更になってしまうし、 今後GitHub Pagesから別のサービスに移行するかもしれないので、そのときにも困る。 そこでUser Pagesは作成せず、Project Pagesとして作成する。
+ここでUser Pages(リポジトリ名: (ユーザ名).github.io)で作成し、 CNAMEファイルで独自ドメインを設定すると、 GitHubの他のリポジトリにも独自ドメインの設定が反映される。
+そのため、今まで(ユーザ名).github.io/(プロジェクト名)/のURLが (独自ドメイン)/(プロジェクト名)/にリダイレクトされるようになる。
+既存のプロジェクトページすべてのURLが変更になってしまうし、 今後ホスティング先をGitHub Pagesから別のサービスに移行するときにまた変更することになる。 そこでUser Pagesは作成せず、Project Pagesとして作成する。
 c.f. Custom domain redirects for GitHub Pages sites
-テーマを選ぶために色々変えていたら、一度リポジトリが壊れてしまってpushもpullもできなくなってしまった。 仕方がないので、
- ローカルの.gitディレクトリを削除して、残りを別ディレクトリに退避 GitHub上のリポジトリを削除 GitHub上でリポジトリを再度作成 ローカルにgit clone 別ディレクトリに退避しておいたデータを戻してgit add→git push  として対応(もっとうまいやり方はあるとは思うがgit submoduleの動作について理解不足)。</description>
+ページ移転作業 各ページを手作業でコピペ。 1日5ページ〜10ページくらい移行作業した。</description>
+    </item>
+    
+    <item>
+      <title>GPXトラックログを間引く・簡略化</title>
+      <link>https://www.330k.info/software/simplify_gpx/</link>
+      <pubDate>Wed, 28 Sep 2016 00:00:00 +0900</pubDate>
+      
+      <guid>https://www.330k.info/software/simplify_gpx/</guid>
+      <description>  概要 GPSロガーで取ったGPXログを公開する際、
+ 途切れ途切れのトラックログを結合し 日ごとにそれをまた分割し それぞれを1トラック400ポイント程度に間引いて簡略化する  という手間がかかっていたため、この一連の作業を一括処理するプログラムを作った。
+また、ツーリング中には事前に作成しておいたGPXファイルをAndroidのRMapsや地図ロイドに読み込ませて走行ルートを確認しているのだが、 GPXファイルに余分な要素があると、処理に時間がかかってしまう(あまりに重いと処理できないこともある)。
+トラックログを間引くアルゴリズムは折れ線を間引くに記載した点数を指定するタイプのDouglas-Peuckerを実装している。 メルカトル図法に投影した座標で間引いているので、Google Mapsなどメルカトル図法の地図で見た時に形状をよく保存する。
+使い方  ボタンを押してGPXファイルを選択 一括処理する内容をチェックして選択 「処理実行」ボタンをクリックして少し待つ 表示されたリンクをクリックしてGPXファイルをダウンロード  注意事項  Chrome 53、Firefox 49、Edge、IE 11にて動作を確認 IE8では動作しません IE 9, 10は環境が無いため確認できません 重いGPXファイルを処理しようとすると固まります(WorkerではXMLParserが使えないため) 複数ファイルを選択した時の並び順はOSやブラウザ、選択時の操作に依存します  なお、カシミール3DではGPXファイルをXMLとしてパースして読み込んでいるわけではないようで、 空要素(&amp;lt;trkpt lat=&amp;quot;***&amp;quot; lon=&amp;quot;***&amp;quot; /&amp;gt;)の形を認識できない。 そのため&amp;lt;trkpt lat=&amp;quot;***&amp;quot; lon=&amp;quot;***&amp;quot;&amp;gt;&amp;lt;/trkpt&amp;gt;の形に修正したものを出力している。
+使用例 元のGPSログをカシミール3Dで読み込んだ画面
+ デフォルト設定で一括処理した後のGPXファイルを読み込んだ画面 (このデータの場合は、6時間途切れたらトラック分割するので1日毎に分割され、それぞれが400点に間引きされている)
+ 更新履歴  カシミール3Dでも読めるよう、空要素の場合は&amp;lt;trkpt ***&amp;gt;&amp;lt;/trkpt&amp;gt;の形に置換するようにした。 (May 4 2014) 優先度付きキューの実装を変更して高速化。(May 28 2014) プログラムを全面書き直し。トラックの自動分割・結合機能追加。 (Sep. 24 2016) 標高をGoogle Maps Elevations APIから取得する機能を追加して統合。 (Sep. 28 2016)  </description>
+    </item>
+    
+    <item>
+      <title>Google MapsでGPXルート作成</title>
+      <link>https://www.330k.info/software/create_gpx_with_google_maps/</link>
+      <pubDate>Sat, 06 Aug 2016 00:00:00 +0900</pubDate>
+      
+      <guid>https://www.330k.info/software/create_gpx_with_google_maps/</guid>
+      <description>PC用フルスクリーン版 モバイル(スマートフォン)版  使い方  出発地点と目的地点を入れて「Calculate Route」をクリック。 途中経路を変えたい場合は、通常のGoogleマップのようにドラッグして変更します。「Reduce into *** points」をクリックすると、trkpt要素の数を削減します(Douglas-Peuckerアルゴリズムを使用)。赤線が簡略化されたルートです。 「Add Elevation」をクリックすると、標高(ele要素)を追加します(100点で1秒かかります)。 「Download」をクリックすると、download.gpxというファイル名でGPXファイルがダウンロードされます。  作った経緯 今までは自転車ツーリングをするとき、
+ Googleマップでルートを作成 GMapToGPXでGPXファイルにする カシミール3Dで基盤地図情報(標高)で標高データを追加 累積標高などを確認 Androidの地図ロイドなどに取り込んでツーリング中に確認  というやり方でルートを検討・確認していた。
+だが&amp;rdquo;新しいGoogleマップ&amp;rdquo;になってから、GMapToGPXが使えなくなってしまったので、 Google Maps API v3を使ってGPXのトラックを生成する、簡単なプログラムを書いてみた。
+スマートフォンのブラウザ(標準ブラウザ、Chrome、Firefox)でも動作するので、ツーリングなどの出先でもルートを作成可能。
+注意事項  Chrome(Ubuntu, Windows 7, Windows 10)、Firefox(Ubuntu, Windows 7)、IE 11、Edgeで動作確認しています。 Google Maps APIの制限により、途中に設定できる地点は8箇所までです。 Internet Explorer 8ではダウンロードができません。テキストボックスに生成されたGPXテキストをコピーし、メモ帳などに貼り付けutf8で保存してください。 Internet Explorer 9, 10は未確認です。 iOSのSafariではGPXファイルのダウンロードができません。  主な更新・修正点  地図ロイドやルートラボに合わせ、簡略化後の点数を800点と8000点にした。(May 26 2014) Douglas-Peuckerのアルゴリズムで優先度付きキューの実装を変更し、高速化。(May 26 2014) 間引き時にメルカトル図法で投影した座標に対してDouglas-Peuckerを適用するように変更。(Jun 6 2014) モバイル版、フルスクリーン版をGitHubにホスティング先を変更。(Mar 13 2015) IEとEdgeでの動作状況を追記。(Oct.</description>
+    </item>
+    
+    <item>
+      <title>GeoDistanceとその他の測地線距離算出式の精度</title>
+      <link>https://www.330k.info/essay/precision-of-mathematica-geodistance-and-geographical-distance-formula/</link>
+      <pubDate>Sat, 07 Jun 2014 00:00:00 +0900</pubDate>
+      
+      <guid>https://www.330k.info/essay/precision-of-mathematica-geodistance-and-geographical-distance-formula/</guid>
+      <description>Mathematicaには2点の緯度と経度を与えて、その間の測地線距離を返す関数としてGeoDistanceがある。 しかしながら、ここで書かれているように、その精度には疑問が呈されているようだ。
+他の有名な測地線距離の計算方法として、
+ ヒュベニの式(カシミール3Dが採用しているが、英語圏では情報が見つからない) 国土地理院の測量計算サイトの計算式のついてのドキュメントを実装したもの 完全な球体とみなして計算(Google EarthやGoogle Maps API v3のcomputeDistanceBetweenが採用、haversine formula)  が見つかったので、GeoDistanceのMethodオプション3種類(&amp;ldquo;Vincenty75&amp;rdquo;, &amp;ldquo;Robbin61&amp;rdquo;, &amp;ldquo;ExtendedNewtonRaphson&amp;rdquo;)と上記の3種類の計算方法の合計6種類について精度を評価してみた。
+正確な距離としては、GeographicLib (Wikipediaによると誤差15nmらしい)をJLink経由で使って計算したもの採用し、準拠楕円体はWGS84とした。
+ただし、完全な球体とした場合の半径はGoogle EarthやGoogle Mapsにあわせて6378137 mとした。
+ランダムな2点間の距離の精度 地球表面上で一様分布となるよう、ランダムに2点を選び、その間の距離の精度を評価した。
+ 上図は横軸がGeographicLibで計算した正確な距離、縦軸が各計算方法で計算した距離である。
+y = xの直線上にあれば正確ということだが、GeoDistanceの&amp;rdquo;Robbin61&amp;rdquo;では1万kmを超えると実際よりも極端に短く計算してしまうようだ。
+またヒュベニの式は実際よりも長く計算することが多く、そのような場合について調べてみると高緯度になるほど誤差が大きくなることが分かった。
+同じ計算結果を誤差についてプロットしたものが下図である。また表は各計算方法の最大誤差である。
+    計算方法 誤差の絶対値     GeoDistance(&amp;ldquo;Vincenty75&amp;rdquo;) 7.119 * 10^-12   GeoDistance(&amp;ldquo;Robbin61&amp;rdquo;) 9.536 * 10^-1   GeoDistance(&amp;ldquo;ExtendedNewtonRaphson&amp;rdquo;) 1.247 * 10^-6   ヒュベニの式 2.022 * 10^1   測量計算サイト計算式 6.682 * 10^-3   完全球体モデル 6.</description>
+    </item>
+    
+    <item>
+      <title>Douglas-Peucker向けの優先度付きキュー実装の検討</title>
+      <link>https://www.330k.info/essay/implement-of-priority-queue-for-douglas-peucker-simplify-algorithm/</link>
+      <pubDate>Thu, 29 May 2014 00:00:00 +0900</pubDate>
+      
+      <guid>https://www.330k.info/essay/implement-of-priority-queue-for-douglas-peucker-simplify-algorithm/</guid>
+      <description>Nov. 29 2015:
+ JavaScriptで実装した優先度付きキューをGitHubで公開→https://github.com/330k/priorityqueue_js/ 各ヒープのベンチマーク → http://330k.github.io/priorityqueue_js/benchmark.html  これにはFibonacci Heapも比較対象に入れてある  折れ線を間引くで書いたように、 Douglas-Peuckerアルゴリズムを改良して指定した点数まで点を削減して折れ線を簡略化する場合、 優先度付きキューを使うことになる。
+このアルゴリズムでは
+ 始点と終点を結ぶ線分で最も距離が大きな点P1を選ぶ 始点と点P1を結ぶ線分で距離最大となる点P2をキューに登録(優先度は点P2と線分の距離) 点P1と終点を結ぶ線分で距離最大となる点P3をキューに登録(優先度は点P3と線分の距離) キューから距離が最大(=優先度最大)の点を選んで、2に戻る  という手順となるため、「キューに2つ登録して、1つ取り出す」ということを繰り返すことになる。
+そこで今回はランダムな優先度のデータを
+ 連続して登録し、連続して取り出す(要はソートしているだけ) 「キューに2つ登録して、1つ取り出す」を繰り返すDouglas-Peuckerを想定した試験  という操作に対してどの優先度付きキューの実装が良い性能をしめすのか、ベンチマークを取ってみた。
+優先度付きキューの実装にはいくつか方法があるが、今回は以下の6種類を試してみた。
+ Array.sort(): キューへの追加はArray.push()、キューから取り出すときに必要であればArray.sort()してArray.pop()する。非常に単純で楽チン。結果の検証用。 Selection: キューへの追加はArray.push()、キューから取り出すときに最大要素を選択。enqueue: O(1), dequeue: O(n2)。 Insertion: キューへの追加時に挿入ソートを行う。キューから取り出すときはArray.pop()するだけ。enqueue: O(n2), dequeue: O(1)。 Binary Insertion: キューへの追加時に二分挿入ソートを行う。あとは3と同じ。enqueue: O(n2), dequeue: O(1)。 Binary Heap: 二分ヒープ(wikipedia)での実装。ポインタなしで実装できるので省メモリ。java.util.PriorityQueueはこれらしい。enqueue: O(log(n)), dequeue: O(log(n))。 Pairing Heap: ペアリングヒープ(wikipedia: en)での実装。gcc(libstdc++)のpriority_queueはこれらしい。enqueue: O(log(n)), dequeue: O(log(n))。実装にはこれを参考にした。  いずれもJavaScriptで実装した。
+ベンチマーク結果 以下、Firefox 29とChromium 34での結果。単位はmsで、小さいほうが高速。 載せていないがVirtualBox上のWindows XPで測定してもほぼ同じ結果だった。</description>
     </item>
     
   </channel>

@@ -69,8 +69,8 @@ ga('send', 'pageview');
 
 <ul>
 <li>「新しいGoogleサイト」の機能が全然ダメ(特にガジェットが使えなくなる)で使い物にならない</li>
-<li>Google自身が推進している常時SSL化も独自ドメインでは機能しない</li>
-<li>無駄に色々と読み込むせいで遅い(Google自身のPageSpeed Insightでも低得点)</li>
+<li>Google自身が推進している常時SSL化も独自ドメインでは機能しない(正確にはMixed Contentsを修正できない)</li>
+<li>無駄に色々と読み込むせいで遅い</li>
 </ul>
 
 <p>ということで他のサービスへの移転を決断。</p>
@@ -109,27 +109,18 @@ ga('send', 'pageview');
 <p>GitHubにGitHub Pages用のリポジトリを作成。
 参考サイトにならい、Hugo自体のリポジトリも作成。</p>
 
-<p>ここでUser Pages(リポジトリ名: <code>ユーザ名.github.io</code>)で作成すると、
+<p>ここでUser Pages(リポジトリ名: <code>(ユーザ名).github.io</code>)で作成し、
+<code>CNAME</code>ファイルで独自ドメインを設定すると、
 GitHubの他のリポジトリにも独自ドメインの設定が反映される。</p>
 
-<p>これでは既存のプロジェクトページすべてのURLが変更になってしまうし、
-今後GitHub Pagesから別のサービスに移行するかもしれないので、そのときにも困る。
+<p>そのため、今まで<code>(ユーザ名).github.io/(プロジェクト名)/</code>のURLが
+<code>(独自ドメイン)/(プロジェクト名)/</code>にリダイレクトされるようになる。</p>
+
+<p>既存のプロジェクトページすべてのURLが変更になってしまうし、
+今後ホスティング先をGitHub Pagesから別のサービスに移行するときにまた変更することになる。
 そこでUser Pagesは作成せず、Project Pagesとして作成する。</p>
 
 <p>c.f. <a href="https://help.github.com/articles/custom-domain-redirects-for-github-pages-sites/">Custom domain redirects for GitHub Pages sites</a></p>
-
-<p>テーマを選ぶために色々変えていたら、一度リポジトリが壊れてしまってpushもpullもできなくなってしまった。
-仕方がないので、</p>
-
-<ol>
-<li>ローカルの.gitディレクトリを削除して、残りを別ディレクトリに退避</li>
-<li>GitHub上のリポジトリを削除</li>
-<li>GitHub上でリポジトリを再度作成</li>
-<li>ローカルに<code>git clone</code></li>
-<li>別ディレクトリに退避しておいたデータを戻して<code>git add</code>→<code>git push</code></li>
-</ol>
-
-<p>として対応(もっとうまいやり方はあるとは思うがgit submoduleの動作について理解不足)。</p>
 
 <h2 id="ページ移転作業">ページ移転作業</h2>
 
@@ -252,11 +243,11 @@ GitHubの他のリポジトリにも独自ドメインの設定が反映され�
 		<a class="widget__link widget__link--taglist" href="/tags/.net" title=".net">.net (1)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/bat" title="bat">bat (2)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/chrome" title="chrome">chrome (1)</a>
-		<a class="widget__link widget__link--taglist" href="/tags/github" title="github">github (1)</a>
+		<a class="widget__link widget__link--taglist" href="/tags/github" title="github">github (5)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/gmail" title="gmail">gmail (2)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/google" title="google">google (2)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/gps" title="gps">gps (1)</a>
-		<a class="widget__link widget__link--taglist" href="/tags/gpx" title="gpx">gpx (5)</a>
+		<a class="widget__link widget__link--taglist" href="/tags/gpx" title="gpx">gpx (4)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/hta" title="hta">hta (1)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/java" title="java">java (2)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/javascript" title="javascript">javascript (3)</a>
@@ -267,6 +258,7 @@ GitHubの他のリポジトリにも独自ドメインの設定が反映され�
 		<a class="widget__link widget__link--taglist" href="/tags/vba" title="vba">vba (3)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/windows" title="windows">windows (9)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/wsh" title="wsh">wsh (2)</a>
+		<a class="widget__link widget__link--taglist" href="/tags/zabbix" title="zabbix">zabbix (1)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/%e3%82%a2%e3%83%ab%e3%82%b4%e3%83%aa%e3%82%ba%e3%83%a0" title="アルゴリズム">アルゴリズム (5)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/%e3%83%84%e3%83%bc%e3%83%aa%e3%83%b3%e3%82%b0" title="ツーリング">ツーリング (42)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/%e3%83%91%e3%83%af%e3%83%8f%e3%83%a9" title="パワハラ">パワハラ (5)</a>

@@ -64,17 +64,17 @@ ga('send', 'pageview');
 		</header>
 		<div class="list__excerpt">
 			今まで独自ドメインでGoogleサイトを利用してきたが、
- 「新しいGoogleサイト」の機能が全然ダメ(特にガジェットが使えなくなる)で使い物にならない Google自身が推進している常時SSL化も独自ドメインでは機能しない 無駄に色々と読み込むせいで遅い(Google自身のPageSpeed Insightでも低得点)  ということで他のサービスへの移転を決断。
+ 「新しいGoogleサイト」の機能が全然ダメ(特にガジェットが使えなくなる)で使い物にならない Google自身が推進している常時SSL化も独自ドメインでは機能しない(正確にはMixed Contentsを修正できない) 無駄に色々と読み込むせいで遅い  ということで他のサービスへの移転を決断。
 AWSやGCP上に構築することも考えたものの、 大したPVでもないので無料で使える組み合わせとして、以下の構成にした。
  Hugoを使って静的にサイトを生成 GitHub Pagesにアップロード CloudFlareを使って常時HTTPS化に対応  Hugo + GitHub Pagesの部分は Hugo + Github Pagesでブログを公開してみた を参考にした。
 Hugo Ubuntuではapt-getでHugoをインストールできる(最新版とは限らないので注意)。
 $ sudo apt-get install hugo  テーマは、少し古いバージョンのHugoでも動作するMainroadに決定。 後は以下の作業を実施。
  今までGoogleサイトのガジェットで行っていたGoogle MapsでのKMLファイルの表示を行うShortcodeを作成。 CSSファイルをいじって横幅を拡大。 コードのシンタックスハイライトを行うため、highlight.jsを読み込むようlayouts/partials/header.htmlを修正。  GitHub GitHubにGitHub Pages用のリポジトリを作成。 参考サイトにならい、Hugo自体のリポジトリも作成。
-ここでUser Pages(リポジトリ名: ユーザ名.github.io)で作成すると、 GitHubの他のリポジトリにも独自ドメインの設定が反映される。
-これでは既存のプロジェクトページすべてのURLが変更になってしまうし、 今後GitHub Pagesから別のサービスに移行するかもしれないので、そのときにも困る。 そこでUser Pagesは作成せず、Project Pagesとして作成する。
+ここでUser Pages(リポジトリ名: (ユーザ名).github.io)で作成し、 CNAMEファイルで独自ドメインを設定すると、 GitHubの他のリポジトリにも独自ドメインの設定が反映される。
+そのため、今まで(ユーザ名).github.io/(プロジェクト名)/のURLが (独自ドメイン)/(プロジェクト名)/にリダイレクトされるようになる。
+既存のプロジェクトページすべてのURLが変更になってしまうし、 今後ホスティング先をGitHub Pagesから別のサービスに移行するときにまた変更することになる。 そこでUser Pagesは作成せず、Project Pagesとして作成する。
 c.f. Custom domain redirects for GitHub Pages sites
-テーマを選ぶために色々変えていたら、一度リポジトリが壊れてしまってpushもpullもできなくなってしまった。 仕方がないので、
- ローカルの.gitディレクトリを削除して、残りを別ディレクトリに退避 GitHub上のリポジトリを削除 GitHub上でリポジトリを再度作成 ローカルにgit clone 別ディレクトリに退避しておいたデータを戻してgit add→git push  として対応(もっとうまいやり方はあるとは思うがgit submoduleの動作について理解不足)。
+ページ移転作業 各ページを手作業でコピペ。 1日5ページ〜10ページくらい移行作業した。
 		</div>
 	</div>
 </article>
@@ -113,7 +113,7 @@ c.f. Custom domain redirects for GitHub Pages sites
 			</div>
 		</header>
 		<div class="list__excerpt">
-			「この動画ファイルでDVD焼いて。簡単でしょ。」
+			「この動画ファイルをDVDに焼いて。簡単でしょ。」
  いやいや、DVD-Video規格に沿った動画ファイルとファイル構造にしないといけないんですけど。
 Windows用のオーサリングソフトはフリーでも色々あるが、どれが良いのかよくわからないので、 ffmpeg + dvdauthor + mkisofsでISOファイルを作成するバッチファイルを作成した。
 参考サイト : http://d.hatena.ne.jp/hikaen2/20150201/1422773879
@@ -127,7 +127,7 @@ https://cdrtfe.sourceforge.io/cdrtfe/download_en.html
  tools\cdrtools\mkisofs.exe tools\cygwin\cygwin1.dll tools\cygwin\cygwin.ini  をPATHの通ったフォルダに移動。
 バッチファイル 下記の内容のバッチファイルを作成。 CPU数に合わせてthreadsの値は変更する。
 DVDにしたい動画ファイルをドラッグ&amp;ドロップ。
-@ECHO OFF REM 動画ファイルからDVDのISOファイルを作成 SET VIDEO_FORMAT=NTSC ffmpeg.exe -i &quot;%1&quot; -threads 4 -vf yadif=1,scale=720:480,tinterlace=4 -target ntsc-dvd -flags +ilme+ildct &quot;%~dpn1_dvd.mpeg&quot; dvdauthor -o &quot;%~dpn1_dvd&quot; -t &quot;%~dpn1_dvd.mpeg&quot; dvdauthor -o &quot;%~dpn1_dvd&quot; -T mkisofs -dvd-video -o &quot;%~dpn1_dvd.
+@ECHO OFF REM 動画ファイルからDVDのISOファイルを作成 SET VIDEO_FORMAT=NTSC ffmpeg -i &quot;%1&quot; -threads 4 -vf yadif=1,scale=720:480,tinterlace=4 -target ntsc-dvd -flags +ilme+ildct &quot;%~dpn1_dvd.mpeg&quot; dvdauthor -o &quot;%~dpn1_dvd&quot; -t &quot;%~dpn1_dvd.mpeg&quot; dvdauthor -o &quot;%~dpn1_dvd&quot; -T mkisofs -dvd-video -o &quot;%~dpn1_dvd.
 		</div>
 	</div>
 </article>
@@ -372,11 +372,11 @@ Alt押す → テンキー9 → テンキー2 → Alt離す
 		<a class="widget__link widget__link--taglist" href="/tags/.net" title=".net">.net (1)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/bat" title="bat">bat (2)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/chrome" title="chrome">chrome (1)</a>
-		<a class="widget__link widget__link--taglist" href="/tags/github" title="github">github (1)</a>
+		<a class="widget__link widget__link--taglist" href="/tags/github" title="github">github (5)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/gmail" title="gmail">gmail (2)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/google" title="google">google (2)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/gps" title="gps">gps (1)</a>
-		<a class="widget__link widget__link--taglist" href="/tags/gpx" title="gpx">gpx (5)</a>
+		<a class="widget__link widget__link--taglist" href="/tags/gpx" title="gpx">gpx (4)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/hta" title="hta">hta (1)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/java" title="java">java (2)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/javascript" title="javascript">javascript (3)</a>
@@ -387,6 +387,7 @@ Alt押す → テンキー9 → テンキー2 → Alt離す
 		<a class="widget__link widget__link--taglist" href="/tags/vba" title="vba">vba (3)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/windows" title="windows">windows (9)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/wsh" title="wsh">wsh (2)</a>
+		<a class="widget__link widget__link--taglist" href="/tags/zabbix" title="zabbix">zabbix (1)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/%e3%82%a2%e3%83%ab%e3%82%b4%e3%83%aa%e3%82%ba%e3%83%a0" title="アルゴリズム">アルゴリズム (5)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/%e3%83%84%e3%83%bc%e3%83%aa%e3%83%b3%e3%82%b0" title="ツーリング">ツーリング (42)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/%e3%83%91%e3%83%af%e3%83%8f%e3%83%a9" title="パワハラ">パワハラ (5)</a>

@@ -41,25 +41,6 @@
     </item>
     
     <item>
-      <title>GeoDistanceとその他の測地線距離算出式の精度</title>
-      <link>https://www.330k.info/essay/precision-of-mathematica-geodistance-and-geographical-distance-formula/</link>
-      <pubDate>Sat, 07 Jun 2014 00:00:00 +0900</pubDate>
-      
-      <guid>https://www.330k.info/essay/precision-of-mathematica-geodistance-and-geographical-distance-formula/</guid>
-      <description>Mathematicaには2点の緯度と経度を与えて、その間の測地線距離を返す関数としてGeoDistanceがある。 しかしながら、ここで書かれているように、その精度には疑問が呈されているようだ。
-他の有名な測地線距離の計算方法として、
- ヒュベニの式(カシミール3Dが採用しているが、英語圏では情報が見つからない) 国土地理院の測量計算サイトの計算式のついてのドキュメントを実装したもの 完全な球体とみなして計算(Google EarthやGoogle Maps API v3のcomputeDistanceBetweenが採用、haversine formula)  が見つかったので、GeoDistanceのMethodオプション3種類(&amp;ldquo;Vincenty75&amp;rdquo;, &amp;ldquo;Robbin61&amp;rdquo;, &amp;ldquo;ExtendedNewtonRaphson&amp;rdquo;)と上記の3種類の計算方法の合計6種類について精度を評価してみた。
-正確な距離としては、GeographicLib (Wikipediaによると誤差15nmらしい)をJLink経由で使って計算したもの採用し、準拠楕円体はWGS84とした。
-ただし、完全な球体とした場合の半径はGoogle EarthやGoogle Mapsにあわせて6378137 mとした。
-ランダムな2点間の距離の精度 地球表面上で一様分布となるよう、ランダムに2点を選び、その間の距離の精度を評価した。
- 上図は横軸がGeographicLibで計算した正確な距離、縦軸が各計算方法で計算した距離である。
-y = xの直線上にあれば正確ということだが、GeoDistanceの&amp;rdquo;Robbin61&amp;rdquo;では1万kmを超えると実際よりも極端に短く計算してしまうようだ。
-またヒュベニの式は実際よりも長く計算することが多く、そのような場合について調べてみると高緯度になるほど誤差が大きくなることが分かった。
-同じ計算結果を誤差についてプロットしたものが下図である。また表は各計算方法の最大誤差である。
-    計算方法 誤差の絶対値     GeoDistance(&amp;ldquo;Vincenty75&amp;rdquo;) 7.119 * 10^-12   GeoDistance(&amp;ldquo;Robbin61&amp;rdquo;) 9.536 * 10^-1   GeoDistance(&amp;ldquo;ExtendedNewtonRaphson&amp;rdquo;) 1.247 * 10^-6   ヒュベニの式 2.022 * 10^1   測量計算サイト計算式 6.682 * 10^-3   完全球体モデル 6.</description>
-    </item>
-    
-    <item>
       <title>あしあとデータ結合機</title>
       <link>https://www.330k.info/software/ashiato-data/</link>
       <pubDate>Fri, 30 Oct 2009 22:43:03 +0900</pubDate>

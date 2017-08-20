@@ -17,7 +17,7 @@
       <pubDate>Thu, 27 Jul 2017 21:21:29 +0900</pubDate>
       
       <guid>https://www.330k.info/essay/author_dvd_from_movie_file_on_windows/</guid>
-      <description>「この動画ファイルでDVD焼いて。簡単でしょ。」
+      <description>「この動画ファイルをDVDに焼いて。簡単でしょ。」
  いやいや、DVD-Video規格に沿った動画ファイルとファイル構造にしないといけないんですけど。
 Windows用のオーサリングソフトはフリーでも色々あるが、どれが良いのかよくわからないので、 ffmpeg + dvdauthor + mkisofsでISOファイルを作成するバッチファイルを作成した。
 参考サイト : http://d.hatena.ne.jp/hikaen2/20150201/1422773879
@@ -31,7 +31,7 @@ https://cdrtfe.sourceforge.io/cdrtfe/download_en.html
  tools\cdrtools\mkisofs.exe tools\cygwin\cygwin1.dll tools\cygwin\cygwin.ini  をPATHの通ったフォルダに移動。
 バッチファイル 下記の内容のバッチファイルを作成。 CPU数に合わせてthreadsの値は変更する。
 DVDにしたい動画ファイルをドラッグ&amp;amp;ドロップ。
-@ECHO OFF REM 動画ファイルからDVDのISOファイルを作成 SET VIDEO_FORMAT=NTSC ffmpeg.exe -i &amp;quot;%1&amp;quot; -threads 4 -vf yadif=1,scale=720:480,tinterlace=4 -target ntsc-dvd -flags +ilme+ildct &amp;quot;%~dpn1_dvd.mpeg&amp;quot; dvdauthor -o &amp;quot;%~dpn1_dvd&amp;quot; -t &amp;quot;%~dpn1_dvd.mpeg&amp;quot; dvdauthor -o &amp;quot;%~dpn1_dvd&amp;quot; -T mkisofs -dvd-video -o &amp;quot;%~dpn1_dvd.</description>
+@ECHO OFF REM 動画ファイルからDVDのISOファイルを作成 SET VIDEO_FORMAT=NTSC ffmpeg -i &amp;quot;%1&amp;quot; -threads 4 -vf yadif=1,scale=720:480,tinterlace=4 -target ntsc-dvd -flags +ilme+ildct &amp;quot;%~dpn1_dvd.mpeg&amp;quot; dvdauthor -o &amp;quot;%~dpn1_dvd&amp;quot; -t &amp;quot;%~dpn1_dvd.mpeg&amp;quot; dvdauthor -o &amp;quot;%~dpn1_dvd&amp;quot; -T mkisofs -dvd-video -o &amp;quot;%~dpn1_dvd.</description>
     </item>
     
     <item>
