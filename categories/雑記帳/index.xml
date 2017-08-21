@@ -6,10 +6,31 @@
     <description>Recent content in 雑記帳 on 330k info</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 08 Aug 2017 19:24:04 +0900</lastBuildDate>
+    <lastBuildDate>Mon, 21 Aug 2017 22:38:20 +0900</lastBuildDate>
     
 	<atom:link href="https://www.330k.info/categories/%E9%9B%91%E8%A8%98%E5%B8%B3/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Unicode制御文字(LRO, RLO)でコピー・改変を防止 (構想)</title>
+      <link>https://www.330k.info/essay/scramble_unicode_lro_rlo/</link>
+      <pubDate>Mon, 21 Aug 2017 22:38:20 +0900</pubDate>
+      
+      <guid>https://www.330k.info/essay/scramble_unicode_lro_rlo/</guid>
+      <description>Unicode制御文字のうち、LRO(Left-to-right override, U+202D)とRLO(Right-to-left override, U+202E)は 行中でも文字列の方向を変更する。
+1行の中に何度もLROとRLOが入ると、カーソルキーが踊って楽しいことになる。
+例: 下のテキストボックスの中の文字列を編集しようとしても初見ではうまくできないはず。
+‮‭い‮を‭ろ‮る‭は‮ぬ‭に‮り‭ほ‮ち‭へ ‮‭わ‮む‭か‮ら‭よ‮な‭た‮ね‭れ‮つ ‮‭う‮て‭ゐ‮え‭の‮こ‭お‮ふ‭く‮け‭や ‮‭あ‮す‭さ‮せ‭き‮も‭ゆ‮ひ‭め‮ゑ‭み 
+表示上は普通のいろは順にひらがなが並んでいるように見えるが、 実際のデータはまったく違う順序になっている。
+↓通常のテキスト (比較用)
+いろはにほへとちりぬるを わかよたれそつねならむ うゐのおくやまけふこえて あさきゆめみしゑひもせす 
+作り方 行内の文字列の順番を入れ替えつつ、LROとRLOを交互に挿入。
+以下のMathematicaコードで上記の例を作成した。
+StringScrumble[str_String] := Module[{chars, chars2}, StringJoin[Riffle[( chars = ToCharacterCode[#]; chars2 = Join[{16^^202e}, Riffle[chars, Reverse[chars]]][[1 ;; Length[chars]]]; FromCharacterCode[Riffle[chars2, {16^^202d, 16^^202e}]]) &amp;amp; /@ StringSplit[str, &amp;quot;\n&amp;quot;] , StringCases[str, &amp;quot;\n&amp;quot;]]]] StringScrumble[&amp;quot;いろはにほへとちりぬるを\nわかよたれそつねならむ\nうゐのおくやまけふこえて\nあさきゆめみしゑひもせす&amp;quot;]  各種デバイス・アプリでの表示 ChromeやFirefox、Edgeなどブラウザは狙い通り表示された。メモ帳もOK。
+geditは行頭にRLOがあると右寄せで表示してしまう(こういう表示のほうが正しいかもしれないが)。
+iPhoneのメッセージ、メール、GmailはいずれもOK。
+ Edge (Windows 10):   Chrome(Ubuntu):   Firefox (Ubuntu):   メモ帳 (Windows 10):   gedit (Ubuntu):   iPhone メール:   iPhone メッセージ:   iPhone Gmailアプリ:    課題と応用 交互にLROとRLOを入れていく単純な方法では、 文字列方向に「中立」な文字(スペースやカンマ、ピリオド、句読点など)を含む文字列は 上記のMathematicaコードでは上手く表示できない。</description>
+    </item>
     
     <item>
       <title>Hugo &#43; GitHub Pages &#43; CloudFlareにGoogleサイトから移転</title>
