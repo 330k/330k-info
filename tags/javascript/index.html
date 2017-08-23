@@ -76,10 +76,11 @@ ga('send', 'pageview');
 いろはにほへとちりぬるを わかよたれそつねならむ うゐのおくやまけふこえて あさきゆめみしゑひもせす 
 作り方 行内の文字列の順番を入れ替えつつ、LROとRLOを交互に挿入。
 以下のMathematicaコードで上記の例を作成した。
-StringScrumble[str_String] := Module[{chars, chars2}, StringJoin[Riffle[( chars = ToCharacterCode[#]; chars2 = Join[{16^^202e}, Riffle[chars, Reverse[chars]]][[1 ;; Length[chars]]]; FromCharacterCode[Riffle[chars2, {16^^202d, 16^^202e}]]) &amp; /@ StringSplit[str, &quot;\n&quot;] , StringCases[str, &quot;\n&quot;]]]] StringScrumble[&quot;いろはにほへとちりぬるを\nわかよたれそつねならむ\nうゐのおくやまけふこえて\nあさきゆめみしゑひもせす&quot;]  各種デバイス・アプリでの表示 ChromeやFirefox、Edgeなどブラウザは狙い通り表示された。メモ帳もOK。
-geditは行頭にRLOがあると右寄せで表示してしまう(こういう表示のほうが正しいかもしれないが)。
+StringScrumble[str_String] := Module[{chars, chars2}, StringJoin[Riffle[( chars = ToCharacterCode[#]; chars2 = Join[{16^^202e}, Riffle[chars, Reverse[chars]]][[1 ;; Length[chars]]]; FromCharacterCode[Riffle[chars2, {16^^202d, 16^^202e}]]) &amp; /@ StringSplit[str, &quot;\n&quot;] , StringCases[str, &quot;\n&quot;]]]] StringScrumble[&quot;いろはにほへとちりぬるを\nわかよたれそつねならむ\nうゐのおくやまけふこえて\nあさきゆめみしゑひもせす&quot;]  各種デバイス・アプリでの表示 上記の文章をメールで送信し、各種端末で受信メールで表示してみた。
+ChromeやFirefoxなどブラウザは狙い通り表示された。 Edgeはテキストボックス内ではダメだったが、それ以外の場所ではOK。 Outlookでの表示もOK。
+メモ帳はOK。 geditは行頭にRLOがあると右寄せで表示してしまう(こういう表示のほうが正しいかもしれないが)。
 iPhoneのメッセージ、メール、GmailはいずれもOK。
- Edge (Windows 10):   Chrome(Ubuntu):   Firefox (Ubuntu):   メモ帳 (Windows 10):   gedit (Ubuntu):   iPhone メール:   iPhone メッセージ:   iPhone Gmailアプリ:    課題と応用 交互にLROとRLOを入れていく単純な方法では、 文字列方向に「中立」な文字(スペースやカンマ、ピリオド、句読点など)を含む文字列は 上記のMathematicaコードでは上手く表示できない。
+ Windows 10  Edge:   Outlook:   メモ帳:    Ubuntu 16.
 		</div>
 	</div>
 </article>
