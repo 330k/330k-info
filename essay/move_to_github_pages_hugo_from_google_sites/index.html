@@ -106,8 +106,7 @@ ga('send', 'pageview');
 
 <h2 id="github">GitHub</h2>
 
-<p>GitHubにGitHub Pages用のリポジトリを作成。
-参考サイトにならい、Hugo自体のリポジトリも作成。</p>
+<p>GitHubにGitHub Pages用のリポジトリとHugo自体のリポジトリを作成。</p>
 
 <p>ここでUser Pages(リポジトリ名: <code>(ユーザ名).github.io</code>)で作成し、
 <code>CNAME</code>ファイルで独自ドメインを設定すると、
@@ -144,7 +143,7 @@ GitHubの他のリポジトリにも独自ドメインの設定が反映され�
 <li>CloudFlareで<code>www.330k.info</code>のCNAMEレコードを<code>ghs.google.com</code>から<code>330k.github.io</code>に変更。</li>
 <li>SSLの設定を<code>Flexible</code>に設定。</li>
 <li>HTTPのアクセスをHTTPSにリダイレクトする<code>Always use HTTPS</code>を<code>ON</code>に設定。</li>
-<li>サブドメインはHTTPS化しないかもしれないので、HSTSはOFFで様子見。</li>
+<li><s>HSTSはOFFで様子見。</s> → HSTS Onに変更(includeSubdomainはOFF)</li>
 <li><code>Automatic HTTPS Rewrites</code>はOFF(自力ですべての内部リンクをHTTPSに置換)。</li>
 </ul>
 
