@@ -29,8 +29,9 @@
 以下のMathematicaコードで上記の例を作成した。
 StringScrumble[str_String] := Module[{chars, chars2}, StringJoin[Riffle[( chars = ToCharacterCode[#]; chars2 = Join[{16^^202e}, Riffle[chars, Reverse[chars]]][[1 ;; Length[chars]]]; FromCharacterCode[Riffle[chars2, {16^^202d, 16^^202e}]]) &amp;amp; /@ StringSplit[str, &amp;quot;\n&amp;quot;] , StringCases[str, &amp;quot;\n&amp;quot;]]]] StringScrumble[&amp;quot;いろはにほへとちりぬるを\nわかよたれそつねならむ\nうゐのおくやまけふこえて\nあさきゆめみしゑひもせす&amp;quot;]  各種デバイス・アプリでの表示 上記の文章をメールで送信し、各種端末で受信メールで表示してみた。
 ChromeやFirefoxなどブラウザは狙い通り表示された。 Edgeはテキストボックス内ではダメだったが、それ以外の場所ではOK。 Outlookでの表示もOK。
-メモ帳はOK。 geditは行頭にRLOがあると右寄せで表示してしまう(こういう表示のほうが正しいかもしれないが)。
 iPhoneのメッセージ、メール、GmailはいずれもOK。
+テキストエディタについてもどう表示されるか確認した。
+メモ帳は意外にもちゃんとBiDi対応だった。 geditは行頭にRLOがあると右寄せで表示してしまう(こういう表示のほうが正しいかもしれないが)。
  Windows 10  Edge:   Outlook:   メモ帳:    Ubuntu 16.</description>
     </item>
     
