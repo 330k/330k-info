@@ -55,6 +55,26 @@ ga('send', 'pageview');
 			<h1 class="page-header__title">雑記帳</h1>
 		</header>
 				<article class="list__item post clearfix">
+	<div class="list__content clearfix">
+		<header class="list__header">
+			<h3 class="list__title post__title ">
+				<a href="/essay/detect_submittion_to_private_mail_from_gmail/" rel="bookmark">Gmail (G Suite)でフリーメールアドレスへの送信を検知</a>
+			</h3>
+			<div class="list__meta meta">
+				<svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
+				<time class="list__meta-date" datetime="2016-11-29T20:45:00">November 29, 2016</time>
+			</div>
+		</header>
+		<div class="list__excerpt">
+			 会社ではG Suite(旧Google Apps for Works)を導入しているが、 ある社員が個人のGmailアドレスに会社の情報の入ったメールを送信していた。
+幸いPCで操作していたためPCのログ監視ソフト(SKYSEA Client View)で検知し、当該従業員に注意することができた。 ただ、同じことを会社支給のiPhoneでやられた場合に無力だったことに気づいたので、G Suite側でも対策を実施。
+設定方法は以下の通り。
+ 「管理コンソール」の「アプリ」→「Gmail」→「詳細設定」と進む 「コンテンツ コンプライアンス」を追加 影響を受けるメールは「送信」にチェック 「次の一部がメールに一致する場合」を選択 「任意のエンベロープ受信者」が「いずれかの単語に一致する」にhttp://powerbiz.jp/abiz/tips/archives/26/ などから検知対象とするドメイン一覧を取得してスペース区切りにしたものを設定する (1000文字を超える場合は1000文字以内に収まるよう複数に分けて登録)   「上記の表現に一致する場合は、次の処理を行います」には「メッセージを変更」を選択 「その他の送信先」「受信者を追加」で配信先に管理者用のメールアドレスを設定(エイリアスにしておくとフィルタ作成で便利)   設定ができたら保存する(※全ユーザに適用されるまで1時間程度かかる) 管理者用のGmailの設定で、8で設定したアドレスに来たものをフィルタしてラベルをつけるようにしておく  注意事項  設定ミスすると全ユーザのメールが影響を受けるので、テスト用のOUを作ってから検証してから全ユーザに適用する コンテンツコンプライアンスでは、クレジットカード番号やパスポート番号が含まれたメールを検知可能 残念ながら執筆時点(Nov. 29 2016)では日本のマイナンバーの検知機能はない  
+		</div>
+	</div>
+</article>
+
+				<article class="list__item post clearfix">
 	<figure class="list__thumbnail">
 		<a href="https://www.330k.info/essay/make_font_embedded_pdf_from_edinet/">
 			<img src="/essay/make_font_embedded_pdf_from_edinet/EDINET001.png" alt="EDINETが生成するPDFにフォントを埋め込む" />
@@ -300,32 +320,6 @@ Network Connect起動時に作成される仮想NICがメトリックで優先�
 	</div>
 </article>
 
-				<article class="list__item post clearfix">
-	<figure class="list__thumbnail">
-		<a href="https://www.330k.info/essay/first-review-of-recon-jet/">
-			<img src="/essay/first-review-of-recon-jet/IMG_20150816_063230.jpg" alt="Recon JETを試してみた" />
-		</a>
-	</figure>
-	<div class="list__content clearfix">
-		<header class="list__header">
-			<h3 class="list__title post__title ">
-				<a href="/essay/first-review-of-recon-jet/" rel="bookmark">Recon JETを試してみた</a>
-			</h3>
-			<div class="list__meta meta">
-				<svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
-				<time class="list__meta-date" datetime="2015-10-26T00:00:00">October 26, 2015</time>
-			</div>
-		</header>
-		<div class="list__excerpt">
-			購入したのはかなり早いタイミングだったが、なかなか試すことができなかったRecon JET。
-やっと自転車で走るときにつけて使い心地はどんなものか試すことが出来た。 ANT+対応の心拍計などは持っていないので、Recon JET単体でのテスト。
-つけ心地  普通のサングラスに比べればやはりパッドが当たる部分が痛くなるが、耐えられないほどではない 日本は車道の左側通行なので、視界の右下をディスプレイに遮られると、後方確認がしにくい  GPS  測位が遅い(m-241に比べて10分以上捕捉に時間がかかることもある) 測位の精度はm-241と同等以上(下記マップは障害物がほとんどない荒川CRを走行したとき) ただし、積算距離の精度は低い(１箇所でも位置がずれると、そのせいで距離が大きく計算される)  Recon JET(赤線)とm-241(青線)のGPSログ比較。
-  function initMap(){ var map, ctaLayer; map = new google.maps.Map(document.getElementById("map-canvas"), { center: {lat: 35.6832581, lng: 139.7555827}, zoom: 8 }); ctaLayer = new google.maps.KmlLayer({ url: "https:\/\/www.330k.info\/\/essay\/first-review-of-recon-jet\/2015081602.kml" }); ctaLayer.setMap(map); }   バッテリー  最大2時間半しかもたない 予備のバッテリーを持っていても、1日中走行するには耐えられない  カメラ  解像度は低いので、携帯電話のほうがよっぽどまし。 動画は撮影時間を予め15秒や1分などと予め設定してから撮影をスタートするので、使いどころが難しい。  荒川CRで実際に撮影した画像と動画
- マップ  黒背景に道路が暗い灰色で表示されるので非常に見にくい 道路名や何号線かなどが表示されないため道に迷った時や知らない土地では無力  Recon Uplink  Recon JETを接続すると自動で記録をWeb上に上げてくれる 今までの走行記録(距離、平均速度、獲得標高など)をブラウザで見れるのは便利なので、 毎日ガチで2時間の練習ばかりする人であれば有用かもしれない  総評  サイコンの代替になるにはまだまだ性能不足(特にバッテリー)。 カメラやマップもRecon JETを使うくらいなら携帯電話(スマートフォン)のほうが断然良い。  ということで、残念ながら現時点ではロングツーリングのお供にはなれなかった。
-		</div>
-	</div>
-</article>
-
 
 		
 <div class="pagination clearfix">
@@ -353,6 +347,7 @@ Network Connect起動時に作成される仮想NICがメトリックで優先�
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/essay/delete_temporary_files_with_powershell/">Officeの一時ファイルやThumbs.dbなどをPowerShellで一掃</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/scramble_unicode_lro_rlo/">Unicode制御文字(LRO, RLO)でコピー・改変を防止 (構想)</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/move_to_github_pages_hugo_from_google_sites/">Hugo &#43; GitHub Pages &#43; CloudFlareにGoogleサイトから移転</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20170729-0806_hokkaido/">2017年7月29日〜8月6日 北海道 道東→道北(襟裳岬、納沙布岬、知床、宗谷岬)</a></li>
@@ -362,7 +357,6 @@ Network Connect起動時に作成される仮想NICがメトリックで優先�
 			<li class="widget__item"><a class="widget__link" href="/essay/create_uuid_vba/">VBAでUUIDを生成</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20170715-17_castella_yatsugatake_kogen/">2017年07月15日〜17日 カステラ工場〜軽井沢〜八ヶ岳高原〜甲府</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/equipments/">携行品・装備品</a></li>
-			<li class="widget__item"><a class="widget__link" href="/bicycle/introduction/">自転車について</a></li>
 		</ul>
 	</div>
 </div>
@@ -408,6 +402,7 @@ Network Connect起動時に作成される仮想NICがメトリックで優先�
 		<a class="widget__link widget__link--taglist" href="/tags/javascript" title="javascript">javascript (4)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/mathematica" title="mathematica">mathematica (18)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/powerpoint" title="powerpoint">powerpoint (1)</a>
+		<a class="widget__link widget__link--taglist" href="/tags/powershell" title="powershell">powershell (1)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/sql" title="sql">sql (3)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/ubuntu" title="ubuntu">ubuntu (6)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/vba" title="vba">vba (3)</a>
@@ -418,7 +413,7 @@ Network Connect起動時に作成される仮想NICがメトリックで優先�
 		<a class="widget__link widget__link--taglist" href="/tags/%e3%83%84%e3%83%bc%e3%83%aa%e3%83%b3%e3%82%b0" title="ツーリング">ツーリング (42)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/%e3%83%91%e3%83%af%e3%83%8f%e3%83%a9" title="パワハラ">パワハラ (5)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/%e7%94%9f%e6%b4%bb" title="生活">生活 (1)</a>
-		<a class="widget__link widget__link--taglist" href="/tags/%e7%a4%be%e5%86%85se" title="社内se">社内se (12)</a>
+		<a class="widget__link widget__link--taglist" href="/tags/%e7%a4%be%e5%86%85se" title="社内se">社内se (13)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/%e8%87%aa%e8%bb%a2%e8%bb%8a" title="自転車">自転車 (9)</a>
 	</div>
 </div>

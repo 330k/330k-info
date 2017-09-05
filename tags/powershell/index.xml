@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Powershell on 330k info</title>
+    <link>https://www.330k.info/tags/powershell/</link>
+    <description>Recent content in Powershell on 330k info</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 06 Sep 2017 00:57:48 +0900</lastBuildDate>
+    
+	<atom:link href="https://www.330k.info/tags/powershell/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Officeの一時ファイルやThumbs.dbなどをPowerShellで一掃</title>
+      <link>https://www.330k.info/essay/delete_temporary_files_with_powershell/</link>
+      <pubDate>Wed, 06 Sep 2017 00:57:48 +0900</pubDate>
+      
+      <guid>https://www.330k.info/essay/delete_temporary_files_with_powershell/</guid>
+      <description>ファイルサーバの空き容量が減ってきたので調べてみたら、 削除されていないOfficeファイルの一時ファイルや、Thumbs.dbが結構あることが分かった。
+Thumbs.dbはグループポリシーでネットワークドライブ上では生成しないようにしているはずだが、 ローカルのフォルダをファイルサーバにコピーすると、一緒にくっついてくるらしい。
+以下のPowerShellスクリプトをタスクスケジューラに登録して、定期的(1日1回)にゴミ掃除。
+$a = @() $a += Get-ChildItem &amp;quot;(掃除対象フォルダのパス1)&amp;quot; -Force -Recurse $a += Get-ChildItem &amp;quot;(掃除対象フォルダのパス2)&amp;quot; -Force -Recurse $a += Get-ChildItem &amp;quot;(掃除対象フォルダのパス3)&amp;quot; -Force -Recurse $a | Where-Object { ` $_.Name -like &amp;quot;~*&amp;quot; -and $_.LastWriteTime -lt (Get-Date).AddDays(-1) ` -or $_.Name -like &amp;quot;*.tmp&amp;quot; ` -or $_.Name -eq &amp;quot;Thumbs.db&amp;quot; ` -or $_.Name -eq &amp;quot;.DS_Store&amp;quot; ` -or $_.Name -like &amp;quot;._*&amp;quot; ` } | Remove-Item -Force  削除対象は以下の通り。
+ 更新日時が1日以上前のOffice一時ファイル(&amp;quot;~*&amp;quot;) 拡張子が&amp;quot;tmp&amp;quot;のファイル &amp;quot;Thumbs.db&amp;quot; .DS_Storeや._*などのMac OSで使用されるファイル  </description>
+    </item>
+    
+  </channel>
+</rss>
