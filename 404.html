@@ -3,11 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>簡易ハンディGPSによるあしあとデータの時刻情報</title>
+<title>404 Page not found</title>
 <meta name="description" content="自転車ツーリングの記録やソフトウェアの配布、Mathematicaをメインにしたプログラミングの覚書や日ごろの雑感など。">
 <meta name="generator" content="Hugo 0.21" />
 
-
+<link rel="alternate" type="application/rss+xml" title="330k info Feed" href="https://www.330k.info/index.xml">
 <link rel="stylesheet" href="/css/style.css" type="text/css" media="all" />
 <script type="text/javascript" src="/js/scripts.js"></script>
 <script type="text/javascript" src="/js/highlight.pack.js"></script>
@@ -38,7 +38,7 @@ ga('send', 'pageview');
 <nav class="menu" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
 	<ul class="menu__list">
 		<li class="menu__item "><a class="menu__link" href="/bicycle/">BICYCLES</a></li>
-		<li class="menu__item menu__item--active"><a class="menu__link" href="/essay/">ESSAYS</a></li>
+		<li class="menu__item "><a class="menu__link" href="/essay/">ESSAYS</a></li>
 		<li class="menu__item "><a class="menu__link" href="/software/">SOFTWARES</a></li>
 	</ul>
 </nav>
@@ -47,79 +47,12 @@ ga('send', 'pageview');
 		<div class="wrapper clearfix">
 
 
-<div class="main-content content" role="main" itemprop="mainContentOfPage">
-	<article class="post">
-		<header class="post__header clearfix">
-			<h1 class="post__title">簡易ハンディGPSによるあしあとデータの時刻情報</h1>
-			<p class="post__meta meta">
-				<svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
-				<time class="post__meta-date" datetime="2009-10-27T00:00:00">October 27, 2009</time>
-				<span class="post__meta-categories meta-categories">
-					<svg class="icon icon-category" height="16" viewBox="0 0 16 16" width="16" xmlns="http://www.w3.org/2000/svg"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
-					<a class="meta-categories__link" href="/categories/%e9%9b%91%e8%a8%98%e5%b8%b3" rel="category">雑記帳</a></span>
-			</p>
-		</header>
-		<div class="post__content clearfix">
-			<p>au携帯電話に入っている地図ビューアーの簡易ハンディGPS機能によって取得したGPSログ(あしあとデータ)は、</p>
-
-<pre><code>本ファイルは、地図ビューアーにより出力されたGPS情報ファイルです。
-
-出力日時:2009/10/27 08:56:46 +0900
-
-+++GPSログ+++
-940669002,139.604988,35.833148
-</code></pre>
-
-<p>という形式になっており、「+++GPSログ+++」以下の行に時刻、経度、緯度の順番に記録される。</p>
-
-<p>GPSでは時刻を1980年1月6日0時0分0秒(GMT)からの秒数として表すが、au携帯電話の場合はこれに9時間を足した秒数になる。</p>
-
-<p>ただし、GPS時刻は1980年1月6日以降の閏秒を無視しているので、普通のGPSロガーから時刻情報を取り出すときには閏秒の処理が必要になる。
-ちなみに2009年1月1日時点でGPSの原子時計は15秒進んでいる。</p>
-
-<p>3行目の出力日時は簡易ハンディGPSからあしあとデータの保存をした時の時刻となる。
-上のデータは1回目の測位終了後直ちに保存したものであるので、出力日時の「2009/10/27 08:56:46」というのは「940669002」の表す時刻の数秒後であるはず。</p>
-
-<p>ところが、閏秒を考慮せずにMathematicaで</p>
-
-<pre><code class="language-Mathematica">DatePlus[DateList[{1980, 1, 6, 0, 0, 0}], {940669002, &quot;Second&quot;}]
-</code></pre>
-
-<p>とすると、</p>
-
-<pre><code class="language-Mathematica">{2009, 10, 27, 8, 56, 42.}
-</code></pre>
-
-<p>と返ってくる。</p>
-
-<p>電波時計と携帯電話を同時に見ていたのだが、8時56分42秒というのは測位した瞬間に電波時計が指していた時刻と一致している。
-15秒前の8時56分27秒の時点ではまだ測位を開始していない。</p>
-
-<p>以上より、auの携帯電話(少なくとも私が持っているW61CA)の簡易ハンディGPSによるあしあとデータの時刻情報は閏秒について修正する必要がない(携帯電話側で修正している)と言える。</p>
-
-		</div>
-		
-<div class="post__tags tags clearfix">
-	<svg class="icon icon-tag" width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="m4.73135 3.3795002q0-.5597-.39604-.9557-.39604-.3961-.95577-.3961-.55974 0-.95578.3961-.39604.396-.39604.9557 0 .5598.39604.9558.39604.3961.95578.3961.55973 0 .95577-.3961.39604-.396.39604-.9558zm11.26865 6.0832q0 .5596998-.39076.9504998l-5.18548 5.196q-.41188.3908-.9610504.3908-.55974 0-.9505-.3908l-7.5511496-7.5616998q-.40132-.3907-.68119-1.0666-.27987-.6759-.27987-1.2357v-4.3934q0-.54920004.40132-.95050004.40132-.4013.9505-.4013h4.39339q.55974 0 1.23565.2799.67591.2798 1.07723.6812l7.55115 7.54060004q.39076.4118.39076.961z"/></svg>
-	<ul class="tags__list">
-		<li class="tags__item"><a class="tags__link" href="/tags/gps/" rel="tag">GPS</a></li>
-	</ul>
-</div>
-
-	</article>
-	
-	
-<nav class="post-nav row clearfix" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
-	<div class="post-nav__item post-nav__item--prev col-1-2">
-		<a class="post-nav__link" href="/essay/how-to-redirect-standard-input-output-of-16bit-application/" rel="prev"><span class="post-nav__caption">«Previous</span><p class="post-nav__post-title">16ビットアプリケーションの標準入出力をリダイレクト</p></a>
+<main class="main-content content" role="main" itemprop="mainContentOfPage">
+	<div class="warning">
+		<h1 class="warning__headline">404. Page not found</h1>
+		<p class="warning__text">The page you were looking for appears to have been moved, deleted or does not exist. Please, use search or go to <a href="/">main page</a>.</p>
 	</div>
-	<div class="post-nav__item post-nav__item--next col-1-2">
-		<a class="post-nav__link" href="/essay/takakugatanonaigaihantei/" rel="next"><span class="post-nav__caption">Next»</span><p class="post-nav__post-title">多角形の内外判定</p></a>
-	</div>
-</nav>
-
-	
-</div>
+</main>
 
 <aside class="sidebar" itemscope="itemscope" itemtype="http://schema.org/WPSideBar">
 	
