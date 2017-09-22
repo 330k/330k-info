@@ -118,42 +118,22 @@ Douglas-Peuckerアルゴリズムを改良して指定した点数まで点を�
 
 <h3 id="firefox-29-on-ubuntu-12-04-lts-64bit">Firefox 29 on Ubuntu 12.04 LTS 64bit</h3>
 
+<h4 id="sequential">Sequential</h4>
+
 <table>
 <thead>
 <tr>
 <th align="right">n</th>
-<th align="right">Sequential</th>
-<th align="right"></th>
-<th align="right"></th>
-<th align="right"></th>
-<th align="right"></th>
-<th align="right"></th>
-<th align="right">Douglas-Peucker</th>
-<th align="right"></th>
-<th align="right"></th>
-<th align="right"></th>
-<th align="right"></th>
-<th align="right"></th>
+<th align="right">Array.sort()</th>
+<th align="right">Selection</th>
+<th align="right">Insertion</th>
+<th align="right">Binary Insertion</th>
+<th align="right">Binary Heap</th>
+<th align="right">Pairing Heap</th>
 </tr>
 </thead>
 
 <tbody>
-<tr>
-<td align="right">Method</td>
-<td align="right">Array.sort()</td>
-<td align="right">Selection</td>
-<td align="right">Insertion</td>
-<td align="right">Binary Insertion</td>
-<td align="right">Binary Heap</td>
-<td align="right">Pairing Heap</td>
-<td align="right">Array.sort()</td>
-<td align="right">Selection</td>
-<td align="right">Insertion</td>
-<td align="right">Binary Insertion</td>
-<td align="right">Binary Heap</td>
-<td align="right">Pairing Heap</td>
-</tr>
-
 <tr>
 <td align="right">1000</td>
 <td align="right">3</td>
@@ -162,12 +142,6 @@ Douglas-Peuckerアルゴリズムを改良して指定した点数まで点を�
 <td align="right"><strong>1</strong></td>
 <td align="right">2</td>
 <td align="right">2</td>
-<td align="right">15</td>
-<td align="right">3</td>
-<td align="right">2</td>
-<td align="right"><strong>1</strong></td>
-<td align="right"><strong>1</strong></td>
-<td align="right"><strong>1</strong></td>
 </tr>
 
 <tr>
@@ -178,12 +152,6 @@ Douglas-Peuckerアルゴリズムを改良して指定した点数まで点を�
 <td align="right"><strong>1</strong></td>
 <td align="right"><strong>1</strong></td>
 <td align="right"><strong>1</strong></td>
-<td align="right">49</td>
-<td align="right">9</td>
-<td align="right">6</td>
-<td align="right">1</td>
-<td align="right"><strong>0</strong></td>
-<td align="right">1</td>
 </tr>
 
 <tr>
@@ -194,12 +162,6 @@ Douglas-Peuckerアルゴリズムを改良して指定した点数まで点を�
 <td align="right">4</td>
 <td align="right"><strong>2</strong></td>
 <td align="right"><strong>2</strong></td>
-<td align="right">274</td>
-<td align="right">47</td>
-<td align="right">36</td>
-<td align="right"><strong>1</strong></td>
-<td align="right">3</td>
-<td align="right"><strong>1</strong></td>
 </tr>
 
 <tr>
@@ -210,12 +172,6 @@ Douglas-Peuckerアルゴリズムを改良して指定した点数まで点を�
 <td align="right">11</td>
 <td align="right"><strong>4</strong></td>
 <td align="right">5</td>
-<td align="right">1107</td>
-<td align="right">180</td>
-<td align="right">128</td>
-<td align="right">4</td>
-<td align="right">4</td>
-<td align="right"><strong>2</strong></td>
 </tr>
 
 <tr>
@@ -226,6 +182,127 @@ Douglas-Peuckerアルゴリズムを改良して指定した点数まで点を�
 <td align="right">32</td>
 <td align="right"><strong>8</strong></td>
 <td align="right">10</td>
+</tr>
+
+<tr>
+<td align="right">50000</td>
+<td align="right">-</td>
+<td align="right">-</td>
+<td align="right">-</td>
+<td align="right">177</td>
+<td align="right"><strong>22</strong></td>
+<td align="right">26</td>
+</tr>
+
+<tr>
+<td align="right">100000</td>
+<td align="right">-</td>
+<td align="right">-</td>
+<td align="right">-</td>
+<td align="right">688</td>
+<td align="right"><strong>48</strong></td>
+<td align="right">66</td>
+</tr>
+
+<tr>
+<td align="right">200000</td>
+<td align="right">-</td>
+<td align="right">-</td>
+<td align="right">-</td>
+<td align="right">2909</td>
+<td align="right"><strong>128</strong></td>
+<td align="right">164</td>
+</tr>
+
+<tr>
+<td align="right">500000</td>
+<td align="right">-</td>
+<td align="right">-</td>
+<td align="right">-</td>
+<td align="right">-</td>
+<td align="right"><strong>413</strong></td>
+<td align="right">512</td>
+</tr>
+
+<tr>
+<td align="right">1000000</td>
+<td align="right">-</td>
+<td align="right">-</td>
+<td align="right">-</td>
+<td align="right">-</td>
+<td align="right"><strong>996</strong></td>
+<td align="right">1235</td>
+</tr>
+</tbody>
+</table>
+
+
+<figure >
+    
+        <img src="priority_queue_test_001.png" />
+    
+    
+</figure>
+
+
+<h4 id="dauglas-peucker-2-enqueue-1-dequeue">Dauglas-Peucker (2-enqueue, 1-dequeue)</h4>
+
+<table>
+<thead>
+<tr>
+<th align="right">n</th>
+<th align="right">Array.sort()</th>
+<th align="right">Selection</th>
+<th align="right">Insertion</th>
+<th align="right">Binary Insertion</th>
+<th align="right">Binary Heap</th>
+<th align="right">Pairing Heap</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="right">1000</td>
+<td align="right">15</td>
+<td align="right">3</td>
+<td align="right">2</td>
+<td align="right"><strong>1</strong></td>
+<td align="right"><strong>1</strong></td>
+<td align="right"><strong>1</strong></td>
+</tr>
+
+<tr>
+<td align="right">2000</td>
+<td align="right">49</td>
+<td align="right">9</td>
+<td align="right">6</td>
+<td align="right">1</td>
+<td align="right"><strong>0</strong></td>
+<td align="right">1</td>
+</tr>
+
+<tr>
+<td align="right">5000</td>
+<td align="right">274</td>
+<td align="right">47</td>
+<td align="right">36</td>
+<td align="right"><strong>1</strong></td>
+<td align="right">3</td>
+<td align="right"><strong>1</strong></td>
+</tr>
+
+<tr>
+<td align="right">10000</td>
+<td align="right">1107</td>
+<td align="right">180</td>
+<td align="right">128</td>
+<td align="right">4</td>
+<td align="right">4</td>
+<td align="right"><strong>2</strong></td>
+</tr>
+
+<tr>
+<td align="right">20000</td>
 <td align="right">-</td>
 <td align="right">685</td>
 <td align="right">554</td>
@@ -239,12 +316,6 @@ Douglas-Peuckerアルゴリズムを改良して指定した点数まで点を�
 <td align="right">-</td>
 <td align="right">-</td>
 <td align="right">-</td>
-<td align="right">177</td>
-<td align="right"><strong>22</strong></td>
-<td align="right">26</td>
-<td align="right">-</td>
-<td align="right">-</td>
-<td align="right">-</td>
 <td align="right">53</td>
 <td align="right">21</td>
 <td align="right"><strong>15</strong></td>
@@ -255,12 +326,6 @@ Douglas-Peuckerアルゴリズムを改良して指定した点数まで点を�
 <td align="right">-</td>
 <td align="right">-</td>
 <td align="right">-</td>
-<td align="right">688</td>
-<td align="right"><strong>48</strong></td>
-<td align="right">66</td>
-<td align="right">-</td>
-<td align="right">-</td>
-<td align="right">-</td>
 <td align="right">189</td>
 <td align="right">45</td>
 <td align="right"><strong>36</strong></td>
@@ -268,12 +333,6 @@ Douglas-Peuckerアルゴリズムを改良して指定した点数まで点を�
 
 <tr>
 <td align="right">200000</td>
-<td align="right">-</td>
-<td align="right">-</td>
-<td align="right">-</td>
-<td align="right">2909</td>
-<td align="right"><strong>128</strong></td>
-<td align="right">164</td>
 <td align="right">-</td>
 <td align="right">-</td>
 <td align="right">-</td>
@@ -288,12 +347,6 @@ Douglas-Peuckerアルゴリズムを改良して指定した点数まで点を�
 <td align="right">-</td>
 <td align="right">-</td>
 <td align="right">-</td>
-<td align="right"><strong>413</strong></td>
-<td align="right">512</td>
-<td align="right">-</td>
-<td align="right">-</td>
-<td align="right">-</td>
-<td align="right">-</td>
 <td align="right">313</td>
 <td align="right"><strong>250</strong></td>
 </tr>
@@ -304,86 +357,39 @@ Douglas-Peuckerアルゴリズムを改良して指定した点数まで点を�
 <td align="right">-</td>
 <td align="right">-</td>
 <td align="right">-</td>
-<td align="right"><strong>996</strong></td>
-<td align="right">1235</td>
-<td align="right">-</td>
-<td align="right">-</td>
-<td align="right">-</td>
-<td align="right">-</td>
 <td align="right">729</td>
 <td align="right"><strong>592</strong></td>
 </tr>
 </tbody>
 </table>
 
-<table>
-<thead>
-<tr>
-<th>Sequential</th>
-<th>Dauglas-Peucker</th>
-</tr>
-</thead>
 
-<tbody>
-<tr>
-<td>
-<figure >
-    
-        <img src="priority_queue_test_001.png" />
-    
-    
-</figure>
-</td>
-<td>
 <figure >
     
         <img src="priority_queue_test_002.png" />
     
     
 </figure>
-</td>
-</tr>
-</tbody>
-</table>
+
 
 <h3 id="chromium-34-on-ubuntu-12-04-lts-64bit">Chromium 34 on Ubuntu 12.04 LTS 64bit</h3>
+
+<h4 id="sequential-1">Sequential</h4>
 
 <table>
 <thead>
 <tr>
 <th align="right">n</th>
-<th align="right">Sequential</th>
-<th align="right"></th>
-<th align="right"></th>
-<th align="right"></th>
-<th align="right"></th>
-<th align="right"></th>
-<th align="right">Douglas-Peucker</th>
-<th align="right"></th>
-<th align="right"></th>
-<th align="right"></th>
-<th align="right"></th>
-<th align="right"></th>
+<th align="right">Array.sort()</th>
+<th align="right">Selection</th>
+<th align="right">Insertion</th>
+<th align="right">Binary Insertion</th>
+<th align="right">Binary Heap</th>
+<th align="right">Pairing Heap</th>
 </tr>
 </thead>
 
 <tbody>
-<tr>
-<td align="right">Method</td>
-<td align="right">Array.sort()</td>
-<td align="right">Selection</td>
-<td align="right">Insertion</td>
-<td align="right">Binary Insertion</td>
-<td align="right">Binary Heap</td>
-<td align="right">Pairing Heap</td>
-<td align="right">Array.sort()</td>
-<td align="right">Selection</td>
-<td align="right">Insertion</td>
-<td align="right">Binary Insertion</td>
-<td align="right">Binary Heap</td>
-<td align="right">Pairing Heap</td>
-</tr>
-
 <tr>
 <td align="right">1000</td>
 <td align="right">5</td>
@@ -392,12 +398,6 @@ Douglas-Peuckerアルゴリズムを改良して指定した点数まで点を�
 <td align="right"><strong>2</strong></td>
 <td align="right"><strong><em>2</em></strong></td>
 <td align="right">5</td>
-<td align="right">33</td>
-<td align="right">4</td>
-<td align="right">3</td>
-<td align="right"><strong>0</strong></td>
-<td align="right">1</td>
-<td align="right"><strong>0</strong></td>
 </tr>
 
 <tr>
@@ -408,12 +408,6 @@ Douglas-Peuckerアルゴリズムを改良して指定した点数まで点を�
 <td align="right"><strong>2</strong></td>
 <td align="right"><strong>2</strong></td>
 <td align="right"><strong>2</strong></td>
-<td align="right">119</td>
-<td align="right">17</td>
-<td align="right">13</td>
-<td align="right">2</td>
-<td align="right">2</td>
-<td align="right"><strong>0</strong></td>
 </tr>
 
 <tr>
@@ -424,12 +418,6 @@ Douglas-Peuckerアルゴリズムを改良して指定した点数まで点を�
 <td align="right">6</td>
 <td align="right">7</td>
 <td align="right">4</td>
-<td align="right">913</td>
-<td align="right">102</td>
-<td align="right">76</td>
-<td align="right"><strong>3</strong></td>
-<td align="right">5</td>
-<td align="right"><strong>3</strong></td>
 </tr>
 
 <tr>
@@ -440,28 +428,16 @@ Douglas-Peuckerアルゴリズムを改良して指定した点数まで点を�
 <td align="right">13</td>
 <td align="right">10</td>
 <td align="right">10</td>
-<td align="right">4008</td>
-<td align="right">435</td>
-<td align="right">309</td>
-<td align="right"><strong>6</strong></td>
-<td align="right">10</td>
-<td align="right">7</td>
 </tr>
 
 <tr>
 <td align="right">20000</td>
+<td align="right">-</td>
 <td align="right">3238</td>
 <td align="right">2083</td>
 <td align="right">38</td>
 <td align="right"><strong>21</strong></td>
 <td align="right"><strong>21</strong></td>
-<td align="right">1663</td>
-<td align="right">1501</td>
-<td align="right">16</td>
-<td align="right">21</td>
-<td align="right"><strong>10</strong></td>
-<td align="right"></td>
-<td align="right"></td>
 </tr>
 
 <tr>
@@ -472,6 +448,127 @@ Douglas-Peuckerアルゴリズムを改良して指定した点数まで点を�
 <td align="right">210</td>
 <td align="right"><strong>63</strong></td>
 <td align="right">66</td>
+</tr>
+
+<tr>
+<td align="right">100000</td>
+<td align="right">-</td>
+<td align="right">-</td>
+<td align="right">-</td>
+<td align="right">924</td>
+<td align="right"><strong>157</strong></td>
+<td align="right">167</td>
+</tr>
+
+<tr>
+<td align="right">200000</td>
+<td align="right">-</td>
+<td align="right">-</td>
+<td align="right">-</td>
+<td align="right">6875</td>
+<td align="right">393</td>
+<td align="right"><strong>383</strong></td>
+</tr>
+
+<tr>
+<td align="right">500000</td>
+<td align="right">-</td>
+<td align="right">-</td>
+<td align="right">-</td>
+<td align="right">-</td>
+<td align="right">1289</td>
+<td align="right"><strong>1207</strong></td>
+</tr>
+
+<tr>
+<td align="right">1000000</td>
+<td align="right">-</td>
+<td align="right">-</td>
+<td align="right">-</td>
+<td align="right">-</td>
+<td align="right">2917</td>
+<td align="right"><strong><em>2779</em></strong></td>
+</tr>
+</tbody>
+</table>
+
+
+<figure >
+    
+        <img src="priority_queue_test_003.png" />
+    
+    
+</figure>
+
+
+<h4 id="dauglas-peucker-2-enqueue-1-dequeue-1">Dauglas-Peucker (2-enqueue, 1-dequeue)</h4>
+
+<table>
+<thead>
+<tr>
+<th align="right">n</th>
+<th align="right">Array.sort()</th>
+<th align="right">Selection</th>
+<th align="right">Insertion</th>
+<th align="right">Binary Insertion</th>
+<th align="right">Binary Heap</th>
+<th align="right">Pairing Heap</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="right">1000</td>
+<td align="right">33</td>
+<td align="right">4</td>
+<td align="right">3</td>
+<td align="right"><strong>0</strong></td>
+<td align="right">1</td>
+<td align="right"><strong>0</strong></td>
+</tr>
+
+<tr>
+<td align="right">2000</td>
+<td align="right">119</td>
+<td align="right">17</td>
+<td align="right">13</td>
+<td align="right">2</td>
+<td align="right">2</td>
+<td align="right"><strong>0</strong></td>
+</tr>
+
+<tr>
+<td align="right">5000</td>
+<td align="right">913</td>
+<td align="right">102</td>
+<td align="right">76</td>
+<td align="right"><strong>3</strong></td>
+<td align="right">5</td>
+<td align="right"><strong>3</strong></td>
+</tr>
+
+<tr>
+<td align="right">10000</td>
+<td align="right">4008</td>
+<td align="right">435</td>
+<td align="right">309</td>
+<td align="right"><strong>6</strong></td>
+<td align="right">10</td>
+<td align="right">7</td>
+</tr>
+
+<tr>
+<td align="right">20000</td>
+<td align="right">-</td>
+<td align="right">1663</td>
+<td align="right">1501</td>
+<td align="right">16</td>
+<td align="right">21</td>
+<td align="right"><strong>10</strong></td>
+</tr>
+
+<tr>
+<td align="right">50000</td>
 <td align="right">-</td>
 <td align="right">-</td>
 <td align="right">-</td>
@@ -485,12 +582,6 @@ Douglas-Peuckerアルゴリズムを改良して指定した点数まで点を�
 <td align="right">-</td>
 <td align="right">-</td>
 <td align="right">-</td>
-<td align="right">924</td>
-<td align="right"><strong>157</strong></td>
-<td align="right">167</td>
-<td align="right">-</td>
-<td align="right">-</td>
-<td align="right">-</td>
 <td align="right">581</td>
 <td align="right">147</td>
 <td align="right"><strong>100</strong></td>
@@ -498,12 +589,6 @@ Douglas-Peuckerアルゴリズムを改良して指定した点数まで点を�
 
 <tr>
 <td align="right">200000</td>
-<td align="right">-</td>
-<td align="right">-</td>
-<td align="right">-</td>
-<td align="right">6875</td>
-<td align="right">393</td>
-<td align="right"><strong>383</strong></td>
 <td align="right">-</td>
 <td align="right">-</td>
 <td align="right">-</td>
@@ -518,12 +603,6 @@ Douglas-Peuckerアルゴリズムを改良して指定した点数まで点を�
 <td align="right">-</td>
 <td align="right">-</td>
 <td align="right">-</td>
-<td align="right">1289</td>
-<td align="right"><strong>1207</strong></td>
-<td align="right">-</td>
-<td align="right">-</td>
-<td align="right">-</td>
-<td align="right">-</td>
 <td align="right">996</td>
 <td align="right"><strong>605</strong></td>
 </tr>
@@ -534,47 +613,20 @@ Douglas-Peuckerアルゴリズムを改良して指定した点数まで点を�
 <td align="right">-</td>
 <td align="right">-</td>
 <td align="right">-</td>
-<td align="right">2917</td>
-<td align="right"><strong><em>2779</em></strong></td>
-<td align="right">-</td>
-<td align="right">-</td>
-<td align="right">-</td>
-<td align="right">-</td>
 <td align="right">2203</td>
 <td align="right"><strong><em>1492</em></strong></td>
 </tr>
 </tbody>
 </table>
 
-<table>
-<thead>
-<tr>
-<th>Sequential</th>
-<th>Dauglas-Peucker</th>
-</tr>
-</thead>
 
-<tbody>
-<tr>
-<td>
-<figure >
-    
-        <img src="priority_queue_test_003.png" />
-    
-    
-</figure>
-</td>
-<td>
 <figure >
     
         <img src="priority_queue_test_004.png" />
     
     
 </figure>
-</td>
-</tr>
-</tbody>
-</table>
+
 
 <p>ということで、上記の表からわかるのは、</p>
 
@@ -592,56 +644,28 @@ Douglas-Peuckerアルゴリズムを改良して指定した点数まで点を�
 
 <p>以上より、Douglas-Peuckerを改良したアルゴリズムで使う優先度付きキューの実装は、Pairing Heapが良いようだ。</p>
 
-<hr />
-
-<p>May 30 2014 追記:</p>
-
-<p>Binary Heapの実装にバグがあったため修正した。それに伴い結論を修正。</p>
-
-<hr />
-
 <h2 id="補足">補足</h2>
 
 <p>さらに他のヒープでの実装を試してみた。</p>
 
 <p>またスマートフォン(URBANO L01、Android 4.2)でもベンチマークを取ってみた。</p>
 
+<h3 id="sequential-2">Sequential</h3>
+
 <table>
 <thead>
 <tr>
 <th>n=1000000</th>
-<th align="right">Sequential</th>
-<th align="right"></th>
-<th align="right"></th>
-<th align="right"></th>
-<th align="right"></th>
-<th align="right"></th>
-<th align="right">Douglas-Peucker</th>
-<th align="right"></th>
-<th align="right"></th>
-<th align="right"></th>
-<th align="right"></th>
-<th align="right"></th>
+<th align="right">Pairing Heap</th>
+<th align="right">Binary Heap</th>
+<th align="right">d-ary Heap (d=3)</th>
+<th align="right">d-ary Heap (d=4)</th>
+<th align="right">Skew Heap</th>
+<th align="right">Leftist Heap</th>
 </tr>
 </thead>
 
 <tbody>
-<tr>
-<td>Method</td>
-<td align="right">Pairing Heap</td>
-<td align="right">Binary Heap</td>
-<td align="right">d-ary Heap (d=3)</td>
-<td align="right">d-ary Heap (d=4)</td>
-<td align="right">Skew Heap</td>
-<td align="right">Leftist Heap</td>
-<td align="right">Pairing Heap</td>
-<td align="right">Binary Heap</td>
-<td align="right">d-ary Heap (d=3)</td>
-<td align="right">d-ary Heap (d=4)</td>
-<td align="right">Skew Heap</td>
-<td align="right">Leftist Heap</td>
-</tr>
-
 <tr>
 <td>Firefox 29 on Ubuntu 12.04</td>
 <td align="right">1237</td>
@@ -650,12 +674,6 @@ Douglas-Peuckerアルゴリズムを改良して指定した点数まで点を�
 <td align="right"><strong>822</strong></td>
 <td align="right">1791</td>
 <td align="right">1904</td>
-<td align="right">590</td>
-<td align="right">697</td>
-<td align="right">612</td>
-<td align="right"><strong>558</strong></td>
-<td align="right">803</td>
-<td align="right">838</td>
 </tr>
 
 <tr>
@@ -666,12 +684,6 @@ Douglas-Peuckerアルゴリズムを改良して指定した点数まで点を�
 <td align="right">2846</td>
 <td align="right">4867</td>
 <td align="right">5080</td>
-<td align="right"><strong>1251</strong></td>
-<td align="right">2146</td>
-<td align="right">2103</td>
-<td align="right">1956</td>
-<td align="right">1911</td>
-<td align="right">2280</td>
 </tr>
 
 <tr>
@@ -682,12 +694,6 @@ Douglas-Peuckerアルゴリズムを改良して指定した点数まで点を�
 <td align="right"><strong>8905</strong></td>
 <td align="right">26907</td>
 <td align="right">37929</td>
-<td align="right"><strong>4609</strong></td>
-<td align="right">6731</td>
-<td align="right">5697</td>
-<td align="right">5640</td>
-<td align="right">17942</td>
-<td align="right">8418</td>
 </tr>
 
 <tr>
@@ -698,6 +704,58 @@ Douglas-Peuckerアルゴリズムを改良して指定した点数まで点を�
 <td align="right"><strong>24713</strong></td>
 <td align="right">35926</td>
 <td align="right">48263</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="dauglas-peucker-2-enqueue-1-dequeue-2">Dauglas-Peucker (2-enqueue, 1-dequeue)</h3>
+
+<table>
+<thead>
+<tr>
+<th>n=1000000</th>
+<th align="right">Pairing Heap</th>
+<th align="right">Binary Heap</th>
+<th align="right">d-ary Heap (d=3)</th>
+<th align="right">d-ary Heap (d=4)</th>
+<th align="right">Skew Heap</th>
+<th align="right">Leftist Heap</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Firefox 29 on Ubuntu 12.04</td>
+<td align="right">590</td>
+<td align="right">697</td>
+<td align="right">612</td>
+<td align="right"><strong>558</strong></td>
+<td align="right">803</td>
+<td align="right">838</td>
+</tr>
+
+<tr>
+<td>Chromium 34 on Ubuntu 12.04</td>
+<td align="right"><strong>1251</strong></td>
+<td align="right">2146</td>
+<td align="right">2103</td>
+<td align="right">1956</td>
+<td align="right">1911</td>
+<td align="right">2280</td>
+</tr>
+
+<tr>
+<td>Firefox 29 on Android 4.2</td>
+<td align="right"><strong>4609</strong></td>
+<td align="right">6731</td>
+<td align="right">5697</td>
+<td align="right">5640</td>
+<td align="right">17942</td>
+<td align="right">8418</td>
+</tr>
+
+<tr>
+<td>Chrome 35 on Android 4.2</td>
 <td align="right"><strong>11902</strong></td>
 <td align="right">26250</td>
 <td align="right">24070</td>
