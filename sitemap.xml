@@ -533,12 +533,6 @@
   </url>
   
   <url>
-    <loc>https://www.330k.info/tags/.net/</loc>
-    <lastmod>2009-10-26T21:47:00+09:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>https://www.330k.info/</loc>
     <lastmod>2017-09-06T00:57:48+09:00</lastmod>
     <priority>0</priority>
@@ -628,6 +622,12 @@
   </url>
   
   <url>
+    <loc>https://www.330k.info/tags/net/</loc>
+    <lastmod>2009-10-26T21:47:00+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://www.330k.info/tags/powerpoint/</loc>
     <lastmod>2009-10-25T22:42:27+09:00</lastmod>
     <priority>0</priority>
@@ -653,7 +653,7 @@
   
   <url>
     <loc>https://www.330k.info/tags/</loc>
-    <lastmod>2009-10-26T21:47:00+09:00</lastmod>
+    <lastmod>2017-07-27T21:21:29+09:00</lastmod>
     <priority>0</priority>
   </url>
   
