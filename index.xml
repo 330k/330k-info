@@ -6,10 +6,24 @@
     <description>Recent content on 330k info</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 02 Oct 2017 23:27:45 +0900</lastBuildDate>
+    <lastBuildDate>Mon, 02 Oct 2017 23:44:23 +0900</lastBuildDate>
     
 	<atom:link href="https://www.330k.info/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>共有PCの実際の使用者を記録する</title>
+      <link>https://www.330k.info/essay/logging_shared_pc_user/</link>
+      <pubDate>Mon, 02 Oct 2017 23:44:23 +0900</pubDate>
+      
+      <guid>https://www.330k.info/essay/logging_shared_pc_user/</guid>
+      <description>会社で個々人のPCのセキュリティをガチガチに固めたりしていると、何かと融通がきかない。 そのため、セキュリティ設定緩めの共有PCを1台用意して、やむを得ない時には利用してもらわざるを得ない。
+また、グループポリシーでセキュリティ設定をしている部分があるので、やむを得ず共有アカウントを使用している。
+そのため、SKYSEAでログは取っているものの、実際に誰が操作しているのか分からない、という問題があった。
+それを解決するため、PCに付属のカメラで、ログイン時に正面にいる人の顔を記録することにした。
+前準備  ffmpegをダウンロードする ffmpegにPATHを通す ffmpegでウェブカメラのデバイスや対応する解像度、フレームレートを調べておく  VBScript 以下のVBScriptファイルを適当なところに配置。 内容はスクリプト起動後、5秒間、ウェブカメラの映像を記録して、指定したメールアドレスに送信する。
+Option Explicit On Error Resume Next Dim objShell Dim objFS Dim strDate Dim strFilePath Dim objNetwork Dim objMsg Set objShell = CreateObject(&amp;quot;WScript.Shell&amp;quot;) Set objFS = CreateObject(&amp;quot;Scripting.FileSystemObject&amp;quot;) strDate = Year(Now()) strDate = strDate &amp;amp; Right(&amp;quot;0&amp;quot; + Month(Now()), 2) strDate = strDate &amp;amp; Right(&amp;quot;0&amp;quot; + Day(Now()), 2) strDate = strDate &amp;amp; Right(&amp;quot;0&amp;quot; + Hour(Now()), 2) strDate = strDate &amp;amp; Right(&amp;quot;0&amp;quot; + Minute(Now()), 2) strDate = strDate &amp;amp; Right(&amp;quot;0&amp;quot; + Second(Now()), 2) strFilePath = objFS.</description>
+    </item>
     
     <item>
       <title>Google AnalyticsでVideo要素のイベントを計測</title>

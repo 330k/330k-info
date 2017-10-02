@@ -3,11 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Wsh</title>
+<title>共有PCの実際の使用者を記録する</title>
 <meta name="description" content="自転車ツーリングの記録やソフトウェアの配布、Mathematicaをメインにしたプログラミングの覚書や日ごろの雑感など。">
 <meta name="generator" content="Hugo 0.21" />
 
-<link rel="alternate" type="application/rss+xml" title="330k info Feed" href="https://www.330k.info/tags/wsh/index.xml">
+
 <link rel="stylesheet" href="/css/style.css" type="text/css" media="all" />
 <script type="text/javascript" src="/js/scripts.js"></script>
 <script type="text/javascript" src="/js/highlight.pack.js"></script>
@@ -38,7 +38,7 @@ ga('send', 'pageview');
 <nav class="menu" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
 	<ul class="menu__list">
 		<li class="menu__item "><a class="menu__link" href="/bicycle/">BICYCLES</a></li>
-		<li class="menu__item "><a class="menu__link" href="/essay/">ESSAYS</a></li>
+		<li class="menu__item menu__item--active"><a class="menu__link" href="/essay/">ESSAYS</a></li>
 		<li class="menu__item "><a class="menu__link" href="/software/">SOFTWARES</a></li>
 	</ul>
 </nav>
@@ -47,59 +47,127 @@ ga('send', 'pageview');
 		<div class="wrapper clearfix">
 
 
-	<main class="main-content list content" role="main">
-		<header class="page-header">
-			<h1 class="page-header__title">Wsh</h1>
-		</header><article class="list__item post clearfix">
-	<div class="list__content clearfix">
-		<header class="list__header">
-			<h3 class="list__title post__title ">
-				<a href="/essay/create_zip_file_with_wsh_jscript/" rel="bookmark">Windows標準機能でZIPファイルの作成</a>
-			</h3>
-			<div class="list__meta meta">
+<div class="main-content content" role="main" itemprop="mainContentOfPage">
+	<article class="post">
+		<header class="post__header clearfix">
+			<h1 class="post__title">共有PCの実際の使用者を記録する</h1>
+			<p class="post__meta meta">
 				<svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
-				<time class="list__meta-date" datetime="2017-05-08T22:37:00">May 08, 2017</time>
-			</div>
+				<time class="post__meta-date" datetime="2017-10-02T23:44:23">October 02, 2017</time>
+				<span class="post__meta-categories meta-categories">
+					<svg class="icon icon-category" height="16" viewBox="0 0 16 16" width="16" xmlns="http://www.w3.org/2000/svg"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+					<a class="meta-categories__link" href="/categories/%e9%9b%91%e8%a8%98%e5%b8%b3" rel="category">雑記帳</a></span>
+			</p>
 		</header>
-		<div class="list__excerpt">
-			JScriptで複数のテキストファイルを書き出し、それをZIPでまとめたかったので作成。 VBAやVBScript版を参考に作ってみた。
-参考サイト : http://kiq-creator.com/blog/?eid=33
-複数のファイルをZIP圧縮する際のコツとしては、CopyHereをするたびに待機すること。 CopyHereは非同期なので、すぐにJS側に制御が返ってくるが、 複数のファイルを一気にCopyHereしようとすると、「読み取りできません」とエラーが出る。
-使い方 以下のコード中のcreateZipFileを自分のスクリプトにコピー&amp;ペーストして
-createZipFile( &quot;zipファイルのパス&quot;, [&quot;圧縮対象ファイルのパス1&quot;, &quot;圧縮対象ファイルのパス2&quot;, ...])  とすればOK。 もしくは以下のコードをメモ帳で拡張子をjsにして保存すれば、ドラッグ&amp;ドロップでzipファイルを作成(右クリック→送る→圧縮フォルダーとほぼ同じ動作)。
-注意事項 ディレクトリには対応してません。またWindows標準では暗号化ZIPは作成できません。 また圧縮対象ファイルの存在チェック等もやってないので、必要であればエラーハンドリング処理を追加してください。
-/** Windows 標準機能でZipファイルを作成するWSH(JScript) Copyright 330k This software is released under the MIT License. http://opensource.org/licenses/mit-license.php */ var args = []; for(var i = 0; i &lt; WScript.Arguments.length; i++){ args.push(WScript.Arguments(i)); } var zipfile = args[0].replace(/(.+)\.(.+?)$/, &quot;$1.zip&quot;); createZipFile(zipfile, args); function createZipFile(zipFilePath, sourceFiles){ var shell = WScript.CreateObject(&quot;Shell.Application&quot;); var fso = WScript.CreateObject(&quot;Scripting.FileSystemObject&quot;); var file = fso.
-		</div>
-	</div>
-</article>
-<article class="list__item post clearfix">
-	<div class="list__content clearfix">
-		<header class="list__header">
-			<h3 class="list__title post__title ">
-				<a href="/essay/disable_specific_windows_update_without_wsus/" rel="bookmark">WSUSなしでWindows 10の広告をWindows Updateから非表示にする</a>
-			</h3>
-			<div class="list__meta meta">
-				<svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
-				<time class="list__meta-date" datetime="2015-07-08T00:00:00">July 08, 2015</time>
-			</div>
-		</header>
-		<div class="list__excerpt">
-			先月頃から、Windows 7の通知領域に「Windows 10を入手する」とか「無料アップグレードを予約」とかいう邪魔なMicrosoftの広告が入るようになってきた。 社内SEとしてはユーザに勝手にOSをアップグレードされるわけにはいかないので、消し去りたい。
-ネットを探してみると、やはり同様の悩みを持つ人は多いらしく、結論としては、
- GWX.exeとGWXUX.exeをタスクマネージャで強制終了する インストールされたWindows Updateの「KB3035583」をアンインストールする 再度Windows Updateがインストールさせようとしてくるので、KB3035583を右クリックして「非表示」にする  ということらしい。 → 参考サイト: 「Windows10を入手する」の通知が消えない＼(^o^)／
-さて、1人社内SEとしては以上の手順をユーザの全PCに行うのは無理なので、なんとか自動化したい。 1と2についてはコマンドプロンプトで可能なので、あっさり情報が見つかり、
-Taskkill /IM GWX.exe /F Taskkill /IM GWXUX.exe /F wusa.exe /uninstall /kb:3035583 /quiet /norestart  と書いたバッチファイルをログオンスクリプトに仕込むことで可能だった。
-問題は3の何度アンインストールしても再インストールさせようとしてくる点。 根本的な解決策はもちろんWSUSサーバを立てて、KB3035583を承認しなければ良い。
-だが、私の会社にはWSUSサーバはない。 レジストリをいじったりして特定のWindows Updateを非表示にする方法がないか、と調べてみたら、 Windows Update Agent APIというのがあることを発見。
-英語の情報しかなかったが、サンプルを参考に目的の「KB3035583」を非表示にするスクリプト(今回はJavaScript)を書いてみた。
-/********************************************************************** WSUSを使用せずに不必要なWindowsUpdateを非表示 Copyright 2015-2016 330k 使用は自己責任でお願いします **********************************************************************/ try{ // インストールしないWindowsUpdateのKB番号 var disabledKBs = [ 2876229, 2952664, 2976978, 2977759, 3021917, 3022345, 3035583, 3068708, 3075249, 3080149, 3123862, 3150513, 2990214,// Win 7 3050265, 3065987, 3075851, 3083324, 3083710, 3102810, 3112343, 3135445, 3138612, 3161608, 3044374,// Win 8.
-		</div>
-	</div>
-</article>
+		<div class="post__content clearfix">
+			
+
+<p>会社で個々人のPCのセキュリティをガチガチに固めたりしていると、何かと融通がきかない。
+そのため、セキュリティ設定緩めの共有PCを1台用意して、やむを得ない時には利用してもらわざるを得ない。</p>
+
+<p>また、グループポリシーでセキュリティ設定をしている部分があるので、やむを得ず共有アカウントを使用している。</p>
+
+<p>そのため、SKYSEAでログは取っているものの、実際に誰が操作しているのか分からない、という問題があった。</p>
+
+<p>それを解決するため、PCに付属のカメラで、ログイン時に正面にいる人の顔を記録することにした。</p>
+
+<h2 id="前準備">前準備</h2>
+
+<ul>
+<li>ffmpegをダウンロードする</li>
+<li>ffmpegにPATHを通す</li>
+<li>ffmpegでウェブカメラのデバイスや対応する解像度、フレームレートを調べておく</li>
+</ul>
+
+<h2 id="vbscript">VBScript</h2>
+
+<p>以下のVBScriptファイルを適当なところに配置。
+内容はスクリプト起動後、5秒間、ウェブカメラの映像を記録して、指定したメールアドレスに送信する。</p>
+
+<pre><code class="language-VBScript">Option Explicit
+
+On Error Resume Next
+
+Dim objShell
+Dim objFS
+Dim strDate
+Dim strFilePath
+Dim objNetwork
+Dim objMsg
+
+Set objShell = CreateObject(&quot;WScript.Shell&quot;)
+Set objFS = CreateObject(&quot;Scripting.FileSystemObject&quot;)
+
+strDate = Year(Now())
+strDate = strDate &amp; Right(&quot;0&quot; + Month(Now()), 2)
+strDate = strDate &amp; Right(&quot;0&quot; + Day(Now()), 2)
+strDate = strDate &amp; Right(&quot;0&quot; + Hour(Now()), 2)
+strDate = strDate &amp; Right(&quot;0&quot; + Minute(Now()), 2)
+strDate = strDate &amp; Right(&quot;0&quot; + Second(Now()), 2)
+
+strFilePath = objFS.getSpecialFolder(2).Path &amp; &quot;\&quot; + strDate + &quot;.mp4&quot;
+
+objShell.Run &quot;ffmpeg -f dshow -t 5 -video_size 1280x720 -framerate 7.5 -pixel_format yuyv422 -i video=&quot;&quot;USB HD Webcam&quot;&quot; -r 30 -c:v libx264 -y &quot;&quot;&quot; &amp; strFilePath &amp; &quot;&quot;&quot;&quot;, 0, True
+
+Set objNetwork = CreateObject(&quot;WScript.Network&quot;)
+Set objMsg = CreateObject(&quot;CDO.Message&quot;)
+
+objMsg.From = &quot;(送信元メールアドレス)&quot;
+objMsg.ReplyTo = &quot;(返信先メールアドレス(任意))&quot;
+objMsg.To = &quot;(宛先メールアドレス)&quot;
+objMsg.Subject = &quot;Message from &quot; + objNetwork.UserName + &quot; &quot; + objNetwork.ComputerName
+objMsg.TextBody = &quot;Recorded Video&quot;
+objMsg.TextBodyPart.Charset = &quot;ISO-2022-JP&quot;
+objMsg.Configuration.Fields.Item(&quot;http://schemas.microsoft.com/cdo/configuration/sendusing&quot;) = 2
+objMsg.Configuration.Fields.Item(&quot;http://schemas.microsoft.com/cdo/configuration/smtpusessl&quot;) = True
+objMsg.Configuration.Fields.Item(&quot;http://schemas.microsoft.com/cdo/configuration/smtpserver&quot;) = &quot;smtp-relay.gmail.com&quot;
+objMsg.Configuration.Fields.Item(&quot;http://schemas.microsoft.com/cdo/configuration/smtpserverport&quot;) = 465
+objMsg.Configuration.Fields.Update
+
+If objFS.FileExists(strFilePath) Then
+  objMsg.AddAttachment strFilePath
+  objFS.DeleteFile strFilePath
+End If
+
+objMsg.Send
+</code></pre>
+
+<h2 id="タスクスケジューラ">タスクスケジューラ</h2>
+
+<p>タスクスケジューラからタスクを作成し、トリガーに「ワークステーションのロック解除」に上のVBScriptが起動するように設定する。</p>
 
 
+<figure >
+    
+        <img src="001.png" />
+    
+    
+</figure>
+
+
+<p>これでロック解除した時、自動で管理者アカウントに動画付きメールが飛んでくるので、
+SKYSEAログと照合すれば、誰が操作したのか追跡できる。</p>
+
+		</div>
 		
-	</main>
+<div class="post__tags tags clearfix">
+	<svg class="icon icon-tag" width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="m4.73135 3.3795002q0-.5597-.39604-.9557-.39604-.3961-.95577-.3961-.55974 0-.95578.3961-.39604.396-.39604.9557 0 .5598.39604.9558.39604.3961.95578.3961.55973 0 .95577-.3961.39604-.396.39604-.9558zm11.26865 6.0832q0 .5596998-.39076.9504998l-5.18548 5.196q-.41188.3908-.9610504.3908-.55974 0-.9505-.3908l-7.5511496-7.5616998q-.40132-.3907-.68119-1.0666-.27987-.6759-.27987-1.2357v-4.3934q0-.54920004.40132-.95050004.40132-.4013.9505-.4013h4.39339q.55974 0 1.23565.2799.67591.2798 1.07723.6812l7.55115 7.54060004q.39076.4118.39076.961z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item"><a class="tags__link" href="/tags/%E7%A4%BE%E5%86%85se/" rel="tag">社内SE</a></li>
+	</ul>
+</div>
+
+	</article>
+	
+	
+<nav class="post-nav row clearfix" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
+	<div class="post-nav__item post-nav__item--prev col-1-2">
+		<a class="post-nav__link" href="/essay/measure_video_events_with_google_analytics/" rel="prev"><span class="post-nav__caption">«Previous</span><p class="post-nav__post-title">Google AnalyticsでVideo要素のイベントを計測</p></a>
+	</div>
+</nav>
+
+	
+</div>
 
 <aside class="sidebar" itemscope="itemscope" itemtype="http://schema.org/WPSideBar">
 	

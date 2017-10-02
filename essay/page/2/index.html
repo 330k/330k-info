@@ -54,6 +54,29 @@ ga('send', 'pageview');
 	<div class="list__content clearfix">
 		<header class="list__header">
 			<h3 class="list__title post__title ">
+				<a href="/essay/xubuntu1604_snort_base/" rel="bookmark">Xubuntu 16.04 &#43; Snortで簡易IDS構築</a>
+			</h3>
+			<div class="list__meta meta">
+				<svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
+				<time class="list__meta-date" datetime="2017-06-06T06:37:00">June 06, 2017</time>
+			</div>
+		</header>
+		<div class="list__excerpt">
+			ウイルス等に侵入された後の対策として、IDSやIPS製品の紹介をベンダーから受けたが、正直なところ価格が高かったのと、検知されるメッセージがSnort由来のものが多い気がしたので、自分でSnortを構築して商用製品との差を調べてみることにした。
+構築環境  PC : 余っていたノートPC Panasonic LetsNote CF-NX1 OS : Xubuntu 16.04.2 (LetsNoteの有線LANと無線LANのNICを認識できる可能性が高いディストリビューションとして選択) ルータ : Yamaha RTX810 IDSとして運用(ミラーポートの通信を監視) LetsNoteの有線LANはミラーポートに接続し、通信を監視 LetsNote自体にアクセスするときには無線LANを使用する  図(適当)  手順 基本的に、以下のドキュメント通りでOK。
+Snort 2.9.9.x on Ubuntu 14 -16
+LetsNoteでは有線LANのNICはenp0s25、無線LANはwlp2s0となった。
+注意点は以下の通り。
+ rule_url=https://www.snort.org/reg-rules/|snortrules-snapshot.tar.gz|&lt;oinkcode&gt; → rule_url=https://www.snort.org/rules/|snortrules-snapshot.tar.gz|&lt;oinkcode&gt; ※微妙にURLが変わっているので注意 sudo /usr/local/bin/pulledpork.pl -c /etc/snort/pulledpork.conf -l → sudo /usr/local/bin/pulledpork.pl -c /etc/snort/pulledpork.conf -l -o /etc/snort/rules/snort.rules ※-oオプションが必要と怒られた  有線LAN(enp0s25)はミラーポートから受信だけできれば良いので、 /etc/network/interfacesを編集して使われていないネットワークのアドレスを適当に設定。 管理の通信やBASEによるログを眺めるためには無線(wlp2s0)を使用するので、 NetworkManagerを使って適当に固定IPを設定。
+RTX810はhttp://www.rtpro.yamaha.co.jp/RT/manual/rt-common/setup/lan_port-mirroring.html を参照してミラーポートを設定。
+ 設定(ポート1と2の送信および受信フレームをポート4にミラー) lan port-mirroring lan1 4 in 1 2 out 1 2 解除 no lan port-mirroring lan1  結果 一応IDSとして構築できたので、現在はログを見て様子見。今のところのメモは以下。
+		</div>
+	</div>
+</article>
+<article class="list__item post clearfix">
+	<div class="list__content clearfix">
+		<header class="list__header">
+			<h3 class="list__title post__title ">
 				<a href="/essay/create_zip_file_with_wsh_jscript/" rel="bookmark">Windows標準機能でZIPファイルの作成</a>
 			</h3>
 			<div class="list__meta meta">
@@ -253,47 +276,6 @@ wget http://ftp.jaist.ac.jp/pub/apache/tika/tika-app-1.11.jar  全メタデー�
 		</div>
 	</div>
 </article>
-<article class="list__item post clearfix">
-	<div class="list__content clearfix">
-		<header class="list__header">
-			<h3 class="list__title post__title ">
-				<a href="/essay/what_l2_forwarding_ssl_vpn_protects/" rel="bookmark">仮想的な専用線という言葉にだまされた残念な技術者</a>
-			</h3>
-			<div class="list__meta meta">
-				<svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
-				<time class="list__meta-date" datetime="2015-11-29T00:00:00">November 29, 2015</time>
-			</div>
-		</header>
-		<div class="list__excerpt">
-			例によってパワハラを受けた研修先で最初に受けたパワハラが、 リモートアクセスのSSL-VPNに関する技術的な質問をした時のことだった。
-研修先の会社ではJuniper社(現PulseSecure社)のSSL-VPN製品を導入しており、 クライアントPC側にはNetwork Connectというソフトウェアをインストールしていた。
-これはL2フォワーディング方式のSSL-VPNで、起動するとネットワークアダプタに仮想NICが追加される。 仮想NIC経由で通信することで外部からでも社内LANに接続できる。
-研修先企業では外出時にSSL-VPNの接続を義務付けている、という話になったときのことだった。
- パワハラ上司(自称ITエンジニア)「外出先のホテルなどでは社内システムにアクセスしない時も絶対にVPNで接続してからインターネットに接続しろ。」
- 私「なぜですか？」
- パワハラ上司「同じネットワークにいるコンピュータから盗聴や攻撃をされるだろ！」
- 私「HTTPSでないHTTPは確かに盗聴されますが、SSL-VPNで接続したところで攻撃は受けるのではないですか？」
- パワハラ上司「VPNは仮想的に専用線を張るんだ！」
- 私「仮想的に専用線を張ったところで物理的には元のネットワークにいますよね？」
- パワハラ上司「専用線で接続したら攻撃されない。だから仮想的に専用線を張ってるんだから攻撃されない！」
- 私「(喩え話じゃなくてちゃんと技術的な回答がほしいんだが…)」
- パワハラ上司「ちょっとは調べてから質問しろ」
-パワハラ上司「俺の時間もタダじゃねえんだぞ！」
-パワハラ上司「間違ったら『はい、すみません』でいいんだ。ほれ、早く言え！」
- 私「はい、すみません。」
-  とまあ、これが今思い返すと調子に乗らせる原因だったかもしれない。 研修先の自称ITエンジニアの技術力に疑念を持った最初の出来事だった。
-Network Connect起動時に作成される仮想NICがメトリックで優先されるように設定されるので、 VPN接続後のクライアント発の通信はすべて仮想NIC経由となる。
-ただ私が疑念に抱いたのは、同じ物理ネットワークの他の端末から通信が来た場合は、元の物理NICから応答するのではないか、という点だ。
-具体例としては、クライアントPCでファイル共有を有効にしていた場合、 SSL-VPNで接続していても同じネットワークにいる端末から共有しているファイルが見えてしまうのではないか。
-技術者なら実際に試してみるべき、ということで、実験してみた。
- クライアントOS: Windows 7 64bit クライアントPC: ファイル共有ON 物理ネットワーク環境: 来客用Wi-Fi(普通の家庭用Wi-Fiルータと同じ環境) SSL-VPNクライアント: Pulse Secure 5.2 (Network Connectの後継のJunos Pulseの後継) SSL-VPNアライアンス: MAG2600  という環境でSSL-VPNを接続した後、 同じ物理ネットワークの他のPCから共有されたファイルが見えるかどうかを確かめてみた。
-結果: 見えた　NetBIOS名でもアクセス可能
-物理NICに割り当てられたIPアドレスを使ってもアクセスできたが、NetBIOSによる名前解決もできた。 ということはUDPのブロードキャストにも物理NICから応答する、ということが分かった。
-物理NICが普通の通信が出来ないとカプセル化したパケットの通信もできない、というのは 普通に考えればわかると思うのだが、残念ながらパワハラエンジニアの知識レベルはその程度だった、ということか。
-結論としては、下記の通り。
-		</div>
-	</div>
-</article>
 
 
 		
@@ -322,6 +304,7 @@ Network Connect起動時に作成される仮想NICがメトリックで優先�
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/essay/logging_shared_pc_user/">共有PCの実際の使用者を記録する</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/measure_video_events_with_google_analytics/">Google AnalyticsでVideo要素のイベントを計測</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/delete_temporary_files_with_powershell/">Officeの一時ファイルやThumbs.dbなどをPowerShellで一掃</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/scramble_unicode_lro_rlo/">Unicode制御文字(LRO, RLO)でコピー・改変を防止 (構想)</a></li>
@@ -331,7 +314,6 @@ Network Connect起動時に作成される仮想NICがメトリックで優先�
 			<li class="widget__item"><a class="widget__link" href="/essay/random_distribution_sphere_surface/">球面上の一様分布</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/zabbix_ricoh_printer_template_xml/">RICOHプリンタ・複合機用のZabbix用テンプレート</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/create_uuid_vba/">VBAでUUIDを生成</a></li>
-			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20170715-17_castella_yatsugatake_kogen/">2017年07月15日〜17日 カステラ工場〜軽井沢〜八ヶ岳高原〜甲府</a></li>
 		</ul>
 	</div>
 </div>
@@ -390,7 +372,7 @@ Network Connect起動時に作成される仮想NICがメトリックで優先�
 		<a class="widget__link widget__link--taglist" href="/tags/%e3%83%84%e3%83%bc%e3%83%aa%e3%83%b3%e3%82%b0" title="ツーリング">ツーリング (42)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/%e3%83%91%e3%83%af%e3%83%8f%e3%83%a9" title="パワハラ">パワハラ (5)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/%e7%94%9f%e6%b4%bb" title="生活">生活 (1)</a>
-		<a class="widget__link widget__link--taglist" href="/tags/%e7%a4%be%e5%86%85se" title="社内se">社内se (14)</a>
+		<a class="widget__link widget__link--taglist" href="/tags/%e7%a4%be%e5%86%85se" title="社内se">社内se (15)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/%e8%87%aa%e8%bb%a2%e8%bb%8a" title="自転車">自転車 (9)</a>
 	</div>
 </div>
