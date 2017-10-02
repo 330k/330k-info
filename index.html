@@ -51,6 +51,26 @@ ga('send', 'pageview');
 	<div class="list__content clearfix">
 		<header class="list__header">
 			<h3 class="list__title post__title ">
+				<a href="/essay/measure_video_events_with_google_analytics/" rel="bookmark">Google AnalyticsでVideo要素のイベントを計測</a>
+			</h3>
+			<div class="list__meta meta">
+				<svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
+				<time class="list__meta-date" datetime="2017-10-02T23:27:45">October 02, 2017</time>
+			</div>
+		</header>
+		<div class="list__excerpt">
+			会社のウェブサイトに貼ってある動画ファイルが、実際にどれだけ再生されているのか調査するべく、 Google Analyticsのイベントで計測するためのコードを作ってみた。
+計測対象は以下のイベント。
+ 再生開始(play) 最後まで再生(ended) 一時停止(pause) シークした(seeked) どこまで再生したか(動画時間の10%, 25%, 50%, 75%, 90%)  今のところ、動画を埋め込んであるページのPVが5000に対して、再生開始したのは1%程度の50。 さらに最後まで見たのはそのうち6割の30。
+5分近くもある動画を全部見ようなんて人はほとんどいない、ということは予想済みであったが、 会社の上の人はこういうユーザ視点を持ってないんだよね。
+HTML側 &lt;video id=&quot;movie001&quot; width=&quot;(動画幅)&quot; height=&quot;(動画高さ)&quot; title=&quot;Movie Title&quot;&gt; &lt;source src=&quot;(動画ファイルのパス)&quot; type=&quot;video/mp4&quot; /&gt; &lt;/video  JavaScript側(jQuery使用) $(function(){ var oldratio = 0.0; $('video')..on('play', function(e) { ga('send','event','video','play',e.target.getAttribute('title')); }).on('ended', function(e) { ga('send','event','video','play_end',e.target.getAttribute('title')); }).on('pause', function(e) { ga('send','event','video','pause',e.target.getAttribute('title')); }).on('seeked', function(e) { ga('send','event','video','seeked',e.target.getAttribute('title')); }).on('timeupdate', function(e) { var ratio = e.target.currentTime / e.target.duration; if((0.9 &lt;= ratio) &amp;&amp; (oldratio &lt; 0.
+		</div>
+	</div>
+</article>
+<article class="list__item post clearfix">
+	<div class="list__content clearfix">
+		<header class="list__header">
+			<h3 class="list__title post__title ">
 				<a href="/essay/delete_temporary_files_with_powershell/" rel="bookmark">Officeの一時ファイルやThumbs.dbなどをPowerShellで一掃</a>
 			</h3>
 			<div class="list__meta meta">
@@ -263,38 +283,6 @@ Public Function GetUUID() As String 'GetUUID = Mid$(CreateObject(&quot;Scriptlet
 		</div>
 	</div>
 </article>
-<article class="list__item post clearfix">
-	<figure class="list__thumbnail">
-		<a href="https://www.330k.info/bicycle/equipments/">
-			<img src="/bicycle/equipments/CA3A0004.jpg" alt="携行品・装備品" />
-		</a>
-	</figure>
-	<div class="list__content clearfix">
-		<header class="list__header">
-			<h3 class="list__title post__title ">
-				<a href="/bicycle/equipments/" rel="bookmark">携行品・装備品</a>
-			</h3>
-			<div class="list__meta meta">
-				<svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
-				<time class="list__meta-date" datetime="2017-06-27T22:19:26">June 27, 2017</time>
-			</div>
-		</header>
-		<div class="list__excerpt">
-			現在使用中のもの サドルバッグ レベレイトデザイン PIKA それまでのオーストリッチのサドルバッグ、モンベルのフロントバッグ、ドイターのバックパックを一本化するために購入。 荷物すべてをこのサドルバッグとツールボトルに収めることに成功。 自分のように背が低く、サドルとタイヤの間にあまりクリアランスが取れない場合はタイヤで擦ってしまいやすいので要注意。
-あとは余った靴紐を1本持っておくと、レインウェアを取り出しやすいようにバッグの上に括りつけておいたり、 どうしてもタイヤで擦ってしまう場合に強引に上方向に引っ張り上げることができるので非常に便利。
-輪行袋 OSTRICH L-100 輪行袋超軽量型  今まではツーリングの計画時に輪行を念頭に置いていなかったので、非常用としてとにかく小さく軽いものを購入。 数回輪行したところ自転車を入れる袋としては全く問題ないが、リアキャリアを外さなければならず、これが列車内で非常に邪魔になる。 リアキャリアをつけずにバックパックのみで日帰りで「行ける所まで行って帰りは輪行」とか「行きは輪行して自転車で帰ってくる」とか「往復輪行してちょっと遠くの峠まで」というときにはうってつけだと思う。 輪行すれば行動半径が2倍になる、ということに気づいてしまったので今後はさらなる活躍が期待される。
-折りたたみ靴 Timberland RADLER TRAIL CAMP Timberlandの折りたためる靴。裸足でも履け、軽いトレッキング程度なら歩けるグリップがある。 SPDシューズで音や滑って転ぶことを気にする必要がないので、自転車を降りた後の行動で重宝している。
-現在は使わなくなったもの ヘッドライト Fenix LD20 某レビューサイトで絶賛されていたためAmazonで購入。 評判通りの明るさ。転勤で首都圏から出てしまったが、街灯がなくても問題なく走行可能。 サイコンの近くに設置すると電波が干渉して速度が出なくなるので出来る限り離すように設置。
-→ 川崎市を走行中に、振動でネジが緩んで落下。
-USB充電器 FUJITSU FSC321FX USB⇔NiMH充電池(eneloop)の充電ができるコンパクトな充電器。 2本入れないと充電できないのが欠点だが、スマートフォンへの予備バッテリーのほか、 単3の充電池をヘッドライト、テールライト、GPSロガーで使いまわしているため荷物の軽量化に大きく貢献。
-→ 電装品はLiイオン電池のモバイルバッテリーに移行
-リアキャリア MINOURA AMT-9100 池袋Y&rsquo;s Roadで箱の中に定価より5割以上安い値札を貼られて入っていたのを掘り出した。 鉄製のMT-800Nを買うつもりだっが、MT-800Nよりも500g以上軽い上に安いのでそのままサイドバッグとともにレジに行った。 積載重量が10kgとMT-800Nの18kgに比べると見劣りするが、自分に18kgもの荷物を運搬できる脚力はないと言い聞かせている。
-サイドバッグ ANTARES Konnix ST-950-P 池袋Y&rsquo;s Roadに行ったら他のOSTRICHやdeuterなどのサイドバッグのほぼ半値と安かったので購入。 防水構造を謳ってはいるが基本的に雨の中では走らないので防水性能はまだ分からない。 リアキャリアのパイプにひっかけるプラスチック製のツメがちょっと心許ないが、容量は十分あり、反射材もついていて基本的には満足。
-テールランプ Blackburn Mars 4.0 これまた1WのLEDを使っていて明るいと評判のテールランプ。明るいがスイッチは非常に押しにくい。 1ヶ月少しの使用で、基板が異常発熱して電池ごとオシャカになった。 エネループを使っていたのがまずかったのか？ ネットで探してみても同じような症状を示す例は見当たらないので単なる個体差かもしれないが、もうこのメーカの製品は買わない。
-フロントバッグ mont-bell ツーリングフロントバッグ バックパックをなくすための試行錯誤の中で、フロントバッグの導入をしてみた。 結果・・・ハンドルが非常に重い。 またヘッドライトが取り付けられなくなったため、エクステンションバーが必要になり、更に重量増。 フロントの荷重が増えたため、フロントタイヤで異物を踏んづけてのパンクがしやすくなってしまった。 あと、なんというか・・・見た目のモンベル臭さが・・・。 ということで現在は使用せず。
-		</div>
-	</div>
-</article>
 
 		
 
@@ -323,6 +311,7 @@ USB充電器 FUJITSU FSC321FX USB⇔NiMH充電池(eneloop)の充電ができる�
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/essay/measure_video_events_with_google_analytics/">Google AnalyticsでVideo要素のイベントを計測</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/delete_temporary_files_with_powershell/">Officeの一時ファイルやThumbs.dbなどをPowerShellで一掃</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/scramble_unicode_lro_rlo/">Unicode制御文字(LRO, RLO)でコピー・改変を防止 (構想)</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/move_to_github_pages_hugo_from_google_sites/">Hugo &#43; GitHub Pages &#43; CloudFlareにGoogleサイトから移転</a></li>
@@ -332,7 +321,6 @@ USB充電器 FUJITSU FSC321FX USB⇔NiMH充電池(eneloop)の充電ができる�
 			<li class="widget__item"><a class="widget__link" href="/essay/zabbix_ricoh_printer_template_xml/">RICOHプリンタ・複合機用のZabbix用テンプレート</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/create_uuid_vba/">VBAでUUIDを生成</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20170715-17_castella_yatsugatake_kogen/">2017年07月15日〜17日 カステラ工場〜軽井沢〜八ヶ岳高原〜甲府</a></li>
-			<li class="widget__item"><a class="widget__link" href="/bicycle/equipments/">携行品・装備品</a></li>
 		</ul>
 	</div>
 </div>
@@ -371,6 +359,7 @@ USB充電器 FUJITSU FSC321FX USB⇔NiMH充電池(eneloop)の充電ができる�
 		<a class="widget__link widget__link--taglist" href="/tags/github" title="github">github (5)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/gmail" title="gmail">gmail (2)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/google" title="google">google (2)</a>
+		<a class="widget__link widget__link--taglist" href="/tags/google-anaytics" title="google-anaytics">google-anaytics (1)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/gps" title="gps">gps (1)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/gpx" title="gpx">gpx (4)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/hta" title="hta">hta (1)</a>
@@ -390,7 +379,7 @@ USB充電器 FUJITSU FSC321FX USB⇔NiMH充電池(eneloop)の充電ができる�
 		<a class="widget__link widget__link--taglist" href="/tags/%e3%83%84%e3%83%bc%e3%83%aa%e3%83%b3%e3%82%b0" title="ツーリング">ツーリング (42)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/%e3%83%91%e3%83%af%e3%83%8f%e3%83%a9" title="パワハラ">パワハラ (5)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/%e7%94%9f%e6%b4%bb" title="生活">生活 (1)</a>
-		<a class="widget__link widget__link--taglist" href="/tags/%e7%a4%be%e5%86%85se" title="社内se">社内se (13)</a>
+		<a class="widget__link widget__link--taglist" href="/tags/%e7%a4%be%e5%86%85se" title="社内se">社内se (14)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/%e8%87%aa%e8%bb%a2%e8%bb%8a" title="自転車">自転車 (9)</a>
 	</div>
 </div>
