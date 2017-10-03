@@ -71,11 +71,12 @@ Google Analyticsのイベントで計測するためのコードを作ってみ�
 <li>再生開始(play)</li>
 <li>最後まで再生(ended)</li>
 <li>一時停止(pause)</li>
+<li>再生再開(resume)</li>
 <li>シークした(seeked)</li>
 <li>どこまで再生したか(動画時間の10%, 25%, 50%, 75%, 90%)</li>
 </ul>
 
-<p>今のところ、動画を埋め込んであるページのPVが5000に対して、再生開始したのは1%程度の50。
+<p>今のところ、動画を埋め込んであるページのPVが5000に対して、再生開始したのは1%程度の50で、
 さらに最後まで見たのはそのうち6割の30。</p>
 
 <p>5分近くもある動画を全部見ようなんて人はほとんどいない、ということは予想済みであったが、
@@ -92,8 +93,13 @@ Google Analyticsのイベントで計測するためのコードを作ってみ�
 
 <pre><code class="language-js">$(function(){
   var oldratio = 0.0;
-  $('video')..on('play', function(e) {
-    ga('send','event','video','play',e.target.getAttribute('title'));
+  $('video').on('play', function(e) {
+    on('play', function(e) {
+    if(e.target.currentTime &gt; 0){
+      ga('send','event','video','resume',e.target.getAttribute('title'));
+    }else{
+      ga('send','event','video','play',e.target.getAttribute('title'));
+    }
   }).on('ended', function(e) {
     ga('send','event','video','play_end',e.target.getAttribute('title'));
   }).on('pause', function(e) {
@@ -101,19 +107,19 @@ Google Analyticsのイベントで計測するためのコードを作ってみ�
   }).on('seeked', function(e) {
     ga('send','event','video','seeked',e.target.getAttribute('title'));
   }).on('timeupdate', function(e) {
-  var ratio = e.target.currentTime / e.target.duration;
-  if((0.9 &lt;= ratio) &amp;&amp; (oldratio &lt; 0.9)){
-    ga('send','event','video','play_90percent',e.target.getAttribute('title'));
-  }else if((0.75 &lt;= ratio) &amp;&amp; (oldratio &lt; 0.75)){
-    ga('send','event','video','play_75percent',e.target.getAttribute('title'));
-  }else if((0.5 &lt;= ratio) &amp;&amp; (oldratio &lt; 0.5)){
-    ga('send','event','video','play_50percent',e.target.getAttribute('title'));
-  }else if((0.25 &lt;= ratio) &amp;&amp; (oldratio &lt; 0.25)){
-    ga('send','event','video','play_25percent',e.target.getAttribute('title'));
-  }else if((0.1 &lt;= ratio) &amp;&amp; (oldratio &lt; 0.1)){
-    ga('send','event','video','play_10percent',e.target.getAttribute('title'));
-  }
-  oldratio = ratio;
+    var ratio = e.target.currentTime / e.target.duration;
+    if((0.9 &lt;= ratio) &amp;&amp; (oldratio &lt; 0.9)){
+      ga('send','event','video','play_90percent',e.target.getAttribute('title'));
+    }else if((0.75 &lt;= ratio) &amp;&amp; (oldratio &lt; 0.75)){
+      ga('send','event','video','play_75percent',e.target.getAttribute('title'));
+    }else if((0.5 &lt;= ratio) &amp;&amp; (oldratio &lt; 0.5)){
+      ga('send','event','video','play_50percent',e.target.getAttribute('title'));
+    }else if((0.25 &lt;= ratio) &amp;&amp; (oldratio &lt; 0.25)){
+      ga('send','event','video','play_25percent',e.target.getAttribute('title'));
+    }else if((0.1 &lt;= ratio) &amp;&amp; (oldratio &lt; 0.1)){
+      ga('send','event','video','play_10percent',e.target.getAttribute('title'));
+    }
+    oldratio = ratio;
   });
 });
 </code></pre>
