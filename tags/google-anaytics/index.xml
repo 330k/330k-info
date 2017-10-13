@@ -12,16 +12,15 @@
     
     
     <item>
-      <title>Google AnalyticsでVideo要素のイベントを計測</title>
+      <title>Google Analyticsど動画(Video要素)のイベントを計測</title>
       <link>https://www.330k.info/essay/measure_video_events_with_google_analytics/</link>
       <pubDate>Mon, 02 Oct 2017 23:27:45 +0900</pubDate>
       
       <guid>https://www.330k.info/essay/measure_video_events_with_google_analytics/</guid>
       <description>会社のウェブサイトに貼ってある動画ファイルが、実際にどれだけ再生されているのか調査するべく、 Google Analyticsのイベントで計測するためのコードを作ってみた。
 計測対象は以下のイベント。
- 再生開始(play) 最後まで再生(ended) 一時停止(pause) 再生再開(resume) シークした(seeked) どこまで再生したか(動画時間の10%, 25%, 50%, 75%, 90%)  今のところ、動画を埋め込んであるページのPVが5000に対して、再生開始したのは1%程度の50で、 さらに最後まで見たのはそのうち6割の30。
-5分近くもある動画を全部見ようなんて人はほとんどいない、ということは予想済みであったが、 会社の上の人はこういうユーザ視点を持ってないんだよね。
-HTML側 &amp;lt;video id=&amp;quot;movie001&amp;quot; width=&amp;quot;(動画幅)&amp;quot; height=&amp;quot;(動画高さ)&amp;quot; title=&amp;quot;Movie Title&amp;quot;&amp;gt; &amp;lt;source src=&amp;quot;(動画ファイルのパス)&amp;quot; type=&amp;quot;video/mp4&amp;quot; /&amp;gt; &amp;lt;/video  JavaScript側(jQuery使用) $(function(){ var oldratio = 0.0; $(&#39;video&#39;).on(&#39;play&#39;, function(e) { on(&#39;play&#39;, function(e) { if(e.target.currentTime &amp;gt; 0){ ga(&#39;send&#39;,&#39;event&#39;,&#39;video&#39;,&#39;resume&#39;,e.target.getAttribute(&#39;title&#39;)); }else{ ga(&#39;send&#39;,&#39;event&#39;,&#39;video&#39;,&#39;play&#39;,e.target.getAttribute(&#39;title&#39;)); } }).on(&#39;ended&#39;, function(e) { ga(&#39;send&#39;,&#39;event&#39;,&#39;video&#39;,&#39;play_end&#39;,e.target.getAttribute(&#39;title&#39;)); }).on(&#39;pause&#39;, function(e) { ga(&#39;send&#39;,&#39;event&#39;,&#39;video&#39;,&#39;pause&#39;,e.target.getAttribute(&#39;title&#39;)); }).on(&#39;seeked&#39;, function(e) { ga(&#39;send&#39;,&#39;event&#39;,&#39;video&#39;,&#39;seeked&#39;,e.target.getAttribute(&#39;title&#39;)); }).on(&#39;timeupdate&#39;, function(e) { var ratio = e.</description>
+ 再生開始(play) 最後まで再生(ended) 一時停止(pause) 再生再開(resume) シークした(seeked) どこまで再生したか(動画時間の10%, 25%, 50%, 75%, 90%)  HTML側 &amp;lt;video id=&amp;quot;movie001&amp;quot; width=&amp;quot;(動画幅)&amp;quot; height=&amp;quot;(動画高さ)&amp;quot; title=&amp;quot;Movie Title&amp;quot;&amp;gt; &amp;lt;source src=&amp;quot;(動画ファイルのパス)&amp;quot; type=&amp;quot;video/mp4&amp;quot; /&amp;gt; &amp;lt;/video  JavaScript側(jQuery使用) イベントカテゴリに「video」、イベントアクションにplay、play_endなど。 イベントラベルには動画のtitle属性をセット。
+$(function(){ var oldratio = 0.0; $(&#39;video&#39;).on(&#39;play&#39;, function(e) { on(&#39;play&#39;, function(e) { if(e.target.currentTime &amp;gt; 0){ ga(&#39;send&#39;,&#39;event&#39;,&#39;video&#39;,&#39;resume&#39;,e.target.getAttribute(&#39;title&#39;)); }else{ ga(&#39;send&#39;,&#39;event&#39;,&#39;video&#39;,&#39;play&#39;,e.target.getAttribute(&#39;title&#39;)); } }).on(&#39;ended&#39;, function(e) { ga(&#39;send&#39;,&#39;event&#39;,&#39;video&#39;,&#39;play_end&#39;,e.target.getAttribute(&#39;title&#39;)); }).on(&#39;pause&#39;, function(e) { ga(&#39;send&#39;,&#39;event&#39;,&#39;video&#39;,&#39;pause&#39;,e.target.getAttribute(&#39;title&#39;)); }).on(&#39;seeked&#39;, function(e) { ga(&#39;send&#39;,&#39;event&#39;,&#39;video&#39;,&#39;seeked&#39;,e.target.getAttribute(&#39;title&#39;)); }).on(&#39;timeupdate&#39;, function(e) { var ratio = e.target.currentTime / e.</description>
     </item>
     
   </channel>
