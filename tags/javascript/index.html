@@ -54,6 +54,25 @@ ga('send', 'pageview');
 	<div class="list__content clearfix">
 		<header class="list__header">
 			<h3 class="list__title post__title ">
+				<a href="/essay/measure_video_events_with_google_analytics/" rel="bookmark">Google Analyticsで動画(Video要素)のイベントを計測</a>
+			</h3>
+			<div class="list__meta meta">
+				<svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
+				<time class="list__meta-date" datetime="2017-10-02T23:27:45">October 02, 2017</time>
+			</div>
+		</header>
+		<div class="list__excerpt">
+			会社のウェブサイトに貼ってある動画ファイルが、実際にどれだけ再生されているのか調査するべく、 Google Analyticsのイベントで計測するためのコードを作ってみた。
+計測対象は以下のイベント。
+ 再生開始(play) 最後まで再生(ended) 一時停止(pause) 再生再開(resume) シークした(seeked) どこまで再生したか(動画時間の10%, 25%, 50%, 75%, 90%)  HTML側 &lt;video id=&quot;movie001&quot; width=&quot;(動画幅)&quot; height=&quot;(動画高さ)&quot; title=&quot;Movie Title&quot;&gt; &lt;source src=&quot;(動画ファイルのパス)&quot; type=&quot;video/mp4&quot; /&gt; &lt;/video  JavaScript側(jQuery使用) イベントカテゴリに「video」、イベントアクションにplay、play_endなど。 イベントラベルには動画のtitle属性をセット。
+$(function(){ var oldratio = 0.0; $('video').on('play', function(e) { on('play', function(e) { if(e.target.currentTime &gt; 0){ ga('send','event','video','resume',e.target.getAttribute('title')); }else{ ga('send','event','video','play',e.target.getAttribute('title')); } }).on('ended', function(e) { ga('send','event','video','play_end',e.target.getAttribute('title')); }).on('pause', function(e) { ga('send','event','video','pause',e.target.getAttribute('title')); }).on('seeked', function(e) { ga('send','event','video','seeked',e.target.getAttribute('title')); }).on('timeupdate', function(e) { var ratio = e.target.currentTime / e.
+		</div>
+	</div>
+</article>
+<article class="list__item post clearfix">
+	<div class="list__content clearfix">
+		<header class="list__header">
+			<h3 class="list__title post__title ">
 				<a href="/essay/scramble_unicode_lro_rlo/" rel="bookmark">Unicode制御文字(LRO, RLO)でコピー・改変を防止 (構想)</a>
 			</h3>
 			<div class="list__meta meta">
@@ -223,13 +242,12 @@ GitHubにアップロードした方はバイナリデータにも対応。 こ�
 		<a class="widget__link widget__link--taglist" href="/tags/chrome" title="chrome">chrome (1)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/github" title="github">github (5)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/gmail" title="gmail">gmail (2)</a>
-		<a class="widget__link widget__link--taglist" href="/tags/google" title="google">google (2)</a>
-		<a class="widget__link widget__link--taglist" href="/tags/google-anaytics" title="google-anaytics">google-anaytics (1)</a>
+		<a class="widget__link widget__link--taglist" href="/tags/google" title="google">google (3)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/gps" title="gps">gps (1)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/gpx" title="gpx">gpx (4)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/hta" title="hta">hta (1)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/java" title="java">java (2)</a>
-		<a class="widget__link widget__link--taglist" href="/tags/javascript" title="javascript">javascript (4)</a>
+		<a class="widget__link widget__link--taglist" href="/tags/javascript" title="javascript">javascript (5)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/mathematica" title="mathematica">mathematica (18)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/net" title="net">net (1)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/powerpoint" title="powerpoint">powerpoint (1)</a>
