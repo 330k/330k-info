@@ -51,6 +51,24 @@ ga('send', 'pageview');
 		<header class="page-header">
 			<h1 class="page-header__title">Essays</h1>
 		</header><article class="list__item post clearfix">
+	<div class="list__content clearfix">
+		<header class="list__header">
+			<h3 class="list__title post__title ">
+				<a href="/essay/resize_and_pad_with_imagemagick/" rel="bookmark">ImageMagickでベクタ画像を綺麗な半透過PNGにする</a>
+			</h3>
+			<div class="list__meta meta">
+				<svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
+				<time class="list__meta-date" datetime="2017-10-19T20:48:53">October 19, 2017</time>
+			</div>
+		</header>
+		<div class="list__excerpt">
+			ImageMagickで以下のようなことをやる機会があったのでメモ。 今回は元画像がIllustratorファイルだったが、 他のベクタ形式の画像からでも背景透過PNGを作成するときに使えると思う。
+ 元データはIllustratorファイル(.ai) 元の画像の余白部は削除する 220x110の長方形に入るようにリサイズ 上下左右に余白をつける 出来上がりの画像サイズは230x180 背景は透過させる(きれいに透過させたい)  コマンド convert -colorspace sRGB -density 576 -filter Point &quot;元ファイル.ai&quot; -trim -alpha set -fill '#000000ff' -opaque '#ffffff' -background transparent +filter -resize 220x110 -gravity center -extent 230x180 出力ファイル.png  説明 アンチエイリアスを切った状態で透過色を設定し、その後アンチエイリアスをONにして縮小するところがミソ。 これで中間色の部分をきれいに半透過にできる。
+   オプション 説明     -colorspace sRGB カラースペースをsRGBに設定   -density 576 出力されるPNGファイルの解像度が72dpiだったので、その8倍で読み込むよう設定   -filter Point アンチエイリアスをOFFに設定   &quot;元ファイル.ai&quot; 画像ファイルを読み込む   -trim 元画像の余白を削除   -alpha set -fill '#000000ff' -opaque '#ffffff' 白(#ffffff)を透過に指定   -background transparent 出力画像の背景を透明に設定   +filter リサイズする時はアンチエイリアスON(上で設定された-filter Pointを無効化)   -resize 220x110 最大サイズを220x110に縮小   -gravity center -extent 230x180 画像中央を中心に上下左右に余白を作って230x180にする   出力ファイル.
+		</div>
+	</div>
+</article>
+<article class="list__item post clearfix">
 	<figure class="list__thumbnail">
 		<a href="https://www.330k.info/essay/logging_shared_pc_user/">
 			<img src="/essay/logging_shared_pc_user/001.png" alt="共有PCの実際の使用者を記録する" />
@@ -268,27 +286,6 @@ Public Function GetUUID() As String 'GetUUID = Mid$(CreateObject(&quot;Scriptlet
 		</div>
 	</div>
 </article>
-<article class="list__item post clearfix">
-	<div class="list__content clearfix">
-		<header class="list__header">
-			<h3 class="list__title post__title ">
-				<a href="/essay/input_backslach_with_us_keyboard_layout/" rel="bookmark">英語版Windows PE環境でバックスラッシュを入力</a>
-			</h3>
-			<div class="list__meta meta">
-				<svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
-				<time class="list__meta-date" datetime="2017-06-06T06:48:00">June 06, 2017</time>
-			</div>
-		</header>
-		<div class="list__excerpt">
-			会社のPCではHDD暗号化ソフトのSecureDocを使用しているが、先日1台のPCが起動しなくなったため、リカバリーディスクを使っての救出を行った際のメモ。
-SecureDocのリカバリーディスクはWindows PEベースなのだが、海外の製品なので当然英語キーボード。 起動しなくなったPCのHDDの中身は運良く復旧できそうだったのだが、 データをネットワーク経由で回収しようとしたところネットワーク設定画面でバックスラッシュが入力できなくてハマった。
-5分ほどキーボードを押しまくった後、Altキーと文字コード入力で行けることに気がついた。
-Alt押す → テンキー9 → テンキー2 → Alt離す
-で無事入力できた。
-ただ、LetsNoteのNICをWindows PEでは認識できず無駄足に。 結局USBメモリ経由で回収した。
-		</div>
-	</div>
-</article>
 
 
 		
@@ -316,6 +313,7 @@ Alt押す → テンキー9 → テンキー2 → Alt離す
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/essay/resize_and_pad_with_imagemagick/">ImageMagickでベクタ画像を綺麗な半透過PNGにする</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/logging_shared_pc_user/">共有PCの実際の使用者を記録する</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/measure_video_events_with_google_analytics/">Google Analyticsで動画(Video要素)のイベントを計測</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/delete_temporary_files_with_powershell/">Officeの一時ファイルやThumbs.dbなどをPowerShellで一掃</a></li>
@@ -325,7 +323,6 @@ Alt押す → テンキー9 → テンキー2 → Alt離す
 			<li class="widget__item"><a class="widget__link" href="/essay/author_dvd_from_movie_file_on_windows/">動画ファイルからDVDオーサリング</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/random_distribution_sphere_surface/">球面上の一様分布</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/zabbix_ricoh_printer_template_xml/">RICOHプリンタ・複合機用のZabbix用テンプレート</a></li>
-			<li class="widget__item"><a class="widget__link" href="/essay/create_uuid_vba/">VBAでUUIDを生成</a></li>
 		</ul>
 	</div>
 </div>
@@ -369,6 +366,7 @@ Alt押す → テンキー9 → テンキー2 → Alt離す
 		<a class="widget__link widget__link--taglist" href="/tags/hta" title="hta">hta (1)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/java" title="java">java (2)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/javascript" title="javascript">javascript (5)</a>
+		<a class="widget__link widget__link--taglist" href="/tags/linux" title="linux">linux (1)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/mathematica" title="mathematica">mathematica (18)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/net" title="net">net (1)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/powerpoint" title="powerpoint">powerpoint (1)</a>

@@ -6,10 +6,21 @@
     <description>Recent content on 330k info</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 02 Oct 2017 23:44:23 +0900</lastBuildDate>
+    <lastBuildDate>Thu, 19 Oct 2017 20:48:53 +0900</lastBuildDate>
     
 	<atom:link href="https://www.330k.info/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>ImageMagickでベクタ画像を綺麗な半透過PNGにする</title>
+      <link>https://www.330k.info/essay/resize_and_pad_with_imagemagick/</link>
+      <pubDate>Thu, 19 Oct 2017 20:48:53 +0900</pubDate>
+      
+      <guid>https://www.330k.info/essay/resize_and_pad_with_imagemagick/</guid>
+      <description>ImageMagickで以下のようなことをやる機会があったのでメモ。 今回は元画像がIllustratorファイルだったが、 他のベクタ形式の画像からでも背景透過PNGを作成するときに使えると思う。
+ 元データはIllustratorファイル(.ai) 元の画像の余白部は削除する 220x110の長方形に入るようにリサイズ 上下左右に余白をつける 出来上がりの画像サイズは230x180 背景は透過させる(きれいに透過させたい)  コマンド convert -colorspace sRGB -density 576 -filter Point &amp;quot;元ファイル.ai&amp;quot; -trim -alpha set -fill &#39;#000000ff&#39; -opaque &#39;#ffffff&#39; -background transparent +filter -resize 220x110 -gravity center -extent 230x180 出力ファイル.png  説明 アンチエイリアスを切った状態で透過色を設定し、その後アンチエイリアスをONにして縮小するところがミソ。 これで中間色の部分をきれいに半透過にできる。
+   オプション 説明     -colorspace sRGB カラースペースをsRGBに設定   -density 576 出力されるPNGファイルの解像度が72dpiだったので、その8倍で読み込むよう設定   -filter Point アンチエイリアスをOFFに設定   &amp;quot;元ファイル.ai&amp;quot; 画像ファイルを読み込む   -trim 元画像の余白を削除   -alpha set -fill &#39;#000000ff&#39; -opaque &#39;#ffffff&#39; 白(#ffffff)を透過に指定   -background transparent 出力画像の背景を透明に設定   +filter リサイズする時はアンチエイリアスON(上で設定された-filter Pointを無効化)   -resize 220x110 最大サイズを220x110に縮小   -gravity center -extent 230x180 画像中央を中心に上下左右に余白を作って230x180にする   出力ファイル.</description>
+    </item>
     
     <item>
       <title>共有PCの実際の使用者を記録する</title>

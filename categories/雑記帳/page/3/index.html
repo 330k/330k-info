@@ -54,6 +54,25 @@ ga('send', 'pageview');
 	<div class="list__content clearfix">
 		<header class="list__header">
 			<h3 class="list__title post__title ">
+				<a href="/essay/aggregate-metadata-from-all-pdf-office-documents/" rel="bookmark">Tikaを使って指定したディレクトリ以下の全ファイルのメタデータを収集</a>
+			</h3>
+			<div class="list__meta meta">
+				<svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
+				<time class="list__meta-date" datetime="2015-11-29T00:00:00">November 29, 2015</time>
+			</div>
+		</header>
+		<div class="list__excerpt">
+			会社で外部に公開しているPDFファイルの作成者やタイトルにおかしいもの(社名が間違っている etc.)があることに気づき、 会社のファイルサーバにあるWord、Excel、PowerPoint、PDFファイルのメタ情報を一覧で出力し、 Excelにインポートして変なメタ情報が設定されていないかチェックするためのスクリプトを作ってみた。
+準備 まずはapacheからTikaをダウンロード(執筆時点では1.11が最新)
+wget http://ftp.jaist.ac.jp/pub/apache/tika/tika-app-1.11.jar  全メタデータを収集 とにかく全部のメタデータを収集したいときは、tikaのjarファイルと同じディレクトリに以下のようなスクリプトを配置。 検索対象のディレクトリは3行目で指定する。
+#!/bin/bash dir=~/Documents/ output=metadata.xml port=12345 tmpfile=temp.txt java -jar tika-app-1.11.jar -s -x --port $port &gt; $tmpfile &amp; procid=$! sleep 1 echo &quot;&lt;?xml version=\&quot;1.0\&quot; encoding=\&quot;utf-8\&quot; ?&gt;&quot; &gt; $output echo &quot;&lt;files&gt;&quot; &gt;&gt; $output find &quot;$dir&quot; -iname &quot;*.pdf&quot; -o -iname &quot;*.doc&quot; -o -iname &quot;*.doc?&quot; -o -iname &quot;*.xls&quot; -o -iname &quot;*.xls?&quot; -o -iname &quot;*.ppt&quot; -o -iname &quot;*.ppt?&quot; | while read i do echo &quot;&lt;file&gt;&quot; &gt;&gt; $output echo &quot; &lt;filepath&gt;&lt;!
+		</div>
+	</div>
+</article>
+<article class="list__item post clearfix">
+	<div class="list__content clearfix">
+		<header class="list__header">
+			<h3 class="list__title post__title ">
 				<a href="/essay/what_l2_forwarding_ssl_vpn_protects/" rel="bookmark">仮想的な専用線という言葉にだまされた残念な技術者</a>
 			</h3>
 			<div class="list__meta meta">
@@ -341,35 +360,6 @@ Let&rsquo;s Noteの場合、 C:\util2\drivers\etm\DppmCleaner.bat、もしくは
 		</div>
 	</div>
 </article>
-<article class="list__item post clearfix">
-	<div class="list__content clearfix">
-		<header class="list__header">
-			<h3 class="list__title post__title ">
-				<a href="/essay/results-oriented-approach-of-japan-companies-and-power-harassment/" rel="bookmark">日本企業における成果主義とパワハラ</a>
-			</h3>
-			<div class="list__meta meta">
-				<svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
-				<time class="list__meta-date" datetime="2015-07-15T00:00:00">July 15, 2015</time>
-			</div>
-		</header>
-		<div class="list__excerpt">
-			今年の5月までの半年間、研修先の企業で
- 自分がミスをしたり、言いがかりをつける格好の餌を与える 相手がひたすら満足するまで怒鳴りつける しばらくしたら、定番の以下の言い訳をする  「さっきのは悪気はなかった」 「お前の為を思って怒ったんだ」   のループを繰り返していた。
-周りや相手の上司に現状を訴えても、「あいつが怒りは愛があるから良いんだ」と言われる。
-パワハラに限らず、体罰をする人は皆「愛を持ってやった、愛の鞭だ」と言う。
-こうして私は不眠、吐き気、下痢などの体調不良になり、薬(イリボー、ルネスタ、レクサプロ、リボトリール)が どんどん増えていった。また、カウンセリングにも行くようになった。
-話は変わって、勤怠管理システムについて経営者と会議をしたところ、 「うちの会社(金融業)の従業員は、皆プロフェッショナルなので、結果で評価してもらいたいと思っている。 我々経営者も結果で評価する。」 という方針が経営者から出された。
-言われた瞬間はちょっとした違和感を覚えただけだったが、よくよく考えてみると、 結果で評価する、と、愛がある指導ならば何でも認められる、は矛盾している。
-愛がある指導というプロセスを持って評価していて、結果を評価していない。
-結果で評価するならば指導についても結果で評価するべきで、私の場合は
-「怒鳴りつける指導を繰り返すことで、不眠や吐き気などの体調不良と 薬による治療、カウンセリングが必要な状態となったという結果をもたらした。」
-という結果を持って評価するべきだ。
-ということは、不完全な成果主義、結果主義がパワハラを生むのではないか。
-とはいえ完全な結果主義を取ると、実際に体調不良にならなければどんな暴力的な言動も問題ない、ということになってしまう。 ただ、金融業の経営者であれば、実際に体調不良になる前でも経営上のリスクとして判断できるはずだ。
-次の会議ではちょっとこの理論でジャブを打ってみよう。
-		</div>
-	</div>
-</article>
 
 
 		
@@ -398,6 +388,7 @@ Let&rsquo;s Noteの場合、 C:\util2\drivers\etm\DppmCleaner.bat、もしくは
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/essay/resize_and_pad_with_imagemagick/">ImageMagickでベクタ画像を綺麗な半透過PNGにする</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/logging_shared_pc_user/">共有PCの実際の使用者を記録する</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/measure_video_events_with_google_analytics/">Google Analyticsで動画(Video要素)のイベントを計測</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/delete_temporary_files_with_powershell/">Officeの一時ファイルやThumbs.dbなどをPowerShellで一掃</a></li>
@@ -407,7 +398,6 @@ Let&rsquo;s Noteの場合、 C:\util2\drivers\etm\DppmCleaner.bat、もしくは
 			<li class="widget__item"><a class="widget__link" href="/essay/author_dvd_from_movie_file_on_windows/">動画ファイルからDVDオーサリング</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/random_distribution_sphere_surface/">球面上の一様分布</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/zabbix_ricoh_printer_template_xml/">RICOHプリンタ・複合機用のZabbix用テンプレート</a></li>
-			<li class="widget__item"><a class="widget__link" href="/essay/create_uuid_vba/">VBAでUUIDを生成</a></li>
 		</ul>
 	</div>
 </div>
@@ -451,6 +441,7 @@ Let&rsquo;s Noteの場合、 C:\util2\drivers\etm\DppmCleaner.bat、もしくは
 		<a class="widget__link widget__link--taglist" href="/tags/hta" title="hta">hta (1)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/java" title="java">java (2)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/javascript" title="javascript">javascript (5)</a>
+		<a class="widget__link widget__link--taglist" href="/tags/linux" title="linux">linux (1)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/mathematica" title="mathematica">mathematica (18)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/net" title="net">net (1)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/powerpoint" title="powerpoint">powerpoint (1)</a>
