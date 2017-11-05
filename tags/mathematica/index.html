@@ -252,7 +252,7 @@ y = xの直線上にあれば正確ということだが、GeoDistanceの&rdquo;
 			</div>
 		</header>
 		<div class="list__excerpt">
-			[Wolfram CDF Player を汎用する]()にあるように、 CDF PlayerでもJ/Linkを使えばローカルファイルの読み込み、書き込みができる(※CDFファイルの作成にはMathematicaが必要)。
+			Wolfram CDF Player を汎用するにあるように、 CDF PlayerでもJ/Linkを使えばローカルファイルの読み込み、書き込みができる(※CDFファイルの作成にはMathematicaが必要)。
 上記リンク先ではテキストファイルを読み込む例が載っているが、バイナリファイルとして読み込んでImportStringを使えば、 Mathematicaが対応している形式すべてのファイルを読み込むことができる。
 J/Linkでバイナリファイルを読み込むときのポイントとしては、
  &ldquo;[B&rdquo;というクラス名でbyte型の配列を作ってBufferedInputStream.read(byte[])で一気に読み込むことで高速化 読み込んだbyte[]がMathematicaに入った時に符号付き整数で扱われるため、FromCharacterCodeに突っ込む前に0〜255になるように修正  が挙げられる。
