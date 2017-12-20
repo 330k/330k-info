@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>GeForce 1060搭載ノートPCにUbuntu &#43; NVIDIAドライバ &#43; CUDA &#43; Mathematia 8をインストール</title>
+<title>GeForce 1060搭載ノートPCにUbuntu 17.10 &#43; NVIDIAドライバ &#43; CUDA &#43; Mathematia 8をインストール</title>
 <meta name="description" content="自転車ツーリングの記録やソフトウェアの配布、Mathematicaをメインにしたプログラミングの覚書や日ごろの雑感など。">
 <meta name="generator" content="Hugo 0.25.1" />
 
@@ -50,7 +50,7 @@ ga('send', 'pageview');
 <div class="main-content content" role="main" itemprop="mainContentOfPage">
 	<article class="post">
 		<header class="post__header clearfix">
-			<h1 class="post__title">GeForce 1060搭載ノートPCにUbuntu &#43; NVIDIAドライバ &#43; CUDA &#43; Mathematia 8をインストール</h1>
+			<h1 class="post__title">GeForce 1060搭載ノートPCにUbuntu 17.10 &#43; NVIDIAドライバ &#43; CUDA &#43; Mathematia 8をインストール</h1>
 			<p class="post__meta meta">
 				<svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
 				<time class="post__meta-date" datetime="2017-12-21T00:00:00">December 21, 2017</time>
@@ -87,6 +87,8 @@ ddでUSBメモリに書き込む。</p>
 <h2 id="ファームウェア設定">ファームウェア設定</h2>
 
 <p>新PCに電源を入れ、ファームウェア設定画面に入り、起動モードをUEFIからBIOSに変更する。</p>
+
+<h2 id="ubuntuインストール">Ubuntuインストール</h2>
 
 <p>USBメモリを挿入してPCを再起動し、インストールする。</p>
 
@@ -148,12 +150,14 @@ Wolframシステム移行フォームで、新しいアクティベーション�
 LANG=ja_JP.UTF-8
 </code></pre>
 
-<p><code>ISO8859-1.m</code>を書き換えなくても大丈夫だった。</p>
+<p><code>ISO8859-1.m</code>は書き換えなくても大丈夫だった。</p>
 
 <h2 id="cudalinkの設定">CUDALinkの設定</h2>
 
 <p>Wolframのドキュメントには環境変数<code>NVIDIA_DRIVER_LIBRARY_PATH</code>と<code>CUDA_LIBRARY_PATH</code>を設定すれば良い、と書いてあるが、実際には読みに行ってくれない。
-なので、デフォルトの位置にシンボリックリンクを作成する。</p>
+(なぜか環境変数をMathematicaが読み込めていない)</p>
+
+<p>なので、デフォルトの位置にシンボリックリンクを作成する。</p>
 
 <pre><code>sudo mkdir /usr/lib64
 sudo ln -s /usr/lib/nvidia-387/tls/libnvidia-tls.so.387.26 /usr/lib64/libnvidia-tls.so.387.26
@@ -232,7 +236,7 @@ Out[9]= {1 -&gt; {&quot;Name&quot; -&gt; &quot;GeForce GTX 1060&quot;, &quot;Clo
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
-			<li class="widget__item"><a class="widget__link" href="/essay/ubuntu_nvidia_cuda_mathematica_geforce1060/">GeForce 1060搭載ノートPCにUbuntu &#43; NVIDIAドライバ &#43; CUDA &#43; Mathematia 8をインストール</a></li>
+			<li class="widget__item"><a class="widget__link" href="/essay/ubuntu_nvidia_cuda_mathematica_geforce1060/">GeForce 1060搭載ノートPCにUbuntu 17.10 &#43; NVIDIAドライバ &#43; CUDA &#43; Mathematia 8をインストール</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/resize_and_pad_with_imagemagick/">ImageMagickでベクタ画像を綺麗な半透過PNGにする</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/logging_shared_pc_user/">共有PCの実際の使用者を記録する</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/measure_video_events_with_google_analytics/">Google Analyticsで動画(Video要素)のイベントを計測</a></li>
