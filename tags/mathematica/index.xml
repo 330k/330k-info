@@ -6,10 +6,27 @@
     <description>Recent content in Mathematica on 330k info</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 22 Jul 2017 19:32:46 +0900</lastBuildDate>
+    <lastBuildDate>Thu, 21 Dec 2017 00:00:00 +0900</lastBuildDate>
     
 	<atom:link href="https://www.330k.info/tags/mathematica/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>GeForce 1060搭載ノートPCにUbuntu &#43; NVIDIAドライバ &#43; CUDA &#43; Mathematia 8をインストール</title>
+      <link>https://www.330k.info/essay/ubuntu_nvidia_cuda_mathematica_geforce1060/</link>
+      <pubDate>Thu, 21 Dec 2017 00:00:00 +0900</pubDate>
+      
+      <guid>https://www.330k.info/essay/ubuntu_nvidia_cuda_mathematica_geforce1060/</guid>
+      <description>MathematicaからCUDAを使いたかったので、GPU搭載のノートPCを購入してセットアップした。
+購入PC PC工房のGeForce 1060搭載ノートPC(OSなし) : STYLE-15FX093-i7-RNFR [OS LESS]
+ CPU: Intel Core i7-7700HQ 2.8GHz Memory: 16GB Storage: SSD 240GB + HDD 2TB GPU: NVIDIA GeForce 1060 6GB  Ubuntu 17.10 日本語Remixをダウンロード 旧PC(Ubuntu 16.04)で Ubuntu Desktop 日本語 Remixのダウンロードから、ubuntu-ja-17.10-desktop-amd64.isoをダウンロード。 ddでUSBメモリに書き込む。
+sudo dd if=ubuntu-ja-17.10-desktop-amd64.iso of=/dev/sde status=progress  ファームウェア設定 新PCに電源を入れ、ファームウェア設定画面に入り、起動モードをUEFIからBIOSに変更する。
+USBメモリを挿入してPCを再起動し、インストールする。
+ 言語は日本語を選択 サードパーティー製のドライバを・・・にチェック SSD(/dev/sda)を「/」(ext4)に、HDD(/dev/sdb)を「/home」にマウント ブートローダを/dev/sdaにインストール ホームディレクトリを暗号化にチェック(お好みで)  インストールができたらUSBメモリを抜いて再起動。
+Ubuntuが無事に起動し、ログインできたら、まずはディレクトリ名を日本語から英語に直してから作業開始。
+LANG=C xdg-user-dirs-gtk-update  NVIDIA Driver 公式リポジトリにあるnvidia-387をインストールする。 デフォルトのnouveauの無効化は不要だった。
+sudo apt update sudo apt install nvidia-387  CUDA 9.</description>
+    </item>
     
     <item>
       <title>球面上の一様分布</title>

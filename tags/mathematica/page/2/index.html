@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Mathematica</title>
 <meta name="description" content="自転車ツーリングの記録やソフトウェアの配布、Mathematicaをメインにしたプログラミングの覚書や日ごろの雑感など。">
-<meta name="generator" content="Hugo 0.21" />
+<meta name="generator" content="Hugo 0.25.1" />
 
 <link rel="alternate" type="application/rss+xml" title="330k info Feed" href="https://www.330k.info/tags/mathematica/index.xml">
 <link rel="stylesheet" href="/css/style.css" type="text/css" media="all" />
@@ -51,6 +51,27 @@ ga('send', 'pageview');
 		<header class="page-header">
 			<h1 class="page-header__title">Mathematica</h1>
 		</header><article class="list__item post clearfix">
+	<div class="list__content clearfix">
+		<header class="list__header">
+			<h3 class="list__title post__title ">
+				<a href="/essay/process-blob-and-multibyte-string-from-sqlite-with-mathematica/" rel="bookmark">MathematicaからSQLiteでBLOBとマルチバイト文字列を扱う</a>
+			</h3>
+			<div class="list__meta meta">
+				<svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
+				<time class="list__meta-date" datetime="2012-10-14T00:00:00">October 14, 2012</time>
+			</div>
+		</header>
+		<div class="list__excerpt">
+			ドキュメントにはないものの、MathematicaではSQLiteを扱うことができる。 しかしながら、BLOB型や文字列で日本語などを扱うには少し工夫が必要なので、メモ。
+BLOB型 select 直接BLOB型をselectすると$Failedが返ってくるので、hex関数で16進文字列として返す。
+db = Database`OpenDatabase[sqlitefilepath]; rs = Database`QueryDatabase[db, &quot;select hex(column_name) from table_name&quot;];  これを16進文字列→数値→バイト列→文字列と変換して、最後にImportStringで読み込むと、Mathematicaで読み込める。
+ImportSQLiteBLOB[hex_, format_] := ImportString[ FromCharacterCode[IntegerDigits[FromDigits[hex, 16], 256]], format]; ImportSQLiteBLOB[rs[[1, 1]], &quot;PNG&quot;]  insert insertする場合には逆に、データをExportStringで文字列に変換→バイト列→16進文字列と変換し&rdquo;x&rsquo;&ldquo;と&rdquo;&lsquo;&ldquo;で囲う。
+ExportSQLiteBLOB[expr_, format_] := StringJoin[&quot;x'&quot;, IntegerString[ToCharacterCode[ExportString[expr, format]], 16, 2], &quot;'&quot;]; Database`QueryDatabase[db, &quot;insert into table_name values (&quot; &lt;&gt; ExportSQLiteBLOB[Plot[Sin[x], {x, 0, Pi}], &quot;PNG&quot;] &lt;&gt; &quot;)&quot;];  マルチバイト文字列 select 日本語などマルチバイト文字列が入っていても適切に変換してくれないので、自前で変換する。
+ImportSQLiteString[str_] := FromCharacterCode[ToCharacterCode[str], &quot;UTF8&quot;]; rs = Database`QueryDatabase[db, &quot;select column_name from table_name&quot;]; ImportSQLiteString[rs[[1, 1]]]  insert そのまま突っ込むとエラーが出るので、変換してから突っ込む。ついでにシングルクォーテーションをエスケープしておく。
+		</div>
+	</div>
+</article>
+<article class="list__item post clearfix">
 	<div class="list__content clearfix">
 		<header class="list__header">
 			<h3 class="list__title post__title ">
@@ -277,6 +298,7 @@ A = {ax, ay}; B = {bx, by}; P = {px, py}; H = {x, y}; Solve[{ (H - A).(P - H) ==
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/essay/ubuntu_nvidia_cuda_mathematica_geforce1060/">GeForce 1060搭載ノートPCにUbuntu &#43; NVIDIAドライバ &#43; CUDA &#43; Mathematia 8をインストール</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/resize_and_pad_with_imagemagick/">ImageMagickでベクタ画像を綺麗な半透過PNGにする</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/logging_shared_pc_user/">共有PCの実際の使用者を記録する</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/measure_video_events_with_google_analytics/">Google Analyticsで動画(Video要素)のイベントを計測</a></li>
@@ -286,7 +308,6 @@ A = {ax, ay}; B = {bx, by}; P = {px, py}; H = {x, y}; Solve[{ (H - A).(P - H) ==
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20170729-0806_hokkaido/">2017年7月29日〜8月6日 北海道 道東→道北(襟裳岬、納沙布岬、知床、宗谷岬)</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/author_dvd_from_movie_file_on_windows/">動画ファイルからDVDオーサリング</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/random_distribution_sphere_surface/">球面上の一様分布</a></li>
-			<li class="widget__item"><a class="widget__link" href="/essay/zabbix_ricoh_printer_template_xml/">RICOHプリンタ・複合機用のZabbix用テンプレート</a></li>
 		</ul>
 	</div>
 </div>
@@ -322,6 +343,7 @@ A = {ax, ay}; B = {bx, by}; P = {px, py}; H = {x, y}; Solve[{ (H - A).(P - H) ==
 	<div class="widget__content">
 		<a class="widget__link widget__link--taglist" href="/tags/bat" title="bat">bat (2)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/chrome" title="chrome">chrome (1)</a>
+		<a class="widget__link widget__link--taglist" href="/tags/cuda" title="cuda">cuda (1)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/github" title="github">github (5)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/gmail" title="gmail">gmail (2)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/google" title="google">google (3)</a>
@@ -331,12 +353,12 @@ A = {ax, ay}; B = {bx, by}; P = {px, py}; H = {x, y}; Solve[{ (H - A).(P - H) ==
 		<a class="widget__link widget__link--taglist" href="/tags/java" title="java">java (2)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/javascript" title="javascript">javascript (5)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/linux" title="linux">linux (1)</a>
-		<a class="widget__link widget__link--taglist" href="/tags/mathematica" title="mathematica">mathematica (18)</a>
+		<a class="widget__link widget__link--taglist" href="/tags/mathematica" title="mathematica">mathematica (19)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/net" title="net">net (1)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/powerpoint" title="powerpoint">powerpoint (1)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/powershell" title="powershell">powershell (1)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/sql" title="sql">sql (3)</a>
-		<a class="widget__link widget__link--taglist" href="/tags/ubuntu" title="ubuntu">ubuntu (6)</a>
+		<a class="widget__link widget__link--taglist" href="/tags/ubuntu" title="ubuntu">ubuntu (7)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/vba" title="vba">vba (3)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/windows" title="windows">windows (9)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/wsh" title="wsh">wsh (2)</a>

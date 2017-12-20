@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>雑記帳</title>
 <meta name="description" content="自転車ツーリングの記録やソフトウェアの配布、Mathematicaをメインにしたプログラミングの覚書や日ごろの雑感など。">
-<meta name="generator" content="Hugo 0.21" />
+<meta name="generator" content="Hugo 0.25.1" />
 
 <link rel="alternate" type="application/rss+xml" title="330k info Feed" href="https://www.330k.info/categories/%E9%9B%91%E8%A8%98%E5%B8%B3/index.xml">
 <link rel="stylesheet" href="/css/style.css" type="text/css" media="all" />
@@ -51,6 +51,26 @@ ga('send', 'pageview');
 		<header class="page-header">
 			<h1 class="page-header__title">雑記帳</h1>
 		</header><article class="list__item post clearfix">
+	<div class="list__content clearfix">
+		<header class="list__header">
+			<h3 class="list__title post__title ">
+				<a href="/essay/create_uuid_vba/" rel="bookmark">VBAでUUIDを生成</a>
+			</h3>
+			<div class="list__meta meta">
+				<svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
+				<time class="list__meta-date" datetime="2017-07-20T20:57:38">July 20, 2017</time>
+			</div>
+		</header>
+		<div class="list__excerpt">
+			Excel VBAでUUID(GUID)を生成して使っている部分があったのだが、 先日のWindows Updateを適用してから、 CreateObject(&quot;Scriptlet.TypeLib&quot;)でエラーが出て使用できなくなってしまった。
+参考 : 2017 年 7 月のセキュリティ更新適用後、VBA から一部のオブジェクトを作成できません
+私の場合はただ単にランダムなUUIDが生成できれば良いので、 UUID v4を生成する関数を作った。
+VBの乱数の精度としては24ビットらしいので、1回の乱数生成では最大16ビット使用するようにはしている。 とはいえ乱数の品質としてはあまり高くないのでご注意を。
+Public Function GetUUID() As String 'GetUUID = Mid$(CreateObject(&quot;Scriptlet.TypeLib&quot;).GUID, 2, 36) GetUUID = Right$(&quot;0000&quot; &amp; Hex(Rnd() * 65536), 4) &amp; Right$(&quot;0000&quot; &amp; Hex(Rnd() * 65536), 4) GetUUID = GetUUID &amp; &quot;-&quot; &amp; Right$(&quot;0000&quot; &amp; Hex(Rnd() * 65536), 4) GetUUID = GetUUID &amp; &quot;-4&quot; &amp; Right$(&quot;0000&quot; &amp; Hex(Rnd() * 65536), 3) GetUUID = GetUUID &amp; &quot;-&quot; &amp; Right$(&quot;0000&quot; &amp; Hex(32768 + Rnd() * 16384), 4) GetUUID = GetUUID &amp; &quot;-&quot; &amp; Right$(&quot;0000&quot; &amp; Hex(Rnd() * 65536), 4) &amp; Right$(&quot;0000&quot; &amp; Hex(Rnd() * 65536), 4) &amp; Right$(&quot;0000&quot; &amp; Hex(Rnd() * 65536), 4) End Function  
+		</div>
+	</div>
+</article>
+<article class="list__item post clearfix">
 	<div class="list__content clearfix">
 		<header class="list__header">
 			<h3 class="list__title post__title ">
@@ -258,26 +278,6 @@ DVDの中身のVTS_01_1.VOB, VTS_01_2.VOBというファイルをffmpegの-iオ�
 		</div>
 	</div>
 </article>
-<article class="list__item post clearfix">
-	<div class="list__content clearfix">
-		<header class="list__header">
-			<h3 class="list__title post__title ">
-				<a href="/essay/change-c-compiler-in-mathematica/" rel="bookmark">Compileで使用するCコンパイラを変更する</a>
-			</h3>
-			<div class="list__meta meta">
-				<svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
-				<time class="list__meta-date" datetime="2015-12-08T17:40:00">December 08, 2015</time>
-			</div>
-		</header>
-		<div class="list__excerpt">
-			Mathematica 8から、CompileでCコンパイラを使って直接ネイティブコードにコンパイルできるようになった。 使用するCコンパイラは、
-Needs[&quot;CCompilerDriver`&quot;]; CCompilerDriver`$CCompiler = { &quot;Name&quot; -&gt; &quot;GCC&quot;, &quot;Compiler&quot; -&gt; CCompilerDriver`GCCCompiler`GCCCompiler, &quot;CompilerInstallation&quot; -&gt; &quot;/usr/bin&quot;, &quot;CompilerName&quot; -&gt; Automatic };  というように、CCompilerDriver`$CCompilerを変更して指定する。
-以前からのCompile(&ldquo;WVM&rdquo;)と、各コンパイラの比較のため、ベンチマークを行ってみた。 検証環境は以下の通り。
- CPU: Intel Core-i7 3770 (インテル® HT テクノロジー ON) OS: Ubuntu 14.04 LTS 64bit Memory: 16 GB DDR3 1333 MHz  検証するCコンパイラは、GCC、Intel C++ Compiler、Clangの3種類。
- gcc: (Ubuntu 4.8.4-2ubuntu1~14.04) 4.8.4 icc: icc (ICC) 14.0.3 20140422 clang: Ubuntu clang version 3.4-1ubuntu3 (tags/RELEASE_34/final) (based on LLVM 3.4)  Mathematicaコードは以下。1/i^2を総和してπ^2/6を求める単純な計算を行った。 ※私の環境ではICCは/media/storage/intel/compserxe/binにインストールしているので下記コードを使用する場合は注意。
-		</div>
-	</div>
-</article>
 
 
 		
@@ -306,6 +306,7 @@ Needs[&quot;CCompilerDriver`&quot;]; CCompilerDriver`$CCompiler = { &quot;Name&q
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/essay/ubuntu_nvidia_cuda_mathematica_geforce1060/">GeForce 1060搭載ノートPCにUbuntu &#43; NVIDIAドライバ &#43; CUDA &#43; Mathematia 8をインストール</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/resize_and_pad_with_imagemagick/">ImageMagickでベクタ画像を綺麗な半透過PNGにする</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/logging_shared_pc_user/">共有PCの実際の使用者を記録する</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/measure_video_events_with_google_analytics/">Google Analyticsで動画(Video要素)のイベントを計測</a></li>
@@ -315,7 +316,6 @@ Needs[&quot;CCompilerDriver`&quot;]; CCompilerDriver`$CCompiler = { &quot;Name&q
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20170729-0806_hokkaido/">2017年7月29日〜8月6日 北海道 道東→道北(襟裳岬、納沙布岬、知床、宗谷岬)</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/author_dvd_from_movie_file_on_windows/">動画ファイルからDVDオーサリング</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/random_distribution_sphere_surface/">球面上の一様分布</a></li>
-			<li class="widget__item"><a class="widget__link" href="/essay/zabbix_ricoh_printer_template_xml/">RICOHプリンタ・複合機用のZabbix用テンプレート</a></li>
 		</ul>
 	</div>
 </div>
@@ -351,6 +351,7 @@ Needs[&quot;CCompilerDriver`&quot;]; CCompilerDriver`$CCompiler = { &quot;Name&q
 	<div class="widget__content">
 		<a class="widget__link widget__link--taglist" href="/tags/bat" title="bat">bat (2)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/chrome" title="chrome">chrome (1)</a>
+		<a class="widget__link widget__link--taglist" href="/tags/cuda" title="cuda">cuda (1)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/github" title="github">github (5)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/gmail" title="gmail">gmail (2)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/google" title="google">google (3)</a>
@@ -360,12 +361,12 @@ Needs[&quot;CCompilerDriver`&quot;]; CCompilerDriver`$CCompiler = { &quot;Name&q
 		<a class="widget__link widget__link--taglist" href="/tags/java" title="java">java (2)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/javascript" title="javascript">javascript (5)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/linux" title="linux">linux (1)</a>
-		<a class="widget__link widget__link--taglist" href="/tags/mathematica" title="mathematica">mathematica (18)</a>
+		<a class="widget__link widget__link--taglist" href="/tags/mathematica" title="mathematica">mathematica (19)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/net" title="net">net (1)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/powerpoint" title="powerpoint">powerpoint (1)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/powershell" title="powershell">powershell (1)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/sql" title="sql">sql (3)</a>
-		<a class="widget__link widget__link--taglist" href="/tags/ubuntu" title="ubuntu">ubuntu (6)</a>
+		<a class="widget__link widget__link--taglist" href="/tags/ubuntu" title="ubuntu">ubuntu (7)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/vba" title="vba">vba (3)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/windows" title="windows">windows (9)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/wsh" title="wsh">wsh (2)</a>

@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>330k info</title>
 <meta name="description" content="自転車ツーリングの記録やソフトウェアの配布、Mathematicaをメインにしたプログラミングの覚書や日ごろの雑感など。">
-<meta name="generator" content="Hugo 0.21" />
+<meta name="generator" content="Hugo 0.25.1" />
 
 <link rel="alternate" type="application/rss+xml" title="330k info Feed" href="https://www.330k.info/index.xml">
 <link rel="stylesheet" href="/css/style.css" type="text/css" media="all" />
@@ -48,6 +48,30 @@ ga('send', 'pageview');
 
 
 	<main class="main-content list content" role="main"><article class="list__item post clearfix">
+	<div class="list__content clearfix">
+		<header class="list__header">
+			<h3 class="list__title post__title ">
+				<a href="/essay/ubuntu_nvidia_cuda_mathematica_geforce1060/" rel="bookmark">GeForce 1060搭載ノートPCにUbuntu &#43; NVIDIAドライバ &#43; CUDA &#43; Mathematia 8をインストール</a>
+			</h3>
+			<div class="list__meta meta">
+				<svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
+				<time class="list__meta-date" datetime="2017-12-21T00:00:00">December 21, 2017</time>
+			</div>
+		</header>
+		<div class="list__excerpt">
+			MathematicaからCUDAを使いたかったので、GPU搭載のノートPCを購入してセットアップした。
+購入PC PC工房のGeForce 1060搭載ノートPC(OSなし) : STYLE-15FX093-i7-RNFR [OS LESS]
+ CPU: Intel Core i7-7700HQ 2.8GHz Memory: 16GB Storage: SSD 240GB + HDD 2TB GPU: NVIDIA GeForce 1060 6GB  Ubuntu 17.10 日本語Remixをダウンロード 旧PC(Ubuntu 16.04)で Ubuntu Desktop 日本語 Remixのダウンロードから、ubuntu-ja-17.10-desktop-amd64.isoをダウンロード。 ddでUSBメモリに書き込む。
+sudo dd if=ubuntu-ja-17.10-desktop-amd64.iso of=/dev/sde status=progress  ファームウェア設定 新PCに電源を入れ、ファームウェア設定画面に入り、起動モードをUEFIからBIOSに変更する。
+USBメモリを挿入してPCを再起動し、インストールする。
+ 言語は日本語を選択 サードパーティー製のドライバを・・・にチェック SSD(/dev/sda)を「/」(ext4)に、HDD(/dev/sdb)を「/home」にマウント ブートローダを/dev/sdaにインストール ホームディレクトリを暗号化にチェック(お好みで)  インストールができたらUSBメモリを抜いて再起動。
+Ubuntuが無事に起動し、ログインできたら、まずはディレクトリ名を日本語から英語に直してから作業開始。
+LANG=C xdg-user-dirs-gtk-update  NVIDIA Driver 公式リポジトリにあるnvidia-387をインストールする。 デフォルトのnouveauの無効化は不要だった。
+sudo apt update sudo apt install nvidia-387  CUDA 9.
+		</div>
+	</div>
+</article>
+<article class="list__item post clearfix">
 	<div class="list__content clearfix">
 		<header class="list__header">
 			<h3 class="list__title post__title ">
@@ -264,32 +288,12 @@ data3 = Normalize /@ RandomReal[NormalDistribution[], {2000, 3}]; g3 = ListPoint
 		</div>
 	</div>
 </article>
-<article class="list__item post clearfix">
-	<div class="list__content clearfix">
-		<header class="list__header">
-			<h3 class="list__title post__title ">
-				<a href="/essay/zabbix_ricoh_printer_template_xml/" rel="bookmark">RICOHプリンタ・複合機用のZabbix用テンプレート</a>
-			</h3>
-			<div class="list__meta meta">
-				<svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
-				<time class="list__meta-date" datetime="2017-07-20T21:12:22">July 20, 2017</time>
-			</div>
-		</header>
-		<div class="list__excerpt">
-			社内で余っているサーバにZabbixを入れたので、 SNMP v2cでRICOH製のプリンタ・複合機の各種情報を取得するXMLテンプレートをhttps://github.com/coreyramirezgomez/Ricoh-Printers-Zabbix-Template/blob/master/Ricoh%20Printers%20SNMP%20Template.xml を元に作成した。
-変更箇所としては以下の通り。
- SNMP Discoveryで英語のアイテム名を取得するように変更 1分間あたりの印刷枚数のアイテムとグラフを追加 Discoveryの間隔が長くした(負荷でプリンタが応答しなくなるため)  確認している機種は社内にある以下の2機種のみ。
- RICOH MP C5503 IPSiO SP 6320  ダウンロードはZabbix Share - Template Ricoh SNMP Printers。
-&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt; &lt;zabbix_export&gt; &lt;version&gt;3.2&lt;/version&gt; &lt;date&gt;2017-07-20T10:38:50Z&lt;/date&gt; &lt;groups&gt; &lt;group&gt; &lt;name&gt;Printers&lt;/name&gt; &lt;/group&gt; &lt;/groups&gt; &lt;templates&gt; &lt;template&gt; &lt;template&gt;Template SNMP Ricoh Printers&lt;/template&gt; &lt;name&gt;Template SNMP Ricoh Printers&lt;/name&gt; &lt;description/&gt; &lt;groups&gt; &lt;group&gt; &lt;name&gt;Printers&lt;/name&gt; &lt;/group&gt; &lt;/groups&gt; &lt;applications&gt; &lt;application&gt; &lt;name&gt;SNMP Enabled Printer&lt;/name&gt; &lt;/application&gt; &lt;/applications&gt; &lt;items&gt; &lt;item&gt; &lt;name&gt;Description&lt;/name&gt; &lt;type&gt;4&lt;/type&gt; &lt;snmp_community&gt;{$SNMP_COMMUNITY}&lt;/snmp_community&gt; &lt;multiplier&gt;0&lt;/multiplier&gt; &lt;snmp_oid&gt;.1.3.6.1.2.1.25.3.2.1.3.1&lt;/snmp_oid&gt; &lt;key&gt;Description&lt;/key&gt; &lt;delay&gt;60&lt;/delay&gt; &lt;history&gt;90&lt;/history&gt; &lt;trends&gt;0&lt;/trends&gt; &lt;status&gt;0&lt;/status&gt; &lt;value_type&gt;4&lt;/value_type&gt; &lt;allowed_hosts/&gt; &lt;units/&gt; &lt;delta&gt;0&lt;/delta&gt; &lt;snmpv3_contextname/&gt; &lt;snmpv3_securityname/&gt; &lt;snmpv3_securitylevel&gt;0&lt;/snmpv3_securitylevel&gt; &lt;snmpv3_authprotocol&gt;0&lt;/snmpv3_authprotocol&gt; &lt;snmpv3_authpassphrase/&gt; &lt;snmpv3_privprotocol&gt;0&lt;/snmpv3_privprotocol&gt; &lt;snmpv3_privpassphrase/&gt; &lt;formula&gt;1&lt;/formula&gt; &lt;delay_flex/&gt; &lt;params/&gt; &lt;ipmi_sensor/&gt; &lt;data_type&gt;0&lt;/data_type&gt; &lt;authtype&gt;0&lt;/authtype&gt; &lt;username/&gt; &lt;password/&gt; &lt;publickey/&gt; &lt;privatekey/&gt; &lt;port&gt;161&lt;/port&gt; &lt;description/&gt; &lt;inventory_link&gt;2&lt;/inventory_link&gt; &lt;applications&gt; &lt;application&gt; &lt;name&gt;SNMP Enabled Printer&lt;/name&gt; &lt;/application&gt; &lt;/applications&gt; &lt;valuemap/&gt; &lt;logtimefmt/&gt; &lt;/item&gt; &lt;item&gt; &lt;name&gt;Page Count&lt;/name&gt; &lt;type&gt;4&lt;/type&gt; &lt;snmp_community&gt;{$SNMP_COMMUNITY}&lt;/snmp_community&gt; &lt;multiplier&gt;0&lt;/multiplier&gt; &lt;snmp_oid&gt;.
-		</div>
-	</div>
-</article>
 
 		
 
 		
 <div class="pagination clearfix">
-	<span class="pagination__item pagination__item--current">1/10</span>
+	<span class="pagination__item pagination__item--current">1/11</span>
 	<a class="pagination__item pagination__item--next" href="/page/2/">»</a>
 </div>
 
@@ -312,6 +316,7 @@ data3 = Normalize /@ RandomReal[NormalDistribution[], {2000, 3}]; g3 = ListPoint
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/essay/ubuntu_nvidia_cuda_mathematica_geforce1060/">GeForce 1060搭載ノートPCにUbuntu &#43; NVIDIAドライバ &#43; CUDA &#43; Mathematia 8をインストール</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/resize_and_pad_with_imagemagick/">ImageMagickでベクタ画像を綺麗な半透過PNGにする</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/logging_shared_pc_user/">共有PCの実際の使用者を記録する</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/measure_video_events_with_google_analytics/">Google Analyticsで動画(Video要素)のイベントを計測</a></li>
@@ -321,7 +326,6 @@ data3 = Normalize /@ RandomReal[NormalDistribution[], {2000, 3}]; g3 = ListPoint
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20170729-0806_hokkaido/">2017年7月29日〜8月6日 北海道 道東→道北(襟裳岬、納沙布岬、知床、宗谷岬)</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/author_dvd_from_movie_file_on_windows/">動画ファイルからDVDオーサリング</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/random_distribution_sphere_surface/">球面上の一様分布</a></li>
-			<li class="widget__item"><a class="widget__link" href="/essay/zabbix_ricoh_printer_template_xml/">RICOHプリンタ・複合機用のZabbix用テンプレート</a></li>
 		</ul>
 	</div>
 </div>
@@ -357,6 +361,7 @@ data3 = Normalize /@ RandomReal[NormalDistribution[], {2000, 3}]; g3 = ListPoint
 	<div class="widget__content">
 		<a class="widget__link widget__link--taglist" href="/tags/bat" title="bat">bat (2)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/chrome" title="chrome">chrome (1)</a>
+		<a class="widget__link widget__link--taglist" href="/tags/cuda" title="cuda">cuda (1)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/github" title="github">github (5)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/gmail" title="gmail">gmail (2)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/google" title="google">google (3)</a>
@@ -366,12 +371,12 @@ data3 = Normalize /@ RandomReal[NormalDistribution[], {2000, 3}]; g3 = ListPoint
 		<a class="widget__link widget__link--taglist" href="/tags/java" title="java">java (2)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/javascript" title="javascript">javascript (5)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/linux" title="linux">linux (1)</a>
-		<a class="widget__link widget__link--taglist" href="/tags/mathematica" title="mathematica">mathematica (18)</a>
+		<a class="widget__link widget__link--taglist" href="/tags/mathematica" title="mathematica">mathematica (19)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/net" title="net">net (1)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/powerpoint" title="powerpoint">powerpoint (1)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/powershell" title="powershell">powershell (1)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/sql" title="sql">sql (3)</a>
-		<a class="widget__link widget__link--taglist" href="/tags/ubuntu" title="ubuntu">ubuntu (6)</a>
+		<a class="widget__link widget__link--taglist" href="/tags/ubuntu" title="ubuntu">ubuntu (7)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/vba" title="vba">vba (3)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/windows" title="windows">windows (9)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/wsh" title="wsh">wsh (2)</a>
