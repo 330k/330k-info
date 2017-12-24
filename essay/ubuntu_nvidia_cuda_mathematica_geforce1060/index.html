@@ -107,6 +107,11 @@ ddでUSBメモリに書き込む。</p>
 <pre><code>LANG=C xdg-user-dirs-gtk-update
 </code></pre>
 
+<p>DKMSがうまく動かないので、カーネルのバージョンを固定する。</p>
+
+<pre><code>sudo apt-mark hold linux-generic linux-image-generic linux-headers-generic
+</code></pre>
+
 <h2 id="nvidia-driver">NVIDIA Driver</h2>
 
 <p>公式リポジトリにあるnvidia-387をインストールする。

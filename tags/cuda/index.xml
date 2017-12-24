@@ -24,8 +24,8 @@ sudo dd if=ubuntu-ja-17.10-desktop-amd64.iso of=/dev/sde status=progress  ファ
 Ubuntuインストール USBメモリを挿入してPCを再起動し、インストールする。
  言語は日本語を選択 サードパーティー製のドライバを・・・にチェック SSD(/dev/sda)を「/」(ext4)に、HDD(/dev/sdb)を「/home」にマウント ブートローダを/dev/sdaにインストール ホームディレクトリを暗号化にチェック(お好みで)  インストールができたらUSBメモリを抜いて再起動。
 Ubuntuが無事に起動し、ログインできたら、まずはディレクトリ名を日本語から英語に直してから作業開始。
-LANG=C xdg-user-dirs-gtk-update  NVIDIA Driver 公式リポジトリにあるnvidia-387をインストールする。 デフォルトのnouveauの無効化は不要だった。
-sudo apt update sudo apt install nvidia-387  CUDA 9.</description>
+LANG=C xdg-user-dirs-gtk-update  DKMSがうまく動かないので、カーネルのバージョンを固定する。
+sudo apt-mark hold linux-generic linux-image-generic linux-headers-generic  NVIDIA Driver 公式リポジトリにあるnvidia-387をインストールする。 デフォルトのnouveauの無効化は不要だった。</description>
     </item>
     
   </channel>
