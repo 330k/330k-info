@@ -6,10 +6,23 @@
     <description>Recent content in Essays on 330k info</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 21 Dec 2017 00:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Mon, 26 Feb 2018 02:19:51 +0900</lastBuildDate>
     
 	<atom:link href="https://www.330k.info/essay/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Ubuntu 16.04 &#43; Apache 2.4にLet&#39;s Encryptを設定する</title>
+      <link>https://www.330k.info/essay/letsencrypt-ubuntu-1604/</link>
+      <pubDate>Mon, 26 Feb 2018 02:19:51 +0900</pubDate>
+      
+      <guid>https://www.330k.info/essay/letsencrypt-ubuntu-1604/</guid>
+      <description>海外の格安VPS、AlaphaRacksでHTTPSのHTTPサーバを立てたので、その作業録。
+環境 Chinese Year Specialという年間$8のプランを契約。 Ubuntuのバージョンは16.04なのだが、カーネルのバージョンは2.6.32の古め。 そのため、dockerは使えない。
+# uname -r 2.6.32-042stab127.2  # cat /etc/lsb-release DISTRIB_ID=Ubuntu DISTRIB_RELEASE=16.04 DISTRIB_CODENAME=xenial DISTRIB_DESCRIPTION=&amp;quot;Ubuntu 16.04 LTS&amp;quot;  ApacheのSSLモジュール有効化 SSLモジュールを有効化し、a2ensiteでHTTPSサイトを有効化する。 あとは設定ファイルにServerNameを追加する。
+# a2enmod ssl # vi /etc/apache2/sites-available/default-ssl.conf ServerAdmin xxx@yyy.zzz (変更) ServerName xxx.yyy.zzz (追加) # a2ensite default-ssl # service apache2 reload  Let&amp;rsquo;s Encryptのインストールと設定 # apt-get install letsencrypt python-letsencrypt-apache  Apacheを止めてから、Let&amp;rsquo;s Encryptを実行。
+# service apache2 stop # letsencrypt --authenticator standalone --installer apache # service apache2 start  この時点でブラウザからHTTPSでアクセスできるはずなので確認。</description>
+    </item>
     
     <item>
       <title>GeForce 1060搭載ノートPCにUbuntu 17.10 &#43; NVIDIAドライバ &#43; CUDA &#43; Mathematia 8をインストール</title>
