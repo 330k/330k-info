@@ -66,7 +66,7 @@ ga('send', 'pageview');
 <p>そこで、バックアップを兼ねて動画化してYoutubeにアップロードするようにし、
 HDDの空き容量が減ってきたらオリジナルの録音ファイルを消去していくことにした。</p>
 
-<p>ffmpeg(avconv)を使い、以下の手順で実施する。</p>
+<p>ffmpegを使い、以下の手順で実施する。</p>
 
 <ol>
 <li>適当に画像ファイルを作成する</li>
@@ -77,7 +77,7 @@ HDDの空き容量が減ってきたらオリジナルの録音ファイルを�
 
 <p>具体的には、適当にblank.pngという名前で640x480とか好みのサイズで画像を作成し、以下のコマンドで24時間の無音声動画ファイル(blank24.mov)を作成。</p>
 
-<pre><code class="language-bash">avconv -y -loop 1 -r 1 -i blank.png -t 86400 blank24.mov
+<pre><code class="language-bash">ffmpeg -y -loop 1 -r 1 -i blank.png -t 86400 blank24.mov
 </code></pre>
 
 <p>これでフレームレート1 fps、動画時間が24時間(86400秒)の無音声動画ファイルblank24.movができる。
@@ -85,7 +85,7 @@ HDDの空き容量が減ってきたらオリジナルの録音ファイルを�
 
 <p>次に、この無音声の動画ファイル(blank24.mov)と、録音した音声ファイル(input.mp3)を結合する。</p>
 
-<pre><code class="language-bash">avconv -y -i blank24.mov -i input.mp3 -vcodec copy -acodec copy -shortest output.mov
+<pre><code class="language-bash">ffmpeg -y -i blank24.mov -i input.mp3 -vcodec copy -acodec copy -shortest output.mov
 </code></pre>
 
 <p><code>-shortest</code>オプションを加えているので、24時間のblank24.movと音声ファイルの時間のうち、短い方の時間でoutput.movが作成される。</p>
@@ -110,22 +110,22 @@ ICレコーダーで録音したMP3、Androidの録音アプリのmp4、iPhone�
 
 find ./ -iname &quot;*.mp3&quot; -o -iname &quot;*.mp4&quot; -o -iname &quot;*.m4a&quot; | while read i
 do
-  hour=`avconv -i &quot;$i&quot; 2&gt;&amp;1 | grep Duration | sed -E &quot;s/.*Duration: (.*):.*:.*, start:.*/\\1/&quot;`
+  hour=`ffmpeg -i &quot;$i&quot; 2&gt;&amp;1 &lt; /dev/null | grep Duration | sed -E &quot;s/.*Duration: (.*):.*:.*, start:.*/\\1/&quot;`
   if [ $hour -lt 12 ]; then
      # 12時間以下
       output=${i%.*}.mov
      if [ ! -f &quot;$output&quot; ]; then
-        avconv -y -i ./blank24.mov -i &quot;$i&quot; -vcodec copy -acodec copy -shortest &quot;$output&quot;
+        ffmpeg -y -i ./blank24.mov -i &quot;$i&quot; -vcodec copy -acodec copy -shortest &quot;$output&quot; &lt; /dev/null
      fi
      else
      # 12時間以上の場合は11時間で分割
      output1=${i%.*}_001.mov
      output2=${i%.*}_002.mov
      if [ ! -f &quot;$output1&quot; ]; then
-        avconv -y -i ./blank24.mov -i &quot;$i&quot; -vcodec copy -acodec copy -shortest -t 11:00:00 &quot;$output1&quot;
+        ffmpeg -y -i ./blank24.mov -i &quot;$i&quot; -vcodec copy -acodec copy -shortest -t 11:00:00 &quot;$output1&quot; &lt; /dev/null
      fi
      if [ ! -f &quot;$output2&quot; ]; then
-        avconv -y -i ./blank24.mov -ss 11:00:00 -i &quot;$i&quot; -vcodec copy -acodec copy -shortest &quot;$output2&quot;
+        ffmpeg -y -i ./blank24.mov -ss 11:00:00 -i &quot;$i&quot; -vcodec copy -acodec copy -shortest &quot;$output2&quot; &lt; /dev/null
      fi
   fi
 done
@@ -244,6 +244,7 @@ done
 		<a class="widget__link widget__link--taglist" href="/tags/bat" title="bat">bat (2)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/chrome" title="chrome">chrome (1)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/cuda" title="cuda">cuda (1)</a>
+		<a class="widget__link widget__link--taglist" href="/tags/ffmpeg" title="ffmpeg">ffmpeg (1)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/github" title="github">github (5)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/gmail" title="gmail">gmail (2)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/google" title="google">google (3)</a>

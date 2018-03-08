@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ffmpeg&#43;Mathematicaで動画ファイルを作成する</title>
+<title>ffmpeg &#43; Mathematicaで動画ファイルを作成する</title>
 <meta name="description" content="自転車ツーリングの記録やソフトウェアの配布、Mathematicaをメインにしたプログラミングの覚書や日ごろの雑感など。">
 <meta name="generator" content="Hugo 0.25.1" />
 
@@ -50,7 +50,7 @@ ga('send', 'pageview');
 <div class="main-content content" role="main" itemprop="mainContentOfPage">
 	<article class="post">
 		<header class="post__header clearfix">
-			<h1 class="post__title">ffmpeg&#43;Mathematicaで動画ファイルを作成する</h1>
+			<h1 class="post__title">ffmpeg &#43; Mathematicaで動画ファイルを作成する</h1>
 			<p class="post__meta meta">
 				<svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
 				<time class="post__meta-date" datetime="2013-09-27T00:04:00">September 27, 2013</time>
@@ -64,7 +64,7 @@ ga('send', 'pageview');
 いかんせんすべてのフレームの画像を作成してからファイルに書きだすので、フレーム数に比例してメモリの使用量が多くなってしまう。
 そのため長いムービーの作成は困難であった。</p>
 
-<p>そこで、ffmpeg(avconv)と併用することでメモリ使用量を抑えつつ、長編の動画ファイルを制作する。
+<p>そこで、ffmpegと併用することでメモリ使用量を抑えつつ、長編の動画ファイルを制作する。
 具体的には、</p>
 
 <ol>
@@ -78,7 +78,7 @@ ga('send', 'pageview');
 <p>例えば、以下のようにするとtest001.aviができあがる。</p>
 
 <pre><code class="language-Mathematica">s = OpenWrite[
-   &quot;!avconv -y -vcodec ppm -f image2pipe -i - -vcodec rawvideo test001.avi&quot;, BinaryFormat -&gt; True];
+   &quot;!ffmpeg -y -vcodec ppm -f image2pipe -i - -vcodec rawvideo test001.avi&quot;, BinaryFormat -&gt; True];
 Do[
   BinaryWrite[s, ExportString[
     Plot[Sin[x + i], {x, 0, 2 Pi}
@@ -104,7 +104,7 @@ ExportMovie[outputfilepath_String,
    stream = OpenWrite[
      ToString[
       StringForm[
-       &quot;!avconv -y -vcodec ppm -f image2pipe -i - -r `` `` ``&quot;
+       &quot;!ffmpeg -y -vcodec ppm -f image2pipe -i - -r `` `` ``&quot;
        , OptionValue[&quot;FrameRate&quot;]
        , OptionValue[&quot;VideoCodecOption&quot;]
        , outputfilepath
@@ -144,6 +144,7 @@ SyntaxInformation[ExportMovie] = {
 	<svg class="icon icon-tag" width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="m4.73135 3.3795002q0-.5597-.39604-.9557-.39604-.3961-.95577-.3961-.55974 0-.95578.3961-.39604.396-.39604.9557 0 .5598.39604.9558.39604.3961.95578.3961.55973 0 .95577-.3961.39604-.396.39604-.9558zm11.26865 6.0832q0 .5596998-.39076.9504998l-5.18548 5.196q-.41188.3908-.9610504.3908-.55974 0-.9505-.3908l-7.5511496-7.5616998q-.40132-.3907-.68119-1.0666-.27987-.6759-.27987-1.2357v-4.3934q0-.54920004.40132-.95050004.40132-.4013.9505-.4013h4.39339q.55974 0 1.23565.2799.67591.2798 1.07723.6812l7.55115 7.54060004q.39076.4118.39076.961z"/></svg>
 	<ul class="tags__list">
 		<li class="tags__item"><a class="tags__link" href="/tags/mathematica/" rel="tag">Mathematica</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/ffmpeg/" rel="tag">ffmpeg</a></li>
 	</ul>
 </div>
 
@@ -226,6 +227,7 @@ SyntaxInformation[ExportMovie] = {
 		<a class="widget__link widget__link--taglist" href="/tags/bat" title="bat">bat (2)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/chrome" title="chrome">chrome (1)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/cuda" title="cuda">cuda (1)</a>
+		<a class="widget__link widget__link--taglist" href="/tags/ffmpeg" title="ffmpeg">ffmpeg (1)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/github" title="github">github (5)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/gmail" title="gmail">gmail (2)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/google" title="google">google (3)</a>

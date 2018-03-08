@@ -159,16 +159,16 @@ ImportWithJLink[filepath_?(FileExistsQ[FindFile[#]] &amp;amp;), format_] := ( Ne
     </item>
     
     <item>
-      <title>ffmpeg&#43;Mathematicaで動画ファイルを作成する</title>
+      <title>ffmpeg &#43; Mathematicaで動画ファイルを作成する</title>
       <link>https://www.330k.info/essay/make-a-movie-with-mathematica-and-ffmpeg/</link>
       <pubDate>Fri, 27 Sep 2013 00:04:00 +0900</pubDate>
       
       <guid>https://www.330k.info/essay/make-a-movie-with-mathematica-and-ffmpeg/</guid>
       <description>MathematicaのExportでAVIなどの動画ファイルを作成することは簡単に可能だが、 いかんせんすべてのフレームの画像を作成してからファイルに書きだすので、フレーム数に比例してメモリの使用量が多くなってしまう。 そのため長いムービーの作成は困難であった。
-そこで、ffmpeg(avconv)と併用することでメモリ使用量を抑えつつ、長編の動画ファイルを制作する。 具体的には、
+そこで、ffmpegと併用することでメモリ使用量を抑えつつ、長編の動画ファイルを制作する。 具体的には、
  ffmpegで標準入力から読み込ませるOutputStreamオブジェクトを作成する BinaryWriteでそのストリームに各フレームの画像を書き込む 終わったらCloseでストリームを閉じる  とする。ここで、各フレーム画像の形式をPPMにしないとうまく動作しなかった(BMP、PNGなどではなぜか動作せず)。
 例えば、以下のようにするとtest001.aviができあがる。
-s = OpenWrite[ &amp;quot;!avconv -y -vcodec ppm -f image2pipe -i - -vcodec rawvideo test001.avi&amp;quot;, BinaryFormat -&amp;gt; True]; Do[ BinaryWrite[s, ExportString[ Plot[Sin[x + i], {x, 0, 2 Pi} , ImageSize -&amp;gt; {640, 480} , PlotRange -&amp;gt; {{0, 2 Pi}, {-1, 1}} , Frame -&amp;gt; True] , &amp;quot;PPM&amp;quot;]] , {i, 0, 2 Pi, Pi/50} ]; Close[s]  Exportと同じような使い勝手の関数ExportMovieを作るとこんな感じになる。
+s = OpenWrite[ &amp;quot;!ffmpeg -y -vcodec ppm -f image2pipe -i - -vcodec rawvideo test001.avi&amp;quot;, BinaryFormat -&amp;gt; True]; Do[ BinaryWrite[s, ExportString[ Plot[Sin[x + i], {x, 0, 2 Pi} , ImageSize -&amp;gt; {640, 480} , PlotRange -&amp;gt; {{0, 2 Pi}, {-1, 1}} , Frame -&amp;gt; True] , &amp;quot;PPM&amp;quot;]] , {i, 0, 2 Pi, Pi/50} ]; Close[s]  Exportと同じような使い勝手の関数ExportMovieを作るとこんな感じになる。
 Options[ExportMovie] = { &amp;quot;FrameRate&amp;quot; -&amp;gt; 25, &amp;quot;VideoCodecOption&amp;quot; -&amp;gt; &amp;quot;-vcodec rawvideo&amp;quot;, &amp;quot;ExportOptions&amp;quot; -&amp;gt; {} }; ExportMovie[outputfilepath_String, expr_, {i_Symbol, imin_: 1, imax_, di_: 1}, OptionsPattern[]] := Module[{stream}, stream = OpenWrite[ ToString[ StringForm[ &amp;quot;!</description>
     </item>
     
