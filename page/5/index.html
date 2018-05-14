@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>330k info</title>
 <meta name="description" content="自転車ツーリングの記録やソフトウェアの配布、Mathematicaをメインにしたプログラミングの覚書や日ごろの雑感など。">
-<meta name="generator" content="Hugo 0.25.1" />
+<meta name="generator" content="Hugo 0.40.1" />
 
 <link rel="alternate" type="application/rss+xml" title="330k info Feed" href="https://www.330k.info/index.xml">
 <link rel="stylesheet" href="/css/style.css" type="text/css" media="all" />
@@ -48,6 +48,34 @@ ga('send', 'pageview');
 
 
 	<main class="main-content list content" role="main"><article class="list__item post clearfix">
+	<div class="list__content clearfix">
+		<header class="list__header">
+			<h3 class="list__title post__title ">
+				<a href="/essay/upload_recorded_mp3_files_to_youtube/" rel="bookmark">秘密録音した音声ファイルをYoutubeにバックアップ</a>
+			</h3>
+			<div class="list__meta meta">
+				<svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
+				<time class="list__meta-date" datetime="2015-10-15T00:00:00">October 15, 2015</time>
+			</div>
+		</header>
+		<div class="list__excerpt">
+			私はパワハラ対策として、毎日ICレコーダーを使って秘密録音を実施している。 ただ、毎日10時間を超える録音時間のため、32kbpsで録音しても1日あたり200MB弱の音声ファイルがHDDに追加されていき、HDDの容量を圧迫していく。
+そこで、バックアップを兼ねて動画化してYoutubeにアップロードするようにし、 HDDの空き容量が減ってきたらオリジナルの録音ファイルを消去していくことにした。
+ffmpegを使い、以下の手順で実施する。
+ 適当に画像ファイルを作成する 画像ファイルから無音声の動画ファイル(再生時間24時間)を作成する 無音声の動画ファイルと、毎日録音した音声ファイルを結合する 結合した動画ファイルをYoutubeにアップロード  具体的には、適当にblank.pngという名前で640x480とか好みのサイズで画像を作成し、以下のコマンドで24時間の無音声動画ファイル(blank24.mov)を作成。
+ffmpeg -y -loop 1 -r 1 -i blank.png -t 86400 blank24.mov  これでフレームレート1 fps、動画時間が24時間(86400秒)の無音声動画ファイルblank24.movができる。 私の環境では5分程度かかったが、このファイルは1度作っておけば何度でも使えるので、最初の1回だけ待てば良い。
+次に、この無音声の動画ファイル(blank24.mov)と、録音した音声ファイル(input.mp3)を結合する。
+ffmpeg -y -i blank24.mov -i input.mp3 -vcodec copy -acodec copy -shortest output.mov  -shortestオプションを加えているので、24時間のblank24.movと音声ファイルの時間のうち、短い方の時間でoutput.movが作成される。
+動画になったことにより、元のMP3ファイルよりもファイルサイズが1割ほど増える。 私の環境では12時間程度録音したものからでも1分程度のエンコード時間で動画ファイルを作成できた。
+ちなみに出来上がりの動画ファイルのコンテナがMOVなのは、録音した音声ファイルの拡張子が、 ICレコーダーで録音したMP3、Androidの録音アプリのmp4、iPhoneの録音アプリのm4aと3種類あったため、 それと競合しないコンテナ形式を選んだ。
+また、無音声動画ファイル(blank24.mov)を作成せず、1コマンドで静止画と音声ファイルを結合することも可能だが、 都度動画部分のエンコードが発生するため時間がかかる。
+毎日音声ファイルが増えていくような状況では、予め無音声動画ファイルをつくっておき、 -vcodec copyとすることで再エンコードを省略すれば、毎日の処理が高速化できる。
+ただし、Youtubeの制限により、15分の制限を解除したアカウントでも、動画の最長時間は12時間に制限される。 したがって、私は以下のようなシェルスクリプトを書いて実行している。
+#!/bin/bash find ./ -iname &quot;*.mp3&quot; -o -iname &quot;*.mp4&quot; -o -iname &quot;*.m4a&quot; | while read i do hour=`ffmpeg -i &quot;$i&quot; 2&gt;&amp;1 &lt; /dev/null | grep Duration | sed -E &quot;s/.
+		</div>
+	</div>
+</article>
+<article class="list__item post clearfix">
 	<figure class="list__thumbnail">
 		<a href="https://www.330k.info/bicycle/touring/20150830-0904-shimane-tottori/">
 			<img src="/bicycle/touring/20150830-0904-shimane-tottori/IMG_0489.JPG" alt="2015年08月30日〜09月04日 山陰地方縦断" />
@@ -264,7 +292,7 @@ Windows標準のサウンドレコーダー(ノートPC、会社ではLetsNote�
 		<div class="list__excerpt">
 			2年近く前にパイロット版を予約していたRecon Jetが手元に到着した。 発送はFedEx。
    日付 できごと     2015年4月29日 Recon社(カナダ リッチモンド)を出荷   2015年4月30日 バンクーバー   2015年5月01日 メンフィス空港から空輸   2015年5月02日 成田空港に到着   2015年5月03日 税関通過   2015年5月07日 平日のため受け取れず、FedExに電話して土曜日の午後を希望   2015年5月09日 無事到着(国内の配送は西濃運輸)    箱を開けたらこのような感じ(携帯での撮影のため画質はご容赦を)
-    説明書を読むと、
+       説明書を読むと、
  Recon Jetの電源を入れる 付属のmicroUSBケーブルでPCと接続する ReconのサイトにアクセスしてRecon Uplinkをインストールし、初期登録をせよ  とある。
 が、Recon UplinkはWindows版とMac版しかない。 私が今持っているのはUbuntuマシンなので、以下を試してみた。
  wineで動かないかな？ → インストールを完了できず 仮想マシン(Windows XP on VirtualBox)ならどうだ！ → Windows XPには対応していないらしく、こちらも動作せず 今なら無料でWindows 10 Insider Preview版が使えるんじゃね？ → VirtualBoxで仮想マシンを作成しUplinkのインストールとソフトの起動は成功。初期登録までは上手くいったが、その後同期がいつまで待っても始まらない。  このままでは$499が無駄になってしまうので、最終的にWindows 8.
@@ -291,43 +319,8 @@ Windows標準のサウンドレコーダー(ノートPC、会社ではLetsNote�
 			たまたま私の環境の問題かもしれないが、
  Intel Core-i7 3770 Ubuntu 14.04 LTS Mathematica 8.0.4 Home Edition  という環境で、Mathematicaのノートブック上でPlot3DなどのGraphics3Dオブジェクトが、 うまく表示できないことに悩まされていたが、その解決法が分かった。
 メニューの「編集」→「環境設定」から、「詳細」タブを開き、「オプションインスペクタを開く」をクリック。
- オプションインスペクタでは「グラフィックス設定」「RenderingOptions」内の&rdquo;Graphics3DRenderingEngine&rdquo;を デフォルトの&rdquo;Automatic&rdquo;から&rdquo;Software&rdquo;に変更する。
- 私の場合は以上で上手く行った。 Windowsではこのようなことはなかったのだが・・・。
-		</div>
-	</div>
-</article>
-<article class="list__item post clearfix">
-	<figure class="list__thumbnail">
-		<a href="https://www.330k.info/essay/how-to-create-graphs-for-papers-with-mathematica/">
-			<img src="/essay/how-to-create-graphs-for-papers-with-mathematica/graph001.png" alt="Mathematicaで論文用の図やグラフを作成するときのまとめ" />
-		</a>
-	</figure>
-	<div class="list__content clearfix">
-		<header class="list__header">
-			<h3 class="list__title post__title ">
-				<a href="/essay/how-to-create-graphs-for-papers-with-mathematica/" rel="bookmark">Mathematicaで論文用の図やグラフを作成するときのまとめ</a>
-			</h3>
-			<div class="list__meta meta">
-				<svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
-				<time class="list__meta-date" datetime="2014-12-14T00:00:00">December 14, 2014</time>
-			</div>
-		</header>
-		<div class="list__excerpt">
-			Mathematicaで作る図やグラフは美しいんだ！ということを伝えたいので、 もう数年も前になるが、修士論文を書くときにMathematicaで作るグラフにこだわった点を思い出しながらまとめてみる。
-論文を書くために使うソフトウェア 私はpLaTeXで論文を書いたが、研究室ではWordが推奨されていた。 図表の番号を管理する必要や図表の位置がずれて飛んでいってしまうといった事態も起きないし、目次や索引、参考文献リストの作成も自動でできる。 ただ、Wordだと添削をしやすいのは確か。
-MathematicaでExportする画像の形式 Mathematicaでは多様な画像ファイル形式でExportできるが、論文用のグラフでは多分PNG、EPS、PDFから選択することになると思う。 各画像形式を比較すると、それぞれ以下の特徴がある。
- PNG  ラスタ形式のため、印刷に耐えられるようにするには予め解像度を計算して作成する必要がある 半透過色に対応 Word、pLaTeXどちらでも使える  EPS  ベクタ形式で保存できるため、印刷では自動的にプリンタの解像度で印刷してくれる 半透過色には非対応 pLaTeXで使用可 あまりにEPS画像が多いと、dvipdfm(x)が重くなるので注意  PDF  ベクタ形式で保存できる 半透過色に対応 pLaTeXで使用可 pLaTeXで使うには、予めebbやxbbで.bbファイルや.xbbファイルを作成して、pLaTeXに画像の大きさを知らせる必要がある   したがって、Wordでは基本的に画像をPNG形式で作ることになるが、pLaTeXではEPSやPDFといったベクタ形式の画像フォーマットが使えるのでおすすめ。
-私は基本的にMathematicaからPDFでグラフを作成し、 すべての画像に対してpLaTeXについてくるebbを実行するPerlスクリプトを作って実行してからpLaTeXでコンパイルしていた。
-もちろん写真はJPEG形式を使用したが、写真にいろいろ矢印や記号を書き加えるときはOpenOffice.orgのImpressでJPEG画像の上にいろいろ矢印などを書き込んでPDFにエクスポートしたものを使った。 当時はPowerPointではPDF出力できなかったためOpenOffice.orgを使ったが、今ではPowerPointでいいと思う。
-図・グラフの論文におけるサイズを決め、ImageSizeオプションを指定 おそらくほとんどの論文はA4サイズ(210mm×297mm)で作成されると思う。
-そこから左右の余白をそれぞれ30mmとすると、本文の幅は150mmとなる。 図やグラフの幅は本文より少し小さくしたいので、私は基本的に横幅140mmでグラフを作成した。
-縦幅はMathematicaではデフォルトで黄金比(GoldenRatio)を使ってくれるので、そのままで良いと思う。 2段組のときは半分の70mmとか65mmとなる。
-したがってMathematicaでは、PlotやShowなどのオプションImageSizeに
-ImageSize -&gt; 140 * 72 / 25.4  と指定する。これは140mmの横幅で、72dpi(dots per inch)、1 inch = 25.4mmという意味である。
-論文用のグラフでは絶対にFrame -&gt; Trueを指定する 論文用のグラフでは流儀として
-Frame -&gt; True  を指定して枠のついたグラフにする。
-これはExcelなどでグラフを作るときも同様。
-枠についた目盛りを細かく調整したい場合は、FrameTicksオプションとFrameTickesStyleオプションを指定する。 また、FrameLabelで各軸のラベルと単位を書き入れるのも忘れずに。
+  オプションインスペクタでは「グラフィックス設定」「RenderingOptions」内の&rdquo;Graphics3DRenderingEngine&rdquo;を デフォルトの&rdquo;Automatic&rdquo;から&rdquo;Software&rdquo;に変更する。
+  私の場合は以上で上手く行った。 Windowsではこのようなことはなかったのだが・・・。
 		</div>
 	</div>
 </article>
@@ -360,6 +353,7 @@ Frame -&gt; True  を指定して枠のついたグラフにする。
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/essay/text_garbled_in_snap_apps_in_ubuntu_18_04/">Ubuntu 18.04 LTSで文字化けしたSnapアプリをなんとかして使う</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/letsencrypt-ubuntu-1604/">Ubuntu 16.04 &#43; Apache 2.4にLet&#39;s Encryptを設定する</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/ubuntu_nvidia_cuda_mathematica_geforce1060/">GeForce 1060搭載ノートPCにUbuntu 17.10 &#43; NVIDIAドライバ &#43; CUDA &#43; Mathematia 8をインストール</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/resize_and_pad_with_imagemagick/">ImageMagickでベクタ画像を綺麗な半透過PNGにする</a></li>
@@ -369,7 +363,6 @@ Frame -&gt; True  を指定して枠のついたグラフにする。
 			<li class="widget__item"><a class="widget__link" href="/essay/scramble_unicode_lro_rlo/">Unicode制御文字(LRO, RLO)でコピー・改変を防止 (構想)</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/move_to_github_pages_hugo_from_google_sites/">Hugo &#43; GitHub Pages &#43; CloudFlareにGoogleサイトから移転</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20170729-0806_hokkaido/">2017年7月29日〜8月6日 北海道 道東→道北(襟裳岬、納沙布岬、知床、宗谷岬)</a></li>
-			<li class="widget__item"><a class="widget__link" href="/essay/author_dvd_from_movie_file_on_windows/">動画ファイルからDVDオーサリング</a></li>
 		</ul>
 	</div>
 </div>
@@ -422,7 +415,7 @@ Frame -&gt; True  を指定して枠のついたグラフにする。
 		<a class="widget__link widget__link--taglist" href="/tags/powerpoint" title="powerpoint">powerpoint (1)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/powershell" title="powershell">powershell (1)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/sql" title="sql">sql (3)</a>
-		<a class="widget__link widget__link--taglist" href="/tags/ubuntu" title="ubuntu">ubuntu (8)</a>
+		<a class="widget__link widget__link--taglist" href="/tags/ubuntu" title="ubuntu">ubuntu (9)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/vba" title="vba">vba (3)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/windows" title="windows">windows (9)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/wsh" title="wsh">wsh (2)</a>

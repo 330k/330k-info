@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Gpx</title>
 <meta name="description" content="自転車ツーリングの記録やソフトウェアの配布、Mathematicaをメインにしたプログラミングの覚書や日ごろの雑感など。">
-<meta name="generator" content="Hugo 0.25.1" />
+<meta name="generator" content="Hugo 0.40.1" />
 
 <link rel="alternate" type="application/rss+xml" title="330k info Feed" href="https://www.330k.info/tags/gpx/index.xml">
 <link rel="stylesheet" href="/css/style.css" type="text/css" media="all" />
@@ -68,8 +68,8 @@ ga('send', 'pageview');
 トラックログを間引くアルゴリズムは折れ線を間引くに記載した点数を指定するタイプのDouglas-Peuckerを実装している。 メルカトル図法に投影した座標で間引いているので、Google Mapsなどメルカトル図法の地図で見た時に形状をよく保存する。
 使い方  ボタンを押してGPXファイルを選択 一括処理する内容をチェックして選択 「処理実行」ボタンをクリックして少し待つ 表示されたリンクをクリックしてGPXファイルをダウンロード  注意事項  Chrome 53、Firefox 49、Edge、IE 11にて動作を確認 IE8では動作しません IE 9, 10は環境が無いため確認できません 重いGPXファイルを処理しようとすると固まります(WorkerではXMLParserが使えないため) 複数ファイルを選択した時の並び順はOSやブラウザ、選択時の操作に依存します  なお、カシミール3DではGPXファイルをXMLとしてパースして読み込んでいるわけではないようで、 空要素(&lt;trkpt lat=&quot;***&quot; lon=&quot;***&quot; /&gt;)の形を認識できない。 そのため&lt;trkpt lat=&quot;***&quot; lon=&quot;***&quot;&gt;&lt;/trkpt&gt;の形に修正したものを出力している。
 使用例 元のGPSログをカシミール3Dで読み込んだ画面
- デフォルト設定で一括処理した後のGPXファイルを読み込んだ画面 (このデータの場合は、6時間途切れたらトラック分割するので1日毎に分割され、それぞれが400点に間引きされている)
- 更新履歴  カシミール3Dでも読めるよう、空要素の場合は&lt;trkpt ***&gt;&lt;/trkpt&gt;の形に置換するようにした。 (May 4 2014) 優先度付きキューの実装を変更して高速化。(May 28 2014) プログラムを全面書き直し。トラックの自動分割・結合機能追加。 (Sep. 24 2016) 標高をGoogle Maps Elevations APIから取得する機能を追加して統合。 (Sep. 28 2016)  
+  デフォルト設定で一括処理した後のGPXファイルを読み込んだ画面 (このデータの場合は、6時間途切れたらトラック分割するので1日毎に分割され、それぞれが400点に間引きされている)
+  更新履歴  カシミール3Dでも読めるよう、空要素の場合は&lt;trkpt ***&gt;&lt;/trkpt&gt;の形に置換するようにした。 (May 4 2014) 優先度付きキューの実装を変更して高速化。(May 28 2014) プログラムを全面書き直し。トラックの自動分割・結合機能追加。 (Sep. 24 2016) 標高をGoogle Maps Elevations APIから取得する機能を追加して統合。 (Sep. 28 2016)  
 		</div>
 	</div>
 </article>
@@ -161,6 +161,7 @@ Mathematica 8からは標準でGPXをImport可能になった。
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/essay/text_garbled_in_snap_apps_in_ubuntu_18_04/">Ubuntu 18.04 LTSで文字化けしたSnapアプリをなんとかして使う</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/letsencrypt-ubuntu-1604/">Ubuntu 16.04 &#43; Apache 2.4にLet&#39;s Encryptを設定する</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/ubuntu_nvidia_cuda_mathematica_geforce1060/">GeForce 1060搭載ノートPCにUbuntu 17.10 &#43; NVIDIAドライバ &#43; CUDA &#43; Mathematia 8をインストール</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/resize_and_pad_with_imagemagick/">ImageMagickでベクタ画像を綺麗な半透過PNGにする</a></li>
@@ -170,7 +171,6 @@ Mathematica 8からは標準でGPXをImport可能になった。
 			<li class="widget__item"><a class="widget__link" href="/essay/scramble_unicode_lro_rlo/">Unicode制御文字(LRO, RLO)でコピー・改変を防止 (構想)</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/move_to_github_pages_hugo_from_google_sites/">Hugo &#43; GitHub Pages &#43; CloudFlareにGoogleサイトから移転</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20170729-0806_hokkaido/">2017年7月29日〜8月6日 北海道 道東→道北(襟裳岬、納沙布岬、知床、宗谷岬)</a></li>
-			<li class="widget__item"><a class="widget__link" href="/essay/author_dvd_from_movie_file_on_windows/">動画ファイルからDVDオーサリング</a></li>
 		</ul>
 	</div>
 </div>
@@ -223,7 +223,7 @@ Mathematica 8からは標準でGPXをImport可能になった。
 		<a class="widget__link widget__link--taglist" href="/tags/powerpoint" title="powerpoint">powerpoint (1)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/powershell" title="powershell">powershell (1)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/sql" title="sql">sql (3)</a>
-		<a class="widget__link widget__link--taglist" href="/tags/ubuntu" title="ubuntu">ubuntu (8)</a>
+		<a class="widget__link widget__link--taglist" href="/tags/ubuntu" title="ubuntu">ubuntu (9)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/vba" title="vba">vba (3)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/windows" title="windows">windows (9)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/wsh" title="wsh">wsh (2)</a>

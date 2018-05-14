@@ -44,7 +44,7 @@ ChromeやFirefoxなどブラウザは狙い通り表示された。 Edgeはテ�
 iPhoneのメッセージ、メール、GmailはいずれもOK。
 テキストエディタについてもどう表示されるか確認した。
 メモ帳は意外にもちゃんとBiDi対応だった。 geditは行頭にRLOがあると右寄せで表示してしまう(こういう表示のほうが正しいかもしれないが)。
- Windows 10  Edge:   Outlook:   メモ帳:    Ubuntu 16.</description>
+ Windows 10  Edge:    Outlook:    メモ帳:     Ubuntu 16.</description>
     </item>
     
     <item>

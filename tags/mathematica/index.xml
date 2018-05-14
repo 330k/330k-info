@@ -35,10 +35,10 @@ sudo apt-mark hold linux-generic linux-image-generic linux-headers-generic  NVID
       
       <guid>https://www.330k.info/essay/random_distribution_sphere_surface/</guid>
       <description>球面上に一様分布するランダムな点を生成したい時、 単純に極座標表示でθとφを一様分布させると、極付近に点が集まってしまう。
-data1 = Transpose[{Sin[t] Cos[f], Sin[t] Sin[f], Cos[t]} /. { f -&amp;gt; RandomReal[{0, 2 Pi}, 2000], t -&amp;gt; RandomReal[{0, Pi}, 2000]}]; g1 = ListPointPlot3D[data1, BoxRatios -&amp;gt; {1, 1, 1}]   球面上で一様分布させるには、下記のようにθにArcCosを使う (θの位置の確率をSinθに比例させたい→累積確率分布関数はCos→逆関数はArcCos)。
-data2 = Transpose[{Sin[t] Cos[f], Sin[t] Sin[f], Cos[t]} /. { f -&amp;gt; RandomReal[{0, 2 Pi}, 2000], t -&amp;gt; ArcCos[RandomReal[{-1, 1}, 2000]]}]; g2 = ListPointPlot3D[data2, BoxRatios -&amp;gt; {1, 1, 1}]   なお、多次元球面上の一様分布は球面上に一様分布する乱数の生成にあるように、 多次元ガウス分布を正規化すると得られる。
+data1 = Transpose[{Sin[t] Cos[f], Sin[t] Sin[f], Cos[t]} /. { f -&amp;gt; RandomReal[{0, 2 Pi}, 2000], t -&amp;gt; RandomReal[{0, Pi}, 2000]}]; g1 = ListPointPlot3D[data1, BoxRatios -&amp;gt; {1, 1, 1}]    球面上で一様分布させるには、下記のようにθにArcCosを使う (θの位置の確率をSinθに比例させたい→累積確率分布関数はCos→逆関数はArcCos)。
+data2 = Transpose[{Sin[t] Cos[f], Sin[t] Sin[f], Cos[t]} /. { f -&amp;gt; RandomReal[{0, 2 Pi}, 2000], t -&amp;gt; ArcCos[RandomReal[{-1, 1}, 2000]]}]; g2 = ListPointPlot3D[data2, BoxRatios -&amp;gt; {1, 1, 1}]    なお、多次元球面上の一様分布は球面上に一様分布する乱数の生成にあるように、 多次元ガウス分布を正規化すると得られる。
 下記は3次元の場合。
-data3 = Normalize /@ RandomReal[NormalDistribution[], {2000, 3}]; g3 = ListPointPlot3D[data3, BoxRatios -&amp;gt; {1, 1, 1}]   </description>
+data3 = Normalize /@ RandomReal[NormalDistribution[], {2000, 3}]; g3 = ListPointPlot3D[data3, BoxRatios -&amp;gt; {1, 1, 1}]    </description>
     </item>
     
     <item>
@@ -77,8 +77,8 @@ Needs[&amp;quot;CCompilerDriver`&amp;quot;]; CCompilerDriver`$CCompiler = { &amp
       <description>たまたま私の環境の問題かもしれないが、
  Intel Core-i7 3770 Ubuntu 14.04 LTS Mathematica 8.0.4 Home Edition  という環境で、Mathematicaのノートブック上でPlot3DなどのGraphics3Dオブジェクトが、 うまく表示できないことに悩まされていたが、その解決法が分かった。
 メニューの「編集」→「環境設定」から、「詳細」タブを開き、「オプションインスペクタを開く」をクリック。
- オプションインスペクタでは「グラフィックス設定」「RenderingOptions」内の&amp;rdquo;Graphics3DRenderingEngine&amp;rdquo;を デフォルトの&amp;rdquo;Automatic&amp;rdquo;から&amp;rdquo;Software&amp;rdquo;に変更する。
- 私の場合は以上で上手く行った。 Windowsではこのようなことはなかったのだが・・・。</description>
+  オプションインスペクタでは「グラフィックス設定」「RenderingOptions」内の&amp;rdquo;Graphics3DRenderingEngine&amp;rdquo;を デフォルトの&amp;rdquo;Automatic&amp;rdquo;から&amp;rdquo;Software&amp;rdquo;に変更する。
+  私の場合は以上で上手く行った。 Windowsではこのようなことはなかったのだが・・・。</description>
     </item>
     
     <item>
@@ -137,11 +137,11 @@ backPropagation[pct : perceptron[w : {__}], x_List, teach_List, rate_: 1] := Mod
 正確な距離としては、GeographicLib (Wikipediaによると誤差15nmらしい)をJLink経由で使って計算したもの採用し、準拠楕円体はWGS84とした。
 ただし、完全な球体とした場合の半径はGoogle EarthやGoogle Mapsにあわせて6378137 mとした。
 ランダムな2点間の距離の精度 地球表面上で一様分布となるよう、ランダムに2点を選び、その間の距離の精度を評価した。
- 上図は横軸がGeographicLibで計算した正確な距離、縦軸が各計算方法で計算した距離である。
+  上図は横軸がGeographicLibで計算した正確な距離、縦軸が各計算方法で計算した距離である。
 y = xの直線上にあれば正確ということだが、GeoDistanceの&amp;rdquo;Robbin61&amp;rdquo;では1万kmを超えると実際よりも極端に短く計算してしまうようだ。
 またヒュベニの式は実際よりも長く計算することが多く、そのような場合について調べてみると高緯度になるほど誤差が大きくなることが分かった。
 同じ計算結果を誤差についてプロットしたものが下図である。また表は各計算方法の最大誤差である。
-    計算方法 誤差の絶対値     GeoDistance(&amp;ldquo;Vincenty75&amp;rdquo;) 7.119 * 10^-12   GeoDistance(&amp;ldquo;Robbin61&amp;rdquo;) 9.536 * 10^-1   GeoDistance(&amp;ldquo;ExtendedNewtonRaphson&amp;rdquo;) 1.247 * 10^-6   ヒュベニの式 2.022 * 10^1   測量計算サイト計算式 6.682 * 10^-3   完全球体モデル 6.</description>
+     計算方法 誤差の絶対値     GeoDistance(&amp;ldquo;Vincenty75&amp;rdquo;) 7.119 * 10^-12   GeoDistance(&amp;ldquo;Robbin61&amp;rdquo;) 9.536 * 10^-1   GeoDistance(&amp;ldquo;ExtendedNewtonRaphson&amp;rdquo;) 1.247 * 10^-6   ヒュベニの式 2.022 * 10^1   測量計算サイト計算式 6.682 * 10^-3   完全球体モデル 6.</description>
     </item>
     
     <item>

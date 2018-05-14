@@ -6,10 +6,23 @@
     <description>Recent content in Ubuntu on 330k info</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Mon, 26 Feb 2018 02:19:51 +0900</lastBuildDate>
+    <lastBuildDate>Tue, 15 May 2018 07:38:59 +0900</lastBuildDate>
     
 	<atom:link href="https://www.330k.info/tags/ubuntu/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Ubuntu 18.04 LTSで文字化けしたSnapアプリをなんとかして使う</title>
+      <link>https://www.330k.info/essay/text_garbled_in_snap_apps_in_ubuntu_18_04/</link>
+      <pubDate>Tue, 15 May 2018 07:38:59 +0900</pubDate>
+      
+      <guid>https://www.330k.info/essay/text_garbled_in_snap_apps_in_ubuntu_18_04/</guid>
+      <description>Ubuntu 17.10から18.04 LTSにアップデートしたところ、それまで使っていたコミックビューア(comix)がなくなっていた。
+Ubuntuソフトウェアから探したところ、mcomix-tabetaiというSnapパッケージがあったので、それをインストールしたところ、日本語が全部豆腐に・・・。
+ということで、一旦英語にして起動。 ターミナルから以下のコマンドを入力。
+LANG=C mcomix-tabetai  設定(Preferences)から言語をEnglishにする。
+  これで終了すれば、次回は通常通り起動すれば言語設定が英語になっている。 めでたしめでたし。</description>
+    </item>
     
     <item>
       <title>Ubuntu 16.04 &#43; Apache 2.4にLet&#39;s Encryptを設定する</title>
@@ -48,7 +61,7 @@ sudo apt-mark hold linux-generic linux-image-generic linux-headers-generic  NVID
       
       <guid>https://www.330k.info/essay/xubuntu1604_snort_base/</guid>
       <description>ウイルス等に侵入された後の対策として、IDSやIPS製品の紹介をベンダーから受けたが、正直なところ価格が高かったのと、検知されるメッセージがSnort由来のものが多い気がしたので、自分でSnortを構築して商用製品との差を調べてみることにした。
-構築環境  PC : 余っていたノートPC Panasonic LetsNote CF-NX1 OS : Xubuntu 16.04.2 (LetsNoteの有線LANと無線LANのNICを認識できる可能性が高いディストリビューションとして選択) ルータ : Yamaha RTX810 IDSとして運用(ミラーポートの通信を監視) LetsNoteの有線LANはミラーポートに接続し、通信を監視 LetsNote自体にアクセスするときには無線LANを使用する  図(適当)  手順 基本的に、以下のドキュメント通りでOK。
+構築環境  PC : 余っていたノートPC Panasonic LetsNote CF-NX1 OS : Xubuntu 16.04.2 (LetsNoteの有線LANと無線LANのNICを認識できる可能性が高いディストリビューションとして選択) ルータ : Yamaha RTX810 IDSとして運用(ミラーポートの通信を監視) LetsNoteの有線LANはミラーポートに接続し、通信を監視 LetsNote自体にアクセスするときには無線LANを使用する  図(適当)   手順 基本的に、以下のドキュメント通りでOK。
 Snort 2.9.9.x on Ubuntu 14 -16
 LetsNoteでは有線LANのNICはenp0s25、無線LANはwlp2s0となった。
 注意点は以下の通り。
@@ -99,8 +112,8 @@ ffmpeg -y -i blank24.mov -i input.mp3 -vcodec copy -acodec copy -shortest output
       <description>たまたま私の環境の問題かもしれないが、
  Intel Core-i7 3770 Ubuntu 14.04 LTS Mathematica 8.0.4 Home Edition  という環境で、Mathematicaのノートブック上でPlot3DなどのGraphics3Dオブジェクトが、 うまく表示できないことに悩まされていたが、その解決法が分かった。
 メニューの「編集」→「環境設定」から、「詳細」タブを開き、「オプションインスペクタを開く」をクリック。
- オプションインスペクタでは「グラフィックス設定」「RenderingOptions」内の&amp;rdquo;Graphics3DRenderingEngine&amp;rdquo;を デフォルトの&amp;rdquo;Automatic&amp;rdquo;から&amp;rdquo;Software&amp;rdquo;に変更する。
- 私の場合は以上で上手く行った。 Windowsではこのようなことはなかったのだが・・・。</description>
+  オプションインスペクタでは「グラフィックス設定」「RenderingOptions」内の&amp;rdquo;Graphics3DRenderingEngine&amp;rdquo;を デフォルトの&amp;rdquo;Automatic&amp;rdquo;から&amp;rdquo;Software&amp;rdquo;に変更する。
+  私の場合は以上で上手く行った。 Windowsではこのようなことはなかったのだが・・・。</description>
     </item>
     
     <item>

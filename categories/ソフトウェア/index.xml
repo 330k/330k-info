@@ -22,7 +22,7 @@
 誰か作ってるだろうと思って探してみたが、意外なことに私の調べた限りではそのような拡張機能が見つからなかったので、自分で作ってみた。
 せっかくなのでChromeウェブストアに公開してみたので、以下のリンクからどうぞ。
 Chromeウェブストア: EMLとして保存(Gmail)
- 使い方 Gmailで「メッセージのソースを表示」を行うと、自動でemlファイルがダウンロードされます。 ファイル名は「yyyymmdd_hhmmss.eml」になります(Dateヘッダから取得した日時です)。
+  使い方 Gmailで「メッセージのソースを表示」を行うと、自動でemlファイルがダウンロードされます。 ファイル名は「yyyymmdd_hhmmss.eml」になります(Dateヘッダから取得した日時です)。
 仕様についての補足 当初はGmail画面の「メッセージのソースを表示」の下にメニュー項目を追加して、ダウンロードさせるようにしたかったが、 メッセージのソースを表示をした時のURL(https://mail.google.com/mail/u/0/?ui=2&amp;amp;ik=**********&amp;amp;view=om&amp;amp;th=*************)のパラメータのうち、 thはブラウザのlocation.pathやhrefを見ればわかるが、ikはメッセージが表示されるときにページ側のグローバルオブジェクトに格納されるため、 拡張機能内のJavaScriptからはアクセスできない(拡張機能のJavaScriptはページ内のJavaScriptとは別の空間で実行される)。 そのため、メッセージのソースを表示した後に動作するような仕様とした。
 もちろんGmail APIを使えばアクセスできるとは思うのだが、そうするとユーザは最初にアプリに対してGmailを読み取る権限を許可しなければならないため、敷居が高くなってしまう。 他の人はこれらの理由で同様の拡張機能の作成を断念したのではないだろうか。
 また、Outlookのように保存されるファイル名を件名にしたかったが、ありとあらゆる文字コードに対応しなければならなくなるので単純にDateヘッダから日時を取得する仕様とした。
@@ -41,8 +41,8 @@ Chromeウェブストア: EMLとして保存(Gmail)
 トラックログを間引くアルゴリズムは折れ線を間引くに記載した点数を指定するタイプのDouglas-Peuckerを実装している。 メルカトル図法に投影した座標で間引いているので、Google Mapsなどメルカトル図法の地図で見た時に形状をよく保存する。
 使い方  ボタンを押してGPXファイルを選択 一括処理する内容をチェックして選択 「処理実行」ボタンをクリックして少し待つ 表示されたリンクをクリックしてGPXファイルをダウンロード  注意事項  Chrome 53、Firefox 49、Edge、IE 11にて動作を確認 IE8では動作しません IE 9, 10は環境が無いため確認できません 重いGPXファイルを処理しようとすると固まります(WorkerではXMLParserが使えないため) 複数ファイルを選択した時の並び順はOSやブラウザ、選択時の操作に依存します  なお、カシミール3DではGPXファイルをXMLとしてパースして読み込んでいるわけではないようで、 空要素(&amp;lt;trkpt lat=&amp;quot;***&amp;quot; lon=&amp;quot;***&amp;quot; /&amp;gt;)の形を認識できない。 そのため&amp;lt;trkpt lat=&amp;quot;***&amp;quot; lon=&amp;quot;***&amp;quot;&amp;gt;&amp;lt;/trkpt&amp;gt;の形に修正したものを出力している。
 使用例 元のGPSログをカシミール3Dで読み込んだ画面
- デフォルト設定で一括処理した後のGPXファイルを読み込んだ画面 (このデータの場合は、6時間途切れたらトラック分割するので1日毎に分割され、それぞれが400点に間引きされている)
- 更新履歴  カシミール3Dでも読めるよう、空要素の場合は&amp;lt;trkpt ***&amp;gt;&amp;lt;/trkpt&amp;gt;の形に置換するようにした。 (May 4 2014) 優先度付きキューの実装を変更して高速化。(May 28 2014) プログラムを全面書き直し。トラックの自動分割・結合機能追加。 (Sep. 24 2016) 標高をGoogle Maps Elevations APIから取得する機能を追加して統合。 (Sep. 28 2016)  </description>
+  デフォルト設定で一括処理した後のGPXファイルを読み込んだ画面 (このデータの場合は、6時間途切れたらトラック分割するので1日毎に分割され、それぞれが400点に間引きされている)
+  更新履歴  カシミール3Dでも読めるよう、空要素の場合は&amp;lt;trkpt ***&amp;gt;&amp;lt;/trkpt&amp;gt;の形に置換するようにした。 (May 4 2014) 優先度付きキューの実装を変更して高速化。(May 28 2014) プログラムを全面書き直し。トラックの自動分割・結合機能追加。 (Sep. 24 2016) 標高をGoogle Maps Elevations APIから取得する機能を追加して統合。 (Sep. 28 2016)  </description>
     </item>
     
     <item>
@@ -88,7 +88,7 @@ GitHubにアップロードした方はバイナリデータにも対応。 こ�
  CSVファイル(*.csv) Excelファイル(.xls、.xlsx、.xlsm、.xlsb) Accessファイル(*.mdb)  などをADODB経由で開いてSQLクエリを実行できます。
 CSVファイルはディレクトリ⇔データベース、CSVファイル⇔テーブルとして扱われ、 ExcelファイルはExcelブック⇔データベース、シート⇔テーブルとして扱われます。
 主に、SQLクエリを実行した結果をExcelに貼り付けて使用することを想定しており、 出力された表はExcelに貼り付けやすいようTSV形式で持っています。 select intoで直接ファイルに書き出すこともできます。
-スクリーンショット  ダウンロード Gistからダウンロード
+スクリーンショット   ダウンロード Gistからダウンロード
 もしくは以下のソースコードをメモ帳にコピー＆ペーストし、拡張子をhtaに変更してください。
 &amp;lt;html&amp;gt; &amp;lt;head&amp;gt; &amp;lt;!-- HTA SQL Tool by 330k Copyright (c) 2016 330k This software is released under the MIT License. http://opensource.org/licenses/mit-license.php --&amp;gt; &amp;lt;title&amp;gt;HTA SQL Tool by 330k&amp;lt;/title&amp;gt; &amp;lt;HTA:APPLICATION ID=&amp;quot;USQLEXE&amp;quot; APPLICATIONNAME=&amp;quot;USQLEXE&amp;quot; BORDER=&amp;quot;thick&amp;quot; BORDERSTYLE=&amp;quot;normal&amp;quot; CAPTION=&amp;quot;yes&amp;quot; ICON=&amp;quot;C:\WINDOWS\system32\rsnotify.exe&amp;quot; INNERBORDER=&amp;quot;no&amp;quot; MAXIMIZEBUTTON=&amp;quot;yes&amp;quot; MINIMIZEBUTTON=&amp;quot;yes&amp;quot; SHOWINTASKBAR=&amp;quot;yes&amp;quot; SINGLEINSTANCE=&amp;quot;no&amp;quot; SYSMENU=&amp;quot;yes&amp;quot; VERSION=&amp;quot;1.0&amp;quot; WINDOWSTATE=&amp;quot;normal&amp;quot; SCROLL=&amp;quot;no&amp;quot; SCROLLFLAT=&amp;quot;no&amp;quot; SELECTION=&amp;quot;yes&amp;quot; CONTEXTMENU=&amp;quot;yes&amp;quot; NAVIGABLE=&amp;quot;yes&amp;quot; /&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;script type=&amp;quot;text/javascript&amp;quot;&amp;gt; var doc = document; eval(&#39;var document = doc&#39;); var shell = new ActiveXObject(&#39;WScript.</description>
     </item>
@@ -125,7 +125,7 @@ GPXへの変換に際しては時刻情報を残しますので、カシミー�
       <description> 概要 序盤は定石データベースを使用し、中盤を貧弱な評価関数で乗り切り、終盤は完全読みを行う、普通のコンピュータリバーシソフト。
  貧弱な評価関数 マルチスレッドによる高い応答性・操作性 棋譜や盤面の出力が可能 対戦中や棋譜を読み込んで最善手を探索させるなど研究のための機能も一応付属  を特徴とする。
 ダウンロード Vectorの紹介ページへ
-スクリーンショット  </description>
+スクリーンショット   </description>
     </item>
     
     <item>
@@ -135,7 +135,7 @@ GPXへの変換に際しては時刻情報を残しますので、カシミー�
       
       <guid>https://www.330k.info/software/extract-exlinks-pptx/</guid>
       <description> 概要 PowerPointで動画を入れることはよくあるが、その動画がどこにあるファイルなのか分からなくなることがよくある。 一応、PowerPointでもパスを表示させることはできるのだが、何せ表示できる文字数が短すぎて分からない、という無駄機能状態。
- ↑このように「ファイルへのリンクの編集」で表示させることはできるのだが、 深い階層のファイルを参照していると、表示しきれない。
+  ↑このように「ファイルへのリンクの編集」で表示させることはできるのだが、 深い階層のファイルを参照していると、表示しきれない。
 幸い、最新のPowerPointファイル(.pptx)はxmlファイルをzipで固めたものなので、中身を解析して、外部にリンクしているもののパスと、それが使用されているスライドのページ数を抽出するプログラムを作ってみた。
 ダウンロード ExtractPPTXExLink.jar
 使い方 ExtractPPTXExLink.jarを実行すると、pptxファイルの場所を聞かれるので、1つ選択する。 すると、pptxと同じフォルダに(pptxファイル名)_exlink.txtというファイルにスライドページ番号と外部リンクのパスが出力される。

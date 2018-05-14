@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>330k info</title>
 <meta name="description" content="自転車ツーリングの記録やソフトウェアの配布、Mathematicaをメインにしたプログラミングの覚書や日ごろの雑感など。">
-<meta name="generator" content="Hugo 0.25.1" />
+<meta name="generator" content="Hugo 0.40.1" />
 
 <link rel="alternate" type="application/rss+xml" title="330k info Feed" href="https://www.330k.info/index.xml">
 <link rel="stylesheet" href="/css/style.css" type="text/css" media="all" />
@@ -48,6 +48,36 @@ ga('send', 'pageview');
 
 
 	<main class="main-content list content" role="main"><article class="list__item post clearfix">
+	<div class="list__content clearfix">
+		<header class="list__header">
+			<h3 class="list__title post__title ">
+				<a href="/essay/author_dvd_from_movie_file_on_windows/" rel="bookmark">動画ファイルからDVDオーサリング</a>
+			</h3>
+			<div class="list__meta meta">
+				<svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
+				<time class="list__meta-date" datetime="2017-07-27T21:21:29">July 27, 2017</time>
+			</div>
+		</header>
+		<div class="list__excerpt">
+			「この動画ファイルをDVDに焼いて。簡単でしょ。」
+ いやいや、DVD-Video規格に沿った動画ファイルとファイル構造にしないといけないんですけど。
+Windows用のオーサリングソフトはフリーでも色々あるが、どれが良いのかよくわからないので、 ffmpeg + dvdauthor + mkisofsでISOファイルを作成するバッチファイルを作成した。
+参考サイト : http://d.hatena.ne.jp/hikaen2/20150201/1422773879
+前準備 ffmpeg 適当にWindows用バイナリを落としてPATHを設定しておく。
+dvdauthor Windows用のバイナリをダウンロードし、PATHの通ったところに設置。
+http://www.paehl.com/open_source/?DVDAuthor
+これの下部の「From Box.net」または「From Google Drive」からダウンロード。
+mkisofs 他のソフト(cdrfde)にくっついてくるmkisofs.exeを抜き出す。
+https://cdrtfe.sourceforge.io/cdrtfe/download_en.html
+これのcdrtfe 1.5.7 zip archiveをダウンロードし、展開したファイルの中から、
+ tools\cdrtools\mkisofs.exe tools\cygwin\cygwin1.dll tools\cygwin\cygwin.ini  をPATHの通ったフォルダに移動。
+バッチファイル 下記の内容のバッチファイルを作成。 CPU数に合わせてthreadsの値は変更する。
+DVDにしたい動画ファイルをドラッグ&amp;ドロップ。
+@ECHO OFF REM 動画ファイルからDVDのISOファイルを作成 SET VIDEO_FORMAT=NTSC ffmpeg -i &quot;%1&quot; -threads 4 -vf yadif=1,scale=720:480,tinterlace=4 -target ntsc-dvd -flags +ilme+ildct &quot;%~dpn1_dvd.mpeg&quot; dvdauthor -o &quot;%~dpn1_dvd&quot; -t &quot;%~dpn1_dvd.mpeg&quot; dvdauthor -o &quot;%~dpn1_dvd&quot; -T mkisofs -dvd-video -o &quot;%~dpn1_dvd.
+		</div>
+	</div>
+</article>
+<article class="list__item post clearfix">
 	<figure class="list__thumbnail">
 		<a href="https://www.330k.info/essay/random_distribution_sphere_surface/">
 			<img src="/essay/random_distribution_sphere_surface/002.png" alt="球面上の一様分布" />
@@ -65,10 +95,10 @@ ga('send', 'pageview');
 		</header>
 		<div class="list__excerpt">
 			球面上に一様分布するランダムな点を生成したい時、 単純に極座標表示でθとφを一様分布させると、極付近に点が集まってしまう。
-data1 = Transpose[{Sin[t] Cos[f], Sin[t] Sin[f], Cos[t]} /. { f -&gt; RandomReal[{0, 2 Pi}, 2000], t -&gt; RandomReal[{0, Pi}, 2000]}]; g1 = ListPointPlot3D[data1, BoxRatios -&gt; {1, 1, 1}]   球面上で一様分布させるには、下記のようにθにArcCosを使う (θの位置の確率をSinθに比例させたい→累積確率分布関数はCos→逆関数はArcCos)。
-data2 = Transpose[{Sin[t] Cos[f], Sin[t] Sin[f], Cos[t]} /. { f -&gt; RandomReal[{0, 2 Pi}, 2000], t -&gt; ArcCos[RandomReal[{-1, 1}, 2000]]}]; g2 = ListPointPlot3D[data2, BoxRatios -&gt; {1, 1, 1}]   なお、多次元球面上の一様分布は球面上に一様分布する乱数の生成にあるように、 多次元ガウス分布を正規化すると得られる。
+data1 = Transpose[{Sin[t] Cos[f], Sin[t] Sin[f], Cos[t]} /. { f -&gt; RandomReal[{0, 2 Pi}, 2000], t -&gt; RandomReal[{0, Pi}, 2000]}]; g1 = ListPointPlot3D[data1, BoxRatios -&gt; {1, 1, 1}]    球面上で一様分布させるには、下記のようにθにArcCosを使う (θの位置の確率をSinθに比例させたい→累積確率分布関数はCos→逆関数はArcCos)。
+data2 = Transpose[{Sin[t] Cos[f], Sin[t] Sin[f], Cos[t]} /. { f -&gt; RandomReal[{0, 2 Pi}, 2000], t -&gt; ArcCos[RandomReal[{-1, 1}, 2000]]}]; g2 = ListPointPlot3D[data2, BoxRatios -&gt; {1, 1, 1}]    なお、多次元球面上の一様分布は球面上に一様分布する乱数の生成にあるように、 多次元ガウス分布を正規化すると得られる。
 下記は3次元の場合。
-data3 = Normalize /@ RandomReal[NormalDistribution[], {2000, 3}]; g3 = ListPointPlot3D[data3, BoxRatios -&gt; {1, 1, 1}]   
+data3 = Normalize /@ RandomReal[NormalDistribution[], {2000, 3}]; g3 = ListPointPlot3D[data3, BoxRatios -&gt; {1, 1, 1}]    
 		</div>
 	</div>
 </article>
@@ -152,7 +182,7 @@ Public Function GetUUID() As String 'GetUUID = Mid$(CreateObject(&quot;Scriptlet
 		<div class="list__excerpt">
 			現在使用中のもの サドルバッグ レベレイトデザイン PIKA それまでのオーストリッチのサドルバッグ、モンベルのフロントバッグ、ドイターのバックパックを一本化するために購入。 荷物すべてをこのサドルバッグとツールボトルに収めることに成功。 自分のように背が低く、サドルとタイヤの間にあまりクリアランスが取れない場合はタイヤで擦ってしまいやすいので要注意。
 あとは余った靴紐を1本持っておくと、レインウェアを取り出しやすいようにバッグの上に括りつけておいたり、 どうしてもタイヤで擦ってしまう場合に強引に上方向に引っ張り上げることができるので非常に便利。
-輪行袋 OSTRICH L-100 輪行袋超軽量型  今まではツーリングの計画時に輪行を念頭に置いていなかったので、非常用としてとにかく小さく軽いものを購入。 数回輪行したところ自転車を入れる袋としては全く問題ないが、リアキャリアを外さなければならず、これが列車内で非常に邪魔になる。 リアキャリアをつけずにバックパックのみで日帰りで「行ける所まで行って帰りは輪行」とか「行きは輪行して自転車で帰ってくる」とか「往復輪行してちょっと遠くの峠まで」というときにはうってつけだと思う。 輪行すれば行動半径が2倍になる、ということに気づいてしまったので今後はさらなる活躍が期待される。
+輪行袋 OSTRICH L-100 輪行袋超軽量型   今まではツーリングの計画時に輪行を念頭に置いていなかったので、非常用としてとにかく小さく軽いものを購入。 数回輪行したところ自転車を入れる袋としては全く問題ないが、リアキャリアを外さなければならず、これが列車内で非常に邪魔になる。 リアキャリアをつけずにバックパックのみで日帰りで「行ける所まで行って帰りは輪行」とか「行きは輪行して自転車で帰ってくる」とか「往復輪行してちょっと遠くの峠まで」というときにはうってつけだと思う。 輪行すれば行動半径が2倍になる、ということに気づいてしまったので今後はさらなる活躍が期待される。
 折りたたみ靴 Timberland RADLER TRAIL CAMP Timberlandの折りたためる靴。裸足でも履け、軽いトレッキング程度なら歩けるグリップがある。 SPDシューズで音や滑って転ぶことを気にする必要がないので、自転車を降りた後の行動で重宝している。
 現在は使わなくなったもの ヘッドライト Fenix LD20 某レビューサイトで絶賛されていたためAmazonで購入。 評判通りの明るさ。転勤で首都圏から出てしまったが、街灯がなくても問題なく走行可能。 サイコンの近くに設置すると電波が干渉して速度が出なくなるので出来る限り離すように設置。
 → 川崎市を走行中に、振動でネジが緩んで落下。
@@ -182,8 +212,8 @@ USB充電器 FUJITSU FSC321FX USB⇔NiMH充電池(eneloop)の充電ができる�
 			</div>
 		</header>
 		<div class="list__excerpt">
-			SURLY CROSS-CHECK (Aug. 2010 &ndash;)  Nov. 20 2016 ついにブレーキ以外のコンポをDura-Ace(9100)化、ホイールもユーラスにしてしまった・・・。 SURLY cross-checkにDura-Ace、Vブレーキ、SPDペダルなんて組み合わせは他にいないだろうな。
-      パーツ 購入時 現在 備考     フレーム・フォーク Surly Crosscheck 460mm -    ヘッドパーツ Canecreek S3 -    ステム Thomson Elite X2 100mm -    ハンドルバー Salsa Short &amp; Shallow 380mm -    シート(サドル) Selle Italia Yutaak -    シートポスト Thomson Elite -    ハブ(フロント) Shimano 105 HB-5700-L Campagnolo Eurus 完組    ハブ(リア) Shimano 105 FH-5700-L (完組Campagnolo Eurus)    スポーク DT-Swiss 型番不明 (完組Campagnolo Eurus)    リム DT-Swiss RR465 (完組Campagnolo Eurus)    タイヤ Schwalve Delta Cruiser 28C Continental GrandPrix 4000S II 25C    クランクセット Shimano 105 FC-5703-L 50-39-30T 170mm Shimano Dura-Ace FC-R9100 50-34T 170mm    ディレイラ(フロント) Shimano 105 FD-5703-S/M Shimano Dura-Ace FD-R9100    ディレイラ(リア) Shimano 105 RD-5700-GS Shimano Dura-Ace RD-R9100    カセットスプロケット Shimano 105 CS-5700 11-25T Shimano Dura-Ace CS-R9100 11-30T    ブレーキレバー Shimano 105 ST-5703 Shimano Dura-Ace ST-R9100    ブレーキ Canecreek SCX-5 Shimano 105 BR-R573 カンチレバーではビビリが発生したためミニV化   ペダル Shimano A-530 Shimano M-540     購入直後の感想  自転車に乗り始めて3年目、ついに自分がツーリングするための自転車をオーダーした。 その結果がこのSURLYのシクロクロスバイク。 長時間・長距離を走るべく、クロモリフレームにコンポーネントは105でフロントトリプル+リア11-25Tでワイドレンジのギアレシオを選択し、ついでに憧れだったSPD(ただし片面)にした。タイヤは悩んだが、とりあえず28Cにしておいた。
+			SURLY CROSS-CHECK (Aug. 2010 &ndash;)   Nov. 20 2016 ついにブレーキ以外のコンポをDura-Ace(9100)化、ホイールもユーラスにしてしまった・・・。 SURLY cross-checkにDura-Ace、Vブレーキ、SPDペダルなんて組み合わせは他にいないだろうな。
+        パーツ 購入時 現在 備考     フレーム・フォーク Surly Crosscheck 460mm -    ヘッドパーツ Canecreek S3 -    ステム Thomson Elite X2 100mm -    ハンドルバー Salsa Short &amp; Shallow 380mm -    シート(サドル) Selle Italia Yutaak -    シートポスト Thomson Elite -    ハブ(フロント) Shimano 105 HB-5700-L Campagnolo Eurus 完組    ハブ(リア) Shimano 105 FH-5700-L (完組Campagnolo Eurus)    スポーク DT-Swiss 型番不明 (完組Campagnolo Eurus)    リム DT-Swiss RR465 (完組Campagnolo Eurus)    タイヤ Schwalve Delta Cruiser 28C Continental GrandPrix 4000S II 25C    クランクセット Shimano 105 FC-5703-L 50-39-30T 170mm Shimano Dura-Ace FC-R9100 50-34T 170mm    ディレイラ(フロント) Shimano 105 FD-5703-S/M Shimano Dura-Ace FD-R9100    ディレイラ(リア) Shimano 105 RD-5700-GS Shimano Dura-Ace RD-R9100    カセットスプロケット Shimano 105 CS-5700 11-25T Shimano Dura-Ace CS-R9100 11-30T    ブレーキレバー Shimano 105 ST-5703 Shimano Dura-Ace ST-R9100    ブレーキ Canecreek SCX-5 Shimano 105 BR-R573 カンチレバーではビビリが発生したためミニV化   ペダル Shimano A-530 Shimano M-540     購入直後の感想   自転車に乗り始めて3年目、ついに自分がツーリングするための自転車をオーダーした。 その結果がこのSURLYのシクロクロスバイク。 長時間・長距離を走るべく、クロモリフレームにコンポーネントは105でフロントトリプル+リア11-25Tでワイドレンジのギアレシオを選択し、ついでに憧れだったSPD(ただし片面)にした。タイヤは悩んだが、とりあえず28Cにしておいた。
 		</div>
 	</div>
 </article>
@@ -221,7 +251,7 @@ Alt押す → テンキー9 → テンキー2 → Alt離す
 		</header>
 		<div class="list__excerpt">
 			ウイルス等に侵入された後の対策として、IDSやIPS製品の紹介をベンダーから受けたが、正直なところ価格が高かったのと、検知されるメッセージがSnort由来のものが多い気がしたので、自分でSnortを構築して商用製品との差を調べてみることにした。
-構築環境  PC : 余っていたノートPC Panasonic LetsNote CF-NX1 OS : Xubuntu 16.04.2 (LetsNoteの有線LANと無線LANのNICを認識できる可能性が高いディストリビューションとして選択) ルータ : Yamaha RTX810 IDSとして運用(ミラーポートの通信を監視) LetsNoteの有線LANはミラーポートに接続し、通信を監視 LetsNote自体にアクセスするときには無線LANを使用する  図(適当)  手順 基本的に、以下のドキュメント通りでOK。
+構築環境  PC : 余っていたノートPC Panasonic LetsNote CF-NX1 OS : Xubuntu 16.04.2 (LetsNoteの有線LANと無線LANのNICを認識できる可能性が高いディストリビューションとして選択) ルータ : Yamaha RTX810 IDSとして運用(ミラーポートの通信を監視) LetsNoteの有線LANはミラーポートに接続し、通信を監視 LetsNote自体にアクセスするときには無線LANを使用する  図(適当)   手順 基本的に、以下のドキュメント通りでOK。
 Snort 2.9.9.x on Ubuntu 14 -16
 LetsNoteでは有線LANのNICはenp0s25、無線LANはwlp2s0となった。
 注意点は以下の通り。
@@ -250,28 +280,6 @@ RTX810はhttp://www.rtpro.yamaha.co.jp/RT/manual/rt-common/setup/lan_port-mirror
 createZipFile( &quot;zipファイルのパス&quot;, [&quot;圧縮対象ファイルのパス1&quot;, &quot;圧縮対象ファイルのパス2&quot;, ...])  とすればOK。 もしくは以下のコードをメモ帳で拡張子をjsにして保存すれば、ドラッグ&amp;ドロップでzipファイルを作成(右クリック→送る→圧縮フォルダーとほぼ同じ動作)。
 注意事項 ディレクトリには対応してません。またWindows標準では暗号化ZIPは作成できません。 また圧縮対象ファイルの存在チェック等もやってないので、必要であればエラーハンドリング処理を追加してください。
 /** Windows 標準機能でZipファイルを作成するWSH(JScript) Copyright 330k This software is released under the MIT License. http://opensource.org/licenses/mit-license.php */ var args = []; for(var i = 0; i &lt; WScript.Arguments.length; i++){ args.push(WScript.Arguments(i)); } var zipfile = args[0].replace(/(.+)\.(.+?)$/, &quot;$1.zip&quot;); createZipFile(zipfile, args); function createZipFile(zipFilePath, sourceFiles){ var shell = WScript.CreateObject(&quot;Shell.Application&quot;); var fso = WScript.CreateObject(&quot;Scripting.FileSystemObject&quot;); var file = fso.
-		</div>
-	</div>
-</article>
-<article class="list__item post clearfix">
-	<figure class="list__thumbnail">
-		<a href="https://www.330k.info/bicycle/touring/20170429-0505_nagoya_shirakawago_noto_peninshula_kanazawa/">
-			<img src="/bicycle/touring/20170429-0505_nagoya_shirakawago_noto_peninshula_kanazawa/IMG_20170504_084633846.jpg" alt="2017年04月29日〜05月05日 東京→名古屋→岐阜→能登半島→金沢→米原" />
-		</a>
-	</figure>
-	<div class="list__content clearfix">
-		<header class="list__header">
-			<h3 class="list__title post__title ">
-				<a href="/bicycle/touring/20170429-0505_nagoya_shirakawago_noto_peninshula_kanazawa/" rel="bookmark">2017年04月29日〜05月05日 東京→名古屋→岐阜→能登半島→金沢→米原</a>
-			</h3>
-			<div class="list__meta meta">
-				<svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
-				<time class="list__meta-date" datetime="2017-04-29T21:53:24">April 29, 2017</time>
-			</div>
-		</header>
-		<div class="list__excerpt">
-			2017年のGWは適当に天気の良さそうな方向に走った結果、岐阜の山中から能登半島を回るコースになった。
-  function initMap(){ var map, ctaLayer; map = new google.maps.Map(document.getElementById("map-canvas"), { center: {lat: 35.6832581, lng: 139.7555827}, zoom: 8 }); ctaLayer = new google.maps.KmlLayer({ url: "https:\/\/www.330k.info\/\/bicycle\/touring\/20170429-0505_nagoya_shirakawago_noto_peninshula_kanazawa\/20170429-0505.kml" }); ctaLayer.setMap(map); }      日付 出発地 到着地 走行距離(km) 走行時間 最高速度(km/h) 平均速度(km/h) 主な経路 景勝地     2017年4月29日 東京 清水 185.62 8:33:11 64.0 21.7 R1 箱根峠   2017年4月30日 清水 岡崎 167.15 7:12:45 58.4 23.2 R150, R1 大崩海岸   2017年5月1日 岡崎 郡上白鳥 140.
 		</div>
 	</div>
 </article>
@@ -304,6 +312,7 @@ createZipFile( &quot;zipファイルのパス&quot;, [&quot;圧縮対象ファ�
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/essay/text_garbled_in_snap_apps_in_ubuntu_18_04/">Ubuntu 18.04 LTSで文字化けしたSnapアプリをなんとかして使う</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/letsencrypt-ubuntu-1604/">Ubuntu 16.04 &#43; Apache 2.4にLet&#39;s Encryptを設定する</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/ubuntu_nvidia_cuda_mathematica_geforce1060/">GeForce 1060搭載ノートPCにUbuntu 17.10 &#43; NVIDIAドライバ &#43; CUDA &#43; Mathematia 8をインストール</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/resize_and_pad_with_imagemagick/">ImageMagickでベクタ画像を綺麗な半透過PNGにする</a></li>
@@ -313,7 +322,6 @@ createZipFile( &quot;zipファイルのパス&quot;, [&quot;圧縮対象ファ�
 			<li class="widget__item"><a class="widget__link" href="/essay/scramble_unicode_lro_rlo/">Unicode制御文字(LRO, RLO)でコピー・改変を防止 (構想)</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/move_to_github_pages_hugo_from_google_sites/">Hugo &#43; GitHub Pages &#43; CloudFlareにGoogleサイトから移転</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20170729-0806_hokkaido/">2017年7月29日〜8月6日 北海道 道東→道北(襟裳岬、納沙布岬、知床、宗谷岬)</a></li>
-			<li class="widget__item"><a class="widget__link" href="/essay/author_dvd_from_movie_file_on_windows/">動画ファイルからDVDオーサリング</a></li>
 		</ul>
 	</div>
 </div>
@@ -366,7 +374,7 @@ createZipFile( &quot;zipファイルのパス&quot;, [&quot;圧縮対象ファ�
 		<a class="widget__link widget__link--taglist" href="/tags/powerpoint" title="powerpoint">powerpoint (1)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/powershell" title="powershell">powershell (1)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/sql" title="sql">sql (3)</a>
-		<a class="widget__link widget__link--taglist" href="/tags/ubuntu" title="ubuntu">ubuntu (8)</a>
+		<a class="widget__link widget__link--taglist" href="/tags/ubuntu" title="ubuntu">ubuntu (9)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/vba" title="vba">vba (3)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/windows" title="windows">windows (9)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/wsh" title="wsh">wsh (2)</a>

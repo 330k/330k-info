@@ -21,7 +21,7 @@
  CSVファイル(*.csv) Excelファイル(.xls、.xlsx、.xlsm、.xlsb) Accessファイル(*.mdb)  などをADODB経由で開いてSQLクエリを実行できます。
 CSVファイルはディレクトリ⇔データベース、CSVファイル⇔テーブルとして扱われ、 ExcelファイルはExcelブック⇔データベース、シート⇔テーブルとして扱われます。
 主に、SQLクエリを実行した結果をExcelに貼り付けて使用することを想定しており、 出力された表はExcelに貼り付けやすいようTSV形式で持っています。 select intoで直接ファイルに書き出すこともできます。
-スクリーンショット  ダウンロード Gistからダウンロード
+スクリーンショット   ダウンロード Gistからダウンロード
 もしくは以下のソースコードをメモ帳にコピー＆ペーストし、拡張子をhtaに変更してください。
 &amp;lt;html&amp;gt; &amp;lt;head&amp;gt; &amp;lt;!-- HTA SQL Tool by 330k Copyright (c) 2016 330k This software is released under the MIT License. http://opensource.org/licenses/mit-license.php --&amp;gt; &amp;lt;title&amp;gt;HTA SQL Tool by 330k&amp;lt;/title&amp;gt; &amp;lt;HTA:APPLICATION ID=&amp;quot;USQLEXE&amp;quot; APPLICATIONNAME=&amp;quot;USQLEXE&amp;quot; BORDER=&amp;quot;thick&amp;quot; BORDERSTYLE=&amp;quot;normal&amp;quot; CAPTION=&amp;quot;yes&amp;quot; ICON=&amp;quot;C:\WINDOWS\system32\rsnotify.exe&amp;quot; INNERBORDER=&amp;quot;no&amp;quot; MAXIMIZEBUTTON=&amp;quot;yes&amp;quot; MINIMIZEBUTTON=&amp;quot;yes&amp;quot; SHOWINTASKBAR=&amp;quot;yes&amp;quot; SINGLEINSTANCE=&amp;quot;no&amp;quot; SYSMENU=&amp;quot;yes&amp;quot; VERSION=&amp;quot;1.0&amp;quot; WINDOWSTATE=&amp;quot;normal&amp;quot; SCROLL=&amp;quot;no&amp;quot; SCROLLFLAT=&amp;quot;no&amp;quot; SELECTION=&amp;quot;yes&amp;quot; CONTEXTMENU=&amp;quot;yes&amp;quot; NAVIGABLE=&amp;quot;yes&amp;quot; /&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;script type=&amp;quot;text/javascript&amp;quot;&amp;gt; var doc = document; eval(&#39;var document = doc&#39;); var shell = new ActiveXObject(&#39;WScript.</description>
     </item>
