@@ -67,7 +67,7 @@ ga('send', 'pageview');
 <p>ということで、一旦英語にして起動。
 ターミナルから以下のコマンドを入力。</p>
 
-<pre><code class="language-bash">LANG=C mcomix-tabetai
+<pre><code class="language-bash">$ LANG=C mcomix-tabetai
 </code></pre>
 
 <p>設定(Preferences)から言語をEnglishにする。</p>
@@ -83,6 +83,30 @@ ga('send', 'pageview');
 
 <p>これで終了すれば、次回は通常通り起動すれば言語設定が英語になっている。
 めでたしめでたし。</p>
+
+<p>ちなみに、snapでインストールしたパッケージに含まれるコマンドは以下のようにして調べられる。</p>
+
+<pre><code class="language-bash">$ snap info mcomix-tabetai 
+name:      mcomix-tabetai
+summary:   User-friendly, customizable image viewer specifically designed to handle comic books.
+publisher: lolsmth
+license:   unknown
+description: |
+  MComix is a user-friendly, customizable image viewer. It is specifically designed to handle comic
+  books (both Western comics and manga) and supports a variety of container formats (including CBR,
+  CBZ, CB7, CBT, LHA and PDF). MComix is a fork of Comix.
+commands:
+  - mcomix-tabetai
+snap-id:   3DtzvFBf5ADs0tanXlF4yQVvCx0JKxQ2
+tracking:  stable
+refreshed: 2018-04-10T20:01:20+09:00
+installed:   1.2.1 (7) 92MB -
+channels:              
+  stable:    1.2.1 (7) 92MB -
+  candidate: 1.2.1 (3) 88MB -
+  beta:      ↑              
+  edge:      1.2.1 (7) 92MB -
+</code></pre>
 
 		</div>
 		

@@ -20,8 +20,10 @@
       <description>Ubuntu 17.10から18.04 LTSにアップデートしたところ、それまで使っていたコミックビューア(comix)がなくなっていた。
 Ubuntuソフトウェアから探したところ、mcomix-tabetaiというSnapパッケージがあったので、それをインストールしたところ、日本語が全部豆腐に・・・。
 ということで、一旦英語にして起動。 ターミナルから以下のコマンドを入力。
-LANG=C mcomix-tabetai  設定(Preferences)から言語をEnglishにする。
-  これで終了すれば、次回は通常通り起動すれば言語設定が英語になっている。 めでたしめでたし。</description>
+$ LANG=C mcomix-tabetai  設定(Preferences)から言語をEnglishにする。
+  これで終了すれば、次回は通常通り起動すれば言語設定が英語になっている。 めでたしめでたし。
+ちなみに、snapでインストールしたパッケージに含まれるコマンドは以下のようにして調べられる。
+$ snap info mcomix-tabetai name: mcomix-tabetai summary: User-friendly, customizable image viewer specifically designed to handle comic books. publisher: lolsmth license: unknown description: | MComix is a user-friendly, customizable image viewer. It is specifically designed to handle comic books (both Western comics and manga) and supports a variety of container formats (including CBR, CBZ, CB7, CBT, LHA and PDF).</description>
     </item>
     
     <item>
