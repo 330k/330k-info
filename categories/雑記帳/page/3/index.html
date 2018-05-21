@@ -51,6 +51,32 @@ ga('send', 'pageview');
 		<header class="page-header">
 			<h1 class="page-header__title">雑記帳</h1>
 		</header><article class="list__item post clearfix">
+	<figure class="list__thumbnail">
+		<a href="https://www.330k.info/essay/rescue_gps_log_from_binary_data_of_holux_m241/">
+			<img src="/essay/rescue_gps_log_from_binary_data_of_holux_m241/20160703_rescue_map.png" alt="m-241のバイナリデータからトラックログを吸い出す" />
+		</a>
+	</figure>
+	<div class="list__content clearfix">
+		<header class="list__header">
+			<h3 class="list__title post__title ">
+				<a href="/essay/rescue_gps_log_from_binary_data_of_holux_m241/" rel="bookmark">m-241のバイナリデータからトラックログを吸い出す</a>
+			</h3>
+			<div class="list__meta meta">
+				<svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
+				<time class="list__meta-date" datetime="2016-09-22T07:14:00">September 22, 2016</time>
+			</div>
+		</header>
+		<div class="list__excerpt">
+			GPSロガー(Holux m-241)のメモリが破損しているのか、 実は6月30日と7月3日の軽井沢→直江津ツーリングと、9月の西九州→佐多岬ツーリングでは、 ログが破損していたため、Googleのロケーション履歴を代用している。
+バイナリデータは一応吸い出せているようなので、その構造を調べると、 HOLUX m-241 LoggerUtility .trlファイル構造の覚書 より以下のような構造になっている。
+ 1レコード20バイトの固定長 時刻4バイト 緯度4バイト 経度4バイト 高度3バイト 速度4バイト チェックサム1バイト  また、m-241は時折書き込み先のメモリアドレスがずれることがあるようだ、との情報も見つかったため、 バイナリエディタで除いてみると、どうも4バイトずつずれて記録されたデータがあるようだった。
+そこで
+ レコードの先頭バイトを4バイトずつオフセットさせて読み込んでみる 緯度と経度が日本付近のものと思われるものを片っ端から拾う 時刻は整数型なのでとりあえず読み込む 高度、速度のデータは無視！  という方針でMathematicaのプログラムを書いてみた。
+data = Table[Module[{str, ret}, str = OpenRead[&quot;2016091200.bin&quot;, BinaryFormat -&gt; True]; (* 最初に余分にiバイト読み込んで先頭をずらす *) Do[ BinaryRead[str, &quot;Byte&quot;], {i} ]; (* バイナリ形式で読み込む *) ret = Cases[ MapIndexed[ {First[#2], Sequence @@ #1} &amp;, BinaryReadList[ str, {&quot;Integer32&quot;, &quot;Real32&quot;, &quot;Real32&quot;, &quot;Byte&quot;, &quot;Byte&quot;, &quot;Byte&quot;, &quot;Real32&quot;, &quot;Byte&quot;}] ], {count_, d_Integer, lat_Real, lon_Real, __} /; (30 &lt; lat &lt; 40 &amp;&amp; 125 &lt; lon &lt; 140) :&gt; {count, DateString[DatePlus[{1970, 1, 1, 0, 0, 0}, {d, &quot;Second&quot;}], {&quot;Year&quot;, &quot;-&quot;, &quot;Month&quot;, &quot;-&quot;, &quot;Day&quot;, &quot;T&quot;, &quot;Time&quot;, &quot;Z&quot;}], lat, lon}]; Close[str]; ret ], {i, 0, 19, 4}];  ※ 2016091200.
+		</div>
+	</div>
+</article>
+<article class="list__item post clearfix">
 	<div class="list__content clearfix">
 		<header class="list__header">
 			<h3 class="list__title post__title ">
@@ -297,34 +323,6 @@ IP電話は、ほとんど通話をしないため、通話料金ではなく月
 		</div>
 	</div>
 </article>
-<article class="list__item post clearfix">
-	<div class="list__content clearfix">
-		<header class="list__header">
-			<h3 class="list__title post__title ">
-				<a href="/essay/upload_recorded_mp3_files_to_youtube/" rel="bookmark">秘密録音した音声ファイルをYoutubeにバックアップ</a>
-			</h3>
-			<div class="list__meta meta">
-				<svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
-				<time class="list__meta-date" datetime="2015-10-15T00:00:00">October 15, 2015</time>
-			</div>
-		</header>
-		<div class="list__excerpt">
-			私はパワハラ対策として、毎日ICレコーダーを使って秘密録音を実施している。 ただ、毎日10時間を超える録音時間のため、32kbpsで録音しても1日あたり200MB弱の音声ファイルがHDDに追加されていき、HDDの容量を圧迫していく。
-そこで、バックアップを兼ねて動画化してYoutubeにアップロードするようにし、 HDDの空き容量が減ってきたらオリジナルの録音ファイルを消去していくことにした。
-ffmpegを使い、以下の手順で実施する。
- 適当に画像ファイルを作成する 画像ファイルから無音声の動画ファイル(再生時間24時間)を作成する 無音声の動画ファイルと、毎日録音した音声ファイルを結合する 結合した動画ファイルをYoutubeにアップロード  具体的には、適当にblank.pngという名前で640x480とか好みのサイズで画像を作成し、以下のコマンドで24時間の無音声動画ファイル(blank24.mov)を作成。
-ffmpeg -y -loop 1 -r 1 -i blank.png -t 86400 blank24.mov  これでフレームレート1 fps、動画時間が24時間(86400秒)の無音声動画ファイルblank24.movができる。 私の環境では5分程度かかったが、このファイルは1度作っておけば何度でも使えるので、最初の1回だけ待てば良い。
-次に、この無音声の動画ファイル(blank24.mov)と、録音した音声ファイル(input.mp3)を結合する。
-ffmpeg -y -i blank24.mov -i input.mp3 -vcodec copy -acodec copy -shortest output.mov  -shortestオプションを加えているので、24時間のblank24.movと音声ファイルの時間のうち、短い方の時間でoutput.movが作成される。
-動画になったことにより、元のMP3ファイルよりもファイルサイズが1割ほど増える。 私の環境では12時間程度録音したものからでも1分程度のエンコード時間で動画ファイルを作成できた。
-ちなみに出来上がりの動画ファイルのコンテナがMOVなのは、録音した音声ファイルの拡張子が、 ICレコーダーで録音したMP3、Androidの録音アプリのmp4、iPhoneの録音アプリのm4aと3種類あったため、 それと競合しないコンテナ形式を選んだ。
-また、無音声動画ファイル(blank24.mov)を作成せず、1コマンドで静止画と音声ファイルを結合することも可能だが、 都度動画部分のエンコードが発生するため時間がかかる。
-毎日音声ファイルが増えていくような状況では、予め無音声動画ファイルをつくっておき、 -vcodec copyとすることで再エンコードを省略すれば、毎日の処理が高速化できる。
-ただし、Youtubeの制限により、15分の制限を解除したアカウントでも、動画の最長時間は12時間に制限される。 したがって、私は以下のようなシェルスクリプトを書いて実行している。
-#!/bin/bash find ./ -iname &quot;*.mp3&quot; -o -iname &quot;*.mp4&quot; -o -iname &quot;*.m4a&quot; | while read i do hour=`ffmpeg -i &quot;$i&quot; 2&gt;&amp;1 &lt; /dev/null | grep Duration | sed -E &quot;s/.
-		</div>
-	</div>
-</article>
 
 
 		
@@ -353,6 +351,7 @@ ffmpeg -y -i blank24.mov -i input.mp3 -vcodec copy -acodec copy -shortest output
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/essay/mathematica-special-notation/">Mathematicaの特殊・省略記法一覧</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/text_garbled_in_snap_apps_in_ubuntu_18_04/">Ubuntu 18.04 LTSで文字化けしたSnapアプリをなんとかして使う</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20180427-28_kagoshima/">2018年4月27日〜28日 鹿児島</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/letsencrypt-ubuntu-1604/">Ubuntu 16.04 &#43; Apache 2.4にLet&#39;s Encryptを設定する</a></li>
@@ -362,7 +361,6 @@ ffmpeg -y -i blank24.mov -i input.mp3 -vcodec copy -acodec copy -shortest output
 			<li class="widget__item"><a class="widget__link" href="/essay/measure_video_events_with_google_analytics/">Google Analyticsで動画(Video要素)のイベントを計測</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/delete_temporary_files_with_powershell/">Officeの一時ファイルやThumbs.dbなどをPowerShellで一掃</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/scramble_unicode_lro_rlo/">Unicode制御文字(LRO, RLO)でコピー・改変を防止 (構想)</a></li>
-			<li class="widget__item"><a class="widget__link" href="/essay/move_to_github_pages_hugo_from_google_sites/">Hugo &#43; GitHub Pages &#43; CloudFlareにGoogleサイトから移転</a></li>
 		</ul>
 	</div>
 </div>
@@ -410,7 +408,7 @@ ffmpeg -y -i blank24.mov -i input.mp3 -vcodec copy -acodec copy -shortest output
 		<a class="widget__link widget__link--taglist" href="/tags/java" title="java">java (2)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/javascript" title="javascript">javascript (5)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/linux" title="linux">linux (1)</a>
-		<a class="widget__link widget__link--taglist" href="/tags/mathematica" title="mathematica">mathematica (19)</a>
+		<a class="widget__link widget__link--taglist" href="/tags/mathematica" title="mathematica">mathematica (20)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/net" title="net">net (1)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/powerpoint" title="powerpoint">powerpoint (1)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/powershell" title="powershell">powershell (1)</a>

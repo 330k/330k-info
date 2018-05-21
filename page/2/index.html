@@ -48,6 +48,34 @@ ga('send', 'pageview');
 
 
 	<main class="main-content list content" role="main"><article class="list__item post clearfix">
+	<div class="list__content clearfix">
+		<header class="list__header">
+			<h3 class="list__title post__title ">
+				<a href="/essay/move_to_github_pages_hugo_from_google_sites/" rel="bookmark">Hugo &#43; GitHub Pages &#43; CloudFlareにGoogleサイトから移転</a>
+			</h3>
+			<div class="list__meta meta">
+				<svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
+				<time class="list__meta-date" datetime="2017-08-08T19:24:04">August 08, 2017</time>
+			</div>
+		</header>
+		<div class="list__excerpt">
+			今まで独自ドメインでGoogleサイトを利用してきたが、
+ 「新しいGoogleサイト」の機能が全然ダメ(特にガジェットが使えなくなる)で使い物にならない Google自身が推進している常時SSL化も独自ドメインでは機能しない(正確にはMixed Contentsを修正できない) 無駄に色々と読み込むせいで遅い  ということで他のサービスへの移転を決断。
+AWSやGCP上に構築することも考えたものの、 大したPVでもないので無料で使える組み合わせとして、以下の構成にした。
+ Hugoを使って静的にサイトを生成 GitHub Pagesにアップロード CloudFlareを使って常時HTTPS化に対応  Hugo + GitHub Pagesの部分は Hugo + Github Pagesでブログを公開してみた を参考にした。
+Hugo Ubuntuではapt-getでHugoをインストールできる(最新版とは限らないので注意)。
+$ sudo apt-get install hugo  テーマは、少し古いバージョンのHugoでも動作するMainroadに決定。 後は以下の作業を実施。
+ 今までGoogleサイトのガジェットで行っていたGoogle MapsでのKMLファイルの表示を行うShortcodeを作成。 CSSファイルをいじって横幅を拡大。 コードのシンタックスハイライトを行うため、highlight.jsを読み込むようlayouts/partials/header.htmlを修正。  GitHub GitHubにGitHub Pages用のリポジトリとHugo自体のリポジトリを作成。
+ここでUser Pages(リポジトリ名: (ユーザ名).github.io)で作成し、 CNAMEファイルで独自ドメインを設定すると、 GitHubの他のリポジトリにも独自ドメインの設定が反映される。
+そのため、今まで(ユーザ名).github.io/(プロジェクト名)/のURLが (独自ドメイン)/(プロジェクト名)/にリダイレクトされるようになる。
+既存のプロジェクトページすべてのURLが変更になってしまうし、 今後ホスティング先をGitHub Pagesから別のサービスに移行するときにまた変更することになる。 そこでUser Pagesは作成せず、Project Pagesとして作成する。
+c.f. Custom domain redirects for GitHub Pages sites
+ページ移転作業 各ページを手作業でコピペ。 1日5ページ〜10ページくらい移行作業した。
+画像については、Chromeの開発者ツールで、
+		</div>
+	</div>
+</article>
+<article class="list__item post clearfix">
 	<figure class="list__thumbnail">
 		<a href="https://www.330k.info/bicycle/touring/20170729-0806_hokkaido/">
 			<img src="/bicycle/touring/20170729-0806_hokkaido/IMG_20170805_130612115_HDR.jpg" alt="2017年7月29日〜8月6日 北海道 道東→道北(襟裳岬、納沙布岬、知床、宗谷岬)" />
@@ -259,29 +287,6 @@ Alt押す → テンキー9 → テンキー2 → Alt離す
 		</div>
 	</div>
 </article>
-<article class="list__item post clearfix">
-	<div class="list__content clearfix">
-		<header class="list__header">
-			<h3 class="list__title post__title ">
-				<a href="/essay/xubuntu1604_snort_base/" rel="bookmark">Xubuntu 16.04 &#43; Snortで簡易IDS構築</a>
-			</h3>
-			<div class="list__meta meta">
-				<svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
-				<time class="list__meta-date" datetime="2017-06-06T06:37:00">June 06, 2017</time>
-			</div>
-		</header>
-		<div class="list__excerpt">
-			ウイルス等に侵入された後の対策として、IDSやIPS製品の紹介をベンダーから受けたが、正直なところ価格が高かったのと、検知されるメッセージがSnort由来のものが多い気がしたので、自分でSnortを構築して商用製品との差を調べてみることにした。
-構築環境  PC : 余っていたノートPC Panasonic LetsNote CF-NX1 OS : Xubuntu 16.04.2 (LetsNoteの有線LANと無線LANのNICを認識できる可能性が高いディストリビューションとして選択) ルータ : Yamaha RTX810 IDSとして運用(ミラーポートの通信を監視) LetsNoteの有線LANはミラーポートに接続し、通信を監視 LetsNote自体にアクセスするときには無線LANを使用する  図(適当)   手順 基本的に、以下のドキュメント通りでOK。
-Snort 2.9.9.x on Ubuntu 14 -16
-LetsNoteでは有線LANのNICはenp0s25、無線LANはwlp2s0となった。
-注意点は以下の通り。
- rule_url=https://www.snort.org/reg-rules/|snortrules-snapshot.tar.gz|&lt;oinkcode&gt; → rule_url=https://www.snort.org/rules/|snortrules-snapshot.tar.gz|&lt;oinkcode&gt; ※微妙にURLが変わっているので注意 sudo /usr/local/bin/pulledpork.pl -c /etc/snort/pulledpork.conf -l → sudo /usr/local/bin/pulledpork.pl -c /etc/snort/pulledpork.conf -l -o /etc/snort/rules/snort.rules ※-oオプションが必要と怒られた  有線LAN(enp0s25)はミラーポートから受信だけできれば良いので、 /etc/network/interfacesを編集して使われていないネットワークのアドレスを適当に設定。 管理の通信やBASEによるログを眺めるためには無線(wlp2s0)を使用するので、 NetworkManagerを使って適当に固定IPを設定。
-RTX810はhttp://www.rtpro.yamaha.co.jp/RT/manual/rt-common/setup/lan_port-mirroring.html を参照してミラーポートを設定。
- 設定(ポート1と2の送信および受信フレームをポート4にミラー) lan port-mirroring lan1 4 in 1 2 out 1 2 解除 no lan port-mirroring lan1  結果 一応IDSとして構築できたので、現在はログを見て様子見。今のところのメモは以下。
-		</div>
-	</div>
-</article>
 
 		
 
@@ -311,6 +316,7 @@ RTX810はhttp://www.rtpro.yamaha.co.jp/RT/manual/rt-common/setup/lan_port-mirror
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/essay/mathematica-special-notation/">Mathematicaの特殊・省略記法一覧</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/text_garbled_in_snap_apps_in_ubuntu_18_04/">Ubuntu 18.04 LTSで文字化けしたSnapアプリをなんとかして使う</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20180427-28_kagoshima/">2018年4月27日〜28日 鹿児島</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/letsencrypt-ubuntu-1604/">Ubuntu 16.04 &#43; Apache 2.4にLet&#39;s Encryptを設定する</a></li>
@@ -320,7 +326,6 @@ RTX810はhttp://www.rtpro.yamaha.co.jp/RT/manual/rt-common/setup/lan_port-mirror
 			<li class="widget__item"><a class="widget__link" href="/essay/measure_video_events_with_google_analytics/">Google Analyticsで動画(Video要素)のイベントを計測</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/delete_temporary_files_with_powershell/">Officeの一時ファイルやThumbs.dbなどをPowerShellで一掃</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/scramble_unicode_lro_rlo/">Unicode制御文字(LRO, RLO)でコピー・改変を防止 (構想)</a></li>
-			<li class="widget__item"><a class="widget__link" href="/essay/move_to_github_pages_hugo_from_google_sites/">Hugo &#43; GitHub Pages &#43; CloudFlareにGoogleサイトから移転</a></li>
 		</ul>
 	</div>
 </div>
@@ -368,7 +373,7 @@ RTX810はhttp://www.rtpro.yamaha.co.jp/RT/manual/rt-common/setup/lan_port-mirror
 		<a class="widget__link widget__link--taglist" href="/tags/java" title="java">java (2)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/javascript" title="javascript">javascript (5)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/linux" title="linux">linux (1)</a>
-		<a class="widget__link widget__link--taglist" href="/tags/mathematica" title="mathematica">mathematica (19)</a>
+		<a class="widget__link widget__link--taglist" href="/tags/mathematica" title="mathematica">mathematica (20)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/net" title="net">net (1)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/powerpoint" title="powerpoint">powerpoint (1)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/powershell" title="powershell">powershell (1)</a>

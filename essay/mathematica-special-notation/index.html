@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Google Sites &#43; Google Analyticsで「サイト上のデータ表示」は要注意</title>
+<title>Mathematicaの特殊・省略記法一覧</title>
 <meta name="description" content="自転車ツーリングの記録やソフトウェアの配布、Mathematicaをメインにしたプログラミングの覚書や日ごろの雑感など。">
 <meta name="generator" content="Hugo 0.40.1" />
 
@@ -50,103 +50,153 @@ ga('send', 'pageview');
 <div class="main-content content" role="main" itemprop="mainContentOfPage">
 	<article class="post">
 		<header class="post__header clearfix">
-			<h1 class="post__title">Google Sites &#43; Google Analyticsで「サイト上のデータ表示」は要注意</h1>
+			<h1 class="post__title">Mathematicaの特殊・省略記法一覧</h1>
 			<p class="post__meta meta">
 				<svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
-				<time class="post__meta-date" datetime="2009-11-15T00:00:00">November 15, 2009</time>
+				<time class="post__meta-date" datetime="2018-05-22T04:34:15">May 22, 2018</time>
 				<span class="post__meta-categories meta-categories">
 					<svg class="icon icon-category" height="16" viewBox="0 0 16 16" width="16" xmlns="http://www.w3.org/2000/svg"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
 					<a class="meta-categories__link" href="/categories/%e9%9b%91%e8%a8%98%e5%b8%b3" rel="category">雑記帳</a></span>
 			</p>
 		</header>
 		<div class="post__content clearfix">
-			<p>Google SitesではGoogle Analyticsを用いる設定が簡単にできるが、Google Analyticsの「サイト上のデータ表示」を行うと「閉じる」をクリックしても何の反応がない。
-画面にレイヤーが重なっていろいろなデータが表示されてしまう状態から抜けられない。</p>
+			
 
-<p>ネットを調べたところ、「閉じる」が見つからないために同じような現象に遭遇している事例は見つかったが、
-「閉じる」をクリックしても、</p>
+<p>Mathematicaの省略記法はドキュメントやヘルプで調べにくいのでまとめてみる。</p>
 
-<pre><code class="language-js">_siteOverlay._close()
+<h2 id="関数適用">関数適用</h2>
+
+<h3 id="前置記法">@ (前置記法)</h3>
+
+<p><code>f@a</code>は<code>f[a]</code>と等価。
+後ろのカッコ(<code>]</code>)を入力しなくてもすむ。</p>
+
+<pre><code class="language-Mathematica">Plot[Evaluate@Integrate[x^2, x], {x, -3, 3}]
 </code></pre>
 
-<p>をアドレスバーに打ち込んでもダメだった。
-おそらくGoogle Sitesを利用している場合特有の現象なのだろう。</p>
+<h3 id="後置記法">// (後置記法)</h3>
 
-<p>この現象が発生することを確認したブラウザは</p>
+<p><code>a // f</code>は<code>f[a]</code>と等価。
+数値にする(<code>N</code>)や簡約化(<code>Simplify</code>、<code>FullSimplify</code>)でよく使う。</p>
 
-<ul>
-<li>Google Chrome 4.0.237.0</li>
-<li>Mozilla Firefox 3.5.5</li>
-<li>Opera 10</li>
-<li>Internet Explorer 8</li>
-</ul>
+<pre><code class="language-Mathematica">In[1]:= Sin[2] // N
 
-<p>で、いずれもOSはWindows Vista(32ビット)。ちなみにIE8ではレイアウトも崩れていた。</p>
-
-<p>仕方がないので_siteOverlay.close()の中身をちょっと調べた。</p>
-
-<pre><code class="language-js">function () {
-    var domain, cookiePath;
-    if (GLOBAL_window._udo) {
-        domain = GLOBAL_window._udo;
-    } else if (GLOBAL_window._gat &amp;&amp; GLOBAL_window._gat._gasoDomain) {
-        domain = GLOBAL_window._gat._gasoDomain;
-    }
-    if (domain) {
-        domain = domain[$$PROP_replace](&quot;domain=&quot;, &quot;&quot;)[$$PROP_replace](&quot;;&quot;, &quot;&quot;)[$$PROP_replace](/ /g, &quot;&quot;);
-    }
-    if (GLOBAL_window._utcp) {
-        cookiePath = GLOBAL_window._utcp;
-    } else if (GLOBAL_window._gat &amp;&amp; GLOBAL_window._gat._gasoCPath) {
-        cookiePath = GLOBAL_window._gat._gasoCPath;
-    }
-    if (domain &amp;&amp; cookiePath) {
-        goog.net.cookies[$$PROP_remove](&quot;GASO&quot;, cookiePath, &quot;.&quot; + domain);
-        GLOBAL_window.parent &amp;&amp; GLOBAL_window.close();
-        var idx = GLOBAL_document[$$PROP_location][$$PROP_href][$$PROP_indexOf](&quot;#gaso=&quot;);
-        if (idx &gt; -1) {
-            var href = GLOBAL_document[$$PROP_location][$$PROP_href][$$PROP_substring](0, idx);
-            GLOBAL_document[$$PROP_location][$$PROP_replace](href);
-        } else {
-            GLOBAL_document[$$PROP_location].reload();
-        }
-    }
-}
+Out[1]= 0.909297
 </code></pre>
 
-<p>このうち、</p>
+<h3 id="中置記法">~ ~ (中置記法)</h3>
 
-<pre><code class="language-js">GLOBAL_window._gat._gasoCPath
+<p><code>a~f~b</code>とすると、<code>f[a, b]</code>と等価になる。</p>
+
+<pre><code class="language-Mathematica">In[1]:= {1, 2}~Join~{3, 4}
+
+Out[1]= {1, 2, 3, 4}
 </code></pre>
 
-<p>が空文字列になってしまっているために、Cookieが削除されずに残ってしまうようだ。</p>
+<h2 id="関数適用-1">関数適用</h2>
 
-<p>なぜそうなってしまうのかは面倒なので調べていないが、とりあえず対処方法としては該当するCookieを削除してしまえばよいということになる。
-ドメインにあるクッキーのうち</p>
+<h3 id="function">&amp;, #, ### (Function)</h3>
 
-<ul>
-<li>GASO</li>
-<li>aftzc</li>
-</ul>
+<p>純関数。<code>#1</code>、<code>#2</code>・・・が引数を表す。<code>#</code>は<code>#1</code>と同じ。
+<code>#0</code>は関数自体表す。<code>##</code>は引数全体。</p>
 
-<p>という名前のCookieが追加されていたので、これらを削除する。</p>
+<p>関数型プログラミングの基本。</p>
 
-<p>ようやく解放された。</p>
+<pre><code class="language-Mathematica">In[1]:= If[#1 == 1, 1, #1 #0[#1 - 1]] &amp;[10]
 
-<p>これからは「サイト上のデータ表示」はクリックしないように気をつけよう。</p>
+Out[1]= 3628800
+</code></pre>
+
+<h3 id="map">/@ (Map)</h3>
+
+<p><code>f /@ {1, 2, 3, 4}</code>は<code>Map[f, {1, 2, 3, 4}]</code>と等価。
+関数型プログラミングの基本。</p>
+
+<pre><code class="language-Mathematica">In[1]:= f /@ {a, b, c, d}
+
+Out[1]= {f[a], f[b], f[c], f[d]}
+</code></pre>
+
+<h3 id="mapall">//@ (MapAll)</h3>
+
+<p><code>f /@@ {1, 2, 3, 4}</code>とすると、<code>MapAll[f, {1, 2, 3, 4}]</code>と等価。
+あまり使わない。</p>
+
+<h3 id="apply">@@ (Apply)</h3>
+
+<p><code>f @@ g[a]</code>とすると、<code>g[a]</code>の頭部<code>g</code>を<code>f</code>に置き換えて<code>f[a]</code>となる。
+<code>g</code>が<code>List</code>に対して、いろいろ使うことが多い。</p>
+
+<pre><code class="language-Mathematica">In[1]:= Or @@ {False, False, True}
+
+Out[1]= True
+</code></pre>
+
+<h3 id="apply-1">@@@ (Apply)</h3>
+
+<p>レベル1の部分に<code>Apply</code>され、<code>Apply[f, exp, {1}]</code>と等価。
+これもよく使う。</p>
+
+<pre><code class="language-Mathematica">In[1]:= f @@@ {{a, b}, {c, d}}
+
+Out[1]= {f[a, b], f[c, d]}
+</code></pre>
+
+<h3 id="replaceall">/. (ReplaceAll)</h3>
+
+<p><code>exp /. a -&gt; b</code>で<code>exp</code>中の<code>a</code>を<code>b</code>に置換する。
+Solveなどで得られた解を利用するときによく使う。</p>
+
+<pre><code class="language-Mathematica">In[1]:= ans = Solve[a x^2 + b x + c == 0, x];
+x /. ans
+
+Out[1]= {(-b - Sqrt[b^2 - 4 a c])/(2 a), (-b + Sqrt[b^2 - 4 a c])/(2 a)}
+</code></pre>
+
+<h3 id="replacerepeated">//. (ReplaceRepeated)</h3>
+
+<p><code>exp //. a -&gt; b</code>は<code>exp /. a -&gt; b</code>が変わらなくなるまで繰り返す。</p>
+
+<h2 id="数値表記">数値表記</h2>
+
+<h3 id="指数表記">*^ (指数表記)</h3>
+
+<p><code>a*^xxx</code>で<code>a * 10^xxx</code>と等価。</p>
+
+<pre><code class="language-Mathematica">In[1]:= 2*^10
+
+Out[1]= 20000000000
+</code></pre>
+
+<h3 id="baseform">^^ (BaseForm)</h3>
+
+<p><code>a^^xxxx</code>でa進数表記。</p>
+
+<pre><code class="language-Mathematica">In[1]:= 16^^faceb00c
+
+Out[1]= 4207849484
+</code></pre>
+
+<h2 id="その他">その他</h2>
+
+<p>ここに紹介したもの以外にパターンの表記などがあるが、
+パターンの表記はほとんど省略記法しか使わない。</p>
 
 		</div>
 		
+<div class="post__tags tags clearfix">
+	<svg class="icon icon-tag" width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="m4.73135 3.3795002q0-.5597-.39604-.9557-.39604-.3961-.95577-.3961-.55974 0-.95578.3961-.39604.396-.39604.9557 0 .5598.39604.9558.39604.3961.95578.3961.55973 0 .95577-.3961.39604-.396.39604-.9558zm11.26865 6.0832q0 .5596998-.39076.9504998l-5.18548 5.196q-.41188.3908-.9610504.3908-.55974 0-.9505-.3908l-7.5511496-7.5616998q-.40132-.3907-.68119-1.0666-.27987-.6759-.27987-1.2357v-4.3934q0-.54920004.40132-.95050004.40132-.4013.9505-.4013h4.39339q.55974 0 1.23565.2799.67591.2798 1.07723.6812l7.55115 7.54060004q.39076.4118.39076.961z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item"><a class="tags__link" href="/tags/mathematica/" rel="tag">Mathematica</a></li>
+	</ul>
+</div>
 
 	</article>
 	
 	
 <nav class="post-nav row clearfix" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
 	<div class="post-nav__item post-nav__item--prev col-1-2">
-		<a class="post-nav__link" href="/essay/takakugatanonaigaihantei/" rel="prev"><span class="post-nav__caption">«Previous</span><p class="post-nav__post-title">多角形の内外判定</p></a>
-	</div>
-	<div class="post-nav__item post-nav__item--next col-1-2">
-		<a class="post-nav__link" href="/essay/extend-import-and-export-of-mathematica7/" rel="next"><span class="post-nav__caption">Next»</span><p class="post-nav__post-title">Mathematica 7でImportおよびExportを拡張する</p></a>
+		<a class="post-nav__link" href="/essay/text_garbled_in_snap_apps_in_ubuntu_18_04/" rel="prev"><span class="post-nav__caption">«Previous</span><p class="post-nav__post-title">Ubuntu 18.04 LTSで文字化けしたSnapアプリをなんとかして使う</p></a>
 	</div>
 </nav>
 

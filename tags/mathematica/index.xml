@@ -6,10 +6,25 @@
     <description>Recent content in Mathematica on 330k info</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Thu, 21 Dec 2017 00:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Tue, 22 May 2018 04:34:15 +0900</lastBuildDate>
     
 	<atom:link href="https://www.330k.info/tags/mathematica/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Mathematicaの特殊・省略記法一覧</title>
+      <link>https://www.330k.info/essay/mathematica-special-notation/</link>
+      <pubDate>Tue, 22 May 2018 04:34:15 +0900</pubDate>
+      
+      <guid>https://www.330k.info/essay/mathematica-special-notation/</guid>
+      <description>Mathematicaの省略記法はドキュメントやヘルプで調べにくいのでまとめてみる。
+関数適用 @ (前置記法) f@aはf[a]と等価。 後ろのカッコ(])を入力しなくてもすむ。
+Plot[Evaluate@Integrate[x^2, x], {x, -3, 3}]  // (後置記法) a // fはf[a]と等価。 数値にする(N)や簡約化(Simplify、FullSimplify)でよく使う。
+In[1]:= Sin[2] // N Out[1]= 0.909297  ~ ~ (中置記法) a~f~bとすると、f[a, b]と等価になる。
+In[1]:= {1, 2}~Join~{3, 4} Out[1]= {1, 2, 3, 4}  関数適用 &amp;amp;, #, ### (Function) 純関数。#1、#2・・・が引数を表す。#は#1と同じ。 #0は関数自体表す。##は引数全体。
+関数型プログラミングの基本。
+In[1]:= If[#1 == 1, 1, #1 #0[#1 - 1]] &amp;amp;[10] Out[1]= 3628800  /@ (Map) f /@ {1, 2, 3, 4}はMap[f, {1, 2, 3, 4}]と等価。 関数型プログラミングの基本。</description>
+    </item>
     
     <item>
       <title>GeForce 1060搭載ノートPCにUbuntu 17.10 &#43; NVIDIAドライバ &#43; CUDA &#43; Mathematia 8をインストール</title>

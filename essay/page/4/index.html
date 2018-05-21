@@ -54,6 +54,34 @@ ga('send', 'pageview');
 	<div class="list__content clearfix">
 		<header class="list__header">
 			<h3 class="list__title post__title ">
+				<a href="/essay/upload_recorded_mp3_files_to_youtube/" rel="bookmark">秘密録音した音声ファイルをYoutubeにバックアップ</a>
+			</h3>
+			<div class="list__meta meta">
+				<svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
+				<time class="list__meta-date" datetime="2015-10-15T00:00:00">October 15, 2015</time>
+			</div>
+		</header>
+		<div class="list__excerpt">
+			私はパワハラ対策として、毎日ICレコーダーを使って秘密録音を実施している。 ただ、毎日10時間を超える録音時間のため、32kbpsで録音しても1日あたり200MB弱の音声ファイルがHDDに追加されていき、HDDの容量を圧迫していく。
+そこで、バックアップを兼ねて動画化してYoutubeにアップロードするようにし、 HDDの空き容量が減ってきたらオリジナルの録音ファイルを消去していくことにした。
+ffmpegを使い、以下の手順で実施する。
+ 適当に画像ファイルを作成する 画像ファイルから無音声の動画ファイル(再生時間24時間)を作成する 無音声の動画ファイルと、毎日録音した音声ファイルを結合する 結合した動画ファイルをYoutubeにアップロード  具体的には、適当にblank.pngという名前で640x480とか好みのサイズで画像を作成し、以下のコマンドで24時間の無音声動画ファイル(blank24.mov)を作成。
+ffmpeg -y -loop 1 -r 1 -i blank.png -t 86400 blank24.mov  これでフレームレート1 fps、動画時間が24時間(86400秒)の無音声動画ファイルblank24.movができる。 私の環境では5分程度かかったが、このファイルは1度作っておけば何度でも使えるので、最初の1回だけ待てば良い。
+次に、この無音声の動画ファイル(blank24.mov)と、録音した音声ファイル(input.mp3)を結合する。
+ffmpeg -y -i blank24.mov -i input.mp3 -vcodec copy -acodec copy -shortest output.mov  -shortestオプションを加えているので、24時間のblank24.movと音声ファイルの時間のうち、短い方の時間でoutput.movが作成される。
+動画になったことにより、元のMP3ファイルよりもファイルサイズが1割ほど増える。 私の環境では12時間程度録音したものからでも1分程度のエンコード時間で動画ファイルを作成できた。
+ちなみに出来上がりの動画ファイルのコンテナがMOVなのは、録音した音声ファイルの拡張子が、 ICレコーダーで録音したMP3、Androidの録音アプリのmp4、iPhoneの録音アプリのm4aと3種類あったため、 それと競合しないコンテナ形式を選んだ。
+また、無音声動画ファイル(blank24.mov)を作成せず、1コマンドで静止画と音声ファイルを結合することも可能だが、 都度動画部分のエンコードが発生するため時間がかかる。
+毎日音声ファイルが増えていくような状況では、予め無音声動画ファイルをつくっておき、 -vcodec copyとすることで再エンコードを省略すれば、毎日の処理が高速化できる。
+ただし、Youtubeの制限により、15分の制限を解除したアカウントでも、動画の最長時間は12時間に制限される。 したがって、私は以下のようなシェルスクリプトを書いて実行している。
+#!/bin/bash find ./ -iname &quot;*.mp3&quot; -o -iname &quot;*.mp4&quot; -o -iname &quot;*.m4a&quot; | while read i do hour=`ffmpeg -i &quot;$i&quot; 2&gt;&amp;1 &lt; /dev/null | grep Duration | sed -E &quot;s/.
+		</div>
+	</div>
+</article>
+<article class="list__item post clearfix">
+	<div class="list__content clearfix">
+		<header class="list__header">
+			<h3 class="list__title post__title ">
 				<a href="/essay/augue-against-power-harassment-bully/" rel="bookmark">言いがかりを付けられたので切り返してみた</a>
 			</h3>
 			<div class="list__meta meta">
@@ -313,34 +341,6 @@ Frame -&gt; True  を指定して枠のついたグラフにする。
 		</div>
 	</div>
 </article>
-<article class="list__item post clearfix">
-	<div class="list__content clearfix">
-		<header class="list__header">
-			<h3 class="list__title post__title ">
-				<a href="/essay/implement_perceptron_and_backpropagation_with_mathematica/" rel="bookmark">Mathematicaでパーセプトロンとバックプロパゲーション</a>
-			</h3>
-			<div class="list__meta meta">
-				<svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
-				<time class="list__meta-date" datetime="2014-07-14T00:00:00">July 14, 2014</time>
-			</div>
-		</header>
-		<div class="list__excerpt">
-			拙作のリバーシプログラムViglaは高校時代に作ったものだが、 評価関数は手の広さと辺の形を適当に数値化したものであるためにあまり強いプログラムにはできなかった。
-当時から強いリバーシプログラムは辺や隅のパターンを評価していることは知ってはいたものの、理解出来ずじまいだった。
-今回もう一度挑戦してみようと思い、まずはMathematicaでパーセプトロンとバックプロパゲーションによる学習を実装してみた。
-簡単のため、出力関数としてはシグモイド関数のみに限定した(一般の関数にできるようにするには、各層のネット値を別に保存する必要があり、煩雑だったため)。 しかしながら、任意の隠し層の数やニューロン数に対応できるように実装した。
-というわけで、まずはシグモイド関数と順方向演算を定義。
-f[x_] := 1/(1 + Exp[-x]); perceptron[w : {__}][x_] := FoldList[(f /@ (Append[#1, 1].#2)) &amp;, x, w];  wが各層の重み行列のリストで、MathematicaならFoldListを使って1行で順方向演算が定義できる。 Mathematicaでは添字が1から始まるので、通常wi0で表されることが多いバイアス成分は一番最後に置いた。
-次に、重み行列をランダムに初期化したパーセプトロンを返す関数として、以下のcreatePerceptronを定義。
-createPerceptron[dimensions_, range_] := perceptron[MapThread[ RandomReal[range, {#1, #2}] &amp;, {Most[dimensions] + 1, Rest[dimensions]}]]  dimensionsは各層のニューロン数で、乱数の範囲をrangeで指定する。
-例えば、入力層のニューロン数が2、隠し層のニューロン数が2、出力層のニューロン数が1の3層パーセプトロンで、 重みが-0.2から0.2までの乱数となるパーセプトロンは、以下のようにして得られる。
-p = createPerceptron[{2, 2, 1}, {-0.2, 0.2}]  この初期状態で、入力層に{0, 0}を与えた時の出力は、
-p[{0, 0}] {{0, 0}, {0.512507, 0.510116}, {0.497566}}  となる。2番目の要素が隠し層の値で、最後の{0.497566}が出力層の値である。
-次に、バックプロパゲーションによる学習を実装する。
-backPropagation[pct : perceptron[w : {__}], x_List, teach_List, rate_: 1] := Module[{out, \[Delta], \[Delta]n, \[CapitalDelta]w}, out = pct[x]; \[Delta]n = With[{y = Last[out]}, (teach - y) y (1 - y)]; \[Delta] = Reverse@FoldList[(Most[#2[[2]]].
-		</div>
-	</div>
-</article>
 
 
 		
@@ -369,6 +369,7 @@ backPropagation[pct : perceptron[w : {__}], x_List, teach_List, rate_: 1] := Mod
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/essay/mathematica-special-notation/">Mathematicaの特殊・省略記法一覧</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/text_garbled_in_snap_apps_in_ubuntu_18_04/">Ubuntu 18.04 LTSで文字化けしたSnapアプリをなんとかして使う</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20180427-28_kagoshima/">2018年4月27日〜28日 鹿児島</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/letsencrypt-ubuntu-1604/">Ubuntu 16.04 &#43; Apache 2.4にLet&#39;s Encryptを設定する</a></li>
@@ -378,7 +379,6 @@ backPropagation[pct : perceptron[w : {__}], x_List, teach_List, rate_: 1] := Mod
 			<li class="widget__item"><a class="widget__link" href="/essay/measure_video_events_with_google_analytics/">Google Analyticsで動画(Video要素)のイベントを計測</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/delete_temporary_files_with_powershell/">Officeの一時ファイルやThumbs.dbなどをPowerShellで一掃</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/scramble_unicode_lro_rlo/">Unicode制御文字(LRO, RLO)でコピー・改変を防止 (構想)</a></li>
-			<li class="widget__item"><a class="widget__link" href="/essay/move_to_github_pages_hugo_from_google_sites/">Hugo &#43; GitHub Pages &#43; CloudFlareにGoogleサイトから移転</a></li>
 		</ul>
 	</div>
 </div>
@@ -426,7 +426,7 @@ backPropagation[pct : perceptron[w : {__}], x_List, teach_List, rate_: 1] := Mod
 		<a class="widget__link widget__link--taglist" href="/tags/java" title="java">java (2)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/javascript" title="javascript">javascript (5)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/linux" title="linux">linux (1)</a>
-		<a class="widget__link widget__link--taglist" href="/tags/mathematica" title="mathematica">mathematica (19)</a>
+		<a class="widget__link widget__link--taglist" href="/tags/mathematica" title="mathematica">mathematica (20)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/net" title="net">net (1)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/powerpoint" title="powerpoint">powerpoint (1)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/powershell" title="powershell">powershell (1)</a>
