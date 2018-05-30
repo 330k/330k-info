@@ -54,6 +54,27 @@ ga('send', 'pageview');
 	<div class="list__content clearfix">
 		<header class="list__header">
 			<h3 class="list__title post__title ">
+				<a href="/essay/earth_radius/" rel="bookmark">地球の大きさ(周長や半径)を覚える必要はない</a>
+			</h3>
+			<div class="list__meta meta">
+				<svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
+				<time class="list__meta-date" datetime="2018-05-30T20:06:18">May 30, 2018</time>
+			</div>
+		</header>
+		<div class="list__excerpt">
+			ある書物で、地球の半径を東大生の何割かがオーダーが違うレベルで間違う、ということが書いてあった(誰の著作だったか忘れてしまった・・・)。
+ただ、地球の周長や半径の概数は、暗記する必要はまったくない。
+なぜなら、「1キロメートルの基準が、赤道から北極までの長さの1万分の1」としてメートル法が決められたから。
+だから、地球一周は4倍の約40,000 km。半径は円周率で割って約6,400 kmというのは計算で出せる。
+正確な数値としては、極周長が40,075 km、赤道周長が39,941 km、半径が6,357 km。
+ちなみに、メートル法が地球を基準にしたのは、 フランス革命後にそれまでの為政者が使用させていた単位(インチやフィートは指や足の長さが由来)をやめて、 全世界で共通で使える単位を作ろう、という目的でメートル法が作られたから。
+		</div>
+	</div>
+</article>
+<article class="list__item post clearfix">
+	<div class="list__content clearfix">
+		<header class="list__header">
+			<h3 class="list__title post__title ">
 				<a href="/essay/mathematica-special-notation/" rel="bookmark">Mathematicaの特殊・省略記法一覧</a>
 			</h3>
 			<div class="list__meta meta">
@@ -256,39 +277,11 @@ iPhoneのメッセージ、メール、GmailはいずれもOK。
 		</div>
 	</div>
 </article>
-<article class="list__item post clearfix">
-	<div class="list__content clearfix">
-		<header class="list__header">
-			<h3 class="list__title post__title ">
-				<a href="/essay/move_to_github_pages_hugo_from_google_sites/" rel="bookmark">Hugo &#43; GitHub Pages &#43; CloudFlareにGoogleサイトから移転</a>
-			</h3>
-			<div class="list__meta meta">
-				<svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
-				<time class="list__meta-date" datetime="2017-08-08T19:24:04">August 08, 2017</time>
-			</div>
-		</header>
-		<div class="list__excerpt">
-			今まで独自ドメインでGoogleサイトを利用してきたが、
- 「新しいGoogleサイト」の機能が全然ダメ(特にガジェットが使えなくなる)で使い物にならない Google自身が推進している常時SSL化も独自ドメインでは機能しない(正確にはMixed Contentsを修正できない) 無駄に色々と読み込むせいで遅い  ということで他のサービスへの移転を決断。
-AWSやGCP上に構築することも考えたものの、 大したPVでもないので無料で使える組み合わせとして、以下の構成にした。
- Hugoを使って静的にサイトを生成 GitHub Pagesにアップロード CloudFlareを使って常時HTTPS化に対応  Hugo + GitHub Pagesの部分は Hugo + Github Pagesでブログを公開してみた を参考にした。
-Hugo Ubuntuではapt-getでHugoをインストールできる(最新版とは限らないので注意)。
-$ sudo apt-get install hugo  テーマは、少し古いバージョンのHugoでも動作するMainroadに決定。 後は以下の作業を実施。
- 今までGoogleサイトのガジェットで行っていたGoogle MapsでのKMLファイルの表示を行うShortcodeを作成。 CSSファイルをいじって横幅を拡大。 コードのシンタックスハイライトを行うため、highlight.jsを読み込むようlayouts/partials/header.htmlを修正。  GitHub GitHubにGitHub Pages用のリポジトリとHugo自体のリポジトリを作成。
-ここでUser Pages(リポジトリ名: (ユーザ名).github.io)で作成し、 CNAMEファイルで独自ドメインを設定すると、 GitHubの他のリポジトリにも独自ドメインの設定が反映される。
-そのため、今まで(ユーザ名).github.io/(プロジェクト名)/のURLが (独自ドメイン)/(プロジェクト名)/にリダイレクトされるようになる。
-既存のプロジェクトページすべてのURLが変更になってしまうし、 今後ホスティング先をGitHub Pagesから別のサービスに移行するときにまた変更することになる。 そこでUser Pagesは作成せず、Project Pagesとして作成する。
-c.f. Custom domain redirects for GitHub Pages sites
-ページ移転作業 各ページを手作業でコピペ。 1日5ページ〜10ページくらい移行作業した。
-画像については、Chromeの開発者ツールで、
-		</div>
-	</div>
-</article>
 
 
 		
 <div class="pagination clearfix">
-	<span class="pagination__item pagination__item--current">1/6</span>
+	<span class="pagination__item pagination__item--current">1/7</span>
 	<a class="pagination__item pagination__item--next" href="/categories/%E9%9B%91%E8%A8%98%E5%B8%B3/page/2/">»</a>
 </div>
 
@@ -311,6 +304,7 @@ c.f. Custom domain redirects for GitHub Pages sites
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/essay/earth_radius/">地球の大きさ(周長や半径)を覚える必要はない</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/mathematica-special-notation/">Mathematicaの特殊・省略記法一覧</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/text_garbled_in_snap_apps_in_ubuntu_18_04/">Ubuntu 18.04 LTSで文字化けしたSnapアプリをなんとかして使う</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20180427-28_kagoshima/">2018年4月27日〜28日 鹿児島</a></li>
@@ -320,7 +314,6 @@ c.f. Custom domain redirects for GitHub Pages sites
 			<li class="widget__item"><a class="widget__link" href="/essay/logging_shared_pc_user/">共有PCの実際の使用者を記録する</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/measure_video_events_with_google_analytics/">Google Analyticsで動画(Video要素)のイベントを計測</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/delete_temporary_files_with_powershell/">Officeの一時ファイルやThumbs.dbなどをPowerShellで一掃</a></li>
-			<li class="widget__item"><a class="widget__link" href="/essay/scramble_unicode_lro_rlo/">Unicode制御文字(LRO, RLO)でコピー・改変を防止 (構想)</a></li>
 		</ul>
 	</div>
 </div>
@@ -384,6 +377,7 @@ c.f. Custom domain redirects for GitHub Pages sites
 		<a class="widget__link widget__link--taglist" href="/tags/%e7%94%9f%e6%b4%bb" title="生活">生活 (1)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/%e7%a4%be%e5%86%85se" title="社内se">社内se (15)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/%e8%87%aa%e8%bb%a2%e8%bb%8a" title="自転車">自転車 (9)</a>
+		<a class="widget__link widget__link--taglist" href="/tags/%e9%9b%91%e5%ad%a6" title="雑学">雑学 (1)</a>
 	</div>
 </div>
 </aside>

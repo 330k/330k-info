@@ -6,10 +6,24 @@
     <description>Recent content in Essays on 330k info</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Tue, 22 May 2018 04:34:15 +0900</lastBuildDate>
+    <lastBuildDate>Wed, 30 May 2018 20:06:18 +0900</lastBuildDate>
     
 	<atom:link href="https://www.330k.info/essay/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>地球の大きさ(周長や半径)を覚える必要はない</title>
+      <link>https://www.330k.info/essay/earth_radius/</link>
+      <pubDate>Wed, 30 May 2018 20:06:18 +0900</pubDate>
+      
+      <guid>https://www.330k.info/essay/earth_radius/</guid>
+      <description>ある書物で、地球の半径を東大生の何割かがオーダーが違うレベルで間違う、ということが書いてあった(誰の著作だったか忘れてしまった・・・)。
+ただ、地球の周長や半径の概数は、暗記する必要はまったくない。
+なぜなら、「1キロメートルの基準が、赤道から北極までの長さの1万分の1」としてメートル法が決められたから。
+だから、地球一周は4倍の約40,000 km。半径は円周率で割って約6,400 kmというのは計算で出せる。
+正確な数値としては、極周長が40,075 km、赤道周長が39,941 km、半径が6,357 km。
+ちなみに、メートル法が地球を基準にしたのは、 フランス革命後にそれまでの為政者が使用させていた単位(インチやフィートは指や足の長さが由来)をやめて、 全世界で共通で使える単位を作ろう、という目的でメートル法が作られたから。</description>
+    </item>
     
     <item>
       <title>Mathematicaの特殊・省略記法一覧</title>
