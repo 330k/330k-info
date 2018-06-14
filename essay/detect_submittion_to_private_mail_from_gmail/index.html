@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Gmail (G Suite)でフリーメールアドレスへの送信を検知</title>
 <meta name="description" content="自転車ツーリングの記録やソフトウェアの配布、Mathematicaをメインにしたプログラミングの覚書や日ごろの雑感など。">
-<meta name="generator" content="Hugo 0.41" />
+<meta name="generator" content="Hugo 0.42.1" />
 
 
 <link rel="stylesheet" href="/css/style.css" type="text/css" media="all" />
@@ -24,7 +24,7 @@ if (!doNotTrack) {
 	ga('send', 'pageview');
 }
 </script>
-<script async src='//www.google-analytics.com/analytics.js'></script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
 
 </head>
 <body class="body body-left-sidebar mobile" itemscope="itemscope" itemtype="http://schema.org/WebPage">
@@ -72,14 +72,14 @@ if (!doNotTrack) {
 <p>幸いPCで操作していたためPCのログ監視ソフト(SKYSEA Client View)で検知し、当該従業員に注意することができた。
 ただ、同じことを会社支給のiPhoneでやられた場合に無力だったことに気づいたので、G Suite側でも対策を実施。</p>
 
-<p>設定方法は以下の通り。</p>
+<h1 id="設定方法">設定方法</h1>
 
 <ol>
 <li>「管理コンソール」の「アプリ」→「Gmail」→「詳細設定」と進む</li>
 <li>「コンテンツ コンプライアンス」を追加</li>
 <li>影響を受けるメールは「送信」にチェック</li>
 <li>「次の一部がメールに一致する場合」を選択</li>
-<li>「任意のエンベロープ受信者」が「いずれかの単語に一致する」に<a href="http://powerbiz.jp/abiz/tips/archives/26/">http://powerbiz.jp/abiz/tips/archives/26/</a>
+<li>「任意のエンベロープ受信者」が「いずれかの単語に一致する」に<a href="http://powerbiz.jp/abiz/tips/archives/26/">【登録ページ作成TIPS】登録拒否設定用フリーメールドメインリスト</a>
 などから検知対象とするドメイン一覧を取得してスペース区切りにしたものを設定する
 (1000文字を超える場合は1000文字以内に収まるよう複数に分けて登録)
 
@@ -104,12 +104,28 @@ if (!doNotTrack) {
 <li>管理者用のGmailの設定で、8で設定したアドレスに来たものをフィルタしてラベルをつけるようにしておく</li>
 </ol>
 
-<h2 id="注意事項">注意事項</h2>
+<h1 id="注意事項">注意事項</h1>
 
 <ul>
 <li>設定ミスすると全ユーザのメールが影響を受けるので、テスト用のOUを作ってから検証してから全ユーザに適用する</li>
 <li>コンテンツコンプライアンスでは、クレジットカード番号やパスポート番号が含まれたメールを検知可能</li>
 <li>残念ながら執筆時点(Nov. 29 2016)では日本のマイナンバーの検知機能はない</li>
+</ul>
+
+<h1 id="プロモーションコード">プロモーションコード</h1>
+
+<p>もしGmailやG Suiteを導入予定であれば、以下のリンクからお願いします。</p>
+
+<p>またプロモーションコードを入力すると初年度の料金が20%割引されます。</p>
+
+<ul>
+<li><a href="https://goo.gl/mMg6b3">G Suiteのお申し込み</a></li>
+<li>プロモーションコード
+
+<ul>
+<li>G Suite Basic プラン: <code>YA3CFEWVCWTVM9A</code></li>
+<li>G Suite Business プラン: <code>Y9GNVRWQUGVTQEW</code></li>
+</ul></li>
 </ul>
 
 		</div>
