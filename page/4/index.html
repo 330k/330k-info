@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>330k info</title>
 <meta name="description" content="自転車ツーリングの記録やソフトウェアの配布、Mathematicaをメインにしたプログラミングの覚書や日ごろの雑感など。">
-<meta name="generator" content="Hugo 0.42.1" />
+<meta name="generator" content="Hugo 0.44" />
 
 <link rel="alternate" type="application/rss+xml" title="330k info Feed" href="https://www.330k.info/index.xml">
 <link rel="stylesheet" href="/css/style.css" type="text/css" media="all" />
@@ -52,6 +52,30 @@ if (!doNotTrack) {
 
 
 	<main class="main-content list content" role="main"><article class="list__item post clearfix">
+	<div class="list__content clearfix">
+		<header class="list__header">
+			<h3 class="list__title post__title ">
+				<a href="/essay/performance_degration_of_kanjo_bugyo/" rel="bookmark">勘定奉行の性能劣化に対処</a>
+			</h3>
+			<div class="list__meta meta">
+				<svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
+				<time class="list__meta-date" datetime="2016-11-06T17:22:00">November 06, 2016</time>
+			</div>
+		</header>
+		<div class="list__excerpt">
+			社内では会計システムに勘定奉行(ネットワーク版)を使っているが、 担当者から「勘定奉行で仕訳帳の表示に20秒くらいかかる」と言われたので調査してみた。
+その担当者のPC固有の問題かどうかを切り分けるため別のPCから同様の操作を行ってみたところ、同じ症状が発生した。 ということは、サーバ側に問題がありそう。
+勘定奉行のクライアントは生のSQL文をサーバに発行する仕組みなので、 Wiresharkでパケットをキャプチャすることで発行されたSQL文を把握することができる。
+その状態でサーバ側の負荷を測定してみると、特定のSQL文の処理に時間がかかっていることが分かった。
+勘定奉行ではSQL Serverをバックエンドに使っているので、 「SQL Server パフォーマンス」などでGoogle先生に聞いてみると、以下のページがヒット。
+どうする？ SQL Server のクエリ パフォーマンスが低下した！
+これに従い、サーバ上でSQL Server Management Studioを起動し、勘定奉行で使用しているデータベースで
+sp_updatestats  としたところ、1秒程度で処理が完了するようになった。 上記ページには各テーブル単位での統計情報更新や、実行プランの再作成、インデックスの再構築の方法も書かれているが、今回は行わなかった。
+このようにSQL文を直接叩きに行く方法は多分メーカ(OBC)では非推奨だと思うが、 クライアント側にsp_updatestatsを発行するメニューくらいつけてほしいものだ。
+		</div>
+	</div>
+</article>
+<article class="list__item post clearfix">
 	<figure class="list__thumbnail">
 		<a href="https://www.330k.info/essay/rescue_gps_log_from_binary_data_of_holux_m241/">
 			<img src="/essay/rescue_gps_log_from_binary_data_of_holux_m241/20160703_rescue_map.png" alt="m-241のバイナリデータからトラックログを吸い出す" />
@@ -263,40 +287,6 @@ Network Connect起動時に作成される仮想NICがメトリックで優先�
 		</div>
 	</div>
 </article>
-<article class="list__item post clearfix">
-	<figure class="list__thumbnail">
-		<a href="https://www.330k.info/essay/exchange-st-5703-to-sl-r400/">
-			<img src="/essay/exchange-st-5703-to-sl-r400/002.jpg" alt="ST-5703の変速機構が破損したのでWレバーに交換" />
-		</a>
-	</figure>
-	<div class="list__content clearfix">
-		<header class="list__header">
-			<h3 class="list__title post__title ">
-				<a href="/essay/exchange-st-5703-to-sl-r400/" rel="bookmark">ST-5703の変速機構が破損したのでWレバーに交換</a>
-			</h3>
-			<div class="list__meta meta">
-				<svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
-				<time class="list__meta-date" datetime="2015-11-08T02:43:00">November 08, 2015</time>
-			</div>
-		</header>
-		<div class="list__excerpt">
-			先月の軽井沢〜直江津のあと、2年ぶりに自転車をオーバーホールした。
-その一環でシフトワイヤーケーブルの交換を行ったところ、フロントディレイラーの調子がおかしい。
-フロントトリプルなので、インナー⇛センター⇛アウターは問題なく変速できるのだが、 アウター⇛センターに変速しようとすると、「バキッ、ガッチャン」と音がして、一気にインナーまで落ちてしまうか、 まったく変速操作を受け付けなくなるか、のどちらかの症状が発生。
-ネットで調べると、記 ： シマノ105 STI左レバー ST-5703不調 と同じように、ワイヤー先端のタイコが外れてしまっていた。
-何回ワイヤーのタイコの位置を直してもタイコが外れて変速操作の不調が治らない。 さて、何とかならないかと思いながら何回か変速操作をしていたところ、レバーの隙間から以下の写真のような部品が落ちてきた。
-  シマノの説明書を見ても該当する部品は見当たらないし、よく見ると穴の周囲は削れているし、 あれ？もしかして、完全に壊れちゃった？
-とはいえ、STIレバーは結構お値段がするもので、amazonで25000円くらいする。 それに今のコンポも6年目で走行距離が16000km程度(あまり走れていないな・・・)なので、そろそろ一式換装しようか、と考えていたところ。
-一式交換するとなると、11s対応のホイールも交換が必要になり20万円程度の出費を覚悟しなければならないし、 なによりせっかく来月の初めに取った遅めの夏休みに間に合わない。
-一晩考えた後、「フロントだけならWレバーでしばらく乗り切ってからコンポを一式換装しよう」ということにした。
-というわけで、早速amazonでSL-R400を購入。お盆だったがナチュラムからは翌日届いた。
-  早速説明書を読みながら取り付け。取り付け作業の中で、説明書から日本語のページを探すのが一番手間取った。
-あとはワイヤーの通し方の説明が全くないことに困惑(STIレバーの説明書には詳しく書いてあるのに)。 だが実物を見てみたら説明が不要なくらい簡単な構造であることが分かった。
-  手でクランクを回しながら変速操作をしてみると、フリクションの独特な操作感は確かにハマるものがある。 面倒なワイヤーの調整も不要。これは楽しいかもしれない。
-とりあえず来月に予定しているロングツーリングはこれで乗り切ってみる。
-		</div>
-	</div>
-</article>
 
 		
 
@@ -326,6 +316,7 @@ Network Connect起動時に作成される仮想NICがメトリックで優先�
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/essay/start-command-prompt-in-windows-10/">Windows 10でコマンドプロンプトを素早く起動する方法</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/earth_radius/">地球の大きさ(周長や半径)を覚える必要はない</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/mathematica-special-notation/">Mathematicaの特殊・省略記法一覧</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/text_garbled_in_snap_apps_in_ubuntu_18_04/">Ubuntu 18.04 LTSで文字化けしたSnapアプリをなんとかして使う</a></li>
@@ -335,7 +326,6 @@ Network Connect起動時に作成される仮想NICがメトリックで優先�
 			<li class="widget__item"><a class="widget__link" href="/essay/resize_and_pad_with_imagemagick/">ImageMagickでベクタ画像を綺麗な半透過PNGにする</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/logging_shared_pc_user/">共有PCの実際の使用者を記録する</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/measure_video_events_with_google_analytics/">Google Analyticsで動画(Video要素)のイベントを計測</a></li>
-			<li class="widget__item"><a class="widget__link" href="/essay/delete_temporary_files_with_powershell/">Officeの一時ファイルやThumbs.dbなどをPowerShellで一掃</a></li>
 		</ul>
 	</div>
 </div>
@@ -390,7 +380,7 @@ Network Connect起動時に作成される仮想NICがメトリックで優先�
 		<a class="widget__link widget__link--taglist" href="/tags/sql" title="sql">sql (3)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/ubuntu" title="ubuntu">ubuntu (9)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/vba" title="vba">vba (3)</a>
-		<a class="widget__link widget__link--taglist" href="/tags/windows" title="windows">windows (9)</a>
+		<a class="widget__link widget__link--taglist" href="/tags/windows" title="windows">windows (10)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/wsh" title="wsh">wsh (2)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/zabbix" title="zabbix">zabbix (1)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/%e3%82%a2%e3%83%ab%e3%82%b4%e3%83%aa%e3%82%ba%e3%83%a0" title="アルゴリズム">アルゴリズム (5)</a>

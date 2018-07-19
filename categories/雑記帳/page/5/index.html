@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>雑記帳</title>
 <meta name="description" content="自転車ツーリングの記録やソフトウェアの配布、Mathematicaをメインにしたプログラミングの覚書や日ごろの雑感など。">
-<meta name="generator" content="Hugo 0.42.1" />
+<meta name="generator" content="Hugo 0.44" />
 
 <link rel="alternate" type="application/rss+xml" title="330k info Feed" href="https://www.330k.info/categories/%E9%9B%91%E8%A8%98%E5%B8%B3/index.xml">
 <link rel="stylesheet" href="/css/style.css" type="text/css" media="all" />
@@ -55,6 +55,31 @@ if (!doNotTrack) {
 		<header class="page-header">
 			<h1 class="page-header__title">雑記帳</h1>
 		</header><article class="list__item post clearfix">
+	<figure class="list__thumbnail">
+		<a href="https://www.330k.info/essay/3d-graphics-not-showed-in-ubuntu-mathematica/">
+			<img src="/essay/3d-graphics-not-showed-in-ubuntu-mathematica/002.png" alt="3Dグラフィックスが正常に表示されない問題" />
+		</a>
+	</figure>
+	<div class="list__content clearfix">
+		<header class="list__header">
+			<h3 class="list__title post__title ">
+				<a href="/essay/3d-graphics-not-showed-in-ubuntu-mathematica/" rel="bookmark">3Dグラフィックスが正常に表示されない問題</a>
+			</h3>
+			<div class="list__meta meta">
+				<svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
+				<time class="list__meta-date" datetime="2015-01-09T00:00:00">January 09, 2015</time>
+			</div>
+		</header>
+		<div class="list__excerpt">
+			たまたま私の環境の問題かもしれないが、
+ Intel Core-i7 3770 Ubuntu 14.04 LTS Mathematica 8.0.4 Home Edition  という環境で、Mathematicaのノートブック上でPlot3DなどのGraphics3Dオブジェクトが、 うまく表示できないことに悩まされていたが、その解決法が分かった。
+メニューの「編集」→「環境設定」から、「詳細」タブを開き、「オプションインスペクタを開く」をクリック。
+  オプションインスペクタでは「グラフィックス設定」「RenderingOptions」内の&rdquo;Graphics3DRenderingEngine&rdquo;を デフォルトの&rdquo;Automatic&rdquo;から&rdquo;Software&rdquo;に変更する。
+  私の場合は以上で上手く行った。 Windowsではこのようなことはなかったのだが・・・。
+		</div>
+	</div>
+</article>
+<article class="list__item post clearfix">
 	<figure class="list__thumbnail">
 		<a href="https://www.330k.info/essay/how-to-create-graphs-for-papers-with-mathematica/">
 			<img src="/essay/how-to-create-graphs-for-papers-with-mathematica/graph001.png" alt="Mathematicaで論文用の図やグラフを作成するときのまとめ" />
@@ -279,24 +304,6 @@ Thank you for your report and we look forward to a continued, productive relatio
 		</div>
 	</div>
 </article>
-<article class="list__item post clearfix">
-	<div class="list__content clearfix">
-		<header class="list__header">
-			<h3 class="list__title post__title ">
-				<a href="/essay/format-floating-number-for-s-dyna-with-java/" rel="bookmark">LS-DYNA用の浮動小数点数をフォーマット</a>
-			</h3>
-			<div class="list__meta meta">
-				<svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
-				<time class="list__meta-date" datetime="2012-08-25T08:56:00">August 25, 2012</time>
-			</div>
-		</header>
-		<div class="list__excerpt">
-			LS-DYNAのキーワードファイルを書きだすプログラムを書いたところ、浮動小数点数を固定文字数(10文字)にフォーマットする所でつまづいた。 具体的には
- String.formatやDecimalFormatの動作が遅い(String.formatよりはDecimalFormatのほうが速いが) 文字数を10文字に制限することが難しい(絶対値の大小比較を行なって桁数ごとに条件分岐をしても、四捨五入によって意図しない文字数(11文字)になる)  という問題にあたった。そこでdoubleから長さ10の文字列を力技で書きだすロジックを自作した。特徴は以下の通り。
- 正の時は先頭にスペース、負の時は先頭に&rdquo;-&ldquo;を入れる 10文字の制限の中で最も有効桁数が大きくなるようにフォーマット 四捨五入はしない！ DecimalFormatの15倍高速(もう少し工夫はできるが)  private static String formatFloat10(double d){ char[] c = new char[10]; double a; if(d == 0.0){ return &quot; 0.0000000&quot;; } if(d &lt; 0){ c[0] = '-'; a = -d; }else{ c[0] = ' '; a = d; } int m = (int)Math.floor(Math.log10(a)); if(m &lt;= -100){ for(int i = 1; i &lt; 1 - m; i++) a *= 10; c[1] = (char)('0' + Math.
-		</div>
-	</div>
-</article>
 
 
 		
@@ -325,6 +332,7 @@ Thank you for your report and we look forward to a continued, productive relatio
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/essay/start-command-prompt-in-windows-10/">Windows 10でコマンドプロンプトを素早く起動する方法</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/earth_radius/">地球の大きさ(周長や半径)を覚える必要はない</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/mathematica-special-notation/">Mathematicaの特殊・省略記法一覧</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/text_garbled_in_snap_apps_in_ubuntu_18_04/">Ubuntu 18.04 LTSで文字化けしたSnapアプリをなんとかして使う</a></li>
@@ -334,7 +342,6 @@ Thank you for your report and we look forward to a continued, productive relatio
 			<li class="widget__item"><a class="widget__link" href="/essay/resize_and_pad_with_imagemagick/">ImageMagickでベクタ画像を綺麗な半透過PNGにする</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/logging_shared_pc_user/">共有PCの実際の使用者を記録する</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/measure_video_events_with_google_analytics/">Google Analyticsで動画(Video要素)のイベントを計測</a></li>
-			<li class="widget__item"><a class="widget__link" href="/essay/delete_temporary_files_with_powershell/">Officeの一時ファイルやThumbs.dbなどをPowerShellで一掃</a></li>
 		</ul>
 	</div>
 </div>
@@ -389,7 +396,7 @@ Thank you for your report and we look forward to a continued, productive relatio
 		<a class="widget__link widget__link--taglist" href="/tags/sql" title="sql">sql (3)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/ubuntu" title="ubuntu">ubuntu (9)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/vba" title="vba">vba (3)</a>
-		<a class="widget__link widget__link--taglist" href="/tags/windows" title="windows">windows (9)</a>
+		<a class="widget__link widget__link--taglist" href="/tags/windows" title="windows">windows (10)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/wsh" title="wsh">wsh (2)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/zabbix" title="zabbix">zabbix (1)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/%e3%82%a2%e3%83%ab%e3%82%b4%e3%83%aa%e3%82%ba%e3%83%a0" title="アルゴリズム">アルゴリズム (5)</a>

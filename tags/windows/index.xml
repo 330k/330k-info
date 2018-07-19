@@ -6,10 +6,24 @@
     <description>Recent content in Windows on 330k info</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Thu, 27 Jul 2017 21:21:29 +0900</lastBuildDate>
+    <lastBuildDate>Tue, 17 Jul 2018 07:03:25 +0900</lastBuildDate>
     
 	<atom:link href="https://www.330k.info/tags/windows/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Windows 10でコマンドプロンプトを素早く起動する方法</title>
+      <link>https://www.330k.info/essay/start-command-prompt-in-windows-10/</link>
+      <pubDate>Tue, 17 Jul 2018 07:03:25 +0900</pubDate>
+      
+      <guid>https://www.330k.info/essay/start-command-prompt-in-windows-10/</guid>
+      <description> 元ネタ: Windows 10でコマンドプロンプトを素早く起動する方法
+私が業務で使うときは以下の手順で起動している。 設定が不必要で、おそらく最速。
+管理者権限でコマンドプロンプトを起動する  [Windows] + [X] → [A]で管理者権限でPowerShellを起動 UACのダイアログが出たら許可する PowerShell上で「cmd」と入力してEnter。  UACがONのときでもキーストローク数は9ストローク。
+コマンドプロンプトを起動しなくても、
+ コマンドプロンプトとほぼ同じ操作ができるようにPowerShellのAliasが設定されている 将来性を考えたらPowerShellに慣れていたほうが得  と思うので、PowerShellを起動するだけで良いのであれば、キーストローク数は5ですむ。
+     </description>
+    </item>
     
     <item>
       <title>動画ファイルからDVDオーサリング</title>

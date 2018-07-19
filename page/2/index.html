@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>330k info</title>
 <meta name="description" content="自転車ツーリングの記録やソフトウェアの配布、Mathematicaをメインにしたプログラミングの覚書や日ごろの雑感など。">
-<meta name="generator" content="Hugo 0.42.1" />
+<meta name="generator" content="Hugo 0.44" />
 
 <link rel="alternate" type="application/rss+xml" title="330k info Feed" href="https://www.330k.info/index.xml">
 <link rel="stylesheet" href="/css/style.css" type="text/css" media="all" />
@@ -52,6 +52,26 @@ if (!doNotTrack) {
 
 
 	<main class="main-content list content" role="main"><article class="list__item post clearfix">
+	<div class="list__content clearfix">
+		<header class="list__header">
+			<h3 class="list__title post__title ">
+				<a href="/essay/delete_temporary_files_with_powershell/" rel="bookmark">Officeの一時ファイルやThumbs.dbなどをPowerShellで一掃</a>
+			</h3>
+			<div class="list__meta meta">
+				<svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
+				<time class="list__meta-date" datetime="2017-09-06T00:57:48">September 06, 2017</time>
+			</div>
+		</header>
+		<div class="list__excerpt">
+			ファイルサーバの空き容量が減ってきたので調べてみたら、 削除されていないOfficeファイルの一時ファイルや、Thumbs.dbが結構あることが分かった。
+Thumbs.dbはグループポリシーでネットワークドライブ上では生成しないようにしているはずだが、 ローカルのフォルダをファイルサーバにコピーすると、一緒にくっついてくるらしい。
+以下のPowerShellスクリプトをタスクスケジューラに登録して、定期的(1日1回)にゴミ掃除。
+$a = @() $a += Get-ChildItem &quot;(掃除対象フォルダのパス1)&quot; -Force -Recurse $a += Get-ChildItem &quot;(掃除対象フォルダのパス2)&quot; -Force -Recurse $a += Get-ChildItem &quot;(掃除対象フォルダのパス3)&quot; -Force -Recurse $a | Where-Object { ` $_.Name -like &quot;~*&quot; -and $_.LastWriteTime -lt (Get-Date).AddDays(-1) ` -or $_.Name -like &quot;*.tmp&quot; ` -or $_.Name -eq &quot;Thumbs.db&quot; ` -or $_.Name -eq &quot;.DS_Store&quot; ` -or $_.Name -like &quot;._*&quot; ` } | Remove-Item -Force  削除対象は以下の通り。
+ 更新日時が1日以上前のOffice一時ファイル(&quot;~*&quot;) 拡張子が&quot;tmp&quot;のファイル &quot;Thumbs.db&quot; .DS_Storeや._*などのMac OSで使用されるファイル  
+		</div>
+	</div>
+</article>
+<article class="list__item post clearfix">
 	<div class="list__content clearfix">
 		<header class="list__header">
 			<h3 class="list__title post__title ">
@@ -279,28 +299,6 @@ USB充電器 FUJITSU FSC321FX USB⇔NiMH充電池(eneloop)の充電ができる�
 		</div>
 	</div>
 </article>
-<article class="list__item post clearfix">
-	<figure class="list__thumbnail">
-		<a href="https://www.330k.info/bicycle/introduction/">
-			<img src="/bicycle/introduction/IMG_1011_s.jpg" alt="自転車について" />
-		</a>
-	</figure>
-	<div class="list__content clearfix">
-		<header class="list__header">
-			<h3 class="list__title post__title ">
-				<a href="/bicycle/introduction/" rel="bookmark">自転車について</a>
-			</h3>
-			<div class="list__meta meta">
-				<svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
-				<time class="list__meta-date" datetime="2017-06-27T22:10:24">June 27, 2017</time>
-			</div>
-		</header>
-		<div class="list__excerpt">
-			SURLY CROSS-CHECK (Aug. 2010 &ndash;)   Nov. 20 2016 ついにブレーキ以外のコンポをDura-Ace(9100)化、ホイールもユーラスにしてしまった・・・。 SURLY cross-checkにDura-Ace、Vブレーキ、SPDペダルなんて組み合わせは他にいないだろうな。
-        パーツ 購入時 現在 備考     フレーム・フォーク Surly Crosscheck 460mm -    ヘッドパーツ Canecreek S3 -    ステム Thomson Elite X2 100mm -    ハンドルバー Salsa Short &amp; Shallow 380mm -    シート(サドル) Selle Italia Yutaak -    シートポスト Thomson Elite -    ハブ(フロント) Shimano 105 HB-5700-L Campagnolo Eurus 完組    ハブ(リア) Shimano 105 FH-5700-L (完組Campagnolo Eurus)    スポーク DT-Swiss 型番不明 (完組Campagnolo Eurus)    リム DT-Swiss RR465 (完組Campagnolo Eurus)    タイヤ Schwalve Delta Cruiser 28C Continental GrandPrix 4000S II 25C    クランクセット Shimano 105 FC-5703-L 50-39-30T 170mm Shimano Dura-Ace FC-R9100 50-34T 170mm    ディレイラ(フロント) Shimano 105 FD-5703-S/M Shimano Dura-Ace FD-R9100    ディレイラ(リア) Shimano 105 RD-5700-GS Shimano Dura-Ace RD-R9100    カセットスプロケット Shimano 105 CS-5700 11-25T Shimano Dura-Ace CS-R9100 11-30T    ブレーキレバー Shimano 105 ST-5703 Shimano Dura-Ace ST-R9100    ブレーキ Canecreek SCX-5 Shimano 105 BR-R573 カンチレバーではビビリが発生したためミニV化   ペダル Shimano A-530 Shimano M-540     購入直後の感想   自転車に乗り始めて3年目、ついに自分がツーリングするための自転車をオーダーした。 その結果がこのSURLYのシクロクロスバイク。 長時間・長距離を走るべく、クロモリフレームにコンポーネントは105でフロントトリプル+リア11-25Tでワイドレンジのギアレシオを選択し、ついでに憧れだったSPD(ただし片面)にした。タイヤは悩んだが、とりあえず28Cにしておいた。
-		</div>
-	</div>
-</article>
 
 		
 
@@ -330,6 +328,7 @@ USB充電器 FUJITSU FSC321FX USB⇔NiMH充電池(eneloop)の充電ができる�
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/essay/start-command-prompt-in-windows-10/">Windows 10でコマンドプロンプトを素早く起動する方法</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/earth_radius/">地球の大きさ(周長や半径)を覚える必要はない</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/mathematica-special-notation/">Mathematicaの特殊・省略記法一覧</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/text_garbled_in_snap_apps_in_ubuntu_18_04/">Ubuntu 18.04 LTSで文字化けしたSnapアプリをなんとかして使う</a></li>
@@ -339,7 +338,6 @@ USB充電器 FUJITSU FSC321FX USB⇔NiMH充電池(eneloop)の充電ができる�
 			<li class="widget__item"><a class="widget__link" href="/essay/resize_and_pad_with_imagemagick/">ImageMagickでベクタ画像を綺麗な半透過PNGにする</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/logging_shared_pc_user/">共有PCの実際の使用者を記録する</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/measure_video_events_with_google_analytics/">Google Analyticsで動画(Video要素)のイベントを計測</a></li>
-			<li class="widget__item"><a class="widget__link" href="/essay/delete_temporary_files_with_powershell/">Officeの一時ファイルやThumbs.dbなどをPowerShellで一掃</a></li>
 		</ul>
 	</div>
 </div>
@@ -394,7 +392,7 @@ USB充電器 FUJITSU FSC321FX USB⇔NiMH充電池(eneloop)の充電ができる�
 		<a class="widget__link widget__link--taglist" href="/tags/sql" title="sql">sql (3)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/ubuntu" title="ubuntu">ubuntu (9)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/vba" title="vba">vba (3)</a>
-		<a class="widget__link widget__link--taglist" href="/tags/windows" title="windows">windows (9)</a>
+		<a class="widget__link widget__link--taglist" href="/tags/windows" title="windows">windows (10)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/wsh" title="wsh">wsh (2)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/zabbix" title="zabbix">zabbix (1)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/%e3%82%a2%e3%83%ab%e3%82%b4%e3%83%aa%e3%82%ba%e3%83%a0" title="アルゴリズム">アルゴリズム (5)</a>
