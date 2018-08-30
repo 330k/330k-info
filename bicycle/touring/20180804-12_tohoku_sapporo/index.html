@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Xubuntu 16.04 &#43; Snortで簡易IDS構築</title>
+<title>2018年8月4日〜12日 東北中央部縦断〜函館〜札幌</title>
 <meta name="description" content="自転車ツーリングの記録やソフトウェアの配布、Mathematicaをメインにしたプログラミングの覚書や日ごろの雑感など。">
 <meta name="generator" content="Hugo 0.47.1" />
 
@@ -41,8 +41,8 @@ if (!doNotTrack) {
 			
 <nav class="menu" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
 	<ul class="menu__list">
-		<li class="menu__item "><a class="menu__link" href="/bicycle/">BICYCLES</a></li>
-		<li class="menu__item menu__item--active"><a class="menu__link" href="/essay/">ESSAYS</a></li>
+		<li class="menu__item menu__item--active"><a class="menu__link" href="/bicycle/">BICYCLES</a></li>
+		<li class="menu__item "><a class="menu__link" href="/essay/">ESSAYS</a></li>
 		<li class="menu__item "><a class="menu__link" href="/software/">SOFTWARES</a></li>
 	</ul>
 </nav>
@@ -54,92 +54,168 @@ if (!doNotTrack) {
 <div class="main-content content" role="main" itemprop="mainContentOfPage">
 	<article class="post">
 		<header class="post__header clearfix">
-			<h1 class="post__title">Xubuntu 16.04 &#43; Snortで簡易IDS構築</h1>
+			<h1 class="post__title">2018年8月4日〜12日 東北中央部縦断〜函館〜札幌</h1>
 			<p class="post__meta meta">
 				<svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
-				<time class="post__meta-date" datetime="2017-06-06T06:37:00">June 06, 2017</time>
+				<time class="post__meta-date" datetime="2018-08-04T21:15:57">August 04, 2018</time>
 				<span class="post__meta-categories meta-categories">
 					<svg class="icon icon-category" height="16" viewBox="0 0 16 16" width="16" xmlns="http://www.w3.org/2000/svg"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
-					<a class="meta-categories__link" href="/categories/%e9%9b%91%e8%a8%98%e5%b8%b3" rel="category">雑記帳</a></span>
+					<a class="meta-categories__link" href="/categories/%e8%87%aa%e8%bb%a2%e8%bb%8a" rel="category">自転車</a></span>
 			</p>
 		</header>
 		<div class="post__content clearfix">
-			
+			<div id="map-canvas" style="width: 100%; height:500px; margin:0; padding: 0"></div>
+<script>
+function initMap(){
+  var map,
+    ctaLayer;
+  map = new google.maps.Map(document.getElementById("map-canvas"), {
+    center: {lat: 35.6832581, lng: 139.7555827},
+    zoom: 8
+  });
+  ctaLayer = new google.maps.KmlLayer({
+    url: "https:\/\/www.330k.info\/\/bicycle\/touring\/20180804-12_tohoku_sapporo\/20180804.kml"
+  });
+  ctaLayer.setMap(map);
+}
+</script>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCir56M7J9LT4-3wDVgG8etGo_HPSMWVBk&callback=initMap" async defer></script>
 
-<p>ウイルス等に侵入された後の対策として、IDSやIPS製品の紹介をベンダーから受けたが、正直なところ価格が高かったのと、検知されるメッセージがSnort由来のものが多い気がしたので、自分でSnortを構築して商用製品との差を調べてみることにした。</p>
+<table>
+<thead>
+<tr>
+<th>日付</th>
+<th>出発地</th>
+<th>到着地</th>
+<th>走行距離(km)</th>
+<th>走行時間</th>
+<th>最高速度(km/h)</th>
+<th>平均速度(km/h)</th>
+<th>主な経路</th>
+<th>景勝地</th>
+</tr>
+</thead>
 
-<h2 id="構築環境">構築環境</h2>
+<tbody>
+<tr>
+<td>2018年08月04日</td>
+<td>自宅</td>
+<td>那須塩原</td>
+<td>146.15</td>
+<td>5:30:27</td>
+<td></td>
+<td>26.5</td>
+<td>R4</td>
+<td></td>
+</tr>
 
-<ul>
-<li>PC : 余っていたノートPC  Panasonic LetsNote CF-NX1</li>
-<li>OS : Xubuntu 16.04.2 (LetsNoteの有線LANと無線LANのNICを認識できる可能性が高いディストリビューションとして選択)</li>
-<li>ルータ : Yamaha RTX810</li>
-<li>IDSとして運用(ミラーポートの通信を監視)</li>
-<li>LetsNoteの有線LANはミラーポートに接続し、通信を監視</li>
-<li>LetsNote自体にアクセスするときには無線LANを使用する</li>
-</ul>
+<tr>
+<td>2018年08月05日</td>
+<td>那須塩原</td>
+<td>喜多方</td>
+<td>158.90</td>
+<td>6:23:53</td>
+<td></td>
+<td>24.8</td>
+<td>R4, R49, R121</td>
+<td>猪苗代湖</td>
+</tr>
 
-<h2 id="図-適当">図(適当)</h2>
+<tr>
+<td>2018年08月06日</td>
+<td>喜多方</td>
+<td>東根</td>
+<td>117.82</td>
+<td>4:49:10</td>
+<td></td>
+<td>24.4</td>
+<td>R121, R13</td>
+<td>米沢</td>
+</tr>
 
+<tr>
+<td>2018年08月07日</td>
+<td>東根</td>
+<td>角館</td>
+<td>148.77</td>
+<td>6:27:22</td>
+<td></td>
+<td>23.2</td>
+<td>R13, r11</td>
+<td></td>
+</tr>
 
-<figure>
-    
-        <img src="snort001.png" />
-    
-    
-</figure>
+<tr>
+<td>2018年08月08日</td>
+<td>角館</td>
+<td>小坂</td>
+<td>122.22</td>
+<td>6:06:35</td>
+<td></td>
+<td>20.0</td>
+<td>R46, R341, R282</td>
+<td>八幡平</td>
+</tr>
 
+<tr>
+<td>2018年08月09日</td>
+<td>小坂</td>
+<td>函館</td>
+<td>167.26</td>
+<td>7:20:07</td>
+<td></td>
+<td>22.9</td>
+<td>r2, R103, R102, R4</td>
+<td>十和田湖</td>
+</tr>
 
-<h2 id="手順">手順</h2>
+<tr>
+<td>2018年08月10日</td>
+<td>函館</td>
+<td>せたな</td>
+<td>143.16</td>
+<td>6:19:22</td>
+<td></td>
+<td>22.6</td>
+<td>R227, R229</td>
+<td>厚沢部</td>
+</tr>
 
-<p>基本的に、以下のドキュメント通りでOK。</p>
+<tr>
+<td>2018年08月11日</td>
+<td>せたな</td>
+<td>小樽</td>
+<td>176.82</td>
+<td>7:08:32</td>
+<td></td>
+<td>24.8</td>
+<td>R229, R5</td>
+<td>留寿都</td>
+</tr>
 
-<p><a href="https://s3.amazonaws.com/snort-org-site/production/document_files/files/000/000/122/original/Snort_2.9.9.x_on_Ubuntu_14-16.pdf?AWSAccessKeyId=AKIAIXACIED2SPMSC7GA&amp;Expires=1495781265&amp;Signature=KgejvuGSg4bx%2Ft099F3cdwrd%2BcU%3D">Snort 2.9.9.x on Ubuntu 14 -16</a></p>
+<tr>
+<td>2018年08月12日</td>
+<td>小樽</td>
+<td>札幌</td>
+<td>36.73</td>
+<td>1:53:03</td>
+<td></td>
+<td>19.5</td>
+<td>R5</td>
+<td></td>
+</tr>
+</tbody>
+</table>
 
-<p>LetsNoteでは有線LANのNICは<code>enp0s25</code>、無線LANは<code>wlp2s0</code>となった。</p>
-
-<p>注意点は以下の通り。</p>
-
-<ul>
-<li><s><code>rule_url=https://www.snort.org/reg-rules/|snortrules-snapshot.tar.gz|&lt;oinkcode&gt;</code></s><br/>
-→ <code>rule_url=https://www.snort.org/rules/|snortrules-snapshot.tar.gz|&lt;oinkcode&gt;</code><br/>
-※微妙にURLが変わっているので注意</li>
-<li><s><code>sudo /usr/local/bin/pulledpork.pl -c /etc/snort/pulledpork.conf -l</code></s><br/>
-→ <code>sudo /usr/local/bin/pulledpork.pl -c /etc/snort/pulledpork.conf -l -o /etc/snort/rules/snort.rules</code><br/>
-※-oオプションが必要と怒られた</li>
-</ul>
-
-<p>有線LAN(enp0s25)はミラーポートから受信だけできれば良いので、
-/etc/network/interfacesを編集して使われていないネットワークのアドレスを適当に設定。
-管理の通信やBASEによるログを眺めるためには無線(wlp2s0)を使用するので、
-NetworkManagerを使って適当に固定IPを設定。</p>
-
-<p>RTX810は<a href="http://www.rtpro.yamaha.co.jp/RT/manual/rt-common/setup/lan_port-mirroring.html">http://www.rtpro.yamaha.co.jp/RT/manual/rt-common/setup/lan_port-mirroring.html</a>
-を参照してミラーポートを設定。</p>
-
-<ul>
-<li>設定(ポート1と2の送信および受信フレームをポート4にミラー)<br/>
-<code>lan port-mirroring lan1 4 in 1 2 out 1 2</code></li>
-<li>解除<br/>
-<code>no lan port-mirroring lan1</code></li>
-</ul>
-
-<h2 id="結果">結果</h2>
-
-<p>一応IDSとして構築できたので、現在はログを見て様子見。今のところのメモは以下。</p>
-
-<ul>
-<li>ノートPCにSnortを構築しても、なんとか100Mbps程度は処理してくれる(ただしCPUは常に100%)</li>
-<li>商用製品はLINEの通信を検知してくれたが、Snortでは検知してくれない(自分でルールを作れ、という話か)</li>
-</ul>
+<p>今回の夏休みは、東北の内陸部を走ってみた。
+結局津軽海峡フェリーで函館に渡り、その後、北海道の日本海側を走って札幌まで走ってきた。</p>
 
 		</div>
 		
 <div class="post__tags tags clearfix">
 	<svg class="icon icon-tag" width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="m4.73135 3.3795002q0-.5597-.39604-.9557-.39604-.3961-.95577-.3961-.55974 0-.95578.3961-.39604.396-.39604.9557 0 .5598.39604.9558.39604.3961.95578.3961.55973 0 .95577-.3961.39604-.396.39604-.9558zm11.26865 6.0832q0 .5596998-.39076.9504998l-5.18548 5.196q-.41188.3908-.9610504.3908-.55974 0-.9505-.3908l-7.5511496-7.5616998q-.40132-.3907-.68119-1.0666-.27987-.6759-.27987-1.2357v-4.3934q0-.54920004.40132-.95050004.40132-.4013.9505-.4013h4.39339q.55974 0 1.23565.2799.67591.2798 1.07723.6812l7.55115 7.54060004q.39076.4118.39076.961z"/></svg>
 	<ul class="tags__list">
-		<li class="tags__item"><a class="tags__link" href="/tags/%E7%A4%BE%E5%86%85se/" rel="tag">社内SE</a></li>
-		<li class="tags__item"><a class="tags__link" href="/tags/ubuntu/" rel="tag">Ubuntu</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/%E3%83%84%E3%83%BC%E3%83%AA%E3%83%B3%E3%82%B0/" rel="tag">ツーリング</a></li>
 	</ul>
 </div>
 
@@ -148,10 +224,7 @@ NetworkManagerを使って適当に固定IPを設定。</p>
 	
 <nav class="post-nav row clearfix" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
 	<div class="post-nav__item post-nav__item--prev col-1-2">
-		<a class="post-nav__link" href="/essay/create_zip_file_with_wsh_jscript/" rel="prev"><span class="post-nav__caption">«Previous</span><p class="post-nav__post-title">Windows標準機能でZIPファイルの作成</p></a>
-	</div>
-	<div class="post-nav__item post-nav__item--next col-1-2">
-		<a class="post-nav__link" href="/essay/input_backslach_with_us_keyboard_layout/" rel="next"><span class="post-nav__caption">Next»</span><p class="post-nav__post-title">英語版Windows PE環境でバックスラッシュを入力</p></a>
+		<a class="post-nav__link" href="/bicycle/touring/20180427-28_kagoshima/" rel="prev"><span class="post-nav__caption">«Previous</span><p class="post-nav__post-title">2018年4月27日〜28日 鹿児島</p></a>
 	</div>
 </nav>
 
