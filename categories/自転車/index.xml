@@ -6,10 +6,19 @@
     <description>Recent content in 自転車 on 330k info</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Sat, 28 Apr 2018 00:48:44 +0900</lastBuildDate>
+    <lastBuildDate>Sat, 04 Aug 2018 21:15:57 +0900</lastBuildDate>
     
 	<atom:link href="https://www.330k.info/categories/%E8%87%AA%E8%BB%A2%E8%BB%8A/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>2018年8月4日〜12日 東北中央部縦断〜函館〜札幌</title>
+      <link>https://www.330k.info/bicycle/touring/20180804-10_tohoku_sapporo/</link>
+      <pubDate>Sat, 04 Aug 2018 21:15:57 +0900</pubDate>
+      
+      <guid>https://www.330k.info/bicycle/touring/20180804-10_tohoku_sapporo/</guid>
+      <description>function initMap(){ var map, ctaLayer; map = new google.maps.Map(document.getElementById(&#34;map-canvas&#34;), { center: {lat: 35.6832581, lng: 139.7555827}, zoom: 8 }); ctaLayer = new google.maps.KmlLayer({ url: &#34;https:\/\/www.330k.info\/\/bicycle\/touring\/20180804-10_tohoku_sapporo\/20180804.kml&#34; }); ctaLayer.setMap(map); }      日付 出発地 到着地 走行距離(km) 走行時間 最高速度(km/h) 平均速度(km/h) 主な経路 景勝地     2018年08月04日 自宅 那須塩原 146.15 5:30:27  26.5 R4    2018年08月05日 那須塩原 喜多方 158.90 6:23:53  24.8 R4, R49, R121 猪苗代湖   2018年08月06日 喜多方 東根 117.</description>
+    </item>
     
     <item>
       <title>2018年4月27日〜28日 鹿児島</title>
