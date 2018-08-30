@@ -4,7 +4,7 @@
 <Folder>
 <name>Tracks</name>
 <Placemark>
-<name>20180804</name>
+<name>20180804.KML(20180804)</name>
 <Style>
 <LineStyle>
  <color>ff0000ff</color>
@@ -22,17 +22,6 @@
 	</Data>
 </ExtendedData>
 <gx:Track>
-<when>2018-08-03T23:12:23Z</when>
-<when>2018-08-03T23:12:52Z</when>
-<when>2018-08-03T23:13:22Z</when>
-<when>2018-08-03T23:13:47Z</when>
-<when>2018-08-03T23:14:35Z</when>
-<when>2018-08-03T23:14:53Z</when>
-<when>2018-08-03T23:14:58Z</when>
-<when>2018-08-03T23:15:47Z</when>
-<when>2018-08-03T23:16:17Z</when>
-<when>2018-08-03T23:17:18Z</when>
-<when>2018-08-03T23:17:26Z</when>
 <when>2018-08-03T23:18:06Z</when>
 <when>2018-08-03T23:18:19Z</when>
 <when>2018-08-03T23:19:20Z</when>
@@ -422,17 +411,6 @@
 <when>2018-08-04T07:22:58Z</when>
 <when>2018-08-04T07:27:31Z</when>
 <when>2018-08-04T07:27:51Z</when>
-<gx:coord>139.777797 35.736938 -10.600000</gx:coord>
-<gx:coord>139.779325 35.736364 -11.000000</gx:coord>
-<gx:coord>139.779454 35.736401 -10.800000</gx:coord>
-<gx:coord>139.781443 35.735721 -12.200000</gx:coord>
-<gx:coord>139.785598 35.734527 -12.200000</gx:coord>
-<gx:coord>139.786370 35.734160 -12.000000</gx:coord>
-<gx:coord>139.786664 35.733956 -12.200000</gx:coord>
-<gx:coord>139.787876 35.732385 -12.400000</gx:coord>
-<gx:coord>139.789873 35.731279 -10.800000</gx:coord>
-<gx:coord>139.790010 35.731068 -11.800000</gx:coord>
-<gx:coord>139.790404 35.730813 -11.800000</gx:coord>
 <gx:coord>139.791747 35.730116 -11.200000</gx:coord>
 <gx:coord>139.791910 35.730747 -10.600000</gx:coord>
 <gx:coord>139.792497 35.731993 -13.000000</gx:coord>
@@ -825,7 +803,7 @@
 </gx:Track>
 </Placemark>
 <Placemark>
-<name>20180805</name>
+<name>20180804.KML(20180805)</name>
 <Style>
 <LineStyle>
  <color>ff00ffff</color>
@@ -1646,7 +1624,7 @@
 </gx:Track>
 </Placemark>
 <Placemark>
-<name>20180806</name>
+<name>20180804.KML(20180806)</name>
 <Style>
 <LineStyle>
  <color>ff00ff80</color>
@@ -2467,7 +2445,7 @@
 </gx:Track>
 </Placemark>
 <Placemark>
-<name>20180807</name>
+<name>20180804.KML(20180807)</name>
 <Style>
 <LineStyle>
  <color>ffffff00</color>
@@ -3288,7 +3266,7 @@
 </gx:Track>
 </Placemark>
 <Placemark>
-<name>20180808</name>
+<name>20180804.KML(20180808)</name>
 <Style>
 <LineStyle>
  <color>ffc08000</color>
@@ -4109,7 +4087,7 @@
 </gx:Track>
 </Placemark>
 <Placemark>
-<name>20180809</name>
+<name>20180804.KML(20180809)</name>
 <Style>
 <LineStyle>
  <color>ffc08080</color>
@@ -4930,7 +4908,7 @@
 </gx:Track>
 </Placemark>
 <Placemark>
-<name>20180810</name>
+<name>20180804.KML(20180810)</name>
 <Style>
 <LineStyle>
  <color>ffff00ff</color>
@@ -5751,7 +5729,7 @@
 </gx:Track>
 </Placemark>
 <Placemark>
-<name>20180811</name>
+<name>20180804.KML(20180811)</name>
 <Style>
 <LineStyle>
  <color>ff404080</color>
@@ -6572,7 +6550,7 @@
 </gx:Track>
 </Placemark>
 <Placemark>
-<name>20180812</name>
+<name>20180804.KML(20180812)</name>
 <Style>
 <LineStyle>
  <color>ff4080ff</color>
