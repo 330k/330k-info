@@ -6,10 +6,19 @@
     <description>Recent content in ツーリング on 330k info</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Sat, 04 Aug 2018 21:15:57 +0900</lastBuildDate>
+    <lastBuildDate>Sun, 07 Oct 2018 23:09:31 +0900</lastBuildDate>
     
 	<atom:link href="https://www.330k.info/tags/%E3%83%84%E3%83%BC%E3%83%AA%E3%83%B3%E3%82%B0/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>2018年10月7日〜14日 中央構造線 &#43; 山中湖</title>
+      <link>https://www.330k.info/bicycle/touring/20181007-14_median_line/</link>
+      <pubDate>Sun, 07 Oct 2018 23:09:31 +0900</pubDate>
+      
+      <guid>https://www.330k.info/bicycle/touring/20181007-14_median_line/</guid>
+      <description>function initMap(){ var map, ctaLayer; map = new google.maps.Map(document.getElementById(&#34;map-canvas&#34;), { center: {lat: 35.6832581, lng: 139.7555827}, zoom: 8 }); ctaLayer = new google.maps.KmlLayer({ url: &#34;https:\/\/www.330k.info\/\/bicycle\/touring\/20181007-14_median_line\/20181007-14_median_line.kml&#34; }); ctaLayer.setMap(map); }      日付 出発地 到着地 走行距離(km) 走行時間 最高速度(km/h) 平均速度(km/h) 主な経路 景勝地     2018年10月07日 熊本 大分 141.40 5:52:16  24.1 R57, k135 阿蘇   2018年10月08日 大分 内子 112.61 5:13:02  21.6 R197 佐田岬   2018年10月09日 内子 大歩危 166.</description>
+    </item>
     
     <item>
       <title>2018年8月4日〜12日 東北中央部縦断〜函館〜札幌</title>
