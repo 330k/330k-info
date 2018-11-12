@@ -54,7 +54,7 @@ data3 = Normalize /@ RandomReal[NormalDistribution[], {2000, 3}]; g3 = ListPoint
 MathematicaにCやFortranのソースコード形式で吐かせるのが確実。
 ※注意事項
 公式の名前や出典に関しては自信がないので、鵜呑みにしないこと。
-1段1次 Euler法   2段2次 修正Euler法   Heun法   Ralston法 3段3次 Heunの3次法   Kuttaの3次法   Ralstonの3次法 4段4次 古典的Runge-Kutta法   6段5次 Runge-Kutta-Fehlberg法のうち5次の部分   Runge-Kutta-Nystroemのうち5次の部分   Butcherによる5次公式を3つ        7段6次 Hammudによるもの   9段7次 Shanksによるもの   CooperとVernerによる7次公式   11段8次 CooperとVernerによる8次公式   16段9次 Vernerによる埋め込み型公式のうち9次のもの   </description>
+1段1次 Euler法   2段2次 修正Euler法   Heun法   Ralston法 3段3次 Heunの3次法   Kuttaの3次法   Ralstonの3次法 4段4次 古典的Runge-Kutta法   6段5次 Runge-Kutta-Fehlberg法のうち5次の部分   Runge-Kutta-Nystroemのうち5次の部分   Butcherによる5次公式を3つ       7段6次 Hammudによるもの   9段7次 Shanksによるもの   CooperとVernerによる7次公式   11段8次 CooperとVernerによる8次公式   16段9次 Vernerによる埋め込み型公式のうち9次のもの   </description>
     </item>
     
     <item>

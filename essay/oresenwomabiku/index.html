@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>折れ線を間引く</title>
 <meta name="description" content="自転車ツーリングの記録やソフトウェアの配布、Mathematicaをメインにしたプログラミングの覚書や日ごろの雑感など。">
-<meta name="generator" content="Hugo 0.49.2" />
+<meta name="generator" content="Hugo 0.51" />
 
 
 <link rel="stylesheet" href="/css/style.css" type="text/css" media="all" />
@@ -190,20 +190,12 @@ LineSimplify[{p1 : {_, _}, p2 : {_, _}}, \[Epsilon]_] := {p1, p2}
 
 <tbody>
 <tr>
-<td>
-<figure>
-    
-        <img src="douglas-peucker-001.png" />
-    
-    
+<td><figure>
+    <img src="douglas-peucker-001.png"/> 
 </figure>
 </td>
-<td>
-<figure>
-    
-        <img src="douglas-peucker-002.png" />
-    
-    
+<td><figure>
+    <img src="douglas-peucker-002.png"/> 
 </figure>
 </td>
 </tr>
@@ -295,12 +287,8 @@ LineSimplifyN[line : {{_, _} ..}, n_Integer] :=
 Graphics[{Polygon[line], Red, Line@LineSimplifyN[line, 50]}]
 </code></pre>
 
-
 <figure>
-    
-        <img src="douglas-peucker-n-001.png" />
-    
-    
+    <img src="douglas-peucker-n-001.png"/> 
 </figure>
 
 

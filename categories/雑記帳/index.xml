@@ -22,7 +22,7 @@
 管理者権限でコマンドプロンプトを起動する  [Windows] + [X] → [A]で管理者権限でPowerShellを起動 UACのダイアログが出たら許可する PowerShell上で「cmd」と入力してEnter。  UACがONのときでもキーストローク数は9ストローク。
 コマンドプロンプトを起動しなくても、
  コマンドプロンプトとほぼ同じ操作ができるようにPowerShellのAliasが設定されている 将来性を考えたらPowerShellに慣れていたほうが得  と思うので、PowerShellを起動するだけで良いのであれば、キーストローク数は5ですむ。
-     </description>
+    </description>
     </item>
     
     <item>
@@ -376,7 +376,7 @@ data = Table[Module[{str, ret}, str = OpenRead[&amp;quot;2016091200.bin&amp;quot
  Firefoxアカウントを使ったパスワード等の同期をさせない 強制的に最新版にアップデートさせる たまにしか社内LANにアクセスしない端末でも設定を反映させたい (公式サイトの「すべてのクライアントの設定を管理者が一括して変更したい」では常時社内LANにアクセスできる端末である必要がある)  手順は以下の通り。
  「autoconfig.js」と「autoconfig.cfg」を公式サイトの例にしたがって記述  autoconfig.js
 pref(&amp;quot;general.config.filename&amp;quot;, &amp;quot;autoconfig.cfg&amp;quot;); pref(&amp;quot;general.config.vendor&amp;quot;, &amp;quot;autoconfig&amp;quot;); pref(&amp;quot;general.config.obscure_value&amp;quot;, 0);  autoconfig.cfg (ここではFirefoxアカウントによる同期の不許可と、自動アップデートの有効化を設定)
-lockPref(&amp;quot;loop.enabled&amp;quot;, false); lockPref(&amp;quot;services.sync.enabled&amp;quot;, false); lockPref(&amp;quot;services.sync.engine.addons&amp;quot;, false); lockPref(&amp;quot;services.sync.engine.bookmarks&amp;quot;, false); lockPref(&amp;quot;services.sync.engine.history&amp;quot;, false); lockPref(&amp;quot;services.sync.engine.passwords&amp;quot;, false); lockPref(&amp;quot;services.sync.engine.prefs&amp;quot;, false); lockPref(&amp;quot;services.sync.engine.tabs&amp;quot;, false); lockPref(&amp;quot;app.update.enabled&amp;quot;, true); lockPref(&amp;quot;app.update.auto&amp;quot;, true); lockPref(&amp;quot;browser.search.update&amp;quot;, true);   「autoconfig.js」と「autoconfig.cfg」を一般ユーザが読み取り可能なフォルダに配置 (例えば「\ドメインコントローラ\SYSVOL\ドメイン名\Deployment」など) グループポリシーの「コンピュータの構成」「基本設定」「Windowsの設定」「ファイル」を使い、 「autoconfig.js」と「autoconfig.cfg」を公式サイトで指定されたフォルダに配置。     64bit版Windowsに32bit版Firefoxがインストールされている場合は、「項目レベルで対象化する」にチェックし、 「Processor_Architecture」に「AMD64」を設定し、「%PROGRAMFILES(X86)%\Mozilla Firefox」に配置する。 ※ 両方ある場合は2つずつ設定する       最後に実際にクライアントPCにファイルが反映され、Firefoxのabout:configで設定されていることを確認</description>
+lockPref(&amp;quot;loop.enabled&amp;quot;, false); lockPref(&amp;quot;services.sync.enabled&amp;quot;, false); lockPref(&amp;quot;services.sync.engine.addons&amp;quot;, false); lockPref(&amp;quot;services.sync.engine.bookmarks&amp;quot;, false); lockPref(&amp;quot;services.sync.engine.history&amp;quot;, false); lockPref(&amp;quot;services.sync.engine.passwords&amp;quot;, false); lockPref(&amp;quot;services.sync.engine.prefs&amp;quot;, false); lockPref(&amp;quot;services.sync.engine.tabs&amp;quot;, false); lockPref(&amp;quot;app.update.enabled&amp;quot;, true); lockPref(&amp;quot;app.update.auto&amp;quot;, true); lockPref(&amp;quot;browser.search.update&amp;quot;, true);   「autoconfig.js」と「autoconfig.cfg」を一般ユーザが読み取り可能なフォルダに配置 (例えば「\ドメインコントローラ\SYSVOL\ドメイン名\Deployment」など) グループポリシーの「コンピュータの構成」「基本設定」「Windowsの設定」「ファイル」を使い、 「autoconfig.js」と「autoconfig.cfg」を公式サイトで指定されたフォルダに配置。     64bit版Windowsに32bit版Firefoxがインストールされている場合は、「項目レベルで対象化する」にチェックし、 「Processor_Architecture」に「AMD64」を設定し、「%PROGRAMFILES(X86)%\Mozilla Firefox」に配置する。 ※ 両方ある場合は2つずつ設定する      最後に実際にクライアントPCにファイルが反映され、Firefoxのabout:configで設定されていることを確認</description>
     </item>
     
     <item>
@@ -690,7 +690,7 @@ Windows標準のサウンドレコーダー(ノートPC、会社ではLetsNote�
       <guid>https://www.330k.info/essay/shipment-of-recon-jet-and-uplink-needs-windows/</guid>
       <description>2年近く前にパイロット版を予約していたRecon Jetが手元に到着した。 発送はFedEx。
    日付 できごと     2015年4月29日 Recon社(カナダ リッチモンド)を出荷   2015年4月30日 バンクーバー   2015年5月01日 メンフィス空港から空輸   2015年5月02日 成田空港に到着   2015年5月03日 税関通過   2015年5月07日 平日のため受け取れず、FedExに電話して土曜日の午後を希望   2015年5月09日 無事到着(国内の配送は西濃運輸)    箱を開けたらこのような感じ(携帯での撮影のため画質はご容赦を)
-       説明書を読むと、
+      説明書を読むと、
  Recon Jetの電源を入れる 付属のmicroUSBケーブルでPCと接続する ReconのサイトにアクセスしてRecon Uplinkをインストールし、初期登録をせよ  とある。
 が、Recon UplinkはWindows版とMac版しかない。 私が今持っているのはUbuntuマシンなので、以下を試してみた。
  wineで動かないかな？ → インストールを完了できず 仮想マシン(Windows XP on VirtualBox)ならどうだ！ → Windows XPには対応していないらしく、こちらも動作せず 今なら無料でWindows 10 Insider Preview版が使えるんじゃね？ → VirtualBoxで仮想マシンを作成しUplinkのインストールとソフトの起動は成功。初期登録までは上手くいったが、その後同期がいつまで待っても始まらない。  このままでは$499が無駄になってしまうので、最終的にWindows 8.</description>
@@ -912,7 +912,7 @@ myPrimeChoice1[n_] := Module[{r = {}, i}, Do[If[PrimeQ[i], AppendTo[r, i]], {i, 
 MathematicaにCやFortranのソースコード形式で吐かせるのが確実。
 ※注意事項
 公式の名前や出典に関しては自信がないので、鵜呑みにしないこと。
-1段1次 Euler法   2段2次 修正Euler法   Heun法   Ralston法 3段3次 Heunの3次法   Kuttaの3次法   Ralstonの3次法 4段4次 古典的Runge-Kutta法   6段5次 Runge-Kutta-Fehlberg法のうち5次の部分   Runge-Kutta-Nystroemのうち5次の部分   Butcherによる5次公式を3つ        7段6次 Hammudによるもの   9段7次 Shanksによるもの   CooperとVernerによる7次公式   11段8次 CooperとVernerによる8次公式   16段9次 Vernerによる埋め込み型公式のうち9次のもの   </description>
+1段1次 Euler法   2段2次 修正Euler法   Heun法   Ralston法 3段3次 Heunの3次法   Kuttaの3次法   Ralstonの3次法 4段4次 古典的Runge-Kutta法   6段5次 Runge-Kutta-Fehlberg法のうち5次の部分   Runge-Kutta-Nystroemのうち5次の部分   Butcherによる5次公式を3つ       7段6次 Hammudによるもの   9段7次 Shanksによるもの   CooperとVernerによる7次公式   11段8次 CooperとVernerによる8次公式   16段9次 Vernerによる埋め込み型公式のうち9次のもの   </description>
     </item>
     
     <item>

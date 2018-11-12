@@ -22,7 +22,7 @@
 管理者権限でコマンドプロンプトを起動する  [Windows] + [X] → [A]で管理者権限でPowerShellを起動 UACのダイアログが出たら許可する PowerShell上で「cmd」と入力してEnter。  UACがONのときでもキーストローク数は9ストローク。
 コマンドプロンプトを起動しなくても、
  コマンドプロンプトとほぼ同じ操作ができるようにPowerShellのAliasが設定されている 将来性を考えたらPowerShellに慣れていたほうが得  と思うので、PowerShellを起動するだけで良いのであれば、キーストローク数は5ですむ。
-     </description>
+    </description>
     </item>
     
     <item>

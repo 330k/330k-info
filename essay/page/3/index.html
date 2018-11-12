@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Essays</title>
 <meta name="description" content="自転車ツーリングの記録やソフトウェアの配布、Mathematicaをメインにしたプログラミングの覚書や日ごろの雑感など。">
-<meta name="generator" content="Hugo 0.49.2" />
+<meta name="generator" content="Hugo 0.51" />
 
 <link rel="alternate" type="application/rss+xml" title="330k info Feed" href="https://www.330k.info/essay/index.xml">
 <link rel="stylesheet" href="/css/style.css" type="text/css" media="all" />
@@ -154,7 +154,7 @@ data = Table[Module[{str, ret}, str = OpenRead[&quot;2016091200.bin&quot;, Binar
  Firefoxアカウントを使ったパスワード等の同期をさせない 強制的に最新版にアップデートさせる たまにしか社内LANにアクセスしない端末でも設定を反映させたい (公式サイトの「すべてのクライアントの設定を管理者が一括して変更したい」では常時社内LANにアクセスできる端末である必要がある)  手順は以下の通り。
  「autoconfig.js」と「autoconfig.cfg」を公式サイトの例にしたがって記述  autoconfig.js
 pref(&quot;general.config.filename&quot;, &quot;autoconfig.cfg&quot;); pref(&quot;general.config.vendor&quot;, &quot;autoconfig&quot;); pref(&quot;general.config.obscure_value&quot;, 0);  autoconfig.cfg (ここではFirefoxアカウントによる同期の不許可と、自動アップデートの有効化を設定)
-lockPref(&quot;loop.enabled&quot;, false); lockPref(&quot;services.sync.enabled&quot;, false); lockPref(&quot;services.sync.engine.addons&quot;, false); lockPref(&quot;services.sync.engine.bookmarks&quot;, false); lockPref(&quot;services.sync.engine.history&quot;, false); lockPref(&quot;services.sync.engine.passwords&quot;, false); lockPref(&quot;services.sync.engine.prefs&quot;, false); lockPref(&quot;services.sync.engine.tabs&quot;, false); lockPref(&quot;app.update.enabled&quot;, true); lockPref(&quot;app.update.auto&quot;, true); lockPref(&quot;browser.search.update&quot;, true);   「autoconfig.js」と「autoconfig.cfg」を一般ユーザが読み取り可能なフォルダに配置 (例えば「\ドメインコントローラ\SYSVOL\ドメイン名\Deployment」など) グループポリシーの「コンピュータの構成」「基本設定」「Windowsの設定」「ファイル」を使い、 「autoconfig.js」と「autoconfig.cfg」を公式サイトで指定されたフォルダに配置。     64bit版Windowsに32bit版Firefoxがインストールされている場合は、「項目レベルで対象化する」にチェックし、 「Processor_Architecture」に「AMD64」を設定し、「%PROGRAMFILES(X86)%\Mozilla Firefox」に配置する。 ※ 両方ある場合は2つずつ設定する       最後に実際にクライアントPCにファイルが反映され、Firefoxのabout:configで設定されていることを確認
+lockPref(&quot;loop.enabled&quot;, false); lockPref(&quot;services.sync.enabled&quot;, false); lockPref(&quot;services.sync.engine.addons&quot;, false); lockPref(&quot;services.sync.engine.bookmarks&quot;, false); lockPref(&quot;services.sync.engine.history&quot;, false); lockPref(&quot;services.sync.engine.passwords&quot;, false); lockPref(&quot;services.sync.engine.prefs&quot;, false); lockPref(&quot;services.sync.engine.tabs&quot;, false); lockPref(&quot;app.update.enabled&quot;, true); lockPref(&quot;app.update.auto&quot;, true); lockPref(&quot;browser.search.update&quot;, true);   「autoconfig.js」と「autoconfig.cfg」を一般ユーザが読み取り可能なフォルダに配置 (例えば「\ドメインコントローラ\SYSVOL\ドメイン名\Deployment」など) グループポリシーの「コンピュータの構成」「基本設定」「Windowsの設定」「ファイル」を使い、 「autoconfig.js」と「autoconfig.cfg」を公式サイトで指定されたフォルダに配置。     64bit版Windowsに32bit版Firefoxがインストールされている場合は、「項目レベルで対象化する」にチェックし、 「Processor_Architecture」に「AMD64」を設定し、「%PROGRAMFILES(X86)%\Mozilla Firefox」に配置する。 ※ 両方ある場合は2つずつ設定する      最後に実際にクライアントPCにファイルが反映され、Firefoxのabout:configで設定されていることを確認
 		</div>
 	</div>
 </article>
