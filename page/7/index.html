@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>330k info</title>
 <meta name="description" content="自転車ツーリングの記録やソフトウェアの配布、Mathematicaをメインにしたプログラミングの覚書や日ごろの雑感など。">
-<meta name="generator" content="Hugo 0.51" />
+<meta name="generator" content="Hugo 0.54.0" />
 
 <link rel="alternate" type="application/rss+xml" title="330k info Feed" href="https://www.330k.info/index.xml">
 <link rel="stylesheet" href="/css/style.css" type="text/css" media="all" />
@@ -52,6 +52,30 @@ if (!doNotTrack) {
 
 
 	<main class="main-content list content" role="main"><article class="list__item post clearfix">
+	<div class="list__content clearfix">
+		<header class="list__header">
+			<h3 class="list__title post__title ">
+				<a href="/essay/implement-of-priority-queue-for-douglas-peucker-simplify-algorithm/" rel="bookmark">Douglas-Peucker向けの優先度付きキュー実装の検討</a>
+			</h3>
+			<div class="list__meta meta">
+				<svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
+				<time class="list__meta-date" datetime="2014-05-29T00:00:00">May 29, 2014</time>
+			</div>
+		</header>
+		<div class="list__excerpt">
+			Nov. 29 2015:
+ JavaScriptで実装した優先度付きキューをGitHubで公開→https://github.com/330k/priorityqueue_js/ 各ヒープのベンチマーク → http://330k.github.io/priorityqueue_js/benchmark.html  これにはFibonacci Heapも比較対象に入れてある  折れ線を間引くで書いたように、 Douglas-Peuckerアルゴリズムを改良して指定した点数まで点を削減して折れ線を簡略化する場合、 優先度付きキューを使うことになる。
+このアルゴリズムでは
+ 始点と終点を結ぶ線分で最も距離が大きな点P1を選ぶ 始点と点P1を結ぶ線分で距離最大となる点P2をキューに登録(優先度は点P2と線分の距離) 点P1と終点を結ぶ線分で距離最大となる点P3をキューに登録(優先度は点P3と線分の距離) キューから距離が最大(=優先度最大)の点を選んで、2に戻る  という手順となるため、「キューに2つ登録して、1つ取り出す」ということを繰り返すことになる。
+そこで今回はランダムな優先度のデータを
+ 連続して登録し、連続して取り出す(要はソートしているだけ) 「キューに2つ登録して、1つ取り出す」を繰り返すDouglas-Peuckerを想定した試験  という操作に対してどの優先度付きキューの実装が良い性能をしめすのか、ベンチマークを取ってみた。
+優先度付きキューの実装にはいくつか方法があるが、今回は以下の6種類を試してみた。
+ Array.sort(): キューへの追加はArray.push()、キューから取り出すときに必要であればArray.sort()してArray.pop()する。非常に単純で楽チン。結果の検証用。 Selection: キューへの追加はArray.push()、キューから取り出すときに最大要素を選択。enqueue: O(1), dequeue: O(n2)。 Insertion: キューへの追加時に挿入ソートを行う。キューから取り出すときはArray.pop()するだけ。enqueue: O(n2), dequeue: O(1)。 Binary Insertion: キューへの追加時に二分挿入ソートを行う。あとは3と同じ。enqueue: O(n2), dequeue: O(1)。 Binary Heap: 二分ヒープ(wikipedia)での実装。ポインタなしで実装できるので省メモリ。java.util.PriorityQueueはこれらしい。enqueue: O(log(n)), dequeue: O(log(n))。 Pairing Heap: ペアリングヒープ(wikipedia: en)での実装。gcc(libstdc++)のpriority_queueはこれらしい。enqueue: O(log(n)), dequeue: O(log(n))。実装にはこれを参考にした。  いずれもJavaScriptで実装した。
+ベンチマーク結果 以下、Firefox 29とChromium 34での結果。単位はmsで、小さいほうが高速。 載せていないがVirtualBox上のWindows XPで測定してもほぼ同じ結果だった。
+		</div>
+	</div>
+</article>
+<article class="list__item post clearfix">
 	<div class="list__content clearfix">
 		<header class="list__header">
 			<h3 class="list__title post__title ">
@@ -239,27 +263,6 @@ Options[ExportMovie] = { &quot;FrameRate&quot; -&gt; 25, &quot;VideoCodecOption&
 		</div>
 	</div>
 </article>
-<article class="list__item post clearfix">
-	<div class="list__content clearfix">
-		<header class="list__header">
-			<h3 class="list__title post__title ">
-				<a href="/essay/process-blob-and-multibyte-string-from-sqlite-with-mathematica/" rel="bookmark">MathematicaからSQLiteでBLOBとマルチバイト文字列を扱う</a>
-			</h3>
-			<div class="list__meta meta">
-				<svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
-				<time class="list__meta-date" datetime="2012-10-14T00:00:00">October 14, 2012</time>
-			</div>
-		</header>
-		<div class="list__excerpt">
-			ドキュメントにはないものの、MathematicaではSQLiteを扱うことができる。 しかしながら、BLOB型や文字列で日本語などを扱うには少し工夫が必要なので、メモ。
-BLOB型 select 直接BLOB型をselectすると$Failedが返ってくるので、hex関数で16進文字列として返す。
-db = Database`OpenDatabase[sqlitefilepath]; rs = Database`QueryDatabase[db, &quot;select hex(column_name) from table_name&quot;];  これを16進文字列→数値→バイト列→文字列と変換して、最後にImportStringで読み込むと、Mathematicaで読み込める。
-ImportSQLiteBLOB[hex_, format_] := ImportString[ FromCharacterCode[IntegerDigits[FromDigits[hex, 16], 256]], format]; ImportSQLiteBLOB[rs[[1, 1]], &quot;PNG&quot;]  insert insertする場合には逆に、データをExportStringで文字列に変換→バイト列→16進文字列と変換し&rdquo;x&rsquo;&ldquo;と&rdquo;&lsquo;&ldquo;で囲う。
-ExportSQLiteBLOB[expr_, format_] := StringJoin[&quot;x'&quot;, IntegerString[ToCharacterCode[ExportString[expr, format]], 16, 2], &quot;'&quot;]; Database`QueryDatabase[db, &quot;insert into table_name values (&quot; &lt;&gt; ExportSQLiteBLOB[Plot[Sin[x], {x, 0, Pi}], &quot;PNG&quot;] &lt;&gt; &quot;)&quot;];  マルチバイト文字列 select 日本語などマルチバイト文字列が入っていても適切に変換してくれないので、自前で変換する。
-ImportSQLiteString[str_] := FromCharacterCode[ToCharacterCode[str], &quot;UTF8&quot;]; rs = Database`QueryDatabase[db, &quot;select column_name from table_name&quot;]; ImportSQLiteString[rs[[1, 1]]]  insert そのまま突っ込むとエラーが出るので、変換してから突っ込む。ついでにシングルクォーテーションをエスケープしておく。
-		</div>
-	</div>
-</article>
 
 		
 
@@ -289,6 +292,7 @@ ImportSQLiteString[str_] := FromCharacterCode[ToCharacterCode[str], &quot;UTF8&q
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20190216-brm216chiba-300km/">2019年02月16日 BRM216千葉300km(佐原)</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20181007-14_median_line/">2018年10月7日〜14日 中央構造線 &#43; 山中湖</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20180804-12_tohoku_sapporo/">2018年8月4日〜12日 東北中央部縦断〜函館〜札幌</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/start-command-prompt-in-windows-10/">Windows 10でコマンドプロンプトを素早く起動する方法</a></li>
@@ -298,7 +302,6 @@ ImportSQLiteString[str_] := FromCharacterCode[ToCharacterCode[str], &quot;UTF8&q
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20180427-28_kagoshima/">2018年4月27日〜28日 鹿児島</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/letsencrypt-ubuntu-1604/">Ubuntu 16.04 &#43; Apache 2.4にLet&#39;s Encryptを設定する</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/ubuntu_nvidia_cuda_mathematica_geforce1060/">GeForce 1060搭載ノートPCにUbuntu 17.10 &#43; NVIDIAドライバ &#43; CUDA &#43; Mathematia 8をインストール</a></li>
-			<li class="widget__item"><a class="widget__link" href="/essay/resize_and_pad_with_imagemagick/">ImageMagickでベクタ画像を綺麗な半透過PNGにする</a></li>
 		</ul>
 	</div>
 </div>
@@ -357,7 +360,7 @@ ImportSQLiteString[str_] := FromCharacterCode[ToCharacterCode[str], &quot;UTF8&q
 		<a class="widget__link widget__link--taglist" href="/tags/wsh" title="wsh">wsh (2)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/zabbix" title="zabbix">zabbix (1)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/%e3%82%a2%e3%83%ab%e3%82%b4%e3%83%aa%e3%82%ba%e3%83%a0" title="アルゴリズム">アルゴリズム (5)</a>
-		<a class="widget__link widget__link--taglist" href="/tags/%e3%83%84%e3%83%bc%e3%83%aa%e3%83%b3%e3%82%b0" title="ツーリング">ツーリング (45)</a>
+		<a class="widget__link widget__link--taglist" href="/tags/%e3%83%84%e3%83%bc%e3%83%aa%e3%83%b3%e3%82%b0" title="ツーリング">ツーリング (46)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/%e3%83%91%e3%83%af%e3%83%8f%e3%83%a9" title="パワハラ">パワハラ (5)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/%e7%94%9f%e6%b4%bb" title="生活">生活 (1)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/%e7%a4%be%e5%86%85se" title="社内se">社内se (15)</a>
@@ -370,7 +373,7 @@ ImportSQLiteString[str_] := FromCharacterCode[ToCharacterCode[str], &quot;UTF8&q
 	</div>
 		<footer class="footer" itemscope="itemscope" itemtype="http://schema.org/WPFooter">
 			<div class="container container-inner">
-				<p class="footer__copyright">&copy; 2018 330k info. <span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad theme</a>.</span></p>
+				<p class="footer__copyright">&copy; 2019 330k info. <span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad theme</a>.</span></p>
 			</div>
 		</footer>
 	</div>
