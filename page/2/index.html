@@ -55,6 +55,30 @@ if (!doNotTrack) {
 	<div class="list__content clearfix">
 		<header class="list__header">
 			<h3 class="list__title post__title ">
+				<a href="/essay/ubuntu_nvidia_cuda_mathematica_geforce1060/" rel="bookmark">GeForce 1060搭載ノートPCにUbuntu 17.10 &#43; NVIDIAドライバ &#43; CUDA &#43; Mathematia 8をインストール</a>
+			</h3>
+			<div class="list__meta meta">
+				<svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
+				<time class="list__meta-date" datetime="2017-12-21T00:00:00">December 21, 2017</time>
+			</div>
+		</header>
+		<div class="list__excerpt">
+			MathematicaからCUDAを使いたかったので、GPU搭載のノートPCを購入してセットアップした。
+購入PC PC工房のGeForce 1060搭載ノートPC(OSなし) : STYLE-15FX093-i7-RNFR [OS LESS]
+ CPU: Intel Core i7-7700HQ 2.8GHz Memory: 16GB Storage: SSD 240GB + HDD 2TB GPU: NVIDIA GeForce 1060 6GB  Ubuntu 17.10 日本語Remixをダウンロード 旧PC(Ubuntu 16.04)で Ubuntu Desktop 日本語 Remixのダウンロードから、ubuntu-ja-17.10-desktop-amd64.isoをダウンロード。 ddでUSBメモリに書き込む。
+sudo dd if=ubuntu-ja-17.10-desktop-amd64.iso of=/dev/sde status=progress  ファームウェア設定 新PCに電源を入れ、ファームウェア設定画面に入り、起動モードをUEFIからBIOSに変更する。
+Ubuntuインストール USBメモリを挿入してPCを再起動し、インストールする。
+ 言語は日本語を選択 サードパーティー製のドライバを・・・にチェック SSD(/dev/sda)を「/」(ext4)に、HDD(/dev/sdb)を「/home」にマウント ブートローダを/dev/sdaにインストール ホームディレクトリを暗号化にチェック(お好みで)  インストールができたらUSBメモリを抜いて再起動。
+Ubuntuが無事に起動し、ログインできたら、まずはディレクトリ名を日本語から英語に直してから作業開始。
+LANG=C xdg-user-dirs-gtk-update  DKMSがうまく動かないので、カーネルのバージョンを固定する。
+sudo apt-mark hold linux-generic linux-image-generic linux-headers-generic  NVIDIA Driver 公式リポジトリにあるnvidia-387をインストールする。 デフォルトのnouveauの無効化は不要だった。
+		</div>
+	</div>
+</article>
+<article class="list__item post clearfix">
+	<div class="list__content clearfix">
+		<header class="list__header">
+			<h3 class="list__title post__title ">
 				<a href="/essay/resize_and_pad_with_imagemagick/" rel="bookmark">ImageMagickでベクタ画像を綺麗な半透過PNGにする</a>
 			</h3>
 			<div class="list__meta meta">
@@ -268,33 +292,13 @@ data3 = Normalize /@ RandomReal[NormalDistribution[], {2000, 3}]; g3 = ListPoint
 		</div>
 	</div>
 </article>
-<article class="list__item post clearfix">
-	<div class="list__content clearfix">
-		<header class="list__header">
-			<h3 class="list__title post__title ">
-				<a href="/essay/zabbix_ricoh_printer_template_xml/" rel="bookmark">RICOHプリンタ・複合機用のZabbix用テンプレート</a>
-			</h3>
-			<div class="list__meta meta">
-				<svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
-				<time class="list__meta-date" datetime="2017-07-20T21:12:22">July 20, 2017</time>
-			</div>
-		</header>
-		<div class="list__excerpt">
-			社内で余っているサーバにZabbixを入れたので、 SNMP v2cでRICOH製のプリンタ・複合機の各種情報を取得するXMLテンプレートをhttps://github.com/coreyramirezgomez/Ricoh-Printers-Zabbix-Template/blob/master/Ricoh%20Printers%20SNMP%20Template.xml を元に作成した。
-変更箇所としては以下の通り。
- SNMP Discoveryで英語のアイテム名を取得するように変更 1分間あたりの印刷枚数のアイテムとグラフを追加 Discoveryの間隔が長くした(負荷でプリンタが応答しなくなるため)  確認している機種は社内にある以下の2機種のみ。
- RICOH MP C5503 IPSiO SP 6320  ダウンロードはZabbix Share - Template Ricoh SNMP Printers。
-&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt; &lt;zabbix_export&gt; &lt;version&gt;3.2&lt;/version&gt; &lt;date&gt;2017-07-20T10:38:50Z&lt;/date&gt; &lt;groups&gt; &lt;group&gt; &lt;name&gt;Printers&lt;/name&gt; &lt;/group&gt; &lt;/groups&gt; &lt;templates&gt; &lt;template&gt; &lt;template&gt;Template SNMP Ricoh Printers&lt;/template&gt; &lt;name&gt;Template SNMP Ricoh Printers&lt;/name&gt; &lt;description/&gt; &lt;groups&gt; &lt;group&gt; &lt;name&gt;Printers&lt;/name&gt; &lt;/group&gt; &lt;/groups&gt; &lt;applications&gt; &lt;application&gt; &lt;name&gt;SNMP Enabled Printer&lt;/name&gt; &lt;/application&gt; &lt;/applications&gt; &lt;items&gt; &lt;item&gt; &lt;name&gt;Description&lt;/name&gt; &lt;type&gt;4&lt;/type&gt; &lt;snmp_community&gt;{$SNMP_COMMUNITY}&lt;/snmp_community&gt; &lt;multiplier&gt;0&lt;/multiplier&gt; &lt;snmp_oid&gt;.1.3.6.1.2.1.25.3.2.1.3.1&lt;/snmp_oid&gt; &lt;key&gt;Description&lt;/key&gt; &lt;delay&gt;60&lt;/delay&gt; &lt;history&gt;90&lt;/history&gt; &lt;trends&gt;0&lt;/trends&gt; &lt;status&gt;0&lt;/status&gt; &lt;value_type&gt;4&lt;/value_type&gt; &lt;allowed_hosts/&gt; &lt;units/&gt; &lt;delta&gt;0&lt;/delta&gt; &lt;snmpv3_contextname/&gt; &lt;snmpv3_securityname/&gt; &lt;snmpv3_securitylevel&gt;0&lt;/snmpv3_securitylevel&gt; &lt;snmpv3_authprotocol&gt;0&lt;/snmpv3_authprotocol&gt; &lt;snmpv3_authpassphrase/&gt; &lt;snmpv3_privprotocol&gt;0&lt;/snmpv3_privprotocol&gt; &lt;snmpv3_privpassphrase/&gt; &lt;formula&gt;1&lt;/formula&gt; &lt;delay_flex/&gt; &lt;params/&gt; &lt;ipmi_sensor/&gt; &lt;data_type&gt;0&lt;/data_type&gt; &lt;authtype&gt;0&lt;/authtype&gt; &lt;username/&gt; &lt;password/&gt; &lt;publickey/&gt; &lt;privatekey/&gt; &lt;port&gt;161&lt;/port&gt; &lt;description/&gt; &lt;inventory_link&gt;2&lt;/inventory_link&gt; &lt;applications&gt; &lt;application&gt; &lt;name&gt;SNMP Enabled Printer&lt;/name&gt; &lt;/application&gt; &lt;/applications&gt; &lt;valuemap/&gt; &lt;logtimefmt/&gt; &lt;/item&gt; &lt;item&gt; &lt;name&gt;Page Count&lt;/name&gt; &lt;type&gt;4&lt;/type&gt; &lt;snmp_community&gt;{$SNMP_COMMUNITY}&lt;/snmp_community&gt; &lt;multiplier&gt;0&lt;/multiplier&gt; &lt;snmp_oid&gt;.
-		</div>
-	</div>
-</article>
 
 		
 
 		
 <div class="pagination clearfix">
 	<a class="pagination__item pagination__item--prev" href="/">«</a>
-	<span class="pagination__item pagination__item--current">2/11</span>
+	<span class="pagination__item pagination__item--current">2/12</span>
 	<a class="pagination__item pagination__item--next" href="/page/3/">»</a>
 </div>
 
@@ -317,6 +321,7 @@ data3 = Normalize /@ RandomReal[NormalDistribution[], {2000, 3}]; g3 = ListPoint
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/essay/show-only-first-images/">bxSliderで2番目以降の画像がJS実行前に一瞬表示されるのを防止する</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20190216-brm216chiba-300km/">2019年02月16日 BRM216千葉300km(佐原)</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20181007-14_median_line/">2018年10月7日〜14日 中央構造線 &#43; 山中湖</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20180804-12_tohoku_sapporo/">2018年8月4日〜12日 東北中央部縦断〜函館〜札幌</a></li>
@@ -326,7 +331,6 @@ data3 = Normalize /@ RandomReal[NormalDistribution[], {2000, 3}]; g3 = ListPoint
 			<li class="widget__item"><a class="widget__link" href="/essay/text_garbled_in_snap_apps_in_ubuntu_18_04/">Ubuntu 18.04 LTSで文字化けしたSnapアプリをなんとかして使う</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20180427-28_kagoshima/">2018年4月27日〜28日 鹿児島</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/letsencrypt-ubuntu-1604/">Ubuntu 16.04 &#43; Apache 2.4にLet&#39;s Encryptを設定する</a></li>
-			<li class="widget__item"><a class="widget__link" href="/essay/ubuntu_nvidia_cuda_mathematica_geforce1060/">GeForce 1060搭載ノートPCにUbuntu 17.10 &#43; NVIDIAドライバ &#43; CUDA &#43; Mathematia 8をインストール</a></li>
 		</ul>
 	</div>
 </div>
@@ -372,7 +376,7 @@ data3 = Normalize /@ RandomReal[NormalDistribution[], {2000, 3}]; g3 = ListPoint
 		<a class="widget__link widget__link--taglist" href="/tags/gpx" title="gpx">gpx (4)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/hta" title="hta">hta (1)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/java" title="java">java (2)</a>
-		<a class="widget__link widget__link--taglist" href="/tags/javascript" title="javascript">javascript (5)</a>
+		<a class="widget__link widget__link--taglist" href="/tags/javascript" title="javascript">javascript (6)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/linux" title="linux">linux (1)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/mathematica" title="mathematica">mathematica (20)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/net" title="net">net (1)</a>

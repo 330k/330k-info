@@ -55,6 +55,26 @@ if (!doNotTrack) {
 	<div class="list__content clearfix">
 		<header class="list__header">
 			<h3 class="list__title post__title ">
+				<a href="/essay/zabbix_ricoh_printer_template_xml/" rel="bookmark">RICOHプリンタ・複合機用のZabbix用テンプレート</a>
+			</h3>
+			<div class="list__meta meta">
+				<svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
+				<time class="list__meta-date" datetime="2017-07-20T21:12:22">July 20, 2017</time>
+			</div>
+		</header>
+		<div class="list__excerpt">
+			社内で余っているサーバにZabbixを入れたので、 SNMP v2cでRICOH製のプリンタ・複合機の各種情報を取得するXMLテンプレートをhttps://github.com/coreyramirezgomez/Ricoh-Printers-Zabbix-Template/blob/master/Ricoh%20Printers%20SNMP%20Template.xml を元に作成した。
+変更箇所としては以下の通り。
+ SNMP Discoveryで英語のアイテム名を取得するように変更 1分間あたりの印刷枚数のアイテムとグラフを追加 Discoveryの間隔が長くした(負荷でプリンタが応答しなくなるため)  確認している機種は社内にある以下の2機種のみ。
+ RICOH MP C5503 IPSiO SP 6320  ダウンロードはZabbix Share - Template Ricoh SNMP Printers。
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt; &lt;zabbix_export&gt; &lt;version&gt;3.2&lt;/version&gt; &lt;date&gt;2017-07-20T10:38:50Z&lt;/date&gt; &lt;groups&gt; &lt;group&gt; &lt;name&gt;Printers&lt;/name&gt; &lt;/group&gt; &lt;/groups&gt; &lt;templates&gt; &lt;template&gt; &lt;template&gt;Template SNMP Ricoh Printers&lt;/template&gt; &lt;name&gt;Template SNMP Ricoh Printers&lt;/name&gt; &lt;description/&gt; &lt;groups&gt; &lt;group&gt; &lt;name&gt;Printers&lt;/name&gt; &lt;/group&gt; &lt;/groups&gt; &lt;applications&gt; &lt;application&gt; &lt;name&gt;SNMP Enabled Printer&lt;/name&gt; &lt;/application&gt; &lt;/applications&gt; &lt;items&gt; &lt;item&gt; &lt;name&gt;Description&lt;/name&gt; &lt;type&gt;4&lt;/type&gt; &lt;snmp_community&gt;{$SNMP_COMMUNITY}&lt;/snmp_community&gt; &lt;multiplier&gt;0&lt;/multiplier&gt; &lt;snmp_oid&gt;.1.3.6.1.2.1.25.3.2.1.3.1&lt;/snmp_oid&gt; &lt;key&gt;Description&lt;/key&gt; &lt;delay&gt;60&lt;/delay&gt; &lt;history&gt;90&lt;/history&gt; &lt;trends&gt;0&lt;/trends&gt; &lt;status&gt;0&lt;/status&gt; &lt;value_type&gt;4&lt;/value_type&gt; &lt;allowed_hosts/&gt; &lt;units/&gt; &lt;delta&gt;0&lt;/delta&gt; &lt;snmpv3_contextname/&gt; &lt;snmpv3_securityname/&gt; &lt;snmpv3_securitylevel&gt;0&lt;/snmpv3_securitylevel&gt; &lt;snmpv3_authprotocol&gt;0&lt;/snmpv3_authprotocol&gt; &lt;snmpv3_authpassphrase/&gt; &lt;snmpv3_privprotocol&gt;0&lt;/snmpv3_privprotocol&gt; &lt;snmpv3_privpassphrase/&gt; &lt;formula&gt;1&lt;/formula&gt; &lt;delay_flex/&gt; &lt;params/&gt; &lt;ipmi_sensor/&gt; &lt;data_type&gt;0&lt;/data_type&gt; &lt;authtype&gt;0&lt;/authtype&gt; &lt;username/&gt; &lt;password/&gt; &lt;publickey/&gt; &lt;privatekey/&gt; &lt;port&gt;161&lt;/port&gt; &lt;description/&gt; &lt;inventory_link&gt;2&lt;/inventory_link&gt; &lt;applications&gt; &lt;application&gt; &lt;name&gt;SNMP Enabled Printer&lt;/name&gt; &lt;/application&gt; &lt;/applications&gt; &lt;valuemap/&gt; &lt;logtimefmt/&gt; &lt;/item&gt; &lt;item&gt; &lt;name&gt;Page Count&lt;/name&gt; &lt;type&gt;4&lt;/type&gt; &lt;snmp_community&gt;{$SNMP_COMMUNITY}&lt;/snmp_community&gt; &lt;multiplier&gt;0&lt;/multiplier&gt; &lt;snmp_oid&gt;.
+		</div>
+	</div>
+</article>
+<article class="list__item post clearfix">
+	<div class="list__content clearfix">
+		<header class="list__header">
+			<h3 class="list__title post__title ">
 				<a href="/essay/create_uuid_vba/" rel="bookmark">VBAでUUIDを生成</a>
 			</h3>
 			<div class="list__meta meta">
@@ -265,35 +285,13 @@ PC1までは人が多かったが、休憩時間の配分が各々違うよう�
 		</div>
 	</div>
 </article>
-<article class="list__item post clearfix">
-	<figure class="list__thumbnail">
-		<a href="https://www.330k.info/bicycle/touring/20170211-12-izu-peninsula/">
-			<img src="/bicycle/touring/20170211-12-izu-peninsula/IMG_1221.jpg" alt="2017年02月11日〜12日 伊豆半島" />
-		</a>
-	</figure>
-	<div class="list__content clearfix">
-		<header class="list__header">
-			<h3 class="list__title post__title ">
-				<a href="/bicycle/touring/20170211-12-izu-peninsula/" rel="bookmark">2017年02月11日〜12日 伊豆半島</a>
-			</h3>
-			<div class="list__meta meta">
-				<svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
-				<time class="list__meta-date" datetime="2017-02-11T21:52:45">February 11, 2017</time>
-			</div>
-		</header>
-		<div class="list__excerpt">
-			早咲きの桜として有名な河津桜を見に、伊豆半島を走ってきた。 桜、梅、月、富士山、さらに土肥峠では雪、と風流な旅になった。
-  function initMap(){ var map, ctaLayer; map = new google.maps.Map(document.getElementById("map-canvas"), { center: {lat: 35.6832581, lng: 139.7555827}, zoom: 8 }); ctaLayer = new google.maps.KmlLayer({ url: "https:\/\/www.330k.info\/\/bicycle\/touring\/20170211-12-izu-peninsula\/20170211-12.kml" }); ctaLayer.setMap(map); }      日付 出発地 到着地 走行距離(km) 走行時間 最高速度(km/h) 平均速度(km/h) 主な経路 景勝地     2017年2月11日 東京 熱川 162.04 6:45:42 54.1 24.0 R246, R1, R135    2017年2月12日 熱川 三島 152.59 7:30:06 62.7 20.3 R135, R136 河津、石廊崎、西伊豆    1日目 朝、出発しようとした直前に会社携帯に連絡があり、会社のサーバがダウン。 ハードウェア障害と思われたが、平日昼間まで交換部品が手配できないため、休日中の復旧を断念。出発は当初計画より2時間ほど遅れた。
-		</div>
-	</div>
-</article>
 
 		
 
 		
 <div class="pagination clearfix">
 	<a class="pagination__item pagination__item--prev" href="/page/2/">«</a>
-	<span class="pagination__item pagination__item--current">3/11</span>
+	<span class="pagination__item pagination__item--current">3/12</span>
 	<a class="pagination__item pagination__item--next" href="/page/4/">»</a>
 </div>
 
@@ -316,6 +314,7 @@ PC1までは人が多かったが、休憩時間の配分が各々違うよう�
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/essay/show-only-first-images/">bxSliderで2番目以降の画像がJS実行前に一瞬表示されるのを防止する</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20190216-brm216chiba-300km/">2019年02月16日 BRM216千葉300km(佐原)</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20181007-14_median_line/">2018年10月7日〜14日 中央構造線 &#43; 山中湖</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20180804-12_tohoku_sapporo/">2018年8月4日〜12日 東北中央部縦断〜函館〜札幌</a></li>
@@ -325,7 +324,6 @@ PC1までは人が多かったが、休憩時間の配分が各々違うよう�
 			<li class="widget__item"><a class="widget__link" href="/essay/text_garbled_in_snap_apps_in_ubuntu_18_04/">Ubuntu 18.04 LTSで文字化けしたSnapアプリをなんとかして使う</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20180427-28_kagoshima/">2018年4月27日〜28日 鹿児島</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/letsencrypt-ubuntu-1604/">Ubuntu 16.04 &#43; Apache 2.4にLet&#39;s Encryptを設定する</a></li>
-			<li class="widget__item"><a class="widget__link" href="/essay/ubuntu_nvidia_cuda_mathematica_geforce1060/">GeForce 1060搭載ノートPCにUbuntu 17.10 &#43; NVIDIAドライバ &#43; CUDA &#43; Mathematia 8をインストール</a></li>
 		</ul>
 	</div>
 </div>
@@ -371,7 +369,7 @@ PC1までは人が多かったが、休憩時間の配分が各々違うよう�
 		<a class="widget__link widget__link--taglist" href="/tags/gpx" title="gpx">gpx (4)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/hta" title="hta">hta (1)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/java" title="java">java (2)</a>
-		<a class="widget__link widget__link--taglist" href="/tags/javascript" title="javascript">javascript (5)</a>
+		<a class="widget__link widget__link--taglist" href="/tags/javascript" title="javascript">javascript (6)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/linux" title="linux">linux (1)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/mathematica" title="mathematica">mathematica (20)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/net" title="net">net (1)</a>

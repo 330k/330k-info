@@ -55,6 +55,33 @@ if (!doNotTrack) {
 		<header class="page-header">
 			<h1 class="page-header__title">Essays</h1>
 		</header><article class="list__item post clearfix">
+	<div class="list__content clearfix">
+		<header class="list__header">
+			<h3 class="list__title post__title ">
+				<a href="/essay/show-only-first-images/" rel="bookmark">bxSliderで2番目以降の画像がJS実行前に一瞬表示されるのを防止する</a>
+			</h3>
+			<div class="list__meta meta">
+				<svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
+				<time class="list__meta-date" datetime="2019-03-01T07:01:13">March 01, 2019</time>
+			</div>
+		</header>
+		<div class="list__excerpt">
+			もうjQueryも古いと言われているが、会社のウェブサイトでjQueryプラグインのbxSliderが使われている。
+Google先生のPageSpeed Insightに注意されたとおり、レンダリングブロックするJavaScriptを後ろ(&lt;/body&gt;直上)に配置したところ、 2枚目以降の画像が一瞬表示されてしまう現象が発生。
+これはJSをレンダリングブロックしないように後ろに配置したり、deferをつけたときに、ブラウザが
+ HTMLをロード CSSを読み込み CSSに従って要素を配置 ← このときに一瞬表示 JavaScript読み込み bxSliderプラグインによってCSS書き換え 書き換えられたCSSでDOM要素を再配置 ← このときに2番目以降が消える  という順番で処理されるため。
+なので、CSSで最初から2番目以降を表示しないようにしておけばい。
+具体的には、.bxsliderの2番目以降の子要素にdisplay: none;を指定すればよく、下記のようにすれば良い。
+&lt;ul class=&quot;bxslider&quot;&gt; &lt;li&gt;&lt;div class=&quot;slide&quot;&gt;&lt;/div&gt;&lt;/li&gt; &lt;li&gt;&lt;div class=&quot;slide&quot;&gt;&lt;/div&gt;&lt;/li&gt; &lt;li&gt;&lt;div class=&quot;slide&quot;&gt;&lt;/div&gt;&lt;/li&gt; &lt;li&gt;&lt;div class=&quot;slide&quot;&gt;&lt;/div&gt;&lt;/li&gt; &lt;li&gt;&lt;div class=&quot;slide&quot;&gt;&lt;/div&gt;&lt;/li&gt; &lt;li&gt;&lt;div class=&quot;slide&quot;&gt;&lt;/div&gt;&lt;/li&gt; &lt;/ul&gt;  .bxslider li:not(:first-child){ display: none; }  :not(:first-child)が2番目以降の子要素を示す擬似クラス。 ここ最近のブラウザならすべて対応している(:first-childはCSS2.1、:notはCSS3)。
+2番目以降の画像が一瞬表示されるという見た目の問題以外にも、 JavaScript(bxSlider)実行後も要素の再配置が発生しないので表示が高速になる利点もある。
+参考 ちょっと古い記事だが、他の方も同様の問題に対処している。
+ 「bxSlider」で画像が一度に出てしまう際の対処 [bxSlider]スライドショー読み込み時に画像が一瞬バラけてしまう場合の超簡単な対処法  ただ、
+ 2番目以降ではなくすべての子要素を消してしまっていて、JavaScript実行前は逆に画像が1枚も表示されず、実行後に要素の再配置が発生してしまっている  その対処として表示領域のwidthとheightを指定している  IDで2番目以降の要素を指定している  というやり方で、
+ レスポンシブにするため、CSSの別の場所で細かく画像の大きさを場合分けしている ページによってスライドショーの画像の枚数やIDに違いがある  という点で私の会社のサイトに合わず、そのままでは採用できなかった。
+		</div>
+	</div>
+</article>
+<article class="list__item post clearfix">
 	<figure class="list__thumbnail">
 		<a href="https://www.330k.info/essay/start-command-prompt-in-windows-10/">
 			<img src="/essay/start-command-prompt-in-windows-10/002.png" alt="Windows 10でコマンドプロンプトを素早く起動する方法" />
@@ -256,26 +283,6 @@ $(function(){ var oldratio = 0.0; $('video').on('play', function(e) { on('play',
 		</div>
 	</div>
 </article>
-<article class="list__item post clearfix">
-	<div class="list__content clearfix">
-		<header class="list__header">
-			<h3 class="list__title post__title ">
-				<a href="/essay/delete_temporary_files_with_powershell/" rel="bookmark">Officeの一時ファイルやThumbs.dbなどをPowerShellで一掃</a>
-			</h3>
-			<div class="list__meta meta">
-				<svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
-				<time class="list__meta-date" datetime="2017-09-06T00:57:48">September 06, 2017</time>
-			</div>
-		</header>
-		<div class="list__excerpt">
-			ファイルサーバの空き容量が減ってきたので調べてみたら、 削除されていないOfficeファイルの一時ファイルや、Thumbs.dbが結構あることが分かった。
-Thumbs.dbはグループポリシーでネットワークドライブ上では生成しないようにしているはずだが、 ローカルのフォルダをファイルサーバにコピーすると、一緒にくっついてくるらしい。
-以下のPowerShellスクリプトをタスクスケジューラに登録して、定期的(1日1回)にゴミ掃除。
-$a = @() $a += Get-ChildItem &quot;(掃除対象フォルダのパス1)&quot; -Force -Recurse $a += Get-ChildItem &quot;(掃除対象フォルダのパス2)&quot; -Force -Recurse $a += Get-ChildItem &quot;(掃除対象フォルダのパス3)&quot; -Force -Recurse $a | Where-Object { ` $_.Name -like &quot;~*&quot; -and $_.LastWriteTime -lt (Get-Date).AddDays(-1) ` -or $_.Name -like &quot;*.tmp&quot; ` -or $_.Name -eq &quot;Thumbs.db&quot; ` -or $_.Name -eq &quot;.DS_Store&quot; ` -or $_.Name -like &quot;._*&quot; ` } | Remove-Item -Force  削除対象は以下の通り。
- 更新日時が1日以上前のOffice一時ファイル(&quot;~*&quot;) 拡張子が&quot;tmp&quot;のファイル &quot;Thumbs.db&quot; .DS_Storeや._*などのMac OSで使用されるファイル  
-		</div>
-	</div>
-</article>
 
 
 		
@@ -303,6 +310,7 @@ $a = @() $a += Get-ChildItem &quot;(掃除対象フォルダのパス1)&quot; -F
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/essay/show-only-first-images/">bxSliderで2番目以降の画像がJS実行前に一瞬表示されるのを防止する</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20190216-brm216chiba-300km/">2019年02月16日 BRM216千葉300km(佐原)</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20181007-14_median_line/">2018年10月7日〜14日 中央構造線 &#43; 山中湖</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20180804-12_tohoku_sapporo/">2018年8月4日〜12日 東北中央部縦断〜函館〜札幌</a></li>
@@ -312,7 +320,6 @@ $a = @() $a += Get-ChildItem &quot;(掃除対象フォルダのパス1)&quot; -F
 			<li class="widget__item"><a class="widget__link" href="/essay/text_garbled_in_snap_apps_in_ubuntu_18_04/">Ubuntu 18.04 LTSで文字化けしたSnapアプリをなんとかして使う</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20180427-28_kagoshima/">2018年4月27日〜28日 鹿児島</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/letsencrypt-ubuntu-1604/">Ubuntu 16.04 &#43; Apache 2.4にLet&#39;s Encryptを設定する</a></li>
-			<li class="widget__item"><a class="widget__link" href="/essay/ubuntu_nvidia_cuda_mathematica_geforce1060/">GeForce 1060搭載ノートPCにUbuntu 17.10 &#43; NVIDIAドライバ &#43; CUDA &#43; Mathematia 8をインストール</a></li>
 		</ul>
 	</div>
 </div>
@@ -358,7 +365,7 @@ $a = @() $a += Get-ChildItem &quot;(掃除対象フォルダのパス1)&quot; -F
 		<a class="widget__link widget__link--taglist" href="/tags/gpx" title="gpx">gpx (4)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/hta" title="hta">hta (1)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/java" title="java">java (2)</a>
-		<a class="widget__link widget__link--taglist" href="/tags/javascript" title="javascript">javascript (5)</a>
+		<a class="widget__link widget__link--taglist" href="/tags/javascript" title="javascript">javascript (6)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/linux" title="linux">linux (1)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/mathematica" title="mathematica">mathematica (20)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/net" title="net">net (1)</a>

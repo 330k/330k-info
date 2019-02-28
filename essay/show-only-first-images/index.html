@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ST-5703の変速機構が破損したのでWレバーに交換</title>
+<title>bxSliderで2番目以降の画像がJS実行前に一瞬表示されるのを防止する</title>
 <meta name="description" content="自転車ツーリングの記録やソフトウェアの配布、Mathematicaをメインにしたプログラミングの覚書や日ごろの雑感など。">
 <meta name="generator" content="Hugo 0.54.0" />
 
@@ -54,74 +54,96 @@ if (!doNotTrack) {
 <div class="main-content content" role="main" itemprop="mainContentOfPage">
 	<article class="post">
 		<header class="post__header clearfix">
-			<h1 class="post__title">ST-5703の変速機構が破損したのでWレバーに交換</h1>
+			<h1 class="post__title">bxSliderで2番目以降の画像がJS実行前に一瞬表示されるのを防止する</h1>
 			<p class="post__meta meta">
 				<svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
-				<time class="post__meta-date" datetime="2015-11-08T02:43:00">November 08, 2015</time>
+				<time class="post__meta-date" datetime="2019-03-01T07:01:13">March 01, 2019</time>
 				<span class="post__meta-categories meta-categories">
 					<svg class="icon icon-category" height="16" viewBox="0 0 16 16" width="16" xmlns="http://www.w3.org/2000/svg"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
 					<a class="meta-categories__link" href="/categories/%e9%9b%91%e8%a8%98%e5%b8%b3" rel="category">雑記帳</a></span>
 			</p>
 		</header>
 		<div class="post__content clearfix">
-			<p>先月の軽井沢〜直江津のあと、2年ぶりに自転車をオーバーホールした。</p>
+			
 
-<p>その一環でシフトワイヤーケーブルの交換を行ったところ、フロントディレイラーの調子がおかしい。</p>
+<p>もうjQueryも古いと言われているが、会社のウェブサイトでjQueryプラグインのbxSliderが使われている。</p>
 
-<p>フロントトリプルなので、インナー⇛センター⇛アウターは問題なく変速できるのだが、
-アウター⇛センターに変速しようとすると、「バキッ、ガッチャン」と音がして、一気にインナーまで落ちてしまうか、
-まったく変速操作を受け付けなくなるか、のどちらかの症状が発生。</p>
+<p>Google先生のPageSpeed Insightに注意されたとおり、レンダリングブロックするJavaScriptを後ろ(&lt;/body&gt;直上)に配置したところ、
+2枚目以降の画像が一瞬表示されてしまう現象が発生。</p>
 
-<p>ネットで調べると、<a href="http://yuz1.blog.shinobi.jp/Entry/1729/">記 ： シマノ105 STI左レバー ST-5703不調</a>
-と同じように、ワイヤー先端のタイコが外れてしまっていた。</p>
+<p>これはJSをレンダリングブロックしないように後ろに配置したり、deferをつけたときに、ブラウザが</p>
 
-<p>何回ワイヤーのタイコの位置を直してもタイコが外れて変速操作の不調が治らない。
-さて、何とかならないかと思いながら何回か変速操作をしていたところ、レバーの隙間から以下の写真のような部品が落ちてきた。</p>
+<ul>
+<li>HTMLをロード</li>
+<li>CSSを読み込み</li>
+<li>CSSに従って要素を配置 ← このときに一瞬表示</li>
+<li>JavaScript読み込み</li>
+<li>bxSliderプラグインによってCSS書き換え</li>
+<li>書き換えられたCSSでDOM要素を再配置 ← このときに2番目以降が消える</li>
+</ul>
 
-<figure>
-    <img src="001.jpg"/> 
-</figure>
+<p>という順番で処理されるため。</p>
 
+<p>なので、CSSで最初から2番目以降を表示しないようにしておけばい。</p>
 
-<p>シマノの説明書を見ても該当する部品は見当たらないし、よく見ると穴の周囲は削れているし、
-あれ？もしかして、完全に壊れちゃった？</p>
+<p>具体的には、<code>.bxslider</code>の2番目以降の子要素に<code>display: none;</code>を指定すればよく、下記のようにすれば良い。</p>
 
-<p>とはいえ、STIレバーは結構お値段がするもので、amazonで25000円くらいする。
-それに今のコンポも6年目で走行距離が16000km程度(あまり走れていないな・・・)なので、そろそろ一式換装しようか、と考えていたところ。</p>
+<pre><code class="language-HTML">&lt;ul class=&quot;bxslider&quot;&gt;
+    &lt;li&gt;&lt;div class=&quot;slide&quot;&gt;&lt;/div&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;div class=&quot;slide&quot;&gt;&lt;/div&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;div class=&quot;slide&quot;&gt;&lt;/div&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;div class=&quot;slide&quot;&gt;&lt;/div&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;div class=&quot;slide&quot;&gt;&lt;/div&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;div class=&quot;slide&quot;&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</code></pre>
 
-<p>一式交換するとなると、11s対応のホイールも交換が必要になり20万円程度の出費を覚悟しなければならないし、
-なによりせっかく来月の初めに取った遅めの夏休みに間に合わない。</p>
+<pre><code class="language-CSS">.bxslider li:not(:first-child){
+    display: none;
+}
+</code></pre>
 
-<p>一晩考えた後、「フロントだけならWレバーでしばらく乗り切ってからコンポを一式換装しよう」ということにした。</p>
+<p><code>:not(:first-child)</code>が2番目以降の子要素を示す擬似クラス。
+ここ最近のブラウザならすべて対応している(<code>:first-child</code>はCSS2.1、<code>:not</code>はCSS3)。</p>
 
-<p>というわけで、早速amazonでSL-R400を購入。お盆だったがナチュラムからは翌日届いた。</p>
+<p>2番目以降の画像が一瞬表示されるという見た目の問題以外にも、
+JavaScript(bxSlider)実行後も要素の再配置が発生しないので表示が高速になる利点もある。</p>
 
-<figure>
-    <img src="002.jpg"/> 
-</figure>
+<h2 id="参考">参考</h2>
 
+<p>ちょっと古い記事だが、他の方も同様の問題に対処している。</p>
 
-<p>早速説明書を読みながら取り付け。取り付け作業の中で、説明書から日本語のページを探すのが一番手間取った。</p>
+<ul>
+<li><a href="https://hacknote.jp/archives/5398/">「bxSlider」で画像が一度に出てしまう際の対処</a></li>
+<li><a href="https://fukafuka295.jp/hp/bxSlider_barabara.html">[bxSlider]スライドショー読み込み時に画像が一瞬バラけてしまう場合の超簡単な対処法</a></li>
+</ul>
 
-<p>あとはワイヤーの通し方の説明が全くないことに困惑(STIレバーの説明書には詳しく書いてあるのに)。
-だが実物を見てみたら説明が不要なくらい簡単な構造であることが分かった。</p>
+<p>ただ、</p>
 
-<figure>
-    <img src="003.jpg"/> 
-</figure>
+<ul>
+<li>2番目以降ではなくすべての子要素を消してしまっていて、JavaScript実行前は逆に画像が1枚も表示されず、実行後に要素の再配置が発生してしまっている
 
+<ul>
+<li>その対処として表示領域の<code>width</code>と<code>height</code>を指定している</li>
+</ul></li>
+<li>IDで2番目以降の要素を指定している</li>
+</ul>
 
-<p>手でクランクを回しながら変速操作をしてみると、フリクションの独特な操作感は確かにハマるものがある。
-面倒なワイヤーの調整も不要。これは楽しいかもしれない。</p>
+<p>というやり方で、</p>
 
-<p>とりあえず来月に予定しているロングツーリングはこれで乗り切ってみる。</p>
+<ul>
+<li>レスポンシブにするため、CSSの別の場所で細かく画像の大きさを場合分けしている</li>
+<li>ページによってスライドショーの画像の枚数やIDに違いがある</li>
+</ul>
+
+<p>という点で私の会社のサイトに合わず、そのままでは採用できなかった。</p>
 
 		</div>
 		
 <div class="post__tags tags clearfix">
 	<svg class="icon icon-tag" width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="m4.73135 3.3795002q0-.5597-.39604-.9557-.39604-.3961-.95577-.3961-.55974 0-.95578.3961-.39604.396-.39604.9557 0 .5598.39604.9558.39604.3961.95578.3961.55973 0 .95577-.3961.39604-.396.39604-.9558zm11.26865 6.0832q0 .5596998-.39076.9504998l-5.18548 5.196q-.41188.3908-.9610504.3908-.55974 0-.9505-.3908l-7.5511496-7.5616998q-.40132-.3907-.68119-1.0666-.27987-.6759-.27987-1.2357v-4.3934q0-.54920004.40132-.95050004.40132-.4013.9505-.4013h4.39339q.55974 0 1.23565.2799.67591.2798 1.07723.6812l7.55115 7.54060004q.39076.4118.39076.961z"/></svg>
 	<ul class="tags__list">
-		<li class="tags__item"><a class="tags__link" href="/tags/%E8%87%AA%E8%BB%A2%E8%BB%8A/" rel="tag">自転車</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/javascript/" rel="tag">JavaScript</a></li>
 	</ul>
 </div>
 
@@ -130,10 +152,7 @@ if (!doNotTrack) {
 	
 <nav class="post-nav row clearfix" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
 	<div class="post-nav__item post-nav__item--prev col-1-2">
-		<a class="post-nav__link" href="/essay/first-review-of-recon-jet/" rel="prev"><span class="post-nav__caption">«Previous</span><p class="post-nav__post-title">Recon JETを試してみた</p></a>
-	</div>
-	<div class="post-nav__item post-nav__item--next col-1-2">
-		<a class="post-nav__link" href="/essay/what_l2_forwarding_ssl_vpn_protects/" rel="next"><span class="post-nav__caption">Next»</span><p class="post-nav__post-title">仮想的な専用線という言葉にだまされた残念な技術者</p></a>
+		<a class="post-nav__link" href="/essay/start-command-prompt-in-windows-10/" rel="prev"><span class="post-nav__caption">«Previous</span><p class="post-nav__post-title">Windows 10でコマンドプロンプトを素早く起動する方法</p></a>
 	</div>
 </nav>
 

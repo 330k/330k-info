@@ -55,6 +55,25 @@ if (!doNotTrack) {
 	<div class="list__content clearfix">
 		<header class="list__header">
 			<h3 class="list__title post__title ">
+				<a href="/essay/convert-dvd-to-mpeg-in-a-batch-file/" rel="bookmark">ffmpegでDVDをMPEGファイルに変換</a>
+			</h3>
+			<div class="list__meta meta">
+				<svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
+				<time class="list__meta-date" datetime="2015-12-17T20:49:00">December 17, 2015</time>
+			</div>
+		</header>
+		<div class="list__excerpt">
+			 社内でアシスタントからDVDをPCで再生できるようにしたい、という要望を受けたので、 DVDを入れて起動するだけのバッチファイルを作ってみた。
+DVDの中身のVTS_01_1.VOB, VTS_01_2.VOBというファイルをffmpegの-iオプションに指定すれば良いのだが、 パイプ記号「|」を使ってファイル名を連結しなければならない。 ただ、バッチファイル中でパイプ記号が入ると上手く連結できないので、 試行錯誤の結果、一旦「$$」という文字を挟んで連結した後、パイプ記号に変換、という手順になった。
+使い方  以下のテキストをメモ帳にコピー＆ペースト 下のテキスト中でFドライブを指定している部分を各自のドライブ名に変更 拡張子をbatにして保存 DVDを入れてバッチファイルを起動  原則としてバッチファイルと同じフォルダにdvd_yyyymmdd.mpegというファイルが出来上がる
+@ECHO OFF ECHO DVDから普通の動画ファイルへ変換を行います。 ECHO DVDがFドライブに入っていることを確認してください。 PAUSE SET A= FOR %%F IN (&quot;F:\VIDEO_TS\VTS_01_*.VOB&quot;) DO CALL SET A=%%A%%$$%%F SET TIME_TMP=%TIME: =0% SET NOW=%DATE:/=%%TIME_TMP:~0,2%%TIME_TMP:~3,2%%TIME_TMP:~6,2% SET B=&quot;%A:$$=|%&quot; ffmpeg -i &quot;concat:%B:~2,-1%&quot; -target ntsc-dvd -vcodec copy -acodec copy dvd_%NOW%.mpeg ECHO 変換が終了しました。 ECHO 出力ファイル: %~dp0 dvd_%NOW%.mpeg PAUSE  
+		</div>
+	</div>
+</article>
+<article class="list__item post clearfix">
+	<div class="list__content clearfix">
+		<header class="list__header">
+			<h3 class="list__title post__title ">
 				<a href="/essay/change-c-compiler-in-mathematica/" rel="bookmark">Compileで使用するCコンパイラを変更する</a>
 			</h3>
 			<div class="list__meta meta">
@@ -304,67 +323,13 @@ ffmpeg -y -i blank24.mov -i input.mp3 -vcodec copy -acodec copy -shortest output
 		</div>
 	</div>
 </article>
-<article class="list__item post clearfix">
-	<div class="list__content clearfix">
-		<header class="list__header">
-			<h3 class="list__title post__title ">
-				<a href="/essay/augue-against-power-harassment-bully/" rel="bookmark">言いがかりを付けられたので切り返してみた</a>
-			</h3>
-			<div class="list__meta meta">
-				<svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
-				<time class="list__meta-date" datetime="2015-08-28T00:00:00">August 28, 2015</time>
-			</div>
-		</header>
-		<div class="list__excerpt">
-			今朝、以前パワハラを受けていた研修先(以下G社とする)の人間からメールが来た。 要約すると、以下の内容になる。
- 撤去作業終わりました
-**社(私の会社)の作業なので一般常識的に事前に連絡するのが筋です
- 確かに自分の会社が発注した作業で、G社側でネットワーク機器の撤去作業があったのだが、当然私は事前に連絡を行っていた。 それを忘れている自分を棚に上げ、偉そうにこちらに「一般常識」を説いてきた。
-他にも研修中は私に対して
- 「間違ったらすぐに『はい、すみません』と言え！！」
-「報・連・相をきちんとしろ！！」
-「社会人として失格だ！」
- と怒鳴られ続けてきた。
-以前は研修中ということで下請け同然に扱われることを甘受していたが、 現在は研修期間は終了しており、下請けのように扱われる道理はない。
-また、研修中は連日のパワハラで疲弊しきっていたが、研修終了と共に精神的に回復してきたので、 一発切り返すことにしてみた。
- 私は事前に連絡していますので、筋は通してあります。
-筋を通すという意味では、御社が原因で弊社のシステム移管が遅れていると他社経由で聞きましたが、 御社からは何の連絡もありません。
-こちらに筋を通せ、とおっしゃるならば、 御社も筋を通すべきではないでしょうか。
-もちろん私の論理に間違いがあれば、ご指摘ください。
-弊社としては御社との関係を悪化させる意図はございませんが、 御社の一方的な態度は弊社に限らず、相手に良い印象を与えないと考えます。
- 研修先の人間がまともな人間であるならば、
- 私に反論する 間違いを認める  のいずれかの連絡が来るはずだが、メールを送信して8時間たった現時点では来ていない。
-私には「『間違ったらはい、すみません』と言え！」と怒鳴り続けていたのだが、 やはり自分たちの間違いを認めて自省できるような人間ではなかったようだ。
-さて、今後の彼らの対応について予想してみる。
-恐らくだがいつもの彼らのやり口から、私のメールへの対応は反論でも謝罪でもなく、 そんなことを言うと、○○してやらんぞ！ もしくは ○○してやるぞ！ という脅迫を行ってくると予想する。
-これは現在もG社にユーザーサポート業務を一部委託していることを盾に取った脅迫だ。
-とはいえ、その対価として高額な「経営指導料」なるものをG社には支払っている。
-ただ、これが相場の4倍程度の値段で、しかも対応時間は平日の日中に限る、というものなので、 東証一部上場のG社は監査法人に経営指導料について突かれると痛い(不正な利益供与と疑われる)のではないか。
-今後、進捗があれば追記していきたい。
-増長した人間が言う「一般常識」とは何なのか、「社会人」とはどういう行動をするのだろうか。面白そうだ。
-後日談(2週間後)
-今のところ面白い展開にはならずにすんでいる。 G社は私が休暇を取っている間に、私の上司にきちんと状況を説明しに来たらしい。
-G社から私への謝罪はないものの、その後の電話の対応は非常に丁寧になった。 監査法人のコンプライアンス通報窓口へ送るメールの文面を準備していたのだが、送らずに済みそうだ。
-今後も続くと良いが・・・
-後日談その2(2ヶ月後)
-やはり彼らは嫌がらせを行ってきた。
-残念ながら私の予想は当たり、 「延長の連絡がないから今月(10月)でメールサーバの契約を切るぞ」 と一方的に通告してきた。 (現在使用しているメールサーバはクラウド型のメールサービスで、過去の経緯からG社と自分の会社で共有している)
-事前に「10月以降の支払いはG社と弊社のアカウント数に按分した額をG社から請求する」と取り決めてあるので、 今回のG社の行為は契約違反であり、もしかしたら脅迫罪にもなるかもしれない。
-さらに、私の会社で使用している分だけアカウント数が減っても メールサーバの利用料金は変わらないため、G社側にコスト削減などのメリットはない。 完全に嫌がらせ目的であり悪質である。
-もう少ししたらメールサーバも切り替えるので、ようやく完全に縁が切れる。
-心置きなく温めておいた監査法人への通報メールを送信した。
-後日談その3(2ヶ月半後)
-どうも監査法人が動いたらしい。
-		</div>
-	</div>
-</article>
 
 		
 
 		
 <div class="pagination clearfix">
 	<a class="pagination__item pagination__item--prev" href="/page/4/">«</a>
-	<span class="pagination__item pagination__item--current">5/11</span>
+	<span class="pagination__item pagination__item--current">5/12</span>
 	<a class="pagination__item pagination__item--next" href="/page/6/">»</a>
 </div>
 
@@ -387,6 +352,7 @@ G社から私への謝罪はないものの、その後の電話の対応は非�
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/essay/show-only-first-images/">bxSliderで2番目以降の画像がJS実行前に一瞬表示されるのを防止する</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20190216-brm216chiba-300km/">2019年02月16日 BRM216千葉300km(佐原)</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20181007-14_median_line/">2018年10月7日〜14日 中央構造線 &#43; 山中湖</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20180804-12_tohoku_sapporo/">2018年8月4日〜12日 東北中央部縦断〜函館〜札幌</a></li>
@@ -396,7 +362,6 @@ G社から私への謝罪はないものの、その後の電話の対応は非�
 			<li class="widget__item"><a class="widget__link" href="/essay/text_garbled_in_snap_apps_in_ubuntu_18_04/">Ubuntu 18.04 LTSで文字化けしたSnapアプリをなんとかして使う</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20180427-28_kagoshima/">2018年4月27日〜28日 鹿児島</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/letsencrypt-ubuntu-1604/">Ubuntu 16.04 &#43; Apache 2.4にLet&#39;s Encryptを設定する</a></li>
-			<li class="widget__item"><a class="widget__link" href="/essay/ubuntu_nvidia_cuda_mathematica_geforce1060/">GeForce 1060搭載ノートPCにUbuntu 17.10 &#43; NVIDIAドライバ &#43; CUDA &#43; Mathematia 8をインストール</a></li>
 		</ul>
 	</div>
 </div>
@@ -442,7 +407,7 @@ G社から私への謝罪はないものの、その後の電話の対応は非�
 		<a class="widget__link widget__link--taglist" href="/tags/gpx" title="gpx">gpx (4)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/hta" title="hta">hta (1)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/java" title="java">java (2)</a>
-		<a class="widget__link widget__link--taglist" href="/tags/javascript" title="javascript">javascript (5)</a>
+		<a class="widget__link widget__link--taglist" href="/tags/javascript" title="javascript">javascript (6)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/linux" title="linux">linux (1)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/mathematica" title="mathematica">mathematica (20)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/net" title="net">net (1)</a>
