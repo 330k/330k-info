@@ -21,14 +21,13 @@
 Google先生のPageSpeed Insightに注意されたとおり、レンダリングブロックするJavaScriptを後ろ(&amp;lt;/body&amp;gt;直上)に配置したところ、 2枚目以降の画像が一瞬表示されてしまう現象が発生。
 これはJSをレンダリングブロックしないように後ろに配置したり、deferをつけたときに、ブラウザが
  HTMLをロード CSSを読み込み CSSに従って要素を配置 ← このときに一瞬表示 JavaScript読み込み bxSliderプラグインによってCSS書き換え 書き換えられたCSSでDOM要素を再配置 ← このときに2番目以降が消える  という順番で処理されるため。
-なので、CSSで最初から2番目以降を表示しないようにしておけばい。
-具体的には、.bxsliderの2番目以降の子要素にdisplay: none;を指定すればよく、下記のようにすれば良い。
+なので、CSSで最初から2番目以降を表示しないようにしておけばよい。 具体的には、.bxsliderの2番目以降の子要素にdisplay: none;を指定すればよく、下記のようにする。
 &amp;lt;ul class=&amp;quot;bxslider&amp;quot;&amp;gt; &amp;lt;li&amp;gt;&amp;lt;div class=&amp;quot;slide&amp;quot;&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;/li&amp;gt; &amp;lt;li&amp;gt;&amp;lt;div class=&amp;quot;slide&amp;quot;&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;/li&amp;gt; &amp;lt;li&amp;gt;&amp;lt;div class=&amp;quot;slide&amp;quot;&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;/li&amp;gt; &amp;lt;li&amp;gt;&amp;lt;div class=&amp;quot;slide&amp;quot;&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;/li&amp;gt; &amp;lt;li&amp;gt;&amp;lt;div class=&amp;quot;slide&amp;quot;&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;/li&amp;gt; &amp;lt;li&amp;gt;&amp;lt;div class=&amp;quot;slide&amp;quot;&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;/li&amp;gt; &amp;lt;/ul&amp;gt;  .bxslider li:not(:first-child){ display: none; }  :not(:first-child)が2番目以降の子要素を示す擬似クラス。 ここ最近のブラウザならすべて対応している(:first-childはCSS2.1、:notはCSS3)。
-2番目以降の画像が一瞬表示されるという見た目の問題以外にも、 JavaScript(bxSlider)実行後も要素の再配置が発生しないので表示が高速になる利点もある。
 参考 ちょっと古い記事だが、他の方も同様の問題に対処している。
  「bxSlider」で画像が一度に出てしまう際の対処 [bxSlider]スライドショー読み込み時に画像が一瞬バラけてしまう場合の超簡単な対処法  ただ、
  2番目以降ではなくすべての子要素を消してしまっていて、JavaScript実行前は逆に画像が1枚も表示されず、実行後に要素の再配置が発生してしまっている  その対処として表示領域のwidthとheightを指定している  IDで2番目以降の要素を指定している  というやり方で、
- レスポンシブにするため、CSSの別の場所で細かく画像の大きさを場合分けしている ページによってスライドショーの画像の枚数やIDに違いがある  という点で私の会社のサイトに合わず、そのままでは採用できなかった。</description>
+ レスポンシブにするため、CSSの別の場所で細かく画像の大きさを場合分けしている ページによってスライドショーの画像の枚数やIDに違いがある  という点で私の会社のサイトに合わず、そのままでは採用できなかった。
+なお、今回の対応に寄って2番目以降の画像が一瞬表示されるという見た目の問題以外にも、 JavaScript(bxSlider)実行後も要素の再配置が発生しないので表示が高速になる利点もある。</description>
     </item>
     
     <item>
