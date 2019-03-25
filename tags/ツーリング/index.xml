@@ -6,10 +6,22 @@
     <description>Recent content in ツーリング on 330k info</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Sat, 16 Feb 2019 22:42:52 +0900</lastBuildDate>
+    <lastBuildDate>Mon, 25 Mar 2019 22:07:13 +0900</lastBuildDate>
     
 	<atom:link href="https://www.330k.info/tags/%E3%83%84%E3%83%BC%E3%83%AA%E3%83%B3%E3%82%B0/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>2019年03月24日 BRM324 つくば200</title>
+      <link>https://www.330k.info/bicycle/touring/20190324-brm324-tsukuba200/</link>
+      <pubDate>Mon, 25 Mar 2019 22:07:13 +0900</pubDate>
+      
+      <guid>https://www.330k.info/bicycle/touring/20190324-brm324-tsukuba200/</guid>
+      <description>function initMap(){ var map, ctaLayer; map = new google.maps.Map(document.getElementById(&#34;map-canvas&#34;), { center: {lat: 35.6832581, lng: 139.7555827}, zoom: 8 }); ctaLayer = new google.maps.KmlLayer({ url: &#34;https:\/\/www.330k.info\/\/bicycle\/touring\/20190324-brm324-tsukuba200\/2019032401.kml&#34; }); ctaLayer.setMap(map); }      日付 出発地 到着地 走行距離(km) 走行時間 最高速度(km/h) 平均速度(km/h) 主な経路 景勝地     2019年03月24日 金町 金町 205.62 9:25:16 55.7 21.8 一本杉峠、湯袋峠、風返峠、表筑波スカイライン きのこ山    今年2回めのブルベ。 スタート＆ゴール地点が自走できる場所だったBRM324つくば200に参加した。
+Start - PC1 スタートは金町の江戸川CR葛飾橋下から。 スタート地点までは自走で13kmちょっとなので、ブリーフィングが始まる6時頃に着くように自宅を出発。
+ほぼ予定通り、受付後すぐにブリーフィング開始。
+  ブリーフィングでは下記の注意事項。</description>
+    </item>
     
     <item>
       <title>2019年02月16日 BRM216千葉300km(佐原)</title>

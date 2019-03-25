@@ -52,6 +52,34 @@ if (!doNotTrack) {
 
 
 	<main class="main-content list content" role="main"><article class="list__item post clearfix">
+	<div class="list__content clearfix">
+		<header class="list__header">
+			<h3 class="list__title post__title ">
+				<a href="/essay/implement_perceptron_and_backpropagation_with_mathematica/" rel="bookmark">Mathematicaでパーセプトロンとバックプロパゲーション</a>
+			</h3>
+			<div class="list__meta meta">
+				<svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
+				<time class="list__meta-date" datetime="2014-07-14T00:00:00">July 14, 2014</time>
+			</div>
+		</header>
+		<div class="list__excerpt">
+			拙作のリバーシプログラムViglaは高校時代に作ったものだが、 評価関数は手の広さと辺の形を適当に数値化したものであるためにあまり強いプログラムにはできなかった。
+当時から強いリバーシプログラムは辺や隅のパターンを評価していることは知ってはいたものの、理解出来ずじまいだった。
+今回もう一度挑戦してみようと思い、まずはMathematicaでパーセプトロンとバックプロパゲーションによる学習を実装してみた。
+簡単のため、出力関数としてはシグモイド関数のみに限定した(一般の関数にできるようにするには、各層のネット値を別に保存する必要があり、煩雑だったため)。 しかしながら、任意の隠し層の数やニューロン数に対応できるように実装した。
+というわけで、まずはシグモイド関数と順方向演算を定義。
+f[x_] := 1/(1 + Exp[-x]); perceptron[w : {__}][x_] := FoldList[(f /@ (Append[#1, 1].#2)) &amp;, x, w];  wが各層の重み行列のリストで、MathematicaならFoldListを使って1行で順方向演算が定義できる。 Mathematicaでは添字が1から始まるので、通常wi0で表されることが多いバイアス成分は一番最後に置いた。
+次に、重み行列をランダムに初期化したパーセプトロンを返す関数として、以下のcreatePerceptronを定義。
+createPerceptron[dimensions_, range_] := perceptron[MapThread[ RandomReal[range, {#1, #2}] &amp;, {Most[dimensions] + 1, Rest[dimensions]}]]  dimensionsは各層のニューロン数で、乱数の範囲をrangeで指定する。
+例えば、入力層のニューロン数が2、隠し層のニューロン数が2、出力層のニューロン数が1の3層パーセプトロンで、 重みが-0.2から0.2までの乱数となるパーセプトロンは、以下のようにして得られる。
+p = createPerceptron[{2, 2, 1}, {-0.2, 0.2}]  この初期状態で、入力層に{0, 0}を与えた時の出力は、
+p[{0, 0}] {{0, 0}, {0.512507, 0.510116}, {0.497566}}  となる。2番目の要素が隠し層の値で、最後の{0.497566}が出力層の値である。
+次に、バックプロパゲーションによる学習を実装する。
+backPropagation[pct : perceptron[w : {__}], x_List, teach_List, rate_: 1] := Module[{out, \[Delta], \[Delta]n, \[CapitalDelta]w}, out = pct[x]; \[Delta]n = With[{y = Last[out]}, (teach - y) y (1 - y)]; \[Delta] = Reverse@FoldList[(Most[#2[[2]]].
+		</div>
+	</div>
+</article>
+<article class="list__item post clearfix">
 	<figure class="list__thumbnail">
 		<a href="https://www.330k.info/essay/precision-of-mathematica-geodistance-and-geographical-distance-formula/">
 			<img src="/essay/precision-of-mathematica-geodistance-and-geographical-distance-formula/hubeny_graph002.png" alt="GeoDistanceとその他の測地線距離算出式の精度" />
@@ -251,27 +279,6 @@ Options[ExportMovie] = { &quot;FrameRate&quot; -&gt; 25, &quot;VideoCodecOption&
 		</div>
 	</div>
 </article>
-<article class="list__item post clearfix">
-	<figure class="list__thumbnail">
-		<a href="https://www.330k.info/bicycle/touring/20130306-07-nagoya-yokohama/">
-			<img src="/bicycle/touring/20130306-07-nagoya-yokohama/DSCF3947.jpg" alt="2013年03月06日〜07日 名古屋〜横浜" />
-		</a>
-	</figure>
-	<div class="list__content clearfix">
-		<header class="list__header">
-			<h3 class="list__title post__title ">
-				<a href="/bicycle/touring/20130306-07-nagoya-yokohama/" rel="bookmark">2013年03月06日〜07日 名古屋〜横浜</a>
-			</h3>
-			<div class="list__meta meta">
-				<svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
-				<time class="list__meta-date" datetime="2013-03-06T21:49:33">March 06, 2013</time>
-			</div>
-		</header>
-		<div class="list__excerpt">
-			  function initMap(){ var map, ctaLayer; map = new google.maps.Map(document.getElementById("map-canvas"), { center: {lat: 35.6832581, lng: 139.7555827}, zoom: 8 }); ctaLayer = new google.maps.KmlLayer({ url: "https:\/\/www.330k.info\/\/bicycle\/touring\/20130306-07-nagoya-yokohama\/20130316-07.kml" }); ctaLayer.setMap(map); }      日付 出発地 到着地 走行距離(km) 走行時間 最高速度(km/h) 平均速度(km/h) 主な経路 景勝地     2013年3月6日 東海市 焼津 158.97 6:06:35 59.9 26.0 R1    2013年3月7日 焼津 横浜 178.61 8:06:30 64.2 22.0 R1                             
-		</div>
-	</div>
-</article>
 
 		
 
@@ -301,6 +308,7 @@ Options[ExportMovie] = { &quot;FrameRate&quot; -&gt; 25, &quot;VideoCodecOption&
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20190324-brm324-tsukuba200/">2019年03月24日 BRM324 つくば200</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/show-only-first-images/">bxSliderで2番目以降の画像が一瞬表示されるのを防止する</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20190216-brm216chiba-300km/">2019年02月16日 BRM216千葉300km(佐原)</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20181007-14_median_line/">2018年10月7日〜14日 中央構造線 &#43; 山中湖</a></li>
@@ -310,7 +318,6 @@ Options[ExportMovie] = { &quot;FrameRate&quot; -&gt; 25, &quot;VideoCodecOption&
 			<li class="widget__item"><a class="widget__link" href="/essay/mathematica-special-notation/">Mathematicaの特殊・省略記法一覧</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/text_garbled_in_snap_apps_in_ubuntu_18_04/">Ubuntu 18.04 LTSで文字化けしたSnapアプリをなんとかして使う</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20180427-28_kagoshima/">2018年4月27日〜28日 鹿児島</a></li>
-			<li class="widget__item"><a class="widget__link" href="/essay/letsencrypt-ubuntu-1604/">Ubuntu 16.04 &#43; Apache 2.4にLet&#39;s Encryptを設定する</a></li>
 		</ul>
 	</div>
 </div>
@@ -369,7 +376,7 @@ Options[ExportMovie] = { &quot;FrameRate&quot; -&gt; 25, &quot;VideoCodecOption&
 		<a class="widget__link widget__link--taglist" href="/tags/wsh" title="wsh">wsh (2)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/zabbix" title="zabbix">zabbix (1)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/%e3%82%a2%e3%83%ab%e3%82%b4%e3%83%aa%e3%82%ba%e3%83%a0" title="アルゴリズム">アルゴリズム (5)</a>
-		<a class="widget__link widget__link--taglist" href="/tags/%e3%83%84%e3%83%bc%e3%83%aa%e3%83%b3%e3%82%b0" title="ツーリング">ツーリング (46)</a>
+		<a class="widget__link widget__link--taglist" href="/tags/%e3%83%84%e3%83%bc%e3%83%aa%e3%83%b3%e3%82%b0" title="ツーリング">ツーリング (47)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/%e3%83%91%e3%83%af%e3%83%8f%e3%83%a9" title="パワハラ">パワハラ (5)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/%e7%94%9f%e6%b4%bb" title="生活">生活 (1)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/%e7%a4%be%e5%86%85se" title="社内se">社内se (15)</a>
