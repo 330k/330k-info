@@ -6,10 +6,23 @@
     <description>Recent content in ブルベ on 330k info</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Mon, 25 Mar 2019 22:07:13 +0900</lastBuildDate>
+    <lastBuildDate>Mon, 22 Apr 2019 21:28:58 +0900</lastBuildDate>
     
 	<atom:link href="https://www.330k.info/tags/%E3%83%96%E3%83%AB%E3%83%99/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>2019年04月20日 BRM420 埼玉400km アタック老越路</title>
+      <link>https://www.330k.info/bicycle/touring/20190420-brm420-attack-oinokoji-400km/</link>
+      <pubDate>Mon, 22 Apr 2019 21:28:58 +0900</pubDate>
+      
+      <guid>https://www.330k.info/bicycle/touring/20190420-brm420-attack-oinokoji-400km/</guid>
+      <description>function initMap(){ var map, ctaLayer; map = new google.maps.Map(document.getElementById(&#34;map-canvas&#34;), { center: {lat: 35.6832581, lng: 139.7555827}, zoom: 8 }); ctaLayer = new google.maps.KmlLayer({ url: &#34;https:\/\/www.330k.info\/\/bicycle\/touring\/20190420-brm420-attack-oinokoji-400km\/2019042001.kml&#34; }); ctaLayer.setMap(map); }      日付 出発地 到着地 走行距離(km) 走行時間 最高速度(km/h) 平均速度(km/h) 主な経路 景勝地     2019年04月20日 入間市 入間市 402.55 16:43:55 24.1 52.7 中之条、桐生、老越路、宇都宮、桜川 老越路峠    今年3回目のブルベは400kmに挑戦。
+Start - PC1 前日は入間市内のホテル「入間第一ホテル」に宿泊。 前回の300kmの反省を生かし、今回は連泊で予約。
+ホテルからスタート地点まではすぐ。
+6時50分にホテルを出発し、7時過ぎにスタート地点に到着し、受付完了。
+  今日も天気が良さそうで何より。</description>
+    </item>
     
     <item>
       <title>2019年03月24日 BRM324 つくば200</title>

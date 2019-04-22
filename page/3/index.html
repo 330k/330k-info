@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>330k info</title>
 <meta name="description" content="自転車ツーリングの記録やソフトウェアの配布、Mathematicaをメインにしたプログラミングの覚書や日ごろの雑感など。">
-<meta name="generator" content="Hugo 0.54.0" />
+<meta name="generator" content="Hugo 0.55.3" />
 
 <link rel="alternate" type="application/rss+xml" title="330k info Feed" href="https://www.330k.info/index.xml">
 <link rel="stylesheet" href="/css/style.css" type="text/css" media="all" />
@@ -52,6 +52,36 @@ if (!doNotTrack) {
 
 
 	<main class="main-content list content" role="main"><article class="list__item post clearfix">
+	<div class="list__content clearfix">
+		<header class="list__header">
+			<h3 class="list__title post__title ">
+				<a href="/essay/author_dvd_from_movie_file_on_windows/" rel="bookmark">動画ファイルからDVDオーサリング</a>
+			</h3>
+			<div class="list__meta meta">
+				<svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
+				<time class="list__meta-date" datetime="2017-07-27T21:21:29">July 27, 2017</time>
+			</div>
+		</header>
+		<div class="list__excerpt">
+			「この動画ファイルをDVDに焼いて。簡単でしょ。」
+ いやいや、DVD-Video規格に沿った動画ファイルとファイル構造にしないといけないんですけど。
+Windows用のオーサリングソフトはフリーでも色々あるが、どれが良いのかよくわからないので、 ffmpeg + dvdauthor + mkisofsでISOファイルを作成するバッチファイルを作成した。
+参考サイト : http://d.hatena.ne.jp/hikaen2/20150201/1422773879
+前準備 ffmpeg 適当にWindows用バイナリを落としてPATHを設定しておく。
+dvdauthor Windows用のバイナリをダウンロードし、PATHの通ったところに設置。
+http://www.paehl.com/open_source/?DVDAuthor
+これの下部の「From Box.net」または「From Google Drive」からダウンロード。
+mkisofs 他のソフト(cdrfde)にくっついてくるmkisofs.exeを抜き出す。
+https://cdrtfe.sourceforge.io/cdrtfe/download_en.html
+これのcdrtfe 1.5.7 zip archiveをダウンロードし、展開したファイルの中から、
+ tools\cdrtools\mkisofs.exe tools\cygwin\cygwin1.dll tools\cygwin\cygwin.ini  をPATHの通ったフォルダに移動。
+バッチファイル 下記の内容のバッチファイルを作成。 CPU数に合わせてthreadsの値は変更する。
+DVDにしたい動画ファイルをドラッグ&amp;ドロップ。
+@ECHO OFF REM 動画ファイルからDVDのISOファイルを作成 SET VIDEO_FORMAT=NTSC ffmpeg -i &quot;%1&quot; -threads 4 -vf yadif=1,scale=720:480,tinterlace=4 -target ntsc-dvd -flags +ilme+ildct &quot;%~dpn1_dvd.mpeg&quot; dvdauthor -o &quot;%~dpn1_dvd&quot; -t &quot;%~dpn1_dvd.mpeg&quot; dvdauthor -o &quot;%~dpn1_dvd&quot; -T mkisofs -dvd-video -o &quot;%~dpn1_dvd.
+		</div>
+	</div>
+</article>
+<article class="list__item post clearfix">
 	<figure class="list__thumbnail">
 		<a href="https://www.330k.info/essay/random_distribution_sphere_surface/">
 			<img src="/essay/random_distribution_sphere_surface/002.png" alt="球面上の一様分布" />
@@ -257,28 +287,6 @@ createZipFile( &quot;zipファイルのパス&quot;, [&quot;圧縮対象ファ�
 		</div>
 	</div>
 </article>
-<article class="list__item post clearfix">
-	<figure class="list__thumbnail">
-		<a href="https://www.330k.info/bicycle/touring/20170429-0505_nagoya_shirakawago_noto_peninshula_kanazawa/">
-			<img src="/bicycle/touring/20170429-0505_nagoya_shirakawago_noto_peninshula_kanazawa/IMG_20170504_084633846.jpg" alt="2017年04月29日〜05月05日 東京→名古屋→岐阜→能登半島→金沢→米原" />
-		</a>
-	</figure>
-	<div class="list__content clearfix">
-		<header class="list__header">
-			<h3 class="list__title post__title ">
-				<a href="/bicycle/touring/20170429-0505_nagoya_shirakawago_noto_peninshula_kanazawa/" rel="bookmark">2017年04月29日〜05月05日 東京→名古屋→岐阜→能登半島→金沢→米原</a>
-			</h3>
-			<div class="list__meta meta">
-				<svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
-				<time class="list__meta-date" datetime="2017-04-29T21:53:24">April 29, 2017</time>
-			</div>
-		</header>
-		<div class="list__excerpt">
-			2017年のGWは適当に天気の良さそうな方向に走った結果、岐阜の山中から能登半島を回るコースになった。
-  function initMap(){ var map, ctaLayer; map = new google.maps.Map(document.getElementById("map-canvas"), { center: {lat: 35.6832581, lng: 139.7555827}, zoom: 8 }); ctaLayer = new google.maps.KmlLayer({ url: "https:\/\/www.330k.info\/\/bicycle\/touring\/20170429-0505_nagoya_shirakawago_noto_peninshula_kanazawa\/20170429-0505.kml" }); ctaLayer.setMap(map); }      日付 出発地 到着地 走行距離(km) 走行時間 最高速度(km/h) 平均速度(km/h) 主な経路 景勝地     2017年4月29日 東京 清水 185.62 8:33:11 64.0 21.7 R1 箱根峠   2017年4月30日 清水 岡崎 167.15 7:12:45 58.4 23.2 R150, R1 大崩海岸   2017年5月1日 岡崎 郡上白鳥 140.
-		</div>
-	</div>
-</article>
 
 		
 
@@ -308,6 +316,7 @@ createZipFile( &quot;zipファイルのパス&quot;, [&quot;圧縮対象ファ�
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20190420-brm420-attack-oinokoji-400km/">2019年04月20日 BRM420 埼玉400km アタック老越路</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20190324-brm324-tsukuba200/">2019年03月24日 BRM324 つくば200</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/show-only-first-images/">bxSliderで2番目以降の画像が一瞬表示されるのを防止する</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20190216-brm216chiba-300km/">2019年02月16日 BRM216千葉300km(佐原)</a></li>
@@ -317,7 +326,6 @@ createZipFile( &quot;zipファイルのパス&quot;, [&quot;圧縮対象ファ�
 			<li class="widget__item"><a class="widget__link" href="/essay/earth_radius/">地球の大きさ(周長や半径)を覚える必要はない</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/mathematica-special-notation/">Mathematicaの特殊・省略記法一覧</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/text_garbled_in_snap_apps_in_ubuntu_18_04/">Ubuntu 18.04 LTSで文字化けしたSnapアプリをなんとかして使う</a></li>
-			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20180427-28_kagoshima/">2018年4月27日〜28日 鹿児島</a></li>
 		</ul>
 	</div>
 </div>
@@ -378,7 +386,7 @@ createZipFile( &quot;zipファイルのパス&quot;, [&quot;圧縮対象ファ�
 		<a class="widget__link widget__link--taglist" href="/tags/%e3%82%a2%e3%83%ab%e3%82%b4%e3%83%aa%e3%82%ba%e3%83%a0" title="アルゴリズム">アルゴリズム (5)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/%e3%83%84%e3%83%bc%e3%83%aa%e3%83%b3%e3%82%b0" title="ツーリング">ツーリング (44)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/%e3%83%91%e3%83%af%e3%83%8f%e3%83%a9" title="パワハラ">パワハラ (5)</a>
-		<a class="widget__link widget__link--taglist" href="/tags/%e3%83%96%e3%83%ab%e3%83%99" title="ブルベ">ブルベ (3)</a>
+		<a class="widget__link widget__link--taglist" href="/tags/%e3%83%96%e3%83%ab%e3%83%99" title="ブルベ">ブルベ (4)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/%e7%94%9f%e6%b4%bb" title="生活">生活 (1)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/%e7%a4%be%e5%86%85se" title="社内se">社内se (15)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/%e8%87%aa%e8%bb%a2%e8%bb%8a" title="自転車">自転車 (9)</a>
