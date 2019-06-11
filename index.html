@@ -75,6 +75,28 @@ if (!doNotTrack) {
 </article>
 <article class="list__item post clearfix">
 	<figure class="list__thumbnail">
+		<a href="https://www.330k.info/bicycle/touring/20190428-aizu/">
+			<img src="/bicycle/touring/20190428-aizu/DSC_0058.JPG" alt="2019年04月28日〜29日 会津" />
+		</a>
+	</figure>
+	<div class="list__content clearfix">
+		<header class="list__header">
+			<h3 class="list__title post__title ">
+				<a href="/bicycle/touring/20190428-aizu/" rel="bookmark">2019年04月28日〜29日 会津</a>
+			</h3>
+			<div class="list__meta meta">
+				<svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
+				<time class="list__meta-date" datetime="2019-04-28T13:21:29">April 28, 2019</time>
+			</div>
+		</header>
+		<div class="list__excerpt">
+			平成から令和へ変わるGW。休めるか決まっていなかったため、予定を立てられずにいたが、結果的に休めたのでとりあえず出発してみることに。
+  function initMap(){ var map, ctaLayer; map = new google.maps.Map(document.getElementById("map-canvas"), { center: {lat: 35.6832581, lng: 139.7555827}, zoom: 8 }); ctaLayer = new google.maps.KmlLayer({ url: "https:\/\/www.330k.info\/\/bicycle\/touring\/20190428-aizu\/2019042801.kml" }); ctaLayer.setMap(map); }      日付 出発地 到着地 走行距離(km) 走行時間 最高速度(km/h) 平均速度(km/h) 主な経路 景勝地     2019年04月28日 自宅 小山 109.51 4:38:37 40.5 23.6 渡良瀬遊水地    2019年04月29日 小山 会津若松 172.31 6:53:44 52.4 25.0 鬼怒川温泉, 五十里湖     1日目 宿も決めないままとりあえず自宅を出たあと、国道4号を北上。
+		</div>
+	</div>
+</article>
+<article class="list__item post clearfix">
+	<figure class="list__thumbnail">
 		<a href="https://www.330k.info/bicycle/touring/20190420-brm420-attack-oinokoji-400km/">
 			<img src="/bicycle/touring/20190420-brm420-attack-oinokoji-400km/DSC_0035-EFFECTS.jpg" alt="2019年04月20日 BRM420 埼玉400km アタック老越路" />
 		</a>
@@ -262,28 +284,6 @@ Google先生のPageSpeed Insightに注意されたとおり、レンダリング
 		</div>
 	</div>
 </article>
-<article class="list__item post clearfix">
-	<div class="list__content clearfix">
-		<header class="list__header">
-			<h3 class="list__title post__title ">
-				<a href="/essay/mathematica-special-notation/" rel="bookmark">Mathematicaの特殊・省略記法一覧</a>
-			</h3>
-			<div class="list__meta meta">
-				<svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
-				<time class="list__meta-date" datetime="2018-05-22T04:34:15">May 22, 2018</time>
-			</div>
-		</header>
-		<div class="list__excerpt">
-			Mathematicaの省略記法はドキュメントやヘルプで調べにくいのでまとめてみる。
-関数適用 @ (前置記法) f@aはf[a]と等価。 後ろのカッコ(])を入力しなくてもすむ。
-Plot[Evaluate@Integrate[x^2, x], {x, -3, 3}]  // (後置記法) a // fはf[a]と等価。 数値にする(N)や簡約化(Simplify、FullSimplify)でよく使う。
-In[1]:= Sin[2] // N Out[1]= 0.909297  ~ ~ (中置記法) a~f~bとすると、f[a, b]と等価になる。
-In[1]:= {1, 2}~Join~{3, 4} Out[1]= {1, 2, 3, 4}  関数適用 &amp;, #, ### (Function) 純関数。#1、#2・・・が引数を表す。#は#1と同じ。 #0は関数自体表す。##は引数全体。
-関数型プログラミングの基本。
-In[1]:= If[#1 == 1, 1, #1 #0[#1 - 1]] &amp;[10] Out[1]= 3628800  /@ (Map) f /@ {1, 2, 3, 4}はMap[f, {1, 2, 3, 4}]と等価。 関数型プログラミングの基本。
-		</div>
-	</div>
-</article>
 
 		
 
@@ -313,6 +313,7 @@ In[1]:= If[#1 == 1, 1, #1 #0[#1 - 1]] &amp;[10] Out[1]= 3628800  /@ (Map) f /@ {
 	<div class="widget__content">
 		<ul class="widget__list">
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/201906061-brm601-hitachi-600/">2019年06月01日 BRM601 日立600</a></li>
+			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20190428-aizu/">2019年04月28日〜29日 会津</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20190420-brm420-attack-oinokoji-400km/">2019年04月20日 BRM420 埼玉400km アタック老越路</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20190324-brm324-tsukuba200/">2019年03月24日 BRM324 つくば200</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/show-only-first-images/">bxSliderで2番目以降の画像が一瞬表示されるのを防止する</a></li>
@@ -321,7 +322,6 @@ In[1]:= If[#1 == 1, 1, #1 #0[#1 - 1]] &amp;[10] Out[1]= 3628800  /@ (Map) f /@ {
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20180804-12_tohoku_sapporo/">2018年8月4日〜12日 東北中央部縦断〜函館〜札幌</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/start-command-prompt-in-windows-10/">Windows 10でコマンドプロンプトを素早く起動する方法</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/earth_radius/">地球の大きさ(周長や半径)を覚える必要はない</a></li>
-			<li class="widget__item"><a class="widget__link" href="/essay/mathematica-special-notation/">Mathematicaの特殊・省略記法一覧</a></li>
 		</ul>
 	</div>
 </div>
@@ -380,7 +380,7 @@ In[1]:= If[#1 == 1, 1, #1 #0[#1 - 1]] &amp;[10] Out[1]= 3628800  /@ (Map) f /@ {
 		<a class="widget__link widget__link--taglist" href="/tags/wsh" title="wsh">wsh (2)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/zabbix" title="zabbix">zabbix (1)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/%e3%82%a2%e3%83%ab%e3%82%b4%e3%83%aa%e3%82%ba%e3%83%a0" title="アルゴリズム">アルゴリズム (5)</a>
-		<a class="widget__link widget__link--taglist" href="/tags/%e3%83%84%e3%83%bc%e3%83%aa%e3%83%b3%e3%82%b0" title="ツーリング">ツーリング (44)</a>
+		<a class="widget__link widget__link--taglist" href="/tags/%e3%83%84%e3%83%bc%e3%83%aa%e3%83%b3%e3%82%b0" title="ツーリング">ツーリング (45)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/%e3%83%91%e3%83%af%e3%83%8f%e3%83%a9" title="パワハラ">パワハラ (5)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/%e3%83%96%e3%83%ab%e3%83%99" title="ブルベ">ブルベ (5)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/%e7%94%9f%e6%b4%bb" title="生活">生活 (1)</a>

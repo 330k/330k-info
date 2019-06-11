@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>地球の大きさ(周長や半径)を覚える必要はない</title>
+<title>2019年04月28日〜29日 会津</title>
 <meta name="description" content="自転車ツーリングの記録やソフトウェアの配布、Mathematicaをメインにしたプログラミングの覚書や日ごろの雑感など。">
 <meta name="generator" content="Hugo 0.55.6" />
 
@@ -41,8 +41,8 @@ if (!doNotTrack) {
 			
 <nav class="menu" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
 	<ul class="menu__list">
-		<li class="menu__item "><a class="menu__link" href="/bicycle/">BICYCLES</a></li>
-		<li class="menu__item menu__item--active"><a class="menu__link" href="/essay/">ESSAYS</a></li>
+		<li class="menu__item menu__item--active"><a class="menu__link" href="/bicycle/">BICYCLES</a></li>
+		<li class="menu__item "><a class="menu__link" href="/essay/">ESSAYS</a></li>
 		<li class="menu__item "><a class="menu__link" href="/software/">SOFTWARES</a></li>
 	</ul>
 </nav>
@@ -54,37 +54,158 @@ if (!doNotTrack) {
 <div class="main-content content" role="main" itemprop="mainContentOfPage">
 	<article class="post">
 		<header class="post__header clearfix">
-			<h1 class="post__title">地球の大きさ(周長や半径)を覚える必要はない</h1>
+			<h1 class="post__title">2019年04月28日〜29日 会津</h1>
 			<p class="post__meta meta">
 				<svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
-				<time class="post__meta-date" datetime="2018-05-30T20:06:18">May 30, 2018</time>
+				<time class="post__meta-date" datetime="2019-04-28T13:21:29">April 28, 2019</time>
 				<span class="post__meta-categories meta-categories">
 					<svg class="icon icon-category" height="16" viewBox="0 0 16 16" width="16" xmlns="http://www.w3.org/2000/svg"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
-					<a class="meta-categories__link" href="/categories/%e9%9b%91%e8%a8%98%e5%b8%b3" rel="category">雑記帳</a></span>
+					<a class="meta-categories__link" href="/categories/%e8%87%aa%e8%bb%a2%e8%bb%8a" rel="category">自転車</a></span>
 			</p>
 		</header>
 		<div class="post__content clearfix">
-			<p>ある書物で、地球の半径を東大生の何割かがオーダーが違うレベルで間違う、ということが書いてあった(誰の著作だったか忘れてしまった・・・)。</p>
+			
 
-<p>ただ、地球の周長や半径の概数は、暗記する必要はまったくない。</p>
+<p>平成から令和へ変わるGW。休めるか決まっていなかったため、予定を立てられずにいたが、結果的に休めたのでとりあえず出発してみることに。</p>
 
-<p>なぜなら、「1キロメートルの基準が、赤道から北極までの長さの1万分の1」としてメートル法が決められたから。
-覚えるのはこれだけで良い。</p>
+<div id="map-canvas" style="width: 100%; height:500px; margin:0; padding: 0"></div>
+<script>
+function initMap(){
+  var map,
+    ctaLayer;
+  map = new google.maps.Map(document.getElementById("map-canvas"), {
+    center: {lat: 35.6832581, lng: 139.7555827},
+    zoom: 8
+  });
+  ctaLayer = new google.maps.KmlLayer({
+    url: "https:\/\/www.330k.info\/\/bicycle\/touring\/20190428-aizu\/2019042801.kml"
+  });
+  ctaLayer.setMap(map);
+}
+</script>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCir56M7J9LT4-3wDVgG8etGo_HPSMWVBk&callback=initMap" async defer></script>
 
-<p>だから、地球一周は4倍の約40,000 km。半径は円周率で割って約6,400 kmというのは計算で出せる。</p>
+<table>
+<thead>
+<tr>
+<th>日付</th>
+<th>出発地</th>
+<th>到着地</th>
+<th>走行距離(km)</th>
+<th>走行時間</th>
+<th>最高速度(km/h)</th>
+<th>平均速度(km/h)</th>
+<th>主な経路</th>
+<th>景勝地</th>
+</tr>
+</thead>
 
-<p>正確な数値としては、極周長が40,075 km、赤道周長が39,941 km、半径が6,357 km。</p>
+<tbody>
+<tr>
+<td>2019年04月28日</td>
+<td>自宅</td>
+<td>小山</td>
+<td>109.51</td>
+<td>4:38:37</td>
+<td>40.5</td>
+<td>23.6</td>
+<td>渡良瀬遊水地</td>
+<td></td>
+</tr>
 
-<p>ちなみに、メートル法が地球を基準にしたのは、
-フランス革命後にそれまでの為政者が使用させていた単位(インチやフィートは指や足の長さが由来)をやめて、
-全世界で共通で使える単位を作ろう、という目的でメートル法が作られたから。</p>
+<tr>
+<td>2019年04月29日</td>
+<td>小山</td>
+<td>会津若松</td>
+<td>172.31</td>
+<td>6:53:44</td>
+<td>52.4</td>
+<td>25.0</td>
+<td>鬼怒川温泉, 五十里湖</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="1日目">1日目</h2>
+
+<p>宿も決めないままとりあえず自宅を出たあと、国道4号を北上。</p>
+
+<p>道の駅五霞で昼食を食べたあと、利根川を渡る橋の手前で利根川をぼーっと眺めつつ、「あ、渡良瀬遊水地行ってみよう。」と思いたち、利根川を遡って渡良瀬遊水地へ。</p>
+
+<figure>
+    <img src="DSC_0052.JPG"/> 
+</figure>
+
+
+<p>周辺がサイクリングコースになっているようで、適当にぐるぐる。</p>
+
+<figure>
+    <img src="DSC_0053.JPG"/> 
+</figure>
+
+
+<p>付近で宿を探したところ、どこも空室がないので「しかたないから帰るか」と思って少し利根川を下る。</p>
+
+<p>適当に走っていたら利根川と渡良瀬川の合流部で渡る橋がなくなり、現在地をスマホで確認するついでに、
+ダメ元でホテルを検索したら、小山の東横インに空室が出たので、即予約して小山へ。</p>
+
+<p>チェックイン後は適当に駅周辺をブラブラして小山うどんを食べた。</p>
+
+<h2 id="2日目">2日目</h2>
+
+<p>鬼怒川沿いを登って会津若松方面へ行くか、それとも日光方面に行って金精峠から群馬に抜けるか、の2つをどちらにするか考えたが、
+鬼怒川沿いを会津若松に行くことに決めて、ひたすら北上。</p>
+
+<p>観光客の車でごった返していた日光市内を抜けて鬼怒川温泉へ。</p>
+
+<p><figure>
+    <img src="DSC_0055.JPG"/> 
+</figure>
+
+<figure>
+    <img src="DSC_0058.JPG"/> 
+</figure>
+</p>
+
+<p>峠を超えて福島県に入る。</p>
+
+<figure>
+    <img src="DSC_0060.JPG"/> 
+</figure>
+
+
+<p>北に来たのに加え、標高もあるので、GWだがまだ桜が満開。</p>
+
+<figure>
+    <img src="DSC_0065.JPG"/> 
+</figure>
+
+
+<p>そのまま下って会津若松市内へ。
+昨年は周囲を回っただけの会津若松城を少し観光。</p>
+
+<p>さて、この日も付近の宿に空室はなし。翌日からは2日間ほど雨の予報。</p>
+
+<p>会津若松市内にインターネットカフェは2件ほどあったが、駐車場は雨ざらしで自転車を置く気になれず。</p>
+
+<figure>
+    <img src="DSC_0070.JPG"/> 
+</figure>
+
+
+<p>ということで、会津若松駅から輪行で帰宅。</p>
+
+<p>ちなみに、桜が満開ということは、花粉も飛んでいた。</p>
+
+<p>ということで、関東では花粉が終わっていたため対策していなかったため、翌日以降は頭痛や倦怠感に悩まされた。</p>
 
 		</div>
 		
 <div class="post__tags tags clearfix">
 	<svg class="icon icon-tag" width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="m4.73135 3.3795002q0-.5597-.39604-.9557-.39604-.3961-.95577-.3961-.55974 0-.95578.3961-.39604.396-.39604.9557 0 .5598.39604.9558.39604.3961.95578.3961.55973 0 .95577-.3961.39604-.396.39604-.9558zm11.26865 6.0832q0 .5596998-.39076.9504998l-5.18548 5.196q-.41188.3908-.9610504.3908-.55974 0-.9505-.3908l-7.5511496-7.5616998q-.40132-.3907-.68119-1.0666-.27987-.6759-.27987-1.2357v-4.3934q0-.54920004.40132-.95050004.40132-.4013.9505-.4013h4.39339q.55974 0 1.23565.2799.67591.2798 1.07723.6812l7.55115 7.54060004q.39076.4118.39076.961z"/></svg>
 	<ul class="tags__list">
-		<li class="tags__item"><a class="tags__link" href="/tags/%E9%9B%91%E5%AD%A6/" rel="tag">雑学</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/%E3%83%84%E3%83%BC%E3%83%AA%E3%83%B3%E3%82%B0/" rel="tag">ツーリング</a></li>
 	</ul>
 </div>
 
@@ -93,10 +214,10 @@ if (!doNotTrack) {
 	
 <nav class="post-nav row clearfix" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
 	<div class="post-nav__item post-nav__item--prev col-1-2">
-		<a class="post-nav__link" href="/essay/mathematica-special-notation/" rel="prev"><span class="post-nav__caption">«Previous</span><p class="post-nav__post-title">Mathematicaの特殊・省略記法一覧</p></a>
+		<a class="post-nav__link" href="/bicycle/touring/20190420-brm420-attack-oinokoji-400km/" rel="prev"><span class="post-nav__caption">«Previous</span><p class="post-nav__post-title">2019年04月20日 BRM420 埼玉400km アタック老越路</p></a>
 	</div>
 	<div class="post-nav__item post-nav__item--next col-1-2">
-		<a class="post-nav__link" href="/essay/start-command-prompt-in-windows-10/" rel="next"><span class="post-nav__caption">Next»</span><p class="post-nav__post-title">Windows 10でコマンドプロンプトを素早く起動する方法</p></a>
+		<a class="post-nav__link" href="/bicycle/touring/201906061-brm601-hitachi-600/" rel="next"><span class="post-nav__caption">Next»</span><p class="post-nav__post-title">2019年06月01日 BRM601 日立600</p></a>
 	</div>
 </nav>
 

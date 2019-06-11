@@ -22,6 +22,16 @@
     </item>
     
     <item>
+      <title>2019年04月28日〜29日 会津</title>
+      <link>https://www.330k.info/bicycle/touring/20190428-aizu/</link>
+      <pubDate>Sun, 28 Apr 2019 13:21:29 +0900</pubDate>
+      
+      <guid>https://www.330k.info/bicycle/touring/20190428-aizu/</guid>
+      <description>平成から令和へ変わるGW。休めるか決まっていなかったため、予定を立てられずにいたが、結果的に休めたのでとりあえず出発してみることに。
+  function initMap(){ var map, ctaLayer; map = new google.maps.Map(document.getElementById(&#34;map-canvas&#34;), { center: {lat: 35.6832581, lng: 139.7555827}, zoom: 8 }); ctaLayer = new google.maps.KmlLayer({ url: &#34;https:\/\/www.330k.info\/\/bicycle\/touring\/20190428-aizu\/2019042801.kml&#34; }); ctaLayer.setMap(map); }      日付 出発地 到着地 走行距離(km) 走行時間 最高速度(km/h) 平均速度(km/h) 主な経路 景勝地     2019年04月28日 自宅 小山 109.51 4:38:37 40.5 23.6 渡良瀬遊水地    2019年04月29日 小山 会津若松 172.31 6:53:44 52.4 25.0 鬼怒川温泉, 五十里湖     1日目 宿も決めないままとりあえず自宅を出たあと、国道4号を北上。</description>
+    </item>
+    
+    <item>
       <title>2019年04月20日 BRM420 埼玉400km アタック老越路</title>
       <link>https://www.330k.info/bicycle/touring/20190420-brm420-attack-oinokoji-400km/</link>
       <pubDate>Mon, 22 Apr 2019 21:28:58 +0900</pubDate>
