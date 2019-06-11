@@ -6,10 +6,20 @@
     <description>Recent content on 330k info</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Mon, 22 Apr 2019 21:28:58 +0900</lastBuildDate>
+    <lastBuildDate>Sat, 01 Jun 2019 13:21:29 +0900</lastBuildDate>
     
 	<atom:link href="https://www.330k.info/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>2019年06月01日 BRM601 日立600</title>
+      <link>https://www.330k.info/bicycle/touring/201906061-brm601-hitachi-600/</link>
+      <pubDate>Sat, 01 Jun 2019 13:21:29 +0900</pubDate>
+      
+      <guid>https://www.330k.info/bicycle/touring/201906061-brm601-hitachi-600/</guid>
+      <description>SR取得に向けて最後の600km。12連勤後にチャレンジ。
+  function initMap(){ var map, ctaLayer; map = new google.maps.Map(document.getElementById(&#34;map-canvas&#34;), { center: {lat: 35.6832581, lng: 139.7555827}, zoom: 8 }); ctaLayer = new google.maps.KmlLayer({ url: &#34;https:\/\/www.330k.info\/\/bicycle\/touring\/201906061-brm601-hitachi-600\/2019060101.kml&#34; }); ctaLayer.setMap(map); }      日付 出発地 到着地 走行距離(km) 走行時間 最高速度(km/h) 平均速度(km/h) 主な経路 景勝地     2019年06月01日 二子玉川 二子玉川  603.23 25:27:45 56.9 23.7 飯能, 深谷, 小山, さくら, 日立    スタート - PC1 まずはスタート地点まで自宅から25km自走。 午前4時45分に出発し、スタート地点には午前6時ちょうどに到着。 ちょうど6時スタート組がスタートしているところだった。</description>
+    </item>
     
     <item>
       <title>2019年04月20日 BRM420 埼玉400km アタック老越路</title>
