@@ -140,6 +140,17 @@ function initMap(){
 
 <p>周辺がサイクリングコースになっているようで、適当にぐるぐる。</p>
 
+<script src='https://cdnjs.cloudflare.com/ajax/libs/three.js/r76/three.js'></script>  
+<script src='https://cdn.rawgit.com/aike/thview.js/master/thview.js'></script> 
+<div id="thviewer"></div>  
+<script>
+window.onload = function() {  
+  var path = 'R0010052_20190428142137.JPG';
+  THREE.ImageUtils.crossOrigin = "*";
+  var img1 = new ThView({id:'viewer', file: path });
+};
+</script>
+
 <figure>
     <img src="DSC_0053.JPG"/> 
 </figure>
