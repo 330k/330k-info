@@ -68,6 +68,10 @@ if (!doNotTrack) {
 
 <p>平成から令和へ変わるGW。休めるか決まっていなかったため、予定を立てられずにいたが、結果的に休めたのでとりあえず出発してみることに。</p>
 
+
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCir56M7J9LT4-3wDVgG8etGo_HPSMWVBk&callback=initMap" async defer></script>
+
+
 <div id="map-canvas" style="width: 100%; height:500px; margin:0; padding: 0"></div>
 <script>
 function initMap(){
@@ -78,12 +82,11 @@ function initMap(){
     zoom: 8
   });
   ctaLayer = new google.maps.KmlLayer({
-    url: "https:\/\/www.330k.info\/\/bicycle\/touring\/20190428-aizu\/2019042801.kml"
+    url: 'https:\/\/www.330k.info\/\/bicycle\/touring\/20190428-aizu\/2019042801.kml'
   });
   ctaLayer.setMap(map);
 }
 </script>
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCir56M7J9LT4-3wDVgG8etGo_HPSMWVBk&callback=initMap" async defer></script>
 
 <table>
 <thead>
@@ -140,15 +143,26 @@ function initMap(){
 
 <p>周辺がサイクリングコースになっているようで、適当にぐるぐる。</p>
 
-<script src='https://cdnjs.cloudflare.com/ajax/libs/three.js/r76/three.js'></script>  
-<script src='https://cdn.rawgit.com/aike/thview.js/master/thview.js'></script> 
-<div id="thviewer"></div>  
+
+<script src='https://cdnjs.cloudflare.com/ajax/libs/three.js/r76/three.js' defer></script>
+<script src='https://cdn.rawgit.com/aike/thview.js/master/thview.js' defer></script>
+
+
+<div id='thviewer-R0010042_20190428140253.JPG'></div>  
 <script>
-window.onload = function() {  
-  var path = 'R0010052_20190428142137.JPG';
+
+window.addEventListener("load", function(){
+  var path = 'R0010042_20190428140253.JPG';
   THREE.ImageUtils.crossOrigin = "*";
-  var img1 = new ThView({id:'thviewer', file: path });
-};
+  var img1 = new ThView({
+    id:'thviewer-R0010042_20190428140253.JPG',
+    file: path,
+    width: 640,
+    height: 480,
+    rotation: true,
+    firstview: 270
+    });
+}, false);
 </script>
 
 <figure>
@@ -178,6 +192,25 @@ window.onload = function() {
     <img src="DSC_0058.JPG"/> 
 </figure>
 </p>
+
+
+
+<div id='thviewer-R0010057_20190429125013.JPG'></div>  
+<script>
+
+window.addEventListener("load", function(){
+  var path = 'R0010057_20190429125013.JPG';
+  THREE.ImageUtils.crossOrigin = "*";
+  var img1 = new ThView({
+    id:'thviewer-R0010057_20190429125013.JPG',
+    file: path,
+    width: 640,
+    height: 480,
+    rotation: true,
+    firstview: 270
+    });
+}, false);
+</script>
 
 <p>峠を超えて福島県に入る。</p>
 

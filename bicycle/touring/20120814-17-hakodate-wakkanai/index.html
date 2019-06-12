@@ -64,7 +64,11 @@ if (!doNotTrack) {
 			</p>
 		</header>
 		<div class="post__content clearfix">
-			<div id="map-canvas" style="width: 100%; height:500px; margin:0; padding: 0"></div>
+			
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCir56M7J9LT4-3wDVgG8etGo_HPSMWVBk&callback=initMap" async defer></script>
+
+
+<div id="map-canvas" style="width: 100%; height:500px; margin:0; padding: 0"></div>
 <script>
 function initMap(){
   var map,
@@ -74,12 +78,11 @@ function initMap(){
     zoom: 8
   });
   ctaLayer = new google.maps.KmlLayer({
-    url: "https:\/\/www.330k.info\/\/bicycle\/touring\/20120814-17-hakodate-wakkanai\/20120814-17.kml"
+    url: 'https:\/\/www.330k.info\/\/bicycle\/touring\/20120814-17-hakodate-wakkanai\/20120814-17.kml'
   });
   ctaLayer.setMap(map);
 }
 </script>
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCir56M7J9LT4-3wDVgG8etGo_HPSMWVBk&callback=initMap" async defer></script>
 
 <table>
 <thead>
