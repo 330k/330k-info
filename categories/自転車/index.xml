@@ -18,7 +18,7 @@
       
       <guid>https://www.330k.info/bicycle/touring/201906061-brm601-hitachi-600/</guid>
       <description>SR取得に向けて最後の600km。12連勤後にチャレンジ。
-  function initMap(){ var map, ctaLayer; map = new google.maps.Map(document.getElementById(&#34;map-canvas&#34;), { center: {lat: 35.6832581, lng: 139.7555827}, zoom: 8 }); ctaLayer = new google.maps.KmlLayer({ url: &#39;https:\/\/www.330k.info\/\/bicycle\/touring\/201906061-brm601-hitachi-600\/2019060101.kml&#39; }); ctaLayer.setMap(map); }     日付 出発地 到着地 走行距離(km) 走行時間 最高速度(km/h) 平均速度(km/h) 主な経路 景勝地     2019年06月01日 二子玉川 二子玉川 603.23 25:27:45 56.9 23.7 飯能, 深谷, 小山, さくら, 日立     スタート - PC1 まずはスタート地点まで自宅から25km自走。 午前4時45分に出発し、スタート地点には午前6時ちょうどに到着。 ちょうど6時スタート組がスタートしているところだった。</description>
+  function initMap(){ var map, ctaLayer; map = new google.maps.Map(document.getElementById(&#34;mapcanvas-2019060101-kml&#34;), { center: {lat: 35.6832581, lng: 139.7555827}, zoom: 8 }); ctaLayer = new google.maps.KmlLayer({ url: &#39;https:\/\/www.330k.info\/\/bicycle\/touring\/201906061-brm601-hitachi-600\/2019060101.kml&#39; }); ctaLayer.setMap(map); }     日付 出発地 到着地 走行距離(km) 走行時間 最高速度(km/h) 平均速度(km/h) 主な経路 景勝地     2019年06月01日 二子玉川 二子玉川 603.23 25:27:45 56.9 23.7 飯能, 深谷, 小山, さくら, 日立     スタート - PC1 まずはスタート地点まで自宅から25km自走。 午前4時45分に出発し、スタート地点には午前6時ちょうどに到着。 ちょうど6時スタート組がスタートしているところだった。</description>
     </item>
     
     <item>
@@ -28,7 +28,7 @@
       
       <guid>https://www.330k.info/bicycle/touring/20190428-aizu/</guid>
       <description>平成から令和へ変わるGW。休めるか決まっていなかったため、予定を立てられずにいたが、結果的に休めたのでとりあえず出発してみることに。
-  function initMap(){ var map, ctaLayer; map = new google.maps.Map(document.getElementById(&#34;map-canvas&#34;), { center: {lat: 35.6832581, lng: 139.7555827}, zoom: 8 }); ctaLayer = new google.maps.KmlLayer({ url: &#39;https:\/\/www.330k.info\/\/bicycle\/touring\/20190428-aizu\/2019042801.kml&#39; }); ctaLayer.setMap(map); }     日付 出発地 到着地 走行距離(km) 走行時間 最高速度(km/h) 平均速度(km/h) 主な経路 景勝地     2019年04月28日 自宅 小山 109.51 4:38:37 40.5 23.6 渡良瀬遊水地    2019年04月29日 小山 会津若松 172.31 6:53:44 52.4 25.0 鬼怒川温泉, 五十里湖     1日目 宿も決めないままとりあえず自宅を出たあと、国道4号を北上。</description>
+  function initMap(){ var map, ctaLayer; map = new google.maps.Map(document.getElementById(&#34;mapcanvas-2019042801-kml&#34;), { center: {lat: 35.6832581, lng: 139.7555827}, zoom: 8 }); ctaLayer = new google.maps.KmlLayer({ url: &#39;https:\/\/www.330k.info\/\/bicycle\/touring\/20190428-aizu\/2019042801.kml&#39; }); ctaLayer.setMap(map); }     日付 出発地 到着地 走行距離(km) 走行時間 最高速度(km/h) 平均速度(km/h) 主な経路 景勝地     2019年04月28日 自宅 小山 109.51 4:38:37 40.5 23.6 渡良瀬遊水地    2019年04月29日 小山 会津若松 172.31 6:53:44 52.4 25.0 鬼怒川温泉, 五十里湖     1日目 宿も決めないままとりあえず自宅を出たあと、国道4号を北上。</description>
     </item>
     
     <item>
@@ -37,7 +37,7 @@
       <pubDate>Mon, 22 Apr 2019 21:28:58 +0900</pubDate>
       
       <guid>https://www.330k.info/bicycle/touring/20190420-brm420-attack-oinokoji-400km/</guid>
-      <description>function initMap(){ var map, ctaLayer; map = new google.maps.Map(document.getElementById(&#34;map-canvas&#34;), { center: {lat: 35.6832581, lng: 139.7555827}, zoom: 8 }); ctaLayer = new google.maps.KmlLayer({ url: &#39;https:\/\/www.330k.info\/\/bicycle\/touring\/20190420-brm420-attack-oinokoji-400km\/2019042001.kml&#39; }); ctaLayer.setMap(map); }     日付 出発地 到着地 走行距離(km) 走行時間 最高速度(km/h) 平均速度(km/h) 主な経路 景勝地     2019年04月20日 入間市 入間市 402.55 16:43:55 24.1 52.7 中之条、桐生、老越路、宇都宮、桜川 老越路峠    今年3回目のブルベは400kmに挑戦。
+      <description>function initMap(){ var map, ctaLayer; map = new google.maps.Map(document.getElementById(&#34;mapcanvas-2019042001-kml&#34;), { center: {lat: 35.6832581, lng: 139.7555827}, zoom: 8 }); ctaLayer = new google.maps.KmlLayer({ url: &#39;https:\/\/www.330k.info\/\/bicycle\/touring\/20190420-brm420-attack-oinokoji-400km\/2019042001.kml&#39; }); ctaLayer.setMap(map); }     日付 出発地 到着地 走行距離(km) 走行時間 最高速度(km/h) 平均速度(km/h) 主な経路 景勝地     2019年04月20日 入間市 入間市 402.55 16:43:55 24.1 52.7 中之条、桐生、老越路、宇都宮、桜川 老越路峠    今年3回目のブルベは400kmに挑戦。
 Start - PC1 前日は入間市内のホテル「入間第一ホテル」に宿泊。 前回の300kmの反省を生かし、今回は連泊で予約。
 ホテルからスタート地点まではすぐ。
 6時50分にホテルを出発し、7時過ぎにスタート地点に到着し、受付完了。
@@ -50,7 +50,7 @@ Start - PC1 前日は入間市内のホテル「入間第一ホテル」に宿�
       <pubDate>Mon, 25 Mar 2019 22:07:13 +0900</pubDate>
       
       <guid>https://www.330k.info/bicycle/touring/20190324-brm324-tsukuba200/</guid>
-      <description>function initMap(){ var map, ctaLayer; map = new google.maps.Map(document.getElementById(&#34;map-canvas&#34;), { center: {lat: 35.6832581, lng: 139.7555827}, zoom: 8 }); ctaLayer = new google.maps.KmlLayer({ url: &#39;https:\/\/www.330k.info\/\/bicycle\/touring\/20190324-brm324-tsukuba200\/2019032401.kml&#39; }); ctaLayer.setMap(map); }     日付 出発地 到着地 走行距離(km) 走行時間 最高速度(km/h) 平均速度(km/h) 主な経路 景勝地     2019年03月24日 金町 金町 205.62 9:25:16 55.7 21.8 一本杉峠、湯袋峠、風返峠、表筑波スカイライン きのこ山    今年2回めのブルベ。 スタート＆ゴール地点が自走できる場所だったBRM324つくば200に参加した。
+      <description>function initMap(){ var map, ctaLayer; map = new google.maps.Map(document.getElementById(&#34;mapcanvas-2019032401-kml&#34;), { center: {lat: 35.6832581, lng: 139.7555827}, zoom: 8 }); ctaLayer = new google.maps.KmlLayer({ url: &#39;https:\/\/www.330k.info\/\/bicycle\/touring\/20190324-brm324-tsukuba200\/2019032401.kml&#39; }); ctaLayer.setMap(map); }     日付 出発地 到着地 走行距離(km) 走行時間 最高速度(km/h) 平均速度(km/h) 主な経路 景勝地     2019年03月24日 金町 金町 205.62 9:25:16 55.7 21.8 一本杉峠、湯袋峠、風返峠、表筑波スカイライン きのこ山    今年2回めのブルベ。 スタート＆ゴール地点が自走できる場所だったBRM324つくば200に参加した。
 Start - PC1 スタートは金町の江戸川CR葛飾橋下から。 スタート地点までは自走で13kmちょっとなので、ブリーフィングが始まる6時頃に着くように自宅を出発。
 ほぼ予定通り、受付後すぐにブリーフィング開始。
   ブリーフィングでは下記の注意事項。</description>
@@ -63,7 +63,7 @@ Start - PC1 スタートは金町の江戸川CR葛飾橋下から。 スター�
       
       <guid>https://www.330k.info/bicycle/touring/20190216-brm216chiba-300km/</guid>
       <description>今年はブルベをやるぞ、と決めたので、とりあえず300kmにエントリー。 ただ、今回はいろいろとトラブル続きだった・・・。
-  function initMap(){ var map, ctaLayer; map = new google.maps.Map(document.getElementById(&#34;map-canvas&#34;), { center: {lat: 35.6832581, lng: 139.7555827}, zoom: 8 }); ctaLayer = new google.maps.KmlLayer({ url: &#39;https:\/\/www.330k.info\/\/bicycle\/touring\/20190216-brm216chiba-300km\/20190216.kml&#39; }); ctaLayer.setMap(map); }     日付 出発地 到着地 走行距離(km) 走行時間 最高速度(km/h) 平均速度(km/h) 主な経路 景勝地     2019年02月16日 袖ヶ浦海浜公園 袖ヶ浦海浜公園 308.77 12:52:13 54.6 24.0 佐原、香取、犬吠埼、御宿     前日 前日の金曜日は15時に仕事を切り上げ、京成線から内房線で長浦駅へ。ファミリーロッジ旅籠屋・袖ヶ浦店に宿泊。
+  function initMap(){ var map, ctaLayer; map = new google.maps.Map(document.getElementById(&#34;mapcanvas-20190216-kml&#34;), { center: {lat: 35.6832581, lng: 139.7555827}, zoom: 8 }); ctaLayer = new google.maps.KmlLayer({ url: &#39;https:\/\/www.330k.info\/\/bicycle\/touring\/20190216-brm216chiba-300km\/20190216.kml&#39; }); ctaLayer.setMap(map); }     日付 出発地 到着地 走行距離(km) 走行時間 最高速度(km/h) 平均速度(km/h) 主な経路 景勝地     2019年02月16日 袖ヶ浦海浜公園 袖ヶ浦海浜公園 308.77 12:52:13 54.6 24.0 佐原、香取、犬吠埼、御宿     前日 前日の金曜日は15時に仕事を切り上げ、京成線から内房線で長浦駅へ。ファミリーロッジ旅籠屋・袖ヶ浦店に宿泊。
 何時頃にゴールするのか読めなかったので、宿泊は前日だけにしておいたのだが、 ファミリーロッジ旅籠屋のスタッフ(オーナー?)によると門限がない、とのこと。 連泊で予約しておけばよかったと少し後悔(ミス1つ目)。
 近くのセブンイレブンで翌朝の食料を買って翌日に備えた。 一緒にGarminのハートレートモニター用の電池を購入するのを忘れてしまった(ミス2つ目)。
 当日 スタート前 緊張のためかよく眠れなかったが、一応3時間程度は睡眠が取れた。</description>
@@ -75,7 +75,7 @@ Start - PC1 スタートは金町の江戸川CR葛飾橋下から。 スター�
       <pubDate>Sun, 07 Oct 2018 23:09:31 +0900</pubDate>
       
       <guid>https://www.330k.info/bicycle/touring/20181007-14_median_line/</guid>
-      <description>function initMap(){ var map, ctaLayer; map = new google.maps.Map(document.getElementById(&#34;map-canvas&#34;), { center: {lat: 35.6832581, lng: 139.7555827}, zoom: 8 }); ctaLayer = new google.maps.KmlLayer({ url: &#39;https:\/\/www.330k.info\/\/bicycle\/touring\/20181007-14_median_line\/20181007-14_median_line.kml&#39; }); ctaLayer.setMap(map); }     日付 出発地 到着地 走行距離(km) 走行時間 最高速度(km/h) 平均速度(km/h) 主な経路 景勝地     2018年10月07日 熊本 大分 141.40 5:52:16  24.1 R57, k135 阿蘇   2018年10月08日 大分 内子 112.61 5:13:02  21.6 R197 佐田岬   2018年10月09日 内子 大歩危 166.</description>
+      <description>function initMap(){ var map, ctaLayer; map = new google.maps.Map(document.getElementById(&#34;mapcanvas-20181007-14-median-line-kml&#34;), { center: {lat: 35.6832581, lng: 139.7555827}, zoom: 8 }); ctaLayer = new google.maps.KmlLayer({ url: &#39;https:\/\/www.330k.info\/\/bicycle\/touring\/20181007-14_median_line\/20181007-14_median_line.kml&#39; }); ctaLayer.setMap(map); }     日付 出発地 到着地 走行距離(km) 走行時間 最高速度(km/h) 平均速度(km/h) 主な経路 景勝地     2018年10月07日 熊本 大分 141.40 5:52:16  24.1 R57, k135 阿蘇   2018年10月08日 大分 内子 112.61 5:13:02  21.6 R197 佐田岬   2018年10月09日 内子 大歩危 166.</description>
     </item>
     
     <item>
@@ -84,7 +84,7 @@ Start - PC1 スタートは金町の江戸川CR葛飾橋下から。 スター�
       <pubDate>Sat, 04 Aug 2018 21:15:57 +0900</pubDate>
       
       <guid>https://www.330k.info/bicycle/touring/20180804-12_tohoku_sapporo/</guid>
-      <description>function initMap(){ var map, ctaLayer; map = new google.maps.Map(document.getElementById(&#34;map-canvas&#34;), { center: {lat: 35.6832581, lng: 139.7555827}, zoom: 8 }); ctaLayer = new google.maps.KmlLayer({ url: &#39;https:\/\/www.330k.info\/\/bicycle\/touring\/20180804-12_tohoku_sapporo\/20180804.kml&#39; }); ctaLayer.setMap(map); }     日付 出発地 到着地 走行距離(km) 走行時間 最高速度(km/h) 平均速度(km/h) 主な経路 景勝地     2018年08月04日 自宅 那須塩原 146.15 5:30:27  26.5 R4    2018年08月05日 那須塩原 喜多方 158.90 6:23:53  24.8 R4, R49, R121 猪苗代湖   2018年08月06日 喜多方 東根 117.</description>
+      <description>function initMap(){ var map, ctaLayer; map = new google.maps.Map(document.getElementById(&#34;mapcanvas-20180804-kml&#34;), { center: {lat: 35.6832581, lng: 139.7555827}, zoom: 8 }); ctaLayer = new google.maps.KmlLayer({ url: &#39;https:\/\/www.330k.info\/\/bicycle\/touring\/20180804-12_tohoku_sapporo\/20180804.kml&#39; }); ctaLayer.setMap(map); }     日付 出発地 到着地 走行距離(km) 走行時間 最高速度(km/h) 平均速度(km/h) 主な経路 景勝地     2018年08月04日 自宅 那須塩原 146.15 5:30:27  26.5 R4    2018年08月05日 那須塩原 喜多方 158.90 6:23:53  24.8 R4, R49, R121 猪苗代湖   2018年08月06日 喜多方 東根 117.</description>
     </item>
     
     <item>
@@ -93,7 +93,7 @@ Start - PC1 スタートは金町の江戸川CR葛飾橋下から。 スター�
       <pubDate>Sat, 28 Apr 2018 00:48:44 +0900</pubDate>
       
       <guid>https://www.330k.info/bicycle/touring/20180427-28_kagoshima/</guid>
-      <description>function initMap(){ var map, ctaLayer; map = new google.maps.Map(document.getElementById(&#34;map-canvas&#34;), { center: {lat: 35.6832581, lng: 139.7555827}, zoom: 8 }); ctaLayer = new google.maps.KmlLayer({ url: &#39;https:\/\/www.330k.info\/\/bicycle\/touring\/20180427-28_kagoshima\/20180427.kml&#39; }); ctaLayer.setMap(map); }     日付 出発地 到着地 走行距離(km) 走行時間 最高速度(km/h) 平均速度(km/h) 主な経路 景勝地     2018年04月27日 鹿児島空港 枕崎 120.48 4:43:11 59.1 25.5 R10, R226 開聞岳   2018年04月28日 枕崎 阿久根 94.73 4:06:36 &amp;ndash; 23.0 R270, R3     1日目 今年のGWは鹿児島を出発して、阿蘇を登って大分方面へ九州を横断、フェリーで四国に渡って愛媛→徳島、さらにフェリーで和歌山あたりまで走ろうと計画。</description>
+      <description>function initMap(){ var map, ctaLayer; map = new google.maps.Map(document.getElementById(&#34;mapcanvas-20180427-kml&#34;), { center: {lat: 35.6832581, lng: 139.7555827}, zoom: 8 }); ctaLayer = new google.maps.KmlLayer({ url: &#39;https:\/\/www.330k.info\/\/bicycle\/touring\/20180427-28_kagoshima\/20180427.kml&#39; }); ctaLayer.setMap(map); }     日付 出発地 到着地 走行距離(km) 走行時間 最高速度(km/h) 平均速度(km/h) 主な経路 景勝地     2018年04月27日 鹿児島空港 枕崎 120.48 4:43:11 59.1 25.5 R10, R226 開聞岳   2018年04月28日 枕崎 阿久根 94.73 4:06:36 &amp;ndash; 23.0 R270, R3     1日目 今年のGWは鹿児島を出発して、阿蘇を登って大分方面へ九州を横断、フェリーで四国に渡って愛媛→徳島、さらにフェリーで和歌山あたりまで走ろうと計画。</description>
     </item>
     
     <item>
@@ -102,7 +102,7 @@ Start - PC1 スタートは金町の江戸川CR葛飾橋下から。 スター�
       <pubDate>Sun, 06 Aug 2017 17:44:51 +0900</pubDate>
       
       <guid>https://www.330k.info/bicycle/touring/20170729-0806_hokkaido/</guid>
-      <description>function initMap(){ var map, ctaLayer; map = new google.maps.Map(document.getElementById(&#34;map-canvas&#34;), { center: {lat: 35.6832581, lng: 139.7555827}, zoom: 8 }); ctaLayer = new google.maps.KmlLayer({ url: &#39;https:\/\/www.330k.info\/\/bicycle\/touring\/20170729-0806_hokkaido\/20170729.kml&#39; }); ctaLayer.setMap(map); }     日付 出発地 到着地 走行距離(km) 走行時間 最高速度(km/h) 平均速度(km/h) 主な経路 景勝地     2017年07月29日 苫小牧 勇払 17.03 0:54:54 38.7 18.6     2017年07月30日 勇払 襟裳岬 167.79 6:32:39 54.9 25.6 R235, R336    2017年07月31日 襟裳岬 釧路 187.</description>
+      <description>function initMap(){ var map, ctaLayer; map = new google.maps.Map(document.getElementById(&#34;mapcanvas-20170729-kml&#34;), { center: {lat: 35.6832581, lng: 139.7555827}, zoom: 8 }); ctaLayer = new google.maps.KmlLayer({ url: &#39;https:\/\/www.330k.info\/\/bicycle\/touring\/20170729-0806_hokkaido\/20170729.kml&#39; }); ctaLayer.setMap(map); }     日付 出発地 到着地 走行距離(km) 走行時間 最高速度(km/h) 平均速度(km/h) 主な経路 景勝地     2017年07月29日 苫小牧 勇払 17.03 0:54:54 38.7 18.6     2017年07月30日 勇払 襟裳岬 167.79 6:32:39 54.9 25.6 R235, R336    2017年07月31日 襟裳岬 釧路 187.</description>
     </item>
     
     <item>
@@ -111,7 +111,7 @@ Start - PC1 スタートは金町の江戸川CR葛飾橋下から。 スター�
       <pubDate>Sat, 15 Jul 2017 21:28:44 +0900</pubDate>
       
       <guid>https://www.330k.info/bicycle/touring/20170715-17_castella_yatsugatake_kogen/</guid>
-      <description>function initMap(){ var map, ctaLayer; map = new google.maps.Map(document.getElementById(&#34;map-canvas&#34;), { center: {lat: 35.6832581, lng: 139.7555827}, zoom: 8 }); ctaLayer = new google.maps.KmlLayer({ url: &#39;https:\/\/www.330k.info\/\/bicycle\/touring\/20170715-17_castella_yatsugatake_kogen\/20170715.kml&#39; }); ctaLayer.setMap(map); }     日付 出発地 到着地 走行距離(km) 走行時間 最高速度(km/h) 平均速度(km/h) 主な経路 景勝地     2017年07月15日 東京 安中 140.33 5:54:26 50.9 23.8 荒川CR, R254 文明堂浦和工場、富岡製糸場   2017年07月16日 安中 甲府 133.05 5:34:37 66.8 23.9 R18, R141 野辺山高原   2017年07月17日 甲府 東京 144.</description>
+      <description>function initMap(){ var map, ctaLayer; map = new google.maps.Map(document.getElementById(&#34;mapcanvas-20170715-kml&#34;), { center: {lat: 35.6832581, lng: 139.7555827}, zoom: 8 }); ctaLayer = new google.maps.KmlLayer({ url: &#39;https:\/\/www.330k.info\/\/bicycle\/touring\/20170715-17_castella_yatsugatake_kogen\/20170715.kml&#39; }); ctaLayer.setMap(map); }     日付 出発地 到着地 走行距離(km) 走行時間 最高速度(km/h) 平均速度(km/h) 主な経路 景勝地     2017年07月15日 東京 安中 140.33 5:54:26 50.9 23.8 荒川CR, R254 文明堂浦和工場、富岡製糸場   2017年07月16日 安中 甲府 133.05 5:34:37 66.8 23.9 R18, R141 野辺山高原   2017年07月17日 甲府 東京 144.</description>
     </item>
     
     <item>
@@ -151,7 +151,7 @@ USB充電器 FUJITSU FSC321FX USB⇔NiMH充電池(eneloop)の充電ができる�
       
       <guid>https://www.330k.info/bicycle/touring/20170429-0505_nagoya_shirakawago_noto_peninshula_kanazawa/</guid>
       <description>2017年のGWは適当に天気の良さそうな方向に走った結果、岐阜の山中から能登半島を回るコースになった。
-  function initMap(){ var map, ctaLayer; map = new google.maps.Map(document.getElementById(&#34;map-canvas&#34;), { center: {lat: 35.6832581, lng: 139.7555827}, zoom: 8 }); ctaLayer = new google.maps.KmlLayer({ url: &#39;https:\/\/www.330k.info\/\/bicycle\/touring\/20170429-0505_nagoya_shirakawago_noto_peninshula_kanazawa\/20170429-0505.kml&#39; }); ctaLayer.setMap(map); }     日付 出発地 到着地 走行距離(km) 走行時間 最高速度(km/h) 平均速度(km/h) 主な経路 景勝地     2017年4月29日 東京 清水 185.62 8:33:11 64.0 21.7 R1 箱根峠   2017年4月30日 清水 岡崎 167.15 7:12:45 58.4 23.2 R150, R1 大崩海岸   2017年5月1日 岡崎 郡上白鳥 140.</description>
+  function initMap(){ var map, ctaLayer; map = new google.maps.Map(document.getElementById(&#34;mapcanvas-20170429-0505-kml&#34;), { center: {lat: 35.6832581, lng: 139.7555827}, zoom: 8 }); ctaLayer = new google.maps.KmlLayer({ url: &#39;https:\/\/www.330k.info\/\/bicycle\/touring\/20170429-0505_nagoya_shirakawago_noto_peninshula_kanazawa\/20170429-0505.kml&#39; }); ctaLayer.setMap(map); }     日付 出発地 到着地 走行距離(km) 走行時間 最高速度(km/h) 平均速度(km/h) 主な経路 景勝地     2017年4月29日 東京 清水 185.62 8:33:11 64.0 21.7 R1 箱根峠   2017年4月30日 清水 岡崎 167.15 7:12:45 58.4 23.2 R150, R1 大崩海岸   2017年5月1日 岡崎 郡上白鳥 140.</description>
     </item>
     
     <item>
@@ -161,7 +161,7 @@ USB充電器 FUJITSU FSC321FX USB⇔NiMH充電池(eneloop)の充電ができる�
       
       <guid>https://www.330k.info/bicycle/touring/20170318-brm318chiba-2lakes/</guid>
       <description>「ロングライドしてます」と一応言えるようになるため、初ブルベ参加してきた。 他人が作るコースを正確に辿ることに不慣れなため、難易度低目のコースのBRM318千葉200kmに申し込み。
-  function initMap(){ var map, ctaLayer; map = new google.maps.Map(document.getElementById(&#34;map-canvas&#34;), { center: {lat: 35.6832581, lng: 139.7555827}, zoom: 8 }); ctaLayer = new google.maps.KmlLayer({ url: &#39;https:\/\/www.330k.info\/\/bicycle\/touring\/20170318-brm318chiba-2lakes\/20170318.kml&#39; }); ctaLayer.setMap(map); }  前日 スタートの大洗海岸に当日朝に到着する方法がないので、 前日の仕事を早めに切り上げて常磐線に乗り、勝田のビジネスホテルで前泊。 しかも2泊することで当日スタート地点に持っていく荷物を減らして万端の準備。
+  function initMap(){ var map, ctaLayer; map = new google.maps.Map(document.getElementById(&#34;mapcanvas-20170318-kml&#34;), { center: {lat: 35.6832581, lng: 139.7555827}, zoom: 8 }); ctaLayer = new google.maps.KmlLayer({ url: &#39;https:\/\/www.330k.info\/\/bicycle\/touring\/20170318-brm318chiba-2lakes\/20170318.kml&#39; }); ctaLayer.setMap(map); }  前日 スタートの大洗海岸に当日朝に到着する方法がないので、 前日の仕事を早めに切り上げて常磐線に乗り、勝田のビジネスホテルで前泊。 しかも2泊することで当日スタート地点に持っていく荷物を減らして万端の準備。
 当日 朝6時45分にホテルを出て、11km離れたスタート地点まで走行。7時15分頃に到着。 スタッフの方に捺印済みの権利放棄書を渡し、名簿に名前を記入、ブルベカードを受取って出走番号を記入。 安全ピンと黒いフェルト布(20mm×60mmくらい)を渡されて、 何に使うものなのか分からずスタッフに質問したところ、「喪章です」との回答が。
 その後ブリーフィング時にブルベの稲垣会長という方がNZで1200kmブルベ参加中に事故で亡くなったとの説明が。 15日に起きた事故とのことだが、事前準備で精一杯で何も知らなかった。 そういう理由で今回のブルベは全員が喪章を着けての走行をすることになったそうだ。
 写真は8:00スタートの車検。私は8:10スタート。ブレーキ、前後ライトとベルの確認をしてスタート。
@@ -180,7 +180,7 @@ PC1までは人が多かったが、休憩時間の配分が各々違うよう�
       
       <guid>https://www.330k.info/bicycle/touring/20170211-12-izu-peninsula/</guid>
       <description>早咲きの桜として有名な河津桜を見に、伊豆半島を走ってきた。 桜、梅、月、富士山、さらに土肥峠では雪、と風流な旅になった。
-  function initMap(){ var map, ctaLayer; map = new google.maps.Map(document.getElementById(&#34;map-canvas&#34;), { center: {lat: 35.6832581, lng: 139.7555827}, zoom: 8 }); ctaLayer = new google.maps.KmlLayer({ url: &#39;https:\/\/www.330k.info\/\/bicycle\/touring\/20170211-12-izu-peninsula\/20170211-12.kml&#39; }); ctaLayer.setMap(map); }     日付 出発地 到着地 走行距離(km) 走行時間 最高速度(km/h) 平均速度(km/h) 主な経路 景勝地     2017年2月11日 東京 熱川 162.04 6:45:42 54.1 24.0 R246, R1, R135    2017年2月12日 熱川 三島 152.59 7:30:06 62.7 20.3 R135, R136 河津、石廊崎、西伊豆    1日目 朝、出発しようとした直前に会社携帯に連絡があり、会社のサーバがダウン。 ハードウェア障害と思われたが、平日昼間まで交換部品が手配できないため、休日中の復旧を断念。出発は当初計画より2時間ほど遅れた。</description>
+  function initMap(){ var map, ctaLayer; map = new google.maps.Map(document.getElementById(&#34;mapcanvas-20170211-12-kml&#34;), { center: {lat: 35.6832581, lng: 139.7555827}, zoom: 8 }); ctaLayer = new google.maps.KmlLayer({ url: &#39;https:\/\/www.330k.info\/\/bicycle\/touring\/20170211-12-izu-peninsula\/20170211-12.kml&#39; }); ctaLayer.setMap(map); }     日付 出発地 到着地 走行距離(km) 走行時間 最高速度(km/h) 平均速度(km/h) 主な経路 景勝地     2017年2月11日 東京 熱川 162.04 6:45:42 54.1 24.0 R246, R1, R135    2017年2月12日 熱川 三島 152.59 7:30:06 62.7 20.3 R135, R136 河津、石廊崎、西伊豆    1日目 朝、出発しようとした直前に会社携帯に連絡があり、会社のサーバがダウン。 ハードウェア障害と思われたが、平日昼間まで交換部品が手配できないため、休日中の復旧を断念。出発は当初計画より2時間ほど遅れた。</description>
     </item>
     
     <item>
@@ -190,7 +190,7 @@ PC1までは人が多かったが、休憩時間の配分が各々違うよう�
       
       <guid>https://www.330k.info/bicycle/touring/20161231-20170102-first-sunrise-at-inubozaki/</guid>
       <description>新型Dura-Aceに換装したSURLY crosscheckにて2017年の初日の出を犬吠埼で見るべく走ってきた。
-  function initMap(){ var map, ctaLayer; map = new google.maps.Map(document.getElementById(&#34;map-canvas&#34;), { center: {lat: 35.6832581, lng: 139.7555827}, zoom: 8 }); ctaLayer = new google.maps.KmlLayer({ url: &#39;https:\/\/www.330k.info\/\/bicycle\/touring\/20161231-20170102-first-sunrise-at-inubozaki\/20161231-20170102.kml&#39; }); ctaLayer.setMap(map); }     日付 出発地 到着地 走行距離(km) 走行時間 最高速度(km/h) 平均速度(km/h) 主な経路 景勝地     2016年12月31日 東京 神栖 101.22 3:47:47 56.2 26.7 R6, r11    2017年1月1日 神栖 鴨川 164.20 6:26:46 48.9 25.5 R124, R128, r30 犬吠埼   2017年1月2日 鴨川 東京 112.</description>
+  function initMap(){ var map, ctaLayer; map = new google.maps.Map(document.getElementById(&#34;mapcanvas-20161231-20170102-kml&#34;), { center: {lat: 35.6832581, lng: 139.7555827}, zoom: 8 }); ctaLayer = new google.maps.KmlLayer({ url: &#39;https:\/\/www.330k.info\/\/bicycle\/touring\/20161231-20170102-first-sunrise-at-inubozaki\/20161231-20170102.kml&#39; }); ctaLayer.setMap(map); }     日付 出発地 到着地 走行距離(km) 走行時間 最高速度(km/h) 平均速度(km/h) 主な経路 景勝地     2016年12月31日 東京 神栖 101.22 3:47:47 56.2 26.7 R6, r11    2017年1月1日 神栖 鴨川 164.20 6:26:46 48.9 25.5 R124, R128, r30 犬吠埼   2017年1月2日 鴨川 東京 112.</description>
     </item>
     
     <item>
@@ -199,7 +199,7 @@ PC1までは人が多かったが、休憩時間の配分が各々違うよう�
       <pubDate>Tue, 06 Sep 2016 21:52:07 +0900</pubDate>
       
       <guid>https://www.330k.info/bicycle/touring/20160906-11-kokura-nagasaki-satamisaki/</guid>
-      <description>function initMap(){ var map, ctaLayer; map = new google.maps.Map(document.getElementById(&#34;map-canvas&#34;), { center: {lat: 35.6832581, lng: 139.7555827}, zoom: 8 }); ctaLayer = new google.maps.KmlLayer({ url: &#39;https:\/\/www.330k.info\/\/bicycle\/touring\/20160906-11-kokura-nagasaki-satamisaki\/20160906-11_001.kml&#39; }); ctaLayer.setMap(map); }     日付 出発地 到着地 走行距離(km) 走行時間 最高速度(km/h) 平均速度(km/h) 主な経路 景勝地     2016年9月6日 小倉 松浦 164.38 6:33:15 56.5 25.1 R3, R202, R204 虹の松原   2016年9月7日 松浦 諫早 156.93    R204, R202, R206, R34 平戸   2016年9月8日 諫早 熊本 147.</description>
+      <description>function initMap(){ var map, ctaLayer; map = new google.maps.Map(document.getElementById(&#34;mapcanvas-20160906-11-001-kml&#34;), { center: {lat: 35.6832581, lng: 139.7555827}, zoom: 8 }); ctaLayer = new google.maps.KmlLayer({ url: &#39;https:\/\/www.330k.info\/\/bicycle\/touring\/20160906-11-kokura-nagasaki-satamisaki\/20160906-11_001.kml&#39; }); ctaLayer.setMap(map); }     日付 出発地 到着地 走行距離(km) 走行時間 最高速度(km/h) 平均速度(km/h) 主な経路 景勝地     2016年9月6日 小倉 松浦 164.38 6:33:15 56.5 25.1 R3, R202, R204 虹の松原   2016年9月7日 松浦 諫早 156.93    R204, R202, R206, R34 平戸   2016年9月8日 諫早 熊本 147.</description>
     </item>
     
     <item>
@@ -208,7 +208,7 @@ PC1までは人が多かったが、休憩時間の配分が各々違うよう�
       <pubDate>Thu, 30 Jun 2016 21:51:44 +0900</pubDate>
       
       <guid>https://www.330k.info/bicycle/touring/20160630-0703_karuizawa-naoetsu/</guid>
-      <description>function initMap(){ var map, ctaLayer; map = new google.maps.Map(document.getElementById(&#34;map-canvas&#34;), { center: {lat: 35.6832581, lng: 139.7555827}, zoom: 8 }); ctaLayer = new google.maps.KmlLayer({ url: &#39;https:\/\/www.330k.info\/\/bicycle\/touring\/20160630-0703_karuizawa-naoetsu\/20160630-0703.kml&#39; }); ctaLayer.setMap(map); }     日付 出発地 到着地 走行距離(km) 走行時間 最高速度(km/h) 平均速度(km/h) 主な経路 景勝地     2016年6月30日 東京 軽井沢 154.89 6:46:24 51.1 22.9 荒川CR, R17, R18    2016年7月3日 軽井沢 直江津 155.37 5:59:01 66.2 26.0 R18     会社の研修旅行が軽井沢で行われることになったので、それに合わせて自転車で前日入りすることにした。</description>
+      <description>function initMap(){ var map, ctaLayer; map = new google.maps.Map(document.getElementById(&#34;mapcanvas-20160630-0703-kml&#34;), { center: {lat: 35.6832581, lng: 139.7555827}, zoom: 8 }); ctaLayer = new google.maps.KmlLayer({ url: &#39;https:\/\/www.330k.info\/\/bicycle\/touring\/20160630-0703_karuizawa-naoetsu\/20160630-0703.kml&#39; }); ctaLayer.setMap(map); }     日付 出発地 到着地 走行距離(km) 走行時間 最高速度(km/h) 平均速度(km/h) 主な経路 景勝地     2016年6月30日 東京 軽井沢 154.89 6:46:24 51.1 22.9 荒川CR, R17, R18    2016年7月3日 軽井沢 直江津 155.37 5:59:01 66.2 26.0 R18     会社の研修旅行が軽井沢で行われることになったので、それに合わせて自転車で前日入りすることにした。</description>
     </item>
     
     <item>
@@ -217,7 +217,7 @@ PC1までは人が多かったが、休憩時間の配分が各々違うよう�
       <pubDate>Sat, 30 Apr 2016 21:51:30 +0900</pubDate>
       
       <guid>https://www.330k.info/bicycle/touring/20160430-0506_okayama_shimanami_shikoku/</guid>
-      <description>function initMap(){ var map, ctaLayer; map = new google.maps.Map(document.getElementById(&#34;map-canvas&#34;), { center: {lat: 35.6832581, lng: 139.7555827}, zoom: 8 }); ctaLayer = new google.maps.KmlLayer({ url: &#39;https:\/\/www.330k.info\/\/bicycle\/touring\/20160430-0506_okayama_shimanami_shikoku\/20160430-0506.kml&#39; }); ctaLayer.setMap(map); }     日付 出発地 到着地 走行距離(km) 走行時間 最高速度(km/h) 平均速度(km/h) 主な経路 景勝地     2016年4月30日 岡山 松永 86.12 3:46:39 51.0 22.8 R2    2016年5月1日 松永 西条 104.45 5:01:47 52.0 20.7 しまなみ海道, R196 今治城   2016年5月2日 西条 八幡浜 102.</description>
+      <description>function initMap(){ var map, ctaLayer; map = new google.maps.Map(document.getElementById(&#34;mapcanvas-20160430-0506-kml&#34;), { center: {lat: 35.6832581, lng: 139.7555827}, zoom: 8 }); ctaLayer = new google.maps.KmlLayer({ url: &#39;https:\/\/www.330k.info\/\/bicycle\/touring\/20160430-0506_okayama_shimanami_shikoku\/20160430-0506.kml&#39; }); ctaLayer.setMap(map); }     日付 出発地 到着地 走行距離(km) 走行時間 最高速度(km/h) 平均速度(km/h) 主な経路 景勝地     2016年4月30日 岡山 松永 86.12 3:46:39 51.0 22.8 R2    2016年5月1日 松永 西条 104.45 5:01:47 52.0 20.7 しまなみ海道, R196 今治城   2016年5月2日 西条 八幡浜 102.</description>
     </item>
     
     <item>
@@ -226,7 +226,7 @@ PC1までは人が多かったが、休憩時間の配分が各々違うよう�
       <pubDate>Sun, 30 Aug 2015 21:51:05 +0900</pubDate>
       
       <guid>https://www.330k.info/bicycle/touring/20150830-0904-shimane-tottori/</guid>
-      <description>function initMap(){ var map, ctaLayer; map = new google.maps.Map(document.getElementById(&#34;map-canvas&#34;), { center: {lat: 35.6832581, lng: 139.7555827}, zoom: 8 }); ctaLayer = new google.maps.KmlLayer({ url: &#39;https:\/\/www.330k.info\/\/bicycle\/touring\/20150830-0904-shimane-tottori\/20150830-0904.kml&#39; }); ctaLayer.setMap(map); }     日付 出発地 到着地 走行距離(km) 走行時間 最高速度(km/h) 平均速度(km/h) 主な経路 景勝地     2015年8月30日 下関 萩 102.09 4:32:35 59.9 22.5 R191    2015年8月31日 萩 浜田 99.56 4:32:20 47.4 21.9 R191, R9    2015年9月1日 浜田 松江 129.</description>
+      <description>function initMap(){ var map, ctaLayer; map = new google.maps.Map(document.getElementById(&#34;mapcanvas-20150830-0904-kml&#34;), { center: {lat: 35.6832581, lng: 139.7555827}, zoom: 8 }); ctaLayer = new google.maps.KmlLayer({ url: &#39;https:\/\/www.330k.info\/\/bicycle\/touring\/20150830-0904-shimane-tottori\/20150830-0904.kml&#39; }); ctaLayer.setMap(map); }     日付 出発地 到着地 走行距離(km) 走行時間 最高速度(km/h) 平均速度(km/h) 主な経路 景勝地     2015年8月30日 下関 萩 102.09 4:32:35 59.9 22.5 R191    2015年8月31日 萩 浜田 99.56 4:32:20 47.4 21.9 R191, R9    2015年9月1日 浜田 松江 129.</description>
     </item>
     
     <item>
@@ -235,7 +235,7 @@ PC1までは人が多かったが、休憩時間の配分が各々違うよう�
       <pubDate>Tue, 17 Sep 2013 21:50:45 +0900</pubDate>
       
       <guid>https://www.330k.info/bicycle/touring/20130917-24-yokohama-tohoku-japan-sea-tappizaki/</guid>
-      <description>function initMap(){ var map, ctaLayer; map = new google.maps.Map(document.getElementById(&#34;map-canvas&#34;), { center: {lat: 35.6832581, lng: 139.7555827}, zoom: 8 }); ctaLayer = new google.maps.KmlLayer({ url: &#39;https:\/\/www.330k.info\/\/bicycle\/touring\/20130917-24-yokohama-tohoku-japan-sea-tappizaki\/20130917-24.kml&#39; }); ctaLayer.setMap(map); }     日付 出発地 到着地 走行距離(km) 走行時間 最高速度(km/h) 平均速度(km/h) 主な経路 景勝地     2013年9月17日 横浜 渋川 158.37 6:19:59 47.6 25.0 荒川CR、利根川CR    2013年9月18日 渋川 長岡 154.57 6:35:34 56.8 23.4 R17 三国峠   2013年9月19日 長岡 村上 118.</description>
+      <description>function initMap(){ var map, ctaLayer; map = new google.maps.Map(document.getElementById(&#34;mapcanvas-20130917-24-kml&#34;), { center: {lat: 35.6832581, lng: 139.7555827}, zoom: 8 }); ctaLayer = new google.maps.KmlLayer({ url: &#39;https:\/\/www.330k.info\/\/bicycle\/touring\/20130917-24-yokohama-tohoku-japan-sea-tappizaki\/20130917-24.kml&#39; }); ctaLayer.setMap(map); }     日付 出発地 到着地 走行距離(km) 走行時間 最高速度(km/h) 平均速度(km/h) 主な経路 景勝地     2013年9月17日 横浜 渋川 158.37 6:19:59 47.6 25.0 荒川CR、利根川CR    2013年9月18日 渋川 長岡 154.57 6:35:34 56.8 23.4 R17 三国峠   2013年9月19日 長岡 村上 118.</description>
     </item>
     
     <item>
@@ -244,7 +244,7 @@ PC1までは人が多かったが、休憩時間の配分が各々違うよう�
       <pubDate>Tue, 20 Aug 2013 21:50:24 +0900</pubDate>
       
       <guid>https://www.330k.info/bicycle/touring/20130820-21-naruto-muroto/</guid>
-      <description>function initMap(){ var map, ctaLayer; map = new google.maps.Map(document.getElementById(&#34;map-canvas&#34;), { center: {lat: 35.6832581, lng: 139.7555827}, zoom: 8 }); ctaLayer = new google.maps.KmlLayer({ url: &#39;https:\/\/www.330k.info\/\/bicycle\/touring\/20130820-21-naruto-muroto\/20130820-21.kml&#39; }); ctaLayer.setMap(map); }     日付 出発地 到着地 走行距離(km) 走行時間 最高速度(km/h) 平均速度(km/h) 主な経路 景勝地     2013年8月20日 高松 日和佐 143.18 6:12:47 57.6 23.0 R11, R55    2013年8月21日 日和佐 安芸 122.85 5:16:27 52.0 23.3 R55 室戸岬    高松スタートで四国を一周しようとしたが、2日めから風邪を引いたため高知県安芸市でリタイア。</description>
+      <description>function initMap(){ var map, ctaLayer; map = new google.maps.Map(document.getElementById(&#34;mapcanvas-20130820-21-kml&#34;), { center: {lat: 35.6832581, lng: 139.7555827}, zoom: 8 }); ctaLayer = new google.maps.KmlLayer({ url: &#39;https:\/\/www.330k.info\/\/bicycle\/touring\/20130820-21-naruto-muroto\/20130820-21.kml&#39; }); ctaLayer.setMap(map); }     日付 出発地 到着地 走行距離(km) 走行時間 最高速度(km/h) 平均速度(km/h) 主な経路 景勝地     2013年8月20日 高松 日和佐 143.18 6:12:47 57.6 23.0 R11, R55    2013年8月21日 日和佐 安芸 122.85 5:16:27 52.0 23.3 R55 室戸岬    高松スタートで四国を一周しようとしたが、2日めから風邪を引いたため高知県安芸市でリタイア。</description>
     </item>
     
     <item>
@@ -253,7 +253,7 @@ PC1までは人が多かったが、休憩時間の配分が各々違うよう�
       <pubDate>Fri, 02 Aug 2013 21:50:06 +0900</pubDate>
       
       <guid>https://www.330k.info/bicycle/touring/20130802-03-bousou-peninsula/</guid>
-      <description>function initMap(){ var map, ctaLayer; map = new google.maps.Map(document.getElementById(&#34;map-canvas&#34;), { center: {lat: 35.6832581, lng: 139.7555827}, zoom: 8 }); ctaLayer = new google.maps.KmlLayer({ url: &#39;https:\/\/www.330k.info\/\/bicycle\/touring\/20130802-03-bousou-peninsula\/20130802-03.kml&#39; }); ctaLayer.setMap(map); }     日付 出発地 到着地 走行距離(km) 走行時間 最高速度(km/h) 平均速度(km/h) 主な経路 景勝地     2013年8月2日 横浜 千倉 102.27 4:00:14 43.5 25.5 R16, R127, R410 野島崎   2013年8月3日 千倉 銚子 154.98 6:03:25 55.7 25.6 R128, r30 犬吠埼    1日目 横浜の自宅からスタートして、国道16号を使って久里浜のフェリー乗り場へ。</description>
+      <description>function initMap(){ var map, ctaLayer; map = new google.maps.Map(document.getElementById(&#34;mapcanvas-20130802-03-kml&#34;), { center: {lat: 35.6832581, lng: 139.7555827}, zoom: 8 }); ctaLayer = new google.maps.KmlLayer({ url: &#39;https:\/\/www.330k.info\/\/bicycle\/touring\/20130802-03-bousou-peninsula\/20130802-03.kml&#39; }); ctaLayer.setMap(map); }     日付 出発地 到着地 走行距離(km) 走行時間 最高速度(km/h) 平均速度(km/h) 主な経路 景勝地     2013年8月2日 横浜 千倉 102.27 4:00:14 43.5 25.5 R16, R127, R410 野島崎   2013年8月3日 千倉 銚子 154.98 6:03:25 55.7 25.6 R128, r30 犬吠埼    1日目 横浜の自宅からスタートして、国道16号を使って久里浜のフェリー乗り場へ。</description>
     </item>
     
     <item>
@@ -262,7 +262,7 @@ PC1までは人が多かったが、休憩時間の配分が各々違うよう�
       <pubDate>Tue, 09 Jul 2013 21:49:56 +0900</pubDate>
       
       <guid>https://www.330k.info/bicycle/touring/20130709-16-yokohama-tohoku-pacific-oomazaki/</guid>
-      <description>function initMap(){ var map, ctaLayer; map = new google.maps.Map(document.getElementById(&#34;map-canvas&#34;), { center: {lat: 35.6832581, lng: 139.7555827}, zoom: 8 }); ctaLayer = new google.maps.KmlLayer({ url: &#39;https:\/\/www.330k.info\/\/bicycle\/touring\/20130709-16-yokohama-tohoku-pacific-oomazaki\/20130709-16.kml&#39; }); ctaLayer.setMap(map); }     日付 出発地 到着地 走行距離(km) 走行時間 最高速度(km/h) 平均速度(km/h) 主な経路 景勝地     2013年7月9日 横浜 神栖 147.65 6:23:43 44.5 23.1 R1, R6    2013年7月10日 神栖 いわき 153.27 5:54:58 56.6 25.9 R51, R6    2013年7月11日 いわき 角田 146.</description>
+      <description>function initMap(){ var map, ctaLayer; map = new google.maps.Map(document.getElementById(&#34;mapcanvas-20130709-16-kml&#34;), { center: {lat: 35.6832581, lng: 139.7555827}, zoom: 8 }); ctaLayer = new google.maps.KmlLayer({ url: &#39;https:\/\/www.330k.info\/\/bicycle\/touring\/20130709-16-yokohama-tohoku-pacific-oomazaki\/20130709-16.kml&#39; }); ctaLayer.setMap(map); }     日付 出発地 到着地 走行距離(km) 走行時間 最高速度(km/h) 平均速度(km/h) 主な経路 景勝地     2013年7月9日 横浜 神栖 147.65 6:23:43 44.5 23.1 R1, R6    2013年7月10日 神栖 いわき 153.27 5:54:58 56.6 25.9 R51, R6    2013年7月11日 いわき 角田 146.</description>
     </item>
     
     <item>
@@ -271,7 +271,7 @@ PC1までは人が多かったが、休憩時間の配分が各々違うよう�
       <pubDate>Wed, 06 Mar 2013 21:49:33 +0900</pubDate>
       
       <guid>https://www.330k.info/bicycle/touring/20130306-07-nagoya-yokohama/</guid>
-      <description>   function initMap(){ var map, ctaLayer; map = new google.maps.Map(document.getElementById(&#34;map-canvas&#34;), { center: {lat: 35.6832581, lng: 139.7555827}, zoom: 8 }); ctaLayer = new google.maps.KmlLayer({ url: &#39;https:\/\/www.330k.info\/\/bicycle\/touring\/20130306-07-nagoya-yokohama\/20130316-07.kml&#39; }); ctaLayer.setMap(map); }     日付 出発地 到着地 走行距離(km) 走行時間 最高速度(km/h) 平均速度(km/h) 主な経路 景勝地     2013年3月6日 東海市 焼津 158.97 6:06:35 59.9 26.0 R1    2013年3月7日 焼津 横浜 178.61 8:06:30 64.2 22.0 R1                             </description>
+      <description>   function initMap(){ var map, ctaLayer; map = new google.maps.Map(document.getElementById(&#34;mapcanvas-20130316-07-kml&#34;), { center: {lat: 35.6832581, lng: 139.7555827}, zoom: 8 }); ctaLayer = new google.maps.KmlLayer({ url: &#39;https:\/\/www.330k.info\/\/bicycle\/touring\/20130306-07-nagoya-yokohama\/20130316-07.kml&#39; }); ctaLayer.setMap(map); }     日付 出発地 到着地 走行距離(km) 走行時間 最高速度(km/h) 平均速度(km/h) 主な経路 景勝地     2013年3月6日 東海市 焼津 158.97 6:06:35 59.9 26.0 R1    2013年3月7日 焼津 横浜 178.61 8:06:30 64.2 22.0 R1                             </description>
     </item>
     
     <item>
@@ -280,7 +280,7 @@ PC1までは人が多かったが、休憩時間の配分が各々違うよう�
       <pubDate>Sun, 21 Oct 2012 21:49:12 +0900</pubDate>
       
       <guid>https://www.330k.info/bicycle/touring/20121021-mt-fuji-skyline/</guid>
-      <description>   function initMap(){ var map, ctaLayer; map = new google.maps.Map(document.getElementById(&#34;map-canvas&#34;), { center: {lat: 35.6832581, lng: 139.7555827}, zoom: 8 }); ctaLayer = new google.maps.KmlLayer({ url: &#39;https:\/\/www.330k.info\/\/bicycle\/touring\/20121021-mt-fuji-skyline\/20121021.kml&#39; }); ctaLayer.setMap(map); }     日付 出発地 到着地 走行距離(km) 走行時間 最高速度(km/h) 平均速度(km/h) 主な経路 景勝地     2012年10月21日 富士市 富士市    #N/A R139, r180, r152 富士山スカイライン    海抜0mから富士山スカイラインの新5合目(2400m)まで登った。
+      <description>   function initMap(){ var map, ctaLayer; map = new google.maps.Map(document.getElementById(&#34;mapcanvas-20121021-kml&#34;), { center: {lat: 35.6832581, lng: 139.7555827}, zoom: 8 }); ctaLayer = new google.maps.KmlLayer({ url: &#39;https:\/\/www.330k.info\/\/bicycle\/touring\/20121021-mt-fuji-skyline\/20121021.kml&#39; }); ctaLayer.setMap(map); }     日付 出発地 到着地 走行距離(km) 走行時間 最高速度(km/h) 平均速度(km/h) 主な経路 景勝地     2012年10月21日 富士市 富士市    #N/A R139, r180, r152 富士山スカイライン    海抜0mから富士山スカイラインの新5合目(2400m)まで登った。
                           </description>
     </item>
     
@@ -290,7 +290,7 @@ PC1までは人が多かったが、休憩時間の配分が各々違うよう�
       <pubDate>Sun, 16 Sep 2012 21:49:02 +0900</pubDate>
       
       <guid>https://www.330k.info/bicycle/touring/20120916-17-kanazawa-naoetsu/</guid>
-      <description>function initMap(){ var map, ctaLayer; map = new google.maps.Map(document.getElementById(&#34;map-canvas&#34;), { center: {lat: 35.6832581, lng: 139.7555827}, zoom: 8 }); ctaLayer = new google.maps.KmlLayer({ url: &#39;https:\/\/www.330k.info\/\/bicycle\/touring\/20120916-17-kanazawa-naoetsu\/20120916-17.kml&#39; }); ctaLayer.setMap(map); }     日付 出発地 到着地 走行距離(km) 走行時間 最高速度(km/h) 平均速度(km/h) 主な経路 景勝地     2012年9月16日 金沢 入善 106.96 4:35:10 56.1 23.3 R8 石動   2012年9月17日 入善 直江津 83.59 3:33:47 48.7 23.5 R8 親不知    1日目 前に名古屋から金沢駅までは自走したので、今回は輪行して金沢駅スタート。 建設中の北陸新幹線の高架を見ながら走り、すぐに富山県に入る。</description>
+      <description>function initMap(){ var map, ctaLayer; map = new google.maps.Map(document.getElementById(&#34;mapcanvas-20120916-17-kml&#34;), { center: {lat: 35.6832581, lng: 139.7555827}, zoom: 8 }); ctaLayer = new google.maps.KmlLayer({ url: &#39;https:\/\/www.330k.info\/\/bicycle\/touring\/20120916-17-kanazawa-naoetsu\/20120916-17.kml&#39; }); ctaLayer.setMap(map); }     日付 出発地 到着地 走行距離(km) 走行時間 最高速度(km/h) 平均速度(km/h) 主な経路 景勝地     2012年9月16日 金沢 入善 106.96 4:35:10 56.1 23.3 R8 石動   2012年9月17日 入善 直江津 83.59 3:33:47 48.7 23.5 R8 親不知    1日目 前に名古屋から金沢駅までは自走したので、今回は輪行して金沢駅スタート。 建設中の北陸新幹線の高架を見ながら走り、すぐに富山県に入る。</description>
     </item>
     
     <item>
@@ -299,7 +299,7 @@ PC1までは人が多かったが、休憩時間の配分が各々違うよう�
       <pubDate>Tue, 14 Aug 2012 21:48:37 +0900</pubDate>
       
       <guid>https://www.330k.info/bicycle/touring/20120814-17-hakodate-wakkanai/</guid>
-      <description>function initMap(){ var map, ctaLayer; map = new google.maps.Map(document.getElementById(&#34;map-canvas&#34;), { center: {lat: 35.6832581, lng: 139.7555827}, zoom: 8 }); ctaLayer = new google.maps.KmlLayer({ url: &#39;https:\/\/www.330k.info\/\/bicycle\/touring\/20120814-17-hakodate-wakkanai\/20120814-17.kml&#39; }); ctaLayer.setMap(map); }     日付 出発地 到着地 走行距離(km) 走行時間 最高速度(km/h) 平均速度(km/h) 主な経路 景勝地     2012年8月14日 函館 室蘭 193.01 8:09:05 57.1 23.7 R5, R37    2012年8月15日 室蘭 美唄 169.58 6:36:00 45.3 25.7 R36, R12    2012年8月16日 美唄 名寄 151.</description>
+      <description>function initMap(){ var map, ctaLayer; map = new google.maps.Map(document.getElementById(&#34;mapcanvas-20120814-17-kml&#34;), { center: {lat: 35.6832581, lng: 139.7555827}, zoom: 8 }); ctaLayer = new google.maps.KmlLayer({ url: &#39;https:\/\/www.330k.info\/\/bicycle\/touring\/20120814-17-hakodate-wakkanai\/20120814-17.kml&#39; }); ctaLayer.setMap(map); }     日付 出発地 到着地 走行距離(km) 走行時間 最高速度(km/h) 平均速度(km/h) 主な経路 景勝地     2012年8月14日 函館 室蘭 193.01 8:09:05 57.1 23.7 R5, R37    2012年8月15日 室蘭 美唄 169.58 6:36:00 45.3 25.7 R36, R12    2012年8月16日 美唄 名寄 151.</description>
     </item>
     
     <item>
@@ -308,7 +308,7 @@ PC1までは人が多かったが、休憩時間の配分が各々違うよう�
       <pubDate>Mon, 30 Apr 2012 21:48:15 +0900</pubDate>
       
       <guid>https://www.330k.info/bicycle/touring/20120430-0506-nagoya-kagoshima/</guid>
-      <description>function initMap(){ var map, ctaLayer; map = new google.maps.Map(document.getElementById(&#34;map-canvas&#34;), { center: {lat: 35.6832581, lng: 139.7555827}, zoom: 8 }); ctaLayer = new google.maps.KmlLayer({ url: &#39;https:\/\/www.330k.info\/\/bicycle\/touring\/20120430-0506-nagoya-kagoshima\/20120428-0506.kml&#39; }); ctaLayer.setMap(map); }     日付 出発地 到着地 走行距離(km) 走行時間 最高速度(km/h) 平均速度(km/h) 主な経路 景勝地     2012年4月28日 東海市 枚方 179.78 7:11:21 57.8 25.0 R1 鈴鹿峠   2012年4月29日 枚方 播州赤穂 152.35 6:11:30 52.6 24.6 R1, R2, R250    2012年4月30日 播州赤穂 妹尾 66.</description>
+      <description>function initMap(){ var map, ctaLayer; map = new google.maps.Map(document.getElementById(&#34;mapcanvas-20120428-0506-kml&#34;), { center: {lat: 35.6832581, lng: 139.7555827}, zoom: 8 }); ctaLayer = new google.maps.KmlLayer({ url: &#39;https:\/\/www.330k.info\/\/bicycle\/touring\/20120430-0506-nagoya-kagoshima\/20120428-0506.kml&#39; }); ctaLayer.setMap(map); }     日付 出発地 到着地 走行距離(km) 走行時間 最高速度(km/h) 平均速度(km/h) 主な経路 景勝地     2012年4月28日 東海市 枚方 179.78 7:11:21 57.8 25.0 R1 鈴鹿峠   2012年4月29日 枚方 播州赤穂 152.35 6:11:30 52.6 24.6 R1, R2, R250    2012年4月30日 播州赤穂 妹尾 66.</description>
     </item>
     
     <item>
@@ -317,7 +317,7 @@ PC1までは人が多かったが、休憩時間の配分が各々違うよう�
       <pubDate>Tue, 20 Mar 2012 21:48:01 +0900</pubDate>
       
       <guid>https://www.330k.info/bicycle/touring/20120320-biwako-lake/</guid>
-      <description>   function initMap(){ var map, ctaLayer; map = new google.maps.Map(document.getElementById(&#34;map-canvas&#34;), { center: {lat: 35.6832581, lng: 139.7555827}, zoom: 8 }); ctaLayer = new google.maps.KmlLayer({ url: &#39;https:\/\/www.330k.info\/\/bicycle\/touring\/20120320-biwako-lake\/20120320.kml&#39; }); ctaLayer.setMap(map); }  2回めのビワイチ。今回は琵琶湖大橋を渡ってショートカットした。
+      <description>   function initMap(){ var map, ctaLayer; map = new google.maps.Map(document.getElementById(&#34;mapcanvas-20120320-kml&#34;), { center: {lat: 35.6832581, lng: 139.7555827}, zoom: 8 }); ctaLayer = new google.maps.KmlLayer({ url: &#39;https:\/\/www.330k.info\/\/bicycle\/touring\/20120320-biwako-lake\/20120320.kml&#39; }); ctaLayer.setMap(map); }  2回めのビワイチ。今回は琵琶湖大橋を渡ってショートカットした。
                                 </description>
     </item>
     
@@ -327,7 +327,7 @@ PC1までは人が多かったが、休憩時間の配分が各々違うよう�
       <pubDate>Fri, 23 Sep 2011 21:47:45 +0900</pubDate>
       
       <guid>https://www.330k.info/bicycle/touring/20110923-25-nara-kyoto/</guid>
-      <description>function initMap(){ var map, ctaLayer; map = new google.maps.Map(document.getElementById(&#34;map-canvas&#34;), { center: {lat: 35.6832581, lng: 139.7555827}, zoom: 8 }); ctaLayer = new google.maps.KmlLayer({ url: &#39;https:\/\/www.330k.info\/\/bicycle\/touring\/20110923-25-nara-kyoto\/20110923-25.kml&#39; }); ctaLayer.setMap(map); }     日付 出発地 到着地 走行距離(km) 走行時間 最高速度(km/h) 平均速度(km/h) 主な経路 景勝地     2011年9月23日 東海市 伊賀上野 82.96 3:30:38 59.6 23.6 R1, R25    2011年9月24日 伊賀上野 奈良 75.50   #N/A R25 法隆寺   2011年9月25日 奈良 京都 44.</description>
+      <description>function initMap(){ var map, ctaLayer; map = new google.maps.Map(document.getElementById(&#34;mapcanvas-20110923-25-kml&#34;), { center: {lat: 35.6832581, lng: 139.7555827}, zoom: 8 }); ctaLayer = new google.maps.KmlLayer({ url: &#39;https:\/\/www.330k.info\/\/bicycle\/touring\/20110923-25-nara-kyoto\/20110923-25.kml&#39; }); ctaLayer.setMap(map); }     日付 出発地 到着地 走行距離(km) 走行時間 最高速度(km/h) 平均速度(km/h) 主な経路 景勝地     2011年9月23日 東海市 伊賀上野 82.96 3:30:38 59.6 23.6 R1, R25    2011年9月24日 伊賀上野 奈良 75.50   #N/A R25 法隆寺   2011年9月25日 奈良 京都 44.</description>
     </item>
     
     <item>
@@ -336,7 +336,7 @@ PC1までは人が多かったが、休憩時間の配分が各々違うよう�
       <pubDate>Mon, 18 Jul 2011 21:47:24 +0900</pubDate>
       
       <guid>https://www.330k.info/bicycle/touring/20110718-norikura/</guid>
-      <description>   function initMap(){ var map, ctaLayer; map = new google.maps.Map(document.getElementById(&#34;map-canvas&#34;), { center: {lat: 35.6832581, lng: 139.7555827}, zoom: 8 }); ctaLayer = new google.maps.KmlLayer({ url: &#39;https:\/\/www.330k.info\/\/bicycle\/touring\/20110718-norikura\/20110718.kml&#39; }); ctaLayer.setMap(map); }                                                      </description>
+      <description>   function initMap(){ var map, ctaLayer; map = new google.maps.Map(document.getElementById(&#34;mapcanvas-20110718-kml&#34;), { center: {lat: 35.6832581, lng: 139.7555827}, zoom: 8 }); ctaLayer = new google.maps.KmlLayer({ url: &#39;https:\/\/www.330k.info\/\/bicycle\/touring\/20110718-norikura\/20110718.kml&#39; }); ctaLayer.setMap(map); }                                                      </description>
     </item>
     
     <item>
@@ -345,7 +345,7 @@ PC1までは人が多かったが、休憩時間の配分が各々違うよう�
       <pubDate>Sat, 21 May 2011 21:47:15 +0900</pubDate>
       
       <guid>https://www.330k.info/bicycle/touring/20110521-inuyama-castle/</guid>
-      <description>   function initMap(){ var map, ctaLayer; map = new google.maps.Map(document.getElementById(&#34;map-canvas&#34;), { center: {lat: 35.6832581, lng: 139.7555827}, zoom: 8 }); ctaLayer = new google.maps.KmlLayer({ url: &#39;https:\/\/www.330k.info\/\/bicycle\/touring\/20110521-inuyama-castle\/20110521.kml&#39; }); ctaLayer.setMap(map); }              </description>
+      <description>   function initMap(){ var map, ctaLayer; map = new google.maps.Map(document.getElementById(&#34;mapcanvas-20110521-kml&#34;), { center: {lat: 35.6832581, lng: 139.7555827}, zoom: 8 }); ctaLayer = new google.maps.KmlLayer({ url: &#39;https:\/\/www.330k.info\/\/bicycle\/touring\/20110521-inuyama-castle\/20110521.kml&#39; }); ctaLayer.setMap(map); }              </description>
     </item>
     
     <item>
@@ -354,7 +354,7 @@ PC1までは人が多かったが、休憩時間の配分が各々違うよう�
       <pubDate>Wed, 04 May 2011 21:46:59 +0900</pubDate>
       
       <guid>https://www.330k.info/bicycle/touring/20110504-08-kii-peninsula/</guid>
-      <description>function initMap(){ var map, ctaLayer; map = new google.maps.Map(document.getElementById(&#34;map-canvas&#34;), { center: {lat: 35.6832581, lng: 139.7555827}, zoom: 8 }); ctaLayer = new google.maps.KmlLayer({ url: &#39;https:\/\/www.330k.info\/\/bicycle\/touring\/20110504-08-kii-peninsula\/20110504-08.kml&#39; }); ctaLayer.setMap(map); }     日付 出発地 到着地 走行距離(km) 走行時間 最高速度(km/h) 平均速度(km/h) 主な経路 景勝地     2011年5月4日 東海 志摩 165.81 6:14:26 55.0 26.6 R23, R42    2011年5月5日 志摩 新宮 190.00 8:30:00 55.7 22.4 R42    2011年5月6日 新宮 御坊 163.</description>
+      <description>function initMap(){ var map, ctaLayer; map = new google.maps.Map(document.getElementById(&#34;mapcanvas-20110504-08-kml&#34;), { center: {lat: 35.6832581, lng: 139.7555827}, zoom: 8 }); ctaLayer = new google.maps.KmlLayer({ url: &#39;https:\/\/www.330k.info\/\/bicycle\/touring\/20110504-08-kii-peninsula\/20110504-08.kml&#39; }); ctaLayer.setMap(map); }     日付 出発地 到着地 走行距離(km) 走行時間 最高速度(km/h) 平均速度(km/h) 主な経路 景勝地     2011年5月4日 東海 志摩 165.81 6:14:26 55.0 26.6 R23, R42    2011年5月5日 志摩 新宮 190.00 8:30:00 55.7 22.4 R42    2011年5月6日 新宮 御坊 163.</description>
     </item>
     
     <item>
@@ -363,7 +363,7 @@ PC1までは人が多かったが、休憩時間の配分が各々違うよう�
       <pubDate>Sat, 30 Apr 2011 21:46:31 +0900</pubDate>
       
       <guid>https://www.330k.info/bicycle/touring/20110430-omaezaki/</guid>
-      <description>   function initMap(){ var map, ctaLayer; map = new google.maps.Map(document.getElementById(&#34;map-canvas&#34;), { center: {lat: 35.6832581, lng: 139.7555827}, zoom: 8 }); ctaLayer = new google.maps.KmlLayer({ url: &#39;https:\/\/www.330k.info\/\/bicycle\/touring\/20110430-omaezaki\/20110501.kml&#39; }); ctaLayer.setMap(map); }     日付 出発地 到着地 走行距離(km) 走行時間 最高速度(km/h) 平均速度(km/h) 主な経路 景勝地     2011年4月30日 弁天島 焼津 117.83 4:32:08 62.0 26.0 R150 御前崎                                  </description>
+      <description>   function initMap(){ var map, ctaLayer; map = new google.maps.Map(document.getElementById(&#34;mapcanvas-20110501-kml&#34;), { center: {lat: 35.6832581, lng: 139.7555827}, zoom: 8 }); ctaLayer = new google.maps.KmlLayer({ url: &#39;https:\/\/www.330k.info\/\/bicycle\/touring\/20110430-omaezaki\/20110501.kml&#39; }); ctaLayer.setMap(map); }     日付 出発地 到着地 走行距離(km) 走行時間 最高速度(km/h) 平均速度(km/h) 主な経路 景勝地     2011年4月30日 弁天島 焼津 117.83 4:32:08 62.0 26.0 R150 御前崎                                  </description>
     </item>
     
     <item>
@@ -372,7 +372,7 @@ PC1までは人が多かったが、休憩時間の配分が各々違うよう�
       <pubDate>Sun, 09 Jan 2011 21:46:16 +0900</pubDate>
       
       <guid>https://www.330k.info/bicycle/touring/20110109-atsumi-peninsula/</guid>
-      <description>   function initMap(){ var map, ctaLayer; map = new google.maps.Map(document.getElementById(&#34;map-canvas&#34;), { center: {lat: 35.6832581, lng: 139.7555827}, zoom: 8 }); ctaLayer = new google.maps.KmlLayer({ url: &#39;https:\/\/www.330k.info\/\/bicycle\/touring\/20110109-atsumi-peninsula\/20110109.kml&#39; }); ctaLayer.setMap(map); }                      </description>
+      <description>   function initMap(){ var map, ctaLayer; map = new google.maps.Map(document.getElementById(&#34;mapcanvas-20110109-kml&#34;), { center: {lat: 35.6832581, lng: 139.7555827}, zoom: 8 }); ctaLayer = new google.maps.KmlLayer({ url: &#39;https:\/\/www.330k.info\/\/bicycle\/touring\/20110109-atsumi-peninsula\/20110109.kml&#39; }); ctaLayer.setMap(map); }                      </description>
     </item>
     
     <item>
@@ -381,7 +381,7 @@ PC1までは人が多かったが、休憩時間の配分が各々違うよう�
       <pubDate>Sun, 21 Nov 2010 21:45:58 +0900</pubDate>
       
       <guid>https://www.330k.info/bicycle/touring/20101121-mikawa-wan/</guid>
-      <description>   function initMap(){ var map, ctaLayer; map = new google.maps.Map(document.getElementById(&#34;map-canvas&#34;), { center: {lat: 35.6832581, lng: 139.7555827}, zoom: 8 }); ctaLayer = new google.maps.KmlLayer({ url: &#39;https:\/\/www.330k.info\/\/bicycle\/touring\/20101121-mikawa-wan\/20101121.kml&#39; }); ctaLayer.setMap(map); }              </description>
+      <description>   function initMap(){ var map, ctaLayer; map = new google.maps.Map(document.getElementById(&#34;mapcanvas-20101121-kml&#34;), { center: {lat: 35.6832581, lng: 139.7555827}, zoom: 8 }); ctaLayer = new google.maps.KmlLayer({ url: &#39;https:\/\/www.330k.info\/\/bicycle\/touring\/20101121-mikawa-wan\/20101121.kml&#39; }); ctaLayer.setMap(map); }              </description>
     </item>
     
     <item>
@@ -390,7 +390,7 @@ PC1までは人が多かったが、休憩時間の配分が各々違うよう�
       <pubDate>Sat, 20 Nov 2010 21:45:45 +0900</pubDate>
       
       <guid>https://www.330k.info/bicycle/touring/20101120-kourankei/</guid>
-      <description>   function initMap(){ var map, ctaLayer; map = new google.maps.Map(document.getElementById(&#34;map-canvas&#34;), { center: {lat: 35.6832581, lng: 139.7555827}, zoom: 8 }); ctaLayer = new google.maps.KmlLayer({ url: &#39;https:\/\/www.330k.info\/\/bicycle\/touring\/20101120-kourankei\/20101120.kml&#39; }); ctaLayer.setMap(map); }                    </description>
+      <description>   function initMap(){ var map, ctaLayer; map = new google.maps.Map(document.getElementById(&#34;mapcanvas-20101120-kml&#34;), { center: {lat: 35.6832581, lng: 139.7555827}, zoom: 8 }); ctaLayer = new google.maps.KmlLayer({ url: &#39;https:\/\/www.330k.info\/\/bicycle\/touring\/20101120-kourankei\/20101120.kml&#39; }); ctaLayer.setMap(map); }                    </description>
     </item>
     
     <item>
@@ -399,7 +399,7 @@ PC1までは人が多かったが、休憩時間の配分が各々違うよう�
       <pubDate>Sun, 26 Sep 2010 21:45:31 +0900</pubDate>
       
       <guid>https://www.330k.info/bicycle/touring/20100926-biwako-lake/</guid>
-      <description>   function initMap(){ var map, ctaLayer; map = new google.maps.Map(document.getElementById(&#34;map-canvas&#34;), { center: {lat: 35.6832581, lng: 139.7555827}, zoom: 8 }); ctaLayer = new google.maps.KmlLayer({ url: &#39;https:\/\/www.330k.info\/\/bicycle\/touring\/20100926-biwako-lake\/20100926.kml&#39; }); ctaLayer.setMap(map); }                            </description>
+      <description>   function initMap(){ var map, ctaLayer; map = new google.maps.Map(document.getElementById(&#34;mapcanvas-20100926-kml&#34;), { center: {lat: 35.6832581, lng: 139.7555827}, zoom: 8 }); ctaLayer = new google.maps.KmlLayer({ url: &#39;https:\/\/www.330k.info\/\/bicycle\/touring\/20100926-biwako-lake\/20100926.kml&#39; }); ctaLayer.setMap(map); }                            </description>
     </item>
     
     <item>
@@ -408,7 +408,7 @@ PC1までは人が多かったが、休憩時間の配分が各々違うよう�
       <pubDate>Sun, 19 Sep 2010 21:45:14 +0900</pubDate>
       
       <guid>https://www.330k.info/bicycle/touring/20100919-20-nagoya-kanazawa/</guid>
-      <description>function initMap(){ var map, ctaLayer; map = new google.maps.Map(document.getElementById(&#34;map-canvas&#34;), { center: {lat: 35.6832581, lng: 139.7555827}, zoom: 8 }); ctaLayer = new google.maps.KmlLayer({ url: &#39;https:\/\/www.330k.info\/\/bicycle\/touring\/20100919-20-nagoya-kanazawa\/20100919.kml&#39; }); ctaLayer.setMap(map); }  日本海側に行くなら冬になる前にしなくては！ということで思いつきで金沢まで行ってみた。 敦賀で1泊して金沢まで行き、帰りは輪行した。
+      <description>function initMap(){ var map, ctaLayer; map = new google.maps.Map(document.getElementById(&#34;mapcanvas-20100919-kml&#34;), { center: {lat: 35.6832581, lng: 139.7555827}, zoom: 8 }); ctaLayer = new google.maps.KmlLayer({ url: &#39;https:\/\/www.330k.info\/\/bicycle\/touring\/20100919-20-nagoya-kanazawa\/20100919.kml&#39; }); ctaLayer.setMap(map); }  日本海側に行くなら冬になる前にしなくては！ということで思いつきで金沢まで行ってみた。 敦賀で1泊して金沢まで行き、帰りは輪行した。
 1日目(名古屋→敦賀) まずは養老の滝に行く時にも使ったルートで、名古屋から国道1号→国道155号→愛知県道125号と通って木曽三川を越え、国道258号を北上して関ヶ原を目指す。 このあたりは探せばもう少し平坦なルートが有るかもしれない。
   関ヶ原古戦場に寄ってみたら鉄砲隊の実演イベントをやっていたようだが、天候があまり良くなかったので先を急いだ。
   関ヶ原からは延々と国道365号を進む。 途中何箇所か道幅が狭いところがあったものの、高低差があまりないためスピードに乗ってどんどん進めた。
@@ -425,7 +425,7 @@ PC1までは人が多かったが、休憩時間の配分が各々違うよう�
       <pubDate>Sat, 04 Sep 2010 21:44:58 +0900</pubDate>
       
       <guid>https://www.330k.info/bicycle/touring/20100904-05-nagoya-takamori/</guid>
-      <description>function initMap(){ var map, ctaLayer; map = new google.maps.Map(document.getElementById(&#34;map-canvas&#34;), { center: {lat: 35.6832581, lng: 139.7555827}, zoom: 8 }); ctaLayer = new google.maps.KmlLayer({ url: &#39;https:\/\/www.330k.info\/\/bicycle\/touring\/20100904-05-nagoya-takamori\/20100904-05.kml&#39; }); ctaLayer.setMap(map); }  母親の実家が現住所から140kmちょっとの丁度いい場所にあるので、峠をいくつか越えてきた。 2日間の合計獲得標高は10000mを超えたが、膝が痛むこともなく走破できたのはやはりドロップハンドルとSPDの効果だろう。
+      <description>function initMap(){ var map, ctaLayer; map = new google.maps.Map(document.getElementById(&#34;mapcanvas-20100904-05-kml&#34;), { center: {lat: 35.6832581, lng: 139.7555827}, zoom: 8 }); ctaLayer = new google.maps.KmlLayer({ url: &#39;https:\/\/www.330k.info\/\/bicycle\/touring\/20100904-05-nagoya-takamori\/20100904-05.kml&#39; }); ctaLayer.setMap(map); }  母親の実家が現住所から140kmちょっとの丁度いい場所にあるので、峠をいくつか越えてきた。 2日間の合計獲得標高は10000mを超えたが、膝が痛むこともなく走破できたのはやはりドロップハンドルとSPDの効果だろう。
 1日目(往路) 午前4時過ぎに出発。 まずは国道155号を豊田市まで進み、次に国道153号(飯田街道)に入る。 国道153号に入ったところからどんどん山を上り、いくつかトンネルをくぐる(足助トンネル、新観音トンネル、大野瀬トンネル)。
       地図に峠の名前は載ってないものの、2箇所ほど上り下りがあった。
 大野瀬トンネルを抜けると長野県下伊那郡根羽村に到達。
@@ -443,7 +443,7 @@ PC1までは人が多かったが、休憩時間の配分が各々違うよう�
       <pubDate>Sat, 07 Aug 2010 21:44:48 +0900</pubDate>
       
       <guid>https://www.330k.info/bicycle/touring/20100807-isejinguu-isewanisshuu/</guid>
-      <description>function initMap(){ var map, ctaLayer; map = new google.maps.Map(document.getElementById(&#34;map-canvas&#34;), { center: {lat: 35.6832581, lng: 139.7555827}, zoom: 8 }); ctaLayer = new google.maps.KmlLayer({ url: &#39;https:\/\/www.330k.info\/\/bicycle\/touring\/20100807-isejinguu-isewanisshuu\/20100807.kml&#39; }); ctaLayer.setMap(map); }  新しいシクロクロスバイク(SURLY CROSS-CHECK)が手に入ったので、ずっと温めていた伊勢湾を反時計回りに一周+伊勢神宮参りを決行。
+      <description>function initMap(){ var map, ctaLayer; map = new google.maps.Map(document.getElementById(&#34;mapcanvas-20100807-kml&#34;), { center: {lat: 35.6832581, lng: 139.7555827}, zoom: 8 }); ctaLayer = new google.maps.KmlLayer({ url: &#39;https:\/\/www.330k.info\/\/bicycle\/touring\/20100807-isejinguu-isewanisshuu\/20100807.kml&#39; }); ctaLayer.setMap(map); }  新しいシクロクロスバイク(SURLY CROSS-CHECK)が手に入ったので、ずっと温めていた伊勢湾を反時計回りに一周+伊勢神宮参りを決行。
 目的は
  伊勢神宮に参拝して交通安全を祈願すること これまでの走行距離の限界に挑戦すること 9月30日に廃止される伊勢湾フェリーに乗船すること  の3つ。 鳥羽発の最終フェリーが15時20分となるため、あまりゆっくりできない。
 出発は6時40分。 国道247号を北上し、今回は東海通に入って西進。弥富市で国道1号に入って木曽三川を渡り、三重県に入る。 四日市に入ってすぐ国道23号に入るも、大型車が大量に走っていて自転車には危険だったため、田んぼの中を走る道を適当に走る。
@@ -462,7 +462,7 @@ PC1までは人が多かったが、休憩時間の配分が各々違うよう�
       <pubDate>Mon, 19 Jul 2010 21:44:20 +0900</pubDate>
       
       <guid>https://www.330k.info/bicycle/touring/20100719-yourounotaki/</guid>
-      <description>function initMap(){ var map, ctaLayer; map = new google.maps.Map(document.getElementById(&#34;map-canvas&#34;), { center: {lat: 35.6832581, lng: 139.7555827}, zoom: 8 }); ctaLayer = new google.maps.KmlLayer({ url: &#39;https:\/\/www.330k.info\/\/bicycle\/touring\/20100719-yourounotaki\/20100719.kml&#39; }); ctaLayer.setMap(map); }  浜名湖に行ったときの日焼けがひどかったため、3連休の2日目は休んで、3連休最終日は同僚と養老の滝まで行くことにした。 ルートは名古屋までは国道247号を北上し、その後国道1号を西進、その後国道155号などを通って国道258号と岐阜県道56号を北上というルート。
+      <description>function initMap(){ var map, ctaLayer; map = new google.maps.Map(document.getElementById(&#34;mapcanvas-20100719-kml&#34;), { center: {lat: 35.6832581, lng: 139.7555827}, zoom: 8 }); ctaLayer = new google.maps.KmlLayer({ url: &#39;https:\/\/www.330k.info\/\/bicycle\/touring\/20100719-yourounotaki\/20100719.kml&#39; }); ctaLayer.setMap(map); }  浜名湖に行ったときの日焼けがひどかったため、3連休の2日目は休んで、3連休最終日は同僚と養老の滝まで行くことにした。 ルートは名古屋までは国道247号を北上し、その後国道1号を西進、その後国道155号などを通って国道258号と岐阜県道56号を北上というルート。
 9時に寮を出発し、広い道路を淡々と走る。 岐阜県、三重県との県境で、木曽三川を次々と横断。
             愛知県から岐阜県、三重県と次々と新しい県に突入。 ただし三重県区間は短く、すぐにまた岐阜県に戻ることになる。
   国道258号と岐阜県道56号は小規模のアップダウンを繰り返す。 同僚が徐々に登坂で遅れるようになり、頂上付近で同僚を待つ。
@@ -479,7 +479,7 @@ PC1までは人が多かったが、休憩時間の配分が各々違うよう�
       <pubDate>Sat, 17 Jul 2010 21:43:51 +0900</pubDate>
       
       <guid>https://www.330k.info/bicycle/touring/20100717-hamanako-hamanakocyclingroad/</guid>
-      <description>function initMap(){ var map, ctaLayer; map = new google.maps.Map(document.getElementById(&#34;map-canvas&#34;), { center: {lat: 35.6832581, lng: 139.7555827}, zoom: 8 }); ctaLayer = new google.maps.KmlLayer({ url: &#39;https:\/\/www.330k.info\/\/bicycle\/touring\/20100717-hamanako-hamanakocyclingroad\/20100717.kml&#39; }); ctaLayer.setMap(map); }  6月中旬に新しい自転車を注文したのだが、まだまだ納車されないようなので、3連休はルイガノのクロスバイクと過ごすことになった。 どこに行こうか、と考えてとりあえず3連休初日は浜名湖にうなぎでも食べに行って精をつけることにした。
+      <description>function initMap(){ var map, ctaLayer; map = new google.maps.Map(document.getElementById(&#34;mapcanvas-20100717-kml&#34;), { center: {lat: 35.6832581, lng: 139.7555827}, zoom: 8 }); ctaLayer = new google.maps.KmlLayer({ url: &#39;https:\/\/www.330k.info\/\/bicycle\/touring\/20100717-hamanako-hamanakocyclingroad\/20100717.kml&#39; }); ctaLayer.setMap(map); }  6月中旬に新しい自転車を注文したのだが、まだまだ納車されないようなので、3連休はルイガノのクロスバイクと過ごすことになった。 どこに行こうか、と考えてとりあえず3連休初日は浜名湖にうなぎでも食べに行って精をつけることにした。
     寮を8時に出発し、トロトロと国道1号を東進して11時頃に豊橋を通過、12時20分頃に静岡県に初めて突入。
   遠州灘が見える区間はあまりなかった。自転車はバイパス区間を通行できないので、旧道を進む。
   だいぶお腹も減ってきた13時、ようやく浜名湖(弁天島)に到着。でもお目当てのうな丼屋まではまだ遠い。
@@ -496,7 +496,7 @@ PC1までは人が多かったが、休憩時間の配分が各々違うよう�
       <pubDate>Sun, 04 Jul 2010 21:43:32 +0900</pubDate>
       
       <guid>https://www.330k.info/bicycle/touring/20100704-chitahantou/</guid>
-      <description>function initMap(){ var map, ctaLayer; map = new google.maps.Map(document.getElementById(&#34;map-canvas&#34;), { center: {lat: 35.6832581, lng: 139.7555827}, zoom: 8 }); ctaLayer = new google.maps.KmlLayer({ url: &#39;https:\/\/www.330k.info\/\/bicycle\/touring\/20100704-chitahantou\/20100704.kml&#39; }); ctaLayer.setMap(map); }  名古屋(の隣)に転勤になり、休日が下の写真のようなサイクリング日和になったので、1週間前に実家から新幹線で運んできたルイガノの自転車でとりあえず知多半島一周に出ることにした。コースは地図に示すように知多半島を時計回りに1周することとした。
+      <description>function initMap(){ var map, ctaLayer; map = new google.maps.Map(document.getElementById(&#34;mapcanvas-20100704-kml&#34;), { center: {lat: 35.6832581, lng: 139.7555827}, zoom: 8 }); ctaLayer = new google.maps.KmlLayer({ url: &#39;https:\/\/www.330k.info\/\/bicycle\/touring\/20100704-chitahantou\/20100704.kml&#39; }); ctaLayer.setMap(map); }  名古屋(の隣)に転勤になり、休日が下の写真のようなサイクリング日和になったので、1週間前に実家から新幹線で運んできたルイガノの自転車でとりあえず知多半島一周に出ることにした。コースは地図に示すように知多半島を時計回りに1周することとした。
   出発してからしばらくは街中を進むが、豊浜あたりでようやく左手に海が見えるようになる。国道247号は路肩が狭く、交通量が多くなると少し危険だった。
   2時間ほど走り、距離的にはそろそろ南端についてもおかしくないのだが、地図を持ってくるのを忘れてしまったので、どこが知多半島の先端か分からず。 適当に海に出て写真を撮る。
   もう少し進むと、羽豆岬のフェリーターミナルの案内と鳥居があった。 とりあえず目的としていた知多半島の南端には到達した。 50kmを2時間ちょっとで走ったので、かなりいいペース。
@@ -517,7 +517,7 @@ PC1までは人が多かったが、休憩時間の配分が各々違うよう�
       <pubDate>Thu, 18 Mar 2010 21:43:17 +0900</pubDate>
       
       <guid>https://www.330k.info/bicycle/touring/20100318-okunikkou/</guid>
-      <description>function initMap(){ var map, ctaLayer; map = new google.maps.Map(document.getElementById(&#34;map-canvas&#34;), { center: {lat: 35.6832581, lng: 139.7555827}, zoom: 8 }); ctaLayer = new google.maps.KmlLayer({ url: &#39;https:\/\/www.330k.info\/\/bicycle\/touring\/20100318-okunikkou\/20100318.kml&#39; }); ctaLayer.setMap(map); }  同期の漕艇部OBと2人で卒業旅行替わりにちょっと日帰りでポタリングした。 予定していたコースは
+      <description>function initMap(){ var map, ctaLayer; map = new google.maps.Map(document.getElementById(&#34;mapcanvas-20100318-kml&#34;), { center: {lat: 35.6832581, lng: 139.7555827}, zoom: 8 }); ctaLayer = new google.maps.KmlLayer({ url: &#39;https:\/\/www.330k.info\/\/bicycle\/touring\/20100318-okunikkou\/20100318.kml&#39; }); ctaLayer.setMap(map); }  同期の漕艇部OBと2人で卒業旅行替わりにちょっと日帰りでポタリングした。 予定していたコースは
  東武日光駅まで輪行 いろは坂を超えて日光湯元あたりまで行く 折り返して日光駅付近まで戻る 時間が余ったら付近を観光  としていた。
 走行距離は65km程度なので大した問題は起きないだろうと思っていた。
 まずは本郷を7時に出発して浅草駅まで不忍池を通って走り、輪行開始。
@@ -538,7 +538,7 @@ PC1までは人が多かったが、休憩時間の配分が各々違うよう�
       <pubDate>Sat, 07 Nov 2009 21:43:03 +0900</pubDate>
       
       <guid>https://www.330k.info/bicycle/touring/20091107-08-toukaimuraibaraki/</guid>
-      <description>function initMap(){ var map, ctaLayer; map = new google.maps.Map(document.getElementById(&#34;map-canvas&#34;), { center: {lat: 35.6832581, lng: 139.7555827}, zoom: 8 }); ctaLayer = new google.maps.KmlLayer({ url: &#39;https:\/\/www.330k.info\/\/bicycle\/touring\/20091107-08-toukaimuraibaraki\/20091107-08.kml&#39; }); ctaLayer.setMap(map); }  ホッケー社会人リーグの最終戦が茨城県東海高校のグラウンドで行われることになったので、国道6号の水戸街道部分を自転車で走破するチャンスと捉えて 1. 試合前日に1日かけて東海村まで行く 1. 試合は13時に開始されるので午前中は東海村の原子力関連施設を観光しにポタリング 1. ついでに試合をする 1. 帰りは輪行 という計画を立て、実行した。
+      <description>function initMap(){ var map, ctaLayer; map = new google.maps.Map(document.getElementById(&#34;mapcanvas-20091107-08-kml&#34;), { center: {lat: 35.6832581, lng: 139.7555827}, zoom: 8 }); ctaLayer = new google.maps.KmlLayer({ url: &#39;https:\/\/www.330k.info\/\/bicycle\/touring\/20091107-08-toukaimuraibaraki\/20091107-08.kml&#39; }); ctaLayer.setMap(map); }  ホッケー社会人リーグの最終戦が茨城県東海高校のグラウンドで行われることになったので、国道6号の水戸街道部分を自転車で走破するチャンスと捉えて 1. 試合前日に1日かけて東海村まで行く 1. 試合は13時に開始されるので午前中は東海村の原子力関連施設を観光しにポタリング 1. ついでに試合をする 1. 帰りは輪行 という計画を立て、実行した。
 1日目 天気は秋晴れ、気温も10月上旬並みの小春日和と絶好のサイクリング日和。 中でもスティックの運搬方法には頭を悩ませたが、結局スティックケースに入れて肩にかけて運ぶことにし、その代わりバックパックを省略。 その他軽量化のため、荷物からレインウェアを省いたほか、洗面用具なども必要なものに絞ったが、スティックのほかホッケーのユニフォーム、靴(これが重い)を運搬しなければならないため、トータルで見るといつもよりも荷物の量としては多くなってしまった。
 8時50分ごろ自宅を出発。
 池袋の自宅からどうやって国道6号まで行くか悩んだが、交通量の多いルートで朝から神経を消耗したくなかったので、荒川サイクリングロード経由で行くことにした。 明治通りを通って荒川サイクリングロードに入ってしばらく下ったのち、四つ木橋で国道6号線に入る。 土曜日なのに、自家用車だけでなく大型トラックも非常に多い。
@@ -557,7 +557,7 @@ PC1までは人が多かったが、休憩時間の配分が各々違うよう�
       <pubDate>Fri, 18 Sep 2009 21:42:24 +0900</pubDate>
       
       <guid>https://www.330k.info/bicycle/touring/20090918-20-takamorinagano/</guid>
-      <description>function initMap(){ var map, ctaLayer; map = new google.maps.Map(document.getElementById(&#34;map-canvas&#34;), { center: {lat: 35.6832581, lng: 139.7555827}, zoom: 8 }); ctaLayer = new google.maps.KmlLayer({ url: &#39;https:\/\/www.330k.info\/\/bicycle\/touring\/20090918-20-takamorinagano\/20090918-20.kml&#39; }); ctaLayer.setMap(map); }  9月の連休(シルバーウィーク)を利用して、農作業の手伝いも兼ねて祖母宅まで自転車で行くことにした。 中山道経由も考えたが、ルートとしてはまずは甲州街道から伊那路を辿ることにした。
+      <description>function initMap(){ var map, ctaLayer; map = new google.maps.Map(document.getElementById(&#34;mapcanvas-20090918-20-kml&#34;), { center: {lat: 35.6832581, lng: 139.7555827}, zoom: 8 }); ctaLayer = new google.maps.KmlLayer({ url: &#39;https:\/\/www.330k.info\/\/bicycle\/touring\/20090918-20-takamorinagano\/20090918-20.kml&#39; }); ctaLayer.setMap(map); }  9月の連休(シルバーウィーク)を利用して、農作業の手伝いも兼ねて祖母宅まで自転車で行くことにした。 中山道経由も考えたが、ルートとしてはまずは甲州街道から伊那路を辿ることにした。
 1日目 前日夜に京都より帰宅してから体調が万全とは言えなかったものの、天気予報を見るとなんとか雨は降らない模様。出発を1日延期すると道路の混雑や宿がとれないことが予想されるので、多少悩んだが朝9時30分に出発を決意。
 とりあえず1日目は笹子峠(旧笹子トンネル)を超えて勝沼を目安に、できれば甲府まで、少なくとも大月までが目標。自宅を出て春日通り、山手通り、甲州街道とだいぶ慣れた道を進む。
 大体予定通り昼ごろに高尾に着いたので、安くすますためマクドナルドで100円のもののみを注文して昼食にする。
@@ -578,7 +578,7 @@ PC1までは人が多かったが、休憩時間の配分が各々違うよう�
       <pubDate>Sat, 08 Aug 2009 21:42:04 +0900</pubDate>
       
       <guid>https://www.330k.info/bicycle/touring/20090808-futtsumisaki/</guid>
-      <description>function initMap(){ var map, ctaLayer; map = new google.maps.Map(document.getElementById(&#34;map-canvas&#34;), { center: {lat: 35.6832581, lng: 139.7555827}, zoom: 8 }); ctaLayer = new google.maps.KmlLayer({ url: &#39;https:\/\/www.330k.info\/\/bicycle\/touring\/20090808-futtsumisaki\/20090808.kml&#39; }); ctaLayer.setMap(map); }  教授の発案で、研究室のメンバーで富津海岸で海水浴→木更津に住む教授の家でホームパーティという催しが行われたので、自転車で参加することに。 池袋の自宅を6時30分に出発し、春日通りからお茶の水を通って国道14号千葉街道に入る。 江東区まではよく走るのだが、江戸川区に入るのは初めてだったため、千葉街道が左に逸れるのを見逃してしまい、江戸川を渡ろうとしたら首都高速の橋しかかかっていなかった。
+      <description>function initMap(){ var map, ctaLayer; map = new google.maps.Map(document.getElementById(&#34;mapcanvas-20090808-kml&#34;), { center: {lat: 35.6832581, lng: 139.7555827}, zoom: 8 }); ctaLayer = new google.maps.KmlLayer({ url: &#39;https:\/\/www.330k.info\/\/bicycle\/touring\/20090808-futtsumisaki\/20090808.kml&#39; }); ctaLayer.setMap(map); }  教授の発案で、研究室のメンバーで富津海岸で海水浴→木更津に住む教授の家でホームパーティという催しが行われたので、自転車で参加することに。 池袋の自宅を6時30分に出発し、春日通りからお茶の水を通って国道14号千葉街道に入る。 江東区まではよく走るのだが、江戸川区に入るのは初めてだったため、千葉街道が左に逸れるのを見逃してしまい、江戸川を渡ろうとしたら首都高速の橋しかかかっていなかった。
   江戸川にはサイクリングロードがあることは知っていたので、その入り口を見つけて上流に遡る。
   しばらくすると千葉街道の橋が見えたのでこれを渡り、千葉県に入る。 朝は雲がかかっていて涼しかったのだが、昼になるにつれて雲が晴れ、夏の日光が気温を上げていった。
   千葉県に入ってからの千葉街道は片側1車線で路肩もほとんどなく、普段なら自転車にとっては走りにくい道なのだが、夏休み中の土日とあってか交通量が多く、自動車とほぼ同じ速度で順調に千葉街道を進んだ。 千葉を過ぎると国道14号から国道357号に変わり、蘇我ではJFEの東日本製鉄所(千葉地区)の前を通ったので記念撮影。 さらにそのまま南下すると国道16号に入るが、海岸沿いで高低差のほとんどない片側2車線の道路を快走。
@@ -597,7 +597,7 @@ PC1までは人が多かったが、休憩時間の配分が各々違うよう�
       <pubDate>Sun, 08 Mar 2009 21:41:45 +0900</pubDate>
       
       <guid>https://www.330k.info/bicycle/touring/20090308-10-imaichi/</guid>
-      <description>function initMap(){ var map, ctaLayer; map = new google.maps.Map(document.getElementById(&#34;map-canvas&#34;), { center: {lat: 35.6832581, lng: 139.7555827}, zoom: 8 }); ctaLayer = new google.maps.KmlLayer({ url: &#39;https:\/\/www.330k.info\/\/bicycle\/touring\/20090308-10-imaichi\/20090308-10.kml&#39; }); ctaLayer.setMap(map); }  ホッケー部の後輩たちが今市(栃木県日光市)にある今市青少年スポーツセンターで合宿をする、とのことなので、先輩OBと2人で自転車で参加することになった。
+      <description>function initMap(){ var map, ctaLayer; map = new google.maps.Map(document.getElementById(&#34;mapcanvas-20090308-10-kml&#34;), { center: {lat: 35.6832581, lng: 139.7555827}, zoom: 8 }); ctaLayer = new google.maps.KmlLayer({ url: &#39;https:\/\/www.330k.info\/\/bicycle\/touring\/20090308-10-imaichi\/20090308-10.kml&#39; }); ctaLayer.setMap(map); }  ホッケー部の後輩たちが今市(栃木県日光市)にある今市青少年スポーツセンターで合宿をする、とのことなので、先輩OBと2人で自転車で参加することになった。
 1日目 天候が最大の不安であったが、なんとか雨は降らない模様。 先輩OBが住む北千住駅前で9時に待ち合わせのため、ホッケー用のウェアや靴をパニアバッグに詰め込んで自宅を8時過ぎに出発。
 明治通りを王子駅まですすみ、その後荒川まで北上、あとは荒川河川敷のサイクリングロードを千住大橋まで行ってから南に行って北千住駅まで走った。
 先輩と合流したら、江戸川サイクリングロードを目指す。 下町の細い路地に多少迷いながらも江戸川に到着、あとはサイクリングロードを飛ばすだけ・・・と思っていたが、 強烈な向かい風(季節風) 単調な上り坂 (川沿いだから) 休憩のタイミングがとりづらい(信号がない) ため思ったようには進めず、巡航速度も20km/hそこそこ。
@@ -613,7 +613,7 @@ PC1までは人が多かったが、休憩時間の配分が各々違うよう�
       <pubDate>Sun, 08 Feb 2009 21:41:14 +0900</pubDate>
       
       <guid>https://www.330k.info/bicycle/touring/20090208-odaiba/</guid>
-      <description>   function initMap(){ var map, ctaLayer; map = new google.maps.Map(document.getElementById(&#34;map-canvas&#34;), { center: {lat: 35.6832581, lng: 139.7555827}, zoom: 8 }); ctaLayer = new google.maps.KmlLayer({ url: &#39;https:\/\/www.330k.info\/\/bicycle\/touring\/20090208-odaiba\/20090208.kml&#39; }); ctaLayer.setMap(map); }  譲ってもらったロードレーサーに慣れるため、 翌週用事のあった東京ガス深川グラウンドまでの道の下見を兼ねて、 海が見える方向を目指して気ままに走った。
+      <description>   function initMap(){ var map, ctaLayer; map = new google.maps.Map(document.getElementById(&#34;mapcanvas-20090208-kml&#34;), { center: {lat: 35.6832581, lng: 139.7555827}, zoom: 8 }); ctaLayer = new google.maps.KmlLayer({ url: &#39;https:\/\/www.330k.info\/\/bicycle\/touring\/20090208-odaiba\/20090208.kml&#39; }); ctaLayer.setMap(map); }  譲ってもらったロードレーサーに慣れるため、 翌週用事のあった東京ガス深川グラウンドまでの道の下見を兼ねて、 海が見える方向を目指して気ままに走った。
               </description>
     </item>
     
@@ -623,7 +623,7 @@ PC1までは人が多かったが、休憩時間の配分が各々違うよう�
       <pubDate>Mon, 18 Aug 2008 00:00:00 +0900</pubDate>
       
       <guid>https://www.330k.info/bicycle/touring/20080818-sagamiko/</guid>
-      <description>function initMap(){ var map, ctaLayer; map = new google.maps.Map(document.getElementById(&#34;map-canvas&#34;), { center: {lat: 35.6832581, lng: 139.7555827}, zoom: 8 }); ctaLayer = new google.maps.KmlLayer({ url: &#39;https:\/\/www.330k.info\/\/bicycle\/touring\/20080818-sagamiko\/20080818.kml&#39; }); ctaLayer.setMap(map); }  大学院の講義の1つにソーラークルーレスボートの製作があり、その実走行試験を相模湖で行うとのことなので自転車で行ってみることにした。 それ以前は自転車による1日の最長走行距離は36km(東京→横浜)だったのだが、相模湖までは片道65kmと当時の自分にとってはかなりチャレンジング。
+      <description>function initMap(){ var map, ctaLayer; map = new google.maps.Map(document.getElementById(&#34;mapcanvas-20080818-kml&#34;), { center: {lat: 35.6832581, lng: 139.7555827}, zoom: 8 }); ctaLayer = new google.maps.KmlLayer({ url: &#39;https:\/\/www.330k.info\/\/bicycle\/touring\/20080818-sagamiko\/20080818.kml&#39; }); ctaLayer.setMap(map); }  大学院の講義の1つにソーラークルーレスボートの製作があり、その実走行試験を相模湖で行うとのことなので自転車で行ってみることにした。 それ以前は自転車による1日の最長走行距離は36km(東京→横浜)だったのだが、相模湖までは片道65kmと当時の自分にとってはかなりチャレンジング。
 池袋の自宅を8時30分に出て、春日通り、明治通りと通って新宿まで行き、そこから相模湖までずっと甲州街道(国道20号)を走る。 途中後輪の空気圧が気になったので八王子の自転車屋で空気を入れなおしてもらったほかは特に問題はなく、52km走って高尾に到着。 後日知ることになったのだが、実は後輪のチューブに小さい穴があいていた。
 ここから7km先の東京都と神奈川県の境にある大垂水峠まではずっと上り坂。 高尾の標高は200mないが大垂水峠は392mなので、約200m登る。 とはいえ、いかんせん初めてのヒルクライムなのでこの高低差がどの程度のものなのか見当がつかない。
   高尾山口をすぎてしばらくしてあたりにラブホテル以外に何も見当たらなくなってきたところで一旦休憩。

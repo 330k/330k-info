@@ -72,12 +72,13 @@ if (!doNotTrack) {
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCir56M7J9LT4-3wDVgG8etGo_HPSMWVBk&callback=initMap" async defer></script>
 
 
-<div id="map-canvas" style="width: 100%; height:500px; margin:0; padding: 0"></div>
+
+<div id="mapcanvas-2019042801-kml" style="width: 100%; height:500px; margin:0; padding: 0"></div>
 <script>
 function initMap(){
   var map,
     ctaLayer;
-  map = new google.maps.Map(document.getElementById("map-canvas"), {
+  map = new google.maps.Map(document.getElementById("mapcanvas-2019042801-kml"), {
     center: {lat: 35.6832581, lng: 139.7555827},
     zoom: 8
   });
@@ -148,14 +149,15 @@ function initMap(){
 <script src='https://cdn.rawgit.com/aike/thview.js/master/thview.js' defer></script>
 
 
-<div id='thviewer-R0010042_20190428140253.JPG'></div>  
+
+<div id='thviewer-r0010042-20190428140253-jpg'></div>  
 <script>
 
 window.addEventListener("load", function(){
   var path = 'R0010042_20190428140253.JPG';
   THREE.ImageUtils.crossOrigin = "*";
   var img1 = new ThView({
-    id:'thviewer-R0010042_20190428140253.JPG',
+    id:'thviewer-r0010042-20190428140253-jpg',
     file: path,
     width: 640,
     height: 480,
@@ -195,14 +197,15 @@ window.addEventListener("load", function(){
 
 
 
-<div id='thviewer-R0010057_20190429125013.JPG'></div>  
+
+<div id='thviewer-r0010057-20190429125013-jpg'></div>  
 <script>
 
 window.addEventListener("load", function(){
   var path = 'R0010057_20190429125013.JPG';
   THREE.ImageUtils.crossOrigin = "*";
   var img1 = new ThView({
-    id:'thviewer-R0010057_20190429125013.JPG',
+    id:'thviewer-r0010057-20190429125013-jpg',
     file: path,
     width: 640,
     height: 480,
