@@ -20,7 +20,7 @@
       <description>とりあえず申し込んでいた2つ目の600kmブルベ。
 直前に津波を伴う震度6強の地震が新潟北部で発生し、開催が危ぶまれたものの、一部コースを変更して無事開催。
 DNSを真剣に考えていたけれど、レンタカーによる移動、予め仮眠場所にホテルを予約しておくなど、今回初めての試みもあるので、それらのテストも兼ねて出走を決意。
-  function initMap(){ var map, ctaLayer; map = new google.maps.Map(document.getElementById(&#34;mapcanvas-kml&#34;), { center: {lat: 35.6832581, lng: 139.7555827}, zoom: 8 }); ctaLayer = new google.maps.KmlLayer({ url: &#39;https:\/\/www.330k.info\/\/bicycle\/touring\/20190622-brm622gunma600km-niigata\/.kml&#39; }); ctaLayer.setMap(map); }     日付 出発地 到着地 走行距離(km) 走行時間 最高速度(km/h) 平均速度(km/h) 主な経路 景勝地     2019年06月22日 新潟市秋津 新潟市秋津 612.52 25:38:35 63.2 23.9 村上、胎内、柏崎、上越、津南、魚沼、栃尾     前日 前日の金曜日、フレックスで14時過ぎに退勤し、自宅近くの日産レンタカーでNV200を借りて自宅の駐車場に置いて自転車を載せる。
+  function initMap(){ var map, ctaLayer; map = new google.maps.Map(document.getElementById(&#34;mapcanvas-2019062201-kml&#34;), { center: {lat: 35.6832581, lng: 139.7555827}, zoom: 8 }); ctaLayer = new google.maps.KmlLayer({ url: &#39;https:\/\/www.330k.info\/\/bicycle\/touring\/20190622-brm622gunma600km-niigata\/2019062201.kml&#39; }); ctaLayer.setMap(map); }     日付 出発地 到着地 走行距離(km) 走行時間 最高速度(km/h) 平均速度(km/h) 主な経路 景勝地     2019年06月22日 新潟市秋津 新潟市秋津 612.52 25:38:35 63.2 23.9 村上、胎内、柏崎、上越、津南、魚沼、栃尾     前日 前日の金曜日、フレックスで14時過ぎに退勤し、自宅近くの日産レンタカーでNV200を借りて自宅の駐車場に置いて自転車を載せる。
 後部座席の倒し方がわからなかったのだが、なんと倒さなくても自転車をそのまま入れることができた。
 その他着替え等の準備をして関越道経由で新潟市まで。
 大きな車を運転するのは初めてだったのだが、車幅の感覚はすぐに慣れることができた一方、長さの感覚は難しく、自宅近くの狭い路地を抜けるのに少しヒヤヒヤ。
