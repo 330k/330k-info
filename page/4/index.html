@@ -55,6 +55,27 @@ if (!doNotTrack) {
 	<div class="list__content clearfix">
 		<header class="list__header">
 			<h3 class="list__title post__title ">
+				<a href="/essay/input_backslach_with_us_keyboard_layout/" rel="bookmark">英語版Windows PE環境でバックスラッシュを入力</a>
+			</h3>
+			<div class="list__meta meta">
+				<svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
+				<time class="list__meta-date" datetime="2017-06-06T06:48:00">June 06, 2017</time>
+			</div>
+		</header>
+		<div class="list__excerpt">
+			会社のPCではHDD暗号化ソフトのSecureDocを使用しているが、先日1台のPCが起動しなくなったため、リカバリーディスクを使っての救出を行った際のメモ。
+SecureDocのリカバリーディスクはWindows PEベースなのだが、海外の製品なので当然英語キーボード。 起動しなくなったPCのHDDの中身は運良く復旧できそうだったのだが、 データをネットワーク経由で回収しようとしたところネットワーク設定画面でバックスラッシュが入力できなくてハマった。
+5分ほどキーボードを押しまくった後、Altキーと文字コード入力で行けることに気がついた。
+Alt押す → テンキー9 → テンキー2 → Alt離す
+で無事入力できた。
+ただ、LetsNoteのNICをWindows PEでは認識できず無駄足に。 結局USBメモリ経由で回収した。
+		</div>
+	</div>
+</article>
+<article class="list__item post clearfix">
+	<div class="list__content clearfix">
+		<header class="list__header">
+			<h3 class="list__title post__title ">
 				<a href="/essay/xubuntu1604_snort_base/" rel="bookmark">Xubuntu 16.04 &#43; Snortで簡易IDS構築</a>
 			</h3>
 			<div class="list__meta meta">
@@ -267,32 +288,6 @@ sp_updatestats  としたところ、1秒程度で処理が完了するように
 		</div>
 	</div>
 </article>
-<article class="list__item post clearfix">
-	<figure class="list__thumbnail">
-		<a href="https://www.330k.info/essay/rescue_gps_log_from_binary_data_of_holux_m241/">
-			<img src="/essay/rescue_gps_log_from_binary_data_of_holux_m241/20160703_rescue_map.png" alt="m-241のバイナリデータからトラックログを吸い出す" />
-		</a>
-	</figure>
-	<div class="list__content clearfix">
-		<header class="list__header">
-			<h3 class="list__title post__title ">
-				<a href="/essay/rescue_gps_log_from_binary_data_of_holux_m241/" rel="bookmark">m-241のバイナリデータからトラックログを吸い出す</a>
-			</h3>
-			<div class="list__meta meta">
-				<svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
-				<time class="list__meta-date" datetime="2016-09-22T07:14:00">September 22, 2016</time>
-			</div>
-		</header>
-		<div class="list__excerpt">
-			GPSロガー(Holux m-241)のメモリが破損しているのか、 実は6月30日と7月3日の軽井沢→直江津ツーリングと、9月の西九州→佐多岬ツーリングでは、 ログが破損していたため、Googleのロケーション履歴を代用している。
-バイナリデータは一応吸い出せているようなので、その構造を調べると、 HOLUX m-241 LoggerUtility .trlファイル構造の覚書 より以下のような構造になっている。
- 1レコード20バイトの固定長 時刻4バイト 緯度4バイト 経度4バイト 高度3バイト 速度4バイト チェックサム1バイト  また、m-241は時折書き込み先のメモリアドレスがずれることがあるようだ、との情報も見つかったため、 バイナリエディタで除いてみると、どうも4バイトずつずれて記録されたデータがあるようだった。
-そこで
- レコードの先頭バイトを4バイトずつオフセットさせて読み込んでみる 緯度と経度が日本付近のものと思われるものを片っ端から拾う 時刻は整数型なのでとりあえず読み込む 高度、速度のデータは無視！  という方針でMathematicaのプログラムを書いてみた。
-data = Table[Module[{str, ret}, str = OpenRead[&quot;2016091200.bin&quot;, BinaryFormat -&gt; True]; (* 最初に余分にiバイト読み込んで先頭をずらす *) Do[ BinaryRead[str, &quot;Byte&quot;], {i} ]; (* バイナリ形式で読み込む *) ret = Cases[ MapIndexed[ {First[#2], Sequence @@ #1} &amp;, BinaryReadList[ str, {&quot;Integer32&quot;, &quot;Real32&quot;, &quot;Real32&quot;, &quot;Byte&quot;, &quot;Byte&quot;, &quot;Byte&quot;, &quot;Real32&quot;, &quot;Byte&quot;}] ], {count_, d_Integer, lat_Real, lon_Real, __} /; (30 &lt; lat &lt; 40 &amp;&amp; 125 &lt; lon &lt; 140) :&gt; {count, DateString[DatePlus[{1970, 1, 1, 0, 0, 0}, {d, &quot;Second&quot;}], {&quot;Year&quot;, &quot;-&quot;, &quot;Month&quot;, &quot;-&quot;, &quot;Day&quot;, &quot;T&quot;, &quot;Time&quot;, &quot;Z&quot;}], lat, lon}]; Close[str]; ret ], {i, 0, 19, 4}];  ※ 2016091200.
-		</div>
-	</div>
-</article>
 
 		
 
@@ -322,6 +317,7 @@ data = Table[Module[{str, ret}, str = OpenRead[&quot;2016091200.bin&quot;, Binar
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20190622-brm622gunma600km-niigata/">2019年06月22日 BRM622群馬600(新潟周回)</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20190606-brm601-hitachi-600km/">2019年06月01日 BRM601 日立600</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20190428-aizu/">2019年04月28日〜29日 会津</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20190420-brm420-attack-oinokoji-400km/">2019年04月20日 BRM420 埼玉400km アタック老越路</a></li>
@@ -331,7 +327,6 @@ data = Table[Module[{str, ret}, str = OpenRead[&quot;2016091200.bin&quot;, Binar
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20181007-14_median_line/">2018年10月7日〜14日 中央構造線 &#43; 山中湖</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20180804-12_tohoku_sapporo/">2018年8月4日〜12日 東北中央部縦断〜函館〜札幌</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/start-command-prompt-in-windows-10/">Windows 10でコマンドプロンプトを素早く起動する方法</a></li>
-			<li class="widget__item"><a class="widget__link" href="/essay/earth_radius/">地球の大きさ(周長や半径)を覚える必要はない</a></li>
 		</ul>
 	</div>
 </div>
@@ -392,7 +387,7 @@ data = Table[Module[{str, ret}, str = OpenRead[&quot;2016091200.bin&quot;, Binar
 		<a class="widget__link widget__link--taglist" href="/tags/%e3%82%a2%e3%83%ab%e3%82%b4%e3%83%aa%e3%82%ba%e3%83%a0" title="アルゴリズム">アルゴリズム (5)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/%e3%83%84%e3%83%bc%e3%83%aa%e3%83%b3%e3%82%b0" title="ツーリング">ツーリング (45)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/%e3%83%91%e3%83%af%e3%83%8f%e3%83%a9" title="パワハラ">パワハラ (5)</a>
-		<a class="widget__link widget__link--taglist" href="/tags/%e3%83%96%e3%83%ab%e3%83%99" title="ブルベ">ブルベ (5)</a>
+		<a class="widget__link widget__link--taglist" href="/tags/%e3%83%96%e3%83%ab%e3%83%99" title="ブルベ">ブルベ (6)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/%e7%94%9f%e6%b4%bb" title="生活">生活 (1)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/%e7%a4%be%e5%86%85se" title="社内se">社内se (15)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/%e8%87%aa%e8%bb%a2%e8%bb%8a" title="自転車">自転車 (9)</a>

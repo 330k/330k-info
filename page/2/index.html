@@ -55,6 +55,27 @@ if (!doNotTrack) {
 	<div class="list__content clearfix">
 		<header class="list__header">
 			<h3 class="list__title post__title ">
+				<a href="/essay/earth_radius/" rel="bookmark">地球の大きさ(周長や半径)を覚える必要はない</a>
+			</h3>
+			<div class="list__meta meta">
+				<svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
+				<time class="list__meta-date" datetime="2018-05-30T20:06:18">May 30, 2018</time>
+			</div>
+		</header>
+		<div class="list__excerpt">
+			ある書物で、地球の半径を東大生の何割かがオーダーが違うレベルで間違う、ということが書いてあった(誰の著作だったか忘れてしまった・・・)。
+ただ、地球の周長や半径の概数は、暗記する必要はまったくない。
+なぜなら、「1キロメートルの基準が、赤道から北極までの長さの1万分の1」としてメートル法が決められたから。 覚えるのはこれだけで良い。
+だから、地球一周は4倍の約40,000 km。半径は円周率で割って約6,400 kmというのは計算で出せる。
+正確な数値としては、極周長が40,075 km、赤道周長が39,941 km、半径が6,357 km。
+ちなみに、メートル法が地球を基準にしたのは、 フランス革命後にそれまでの為政者が使用させていた単位(インチやフィートは指や足の長さが由来)をやめて、 全世界で共通で使える単位を作ろう、という目的でメートル法が作られたから。
+		</div>
+	</div>
+</article>
+<article class="list__item post clearfix">
+	<div class="list__content clearfix">
+		<header class="list__header">
+			<h3 class="list__title post__title ">
 				<a href="/essay/mathematica-special-notation/" rel="bookmark">Mathematicaの特殊・省略記法一覧</a>
 			</h3>
 			<div class="list__meta meta">
@@ -247,37 +268,6 @@ $a = @() $a += Get-ChildItem &quot;(掃除対象フォルダのパス1)&quot; -F
 		</div>
 	</div>
 </article>
-<article class="list__item post clearfix">
-	<div class="list__content clearfix">
-		<header class="list__header">
-			<h3 class="list__title post__title ">
-				<a href="/essay/scramble_unicode_lro_rlo/" rel="bookmark">Unicode制御文字(LRO, RLO)でコピー・改変を防止 (構想)</a>
-			</h3>
-			<div class="list__meta meta">
-				<svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
-				<time class="list__meta-date" datetime="2017-08-21T22:38:20">August 21, 2017</time>
-			</div>
-		</header>
-		<div class="list__excerpt">
-			Unicode制御文字のうち、LRO(Left-to-right override, U+202D)とRLO(Right-to-left override, U+202E)は 行中でも文字列の方向を変更する。
-1行の中に何度もLROとRLOが入ると、カーソルキーが踊って楽しいことになる。
-例: 下のテキストボックスの中の文字列を編集したり、カーソルキーで移動しようとしても上手くできないはず。
-‮‭い‮を‭ろ‮る‭は‮ぬ‭に‮り‭ほ‮ち‭へ ‮‭わ‮む‭か‮ら‭よ‮な‭た‮ね‭れ‮つ ‮‭う‮て‭ゐ‮え‭の‮こ‭お‮ふ‭く‮け‭や ‮‭あ‮す‭さ‮せ‭き‮も‭ゆ‮ひ‭め‮ゑ‭み 
-※ Edgeは表示が崩れるので、Ctrl + A→Ctrl + Cでメモ帳にコピペで確認可能。
-表示上は普通のいろは順にひらがなが並んでいるように見えるが、 実際のデータはまったく違う順序になっている。
-↓通常のテキスト (比較用)
-いろはにほへとちりぬるを わかよたれそつねならむ うゐのおくやまけふこえて あさきゆめみしゑひもせす 
-作り方 行内の文字列の順番を入れ替えつつ、LROとRLOを交互に挿入。
-以下のMathematicaコードで上記の例を作成した。
-StringScrumble[str_String] := Module[{chars, chars2}, StringJoin[Riffle[( chars = ToCharacterCode[#]; chars2 = Join[{16^^202e}, Riffle[chars, Reverse[chars]]][[1 ;; Length[chars]]]; FromCharacterCode[Riffle[chars2, {16^^202d, 16^^202e}]]) &amp; /@ StringSplit[str, &quot;\n&quot;] , StringCases[str, &quot;\n&quot;]]]] StringScrumble[&quot;いろはにほへとちりぬるを\nわかよたれそつねならむ\nうゐのおくやまけふこえて\nあさきゆめみしゑひもせす&quot;]  各種デバイス・アプリでの表示 上記の文章をメールで送信し、各種端末で受信メールで表示してみた。
-ChromeやFirefoxなどブラウザは狙い通り表示された。 Edgeはテキストボックス内ではダメだったが、それ以外の場所ではOK。 Outlookでの表示もOK。
-iPhoneのメッセージ、メール、GmailはいずれもOK。
-テキストエディタについてもどう表示されるか確認した。
-メモ帳は意外にもちゃんとBiDi対応だった。 geditは行頭にRLOがあると右寄せで表示してしまう(こういう表示のほうが正しいかもしれないが)。
- Windows 10  Edge:    Outlook:    メモ帳:     Ubuntu 16.
-		</div>
-	</div>
-</article>
 
 		
 
@@ -307,6 +297,7 @@ iPhoneのメッセージ、メール、GmailはいずれもOK。
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20190622-brm622gunma600km-niigata/">2019年06月22日 BRM622群馬600(新潟周回)</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20190606-brm601-hitachi-600km/">2019年06月01日 BRM601 日立600</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20190428-aizu/">2019年04月28日〜29日 会津</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20190420-brm420-attack-oinokoji-400km/">2019年04月20日 BRM420 埼玉400km アタック老越路</a></li>
@@ -316,7 +307,6 @@ iPhoneのメッセージ、メール、GmailはいずれもOK。
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20181007-14_median_line/">2018年10月7日〜14日 中央構造線 &#43; 山中湖</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20180804-12_tohoku_sapporo/">2018年8月4日〜12日 東北中央部縦断〜函館〜札幌</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/start-command-prompt-in-windows-10/">Windows 10でコマンドプロンプトを素早く起動する方法</a></li>
-			<li class="widget__item"><a class="widget__link" href="/essay/earth_radius/">地球の大きさ(周長や半径)を覚える必要はない</a></li>
 		</ul>
 	</div>
 </div>
@@ -377,7 +367,7 @@ iPhoneのメッセージ、メール、GmailはいずれもOK。
 		<a class="widget__link widget__link--taglist" href="/tags/%e3%82%a2%e3%83%ab%e3%82%b4%e3%83%aa%e3%82%ba%e3%83%a0" title="アルゴリズム">アルゴリズム (5)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/%e3%83%84%e3%83%bc%e3%83%aa%e3%83%b3%e3%82%b0" title="ツーリング">ツーリング (45)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/%e3%83%91%e3%83%af%e3%83%8f%e3%83%a9" title="パワハラ">パワハラ (5)</a>
-		<a class="widget__link widget__link--taglist" href="/tags/%e3%83%96%e3%83%ab%e3%83%99" title="ブルベ">ブルベ (5)</a>
+		<a class="widget__link widget__link--taglist" href="/tags/%e3%83%96%e3%83%ab%e3%83%99" title="ブルベ">ブルベ (6)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/%e7%94%9f%e6%b4%bb" title="生活">生活 (1)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/%e7%a4%be%e5%86%85se" title="社内se">社内se (15)</a>
 		<a class="widget__link widget__link--taglist" href="/tags/%e8%87%aa%e8%bb%a2%e8%bb%8a" title="自転車">自転車 (9)</a>
