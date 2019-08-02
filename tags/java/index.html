@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Java</title>
 <meta name="description" content="自転車ツーリングの記録やソフトウェアの配布、Mathematicaをメインにしたプログラミングの覚書や日ごろの雑感など。">
-<meta name="generator" content="Hugo 0.55.6" />
+<meta name="generator" content="Hugo 0.56.3" />
 
 <link rel="alternate" type="application/rss+xml" title="330k info Feed" href="https://www.330k.info/tags/java/index.xml">
 <link rel="stylesheet" href="/css/style.css" type="text/css" media="all" />
@@ -68,7 +68,8 @@ if (!doNotTrack) {
 		<div class="list__excerpt">
 			LS-DYNAのキーワードファイルを書きだすプログラムを書いたところ、浮動小数点数を固定文字数(10文字)にフォーマットする所でつまづいた。 具体的には
  String.formatやDecimalFormatの動作が遅い(String.formatよりはDecimalFormatのほうが速いが) 文字数を10文字に制限することが難しい(絶対値の大小比較を行なって桁数ごとに条件分岐をしても、四捨五入によって意図しない文字数(11文字)になる)  という問題にあたった。そこでdoubleから長さ10の文字列を力技で書きだすロジックを自作した。特徴は以下の通り。
- 正の時は先頭にスペース、負の時は先頭に&rdquo;-&ldquo;を入れる 10文字の制限の中で最も有効桁数が大きくなるようにフォーマット 四捨五入はしない！ DecimalFormatの15倍高速(もう少し工夫はできるが)  private static String formatFloat10(double d){ char[] c = new char[10]; double a; if(d == 0.0){ return &quot; 0.0000000&quot;; } if(d &lt; 0){ c[0] = '-'; a = -d; }else{ c[0] = ' '; a = d; } int m = (int)Math.floor(Math.log10(a)); if(m &lt;= -100){ for(int i = 1; i &lt; 1 - m; i++) a *= 10; c[1] = (char)('0' + Math.
+ 正の時は先頭にスペース、負の時は先頭に&rdquo;-&ldquo;を入れる 10文字の制限の中で最も有効桁数が大きくなるようにフォーマット 四捨五入はしない！ DecimalFormatの15倍高速(もう少し工夫はできるが)
+private static String formatFloat10(double d){ char[] c = new char[10]; double a; if(d == 0.0){ return &quot; 0.0000000&quot;; } if(d &lt; 0){ c[0] = '-'; a = -d; }else{ c[0] = ' '; a = d; } int m = (int)Math.floor(Math.log10(a)); if(m &lt;= -100){ for(int i = 1; i &lt; 1 - m; i++) a *= 10; c[1] = (char)('0' + Math.
 		</div>
 	</div>
 </article>

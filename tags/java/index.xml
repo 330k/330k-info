@@ -19,7 +19,8 @@
       <guid>https://www.330k.info/essay/format-floating-number-for-s-dyna-with-java/</guid>
       <description>LS-DYNAのキーワードファイルを書きだすプログラムを書いたところ、浮動小数点数を固定文字数(10文字)にフォーマットする所でつまづいた。 具体的には
  String.formatやDecimalFormatの動作が遅い(String.formatよりはDecimalFormatのほうが速いが) 文字数を10文字に制限することが難しい(絶対値の大小比較を行なって桁数ごとに条件分岐をしても、四捨五入によって意図しない文字数(11文字)になる)  という問題にあたった。そこでdoubleから長さ10の文字列を力技で書きだすロジックを自作した。特徴は以下の通り。
- 正の時は先頭にスペース、負の時は先頭に&amp;rdquo;-&amp;ldquo;を入れる 10文字の制限の中で最も有効桁数が大きくなるようにフォーマット 四捨五入はしない！ DecimalFormatの15倍高速(もう少し工夫はできるが)  private static String formatFloat10(double d){ char[] c = new char[10]; double a; if(d == 0.0){ return &amp;quot; 0.0000000&amp;quot;; } if(d &amp;lt; 0){ c[0] = &#39;-&#39;; a = -d; }else{ c[0] = &#39; &#39;; a = d; } int m = (int)Math.floor(Math.log10(a)); if(m &amp;lt;= -100){ for(int i = 1; i &amp;lt; 1 - m; i++) a *= 10; c[1] = (char)(&#39;0&#39; + Math.</description>
+ 正の時は先頭にスペース、負の時は先頭に&amp;rdquo;-&amp;ldquo;を入れる 10文字の制限の中で最も有効桁数が大きくなるようにフォーマット 四捨五入はしない！ DecimalFormatの15倍高速(もう少し工夫はできるが)
+private static String formatFloat10(double d){ char[] c = new char[10]; double a; if(d == 0.0){ return &amp;quot; 0.0000000&amp;quot;; } if(d &amp;lt; 0){ c[0] = &#39;-&#39;; a = -d; }else{ c[0] = &#39; &#39;; a = d; } int m = (int)Math.floor(Math.log10(a)); if(m &amp;lt;= -100){ for(int i = 1; i &amp;lt; 1 - m; i++) a *= 10; c[1] = (char)(&#39;0&#39; + Math.</description>
     </item>
     
     <item>

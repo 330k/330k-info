@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>LS-DYNA用の浮動小数点数をフォーマット</title>
 <meta name="description" content="自転車ツーリングの記録やソフトウェアの配布、Mathematicaをメインにしたプログラミングの覚書や日ごろの雑感など。">
-<meta name="generator" content="Hugo 0.55.6" />
+<meta name="generator" content="Hugo 0.56.3" />
 
 
 <link rel="stylesheet" href="/css/style.css" type="text/css" media="all" />
@@ -78,139 +78,140 @@ if (!doNotTrack) {
 <li>正の時は先頭にスペース、負の時は先頭に&rdquo;-&ldquo;を入れる</li>
 <li>10文字の制限の中で最も有効桁数が大きくなるようにフォーマット</li>
 <li>四捨五入はしない！</li>
-<li>DecimalFormatの15倍高速(もう少し工夫はできるが)</li>
-</ul>
+
+<li><p>DecimalFormatの15倍高速(もう少し工夫はできるが)</p>
 
 <pre><code class="language-java">private static String formatFloat10(double d){
-    char[] c = new char[10];
-    double a;
+char[] c = new char[10];
+double a;
 
-    if(d == 0.0){
-        return &quot; 0.0000000&quot;;
-    }
-    if(d &lt; 0){
-        c[0] = '-';
-        a = -d;
-    }else{
-        c[0] = ' ';
-        a = d;
-    }
-    int m = (int)Math.floor(Math.log10(a));
-
-    if(m &lt;= -100){
-        for(int i = 1; i &lt; 1 - m; i++) a *= 10;
-        c[1] = (char)('0' + Math.floor(a));
-        a = (a - Math.floor(a)) * 10;
-        c[2] = '.';
-        for(int i = 3; i &lt; 5; i++){
-            /*c[i] = (char)('0' + Math.floor(a));
-            a = (a - Math.floor(a)) * 10;*/
-            double b = Math.floor(a);
-            c[i] = (char)('0' + b);
-            a = (a - b) * 10.0;
-        }
-        c[5] = 'e';
-        c[6] = '-';
-        c[7] = (char)('0' + (-m) * 0.01);
-        c[8] = (char)('0' + (-m * 0.1) % 10);
-        c[9] = (char)('0' + (-m) % 10);
-
-    }else if(m &lt;= -10){
-        for(int i = 1; i &lt; 1 - m; i++) a *= 10;
-        c[1] = (char)('0' + Math.floor(a));
-        a = (a - Math.floor(a)) * 10;
-        c[2] = '.';
-        for(int i = 3; i &lt; 6; i++){
-            double b = Math.floor(a);
-            c[i] = (char)('0' + b);
-            a = (a - b) * 10.0;
-        }
-        c[6] = 'e';
-        c[7] = '-';
-        c[8] = (char)('0' + (-m) * 0.1);
-        c[9] = (char)('0' + (-m) % 10);
-
-    }else if(m &lt;= -4){
-        for(int i = 1; i &lt; 1 - m; i++) a *= 10;
-        c[1] = (char)('0' + Math.floor(a));
-        a = (a - Math.floor(a)) * 10;
-        c[2] = '.';
-        for(int i = 3; i &lt; 7; i++){
-            double b = Math.floor(a);
-            c[i] = (char)('0' + b);
-            a = (a - b) * 10.0;
-        }
-        c[7] = 'e';
-        c[8] = '-';
-        c[9] = (char)('0' - m);
-
-    }else if(m &lt;= -1){
-        c[1] = '0';
-        c[2] = '.';
-        a *= 10;
-        for(int i = 3; i &lt; 10; i++){
-            double b = Math.floor(a);
-            c[i] = (char)('0' + b);
-            a = (a - b) * 10.0;
-        }
-
-    }else if(m &lt;= 6){
-        for(int i = 1; i &lt; m + 1; i++) a *= 0.1;
-        for(int i = 1; i &lt; 10; i++){
-            double b = Math.floor(a);
-            c[i] = (char)('0' + b);
-            a = (a - b) * 10.0;
-            if(i == m + 1){
-                c[++i] = '.';
-            }
-        }
-    }else if(m &lt;= 9){
-        for(int i = 1; i &lt; m + 1; i++) a *= 0.1;
-        c[1] = (char)('0' + Math.floor(a));
-        a = (a - Math.floor(a)) * 10;
-        c[2] = '.';
-        for(int i = 3; i &lt; 8; i++){
-            double b = Math.floor(a);
-            c[i] = (char)('0' + b);
-            a = (a - b) * 10.0;
-        }
-        c[8] = 'e';
-        c[9] = (char)('0' + m);
-
-    }else if(m &lt;= 99){
-        for(int i = 1; i &lt; m + 1; i++) a *= 0.1;
-        c[1] = (char)('0' + Math.floor(a));
-        a = (a - Math.floor(a)) * 10;
-        c[2] = '.';
-        for(int i = 3; i &lt; 7; i++){
-            double b = Math.floor(a);
-            c[i] = (char)('0' + b);
-            a = (a - b) * 10.0;
-        }
-        c[7] = 'e';
-        c[8] = (char)('0' + m * 0.1);
-        c[9] = (char)('0' + m % 10);
-
-    }else{
-        for(int i = 1; i &lt; m + 1; i++) a *= 0.1;
-        c[1] = (char)('0' + Math.floor(a));
-        a = (a - Math.floor(a)) * 10;
-        c[2] = '.';
-        for(int i = 3; i &lt; 6; i++){
-            double b = Math.floor(a);
-            c[i] = (char)('0' + b);
-            a = (a - b) * 10.0;
-        }
-        c[6] = 'e';
-        c[7] = (char)('0' + m * 0.01);
-        c[8] = (char)('0' + (m * 0.1) % 10);
-        c[9] = (char)('0' + m % 10);
-
-    }
-
-    return new String(c);
+if(d == 0.0){
+    return &quot; 0.0000000&quot;;
 }
-</code></pre>
+if(d &lt; 0){
+    c[0] = '-';
+    a = -d;
+}else{
+    c[0] = ' ';
+    a = d;
+}
+int m = (int)Math.floor(Math.log10(a));
+
+if(m &lt;= -100){
+    for(int i = 1; i &lt; 1 - m; i++) a *= 10;
+    c[1] = (char)('0' + Math.floor(a));
+    a = (a - Math.floor(a)) * 10;
+    c[2] = '.';
+    for(int i = 3; i &lt; 5; i++){
+        /*c[i] = (char)('0' + Math.floor(a));
+        a = (a - Math.floor(a)) * 10;*/
+        double b = Math.floor(a);
+        c[i] = (char)('0' + b);
+        a = (a - b) * 10.0;
+    }
+    c[5] = 'e';
+    c[6] = '-';
+    c[7] = (char)('0' + (-m) * 0.01);
+    c[8] = (char)('0' + (-m * 0.1) % 10);
+    c[9] = (char)('0' + (-m) % 10);
+
+}else if(m &lt;= -10){
+    for(int i = 1; i &lt; 1 - m; i++) a *= 10;
+    c[1] = (char)('0' + Math.floor(a));
+    a = (a - Math.floor(a)) * 10;
+    c[2] = '.';
+    for(int i = 3; i &lt; 6; i++){
+        double b = Math.floor(a);
+        c[i] = (char)('0' + b);
+        a = (a - b) * 10.0;
+    }
+    c[6] = 'e';
+    c[7] = '-';
+    c[8] = (char)('0' + (-m) * 0.1);
+    c[9] = (char)('0' + (-m) % 10);
+
+}else if(m &lt;= -4){
+    for(int i = 1; i &lt; 1 - m; i++) a *= 10;
+    c[1] = (char)('0' + Math.floor(a));
+    a = (a - Math.floor(a)) * 10;
+    c[2] = '.';
+    for(int i = 3; i &lt; 7; i++){
+        double b = Math.floor(a);
+        c[i] = (char)('0' + b);
+        a = (a - b) * 10.0;
+    }
+    c[7] = 'e';
+    c[8] = '-';
+    c[9] = (char)('0' - m);
+
+}else if(m &lt;= -1){
+    c[1] = '0';
+    c[2] = '.';
+    a *= 10;
+    for(int i = 3; i &lt; 10; i++){
+        double b = Math.floor(a);
+        c[i] = (char)('0' + b);
+        a = (a - b) * 10.0;
+    }
+
+}else if(m &lt;= 6){
+    for(int i = 1; i &lt; m + 1; i++) a *= 0.1;
+    for(int i = 1; i &lt; 10; i++){
+        double b = Math.floor(a);
+        c[i] = (char)('0' + b);
+        a = (a - b) * 10.0;
+        if(i == m + 1){
+            c[++i] = '.';
+        }
+    }
+}else if(m &lt;= 9){
+    for(int i = 1; i &lt; m + 1; i++) a *= 0.1;
+    c[1] = (char)('0' + Math.floor(a));
+    a = (a - Math.floor(a)) * 10;
+    c[2] = '.';
+    for(int i = 3; i &lt; 8; i++){
+        double b = Math.floor(a);
+        c[i] = (char)('0' + b);
+        a = (a - b) * 10.0;
+    }
+    c[8] = 'e';
+    c[9] = (char)('0' + m);
+
+}else if(m &lt;= 99){
+    for(int i = 1; i &lt; m + 1; i++) a *= 0.1;
+    c[1] = (char)('0' + Math.floor(a));
+    a = (a - Math.floor(a)) * 10;
+    c[2] = '.';
+    for(int i = 3; i &lt; 7; i++){
+        double b = Math.floor(a);
+        c[i] = (char)('0' + b);
+        a = (a - b) * 10.0;
+    }
+    c[7] = 'e';
+    c[8] = (char)('0' + m * 0.1);
+    c[9] = (char)('0' + m % 10);
+
+}else{
+    for(int i = 1; i &lt; m + 1; i++) a *= 0.1;
+    c[1] = (char)('0' + Math.floor(a));
+    a = (a - Math.floor(a)) * 10;
+    c[2] = '.';
+    for(int i = 3; i &lt; 6; i++){
+        double b = Math.floor(a);
+        c[i] = (char)('0' + b);
+        a = (a - b) * 10.0;
+    }
+    c[6] = 'e';
+    c[7] = (char)('0' + m * 0.01);
+    c[8] = (char)('0' + (m * 0.1) % 10);
+    c[9] = (char)('0' + m % 10);
+
+}
+
+return new String(c);
+}
+</code></pre></li>
+</ul>
 
 		</div>
 		
