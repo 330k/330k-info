@@ -641,7 +641,8 @@ data = Table[Module[{str, ret}, str = OpenRead[&amp;quot;2016091200.bin&amp;quot
       <pubDate>Sat, 06 Aug 2016 00:00:00 +0900</pubDate>
       
       <guid>https://www.330k.info/software/create_gpx_with_google_maps/</guid>
-      <description>思った以上に使っていただいてAPI料金の請求がすごいことになったので、申し訳ないのですが1日1000リクエストに制限しました。地図やルートが表示されないときは制限に引っかかっておりますので、時間を置いて再度アクセスしてください。
+      <description>思った以上に使っていただいてAPI料金の請求がすごいことになったので、申し訳ないのですが1日1000リクエストに制限しました。
+地図やルートが表示されないときは制限に引っかかっておりますので、時間を置いて再度アクセスしてください。
   PC用フルスクリーン版 モバイル(スマートフォン)版  使い方  出発地点と目的地点を入れて「Calculate Route」をクリック。 途中経路を変えたい場合は、通常のGoogleマップのようにドラッグして変更します。「Reduce into *** points」をクリックすると、trkpt要素の数を削減します(Douglas-Peuckerアルゴリズムを使用)。赤線が簡略化されたルートです。 「Add Elevation」をクリックすると、標高(ele要素)を追加します(100点で1秒かかります)。 「Download」をクリックすると、download.gpxというファイル名でGPXファイルがダウンロードされます。  作った経緯 今までは自転車ツーリングをするとき、
  Googleマップでルートを作成 GMapToGPXでGPXファイルにする カシミール3Dで基盤地図情報(標高)で標高データを追加 累積標高などを確認 Androidの地図ロイドなどに取り込んでツーリング中に確認  というやり方でルートを検討・確認していた。
 だが&amp;rdquo;新しいGoogleマップ&amp;rdquo;になってから、GMapToGPXが使えなくなってしまったので、 Google Maps API v3を使ってGPXのトラックを生成する、簡単なプログラムを書いてみた。
