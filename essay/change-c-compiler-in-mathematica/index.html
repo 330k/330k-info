@@ -172,10 +172,13 @@ Timing[#[100000000.]] &amp; /@ {f1, f2, f3, f4}
 <p>評判通りIntel C++ CompilerやClangはGCCよりも高速だった。
 なお、呼び出す際のオーバーヘッドも計測してみたが、これはWVMでもネイティブコードでも変わらなかった。</p>
 
-<p>結論としては、以下の通り。
-Mathematica 8以上ではCompileのオプションCompilationTarget-&gt;&ldquo;C&rdquo;を指定して、ネイティブコードにコンパイルした方が数倍高速
-Intel C++ CompilerとClangはともにGCCよりも3倍弱高速
-高速化したい場合は、Mathematicaに加えてCコンパイラもインストールしよう</p>
+<p>結論としては、以下の通り。</p>
+
+<ul>
+<li>Mathematica 8以上ではCompileのオプションCompilationTarget-&gt;&ldquo;C&rdquo;を指定して、ネイティブコードにコンパイルした方が数倍高速</li>
+<li>Intel C++ CompilerとClangはともにGCCよりも3倍弱高速</li>
+<li>高速化したい場合は、Mathematicaに加えてCコンパイラもインストールしよう</li>
+</ul>
 
 		</div>
 		
