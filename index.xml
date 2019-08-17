@@ -6,10 +6,24 @@
     <description>Recent content on 330k info</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Mon, 01 Jul 2019 22:44:19 +0900</lastBuildDate>
+    <lastBuildDate>Sat, 10 Aug 2019 21:18:52 +0900</lastBuildDate>
     
 	<atom:link href="https://www.330k.info/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>2019年08月10日 BRM810 宗谷600 PW北海道</title>
+      <link>https://www.330k.info/bicycle/touring/20190810-brm810-soya-600km/</link>
+      <pubDate>Sat, 10 Aug 2019 21:18:52 +0900</pubDate>
+      
+      <guid>https://www.330k.info/bicycle/touring/20190810-brm810-soya-600km/</guid>
+      <description>600km→400km→200km→300kmのブルベを連続で行うPW北海道に参加。初日は600km。
+  function initMap(){ var map, ctaLayer; map = new google.maps.Map(document.getElementById(&#34;mapcanvas-2019081001-kml&#34;), { center: {lat: 35.6832581, lng: 139.7555827}, zoom: 8 }); ctaLayer = new google.maps.KmlLayer({ url: &#39;https:\/\/www.330k.info\/\/bicycle\/touring\/20190810-brm810-soya-600km\/2019081001.kml&#39; }); ctaLayer.setMap(map); }     日付 出発地 到着地 走行距離(km) 走行時間 最高速度(km/h) 平均速度(km/h) 主な経路 景勝地     2019年08月10日 滝川 滝川 608.33 25:25:40 61.8 23.9 留萌、ノシャップ岬、宗谷岬、音威子府、名寄、朱鞠内湖、深川 オロロンライン    スタートまで 前日の8月9日を有給休暇として、羽田から新千歳空港までスカイマークで飛行機輪行して北海道入り。
+その後は鉄道で札幌まで快速エアポート、札幌から砂川まで特急ライラック。
+スタート地点は滝川なのだが、滝川市内のホテルを取れなかったため、15kmほど手前の砂川に宿泊。
+部屋の中で自転車の輪行解除して良い、というホテルのご厚意もあり、しっかり準備できた。
+1日目 (スタート - PC4) あいにくの雨模様のなか、砂川のホテルを6時半に出発し、7時過ぎにスタート地点に到着。 受付を済ませてしばらく待機。</description>
+    </item>
     
     <item>
       <title>2019年07月01日〜08日 東北(国道4号)〜北海道</title>
