@@ -1,0 +1,19 @@
+.container {
+	position: relative;
+	width: 100%;
+	max-width: 1800px;
+	margin: 0 auto;
+}
+.sidebar {
+	-webkit-flex: 1 0 24.66%;
+	flex: 1 0 24.66%;
+	-webkit-order: 2;
+	order: 2;
+	min-width: 0;
+	margin: 0 0 0 2.5%;
+}
+.sidebar--left {
+	-webkit-order: 0;
+	order: 0;
+	margin: 0 2.5% 0 0;
+}

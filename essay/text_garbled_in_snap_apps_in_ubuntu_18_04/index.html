@@ -1,20 +1,42 @@
 <!DOCTYPE html>
-<html lang="ja-jp">
+<html class="no-js" lang="ja-jp">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ubuntu 18.04 LTSで文字化けしたSnapアプリをなんとかして使う</title>
-<meta name="description" content="自転車ツーリングの記録やソフトウェアの配布、Mathematicaをメインにしたプログラミングの覚書や日ごろの雑感など。">
-<meta name="generator" content="Hugo 0.57.1" />
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Ubuntu 18.04 LTSで文字化けしたSnapアプリをなんとかして使う - 330k info</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+	<meta property="og:title" content="Ubuntu 18.04 LTSで文字化けしたSnapアプリをなんとかして使う" />
+<meta property="og:description" content="Ubuntu 17.10から18.04 LTSにアップデートしたところ、それまで使っていたコミックビューア(comix)がなくなっていた。
+Ubuntuソフトウェアから探したところ、mcomix-tabetaiというSnapパッケージがあったので、それをインストールしたところ、日本語が全部豆腐に・・・。
+ということで、一旦英語にして起動。 ターミナルから以下のコマンドを入力。
+$ LANG=C mcomix-tabetai  設定(Preferences)から言語をEnglishにする。
+  これで終了すれば、次回は通常通り起動すれば言語設定が英語になっている。 めでたしめでたし。
+ちなみに、snapでインストールしたパッケージに含まれるコマンドは以下のようにして調べられる。
+$ snap info mcomix-tabetai name: mcomix-tabetai summary: User-friendly, customizable image viewer specifically designed to handle comic books. publisher: lolsmth license: unknown description: | MComix is a user-friendly, customizable image viewer. It is specifically designed to handle comic books (both Western comics and manga) and supports a variety of container formats (including CBR, CBZ, CB7, CBT, LHA and PDF)." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.330k.info/essay/text_garbled_in_snap_apps_in_ubuntu_18_04/" />
+<meta property="article:published_time" content="2018-05-15T07:38:59+09:00" />
+<meta property="article:modified_time" content="2018-05-15T07:38:59+09:00" />
 
+	<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Ubuntu 18.04 LTSで文字化けしたSnapアプリをなんとかして使う"/>
+<meta name="twitter:description" content="Ubuntu 17.10から18.04 LTSにアップデートしたところ、それまで使っていたコミックビューア(comix)がなくなっていた。
+Ubuntuソフトウェアから探したところ、mcomix-tabetaiというSnapパッケージがあったので、それをインストールしたところ、日本語が全部豆腐に・・・。
+ということで、一旦英語にして起動。 ターミナルから以下のコマンドを入力。
+$ LANG=C mcomix-tabetai  設定(Preferences)から言語をEnglishにする。
+  これで終了すれば、次回は通常通り起動すれば言語設定が英語になっている。 めでたしめでたし。
+ちなみに、snapでインストールしたパッケージに含まれるコマンドは以下のようにして調べられる。
+$ snap info mcomix-tabetai name: mcomix-tabetai summary: User-friendly, customizable image viewer specifically designed to handle comic books. publisher: lolsmth license: unknown description: | MComix is a user-friendly, customizable image viewer. It is specifically designed to handle comic books (both Western comics and manga) and supports a variety of container formats (including CBR, CBZ, CB7, CBT, LHA and PDF)."/>
 
-<link rel="stylesheet" href="/css/style.css" type="text/css" media="all" />
-<script type="text/javascript" src="/js/scripts.js"></script>
-<script type="text/javascript" src="/js/highlight.pack.js"></script>
-<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
-<link rel="stylesheet" href="/css/vs.css">
-<link rel="shortcut icon" href="/favicon.ico">
-
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+	<link rel="stylesheet" href="/css/style.css">
+	<link rel="stylesheet" href="/css/330k.css">
+	<link rel="shortcut icon" href="/favicon.ico">
+		
 <script type="application/javascript">
 var doNotTrack = false;
 if (!doNotTrack) {
@@ -26,44 +48,47 @@ if (!doNotTrack) {
 </script>
 <script async src='https://www.google-analytics.com/analytics.js'></script>
 
+	<link rel="stylesheet" href="/css/vs.css">
 </head>
-<body class="body body-left-sidebar mobile" itemscope="itemscope" itemtype="http://schema.org/WebPage">
-	<div class="container container-outer">
-		<header class="header" itemscope="itemscope" itemtype="http://schema.org/WPHeader">
-			<div class="container container-inner clearfix">
-				<div class="logo" role="banner" itemscope="itemscope" itemtype="http://schema.org/Brand">
-					<a class="logo__link" href="/" title="330k info" rel="home">
-						<h1 class="logo__title">330k info</h1>
-						
-					</a>
-				</div>
-			</div>
-			
-<nav class="menu" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container">
+		<div class="logo">
+			<a class="logo__link" href="/" title="330k info" rel="home">
+				<div class="logo__title">330k info</div>
+				
+			</a>
+		</div>
+		
+<nav class="menu">
+	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+		<span class="menu__btn-title" tabindex="-1">Menu</span>
+	</button>
 	<ul class="menu__list">
-		<li class="menu__item "><a class="menu__link" href="/bicycle/">BICYCLES</a></li>
-		<li class="menu__item menu__item--active"><a class="menu__link" href="/essay/">ESSAYS</a></li>
-		<li class="menu__item "><a class="menu__link" href="/software/">SOFTWARES</a></li>
+		<li class="menu__item">
+			<a class="menu__link" href="/bicycle/">Bicycles</a>
+		</li>
+		<li class="menu__item menu__item--active">
+			<a class="menu__link" href="/essay/">Essays</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/software/">Softwares</a>
+		</li>
 	</ul>
 </nav>
 
-		</header>
-		<div class="wrapper clearfix">
-
-
-<div class="main-content content" role="main" itemprop="mainContentOfPage">
+	</div>
+</header>
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
 	<article class="post">
-		<header class="post__header clearfix">
+		<header class="post__header">
 			<h1 class="post__title">Ubuntu 18.04 LTSで文字化けしたSnapアプリをなんとかして使う</h1>
-			<p class="post__meta meta">
-				<svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
-				<time class="post__meta-date" datetime="2018-05-15T07:38:59">May 15, 2018</time>
-				<span class="post__meta-categories meta-categories">
-					<svg class="icon icon-category" height="16" viewBox="0 0 16 16" width="16" xmlns="http://www.w3.org/2000/svg"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
-					<a class="meta-categories__link" href="/categories/%e9%9b%91%e8%a8%98%e5%b8%b3" rel="category">雑記帳</a></span>
-			</p>
-		</header>
-		<div class="post__content clearfix">
+			
+		</header><div class="content post__content clearfix">
 			<p>Ubuntu 17.10から18.04 LTSにアップデートしたところ、それまで使っていたコミックビューア(comix)がなくなっていた。</p>
 
 <p>Ubuntuソフトウェアから探したところ、<code>mcomix-tabetai</code>というSnapパッケージがあったので、それをインストールしたところ、日本語が全部豆腐に・・・。</p>
@@ -109,31 +134,31 @@ channels:
 </code></pre>
 
 		</div>
-		
+		<footer class="post__footer">
+			
 <div class="post__tags tags clearfix">
-	<svg class="icon icon-tag" width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="m4.73135 3.3795002q0-.5597-.39604-.9557-.39604-.3961-.95577-.3961-.55974 0-.95578.3961-.39604.396-.39604.9557 0 .5598.39604.9558.39604.3961.95578.3961.55973 0 .95577-.3961.39604-.396.39604-.9558zm11.26865 6.0832q0 .5596998-.39076.9504998l-5.18548 5.196q-.41188.3908-.9610504.3908-.55974 0-.9505-.3908l-7.5511496-7.5616998q-.40132-.3907-.68119-1.0666-.27987-.6759-.27987-1.2357v-4.3934q0-.54920004.40132-.95050004.40132-.4013.9505-.4013h4.39339q.55974 0 1.23565.2799.67591.2798 1.07723.6812l7.55115 7.54060004q.39076.4118.39076.961z"/></svg>
+	<svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
 	<ul class="tags__list">
-		<li class="tags__item"><a class="tags__link" href="/tags/ubuntu/" rel="tag">Ubuntu</a></li>
+		<li class="tags__item"><a class="tags__link btn" href="/tags/ubuntu/" rel="tag">Ubuntu</a></li>
 	</ul>
 </div>
-
+		</footer>
 	</article>
-	
-	
-<nav class="post-nav row clearfix" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
-	<div class="post-nav__item post-nav__item--prev col-1-2">
-		<a class="post-nav__link" href="/essay/letsencrypt-ubuntu-1604/" rel="prev"><span class="post-nav__caption">«Previous</span><p class="post-nav__post-title">Ubuntu 16.04 &#43; Apache 2.4にLet&#39;s Encryptを設定する</p></a>
+</main>
+
+
+<nav class="post-nav flex">
+	<div class="post-nav__item post-nav__item--prev">
+		<a class="post-nav__link" href="/essay/letsencrypt-ubuntu-1604/" rel="prev"><span class="post-nav__caption">«&thinsp;Previous</span><p class="post-nav__post-title">Ubuntu 16.04 &#43; Apache 2.4にLet&#39;s Encryptを設定する</p></a>
 	</div>
-	<div class="post-nav__item post-nav__item--next col-1-2">
-		<a class="post-nav__link" href="/essay/mathematica-special-notation/" rel="next"><span class="post-nav__caption">Next»</span><p class="post-nav__post-title">Mathematicaの特殊・省略記法一覧</p></a>
+	<div class="post-nav__item post-nav__item--next">
+		<a class="post-nav__link" href="/essay/mathematica-special-notation/" rel="next"><span class="post-nav__caption">Next&thinsp;»</span><p class="post-nav__post-title">Mathematicaの特殊・省略記法一覧</p></a>
 	</div>
 </nav>
 
-	
-</div>
 
-<aside class="sidebar" itemscope="itemscope" itemtype="http://schema.org/WPSideBar">
-	
+			</div>
+			<aside class="sidebar sidebar--left">
 <div class="widget-recent widget">
 	<div class="widget__content">
 		<ul class="widget__list">
@@ -144,7 +169,6 @@ channels:
 		</ul>
 	</div>
 </div>
-	
 <div class="widget-recent widget">
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
@@ -162,84 +186,85 @@ channels:
 		</ul>
 	</div>
 </div>
-
-	
-<div class="widget-search widget">
-	<form class="widget-search__form" role="search" method="get" action="//google.com/search">
+<div class="widget-categories widget">
+	<h4 class="widget__title">Categories</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/categories/%e3%82%bd%e3%83%95%e3%83%88%e3%82%a6%e3%82%a7%e3%82%a2">ソフトウェア</a></li>
+			<li class="widget__item"><a class="widget__link" href="/categories/%e8%87%aa%e8%bb%a2%e8%bb%8a">自転車</a></li>
+			<li class="widget__item"><a class="widget__link" href="/categories/%e9%9b%91%e8%a8%98%e5%b8%b3">雑記帳</a></li>
+		</ul>
+	</div>
+</div>
+<div class="widget-taglist widget">
+	<h4 class="widget__title">Tags</h4>
+	<div class="widget__content">
+		<a class="widget-taglist__link widget__link btn" href="/tags/apache" title="Apache">Apache (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/bat" title="Bat">Bat (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/chrome" title="Chrome">Chrome (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/cuda" title="Cuda">Cuda (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/ffmpeg" title="Ffmpeg">Ffmpeg (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/github" title="Github">Github (5)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/gmail" title="Gmail">Gmail (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/google" title="Google">Google (3)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/gps" title="Gps">Gps (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/gpx" title="Gpx">Gpx (4)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/hta" title="Hta">Hta (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/java" title="Java">Java (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/javascript" title="Javascript">Javascript (6)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/linux" title="Linux">Linux (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/mathematica" title="Mathematica">Mathematica (20)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/net" title="Net">Net (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/powerpoint" title="Powerpoint">Powerpoint (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/powershell" title="Powershell">Powershell (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/sql" title="Sql">Sql (3)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/ubuntu" title="Ubuntu">Ubuntu (9)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/vba" title="Vba">Vba (3)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/windows" title="Windows">Windows (10)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/wsh" title="Wsh">Wsh (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/zabbix" title="Zabbix">Zabbix (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%82%a2%e3%83%ab%e3%82%b4%e3%83%aa%e3%82%ba%e3%83%a0" title="アルゴリズム">アルゴリズム (5)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%83%84%e3%83%bc%e3%83%aa%e3%83%b3%e3%82%b0" title="ツーリング">ツーリング (46)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%83%91%e3%83%af%e3%83%8f%e3%83%a9" title="パワハラ">パワハラ (5)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%83%96%e3%83%ab%e3%83%99" title="ブルベ">ブルベ (7)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%e7%94%9f%e6%b4%bb" title="生活">生活 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%e7%a4%be%e5%86%85se" title="社内se">社内se (15)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%e8%87%aa%e8%bb%a2%e8%bb%8a" title="自転車">自転車 (9)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%e9%9b%91%e5%ad%a6" title="雑学">雑学 (1)</a>
+	</div>
+</div>
+<div class="widget-social widget">
+	<h4 class="widget-social__title widget__title">Social</h4>
+	<div class="widget-social__content widget__content">
+		<div class="widget-social__item widget__item">
+			<a class="widget-social__link widget__link btn" title="Twitter" rel="noopener noreferrer" href="https://twitter.com/330k" target="_blank">
+				<svg class="widget-social__link-icon icon icon-twitter" width="24" height="24" viewBox="0 0 384 312"><path d="m384 36.9c-14.1 6.3-29.3 10.5-45.2 12.4 16.3-9.7 28.8-25.2 34.6-43.6-15.2 9-32.1 15.6-50 19.1-14.4-15.2-34.9-24.8-57.5-24.8-43.5 0-78.8 35.3-78.8 78.8 0 6.2.7 12.2 2 17.9-65.5-3.3-123.5-34.6-162.4-82.3-6.7 11.6-10.6 25.2-10.6 39.6 0 27.3 13.9 51.4 35 65.6-12.9-.4-25.1-4-35.7-9.9v1c0 38.2 27.2 70 63.2 77.2-6.6 1.8-13.6 2.8-20.8 2.8-5.1 0-10-.5-14.8-1.4 10 31.3 39.1 54.1 73.6 54.7-27 21.1-60.9 33.7-97.8 33.7-6.4 0-12.6-.4-18.8-1.1 34.9 22.4 76.3 35.4 120.8 35.4 144.9 0 224.1-120 224.1-224.1 0-3.4-.1-6.8-.2-10.2 15.4-11.1 28.7-25 39.3-40.8z"/></svg>
+				<span>Twitter</span>
+			</a>
+		</div>
+	</div>
+</div><div class="widget-search widget">
+	<form class="widget-search__form" role="search" method="get" action="https://google.com/search">
 		<label>
-			<span class="screen-reader-text">Search for:</span>
-			<input class="widget-search__field" type="search" placeholder="SEARCH..." value="" name="q">
+			<input class="widget-search__field" type="search" placeholder="SEARCH..." value="" name="q" aria-label="SEARCH...">
 		</label>
 		<input class="widget-search__submit" type="submit" value="Search">
 		<input type="hidden" name="sitesearch" value="https://www.330k.info/" />
 	</form>
 </div>
-	
-	
-<div class="widget-social widget">
-	<h4 class="widget-social__title widget__title">Social</h4>
-	<div class="widget-social__content widget__content">
-		<div class="widget-social__item widget__item">
-			<a class="widget-social__link widget__link btn" title="GitHub" rel="noopener noreferrer" href="https://github.com/330k" target="_blank">
-				<svg class="widget-social__link-icon icon-github" viewBox="0 0 384 374" width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill="#fff"><path d="m192 0c-106.1 0-192 85.8-192 191.7 0 84.7 55 156.6 131.3 181.9 9.6 1.8 13.1-4.2 13.1-9.2 0-4.6-.2-16.6-.3-32.6-53.4 11.6-64.7-25.7-64.7-25.7-8.7-22.1-21.3-28-21.3-28-17.4-11.9 1.3-11.6 1.3-11.6 19.3 1.4 29.4 19.8 29.4 19.8 17.1 29.3 44.9 20.8 55.9 15.9 1.7-12.4 6.7-20.8 12.2-25.6-42.6-4.8-87.5-21.3-87.5-94.8 0-20.9 7.5-38 19.8-51.4-2-4.9-8.6-24.3 1.9-50.7 0 0 16.1-5.2 52.8 19.7 15.3-4.2 31.7-6.4 48.1-6.5 16.3.1 32.7 2.2 48.1 6.5 36.7-24.8 52.8-19.7 52.8-19.7 10.5 26.4 3.9 45.9 1.9 50.7 12.3 13.4 19.7 30.5 19.7 51.4 0 73.7-44.9 89.9-87.7 94.6 6.9 5.9 13 17.6 13 35.5 0 25.6-.2 46.3-.2 52.6 0 5.1 3.5 11.1 13.2 9.2 76.2-25.5 131.2-97.3 131.2-182 0-105.9-86-191.7-192-191.7z"/></svg>
-				<span>GitHub</span>
-			</a>
+</aside>
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2019 330k info.
+			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
 		</div>
 	</div>
-</div>
-
-	
-<div class="widget-taglist widget">
-	<h4 class="widget__title">Tags</h4>
-	<div class="widget__content">
-		<a class="widget__link widget__link--taglist" href="/tags/apache" title="apache">apache (1)</a>
-		<a class="widget__link widget__link--taglist" href="/tags/bat" title="bat">bat (2)</a>
-		<a class="widget__link widget__link--taglist" href="/tags/chrome" title="chrome">chrome (1)</a>
-		<a class="widget__link widget__link--taglist" href="/tags/cuda" title="cuda">cuda (1)</a>
-		<a class="widget__link widget__link--taglist" href="/tags/ffmpeg" title="ffmpeg">ffmpeg (2)</a>
-		<a class="widget__link widget__link--taglist" href="/tags/github" title="github">github (5)</a>
-		<a class="widget__link widget__link--taglist" href="/tags/gmail" title="gmail">gmail (2)</a>
-		<a class="widget__link widget__link--taglist" href="/tags/google" title="google">google (3)</a>
-		<a class="widget__link widget__link--taglist" href="/tags/gps" title="gps">gps (1)</a>
-		<a class="widget__link widget__link--taglist" href="/tags/gpx" title="gpx">gpx (4)</a>
-		<a class="widget__link widget__link--taglist" href="/tags/hta" title="hta">hta (1)</a>
-		<a class="widget__link widget__link--taglist" href="/tags/java" title="java">java (2)</a>
-		<a class="widget__link widget__link--taglist" href="/tags/javascript" title="javascript">javascript (6)</a>
-		<a class="widget__link widget__link--taglist" href="/tags/linux" title="linux">linux (1)</a>
-		<a class="widget__link widget__link--taglist" href="/tags/mathematica" title="mathematica">mathematica (20)</a>
-		<a class="widget__link widget__link--taglist" href="/tags/net" title="net">net (1)</a>
-		<a class="widget__link widget__link--taglist" href="/tags/powerpoint" title="powerpoint">powerpoint (1)</a>
-		<a class="widget__link widget__link--taglist" href="/tags/powershell" title="powershell">powershell (1)</a>
-		<a class="widget__link widget__link--taglist" href="/tags/sql" title="sql">sql (3)</a>
-		<a class="widget__link widget__link--taglist" href="/tags/ubuntu" title="ubuntu">ubuntu (9)</a>
-		<a class="widget__link widget__link--taglist" href="/tags/vba" title="vba">vba (3)</a>
-		<a class="widget__link widget__link--taglist" href="/tags/windows" title="windows">windows (10)</a>
-		<a class="widget__link widget__link--taglist" href="/tags/wsh" title="wsh">wsh (2)</a>
-		<a class="widget__link widget__link--taglist" href="/tags/zabbix" title="zabbix">zabbix (1)</a>
-		<a class="widget__link widget__link--taglist" href="/tags/%e3%82%a2%e3%83%ab%e3%82%b4%e3%83%aa%e3%82%ba%e3%83%a0" title="アルゴリズム">アルゴリズム (5)</a>
-		<a class="widget__link widget__link--taglist" href="/tags/%e3%83%84%e3%83%bc%e3%83%aa%e3%83%b3%e3%82%b0" title="ツーリング">ツーリング (46)</a>
-		<a class="widget__link widget__link--taglist" href="/tags/%e3%83%91%e3%83%af%e3%83%8f%e3%83%a9" title="パワハラ">パワハラ (5)</a>
-		<a class="widget__link widget__link--taglist" href="/tags/%e3%83%96%e3%83%ab%e3%83%99" title="ブルベ">ブルベ (7)</a>
-		<a class="widget__link widget__link--taglist" href="/tags/%e7%94%9f%e6%b4%bb" title="生活">生活 (1)</a>
-		<a class="widget__link widget__link--taglist" href="/tags/%e7%a4%be%e5%86%85se" title="社内se">社内se (15)</a>
-		<a class="widget__link widget__link--taglist" href="/tags/%e8%87%aa%e8%bb%a2%e8%bb%8a" title="自転車">自転車 (9)</a>
-		<a class="widget__link widget__link--taglist" href="/tags/%e9%9b%91%e5%ad%a6" title="雑学">雑学 (1)</a>
+</footer>
 	</div>
-</div>
-</aside>
-
-	</div>
-		<footer class="footer" itemscope="itemscope" itemtype="http://schema.org/WPFooter">
-			<div class="container container-inner">
-				<p class="footer__copyright">&copy; 2019 330k info. <span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad theme</a>.</span></p>
-			</div>
-		</footer>
-	</div>
-
-<script>
-	var navigation = responsiveNav(".menu", {
-		navClass: "menu--collapse",
-	});
-</script>
-</body>
+<script async defer src="/js/menu.js"></script>
+<script type="text/javascript" src="/js/highlight.pack.js"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script></body>
 </html>
