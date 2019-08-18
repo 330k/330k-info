@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="no-js" lang="ja-jp">
 <head>
-	<meta name="generator" content="Hugo 0.57.1" />
+	<meta name="generator" content="Hugo 0.57.2" />
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,7 +13,7 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://www.330k.info/" />
 
-<meta property="og:updated_time" content="2019-08-10T21:18:52+09:00" />
+<meta property="og:updated_time" content="2019-08-14T21:19:19+09:00" />
 
 	<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="330k info"/>
@@ -75,6 +75,21 @@ if (!doNotTrack) {
 			
 <main class="main list" role="main">
 	<article class="list__item post">
+	<header class="list__header">
+		<h3 class="list__title post__title ">
+			<a href="/essay/aggregate-metadata-from-all-pdf-office-documents/" rel="bookmark">
+			Tikaを使って指定したディレクトリ以下の全ファイルのメタデータを収集
+			</a>
+		</h3>
+		
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		会社で外部に公開しているPDFファイルの作成者やタイトルにおかしいもの(社名が間違っている etc.)があることに気づき、 会社のファイルサーバにあるWord、Excel、PowerPoint、PDFファイルのメタ情報を一覧で出力し、 Excelにインポートして変なメタ情報が設定されていないかチェックするためのスクリプトを作ってみた。
+準備 まずはapacheからTikaをダウンロード(執筆時点では1.11が最新)
+wget http://ftp.jaist.ac.jp/pub/apache/tika/tika-app-1.11.jar  全メタデータを収集 とにかく全部のメタデータを収集したいときは、tikaのjarファイルと同じディレクトリに以下のようなスクリプトを配置。 検索対象のディレクトリは3行目で指定する。
+#!/bin/bash dir=~/Documents/ output=metadata.xml port=12345 tmpfile=temp.txt java -jar tika-app-1.11.jar -s -x --port $port &gt; $tmpfile &amp; procid=$! sleep 1 echo &quot;&lt;?xml version=\&quot;1.0\&quot; encoding=\&quot;utf-8\&quot; ?&gt;&quot; &gt; $output echo &quot;&lt;files&gt;&quot; &gt;&gt; $output find &quot;$dir&quot; -iname &quot;*.pdf&quot; -o -iname &quot;*.doc&quot; -o -iname &quot;*.doc?&quot; -o -iname &quot;*.xls&quot; -o -iname &quot;*.xls?&quot; -o -iname &quot;*.ppt&quot; -o -iname &quot;*.ppt?&quot; | while read i do echo &quot;&lt;file&gt;&quot; &gt;&gt; $output echo &quot; &lt;filepath&gt;&lt;!
+	</div>
+</article><article class="list__item post">
 	<header class="list__header">
 		<h3 class="list__title post__title ">
 			<a href="/essay/what_l2_forwarding_ssl_vpn_protects/" rel="bookmark">
@@ -331,21 +346,6 @@ Let&rsquo;s Noteの場合、 C:\util2\drivers\etm\DppmCleaner.bat、もしくは
 インストール結果 現在のところ、インストール後の結果は以下の通り。
  ActiveDirectoryへの参加　→　○成功 グループポリシーの適用　→　△ユーザーの構成のみ有効、コンピュータの構成は有効にならない (ただし、ドメインコントローラ側(Windows Server 2012R2)でのシミュレーションでは適用されるはず) Office 2010の起動　→　△起動は成功(Outlookの設定情報は引き継げず) Adobe Acrobat Pro XIの起動　→　○成功(ただしデフォルトではEdgeでPDFを開く) ウイルスバスター　→　○問題なく動作している模様(リアルタイム検索、パターンファイルのアップデート) BitLockerによるドライブの暗号化　→　○成功(運良くCF-N10もTPMを積んでいた)  その他感想  起動時間はWindows 7とあまり変わらない感触 シャットダウンは早くなった印象 たまに画面の文字がボケる(ClearTypeの設定をいじっても変わらず) 現状ではGPOでコンピュータの構成が効いていないので、クライアント側かサーバ側で対応するタイミングが来るまでは様子見。  Aug.
 	</div>
-</article><article class="list__item post">
-	<header class="list__header">
-		<h3 class="list__title post__title ">
-			<a href="/essay/how-to-take-files-out-from-company/" rel="bookmark">
-			会社から外部へのファイル・データ持ち出し対策
-			</a>
-		</h3>
-		
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		ベネッセの子会社での情報漏えい事件では、スマートフォンを使ってデータをPCから取り出していたらしい。 そこで、私の研修先の会社の社内SE部門の人たちは、以下の内部者によるファイルやデータの持ち出し対策を行っていた。
- 資産管理ソフト(SKYSEA Client View)を導入  USBメモリやスマートフォンを挿しても書き込めないように設定 ネットワーク経由でもSKYSEAにログが残るからわかる  SKYSEAの機能で知らない機器がネットワークに接続されても検知できる(ただし、よく仕組みはわかっていない模様) Webフィルタリングソフト(InterSafe CATS)も導入 会社のメールサーバ経由での送受信メールはすべて保管  M&amp;Aアドバイザリーという業務の特性からとにかく情報漏えい対策にお金はかけており、 セキュリティには相当な自信をお持ちでいらっしゃった。
-ただ、素人目からしても抜け道がいくつか見えたので、研修を終えて自分の会社に戻った瞬間に以下に対して策を講じた。
- Bluetoothが使い放題で、右クリックして「送る」メニューをするだけで簡単にファイル送信可能。 またOfficeのBluetoothアドイン経由でも送信可能。 ※SKYSEAにはBluetoothに接続する機器を制限する機能があるが、iPhoneとのテザリングや無線マウス、キーボードを使用している人がいるので研修先企業では禁止にできなかった。 ネットワークの共有(ICS)や、SoftAPにより個人端末を社内LANへ接続可能 ※SKYSEAにはネットワークに登録されていないMACアドレスの端末が接続されたことを検知・遮断する機能あり。だが直接外部端末を社内ネットワークに接続しない(PCでNAPTを行う)場合は、SKYSEAでは検知不可能。 IISをインストールし、AdHocやWiFi Directで接続されると外部端末からアクセスしての持ち出しが可能。 ※SKYSEAはユーザが新たなソフトウェアをインストールすると検知できる。しかし、SKYSEAのサーバにIISも入れる必要があるためデフォルトだとIISがホワイトリストに入ってしまう。 Hyper-Vをインストールして仮想マシン経由でアクセスされると制限が効かず、ログも残らない。 各ユーザに管理者権限を与えているので、デフォルトで管理共有が有効になっており、外部端末からアクセスして持ちだし可能。 ※SKYSEAには共有フォルダの作成を制限できる機能はあるが、インストール時点で作成されていた場合は禁止できない。 NTFSのジャンクションと上記の方法(ICS、SoftAP、IIS)の組み合わせで、ローカルファイルへのアクセスに見せかけてファイルサーバのファイルも持ち出し可能なので、 ログを見てもファイルサーバからデータを持ちだしたことが分からない。 会社では携帯電話にiPhoneを採用しており、クライアントPCにはバックアップ用にiTunesをインストールしている。 構成プロファイルでApple Storeの使用を禁止しているが、  iTunesを使ってPCからApple Storeのアプリを自由にインストール可能 しかもiTunesのファイル共有機能も有効なので、iPhone経由でいくらでも外部に持ち出せる  標準ブラウザとしてFirefoxを採用しているが、Firefox Syncで個人アカウントを作成し、ブックマークやパスワードを個人PCと同期可能。 テキスト情報ならブックマークに見せかけて同期すれば持ち出せる。 Google Chromeで個人のGoogleアカウントとしてログイン、同期可能なので、Firefox Syncと同様にいろいろ持ち出せる。 また、Google Cloud Printにより家のプリンタに出力することも可能。 Google ChromeではInterSafe CATSとSKYSEAの組み合わせではログ取得ができないので、 InterSafe CATSに引っかからないウェブサイトであれば、ファイルをアップロードし放題。ログも残らない。 ※これはSKYSEAの問題ではなく、InterSafe CATSのフィルタリングがかなりエグい仕組みのため &gt; Feb. 6 2016 追記: InterSafe CATS 4.3以降はこの競合問題は解決した Skype.exeを実行不可にしているものの、Skype for Business(Lync)はスルーなので、ファイル送信し放題 また、「Skype.exe」という名前のファイルを実行禁止・ファイル名変更禁止したりできるが、それでも抜け道はある ※SKYSEAはexeファイルのハッシュ値でブラックリストを作成できる　⇔　1bitでも違うexeファイルを作れば抜けられる  ※はSKYSEAの製品自体が悪いわけではないことの説明。 私はSKYSEAはいい買い物だったと思っているので誤解なきよう。
-	</div>
 </article>
 </main>
 
@@ -372,6 +372,7 @@ Let&rsquo;s Noteの場合、 C:\util2\drivers\etm\DppmCleaner.bat、もしくは
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20190814-brm814-shiretoko-200km/">2019年08月14日 BRM814 知床200 PW北海道</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20190810-brm810-soya-600km/">2019年08月10日 BRM810 宗谷600 PW北海道</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20190701-tohoku-route-4/">2019年07月01日〜08日 東北(国道4号)〜北海道</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20190622-brm622gunma600km-niigata/">2019年06月22日 BRM622群馬600(新潟周回)</a></li>
@@ -381,7 +382,6 @@ Let&rsquo;s Noteの場合、 C:\util2\drivers\etm\DppmCleaner.bat、もしくは
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20190324-brm324-tsukuba200/">2019年03月24日 BRM324 つくば200</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/show-only-first-images/">bxSliderで2番目以降の画像が一瞬表示されるのを防止する</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20190216-brm216chiba-300km/">2019年02月16日 BRM216千葉300km(佐原)</a></li>
-			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20181007-14_median_line/">2018年10月7日〜14日 中央構造線 &#43; 山中湖</a></li>
 		</ul>
 	</div>
 </div>
@@ -425,7 +425,7 @@ Let&rsquo;s Noteの場合、 C:\util2\drivers\etm\DppmCleaner.bat、もしくは
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%82%a2%e3%83%ab%e3%82%b4%e3%83%aa%e3%82%ba%e3%83%a0" title="アルゴリズム">アルゴリズム (5)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%83%84%e3%83%bc%e3%83%aa%e3%83%b3%e3%82%b0" title="ツーリング">ツーリング (46)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%83%91%e3%83%af%e3%83%8f%e3%83%a9" title="パワハラ">パワハラ (5)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%83%96%e3%83%ab%e3%83%99" title="ブルベ">ブルベ (7)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%83%96%e3%83%ab%e3%83%99" title="ブルベ">ブルベ (8)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e7%94%9f%e6%b4%bb" title="生活">生活 (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e7%a4%be%e5%86%85se" title="社内se">社内se (15)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e8%87%aa%e8%bb%a2%e8%bb%8a" title="自転車">自転車 (9)</a>

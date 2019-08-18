@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="no-js" lang="ja-jp">
 <head>
-	<meta name="generator" content="Hugo 0.57.1" />
+	<meta name="generator" content="Hugo 0.57.2" />
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,7 +13,7 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://www.330k.info/" />
 
-<meta property="og:updated_time" content="2019-08-10T21:18:52+09:00" />
+<meta property="og:updated_time" content="2019-08-14T21:19:19+09:00" />
 
 	<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="330k info"/>
@@ -75,6 +75,31 @@ if (!doNotTrack) {
 			
 <main class="main list" role="main">
 	<article class="list__item post">
+	<figure class="list__thumbnail">
+		<a href="https://www.330k.info/bicycle/touring/20100717-hamanako-hamanakocyclingroad/">
+			<img src="/bicycle/touring/20100717-hamanako-hamanakocyclingroad/CIMG4309.jpg" alt="2010年07月17日 浜名湖&amp;浜名湖周遊自転車道" />
+		</a>
+	</figure>
+	<header class="list__header">
+		<h3 class="list__title post__title ">
+			<a href="/bicycle/touring/20100717-hamanako-hamanakocyclingroad/" rel="bookmark">
+			2010年07月17日 浜名湖&amp;浜名湖周遊自転車道
+			</a>
+		</h3>
+		
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		function initMap(){ var map, ctaLayer; map = new google.maps.Map(document.getElementById("mapcanvas-20100717-kml"), { center: {lat: 35.6832581, lng: 139.7555827}, zoom: 8 }); ctaLayer = new google.maps.KmlLayer({ url: 'https:\/\/www.330k.info\/\/bicycle\/touring\/20100717-hamanako-hamanakocyclingroad\/20100717.kml' }); ctaLayer.setMap(map); }  6月中旬に新しい自転車を注文したのだが、まだまだ納車されないようなので、3連休はルイガノのクロスバイクと過ごすことになった。 どこに行こうか、と考えてとりあえず3連休初日は浜名湖にうなぎでも食べに行って精をつけることにした。
+    寮を8時に出発し、トロトロと国道1号を東進して11時頃に豊橋を通過、12時20分頃に静岡県に初めて突入。
+  遠州灘が見える区間はあまりなかった。自転車はバイパス区間を通行できないので、旧道を進む。
+  だいぶお腹も減ってきた13時、ようやく浜名湖(弁天島)に到着。でもお目当てのうな丼屋まではまだ遠い。
+      浜名湖周遊自転車道を通って浜名湖畔を快走。 それにしても天気が良く、青空と浜名湖はとても良く映える。
+  14時、ようやくうな丼にありつけた。 ちなみに本来はツーリングマップルに載っている「志ぶき」という店が目当てだったのだが、昼時を過ぎても行列ができていたので諦めた。
+    昼食後に愛宕神社へお参り。
+  浜名湖周遊自転車道をひたすら走る。 浜名湖周遊自転車道は全線が自転車道として独立しているわけではなく、ところどころ車道を走るところもあるのだが、何箇所か自転車道の入り口が分からなかった。
+    自転車道の終点、三ヶ日からは天竜浜名湖鉄道に乗り、輪行で帰宅した。
+	</div>
+</article><article class="list__item post">
 	<figure class="list__thumbnail">
 		<a href="https://www.330k.info/bicycle/touring/20100704-chitahantou/">
 			<img src="/bicycle/touring/20100704-chitahantou/CIMG4288.jpg" alt="2010年07月04日 知多半島一周" />
@@ -287,22 +312,6 @@ DatePlus[DateList[{1980, 1, 6, 0, 0, 0}], {940669002, &quot;Second&quot;}]  と�
 電波時計と携帯電話を同時に見ていたのだが、8時56分42秒というのは測位した瞬間に電波時計が指していた時刻と一致している。 15秒前の8時56分27秒の時点ではまだ測位を開始していない。
 以上より、auの携帯電話(少なくとも私が持っているW61CA)の簡易ハンディGPSによるあしあとデータの時刻情報は閏秒について修正する必要がない(携帯電話側で修正している)と言える。
 	</div>
-</article><article class="list__item post">
-	<header class="list__header">
-		<h3 class="list__title post__title ">
-			<a href="/essay/how-to-redirect-standard-input-output-of-16bit-application/" rel="bookmark">
-			16ビットアプリケーションの標準入出力をリダイレクト
-			</a>
-		</h3>
-		
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		FORTRANで書かれた古いMS-DOSプログラムを.NET/Linkを使ってMathematicaから操るパッケージを作っていたところ、 Process.StartInfo.RedirectStandardInputやRedirectStandardOutputにTrueを設定してもまったく標準入出力をリダイレクトできなかった。(※OSはVista 32bit)
-いろいろ試してみたところ、16ビットのプログラムだとリダイレクトができないらしいということが分かった。 さてどうしたものかとさらにいろいろ打開策を探してみた結果、
- FileNameに&quot;cmd.exe&quot;を設定して、Process.Start()でプロセスを起動。 必要ならStandardInput.WriteLine(&quot;cd 16ビットプログラムのディレクトリ&quot;)としてカレントディレクトリを移動。 StandardInput.WriteLine(&quot;***.EXE&quot;)として16ビットプログラムを起動。  とcmd.exeを間に挟むことにより、16ビットのプログラムに対しても標準入出力のリダイレクトが行えることが分かった。
-以下はMathematica+.NET/Linkによるサンプル。 標準出力は書き出されるたびにイベントハンドラで捕捉してoutputsに追加するので、Dynamic[outputs]などとしておくと、本当のターミナルの挙動に近づく。 最初にcmd.exeの出力(&ldquo;Microsoft Windows [Version &hellip;&ldquo;)が入るので、16ビットのプログラムの出力だけがほしい場合は16ビットプログラム起動後にフラグを立てれば大丈夫。
-outputs = {}; outputhandler[o_, args_] := Module[ {data = args@Data}, AppendTo[outputs, data]; ]; NETBlock[ proc = NETNew[&quot;System.Diagnostics.Process&quot;]; LoadNETType[&quot;System.Environment&quot;]; proc@StartInfo@FileName = Environment`GetEnvironmentVariable[&quot;ComSpec&quot;]; proc@StartInfo@RedirectStandardInput = True; proc@StartInfo@RedirectStandardOutput = True; proc@StartInfo@UseShellExecute = False; proc@StartInfo@CreateNoWindow = True; proc@StartInfo@WorkingDirectory = DirectoryName[proc@StartInfo@FileName]; AddEventHandler[proc@OutputDataReceived, outputhandler]; proc@Start[]; proc@BeginOutputReadLine[]; proc@StandardInput@WriteLine[&quot;cd &quot; &lt;&gt; &quot;16ビットプログラムのディレクトリ&quot;]; proc@StandardInput@WriteLine[&quot;******.EXE(16ビットプログラム)&quot;]; proc@StandardInput@WriteLine[&quot;16ビットプログラムの標準入力に渡す内容&quot;]; proc@StandardInput@Close[]; proc@WaitForExit[]; proc@Close[]; ];  とはいっても64bit版のWindowsだと16bitのプログラムがそもそも動かない。
-	</div>
 </article>
 </main>
 
@@ -329,6 +338,7 @@ outputs = {}; outputhandler[o_, args_] := Module[ {data = args@Data}, AppendTo[o
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20190814-brm814-shiretoko-200km/">2019年08月14日 BRM814 知床200 PW北海道</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20190810-brm810-soya-600km/">2019年08月10日 BRM810 宗谷600 PW北海道</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20190701-tohoku-route-4/">2019年07月01日〜08日 東北(国道4号)〜北海道</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20190622-brm622gunma600km-niigata/">2019年06月22日 BRM622群馬600(新潟周回)</a></li>
@@ -338,7 +348,6 @@ outputs = {}; outputhandler[o_, args_] := Module[ {data = args@Data}, AppendTo[o
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20190324-brm324-tsukuba200/">2019年03月24日 BRM324 つくば200</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/show-only-first-images/">bxSliderで2番目以降の画像が一瞬表示されるのを防止する</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20190216-brm216chiba-300km/">2019年02月16日 BRM216千葉300km(佐原)</a></li>
-			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20181007-14_median_line/">2018年10月7日〜14日 中央構造線 &#43; 山中湖</a></li>
 		</ul>
 	</div>
 </div>
@@ -382,7 +391,7 @@ outputs = {}; outputhandler[o_, args_] := Module[ {data = args@Data}, AppendTo[o
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%82%a2%e3%83%ab%e3%82%b4%e3%83%aa%e3%82%ba%e3%83%a0" title="アルゴリズム">アルゴリズム (5)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%83%84%e3%83%bc%e3%83%aa%e3%83%b3%e3%82%b0" title="ツーリング">ツーリング (46)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%83%91%e3%83%af%e3%83%8f%e3%83%a9" title="パワハラ">パワハラ (5)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%83%96%e3%83%ab%e3%83%99" title="ブルベ">ブルベ (7)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%83%96%e3%83%ab%e3%83%99" title="ブルベ">ブルベ (8)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e7%94%9f%e6%b4%bb" title="生活">生活 (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e7%a4%be%e5%86%85se" title="社内se">社内se (15)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e8%87%aa%e8%bb%a2%e8%bb%8a" title="自転車">自転車 (9)</a>
