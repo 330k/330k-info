@@ -13,7 +13,7 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://www.330k.info/" />
 
-<meta property="og:updated_time" content="2019-08-14T21:19:19+09:00" />
+<meta property="og:updated_time" content="2019-08-15T21:19:31+09:00" />
 
 	<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="330k info"/>
@@ -75,6 +75,27 @@ if (!doNotTrack) {
 			
 <main class="main list" role="main">
 	<article class="list__item post">
+	<header class="list__header">
+		<h3 class="list__title post__title ">
+			<a href="/essay/install-windows-10-to-panasonic-letsnote-cf-n10/" rel="bookmark">
+			Windows 10を早速テストしてみた
+			</a>
+		</h3>
+		
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		Windows Insider Programに登録していたので、7/31に「Windows 10がでたよ〜」というメールがGabe Aulからやってきた。
+ゆくゆくは更新プログラムが提供されるけど、早く試したい人は「メディア作成ツール」をダウンロードして使うといいよ、 とのことなので、会社で余っていたPCにインストールしてみた。
+インストール  機種: Panasonic Let&rsquo;s Note CF-N10(法人向けモデル) Windows 7 32bit版からのアップグレード Office 2010、Adobe Acrobat Pro XI、トレンドマイクロウイルスバスターがインストール済み  インストール方法は基本的に http://ascii.jp/elem/000/001/034/1034923/ の通り。 ※現在は直接ISOファイルがダウンロードできる模様
+ただし、指示に従って進めていると、以下の2つのソフトウェアをアンインストールしなさい、と出てくる。
+ Intel&reg; Dynamic Power Performance Management Realtek High Definition Audio Driver  Realtekの方は、「アンインストール」ボタンをクリックすればOK。
+Intelの方は、 http://answers.microsoft.com/ja-jp/windows/forum/windows_8-windows_install/windows-8/cefec781-59a2-4f78-925a-0b34c70b53b7?auth=1 に情報がある。
+Let&rsquo;s Noteの場合、 C:\util2\drivers\etm\DppmCleaner.bat、もしくはLPOSetting.jsを実行する、とあるが、 CF-N10の場合はバージョンが違うためか存在しない。
+仕方がないので、時期の近い他機種向けのドライバーをインストールして、上記のLPOSetting.jsを実行することで解決。 その後しばらく待てば、無事Windows 10へのアップグレードが完了した。
+インストール結果 現在のところ、インストール後の結果は以下の通り。
+ ActiveDirectoryへの参加　→　○成功 グループポリシーの適用　→　△ユーザーの構成のみ有効、コンピュータの構成は有効にならない (ただし、ドメインコントローラ側(Windows Server 2012R2)でのシミュレーションでは適用されるはず) Office 2010の起動　→　△起動は成功(Outlookの設定情報は引き継げず) Adobe Acrobat Pro XIの起動　→　○成功(ただしデフォルトではEdgeでPDFを開く) ウイルスバスター　→　○問題なく動作している模様(リアルタイム検索、パターンファイルのアップデート) BitLockerによるドライブの暗号化　→　○成功(運良くCF-N10もTPMを積んでいた)  その他感想  起動時間はWindows 7とあまり変わらない感触 シャットダウンは早くなった印象 たまに画面の文字がボケる(ClearTypeの設定をいじっても変わらず) 現状ではGPOでコンピュータの構成が効いていないので、クライアント側かサーバ側で対応するタイミングが来るまでは様子見。  Aug.
+	</div>
+</article><article class="list__item post">
 	<header class="list__header">
 		<h3 class="list__title post__title ">
 			<a href="/essay/how-to-take-files-out-from-company/" rel="bookmark">
@@ -281,26 +302,6 @@ y = xの直線上にあれば正確ということだが、GeoDistanceの&rdquo;
 同じ計算結果を誤差についてプロットしたものが下図である。また表は各計算方法の最大誤差である。
      計算方法 誤差の絶対値     GeoDistance(&ldquo;Vincenty75&rdquo;) 7.119 * 10^-12   GeoDistance(&ldquo;Robbin61&rdquo;) 9.536 * 10^-1   GeoDistance(&ldquo;ExtendedNewtonRaphson&rdquo;) 1.247 * 10^-6   ヒュベニの式 2.022 * 10^1   測量計算サイト計算式 6.682 * 10^-3   完全球体モデル 6.
 	</div>
-</article><article class="list__item post">
-	<header class="list__header">
-		<h3 class="list__title post__title ">
-			<a href="/essay/implement-of-priority-queue-for-douglas-peucker-simplify-algorithm/" rel="bookmark">
-			Douglas-Peucker向けの優先度付きキュー実装の検討
-			</a>
-		</h3>
-		
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		Nov. 29 2015:
- JavaScriptで実装した優先度付きキューをGitHubで公開→https://github.com/330k/priorityqueue_js/ 各ヒープのベンチマーク → http://330k.github.io/priorityqueue_js/benchmark.html  これにはFibonacci Heapも比較対象に入れてある  折れ線を間引くで書いたように、 Douglas-Peuckerアルゴリズムを改良して指定した点数まで点を削減して折れ線を簡略化する場合、 優先度付きキューを使うことになる。
-このアルゴリズムでは
- 始点と終点を結ぶ線分で最も距離が大きな点P1を選ぶ 始点と点P1を結ぶ線分で距離最大となる点P2をキューに登録(優先度は点P2と線分の距離) 点P1と終点を結ぶ線分で距離最大となる点P3をキューに登録(優先度は点P3と線分の距離) キューから距離が最大(=優先度最大)の点を選んで、2に戻る  という手順となるため、「キューに2つ登録して、1つ取り出す」ということを繰り返すことになる。
-そこで今回はランダムな優先度のデータを
- 連続して登録し、連続して取り出す(要はソートしているだけ) 「キューに2つ登録して、1つ取り出す」を繰り返すDouglas-Peuckerを想定した試験  という操作に対してどの優先度付きキューの実装が良い性能をしめすのか、ベンチマークを取ってみた。
-優先度付きキューの実装にはいくつか方法があるが、今回は以下の6種類を試してみた。
- Array.sort(): キューへの追加はArray.push()、キューから取り出すときに必要であればArray.sort()してArray.pop()する。非常に単純で楽チン。結果の検証用。 Selection: キューへの追加はArray.push()、キューから取り出すときに最大要素を選択。enqueue: O(1), dequeue: O(n2)。 Insertion: キューへの追加時に挿入ソートを行う。キューから取り出すときはArray.pop()するだけ。enqueue: O(n2), dequeue: O(1)。 Binary Insertion: キューへの追加時に二分挿入ソートを行う。あとは3と同じ。enqueue: O(n2), dequeue: O(1)。 Binary Heap: 二分ヒープ(wikipedia)での実装。ポインタなしで実装できるので省メモリ。java.util.PriorityQueueはこれらしい。enqueue: O(log(n)), dequeue: O(log(n))。 Pairing Heap: ペアリングヒープ(wikipedia: en)での実装。gcc(libstdc++)のpriority_queueはこれらしい。enqueue: O(log(n)), dequeue: O(log(n))。実装にはこれを参考にした。  いずれもJavaScriptで実装した。
-ベンチマーク結果 以下、Firefox 29とChromium 34での結果。単位はmsで、小さいほうが高速。 載せていないがVirtualBox上のWindows XPで測定してもほぼ同じ結果だった。
-	</div>
 </article>
 </main>
 
@@ -327,6 +328,7 @@ y = xの直線上にあれば正確ということだが、GeoDistanceの&rdquo;
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20190815-brm815-shari-asahikawa-300km/">2019年08月15日 BRM815 斜里旭川300 PW北海道</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20190814-brm814-shiretoko-200km/">2019年08月14日 BRM814 知床200 PW北海道</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20190810-brm810-soya-600km/">2019年08月10日 BRM810 宗谷600 PW北海道</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20190701-tohoku-route-4/">2019年07月01日〜08日 東北(国道4号)〜北海道</a></li>
@@ -336,7 +338,6 @@ y = xの直線上にあれば正確ということだが、GeoDistanceの&rdquo;
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20190420-brm420-attack-oinokoji-400km/">2019年04月20日 BRM420 埼玉400km アタック老越路</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20190324-brm324-tsukuba200/">2019年03月24日 BRM324 つくば200</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/show-only-first-images/">bxSliderで2番目以降の画像が一瞬表示されるのを防止する</a></li>
-			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20190216-brm216chiba-300km/">2019年02月16日 BRM216千葉300km(佐原)</a></li>
 		</ul>
 	</div>
 </div>
@@ -380,7 +381,7 @@ y = xの直線上にあれば正確ということだが、GeoDistanceの&rdquo;
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%82%a2%e3%83%ab%e3%82%b4%e3%83%aa%e3%82%ba%e3%83%a0" title="アルゴリズム">アルゴリズム (5)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%83%84%e3%83%bc%e3%83%aa%e3%83%b3%e3%82%b0" title="ツーリング">ツーリング (46)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%83%91%e3%83%af%e3%83%8f%e3%83%a9" title="パワハラ">パワハラ (5)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%83%96%e3%83%ab%e3%83%99" title="ブルベ">ブルベ (8)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%83%96%e3%83%ab%e3%83%99" title="ブルベ">ブルベ (9)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e7%94%9f%e6%b4%bb" title="生活">生活 (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e7%a4%be%e5%86%85se" title="社内se">社内se (15)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e8%87%aa%e8%bb%a2%e8%bb%8a" title="自転車">自転車 (9)</a>

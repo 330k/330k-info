@@ -13,7 +13,7 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://www.330k.info/" />
 
-<meta property="og:updated_time" content="2019-08-14T21:19:19+09:00" />
+<meta property="og:updated_time" content="2019-08-15T21:19:31+09:00" />
 
 	<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="330k info"/>
@@ -75,6 +75,24 @@ if (!doNotTrack) {
 			
 <main class="main list" role="main">
 	<article class="list__item post">
+	<figure class="list__thumbnail">
+		<a href="https://www.330k.info/bicycle/touring/20161231-20170102-first-sunrise-at-inubozaki/">
+			<img src="/bicycle/touring/20161231-20170102-first-sunrise-at-inubozaki/IMG_1096.jpg" alt="2016年12月31日〜2017年1月2日 初日の出ツーリング 犬吠埼" />
+		</a>
+	</figure>
+	<header class="list__header">
+		<h3 class="list__title post__title ">
+			<a href="/bicycle/touring/20161231-20170102-first-sunrise-at-inubozaki/" rel="bookmark">
+			2016年12月31日〜2017年1月2日 初日の出ツーリング 犬吠埼
+			</a>
+		</h3>
+		
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		新型Dura-Aceに換装したSURLY crosscheckにて2017年の初日の出を犬吠埼で見るべく走ってきた。
+   function initMap(){ var map, ctaLayer; map = new google.maps.Map(document.getElementById("mapcanvas-20161231-20170102-kml"), { center: {lat: 35.6832581, lng: 139.7555827}, zoom: 8 }); ctaLayer = new google.maps.KmlLayer({ url: 'https:\/\/www.330k.info\/\/bicycle\/touring\/20161231-20170102-first-sunrise-at-inubozaki\/20161231-20170102.kml' }); ctaLayer.setMap(map); }     日付 出発地 到着地 走行距離(km) 走行時間 最高速度(km/h) 平均速度(km/h) 主な経路 景勝地     2016年12月31日 東京 神栖 101.22 3:47:47 56.2 26.7 R6, r11    2017年1月1日 神栖 鴨川 164.20 6:26:46 48.9 25.5 R124, R128, r30 犬吠埼   2017年1月2日 鴨川 東京 112.
+	</div>
+</article><article class="list__item post">
 	<header class="list__header">
 		<h3 class="list__title post__title ">
 			<a href="/essay/detect_submittion_to_private_mail_from_gmail/" rel="bookmark">
@@ -244,22 +262,6 @@ DVDの中身のVTS_01_1.VOB, VTS_01_2.VOBというファイルをffmpegの-iオ�
 使い方  以下のテキストをメモ帳にコピー＆ペースト 下のテキスト中でFドライブを指定している部分を各自のドライブ名に変更 拡張子をbatにして保存 DVDを入れてバッチファイルを起動  原則としてバッチファイルと同じフォルダにdvd_yyyymmdd.mpegというファイルが出来上がる
 @ECHO OFF ECHO DVDから普通の動画ファイルへ変換を行います。 ECHO DVDがFドライブに入っていることを確認してください。 PAUSE SET A= FOR %%F IN (&quot;F:\VIDEO_TS\VTS_01_*.VOB&quot;) DO CALL SET A=%%A%%$$%%F SET TIME_TMP=%TIME: =0% SET NOW=%DATE:/=%%TIME_TMP:~0,2%%TIME_TMP:~3,2%%TIME_TMP:~6,2% SET B=&quot;%A:$$=|%&quot; ffmpeg -i &quot;concat:%B:~2,-1%&quot; -target ntsc-dvd -vcodec copy -acodec copy dvd_%NOW%.mpeg ECHO 変換が終了しました。 ECHO 出力ファイル: %~dp0 dvd_%NOW%.mpeg PAUSE  
 	</div>
-</article><article class="list__item post">
-	<header class="list__header">
-		<h3 class="list__title post__title ">
-			<a href="/essay/change-c-compiler-in-mathematica/" rel="bookmark">
-			Compileで使用するCコンパイラを変更する
-			</a>
-		</h3>
-		
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		Mathematica 8から、CompileでCコンパイラを使って直接ネイティブコードにコンパイルできるようになった。 使用するCコンパイラは、
-Needs[&quot;CCompilerDriver`&quot;]; CCompilerDriver`$CCompiler = { &quot;Name&quot; -&gt; &quot;GCC&quot;, &quot;Compiler&quot; -&gt; CCompilerDriver`GCCCompiler`GCCCompiler, &quot;CompilerInstallation&quot; -&gt; &quot;/usr/bin&quot;, &quot;CompilerName&quot; -&gt; Automatic };  というように、CCompilerDriver`$CCompilerを変更して指定する。
-以前からのCompile(&ldquo;WVM&rdquo;)と、各コンパイラの比較のため、ベンチマークを行ってみた。 検証環境は以下の通り。
- CPU: Intel Core-i7 3770 (インテル® HT テクノロジー ON) OS: Ubuntu 14.04 LTS 64bit Memory: 16 GB DDR3 1333 MHz  検証するCコンパイラは、GCC、Intel C++ Compiler、Clangの3種類。
- gcc: (Ubuntu 4.8.4-2ubuntu1~14.04) 4.8.4 icc: icc (ICC) 14.0.3 20140422 clang: Ubuntu clang version 3.4-1ubuntu3 (tags/RELEASE_34/final) (based on LLVM 3.4)  Mathematicaコードは以下。1/i^2を総和してπ^2/6を求める単純な計算を行った。 ※私の環境ではICCは/media/storage/intel/compserxe/binにインストールしているので下記コードを使用する場合は注意。
-	</div>
 </article>
 </main>
 
@@ -286,6 +288,7 @@ Needs[&quot;CCompilerDriver`&quot;]; CCompilerDriver`$CCompiler = { &quot;Name&q
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20190815-brm815-shari-asahikawa-300km/">2019年08月15日 BRM815 斜里旭川300 PW北海道</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20190814-brm814-shiretoko-200km/">2019年08月14日 BRM814 知床200 PW北海道</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20190810-brm810-soya-600km/">2019年08月10日 BRM810 宗谷600 PW北海道</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20190701-tohoku-route-4/">2019年07月01日〜08日 東北(国道4号)〜北海道</a></li>
@@ -295,7 +298,6 @@ Needs[&quot;CCompilerDriver`&quot;]; CCompilerDriver`$CCompiler = { &quot;Name&q
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20190420-brm420-attack-oinokoji-400km/">2019年04月20日 BRM420 埼玉400km アタック老越路</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20190324-brm324-tsukuba200/">2019年03月24日 BRM324 つくば200</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/show-only-first-images/">bxSliderで2番目以降の画像が一瞬表示されるのを防止する</a></li>
-			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20190216-brm216chiba-300km/">2019年02月16日 BRM216千葉300km(佐原)</a></li>
 		</ul>
 	</div>
 </div>
@@ -339,7 +341,7 @@ Needs[&quot;CCompilerDriver`&quot;]; CCompilerDriver`$CCompiler = { &quot;Name&q
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%82%a2%e3%83%ab%e3%82%b4%e3%83%aa%e3%82%ba%e3%83%a0" title="アルゴリズム">アルゴリズム (5)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%83%84%e3%83%bc%e3%83%aa%e3%83%b3%e3%82%b0" title="ツーリング">ツーリング (46)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%83%91%e3%83%af%e3%83%8f%e3%83%a9" title="パワハラ">パワハラ (5)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%83%96%e3%83%ab%e3%83%99" title="ブルベ">ブルベ (8)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%83%96%e3%83%ab%e3%83%99" title="ブルベ">ブルベ (9)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e7%94%9f%e6%b4%bb" title="生活">生活 (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e7%a4%be%e5%86%85se" title="社内se">社内se (15)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e8%87%aa%e8%bb%a2%e8%bb%8a" title="自転車">自転車 (9)</a>

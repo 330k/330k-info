@@ -4,33 +4,23 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>陽的Runge-Kutta法のButcher tableau - 330k info</title>
+	<title>2019年08月15日 BRM815 斜里旭川300 PW北海道 - 330k info</title>
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
-	<meta property="og:title" content="陽的Runge-Kutta法のButcher tableau" />
-<meta property="og:description" content=" Explicit Runge-Kutta法の公式はいくつか知られているが、高次の公式になるほどButcher配列の項数が増えるため論文に誤植が多くなる。 それに気づかないまま実際に使うと、プログラムは正しく組めているはずなのに思うように精度が上がらないという落とし穴にはまってしまう。
-覚書として、以下に代表的と思われる公式のButcher tableauをまとめる。
-以下のButcher tableauはMathematica 8のNumericalDifferentialEquationAnalysisパッケージに含まれるRungeKuttaOrderConditionsで所定の次数条件を達成していることを確認しており、誤植が入り込まないようにそのままMathematica上で画像化している。
-使用したMathematicaノートブックはこちら。 必要な人はダウンロードして自分で計算して確認した後に使用してほしい。
-MathematicaにCやFortranのソースコード形式で吐かせるのが確実。
-※注意事項
-公式の名前や出典に関しては自信がないので、鵜呑みにしないこと。
-1段1次 Euler法   2段2次 修正Euler法   Heun法   Ralston法 3段3次 Heunの3次法   Kuttaの3次法   Ralstonの3次法 4段4次 古典的Runge-Kutta法   6段5次 Runge-Kutta-Fehlberg法のうち5次の部分   Runge-Kutta-Nystroemのうち5次の部分   Butcherによる5次公式を3つ       7段6次 Hammudによるもの   9段7次 Shanksによるもの   CooperとVernerによる7次公式   11段8次 CooperとVernerによる8次公式   16段9次 Vernerによる埋め込み型公式のうち9次のもの   " />
+	<meta property="og:title" content="2019年08月15日 BRM815 斜里旭川300 PW北海道" />
+<meta property="og:description" content="600km→400km→200km→300kmのブルベを連続で行うPW北海道に参加。 最後の300km。
+   function initMap(){ var map, ctaLayer; map = new google.maps.Map(document.getElementById(&#34;mapcanvas-2019081501-kml&#34;), { center: {lat: 35.6832581, lng: 139.7555827}, zoom: 8 }); ctaLayer = new google.maps.KmlLayer({ url: &#39;https:\/\/www.330k.info\/\/bicycle\/touring\/20190815-brm815-shari-asahikawa-300km\/2019081501.kml&#39; }); ctaLayer.setMap(map); }     日付 出発地 到着地 走行距離(km) 走行時間 最高速度(km/h) 平均速度(km/h) 主な経路 景勝地     2019年08月15日 斜里 旭川 305.70 11:20:46 65.0 26.9 紋別 能取岬、サロマ湖、浮島峠    昨日よりも1時間早いスタートのため、それに合わせて5時20分に知床斜里駅前へ。 他の参加者ともだいぶ顔なじみとなってきた。
+     window.addEventListener(&#34;load&#34;, function(){ var path = &#39;R0010486_20190815052039." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://www.330k.info/essay/explicit-runge-kutta-butcher-tableau/" />
-<meta property="article:published_time" content="2009-12-05T00:00:00+09:00" />
-<meta property="article:modified_time" content="2009-12-05T00:00:00+09:00" />
+<meta property="og:url" content="https://www.330k.info/bicycle/touring/20190815-brm815-shari-asahikawa-300km/" />
+<meta property="article:published_time" content="2019-08-15T21:19:31+09:00" />
+<meta property="article:modified_time" content="2019-08-15T21:19:31+09:00" />
 
 	<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="陽的Runge-Kutta法のButcher tableau"/>
-<meta name="twitter:description" content=" Explicit Runge-Kutta法の公式はいくつか知られているが、高次の公式になるほどButcher配列の項数が増えるため論文に誤植が多くなる。 それに気づかないまま実際に使うと、プログラムは正しく組めているはずなのに思うように精度が上がらないという落とし穴にはまってしまう。
-覚書として、以下に代表的と思われる公式のButcher tableauをまとめる。
-以下のButcher tableauはMathematica 8のNumericalDifferentialEquationAnalysisパッケージに含まれるRungeKuttaOrderConditionsで所定の次数条件を達成していることを確認しており、誤植が入り込まないようにそのままMathematica上で画像化している。
-使用したMathematicaノートブックはこちら。 必要な人はダウンロードして自分で計算して確認した後に使用してほしい。
-MathematicaにCやFortranのソースコード形式で吐かせるのが確実。
-※注意事項
-公式の名前や出典に関しては自信がないので、鵜呑みにしないこと。
-1段1次 Euler法   2段2次 修正Euler法   Heun法   Ralston法 3段3次 Heunの3次法   Kuttaの3次法   Ralstonの3次法 4段4次 古典的Runge-Kutta法   6段5次 Runge-Kutta-Fehlberg法のうち5次の部分   Runge-Kutta-Nystroemのうち5次の部分   Butcherによる5次公式を3つ       7段6次 Hammudによるもの   9段7次 Shanksによるもの   CooperとVernerによる7次公式   11段8次 CooperとVernerによる8次公式   16段9次 Vernerによる埋め込み型公式のうち9次のもの   "/>
+<meta name="twitter:title" content="2019年08月15日 BRM815 斜里旭川300 PW北海道"/>
+<meta name="twitter:description" content="600km→400km→200km→300kmのブルベを連続で行うPW北海道に参加。 最後の300km。
+   function initMap(){ var map, ctaLayer; map = new google.maps.Map(document.getElementById(&#34;mapcanvas-2019081501-kml&#34;), { center: {lat: 35.6832581, lng: 139.7555827}, zoom: 8 }); ctaLayer = new google.maps.KmlLayer({ url: &#39;https:\/\/www.330k.info\/\/bicycle\/touring\/20190815-brm815-shari-asahikawa-300km\/2019081501.kml&#39; }); ctaLayer.setMap(map); }     日付 出発地 到着地 走行距離(km) 走行時間 最高速度(km/h) 平均速度(km/h) 主な経路 景勝地     2019年08月15日 斜里 旭川 305.70 11:20:46 65.0 26.9 紋別 能取岬、サロマ湖、浮島峠    昨日よりも1時間早いスタートのため、それに合わせて5時20分に知床斜里駅前へ。 他の参加者ともだいぶ顔なじみとなってきた。
+     window.addEventListener(&#34;load&#34;, function(){ var path = &#39;R0010486_20190815052039."/>
 
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -68,10 +58,10 @@ if (!doNotTrack) {
 		<span class="menu__btn-title" tabindex="-1">Menu</span>
 	</button>
 	<ul class="menu__list">
-		<li class="menu__item">
+		<li class="menu__item menu__item--active">
 			<a class="menu__link" href="/bicycle/">Bicycles</a>
 		</li>
-		<li class="menu__item menu__item--active">
+		<li class="menu__item">
 			<a class="menu__link" href="/essay/">Essays</a>
 		</li>
 		<li class="menu__item">
@@ -88,154 +78,177 @@ if (!doNotTrack) {
 <main class="main" role="main">
 	<article class="post">
 		<header class="post__header">
-			<h1 class="post__title">陽的Runge-Kutta法のButcher tableau</h1>
+			<h1 class="post__title">2019年08月15日 BRM815 斜里旭川300 PW北海道</h1>
 			
 		</header><div class="content post__content clearfix">
-			
-
-<p>Explicit Runge-Kutta法の公式はいくつか知られているが、高次の公式になるほどButcher配列の項数が増えるため論文に誤植が多くなる。
-それに気づかないまま実際に使うと、プログラムは正しく組めているはずなのに思うように精度が上がらないという落とし穴にはまってしまう。</p>
-
-<p>覚書として、以下に代表的と思われる公式のButcher tableauをまとめる。</p>
-
-<p>以下のButcher tableauはMathematica 8のNumericalDifferentialEquationAnalysisパッケージに含まれるRungeKuttaOrderConditionsで所定の次数条件を達成していることを確認しており、誤植が入り込まないようにそのままMathematica上で画像化している。</p>
-
-<p>使用したMathematicaノートブックは<a href="ExplicitRungeKuttaButcherTableau.nb">こちら</a>。
-必要な人はダウンロードして自分で計算して確認した後に使用してほしい。</p>
-
-<p>MathematicaにCやFortranのソースコード形式で吐かせるのが確実。</p>
-
-<p>※注意事項</p>
-
-<p>公式の名前や出典に関しては自信がないので、鵜呑みにしないこと。</p>
-
-<h2 id="1段1次">1段1次</h2>
-
-<h3 id="euler法">Euler法</h3>
-
-<figure>
-    <img src="ExplicitEuler.png"/> 
-</figure>
+			<p>600km→400km→200km→300kmのブルベを連続で行うPW北海道に参加。
+最後の300km。</p>
 
 
-<h2 id="2段2次">2段2次</h2>
-
-<h3 id="修正euler法">修正Euler法</h3>
-
-<figure>
-    <img src="ModifiedEuler.png"/> 
-</figure>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCir56M7J9LT4-3wDVgG8etGo_HPSMWVBk&callback=initMap" async defer></script>
 
 
-<h3 id="heun法">Heun法</h3>
 
-<figure>
-    <img src="Heun.png"/> 
-</figure>
+<div id="mapcanvas-2019081501-kml" style="width: 100%; height:500px; margin:0; padding: 0"></div>
+<script>
+function initMap(){
+  var map,
+    ctaLayer;
+  map = new google.maps.Map(document.getElementById("mapcanvas-2019081501-kml"), {
+    center: {lat: 35.6832581, lng: 139.7555827},
+    zoom: 8
+  });
+  ctaLayer = new google.maps.KmlLayer({
+    url: 'https:\/\/www.330k.info\/\/bicycle\/touring\/20190815-brm815-shari-asahikawa-300km\/2019081501.kml'
+  });
+  ctaLayer.setMap(map);
+}
+</script>
 
+<table>
+<thead>
+<tr>
+<th>日付</th>
+<th>出発地</th>
+<th>到着地</th>
+<th>走行距離(km)</th>
+<th>走行時間</th>
+<th>最高速度(km/h)</th>
+<th>平均速度(km/h)</th>
+<th>主な経路</th>
+<th>景勝地</th>
+</tr>
+</thead>
 
-<h3 id="ralston法">Ralston法</h3>
+<tbody>
+<tr>
+<td>2019年08月15日</td>
+<td>斜里</td>
+<td>旭川</td>
+<td>305.70</td>
+<td>11:20:46</td>
+<td>65.0</td>
+<td>26.9</td>
+<td>紋別</td>
+<td>能取岬、サロマ湖、浮島峠</td>
+</tr>
+</tbody>
+</table>
 
-<h2 id="3段3次">3段3次</h2>
-
-<h3 id="heunの3次法">Heunの3次法</h3>
-
-<figure>
-    <img src="HeunRK3.png"/> 
-</figure>
-
-
-<h3 id="kuttaの3次法">Kuttaの3次法</h3>
-
-<figure>
-    <img src="ClassicalRK3.png"/> 
-</figure>
-
-
-<h3 id="ralstonの3次法">Ralstonの3次法</h3>
-
-<h2 id="4段4次">4段4次</h2>
-
-<h3 id="古典的runge-kutta法">古典的Runge-Kutta法</h3>
-
-<figure>
-    <img src="ClassicalRK4.png"/> 
-</figure>
-
-
-<h2 id="6段5次">6段5次</h2>
-
-<h3 id="runge-kutta-fehlberg法のうち5次の部分">Runge-Kutta-Fehlberg法のうち5次の部分</h3>
-
-<figure>
-    <img src="RungeKuttaFehlberg.png"/> 
-</figure>
-
-
-<h3 id="runge-kutta-nystroemのうち5次の部分">Runge-Kutta-Nystroemのうち5次の部分</h3>
-
-<figure>
-    <img src="Nystroem.png"/> 
-</figure>
-
-
-<h3 id="butcherによる5次公式を3つ">Butcherによる5次公式を3つ</h3>
-
-<p><figure>
-    <img src="Butcher1.png"/> 
-</figure>
-
-<figure>
-    <img src="Butcher2.png"/> 
-</figure>
-
-<figure>
-    <img src="Butcher3.png"/> 
-</figure>
-</p>
-
-<h2 id="7段6次">7段6次</h2>
-
-<h3 id="hammudによるもの">Hammudによるもの</h3>
-
-<figure>
-    <img src="Hammud6.png"/> 
-</figure>
+<p>昨日よりも1時間早いスタートのため、それに合わせて5時20分に知床斜里駅前へ。
+他の参加者ともだいぶ顔なじみとなってきた。</p>
 
 
-<h2 id="9段7次">9段7次</h2>
-
-<h3 id="shanksによるもの">Shanksによるもの</h3>
-
-<figure>
-    <img src="Shanks7.png"/> 
-</figure>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/three.js/r76/three.js' defer></script>
+<script src='https://cdn.rawgit.com/aike/thview.js/master/thview.js' defer></script>
 
 
-<h3 id="cooperとvernerによる7次公式">CooperとVernerによる7次公式</h3>
 
-<figure>
-    <img src="CooperVerner7.png"/> 
-</figure>
+<div style="position:relative;width:640px;">
+ <div id='thviewer-r0010486-20190815052039-jpg'></div>
+ <img src="/images/23591.svg" style="width:64px; position:absolute; top:0px; right: 0px;"/>
+</div>
+<script>
+
+window.addEventListener("load", function(){
+  var path = 'R0010486_20190815052039.JPG';
+  THREE.ImageUtils.crossOrigin = "*";
+  var img1 = new ThView({
+    id:'thviewer-r0010486-20190815052039-jpg',
+    file: path,
+    width: 640,
+    height: 480,
+    rotation: true,
+    firstview: 270
+    });
+}, false);
+</script>
+
+<p>知床斜里駅を出発し、昨日とは反対方面の網走方面へ。</p>
+
+<p>自分よりもちょっと速いかな、というペースの人に頑張ってついていったが、
+網走市内を抜けたところで千切られ、その後はマイペースで通過チェックの能取岬へ。</p>
 
 
-<h2 id="11段8次">11段8次</h2>
 
-<h3 id="cooperとvernerによる8次公式">CooperとVernerによる8次公式</h3>
+
+<div style="position:relative;width:640px;">
+ <div id='thviewer-r0010494-20190815075041-jpg'></div>
+ <img src="/images/23591.svg" style="width:64px; position:absolute; top:0px; right: 0px;"/>
+</div>
+<script>
+
+window.addEventListener("load", function(){
+  var path = 'R0010494_20190815075041.JPG';
+  THREE.ImageUtils.crossOrigin = "*";
+  var img1 = new ThView({
+    id:'thviewer-r0010494-20190815075041-jpg',
+    file: path,
+    width: 640,
+    height: 480,
+    rotation: true,
+    firstview: 270
+    });
+}, false);
+</script>
+
+<p>記念撮影をしてもらい、また絶景の能取岬をRICOHのTHETAで撮影してそのまま紋別方面へ。</p>
+
+<p>この日は南南東の風のため、基本的には追い風のはずだが、能取湖やサロマ湖をぐるっと回るので、一時的に強烈な向かい風になることも。</p>
+
+<p>70km地点のセイコーマートで休憩したところ、福岡のジャージを着た参加者の人から「みんなで行こうぜ」と声をかけられ、5人でローテーションしながら進むことに。</p>
+
+<p>ローテーションすると疲労度が段違いに軽い。</p>
+
+<p>途中トイレのため1人減ったが、かなりのハイペースを維持。
+そのまま道の駅サロマ湖へ。</p>
 
 <figure>
-    <img src="CooperVerner8.png"/> 
+    <img src="DSC_0464.JPG"/> 
 </figure>
 
 
-<h2 id="16段9次">16段9次</h2>
+<p>ソフトクリームを食べてゆっくりしていたところ、追いついてきた2名の参加者を加え、総勢6人でローテーションすることに。
+ちなみに自分以外の5人は全員600、400、200をすべて完走して1500kmを目指す人たち。私だけ1100km。</p>
 
-<h3 id="vernerによる埋め込み型公式のうち9次のもの">Vernerによる埋め込み型公式のうち9次のもの</h3>
+<p>150kmを過ぎて最初で最後のPC、PC1紋別のセイコーマートへ。</p>
+
+<p>その後は進行方向を南西方面へ変えて、滝上方面へ。
+運が良いことに、それまで南南東だった風向きが北東向きに変わり、またもや追い風に。</p>
+
+<p>浮島峠まで60km近くをひたすらだらだら登りきる。</p>
+
+<p>トンネル内部が実は斜度2.4%あり、意外としんどかった。</p>
 
 <figure>
-    <img src="Verner9.png"/> 
+    <img src="DSC_0469.JPG"/> 
 </figure>
 
+
+<p>登りきったところで少し休憩した後、上川まで下り続け、閉店間際のラーメン店に6人で乗り込む。</p>
+
+<figure>
+    <img src="DSC_0470.JPG"/> 
+</figure>
+
+
+<p>6人の腹ぺこがご飯おかわりした結果、店の米が枯渇。</p>
+
+<p>その後も適度にローテーションしながら、愛別ICの後に少しあった登りを除いてひたすら下って旭川を目指す。</p>
+
+<p>旭川市内に入ったとき、私以外の5人が「旭川に帰ってきた！」とハイテンションになっていたが、400をDNSしてしまった私はいまいち乗り切れず。実力不足だったので致し方なし。</p>
+
+<p>市街地に入ってからはゆっくり進み、フィニッシュのセイコーマートへ。</p>
+
+<figure>
+    <img src="DSC_0472.JPG"/> 
+</figure>
+
+
+<p>認定タイムは14時間53分でゴール！</p>
+
+<p>私以外の5人は1500km(600のゴールの滝川から400スタートの旭川まで自走している人はもっと)走りきってスタッフからねぎらいの言葉を受けていた。
+次は全部完走してやるぞ。</p>
 
 		</div>
 		<footer class="post__footer">
@@ -243,7 +256,7 @@ if (!doNotTrack) {
 <div class="post__tags tags clearfix">
 	<svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
 	<ul class="tags__list">
-		<li class="tags__item"><a class="tags__link btn" href="/tags/%E3%82%A2%E3%83%AB%E3%82%B4%E3%83%AA%E3%82%BA%E3%83%A0/" rel="tag">アルゴリズム</a></li>
+		<li class="tags__item"><a class="tags__link btn" href="/tags/%E3%83%96%E3%83%AB%E3%83%99/" rel="tag">ブルベ</a></li>
 	</ul>
 </div>
 		</footer>
@@ -253,10 +266,7 @@ if (!doNotTrack) {
 
 <nav class="post-nav flex">
 	<div class="post-nav__item post-nav__item--prev">
-		<a class="post-nav__link" href="/essay/extend-import-and-export-of-mathematica7/" rel="prev"><span class="post-nav__caption">«&thinsp;Previous</span><p class="post-nav__post-title">Mathematica 7でImportおよびExportを拡張する</p></a>
-	</div>
-	<div class="post-nav__item post-nav__item--next">
-		<a class="post-nav__link" href="/essay/how-to-optimize-mathematica-programs/" rel="next"><span class="post-nav__caption">Next&thinsp;»</span><p class="post-nav__post-title">Mathematicaにおけるプログラムの高速化手法</p></a>
+		<a class="post-nav__link" href="/bicycle/touring/20190814-brm814-shiretoko-200km/" rel="prev"><span class="post-nav__caption">«&thinsp;Previous</span><p class="post-nav__post-title">2019年08月14日 BRM814 知床200 PW北海道</p></a>
 	</div>
 </nav>
 
