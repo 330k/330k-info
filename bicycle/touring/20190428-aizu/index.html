@@ -165,20 +165,22 @@ function initMap(){
 
 
 
-<div style="position:relative;width:640px;">
+<div id='wrapper-thviewer-r0010042-20190428140253-jpg' style="position:relative;width:100%;max-width:640px;">
  <div id='thviewer-r0010042-20190428140253-jpg'></div>
  <img src="/images/23591.svg" style="width:64px; position:absolute; top:0px; right: 0px;"/>
 </div>
-<script>
+<script defer>
 
-window.addEventListener("load", function(){
+window.addEventListener("DOMContentLoaded", function(){
   var path = 'R0010042_20190428140253.JPG';
   THREE.ImageUtils.crossOrigin = "*";
+  var width = document.getElementById('wrapper-thviewer-r0010042-20190428140253-jpg').offsetWidth;
+
   var img1 = new ThView({
     id:'thviewer-r0010042-20190428140253-jpg',
     file: path,
-    width: 640,
-    height: 480,
+    width: width,
+    height: width * 0.75,
     rotation: true,
     firstview: 270
     });
@@ -216,20 +218,22 @@ window.addEventListener("load", function(){
 
 
 
-<div style="position:relative;width:640px;">
+<div id='wrapper-thviewer-r0010057-20190429125013-jpg' style="position:relative;width:100%;max-width:640px;">
  <div id='thviewer-r0010057-20190429125013-jpg'></div>
  <img src="/images/23591.svg" style="width:64px; position:absolute; top:0px; right: 0px;"/>
 </div>
-<script>
+<script defer>
 
-window.addEventListener("load", function(){
+window.addEventListener("DOMContentLoaded", function(){
   var path = 'R0010057_20190429125013.JPG';
   THREE.ImageUtils.crossOrigin = "*";
+  var width = document.getElementById('wrapper-thviewer-r0010057-20190429125013-jpg').offsetWidth;
+
   var img1 = new ThView({
     id:'thviewer-r0010057-20190429125013-jpg',
     file: path,
-    width: 640,
-    height: 480,
+    width: width,
+    height: width * 0.75,
     rotation: true,
     firstview: 270
     });

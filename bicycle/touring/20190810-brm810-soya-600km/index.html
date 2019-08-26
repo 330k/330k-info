@@ -197,20 +197,22 @@ function initMap(){
 
 
 
-<div style="position:relative;width:640px;">
+<div id='wrapper-thviewer-r0010322-20190810155931-jpg' style="position:relative;width:100%;max-width:640px;">
  <div id='thviewer-r0010322-20190810155931-jpg'></div>
  <img src="/images/23591.svg" style="width:64px; position:absolute; top:0px; right: 0px;"/>
 </div>
-<script>
+<script defer>
 
-window.addEventListener("load", function(){
+window.addEventListener("DOMContentLoaded", function(){
   var path = 'R0010322_20190810155931.JPG';
   THREE.ImageUtils.crossOrigin = "*";
+  var width = document.getElementById('wrapper-thviewer-r0010322-20190810155931-jpg').offsetWidth;
+
   var img1 = new ThView({
     id:'thviewer-r0010322-20190810155931-jpg',
     file: path,
-    width: 640,
-    height: 480,
+    width: width,
+    height: width * 0.75,
     rotation: true,
     firstview: 270
     });
