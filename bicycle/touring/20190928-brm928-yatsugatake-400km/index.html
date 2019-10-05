@@ -4,25 +4,21 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>ffmpegでDVDをMPEGファイルに変換 - 330k info</title>
+	<title>2019年09月28日 BRM928 八ヶ岳1周 400km - 330k info</title>
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
-	<meta property="og:title" content="ffmpegでDVDをMPEGファイルに変換" />
-<meta property="og:description" content=" 社内でアシスタントからDVDをPCで再生できるようにしたい、という要望を受けたので、 DVDを入れて起動するだけのバッチファイルを作ってみた。
-DVDの中身のVTS_01_1.VOB, VTS_01_2.VOBというファイルをffmpegの-iオプションに指定すれば良いのだが、 パイプ記号「|」を使ってファイル名を連結しなければならない。 ただ、バッチファイル中でパイプ記号が入ると上手く連結できないので、 試行錯誤の結果、一旦「$$」という文字を挟んで連結した後、パイプ記号に変換、という手順になった。
-使い方  以下のテキストをメモ帳にコピー＆ペースト 下のテキスト中でFドライブを指定している部分を各自のドライブ名に変更 拡張子をbatにして保存 DVDを入れてバッチファイルを起動  原則としてバッチファイルと同じフォルダにdvd_yyyymmdd.mpegというファイルが出来上がる
-@ECHO OFF ECHO DVDから普通の動画ファイルへ変換を行います。 ECHO DVDがFドライブに入っていることを確認してください。 PAUSE SET A= FOR %%F IN (&quot;F:\VIDEO_TS\VTS_01_*.VOB&quot;) DO CALL SET A=%%A%%$$%%F SET TIME_TMP=%TIME: =0% SET NOW=%DATE:/=%%TIME_TMP:~0,2%%TIME_TMP:~3,2%%TIME_TMP:~6,2% SET B=&quot;%A:$$=|%&quot; ffmpeg -i &quot;concat:%B:~2,-1%&quot; -target ntsc-dvd -vcodec copy -acodec copy dvd_%NOW%.mpeg ECHO 変換が終了しました。 ECHO 出力ファイル: %~dp0 dvd_%NOW%.mpeg PAUSE  " />
+	<meta property="og:title" content="2019年09月28日 BRM928 八ヶ岳1周 400km" />
+<meta property="og:description" content="四国1000kmに向けて、これまで敬遠していた山岳コースにエントリー。
+   function initMap(){ var map, ctaLayer; map = new google.maps.Map(document.getElementById(&#34;mapcanvas-2019092801-kml&#34;), { center: {lat: 35.6832581, lng: 139.7555827}, zoom: 8 }); ctaLayer = new google.maps.KmlLayer({ url: &#39;https:\/\/www.330k.info\/\/bicycle\/touring\/20190928-brm928-yatsugatake-400km\/2019092801.kml&#39; }); ctaLayer.setMap(map); }     区間 地点 走行距離(km) 到着時刻 クローズ時刻     スタート 神奈川県松田町 十文字橋 0.0 07:00 -   PC1 セブンイレブン 市川大門西店 93.3 11:33 13:12   PC2 セブンイレブン 茅野堀店 161.1 15:03 17:44   PC3 セブンイレブン 小海店 209." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://www.330k.info/essay/convert-dvd-to-mpeg-in-a-batch-file/" />
-<meta property="article:published_time" content="2015-12-17T20:49:00+09:00" />
-<meta property="article:modified_time" content="2015-12-17T20:49:00+09:00" />
+<meta property="og:url" content="https://www.330k.info/bicycle/touring/20190928-brm928-yatsugatake-400km/" />
+<meta property="article:published_time" content="2019-10-05T20:59:45+09:00" />
+<meta property="article:modified_time" content="2019-10-05T20:59:45+09:00" />
 
 	<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="ffmpegでDVDをMPEGファイルに変換"/>
-<meta name="twitter:description" content=" 社内でアシスタントからDVDをPCで再生できるようにしたい、という要望を受けたので、 DVDを入れて起動するだけのバッチファイルを作ってみた。
-DVDの中身のVTS_01_1.VOB, VTS_01_2.VOBというファイルをffmpegの-iオプションに指定すれば良いのだが、 パイプ記号「|」を使ってファイル名を連結しなければならない。 ただ、バッチファイル中でパイプ記号が入ると上手く連結できないので、 試行錯誤の結果、一旦「$$」という文字を挟んで連結した後、パイプ記号に変換、という手順になった。
-使い方  以下のテキストをメモ帳にコピー＆ペースト 下のテキスト中でFドライブを指定している部分を各自のドライブ名に変更 拡張子をbatにして保存 DVDを入れてバッチファイルを起動  原則としてバッチファイルと同じフォルダにdvd_yyyymmdd.mpegというファイルが出来上がる
-@ECHO OFF ECHO DVDから普通の動画ファイルへ変換を行います。 ECHO DVDがFドライブに入っていることを確認してください。 PAUSE SET A= FOR %%F IN (&quot;F:\VIDEO_TS\VTS_01_*.VOB&quot;) DO CALL SET A=%%A%%$$%%F SET TIME_TMP=%TIME: =0% SET NOW=%DATE:/=%%TIME_TMP:~0,2%%TIME_TMP:~3,2%%TIME_TMP:~6,2% SET B=&quot;%A:$$=|%&quot; ffmpeg -i &quot;concat:%B:~2,-1%&quot; -target ntsc-dvd -vcodec copy -acodec copy dvd_%NOW%.mpeg ECHO 変換が終了しました。 ECHO 出力ファイル: %~dp0 dvd_%NOW%.mpeg PAUSE  "/>
+<meta name="twitter:title" content="2019年09月28日 BRM928 八ヶ岳1周 400km"/>
+<meta name="twitter:description" content="四国1000kmに向けて、これまで敬遠していた山岳コースにエントリー。
+   function initMap(){ var map, ctaLayer; map = new google.maps.Map(document.getElementById(&#34;mapcanvas-2019092801-kml&#34;), { center: {lat: 35.6832581, lng: 139.7555827}, zoom: 8 }); ctaLayer = new google.maps.KmlLayer({ url: &#39;https:\/\/www.330k.info\/\/bicycle\/touring\/20190928-brm928-yatsugatake-400km\/2019092801.kml&#39; }); ctaLayer.setMap(map); }     区間 地点 走行距離(km) 到着時刻 クローズ時刻     スタート 神奈川県松田町 十文字橋 0.0 07:00 -   PC1 セブンイレブン 市川大門西店 93.3 11:33 13:12   PC2 セブンイレブン 茅野堀店 161.1 15:03 17:44   PC3 セブンイレブン 小海店 209."/>
 
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -60,10 +56,10 @@ if (!doNotTrack) {
 		<span class="menu__btn-title" tabindex="-1">Menu</span>
 	</button>
 	<ul class="menu__list">
-		<li class="menu__item">
+		<li class="menu__item menu__item--active">
 			<a class="menu__link" href="/bicycle/">Bicycles</a>
 		</li>
-		<li class="menu__item menu__item--active">
+		<li class="menu__item">
 			<a class="menu__link" href="/essay/">Essays</a>
 		</li>
 		<li class="menu__item">
@@ -80,51 +76,249 @@ if (!doNotTrack) {
 <main class="main" role="main">
 	<article class="post">
 		<header class="post__header">
-			<h1 class="post__title">ffmpegでDVDをMPEGファイルに変換</h1>
+			<h1 class="post__title">2019年09月28日 BRM928 八ヶ岳1周 400km</h1>
 			
 		</header><div class="content post__content clearfix">
 			
 
-<p>社内でアシスタントからDVDをPCで再生できるようにしたい、という要望を受けたので、
-DVDを入れて起動するだけのバッチファイルを作ってみた。</p>
+<p>四国1000kmに向けて、これまで敬遠していた山岳コースにエントリー。</p>
 
-<p>DVDの中身のVTS_01_1.VOB, VTS_01_2.VOBというファイルをffmpegの-iオプションに指定すれば良いのだが、
-パイプ記号「|」を使ってファイル名を連結しなければならない。
-ただ、バッチファイル中でパイプ記号が入ると上手く連結できないので、
-試行錯誤の結果、一旦「$$」という文字を挟んで連結した後、パイプ記号に変換、という手順になった。</p>
 
-<h3 id="使い方">使い方</h3>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCir56M7J9LT4-3wDVgG8etGo_HPSMWVBk&callback=initMap" async defer></script>
 
-<ol>
-<li>以下のテキストをメモ帳にコピー＆ペースト</li>
-<li>下のテキスト中でFドライブを指定している部分を各自のドライブ名に変更</li>
-<li>拡張子をbatにして保存</li>
-<li>DVDを入れてバッチファイルを起動</li>
-</ol>
 
-<p>原則としてバッチファイルと同じフォルダにdvd_yyyymmdd.mpegというファイルが出来上がる</p>
 
-<pre><code class="language-DOS">@ECHO OFF
-ECHO DVDから普通の動画ファイルへ変換を行います。
-ECHO DVDがFドライブに入っていることを確認してください。
+<div id="mapcanvas-2019092801-kml" style="width: 100%; height:500px; margin:0; padding: 0"></div>
+<script>
+function initMap(){
+  var map,
+    ctaLayer;
+  map = new google.maps.Map(document.getElementById("mapcanvas-2019092801-kml"), {
+    center: {lat: 35.6832581, lng: 139.7555827},
+    zoom: 8
+  });
+  ctaLayer = new google.maps.KmlLayer({
+    url: 'https:\/\/www.330k.info\/\/bicycle\/touring\/20190928-brm928-yatsugatake-400km\/2019092801.kml'
+  });
+  ctaLayer.setMap(map);
+}
+</script>
 
-PAUSE
+<table>
+<thead>
+<tr>
+<th>区間</th>
+<th>地点</th>
+<th>走行距離(km)</th>
+<th>到着時刻</th>
+<th>クローズ時刻</th>
+</tr>
+</thead>
 
-SET A=
-FOR %%F IN (&quot;F:\VIDEO_TS\VTS_01_*.VOB&quot;) DO CALL SET A=%%A%%$$%%F
+<tbody>
+<tr>
+<td>スタート</td>
+<td>神奈川県松田町 十文字橋</td>
+<td>0.0</td>
+<td>07:00</td>
+<td>-</td>
+</tr>
 
-SET TIME_TMP=%TIME: =0%
-SET NOW=%DATE:/=%%TIME_TMP:~0,2%%TIME_TMP:~3,2%%TIME_TMP:~6,2%
+<tr>
+<td>PC1</td>
+<td>セブンイレブン 市川大門西店</td>
+<td>93.3</td>
+<td>11:33</td>
+<td>13:12</td>
+</tr>
 
-SET B=&quot;%A:$$=|%&quot;
+<tr>
+<td>PC2</td>
+<td>セブンイレブン 茅野堀店</td>
+<td>161.1</td>
+<td>15:03</td>
+<td>17:44</td>
+</tr>
 
-ffmpeg -i &quot;concat:%B:~2,-1%&quot; -target ntsc-dvd -vcodec copy -acodec copy dvd_%NOW%.mpeg
+<tr>
+<td>PC3</td>
+<td>セブンイレブン 小海店</td>
+<td>209.5</td>
+<td>18:03</td>
+<td>21:00</td>
+</tr>
 
-ECHO 変換が終了しました。
-ECHO 出力ファイル: %~dp0 dvd_%NOW%.mpeg
+<tr>
+<td>PC4</td>
+<td>セブンイレブン 小淵沢インター店</td>
+<td>258.0</td>
+<td>21:03</td>
+<td>00:12</td>
+</tr>
 
-PAUSE
-</code></pre>
+<tr>
+<td>PC5</td>
+<td>ローソン 富士川増穂インター店</td>
+<td>304.0</td>
+<td>22:55</td>
+<td>03:16</td>
+</tr>
+
+<tr>
+<td>フィニッシュ</td>
+<td>神奈川県松田町 十文字橋</td>
+<td>401.2</td>
+<td>04:08</td>
+<td>10:00</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="スタート-pc1">スタート - PC1</h2>
+
+<p>残念ながら台風の影響でBRM922千葉200km山だらけは延期となってしまったものの、
+この週は天気もよく、絶好のブルベ日和。</p>
+
+<p>前日に鴨宮駅付近の宿に泊まり、10km弱走ってスタート地点へ。
+途中小田急線の新松田駅にコインロッカーがあることを調べておいたので、持ち歩かない荷物を預けてから受付。</p>
+
+<figure>
+    <img src="DSC_0534.JPG"/> 
+</figure>
+
+
+<p>この日の参加者は30名ほど。</p>
+
+<p>車検を早めに受けることができ、10番目程度にスタート。</p>
+
+<p>主に国道246号線の旧道を走りながら静岡県に入り、最初の登り、籠坂峠へ。</p>
+
+<figure>
+    <img src="DSC_0538.JPG"/> 
+</figure>
+
+
+<p>今回の目標は「膝を傷めない」と「登りで足をつかない」に設定し、北海道の宗谷600の反省から前半は特に抑えて入ったところ、
+籠坂峠までに15人ほどに抜かれた。皆さん元気だなぁ。</p>
+
+<p>さらに籠坂峠を登った後、山中湖を過ぎたところでコンビニで小休止。
+はじめての山岳コースなので慎重に。</p>
+
+<p>その後は河口湖→精進湖の近くを通り、富士川まで一気にダウンヒル。</p>
+
+<p>下りきったところでPC1に到着。</p>
+
+<figure>
+    <img src="DSC_0544.JPG"/> 
+</figure>
+
+
+<h2 id="pc1-pc2">PC1 - PC2</h2>
+
+<p>PC1からはR52の旧道を通って甲府盆地の西端を武川まで徐々に登り、R20に入ってからは少し斜度が上がって長野県に入って富士見峠・・・で終わりではなく、
+さらに登って八ヶ岳エコーラインを走る。</p>
+
+<p>私のちょっと前を走っていた2人の参加者が、八ヶ岳エコーラインへの入り口を間違えていたので大声でミスコースと叫んで、その後PC2まで先導した。</p>
+
+<figure>
+    <img src="DSC_0549.JPG"/> 
+</figure>
+
+
+<p>PC2では結構な数の参加者が休憩していたので、軽く会話しながらしっかり栄養補給。</p>
+
+<h2 id="pc2-pc3">PC2 - PC3</h2>
+
+<p>PC2からは本ブルベのハイライト、麦草峠(2127m)へのヒルクライム。</p>
+
+<p>はじめのうちは水田の風景を楽しみながら登っていたが・・・</p>
+
+<figure>
+    <img src="DSC_0553.JPG"/> 
+</figure>
+
+
+<p>別荘地地帯に入ってからは延々とヒルクライム。
+Garmin先生は頂上までの平均勾配しか表示してくれないので(現在地の斜度は表示するよう設定してない)、「6%」という表示を見ながら
+膝を傷めないようゆっくりゆっくり。</p>
+
+<p>少しポツポツと雨が降り始め、ついに頂上へ。</p>
+
+<figure>
+    <img src="DSC_0568.JPG"/> 
+</figure>
+
+
+<p>幸い、雨は本降りにならず、路面もほぼドライのままだったので、ダウンヒルはスピードに乗って楽しめた。</p>
+
+<p>標高850m近くまで下りた小海のPC3に到着。</p>
+
+<figure>
+    <img src="DSC_0570.JPG"/> 
+</figure>
+
+
+<h2 id="pc3-pc4">PC3 - PC4</h2>
+
+<p>小海から標高1400mの野辺山まではちょっとした登り。</p>
+
+<p>行きは追い風だったので、ここから向かい風に。</p>
+
+<p>標高が高いこともあり、気温も13℃まで下がっていたので無理しないペースでたらたら。</p>
+
+<p>山梨県に入ったところで翌週のグランフォンド八ヶ岳でも使われるコースを使って小淵沢方面へ。</p>
+
+<p>ちょっとした登りを間にはさみつつ、ダウンヒルでここもスピードに乗って小淵沢のPC4へ。</p>
+
+<figure>
+    <img src="DSC_0576.JPG"/> 
+</figure>
+
+
+<h2 id="pc4-pc5">PC4 - PC5</h2>
+
+<p>小淵沢からは行きで使ったコースを逆走、つまり下り。
+R20ではたまに大型トラックがすごいスピードで追い越しをかけてくるので、後方に注意しながら進む。</p>
+
+<p>円野でR20から県道11号に入って富士川へ。意外と信号に引っかかった。</p>
+
+<figure>
+    <img src="DSC_0581.JPG"/> 
+</figure>
+
+
+<p>ちょっと疲れてきて食欲が減退気味だったのだが、メロンパンをコーヒーで流し込む。</p>
+
+<h2 id="pc5-フィニッシュ">PC5 - フィニッシュ</h2>
+
+<p>PC5から精進湖までが本ブルベ最後の大きな登り。</p>
+
+<p>淡々と、を心がけゆっくり登った。</p>
+
+<p>登っている最中は良かったのだが、登りきった後、河口湖付近でちょっと寒くなってきた。
+さらに今回はPC2以降の各PCでコーヒーを飲んでいたため、カフェインの過剰摂取で吐き気がし始めたので、富士吉田で小休止。</p>
+
+<p>コーヒーはやめてホットチャイであたたまる。</p>
+
+<p>再スタート後、山中湖に着いたところで後ろから1名の参加者に追い抜かれた。</p>
+
+<figure>
+    <img src="DSC_0587.JPG"/> 
+</figure>
+
+
+<p>明らかに自分よりペースが速かったのだが、ちょっとだけ並走して会話したところ、精進湖の交差点で仮眠していたとのこと。なるほど、速いわけですな。</p>
+
+<p>籠坂峠の登りでその参加者に千切られた後、ひたすら最後のダウンヒル。</p>
+
+<p>途中2台の車が2車線を塞ぐように停車していたが、事故を起こしたわけではなさそうだったので、減速後おおきく避けた。
+ダウンヒルでスピードが出る区間なので、停め方は考えて欲しい。</p>
+
+<p>膝を傷めないように、普段はラストスパートかけたくなるのを抑えて、04時08分にゴール。</p>
+
+<p>認定時間は21時間08分。</p>
+
+<p>前の平坦基調の400kmが20時間38分だった(しかも速い人に引いてもらった)ことから、目標は22時間、むしろ24時間でもOKと考えていたので、かなり上出来。</p>
 
 		</div>
 		<footer class="post__footer">
@@ -132,8 +326,7 @@ PAUSE
 <div class="post__tags tags clearfix">
 	<svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
 	<ul class="tags__list">
-		<li class="tags__item"><a class="tags__link btn" href="/tags/windows/" rel="tag">Windows</a></li>
-		<li class="tags__item"><a class="tags__link btn" href="/tags/bat/" rel="tag">BAT</a></li>
+		<li class="tags__item"><a class="tags__link btn" href="/tags/%E3%83%84%E3%83%BC%E3%83%AA%E3%83%B3%E3%82%B0/" rel="tag">ツーリング</a></li>
 	</ul>
 </div>
 		</footer>
@@ -143,10 +336,7 @@ PAUSE
 
 <nav class="post-nav flex">
 	<div class="post-nav__item post-nav__item--prev">
-		<a class="post-nav__link" href="/essay/change-c-compiler-in-mathematica/" rel="prev"><span class="post-nav__caption">«&thinsp;Previous</span><p class="post-nav__post-title">Compileで使用するCコンパイラを変更する</p></a>
-	</div>
-	<div class="post-nav__item post-nav__item--next">
-		<a class="post-nav__link" href="/essay/manage_firefox_settings_with_group_policy_without_gpo_for_firefox/" rel="next"><span class="post-nav__caption">Next&thinsp;»</span><p class="post-nav__post-title">Firefoxをグループポリシーで管理する</p></a>
+		<a class="post-nav__link" href="/bicycle/touring/20190815-brm815-shari-asahikawa-300km/" rel="prev"><span class="post-nav__caption">«&thinsp;Previous</span><p class="post-nav__post-title">2019年08月15日 BRM815 斜里旭川300 PW北海道</p></a>
 	</div>
 </nav>
 

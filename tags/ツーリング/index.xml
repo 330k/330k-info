@@ -6,10 +6,20 @@
     <description>Recent content in ツーリング on 330k info</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Mon, 01 Jul 2019 22:44:19 +0900</lastBuildDate>
+    <lastBuildDate>Sat, 05 Oct 2019 20:59:45 +0900</lastBuildDate>
     
 	<atom:link href="https://www.330k.info/tags/%E3%83%84%E3%83%BC%E3%83%AA%E3%83%B3%E3%82%B0/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>2019年09月28日 BRM928 八ヶ岳1周 400km</title>
+      <link>https://www.330k.info/bicycle/touring/20190928-brm928-yatsugatake-400km/</link>
+      <pubDate>Sat, 05 Oct 2019 20:59:45 +0900</pubDate>
+      
+      <guid>https://www.330k.info/bicycle/touring/20190928-brm928-yatsugatake-400km/</guid>
+      <description>四国1000kmに向けて、これまで敬遠していた山岳コースにエントリー。
+  function initMap(){ var map, ctaLayer; map = new google.maps.Map(document.getElementById(&#34;mapcanvas-2019092801-kml&#34;), { center: {lat: 35.6832581, lng: 139.7555827}, zoom: 8 }); ctaLayer = new google.maps.KmlLayer({ url: &#39;https:\/\/www.330k.info\/\/bicycle\/touring\/20190928-brm928-yatsugatake-400km\/2019092801.kml&#39; }); ctaLayer.setMap(map); }     区間 地点 走行距離(km) 到着時刻 クローズ時刻     スタート 神奈川県松田町 十文字橋 0.0 07:00 -   PC1 セブンイレブン 市川大門西店 93.3 11:33 13:12   PC2 セブンイレブン 茅野堀店 161.1 15:03 17:44   PC3 セブンイレブン 小海店 209.</description>
+    </item>
     
     <item>
       <title>2019年07月01日〜08日 東北(国道4号)〜北海道</title>
