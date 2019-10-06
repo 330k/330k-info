@@ -6,10 +6,20 @@
     <description>Recent content in ブルベ on 330k info</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Thu, 15 Aug 2019 21:19:31 +0900</lastBuildDate>
+    <lastBuildDate>Sat, 05 Oct 2019 20:59:45 +0900</lastBuildDate>
     
 	<atom:link href="https://www.330k.info/tags/%E3%83%96%E3%83%AB%E3%83%99/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>2019年09月28日 BRM928 八ヶ岳1周 400km</title>
+      <link>https://www.330k.info/bicycle/touring/20190928-brm928-yatsugatake-400km/</link>
+      <pubDate>Sat, 05 Oct 2019 20:59:45 +0900</pubDate>
+      
+      <guid>https://www.330k.info/bicycle/touring/20190928-brm928-yatsugatake-400km/</guid>
+      <description>四国1000kmに向けて、これまで敬遠していた山岳コースにエントリー。
+  function initMap(){ var map, ctaLayer; map = new google.maps.Map(document.getElementById(&#34;mapcanvas-2019092801-kml&#34;), { center: {lat: 35.6832581, lng: 139.7555827}, zoom: 8 }); ctaLayer = new google.maps.KmlLayer({ url: &#39;https:\/\/www.330k.info\/\/bicycle\/touring\/20190928-brm928-yatsugatake-400km\/2019092801.kml&#39; }); ctaLayer.setMap(map); }     区間 地点 距離(km) クローズ時刻 到着時刻     スタート 神奈川県松田町 十文字橋 0.0 - 09/28 07:00   PC1 セブンイレブン 市川大門西店 93.3 09/28 13:12 09/28 11:33   PC2 セブンイレブン 茅野堀店 161.1 09/28 17:44 09/28 15:03   PC3 セブンイレブン 小海店 209.</description>
+    </item>
     
     <item>
       <title>2019年08月15日 BRM815 斜里旭川300 PW北海道</title>
@@ -18,8 +28,7 @@
       
       <guid>https://www.330k.info/bicycle/touring/20190815-brm815-shari-asahikawa-300km/</guid>
       <description>600km→400km→200km→300kmのブルベを連続で行うPW北海道に参加。 最後の300km。
-  function initMap(){ var map, ctaLayer; map = new google.maps.Map(document.getElementById(&#34;mapcanvas-2019081501-kml&#34;), { center: {lat: 35.6832581, lng: 139.7555827}, zoom: 8 }); ctaLayer = new google.maps.KmlLayer({ url: &#39;https:\/\/www.330k.info\/\/bicycle\/touring\/20190815-brm815-shari-asahikawa-300km\/2019081501.kml&#39; }); ctaLayer.setMap(map); }     日付 出発地 到着地 走行距離(km) 走行時間 最高速度(km/h) 平均速度(km/h) 主な経路 景勝地     2019年08月15日 斜里 旭川 305.70 11:20:46 65.0 26.9 紋別 能取岬、サロマ湖、浮島峠    昨日よりも1時間早いスタートのため、それに合わせて5時20分に知床斜里駅前へ。 他の参加者ともだいぶ顔なじみとなってきた。
-  window.addEventListener(&#34;DOMContentLoaded&#34;, function(){ var path = &#39;R0010486_20190815052039.JPG&#39;; THREE.</description>
+  function initMap(){ var map, ctaLayer; map = new google.maps.Map(document.getElementById(&#34;mapcanvas-2019081501-kml&#34;), { center: {lat: 35.6832581, lng: 139.7555827}, zoom: 8 }); ctaLayer = new google.maps.KmlLayer({ url: &#39;https:\/\/www.330k.info\/\/bicycle\/touring\/20190815-brm815-shari-asahikawa-300km\/2019081501.kml&#39; }); ctaLayer.setMap(map); }     区間 地点 距離(km) クローズ時刻 到着時刻     スタート 北海道 知床斜里駅前 0.0 - 08/15 06:00   PC1 セイコーマート 紋別大山店 164.4 08/15 16:56 08/15 13:20   フィニッシュ セイコーマート 旭川2条通店 303.1 08/16 02:00 08/15 20:53    昨日よりも1時間早いスタートのため、それに合わせて5時20分に知床斜里駅前へ。 他の参加者ともだいぶ顔なじみとなってきた。</description>
     </item>
     
     <item>
@@ -29,9 +38,7 @@
       
       <guid>https://www.330k.info/bicycle/touring/20190814-brm814-shiretoko-200km/</guid>
       <description>600km→400km→200km→300kmのブルベを連続で行うPW北海道に参加。 2つ目の400kmを膝の痛みでDNSし、3つ目の200kmから再参加。
-  function initMap(){ var map, ctaLayer; map = new google.maps.Map(document.getElementById(&#34;mapcanvas-2019081401-kml&#34;), { center: {lat: 35.6832581, lng: 139.7555827}, zoom: 8 }); ctaLayer = new google.maps.KmlLayer({ url: &#39;https:\/\/www.330k.info\/\/bicycle\/touring\/20190814-brm814-shiretoko-200km\/2019081401.kml&#39; }); ctaLayer.setMap(map); }     日付 出発地 到着地 走行距離(km) 走行時間 最高速度(km/h) 平均速度(km/h) 主な経路 景勝地     2019年08月14日 斜里 斜里 210.05 9:01:45 68.8 23.3 ウトロ、羅臼、野付半島、根北峠 知床峠    前日は旭川から斜里まで鈍行で移動。
-途中、北見で30分の停車があったので、そのスキに北見のドラッグストアで飲む痛み止めを購入(残念ながらロキソニンは見つけられなかったので、代替のものを購入)。   さて、斜里駅に午前6時20分に行って受付を済ませ、7時にスタート。
-  window.addEventListener(&#34;DOMContentLoaded&#34;, function(){ var path = &#39;R0010347_20190814065657.</description>
+  function initMap(){ var map, ctaLayer; map = new google.maps.Map(document.getElementById(&#34;mapcanvas-2019081401-kml&#34;), { center: {lat: 35.6832581, lng: 139.7555827}, zoom: 8 }); ctaLayer = new google.maps.KmlLayer({ url: &#39;https:\/\/www.330k.info\/\/bicycle\/touring\/20190814-brm814-shiretoko-200km\/2019081401.kml&#39; }); ctaLayer.setMap(map); }     区間 地点 距離(km) クローズ時刻 到着時刻     スタート 北海道 知床斜里駅前 0.0 - 08/14 07:00   PC1 セイコーマート ウトロ店 37.5 08/14 09:54 08/14 08:19   PC2 野付半島ネイチャーセンター 135.1 08/14 16:00 08/14 13:49   フィニッシュ ローソン 斜里朝日町店 208.</description>
     </item>
     
     <item>
@@ -41,11 +48,7 @@
       
       <guid>https://www.330k.info/bicycle/touring/20190810-brm810-soya-600km/</guid>
       <description>600km→400km→200km→300kmのブルベを連続で行うPW北海道に参加。初日は600km。
-  function initMap(){ var map, ctaLayer; map = new google.maps.Map(document.getElementById(&#34;mapcanvas-2019081001-kml&#34;), { center: {lat: 35.6832581, lng: 139.7555827}, zoom: 8 }); ctaLayer = new google.maps.KmlLayer({ url: &#39;https:\/\/www.330k.info\/\/bicycle\/touring\/20190810-brm810-soya-600km\/2019081001.kml&#39; }); ctaLayer.setMap(map); }     日付 出発地 到着地 走行距離(km) 走行時間 最高速度(km/h) 平均速度(km/h) 主な経路 景勝地     2019年08月10日 滝川 滝川 608.33 25:25:40 61.8 23.9 留萌、ノシャップ岬、宗谷岬、音威子府、名寄、朱鞠内湖、深川 オロロンライン    スタートまで 前日の8月9日を有給休暇として、羽田から新千歳空港までスカイマークで飛行機輪行して北海道入り。
-その後は鉄道で札幌まで快速エアポート、札幌から砂川まで特急ライラック。
-スタート地点は滝川なのだが、滝川市内のホテルを取れなかったため、15kmほど手前の砂川に宿泊。
-部屋の中で自転車の輪行解除して良い、というホテルのご厚意もあり、しっかり準備できた。
-1日目 (スタート - PC4) あいにくの雨模様のなか、砂川のホテルを6時半に出発し、7時過ぎにスタート地点に到着。 受付を済ませてしばらく待機。</description>
+  function initMap(){ var map, ctaLayer; map = new google.maps.Map(document.getElementById(&#34;mapcanvas-2019081001-kml&#34;), { center: {lat: 35.6832581, lng: 139.7555827}, zoom: 8 }); ctaLayer = new google.maps.KmlLayer({ url: &#39;https:\/\/www.330k.info\/\/bicycle\/touring\/20190810-brm810-soya-600km\/2019081001.kml&#39; }); ctaLayer.setMap(map); }     区間 地点 距離(km) クローズ時刻 到着時刻     スタート 北海道 滝川ふれ愛の里 0.0 - 08/10 08:00   PC1 セイコーマート 鬼鹿店 81.1 08/10 13:24 08/10 10:52   PC2 セイコーマート 天塩川口店 168.3 08/10 19:12 08/10 14:51   PC3 セイコーマート えびす店 238.</description>
     </item>
     
     <item>
@@ -57,12 +60,7 @@
       <description>とりあえず申し込んでいた2つ目の600kmブルベ。
 直前に津波を伴う震度6強の地震が新潟北部で発生し、開催が危ぶまれたものの、一部コースを変更して無事開催。
 DNSを真剣に考えていたけれど、レンタカーによる移動、予め仮眠場所にホテルを予約しておくなど、今回初めての試みもあるので、それらのテストも兼ねて出走を決意。
-  function initMap(){ var map, ctaLayer; map = new google.maps.Map(document.getElementById(&#34;mapcanvas-2019062201-kml&#34;), { center: {lat: 35.6832581, lng: 139.7555827}, zoom: 8 }); ctaLayer = new google.maps.KmlLayer({ url: &#39;https:\/\/www.330k.info\/\/bicycle\/touring\/20190622-brm622gunma600km-niigata\/2019062201.kml&#39; }); ctaLayer.setMap(map); }     日付 出発地 到着地 走行距離(km) 走行時間 最高速度(km/h) 平均速度(km/h) 主な経路 景勝地     2019年06月22日 新潟市秋津 新潟市秋津 612.52 25:38:35 63.2 23.9 村上、胎内、柏崎、上越、津南、魚沼、栃尾     前日 前日の金曜日、フレックスで14時過ぎに退勤し、自宅近くの日産レンタカーでNV200を借りて自宅の駐車場に置いて自転車を載せる。
-後部座席の倒し方がわからなかったのだが、なんと倒さなくても自転車をそのまま入れることができた。
-その他着替え等の準備をして関越道経由で新潟市まで。
-大きな車を運転するのは初めてだったのだが、車幅の感覚はすぐに慣れることができた一方、長さの感覚は難しく、自宅近くの狭い路地を抜けるのに少しヒヤヒヤ。
-途中PAで夕食をとり、予約していた宿、ファミリーロッジ旅籠屋新潟南店で宿泊。
-スタート - CP1 朝5時に起床して、スタート地点まで運転して移動。 駐車場に停めて自転車のチェックを終え、受付をすませブリーフィングまで車内で休憩。</description>
+  function initMap(){ var map, ctaLayer; map = new google.maps.Map(document.getElementById(&#34;mapcanvas-2019062201-kml&#34;), { center: {lat: 35.6832581, lng: 139.7555827}, zoom: 8 }); ctaLayer = new google.maps.KmlLayer({ url: &#39;https:\/\/www.330k.info\/\/bicycle\/touring\/20190622-brm622gunma600km-niigata\/2019062201.kml&#39; }); ctaLayer.setMap(map); }     区間 地点 距離(km) クローズ時刻 到着時刻     スタート 新潟県 新津 里山ビジターセンター 0.0 - 06/22 07:00   PC1 セブンイレブン 山北勝木店 149.8 06/22 17:00 06/22 13:00   通過C ファミリーマート 柏崎鯨波店 339.4 - 06/22 22:13   通過C セブンイレブン 津南町正面店 465.</description>
     </item>
     
     <item>
@@ -72,7 +70,7 @@ DNSを真剣に考えていたけれど、レンタカーによる移動、予�
       
       <guid>https://www.330k.info/bicycle/touring/20190601-brm601-hitachi-600km/</guid>
       <description>SR取得に向けて最後の600km。12連勤後にチャレンジ。
-  function initMap(){ var map, ctaLayer; map = new google.maps.Map(document.getElementById(&#34;mapcanvas-2019060101-kml&#34;), { center: {lat: 35.6832581, lng: 139.7555827}, zoom: 8 }); ctaLayer = new google.maps.KmlLayer({ url: &#39;https:\/\/www.330k.info\/\/bicycle\/touring\/20190601-brm601-hitachi-600km\/2019060101.kml&#39; }); ctaLayer.setMap(map); }     日付 出発地 到着地 走行距離(km) 走行時間 最高速度(km/h) 平均速度(km/h) 主な経路 景勝地     2019年06月01日 二子玉川 二子玉川 603.23 25:27:45 56.9 23.7 飯能, 深谷, 小山, さくら, 日立     スタート - PC1 まずはスタート地点まで自宅から25km自走。 午前4時45分に出発し、スタート地点には午前6時ちょうどに到着。 ちょうど6時スタート組がスタートしているところだった。</description>
+  function initMap(){ var map, ctaLayer; map = new google.maps.Map(document.getElementById(&#34;mapcanvas-2019060101-kml&#34;), { center: {lat: 35.6832581, lng: 139.7555827}, zoom: 8 }); ctaLayer = new google.maps.KmlLayer({ url: &#39;https:\/\/www.330k.info\/\/bicycle\/touring\/20190601-brm601-hitachi-600km\/2019060101.kml&#39; }); ctaLayer.setMap(map); }     区間 地点 距離(km) クローズ時刻 到着時刻     スタート 東京都 兵庫島公園 0.0 - 06/01 07:00   PC1 セブンイレブン 青梅畑中３丁目店 48.5 06/01 10:27 06/01 09:23   PC2 ファミリーマート ヤマキ花園店 99.8 06/01 13:40 06/01 12:01   PC3 セブンイレブン 小山生駒店 163.</description>
     </item>
     
     <item>
@@ -81,11 +79,7 @@ DNSを真剣に考えていたけれど、レンタカーによる移動、予�
       <pubDate>Mon, 22 Apr 2019 21:28:58 +0900</pubDate>
       
       <guid>https://www.330k.info/bicycle/touring/20190420-brm420-attack-oinokoji-400km/</guid>
-      <description>function initMap(){ var map, ctaLayer; map = new google.maps.Map(document.getElementById(&#34;mapcanvas-2019042001-kml&#34;), { center: {lat: 35.6832581, lng: 139.7555827}, zoom: 8 }); ctaLayer = new google.maps.KmlLayer({ url: &#39;https:\/\/www.330k.info\/\/bicycle\/touring\/20190420-brm420-attack-oinokoji-400km\/2019042001.kml&#39; }); ctaLayer.setMap(map); }     日付 出発地 到着地 走行距離(km) 走行時間 最高速度(km/h) 平均速度(km/h) 主な経路 景勝地     2019年04月20日 入間市 入間市 402.55 16:43:55 24.1 52.7 中之条、桐生、老越路、宇都宮、桜川 老越路峠    今年3回目のブルベは400kmに挑戦。
-Start - PC1 前日は入間市内のホテル「入間第一ホテル」に宿泊。 前回の300kmの反省を生かし、今回は連泊で予約。
-ホテルからスタート地点まではすぐ。
-6時50分にホテルを出発し、7時過ぎにスタート地点に到着し、受付完了。
-  今日も天気が良さそうで何より。</description>
+      <description>function initMap(){ var map, ctaLayer; map = new google.maps.Map(document.getElementById(&#34;mapcanvas-2019042001-kml&#34;), { center: {lat: 35.6832581, lng: 139.7555827}, zoom: 8 }); ctaLayer = new google.maps.KmlLayer({ url: &#39;https:\/\/www.330k.info\/\/bicycle\/touring\/20190420-brm420-attack-oinokoji-400km\/2019042001.kml&#39; }); ctaLayer.setMap(map); }     区間 地点 距離(km) クローズ時刻 到着時刻     スタート 埼玉県入間市 豊水橋 0.0 - 04/20 08:00   PC1 セブンイレブン 高崎城山団地入口店 69.0 04/20 12:36 04/20 11:02   PC2 ローソン 吾妻岩井店 121.6 04/20 16:08 04/20 13:40   PC3 セブンイレブン 宇都宮下栗一丁目店 254.</description>
     </item>
     
     <item>
@@ -94,10 +88,7 @@ Start - PC1 前日は入間市内のホテル「入間第一ホテル」に宿�
       <pubDate>Mon, 25 Mar 2019 22:07:13 +0900</pubDate>
       
       <guid>https://www.330k.info/bicycle/touring/20190324-brm324-tsukuba200/</guid>
-      <description>function initMap(){ var map, ctaLayer; map = new google.maps.Map(document.getElementById(&#34;mapcanvas-2019032401-kml&#34;), { center: {lat: 35.6832581, lng: 139.7555827}, zoom: 8 }); ctaLayer = new google.maps.KmlLayer({ url: &#39;https:\/\/www.330k.info\/\/bicycle\/touring\/20190324-brm324-tsukuba200\/2019032401.kml&#39; }); ctaLayer.setMap(map); }     日付 出発地 到着地 走行距離(km) 走行時間 最高速度(km/h) 平均速度(km/h) 主な経路 景勝地     2019年03月24日 金町 金町 205.62 9:25:16 55.7 21.8 一本杉峠、湯袋峠、風返峠、表筑波スカイライン きのこ山    今年2回めのブルベ。 スタート＆ゴール地点が自走できる場所だったBRM324つくば200に参加した。
-Start - PC1 スタートは金町の江戸川CR葛飾橋下から。 スタート地点までは自走で13kmちょっとなので、ブリーフィングが始まる6時頃に着くように自宅を出発。
-ほぼ予定通り、受付後すぐにブリーフィング開始。
-  ブリーフィングでは下記の注意事項。</description>
+      <description>function initMap(){ var map, ctaLayer; map = new google.maps.Map(document.getElementById(&#34;mapcanvas-2019032401-kml&#34;), { center: {lat: 35.6832581, lng: 139.7555827}, zoom: 8 }); ctaLayer = new google.maps.KmlLayer({ url: &#39;https:\/\/www.330k.info\/\/bicycle\/touring\/20190324-brm324-tsukuba200\/2019032401.kml&#39; }); ctaLayer.setMap(map); }     区間 地点 距離(km) クローズ時刻 到着時刻     スタート 東京都葛飾区葛飾大橋 0.0 - 06:50   PC1 セイコーマート 石岡宇治会店 88.2 12:42 10:24   PC2 セブンイレブン 龍ケ崎文化会館前店 163.0 17:42 15:27   フィニッシュ セブンイレブン 松戸小山店 202.8 20:20 17:31    今年2回めのブルベ。 スタート＆ゴール地点が自走できる場所だったBRM324つくば200に参加した。</description>
     </item>
     
     <item>
