@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>ブルベ on 330k info</title>
@@ -98,7 +98,7 @@ DNSを真剣に考えていたけれど、レンタカーによる移動、予�
       <pubDate>Mon, 25 Mar 2019 22:07:13 +0900</pubDate>
       
       <guid>https://www.330k.info/bicycle/touring/20190324-brm324-tsukuba200/</guid>
-      <description>function initMap(){ var map, ctaLayer; map = new google.maps.Map(document.getElementById(&#34;mapcanvas-2019032401-kml&#34;), { center: {lat: 35.6832581, lng: 139.7555827}, zoom: 8 }); ctaLayer = new google.maps.KmlLayer({ url: &#39;https:\/\/www.330k.info\/\/bicycle\/touring\/20190324-brm324-tsukuba200\/2019032401.kml&#39; }); ctaLayer.setMap(map); }     区間 地点 距離(km) クローズ時刻 到着時刻     スタート 東京都葛飾区葛飾大橋 0.0 - 06:50   PC1 セイコーマート 石岡宇治会店 88.2 12:42 10:24   PC2 セブンイレブン 龍ケ崎文化会館前店 163.0 17:42 15:27   フィニッシュ セブンイレブン 松戸小山店 202.8 20:20 17:31    今年2回めのブルベ。 スタート＆ゴール地点が自走できる場所だったBRM324つくば200に参加した。</description>
+      <description>function initMap(){ var map, ctaLayer; map = new google.maps.Map(document.getElementById(&#34;mapcanvas-2019032401-kml&#34;), { center: {lat: 35.6832581, lng: 139.7555827}, zoom: 8 }); ctaLayer = new google.maps.KmlLayer({ url: &#39;https:\/\/www.330k.info\/\/bicycle\/touring\/20190324-brm324-tsukuba200\/2019032401.kml&#39; }); ctaLayer.setMap(map); }     区間 地点 距離(km) クローズ時刻 到着時刻     スタート 東京都葛飾区 葛飾大橋 0.0 - 03/24 06:50   PC1 セイコーマート 石岡宇治会店 88.2 03/24 12:42 03/24 10:24   PC2 セブンイレブン 龍ケ崎文化会館前店 163.0 03/24 17:42 03/24 15:27   フィニッシュ セブンイレブン 松戸小山店 202.</description>
     </item>
     
     <item>
