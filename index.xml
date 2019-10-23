@@ -18,7 +18,7 @@
       
       <guid>https://www.330k.info/bicycle/touring/20191011-brm1011-shikoku-1000km/</guid>
       <description>今シーズン最長の1000kmに挑戦。四国の東西南北の先端部をめぐる1000km。台風が四国を直撃しないことを祈りつつ参加。
-  function initMap(){ var map, ctaLayer; map = new google.maps.Map(document.getElementById(&#34;mapcanvas-brm1011-all-kml&#34;), { center: {lat: 35.6832581, lng: 139.7555827}, zoom: 8 }); ctaLayer = new google.maps.KmlLayer({ url: &#39;https:\/\/www.330k.info\/\/bicycle\/touring\/20191011-brm1011-shikoku-1000km\/brm1011_all.kml&#39; }); ctaLayer.setMap(map); }     区間 地点 距離(km) クローズ時刻(参考) 到着時刻     スタート 愛媛県新居浜市 黒島海浜公園 0.0 - 10&amp;frasl;11 18:00   PC1 ファミリーマート さぬき津田店 126.0 (10&amp;frasl;12 02:24) 10&amp;frasl;11 23:57   PC2 ローソン 那賀町和食郷店 262.7 (10&amp;frasl;12 11:32) 10&amp;frasl;12 07:25   PC3 ファミリーマート 土佐市宇佐店 414.</description>
+  function initMap(){ var map, ctaLayer; map = new google.maps.Map(document.getElementById(&#34;mapcanvas-brm1011-all-kml&#34;), { center: {lat: 35.6832581, lng: 139.7555827}, zoom: 8 }); ctaLayer = new google.maps.KmlLayer({ url: &#39;https:\/\/www.330k.info\/\/bicycle\/touring\/20191011-brm1011-shikoku-1000km\/brm1011_all.kml&#39; }); ctaLayer.setMap(map); }     区間 地点 距離(km) クローズ時刻(参考) 到着時刻     スタート 愛媛県新居浜市 黒島海浜公園 0.0 - 10/11 18:00   PC1 ファミリーマート さぬき津田店 126.0 (10/12 02:24) 10/11 23:57   PC2 ローソン 那賀町和食郷店 262.7 (10/12 11:32) 10/12 07:25   PC3 ファミリーマート 土佐市宇佐店 414.</description>
     </item>
     
     <item>
@@ -192,9 +192,9 @@ Google先生のPageSpeed Insightに注意されたとおり、レンダリング
       <description>ある書物で、地球の半径を東大生の何割かがオーダーが違うレベルで間違う、ということが書いてあった(誰の著作だったか忘れてしまった・・・)。
 ただ、地球の周長や半径の概数は、暗記する必要はまったくない。
 なぜなら、「1キロメートルの基準が、赤道から北極までの長さの1万分の1」としてメートル法が決められたから。 覚えるのはこれだけで良い。
-だから、地球一周は4倍の約40,000 km。半径は円周率で割って約6,400 kmというのは計算で出せる。
+だから、地球一周は4倍の約40,000 km。半径は円周率の2倍で割って約6,400 kmというのは計算で出せる。
 正確な数値としては、極周長が40,075 km、赤道周長が39,941 km、半径が6,357 km。
-ちなみに、メートル法が地球を基準にしたのは、 フランス革命後にそれまでの為政者が使用させていた単位(インチやフィートは指や足の長さが由来で、権威を高めるため普通の人のサイズよりも大きめになっている(例えば1foot = 30cm))をやめて、 全世界で共通で使える単位を作ろう、という目的でメートル法が作られたから。
+ちなみに、メートル法が地球を基準にしたのは、 フランス革命後にそれまでの為政者が使用させていた単位(インチやフィートは指や足の長さが由来で、1 footが約30cmなどのように権威を高めるため普通の人のサイズよりも大きめになっている)をやめて、 全世界で共通で使える単位を作ろう、という目的でメートル法が作られたから。
 メートル法はフランス革命由来なので、国際単位系は英語のInternational System of Unitsではなく、フランス語のSystème International d&amp;rsquo;unitésの語順でSIと呼ばれる。</description>
     </item>
     
