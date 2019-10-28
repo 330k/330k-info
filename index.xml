@@ -6,10 +6,21 @@
     <description>Recent content on 330k info</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Fri, 18 Oct 2019 20:48:35 +0900</lastBuildDate>
+    <lastBuildDate>Mon, 28 Oct 2019 18:16:38 +0900</lastBuildDate>
     
 	<atom:link href="https://www.330k.info/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>2019年10月26日 BRM1026 宇都宮300km 栃木路</title>
+      <link>https://www.330k.info/bicycle/touring/20191026-brm1026-utsunomiya-300km/</link>
+      <pubDate>Mon, 28 Oct 2019 18:16:38 +0900</pubDate>
+      
+      <guid>https://www.330k.info/bicycle/touring/20191026-brm1026-utsunomiya-300km/</guid>
+      <description>認定が取れるブルベとしては今シーズン最後。
+前回の四国1000kmで余力を使い果たした反省から、タイムにこだわって走ってみた。
+  function initMap(){ var map, ctaLayer; map = new google.maps.Map(document.getElementById(&#34;mapcanvas-2019102601-kml&#34;), { center: {lat: 35.6832581, lng: 139.7555827}, zoom: 8 }); ctaLayer = new google.maps.KmlLayer({ url: &#39;https:\/\/www.330k.info\/\/bicycle\/touring\/20191026-brm1026-utsunomiya-300km\/2019102601.kml&#39; }); ctaLayer.setMap(map); }     区間 地点 距離(km) クローズ時刻 到着時刻     スタート 栃木県宇都宮市 道の駅うつのみや 0.0 - 10/26 06:05   PC1 ファミリーマート 塩原温泉店 68.5 10/26 10:41 10/26 09:07   PC2 セブンイレブン ：那須伊王野店 116.6 10/26 13:53 10/26 11:02   PC3 セブンイレブン 二宮バイパス店 198.</description>
+    </item>
     
     <item>
       <title>2019年10月11日 BRM1011 四国一周1000km</title>

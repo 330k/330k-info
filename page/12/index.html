@@ -13,7 +13,7 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://www.330k.info/" />
 
-<meta property="og:updated_time" content="2019-10-18T20:48:35+09:00" />
+<meta property="og:updated_time" content="2019-10-28T18:16:38+09:00" />
 
 	<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="330k info"/>
@@ -75,6 +75,24 @@ if (!doNotTrack) {
 			
 <main class="main list" role="main">
 	<article class="list__item post">
+	<header class="list__header">
+		<h3 class="list__title post__title ">
+			<a href="/essay/attention-to-show-data-in-combination-of-google-sites-and-google-analytics/" rel="bookmark">
+			Google Sites &#43; Google Analyticsで「サイト上のデータ表示」は要注意
+			</a>
+		</h3>
+		
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		Google SitesではGoogle Analyticsを用いる設定が簡単にできるが、Google Analyticsの「サイト上のデータ表示」を行うと「閉じる」をクリックしても何の反応がない。 画面にレイヤーが重なっていろいろなデータが表示されてしまう状態から抜けられない。
+ネットを調べたところ、「閉じる」が見つからないために同じような現象に遭遇している事例は見つかったが、 「閉じる」をクリックしても、
+_siteOverlay._close()  をアドレスバーに打ち込んでもダメだった。 おそらくGoogle Sitesを利用している場合特有の現象なのだろう。
+この現象が発生することを確認したブラウザは
+ Google Chrome 4.0.237.0 Mozilla Firefox 3.5.5 Opera 10 Internet Explorer 8  で、いずれもOSはWindows Vista(32ビット)。ちなみにIE8ではレイアウトも崩れていた。
+仕方がないので_siteOverlay.close()の中身をちょっと調べた。
+function () { var domain, cookiePath; if (GLOBAL_window._udo) { domain = GLOBAL_window._udo; } else if (GLOBAL_window._gat &amp;&amp; GLOBAL_window._gat._gasoDomain) { domain = GLOBAL_window._gat._gasoDomain; } if (domain) { domain = domain[$$PROP_replace](&quot;domain=&quot;, &quot;&quot;)[$$PROP_replace](&quot;;&quot;, &quot;&quot;)[$$PROP_replace](/ /g, &quot;&quot;); } if (GLOBAL_window._utcp) { cookiePath = GLOBAL_window._utcp; } else if (GLOBAL_window.
+	</div>
+</article><article class="list__item post">
 	<figure class="list__thumbnail">
 		<a href="https://www.330k.info/bicycle/touring/20091107-08-toukaimuraibaraki/">
 			<img src="/bicycle/touring/20091107-08-toukaimuraibaraki/CIMG3535.jpg" alt="2009年11月07日〜08日 東海村(茨城)" />
@@ -278,30 +296,6 @@ A = {ax, ay}; B = {bx, by}; P = {px, py}; H = {x, y}; Solve[{ (H - A).(P - H) ==
     その後教授ほか研究室のメンバーと富津海岸で待ち合わせに行き、久しぶりの海水浴を楽しんだ。
   100km以上走って、海水浴場ではしゃぎ、最終的に教授宅でアルコール、という3連荘は体力的にきつく、翌日も疲労困憊だった。
 	</div>
-</article><article class="list__item post">
-	<figure class="list__thumbnail">
-		<a href="https://www.330k.info/bicycle/touring/20090308-10-imaichi/">
-			<img src="/bicycle/touring/20090308-10-imaichi/CA3A0023.jpg" alt="2009年03月08日〜10日 今市" />
-		</a>
-	</figure>
-	<header class="list__header">
-		<h3 class="list__title post__title ">
-			<a href="/bicycle/touring/20090308-10-imaichi/" rel="bookmark">
-			2009年03月08日〜10日 今市
-			</a>
-		</h3>
-		
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		function initMap(){ var map, ctaLayer; map = new google.maps.Map(document.getElementById("mapcanvas-20090308-10-kml"), { center: {lat: 35.6832581, lng: 139.7555827}, zoom: 8 }); ctaLayer = new google.maps.KmlLayer({ url: 'https:\/\/www.330k.info\/\/bicycle\/touring\/20090308-10-imaichi\/20090308-10.kml' }); ctaLayer.setMap(map); }  ホッケー部の後輩たちが今市(栃木県日光市)にある今市青少年スポーツセンターで合宿をする、とのことなので、先輩OBと2人で自転車で参加することになった。
-1日目 天候が最大の不安であったが、なんとか雨は降らない模様。 先輩OBが住む北千住駅前で9時に待ち合わせのため、ホッケー用のウェアや靴をパニアバッグに詰め込んで自宅を8時過ぎに出発。
-明治通りを王子駅まですすみ、その後荒川まで北上、あとは荒川河川敷のサイクリングロードを千住大橋まで行ってから南に行って北千住駅まで走った。
-先輩と合流したら、江戸川サイクリングロードを目指す。 下町の細い路地に多少迷いながらも江戸川に到着、あとはサイクリングロードを飛ばすだけ・・・と思っていたが、 強烈な向かい風(季節風) 単調な上り坂 (川沿いだから) 休憩のタイミングがとりづらい(信号がない) ため思ったようには進めず、巡航速度も20km/hそこそこ。
-  そのため当初は江戸川サイクリングロード→利根渡良瀬サイクリングロード→思川サイクリングロードと進む予定だったがサイクリングロードメインのルートは断念し、国道16号に出て吉野家で昼食をとった後、国道4号バイパスを通ることに。 国道4号バイパスは側道が広くて自転車にとっては非常に走りやすい。 ただ物資補給のために立ち寄りたいコンビニが少なかった。
-    順調に埼玉県→茨城県→栃木県と進み、しばらくして国道4号旧道に入り、雀宮駅前にある1日目の宿に到着。
-  自転車をホテルに置いた後、電車で宇都宮に行って餃子を食べて翌日に備えた。
- 走行時間 : 6時間3分26秒 走行距離 : 119.45km 平均速度 : 19.7km/h 最高速度 : 41.5km/h  2日目 朝起きたところ夜に雨が降った様子もなく、路面の状態は良好。 いざ今市青少年スポーツセンターへ。
-	</div>
 </article>
 </main>
 
@@ -328,6 +322,7 @@ A = {ax, ay}; B = {bx, by}; P = {px, py}; H = {x, y}; Solve[{ (H - A).(P - H) ==
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20191026-brm1026-utsunomiya-300km/">2019年10月26日 BRM1026 宇都宮300km 栃木路</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20191011-brm1011-shikoku-1000km/">2019年10月11日 BRM1011 四国一周1000km</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20190928-brm928-yatsugatake-400km/">2019年09月28日 BRM928 八ヶ岳1周 400km</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20190815-brm815-shari-asahikawa-300km/">2019年08月15日 BRM815 斜里旭川300 PW北海道</a></li>
@@ -337,7 +332,6 @@ A = {ax, ay}; B = {bx, by}; P = {px, py}; H = {x, y}; Solve[{ (H - A).(P - H) ==
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20190622-brm622gunma600km-niigata/">2019年06月22日 BRM622群馬600(新潟周回)</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20190601-brm601-hitachi-600km/">2019年06月01日 BRM601 日立600</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20190428-aizu/">2019年04月28日〜29日 会津</a></li>
-			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20190420-brm420-attack-oinokoji-400km/">2019年04月20日 BRM420 埼玉400km アタック老越路</a></li>
 		</ul>
 	</div>
 </div>
@@ -382,7 +376,7 @@ A = {ax, ay}; B = {bx, by}; P = {px, py}; H = {x, y}; Solve[{ (H - A).(P - H) ==
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%82%a2%e3%83%ab%e3%82%b4%e3%83%aa%e3%82%ba%e3%83%a0" title="アルゴリズム">アルゴリズム (5)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%83%84%e3%83%bc%e3%83%aa%e3%83%b3%e3%82%b0" title="ツーリング">ツーリング (46)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%83%91%e3%83%af%e3%83%8f%e3%83%a9" title="パワハラ">パワハラ (5)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%83%96%e3%83%ab%e3%83%99" title="ブルベ">ブルベ (11)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%83%96%e3%83%ab%e3%83%99" title="ブルベ">ブルベ (12)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e7%94%9f%e6%b4%bb" title="生活">生活 (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e7%a4%be%e5%86%85se" title="社内se">社内se (15)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e8%87%aa%e8%bb%a2%e8%bb%8a" title="自転車">自転車 (9)</a>
