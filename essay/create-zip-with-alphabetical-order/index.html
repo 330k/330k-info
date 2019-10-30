@@ -92,12 +92,12 @@ if (!doNotTrack) {
 <p>やっていることは</p>
 
 <ol>
-<li>lsに-1オプションをつけてファイル1行ずつでファイル名を出力(デフォルトでは文字コード順)</li>
-<li>zipに-@オプションをつけ、標準入力にファイル名を渡して圧縮(残りのオプションはお好みで)</li>
+<li>lsに<code>-1</code>オプションをつけてファイル1行ずつでファイル名を出力(デフォルトでは文字コード順)</li>
+<li>zipに<code>-@</code>オプションをつけ、標準入力にファイル名を渡して圧縮(残りのオプションはお好みで)</li>
 </ol>
 
 <p>findを使って行うときは、もう少し工夫が必要で、以下のように
-findの-print0オプションとsortの-zオプション、xargsの-0オプションでNull文字区切りでファイル名を出力→ソート→圧縮とする。</p>
+findの<code>-print0</code>オプションとsortの<code>-z</code>オプション、xargsの<code>-0</code>オプションでNull文字区切りでファイル名を出力→ソート→圧縮とする。</p>
 
 <pre><code class="language-bash">find ./ -type f -print0 | sort -z | xargs -0 zip -@rjDo0 圧縮ファイル名.zip
 </code></pre>
