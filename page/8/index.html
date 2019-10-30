@@ -89,21 +89,7 @@ if (!doNotTrack) {
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		Mathematicaで作る図やグラフは美しいんだ！ということを伝えたいので、 もう数年も前になるが、修士論文を書くときにMathematicaで作るグラフにこだわった点を思い出しながらまとめてみる。
-論文を書くために使うソフトウェア 私はpLaTeXで論文を書いたが、研究室ではWordが推奨されていた。 図表の番号を管理する必要や図表の位置がずれて飛んでいってしまうといった事態も起きないし、目次や索引、参考文献リストの作成も自動でできる。 ただ、Wordだと添削をしやすいのは確か。
-MathematicaでExportする画像の形式 Mathematicaでは多様な画像ファイル形式でExportできるが、論文用のグラフでは多分PNG、EPS、PDFから選択することになると思う。 各画像形式を比較すると、それぞれ以下の特徴がある。
- PNG  ラスタ形式のため、印刷に耐えられるようにするには予め解像度を計算して作成する必要がある 半透過色に対応 Word、pLaTeXどちらでも使える  EPS  ベクタ形式で保存できるため、印刷では自動的にプリンタの解像度で印刷してくれる 半透過色には非対応 pLaTeXで使用可 あまりにEPS画像が多いと、dvipdfm(x)が重くなるので注意  PDF  ベクタ形式で保存できる 半透過色に対応 pLaTeXで使用可 pLaTeXで使うには、予めebbやxbbで.bbファイルや.xbbファイルを作成して、pLaTeXに画像の大きさを知らせる必要がある   したがって、Wordでは基本的に画像をPNG形式で作ることになるが、pLaTeXではEPSやPDFといったベクタ形式の画像フォーマットが使えるのでおすすめ。
-私は基本的にMathematicaからPDFでグラフを作成し、 すべての画像に対してpLaTeXについてくるebbを実行するPerlスクリプトを作って実行してからpLaTeXでコンパイルしていた。
-もちろん写真はJPEG形式を使用したが、写真にいろいろ矢印や記号を書き加えるときはOpenOffice.orgのImpressでJPEG画像の上にいろいろ矢印などを書き込んでPDFにエクスポートしたものを使った。 当時はPowerPointではPDF出力できなかったためOpenOffice.orgを使ったが、今ではPowerPointでいいと思う。
-図・グラフの論文におけるサイズを決め、ImageSizeオプションを指定 おそらくほとんどの論文はA4サイズ(210mm×297mm)で作成されると思う。
-そこから左右の余白をそれぞれ30mmとすると、本文の幅は150mmとなる。 図やグラフの幅は本文より少し小さくしたいので、私は基本的に横幅140mmでグラフを作成した。
-縦幅はMathematicaではデフォルトで黄金比(GoldenRatio)を使ってくれるので、そのままで良いと思う。 2段組のときは半分の70mmとか65mmとなる。
-したがってMathematicaでは、PlotやShowなどのオプションImageSizeに
-ImageSize -&gt; 140 * 72 / 25.4  と指定する。これは140mmの横幅で、72dpi(dots per inch)、1 inch = 25.4mmという意味である。
-論文用のグラフでは絶対にFrame -&gt; Trueを指定する 論文用のグラフでは流儀として
-Frame -&gt; True  を指定して枠のついたグラフにする。
-これはExcelなどでグラフを作るときも同様。
-枠についた目盛りを細かく調整したい場合は、FrameTicksオプションとFrameTickesStyleオプションを指定する。 また、FrameLabelで各軸のラベルと単位を書き入れるのも忘れずに。
+		Mathematicaで作る図やグラフは美しいんだ！ということを伝えたいので、 もう数年も前になるが、修士論文を書くときにMathematicaで作るグラフにこだわった点を思い出しながらまとめてみる。 論文を書くために使うソフトウェア 私はpLaTeXで論文を書いたが、研究室ではWordが推奨されていた。 図表の番号を管理する必要や図表の位置がずれて飛んでいってしまうといった事態も起きないし、目次や索引、
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -115,19 +101,7 @@ Frame -&gt; True  を指定して枠のついたグラフにする。
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		拙作のリバーシプログラムViglaは高校時代に作ったものだが、 評価関数は手の広さと辺の形を適当に数値化したものであるためにあまり強いプログラムにはできなかった。
-当時から強いリバーシプログラムは辺や隅のパターンを評価していることは知ってはいたものの、理解出来ずじまいだった。
-今回もう一度挑戦してみようと思い、まずはMathematicaでパーセプトロンとバックプロパゲーションによる学習を実装してみた。
-簡単のため、出力関数としてはシグモイド関数のみに限定した(一般の関数にできるようにするには、各層のネット値を別に保存する必要があり、煩雑だったため)。 しかしながら、任意の隠し層の数やニューロン数に対応できるように実装した。
-というわけで、まずはシグモイド関数と順方向演算を定義。
-f[x_] := 1/(1 + Exp[-x]); perceptron[w : {__}][x_] := FoldList[(f /@ (Append[#1, 1].#2)) &amp;, x, w];  wが各層の重み行列のリストで、MathematicaならFoldListを使って1行で順方向演算が定義できる。 Mathematicaでは添字が1から始まるので、通常wi0で表されることが多いバイアス成分は一番最後に置いた。
-次に、重み行列をランダムに初期化したパーセプトロンを返す関数として、以下のcreatePerceptronを定義。
-createPerceptron[dimensions_, range_] := perceptron[MapThread[ RandomReal[range, {#1, #2}] &amp;, {Most[dimensions] + 1, Rest[dimensions]}]]  dimensionsは各層のニューロン数で、乱数の範囲をrangeで指定する。
-例えば、入力層のニューロン数が2、隠し層のニューロン数が2、出力層のニューロン数が1の3層パーセプトロンで、 重みが-0.2から0.2までの乱数となるパーセプトロンは、以下のようにして得られる。
-p = createPerceptron[{2, 2, 1}, {-0.2, 0.2}]  この初期状態で、入力層に{0, 0}を与えた時の出力は、
-p[{0, 0}] {{0, 0}, {0.512507, 0.510116}, {0.497566}}  となる。2番目の要素が隠し層の値で、最後の{0.497566}が出力層の値である。
-次に、バックプロパゲーションによる学習を実装する。
-backPropagation[pct : perceptron[w : {__}], x_List, teach_List, rate_: 1] := Module[{out, \[Delta], \[Delta]n, \[CapitalDelta]w}, out = pct[x]; \[Delta]n = With[{y = Last[out]}, (teach - y) y (1 - y)]; \[Delta] = Reverse@FoldList[(Most[#2[[2]]].
+		拙作のリバーシプログラムViglaは高校時代に作ったものだが、 評価関数は手の広さと辺の形を適当に数値化したものであるためにあまり強いプログラムにはできなかった。 当時から強いリバーシプログラムは辺や隅のパターンを評価していることは知ってはいたものの、理解出来ずじまいだった。 今回もう一度挑戦してみようと思い、まずはMathematicaでパーセプトロンとバックプロパゲーションによる学習を実装してみた。
 	</div>
 </article><article class="list__item post">
 	<figure class="list__thumbnail">
@@ -144,17 +118,7 @@ backPropagation[pct : perceptron[w : {__}], x_List, teach_List, rate_: 1] := Mod
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		Mathematicaには2点の緯度と経度を与えて、その間の測地線距離を返す関数としてGeoDistanceがある。 しかしながら、ここで書かれているように、その精度には疑問が呈されているようだ。
-他の有名な測地線距離の計算方法として、
- ヒュベニの式(カシミール3Dが採用しているが、英語圏では情報が見つからない) 国土地理院の測量計算サイトの計算式のついてのドキュメントを実装したもの 完全な球体とみなして計算(Google EarthやGoogle Maps API v3のcomputeDistanceBetweenが採用、haversine formula)  が見つかったので、GeoDistanceのMethodオプション3種類(&ldquo;Vincenty75&rdquo;, &ldquo;Robbin61&rdquo;, &ldquo;ExtendedNewtonRaphson&rdquo;)と上記の3種類の計算方法の合計6種類について精度を評価してみた。
-正確な距離としては、GeographicLib (Wikipediaによると誤差15nmらしい)をJLink経由で使って計算したもの採用し、準拠楕円体はWGS84とした。
-ただし、完全な球体とした場合の半径はGoogle EarthやGoogle Mapsにあわせて6378137 mとした。
-ランダムな2点間の距離の精度 地球表面上で一様分布となるよう、ランダムに2点を選び、その間の距離の精度を評価した。
-  上図は横軸がGeographicLibで計算した正確な距離、縦軸が各計算方法で計算した距離である。
-y = xの直線上にあれば正確ということだが、GeoDistanceの&rdquo;Robbin61&rdquo;では1万kmを超えると実際よりも極端に短く計算してしまうようだ。
-またヒュベニの式は実際よりも長く計算することが多く、そのような場合について調べてみると高緯度になるほど誤差が大きくなることが分かった。
-同じ計算結果を誤差についてプロットしたものが下図である。また表は各計算方法の最大誤差である。
-     計算方法 誤差の絶対値     GeoDistance(&ldquo;Vincenty75&rdquo;) 7.119 * 10^-12   GeoDistance(&ldquo;Robbin61&rdquo;) 9.536 * 10^-1   GeoDistance(&ldquo;ExtendedNewtonRaphson&rdquo;) 1.247 * 10^-6   ヒュベニの式 2.022 * 10^1   測量計算サイト計算式 6.682 * 10^-3   完全球体モデル 6.
+		Mathematicaには2点の緯度と経度を与えて、その間の測地線距離を返す関数としてGeoDistanceがある。 しかしながら、ここで書かれているように、その精度には疑問が呈されているようだ。 他の有名な測地線距離の計算方法として、 ヒュベニの式(カシミール3Dが採用しているが、英語圏では情報が見つからない) 国土地理院の測量計算サイトの計算式のついてのドキュメントを実装したもの 完全な球体とみなして計
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -166,15 +130,7 @@ y = xの直線上にあれば正確ということだが、GeoDistanceの&rdquo;
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		Nov. 29 2015:
- JavaScriptで実装した優先度付きキューをGitHubで公開→https://github.com/330k/priorityqueue_js/ 各ヒープのベンチマーク → http://330k.github.io/priorityqueue_js/benchmark.html  これにはFibonacci Heapも比較対象に入れてある  折れ線を間引くで書いたように、 Douglas-Peuckerアルゴリズムを改良して指定した点数まで点を削減して折れ線を簡略化する場合、 優先度付きキューを使うことになる。
-このアルゴリズムでは
- 始点と終点を結ぶ線分で最も距離が大きな点P1を選ぶ 始点と点P1を結ぶ線分で距離最大となる点P2をキューに登録(優先度は点P2と線分の距離) 点P1と終点を結ぶ線分で距離最大となる点P3をキューに登録(優先度は点P3と線分の距離) キューから距離が最大(=優先度最大)の点を選んで、2に戻る  という手順となるため、「キューに2つ登録して、1つ取り出す」ということを繰り返すことになる。
-そこで今回はランダムな優先度のデータを
- 連続して登録し、連続して取り出す(要はソートしているだけ) 「キューに2つ登録して、1つ取り出す」を繰り返すDouglas-Peuckerを想定した試験  という操作に対してどの優先度付きキューの実装が良い性能をしめすのか、ベンチマークを取ってみた。
-優先度付きキューの実装にはいくつか方法があるが、今回は以下の6種類を試してみた。
- Array.sort(): キューへの追加はArray.push()、キューから取り出すときに必要であればArray.sort()してArray.pop()する。非常に単純で楽チン。結果の検証用。 Selection: キューへの追加はArray.push()、キューから取り出すときに最大要素を選択。enqueue: O(1), dequeue: O(n2)。 Insertion: キューへの追加時に挿入ソートを行う。キューから取り出すときはArray.pop()するだけ。enqueue: O(n2), dequeue: O(1)。 Binary Insertion: キューへの追加時に二分挿入ソートを行う。あとは3と同じ。enqueue: O(n2), dequeue: O(1)。 Binary Heap: 二分ヒープ(wikipedia)での実装。ポインタなしで実装できるので省メモリ。java.util.PriorityQueueはこれらしい。enqueue: O(log(n)), dequeue: O(log(n))。 Pairing Heap: ペアリングヒープ(wikipedia: en)での実装。gcc(libstdc++)のpriority_queueはこれらしい。enqueue: O(log(n)), dequeue: O(log(n))。実装にはこれを参考にした。  いずれもJavaScriptで実装した。
-ベンチマーク結果 以下、Firefox 29とChromium 34での結果。単位はmsで、小さいほうが高速。 載せていないがVirtualBox上のWindows XPで測定してもほぼ同じ結果だった。
+		Nov. 29 2015: JavaScriptで実装した優先度付きキューをGitHubで公開→https://github.com/330k/priorityqueue_js/ 各ヒープのベンチマーク → http://330k.github.io/priorityqueue_js/benchmark.html これにはFibonacci Heapも比較対象に入れてある 折れ線を間引くで書いたように、 Douglas-Peuckerアルゴリズムを改良して指定した点数まで点を削減して折れ線を簡略化する場合、 優先度付きキューを使うことに
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -186,10 +142,7 @@ y = xの直線上にあれば正確ということだが、GeoDistanceの&rdquo;
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		自炊した書籍をzipで作成する際、普通に圧縮すると変な順番で格納されてしまう。 実用上ほとんど問題はないのだが、なんとなくファイル名順に格納したかったので、そのやり方をメモ。
-ls -1 ディレクトリ名 | zip -@rjDo0 圧縮ファイル名.zip  やっていることは
- lsに-1オプションをつけてファイル1行ずつでファイル名を出力(デフォルトでは文字コード順) zipに-@オプションをつけ、標準入力にファイル名を渡して圧縮(残りのオプションはお好みで)  findを使って行うときは、もう少し工夫が必要で、以下のように findの-print0オプションとsortの-zオプション、xargsの-0オプションでNull文字区切りでファイル名を出力→ソート→圧縮とする。
-find ./ -type f -print0 | sort -z | xargs -0 zip -@rjDo0 圧縮ファイル名.zip  なんとなくAndroidのPerfectViewerで見るときに表示が早くなったような気がする。たぶんプラシーボだけれど。
+		自炊した書籍をzipで作成する際、普通に圧縮すると変な順番で格納されてしまう。 実用上ほとんど問題はないのだが、なんとなくファイル名順に格納したかったので、そのやり方をメモ。 ls -1 ディレクトリ名 | zip -@rjDo0 圧縮ファイル名.zip やっていることは lsに-1オプションをつけてファイル1行ずつでファイル名を出力(デフォルトでは文字コード順) zipに-@オプションをつけ、標準入力にファイル名を渡して圧縮(残りのオプ
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -201,12 +154,7 @@ find ./ -type f -print0 | sort -z | xargs -0 zip -@rjDo0 圧縮ファイル名.z
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		Wolfram CDF Player を汎用するにあるように、 CDF PlayerでもJ/Linkを使えばローカルファイルの読み込み、書き込みができる(※CDFファイルの作成にはMathematicaが必要)。
-上記リンク先ではテキストファイルを読み込む例が載っているが、バイナリファイルとして読み込んでImportStringを使えば、 Mathematicaが対応している形式すべてのファイルを読み込むことができる。
-J/Linkでバイナリファイルを読み込むときのポイントとしては、
- &ldquo;[B&rdquo;というクラス名でbyte型の配列を作ってBufferedInputStream.read(byte[])で一気に読み込むことで高速化 読み込んだbyte[]がMathematicaに入った時に符号付き整数で扱われるため、FromCharacterCodeに突っ込む前に0〜255になるように修正  が挙げられる。
-一方、CDF PlayerではExportのみならずExportStringが使えない(ImportStringは使えるのに)ので、書き込むほうは不自由が残る。 ここではテキストと画像(BMP、PNG、JPEG)に限って保存する関数を作ってみた。
-ImportWithJLink[filepath_?(FileExistsQ[FindFile[#]] &amp;), format_] := ( Needs[&quot;JLink`&quot;]; JLink`InstallJava[]; JLink`JavaBlock[ Module[{br, byte, result}, br = JLink`JavaNew[&quot;java.io.BufferedInputStream&quot;, JLink`JavaNew[&quot;java.io.FileInputStream&quot;, FindFile@filepath]]; byte = JLink`JavaNew[&quot;[B&quot;, {FileByteCount[FindFile@filepath]}]; br@read[byte]; result = ImportString[ FromCharacterCode[ JLink`JavaObjectToExpression[byte] /. x_?Negative :&gt; x + 256], format]; br@close[]; result]]); ExportWithJLink[filepath_, string_String, format : &quot;Text&quot;] := ( Needs[&quot;JLink`&quot;]; JLink`InstallJava[]; JLink`JavaBlock[ Module[{bw}, bw = JLink`JavaNew[&quot;java.io.BufferedWriter&quot;, JLink`JavaNew[&quot;java.io.FileWriter&quot;, filepath] ]; bw@write[string]; bw@close[]; filepath ] ]); ExportWithJLink[filepath_, image_, format : &quot;PNG&quot; | &quot;BMP&quot; | &quot;JPG&quot;] := ( Needs[&quot;JLink`&quot;]; JLink`InstallJava[]; JLink`JavaBlock[ JLink`LoadJavaClass[&quot;javax.
+		Wolfram CDF Player を汎用するにあるように、 CDF PlayerでもJ/Linkを使えばローカルファイルの読み込み、書き込みができる(※CDFファイルの作成にはMathematicaが必要)。 上記リンク先ではテキストファイルを読み込む例が載っているが、バイナリファイルとして読み込んでImportStringを使えば、 Mathematicaが対応している形式すべてのファイルを読み込むことができる。 J/Linkでバイナリ
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -218,12 +166,7 @@ ImportWithJLink[filepath_?(FileExistsQ[FindFile[#]] &amp;), format_] := ( Needs[
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		MathematicaのExportでAVIなどの動画ファイルを作成することは簡単に可能だが、 いかんせんすべてのフレームの画像を作成してからファイルに書きだすので、フレーム数に比例してメモリの使用量が多くなってしまう。 そのため長いムービーの作成は困難であった。
-そこで、ffmpegと併用することでメモリ使用量を抑えつつ、長編の動画ファイルを制作する。 具体的には、
- ffmpegで標準入力から読み込ませるOutputStreamオブジェクトを作成する BinaryWriteでそのストリームに各フレームの画像を書き込む 終わったらCloseでストリームを閉じる  とする。ここで、各フレーム画像の形式をPPMにしないとうまく動作しなかった(BMP、PNGなどではなぜか動作せず)。
-例えば、以下のようにするとtest001.aviができあがる。
-s = OpenWrite[ &quot;!ffmpeg -y -vcodec ppm -f image2pipe -i - -vcodec rawvideo test001.avi&quot;, BinaryFormat -&gt; True]; Do[ BinaryWrite[s, ExportString[ Plot[Sin[x + i], {x, 0, 2 Pi} , ImageSize -&gt; {640, 480} , PlotRange -&gt; {{0, 2 Pi}, {-1, 1}} , Frame -&gt; True] , &quot;PPM&quot;]] , {i, 0, 2 Pi, Pi/50} ]; Close[s]  Exportと同じような使い勝手の関数ExportMovieを作るとこんな感じになる。
-Options[ExportMovie] = { &quot;FrameRate&quot; -&gt; 25, &quot;VideoCodecOption&quot; -&gt; &quot;-vcodec rawvideo&quot;, &quot;ExportOptions&quot; -&gt; {} }; ExportMovie[outputfilepath_String, expr_, {i_Symbol, imin_: 1, imax_, di_: 1}, OptionsPattern[]] := Module[{stream}, stream = OpenWrite[ ToString[ StringForm[ &quot;!
+		MathematicaのExportでAVIなどの動画ファイルを作成することは簡単に可能だが、 いかんせんすべてのフレームの画像を作成してからファイルに書きだすので、フレーム数に比例してメモリの使用量が多くなってしまう。 そのため長いムービーの作成は困難であった。 そこで、ffmpegと併用することでメモリ使用量を抑えつつ、長編の動画ファイルを制作する。 具体的には、 ffmpegで標準入力から読み込ませる
 	</div>
 </article><article class="list__item post">
 	<figure class="list__thumbnail">
@@ -240,7 +183,7 @@ Options[ExportMovie] = { &quot;FrameRate&quot; -&gt; 25, &quot;VideoCodecOption&
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		function initMap(){ var map, ctaLayer; map = new google.maps.Map(document.getElementById("mapcanvas-20130917-24-kml"), { center: {lat: 35.6832581, lng: 139.7555827}, zoom: 8 }); ctaLayer = new google.maps.KmlLayer({ url: 'https:\/\/www.330k.info\/\/bicycle\/touring\/20130917-24-yokohama-tohoku-japan-sea-tappizaki\/20130917-24.kml' }); ctaLayer.setMap(map); }     日付 出発地 到着地 走行距離(km) 走行時間 最高速度(km/h) 平均速度(km/h) 主な経路 景勝地     2013年9月17日 横浜 渋川 158.37 6:19:59 47.6 25.0 荒川CR、利根川CR    2013年9月18日 渋川 長岡 154.57 6:35:34 56.8 23.4 R17 三国峠   2013年9月19日 長岡 村上 118.
+		<p>7月に太平洋側を北上したので、今度は日本海側を北上して青森まで行ってみた。</p>
 	</div>
 </article><article class="list__item post">
 	<figure class="list__thumbnail">
@@ -257,7 +200,7 @@ Options[ExportMovie] = { &quot;FrameRate&quot; -&gt; 25, &quot;VideoCodecOption&
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		function initMap(){ var map, ctaLayer; map = new google.maps.Map(document.getElementById("mapcanvas-20130820-21-kml"), { center: {lat: 35.6832581, lng: 139.7555827}, zoom: 8 }); ctaLayer = new google.maps.KmlLayer({ url: 'https:\/\/www.330k.info\/\/bicycle\/touring\/20130820-21-naruto-muroto\/20130820-21.kml' }); ctaLayer.setMap(map); }     日付 出発地 到着地 走行距離(km) 走行時間 最高速度(km/h) 平均速度(km/h) 主な経路 景勝地     2013年8月20日 高松 日和佐 143.18 6:12:47 57.6 23.0 R11, R55    2013年8月21日 日和佐 安芸 122.85 5:16:27 52.0 23.3 R55 室戸岬    高松スタートで四国を一周しようとしたが、2日めから風邪を引いたため高知県安芸市でリタイア。
+		<p>高松スタートで四国を一周しようとしたが、2日めから風邪を引いたため高知県安芸市でリタイア。</p>
 	</div>
 </article><article class="list__item post">
 	<figure class="list__thumbnail">
@@ -274,7 +217,8 @@ Options[ExportMovie] = { &quot;FrameRate&quot; -&gt; 25, &quot;VideoCodecOption&
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		function initMap(){ var map, ctaLayer; map = new google.maps.Map(document.getElementById("mapcanvas-20130802-03-kml"), { center: {lat: 35.6832581, lng: 139.7555827}, zoom: 8 }); ctaLayer = new google.maps.KmlLayer({ url: 'https:\/\/www.330k.info\/\/bicycle\/touring\/20130802-03-bousou-peninsula\/20130802-03.kml' }); ctaLayer.setMap(map); }     日付 出発地 到着地 走行距離(km) 走行時間 最高速度(km/h) 平均速度(km/h) 主な経路 景勝地     2013年8月2日 横浜 千倉 102.27 4:00:14 43.5 25.5 R16, R127, R410 野島崎   2013年8月3日 千倉 銚子 154.98 6:03:25 55.7 25.6 R128, r30 犬吠埼    1日目 横浜の自宅からスタートして、国道16号を使って久里浜のフェリー乗り場へ。
+		<p>房総半島の南部は自転車乗りが多いと聞いたのと、東京湾フェリーにも乗ってみたかったので、
+横浜から横須賀まで走ってフェリーに乗って金谷に渡り、ぐるっとまわって銚子まで。</p>
 	</div>
 </article>
 </main>

@@ -90,11 +90,7 @@ if (!doNotTrack) {
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		会社で個々人のPCのセキュリティをガチガチに固めたりしていると、何かと融通がきかない。 そのため、セキュリティ設定緩めの共有PCを1台と共有アカウントを1個用意し、やむを得ない時には利用してもらっている。
-そのため、SKYSEAでログは取っているものの、実際に誰が操作しているのか分からない、という問題があった。
-それを解決するため、PCに付属のカメラで、ログイン時に正面にいる人の顔を記録することにした。
-前準備  ffmpegをダウンロードする ffmpegにPATHを通す ffmpegでウェブカメラのデバイスや対応する解像度、フレームレートを調べておく  VBScript 以下のVBScriptファイルを適当なところに配置。 内容はスクリプト起動後、5秒間、ウェブカメラの映像を記録して、管理者用メールアドレスに送信する。
-Option Explicit On Error Resume Next Dim objShell Dim objFS Dim strDate Dim strFilePath Dim objNetwork Dim objMsg Set objShell = CreateObject(&quot;WScript.Shell&quot;) Set objFS = CreateObject(&quot;Scripting.FileSystemObject&quot;) strDate = Year(Now()) strDate = strDate &amp; Right(&quot;0&quot; + Month(Now()), 2) strDate = strDate &amp; Right(&quot;0&quot; + Day(Now()), 2) strDate = strDate &amp; Right(&quot;0&quot; + Hour(Now()), 2) strDate = strDate &amp; Right(&quot;0&quot; + Minute(Now()), 2) strDate = strDate &amp; Right(&quot;0&quot; + Second(Now()), 2) strFilePath = objFS.
+		会社で個々人のPCのセキュリティをガチガチに固めたりしていると、何かと融通がきかない。 そのため、セキュリティ設定緩めの共有PCを1台と共有アカウントを1個用意し、やむを得ない時には利用してもらっている。 そのため、SKYSEAでログは取っているものの、実際に誰が操作しているのか分からない、という問題があった。 それを解決するため、PCに付属のカメラで、ログイン時に正面にいる人の顔を記録することにした。
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -106,10 +102,7 @@ Option Explicit On Error Resume Next Dim objShell Dim objFS Dim strDate Dim strF
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		会社のウェブサイトに貼ってある動画ファイルが、実際にどれだけ再生されているのか調査するべく、 Google Analyticsのイベントで計測するためのコードを作ってみた。
-計測対象は以下のイベント。
- 再生開始(play) 最後まで再生(ended) 一時停止(pause) 再生再開(resume) シークした(seeked) どこまで再生したか(動画時間の10%, 25%, 50%, 75%, 90%)  HTML側 &lt;video id=&quot;movie001&quot; width=&quot;(動画幅)&quot; height=&quot;(動画高さ)&quot; title=&quot;Movie Title&quot;&gt; &lt;source src=&quot;(動画ファイルのパス)&quot; type=&quot;video/mp4&quot; /&gt; &lt;/video  JavaScript側(jQuery使用) イベントカテゴリに「video」、イベントアクションにplay、play_endなど。 イベントラベルには動画のtitle属性をセット。
-$(function(){ var oldratio = 0.0; $('video').on('play', function(e) { on('play', function(e) { if(e.target.currentTime &gt; 0){ ga('send','event','video','resume',e.target.getAttribute('title')); }else{ ga('send','event','video','play',e.target.getAttribute('title')); } }).on('ended', function(e) { ga('send','event','video','play_end',e.target.getAttribute('title')); }).on('pause', function(e) { ga('send','event','video','pause',e.target.getAttribute('title')); }).on('seeked', function(e) { ga('send','event','video','seeked',e.target.getAttribute('title')); }).on('timeupdate', function(e) { var ratio = e.target.currentTime / e.
+		会社のウェブサイトに貼ってある動画ファイルが、実際にどれだけ再生されているのか調査するべく、 Google Analyticsのイベントで計測するためのコードを作ってみた。 計測対象は以下のイベント。 再生開始(play) 最後まで再生(ended) 一時停止(pause) 再生再開(resume) シークした(seeked) どこまで再生したか(動画時間の10%, 25%, 50%, 75%, 90%) HTML側 &lt;video id=&quot;movie001&quot; width=&quot;(動画幅)&q
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -121,11 +114,7 @@ $(function(){ var oldratio = 0.0; $('video').on('play', function(e) { on('play',
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		ファイルサーバの空き容量が減ってきたので調べてみたら、 削除されていないOfficeファイルの一時ファイルや、Thumbs.dbが結構あることが分かった。
-Thumbs.dbはグループポリシーでネットワークドライブ上では生成しないようにしているはずだが、 ローカルのフォルダをファイルサーバにコピーすると、一緒にくっついてくるらしい。
-以下のPowerShellスクリプトをタスクスケジューラに登録して、定期的(1日1回)にゴミ掃除。
-$a = @() $a += Get-ChildItem &quot;(掃除対象フォルダのパス1)&quot; -Force -Recurse $a += Get-ChildItem &quot;(掃除対象フォルダのパス2)&quot; -Force -Recurse $a += Get-ChildItem &quot;(掃除対象フォルダのパス3)&quot; -Force -Recurse $a | Where-Object { ` $_.Name -like &quot;~*&quot; -and $_.LastWriteTime -lt (Get-Date).AddDays(-1) ` -or $_.Name -like &quot;*.tmp&quot; ` -or $_.Name -eq &quot;Thumbs.db&quot; ` -or $_.Name -eq &quot;.DS_Store&quot; ` -or $_.Name -like &quot;._*&quot; ` } | Remove-Item -Force  削除対象は以下の通り。
- 更新日時が1日以上前のOffice一時ファイル(&quot;~*&quot;) 拡張子が&quot;tmp&quot;のファイル &quot;Thumbs.db&quot; .DS_Storeや._*などのMac OSで使用されるファイル  
+		ファイルサーバの空き容量が減ってきたので調べてみたら、 削除されていないOfficeファイルの一時ファイルや、Thumbs.dbが結構あることが分かった。 Thumbs.dbはグループポリシーでネットワークドライブ上では生成しないようにしているはずだが、 ローカルのフォルダをファイルサーバにコピーすると、一緒にくっついてくるらしい。 以下のPowerShellスクリプトをタスクスケジューラに登録して、定期
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -137,21 +126,7 @@ $a = @() $a += Get-ChildItem &quot;(掃除対象フォルダのパス1)&quot; -F
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		「この動画ファイルをDVDに焼いて。簡単でしょ。」
- いやいや、DVD-Video規格に沿った動画ファイルとファイル構造にしないといけないんですけど。
-Windows用のオーサリングソフトはフリーでも色々あるが、どれが良いのかよくわからないので、 ffmpeg + dvdauthor + mkisofsでISOファイルを作成するバッチファイルを作成した。
-参考サイト : http://d.hatena.ne.jp/hikaen2/20150201/1422773879
-前準備 ffmpeg 適当にWindows用バイナリを落としてPATHを設定しておく。
-dvdauthor Windows用のバイナリをダウンロードし、PATHの通ったところに設置。
-http://www.paehl.com/open_source/?DVDAuthor
-これの下部の「From Box.net」または「From Google Drive」からダウンロード。
-mkisofs 他のソフト(cdrfde)にくっついてくるmkisofs.exeを抜き出す。
-https://cdrtfe.sourceforge.io/cdrtfe/download_en.html
-これのcdrtfe 1.5.7 zip archiveをダウンロードし、展開したファイルの中から、
- tools\cdrtools\mkisofs.exe tools\cygwin\cygwin1.dll tools\cygwin\cygwin.ini  をPATHの通ったフォルダに移動。
-バッチファイル 下記の内容のバッチファイルを作成。 CPU数に合わせてthreadsの値は変更する。
-DVDにしたい動画ファイルをドラッグ&amp;ドロップ。
-@ECHO OFF REM 動画ファイルからDVDのISOファイルを作成 SET VIDEO_FORMAT=NTSC ffmpeg -i &quot;%1&quot; -threads 4 -vf yadif=1,scale=720:480,tinterlace=4 -target ntsc-dvd -flags +ilme+ildct &quot;%~dpn1_dvd.mpeg&quot; dvdauthor -o &quot;%~dpn1_dvd&quot; -t &quot;%~dpn1_dvd.mpeg&quot; dvdauthor -o &quot;%~dpn1_dvd&quot; -T mkisofs -dvd-video -o &quot;%~dpn1_dvd.
+		「この動画ファイルをDVDに焼いて。簡単でしょ。」 いやいや、DVD-Video規格に沿った動画ファイルとファイル構造にしないといけないんですけど。 Windows用のオーサリングソフトはフリーでも色々あるが、どれが良いのかよくわからないので、 ffmpeg + dvdauthor + mkisofsでISOファイルを作成するバッチファイルを作成した。 参考サイト : http://d.hatena.ne.jp/hikaen2/20150201/1422773879 前準備 ffmpeg 適当にWindows用バイナリを落としてPATHを設定しておく。
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -163,11 +138,7 @@ DVDにしたい動画ファイルをドラッグ&amp;ドロップ。
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		社内で余っているサーバにZabbixを入れたので、 SNMP v2cでRICOH製のプリンタ・複合機の各種情報を取得するXMLテンプレートをhttps://github.com/coreyramirezgomez/Ricoh-Printers-Zabbix-Template/blob/master/Ricoh%20Printers%20SNMP%20Template.xml を元に作成した。
-変更箇所としては以下の通り。
- SNMP Discoveryで英語のアイテム名を取得するように変更 1分間あたりの印刷枚数のアイテムとグラフを追加 Discoveryの間隔が長くした(負荷でプリンタが応答しなくなるため)  確認している機種は社内にある以下の2機種のみ。
- RICOH MP C5503 IPSiO SP 6320  ダウンロードはZabbix Share - Template Ricoh SNMP Printers。
-&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt; &lt;zabbix_export&gt; &lt;version&gt;3.2&lt;/version&gt; &lt;date&gt;2017-07-20T10:38:50Z&lt;/date&gt; &lt;groups&gt; &lt;group&gt; &lt;name&gt;Printers&lt;/name&gt; &lt;/group&gt; &lt;/groups&gt; &lt;templates&gt; &lt;template&gt; &lt;template&gt;Template SNMP Ricoh Printers&lt;/template&gt; &lt;name&gt;Template SNMP Ricoh Printers&lt;/name&gt; &lt;description/&gt; &lt;groups&gt; &lt;group&gt; &lt;name&gt;Printers&lt;/name&gt; &lt;/group&gt; &lt;/groups&gt; &lt;applications&gt; &lt;application&gt; &lt;name&gt;SNMP Enabled Printer&lt;/name&gt; &lt;/application&gt; &lt;/applications&gt; &lt;items&gt; &lt;item&gt; &lt;name&gt;Description&lt;/name&gt; &lt;type&gt;4&lt;/type&gt; &lt;snmp_community&gt;{$SNMP_COMMUNITY}&lt;/snmp_community&gt; &lt;multiplier&gt;0&lt;/multiplier&gt; &lt;snmp_oid&gt;.1.3.6.1.2.1.25.3.2.1.3.1&lt;/snmp_oid&gt; &lt;key&gt;Description&lt;/key&gt; &lt;delay&gt;60&lt;/delay&gt; &lt;history&gt;90&lt;/history&gt; &lt;trends&gt;0&lt;/trends&gt; &lt;status&gt;0&lt;/status&gt; &lt;value_type&gt;4&lt;/value_type&gt; &lt;allowed_hosts/&gt; &lt;units/&gt; &lt;delta&gt;0&lt;/delta&gt; &lt;snmpv3_contextname/&gt; &lt;snmpv3_securityname/&gt; &lt;snmpv3_securitylevel&gt;0&lt;/snmpv3_securitylevel&gt; &lt;snmpv3_authprotocol&gt;0&lt;/snmpv3_authprotocol&gt; &lt;snmpv3_authpassphrase/&gt; &lt;snmpv3_privprotocol&gt;0&lt;/snmpv3_privprotocol&gt; &lt;snmpv3_privpassphrase/&gt; &lt;formula&gt;1&lt;/formula&gt; &lt;delay_flex/&gt; &lt;params/&gt; &lt;ipmi_sensor/&gt; &lt;data_type&gt;0&lt;/data_type&gt; &lt;authtype&gt;0&lt;/authtype&gt; &lt;username/&gt; &lt;password/&gt; &lt;publickey/&gt; &lt;privatekey/&gt; &lt;port&gt;161&lt;/port&gt; &lt;description/&gt; &lt;inventory_link&gt;2&lt;/inventory_link&gt; &lt;applications&gt; &lt;application&gt; &lt;name&gt;SNMP Enabled Printer&lt;/name&gt; &lt;/application&gt; &lt;/applications&gt; &lt;valuemap/&gt; &lt;logtimefmt/&gt; &lt;/item&gt; &lt;item&gt; &lt;name&gt;Page Count&lt;/name&gt; &lt;type&gt;4&lt;/type&gt; &lt;snmp_community&gt;{$SNMP_COMMUNITY}&lt;/snmp_community&gt; &lt;multiplier&gt;0&lt;/multiplier&gt; &lt;snmp_oid&gt;.
+		社内で余っているサーバにZabbixを入れたので、 SNMP v2cでRICOH製のプリンタ・複合機の各種情報を取得するXMLテンプレートをhttps://github.com/coreyramirezgomez/Ricoh-Printers-Zabbix-Template/blob/master/Ricoh%20Printers%20SNMP%20Template.xml を元に作成した。 変更箇所としては以
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -179,12 +150,7 @@ DVDにしたい動画ファイルをドラッグ&amp;ドロップ。
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		会社のPCではHDD暗号化ソフトのSecureDocを使用しているが、先日1台のPCが起動しなくなったため、リカバリーディスクを使っての救出を行った際のメモ。
-SecureDocのリカバリーディスクはWindows PEベースなのだが、海外の製品なので当然英語キーボード。 起動しなくなったPCのHDDの中身は運良く復旧できそうだったのだが、 データをネットワーク経由で回収しようとしたところネットワーク設定画面でバックスラッシュが入力できなくてハマった。
-5分ほどキーボードを押しまくった後、Altキーと文字コード入力で行けることに気がついた。
-Alt押す → テンキー9 → テンキー2 → Alt離す
-で無事入力できた。
-ただ、LetsNoteのNICをWindows PEでは認識できず無駄足に。 結局USBメモリ経由で回収した。
+		会社のPCではHDD暗号化ソフトのSecureDocを使用しているが、先日1台のPCが起動しなくなったため、リカバリーディスクを使っての救出を行った際のメモ。 SecureDocのリカバリーディスクはWindows PEベースなのだが、海外の製品なので当然英語キーボード。 起動しなくなったPCのHDDの中身は運良く復旧できそうだったのだが、 データをネットワーク経由で回収しようとしたところネットワーク設定
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -196,14 +162,7 @@ Alt押す → テンキー9 → テンキー2 → Alt離す
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		ウイルス等に侵入された後の対策として、IDSやIPS製品の紹介をベンダーから受けたが、正直なところ価格が高かったのと、検知されるメッセージがSnort由来のものが多い気がしたので、自分でSnortを構築して商用製品との差を調べてみることにした。
-構築環境  PC : 余っていたノートPC Panasonic LetsNote CF-NX1 OS : Xubuntu 16.04.2 (LetsNoteの有線LANと無線LANのNICを認識できる可能性が高いディストリビューションとして選択) ルータ : Yamaha RTX810 IDSとして運用(ミラーポートの通信を監視) LetsNoteの有線LANはミラーポートに接続し、通信を監視 LetsNote自体にアクセスするときには無線LANを使用する  図(適当)   手順 基本的に、以下のドキュメント通りでOK。
-Snort 2.9.9.x on Ubuntu 14 -16
-LetsNoteでは有線LANのNICはenp0s25、無線LANはwlp2s0となった。
-注意点は以下の通り。
- rule_url=https://www.snort.org/reg-rules/|snortrules-snapshot.tar.gz|&lt;oinkcode&gt; → rule_url=https://www.snort.org/rules/|snortrules-snapshot.tar.gz|&lt;oinkcode&gt; ※微妙にURLが変わっているので注意 sudo /usr/local/bin/pulledpork.pl -c /etc/snort/pulledpork.conf -l → sudo /usr/local/bin/pulledpork.pl -c /etc/snort/pulledpork.conf -l -o /etc/snort/rules/snort.rules ※-oオプションが必要と怒られた  有線LAN(enp0s25)はミラーポートから受信だけできれば良いので、 /etc/network/interfacesを編集して使われていないネットワークのアドレスを適当に設定。 管理の通信やBASEによるログを眺めるためには無線(wlp2s0)を使用するので、 NetworkManagerを使って適当に固定IPを設定。
-RTX810はhttp://www.rtpro.yamaha.co.jp/RT/manual/rt-common/setup/lan_port-mirroring.html を参照してミラーポートを設定。
- 設定(ポート1と2の送信および受信フレームをポート4にミラー) lan port-mirroring lan1 4 in 1 2 out 1 2 解除 no lan port-mirroring lan1  結果 一応IDSとして構築できたので、現在はログを見て様子見。今のところのメモは以下。
+		ウイルス等に侵入された後の対策として、IDSやIPS製品の紹介をベンダーから受けたが、正直なところ価格が高かったのと、検知されるメッセージがSnort由来のものが多い気がしたので、自分でSnortを構築して商用製品との差を調べてみることにした。 構築環境 PC : 余っていたノートPC Panasonic LetsNote CF-NX1 OS : Xubuntu 16.04.2 (LetsNoteの有線LANと無線LANのNICを認識できる可能性が高いディストリビューションとして選択) ル
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -215,11 +174,7 @@ RTX810はhttp://www.rtpro.yamaha.co.jp/RT/manual/rt-common/setup/lan_port-mirror
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		 会社ではG Suite(旧Google Apps for Works)を導入しているが、 ある社員が個人のGmailアドレスに会社の情報の入ったメールを送信していた。
-幸いPCで操作していたためPCのログ監視ソフト(SKYSEA Client View)で検知し、当該従業員に注意することができた。 ただ、同じことを会社支給のiPhoneでやられた場合に無力だったことに気づいたので、G Suite側でも対策を実施。
-設定方法  「管理コンソール」の「アプリ」→「Gmail」→「詳細設定」と進む 「コンテンツ コンプライアンス」を追加 影響を受けるメールは「送信」にチェック 「次の一部がメールに一致する場合」を選択 「任意のエンベロープ受信者」が「いずれかの単語に一致する」に【登録ページ作成TIPS】登録拒否設定用フリーメールドメインリスト などから検知対象とするドメイン一覧を取得してスペース区切りにしたものを設定する (1000文字を超える場合は1000文字以内に収まるよう複数に分けて登録)    「上記の表現に一致する場合は、次の処理を行います」には「メッセージを変更」を選択 「その他の送信先」「受信者を追加」で配信先に管理者用のメールアドレスを設定(エイリアスにしておくとフィルタ作成で便利)    設定ができたら保存する(※全ユーザに適用されるまで1時間程度かかる) 管理者用のGmailの設定で、8で設定したアドレスに来たものをフィルタしてラベルをつけるようにしておく  注意事項  設定ミスすると全ユーザのメールが影響を受けるので、テスト用のOUを作ってから検証してから全ユーザに適用する コンテンツコンプライアンスでは、クレジットカード番号やパスポート番号が含まれたメールを検知可能 残念ながら執筆時点(Nov. 29 2016)では日本のマイナンバーの検知機能はない  プロモーションコード もしGmailやG Suiteを導入予定であれば、以下のリンクからお願いします。
-またプロモーションコードを入力すると初年度の料金が20%割引されます。
- G Suiteのお申し込み プロモーションコード  G Suite Basic プラン: YA3CFEWVCWTVM9A G Suite Business プラン: Y9GNVRWQUGVTQEW   
+		会社ではG Suite(旧Google Apps for Works)を導入しているが、 ある社員が個人のGmailアドレスに会社の情報の入ったメールを送信していた。 幸いPCで操作していたためPCのログ監視ソフト(SKYSEA Client View)で検知し、当該従業員に注意することができた。 ただ、同じことを会社支給のiPhoneでやられた場合に無力だったことに気づいたので、G Suite側でも対策を実施。 設定方法 「管理コンソール
 	</div>
 </article><article class="list__item post">
 	<figure class="list__thumbnail">
@@ -236,16 +191,7 @@ RTX810はhttp://www.rtpro.yamaha.co.jp/RT/manual/rt-common/setup/lan_port-mirror
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		EDINETで出力したPDFを会社のプレスリリースで掲載したところ、iPhoneで閲覧できない、という問題が発生した。
-PDFファイルを見てみると、日本語フォントが埋め込まれていない(下図)。
-  そのため、iPhoneなどMS系の日本語フォントがない環境では、日本語部分が真っ白の閲覧できないものになっていた。 ちなみに、Ubuntuでは別の日本語書体で代替表示された。
-  ご丁寧に印刷も低解像度に限られている(上図)。
-他社のプレスリリースを探してみると、そのままのPDFが使われていたところが多かったが、 中には低解像度で印刷して1ページが1枚の画像になったPDFも見つかった。苦労の痕跡が・・・。
-本来はそのようなPDFを作成するEDINETのシステムが悪いのだが、上の人間は「iPhoneでも見れるようにしろ」と聞かない。
-Google先生に聞いてみると、Macで見れないという2011年の投稿が見つかったので、昔からEDINETは変わっていないらしい。 続けて解決策を探すと、「PDFのセキュリティ設定を無視するビューアをつかって仮想PDFプリンタに印刷する」という方法で解決できることが分かった。
-PDFのセキュリティ設定を無視するビューアで代表的なものはEdgeやFirefox(2016年11月現在)。従って
- Windows 10なら、EdgeでPDFを開いてプリンタにMicrosoft Print to PDFを選択して印刷 Windows 7でもAcrobatなどの仮想PDFプリンタがあれば、Firefoxで開いて仮想PDFプリンタに印刷  という手順でフォントを埋め込んだPDFを作成できた。(下図はEdge + Microsoft Print to PDFで作成したもの)
-  ちなみに、このようにして作成したPDFは法的に問題ないのか弁護士の人に聞いてみたところ、OKらしい。
+		EDINETで出力したPDFを会社のプレスリリースで掲載したところ、iPhoneで閲覧できない、という問題が発生した。 PDFファイルを見てみると、日本語フォントが埋め込まれていない(下図)。 そのため、iPhoneなどMS系の日本語フォントがない環境では、日本語部分が真っ白の閲覧できないものになっていた。 ちなみに、Ubuntuでは別の日本語書体で代替表示された。 ご丁寧に印刷も低解像度に限られている(
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -257,19 +203,7 @@ PDFのセキュリティ設定を無視するビューアで代表的なもの�
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		社内では会計システムに勘定奉行(ネットワーク版)を使っているが、 担当者から「勘定奉行で仕訳帳の表示に20秒くらいかかる」と言われたので調査してみた。
-その担当者のPC固有の問題かどうかを切り分けるため別のPCから同様の操作を行ってみたところ、同じ症状が発生した。 ということは、サーバ側に問題がありそう。
-勘定奉行のクライアントは生のSQL文をサーバに発行する仕組みなので、 Wiresharkでパケットをキャプチャすることで発行されたSQL文を把握することができる。
-その状態でサーバ側の負荷を測定してみると、特定のSQL文の処理に時間がかかっていることが分かった。
-勘定奉行ではSQL Serverをバックエンドに使っているので、 「SQL Server パフォーマンス」などでGoogle先生に聞いてみると、以下のページがヒット。
-どうする？ SQL Server のクエリ パフォーマンスが低下した！
-これに従い、サーバ上でSQL Server Management Studioを起動し、勘定奉行で使用しているデータベースで
-sp_updatestats  としたところ、1秒程度で処理が完了するようになった。 上記ページには各テーブル単位での統計情報更新や、実行プランの再作成、インデックスの再構築の方法も書かれているが、今回は行わなかった。
-このようにSQL文を直接叩きに行く方法は多分メーカ(OBC)では非推奨だと思うが、 クライアント側にsp_updatestatsを発行するメニューくらいつけてほしいものだ。
-→ 当然勘定奉行にメニューがあった。ちょっとわかりにくいところだけど。
-「データ領域管理」「データ領域保守」「データ領域変更」とメニューを辿り、「F9 統計情報」ボタンを押すと、統計情報の更新というウィンドウが表示されるので、「実行」すればよい。 対象は、現在選択しているデータ領域のみとのこと。
-ちなみに、全データベースに一括で統計情報の更新をかけるには、SQL Management Studioから、
-sp_MSforeachdb 'USE [?]; sp_updatestats'  とする。
+		社内では会計システムに勘定奉行(ネットワーク版)を使っているが、 担当者から「勘定奉行で仕訳帳の表示に20秒くらいかかる」と言われたので調査してみた。 その担当者のPC固有の問題かどうかを切り分けるため別のPCから同様の操作を行ってみたところ、同じ症状が発生した。 ということは、サーバ側に問題がありそう。 勘定奉行のクライアントは生のSQL文をサーバに発行する仕組みなので、 Wiresharkでパケットをキ
 	</div>
 </article>
 </main>

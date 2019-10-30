@@ -85,15 +85,7 @@ if (!doNotTrack) {
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		公式の情報はこちら : https://www.mozilla.jp/business/faq/tech/setting-management/
-上記公式サイトにあるように、ActiveDirectory環境にあるFirefoxの設定を管理する場合、
- クライアント側にアドオン(GPO for Firefox)をインストール サーバ側に管理用テンプレート(ADMファイル)を配置 グループポリシーエディタで設定を編集  という手順が推奨されている。ただ、この方法だと
- 既存ユーザへの自動設定は不可(ユーザにアドオンをインストールしてもらう必要がある) ユーザがアドオンを無効化してしまう可能性がある 最新のバージョンで追加された設定項目がない場合がある  といったデメリットがあるので、公式サイト中で「MCD用設定ファイルでの実現」という方法で行うことにした。
-要件は以下の通り。
- Firefoxアカウントを使ったパスワード等の同期をさせない 強制的に最新版にアップデートさせる たまにしか社内LANにアクセスしない端末でも設定を反映させたい (公式サイトの「すべてのクライアントの設定を管理者が一括して変更したい」では常時社内LANにアクセスできる端末である必要がある)  手順は以下の通り。
- 「autoconfig.js」と「autoconfig.cfg」を公式サイトの例にしたがって記述  autoconfig.js
-pref(&quot;general.config.filename&quot;, &quot;autoconfig.cfg&quot;); pref(&quot;general.config.vendor&quot;, &quot;autoconfig&quot;); pref(&quot;general.config.obscure_value&quot;, 0);  autoconfig.cfg (ここではFirefoxアカウントによる同期の不許可と、自動アップデートの有効化を設定)
-lockPref(&quot;loop.enabled&quot;, false); lockPref(&quot;services.sync.enabled&quot;, false); lockPref(&quot;services.sync.engine.addons&quot;, false); lockPref(&quot;services.sync.engine.bookmarks&quot;, false); lockPref(&quot;services.sync.engine.history&quot;, false); lockPref(&quot;services.sync.engine.passwords&quot;, false); lockPref(&quot;services.sync.engine.prefs&quot;, false); lockPref(&quot;services.sync.engine.tabs&quot;, false); lockPref(&quot;app.update.enabled&quot;, true); lockPref(&quot;app.update.auto&quot;, true); lockPref(&quot;browser.search.update&quot;, true);   「autoconfig.js」と「autoconfig.cfg」を一般ユーザが読み取り可能なフォルダに配置 (例えば「\ドメインコントローラ\SYSVOL\ドメイン名\Deployment」など) グループポリシーの「コンピュータの構成」「基本設定」「Windowsの設定」「ファイル」を使い、 「autoconfig.js」と「autoconfig.cfg」を公式サイトで指定されたフォルダに配置。     64bit版Windowsに32bit版Firefoxがインストールされている場合は、「項目レベルで対象化する」にチェックし、 「Processor_Architecture」に「AMD64」を設定し、「%PROGRAMFILES(X86)%\Mozilla Firefox」に配置する。 ※ 両方ある場合は2つずつ設定する      最後に実際にクライアントPCにファイルが反映され、Firefoxのabout:configで設定されていることを確認
+		公式の情報はこちら : https://www.mozilla.jp/business/faq/tech/setting-management/ 上記公式サイトにあるように、ActiveDirectory環境にあるFirefoxの設定を管理する場合、 クライアント側にアドオン(GPO for Firefox)をインストール サーバ側に管理用テンプレート(ADMファイル)を配置 グループポリシーエディタで設定を編集 という手順が推奨されている。ただ、この方法だと 既存ユーザへの自動設定は不可(ユーザにアドオンをインストールしてもらう必要が
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -105,32 +97,7 @@ lockPref(&quot;loop.enabled&quot;, false); lockPref(&quot;services.sync.enabled&
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		例によってパワハラを受けた研修先で最初に受けたパワハラが、 リモートアクセスのSSL-VPNに関する技術的な質問をした時のことだった。
-研修先の会社ではJuniper社(現PulseSecure社)のSSL-VPN製品を導入しており、 クライアントPC側にはNetwork Connectというソフトウェアをインストールしていた。
-これはL2フォワーディング方式のSSL-VPNで、起動するとネットワークアダプタに仮想NICが追加される。 仮想NIC経由で通信することで外部からでも社内LANに接続できる。
-研修先企業では外出時にSSL-VPNの接続を義務付けている、という話になったときのことだった。
- パワハラ上司(自称ITエンジニア)「外出先のホテルなどでは社内システムにアクセスしない時も絶対にVPNで接続してからインターネットに接続しろ。」
- 私「なぜですか？」
- パワハラ上司「同じネットワークにいるコンピュータから盗聴や攻撃をされるだろ！」
- 私「HTTPSでないHTTPは確かに盗聴されますが、SSL-VPNで接続したところで攻撃は受けるのではないですか？」
- パワハラ上司「VPNは仮想的に専用線を張るんだ！」
- 私「仮想的に専用線を張ったところで物理的には元のネットワークにいますよね？」
- パワハラ上司「専用線で接続したら攻撃されない。だから仮想的に専用線を張ってるんだから攻撃されない！」
- 私「(喩え話じゃなくてちゃんと技術的な回答がほしいんだが…)」
- パワハラ上司「ちょっとは調べてから質問しろ」
-パワハラ上司「俺の時間もタダじゃねえんだぞ！」
-パワハラ上司「間違ったら『はい、すみません』でいいんだ。ほれ、早く言え！」
- 私「はい、すみません。」
-  とまあ、これが今思い返すと調子に乗らせる原因だったかもしれない。 研修先の自称ITエンジニアの技術力に疑念を持った最初の出来事だった。
-Network Connect起動時に作成される仮想NICがメトリックで優先されるように設定されるので、 VPN接続後のクライアント発の通信はすべて仮想NIC経由となる。
-ただ私が疑念に抱いたのは、同じ物理ネットワークの他の端末から通信が来た場合は、元の物理NICから応答するのではないか、という点だ。
-具体例としては、クライアントPCでファイル共有を有効にしていた場合、 SSL-VPNで接続していても同じネットワークにいる端末から共有しているファイルが見えてしまうのではないか。
-技術者なら実際に試してみるべき、ということで、実験してみた。
- クライアントOS: Windows 7 64bit クライアントPC: ファイル共有ON 物理ネットワーク環境: 来客用Wi-Fi(普通の家庭用Wi-Fiルータと同じ環境) SSL-VPNクライアント: Pulse Secure 5.2 (Network Connectの後継のJunos Pulseの後継) SSL-VPNアライアンス: MAG2600  という環境でSSL-VPNを接続した後、 同じ物理ネットワークの他のPCから共有されたファイルが見えるかどうかを確かめてみた。
-結果: 見えた　NetBIOS名でもアクセス可能
-物理NICに割り当てられたIPアドレスを使ってもアクセスできたが、NetBIOSによる名前解決もできた。 ということはUDPのブロードキャストにも物理NICから応答する、ということが分かった。
-物理NICが普通の通信が出来ないとカプセル化したパケットの通信もできない、というのは 普通に考えればわかると思うのだが、残念ながらパワハラエンジニアの知識レベルはその程度だった、ということか。
-結論としては、下記の通り。
+		例によってパワハラを受けた研修先で最初に受けたパワハラが、 リモートアクセスのSSL-VPNに関する技術的な質問をした時のことだった。 研修先の会社ではJuniper社(現PulseSecure社)のSSL-VPN製品を導入しており、 クライアントPC側にはNetwork Connectというソフトウェアをインストールしていた。 これはL2フォワーディング方式のSSL-VPNで、起動するとネットワークアダプ
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -142,16 +109,7 @@ Network Connect起動時に作成される仮想NICがメトリックで優先�
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		Windows Insider Programに登録していたので、7/31に「Windows 10がでたよ〜」というメールがGabe Aulからやってきた。
-ゆくゆくは更新プログラムが提供されるけど、早く試したい人は「メディア作成ツール」をダウンロードして使うといいよ、 とのことなので、会社で余っていたPCにインストールしてみた。
-インストール  機種: Panasonic Let&rsquo;s Note CF-N10(法人向けモデル) Windows 7 32bit版からのアップグレード Office 2010、Adobe Acrobat Pro XI、トレンドマイクロウイルスバスターがインストール済み  インストール方法は基本的に http://ascii.jp/elem/000/001/034/1034923/ の通り。 ※現在は直接ISOファイルがダウンロードできる模様
-ただし、指示に従って進めていると、以下の2つのソフトウェアをアンインストールしなさい、と出てくる。
- Intel&reg; Dynamic Power Performance Management Realtek High Definition Audio Driver  Realtekの方は、「アンインストール」ボタンをクリックすればOK。
-Intelの方は、 http://answers.microsoft.com/ja-jp/windows/forum/windows_8-windows_install/windows-8/cefec781-59a2-4f78-925a-0b34c70b53b7?auth=1 に情報がある。
-Let&rsquo;s Noteの場合、 C:\util2\drivers\etm\DppmCleaner.bat、もしくはLPOSetting.jsを実行する、とあるが、 CF-N10の場合はバージョンが違うためか存在しない。
-仕方がないので、時期の近い他機種向けのドライバーをインストールして、上記のLPOSetting.jsを実行することで解決。 その後しばらく待てば、無事Windows 10へのアップグレードが完了した。
-インストール結果 現在のところ、インストール後の結果は以下の通り。
- ActiveDirectoryへの参加　→　○成功 グループポリシーの適用　→　△ユーザーの構成のみ有効、コンピュータの構成は有効にならない (ただし、ドメインコントローラ側(Windows Server 2012R2)でのシミュレーションでは適用されるはず) Office 2010の起動　→　△起動は成功(Outlookの設定情報は引き継げず) Adobe Acrobat Pro XIの起動　→　○成功(ただしデフォルトではEdgeでPDFを開く) ウイルスバスター　→　○問題なく動作している模様(リアルタイム検索、パターンファイルのアップデート) BitLockerによるドライブの暗号化　→　○成功(運良くCF-N10もTPMを積んでいた)  その他感想  起動時間はWindows 7とあまり変わらない感触 シャットダウンは早くなった印象 たまに画面の文字がボケる(ClearTypeの設定をいじっても変わらず) 現状ではGPOでコンピュータの構成が効いていないので、クライアント側かサーバ側で対応するタイミングが来るまでは様子見。  Aug.
+		Windows Insider Programに登録していたので、7/31に「Windows 10がでたよ〜」というメールがGabe Aulからやってきた。 ゆくゆくは更新プログラムが提供されるけど、早く試したい人は「メディア作成ツール」をダウンロードして使うといいよ、 とのことなので、会社で余っていたPCにインストールしてみた。 インストール 機種: Panasonic Let&rsquo;s Note CF-N10(法人向けモデル) Windows 7 32bit版からのアップグレード Office 2010、A
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -163,10 +121,7 @@ Let&rsquo;s Noteの場合、 C:\util2\drivers\etm\DppmCleaner.bat、もしくは
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		ベネッセの子会社での情報漏えい事件では、スマートフォンを使ってデータをPCから取り出していたらしい。 そこで、私の研修先の会社の社内SE部門の人たちは、以下の内部者によるファイルやデータの持ち出し対策を行っていた。
- 資産管理ソフト(SKYSEA Client View)を導入  USBメモリやスマートフォンを挿しても書き込めないように設定 ネットワーク経由でもSKYSEAにログが残るからわかる  SKYSEAの機能で知らない機器がネットワークに接続されても検知できる(ただし、よく仕組みはわかっていない模様) Webフィルタリングソフト(InterSafe CATS)も導入 会社のメールサーバ経由での送受信メールはすべて保管  M&amp;Aアドバイザリーという業務の特性からとにかく情報漏えい対策にお金はかけており、 セキュリティには相当な自信をお持ちでいらっしゃった。
-ただ、素人目からしても抜け道がいくつか見えたので、研修を終えて自分の会社に戻った瞬間に以下に対して策を講じた。
- Bluetoothが使い放題で、右クリックして「送る」メニューをするだけで簡単にファイル送信可能。 またOfficeのBluetoothアドイン経由でも送信可能。 ※SKYSEAにはBluetoothに接続する機器を制限する機能があるが、iPhoneとのテザリングや無線マウス、キーボードを使用している人がいるので研修先企業では禁止にできなかった。 ネットワークの共有(ICS)や、SoftAPにより個人端末を社内LANへ接続可能 ※SKYSEAにはネットワークに登録されていないMACアドレスの端末が接続されたことを検知・遮断する機能あり。だが直接外部端末を社内ネットワークに接続しない(PCでNAPTを行う)場合は、SKYSEAでは検知不可能。 IISをインストールし、AdHocやWiFi Directで接続されると外部端末からアクセスしての持ち出しが可能。 ※SKYSEAはユーザが新たなソフトウェアをインストールすると検知できる。しかし、SKYSEAのサーバにIISも入れる必要があるためデフォルトだとIISがホワイトリストに入ってしまう。 Hyper-Vをインストールして仮想マシン経由でアクセスされると制限が効かず、ログも残らない。 各ユーザに管理者権限を与えているので、デフォルトで管理共有が有効になっており、外部端末からアクセスして持ちだし可能。 ※SKYSEAには共有フォルダの作成を制限できる機能はあるが、インストール時点で作成されていた場合は禁止できない。 NTFSのジャンクションと上記の方法(ICS、SoftAP、IIS)の組み合わせで、ローカルファイルへのアクセスに見せかけてファイルサーバのファイルも持ち出し可能なので、 ログを見てもファイルサーバからデータを持ちだしたことが分からない。 会社では携帯電話にiPhoneを採用しており、クライアントPCにはバックアップ用にiTunesをインストールしている。 構成プロファイルでApple Storeの使用を禁止しているが、  iTunesを使ってPCからApple Storeのアプリを自由にインストール可能 しかもiTunesのファイル共有機能も有効なので、iPhone経由でいくらでも外部に持ち出せる  標準ブラウザとしてFirefoxを採用しているが、Firefox Syncで個人アカウントを作成し、ブックマークやパスワードを個人PCと同期可能。 テキスト情報ならブックマークに見せかけて同期すれば持ち出せる。 Google Chromeで個人のGoogleアカウントとしてログイン、同期可能なので、Firefox Syncと同様にいろいろ持ち出せる。 また、Google Cloud Printにより家のプリンタに出力することも可能。 Google ChromeではInterSafe CATSとSKYSEAの組み合わせではログ取得ができないので、 InterSafe CATSに引っかからないウェブサイトであれば、ファイルをアップロードし放題。ログも残らない。 ※これはSKYSEAの問題ではなく、InterSafe CATSのフィルタリングがかなりエグい仕組みのため &gt; Feb. 6 2016 追記: InterSafe CATS 4.3以降はこの競合問題は解決した Skype.exeを実行不可にしているものの、Skype for Business(Lync)はスルーなので、ファイル送信し放題 また、「Skype.exe」という名前のファイルを実行禁止・ファイル名変更禁止したりできるが、それでも抜け道はある ※SKYSEAはexeファイルのハッシュ値でブラックリストを作成できる　⇔　1bitでも違うexeファイルを作れば抜けられる  ※はSKYSEAの製品自体が悪いわけではないことの説明。 私はSKYSEAはいい買い物だったと思っているので誤解なきよう。
+		ベネッセの子会社での情報漏えい事件では、スマートフォンを使ってデータをPCから取り出していたらしい。 そこで、私の研修先の会社の社内SE部門の人たちは、以下の内部者によるファイルやデータの持ち出し対策を行っていた。 資産管理ソフト(SKYSEA Client View)を導入 USBメモリやスマートフォンを挿しても書き込めないように設定 ネットワーク経由でもSKYSEAにログが残るからわかる SKYSEAの機能で知らない
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -178,15 +133,7 @@ Let&rsquo;s Noteの場合、 C:\util2\drivers\etm\DppmCleaner.bat、もしくは
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		先月頃から、Windows 7の通知領域に「Windows 10を入手する」とか「無料アップグレードを予約」とかいう邪魔なMicrosoftの広告が入るようになってきた。 社内SEとしてはユーザに勝手にOSをアップグレードされるわけにはいかないので、消し去りたい。
-ネットを探してみると、やはり同様の悩みを持つ人は多いらしく、結論としては、
- GWX.exeとGWXUX.exeをタスクマネージャで強制終了する インストールされたWindows Updateの「KB3035583」をアンインストールする 再度Windows Updateがインストールさせようとしてくるので、KB3035583を右クリックして「非表示」にする  ということらしい。 → 参考サイト: 「Windows10を入手する」の通知が消えない＼(^o^)／
-さて、1人社内SEとしては以上の手順をユーザの全PCに行うのは無理なので、なんとか自動化したい。 1と2についてはコマンドプロンプトで可能なので、あっさり情報が見つかり、
-Taskkill /IM GWX.exe /F Taskkill /IM GWXUX.exe /F wusa.exe /uninstall /kb:3035583 /quiet /norestart  と書いたバッチファイルをログオンスクリプトに仕込むことで可能だった。
-問題は3の何度アンインストールしても再インストールさせようとしてくる点。 根本的な解決策はもちろんWSUSサーバを立てて、KB3035583を承認しなければ良い。
-だが、私の会社にはWSUSサーバはない。 レジストリをいじったりして特定のWindows Updateを非表示にする方法がないか、と調べてみたら、 Windows Update Agent APIというのがあることを発見。
-英語の情報しかなかったが、サンプルを参考に目的の「KB3035583」を非表示にするスクリプト(今回はJavaScript)を書いてみた。
-/********************************************************************** WSUSを使用せずに不必要なWindowsUpdateを非表示 Copyright 2015-2016 330k 使用は自己責任でお願いします **********************************************************************/ try{ // インストールしないWindowsUpdateのKB番号 var disabledKBs = [ 2876229, 2952664, 2976978, 2977759, 3021917, 3022345, 3035583, 3068708, 3075249, 3080149, 3123862, 3150513, 2990214,// Win 7 3050265, 3065987, 3075851, 3083324, 3083710, 3102810, 3112343, 3135445, 3138612, 3161608, 3044374,// Win 8.
+		先月頃から、Windows 7の通知領域に「Windows 10を入手する」とか「無料アップグレードを予約」とかいう邪魔なMicrosoftの広告が入るようになってきた。 社内SEとしてはユーザに勝手にOSをアップグレードされるわけにはいかないので、消し去りたい。 ネットを探してみると、やはり同様の悩みを持つ人は多いらしく、結論としては、 GWX.exeとGWXUX.exeをタスクマネージャで強制終了する イ
 	</div>
 </article>
 </main>

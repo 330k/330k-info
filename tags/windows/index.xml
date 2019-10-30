@@ -17,12 +17,7 @@
       <pubDate>Tue, 17 Jul 2018 07:03:25 +0900</pubDate>
       
       <guid>https://www.330k.info/essay/start-command-prompt-in-windows-10/</guid>
-      <description> 元ネタ: Windows 10でコマンドプロンプトを素早く起動する方法
-私が業務で使うときは以下の手順で起動している。 設定が不必要で、おそらく最速。
-管理者権限でコマンドプロンプトを起動する  [Windows] + [X] → [A]で管理者権限でPowerShellを起動 UACのダイアログが出たら許可する PowerShell上で「cmd」と入力してEnter。  UACがONのときでもキーストローク数は9ストローク。
-コマンドプロンプトを起動しなくても、
- コマンドプロンプトとほぼ同じ操作ができるようにPowerShellのAliasが設定されている 将来性を考えたらPowerShellに慣れていたほうが得  と思うので、PowerShellを起動するだけで良いのであれば、キーストローク数は5ですむ。
-    </description>
+      <description>元ネタ: Windows 10でコマンドプロンプトを素早く起動する方法 私が業務で使うときは以下の手順で起動している。 設定が不必要で、おそらく最速。 管理者権限でコマンドプロンプトを起動する [Windows] + [X] → [A]で管理者権限でPowerShellを起動 UACのダイアログが出たら許可する PowerShell上で「cmd」と入力してEnter。 UACがONのときでもキーストローク数は9ストローク。 コマンドプロンプトを起動しなくて</description>
     </item>
     
     <item>
@@ -31,21 +26,7 @@
       <pubDate>Thu, 27 Jul 2017 21:21:29 +0900</pubDate>
       
       <guid>https://www.330k.info/essay/author_dvd_from_movie_file_on_windows/</guid>
-      <description>「この動画ファイルをDVDに焼いて。簡単でしょ。」
- いやいや、DVD-Video規格に沿った動画ファイルとファイル構造にしないといけないんですけど。
-Windows用のオーサリングソフトはフリーでも色々あるが、どれが良いのかよくわからないので、 ffmpeg + dvdauthor + mkisofsでISOファイルを作成するバッチファイルを作成した。
-参考サイト : http://d.hatena.ne.jp/hikaen2/20150201/1422773879
-前準備 ffmpeg 適当にWindows用バイナリを落としてPATHを設定しておく。
-dvdauthor Windows用のバイナリをダウンロードし、PATHの通ったところに設置。
-http://www.paehl.com/open_source/?DVDAuthor
-これの下部の「From Box.net」または「From Google Drive」からダウンロード。
-mkisofs 他のソフト(cdrfde)にくっついてくるmkisofs.exeを抜き出す。
-https://cdrtfe.sourceforge.io/cdrtfe/download_en.html
-これのcdrtfe 1.5.7 zip archiveをダウンロードし、展開したファイルの中から、
- tools\cdrtools\mkisofs.exe tools\cygwin\cygwin1.dll tools\cygwin\cygwin.ini  をPATHの通ったフォルダに移動。
-バッチファイル 下記の内容のバッチファイルを作成。 CPU数に合わせてthreadsの値は変更する。
-DVDにしたい動画ファイルをドラッグ&amp;amp;ドロップ。
-@ECHO OFF REM 動画ファイルからDVDのISOファイルを作成 SET VIDEO_FORMAT=NTSC ffmpeg -i &amp;quot;%1&amp;quot; -threads 4 -vf yadif=1,scale=720:480,tinterlace=4 -target ntsc-dvd -flags +ilme+ildct &amp;quot;%~dpn1_dvd.mpeg&amp;quot; dvdauthor -o &amp;quot;%~dpn1_dvd&amp;quot; -t &amp;quot;%~dpn1_dvd.mpeg&amp;quot; dvdauthor -o &amp;quot;%~dpn1_dvd&amp;quot; -T mkisofs -dvd-video -o &amp;quot;%~dpn1_dvd.</description>
+      <description>「この動画ファイルをDVDに焼いて。簡単でしょ。」 いやいや、DVD-Video規格に沿った動画ファイルとファイル構造にしないといけないんですけど。 Windows用のオーサリングソフトはフリーでも色々あるが、どれが良いのかよくわからないので、 ffmpeg + dvdauthor + mkisofsでISOファイルを作成するバッチファイルを作成した。 参考サイト : http://d.hatena.ne.jp/hikaen2/20150201/1422773879 前準備 ffmpeg 適当にWindows用バイナリを落としてPATHを設定しておく。</description>
     </item>
     
     <item>
@@ -54,12 +35,7 @@ DVDにしたい動画ファイルをドラッグ&amp;amp;ドロップ。
       <pubDate>Tue, 06 Jun 2017 06:48:00 +0900</pubDate>
       
       <guid>https://www.330k.info/essay/input_backslach_with_us_keyboard_layout/</guid>
-      <description>会社のPCではHDD暗号化ソフトのSecureDocを使用しているが、先日1台のPCが起動しなくなったため、リカバリーディスクを使っての救出を行った際のメモ。
-SecureDocのリカバリーディスクはWindows PEベースなのだが、海外の製品なので当然英語キーボード。 起動しなくなったPCのHDDの中身は運良く復旧できそうだったのだが、 データをネットワーク経由で回収しようとしたところネットワーク設定画面でバックスラッシュが入力できなくてハマった。
-5分ほどキーボードを押しまくった後、Altキーと文字コード入力で行けることに気がついた。
-Alt押す → テンキー9 → テンキー2 → Alt離す
-で無事入力できた。
-ただ、LetsNoteのNICをWindows PEでは認識できず無駄足に。 結局USBメモリ経由で回収した。</description>
+      <description>会社のPCではHDD暗号化ソフトのSecureDocを使用しているが、先日1台のPCが起動しなくなったため、リカバリーディスクを使っての救出を行った際のメモ。 SecureDocのリカバリーディスクはWindows PEベースなのだが、海外の製品なので当然英語キーボード。 起動しなくなったPCのHDDの中身は運良く復旧できそうだったのだが、 データをネットワーク経由で回収しようとしたところネットワーク設定</description>
     </item>
     
     <item>
@@ -68,13 +44,7 @@ Alt押す → テンキー9 → テンキー2 → Alt離す
       <pubDate>Mon, 08 May 2017 22:37:00 +0900</pubDate>
       
       <guid>https://www.330k.info/essay/create_zip_file_with_wsh_jscript/</guid>
-      <description>JScriptで複数のテキストファイルを書き出し、それをZIPでまとめたかったので作成。 VBAやVBScript版を参考に作ってみた。
-参考サイト : http://kiq-creator.com/blog/?eid=33
-複数のファイルをZIP圧縮する際のコツとしては、CopyHereをするたびに待機すること。 CopyHereは非同期なので、すぐにJS側に制御が返ってくるが、 複数のファイルを一気にCopyHereしようとすると、「読み取りできません」とエラーが出る。
-使い方 以下のコード中のcreateZipFileを自分のスクリプトにコピー&amp;amp;ペーストして
-createZipFile( &amp;quot;zipファイルのパス&amp;quot;, [&amp;quot;圧縮対象ファイルのパス1&amp;quot;, &amp;quot;圧縮対象ファイルのパス2&amp;quot;, ...])  とすればOK。 もしくは以下のコードをメモ帳で拡張子をjsにして保存すれば、ドラッグ&amp;amp;ドロップでzipファイルを作成(右クリック→送る→圧縮フォルダーとほぼ同じ動作)。
-注意事項 ディレクトリには対応してません。またWindows標準では暗号化ZIPは作成できません。 また圧縮対象ファイルの存在チェック等もやってないので、必要であればエラーハンドリング処理を追加してください。
-/** Windows 標準機能でZipファイルを作成するWSH(JScript) Copyright 330k This software is released under the MIT License. http://opensource.org/licenses/mit-license.php */ var args = []; for(var i = 0; i &amp;lt; WScript.Arguments.length; i++){ args.push(WScript.Arguments(i)); } var zipfile = args[0].replace(/(.+)\.(.+?)$/, &amp;quot;$1.zip&amp;quot;); createZipFile(zipfile, args); function createZipFile(zipFilePath, sourceFiles){ var shell = WScript.CreateObject(&amp;quot;Shell.Application&amp;quot;); var fso = WScript.CreateObject(&amp;quot;Scripting.FileSystemObject&amp;quot;); var file = fso.</description>
+      <description>JScriptで複数のテキストファイルを書き出し、それをZIPでまとめたかったので作成。 VBAやVBScript版を参考に作ってみた。 参考サイト : http://kiq-creator.com/blog/?eid=33 複数のファイルをZIP圧縮する際のコツとしては、CopyHereをするたびに待機すること。 CopyHereは非同期なので、すぐにJS側に制御が返ってくるが、 複数のファイルを一気にCopyHereしようとすると、「読み取りできません」とエラーが出る。 使い</description>
     </item>
     
     <item>
@@ -83,13 +53,7 @@ createZipFile( &amp;quot;zipファイルのパス&amp;quot;, [&amp;quot;圧縮�
       <pubDate>Wed, 13 Jan 2016 22:42:14 +0900</pubDate>
       
       <guid>https://www.330k.info/software/hta-sql-tool/</guid>
-      <description>概要 今は廃れたHTA(HTML Application)で書いた、汎用SQLツールです。 Windows上で動作し、
- CSVファイル(*.csv) Excelファイル(.xls、.xlsx、.xlsm、.xlsb) Accessファイル(*.mdb)  などをADODB経由で開いてSQLクエリを実行できます。
-CSVファイルはディレクトリ⇔データベース、CSVファイル⇔テーブルとして扱われ、 ExcelファイルはExcelブック⇔データベース、シート⇔テーブルとして扱われます。
-主に、SQLクエリを実行した結果をExcelに貼り付けて使用することを想定しており、 出力された表はExcelに貼り付けやすいようTSV形式で持っています。 select intoで直接ファイルに書き出すこともできます。
-スクリーンショット   ダウンロード Gistからダウンロード
-もしくは以下のソースコードをメモ帳にコピー＆ペーストし、拡張子をhtaに変更してください。
-&amp;lt;html&amp;gt; &amp;lt;head&amp;gt; &amp;lt;!-- HTA SQL Tool by 330k Copyright (c) 2016 330k This software is released under the MIT License. http://opensource.org/licenses/mit-license.php --&amp;gt; &amp;lt;title&amp;gt;HTA SQL Tool by 330k&amp;lt;/title&amp;gt; &amp;lt;HTA:APPLICATION ID=&amp;quot;USQLEXE&amp;quot; APPLICATIONNAME=&amp;quot;USQLEXE&amp;quot; BORDER=&amp;quot;thick&amp;quot; BORDERSTYLE=&amp;quot;normal&amp;quot; CAPTION=&amp;quot;yes&amp;quot; ICON=&amp;quot;C:\WINDOWS\system32\rsnotify.exe&amp;quot; INNERBORDER=&amp;quot;no&amp;quot; MAXIMIZEBUTTON=&amp;quot;yes&amp;quot; MINIMIZEBUTTON=&amp;quot;yes&amp;quot; SHOWINTASKBAR=&amp;quot;yes&amp;quot; SINGLEINSTANCE=&amp;quot;no&amp;quot; SYSMENU=&amp;quot;yes&amp;quot; VERSION=&amp;quot;1.0&amp;quot; WINDOWSTATE=&amp;quot;normal&amp;quot; SCROLL=&amp;quot;no&amp;quot; SCROLLFLAT=&amp;quot;no&amp;quot; SELECTION=&amp;quot;yes&amp;quot; CONTEXTMENU=&amp;quot;yes&amp;quot; NAVIGABLE=&amp;quot;yes&amp;quot; /&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;script type=&amp;quot;text/javascript&amp;quot;&amp;gt; var doc = document; eval(&#39;var document = doc&#39;); var shell = new ActiveXObject(&#39;WScript.</description>
+      <description>概要 今は廃れたHTA(HTML Application)で書いた、汎用SQLツールです。 Windows上で動作し、 CSVファイル(*.csv) Excelファイル(.xls、.xlsx、.xlsm、.xlsb) Accessファイル(*.mdb) などをADODB経由で開いてSQLクエリを実行できます。 CSVファイルはディレクトリ⇔データベース、CSVファイル⇔テーブルとして扱われ、 ExcelファイルはE</description>
     </item>
     
     <item>
@@ -98,10 +62,7 @@ CSVファイルはディレクトリ⇔データベース、CSVファイル⇔�
       <pubDate>Thu, 17 Dec 2015 20:49:00 +0900</pubDate>
       
       <guid>https://www.330k.info/essay/convert-dvd-to-mpeg-in-a-batch-file/</guid>
-      <description> 社内でアシスタントからDVDをPCで再生できるようにしたい、という要望を受けたので、 DVDを入れて起動するだけのバッチファイルを作ってみた。
-DVDの中身のVTS_01_1.VOB, VTS_01_2.VOBというファイルをffmpegの-iオプションに指定すれば良いのだが、 パイプ記号「|」を使ってファイル名を連結しなければならない。 ただ、バッチファイル中でパイプ記号が入ると上手く連結できないので、 試行錯誤の結果、一旦「$$」という文字を挟んで連結した後、パイプ記号に変換、という手順になった。
-使い方  以下のテキストをメモ帳にコピー＆ペースト 下のテキスト中でFドライブを指定している部分を各自のドライブ名に変更 拡張子をbatにして保存 DVDを入れてバッチファイルを起動  原則としてバッチファイルと同じフォルダにdvd_yyyymmdd.mpegというファイルが出来上がる
-@ECHO OFF ECHO DVDから普通の動画ファイルへ変換を行います。 ECHO DVDがFドライブに入っていることを確認してください。 PAUSE SET A= FOR %%F IN (&amp;quot;F:\VIDEO_TS\VTS_01_*.VOB&amp;quot;) DO CALL SET A=%%A%%$$%%F SET TIME_TMP=%TIME: =0% SET NOW=%DATE:/=%%TIME_TMP:~0,2%%TIME_TMP:~3,2%%TIME_TMP:~6,2% SET B=&amp;quot;%A:$$=|%&amp;quot; ffmpeg -i &amp;quot;concat:%B:~2,-1%&amp;quot; -target ntsc-dvd -vcodec copy -acodec copy dvd_%NOW%.mpeg ECHO 変換が終了しました。 ECHO 出力ファイル: %~dp0 dvd_%NOW%.mpeg PAUSE  </description>
+      <description>社内でアシスタントからDVDをPCで再生できるようにしたい、という要望を受けたので、 DVDを入れて起動するだけのバッチファイルを作ってみた。 DVDの中身のVTS_01_1.VOB, VTS_01_2.VOBというファイルをffmpegの-iオプションに指定すれば良いのだが、 パイプ記号「|」を使ってファイル名を連結しなければならない。 ただ、バッチファイル中でパイプ記号が入ると上手く連結できないので、 試</description>
     </item>
     
     <item>
@@ -110,16 +71,7 @@ DVDの中身のVTS_01_1.VOB, VTS_01_2.VOBというファイルをffmpegの-iオ�
       <pubDate>Tue, 04 Aug 2015 00:00:00 +0900</pubDate>
       
       <guid>https://www.330k.info/essay/install-windows-10-to-panasonic-letsnote-cf-n10/</guid>
-      <description>Windows Insider Programに登録していたので、7/31に「Windows 10がでたよ〜」というメールがGabe Aulからやってきた。
-ゆくゆくは更新プログラムが提供されるけど、早く試したい人は「メディア作成ツール」をダウンロードして使うといいよ、 とのことなので、会社で余っていたPCにインストールしてみた。
-インストール  機種: Panasonic Let&amp;rsquo;s Note CF-N10(法人向けモデル) Windows 7 32bit版からのアップグレード Office 2010、Adobe Acrobat Pro XI、トレンドマイクロウイルスバスターがインストール済み  インストール方法は基本的に http://ascii.jp/elem/000/001/034/1034923/ の通り。 ※現在は直接ISOファイルがダウンロードできる模様
-ただし、指示に従って進めていると、以下の2つのソフトウェアをアンインストールしなさい、と出てくる。
- Intel&amp;reg; Dynamic Power Performance Management Realtek High Definition Audio Driver  Realtekの方は、「アンインストール」ボタンをクリックすればOK。
-Intelの方は、 http://answers.microsoft.com/ja-jp/windows/forum/windows_8-windows_install/windows-8/cefec781-59a2-4f78-925a-0b34c70b53b7?auth=1 に情報がある。
-Let&amp;rsquo;s Noteの場合、 C:\util2\drivers\etm\DppmCleaner.bat、もしくはLPOSetting.jsを実行する、とあるが、 CF-N10の場合はバージョンが違うためか存在しない。
-仕方がないので、時期の近い他機種向けのドライバーをインストールして、上記のLPOSetting.jsを実行することで解決。 その後しばらく待てば、無事Windows 10へのアップグレードが完了した。
-インストール結果 現在のところ、インストール後の結果は以下の通り。
- ActiveDirectoryへの参加　→　○成功 グループポリシーの適用　→　△ユーザーの構成のみ有効、コンピュータの構成は有効にならない (ただし、ドメインコントローラ側(Windows Server 2012R2)でのシミュレーションでは適用されるはず) Office 2010の起動　→　△起動は成功(Outlookの設定情報は引き継げず) Adobe Acrobat Pro XIの起動　→　○成功(ただしデフォルトではEdgeでPDFを開く) ウイルスバスター　→　○問題なく動作している模様(リアルタイム検索、パターンファイルのアップデート) BitLockerによるドライブの暗号化　→　○成功(運良くCF-N10もTPMを積んでいた)  その他感想  起動時間はWindows 7とあまり変わらない感触 シャットダウンは早くなった印象 たまに画面の文字がボケる(ClearTypeの設定をいじっても変わらず) 現状ではGPOでコンピュータの構成が効いていないので、クライアント側かサーバ側で対応するタイミングが来るまでは様子見。  Aug.</description>
+      <description>Windows Insider Programに登録していたので、7/31に「Windows 10がでたよ〜」というメールがGabe Aulからやってきた。 ゆくゆくは更新プログラムが提供されるけど、早く試したい人は「メディア作成ツール」をダウンロードして使うといいよ、 とのことなので、会社で余っていたPCにインストールしてみた。 インストール 機種: Panasonic Let&amp;rsquo;s Note CF-N10(法人向けモデル) Windows 7 32bit版からのアップグレード Office 2010、A</description>
     </item>
     
     <item>
@@ -128,15 +80,7 @@ Let&amp;rsquo;s Noteの場合、 C:\util2\drivers\etm\DppmCleaner.bat、もし�
       <pubDate>Wed, 08 Jul 2015 00:00:00 +0900</pubDate>
       
       <guid>https://www.330k.info/essay/disable_specific_windows_update_without_wsus/</guid>
-      <description>先月頃から、Windows 7の通知領域に「Windows 10を入手する」とか「無料アップグレードを予約」とかいう邪魔なMicrosoftの広告が入るようになってきた。 社内SEとしてはユーザに勝手にOSをアップグレードされるわけにはいかないので、消し去りたい。
-ネットを探してみると、やはり同様の悩みを持つ人は多いらしく、結論としては、
- GWX.exeとGWXUX.exeをタスクマネージャで強制終了する インストールされたWindows Updateの「KB3035583」をアンインストールする 再度Windows Updateがインストールさせようとしてくるので、KB3035583を右クリックして「非表示」にする  ということらしい。 → 参考サイト: 「Windows10を入手する」の通知が消えない＼(^o^)／
-さて、1人社内SEとしては以上の手順をユーザの全PCに行うのは無理なので、なんとか自動化したい。 1と2についてはコマンドプロンプトで可能なので、あっさり情報が見つかり、
-Taskkill /IM GWX.exe /F Taskkill /IM GWXUX.exe /F wusa.exe /uninstall /kb:3035583 /quiet /norestart  と書いたバッチファイルをログオンスクリプトに仕込むことで可能だった。
-問題は3の何度アンインストールしても再インストールさせようとしてくる点。 根本的な解決策はもちろんWSUSサーバを立てて、KB3035583を承認しなければ良い。
-だが、私の会社にはWSUSサーバはない。 レジストリをいじったりして特定のWindows Updateを非表示にする方法がないか、と調べてみたら、 Windows Update Agent APIというのがあることを発見。
-英語の情報しかなかったが、サンプルを参考に目的の「KB3035583」を非表示にするスクリプト(今回はJavaScript)を書いてみた。
-/********************************************************************** WSUSを使用せずに不必要なWindowsUpdateを非表示 Copyright 2015-2016 330k 使用は自己責任でお願いします **********************************************************************/ try{ // インストールしないWindowsUpdateのKB番号 var disabledKBs = [ 2876229, 2952664, 2976978, 2977759, 3021917, 3022345, 3035583, 3068708, 3075249, 3080149, 3123862, 3150513, 2990214,// Win 7 3050265, 3065987, 3075851, 3083324, 3083710, 3102810, 3112343, 3135445, 3138612, 3161608, 3044374,// Win 8.</description>
+      <description>先月頃から、Windows 7の通知領域に「Windows 10を入手する」とか「無料アップグレードを予約」とかいう邪魔なMicrosoftの広告が入るようになってきた。 社内SEとしてはユーザに勝手にOSをアップグレードされるわけにはいかないので、消し去りたい。 ネットを探してみると、やはり同様の悩みを持つ人は多いらしく、結論としては、 GWX.exeとGWXUX.exeをタスクマネージャで強制終了する イ</description>
     </item>
     
     <item>
@@ -145,10 +89,7 @@ Taskkill /IM GWX.exe /F Taskkill /IM GWXUX.exe /F wusa.exe /uninstall /kb:303558
       <pubDate>Fri, 30 Oct 2009 22:43:03 +0900</pubDate>
       
       <guid>https://www.330k.info/software/ashiato-data/</guid>
-      <description>概要 auの携帯電話の地図ビューアーの簡易ハンディGPS機能で取得したあしあとデータを結合し、GPXおよびKML形式に変換します。
-地図ビューアーで約2時間ごとにログを保存しなければならず、1日ログを取った後、複数のあしあとデータを結合するのが面倒だったため作成しました。
-GPXへの変換に際しては時刻情報を残しますので、カシミール3Dなどで速度履歴を見ることも可能です。
-ダウンロード Vectorの紹介ページへ</description>
+      <description>概要 auの携帯電話の地図ビューアーの簡易ハンディGPS機能で取得したあしあとデータを結合し、GPXおよびKML形式に変換します。 地図ビューアーで約2時間ごとにログを保存しなければならず、1日ログを取った後、複数のあしあとデータを結合するのが面倒だったため作成しました。 GPXへの変換に際しては時刻情報を残しますので、カシミール3Dなどで速度履歴を見ることも可能です。 ダウンロード Vectorの紹介ペー</description>
     </item>
     
     <item>
@@ -157,10 +98,7 @@ GPXへの変換に際しては時刻情報を残しますので、カシミー�
       <pubDate>Sun, 25 Oct 2009 22:42:49 +0900</pubDate>
       
       <guid>https://www.330k.info/software/vigla/</guid>
-      <description> 概要 序盤は定石データベースを使用し、中盤を貧弱な評価関数で乗り切り、終盤は完全読みを行う、普通のコンピュータリバーシソフト。
- 貧弱な評価関数 マルチスレッドによる高い応答性・操作性 棋譜や盤面の出力が可能 対戦中や棋譜を読み込んで最善手を探索させるなど研究のための機能も一応付属  を特徴とする。
-ダウンロード Vectorの紹介ページへ
-スクリーンショット   </description>
+      <description>概要 序盤は定石データベースを使用し、中盤を貧弱な評価関数で乗り切り、終盤は完全読みを行う、普通のコンピュータリバーシソフト。 貧弱な評価関数 マルチスレッドによる高い応答性・操作性 棋譜や盤面の出力が可能 対戦中や棋譜を読み込んで最善手を探索させるなど研究のための機能も一応付属 を特徴とする。 ダウンロード Vectorの紹介ページへ スクリーンショット</description>
     </item>
     
   </channel>

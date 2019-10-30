@@ -8,11 +8,7 @@
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
 	<meta property="og:title" content="Compileで使用するCコンパイラを変更する" />
-<meta property="og:description" content="Mathematica 8から、CompileでCコンパイラを使って直接ネイティブコードにコンパイルできるようになった。 使用するCコンパイラは、
-Needs[&quot;CCompilerDriver`&quot;]; CCompilerDriver`$CCompiler = { &quot;Name&quot; -&gt; &quot;GCC&quot;, &quot;Compiler&quot; -&gt; CCompilerDriver`GCCCompiler`GCCCompiler, &quot;CompilerInstallation&quot; -&gt; &quot;/usr/bin&quot;, &quot;CompilerName&quot; -&gt; Automatic };  というように、CCompilerDriver`$CCompilerを変更して指定する。
-以前からのCompile(&ldquo;WVM&rdquo;)と、各コンパイラの比較のため、ベンチマークを行ってみた。 検証環境は以下の通り。
- CPU: Intel Core-i7 3770 (インテル® HT テクノロジー ON) OS: Ubuntu 14.04 LTS 64bit Memory: 16 GB DDR3 1333 MHz  検証するCコンパイラは、GCC、Intel C&#43;&#43; Compiler、Clangの3種類。
- gcc: (Ubuntu 4.8.4-2ubuntu1~14.04) 4.8.4 icc: icc (ICC) 14.0.3 20140422 clang: Ubuntu clang version 3.4-1ubuntu3 (tags/RELEASE_34/final) (based on LLVM 3.4)  Mathematicaコードは以下。1/i^2を総和してπ^2/6を求める単純な計算を行った。 ※私の環境ではICCは/media/storage/intel/compserxe/binにインストールしているので下記コードを使用する場合は注意。" />
+<meta property="og:description" content="Mathematica 8から、CompileでCコンパイラを使って直接ネイティブコードにコンパイルできるようになった。 使用するCコンパイラは、 Needs[&quot;CCompilerDriver`&quot;]; CCompilerDriver`$CCompiler = { &quot;Name&quot; -&gt; &quot;GCC&quot;, &quot;Compiler&quot; -&gt; CCompilerDriver`GCCCompiler`GCCCompiler, &quot;CompilerInstallation&quot; -&gt; &quot;/usr/bin&quot;, &quot;CompilerName&quot; -&gt; Automatic }; というように、CCompilerDriver`$CCompilerを変更して指定する。 以前からのCompile(&ldquo;WVM&rdquo;)と、各コンパイラの比較のため、ベンチマークを行ってみた。 検証環境は以下の通り。 CPU: Intel Core-i7 3770 (インテル" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.330k.info/essay/change-c-compiler-in-mathematica/" />
 <meta property="article:published_time" content="2015-12-08T17:40:00+09:00" />
@@ -20,11 +16,7 @@ Needs[&quot;CCompilerDriver`&quot;]; CCompilerDriver`$CCompiler = { &quot;Name&q
 
 	<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Compileで使用するCコンパイラを変更する"/>
-<meta name="twitter:description" content="Mathematica 8から、CompileでCコンパイラを使って直接ネイティブコードにコンパイルできるようになった。 使用するCコンパイラは、
-Needs[&quot;CCompilerDriver`&quot;]; CCompilerDriver`$CCompiler = { &quot;Name&quot; -&gt; &quot;GCC&quot;, &quot;Compiler&quot; -&gt; CCompilerDriver`GCCCompiler`GCCCompiler, &quot;CompilerInstallation&quot; -&gt; &quot;/usr/bin&quot;, &quot;CompilerName&quot; -&gt; Automatic };  というように、CCompilerDriver`$CCompilerを変更して指定する。
-以前からのCompile(&ldquo;WVM&rdquo;)と、各コンパイラの比較のため、ベンチマークを行ってみた。 検証環境は以下の通り。
- CPU: Intel Core-i7 3770 (インテル® HT テクノロジー ON) OS: Ubuntu 14.04 LTS 64bit Memory: 16 GB DDR3 1333 MHz  検証するCコンパイラは、GCC、Intel C&#43;&#43; Compiler、Clangの3種類。
- gcc: (Ubuntu 4.8.4-2ubuntu1~14.04) 4.8.4 icc: icc (ICC) 14.0.3 20140422 clang: Ubuntu clang version 3.4-1ubuntu3 (tags/RELEASE_34/final) (based on LLVM 3.4)  Mathematicaコードは以下。1/i^2を総和してπ^2/6を求める単純な計算を行った。 ※私の環境ではICCは/media/storage/intel/compserxe/binにインストールしているので下記コードを使用する場合は注意。"/>
+<meta name="twitter:description" content="Mathematica 8から、CompileでCコンパイラを使って直接ネイティブコードにコンパイルできるようになった。 使用するCコンパイラは、 Needs[&quot;CCompilerDriver`&quot;]; CCompilerDriver`$CCompiler = { &quot;Name&quot; -&gt; &quot;GCC&quot;, &quot;Compiler&quot; -&gt; CCompilerDriver`GCCCompiler`GCCCompiler, &quot;CompilerInstallation&quot; -&gt; &quot;/usr/bin&quot;, &quot;CompilerName&quot; -&gt; Automatic }; というように、CCompilerDriver`$CCompilerを変更して指定する。 以前からのCompile(&ldquo;WVM&rdquo;)と、各コンパイラの比較のため、ベンチマークを行ってみた。 検証環境は以下の通り。 CPU: Intel Core-i7 3770 (インテル"/>
 
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">

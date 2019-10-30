@@ -8,16 +8,7 @@
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
 	<meta property="og:title" content="Gmailをeml形式で保存するChrome拡張機能" />
-<meta property="og:description" content=" Gmailの機能拡充により標準で可能になったため、拡張機能の配布を終了しました
-概要 会社でGoogle Apps for Workを導入したところ、「Outlookの時はメールをD&amp;Dで保存できたのに、Gmailになってできなくなった」とのクレームが出てきた。 経理の外注先や監査法人とのやりとりの際に、メールを含む関連資料1式をやりとりするニーズがあるらしい。 Googleで検索すると、「メッセージのソースを表示」→「拡張子をemlにしてメモ帳などで保存」とする方法がみつかった(関連リンク参照)が、 ユーザからは「面倒だ」「拡張子って何？」との声が・・・。
-誰か作ってるだろうと思って探してみたが、意外なことに私の調べた限りではそのような拡張機能が見つからなかったので、自分で作ってみた。
-せっかくなのでChromeウェブストアに公開してみたので、以下のリンクからどうぞ。
-Chromeウェブストア: EMLとして保存(Gmail)
-  使い方 Gmailで「メッセージのソースを表示」を行うと、自動でemlファイルがダウンロードされます。 ファイル名は「yyyymmdd_hhmmss.eml」になります(Dateヘッダから取得した日時です)。
-仕様についての補足 当初はGmail画面の「メッセージのソースを表示」の下にメニュー項目を追加して、ダウンロードさせるようにしたかったが、 メッセージのソースを表示をした時のURL(https://mail.google.com/mail/u/0/?ui=2&amp;ik=**********&amp;view=om&amp;th=*************)のパラメータのうち、 thはブラウザのlocation.pathやhrefを見ればわかるが、ikはメッセージが表示されるときにページ側のグローバルオブジェクトに格納されるため、 拡張機能内のJavaScriptからはアクセスできない(拡張機能のJavaScriptはページ内のJavaScriptとは別の空間で実行される)。 そのため、メッセージのソースを表示した後に動作するような仕様とした。
-もちろんGmail APIを使えばアクセスできるとは思うのだが、そうするとユーザは最初にアプリに対してGmailを読み取る権限を許可しなければならないため、敷居が高くなってしまう。 他の人はこれらの理由で同様の拡張機能の作成を断念したのではないだろうか。
-また、Outlookのように保存されるファイル名を件名にしたかったが、ありとあらゆる文字コードに対応しなければならなくなるので単純にDateヘッダから日時を取得する仕様とした。
-関連リンク  gmailのメールをemlファイルにする | 今日覚えたことの覚え書き Gmail ヘルプ フォーラム Gmailを1件だけパソコンに保存したい  " />
+<meta property="og:description" content="Gmailの機能拡充により標準で可能になったため、拡張機能の配布を終了しました 概要 会社でGoogle Apps for Workを導入したところ、「Outlookの時はメールをD&amp;Dで保存できたのに、Gmailになってできなくなった」とのクレームが出てきた。 経理の外注先や監査法人とのやりとりの際に、メールを含む関連資料1式をやりとりするニーズがあるらしい。 Googleで検索すると、「メッセージのソースを表" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.330k.info/software/save-as-eml-for-gmail-chrome-extension/" />
 <meta property="article:published_time" content="2016-11-06T22:34:45+09:00" />
@@ -25,16 +16,7 @@ Chromeウェブストア: EMLとして保存(Gmail)
 
 	<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Gmailをeml形式で保存するChrome拡張機能"/>
-<meta name="twitter:description" content=" Gmailの機能拡充により標準で可能になったため、拡張機能の配布を終了しました
-概要 会社でGoogle Apps for Workを導入したところ、「Outlookの時はメールをD&amp;Dで保存できたのに、Gmailになってできなくなった」とのクレームが出てきた。 経理の外注先や監査法人とのやりとりの際に、メールを含む関連資料1式をやりとりするニーズがあるらしい。 Googleで検索すると、「メッセージのソースを表示」→「拡張子をemlにしてメモ帳などで保存」とする方法がみつかった(関連リンク参照)が、 ユーザからは「面倒だ」「拡張子って何？」との声が・・・。
-誰か作ってるだろうと思って探してみたが、意外なことに私の調べた限りではそのような拡張機能が見つからなかったので、自分で作ってみた。
-せっかくなのでChromeウェブストアに公開してみたので、以下のリンクからどうぞ。
-Chromeウェブストア: EMLとして保存(Gmail)
-  使い方 Gmailで「メッセージのソースを表示」を行うと、自動でemlファイルがダウンロードされます。 ファイル名は「yyyymmdd_hhmmss.eml」になります(Dateヘッダから取得した日時です)。
-仕様についての補足 当初はGmail画面の「メッセージのソースを表示」の下にメニュー項目を追加して、ダウンロードさせるようにしたかったが、 メッセージのソースを表示をした時のURL(https://mail.google.com/mail/u/0/?ui=2&amp;ik=**********&amp;view=om&amp;th=*************)のパラメータのうち、 thはブラウザのlocation.pathやhrefを見ればわかるが、ikはメッセージが表示されるときにページ側のグローバルオブジェクトに格納されるため、 拡張機能内のJavaScriptからはアクセスできない(拡張機能のJavaScriptはページ内のJavaScriptとは別の空間で実行される)。 そのため、メッセージのソースを表示した後に動作するような仕様とした。
-もちろんGmail APIを使えばアクセスできるとは思うのだが、そうするとユーザは最初にアプリに対してGmailを読み取る権限を許可しなければならないため、敷居が高くなってしまう。 他の人はこれらの理由で同様の拡張機能の作成を断念したのではないだろうか。
-また、Outlookのように保存されるファイル名を件名にしたかったが、ありとあらゆる文字コードに対応しなければならなくなるので単純にDateヘッダから日時を取得する仕様とした。
-関連リンク  gmailのメールをemlファイルにする | 今日覚えたことの覚え書き Gmail ヘルプ フォーラム Gmailを1件だけパソコンに保存したい  "/>
+<meta name="twitter:description" content="Gmailの機能拡充により標準で可能になったため、拡張機能の配布を終了しました 概要 会社でGoogle Apps for Workを導入したところ、「Outlookの時はメールをD&amp;Dで保存できたのに、Gmailになってできなくなった」とのクレームが出てきた。 経理の外注先や監査法人とのやりとりの際に、メールを含む関連資料1式をやりとりするニーズがあるらしい。 Googleで検索すると、「メッセージのソースを表"/>
 
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">

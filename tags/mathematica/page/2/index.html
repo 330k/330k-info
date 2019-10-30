@@ -85,12 +85,7 @@ if (!doNotTrack) {
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		MathematicaのExportでAVIなどの動画ファイルを作成することは簡単に可能だが、 いかんせんすべてのフレームの画像を作成してからファイルに書きだすので、フレーム数に比例してメモリの使用量が多くなってしまう。 そのため長いムービーの作成は困難であった。
-そこで、ffmpegと併用することでメモリ使用量を抑えつつ、長編の動画ファイルを制作する。 具体的には、
- ffmpegで標準入力から読み込ませるOutputStreamオブジェクトを作成する BinaryWriteでそのストリームに各フレームの画像を書き込む 終わったらCloseでストリームを閉じる  とする。ここで、各フレーム画像の形式をPPMにしないとうまく動作しなかった(BMP、PNGなどではなぜか動作せず)。
-例えば、以下のようにするとtest001.aviができあがる。
-s = OpenWrite[ &quot;!ffmpeg -y -vcodec ppm -f image2pipe -i - -vcodec rawvideo test001.avi&quot;, BinaryFormat -&gt; True]; Do[ BinaryWrite[s, ExportString[ Plot[Sin[x + i], {x, 0, 2 Pi} , ImageSize -&gt; {640, 480} , PlotRange -&gt; {{0, 2 Pi}, {-1, 1}} , Frame -&gt; True] , &quot;PPM&quot;]] , {i, 0, 2 Pi, Pi/50} ]; Close[s]  Exportと同じような使い勝手の関数ExportMovieを作るとこんな感じになる。
-Options[ExportMovie] = { &quot;FrameRate&quot; -&gt; 25, &quot;VideoCodecOption&quot; -&gt; &quot;-vcodec rawvideo&quot;, &quot;ExportOptions&quot; -&gt; {} }; ExportMovie[outputfilepath_String, expr_, {i_Symbol, imin_: 1, imax_, di_: 1}, OptionsPattern[]] := Module[{stream}, stream = OpenWrite[ ToString[ StringForm[ &quot;!
+		MathematicaのExportでAVIなどの動画ファイルを作成することは簡単に可能だが、 いかんせんすべてのフレームの画像を作成してからファイルに書きだすので、フレーム数に比例してメモリの使用量が多くなってしまう。 そのため長いムービーの作成は困難であった。 そこで、ffmpegと併用することでメモリ使用量を抑えつつ、長編の動画ファイルを制作する。 具体的には、 ffmpegで標準入力から読み込ませる
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -102,12 +97,7 @@ Options[ExportMovie] = { &quot;FrameRate&quot; -&gt; 25, &quot;VideoCodecOption&
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		ドキュメントにはないものの、MathematicaではSQLiteを扱うことができる。 しかしながら、BLOB型や文字列で日本語などを扱うには少し工夫が必要なので、メモ。
-BLOB型 select 直接BLOB型をselectすると$Failedが返ってくるので、hex関数で16進文字列として返す。
-db = Database`OpenDatabase[sqlitefilepath]; rs = Database`QueryDatabase[db, &quot;select hex(column_name) from table_name&quot;];  これを16進文字列→数値→バイト列→文字列と変換して、最後にImportStringで読み込むと、Mathematicaで読み込める。
-ImportSQLiteBLOB[hex_, format_] := ImportString[ FromCharacterCode[IntegerDigits[FromDigits[hex, 16], 256]], format]; ImportSQLiteBLOB[rs[[1, 1]], &quot;PNG&quot;]  insert insertする場合には逆に、データをExportStringで文字列に変換→バイト列→16進文字列と変換し&rdquo;x&rsquo;&ldquo;と&rdquo;&lsquo;&ldquo;で囲う。
-ExportSQLiteBLOB[expr_, format_] := StringJoin[&quot;x'&quot;, IntegerString[ToCharacterCode[ExportString[expr, format]], 16, 2], &quot;'&quot;]; Database`QueryDatabase[db, &quot;insert into table_name values (&quot; &lt;&gt; ExportSQLiteBLOB[Plot[Sin[x], {x, 0, Pi}], &quot;PNG&quot;] &lt;&gt; &quot;)&quot;];  マルチバイト文字列 select 日本語などマルチバイト文字列が入っていても適切に変換してくれないので、自前で変換する。
-ImportSQLiteString[str_] := FromCharacterCode[ToCharacterCode[str], &quot;UTF8&quot;]; rs = Database`QueryDatabase[db, &quot;select column_name from table_name&quot;]; ImportSQLiteString[rs[[1, 1]]]  insert そのまま突っ込むとエラーが出るので、変換してから突っ込む。ついでにシングルクォーテーションをエスケープしておく。
+		ドキュメントにはないものの、MathematicaではSQLiteを扱うことができる。 しかしながら、BLOB型や文字列で日本語などを扱うには少し工夫が必要なので、メモ。 BLOB型 select 直接BLOB型をselectすると$Failedが返ってくるので、hex関数で16進文字列として返す。 db = Database`OpenDatabase[sqlitefilepath]; rs = Database`QueryDatabase[db, &quot;select hex(column_name) from table_name&quot;]; これを16進文字列→数値→バイト列→文字列と変換して、最後にImportStringで読み込むと、
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -119,16 +109,7 @@ ImportSQLiteString[str_] := FromCharacterCode[ToCharacterCode[str], &quot;UTF8&q
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		Mathematica 8 Home Edition 日本語版をUbuntu 12.04 LTS 64bit版にインストールしたところ、
- ディレクトリ、ファイル名に日本語が含まれるノートブックファイル(.nb)を開けない ディレクトリ、ファイル名に日本語が含まれるとImport/Exportできない、FileNamesで列挙できない ノートブック中に日本語を入力できない $SystemCharacterEncoding、$CharacterEncodingが&rdquo;EUC-JP&rdquo;になっている  などの言語関連の不具合があった。
-これから作るノートブックは英語だけで書けば済むが、今までに作ったノートブックファイルが開けないのがつらい。 一応Wolframのサポートにはメールを出したが、期待できそうになかった。
-/usr/local/Wolram/以下のファイルで関係有りそうなものを試行錯誤していじった結果、以下の方法で対処できたのでメモ。
- /usr/local/Wolfram/Mathematica/8.0/Executables以下の起動用スクリプトファイルMathematica、mathematicaの「LANG=ja_JP.eucJP」を「LANG=en_US.UTF-8」などに適当に変更orコメントアウト /usr/local/Wolfram/Mathematica/8.0/SystemFiles/CharacterEncodings/UTF-8.mの内容をISO8859-1.mにコピー  $SystemCharacterEncoding、$CharacterEncodingは&rdquo;ISO8859-1&rdquo;になってしまうのが気持ち悪いが、とりあえず実用上問題がなくなった。
-あとは本当にISO8859-1の文字コードで書かれたファイルを読み込むことができなくなってしまうが、扱う機会はないので良しとする。
-Oct. 7 2016 追記
-4年越しにWolfram Researchから連絡が来た。
- In May 2012 you reported an issue with Mathematica wherein Mathematica was unable to open files from folders with non-English cahracters in the name. We believe that the issue has been resolved in the current release of Mathematica.
-Thank you for your report and we look forward to a continued, productive relationship with you.
+		Mathematica 8 Home Edition 日本語版をUbuntu 12.04 LTS 64bit版にインストールしたところ、 ディレクトリ、ファイル名に日本語が含まれるノートブックファイル(.nb)を開けない ディレクトリ、ファイル名に日本語が含まれるとImport/Exportできない、FileNamesで列挙できない ノートブック中に日本語を入力できない $SystemCharacterEncoding、$CharacterEncodingが&rdqu
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -140,15 +121,7 @@ Thank you for your report and we look forward to a continued, productive relatio
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		Mathematicaにおいてプログラムの実行速度を最適化する際の項目を思いつく限り挙げてみた。
-関数型パラダイムで書く 必然的に組み込み関数を多く使い、リストをまとめて操作することになるので手続き型で書くより速くなることが多い。 コード量も少なくなって読みやすくなるので、よほどのことでない限りMathematicaでは関数型で書く。
-具体的には、手続き型ループ構文(Do, For, Whileなど)をやめて、MapやThreadを使うようにする。
-出来る限り組み込みの関数を使う 組み込み関数でできることは出来る限りやらせる。 ドキュメントを探すと、Mathematicaは意外と多くのものが組み込みでできるようになっている。
-リストは全体をまとめて扱う 大概のループの中身はリストへの関数の適用や、テンソルの演算などに帰着する。
-四則演算はリストにそのまま適用可能。 内積はDot、外積はCrossがあるし、それらを一般化したInner、Outerといった関数もある。
-Mathematicaでは個々の要素に対する操作は記述しなくてもよい場合が多い。
-myDifferences1[v_] := Table[v[[i + 1]] - v[[i]], {i, Length[v] - 1}]; (* 個々の要素を操作する *) myDifferences2[v_] := Most[RotateLeft[v] - v]; (* リスト全体をまとめて操作する *) {Timing[myDifferences1[#];], Timing[myDifferences2[#];], Timing[Differences[#];]} &amp;[RandomReal[{0, 5}, 5000000]] {{1.919, Null}, {0.296, Null}, {0.187, Null}}  リストの要素数変更を避ける 手続き型で要素数が分からないリストを生成するには、ReapとSowを用いる。AppendToやPrependToは厳禁。
-myPrimeChoice1[n_] := Module[{r = {}, i}, Do[If[PrimeQ[i], AppendTo[r, i]], {i, n}]; r]; myPrimeChoice2[n_] := Module[{i}, Reap[Do[If[PrimeQ[i], Sow[i]], {i, n}]][[2, 1]]]; {Timing[myPrimeChoice1[200000];], Timing[myPrimeChoice2[200000];]} {{3.
+		Mathematicaにおいてプログラムの実行速度を最適化する際の項目を思いつく限り挙げてみた。 関数型パラダイムで書く 必然的に組み込み関数を多く使い、リストをまとめて操作することになるので手続き型で書くより速くなることが多い。 コード量も少なくなって読みやすくなるので、よほどのことでない限りMathematicaでは関数型で書く。 具体的には、手続き型ループ構文(Do, For, Whileなど)をやめて、Ma
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -160,21 +133,7 @@ myPrimeChoice1[n_] := Module[{r = {}, i}, Do[If[PrimeQ[i], AppendTo[r, i]], {i, 
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		MathematicaではImportやExportを使って様々な形式のファイルを読み書きできるが、 標準で対応していないファイル形式についても自分でローダやライタを作り、 それをImportやExportに対応させる方法がExtending Import &amp; Export (Wolfram Library Archive)において解説されている。
-しかしこの文書は2003年のもので以前はExperimental`RegisterConverterという関数で登録すればよかったのだが、 この関数はMathematica 7にはない。
-Names[&quot;*`*Register*&quot;]  などとして探し回ったところ、
- ImportExport`RegisterFormat ImportExport`RegisterExport ImportExport`RegisterImport  というそれらしいものを見つけた。
-早速
-ClearAttributes[ImportExport`RegisterFormat, ReadProtected]  として読込みプロテクトを解除してどういう動作をするのか調べたところ、
- ImportExport`RegisterFormat[&ldquo;ファイルフォーマット名&rdquo;]としてファイルフォーマットを登録 ImportExport`RegisterImport[&ldquo;ファイルフォーマット名&rdquo;, myImport]で自前のローダmyImportをImportに登録 ImportExport`RegisterExport[&ldquo;ファイルフォーマット名&rdquo;, myExport]で自前のライタmyExportをExportに登録  という使い方をするようだ。ファイルフォーマット名は&rdquo;GPX&rdquo;でも&rdquo;KML&rdquo;でも&rdquo;JSON&rdquo;でも好きな名前を付けていい。
-myImportやmyExportの書式は以前と変わっていないようで、
-myImport[filename_String, options___?OptionQ] := Module[{...},...] myExport[filename_String, expression_, options___?OptionQ] := Module[{...},...]  でいい模様。
-ImportExport`RegisterFormatには以下のオプションがある。
- BinaryFormat : バイナリファイルならTrue、そうでなければFalse。 ImportExport`Encoding : よくわからないが、標準では&rdquo;BASE64&rdquo;、&rdquo;BZIP2&rdquo;、&rdquo;GZIP&rdquo;、&rdquo;UUE&rdquo;だけでTrueになっている。 ImportExport`Extensions : 対応する拡張子またはそのリスト。{&rdquo;.nb&rdquo;,&rdquo;.html&rdquo;}などと指定する。 AlphaChannel : アルファチャンネルを使う画像かどうか？Exportの際のラスタライズに関係するかも。JPEG2000やPNGなどでTrueになっている。  ただ、ImportExportExtensionsに拡張子を指定して登録しても、Exportでは大丈夫だがImportではうまく判別されない。 ImportExportRegisterImportの動作についてもう少し調べる必要がある。
-Wolfram Researchが新しいドキュメントを出してくれれば早いのだけれど…。
-Feb. 20 2010追記
-Importで自動判別させる方法が判明。
-FileFormatDump`AddFormat[&quot;ファイルフォーマット名&quot;, bin, bundle, archive, encoding, magic, ext, mime, test, bundletestfunc]  として、判別するときに用いられる関数のほか、MIMEタイプも登録できる模様。
+		MathematicaではImportやExportを使って様々な形式のファイルを読み書きできるが、 標準で対応していないファイル形式についても自分でローダやライタを作り、 それをImportやExportに対応させる方法がExtending Import &amp; Export (Wolfram Library Archive)において解説されている。 しかしこの文書は2003年のもので以前はExperimental`RegisterConverterという関数で
 	</div>
 </article><article class="list__item post">
 	<figure class="list__thumbnail">
@@ -191,15 +150,7 @@ FileFormatDump`AddFormat[&quot;ファイルフォーマット名&quot;, bin, bun
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		ある点が多角形の内側にあるのか外側にあるのかを判定するには主に
- ある点から直線をひいて多角形の辺と何回交差するか判定する(偶数回なら外、奇数回なら中) ある点から多角形の各頂点を順番に見ていったときに何回転するか  の2つの方法がある。
-しかし辺との交差回数をカウントするのは、直線と辺が平行だったり、頂点で交差したりする場合などに特別な配慮が必要なので、 ここでは2番目の方法で実装する。
-点から多角形上の点を順々に見たときの偏角(反時計まわりを正とする)の和を取ればよいので、ある点Pからみた多角形上の頂点Aから頂点Bまでの偏角∠APBを求める関数をまず作成する。
-この実装方法にもベクトルの外積を考えるなど何通りか考えられるが、せっかくMathematicaを使うので楽をして、複素数にしてArgで偏角をとることにする。
-Angle[{{x1_, y1_}, {x2_, y2_}, {x3_, y3_}}] := Module[{v1 = Complex[x1 - x3, y1 - y3], v2 = Complex[x2 - x3, y2 - y3]}, If[TrueQ[v1 == 0], 0, Arg[v2/v1]] ]  多角形の内外判定はMathematicaのPolygonなどの表示に合わせ、自己交差している場合は内部と外部を交互に繰り返すものとすると、
- 偏角の和が0、±4π、±8π、…のとき点は多角形の外 偏角の和が±2π、±6π、±10π…のとき点は多角形の中  とできる。
-以上より多角形の内外を判定する関数InsidePolygonQは以下のように実装できる。
-InsidePolygonQ[poly : {{_, _} ..}, p : {_, _}] := Module[ {argsum}, argsum = Round[Total[MapThread[Angle[{##, p}] &amp;, {poly, RotateLeft[poly]}]]/(2 Pi)]; OddQ[argsum] ]  丸め誤差が蓄積すると誤判定してしまうのだが、誤判定するために要求される丸め誤差はπなので、多分大丈夫だと思われる。
+		ある点が多角形の内側にあるのか外側にあるのかを判定するには主に ある点から直線をひいて多角形の辺と何回交差するか判定する(偶数回なら外、奇数回なら中) ある点から多角形の各頂点を順番に見ていったときに何回転するか の2つの方法がある。 しかし辺との交差回数をカウントするのは、直線と辺が平行だったり、頂点で交差したりする場合などに特別な配慮が必要なので、 ここでは2番目の方法で実装する。 点から多角形上の点を順
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -211,11 +162,7 @@ InsidePolygonQ[poly : {{_, _} ..}, p : {_, _}] := Module[ {argsum}, argsum = Rou
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		FORTRANで書かれた古いMS-DOSプログラムを.NET/Linkを使ってMathematicaから操るパッケージを作っていたところ、 Process.StartInfo.RedirectStandardInputやRedirectStandardOutputにTrueを設定してもまったく標準入出力をリダイレクトできなかった。(※OSはVista 32bit)
-いろいろ試してみたところ、16ビットのプログラムだとリダイレクトができないらしいということが分かった。 さてどうしたものかとさらにいろいろ打開策を探してみた結果、
- FileNameに&quot;cmd.exe&quot;を設定して、Process.Start()でプロセスを起動。 必要ならStandardInput.WriteLine(&quot;cd 16ビットプログラムのディレクトリ&quot;)としてカレントディレクトリを移動。 StandardInput.WriteLine(&quot;***.EXE&quot;)として16ビットプログラムを起動。  とcmd.exeを間に挟むことにより、16ビットのプログラムに対しても標準入出力のリダイレクトが行えることが分かった。
-以下はMathematica+.NET/Linkによるサンプル。 標準出力は書き出されるたびにイベントハンドラで捕捉してoutputsに追加するので、Dynamic[outputs]などとしておくと、本当のターミナルの挙動に近づく。 最初にcmd.exeの出力(&ldquo;Microsoft Windows [Version &hellip;&ldquo;)が入るので、16ビットのプログラムの出力だけがほしい場合は16ビットプログラム起動後にフラグを立てれば大丈夫。
-outputs = {}; outputhandler[o_, args_] := Module[ {data = args@Data}, AppendTo[outputs, data]; ]; NETBlock[ proc = NETNew[&quot;System.Diagnostics.Process&quot;]; LoadNETType[&quot;System.Environment&quot;]; proc@StartInfo@FileName = Environment`GetEnvironmentVariable[&quot;ComSpec&quot;]; proc@StartInfo@RedirectStandardInput = True; proc@StartInfo@RedirectStandardOutput = True; proc@StartInfo@UseShellExecute = False; proc@StartInfo@CreateNoWindow = True; proc@StartInfo@WorkingDirectory = DirectoryName[proc@StartInfo@FileName]; AddEventHandler[proc@OutputDataReceived, outputhandler]; proc@Start[]; proc@BeginOutputReadLine[]; proc@StandardInput@WriteLine[&quot;cd &quot; &lt;&gt; &quot;16ビットプログラムのディレクトリ&quot;]; proc@StandardInput@WriteLine[&quot;******.EXE(16ビットプログラム)&quot;]; proc@StandardInput@WriteLine[&quot;16ビットプログラムの標準入力に渡す内容&quot;]; proc@StandardInput@Close[]; proc@WaitForExit[]; proc@Close[]; ];  とはいっても64bit版のWindowsだと16bitのプログラムがそもそも動かない。
+		FORTRANで書かれた古いMS-DOSプログラムを.NET/Linkを使ってMathematicaから操るパッケージを作っていたところ、 Process.StartInfo.RedirectStandardInputやRedirectStandardOutputにTrueを設定してもまったく標準入出力をリダイレクトできなかった。(※OSはVista 32bit) いろいろ試してみたところ、16ビットのプログラム
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -227,13 +174,7 @@ outputs = {}; outputhandler[o_, args_] := Module[ {data = args@Data}, AppendTo[o
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		MathematicaでGPXファイルを読み込んで解釈する方法のメモ。
-対象となるGPXファイルを
-xml = Import[filepath, &quot;XML&quot;];  でまずXMLとして読み込んでおいて、
-trk = Cases[xml, XMLElement[&quot;trk&quot;, _, _], Infinity];  でtrk要素を抜き出し、
-trkpt = (ToExpression[{&quot;lat&quot;, &quot;lon&quot;} /. Cases[#1, XMLElement[&quot;trkpt&quot;, attr_, _] :&gt; attr, Infinity]] &amp; ) /@ trk;  でそれぞれのtrk要素からtrkpt要素を抜き出して緯度と経度を得る。
-Sep. 28 2013追記
-Mathematica 8からは標準でGPXをImport可能になった。
+		MathematicaでGPXファイルを読み込んで解釈する方法のメモ。 対象となるGPXファイルを xml = Import[filepath, &quot;XML&quot;]; でまずXMLとして読み込んでおいて、 trk = Cases[xml, XMLElement[&quot;trk&quot;, _, _], Infinity]; でtrk要素を抜き出し、 trkpt = (ToExpression[{&quot;lat&quot;, &quot;lon&quot;} /. Cases[#1, XMLElement[&quot;trkpt&quot;, attr_, _] :&gt; attr, Infinity]] &amp; ) /@ trk; でそれぞれのtrk要素からtrkpt要素を抜き出して緯度と経度を得る。 Sep. 28 2013追記 Mathematica 8からは標準でGPXをImport可能になった。
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -245,12 +186,7 @@ Mathematica 8からは標準でGPXをImport可能になった。
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		Mathematicaで友愛数を列挙するプログラム例として以下のようなものが見受けられる。
-yakuwa[n_] := DivisorSigma[1, n] - n; Do[If[(yakuwa[yakuwa[k]] == k) &amp;&amp; (yakuwa[k] != k), Print[{k, yakuwa[k]}]], {k, 1, 1000}];  しかし、Doでループを回してPrintで書き出していくのはMathematica的に美しくないと思う。
-Mathematicaなら関数型プログラミングとパターンマッチを用いるのが良いと思うので、私なら以下のように書く。
-Cases[NestList[DivisorSigma[1, #] - # &amp;, #, 2] &amp; /@ Range[100000], {a_, b_, a_} /; a &lt; b -&gt; {a, b}]  実行速度もこちらのほうが1割程度速い。
-この書き方から一般の社交数を求めるプログラムに拡張するのは簡単で、例えば5個組の社交数を探す場合は以下のようになる。
-Cases[NestList[DivisorSigma[1, #] - # &amp;, #, 5] &amp; /@ Range[100000], {a_, b__, a_} /; a &lt; Min[b] -&gt; {a, b}]  ただし、私の方法はメモリを大量に使う。
+		Mathematicaで友愛数を列挙するプログラム例として以下のようなものが見受けられる。 yakuwa[n_] := DivisorSigma[1, n] - n; Do[If[(yakuwa[yakuwa[k]] == k) &amp;&amp; (yakuwa[k] != k), Print[{k, yakuwa[k]}]], {k, 1, 1000}]; しかし、Doでループを回してPrintで書き出していくのはMathematica的に美しくないと思う。 Mathematicaなら関数型プログラミングとパターンマッチを用いるのが良いと思うので、私なら以下のように書く。 Cases[NestList[DivisorSigma[1, #] - # &amp;, #, 2] &amp; /@ Range[100000], {a_, b_, a_} /; a &lt; b -&gt; {a, b}] 実行速度もこちらの
 	</div>
 </article><article class="list__item post">
 	<figure class="list__thumbnail">
@@ -267,15 +203,7 @@ Cases[NestList[DivisorSigma[1, #] - # &amp;, #, 5] &amp; /@ Range[100000], {a_, 
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		読み込んだGPSログのデータを間引きたい、と思って調べたところ、 (Ramer-)Douglas-Peuckerのアルゴリズムというものがあることが分かった。
-基本的な考え方は、
- 折れ線の始点と終点を結ぶ線分と各点の距離を求める。 すべての点との距離が許容誤差ε以内に入っていれば始点と終点だけを返して終了。 そうでなければ距離が最大の点Pを1つ選択。 始点から点Pまでの折れ線と、点Pから終点までの折れ線のそれぞれについてまた1から処理する。  という再帰的なもの。
-再帰的なものはMathematicaの得意分野なので、MathematicaでRamer-Douglas-Peuckerのアルゴリズムを実装してみた。
-線分と点の距離 さて、まずは線分と点の距離を求める関数を作成する。
-ネットで検索すると直線と点の距離を求めるものが多いが、線分と点の距離のほうが形状をよく保存できるのではないだろうか、と個人的に考えている。
-線分ABに点Pから下ろした垂線の足が点Hだとすると、
- 線分ABと直線PHは直交⇔内積が0 点Hは直線AB上にある⇔実数tに対してB = t H(B、Hは点Aから見た点B、点Hの位置ベクトル)  の条件から、Hの座標と実数tの値が求まる。 Mathematicaを使うと
-A = {ax, ay}; B = {bx, by}; P = {px, py}; H = {x, y}; Solve[{ (H - A).(P - H) == 0, H == A + (B - A) t }, {x, y, t}][[2]] // FullSimplify {x -&gt; (ay^2 bx + ax^2 px + ax ay (-by + py) - ay bx (by + py) + ax (by^2 - 2 bx px - by py) + bx (bx px + by py))/((ax - bx)^2 + (ay - by)^2), y -&gt; ((ax - bx) (by (ax - px) + ay (-bx + px)) + (ay - by)^2 py)/((ax - bx)^2 + (ay - by)^2), t -&gt; (ax^2 + ay^2 + bx px - ax (bx + px) + by py - ay (by + py))/((ax - bx)^2 + (ay - by)^2)}  となる。 これは2次元の場合だが、一般に
+		読み込んだGPSログのデータを間引きたい、と思って調べたところ、 (Ramer-)Douglas-Peuckerのアルゴリズムというものがあることが分かった。 基本的な考え方は、 折れ線の始点と終点を結ぶ線分と各点の距離を求める。 すべての点との距離が許容誤差ε以内に入っていれば始点と終点だけを返して終了。 そうでなければ距離が最大の点Pを1つ選択。 始点から点Pまでの折れ線と、点Pから終点までの折れ線のそれ
 	</div>
 </article>
 </main>

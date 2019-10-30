@@ -17,11 +17,7 @@
       <pubDate>Mon, 02 Oct 2017 23:44:23 +0900</pubDate>
       
       <guid>https://www.330k.info/essay/logging_shared_pc_user/</guid>
-      <description>会社で個々人のPCのセキュリティをガチガチに固めたりしていると、何かと融通がきかない。 そのため、セキュリティ設定緩めの共有PCを1台と共有アカウントを1個用意し、やむを得ない時には利用してもらっている。
-そのため、SKYSEAでログは取っているものの、実際に誰が操作しているのか分からない、という問題があった。
-それを解決するため、PCに付属のカメラで、ログイン時に正面にいる人の顔を記録することにした。
-前準備  ffmpegをダウンロードする ffmpegにPATHを通す ffmpegでウェブカメラのデバイスや対応する解像度、フレームレートを調べておく  VBScript 以下のVBScriptファイルを適当なところに配置。 内容はスクリプト起動後、5秒間、ウェブカメラの映像を記録して、管理者用メールアドレスに送信する。
-Option Explicit On Error Resume Next Dim objShell Dim objFS Dim strDate Dim strFilePath Dim objNetwork Dim objMsg Set objShell = CreateObject(&amp;quot;WScript.Shell&amp;quot;) Set objFS = CreateObject(&amp;quot;Scripting.FileSystemObject&amp;quot;) strDate = Year(Now()) strDate = strDate &amp;amp; Right(&amp;quot;0&amp;quot; + Month(Now()), 2) strDate = strDate &amp;amp; Right(&amp;quot;0&amp;quot; + Day(Now()), 2) strDate = strDate &amp;amp; Right(&amp;quot;0&amp;quot; + Hour(Now()), 2) strDate = strDate &amp;amp; Right(&amp;quot;0&amp;quot; + Minute(Now()), 2) strDate = strDate &amp;amp; Right(&amp;quot;0&amp;quot; + Second(Now()), 2) strFilePath = objFS.</description>
+      <description>会社で個々人のPCのセキュリティをガチガチに固めたりしていると、何かと融通がきかない。 そのため、セキュリティ設定緩めの共有PCを1台と共有アカウントを1個用意し、やむを得ない時には利用してもらっている。 そのため、SKYSEAでログは取っているものの、実際に誰が操作しているのか分からない、という問題があった。 それを解決するため、PCに付属のカメラで、ログイン時に正面にいる人の顔を記録することにした。</description>
     </item>
     
     <item>
@@ -30,10 +26,7 @@ Option Explicit On Error Resume Next Dim objShell Dim objFS Dim strDate Dim strF
       <pubDate>Mon, 02 Oct 2017 23:27:45 +0900</pubDate>
       
       <guid>https://www.330k.info/essay/measure_video_events_with_google_analytics/</guid>
-      <description>会社のウェブサイトに貼ってある動画ファイルが、実際にどれだけ再生されているのか調査するべく、 Google Analyticsのイベントで計測するためのコードを作ってみた。
-計測対象は以下のイベント。
- 再生開始(play) 最後まで再生(ended) 一時停止(pause) 再生再開(resume) シークした(seeked) どこまで再生したか(動画時間の10%, 25%, 50%, 75%, 90%)  HTML側 &amp;lt;video id=&amp;quot;movie001&amp;quot; width=&amp;quot;(動画幅)&amp;quot; height=&amp;quot;(動画高さ)&amp;quot; title=&amp;quot;Movie Title&amp;quot;&amp;gt; &amp;lt;source src=&amp;quot;(動画ファイルのパス)&amp;quot; type=&amp;quot;video/mp4&amp;quot; /&amp;gt; &amp;lt;/video  JavaScript側(jQuery使用) イベントカテゴリに「video」、イベントアクションにplay、play_endなど。 イベントラベルには動画のtitle属性をセット。
-$(function(){ var oldratio = 0.0; $(&#39;video&#39;).on(&#39;play&#39;, function(e) { on(&#39;play&#39;, function(e) { if(e.target.currentTime &amp;gt; 0){ ga(&#39;send&#39;,&#39;event&#39;,&#39;video&#39;,&#39;resume&#39;,e.target.getAttribute(&#39;title&#39;)); }else{ ga(&#39;send&#39;,&#39;event&#39;,&#39;video&#39;,&#39;play&#39;,e.target.getAttribute(&#39;title&#39;)); } }).on(&#39;ended&#39;, function(e) { ga(&#39;send&#39;,&#39;event&#39;,&#39;video&#39;,&#39;play_end&#39;,e.target.getAttribute(&#39;title&#39;)); }).on(&#39;pause&#39;, function(e) { ga(&#39;send&#39;,&#39;event&#39;,&#39;video&#39;,&#39;pause&#39;,e.target.getAttribute(&#39;title&#39;)); }).on(&#39;seeked&#39;, function(e) { ga(&#39;send&#39;,&#39;event&#39;,&#39;video&#39;,&#39;seeked&#39;,e.target.getAttribute(&#39;title&#39;)); }).on(&#39;timeupdate&#39;, function(e) { var ratio = e.target.currentTime / e.</description>
+      <description>会社のウェブサイトに貼ってある動画ファイルが、実際にどれだけ再生されているのか調査するべく、 Google Analyticsのイベントで計測するためのコードを作ってみた。 計測対象は以下のイベント。 再生開始(play) 最後まで再生(ended) 一時停止(pause) 再生再開(resume) シークした(seeked) どこまで再生したか(動画時間の10%, 25%, 50%, 75%, 90%) HTML側 &amp;lt;video id=&amp;quot;movie001&amp;quot; width=&amp;quot;(動画幅)&amp;q</description>
     </item>
     
     <item>
@@ -42,11 +35,7 @@ $(function(){ var oldratio = 0.0; $(&#39;video&#39;).on(&#39;play&#39;, function
       <pubDate>Wed, 06 Sep 2017 00:57:48 +0900</pubDate>
       
       <guid>https://www.330k.info/essay/delete_temporary_files_with_powershell/</guid>
-      <description>ファイルサーバの空き容量が減ってきたので調べてみたら、 削除されていないOfficeファイルの一時ファイルや、Thumbs.dbが結構あることが分かった。
-Thumbs.dbはグループポリシーでネットワークドライブ上では生成しないようにしているはずだが、 ローカルのフォルダをファイルサーバにコピーすると、一緒にくっついてくるらしい。
-以下のPowerShellスクリプトをタスクスケジューラに登録して、定期的(1日1回)にゴミ掃除。
-$a = @() $a += Get-ChildItem &amp;quot;(掃除対象フォルダのパス1)&amp;quot; -Force -Recurse $a += Get-ChildItem &amp;quot;(掃除対象フォルダのパス2)&amp;quot; -Force -Recurse $a += Get-ChildItem &amp;quot;(掃除対象フォルダのパス3)&amp;quot; -Force -Recurse $a | Where-Object { ` $_.Name -like &amp;quot;~*&amp;quot; -and $_.LastWriteTime -lt (Get-Date).AddDays(-1) ` -or $_.Name -like &amp;quot;*.tmp&amp;quot; ` -or $_.Name -eq &amp;quot;Thumbs.db&amp;quot; ` -or $_.Name -eq &amp;quot;.DS_Store&amp;quot; ` -or $_.Name -like &amp;quot;._*&amp;quot; ` } | Remove-Item -Force  削除対象は以下の通り。
- 更新日時が1日以上前のOffice一時ファイル(&amp;quot;~*&amp;quot;) 拡張子が&amp;quot;tmp&amp;quot;のファイル &amp;quot;Thumbs.db&amp;quot; .DS_Storeや._*などのMac OSで使用されるファイル  </description>
+      <description>ファイルサーバの空き容量が減ってきたので調べてみたら、 削除されていないOfficeファイルの一時ファイルや、Thumbs.dbが結構あることが分かった。 Thumbs.dbはグループポリシーでネットワークドライブ上では生成しないようにしているはずだが、 ローカルのフォルダをファイルサーバにコピーすると、一緒にくっついてくるらしい。 以下のPowerShellスクリプトをタスクスケジューラに登録して、定期</description>
     </item>
     
     <item>
@@ -55,21 +44,7 @@ $a = @() $a += Get-ChildItem &amp;quot;(掃除対象フォルダのパス1)&amp;
       <pubDate>Thu, 27 Jul 2017 21:21:29 +0900</pubDate>
       
       <guid>https://www.330k.info/essay/author_dvd_from_movie_file_on_windows/</guid>
-      <description>「この動画ファイルをDVDに焼いて。簡単でしょ。」
- いやいや、DVD-Video規格に沿った動画ファイルとファイル構造にしないといけないんですけど。
-Windows用のオーサリングソフトはフリーでも色々あるが、どれが良いのかよくわからないので、 ffmpeg + dvdauthor + mkisofsでISOファイルを作成するバッチファイルを作成した。
-参考サイト : http://d.hatena.ne.jp/hikaen2/20150201/1422773879
-前準備 ffmpeg 適当にWindows用バイナリを落としてPATHを設定しておく。
-dvdauthor Windows用のバイナリをダウンロードし、PATHの通ったところに設置。
-http://www.paehl.com/open_source/?DVDAuthor
-これの下部の「From Box.net」または「From Google Drive」からダウンロード。
-mkisofs 他のソフト(cdrfde)にくっついてくるmkisofs.exeを抜き出す。
-https://cdrtfe.sourceforge.io/cdrtfe/download_en.html
-これのcdrtfe 1.5.7 zip archiveをダウンロードし、展開したファイルの中から、
- tools\cdrtools\mkisofs.exe tools\cygwin\cygwin1.dll tools\cygwin\cygwin.ini  をPATHの通ったフォルダに移動。
-バッチファイル 下記の内容のバッチファイルを作成。 CPU数に合わせてthreadsの値は変更する。
-DVDにしたい動画ファイルをドラッグ&amp;amp;ドロップ。
-@ECHO OFF REM 動画ファイルからDVDのISOファイルを作成 SET VIDEO_FORMAT=NTSC ffmpeg -i &amp;quot;%1&amp;quot; -threads 4 -vf yadif=1,scale=720:480,tinterlace=4 -target ntsc-dvd -flags +ilme+ildct &amp;quot;%~dpn1_dvd.mpeg&amp;quot; dvdauthor -o &amp;quot;%~dpn1_dvd&amp;quot; -t &amp;quot;%~dpn1_dvd.mpeg&amp;quot; dvdauthor -o &amp;quot;%~dpn1_dvd&amp;quot; -T mkisofs -dvd-video -o &amp;quot;%~dpn1_dvd.</description>
+      <description>「この動画ファイルをDVDに焼いて。簡単でしょ。」 いやいや、DVD-Video規格に沿った動画ファイルとファイル構造にしないといけないんですけど。 Windows用のオーサリングソフトはフリーでも色々あるが、どれが良いのかよくわからないので、 ffmpeg + dvdauthor + mkisofsでISOファイルを作成するバッチファイルを作成した。 参考サイト : http://d.hatena.ne.jp/hikaen2/20150201/1422773879 前準備 ffmpeg 適当にWindows用バイナリを落としてPATHを設定しておく。</description>
     </item>
     
     <item>
@@ -78,11 +53,7 @@ DVDにしたい動画ファイルをドラッグ&amp;amp;ドロップ。
       <pubDate>Thu, 20 Jul 2017 21:12:22 +0900</pubDate>
       
       <guid>https://www.330k.info/essay/zabbix_ricoh_printer_template_xml/</guid>
-      <description>社内で余っているサーバにZabbixを入れたので、 SNMP v2cでRICOH製のプリンタ・複合機の各種情報を取得するXMLテンプレートをhttps://github.com/coreyramirezgomez/Ricoh-Printers-Zabbix-Template/blob/master/Ricoh%20Printers%20SNMP%20Template.xml を元に作成した。
-変更箇所としては以下の通り。
- SNMP Discoveryで英語のアイテム名を取得するように変更 1分間あたりの印刷枚数のアイテムとグラフを追加 Discoveryの間隔が長くした(負荷でプリンタが応答しなくなるため)  確認している機種は社内にある以下の2機種のみ。
- RICOH MP C5503 IPSiO SP 6320  ダウンロードはZabbix Share - Template Ricoh SNMP Printers。
-&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot;?&amp;gt; &amp;lt;zabbix_export&amp;gt; &amp;lt;version&amp;gt;3.2&amp;lt;/version&amp;gt; &amp;lt;date&amp;gt;2017-07-20T10:38:50Z&amp;lt;/date&amp;gt; &amp;lt;groups&amp;gt; &amp;lt;group&amp;gt; &amp;lt;name&amp;gt;Printers&amp;lt;/name&amp;gt; &amp;lt;/group&amp;gt; &amp;lt;/groups&amp;gt; &amp;lt;templates&amp;gt; &amp;lt;template&amp;gt; &amp;lt;template&amp;gt;Template SNMP Ricoh Printers&amp;lt;/template&amp;gt; &amp;lt;name&amp;gt;Template SNMP Ricoh Printers&amp;lt;/name&amp;gt; &amp;lt;description/&amp;gt; &amp;lt;groups&amp;gt; &amp;lt;group&amp;gt; &amp;lt;name&amp;gt;Printers&amp;lt;/name&amp;gt; &amp;lt;/group&amp;gt; &amp;lt;/groups&amp;gt; &amp;lt;applications&amp;gt; &amp;lt;application&amp;gt; &amp;lt;name&amp;gt;SNMP Enabled Printer&amp;lt;/name&amp;gt; &amp;lt;/application&amp;gt; &amp;lt;/applications&amp;gt; &amp;lt;items&amp;gt; &amp;lt;item&amp;gt; &amp;lt;name&amp;gt;Description&amp;lt;/name&amp;gt; &amp;lt;type&amp;gt;4&amp;lt;/type&amp;gt; &amp;lt;snmp_community&amp;gt;{$SNMP_COMMUNITY}&amp;lt;/snmp_community&amp;gt; &amp;lt;multiplier&amp;gt;0&amp;lt;/multiplier&amp;gt; &amp;lt;snmp_oid&amp;gt;.1.3.6.1.2.1.25.3.2.1.3.1&amp;lt;/snmp_oid&amp;gt; &amp;lt;key&amp;gt;Description&amp;lt;/key&amp;gt; &amp;lt;delay&amp;gt;60&amp;lt;/delay&amp;gt; &amp;lt;history&amp;gt;90&amp;lt;/history&amp;gt; &amp;lt;trends&amp;gt;0&amp;lt;/trends&amp;gt; &amp;lt;status&amp;gt;0&amp;lt;/status&amp;gt; &amp;lt;value_type&amp;gt;4&amp;lt;/value_type&amp;gt; &amp;lt;allowed_hosts/&amp;gt; &amp;lt;units/&amp;gt; &amp;lt;delta&amp;gt;0&amp;lt;/delta&amp;gt; &amp;lt;snmpv3_contextname/&amp;gt; &amp;lt;snmpv3_securityname/&amp;gt; &amp;lt;snmpv3_securitylevel&amp;gt;0&amp;lt;/snmpv3_securitylevel&amp;gt; &amp;lt;snmpv3_authprotocol&amp;gt;0&amp;lt;/snmpv3_authprotocol&amp;gt; &amp;lt;snmpv3_authpassphrase/&amp;gt; &amp;lt;snmpv3_privprotocol&amp;gt;0&amp;lt;/snmpv3_privprotocol&amp;gt; &amp;lt;snmpv3_privpassphrase/&amp;gt; &amp;lt;formula&amp;gt;1&amp;lt;/formula&amp;gt; &amp;lt;delay_flex/&amp;gt; &amp;lt;params/&amp;gt; &amp;lt;ipmi_sensor/&amp;gt; &amp;lt;data_type&amp;gt;0&amp;lt;/data_type&amp;gt; &amp;lt;authtype&amp;gt;0&amp;lt;/authtype&amp;gt; &amp;lt;username/&amp;gt; &amp;lt;password/&amp;gt; &amp;lt;publickey/&amp;gt; &amp;lt;privatekey/&amp;gt; &amp;lt;port&amp;gt;161&amp;lt;/port&amp;gt; &amp;lt;description/&amp;gt; &amp;lt;inventory_link&amp;gt;2&amp;lt;/inventory_link&amp;gt; &amp;lt;applications&amp;gt; &amp;lt;application&amp;gt; &amp;lt;name&amp;gt;SNMP Enabled Printer&amp;lt;/name&amp;gt; &amp;lt;/application&amp;gt; &amp;lt;/applications&amp;gt; &amp;lt;valuemap/&amp;gt; &amp;lt;logtimefmt/&amp;gt; &amp;lt;/item&amp;gt; &amp;lt;item&amp;gt; &amp;lt;name&amp;gt;Page Count&amp;lt;/name&amp;gt; &amp;lt;type&amp;gt;4&amp;lt;/type&amp;gt; &amp;lt;snmp_community&amp;gt;{$SNMP_COMMUNITY}&amp;lt;/snmp_community&amp;gt; &amp;lt;multiplier&amp;gt;0&amp;lt;/multiplier&amp;gt; &amp;lt;snmp_oid&amp;gt;.</description>
+      <description>社内で余っているサーバにZabbixを入れたので、 SNMP v2cでRICOH製のプリンタ・複合機の各種情報を取得するXMLテンプレートをhttps://github.com/coreyramirezgomez/Ricoh-Printers-Zabbix-Template/blob/master/Ricoh%20Printers%20SNMP%20Template.xml を元に作成した。 変更箇所としては以</description>
     </item>
     
     <item>
@@ -91,12 +62,7 @@ DVDにしたい動画ファイルをドラッグ&amp;amp;ドロップ。
       <pubDate>Tue, 06 Jun 2017 06:48:00 +0900</pubDate>
       
       <guid>https://www.330k.info/essay/input_backslach_with_us_keyboard_layout/</guid>
-      <description>会社のPCではHDD暗号化ソフトのSecureDocを使用しているが、先日1台のPCが起動しなくなったため、リカバリーディスクを使っての救出を行った際のメモ。
-SecureDocのリカバリーディスクはWindows PEベースなのだが、海外の製品なので当然英語キーボード。 起動しなくなったPCのHDDの中身は運良く復旧できそうだったのだが、 データをネットワーク経由で回収しようとしたところネットワーク設定画面でバックスラッシュが入力できなくてハマった。
-5分ほどキーボードを押しまくった後、Altキーと文字コード入力で行けることに気がついた。
-Alt押す → テンキー9 → テンキー2 → Alt離す
-で無事入力できた。
-ただ、LetsNoteのNICをWindows PEでは認識できず無駄足に。 結局USBメモリ経由で回収した。</description>
+      <description>会社のPCではHDD暗号化ソフトのSecureDocを使用しているが、先日1台のPCが起動しなくなったため、リカバリーディスクを使っての救出を行った際のメモ。 SecureDocのリカバリーディスクはWindows PEベースなのだが、海外の製品なので当然英語キーボード。 起動しなくなったPCのHDDの中身は運良く復旧できそうだったのだが、 データをネットワーク経由で回収しようとしたところネットワーク設定</description>
     </item>
     
     <item>
@@ -105,14 +71,7 @@ Alt押す → テンキー9 → テンキー2 → Alt離す
       <pubDate>Tue, 06 Jun 2017 06:37:00 +0900</pubDate>
       
       <guid>https://www.330k.info/essay/xubuntu1604_snort_base/</guid>
-      <description>ウイルス等に侵入された後の対策として、IDSやIPS製品の紹介をベンダーから受けたが、正直なところ価格が高かったのと、検知されるメッセージがSnort由来のものが多い気がしたので、自分でSnortを構築して商用製品との差を調べてみることにした。
-構築環境  PC : 余っていたノートPC Panasonic LetsNote CF-NX1 OS : Xubuntu 16.04.2 (LetsNoteの有線LANと無線LANのNICを認識できる可能性が高いディストリビューションとして選択) ルータ : Yamaha RTX810 IDSとして運用(ミラーポートの通信を監視) LetsNoteの有線LANはミラーポートに接続し、通信を監視 LetsNote自体にアクセスするときには無線LANを使用する  図(適当)   手順 基本的に、以下のドキュメント通りでOK。
-Snort 2.9.9.x on Ubuntu 14 -16
-LetsNoteでは有線LANのNICはenp0s25、無線LANはwlp2s0となった。
-注意点は以下の通り。
- rule_url=https://www.snort.org/reg-rules/|snortrules-snapshot.tar.gz|&amp;lt;oinkcode&amp;gt; → rule_url=https://www.snort.org/rules/|snortrules-snapshot.tar.gz|&amp;lt;oinkcode&amp;gt; ※微妙にURLが変わっているので注意 sudo /usr/local/bin/pulledpork.pl -c /etc/snort/pulledpork.conf -l → sudo /usr/local/bin/pulledpork.pl -c /etc/snort/pulledpork.conf -l -o /etc/snort/rules/snort.rules ※-oオプションが必要と怒られた  有線LAN(enp0s25)はミラーポートから受信だけできれば良いので、 /etc/network/interfacesを編集して使われていないネットワークのアドレスを適当に設定。 管理の通信やBASEによるログを眺めるためには無線(wlp2s0)を使用するので、 NetworkManagerを使って適当に固定IPを設定。
-RTX810はhttp://www.rtpro.yamaha.co.jp/RT/manual/rt-common/setup/lan_port-mirroring.html を参照してミラーポートを設定。
- 設定(ポート1と2の送信および受信フレームをポート4にミラー) lan port-mirroring lan1 4 in 1 2 out 1 2 解除 no lan port-mirroring lan1  結果 一応IDSとして構築できたので、現在はログを見て様子見。今のところのメモは以下。</description>
+      <description>ウイルス等に侵入された後の対策として、IDSやIPS製品の紹介をベンダーから受けたが、正直なところ価格が高かったのと、検知されるメッセージがSnort由来のものが多い気がしたので、自分でSnortを構築して商用製品との差を調べてみることにした。 構築環境 PC : 余っていたノートPC Panasonic LetsNote CF-NX1 OS : Xubuntu 16.04.2 (LetsNoteの有線LANと無線LANのNICを認識できる可能性が高いディストリビューションとして選択) ル</description>
     </item>
     
     <item>
@@ -121,11 +80,7 @@ RTX810はhttp://www.rtpro.yamaha.co.jp/RT/manual/rt-common/setup/lan_port-mirror
       <pubDate>Tue, 29 Nov 2016 20:45:00 +0900</pubDate>
       
       <guid>https://www.330k.info/essay/detect_submittion_to_private_mail_from_gmail/</guid>
-      <description> 会社ではG Suite(旧Google Apps for Works)を導入しているが、 ある社員が個人のGmailアドレスに会社の情報の入ったメールを送信していた。
-幸いPCで操作していたためPCのログ監視ソフト(SKYSEA Client View)で検知し、当該従業員に注意することができた。 ただ、同じことを会社支給のiPhoneでやられた場合に無力だったことに気づいたので、G Suite側でも対策を実施。
-設定方法  「管理コンソール」の「アプリ」→「Gmail」→「詳細設定」と進む 「コンテンツ コンプライアンス」を追加 影響を受けるメールは「送信」にチェック 「次の一部がメールに一致する場合」を選択 「任意のエンベロープ受信者」が「いずれかの単語に一致する」に【登録ページ作成TIPS】登録拒否設定用フリーメールドメインリスト などから検知対象とするドメイン一覧を取得してスペース区切りにしたものを設定する (1000文字を超える場合は1000文字以内に収まるよう複数に分けて登録)    「上記の表現に一致する場合は、次の処理を行います」には「メッセージを変更」を選択 「その他の送信先」「受信者を追加」で配信先に管理者用のメールアドレスを設定(エイリアスにしておくとフィルタ作成で便利)    設定ができたら保存する(※全ユーザに適用されるまで1時間程度かかる) 管理者用のGmailの設定で、8で設定したアドレスに来たものをフィルタしてラベルをつけるようにしておく  注意事項  設定ミスすると全ユーザのメールが影響を受けるので、テスト用のOUを作ってから検証してから全ユーザに適用する コンテンツコンプライアンスでは、クレジットカード番号やパスポート番号が含まれたメールを検知可能 残念ながら執筆時点(Nov. 29 2016)では日本のマイナンバーの検知機能はない  プロモーションコード もしGmailやG Suiteを導入予定であれば、以下のリンクからお願いします。
-またプロモーションコードを入力すると初年度の料金が20%割引されます。
- G Suiteのお申し込み プロモーションコード  G Suite Basic プラン: YA3CFEWVCWTVM9A G Suite Business プラン: Y9GNVRWQUGVTQEW   </description>
+      <description>会社ではG Suite(旧Google Apps for Works)を導入しているが、 ある社員が個人のGmailアドレスに会社の情報の入ったメールを送信していた。 幸いPCで操作していたためPCのログ監視ソフト(SKYSEA Client View)で検知し、当該従業員に注意することができた。 ただ、同じことを会社支給のiPhoneでやられた場合に無力だったことに気づいたので、G Suite側でも対策を実施。 設定方法 「管理コンソール</description>
     </item>
     
     <item>
@@ -134,16 +89,7 @@ RTX810はhttp://www.rtpro.yamaha.co.jp/RT/manual/rt-common/setup/lan_port-mirror
       <pubDate>Fri, 11 Nov 2016 23:00:00 +0900</pubDate>
       
       <guid>https://www.330k.info/essay/make_font_embedded_pdf_from_edinet/</guid>
-      <description>EDINETで出力したPDFを会社のプレスリリースで掲載したところ、iPhoneで閲覧できない、という問題が発生した。
-PDFファイルを見てみると、日本語フォントが埋め込まれていない(下図)。
-  そのため、iPhoneなどMS系の日本語フォントがない環境では、日本語部分が真っ白の閲覧できないものになっていた。 ちなみに、Ubuntuでは別の日本語書体で代替表示された。
-  ご丁寧に印刷も低解像度に限られている(上図)。
-他社のプレスリリースを探してみると、そのままのPDFが使われていたところが多かったが、 中には低解像度で印刷して1ページが1枚の画像になったPDFも見つかった。苦労の痕跡が・・・。
-本来はそのようなPDFを作成するEDINETのシステムが悪いのだが、上の人間は「iPhoneでも見れるようにしろ」と聞かない。
-Google先生に聞いてみると、Macで見れないという2011年の投稿が見つかったので、昔からEDINETは変わっていないらしい。 続けて解決策を探すと、「PDFのセキュリティ設定を無視するビューアをつかって仮想PDFプリンタに印刷する」という方法で解決できることが分かった。
-PDFのセキュリティ設定を無視するビューアで代表的なものはEdgeやFirefox(2016年11月現在)。従って
- Windows 10なら、EdgeでPDFを開いてプリンタにMicrosoft Print to PDFを選択して印刷 Windows 7でもAcrobatなどの仮想PDFプリンタがあれば、Firefoxで開いて仮想PDFプリンタに印刷  という手順でフォントを埋め込んだPDFを作成できた。(下図はEdge + Microsoft Print to PDFで作成したもの)
-  ちなみに、このようにして作成したPDFは法的に問題ないのか弁護士の人に聞いてみたところ、OKらしい。</description>
+      <description>EDINETで出力したPDFを会社のプレスリリースで掲載したところ、iPhoneで閲覧できない、という問題が発生した。 PDFファイルを見てみると、日本語フォントが埋め込まれていない(下図)。 そのため、iPhoneなどMS系の日本語フォントがない環境では、日本語部分が真っ白の閲覧できないものになっていた。 ちなみに、Ubuntuでは別の日本語書体で代替表示された。 ご丁寧に印刷も低解像度に限られている(</description>
     </item>
     
     <item>
@@ -152,19 +98,7 @@ PDFのセキュリティ設定を無視するビューアで代表的なもの�
       <pubDate>Sun, 06 Nov 2016 17:22:00 +0900</pubDate>
       
       <guid>https://www.330k.info/essay/performance_degration_of_kanjo_bugyo/</guid>
-      <description>社内では会計システムに勘定奉行(ネットワーク版)を使っているが、 担当者から「勘定奉行で仕訳帳の表示に20秒くらいかかる」と言われたので調査してみた。
-その担当者のPC固有の問題かどうかを切り分けるため別のPCから同様の操作を行ってみたところ、同じ症状が発生した。 ということは、サーバ側に問題がありそう。
-勘定奉行のクライアントは生のSQL文をサーバに発行する仕組みなので、 Wiresharkでパケットをキャプチャすることで発行されたSQL文を把握することができる。
-その状態でサーバ側の負荷を測定してみると、特定のSQL文の処理に時間がかかっていることが分かった。
-勘定奉行ではSQL Serverをバックエンドに使っているので、 「SQL Server パフォーマンス」などでGoogle先生に聞いてみると、以下のページがヒット。
-どうする？ SQL Server のクエリ パフォーマンスが低下した！
-これに従い、サーバ上でSQL Server Management Studioを起動し、勘定奉行で使用しているデータベースで
-sp_updatestats  としたところ、1秒程度で処理が完了するようになった。 上記ページには各テーブル単位での統計情報更新や、実行プランの再作成、インデックスの再構築の方法も書かれているが、今回は行わなかった。
-このようにSQL文を直接叩きに行く方法は多分メーカ(OBC)では非推奨だと思うが、 クライアント側にsp_updatestatsを発行するメニューくらいつけてほしいものだ。
-→ 当然勘定奉行にメニューがあった。ちょっとわかりにくいところだけど。
-「データ領域管理」「データ領域保守」「データ領域変更」とメニューを辿り、「F9 統計情報」ボタンを押すと、統計情報の更新というウィンドウが表示されるので、「実行」すればよい。 対象は、現在選択しているデータ領域のみとのこと。
-ちなみに、全データベースに一括で統計情報の更新をかけるには、SQL Management Studioから、
-sp_MSforeachdb &#39;USE [?]; sp_updatestats&#39;  とする。</description>
+      <description>社内では会計システムに勘定奉行(ネットワーク版)を使っているが、 担当者から「勘定奉行で仕訳帳の表示に20秒くらいかかる」と言われたので調査してみた。 その担当者のPC固有の問題かどうかを切り分けるため別のPCから同様の操作を行ってみたところ、同じ症状が発生した。 ということは、サーバ側に問題がありそう。 勘定奉行のクライアントは生のSQL文をサーバに発行する仕組みなので、 Wiresharkでパケットをキ</description>
     </item>
     
     <item>
@@ -173,15 +107,7 @@ sp_MSforeachdb &#39;USE [?]; sp_updatestats&#39;  とする。</description>
       <pubDate>Tue, 12 Jul 2016 22:07:00 +0900</pubDate>
       
       <guid>https://www.330k.info/essay/manage_firefox_settings_with_group_policy_without_gpo_for_firefox/</guid>
-      <description>公式の情報はこちら : https://www.mozilla.jp/business/faq/tech/setting-management/
-上記公式サイトにあるように、ActiveDirectory環境にあるFirefoxの設定を管理する場合、
- クライアント側にアドオン(GPO for Firefox)をインストール サーバ側に管理用テンプレート(ADMファイル)を配置 グループポリシーエディタで設定を編集  という手順が推奨されている。ただ、この方法だと
- 既存ユーザへの自動設定は不可(ユーザにアドオンをインストールしてもらう必要がある) ユーザがアドオンを無効化してしまう可能性がある 最新のバージョンで追加された設定項目がない場合がある  といったデメリットがあるので、公式サイト中で「MCD用設定ファイルでの実現」という方法で行うことにした。
-要件は以下の通り。
- Firefoxアカウントを使ったパスワード等の同期をさせない 強制的に最新版にアップデートさせる たまにしか社内LANにアクセスしない端末でも設定を反映させたい (公式サイトの「すべてのクライアントの設定を管理者が一括して変更したい」では常時社内LANにアクセスできる端末である必要がある)  手順は以下の通り。
- 「autoconfig.js」と「autoconfig.cfg」を公式サイトの例にしたがって記述  autoconfig.js
-pref(&amp;quot;general.config.filename&amp;quot;, &amp;quot;autoconfig.cfg&amp;quot;); pref(&amp;quot;general.config.vendor&amp;quot;, &amp;quot;autoconfig&amp;quot;); pref(&amp;quot;general.config.obscure_value&amp;quot;, 0);  autoconfig.cfg (ここではFirefoxアカウントによる同期の不許可と、自動アップデートの有効化を設定)
-lockPref(&amp;quot;loop.enabled&amp;quot;, false); lockPref(&amp;quot;services.sync.enabled&amp;quot;, false); lockPref(&amp;quot;services.sync.engine.addons&amp;quot;, false); lockPref(&amp;quot;services.sync.engine.bookmarks&amp;quot;, false); lockPref(&amp;quot;services.sync.engine.history&amp;quot;, false); lockPref(&amp;quot;services.sync.engine.passwords&amp;quot;, false); lockPref(&amp;quot;services.sync.engine.prefs&amp;quot;, false); lockPref(&amp;quot;services.sync.engine.tabs&amp;quot;, false); lockPref(&amp;quot;app.update.enabled&amp;quot;, true); lockPref(&amp;quot;app.update.auto&amp;quot;, true); lockPref(&amp;quot;browser.search.update&amp;quot;, true);   「autoconfig.js」と「autoconfig.cfg」を一般ユーザが読み取り可能なフォルダに配置 (例えば「\ドメインコントローラ\SYSVOL\ドメイン名\Deployment」など) グループポリシーの「コンピュータの構成」「基本設定」「Windowsの設定」「ファイル」を使い、 「autoconfig.js」と「autoconfig.cfg」を公式サイトで指定されたフォルダに配置。     64bit版Windowsに32bit版Firefoxがインストールされている場合は、「項目レベルで対象化する」にチェックし、 「Processor_Architecture」に「AMD64」を設定し、「%PROGRAMFILES(X86)%\Mozilla Firefox」に配置する。 ※ 両方ある場合は2つずつ設定する      最後に実際にクライアントPCにファイルが反映され、Firefoxのabout:configで設定されていることを確認</description>
+      <description>公式の情報はこちら : https://www.mozilla.jp/business/faq/tech/setting-management/ 上記公式サイトにあるように、ActiveDirectory環境にあるFirefoxの設定を管理する場合、 クライアント側にアドオン(GPO for Firefox)をインストール サーバ側に管理用テンプレート(ADMファイル)を配置 グループポリシーエディタで設定を編集 という手順が推奨されている。ただ、この方法だと 既存ユーザへの自動設定は不可(ユーザにアドオンをインストールしてもらう必要が</description>
     </item>
     
     <item>
@@ -190,32 +116,7 @@ lockPref(&amp;quot;loop.enabled&amp;quot;, false); lockPref(&amp;quot;services.s
       <pubDate>Sun, 29 Nov 2015 00:00:00 +0900</pubDate>
       
       <guid>https://www.330k.info/essay/what_l2_forwarding_ssl_vpn_protects/</guid>
-      <description>例によってパワハラを受けた研修先で最初に受けたパワハラが、 リモートアクセスのSSL-VPNに関する技術的な質問をした時のことだった。
-研修先の会社ではJuniper社(現PulseSecure社)のSSL-VPN製品を導入しており、 クライアントPC側にはNetwork Connectというソフトウェアをインストールしていた。
-これはL2フォワーディング方式のSSL-VPNで、起動するとネットワークアダプタに仮想NICが追加される。 仮想NIC経由で通信することで外部からでも社内LANに接続できる。
-研修先企業では外出時にSSL-VPNの接続を義務付けている、という話になったときのことだった。
- パワハラ上司(自称ITエンジニア)「外出先のホテルなどでは社内システムにアクセスしない時も絶対にVPNで接続してからインターネットに接続しろ。」
- 私「なぜですか？」
- パワハラ上司「同じネットワークにいるコンピュータから盗聴や攻撃をされるだろ！」
- 私「HTTPSでないHTTPは確かに盗聴されますが、SSL-VPNで接続したところで攻撃は受けるのではないですか？」
- パワハラ上司「VPNは仮想的に専用線を張るんだ！」
- 私「仮想的に専用線を張ったところで物理的には元のネットワークにいますよね？」
- パワハラ上司「専用線で接続したら攻撃されない。だから仮想的に専用線を張ってるんだから攻撃されない！」
- 私「(喩え話じゃなくてちゃんと技術的な回答がほしいんだが…)」
- パワハラ上司「ちょっとは調べてから質問しろ」
-パワハラ上司「俺の時間もタダじゃねえんだぞ！」
-パワハラ上司「間違ったら『はい、すみません』でいいんだ。ほれ、早く言え！」
- 私「はい、すみません。」
-  とまあ、これが今思い返すと調子に乗らせる原因だったかもしれない。 研修先の自称ITエンジニアの技術力に疑念を持った最初の出来事だった。
-Network Connect起動時に作成される仮想NICがメトリックで優先されるように設定されるので、 VPN接続後のクライアント発の通信はすべて仮想NIC経由となる。
-ただ私が疑念に抱いたのは、同じ物理ネットワークの他の端末から通信が来た場合は、元の物理NICから応答するのではないか、という点だ。
-具体例としては、クライアントPCでファイル共有を有効にしていた場合、 SSL-VPNで接続していても同じネットワークにいる端末から共有しているファイルが見えてしまうのではないか。
-技術者なら実際に試してみるべき、ということで、実験してみた。
- クライアントOS: Windows 7 64bit クライアントPC: ファイル共有ON 物理ネットワーク環境: 来客用Wi-Fi(普通の家庭用Wi-Fiルータと同じ環境) SSL-VPNクライアント: Pulse Secure 5.2 (Network Connectの後継のJunos Pulseの後継) SSL-VPNアライアンス: MAG2600  という環境でSSL-VPNを接続した後、 同じ物理ネットワークの他のPCから共有されたファイルが見えるかどうかを確かめてみた。
-結果: 見えた　NetBIOS名でもアクセス可能
-物理NICに割り当てられたIPアドレスを使ってもアクセスできたが、NetBIOSによる名前解決もできた。 ということはUDPのブロードキャストにも物理NICから応答する、ということが分かった。
-物理NICが普通の通信が出来ないとカプセル化したパケットの通信もできない、というのは 普通に考えればわかると思うのだが、残念ながらパワハラエンジニアの知識レベルはその程度だった、ということか。
-結論としては、下記の通り。</description>
+      <description>例によってパワハラを受けた研修先で最初に受けたパワハラが、 リモートアクセスのSSL-VPNに関する技術的な質問をした時のことだった。 研修先の会社ではJuniper社(現PulseSecure社)のSSL-VPN製品を導入しており、 クライアントPC側にはNetwork Connectというソフトウェアをインストールしていた。 これはL2フォワーディング方式のSSL-VPNで、起動するとネットワークアダプ</description>
     </item>
     
     <item>
@@ -224,16 +125,7 @@ Network Connect起動時に作成される仮想NICがメトリックで優先�
       <pubDate>Tue, 04 Aug 2015 00:00:00 +0900</pubDate>
       
       <guid>https://www.330k.info/essay/install-windows-10-to-panasonic-letsnote-cf-n10/</guid>
-      <description>Windows Insider Programに登録していたので、7/31に「Windows 10がでたよ〜」というメールがGabe Aulからやってきた。
-ゆくゆくは更新プログラムが提供されるけど、早く試したい人は「メディア作成ツール」をダウンロードして使うといいよ、 とのことなので、会社で余っていたPCにインストールしてみた。
-インストール  機種: Panasonic Let&amp;rsquo;s Note CF-N10(法人向けモデル) Windows 7 32bit版からのアップグレード Office 2010、Adobe Acrobat Pro XI、トレンドマイクロウイルスバスターがインストール済み  インストール方法は基本的に http://ascii.jp/elem/000/001/034/1034923/ の通り。 ※現在は直接ISOファイルがダウンロードできる模様
-ただし、指示に従って進めていると、以下の2つのソフトウェアをアンインストールしなさい、と出てくる。
- Intel&amp;reg; Dynamic Power Performance Management Realtek High Definition Audio Driver  Realtekの方は、「アンインストール」ボタンをクリックすればOK。
-Intelの方は、 http://answers.microsoft.com/ja-jp/windows/forum/windows_8-windows_install/windows-8/cefec781-59a2-4f78-925a-0b34c70b53b7?auth=1 に情報がある。
-Let&amp;rsquo;s Noteの場合、 C:\util2\drivers\etm\DppmCleaner.bat、もしくはLPOSetting.jsを実行する、とあるが、 CF-N10の場合はバージョンが違うためか存在しない。
-仕方がないので、時期の近い他機種向けのドライバーをインストールして、上記のLPOSetting.jsを実行することで解決。 その後しばらく待てば、無事Windows 10へのアップグレードが完了した。
-インストール結果 現在のところ、インストール後の結果は以下の通り。
- ActiveDirectoryへの参加　→　○成功 グループポリシーの適用　→　△ユーザーの構成のみ有効、コンピュータの構成は有効にならない (ただし、ドメインコントローラ側(Windows Server 2012R2)でのシミュレーションでは適用されるはず) Office 2010の起動　→　△起動は成功(Outlookの設定情報は引き継げず) Adobe Acrobat Pro XIの起動　→　○成功(ただしデフォルトではEdgeでPDFを開く) ウイルスバスター　→　○問題なく動作している模様(リアルタイム検索、パターンファイルのアップデート) BitLockerによるドライブの暗号化　→　○成功(運良くCF-N10もTPMを積んでいた)  その他感想  起動時間はWindows 7とあまり変わらない感触 シャットダウンは早くなった印象 たまに画面の文字がボケる(ClearTypeの設定をいじっても変わらず) 現状ではGPOでコンピュータの構成が効いていないので、クライアント側かサーバ側で対応するタイミングが来るまでは様子見。  Aug.</description>
+      <description>Windows Insider Programに登録していたので、7/31に「Windows 10がでたよ〜」というメールがGabe Aulからやってきた。 ゆくゆくは更新プログラムが提供されるけど、早く試したい人は「メディア作成ツール」をダウンロードして使うといいよ、 とのことなので、会社で余っていたPCにインストールしてみた。 インストール 機種: Panasonic Let&amp;rsquo;s Note CF-N10(法人向けモデル) Windows 7 32bit版からのアップグレード Office 2010、A</description>
     </item>
     
     <item>
@@ -242,10 +134,7 @@ Let&amp;rsquo;s Noteの場合、 C:\util2\drivers\etm\DppmCleaner.bat、もし�
       <pubDate>Sun, 19 Jul 2015 00:00:00 +0900</pubDate>
       
       <guid>https://www.330k.info/essay/how-to-take-files-out-from-company/</guid>
-      <description>ベネッセの子会社での情報漏えい事件では、スマートフォンを使ってデータをPCから取り出していたらしい。 そこで、私の研修先の会社の社内SE部門の人たちは、以下の内部者によるファイルやデータの持ち出し対策を行っていた。
- 資産管理ソフト(SKYSEA Client View)を導入  USBメモリやスマートフォンを挿しても書き込めないように設定 ネットワーク経由でもSKYSEAにログが残るからわかる  SKYSEAの機能で知らない機器がネットワークに接続されても検知できる(ただし、よく仕組みはわかっていない模様) Webフィルタリングソフト(InterSafe CATS)も導入 会社のメールサーバ経由での送受信メールはすべて保管  M&amp;amp;Aアドバイザリーという業務の特性からとにかく情報漏えい対策にお金はかけており、 セキュリティには相当な自信をお持ちでいらっしゃった。
-ただ、素人目からしても抜け道がいくつか見えたので、研修を終えて自分の会社に戻った瞬間に以下に対して策を講じた。
- Bluetoothが使い放題で、右クリックして「送る」メニューをするだけで簡単にファイル送信可能。 またOfficeのBluetoothアドイン経由でも送信可能。 ※SKYSEAにはBluetoothに接続する機器を制限する機能があるが、iPhoneとのテザリングや無線マウス、キーボードを使用している人がいるので研修先企業では禁止にできなかった。 ネットワークの共有(ICS)や、SoftAPにより個人端末を社内LANへ接続可能 ※SKYSEAにはネットワークに登録されていないMACアドレスの端末が接続されたことを検知・遮断する機能あり。だが直接外部端末を社内ネットワークに接続しない(PCでNAPTを行う)場合は、SKYSEAでは検知不可能。 IISをインストールし、AdHocやWiFi Directで接続されると外部端末からアクセスしての持ち出しが可能。 ※SKYSEAはユーザが新たなソフトウェアをインストールすると検知できる。しかし、SKYSEAのサーバにIISも入れる必要があるためデフォルトだとIISがホワイトリストに入ってしまう。 Hyper-Vをインストールして仮想マシン経由でアクセスされると制限が効かず、ログも残らない。 各ユーザに管理者権限を与えているので、デフォルトで管理共有が有効になっており、外部端末からアクセスして持ちだし可能。 ※SKYSEAには共有フォルダの作成を制限できる機能はあるが、インストール時点で作成されていた場合は禁止できない。 NTFSのジャンクションと上記の方法(ICS、SoftAP、IIS)の組み合わせで、ローカルファイルへのアクセスに見せかけてファイルサーバのファイルも持ち出し可能なので、 ログを見てもファイルサーバからデータを持ちだしたことが分からない。 会社では携帯電話にiPhoneを採用しており、クライアントPCにはバックアップ用にiTunesをインストールしている。 構成プロファイルでApple Storeの使用を禁止しているが、  iTunesを使ってPCからApple Storeのアプリを自由にインストール可能 しかもiTunesのファイル共有機能も有効なので、iPhone経由でいくらでも外部に持ち出せる  標準ブラウザとしてFirefoxを採用しているが、Firefox Syncで個人アカウントを作成し、ブックマークやパスワードを個人PCと同期可能。 テキスト情報ならブックマークに見せかけて同期すれば持ち出せる。 Google Chromeで個人のGoogleアカウントとしてログイン、同期可能なので、Firefox Syncと同様にいろいろ持ち出せる。 また、Google Cloud Printにより家のプリンタに出力することも可能。 Google ChromeではInterSafe CATSとSKYSEAの組み合わせではログ取得ができないので、 InterSafe CATSに引っかからないウェブサイトであれば、ファイルをアップロードし放題。ログも残らない。 ※これはSKYSEAの問題ではなく、InterSafe CATSのフィルタリングがかなりエグい仕組みのため &amp;gt; Feb. 6 2016 追記: InterSafe CATS 4.3以降はこの競合問題は解決した Skype.exeを実行不可にしているものの、Skype for Business(Lync)はスルーなので、ファイル送信し放題 また、「Skype.exe」という名前のファイルを実行禁止・ファイル名変更禁止したりできるが、それでも抜け道はある ※SKYSEAはexeファイルのハッシュ値でブラックリストを作成できる　⇔　1bitでも違うexeファイルを作れば抜けられる  ※はSKYSEAの製品自体が悪いわけではないことの説明。 私はSKYSEAはいい買い物だったと思っているので誤解なきよう。</description>
+      <description>ベネッセの子会社での情報漏えい事件では、スマートフォンを使ってデータをPCから取り出していたらしい。 そこで、私の研修先の会社の社内SE部門の人たちは、以下の内部者によるファイルやデータの持ち出し対策を行っていた。 資産管理ソフト(SKYSEA Client View)を導入 USBメモリやスマートフォンを挿しても書き込めないように設定 ネットワーク経由でもSKYSEAにログが残るからわかる SKYSEAの機能で知らない</description>
     </item>
     
     <item>
@@ -254,15 +143,7 @@ Let&amp;rsquo;s Noteの場合、 C:\util2\drivers\etm\DppmCleaner.bat、もし�
       <pubDate>Wed, 08 Jul 2015 00:00:00 +0900</pubDate>
       
       <guid>https://www.330k.info/essay/disable_specific_windows_update_without_wsus/</guid>
-      <description>先月頃から、Windows 7の通知領域に「Windows 10を入手する」とか「無料アップグレードを予約」とかいう邪魔なMicrosoftの広告が入るようになってきた。 社内SEとしてはユーザに勝手にOSをアップグレードされるわけにはいかないので、消し去りたい。
-ネットを探してみると、やはり同様の悩みを持つ人は多いらしく、結論としては、
- GWX.exeとGWXUX.exeをタスクマネージャで強制終了する インストールされたWindows Updateの「KB3035583」をアンインストールする 再度Windows Updateがインストールさせようとしてくるので、KB3035583を右クリックして「非表示」にする  ということらしい。 → 参考サイト: 「Windows10を入手する」の通知が消えない＼(^o^)／
-さて、1人社内SEとしては以上の手順をユーザの全PCに行うのは無理なので、なんとか自動化したい。 1と2についてはコマンドプロンプトで可能なので、あっさり情報が見つかり、
-Taskkill /IM GWX.exe /F Taskkill /IM GWXUX.exe /F wusa.exe /uninstall /kb:3035583 /quiet /norestart  と書いたバッチファイルをログオンスクリプトに仕込むことで可能だった。
-問題は3の何度アンインストールしても再インストールさせようとしてくる点。 根本的な解決策はもちろんWSUSサーバを立てて、KB3035583を承認しなければ良い。
-だが、私の会社にはWSUSサーバはない。 レジストリをいじったりして特定のWindows Updateを非表示にする方法がないか、と調べてみたら、 Windows Update Agent APIというのがあることを発見。
-英語の情報しかなかったが、サンプルを参考に目的の「KB3035583」を非表示にするスクリプト(今回はJavaScript)を書いてみた。
-/********************************************************************** WSUSを使用せずに不必要なWindowsUpdateを非表示 Copyright 2015-2016 330k 使用は自己責任でお願いします **********************************************************************/ try{ // インストールしないWindowsUpdateのKB番号 var disabledKBs = [ 2876229, 2952664, 2976978, 2977759, 3021917, 3022345, 3035583, 3068708, 3075249, 3080149, 3123862, 3150513, 2990214,// Win 7 3050265, 3065987, 3075851, 3083324, 3083710, 3102810, 3112343, 3135445, 3138612, 3161608, 3044374,// Win 8.</description>
+      <description>先月頃から、Windows 7の通知領域に「Windows 10を入手する」とか「無料アップグレードを予約」とかいう邪魔なMicrosoftの広告が入るようになってきた。 社内SEとしてはユーザに勝手にOSをアップグレードされるわけにはいかないので、消し去りたい。 ネットを探してみると、やはり同様の悩みを持つ人は多いらしく、結論としては、 GWX.exeとGWXUX.exeをタスクマネージャで強制終了する イ</description>
     </item>
     
   </channel>

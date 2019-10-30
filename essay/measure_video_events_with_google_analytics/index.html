@@ -8,10 +8,7 @@
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
 	<meta property="og:title" content="Google Analyticsで動画(Video要素)のイベントを計測" />
-<meta property="og:description" content="会社のウェブサイトに貼ってある動画ファイルが、実際にどれだけ再生されているのか調査するべく、 Google Analyticsのイベントで計測するためのコードを作ってみた。
-計測対象は以下のイベント。
- 再生開始(play) 最後まで再生(ended) 一時停止(pause) 再生再開(resume) シークした(seeked) どこまで再生したか(動画時間の10%, 25%, 50%, 75%, 90%)  HTML側 &lt;video id=&quot;movie001&quot; width=&quot;(動画幅)&quot; height=&quot;(動画高さ)&quot; title=&quot;Movie Title&quot;&gt; &lt;source src=&quot;(動画ファイルのパス)&quot; type=&quot;video/mp4&quot; /&gt; &lt;/video  JavaScript側(jQuery使用) イベントカテゴリに「video」、イベントアクションにplay、play_endなど。 イベントラベルには動画のtitle属性をセット。
-$(function(){ var oldratio = 0.0; $(&#39;video&#39;).on(&#39;play&#39;, function(e) { on(&#39;play&#39;, function(e) { if(e.target.currentTime &gt; 0){ ga(&#39;send&#39;,&#39;event&#39;,&#39;video&#39;,&#39;resume&#39;,e.target.getAttribute(&#39;title&#39;)); }else{ ga(&#39;send&#39;,&#39;event&#39;,&#39;video&#39;,&#39;play&#39;,e.target.getAttribute(&#39;title&#39;)); } }).on(&#39;ended&#39;, function(e) { ga(&#39;send&#39;,&#39;event&#39;,&#39;video&#39;,&#39;play_end&#39;,e.target.getAttribute(&#39;title&#39;)); }).on(&#39;pause&#39;, function(e) { ga(&#39;send&#39;,&#39;event&#39;,&#39;video&#39;,&#39;pause&#39;,e.target.getAttribute(&#39;title&#39;)); }).on(&#39;seeked&#39;, function(e) { ga(&#39;send&#39;,&#39;event&#39;,&#39;video&#39;,&#39;seeked&#39;,e.target.getAttribute(&#39;title&#39;)); }).on(&#39;timeupdate&#39;, function(e) { var ratio = e.target.currentTime / e." />
+<meta property="og:description" content="会社のウェブサイトに貼ってある動画ファイルが、実際にどれだけ再生されているのか調査するべく、 Google Analyticsのイベントで計測するためのコードを作ってみた。 計測対象は以下のイベント。 再生開始(play) 最後まで再生(ended) 一時停止(pause) 再生再開(resume) シークした(seeked) どこまで再生したか(動画時間の10%, 25%, 50%, 75%, 90%) HTML側 &lt;video id=&quot;movie001&quot; width=&quot;(動画幅)&q" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.330k.info/essay/measure_video_events_with_google_analytics/" />
 <meta property="article:published_time" content="2017-10-02T23:27:45+09:00" />
@@ -19,10 +16,7 @@ $(function(){ var oldratio = 0.0; $(&#39;video&#39;).on(&#39;play&#39;, function
 
 	<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Google Analyticsで動画(Video要素)のイベントを計測"/>
-<meta name="twitter:description" content="会社のウェブサイトに貼ってある動画ファイルが、実際にどれだけ再生されているのか調査するべく、 Google Analyticsのイベントで計測するためのコードを作ってみた。
-計測対象は以下のイベント。
- 再生開始(play) 最後まで再生(ended) 一時停止(pause) 再生再開(resume) シークした(seeked) どこまで再生したか(動画時間の10%, 25%, 50%, 75%, 90%)  HTML側 &lt;video id=&quot;movie001&quot; width=&quot;(動画幅)&quot; height=&quot;(動画高さ)&quot; title=&quot;Movie Title&quot;&gt; &lt;source src=&quot;(動画ファイルのパス)&quot; type=&quot;video/mp4&quot; /&gt; &lt;/video  JavaScript側(jQuery使用) イベントカテゴリに「video」、イベントアクションにplay、play_endなど。 イベントラベルには動画のtitle属性をセット。
-$(function(){ var oldratio = 0.0; $(&#39;video&#39;).on(&#39;play&#39;, function(e) { on(&#39;play&#39;, function(e) { if(e.target.currentTime &gt; 0){ ga(&#39;send&#39;,&#39;event&#39;,&#39;video&#39;,&#39;resume&#39;,e.target.getAttribute(&#39;title&#39;)); }else{ ga(&#39;send&#39;,&#39;event&#39;,&#39;video&#39;,&#39;play&#39;,e.target.getAttribute(&#39;title&#39;)); } }).on(&#39;ended&#39;, function(e) { ga(&#39;send&#39;,&#39;event&#39;,&#39;video&#39;,&#39;play_end&#39;,e.target.getAttribute(&#39;title&#39;)); }).on(&#39;pause&#39;, function(e) { ga(&#39;send&#39;,&#39;event&#39;,&#39;video&#39;,&#39;pause&#39;,e.target.getAttribute(&#39;title&#39;)); }).on(&#39;seeked&#39;, function(e) { ga(&#39;send&#39;,&#39;event&#39;,&#39;video&#39;,&#39;seeked&#39;,e.target.getAttribute(&#39;title&#39;)); }).on(&#39;timeupdate&#39;, function(e) { var ratio = e.target.currentTime / e."/>
+<meta name="twitter:description" content="会社のウェブサイトに貼ってある動画ファイルが、実際にどれだけ再生されているのか調査するべく、 Google Analyticsのイベントで計測するためのコードを作ってみた。 計測対象は以下のイベント。 再生開始(play) 最後まで再生(ended) 一時停止(pause) 再生再開(resume) シークした(seeked) どこまで再生したか(動画時間の10%, 25%, 50%, 75%, 90%) HTML側 &lt;video id=&quot;movie001&quot; width=&quot;(動画幅)&q"/>
 
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">

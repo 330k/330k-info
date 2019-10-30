@@ -8,11 +8,7 @@
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
 	<meta property="og:title" content="16ビットアプリケーションの標準入出力をリダイレクト" />
-<meta property="og:description" content="FORTRANで書かれた古いMS-DOSプログラムを.NET/Linkを使ってMathematicaから操るパッケージを作っていたところ、 Process.StartInfo.RedirectStandardInputやRedirectStandardOutputにTrueを設定してもまったく標準入出力をリダイレクトできなかった。(※OSはVista 32bit)
-いろいろ試してみたところ、16ビットのプログラムだとリダイレクトができないらしいということが分かった。 さてどうしたものかとさらにいろいろ打開策を探してみた結果、
- FileNameに&quot;cmd.exe&quot;を設定して、Process.Start()でプロセスを起動。 必要ならStandardInput.WriteLine(&quot;cd 16ビットプログラムのディレクトリ&quot;)としてカレントディレクトリを移動。 StandardInput.WriteLine(&quot;***.EXE&quot;)として16ビットプログラムを起動。  とcmd.exeを間に挟むことにより、16ビットのプログラムに対しても標準入出力のリダイレクトが行えることが分かった。
-以下はMathematica&#43;.NET/Linkによるサンプル。 標準出力は書き出されるたびにイベントハンドラで捕捉してoutputsに追加するので、Dynamic[outputs]などとしておくと、本当のターミナルの挙動に近づく。 最初にcmd.exeの出力(&ldquo;Microsoft Windows [Version &hellip;&ldquo;)が入るので、16ビットのプログラムの出力だけがほしい場合は16ビットプログラム起動後にフラグを立てれば大丈夫。
-outputs = {}; outputhandler[o_, args_] := Module[ {data = args@Data}, AppendTo[outputs, data]; ]; NETBlock[ proc = NETNew[&quot;System.Diagnostics.Process&quot;]; LoadNETType[&quot;System.Environment&quot;]; proc@StartInfo@FileName = Environment`GetEnvironmentVariable[&quot;ComSpec&quot;]; proc@StartInfo@RedirectStandardInput = True; proc@StartInfo@RedirectStandardOutput = True; proc@StartInfo@UseShellExecute = False; proc@StartInfo@CreateNoWindow = True; proc@StartInfo@WorkingDirectory = DirectoryName[proc@StartInfo@FileName]; AddEventHandler[proc@OutputDataReceived, outputhandler]; proc@Start[]; proc@BeginOutputReadLine[]; proc@StandardInput@WriteLine[&quot;cd &quot; &lt;&gt; &quot;16ビットプログラムのディレクトリ&quot;]; proc@StandardInput@WriteLine[&quot;******.EXE(16ビットプログラム)&quot;]; proc@StandardInput@WriteLine[&quot;16ビットプログラムの標準入力に渡す内容&quot;]; proc@StandardInput@Close[]; proc@WaitForExit[]; proc@Close[]; ];  とはいっても64bit版のWindowsだと16bitのプログラムがそもそも動かない。" />
+<meta property="og:description" content="FORTRANで書かれた古いMS-DOSプログラムを.NET/Linkを使ってMathematicaから操るパッケージを作っていたところ、 Process.StartInfo.RedirectStandardInputやRedirectStandardOutputにTrueを設定してもまったく標準入出力をリダイレクトできなかった。(※OSはVista 32bit) いろいろ試してみたところ、16ビットのプログラム" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.330k.info/essay/how-to-redirect-standard-input-output-of-16bit-application/" />
 <meta property="article:published_time" content="2009-10-26T21:47:00+09:00" />
@@ -20,11 +16,7 @@ outputs = {}; outputhandler[o_, args_] := Module[ {data = args@Data}, AppendTo[o
 
 	<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="16ビットアプリケーションの標準入出力をリダイレクト"/>
-<meta name="twitter:description" content="FORTRANで書かれた古いMS-DOSプログラムを.NET/Linkを使ってMathematicaから操るパッケージを作っていたところ、 Process.StartInfo.RedirectStandardInputやRedirectStandardOutputにTrueを設定してもまったく標準入出力をリダイレクトできなかった。(※OSはVista 32bit)
-いろいろ試してみたところ、16ビットのプログラムだとリダイレクトができないらしいということが分かった。 さてどうしたものかとさらにいろいろ打開策を探してみた結果、
- FileNameに&quot;cmd.exe&quot;を設定して、Process.Start()でプロセスを起動。 必要ならStandardInput.WriteLine(&quot;cd 16ビットプログラムのディレクトリ&quot;)としてカレントディレクトリを移動。 StandardInput.WriteLine(&quot;***.EXE&quot;)として16ビットプログラムを起動。  とcmd.exeを間に挟むことにより、16ビットのプログラムに対しても標準入出力のリダイレクトが行えることが分かった。
-以下はMathematica&#43;.NET/Linkによるサンプル。 標準出力は書き出されるたびにイベントハンドラで捕捉してoutputsに追加するので、Dynamic[outputs]などとしておくと、本当のターミナルの挙動に近づく。 最初にcmd.exeの出力(&ldquo;Microsoft Windows [Version &hellip;&ldquo;)が入るので、16ビットのプログラムの出力だけがほしい場合は16ビットプログラム起動後にフラグを立てれば大丈夫。
-outputs = {}; outputhandler[o_, args_] := Module[ {data = args@Data}, AppendTo[outputs, data]; ]; NETBlock[ proc = NETNew[&quot;System.Diagnostics.Process&quot;]; LoadNETType[&quot;System.Environment&quot;]; proc@StartInfo@FileName = Environment`GetEnvironmentVariable[&quot;ComSpec&quot;]; proc@StartInfo@RedirectStandardInput = True; proc@StartInfo@RedirectStandardOutput = True; proc@StartInfo@UseShellExecute = False; proc@StartInfo@CreateNoWindow = True; proc@StartInfo@WorkingDirectory = DirectoryName[proc@StartInfo@FileName]; AddEventHandler[proc@OutputDataReceived, outputhandler]; proc@Start[]; proc@BeginOutputReadLine[]; proc@StandardInput@WriteLine[&quot;cd &quot; &lt;&gt; &quot;16ビットプログラムのディレクトリ&quot;]; proc@StandardInput@WriteLine[&quot;******.EXE(16ビットプログラム)&quot;]; proc@StandardInput@WriteLine[&quot;16ビットプログラムの標準入力に渡す内容&quot;]; proc@StandardInput@Close[]; proc@WaitForExit[]; proc@Close[]; ];  とはいっても64bit版のWindowsだと16bitのプログラムがそもそも動かない。"/>
+<meta name="twitter:description" content="FORTRANで書かれた古いMS-DOSプログラムを.NET/Linkを使ってMathematicaから操るパッケージを作っていたところ、 Process.StartInfo.RedirectStandardInputやRedirectStandardOutputにTrueを設定してもまったく標準入出力をリダイレクトできなかった。(※OSはVista 32bit) いろいろ試してみたところ、16ビットのプログラム"/>
 
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">

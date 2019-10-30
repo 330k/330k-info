@@ -8,15 +8,7 @@
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
 	<meta property="og:title" content="折れ線を間引く" />
-<meta property="og:description" content="読み込んだGPSログのデータを間引きたい、と思って調べたところ、 (Ramer-)Douglas-Peuckerのアルゴリズムというものがあることが分かった。
-基本的な考え方は、
- 折れ線の始点と終点を結ぶ線分と各点の距離を求める。 すべての点との距離が許容誤差ε以内に入っていれば始点と終点だけを返して終了。 そうでなければ距離が最大の点Pを1つ選択。 始点から点Pまでの折れ線と、点Pから終点までの折れ線のそれぞれについてまた1から処理する。  という再帰的なもの。
-再帰的なものはMathematicaの得意分野なので、MathematicaでRamer-Douglas-Peuckerのアルゴリズムを実装してみた。
-線分と点の距離 さて、まずは線分と点の距離を求める関数を作成する。
-ネットで検索すると直線と点の距離を求めるものが多いが、線分と点の距離のほうが形状をよく保存できるのではないだろうか、と個人的に考えている。
-線分ABに点Pから下ろした垂線の足が点Hだとすると、
- 線分ABと直線PHは直交⇔内積が0 点Hは直線AB上にある⇔実数tに対してB = t H(B、Hは点Aから見た点B、点Hの位置ベクトル)  の条件から、Hの座標と実数tの値が求まる。 Mathematicaを使うと
-A = {ax, ay}; B = {bx, by}; P = {px, py}; H = {x, y}; Solve[{ (H - A).(P - H) == 0, H == A &#43; (B - A) t }, {x, y, t}][[2]] // FullSimplify {x -&gt; (ay^2 bx &#43; ax^2 px &#43; ax ay (-by &#43; py) - ay bx (by &#43; py) &#43; ax (by^2 - 2 bx px - by py) &#43; bx (bx px &#43; by py))/((ax - bx)^2 &#43; (ay - by)^2), y -&gt; ((ax - bx) (by (ax - px) &#43; ay (-bx &#43; px)) &#43; (ay - by)^2 py)/((ax - bx)^2 &#43; (ay - by)^2), t -&gt; (ax^2 &#43; ay^2 &#43; bx px - ax (bx &#43; px) &#43; by py - ay (by &#43; py))/((ax - bx)^2 &#43; (ay - by)^2)}  となる。 これは2次元の場合だが、一般に" />
+<meta property="og:description" content="読み込んだGPSログのデータを間引きたい、と思って調べたところ、 (Ramer-)Douglas-Peuckerのアルゴリズムというものがあることが分かった。 基本的な考え方は、 折れ線の始点と終点を結ぶ線分と各点の距離を求める。 すべての点との距離が許容誤差ε以内に入っていれば始点と終点だけを返して終了。 そうでなければ距離が最大の点Pを1つ選択。 始点から点Pまでの折れ線と、点Pから終点までの折れ線のそれ" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.330k.info/essay/oresenwomabiku/" />
 <meta property="article:published_time" content="2009-10-24T00:00:00+09:00" />
@@ -24,15 +16,7 @@ A = {ax, ay}; B = {bx, by}; P = {px, py}; H = {x, y}; Solve[{ (H - A).(P - H) ==
 
 	<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="折れ線を間引く"/>
-<meta name="twitter:description" content="読み込んだGPSログのデータを間引きたい、と思って調べたところ、 (Ramer-)Douglas-Peuckerのアルゴリズムというものがあることが分かった。
-基本的な考え方は、
- 折れ線の始点と終点を結ぶ線分と各点の距離を求める。 すべての点との距離が許容誤差ε以内に入っていれば始点と終点だけを返して終了。 そうでなければ距離が最大の点Pを1つ選択。 始点から点Pまでの折れ線と、点Pから終点までの折れ線のそれぞれについてまた1から処理する。  という再帰的なもの。
-再帰的なものはMathematicaの得意分野なので、MathematicaでRamer-Douglas-Peuckerのアルゴリズムを実装してみた。
-線分と点の距離 さて、まずは線分と点の距離を求める関数を作成する。
-ネットで検索すると直線と点の距離を求めるものが多いが、線分と点の距離のほうが形状をよく保存できるのではないだろうか、と個人的に考えている。
-線分ABに点Pから下ろした垂線の足が点Hだとすると、
- 線分ABと直線PHは直交⇔内積が0 点Hは直線AB上にある⇔実数tに対してB = t H(B、Hは点Aから見た点B、点Hの位置ベクトル)  の条件から、Hの座標と実数tの値が求まる。 Mathematicaを使うと
-A = {ax, ay}; B = {bx, by}; P = {px, py}; H = {x, y}; Solve[{ (H - A).(P - H) == 0, H == A &#43; (B - A) t }, {x, y, t}][[2]] // FullSimplify {x -&gt; (ay^2 bx &#43; ax^2 px &#43; ax ay (-by &#43; py) - ay bx (by &#43; py) &#43; ax (by^2 - 2 bx px - by py) &#43; bx (bx px &#43; by py))/((ax - bx)^2 &#43; (ay - by)^2), y -&gt; ((ax - bx) (by (ax - px) &#43; ay (-bx &#43; px)) &#43; (ay - by)^2 py)/((ax - bx)^2 &#43; (ay - by)^2), t -&gt; (ax^2 &#43; ay^2 &#43; bx px - ax (bx &#43; px) &#43; by py - ay (by &#43; py))/((ax - bx)^2 &#43; (ay - by)^2)}  となる。 これは2次元の場合だが、一般に"/>
+<meta name="twitter:description" content="読み込んだGPSログのデータを間引きたい、と思って調べたところ、 (Ramer-)Douglas-Peuckerのアルゴリズムというものがあることが分かった。 基本的な考え方は、 折れ線の始点と終点を結ぶ線分と各点の距離を求める。 すべての点との距離が許容誤差ε以内に入っていれば始点と終点だけを返して終了。 そうでなければ距離が最大の点Pを1つ選択。 始点から点Pまでの折れ線と、点Pから終点までの折れ線のそれ"/>
 
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">

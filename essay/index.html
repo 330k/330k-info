@@ -85,17 +85,7 @@ if (!doNotTrack) {
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		もうjQueryも古いと言われているが、会社のウェブサイトでjQueryプラグインのbxSliderが使われている。
-Google先生のPageSpeed Insightに注意されたとおり、レンダリングブロックするJavaScriptを後ろ(&lt;/body&gt;直上)に配置したところ、 2枚目以降の画像が一瞬表示されてしまう現象が発生。
-これはJSをレンダリングブロックしないように後ろに配置したり、deferをつけたときに、ブラウザが
- HTMLをロード CSSを読み込み CSSに従って要素を配置 ← このときに一瞬表示 JavaScript読み込み bxSliderプラグインによってCSS書き換え 書き換えられたCSSでDOM要素を再配置 ← このときに2番目以降が消える  という順番で処理されるため。
-なので、CSSで最初から2番目以降を表示しないようにしておけばよい。 具体的には、.bxsliderの2番目以降の子要素にdisplay: none;を指定すればよく、下記のようにする。
-&lt;ul class=&quot;bxslider&quot;&gt; &lt;li&gt;&lt;div class=&quot;slide&quot;&gt;&lt;/div&gt;&lt;/li&gt; &lt;li&gt;&lt;div class=&quot;slide&quot;&gt;&lt;/div&gt;&lt;/li&gt; &lt;li&gt;&lt;div class=&quot;slide&quot;&gt;&lt;/div&gt;&lt;/li&gt; &lt;li&gt;&lt;div class=&quot;slide&quot;&gt;&lt;/div&gt;&lt;/li&gt; &lt;li&gt;&lt;div class=&quot;slide&quot;&gt;&lt;/div&gt;&lt;/li&gt; &lt;li&gt;&lt;div class=&quot;slide&quot;&gt;&lt;/div&gt;&lt;/li&gt; &lt;/ul&gt;  .bxslider li:not(:first-child){ display: none; }  :not(:first-child)が2番目以降の子要素を示す擬似クラス。 ここ最近のブラウザならすべて対応している(:first-childはCSS2.1、:notはCSS3)。
-参考 ちょっと古い記事だが、他の方も同様の問題に対処している。
- 「bxSlider」で画像が一度に出てしまう際の対処 [bxSlider]スライドショー読み込み時に画像が一瞬バラけてしまう場合の超簡単な対処法  ただ、
- 2番目以降ではなくすべての子要素を消してしまっていて、JavaScript実行前は逆に画像が1枚も表示されず、実行後に要素の再配置が発生してしまっている  その対処として表示領域のwidthとheightを指定している  IDで2番目以降の要素を指定している  というやり方で、
- レスポンシブにするため、CSSの別の場所で細かく画像の大きさを場合分けしている ページによってスライドショーの画像の枚数やIDに違いがある  という点で私の会社のサイトに合わず、そのままでは採用できなかった。
-なお、今回の対応に寄って2番目以降の画像が一瞬表示されるという見た目の問題以外にも、 JavaScript(bxSlider)実行後も要素の再配置が発生しないので表示が高速になる利点もある。
+		もうjQueryも古いと言われているが、会社のウェブサイトでjQueryプラグインのbxSliderが使われている。 Google先生のPageSpeed Insightに注意されたとおり、レンダリングブロックするJavaScriptを後ろ(&lt;/body&gt;直上)に配置したところ、 2枚目以降の画像が一瞬表示されてしまう現象が発生。 これはJSをレンダリングブロックしないように後ろに配置したり、
 	</div>
 </article><article class="list__item post">
 	<figure class="list__thumbnail">
@@ -112,12 +102,7 @@ Google先生のPageSpeed Insightに注意されたとおり、レンダリング
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		 元ネタ: Windows 10でコマンドプロンプトを素早く起動する方法
-私が業務で使うときは以下の手順で起動している。 設定が不必要で、おそらく最速。
-管理者権限でコマンドプロンプトを起動する  [Windows] + [X] → [A]で管理者権限でPowerShellを起動 UACのダイアログが出たら許可する PowerShell上で「cmd」と入力してEnter。  UACがONのときでもキーストローク数は9ストローク。
-コマンドプロンプトを起動しなくても、
- コマンドプロンプトとほぼ同じ操作ができるようにPowerShellのAliasが設定されている 将来性を考えたらPowerShellに慣れていたほうが得  と思うので、PowerShellを起動するだけで良いのであれば、キーストローク数は5ですむ。
-    
+		元ネタ: Windows 10でコマンドプロンプトを素早く起動する方法 私が業務で使うときは以下の手順で起動している。 設定が不必要で、おそらく最速。 管理者権限でコマンドプロンプトを起動する [Windows] + [X] → [A]で管理者権限でPowerShellを起動 UACのダイアログが出たら許可する PowerShell上で「cmd」と入力してEnter。 UACがONのときでもキーストローク数は9ストローク。 コマンドプロンプトを起動しなくて
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -129,13 +114,7 @@ Google先生のPageSpeed Insightに注意されたとおり、レンダリング
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		ある書物で、地球の半径を東大生の何割かがオーダーが違うレベルで間違う、ということが書いてあった(誰の著作だったか忘れてしまった・・・)。
-ただ、地球の周長や半径の概数は、暗記する必要はまったくない。
-なぜなら、「1キロメートルの基準が、赤道から北極までの長さの1万分の1」としてメートル法が決められたから。 覚えるのはこれだけで良い。
-だから、地球一周は4倍の約40,000 km。半径は円周率の2倍で割って約6,400 kmというのは計算で出せる。
-正確な数値としては、極周長が40,075 km、赤道周長が39,941 km、半径が6,357 km。
-ちなみに、メートル法が地球を基準にしたのは、 フランス革命後にそれまでの為政者が使用させていた単位(インチやフィートは指や足の長さが由来で、1 footが約30cmなどのように権威を高めるため普通の人のサイズよりも大きめになっている)をやめて、 全世界で共通で使える単位を作ろう、という目的でメートル法が作られたから。
-メートル法はフランス革命由来なので、国際単位系は英語のInternational System of Unitsではなく、フランス語のSystème International d&rsquo;unitésの語順でSIと呼ばれる。
+		ある書物で、地球の半径を東大生の何割かがオーダーが違うレベルで間違う、ということが書いてあった(誰の著作だったか忘れてしまった・・・)。 ただ、地球の周長や半径の概数は、暗記する必要はまったくない。 なぜなら、「1キロメートルの基準が、赤道から北極までの長さの1万分の1」としてメートル法が決められたから。 覚えるのはこれだけで良い。 だから、地球一周は4倍の約40,000 km。半径は円周率の2倍で割って約
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -147,13 +126,7 @@ Google先生のPageSpeed Insightに注意されたとおり、レンダリング
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		Mathematicaの省略記法はドキュメントやヘルプで調べにくいのでまとめてみる。
-関数適用 @ (前置記法) f@aはf[a]と等価。 後ろのカッコ(])を入力しなくてもすむ。
-Plot[Evaluate@Integrate[x^2, x], {x, -3, 3}]  // (後置記法) a // fはf[a]と等価。 数値にする(N)や簡約化(Simplify、FullSimplify)でよく使う。
-In[1]:= Sin[2] // N Out[1]= 0.909297  ~ ~ (中置記法) a~f~bとすると、f[a, b]と等価になる。
-In[1]:= {1, 2}~Join~{3, 4} Out[1]= {1, 2, 3, 4}  関数適用 &amp;, #, ### (Function) 純関数。#1、#2・・・が引数を表す。#は#1と同じ。 #0は関数自体表す。##は引数全体。
-関数型プログラミングの基本。
-In[1]:= If[#1 == 1, 1, #1 #0[#1 - 1]] &amp;[10] Out[1]= 3628800  /@ (Map) f /@ {1, 2, 3, 4}はMap[f, {1, 2, 3, 4}]と等価。 関数型プログラミングの基本。
+		Mathematicaの省略記法はドキュメントやヘルプで調べにくいのでまとめてみる。 関数適用 @ (前置記法) f@aはf[a]と等価。 後ろのカッコ(])を入力しなくてもすむ。 Plot[Evaluate@Integrate[x^2, x], {x, -3, 3}] // (後置記法) a // fはf[a]と等価。 数値にする(N)や簡約化(Simplify、FullSimplify)でよく使う。 In[1]:= Sin[2] // N Out[1]= 0.909297 ~ ~ (中置記法) a~f~bとすると、f[a, b]と等価になる。 In[1]:= {1, 2}~Join~{3, 4} Out[1]= {1, 2, 3, 4} 関数適用
 	</div>
 </article><article class="list__item post">
 	<figure class="list__thumbnail">
@@ -170,13 +143,7 @@ In[1]:= If[#1 == 1, 1, #1 #0[#1 - 1]] &amp;[10] Out[1]= 3628800  /@ (Map) f /@ {
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		Ubuntu 17.10から18.04 LTSにアップデートしたところ、それまで使っていたコミックビューア(comix)がなくなっていた。
-Ubuntuソフトウェアから探したところ、mcomix-tabetaiというSnapパッケージがあったので、それをインストールしたところ、日本語が全部豆腐に・・・。
-ということで、一旦英語にして起動。 ターミナルから以下のコマンドを入力。
-$ LANG=C mcomix-tabetai  設定(Preferences)から言語をEnglishにする。
-  これで終了すれば、次回は通常通り起動すれば言語設定が英語になっている。 めでたしめでたし。
-ちなみに、snapでインストールしたパッケージに含まれるコマンドは以下のようにして調べられる。
-$ snap info mcomix-tabetai name: mcomix-tabetai summary: User-friendly, customizable image viewer specifically designed to handle comic books. publisher: lolsmth license: unknown description: | MComix is a user-friendly, customizable image viewer. It is specifically designed to handle comic books (both Western comics and manga) and supports a variety of container formats (including CBR, CBZ, CB7, CBT, LHA and PDF).
+		Ubuntu 17.10から18.04 LTSにアップデートしたところ、それまで使っていたコミックビューア(comix)がなくなっていた。 Ubuntuソフトウェアから探したところ、mcomix-tabetaiというSnapパッケージがあったので、それをインストールしたところ、日本語が全部豆腐に・・・。 ということで、一旦英語にして起動。 ターミナルから以下のコマンドを入力。 $ LANG=C mcomix-tabetai 設定(Preferences)から言
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -188,11 +155,7 @@ $ snap info mcomix-tabetai name: mcomix-tabetai summary: User-friendly, customiz
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		海外の格安VPS、AlaphaRacksでHTTPSのHTTPサーバを立てたので、その作業録。
-環境 Chinese Year Specialという年間$8のプランを契約。 Ubuntuのバージョンは16.04なのだが、カーネルのバージョンは2.6.32の古め。 そのため、dockerは使えない。
-# uname -r 2.6.32-042stab127.2  # cat /etc/lsb-release DISTRIB_ID=Ubuntu DISTRIB_RELEASE=16.04 DISTRIB_CODENAME=xenial DISTRIB_DESCRIPTION=&quot;Ubuntu 16.04 LTS&quot;  ApacheのSSLモジュール有効化 SSLモジュールを有効化し、a2ensiteでHTTPSサイトを有効化する。 あとは設定ファイルにServerNameを追加する。
-# a2enmod ssl # vi /etc/apache2/sites-available/default-ssl.conf ServerAdmin xxx@yyy.zzz (変更) ServerName xxx.yyy.zzz (追加) # a2ensite default-ssl # service apache2 reload  Let&rsquo;s Encryptのインストールと設定 # apt-get install letsencrypt python-letsencrypt-apache  Apacheを止めてから、Let&rsquo;s Encryptを実行。
-# service apache2 stop # letsencrypt --authenticator standalone --installer apache # service apache2 start  この時点でブラウザからHTTPSでアクセスできるはずなので確認。
+		海外の格安VPS、AlaphaRacksでHTTPSのHTTPサーバを立てたので、その作業録。 環境 Chinese Year Specialという年間$8のプランを契約。 Ubuntuのバージョンは16.04なのだが、カーネルのバージョンは2.6.32の古め。 そのため、dockerは使えない。 # uname -r 2.6.32-042stab127.2 # cat /etc/lsb-release DISTRIB_ID=Ubuntu DISTRIB_RELEASE=16.04 DISTRIB_CODENAME=xenial DISTRIB_DESCRIPTION=&quot;Ubuntu 16.04 LTS&quot; ApacheのSSLモジュール有効化 SSLモジュールを有効化し、a2ensiteでHTTPSサイトを有効化
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -204,15 +167,7 @@ $ snap info mcomix-tabetai name: mcomix-tabetai summary: User-friendly, customiz
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		MathematicaからCUDAを使いたかったので、GPU搭載のノートPCを購入してセットアップした。
-購入PC PC工房のGeForce 1060搭載ノートPC(OSなし) : STYLE-15FX093-i7-RNFR [OS LESS]
- CPU: Intel Core i7-7700HQ 2.8GHz Memory: 16GB Storage: SSD 240GB + HDD 2TB GPU: NVIDIA GeForce 1060 6GB  Ubuntu 17.10 日本語Remixをダウンロード 旧PC(Ubuntu 16.04)で Ubuntu Desktop 日本語 Remixのダウンロードから、ubuntu-ja-17.10-desktop-amd64.isoをダウンロード。 ddでUSBメモリに書き込む。
-sudo dd if=ubuntu-ja-17.10-desktop-amd64.iso of=/dev/sde status=progress  ファームウェア設定 新PCに電源を入れ、ファームウェア設定画面に入り、起動モードをUEFIからBIOSに変更する。
-Ubuntuインストール USBメモリを挿入してPCを再起動し、インストールする。
- 言語は日本語を選択 サードパーティー製のドライバを・・・にチェック SSD(/dev/sda)を「/」(ext4)に、HDD(/dev/sdb)を「/home」にマウント ブートローダを/dev/sdaにインストール ホームディレクトリを暗号化にチェック(お好みで)  インストールができたらUSBメモリを抜いて再起動。
-Ubuntuが無事に起動し、ログインできたら、まずはディレクトリ名を日本語から英語に直してから作業開始。
-LANG=C xdg-user-dirs-gtk-update  DKMSがうまく動かないので、カーネルのバージョンを固定する。
-sudo apt-mark hold linux-generic linux-image-generic linux-headers-generic  NVIDIA Driver 公式リポジトリにあるnvidia-387をインストールする。 デフォルトのnouveauの無効化は不要だった。
+		MathematicaからCUDAを使いたかったので、GPU搭載のノートPCを購入してセットアップした。 購入PC PC工房のGeForce 1060搭載ノートPC(OSなし) : STYLE-15FX093-i7-RNFR [OS LESS] CPU: Intel Core i7-7700HQ 2.8GHz Memory: 16GB Storage: SSD 240GB + HDD 2TB GPU: NVIDIA GeForce 1060 6GB Ubuntu 17.10 日本語Remixをダウンロード 旧PC(Ubuntu 16.04)で Ubuntu Desktop 日本語 Remixのダウンロードから、ubuntu-ja-17.10-desktop-amd64.isoをダウンロー
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -224,9 +179,7 @@ sudo apt-mark hold linux-generic linux-image-generic linux-headers-generic  NVID
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		ImageMagickで以下のようなことをやる機会があったのでメモ。 今回は元画像がIllustratorファイルだったが、 他のベクタ形式の画像からでも背景透過PNGを作成するときに使えると思う。
- 元データはIllustratorファイル(.ai) 元の画像の余白部は削除する 220x110の長方形に入るようにリサイズ 上下左右に余白をつける 出来上がりの画像サイズは230x180 背景は透過させる(きれいに透過させたい)  コマンド convert -colorspace sRGB -density 576 -filter Point &quot;元ファイル.ai&quot; -trim -alpha set -fill '#000000ff' -opaque '#ffffff' -background transparent +filter -resize 220x110 -gravity center -extent 230x180 出力ファイル.png  説明 アンチエイリアスを切った状態で透過色を設定し、その後アンチエイリアスをONにして縮小するところがミソ。 これで中間色の部分をきれいに半透過にできる。
-   オプション 説明     -colorspace sRGB カラースペースをsRGBに設定   -density 576 出力されるPNGファイルの解像度が72dpiだったので、その8倍で読み込むよう設定   -filter Point アンチエイリアスをOFFに設定   &quot;元ファイル.ai&quot; 画像ファイルを読み込む   -trim 元画像の余白を削除   -alpha set -fill '#000000ff' -opaque '#ffffff' 白(#ffffff)を透過に指定   -background transparent 出力画像の背景を透明に設定   +filter リサイズする時はアンチエイリアスON(上で設定された-filter Pointを無効化)   -resize 220x110 最大サイズを220x110に縮小   -gravity center -extent 230x180 画像中央を中心に上下左右に余白を作って230x180にする   出力ファイル.
+		ImageMagickで以下のようなことをやる機会があったのでメモ。 今回は元画像がIllustratorファイルだったが、 他のベクタ形式の画像からでも背景透過PNGを作成するときに使えると思う。 元データはIllustratorファイル(.ai) 元の画像の余白部は削除する 220x110の長方形に入るようにリサイズ 上下左右に余白をつける 出来上がりの画像サイズは230x180 背景は透過させる(きれいに透
 	</div>
 </article><article class="list__item post">
 	<figure class="list__thumbnail">
@@ -243,11 +196,7 @@ sudo apt-mark hold linux-generic linux-image-generic linux-headers-generic  NVID
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		会社で個々人のPCのセキュリティをガチガチに固めたりしていると、何かと融通がきかない。 そのため、セキュリティ設定緩めの共有PCを1台と共有アカウントを1個用意し、やむを得ない時には利用してもらっている。
-そのため、SKYSEAでログは取っているものの、実際に誰が操作しているのか分からない、という問題があった。
-それを解決するため、PCに付属のカメラで、ログイン時に正面にいる人の顔を記録することにした。
-前準備  ffmpegをダウンロードする ffmpegにPATHを通す ffmpegでウェブカメラのデバイスや対応する解像度、フレームレートを調べておく  VBScript 以下のVBScriptファイルを適当なところに配置。 内容はスクリプト起動後、5秒間、ウェブカメラの映像を記録して、管理者用メールアドレスに送信する。
-Option Explicit On Error Resume Next Dim objShell Dim objFS Dim strDate Dim strFilePath Dim objNetwork Dim objMsg Set objShell = CreateObject(&quot;WScript.Shell&quot;) Set objFS = CreateObject(&quot;Scripting.FileSystemObject&quot;) strDate = Year(Now()) strDate = strDate &amp; Right(&quot;0&quot; + Month(Now()), 2) strDate = strDate &amp; Right(&quot;0&quot; + Day(Now()), 2) strDate = strDate &amp; Right(&quot;0&quot; + Hour(Now()), 2) strDate = strDate &amp; Right(&quot;0&quot; + Minute(Now()), 2) strDate = strDate &amp; Right(&quot;0&quot; + Second(Now()), 2) strFilePath = objFS.
+		会社で個々人のPCのセキュリティをガチガチに固めたりしていると、何かと融通がきかない。 そのため、セキュリティ設定緩めの共有PCを1台と共有アカウントを1個用意し、やむを得ない時には利用してもらっている。 そのため、SKYSEAでログは取っているものの、実際に誰が操作しているのか分からない、という問題があった。 それを解決するため、PCに付属のカメラで、ログイン時に正面にいる人の顔を記録することにした。
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -259,10 +208,7 @@ Option Explicit On Error Resume Next Dim objShell Dim objFS Dim strDate Dim strF
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		会社のウェブサイトに貼ってある動画ファイルが、実際にどれだけ再生されているのか調査するべく、 Google Analyticsのイベントで計測するためのコードを作ってみた。
-計測対象は以下のイベント。
- 再生開始(play) 最後まで再生(ended) 一時停止(pause) 再生再開(resume) シークした(seeked) どこまで再生したか(動画時間の10%, 25%, 50%, 75%, 90%)  HTML側 &lt;video id=&quot;movie001&quot; width=&quot;(動画幅)&quot; height=&quot;(動画高さ)&quot; title=&quot;Movie Title&quot;&gt; &lt;source src=&quot;(動画ファイルのパス)&quot; type=&quot;video/mp4&quot; /&gt; &lt;/video  JavaScript側(jQuery使用) イベントカテゴリに「video」、イベントアクションにplay、play_endなど。 イベントラベルには動画のtitle属性をセット。
-$(function(){ var oldratio = 0.0; $('video').on('play', function(e) { on('play', function(e) { if(e.target.currentTime &gt; 0){ ga('send','event','video','resume',e.target.getAttribute('title')); }else{ ga('send','event','video','play',e.target.getAttribute('title')); } }).on('ended', function(e) { ga('send','event','video','play_end',e.target.getAttribute('title')); }).on('pause', function(e) { ga('send','event','video','pause',e.target.getAttribute('title')); }).on('seeked', function(e) { ga('send','event','video','seeked',e.target.getAttribute('title')); }).on('timeupdate', function(e) { var ratio = e.target.currentTime / e.
+		会社のウェブサイトに貼ってある動画ファイルが、実際にどれだけ再生されているのか調査するべく、 Google Analyticsのイベントで計測するためのコードを作ってみた。 計測対象は以下のイベント。 再生開始(play) 最後まで再生(ended) 一時停止(pause) 再生再開(resume) シークした(seeked) どこまで再生したか(動画時間の10%, 25%, 50%, 75%, 90%) HTML側 &lt;video id=&quot;movie001&quot; width=&quot;(動画幅)&q
 	</div>
 </article>
 </main>

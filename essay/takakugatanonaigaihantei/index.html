@@ -8,15 +8,7 @@
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
 	<meta property="og:title" content="多角形の内外判定" />
-<meta property="og:description" content="ある点が多角形の内側にあるのか外側にあるのかを判定するには主に
- ある点から直線をひいて多角形の辺と何回交差するか判定する(偶数回なら外、奇数回なら中) ある点から多角形の各頂点を順番に見ていったときに何回転するか  の2つの方法がある。
-しかし辺との交差回数をカウントするのは、直線と辺が平行だったり、頂点で交差したりする場合などに特別な配慮が必要なので、 ここでは2番目の方法で実装する。
-点から多角形上の点を順々に見たときの偏角(反時計まわりを正とする)の和を取ればよいので、ある点Pからみた多角形上の頂点Aから頂点Bまでの偏角∠APBを求める関数をまず作成する。
-この実装方法にもベクトルの外積を考えるなど何通りか考えられるが、せっかくMathematicaを使うので楽をして、複素数にしてArgで偏角をとることにする。
-Angle[{{x1_, y1_}, {x2_, y2_}, {x3_, y3_}}] := Module[{v1 = Complex[x1 - x3, y1 - y3], v2 = Complex[x2 - x3, y2 - y3]}, If[TrueQ[v1 == 0], 0, Arg[v2/v1]] ]  多角形の内外判定はMathematicaのPolygonなどの表示に合わせ、自己交差している場合は内部と外部を交互に繰り返すものとすると、
- 偏角の和が0、±4π、±8π、…のとき点は多角形の外 偏角の和が±2π、±6π、±10π…のとき点は多角形の中  とできる。
-以上より多角形の内外を判定する関数InsidePolygonQは以下のように実装できる。
-InsidePolygonQ[poly : {{_, _} ..}, p : {_, _}] := Module[ {argsum}, argsum = Round[Total[MapThread[Angle[{##, p}] &amp;, {poly, RotateLeft[poly]}]]/(2 Pi)]; OddQ[argsum] ]  丸め誤差が蓄積すると誤判定してしまうのだが、誤判定するために要求される丸め誤差はπなので、多分大丈夫だと思われる。" />
+<meta property="og:description" content="ある点が多角形の内側にあるのか外側にあるのかを判定するには主に ある点から直線をひいて多角形の辺と何回交差するか判定する(偶数回なら外、奇数回なら中) ある点から多角形の各頂点を順番に見ていったときに何回転するか の2つの方法がある。 しかし辺との交差回数をカウントするのは、直線と辺が平行だったり、頂点で交差したりする場合などに特別な配慮が必要なので、 ここでは2番目の方法で実装する。 点から多角形上の点を順" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.330k.info/essay/takakugatanonaigaihantei/" />
 <meta property="article:published_time" content="2009-10-29T00:00:00+09:00" />
@@ -24,15 +16,7 @@ InsidePolygonQ[poly : {{_, _} ..}, p : {_, _}] := Module[ {argsum}, argsum = Rou
 
 	<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="多角形の内外判定"/>
-<meta name="twitter:description" content="ある点が多角形の内側にあるのか外側にあるのかを判定するには主に
- ある点から直線をひいて多角形の辺と何回交差するか判定する(偶数回なら外、奇数回なら中) ある点から多角形の各頂点を順番に見ていったときに何回転するか  の2つの方法がある。
-しかし辺との交差回数をカウントするのは、直線と辺が平行だったり、頂点で交差したりする場合などに特別な配慮が必要なので、 ここでは2番目の方法で実装する。
-点から多角形上の点を順々に見たときの偏角(反時計まわりを正とする)の和を取ればよいので、ある点Pからみた多角形上の頂点Aから頂点Bまでの偏角∠APBを求める関数をまず作成する。
-この実装方法にもベクトルの外積を考えるなど何通りか考えられるが、せっかくMathematicaを使うので楽をして、複素数にしてArgで偏角をとることにする。
-Angle[{{x1_, y1_}, {x2_, y2_}, {x3_, y3_}}] := Module[{v1 = Complex[x1 - x3, y1 - y3], v2 = Complex[x2 - x3, y2 - y3]}, If[TrueQ[v1 == 0], 0, Arg[v2/v1]] ]  多角形の内外判定はMathematicaのPolygonなどの表示に合わせ、自己交差している場合は内部と外部を交互に繰り返すものとすると、
- 偏角の和が0、±4π、±8π、…のとき点は多角形の外 偏角の和が±2π、±6π、±10π…のとき点は多角形の中  とできる。
-以上より多角形の内外を判定する関数InsidePolygonQは以下のように実装できる。
-InsidePolygonQ[poly : {{_, _} ..}, p : {_, _}] := Module[ {argsum}, argsum = Round[Total[MapThread[Angle[{##, p}] &amp;, {poly, RotateLeft[poly]}]]/(2 Pi)]; OddQ[argsum] ]  丸め誤差が蓄積すると誤判定してしまうのだが、誤判定するために要求される丸め誤差はπなので、多分大丈夫だと思われる。"/>
+<meta name="twitter:description" content="ある点が多角形の内側にあるのか外側にあるのかを判定するには主に ある点から直線をひいて多角形の辺と何回交差するか判定する(偶数回なら外、奇数回なら中) ある点から多角形の各頂点を順番に見ていったときに何回転するか の2つの方法がある。 しかし辺との交差回数をカウントするのは、直線と辺が平行だったり、頂点で交差したりする場合などに特別な配慮が必要なので、 ここでは2番目の方法で実装する。 点から多角形上の点を順"/>
 
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">

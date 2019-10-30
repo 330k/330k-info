@@ -85,13 +85,7 @@ if (!doNotTrack) {
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		JScriptで複数のテキストファイルを書き出し、それをZIPでまとめたかったので作成。 VBAやVBScript版を参考に作ってみた。
-参考サイト : http://kiq-creator.com/blog/?eid=33
-複数のファイルをZIP圧縮する際のコツとしては、CopyHereをするたびに待機すること。 CopyHereは非同期なので、すぐにJS側に制御が返ってくるが、 複数のファイルを一気にCopyHereしようとすると、「読み取りできません」とエラーが出る。
-使い方 以下のコード中のcreateZipFileを自分のスクリプトにコピー&amp;ペーストして
-createZipFile( &quot;zipファイルのパス&quot;, [&quot;圧縮対象ファイルのパス1&quot;, &quot;圧縮対象ファイルのパス2&quot;, ...])  とすればOK。 もしくは以下のコードをメモ帳で拡張子をjsにして保存すれば、ドラッグ&amp;ドロップでzipファイルを作成(右クリック→送る→圧縮フォルダーとほぼ同じ動作)。
-注意事項 ディレクトリには対応してません。またWindows標準では暗号化ZIPは作成できません。 また圧縮対象ファイルの存在チェック等もやってないので、必要であればエラーハンドリング処理を追加してください。
-/** Windows 標準機能でZipファイルを作成するWSH(JScript) Copyright 330k This software is released under the MIT License. http://opensource.org/licenses/mit-license.php */ var args = []; for(var i = 0; i &lt; WScript.Arguments.length; i++){ args.push(WScript.Arguments(i)); } var zipfile = args[0].replace(/(.+)\.(.+?)$/, &quot;$1.zip&quot;); createZipFile(zipfile, args); function createZipFile(zipFilePath, sourceFiles){ var shell = WScript.CreateObject(&quot;Shell.Application&quot;); var fso = WScript.CreateObject(&quot;Scripting.FileSystemObject&quot;); var file = fso.
+		JScriptで複数のテキストファイルを書き出し、それをZIPでまとめたかったので作成。 VBAやVBScript版を参考に作ってみた。 参考サイト : http://kiq-creator.com/blog/?eid=33 複数のファイルをZIP圧縮する際のコツとしては、CopyHereをするたびに待機すること。 CopyHereは非同期なので、すぐにJS側に制御が返ってくるが、 複数のファイルを一気にCopyHereしようとすると、「読み取りできません」とエラーが出る。 使い
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -103,15 +97,7 @@ createZipFile( &quot;zipファイルのパス&quot;, [&quot;圧縮対象ファ�
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		先月頃から、Windows 7の通知領域に「Windows 10を入手する」とか「無料アップグレードを予約」とかいう邪魔なMicrosoftの広告が入るようになってきた。 社内SEとしてはユーザに勝手にOSをアップグレードされるわけにはいかないので、消し去りたい。
-ネットを探してみると、やはり同様の悩みを持つ人は多いらしく、結論としては、
- GWX.exeとGWXUX.exeをタスクマネージャで強制終了する インストールされたWindows Updateの「KB3035583」をアンインストールする 再度Windows Updateがインストールさせようとしてくるので、KB3035583を右クリックして「非表示」にする  ということらしい。 → 参考サイト: 「Windows10を入手する」の通知が消えない＼(^o^)／
-さて、1人社内SEとしては以上の手順をユーザの全PCに行うのは無理なので、なんとか自動化したい。 1と2についてはコマンドプロンプトで可能なので、あっさり情報が見つかり、
-Taskkill /IM GWX.exe /F Taskkill /IM GWXUX.exe /F wusa.exe /uninstall /kb:3035583 /quiet /norestart  と書いたバッチファイルをログオンスクリプトに仕込むことで可能だった。
-問題は3の何度アンインストールしても再インストールさせようとしてくる点。 根本的な解決策はもちろんWSUSサーバを立てて、KB3035583を承認しなければ良い。
-だが、私の会社にはWSUSサーバはない。 レジストリをいじったりして特定のWindows Updateを非表示にする方法がないか、と調べてみたら、 Windows Update Agent APIというのがあることを発見。
-英語の情報しかなかったが、サンプルを参考に目的の「KB3035583」を非表示にするスクリプト(今回はJavaScript)を書いてみた。
-/********************************************************************** WSUSを使用せずに不必要なWindowsUpdateを非表示 Copyright 2015-2016 330k 使用は自己責任でお願いします **********************************************************************/ try{ // インストールしないWindowsUpdateのKB番号 var disabledKBs = [ 2876229, 2952664, 2976978, 2977759, 3021917, 3022345, 3035583, 3068708, 3075249, 3080149, 3123862, 3150513, 2990214,// Win 7 3050265, 3065987, 3075851, 3083324, 3083710, 3102810, 3112343, 3135445, 3138612, 3161608, 3044374,// Win 8.
+		先月頃から、Windows 7の通知領域に「Windows 10を入手する」とか「無料アップグレードを予約」とかいう邪魔なMicrosoftの広告が入るようになってきた。 社内SEとしてはユーザに勝手にOSをアップグレードされるわけにはいかないので、消し去りたい。 ネットを探してみると、やはり同様の悩みを持つ人は多いらしく、結論としては、 GWX.exeとGWXUX.exeをタスクマネージャで強制終了する イ
 	</div>
 </article>
 </main>

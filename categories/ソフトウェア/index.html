@@ -90,16 +90,7 @@ if (!doNotTrack) {
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		 Gmailの機能拡充により標準で可能になったため、拡張機能の配布を終了しました
-概要 会社でGoogle Apps for Workを導入したところ、「Outlookの時はメールをD&amp;Dで保存できたのに、Gmailになってできなくなった」とのクレームが出てきた。 経理の外注先や監査法人とのやりとりの際に、メールを含む関連資料1式をやりとりするニーズがあるらしい。 Googleで検索すると、「メッセージのソースを表示」→「拡張子をemlにしてメモ帳などで保存」とする方法がみつかった(関連リンク参照)が、 ユーザからは「面倒だ」「拡張子って何？」との声が・・・。
-誰か作ってるだろうと思って探してみたが、意外なことに私の調べた限りではそのような拡張機能が見つからなかったので、自分で作ってみた。
-せっかくなのでChromeウェブストアに公開してみたので、以下のリンクからどうぞ。
-Chromeウェブストア: EMLとして保存(Gmail)
-  使い方 Gmailで「メッセージのソースを表示」を行うと、自動でemlファイルがダウンロードされます。 ファイル名は「yyyymmdd_hhmmss.eml」になります(Dateヘッダから取得した日時です)。
-仕様についての補足 当初はGmail画面の「メッセージのソースを表示」の下にメニュー項目を追加して、ダウンロードさせるようにしたかったが、 メッセージのソースを表示をした時のURL(https://mail.google.com/mail/u/0/?ui=2&amp;ik=**********&amp;view=om&amp;th=*************)のパラメータのうち、 thはブラウザのlocation.pathやhrefを見ればわかるが、ikはメッセージが表示されるときにページ側のグローバルオブジェクトに格納されるため、 拡張機能内のJavaScriptからはアクセスできない(拡張機能のJavaScriptはページ内のJavaScriptとは別の空間で実行される)。 そのため、メッセージのソースを表示した後に動作するような仕様とした。
-もちろんGmail APIを使えばアクセスできるとは思うのだが、そうするとユーザは最初にアプリに対してGmailを読み取る権限を許可しなければならないため、敷居が高くなってしまう。 他の人はこれらの理由で同様の拡張機能の作成を断念したのではないだろうか。
-また、Outlookのように保存されるファイル名を件名にしたかったが、ありとあらゆる文字コードに対応しなければならなくなるので単純にDateヘッダから日時を取得する仕様とした。
-関連リンク  gmailのメールをemlファイルにする | 今日覚えたことの覚え書き Gmail ヘルプ フォーラム Gmailを1件だけパソコンに保存したい  
+		Gmailの機能拡充により標準で可能になったため、拡張機能の配布を終了しました 概要 会社でGoogle Apps for Workを導入したところ、「Outlookの時はメールをD&amp;Dで保存できたのに、Gmailになってできなくなった」とのクレームが出てきた。 経理の外注先や監査法人とのやりとりの際に、メールを含む関連資料1式をやりとりするニーズがあるらしい。 Googleで検索すると、「メッセージのソースを表
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -111,14 +102,7 @@ Chromeウェブストア: EMLとして保存(Gmail)
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		概要 GPSロガーで取ったGPXログを公開する際、
- 途切れ途切れのトラックログを結合し 日ごとにそれをまた分割し それぞれを1トラック400ポイント程度に間引いて簡略化する  という手間がかかっていたため、この一連の作業を一括処理するプログラムを作った。
-また、ツーリング中には事前に作成しておいたGPXファイルをAndroidのRMapsや地図ロイドに読み込ませて走行ルートを確認しているのだが、 GPXファイルに余分な要素があると、処理に時間がかかってしまう(あまりに重いと処理できないこともある)。
-トラックログを間引くアルゴリズムは折れ線を間引くに記載した点数を指定するタイプのDouglas-Peuckerを実装している。 メルカトル図法に投影した座標で間引いているので、Google Mapsなどメルカトル図法の地図で見た時に形状をよく保存する。
-使い方  ボタンを押してGPXファイルを選択 一括処理する内容をチェックして選択 「処理実行」ボタンをクリックして少し待つ 表示されたリンクをクリックしてGPXファイルをダウンロード  注意事項  Chrome 53、Firefox 49、Edge、IE 11にて動作を確認 IE8では動作しません IE 9, 10は環境が無いため確認できません 重いGPXファイルを処理しようとすると固まります(WorkerではXMLParserが使えないため) 複数ファイルを選択した時の並び順はOSやブラウザ、選択時の操作に依存します  なお、カシミール3DではGPXファイルをXMLとしてパースして読み込んでいるわけではないようで、 空要素(&lt;trkpt lat=&quot;***&quot; lon=&quot;***&quot; /&gt;)の形を認識できない。 そのため&lt;trkpt lat=&quot;***&quot; lon=&quot;***&quot;&gt;&lt;/trkpt&gt;の形に修正したものを出力している。
-使用例 元のGPSログをカシミール3Dで読み込んだ画面
-  デフォルト設定で一括処理した後のGPXファイルを読み込んだ画面 (このデータの場合は、6時間途切れたらトラック分割するので1日毎に分割され、それぞれが400点に間引きされている)
-  更新履歴  カシミール3Dでも読めるよう、空要素の場合は&lt;trkpt ***&gt;&lt;/trkpt&gt;の形に置換するようにした。 (May 4 2014) 優先度付きキューの実装を変更して高速化。(May 28 2014) プログラムを全面書き直し。トラックの自動分割・結合機能追加。 (Sep. 24 2016) 標高をGoogle Maps Elevations APIから取得する機能を追加して統合。 (Sep. 28 2016) ダウンロードファイル名を元の名前から変更。 (Aug.
+		概要 GPSロガーで取ったGPXログを公開する際、 途切れ途切れのトラックログを結合し 日ごとにそれをまた分割し それぞれを1トラック400ポイント程度に間引いて簡略化する という手間がかかっていたため、この一連の作業を一括処理するプログラムを作った。 また、ツーリング中には事前に作成しておいたGPXファイルをAndroidのRMapsや地図ロイドに読み込ませて走行ルートを確認しているのだが、 GPXファイルに
 	</div>
 </article><article class="list__item post">
 	<figure class="list__thumbnail">
@@ -135,13 +119,7 @@ Chromeウェブストア: EMLとして保存(Gmail)
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		思った以上に使っていただいてAPI料金の請求がすごいことになったので、申し訳ないのですが1日1000リクエストに制限しました。
-地図やルートが表示されないときは制限に引っかかっておりますので、時間を置いて再度アクセスしてください。
-  PC用フルスクリーン版 モバイル(スマートフォン)版  使い方  出発地点と目的地点を入れて「Calculate Route」をクリック。 途中経路を変えたい場合は、通常のGoogleマップのようにドラッグして変更します。「Reduce into *** points」をクリックすると、trkpt要素の数を削減します(Douglas-Peuckerアルゴリズムを使用)。赤線が簡略化されたルートです。 「Add Elevation」をクリックすると、標高(ele要素)を追加します(100点で1秒かかります)。 「Download」をクリックすると、download.gpxというファイル名でGPXファイルがダウンロードされます。  作った経緯 今までは自転車ツーリングをするとき、
- Googleマップでルートを作成 GMapToGPXでGPXファイルにする カシミール3Dで基盤地図情報(標高)で標高データを追加 累積標高などを確認 Androidの地図ロイドなどに取り込んでツーリング中に確認  というやり方でルートを検討・確認していた。
-だが&rdquo;新しいGoogleマップ&rdquo;になってから、GMapToGPXが使えなくなってしまったので、 Google Maps API v3を使ってGPXのトラックを生成する、簡単なプログラムを書いてみた。
-スマートフォンのブラウザ(標準ブラウザ、Chrome、Firefox)でも動作するので、ツーリングなどの出先でもルートを作成可能。
-注意事項  Chrome(Ubuntu, Windows 7, Windows 10)、Firefox(Ubuntu, Windows 7)、IE 11、Edgeで動作確認しています。 Google Maps APIの制限により、途中に設定できる地点は8箇所までです。 Internet Explorer 8ではダウンロードができません。テキストボックスに生成されたGPXテキストをコピーし、メモ帳などに貼り付けutf8で保存してください。 Internet Explorer 9, 10は未確認です。 iOSのSafariではGPXファイルのダウンロードができません。  主な更新・修正点  地図ロイドやルートラボに合わせ、簡略化後の点数を800点と8000点にした。(May 26 2014) Douglas-Peuckerのアルゴリズムで優先度付きキューの実装を変更し、高速化。(May 26 2014) 間引き時にメルカトル図法で投影した座標に対してDouglas-Peuckerを適用するように変更。(Jun 6 2014) モバイル版、フルスクリーン版をGitHubにホスティング先を変更。(Mar 13 2015) IEとEdgeでの動作状況を追記。(Oct.
+		思った以上に使っていただいてAPI料金の請求がすごいことになったので、申し訳ないのですが1日1000リクエストに制限しました。 地図やルートが表示されないときは制限に引っかかっておりますので、時間を置いて再度アクセスしてください。 PC用フルスクリーン版 モバイル(スマートフォン)版 使い方 出発地点と目的地点を入れて「Calculate Route」をクリック。 途中経路を変えたい場合は、通常のGoogleマ
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -153,18 +131,7 @@ Chromeウェブストア: EMLとして保存(Gmail)
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		概要 ゼロ幅文字を使ってUnicodeのプレーンテキストにステガノグラフィを施す、 ブラウザのJavaScriptで動作するライブラリを書いてみた。 参考にしたのは以下のサイト
- ZERO WIDTH SPACE を使って Unicode ステガノグラフィ Unicode Text Steganography Encoders/Decoders  特徴としては以下の通り。
- デフォルトではゼロ幅文字として4種類を使用(U+200C, U+200D, U+202C, U+FEFF)し、2種類の時よりもエンコード後の文字数を減少(それでも1文字埋め込むために8文字増える) 使用する文字種はライブラリの使用者側で指定可能 使用する文字種に応じて自動的にコード長を変更(例: 2種類のときは1字(16bit)が16字になり、8種類のときは6字になる) 漢字とひらがな、カタカナの間や英単語間にゼロ幅文字を埋め込むことで、できる限り単語検索を邪魔しない(厳密には異なるUnicodeブロック間に挿入する。非英語の欧州の言語や、サロゲートペアを使用する文字の前後には単語内でも挿入される) 埋め込む位置は毎回ランダム 元の文章、隠しテキストともに多言語対応(全部UTF-16としてJavaScriptで扱っているため) GitHubのものは任意のバイナリデータにも対応  ダウンロードや、サイトに使用する際は以下のURLからどうぞ。
-https://330k.github.io/misc_tools/unicode_steganography.js
-ライセンスはMITライセンス。
-使い方は https://330k.github.io/misc_tools/unicode_steganography.html に書きました(英語です)。
-動作サンプル:  デフォルトで使用する4種の文字(U+200C, U+200D, U+202C, U+FEFF)は、 GmailやOutlook 2010、iPhoneの標準メールアプリにおいて
- ゼロ幅として表示 文字化けしない(豆腐にならない) コピー&amp;ペースト時に保存されるもの  として選定した。
-U+200B(ZERO WIDTH SPACE)はブラウザからGmailで送信するときに削除される。 ただ、メーラを使ってSMTPサーバ(smtp.gmail.com)から送信するときは削除されない。
-Bidiを考慮せず左横書きに限定すれば、U+200E(LRM)やU+202B(LRO)などを追加できる。 FacebookやTwitterなど各アプリやウェブサイトの対応状況は参考サイトの2番目に詳しい。
-GitHubにアップロードした方はバイナリデータにも対応。 これは通常のステガノグラフィとは逆に、画像などのバイナリデータをプレーンテキスト中に埋め込むことになる。 ただサイズがバカでかくなって存在がバレるので、ステガノグラフィとしての意味はなさないかも。
-動作確認ブラウザ  Chromium 45 (Ubuntu 14.04 LTS) Firefox 42 (Ubuntu 14.
+		概要 ゼロ幅文字を使ってUnicodeのプレーンテキストにステガノグラフィを施す、 ブラウザのJavaScriptで動作するライブラリを書いてみた。 参考にしたのは以下のサイト ZERO WIDTH SPACE を使って Unicode ステガノグラフィ Unicode Text Steganography Encoders/Decoders 特徴としては以下の通り。 デフォルトではゼロ幅文字として4種類を使用(U+200C, U+200D, U+202C, U+FEFF)し、2種類の時よりもエンコード後の文字数を減少(それでも1文字埋め込むために8文字増える)
 	</div>
 </article><article class="list__item post">
 	<figure class="list__thumbnail">
@@ -181,13 +148,7 @@ GitHubにアップロードした方はバイナリデータにも対応。 こ�
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		概要 今は廃れたHTA(HTML Application)で書いた、汎用SQLツールです。 Windows上で動作し、
- CSVファイル(*.csv) Excelファイル(.xls、.xlsx、.xlsm、.xlsb) Accessファイル(*.mdb)  などをADODB経由で開いてSQLクエリを実行できます。
-CSVファイルはディレクトリ⇔データベース、CSVファイル⇔テーブルとして扱われ、 ExcelファイルはExcelブック⇔データベース、シート⇔テーブルとして扱われます。
-主に、SQLクエリを実行した結果をExcelに貼り付けて使用することを想定しており、 出力された表はExcelに貼り付けやすいようTSV形式で持っています。 select intoで直接ファイルに書き出すこともできます。
-スクリーンショット   ダウンロード Gistからダウンロード
-もしくは以下のソースコードをメモ帳にコピー＆ペーストし、拡張子をhtaに変更してください。
-&lt;html&gt; &lt;head&gt; &lt;!-- HTA SQL Tool by 330k Copyright (c) 2016 330k This software is released under the MIT License. http://opensource.org/licenses/mit-license.php --&gt; &lt;title&gt;HTA SQL Tool by 330k&lt;/title&gt; &lt;HTA:APPLICATION ID=&quot;USQLEXE&quot; APPLICATIONNAME=&quot;USQLEXE&quot; BORDER=&quot;thick&quot; BORDERSTYLE=&quot;normal&quot; CAPTION=&quot;yes&quot; ICON=&quot;C:\WINDOWS\system32\rsnotify.exe&quot; INNERBORDER=&quot;no&quot; MAXIMIZEBUTTON=&quot;yes&quot; MINIMIZEBUTTON=&quot;yes&quot; SHOWINTASKBAR=&quot;yes&quot; SINGLEINSTANCE=&quot;no&quot; SYSMENU=&quot;yes&quot; VERSION=&quot;1.0&quot; WINDOWSTATE=&quot;normal&quot; SCROLL=&quot;no&quot; SCROLLFLAT=&quot;no&quot; SELECTION=&quot;yes&quot; CONTEXTMENU=&quot;yes&quot; NAVIGABLE=&quot;yes&quot; /&gt; &lt;/head&gt; &lt;script type=&quot;text/javascript&quot;&gt; var doc = document; eval('var document = doc'); var shell = new ActiveXObject('WScript.
+		概要 今は廃れたHTA(HTML Application)で書いた、汎用SQLツールです。 Windows上で動作し、 CSVファイル(*.csv) Excelファイル(.xls、.xlsx、.xlsm、.xlsb) Accessファイル(*.mdb) などをADODB経由で開いてSQLクエリを実行できます。 CSVファイルはディレクトリ⇔データベース、CSVファイル⇔テーブルとして扱われ、 ExcelファイルはE
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -199,10 +160,7 @@ CSVファイルはディレクトリ⇔データベース、CSVファイル⇔�
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		概要 auの携帯電話の地図ビューアーの簡易ハンディGPS機能で取得したあしあとデータを結合し、GPXおよびKML形式に変換します。
-地図ビューアーで約2時間ごとにログを保存しなければならず、1日ログを取った後、複数のあしあとデータを結合するのが面倒だったため作成しました。
-GPXへの変換に際しては時刻情報を残しますので、カシミール3Dなどで速度履歴を見ることも可能です。
-ダウンロード Vectorの紹介ページへ
+		概要 auの携帯電話の地図ビューアーの簡易ハンディGPS機能で取得したあしあとデータを結合し、GPXおよびKML形式に変換します。 地図ビューアーで約2時間ごとにログを保存しなければならず、1日ログを取った後、複数のあしあとデータを結合するのが面倒だったため作成しました。 GPXへの変換に際しては時刻情報を残しますので、カシミール3Dなどで速度履歴を見ることも可能です。 ダウンロード Vectorの紹介ペー
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -214,9 +172,7 @@ GPXへの変換に際しては時刻情報を残しますので、カシミー�
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		概要 VB6およびExcelなどのVBAにおいて日本語の文字コード変換機能を提供するモジュール。 外部ライブラリを使用せずに変換を行う。
-以下の文字コード間の相互変換が可能。
- Shift-JIS EUC-JP JIS UTF-8(BOMなし, あり) UTF-16LE(BOMなし, あり) UTF-16BE(BOMあり)  ダウンロード Vectorの紹介ページへ
+		概要 VB6およびExcelなどのVBAにおいて日本語の文字コード変換機能を提供するモジュール。 外部ライブラリを使用せずに変換を行う。 以下の文字コード間の相互変換が可能。 Shift-JIS EUC-JP JIS UTF-8(BOMなし, あり) UTF-16LE(BOMなし, あり) UTF-16BE(BOMあり) ダウンロード Vectorの紹介ページへ
 	</div>
 </article><article class="list__item post">
 	<figure class="list__thumbnail">
@@ -233,10 +189,7 @@ GPXへの変換に際しては時刻情報を残しますので、カシミー�
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		 概要 序盤は定石データベースを使用し、中盤を貧弱な評価関数で乗り切り、終盤は完全読みを行う、普通のコンピュータリバーシソフト。
- 貧弱な評価関数 マルチスレッドによる高い応答性・操作性 棋譜や盤面の出力が可能 対戦中や棋譜を読み込んで最善手を探索させるなど研究のための機能も一応付属  を特徴とする。
-ダウンロード Vectorの紹介ページへ
-スクリーンショット   
+		概要 序盤は定石データベースを使用し、中盤を貧弱な評価関数で乗り切り、終盤は完全読みを行う、普通のコンピュータリバーシソフト。 貧弱な評価関数 マルチスレッドによる高い応答性・操作性 棋譜や盤面の出力が可能 対戦中や棋譜を読み込んで最善手を探索させるなど研究のための機能も一応付属 を特徴とする。 ダウンロード Vectorの紹介ページへ スクリーンショット
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -248,12 +201,7 @@ GPXへの変換に際しては時刻情報を残しますので、カシミー�
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		 概要 PowerPointで動画を入れることはよくあるが、その動画がどこにあるファイルなのか分からなくなることがよくある。 一応、PowerPointでもパスを表示させることはできるのだが、何せ表示できる文字数が短すぎて分からない、という無駄機能状態。
-  ↑このように「ファイルへのリンクの編集」で表示させることはできるのだが、 深い階層のファイルを参照していると、表示しきれない。
-幸い、最新のPowerPointファイル(.pptx)はxmlファイルをzipで固めたものなので、中身を解析して、外部にリンクしているもののパスと、それが使用されているスライドのページ数を抽出するプログラムを作ってみた。
-ダウンロード ExtractPPTXExLink.jar
-使い方 ExtractPPTXExLink.jarを実行すると、pptxファイルの場所を聞かれるので、1つ選択する。 すると、pptxと同じフォルダに(pptxファイル名)_exlink.txtというファイルにスライドページ番号と外部リンクのパスが出力される。
-動作環境  Java 6以上があればOSは問わないはず Windows XP, 7, 8.1, 10, Ubuntu 14.04 LTSで一応動作を確認  
+		概要 PowerPointで動画を入れることはよくあるが、その動画がどこにあるファイルなのか分からなくなることがよくある。 一応、PowerPointでもパスを表示させることはできるのだが、何せ表示できる文字数が短すぎて分からない、という無駄機能状態。 ↑このように「ファイルへのリンクの編集」で表示させることはできるのだが、 深い階層のファイルを参照していると、表示しきれない。 幸い、最新のPowerPoi
 	</div>
 </article>
 </main>

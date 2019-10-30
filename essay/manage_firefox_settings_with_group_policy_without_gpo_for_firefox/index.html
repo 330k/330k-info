@@ -8,15 +8,7 @@
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
 	<meta property="og:title" content="Firefoxをグループポリシーで管理する" />
-<meta property="og:description" content="公式の情報はこちら : https://www.mozilla.jp/business/faq/tech/setting-management/
-上記公式サイトにあるように、ActiveDirectory環境にあるFirefoxの設定を管理する場合、
- クライアント側にアドオン(GPO for Firefox)をインストール サーバ側に管理用テンプレート(ADMファイル)を配置 グループポリシーエディタで設定を編集  という手順が推奨されている。ただ、この方法だと
- 既存ユーザへの自動設定は不可(ユーザにアドオンをインストールしてもらう必要がある) ユーザがアドオンを無効化してしまう可能性がある 最新のバージョンで追加された設定項目がない場合がある  といったデメリットがあるので、公式サイト中で「MCD用設定ファイルでの実現」という方法で行うことにした。
-要件は以下の通り。
- Firefoxアカウントを使ったパスワード等の同期をさせない 強制的に最新版にアップデートさせる たまにしか社内LANにアクセスしない端末でも設定を反映させたい (公式サイトの「すべてのクライアントの設定を管理者が一括して変更したい」では常時社内LANにアクセスできる端末である必要がある)  手順は以下の通り。
- 「autoconfig.js」と「autoconfig.cfg」を公式サイトの例にしたがって記述  autoconfig.js
-pref(&quot;general.config.filename&quot;, &quot;autoconfig.cfg&quot;); pref(&quot;general.config.vendor&quot;, &quot;autoconfig&quot;); pref(&quot;general.config.obscure_value&quot;, 0);  autoconfig.cfg (ここではFirefoxアカウントによる同期の不許可と、自動アップデートの有効化を設定)
-lockPref(&quot;loop.enabled&quot;, false); lockPref(&quot;services.sync.enabled&quot;, false); lockPref(&quot;services.sync.engine.addons&quot;, false); lockPref(&quot;services.sync.engine.bookmarks&quot;, false); lockPref(&quot;services.sync.engine.history&quot;, false); lockPref(&quot;services.sync.engine.passwords&quot;, false); lockPref(&quot;services.sync.engine.prefs&quot;, false); lockPref(&quot;services.sync.engine.tabs&quot;, false); lockPref(&quot;app.update.enabled&quot;, true); lockPref(&quot;app.update.auto&quot;, true); lockPref(&quot;browser.search.update&quot;, true);   「autoconfig.js」と「autoconfig.cfg」を一般ユーザが読み取り可能なフォルダに配置 (例えば「\ドメインコントローラ\SYSVOL\ドメイン名\Deployment」など) グループポリシーの「コンピュータの構成」「基本設定」「Windowsの設定」「ファイル」を使い、 「autoconfig.js」と「autoconfig.cfg」を公式サイトで指定されたフォルダに配置。     64bit版Windowsに32bit版Firefoxがインストールされている場合は、「項目レベルで対象化する」にチェックし、 「Processor_Architecture」に「AMD64」を設定し、「%PROGRAMFILES(X86)%\Mozilla Firefox」に配置する。 ※ 両方ある場合は2つずつ設定する      最後に実際にクライアントPCにファイルが反映され、Firefoxのabout:configで設定されていることを確認" />
+<meta property="og:description" content="公式の情報はこちら : https://www.mozilla.jp/business/faq/tech/setting-management/ 上記公式サイトにあるように、ActiveDirectory環境にあるFirefoxの設定を管理する場合、 クライアント側にアドオン(GPO for Firefox)をインストール サーバ側に管理用テンプレート(ADMファイル)を配置 グループポリシーエディタで設定を編集 という手順が推奨されている。ただ、この方法だと 既存ユーザへの自動設定は不可(ユーザにアドオンをインストールしてもらう必要が" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.330k.info/essay/manage_firefox_settings_with_group_policy_without_gpo_for_firefox/" />
 <meta property="article:published_time" content="2016-07-12T22:07:00+09:00" />
@@ -24,15 +16,7 @@ lockPref(&quot;loop.enabled&quot;, false); lockPref(&quot;services.sync.enabled&
 
 	<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Firefoxをグループポリシーで管理する"/>
-<meta name="twitter:description" content="公式の情報はこちら : https://www.mozilla.jp/business/faq/tech/setting-management/
-上記公式サイトにあるように、ActiveDirectory環境にあるFirefoxの設定を管理する場合、
- クライアント側にアドオン(GPO for Firefox)をインストール サーバ側に管理用テンプレート(ADMファイル)を配置 グループポリシーエディタで設定を編集  という手順が推奨されている。ただ、この方法だと
- 既存ユーザへの自動設定は不可(ユーザにアドオンをインストールしてもらう必要がある) ユーザがアドオンを無効化してしまう可能性がある 最新のバージョンで追加された設定項目がない場合がある  といったデメリットがあるので、公式サイト中で「MCD用設定ファイルでの実現」という方法で行うことにした。
-要件は以下の通り。
- Firefoxアカウントを使ったパスワード等の同期をさせない 強制的に最新版にアップデートさせる たまにしか社内LANにアクセスしない端末でも設定を反映させたい (公式サイトの「すべてのクライアントの設定を管理者が一括して変更したい」では常時社内LANにアクセスできる端末である必要がある)  手順は以下の通り。
- 「autoconfig.js」と「autoconfig.cfg」を公式サイトの例にしたがって記述  autoconfig.js
-pref(&quot;general.config.filename&quot;, &quot;autoconfig.cfg&quot;); pref(&quot;general.config.vendor&quot;, &quot;autoconfig&quot;); pref(&quot;general.config.obscure_value&quot;, 0);  autoconfig.cfg (ここではFirefoxアカウントによる同期の不許可と、自動アップデートの有効化を設定)
-lockPref(&quot;loop.enabled&quot;, false); lockPref(&quot;services.sync.enabled&quot;, false); lockPref(&quot;services.sync.engine.addons&quot;, false); lockPref(&quot;services.sync.engine.bookmarks&quot;, false); lockPref(&quot;services.sync.engine.history&quot;, false); lockPref(&quot;services.sync.engine.passwords&quot;, false); lockPref(&quot;services.sync.engine.prefs&quot;, false); lockPref(&quot;services.sync.engine.tabs&quot;, false); lockPref(&quot;app.update.enabled&quot;, true); lockPref(&quot;app.update.auto&quot;, true); lockPref(&quot;browser.search.update&quot;, true);   「autoconfig.js」と「autoconfig.cfg」を一般ユーザが読み取り可能なフォルダに配置 (例えば「\ドメインコントローラ\SYSVOL\ドメイン名\Deployment」など) グループポリシーの「コンピュータの構成」「基本設定」「Windowsの設定」「ファイル」を使い、 「autoconfig.js」と「autoconfig.cfg」を公式サイトで指定されたフォルダに配置。     64bit版Windowsに32bit版Firefoxがインストールされている場合は、「項目レベルで対象化する」にチェックし、 「Processor_Architecture」に「AMD64」を設定し、「%PROGRAMFILES(X86)%\Mozilla Firefox」に配置する。 ※ 両方ある場合は2つずつ設定する      最後に実際にクライアントPCにファイルが反映され、Firefoxのabout:configで設定されていることを確認"/>
+<meta name="twitter:description" content="公式の情報はこちら : https://www.mozilla.jp/business/faq/tech/setting-management/ 上記公式サイトにあるように、ActiveDirectory環境にあるFirefoxの設定を管理する場合、 クライアント側にアドオン(GPO for Firefox)をインストール サーバ側に管理用テンプレート(ADMファイル)を配置 グループポリシーエディタで設定を編集 という手順が推奨されている。ただ、この方法だと 既存ユーザへの自動設定は不可(ユーザにアドオンをインストールしてもらう必要が"/>
 
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">

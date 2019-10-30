@@ -8,10 +8,7 @@
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
 	<meta property="og:title" content="Tikaを使って指定したディレクトリ以下の全ファイルのメタデータを収集" />
-<meta property="og:description" content="会社で外部に公開しているPDFファイルの作成者やタイトルにおかしいもの(社名が間違っている etc.)があることに気づき、 会社のファイルサーバにあるWord、Excel、PowerPoint、PDFファイルのメタ情報を一覧で出力し、 Excelにインポートして変なメタ情報が設定されていないかチェックするためのスクリプトを作ってみた。
-準備 まずはapacheからTikaをダウンロード(執筆時点では1.11が最新)
-wget http://ftp.jaist.ac.jp/pub/apache/tika/tika-app-1.11.jar  全メタデータを収集 とにかく全部のメタデータを収集したいときは、tikaのjarファイルと同じディレクトリに以下のようなスクリプトを配置。 検索対象のディレクトリは3行目で指定する。
-#!/bin/bash dir=~/Documents/ output=metadata.xml port=12345 tmpfile=temp.txt java -jar tika-app-1.11.jar -s -x --port $port &gt; $tmpfile &amp; procid=$! sleep 1 echo &quot;&lt;?xml version=\&quot;1.0\&quot; encoding=\&quot;utf-8\&quot; ?&gt;&quot; &gt; $output echo &quot;&lt;files&gt;&quot; &gt;&gt; $output find &quot;$dir&quot; -iname &quot;*.pdf&quot; -o -iname &quot;*.doc&quot; -o -iname &quot;*.doc?&quot; -o -iname &quot;*.xls&quot; -o -iname &quot;*.xls?&quot; -o -iname &quot;*.ppt&quot; -o -iname &quot;*.ppt?&quot; | while read i do echo &quot;&lt;file&gt;&quot; &gt;&gt; $output echo &quot; &lt;filepath&gt;&lt;!" />
+<meta property="og:description" content="会社で外部に公開しているPDFファイルの作成者やタイトルにおかしいもの(社名が間違っている etc.)があることに気づき、 会社のファイルサーバにあるWord、Excel、PowerPoint、PDFファイルのメタ情報を一覧で出力し、 Excelにインポートして変なメタ情報が設定されていないかチェックするためのスクリプトを作ってみた。 準備 まずはapacheからTikaをダウンロード(執筆時点では1.11" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.330k.info/essay/aggregate-metadata-from-all-pdf-office-documents/" />
 <meta property="article:published_time" content="2015-11-29T00:00:00+09:00" />
@@ -19,10 +16,7 @@ wget http://ftp.jaist.ac.jp/pub/apache/tika/tika-app-1.11.jar  全メタデー�
 
 	<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Tikaを使って指定したディレクトリ以下の全ファイルのメタデータを収集"/>
-<meta name="twitter:description" content="会社で外部に公開しているPDFファイルの作成者やタイトルにおかしいもの(社名が間違っている etc.)があることに気づき、 会社のファイルサーバにあるWord、Excel、PowerPoint、PDFファイルのメタ情報を一覧で出力し、 Excelにインポートして変なメタ情報が設定されていないかチェックするためのスクリプトを作ってみた。
-準備 まずはapacheからTikaをダウンロード(執筆時点では1.11が最新)
-wget http://ftp.jaist.ac.jp/pub/apache/tika/tika-app-1.11.jar  全メタデータを収集 とにかく全部のメタデータを収集したいときは、tikaのjarファイルと同じディレクトリに以下のようなスクリプトを配置。 検索対象のディレクトリは3行目で指定する。
-#!/bin/bash dir=~/Documents/ output=metadata.xml port=12345 tmpfile=temp.txt java -jar tika-app-1.11.jar -s -x --port $port &gt; $tmpfile &amp; procid=$! sleep 1 echo &quot;&lt;?xml version=\&quot;1.0\&quot; encoding=\&quot;utf-8\&quot; ?&gt;&quot; &gt; $output echo &quot;&lt;files&gt;&quot; &gt;&gt; $output find &quot;$dir&quot; -iname &quot;*.pdf&quot; -o -iname &quot;*.doc&quot; -o -iname &quot;*.doc?&quot; -o -iname &quot;*.xls&quot; -o -iname &quot;*.xls?&quot; -o -iname &quot;*.ppt&quot; -o -iname &quot;*.ppt?&quot; | while read i do echo &quot;&lt;file&gt;&quot; &gt;&gt; $output echo &quot; &lt;filepath&gt;&lt;!"/>
+<meta name="twitter:description" content="会社で外部に公開しているPDFファイルの作成者やタイトルにおかしいもの(社名が間違っている etc.)があることに気づき、 会社のファイルサーバにあるWord、Excel、PowerPoint、PDFファイルのメタ情報を一覧で出力し、 Excelにインポートして変なメタ情報が設定されていないかチェックするためのスクリプトを作ってみた。 準備 まずはapacheからTikaをダウンロード(執筆時点では1.11"/>
 
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">

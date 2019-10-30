@@ -89,7 +89,9 @@ if (!doNotTrack) {
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		function initMap(){ var map, ctaLayer; map = new google.maps.Map(document.getElementById("mapcanvas-20130709-16-kml"), { center: {lat: 35.6832581, lng: 139.7555827}, zoom: 8 }); ctaLayer = new google.maps.KmlLayer({ url: 'https:\/\/www.330k.info\/\/bicycle\/touring\/20130709-16-yokohama-tohoku-pacific-oomazaki\/20130709-16.kml' }); ctaLayer.setMap(map); }     日付 出発地 到着地 走行距離(km) 走行時間 最高速度(km/h) 平均速度(km/h) 主な経路 景勝地     2013年7月9日 横浜 神栖 147.65 6:23:43 44.5 23.1 R1, R6    2013年7月10日 神栖 いわき 153.27 5:54:58 56.6 25.9 R51, R6    2013年7月11日 いわき 角田 146.
+		<p>3・11の震災当時、名古屋に住んでいたため実感が湧いていなかった。</p>
+
+<p>被害を受けた地域を実際に走り、被害の大きさと復興具合を体感してきた。</p>
 	</div>
 </article><article class="list__item post">
 	<figure class="list__thumbnail">
@@ -106,7 +108,7 @@ if (!doNotTrack) {
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		    function initMap(){ var map, ctaLayer; map = new google.maps.Map(document.getElementById("mapcanvas-20130316-07-kml"), { center: {lat: 35.6832581, lng: 139.7555827}, zoom: 8 }); ctaLayer = new google.maps.KmlLayer({ url: 'https:\/\/www.330k.info\/\/bicycle\/touring\/20130306-07-nagoya-yokohama\/20130316-07.kml' }); ctaLayer.setMap(map); }     日付 出発地 到着地 走行距離(km) 走行時間 最高速度(km/h) 平均速度(km/h) 主な経路 景勝地     2013年3月6日 東海市 焼津 158.97 6:06:35 59.9 26.0 R1    2013年3月7日 焼津 横浜 178.61 8:06:30 64.2 22.0 R1                             
+		<p>職場の名古屋から実家のある横浜まで自転車を輸送するために自走。</p>
 	</div>
 </article><article class="list__item post">
 	<figure class="list__thumbnail">
@@ -123,8 +125,7 @@ if (!doNotTrack) {
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		    function initMap(){ var map, ctaLayer; map = new google.maps.Map(document.getElementById("mapcanvas-20121021-kml"), { center: {lat: 35.6832581, lng: 139.7555827}, zoom: 8 }); ctaLayer = new google.maps.KmlLayer({ url: 'https:\/\/www.330k.info\/\/bicycle\/touring\/20121021-mt-fuji-skyline\/20121021.kml' }); ctaLayer.setMap(map); }     日付 出発地 到着地 走行距離(km) 走行時間 最高速度(km/h) 平均速度(km/h) 主な経路 景勝地     2012年10月21日 富士市 富士市    #N/A R139, r180, r152 富士山スカイライン    海抜0mから富士山スカイラインの新5合目(2400m)まで登った。
-                          
+		<p>海抜0mから富士山スカイラインの新5合目(2400m)まで登った。</p>
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -136,12 +137,7 @@ if (!doNotTrack) {
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		ドキュメントにはないものの、MathematicaではSQLiteを扱うことができる。 しかしながら、BLOB型や文字列で日本語などを扱うには少し工夫が必要なので、メモ。
-BLOB型 select 直接BLOB型をselectすると$Failedが返ってくるので、hex関数で16進文字列として返す。
-db = Database`OpenDatabase[sqlitefilepath]; rs = Database`QueryDatabase[db, &quot;select hex(column_name) from table_name&quot;];  これを16進文字列→数値→バイト列→文字列と変換して、最後にImportStringで読み込むと、Mathematicaで読み込める。
-ImportSQLiteBLOB[hex_, format_] := ImportString[ FromCharacterCode[IntegerDigits[FromDigits[hex, 16], 256]], format]; ImportSQLiteBLOB[rs[[1, 1]], &quot;PNG&quot;]  insert insertする場合には逆に、データをExportStringで文字列に変換→バイト列→16進文字列と変換し&rdquo;x&rsquo;&ldquo;と&rdquo;&lsquo;&ldquo;で囲う。
-ExportSQLiteBLOB[expr_, format_] := StringJoin[&quot;x'&quot;, IntegerString[ToCharacterCode[ExportString[expr, format]], 16, 2], &quot;'&quot;]; Database`QueryDatabase[db, &quot;insert into table_name values (&quot; &lt;&gt; ExportSQLiteBLOB[Plot[Sin[x], {x, 0, Pi}], &quot;PNG&quot;] &lt;&gt; &quot;)&quot;];  マルチバイト文字列 select 日本語などマルチバイト文字列が入っていても適切に変換してくれないので、自前で変換する。
-ImportSQLiteString[str_] := FromCharacterCode[ToCharacterCode[str], &quot;UTF8&quot;]; rs = Database`QueryDatabase[db, &quot;select column_name from table_name&quot;]; ImportSQLiteString[rs[[1, 1]]]  insert そのまま突っ込むとエラーが出るので、変換してから突っ込む。ついでにシングルクォーテーションをエスケープしておく。
+		ドキュメントにはないものの、MathematicaではSQLiteを扱うことができる。 しかしながら、BLOB型や文字列で日本語などを扱うには少し工夫が必要なので、メモ。 BLOB型 select 直接BLOB型をselectすると$Failedが返ってくるので、hex関数で16進文字列として返す。 db = Database`OpenDatabase[sqlitefilepath]; rs = Database`QueryDatabase[db, &quot;select hex(column_name) from table_name&quot;]; これを16進文字列→数値→バイト列→文字列と変換して、最後にImportStringで読み込むと、
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -153,16 +149,7 @@ ImportSQLiteString[str_] := FromCharacterCode[ToCharacterCode[str], &quot;UTF8&q
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		Mathematica 8 Home Edition 日本語版をUbuntu 12.04 LTS 64bit版にインストールしたところ、
- ディレクトリ、ファイル名に日本語が含まれるノートブックファイル(.nb)を開けない ディレクトリ、ファイル名に日本語が含まれるとImport/Exportできない、FileNamesで列挙できない ノートブック中に日本語を入力できない $SystemCharacterEncoding、$CharacterEncodingが&rdquo;EUC-JP&rdquo;になっている  などの言語関連の不具合があった。
-これから作るノートブックは英語だけで書けば済むが、今までに作ったノートブックファイルが開けないのがつらい。 一応Wolframのサポートにはメールを出したが、期待できそうになかった。
-/usr/local/Wolram/以下のファイルで関係有りそうなものを試行錯誤していじった結果、以下の方法で対処できたのでメモ。
- /usr/local/Wolfram/Mathematica/8.0/Executables以下の起動用スクリプトファイルMathematica、mathematicaの「LANG=ja_JP.eucJP」を「LANG=en_US.UTF-8」などに適当に変更orコメントアウト /usr/local/Wolfram/Mathematica/8.0/SystemFiles/CharacterEncodings/UTF-8.mの内容をISO8859-1.mにコピー  $SystemCharacterEncoding、$CharacterEncodingは&rdquo;ISO8859-1&rdquo;になってしまうのが気持ち悪いが、とりあえず実用上問題がなくなった。
-あとは本当にISO8859-1の文字コードで書かれたファイルを読み込むことができなくなってしまうが、扱う機会はないので良しとする。
-Oct. 7 2016 追記
-4年越しにWolfram Researchから連絡が来た。
- In May 2012 you reported an issue with Mathematica wherein Mathematica was unable to open files from folders with non-English cahracters in the name. We believe that the issue has been resolved in the current release of Mathematica.
-Thank you for your report and we look forward to a continued, productive relationship with you.
+		Mathematica 8 Home Edition 日本語版をUbuntu 12.04 LTS 64bit版にインストールしたところ、 ディレクトリ、ファイル名に日本語が含まれるノートブックファイル(.nb)を開けない ディレクトリ、ファイル名に日本語が含まれるとImport/Exportできない、FileNamesで列挙できない ノートブック中に日本語を入力できない $SystemCharacterEncoding、$CharacterEncodingが&rdqu
 	</div>
 </article><article class="list__item post">
 	<figure class="list__thumbnail">
@@ -179,7 +166,7 @@ Thank you for your report and we look forward to a continued, productive relatio
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		function initMap(){ var map, ctaLayer; map = new google.maps.Map(document.getElementById("mapcanvas-20120916-17-kml"), { center: {lat: 35.6832581, lng: 139.7555827}, zoom: 8 }); ctaLayer = new google.maps.KmlLayer({ url: 'https:\/\/www.330k.info\/\/bicycle\/touring\/20120916-17-kanazawa-naoetsu\/20120916-17.kml' }); ctaLayer.setMap(map); }     日付 出発地 到着地 走行距離(km) 走行時間 最高速度(km/h) 平均速度(km/h) 主な経路 景勝地     2012年9月16日 金沢 入善 106.96 4:35:10 56.1 23.3 R8 石動   2012年9月17日 入善 直江津 83.59 3:33:47 48.7 23.5 R8 親不知    1日目 前に名古屋から金沢駅までは自走したので、今回は輪行して金沢駅スタート。 建設中の北陸新幹線の高架を見ながら走り、すぐに富山県に入る。
+		<p><a href="https://www.330k.info/bicycle/touring/20100919-20-nagoya-kanazawa/">前</a>に名古屋から金沢駅までは自走したので、北陸の続きを走ってきた。</p>
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -191,10 +178,7 @@ Thank you for your report and we look forward to a continued, productive relatio
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		LS-DYNAのキーワードファイルを書きだすプログラムを書いたところ、浮動小数点数を固定文字数(10文字)にフォーマットする所でつまづいた。 具体的には
- String.formatやDecimalFormatの動作が遅い(String.formatよりはDecimalFormatのほうが速いが) 文字数を10文字に制限することが難しい(絶対値の大小比較を行なって桁数ごとに条件分岐をしても、四捨五入によって意図しない文字数(11文字)になる)  という問題にあたった。そこでdoubleから長さ10の文字列を力技で書きだすロジックを自作した。特徴は以下の通り。
- 正の時は先頭にスペース、負の時は先頭に&rdquo;-&ldquo;を入れる 10文字の制限の中で最も有効桁数が大きくなるようにフォーマット 四捨五入はしない！ DecimalFormatの15倍高速(もう少し工夫はできるが)
-private static String formatFloat10(double d){ char[] c = new char[10]; double a; if(d == 0.0){ return &quot; 0.0000000&quot;; } if(d &lt; 0){ c[0] = '-'; a = -d; }else{ c[0] = ' '; a = d; } int m = (int)Math.floor(Math.log10(a)); if(m &lt;= -100){ for(int i = 1; i &lt; 1 - m; i++) a *= 10; c[1] = (char)('0' + Math.
+		LS-DYNAのキーワードファイルを書きだすプログラムを書いたところ、浮動小数点数を固定文字数(10文字)にフォーマットする所でつまづいた。 具体的には String.formatやDecimalFormatの動作が遅い(String.formatよりはDecimalFormatのほうが速いが) 文字数を10文字に制限することが難しい(絶対値の大小比較を行なって桁数ごとに条件分岐をしても、四捨五入によっ
 	</div>
 </article><article class="list__item post">
 	<figure class="list__thumbnail">
@@ -211,7 +195,11 @@ private static String formatFloat10(double d){ char[] c = new char[10]; double a
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		function initMap(){ var map, ctaLayer; map = new google.maps.Map(document.getElementById("mapcanvas-20120814-17-kml"), { center: {lat: 35.6832581, lng: 139.7555827}, zoom: 8 }); ctaLayer = new google.maps.KmlLayer({ url: 'https:\/\/www.330k.info\/\/bicycle\/touring\/20120814-17-hakodate-wakkanai\/20120814-17.kml' }); ctaLayer.setMap(map); }     日付 出発地 到着地 走行距離(km) 走行時間 最高速度(km/h) 平均速度(km/h) 主な経路 景勝地     2012年8月14日 函館 室蘭 193.01 8:09:05 57.1 23.7 R5, R37    2012年8月15日 室蘭 美唄 169.58 6:36:00 45.3 25.7 R36, R12    2012年8月16日 美唄 名寄 151.
+		<p>自転車乗りの夢、北海道をついに走ることに。</p>
+
+<p>青春18切符を2日分使って函館まで行き、函館から走行。</p>
+
+<p>帰りは特急と新幹線を乗り継いだ。</p>
 	</div>
 </article><article class="list__item post">
 	<figure class="list__thumbnail">
@@ -228,7 +216,11 @@ private static String formatFloat10(double d){ char[] c = new char[10]; double a
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		function initMap(){ var map, ctaLayer; map = new google.maps.Map(document.getElementById("mapcanvas-20120428-0506-kml"), { center: {lat: 35.6832581, lng: 139.7555827}, zoom: 8 }); ctaLayer = new google.maps.KmlLayer({ url: 'https:\/\/www.330k.info\/\/bicycle\/touring\/20120430-0506-nagoya-kagoshima\/20120428-0506.kml' }); ctaLayer.setMap(map); }     日付 出発地 到着地 走行距離(km) 走行時間 最高速度(km/h) 平均速度(km/h) 主な経路 景勝地     2012年4月28日 東海市 枚方 179.78 7:11:21 57.8 25.0 R1 鈴鹿峠   2012年4月29日 枚方 播州赤穂 152.35 6:11:30 52.6 24.6 R1, R2, R250    2012年4月30日 播州赤穂 妹尾 66.
+		<p>ゴールデンウィークをフルに使って名古屋から鹿児島まで走行した。</p>
+
+<p>ルートは分かりやすく、名古屋〜大阪は国道1号、大阪〜北九州は国道2号、北九州〜鹿児島は国道10号。</p>
+
+<p>雨のため妹尾〜東広島間は輪行し、5月2日は休憩した。</p>
 	</div>
 </article><article class="list__item post">
 	<figure class="list__thumbnail">
@@ -245,8 +237,9 @@ private static String formatFloat10(double d){ char[] c = new char[10]; double a
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		    function initMap(){ var map, ctaLayer; map = new google.maps.Map(document.getElementById("mapcanvas-20120320-kml"), { center: {lat: 35.6832581, lng: 139.7555827}, zoom: 8 }); ctaLayer = new google.maps.KmlLayer({ url: 'https:\/\/www.330k.info\/\/bicycle\/touring\/20120320-biwako-lake\/20120320.kml' }); ctaLayer.setMap(map); }  2回めのビワイチ。今回は琵琶湖大橋を渡ってショートカットした。
-                                
+		<p>2回めのビワイチ。</p>
+
+<p>前回の大津市街地はあまり楽しくなかったので、今回は琵琶湖大橋を渡ってショートカットした。</p>
 	</div>
 </article>
 </main>

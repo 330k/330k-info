@@ -8,13 +8,7 @@
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
 	<meta property="og:title" content="Windows標準機能でZIPファイルの作成" />
-<meta property="og:description" content="JScriptで複数のテキストファイルを書き出し、それをZIPでまとめたかったので作成。 VBAやVBScript版を参考に作ってみた。
-参考サイト : http://kiq-creator.com/blog/?eid=33
-複数のファイルをZIP圧縮する際のコツとしては、CopyHereをするたびに待機すること。 CopyHereは非同期なので、すぐにJS側に制御が返ってくるが、 複数のファイルを一気にCopyHereしようとすると、「読み取りできません」とエラーが出る。
-使い方 以下のコード中のcreateZipFileを自分のスクリプトにコピー&amp;ペーストして
-createZipFile( &quot;zipファイルのパス&quot;, [&quot;圧縮対象ファイルのパス1&quot;, &quot;圧縮対象ファイルのパス2&quot;, ...])  とすればOK。 もしくは以下のコードをメモ帳で拡張子をjsにして保存すれば、ドラッグ&amp;ドロップでzipファイルを作成(右クリック→送る→圧縮フォルダーとほぼ同じ動作)。
-注意事項 ディレクトリには対応してません。またWindows標準では暗号化ZIPは作成できません。 また圧縮対象ファイルの存在チェック等もやってないので、必要であればエラーハンドリング処理を追加してください。
-/** Windows 標準機能でZipファイルを作成するWSH(JScript) Copyright 330k This software is released under the MIT License. http://opensource.org/licenses/mit-license.php */ var args = []; for(var i = 0; i &lt; WScript.Arguments.length; i&#43;&#43;){ args.push(WScript.Arguments(i)); } var zipfile = args[0].replace(/(.&#43;)\.(.&#43;?)$/, &quot;$1.zip&quot;); createZipFile(zipfile, args); function createZipFile(zipFilePath, sourceFiles){ var shell = WScript.CreateObject(&quot;Shell.Application&quot;); var fso = WScript.CreateObject(&quot;Scripting.FileSystemObject&quot;); var file = fso." />
+<meta property="og:description" content="JScriptで複数のテキストファイルを書き出し、それをZIPでまとめたかったので作成。 VBAやVBScript版を参考に作ってみた。 参考サイト : http://kiq-creator.com/blog/?eid=33 複数のファイルをZIP圧縮する際のコツとしては、CopyHereをするたびに待機すること。 CopyHereは非同期なので、すぐにJS側に制御が返ってくるが、 複数のファイルを一気にCopyHereしようとすると、「読み取りできません」とエラーが出る。 使い" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.330k.info/essay/create_zip_file_with_wsh_jscript/" />
 <meta property="article:published_time" content="2017-05-08T22:37:00+09:00" />
@@ -22,13 +16,7 @@ createZipFile( &quot;zipファイルのパス&quot;, [&quot;圧縮対象ファ�
 
 	<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Windows標準機能でZIPファイルの作成"/>
-<meta name="twitter:description" content="JScriptで複数のテキストファイルを書き出し、それをZIPでまとめたかったので作成。 VBAやVBScript版を参考に作ってみた。
-参考サイト : http://kiq-creator.com/blog/?eid=33
-複数のファイルをZIP圧縮する際のコツとしては、CopyHereをするたびに待機すること。 CopyHereは非同期なので、すぐにJS側に制御が返ってくるが、 複数のファイルを一気にCopyHereしようとすると、「読み取りできません」とエラーが出る。
-使い方 以下のコード中のcreateZipFileを自分のスクリプトにコピー&amp;ペーストして
-createZipFile( &quot;zipファイルのパス&quot;, [&quot;圧縮対象ファイルのパス1&quot;, &quot;圧縮対象ファイルのパス2&quot;, ...])  とすればOK。 もしくは以下のコードをメモ帳で拡張子をjsにして保存すれば、ドラッグ&amp;ドロップでzipファイルを作成(右クリック→送る→圧縮フォルダーとほぼ同じ動作)。
-注意事項 ディレクトリには対応してません。またWindows標準では暗号化ZIPは作成できません。 また圧縮対象ファイルの存在チェック等もやってないので、必要であればエラーハンドリング処理を追加してください。
-/** Windows 標準機能でZipファイルを作成するWSH(JScript) Copyright 330k This software is released under the MIT License. http://opensource.org/licenses/mit-license.php */ var args = []; for(var i = 0; i &lt; WScript.Arguments.length; i&#43;&#43;){ args.push(WScript.Arguments(i)); } var zipfile = args[0].replace(/(.&#43;)\.(.&#43;?)$/, &quot;$1.zip&quot;); createZipFile(zipfile, args); function createZipFile(zipFilePath, sourceFiles){ var shell = WScript.CreateObject(&quot;Shell.Application&quot;); var fso = WScript.CreateObject(&quot;Scripting.FileSystemObject&quot;); var file = fso."/>
+<meta name="twitter:description" content="JScriptで複数のテキストファイルを書き出し、それをZIPでまとめたかったので作成。 VBAやVBScript版を参考に作ってみた。 参考サイト : http://kiq-creator.com/blog/?eid=33 複数のファイルをZIP圧縮する際のコツとしては、CopyHereをするたびに待機すること。 CopyHereは非同期なので、すぐにJS側に制御が返ってくるが、 複数のファイルを一気にCopyHereしようとすると、「読み取りできません」とエラーが出る。 使い"/>
 
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">

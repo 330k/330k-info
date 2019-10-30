@@ -85,10 +85,7 @@ if (!doNotTrack) {
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		会社のウェブサイトに貼ってある動画ファイルが、実際にどれだけ再生されているのか調査するべく、 Google Analyticsのイベントで計測するためのコードを作ってみた。
-計測対象は以下のイベント。
- 再生開始(play) 最後まで再生(ended) 一時停止(pause) 再生再開(resume) シークした(seeked) どこまで再生したか(動画時間の10%, 25%, 50%, 75%, 90%)  HTML側 &lt;video id=&quot;movie001&quot; width=&quot;(動画幅)&quot; height=&quot;(動画高さ)&quot; title=&quot;Movie Title&quot;&gt; &lt;source src=&quot;(動画ファイルのパス)&quot; type=&quot;video/mp4&quot; /&gt; &lt;/video  JavaScript側(jQuery使用) イベントカテゴリに「video」、イベントアクションにplay、play_endなど。 イベントラベルには動画のtitle属性をセット。
-$(function(){ var oldratio = 0.0; $('video').on('play', function(e) { on('play', function(e) { if(e.target.currentTime &gt; 0){ ga('send','event','video','resume',e.target.getAttribute('title')); }else{ ga('send','event','video','play',e.target.getAttribute('title')); } }).on('ended', function(e) { ga('send','event','video','play_end',e.target.getAttribute('title')); }).on('pause', function(e) { ga('send','event','video','pause',e.target.getAttribute('title')); }).on('seeked', function(e) { ga('send','event','video','seeked',e.target.getAttribute('title')); }).on('timeupdate', function(e) { var ratio = e.target.currentTime / e.
+		会社のウェブサイトに貼ってある動画ファイルが、実際にどれだけ再生されているのか調査するべく、 Google Analyticsのイベントで計測するためのコードを作ってみた。 計測対象は以下のイベント。 再生開始(play) 最後まで再生(ended) 一時停止(pause) 再生再開(resume) シークした(seeked) どこまで再生したか(動画時間の10%, 25%, 50%, 75%, 90%) HTML側 &lt;video id=&quot;movie001&quot; width=&quot;(動画幅)&q
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -100,19 +97,7 @@ $(function(){ var oldratio = 0.0; $('video').on('play', function(e) { on('play',
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		今まで独自ドメインでGoogleサイトを利用してきたが、
- 「新しいGoogleサイト」の機能が全然ダメ(特にガジェットが使えなくなる)で使い物にならない Google自身が推進している常時SSL化も独自ドメインでは機能しない(正確にはMixed Contentsを修正できない) 無駄に色々と読み込むせいで遅い  ということで他のサービスへの移転を決断。
-AWSやGCP上に構築することも考えたものの、 大したPVでもないので無料で使える組み合わせとして、以下の構成にした。
- Hugoを使って静的にサイトを生成 GitHub Pagesにアップロード CloudFlareを使って常時HTTPS化に対応  Hugo + GitHub Pagesの部分は Hugo + Github Pagesでブログを公開してみた を参考にした。
-Hugo Ubuntuではapt-getでHugoをインストールできる(最新版とは限らないので注意)。
-$ sudo apt-get install hugo  テーマは、少し古いバージョンのHugoでも動作するMainroadに決定。 後は以下の作業を実施。
- 今までGoogleサイトのガジェットで行っていたGoogle MapsでのKMLファイルの表示を行うShortcodeを作成。 CSSファイルをいじって横幅を拡大。 コードのシンタックスハイライトを行うため、highlight.jsを読み込むようlayouts/partials/header.htmlを修正。  GitHub GitHubにGitHub Pages用のリポジトリとHugo自体のリポジトリを作成。
-ここでUser Pages(リポジトリ名: (ユーザ名).github.io)で作成し、 CNAMEファイルで独自ドメインを設定すると、 GitHubの他のリポジトリにも独自ドメインの設定が反映される。
-そのため、今まで(ユーザ名).github.io/(プロジェクト名)/のURLが (独自ドメイン)/(プロジェクト名)/にリダイレクトされるようになる。
-既存のプロジェクトページすべてのURLが変更になってしまうし、 今後ホスティング先をGitHub Pagesから別のサービスに移行するときにまた変更することになる。 そこでUser Pagesは作成せず、Project Pagesとして作成する。
-c.f. Custom domain redirects for GitHub Pages sites
-ページ移転作業 各ページを手作業でコピペ。 1日5ページ〜10ページくらい移行作業した。
-画像については、Chromeの開発者ツールで、
+		今まで独自ドメインでGoogleサイトを利用してきたが、 「新しいGoogleサイト」の機能が全然ダメ(特にガジェットが使えなくなる)で使い物にならない Google自身が推進している常時SSL化も独自ドメインでは機能しない(正確にはMixed Contentsを修正できない) 無駄に色々と読み込むせいで遅い ということで他のサービスへの移転を決断。 AWSやGCP上に構築することも考えたものの、 大したPVで
 	</div>
 </article><article class="list__item post">
 	<figure class="list__thumbnail">
@@ -129,13 +114,7 @@ c.f. Custom domain redirects for GitHub Pages sites
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		思った以上に使っていただいてAPI料金の請求がすごいことになったので、申し訳ないのですが1日1000リクエストに制限しました。
-地図やルートが表示されないときは制限に引っかかっておりますので、時間を置いて再度アクセスしてください。
-  PC用フルスクリーン版 モバイル(スマートフォン)版  使い方  出発地点と目的地点を入れて「Calculate Route」をクリック。 途中経路を変えたい場合は、通常のGoogleマップのようにドラッグして変更します。「Reduce into *** points」をクリックすると、trkpt要素の数を削減します(Douglas-Peuckerアルゴリズムを使用)。赤線が簡略化されたルートです。 「Add Elevation」をクリックすると、標高(ele要素)を追加します(100点で1秒かかります)。 「Download」をクリックすると、download.gpxというファイル名でGPXファイルがダウンロードされます。  作った経緯 今までは自転車ツーリングをするとき、
- Googleマップでルートを作成 GMapToGPXでGPXファイルにする カシミール3Dで基盤地図情報(標高)で標高データを追加 累積標高などを確認 Androidの地図ロイドなどに取り込んでツーリング中に確認  というやり方でルートを検討・確認していた。
-だが&rdquo;新しいGoogleマップ&rdquo;になってから、GMapToGPXが使えなくなってしまったので、 Google Maps API v3を使ってGPXのトラックを生成する、簡単なプログラムを書いてみた。
-スマートフォンのブラウザ(標準ブラウザ、Chrome、Firefox)でも動作するので、ツーリングなどの出先でもルートを作成可能。
-注意事項  Chrome(Ubuntu, Windows 7, Windows 10)、Firefox(Ubuntu, Windows 7)、IE 11、Edgeで動作確認しています。 Google Maps APIの制限により、途中に設定できる地点は8箇所までです。 Internet Explorer 8ではダウンロードができません。テキストボックスに生成されたGPXテキストをコピーし、メモ帳などに貼り付けutf8で保存してください。 Internet Explorer 9, 10は未確認です。 iOSのSafariではGPXファイルのダウンロードができません。  主な更新・修正点  地図ロイドやルートラボに合わせ、簡略化後の点数を800点と8000点にした。(May 26 2014) Douglas-Peuckerのアルゴリズムで優先度付きキューの実装を変更し、高速化。(May 26 2014) 間引き時にメルカトル図法で投影した座標に対してDouglas-Peuckerを適用するように変更。(Jun 6 2014) モバイル版、フルスクリーン版をGitHubにホスティング先を変更。(Mar 13 2015) IEとEdgeでの動作状況を追記。(Oct.
+		思った以上に使っていただいてAPI料金の請求がすごいことになったので、申し訳ないのですが1日1000リクエストに制限しました。 地図やルートが表示されないときは制限に引っかかっておりますので、時間を置いて再度アクセスしてください。 PC用フルスクリーン版 モバイル(スマートフォン)版 使い方 出発地点と目的地点を入れて「Calculate Route」をクリック。 途中経路を変えたい場合は、通常のGoogleマ
 	</div>
 </article>
 </main>

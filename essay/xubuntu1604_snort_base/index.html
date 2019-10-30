@@ -8,14 +8,7 @@
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
 	<meta property="og:title" content="Xubuntu 16.04 &#43; Snortで簡易IDS構築" />
-<meta property="og:description" content="ウイルス等に侵入された後の対策として、IDSやIPS製品の紹介をベンダーから受けたが、正直なところ価格が高かったのと、検知されるメッセージがSnort由来のものが多い気がしたので、自分でSnortを構築して商用製品との差を調べてみることにした。
-構築環境  PC : 余っていたノートPC Panasonic LetsNote CF-NX1 OS : Xubuntu 16.04.2 (LetsNoteの有線LANと無線LANのNICを認識できる可能性が高いディストリビューションとして選択) ルータ : Yamaha RTX810 IDSとして運用(ミラーポートの通信を監視) LetsNoteの有線LANはミラーポートに接続し、通信を監視 LetsNote自体にアクセスするときには無線LANを使用する  図(適当)   手順 基本的に、以下のドキュメント通りでOK。
-Snort 2.9.9.x on Ubuntu 14 -16
-LetsNoteでは有線LANのNICはenp0s25、無線LANはwlp2s0となった。
-注意点は以下の通り。
- rule_url=https://www.snort.org/reg-rules/|snortrules-snapshot.tar.gz|&lt;oinkcode&gt; → rule_url=https://www.snort.org/rules/|snortrules-snapshot.tar.gz|&lt;oinkcode&gt; ※微妙にURLが変わっているので注意 sudo /usr/local/bin/pulledpork.pl -c /etc/snort/pulledpork.conf -l → sudo /usr/local/bin/pulledpork.pl -c /etc/snort/pulledpork.conf -l -o /etc/snort/rules/snort.rules ※-oオプションが必要と怒られた  有線LAN(enp0s25)はミラーポートから受信だけできれば良いので、 /etc/network/interfacesを編集して使われていないネットワークのアドレスを適当に設定。 管理の通信やBASEによるログを眺めるためには無線(wlp2s0)を使用するので、 NetworkManagerを使って適当に固定IPを設定。
-RTX810はhttp://www.rtpro.yamaha.co.jp/RT/manual/rt-common/setup/lan_port-mirroring.html を参照してミラーポートを設定。
- 設定(ポート1と2の送信および受信フレームをポート4にミラー) lan port-mirroring lan1 4 in 1 2 out 1 2 解除 no lan port-mirroring lan1  結果 一応IDSとして構築できたので、現在はログを見て様子見。今のところのメモは以下。" />
+<meta property="og:description" content="ウイルス等に侵入された後の対策として、IDSやIPS製品の紹介をベンダーから受けたが、正直なところ価格が高かったのと、検知されるメッセージがSnort由来のものが多い気がしたので、自分でSnortを構築して商用製品との差を調べてみることにした。 構築環境 PC : 余っていたノートPC Panasonic LetsNote CF-NX1 OS : Xubuntu 16.04.2 (LetsNoteの有線LANと無線LANのNICを認識できる可能性が高いディストリビューションとして選択) ル" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.330k.info/essay/xubuntu1604_snort_base/" />
 <meta property="article:published_time" content="2017-06-06T06:37:00+09:00" />
@@ -23,14 +16,7 @@ RTX810はhttp://www.rtpro.yamaha.co.jp/RT/manual/rt-common/setup/lan_port-mirror
 
 	<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Xubuntu 16.04 &#43; Snortで簡易IDS構築"/>
-<meta name="twitter:description" content="ウイルス等に侵入された後の対策として、IDSやIPS製品の紹介をベンダーから受けたが、正直なところ価格が高かったのと、検知されるメッセージがSnort由来のものが多い気がしたので、自分でSnortを構築して商用製品との差を調べてみることにした。
-構築環境  PC : 余っていたノートPC Panasonic LetsNote CF-NX1 OS : Xubuntu 16.04.2 (LetsNoteの有線LANと無線LANのNICを認識できる可能性が高いディストリビューションとして選択) ルータ : Yamaha RTX810 IDSとして運用(ミラーポートの通信を監視) LetsNoteの有線LANはミラーポートに接続し、通信を監視 LetsNote自体にアクセスするときには無線LANを使用する  図(適当)   手順 基本的に、以下のドキュメント通りでOK。
-Snort 2.9.9.x on Ubuntu 14 -16
-LetsNoteでは有線LANのNICはenp0s25、無線LANはwlp2s0となった。
-注意点は以下の通り。
- rule_url=https://www.snort.org/reg-rules/|snortrules-snapshot.tar.gz|&lt;oinkcode&gt; → rule_url=https://www.snort.org/rules/|snortrules-snapshot.tar.gz|&lt;oinkcode&gt; ※微妙にURLが変わっているので注意 sudo /usr/local/bin/pulledpork.pl -c /etc/snort/pulledpork.conf -l → sudo /usr/local/bin/pulledpork.pl -c /etc/snort/pulledpork.conf -l -o /etc/snort/rules/snort.rules ※-oオプションが必要と怒られた  有線LAN(enp0s25)はミラーポートから受信だけできれば良いので、 /etc/network/interfacesを編集して使われていないネットワークのアドレスを適当に設定。 管理の通信やBASEによるログを眺めるためには無線(wlp2s0)を使用するので、 NetworkManagerを使って適当に固定IPを設定。
-RTX810はhttp://www.rtpro.yamaha.co.jp/RT/manual/rt-common/setup/lan_port-mirroring.html を参照してミラーポートを設定。
- 設定(ポート1と2の送信および受信フレームをポート4にミラー) lan port-mirroring lan1 4 in 1 2 out 1 2 解除 no lan port-mirroring lan1  結果 一応IDSとして構築できたので、現在はログを見て様子見。今のところのメモは以下。"/>
+<meta name="twitter:description" content="ウイルス等に侵入された後の対策として、IDSやIPS製品の紹介をベンダーから受けたが、正直なところ価格が高かったのと、検知されるメッセージがSnort由来のものが多い気がしたので、自分でSnortを構築して商用製品との差を調べてみることにした。 構築環境 PC : 余っていたノートPC Panasonic LetsNote CF-NX1 OS : Xubuntu 16.04.2 (LetsNoteの有線LANと無線LANのNICを認識できる可能性が高いディストリビューションとして選択) ル"/>
 
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">

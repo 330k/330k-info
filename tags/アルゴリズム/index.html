@@ -90,11 +90,7 @@ if (!doNotTrack) {
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		球面上に一様分布するランダムな点を生成したい時、 単純に極座標表示でθとφを一様分布させると、極付近に点が集まってしまう。
-data1 = Transpose[{Sin[t] Cos[f], Sin[t] Sin[f], Cos[t]} /. { f -&gt; RandomReal[{0, 2 Pi}, 2000], t -&gt; RandomReal[{0, Pi}, 2000]}]; g1 = ListPointPlot3D[data1, BoxRatios -&gt; {1, 1, 1}]    球面上で一様分布させるには、下記のようにθにArcCosを使う (θの位置の確率をSinθに比例させたい→累積確率分布関数はCos→逆関数はArcCos)。
-data2 = Transpose[{Sin[t] Cos[f], Sin[t] Sin[f], Cos[t]} /. { f -&gt; RandomReal[{0, 2 Pi}, 2000], t -&gt; ArcCos[RandomReal[{-1, 1}, 2000]]}]; g2 = ListPointPlot3D[data2, BoxRatios -&gt; {1, 1, 1}]    なお、多次元球面上の一様分布は球面上に一様分布する乱数の生成にあるように、 多次元ガウス分布を正規化すると得られる。
-下記は3次元の場合。
-data3 = Normalize /@ RandomReal[NormalDistribution[], {2000, 3}]; g3 = ListPointPlot3D[data3, BoxRatios -&gt; {1, 1, 1}]    
+		球面上に一様分布するランダムな点を生成したい時、 単純に極座標表示でθとφを一様分布させると、極付近に点が集まってしまう。 data1 = Transpose[{Sin[t] Cos[f], Sin[t] Sin[f], Cos[t]} /. { f -&gt; RandomReal[{0, 2 Pi}, 2000], t -&gt; RandomReal[{0, Pi}, 2000]}]; g1 = ListPointPlot3D[data1, BoxRatios -&gt; {1, 1, 1}] 球面上で一様分布させるには、下記のようにθにArcCosを使う (θの位置の確率をSinθに比例させたい→累積確率分布関数はCos→逆関数はArcCos)。 data2 = Transpose[{Sin[t] Cos[f], Sin[t] Sin[f], Cos[t]} /. { f -&gt; RandomReal[{0, 2 Pi}, 2000], t -&gt; ArcCos[RandomReal[{-1, 1}, 2000]]}]; g2 = ListPointPlot3D[data2, BoxRatios -&gt; {1, 1, 1}] なお、多次元球
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -106,15 +102,7 @@ data3 = Normalize /@ RandomReal[NormalDistribution[], {2000, 3}]; g3 = ListPoint
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		Nov. 29 2015:
- JavaScriptで実装した優先度付きキューをGitHubで公開→https://github.com/330k/priorityqueue_js/ 各ヒープのベンチマーク → http://330k.github.io/priorityqueue_js/benchmark.html  これにはFibonacci Heapも比較対象に入れてある  折れ線を間引くで書いたように、 Douglas-Peuckerアルゴリズムを改良して指定した点数まで点を削減して折れ線を簡略化する場合、 優先度付きキューを使うことになる。
-このアルゴリズムでは
- 始点と終点を結ぶ線分で最も距離が大きな点P1を選ぶ 始点と点P1を結ぶ線分で距離最大となる点P2をキューに登録(優先度は点P2と線分の距離) 点P1と終点を結ぶ線分で距離最大となる点P3をキューに登録(優先度は点P3と線分の距離) キューから距離が最大(=優先度最大)の点を選んで、2に戻る  という手順となるため、「キューに2つ登録して、1つ取り出す」ということを繰り返すことになる。
-そこで今回はランダムな優先度のデータを
- 連続して登録し、連続して取り出す(要はソートしているだけ) 「キューに2つ登録して、1つ取り出す」を繰り返すDouglas-Peuckerを想定した試験  という操作に対してどの優先度付きキューの実装が良い性能をしめすのか、ベンチマークを取ってみた。
-優先度付きキューの実装にはいくつか方法があるが、今回は以下の6種類を試してみた。
- Array.sort(): キューへの追加はArray.push()、キューから取り出すときに必要であればArray.sort()してArray.pop()する。非常に単純で楽チン。結果の検証用。 Selection: キューへの追加はArray.push()、キューから取り出すときに最大要素を選択。enqueue: O(1), dequeue: O(n2)。 Insertion: キューへの追加時に挿入ソートを行う。キューから取り出すときはArray.pop()するだけ。enqueue: O(n2), dequeue: O(1)。 Binary Insertion: キューへの追加時に二分挿入ソートを行う。あとは3と同じ。enqueue: O(n2), dequeue: O(1)。 Binary Heap: 二分ヒープ(wikipedia)での実装。ポインタなしで実装できるので省メモリ。java.util.PriorityQueueはこれらしい。enqueue: O(log(n)), dequeue: O(log(n))。 Pairing Heap: ペアリングヒープ(wikipedia: en)での実装。gcc(libstdc++)のpriority_queueはこれらしい。enqueue: O(log(n)), dequeue: O(log(n))。実装にはこれを参考にした。  いずれもJavaScriptで実装した。
-ベンチマーク結果 以下、Firefox 29とChromium 34での結果。単位はmsで、小さいほうが高速。 載せていないがVirtualBox上のWindows XPで測定してもほぼ同じ結果だった。
+		Nov. 29 2015: JavaScriptで実装した優先度付きキューをGitHubで公開→https://github.com/330k/priorityqueue_js/ 各ヒープのベンチマーク → http://330k.github.io/priorityqueue_js/benchmark.html これにはFibonacci Heapも比較対象に入れてある 折れ線を間引くで書いたように、 Douglas-Peuckerアルゴリズムを改良して指定した点数まで点を削減して折れ線を簡略化する場合、 優先度付きキューを使うことに
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -126,14 +114,7 @@ data3 = Normalize /@ RandomReal[NormalDistribution[], {2000, 3}]; g3 = ListPoint
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		 Explicit Runge-Kutta法の公式はいくつか知られているが、高次の公式になるほどButcher配列の項数が増えるため論文に誤植が多くなる。 それに気づかないまま実際に使うと、プログラムは正しく組めているはずなのに思うように精度が上がらないという落とし穴にはまってしまう。
-覚書として、以下に代表的と思われる公式のButcher tableauをまとめる。
-以下のButcher tableauはMathematica 8のNumericalDifferentialEquationAnalysisパッケージに含まれるRungeKuttaOrderConditionsで所定の次数条件を達成していることを確認しており、誤植が入り込まないようにそのままMathematica上で画像化している。
-使用したMathematicaノートブックはこちら。 必要な人はダウンロードして自分で計算して確認した後に使用してほしい。
-MathematicaにCやFortranのソースコード形式で吐かせるのが確実。
-※注意事項
-公式の名前や出典に関しては自信がないので、鵜呑みにしないこと。
-1段1次 Euler法   2段2次 修正Euler法   Heun法   Ralston法 3段3次 Heunの3次法   Kuttaの3次法   Ralstonの3次法 4段4次 古典的Runge-Kutta法   6段5次 Runge-Kutta-Fehlberg法のうち5次の部分   Runge-Kutta-Nystroemのうち5次の部分   Butcherによる5次公式を3つ       7段6次 Hammudによるもの   9段7次 Shanksによるもの   CooperとVernerによる7次公式   11段8次 CooperとVernerによる8次公式   16段9次 Vernerによる埋め込み型公式のうち9次のもの   
+		Explicit Runge-Kutta法の公式はいくつか知られているが、高次の公式になるほどButcher配列の項数が増えるため論文に誤植が多くなる。 それに気づかないまま実際に使うと、プログラムは正しく組めているはずなのに思うように精度が上がらないという落とし穴にはまってしまう。 覚書として、以下に代表的と思われる公式のButcher tableauをまとめる。 以下のButcher tableauはMathemati
 	</div>
 </article><article class="list__item post">
 	<figure class="list__thumbnail">
@@ -150,15 +131,7 @@ MathematicaにCやFortranのソースコード形式で吐かせるのが確実�
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		ある点が多角形の内側にあるのか外側にあるのかを判定するには主に
- ある点から直線をひいて多角形の辺と何回交差するか判定する(偶数回なら外、奇数回なら中) ある点から多角形の各頂点を順番に見ていったときに何回転するか  の2つの方法がある。
-しかし辺との交差回数をカウントするのは、直線と辺が平行だったり、頂点で交差したりする場合などに特別な配慮が必要なので、 ここでは2番目の方法で実装する。
-点から多角形上の点を順々に見たときの偏角(反時計まわりを正とする)の和を取ればよいので、ある点Pからみた多角形上の頂点Aから頂点Bまでの偏角∠APBを求める関数をまず作成する。
-この実装方法にもベクトルの外積を考えるなど何通りか考えられるが、せっかくMathematicaを使うので楽をして、複素数にしてArgで偏角をとることにする。
-Angle[{{x1_, y1_}, {x2_, y2_}, {x3_, y3_}}] := Module[{v1 = Complex[x1 - x3, y1 - y3], v2 = Complex[x2 - x3, y2 - y3]}, If[TrueQ[v1 == 0], 0, Arg[v2/v1]] ]  多角形の内外判定はMathematicaのPolygonなどの表示に合わせ、自己交差している場合は内部と外部を交互に繰り返すものとすると、
- 偏角の和が0、±4π、±8π、…のとき点は多角形の外 偏角の和が±2π、±6π、±10π…のとき点は多角形の中  とできる。
-以上より多角形の内外を判定する関数InsidePolygonQは以下のように実装できる。
-InsidePolygonQ[poly : {{_, _} ..}, p : {_, _}] := Module[ {argsum}, argsum = Round[Total[MapThread[Angle[{##, p}] &amp;, {poly, RotateLeft[poly]}]]/(2 Pi)]; OddQ[argsum] ]  丸め誤差が蓄積すると誤判定してしまうのだが、誤判定するために要求される丸め誤差はπなので、多分大丈夫だと思われる。
+		ある点が多角形の内側にあるのか外側にあるのかを判定するには主に ある点から直線をひいて多角形の辺と何回交差するか判定する(偶数回なら外、奇数回なら中) ある点から多角形の各頂点を順番に見ていったときに何回転するか の2つの方法がある。 しかし辺との交差回数をカウントするのは、直線と辺が平行だったり、頂点で交差したりする場合などに特別な配慮が必要なので、 ここでは2番目の方法で実装する。 点から多角形上の点を順
 	</div>
 </article><article class="list__item post">
 	<figure class="list__thumbnail">
@@ -175,15 +148,7 @@ InsidePolygonQ[poly : {{_, _} ..}, p : {_, _}] := Module[ {argsum}, argsum = Rou
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		読み込んだGPSログのデータを間引きたい、と思って調べたところ、 (Ramer-)Douglas-Peuckerのアルゴリズムというものがあることが分かった。
-基本的な考え方は、
- 折れ線の始点と終点を結ぶ線分と各点の距離を求める。 すべての点との距離が許容誤差ε以内に入っていれば始点と終点だけを返して終了。 そうでなければ距離が最大の点Pを1つ選択。 始点から点Pまでの折れ線と、点Pから終点までの折れ線のそれぞれについてまた1から処理する。  という再帰的なもの。
-再帰的なものはMathematicaの得意分野なので、MathematicaでRamer-Douglas-Peuckerのアルゴリズムを実装してみた。
-線分と点の距離 さて、まずは線分と点の距離を求める関数を作成する。
-ネットで検索すると直線と点の距離を求めるものが多いが、線分と点の距離のほうが形状をよく保存できるのではないだろうか、と個人的に考えている。
-線分ABに点Pから下ろした垂線の足が点Hだとすると、
- 線分ABと直線PHは直交⇔内積が0 点Hは直線AB上にある⇔実数tに対してB = t H(B、Hは点Aから見た点B、点Hの位置ベクトル)  の条件から、Hの座標と実数tの値が求まる。 Mathematicaを使うと
-A = {ax, ay}; B = {bx, by}; P = {px, py}; H = {x, y}; Solve[{ (H - A).(P - H) == 0, H == A + (B - A) t }, {x, y, t}][[2]] // FullSimplify {x -&gt; (ay^2 bx + ax^2 px + ax ay (-by + py) - ay bx (by + py) + ax (by^2 - 2 bx px - by py) + bx (bx px + by py))/((ax - bx)^2 + (ay - by)^2), y -&gt; ((ax - bx) (by (ax - px) + ay (-bx + px)) + (ay - by)^2 py)/((ax - bx)^2 + (ay - by)^2), t -&gt; (ax^2 + ay^2 + bx px - ax (bx + px) + by py - ay (by + py))/((ax - bx)^2 + (ay - by)^2)}  となる。 これは2次元の場合だが、一般に
+		読み込んだGPSログのデータを間引きたい、と思って調べたところ、 (Ramer-)Douglas-Peuckerのアルゴリズムというものがあることが分かった。 基本的な考え方は、 折れ線の始点と終点を結ぶ線分と各点の距離を求める。 すべての点との距離が許容誤差ε以内に入っていれば始点と終点だけを返して終了。 そうでなければ距離が最大の点Pを1つ選択。 始点から点Pまでの折れ線と、点Pから終点までの折れ線のそれ
 	</div>
 </article>
 </main>

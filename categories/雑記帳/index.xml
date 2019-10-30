@@ -17,17 +17,7 @@
       <pubDate>Fri, 01 Mar 2019 07:01:13 +0900</pubDate>
       
       <guid>https://www.330k.info/essay/show-only-first-images/</guid>
-      <description>もうjQueryも古いと言われているが、会社のウェブサイトでjQueryプラグインのbxSliderが使われている。
-Google先生のPageSpeed Insightに注意されたとおり、レンダリングブロックするJavaScriptを後ろ(&amp;lt;/body&amp;gt;直上)に配置したところ、 2枚目以降の画像が一瞬表示されてしまう現象が発生。
-これはJSをレンダリングブロックしないように後ろに配置したり、deferをつけたときに、ブラウザが
- HTMLをロード CSSを読み込み CSSに従って要素を配置 ← このときに一瞬表示 JavaScript読み込み bxSliderプラグインによってCSS書き換え 書き換えられたCSSでDOM要素を再配置 ← このときに2番目以降が消える  という順番で処理されるため。
-なので、CSSで最初から2番目以降を表示しないようにしておけばよい。 具体的には、.bxsliderの2番目以降の子要素にdisplay: none;を指定すればよく、下記のようにする。
-&amp;lt;ul class=&amp;quot;bxslider&amp;quot;&amp;gt; &amp;lt;li&amp;gt;&amp;lt;div class=&amp;quot;slide&amp;quot;&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;/li&amp;gt; &amp;lt;li&amp;gt;&amp;lt;div class=&amp;quot;slide&amp;quot;&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;/li&amp;gt; &amp;lt;li&amp;gt;&amp;lt;div class=&amp;quot;slide&amp;quot;&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;/li&amp;gt; &amp;lt;li&amp;gt;&amp;lt;div class=&amp;quot;slide&amp;quot;&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;/li&amp;gt; &amp;lt;li&amp;gt;&amp;lt;div class=&amp;quot;slide&amp;quot;&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;/li&amp;gt; &amp;lt;li&amp;gt;&amp;lt;div class=&amp;quot;slide&amp;quot;&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;/li&amp;gt; &amp;lt;/ul&amp;gt;  .bxslider li:not(:first-child){ display: none; }  :not(:first-child)が2番目以降の子要素を示す擬似クラス。 ここ最近のブラウザならすべて対応している(:first-childはCSS2.1、:notはCSS3)。
-参考 ちょっと古い記事だが、他の方も同様の問題に対処している。
- 「bxSlider」で画像が一度に出てしまう際の対処 [bxSlider]スライドショー読み込み時に画像が一瞬バラけてしまう場合の超簡単な対処法  ただ、
- 2番目以降ではなくすべての子要素を消してしまっていて、JavaScript実行前は逆に画像が1枚も表示されず、実行後に要素の再配置が発生してしまっている  その対処として表示領域のwidthとheightを指定している  IDで2番目以降の要素を指定している  というやり方で、
- レスポンシブにするため、CSSの別の場所で細かく画像の大きさを場合分けしている ページによってスライドショーの画像の枚数やIDに違いがある  という点で私の会社のサイトに合わず、そのままでは採用できなかった。
-なお、今回の対応に寄って2番目以降の画像が一瞬表示されるという見た目の問題以外にも、 JavaScript(bxSlider)実行後も要素の再配置が発生しないので表示が高速になる利点もある。</description>
+      <description>もうjQueryも古いと言われているが、会社のウェブサイトでjQueryプラグインのbxSliderが使われている。 Google先生のPageSpeed Insightに注意されたとおり、レンダリングブロックするJavaScriptを後ろ(&amp;lt;/body&amp;gt;直上)に配置したところ、 2枚目以降の画像が一瞬表示されてしまう現象が発生。 これはJSをレンダリングブロックしないように後ろに配置したり、</description>
     </item>
     
     <item>
@@ -36,12 +26,7 @@ Google先生のPageSpeed Insightに注意されたとおり、レンダリング
       <pubDate>Tue, 17 Jul 2018 07:03:25 +0900</pubDate>
       
       <guid>https://www.330k.info/essay/start-command-prompt-in-windows-10/</guid>
-      <description> 元ネタ: Windows 10でコマンドプロンプトを素早く起動する方法
-私が業務で使うときは以下の手順で起動している。 設定が不必要で、おそらく最速。
-管理者権限でコマンドプロンプトを起動する  [Windows] + [X] → [A]で管理者権限でPowerShellを起動 UACのダイアログが出たら許可する PowerShell上で「cmd」と入力してEnter。  UACがONのときでもキーストローク数は9ストローク。
-コマンドプロンプトを起動しなくても、
- コマンドプロンプトとほぼ同じ操作ができるようにPowerShellのAliasが設定されている 将来性を考えたらPowerShellに慣れていたほうが得  と思うので、PowerShellを起動するだけで良いのであれば、キーストローク数は5ですむ。
-    </description>
+      <description>元ネタ: Windows 10でコマンドプロンプトを素早く起動する方法 私が業務で使うときは以下の手順で起動している。 設定が不必要で、おそらく最速。 管理者権限でコマンドプロンプトを起動する [Windows] + [X] → [A]で管理者権限でPowerShellを起動 UACのダイアログが出たら許可する PowerShell上で「cmd」と入力してEnter。 UACがONのときでもキーストローク数は9ストローク。 コマンドプロンプトを起動しなくて</description>
     </item>
     
     <item>
@@ -50,13 +35,7 @@ Google先生のPageSpeed Insightに注意されたとおり、レンダリング
       <pubDate>Wed, 30 May 2018 20:06:18 +0900</pubDate>
       
       <guid>https://www.330k.info/essay/earth_radius/</guid>
-      <description>ある書物で、地球の半径を東大生の何割かがオーダーが違うレベルで間違う、ということが書いてあった(誰の著作だったか忘れてしまった・・・)。
-ただ、地球の周長や半径の概数は、暗記する必要はまったくない。
-なぜなら、「1キロメートルの基準が、赤道から北極までの長さの1万分の1」としてメートル法が決められたから。 覚えるのはこれだけで良い。
-だから、地球一周は4倍の約40,000 km。半径は円周率の2倍で割って約6,400 kmというのは計算で出せる。
-正確な数値としては、極周長が40,075 km、赤道周長が39,941 km、半径が6,357 km。
-ちなみに、メートル法が地球を基準にしたのは、 フランス革命後にそれまでの為政者が使用させていた単位(インチやフィートは指や足の長さが由来で、1 footが約30cmなどのように権威を高めるため普通の人のサイズよりも大きめになっている)をやめて、 全世界で共通で使える単位を作ろう、という目的でメートル法が作られたから。
-メートル法はフランス革命由来なので、国際単位系は英語のInternational System of Unitsではなく、フランス語のSystème International d&amp;rsquo;unitésの語順でSIと呼ばれる。</description>
+      <description>ある書物で、地球の半径を東大生の何割かがオーダーが違うレベルで間違う、ということが書いてあった(誰の著作だったか忘れてしまった・・・)。 ただ、地球の周長や半径の概数は、暗記する必要はまったくない。 なぜなら、「1キロメートルの基準が、赤道から北極までの長さの1万分の1」としてメートル法が決められたから。 覚えるのはこれだけで良い。 だから、地球一周は4倍の約40,000 km。半径は円周率の2倍で割って約</description>
     </item>
     
     <item>
@@ -65,13 +44,7 @@ Google先生のPageSpeed Insightに注意されたとおり、レンダリング
       <pubDate>Tue, 22 May 2018 04:34:15 +0900</pubDate>
       
       <guid>https://www.330k.info/essay/mathematica-special-notation/</guid>
-      <description>Mathematicaの省略記法はドキュメントやヘルプで調べにくいのでまとめてみる。
-関数適用 @ (前置記法) f@aはf[a]と等価。 後ろのカッコ(])を入力しなくてもすむ。
-Plot[Evaluate@Integrate[x^2, x], {x, -3, 3}]  // (後置記法) a // fはf[a]と等価。 数値にする(N)や簡約化(Simplify、FullSimplify)でよく使う。
-In[1]:= Sin[2] // N Out[1]= 0.909297  ~ ~ (中置記法) a~f~bとすると、f[a, b]と等価になる。
-In[1]:= {1, 2}~Join~{3, 4} Out[1]= {1, 2, 3, 4}  関数適用 &amp;amp;, #, ### (Function) 純関数。#1、#2・・・が引数を表す。#は#1と同じ。 #0は関数自体表す。##は引数全体。
-関数型プログラミングの基本。
-In[1]:= If[#1 == 1, 1, #1 #0[#1 - 1]] &amp;amp;[10] Out[1]= 3628800  /@ (Map) f /@ {1, 2, 3, 4}はMap[f, {1, 2, 3, 4}]と等価。 関数型プログラミングの基本。</description>
+      <description>Mathematicaの省略記法はドキュメントやヘルプで調べにくいのでまとめてみる。 関数適用 @ (前置記法) f@aはf[a]と等価。 後ろのカッコ(])を入力しなくてもすむ。 Plot[Evaluate@Integrate[x^2, x], {x, -3, 3}] // (後置記法) a // fはf[a]と等価。 数値にする(N)や簡約化(Simplify、FullSimplify)でよく使う。 In[1]:= Sin[2] // N Out[1]= 0.909297 ~ ~ (中置記法) a~f~bとすると、f[a, b]と等価になる。 In[1]:= {1, 2}~Join~{3, 4} Out[1]= {1, 2, 3, 4} 関数適用</description>
     </item>
     
     <item>
@@ -80,13 +53,7 @@ In[1]:= If[#1 == 1, 1, #1 #0[#1 - 1]] &amp;amp;[10] Out[1]= 3628800  /@ (Map) f 
       <pubDate>Tue, 15 May 2018 07:38:59 +0900</pubDate>
       
       <guid>https://www.330k.info/essay/text_garbled_in_snap_apps_in_ubuntu_18_04/</guid>
-      <description>Ubuntu 17.10から18.04 LTSにアップデートしたところ、それまで使っていたコミックビューア(comix)がなくなっていた。
-Ubuntuソフトウェアから探したところ、mcomix-tabetaiというSnapパッケージがあったので、それをインストールしたところ、日本語が全部豆腐に・・・。
-ということで、一旦英語にして起動。 ターミナルから以下のコマンドを入力。
-$ LANG=C mcomix-tabetai  設定(Preferences)から言語をEnglishにする。
-  これで終了すれば、次回は通常通り起動すれば言語設定が英語になっている。 めでたしめでたし。
-ちなみに、snapでインストールしたパッケージに含まれるコマンドは以下のようにして調べられる。
-$ snap info mcomix-tabetai name: mcomix-tabetai summary: User-friendly, customizable image viewer specifically designed to handle comic books. publisher: lolsmth license: unknown description: | MComix is a user-friendly, customizable image viewer. It is specifically designed to handle comic books (both Western comics and manga) and supports a variety of container formats (including CBR, CBZ, CB7, CBT, LHA and PDF).</description>
+      <description>Ubuntu 17.10から18.04 LTSにアップデートしたところ、それまで使っていたコミックビューア(comix)がなくなっていた。 Ubuntuソフトウェアから探したところ、mcomix-tabetaiというSnapパッケージがあったので、それをインストールしたところ、日本語が全部豆腐に・・・。 ということで、一旦英語にして起動。 ターミナルから以下のコマンドを入力。 $ LANG=C mcomix-tabetai 設定(Preferences)から言</description>
     </item>
     
     <item>
@@ -95,11 +62,7 @@ $ snap info mcomix-tabetai name: mcomix-tabetai summary: User-friendly, customiz
       <pubDate>Mon, 26 Feb 2018 02:19:51 +0900</pubDate>
       
       <guid>https://www.330k.info/essay/letsencrypt-ubuntu-1604/</guid>
-      <description>海外の格安VPS、AlaphaRacksでHTTPSのHTTPサーバを立てたので、その作業録。
-環境 Chinese Year Specialという年間$8のプランを契約。 Ubuntuのバージョンは16.04なのだが、カーネルのバージョンは2.6.32の古め。 そのため、dockerは使えない。
-# uname -r 2.6.32-042stab127.2  # cat /etc/lsb-release DISTRIB_ID=Ubuntu DISTRIB_RELEASE=16.04 DISTRIB_CODENAME=xenial DISTRIB_DESCRIPTION=&amp;quot;Ubuntu 16.04 LTS&amp;quot;  ApacheのSSLモジュール有効化 SSLモジュールを有効化し、a2ensiteでHTTPSサイトを有効化する。 あとは設定ファイルにServerNameを追加する。
-# a2enmod ssl # vi /etc/apache2/sites-available/default-ssl.conf ServerAdmin xxx@yyy.zzz (変更) ServerName xxx.yyy.zzz (追加) # a2ensite default-ssl # service apache2 reload  Let&amp;rsquo;s Encryptのインストールと設定 # apt-get install letsencrypt python-letsencrypt-apache  Apacheを止めてから、Let&amp;rsquo;s Encryptを実行。
-# service apache2 stop # letsencrypt --authenticator standalone --installer apache # service apache2 start  この時点でブラウザからHTTPSでアクセスできるはずなので確認。</description>
+      <description>海外の格安VPS、AlaphaRacksでHTTPSのHTTPサーバを立てたので、その作業録。 環境 Chinese Year Specialという年間$8のプランを契約。 Ubuntuのバージョンは16.04なのだが、カーネルのバージョンは2.6.32の古め。 そのため、dockerは使えない。 # uname -r 2.6.32-042stab127.2 # cat /etc/lsb-release DISTRIB_ID=Ubuntu DISTRIB_RELEASE=16.04 DISTRIB_CODENAME=xenial DISTRIB_DESCRIPTION=&amp;quot;Ubuntu 16.04 LTS&amp;quot; ApacheのSSLモジュール有効化 SSLモジュールを有効化し、a2ensiteでHTTPSサイトを有効化</description>
     </item>
     
     <item>
@@ -108,15 +71,7 @@ $ snap info mcomix-tabetai name: mcomix-tabetai summary: User-friendly, customiz
       <pubDate>Thu, 21 Dec 2017 00:00:00 +0900</pubDate>
       
       <guid>https://www.330k.info/essay/ubuntu_nvidia_cuda_mathematica_geforce1060/</guid>
-      <description>MathematicaからCUDAを使いたかったので、GPU搭載のノートPCを購入してセットアップした。
-購入PC PC工房のGeForce 1060搭載ノートPC(OSなし) : STYLE-15FX093-i7-RNFR [OS LESS]
- CPU: Intel Core i7-7700HQ 2.8GHz Memory: 16GB Storage: SSD 240GB + HDD 2TB GPU: NVIDIA GeForce 1060 6GB  Ubuntu 17.10 日本語Remixをダウンロード 旧PC(Ubuntu 16.04)で Ubuntu Desktop 日本語 Remixのダウンロードから、ubuntu-ja-17.10-desktop-amd64.isoをダウンロード。 ddでUSBメモリに書き込む。
-sudo dd if=ubuntu-ja-17.10-desktop-amd64.iso of=/dev/sde status=progress  ファームウェア設定 新PCに電源を入れ、ファームウェア設定画面に入り、起動モードをUEFIからBIOSに変更する。
-Ubuntuインストール USBメモリを挿入してPCを再起動し、インストールする。
- 言語は日本語を選択 サードパーティー製のドライバを・・・にチェック SSD(/dev/sda)を「/」(ext4)に、HDD(/dev/sdb)を「/home」にマウント ブートローダを/dev/sdaにインストール ホームディレクトリを暗号化にチェック(お好みで)  インストールができたらUSBメモリを抜いて再起動。
-Ubuntuが無事に起動し、ログインできたら、まずはディレクトリ名を日本語から英語に直してから作業開始。
-LANG=C xdg-user-dirs-gtk-update  DKMSがうまく動かないので、カーネルのバージョンを固定する。
-sudo apt-mark hold linux-generic linux-image-generic linux-headers-generic  NVIDIA Driver 公式リポジトリにあるnvidia-387をインストールする。 デフォルトのnouveauの無効化は不要だった。</description>
+      <description>MathematicaからCUDAを使いたかったので、GPU搭載のノートPCを購入してセットアップした。 購入PC PC工房のGeForce 1060搭載ノートPC(OSなし) : STYLE-15FX093-i7-RNFR [OS LESS] CPU: Intel Core i7-7700HQ 2.8GHz Memory: 16GB Storage: SSD 240GB + HDD 2TB GPU: NVIDIA GeForce 1060 6GB Ubuntu 17.10 日本語Remixをダウンロード 旧PC(Ubuntu 16.04)で Ubuntu Desktop 日本語 Remixのダウンロードから、ubuntu-ja-17.10-desktop-amd64.isoをダウンロー</description>
     </item>
     
     <item>
@@ -125,9 +80,7 @@ sudo apt-mark hold linux-generic linux-image-generic linux-headers-generic  NVID
       <pubDate>Thu, 19 Oct 2017 20:48:53 +0900</pubDate>
       
       <guid>https://www.330k.info/essay/resize_and_pad_with_imagemagick/</guid>
-      <description>ImageMagickで以下のようなことをやる機会があったのでメモ。 今回は元画像がIllustratorファイルだったが、 他のベクタ形式の画像からでも背景透過PNGを作成するときに使えると思う。
- 元データはIllustratorファイル(.ai) 元の画像の余白部は削除する 220x110の長方形に入るようにリサイズ 上下左右に余白をつける 出来上がりの画像サイズは230x180 背景は透過させる(きれいに透過させたい)  コマンド convert -colorspace sRGB -density 576 -filter Point &amp;quot;元ファイル.ai&amp;quot; -trim -alpha set -fill &#39;#000000ff&#39; -opaque &#39;#ffffff&#39; -background transparent +filter -resize 220x110 -gravity center -extent 230x180 出力ファイル.png  説明 アンチエイリアスを切った状態で透過色を設定し、その後アンチエイリアスをONにして縮小するところがミソ。 これで中間色の部分をきれいに半透過にできる。
-   オプション 説明     -colorspace sRGB カラースペースをsRGBに設定   -density 576 出力されるPNGファイルの解像度が72dpiだったので、その8倍で読み込むよう設定   -filter Point アンチエイリアスをOFFに設定   &amp;quot;元ファイル.ai&amp;quot; 画像ファイルを読み込む   -trim 元画像の余白を削除   -alpha set -fill &#39;#000000ff&#39; -opaque &#39;#ffffff&#39; 白(#ffffff)を透過に指定   -background transparent 出力画像の背景を透明に設定   +filter リサイズする時はアンチエイリアスON(上で設定された-filter Pointを無効化)   -resize 220x110 最大サイズを220x110に縮小   -gravity center -extent 230x180 画像中央を中心に上下左右に余白を作って230x180にする   出力ファイル.</description>
+      <description>ImageMagickで以下のようなことをやる機会があったのでメモ。 今回は元画像がIllustratorファイルだったが、 他のベクタ形式の画像からでも背景透過PNGを作成するときに使えると思う。 元データはIllustratorファイル(.ai) 元の画像の余白部は削除する 220x110の長方形に入るようにリサイズ 上下左右に余白をつける 出来上がりの画像サイズは230x180 背景は透過させる(きれいに透</description>
     </item>
     
     <item>
@@ -136,11 +89,7 @@ sudo apt-mark hold linux-generic linux-image-generic linux-headers-generic  NVID
       <pubDate>Mon, 02 Oct 2017 23:44:23 +0900</pubDate>
       
       <guid>https://www.330k.info/essay/logging_shared_pc_user/</guid>
-      <description>会社で個々人のPCのセキュリティをガチガチに固めたりしていると、何かと融通がきかない。 そのため、セキュリティ設定緩めの共有PCを1台と共有アカウントを1個用意し、やむを得ない時には利用してもらっている。
-そのため、SKYSEAでログは取っているものの、実際に誰が操作しているのか分からない、という問題があった。
-それを解決するため、PCに付属のカメラで、ログイン時に正面にいる人の顔を記録することにした。
-前準備  ffmpegをダウンロードする ffmpegにPATHを通す ffmpegでウェブカメラのデバイスや対応する解像度、フレームレートを調べておく  VBScript 以下のVBScriptファイルを適当なところに配置。 内容はスクリプト起動後、5秒間、ウェブカメラの映像を記録して、管理者用メールアドレスに送信する。
-Option Explicit On Error Resume Next Dim objShell Dim objFS Dim strDate Dim strFilePath Dim objNetwork Dim objMsg Set objShell = CreateObject(&amp;quot;WScript.Shell&amp;quot;) Set objFS = CreateObject(&amp;quot;Scripting.FileSystemObject&amp;quot;) strDate = Year(Now()) strDate = strDate &amp;amp; Right(&amp;quot;0&amp;quot; + Month(Now()), 2) strDate = strDate &amp;amp; Right(&amp;quot;0&amp;quot; + Day(Now()), 2) strDate = strDate &amp;amp; Right(&amp;quot;0&amp;quot; + Hour(Now()), 2) strDate = strDate &amp;amp; Right(&amp;quot;0&amp;quot; + Minute(Now()), 2) strDate = strDate &amp;amp; Right(&amp;quot;0&amp;quot; + Second(Now()), 2) strFilePath = objFS.</description>
+      <description>会社で個々人のPCのセキュリティをガチガチに固めたりしていると、何かと融通がきかない。 そのため、セキュリティ設定緩めの共有PCを1台と共有アカウントを1個用意し、やむを得ない時には利用してもらっている。 そのため、SKYSEAでログは取っているものの、実際に誰が操作しているのか分からない、という問題があった。 それを解決するため、PCに付属のカメラで、ログイン時に正面にいる人の顔を記録することにした。</description>
     </item>
     
     <item>
@@ -149,10 +98,7 @@ Option Explicit On Error Resume Next Dim objShell Dim objFS Dim strDate Dim strF
       <pubDate>Mon, 02 Oct 2017 23:27:45 +0900</pubDate>
       
       <guid>https://www.330k.info/essay/measure_video_events_with_google_analytics/</guid>
-      <description>会社のウェブサイトに貼ってある動画ファイルが、実際にどれだけ再生されているのか調査するべく、 Google Analyticsのイベントで計測するためのコードを作ってみた。
-計測対象は以下のイベント。
- 再生開始(play) 最後まで再生(ended) 一時停止(pause) 再生再開(resume) シークした(seeked) どこまで再生したか(動画時間の10%, 25%, 50%, 75%, 90%)  HTML側 &amp;lt;video id=&amp;quot;movie001&amp;quot; width=&amp;quot;(動画幅)&amp;quot; height=&amp;quot;(動画高さ)&amp;quot; title=&amp;quot;Movie Title&amp;quot;&amp;gt; &amp;lt;source src=&amp;quot;(動画ファイルのパス)&amp;quot; type=&amp;quot;video/mp4&amp;quot; /&amp;gt; &amp;lt;/video  JavaScript側(jQuery使用) イベントカテゴリに「video」、イベントアクションにplay、play_endなど。 イベントラベルには動画のtitle属性をセット。
-$(function(){ var oldratio = 0.0; $(&#39;video&#39;).on(&#39;play&#39;, function(e) { on(&#39;play&#39;, function(e) { if(e.target.currentTime &amp;gt; 0){ ga(&#39;send&#39;,&#39;event&#39;,&#39;video&#39;,&#39;resume&#39;,e.target.getAttribute(&#39;title&#39;)); }else{ ga(&#39;send&#39;,&#39;event&#39;,&#39;video&#39;,&#39;play&#39;,e.target.getAttribute(&#39;title&#39;)); } }).on(&#39;ended&#39;, function(e) { ga(&#39;send&#39;,&#39;event&#39;,&#39;video&#39;,&#39;play_end&#39;,e.target.getAttribute(&#39;title&#39;)); }).on(&#39;pause&#39;, function(e) { ga(&#39;send&#39;,&#39;event&#39;,&#39;video&#39;,&#39;pause&#39;,e.target.getAttribute(&#39;title&#39;)); }).on(&#39;seeked&#39;, function(e) { ga(&#39;send&#39;,&#39;event&#39;,&#39;video&#39;,&#39;seeked&#39;,e.target.getAttribute(&#39;title&#39;)); }).on(&#39;timeupdate&#39;, function(e) { var ratio = e.target.currentTime / e.</description>
+      <description>会社のウェブサイトに貼ってある動画ファイルが、実際にどれだけ再生されているのか調査するべく、 Google Analyticsのイベントで計測するためのコードを作ってみた。 計測対象は以下のイベント。 再生開始(play) 最後まで再生(ended) 一時停止(pause) 再生再開(resume) シークした(seeked) どこまで再生したか(動画時間の10%, 25%, 50%, 75%, 90%) HTML側 &amp;lt;video id=&amp;quot;movie001&amp;quot; width=&amp;quot;(動画幅)&amp;q</description>
     </item>
     
     <item>
@@ -161,11 +107,7 @@ $(function(){ var oldratio = 0.0; $(&#39;video&#39;).on(&#39;play&#39;, function
       <pubDate>Wed, 06 Sep 2017 00:57:48 +0900</pubDate>
       
       <guid>https://www.330k.info/essay/delete_temporary_files_with_powershell/</guid>
-      <description>ファイルサーバの空き容量が減ってきたので調べてみたら、 削除されていないOfficeファイルの一時ファイルや、Thumbs.dbが結構あることが分かった。
-Thumbs.dbはグループポリシーでネットワークドライブ上では生成しないようにしているはずだが、 ローカルのフォルダをファイルサーバにコピーすると、一緒にくっついてくるらしい。
-以下のPowerShellスクリプトをタスクスケジューラに登録して、定期的(1日1回)にゴミ掃除。
-$a = @() $a += Get-ChildItem &amp;quot;(掃除対象フォルダのパス1)&amp;quot; -Force -Recurse $a += Get-ChildItem &amp;quot;(掃除対象フォルダのパス2)&amp;quot; -Force -Recurse $a += Get-ChildItem &amp;quot;(掃除対象フォルダのパス3)&amp;quot; -Force -Recurse $a | Where-Object { ` $_.Name -like &amp;quot;~*&amp;quot; -and $_.LastWriteTime -lt (Get-Date).AddDays(-1) ` -or $_.Name -like &amp;quot;*.tmp&amp;quot; ` -or $_.Name -eq &amp;quot;Thumbs.db&amp;quot; ` -or $_.Name -eq &amp;quot;.DS_Store&amp;quot; ` -or $_.Name -like &amp;quot;._*&amp;quot; ` } | Remove-Item -Force  削除対象は以下の通り。
- 更新日時が1日以上前のOffice一時ファイル(&amp;quot;~*&amp;quot;) 拡張子が&amp;quot;tmp&amp;quot;のファイル &amp;quot;Thumbs.db&amp;quot; .DS_Storeや._*などのMac OSで使用されるファイル  </description>
+      <description>ファイルサーバの空き容量が減ってきたので調べてみたら、 削除されていないOfficeファイルの一時ファイルや、Thumbs.dbが結構あることが分かった。 Thumbs.dbはグループポリシーでネットワークドライブ上では生成しないようにしているはずだが、 ローカルのフォルダをファイルサーバにコピーすると、一緒にくっついてくるらしい。 以下のPowerShellスクリプトをタスクスケジューラに登録して、定期</description>
     </item>
     
     <item>
@@ -174,22 +116,7 @@ $a = @() $a += Get-ChildItem &amp;quot;(掃除対象フォルダのパス1)&amp;
       <pubDate>Mon, 21 Aug 2017 22:38:20 +0900</pubDate>
       
       <guid>https://www.330k.info/essay/scramble_unicode_lro_rlo/</guid>
-      <description>Unicode制御文字のうち、LRO(Left-to-right override, U+202D)とRLO(Right-to-left override, U+202E)は 行中でも文字列の方向を変更する。
-1行の中に何度もLROとRLOが入ると、カーソルキーが踊って楽しいことになる。
-例: 下のテキストボックスの中の文字列を編集したり、カーソルキーで移動しようとしても上手くできないはず。
-‮‭い‮を‭ろ‮る‭は‮ぬ‭に‮り‭ほ‮ち‭へ ‮‭わ‮む‭か‮ら‭よ‮な‭た‮ね‭れ‮つ ‮‭う‮て‭ゐ‮え‭の‮こ‭お‮ふ‭く‮け‭や ‮‭あ‮す‭さ‮せ‭き‮も‭ゆ‮ひ‭め‮ゑ‭み 
-※ Edgeは表示が崩れるので、Ctrl + A→Ctrl + Cでメモ帳にコピペで確認可能。
-表示上は普通のいろは順にひらがなが並んでいるように見えるが、 実際のデータはまったく違う順序になっている。
-↓通常のテキスト (比較用)
-いろはにほへとちりぬるを わかよたれそつねならむ うゐのおくやまけふこえて あさきゆめみしゑひもせす 
-作り方 行内の文字列の順番を入れ替えつつ、LROとRLOを交互に挿入。
-以下のMathematicaコードで上記の例を作成した。
-StringScrumble[str_String] := Module[{chars, chars2}, StringJoin[Riffle[( chars = ToCharacterCode[#]; chars2 = Join[{16^^202e}, Riffle[chars, Reverse[chars]]][[1 ;; Length[chars]]]; FromCharacterCode[Riffle[chars2, {16^^202d, 16^^202e}]]) &amp;amp; /@ StringSplit[str, &amp;quot;\n&amp;quot;] , StringCases[str, &amp;quot;\n&amp;quot;]]]] StringScrumble[&amp;quot;いろはにほへとちりぬるを\nわかよたれそつねならむ\nうゐのおくやまけふこえて\nあさきゆめみしゑひもせす&amp;quot;]  各種デバイス・アプリでの表示 上記の文章をメールで送信し、各種端末で受信メールで表示してみた。
-ChromeやFirefoxなどブラウザは狙い通り表示された。 Edgeはテキストボックス内ではダメだったが、それ以外の場所ではOK。 Outlookでの表示もOK。
-iPhoneのメッセージ、メール、GmailはいずれもOK。
-テキストエディタについてもどう表示されるか確認した。
-メモ帳は意外にもちゃんとBiDi対応だった。 geditは行頭にRLOがあると右寄せで表示してしまう(こういう表示のほうが正しいかもしれないが)。
- Windows 10  Edge:    Outlook:    メモ帳:     Ubuntu 16.</description>
+      <description>Unicode制御文字のうち、LRO(Left-to-right override, U+202D)とRLO(Right-to-left override, U+202E)は 行中でも文字列の方向を変更する。 1行の中に何度もLROとRLOが入ると、カーソルキーが踊って楽しいことになる。 例: 下のテキストボックスの中の文字列を編集したり、カーソルキーで移動しようとしても上手くできないはず。 ‮‭い‮を‭ろ‮る‭は‮ぬ‭に‮り‭ほ‮ち‭へ ‮‭わ‮</description>
     </item>
     
     <item>
@@ -198,19 +125,7 @@ iPhoneのメッセージ、メール、GmailはいずれもOK。
       <pubDate>Tue, 08 Aug 2017 19:24:04 +0900</pubDate>
       
       <guid>https://www.330k.info/essay/move_to_github_pages_hugo_from_google_sites/</guid>
-      <description>今まで独自ドメインでGoogleサイトを利用してきたが、
- 「新しいGoogleサイト」の機能が全然ダメ(特にガジェットが使えなくなる)で使い物にならない Google自身が推進している常時SSL化も独自ドメインでは機能しない(正確にはMixed Contentsを修正できない) 無駄に色々と読み込むせいで遅い  ということで他のサービスへの移転を決断。
-AWSやGCP上に構築することも考えたものの、 大したPVでもないので無料で使える組み合わせとして、以下の構成にした。
- Hugoを使って静的にサイトを生成 GitHub Pagesにアップロード CloudFlareを使って常時HTTPS化に対応  Hugo + GitHub Pagesの部分は Hugo + Github Pagesでブログを公開してみた を参考にした。
-Hugo Ubuntuではapt-getでHugoをインストールできる(最新版とは限らないので注意)。
-$ sudo apt-get install hugo  テーマは、少し古いバージョンのHugoでも動作するMainroadに決定。 後は以下の作業を実施。
- 今までGoogleサイトのガジェットで行っていたGoogle MapsでのKMLファイルの表示を行うShortcodeを作成。 CSSファイルをいじって横幅を拡大。 コードのシンタックスハイライトを行うため、highlight.jsを読み込むようlayouts/partials/header.htmlを修正。  GitHub GitHubにGitHub Pages用のリポジトリとHugo自体のリポジトリを作成。
-ここでUser Pages(リポジトリ名: (ユーザ名).github.io)で作成し、 CNAMEファイルで独自ドメインを設定すると、 GitHubの他のリポジトリにも独自ドメインの設定が反映される。
-そのため、今まで(ユーザ名).github.io/(プロジェクト名)/のURLが (独自ドメイン)/(プロジェクト名)/にリダイレクトされるようになる。
-既存のプロジェクトページすべてのURLが変更になってしまうし、 今後ホスティング先をGitHub Pagesから別のサービスに移行するときにまた変更することになる。 そこでUser Pagesは作成せず、Project Pagesとして作成する。
-c.f. Custom domain redirects for GitHub Pages sites
-ページ移転作業 各ページを手作業でコピペ。 1日5ページ〜10ページくらい移行作業した。
-画像については、Chromeの開発者ツールで、</description>
+      <description>今まで独自ドメインでGoogleサイトを利用してきたが、 「新しいGoogleサイト」の機能が全然ダメ(特にガジェットが使えなくなる)で使い物にならない Google自身が推進している常時SSL化も独自ドメインでは機能しない(正確にはMixed Contentsを修正できない) 無駄に色々と読み込むせいで遅い ということで他のサービスへの移転を決断。 AWSやGCP上に構築することも考えたものの、 大したPVで</description>
     </item>
     
     <item>
@@ -219,21 +134,7 @@ c.f. Custom domain redirects for GitHub Pages sites
       <pubDate>Thu, 27 Jul 2017 21:21:29 +0900</pubDate>
       
       <guid>https://www.330k.info/essay/author_dvd_from_movie_file_on_windows/</guid>
-      <description>「この動画ファイルをDVDに焼いて。簡単でしょ。」
- いやいや、DVD-Video規格に沿った動画ファイルとファイル構造にしないといけないんですけど。
-Windows用のオーサリングソフトはフリーでも色々あるが、どれが良いのかよくわからないので、 ffmpeg + dvdauthor + mkisofsでISOファイルを作成するバッチファイルを作成した。
-参考サイト : http://d.hatena.ne.jp/hikaen2/20150201/1422773879
-前準備 ffmpeg 適当にWindows用バイナリを落としてPATHを設定しておく。
-dvdauthor Windows用のバイナリをダウンロードし、PATHの通ったところに設置。
-http://www.paehl.com/open_source/?DVDAuthor
-これの下部の「From Box.net」または「From Google Drive」からダウンロード。
-mkisofs 他のソフト(cdrfde)にくっついてくるmkisofs.exeを抜き出す。
-https://cdrtfe.sourceforge.io/cdrtfe/download_en.html
-これのcdrtfe 1.5.7 zip archiveをダウンロードし、展開したファイルの中から、
- tools\cdrtools\mkisofs.exe tools\cygwin\cygwin1.dll tools\cygwin\cygwin.ini  をPATHの通ったフォルダに移動。
-バッチファイル 下記の内容のバッチファイルを作成。 CPU数に合わせてthreadsの値は変更する。
-DVDにしたい動画ファイルをドラッグ&amp;amp;ドロップ。
-@ECHO OFF REM 動画ファイルからDVDのISOファイルを作成 SET VIDEO_FORMAT=NTSC ffmpeg -i &amp;quot;%1&amp;quot; -threads 4 -vf yadif=1,scale=720:480,tinterlace=4 -target ntsc-dvd -flags +ilme+ildct &amp;quot;%~dpn1_dvd.mpeg&amp;quot; dvdauthor -o &amp;quot;%~dpn1_dvd&amp;quot; -t &amp;quot;%~dpn1_dvd.mpeg&amp;quot; dvdauthor -o &amp;quot;%~dpn1_dvd&amp;quot; -T mkisofs -dvd-video -o &amp;quot;%~dpn1_dvd.</description>
+      <description>「この動画ファイルをDVDに焼いて。簡単でしょ。」 いやいや、DVD-Video規格に沿った動画ファイルとファイル構造にしないといけないんですけど。 Windows用のオーサリングソフトはフリーでも色々あるが、どれが良いのかよくわからないので、 ffmpeg + dvdauthor + mkisofsでISOファイルを作成するバッチファイルを作成した。 参考サイト : http://d.hatena.ne.jp/hikaen2/20150201/1422773879 前準備 ffmpeg 適当にWindows用バイナリを落としてPATHを設定しておく。</description>
     </item>
     
     <item>
@@ -242,11 +143,7 @@ DVDにしたい動画ファイルをドラッグ&amp;amp;ドロップ。
       <pubDate>Sat, 22 Jul 2017 19:32:46 +0900</pubDate>
       
       <guid>https://www.330k.info/essay/random_distribution_sphere_surface/</guid>
-      <description>球面上に一様分布するランダムな点を生成したい時、 単純に極座標表示でθとφを一様分布させると、極付近に点が集まってしまう。
-data1 = Transpose[{Sin[t] Cos[f], Sin[t] Sin[f], Cos[t]} /. { f -&amp;gt; RandomReal[{0, 2 Pi}, 2000], t -&amp;gt; RandomReal[{0, Pi}, 2000]}]; g1 = ListPointPlot3D[data1, BoxRatios -&amp;gt; {1, 1, 1}]    球面上で一様分布させるには、下記のようにθにArcCosを使う (θの位置の確率をSinθに比例させたい→累積確率分布関数はCos→逆関数はArcCos)。
-data2 = Transpose[{Sin[t] Cos[f], Sin[t] Sin[f], Cos[t]} /. { f -&amp;gt; RandomReal[{0, 2 Pi}, 2000], t -&amp;gt; ArcCos[RandomReal[{-1, 1}, 2000]]}]; g2 = ListPointPlot3D[data2, BoxRatios -&amp;gt; {1, 1, 1}]    なお、多次元球面上の一様分布は球面上に一様分布する乱数の生成にあるように、 多次元ガウス分布を正規化すると得られる。
-下記は3次元の場合。
-data3 = Normalize /@ RandomReal[NormalDistribution[], {2000, 3}]; g3 = ListPointPlot3D[data3, BoxRatios -&amp;gt; {1, 1, 1}]    </description>
+      <description>球面上に一様分布するランダムな点を生成したい時、 単純に極座標表示でθとφを一様分布させると、極付近に点が集まってしまう。 data1 = Transpose[{Sin[t] Cos[f], Sin[t] Sin[f], Cos[t]} /. { f -&amp;gt; RandomReal[{0, 2 Pi}, 2000], t -&amp;gt; RandomReal[{0, Pi}, 2000]}]; g1 = ListPointPlot3D[data1, BoxRatios -&amp;gt; {1, 1, 1}] 球面上で一様分布させるには、下記のようにθにArcCosを使う (θの位置の確率をSinθに比例させたい→累積確率分布関数はCos→逆関数はArcCos)。 data2 = Transpose[{Sin[t] Cos[f], Sin[t] Sin[f], Cos[t]} /. { f -&amp;gt; RandomReal[{0, 2 Pi}, 2000], t -&amp;gt; ArcCos[RandomReal[{-1, 1}, 2000]]}]; g2 = ListPointPlot3D[data2, BoxRatios -&amp;gt; {1, 1, 1}] なお、多次元球</description>
     </item>
     
     <item>
@@ -255,11 +152,7 @@ data3 = Normalize /@ RandomReal[NormalDistribution[], {2000, 3}]; g3 = ListPoint
       <pubDate>Thu, 20 Jul 2017 21:12:22 +0900</pubDate>
       
       <guid>https://www.330k.info/essay/zabbix_ricoh_printer_template_xml/</guid>
-      <description>社内で余っているサーバにZabbixを入れたので、 SNMP v2cでRICOH製のプリンタ・複合機の各種情報を取得するXMLテンプレートをhttps://github.com/coreyramirezgomez/Ricoh-Printers-Zabbix-Template/blob/master/Ricoh%20Printers%20SNMP%20Template.xml を元に作成した。
-変更箇所としては以下の通り。
- SNMP Discoveryで英語のアイテム名を取得するように変更 1分間あたりの印刷枚数のアイテムとグラフを追加 Discoveryの間隔が長くした(負荷でプリンタが応答しなくなるため)  確認している機種は社内にある以下の2機種のみ。
- RICOH MP C5503 IPSiO SP 6320  ダウンロードはZabbix Share - Template Ricoh SNMP Printers。
-&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot;?&amp;gt; &amp;lt;zabbix_export&amp;gt; &amp;lt;version&amp;gt;3.2&amp;lt;/version&amp;gt; &amp;lt;date&amp;gt;2017-07-20T10:38:50Z&amp;lt;/date&amp;gt; &amp;lt;groups&amp;gt; &amp;lt;group&amp;gt; &amp;lt;name&amp;gt;Printers&amp;lt;/name&amp;gt; &amp;lt;/group&amp;gt; &amp;lt;/groups&amp;gt; &amp;lt;templates&amp;gt; &amp;lt;template&amp;gt; &amp;lt;template&amp;gt;Template SNMP Ricoh Printers&amp;lt;/template&amp;gt; &amp;lt;name&amp;gt;Template SNMP Ricoh Printers&amp;lt;/name&amp;gt; &amp;lt;description/&amp;gt; &amp;lt;groups&amp;gt; &amp;lt;group&amp;gt; &amp;lt;name&amp;gt;Printers&amp;lt;/name&amp;gt; &amp;lt;/group&amp;gt; &amp;lt;/groups&amp;gt; &amp;lt;applications&amp;gt; &amp;lt;application&amp;gt; &amp;lt;name&amp;gt;SNMP Enabled Printer&amp;lt;/name&amp;gt; &amp;lt;/application&amp;gt; &amp;lt;/applications&amp;gt; &amp;lt;items&amp;gt; &amp;lt;item&amp;gt; &amp;lt;name&amp;gt;Description&amp;lt;/name&amp;gt; &amp;lt;type&amp;gt;4&amp;lt;/type&amp;gt; &amp;lt;snmp_community&amp;gt;{$SNMP_COMMUNITY}&amp;lt;/snmp_community&amp;gt; &amp;lt;multiplier&amp;gt;0&amp;lt;/multiplier&amp;gt; &amp;lt;snmp_oid&amp;gt;.1.3.6.1.2.1.25.3.2.1.3.1&amp;lt;/snmp_oid&amp;gt; &amp;lt;key&amp;gt;Description&amp;lt;/key&amp;gt; &amp;lt;delay&amp;gt;60&amp;lt;/delay&amp;gt; &amp;lt;history&amp;gt;90&amp;lt;/history&amp;gt; &amp;lt;trends&amp;gt;0&amp;lt;/trends&amp;gt; &amp;lt;status&amp;gt;0&amp;lt;/status&amp;gt; &amp;lt;value_type&amp;gt;4&amp;lt;/value_type&amp;gt; &amp;lt;allowed_hosts/&amp;gt; &amp;lt;units/&amp;gt; &amp;lt;delta&amp;gt;0&amp;lt;/delta&amp;gt; &amp;lt;snmpv3_contextname/&amp;gt; &amp;lt;snmpv3_securityname/&amp;gt; &amp;lt;snmpv3_securitylevel&amp;gt;0&amp;lt;/snmpv3_securitylevel&amp;gt; &amp;lt;snmpv3_authprotocol&amp;gt;0&amp;lt;/snmpv3_authprotocol&amp;gt; &amp;lt;snmpv3_authpassphrase/&amp;gt; &amp;lt;snmpv3_privprotocol&amp;gt;0&amp;lt;/snmpv3_privprotocol&amp;gt; &amp;lt;snmpv3_privpassphrase/&amp;gt; &amp;lt;formula&amp;gt;1&amp;lt;/formula&amp;gt; &amp;lt;delay_flex/&amp;gt; &amp;lt;params/&amp;gt; &amp;lt;ipmi_sensor/&amp;gt; &amp;lt;data_type&amp;gt;0&amp;lt;/data_type&amp;gt; &amp;lt;authtype&amp;gt;0&amp;lt;/authtype&amp;gt; &amp;lt;username/&amp;gt; &amp;lt;password/&amp;gt; &amp;lt;publickey/&amp;gt; &amp;lt;privatekey/&amp;gt; &amp;lt;port&amp;gt;161&amp;lt;/port&amp;gt; &amp;lt;description/&amp;gt; &amp;lt;inventory_link&amp;gt;2&amp;lt;/inventory_link&amp;gt; &amp;lt;applications&amp;gt; &amp;lt;application&amp;gt; &amp;lt;name&amp;gt;SNMP Enabled Printer&amp;lt;/name&amp;gt; &amp;lt;/application&amp;gt; &amp;lt;/applications&amp;gt; &amp;lt;valuemap/&amp;gt; &amp;lt;logtimefmt/&amp;gt; &amp;lt;/item&amp;gt; &amp;lt;item&amp;gt; &amp;lt;name&amp;gt;Page Count&amp;lt;/name&amp;gt; &amp;lt;type&amp;gt;4&amp;lt;/type&amp;gt; &amp;lt;snmp_community&amp;gt;{$SNMP_COMMUNITY}&amp;lt;/snmp_community&amp;gt; &amp;lt;multiplier&amp;gt;0&amp;lt;/multiplier&amp;gt; &amp;lt;snmp_oid&amp;gt;.</description>
+      <description>社内で余っているサーバにZabbixを入れたので、 SNMP v2cでRICOH製のプリンタ・複合機の各種情報を取得するXMLテンプレートをhttps://github.com/coreyramirezgomez/Ricoh-Printers-Zabbix-Template/blob/master/Ricoh%20Printers%20SNMP%20Template.xml を元に作成した。 変更箇所としては以</description>
     </item>
     
     <item>
@@ -268,11 +161,7 @@ data3 = Normalize /@ RandomReal[NormalDistribution[], {2000, 3}]; g3 = ListPoint
       <pubDate>Thu, 20 Jul 2017 20:57:38 +0900</pubDate>
       
       <guid>https://www.330k.info/essay/create_uuid_vba/</guid>
-      <description>Excel VBAでUUID(GUID)を生成して使っている部分があったのだが、 先日のWindows Updateを適用してから、 CreateObject(&amp;quot;Scriptlet.TypeLib&amp;quot;)でエラーが出て使用できなくなってしまった。
-参考 : 2017 年 7 月のセキュリティ更新適用後、VBA から一部のオブジェクトを作成できません
-私の場合はただ単にランダムなUUIDが生成できれば良いので、 UUID v4を生成する関数を作った。
-VBの乱数の精度としては24ビットらしいので、1回の乱数生成では最大16ビット使用するようにはしている。 とはいえ乱数の品質としてはあまり高くないのでご注意を。
-Public Function GetUUID() As String &#39;GetUUID = Mid$(CreateObject(&amp;quot;Scriptlet.TypeLib&amp;quot;).GUID, 2, 36) GetUUID = Right$(&amp;quot;0000&amp;quot; &amp;amp; Hex(Rnd() * 65536), 4) &amp;amp; Right$(&amp;quot;0000&amp;quot; &amp;amp; Hex(Rnd() * 65536), 4) GetUUID = GetUUID &amp;amp; &amp;quot;-&amp;quot; &amp;amp; Right$(&amp;quot;0000&amp;quot; &amp;amp; Hex(Rnd() * 65536), 4) GetUUID = GetUUID &amp;amp; &amp;quot;-4&amp;quot; &amp;amp; Right$(&amp;quot;0000&amp;quot; &amp;amp; Hex(Rnd() * 65536), 3) GetUUID = GetUUID &amp;amp; &amp;quot;-&amp;quot; &amp;amp; Right$(&amp;quot;0000&amp;quot; &amp;amp; Hex(32768 + Rnd() * 16384), 4) GetUUID = GetUUID &amp;amp; &amp;quot;-&amp;quot; &amp;amp; Right$(&amp;quot;0000&amp;quot; &amp;amp; Hex(Rnd() * 65536), 4) &amp;amp; Right$(&amp;quot;0000&amp;quot; &amp;amp; Hex(Rnd() * 65536), 4) &amp;amp; Right$(&amp;quot;0000&amp;quot; &amp;amp; Hex(Rnd() * 65536), 4) End Function  </description>
+      <description>Excel VBAでUUID(GUID)を生成して使っている部分があったのだが、 先日のWindows Updateを適用してから、 CreateObject(&amp;quot;Scriptlet.TypeLib&amp;quot;)でエラーが出て使用できなくなってしまった。 参考 : 2017 年 7 月のセキュリティ更新適用後、VBA から一部のオブジェクトを作成できません 私の場合はただ単にランダムなUUIDが生成できれば良いので、 UUID v4を生</description>
     </item>
     
     <item>
@@ -281,12 +170,7 @@ Public Function GetUUID() As String &#39;GetUUID = Mid$(CreateObject(&amp;quot;S
       <pubDate>Tue, 06 Jun 2017 06:48:00 +0900</pubDate>
       
       <guid>https://www.330k.info/essay/input_backslach_with_us_keyboard_layout/</guid>
-      <description>会社のPCではHDD暗号化ソフトのSecureDocを使用しているが、先日1台のPCが起動しなくなったため、リカバリーディスクを使っての救出を行った際のメモ。
-SecureDocのリカバリーディスクはWindows PEベースなのだが、海外の製品なので当然英語キーボード。 起動しなくなったPCのHDDの中身は運良く復旧できそうだったのだが、 データをネットワーク経由で回収しようとしたところネットワーク設定画面でバックスラッシュが入力できなくてハマった。
-5分ほどキーボードを押しまくった後、Altキーと文字コード入力で行けることに気がついた。
-Alt押す → テンキー9 → テンキー2 → Alt離す
-で無事入力できた。
-ただ、LetsNoteのNICをWindows PEでは認識できず無駄足に。 結局USBメモリ経由で回収した。</description>
+      <description>会社のPCではHDD暗号化ソフトのSecureDocを使用しているが、先日1台のPCが起動しなくなったため、リカバリーディスクを使っての救出を行った際のメモ。 SecureDocのリカバリーディスクはWindows PEベースなのだが、海外の製品なので当然英語キーボード。 起動しなくなったPCのHDDの中身は運良く復旧できそうだったのだが、 データをネットワーク経由で回収しようとしたところネットワーク設定</description>
     </item>
     
     <item>
@@ -295,14 +179,7 @@ Alt押す → テンキー9 → テンキー2 → Alt離す
       <pubDate>Tue, 06 Jun 2017 06:37:00 +0900</pubDate>
       
       <guid>https://www.330k.info/essay/xubuntu1604_snort_base/</guid>
-      <description>ウイルス等に侵入された後の対策として、IDSやIPS製品の紹介をベンダーから受けたが、正直なところ価格が高かったのと、検知されるメッセージがSnort由来のものが多い気がしたので、自分でSnortを構築して商用製品との差を調べてみることにした。
-構築環境  PC : 余っていたノートPC Panasonic LetsNote CF-NX1 OS : Xubuntu 16.04.2 (LetsNoteの有線LANと無線LANのNICを認識できる可能性が高いディストリビューションとして選択) ルータ : Yamaha RTX810 IDSとして運用(ミラーポートの通信を監視) LetsNoteの有線LANはミラーポートに接続し、通信を監視 LetsNote自体にアクセスするときには無線LANを使用する  図(適当)   手順 基本的に、以下のドキュメント通りでOK。
-Snort 2.9.9.x on Ubuntu 14 -16
-LetsNoteでは有線LANのNICはenp0s25、無線LANはwlp2s0となった。
-注意点は以下の通り。
- rule_url=https://www.snort.org/reg-rules/|snortrules-snapshot.tar.gz|&amp;lt;oinkcode&amp;gt; → rule_url=https://www.snort.org/rules/|snortrules-snapshot.tar.gz|&amp;lt;oinkcode&amp;gt; ※微妙にURLが変わっているので注意 sudo /usr/local/bin/pulledpork.pl -c /etc/snort/pulledpork.conf -l → sudo /usr/local/bin/pulledpork.pl -c /etc/snort/pulledpork.conf -l -o /etc/snort/rules/snort.rules ※-oオプションが必要と怒られた  有線LAN(enp0s25)はミラーポートから受信だけできれば良いので、 /etc/network/interfacesを編集して使われていないネットワークのアドレスを適当に設定。 管理の通信やBASEによるログを眺めるためには無線(wlp2s0)を使用するので、 NetworkManagerを使って適当に固定IPを設定。
-RTX810はhttp://www.rtpro.yamaha.co.jp/RT/manual/rt-common/setup/lan_port-mirroring.html を参照してミラーポートを設定。
- 設定(ポート1と2の送信および受信フレームをポート4にミラー) lan port-mirroring lan1 4 in 1 2 out 1 2 解除 no lan port-mirroring lan1  結果 一応IDSとして構築できたので、現在はログを見て様子見。今のところのメモは以下。</description>
+      <description>ウイルス等に侵入された後の対策として、IDSやIPS製品の紹介をベンダーから受けたが、正直なところ価格が高かったのと、検知されるメッセージがSnort由来のものが多い気がしたので、自分でSnortを構築して商用製品との差を調べてみることにした。 構築環境 PC : 余っていたノートPC Panasonic LetsNote CF-NX1 OS : Xubuntu 16.04.2 (LetsNoteの有線LANと無線LANのNICを認識できる可能性が高いディストリビューションとして選択) ル</description>
     </item>
     
     <item>
@@ -311,13 +188,7 @@ RTX810はhttp://www.rtpro.yamaha.co.jp/RT/manual/rt-common/setup/lan_port-mirror
       <pubDate>Mon, 08 May 2017 22:37:00 +0900</pubDate>
       
       <guid>https://www.330k.info/essay/create_zip_file_with_wsh_jscript/</guid>
-      <description>JScriptで複数のテキストファイルを書き出し、それをZIPでまとめたかったので作成。 VBAやVBScript版を参考に作ってみた。
-参考サイト : http://kiq-creator.com/blog/?eid=33
-複数のファイルをZIP圧縮する際のコツとしては、CopyHereをするたびに待機すること。 CopyHereは非同期なので、すぐにJS側に制御が返ってくるが、 複数のファイルを一気にCopyHereしようとすると、「読み取りできません」とエラーが出る。
-使い方 以下のコード中のcreateZipFileを自分のスクリプトにコピー&amp;amp;ペーストして
-createZipFile( &amp;quot;zipファイルのパス&amp;quot;, [&amp;quot;圧縮対象ファイルのパス1&amp;quot;, &amp;quot;圧縮対象ファイルのパス2&amp;quot;, ...])  とすればOK。 もしくは以下のコードをメモ帳で拡張子をjsにして保存すれば、ドラッグ&amp;amp;ドロップでzipファイルを作成(右クリック→送る→圧縮フォルダーとほぼ同じ動作)。
-注意事項 ディレクトリには対応してません。またWindows標準では暗号化ZIPは作成できません。 また圧縮対象ファイルの存在チェック等もやってないので、必要であればエラーハンドリング処理を追加してください。
-/** Windows 標準機能でZipファイルを作成するWSH(JScript) Copyright 330k This software is released under the MIT License. http://opensource.org/licenses/mit-license.php */ var args = []; for(var i = 0; i &amp;lt; WScript.Arguments.length; i++){ args.push(WScript.Arguments(i)); } var zipfile = args[0].replace(/(.+)\.(.+?)$/, &amp;quot;$1.zip&amp;quot;); createZipFile(zipfile, args); function createZipFile(zipFilePath, sourceFiles){ var shell = WScript.CreateObject(&amp;quot;Shell.Application&amp;quot;); var fso = WScript.CreateObject(&amp;quot;Scripting.FileSystemObject&amp;quot;); var file = fso.</description>
+      <description>JScriptで複数のテキストファイルを書き出し、それをZIPでまとめたかったので作成。 VBAやVBScript版を参考に作ってみた。 参考サイト : http://kiq-creator.com/blog/?eid=33 複数のファイルをZIP圧縮する際のコツとしては、CopyHereをするたびに待機すること。 CopyHereは非同期なので、すぐにJS側に制御が返ってくるが、 複数のファイルを一気にCopyHereしようとすると、「読み取りできません」とエラーが出る。 使い</description>
     </item>
     
     <item>
@@ -326,11 +197,7 @@ createZipFile( &amp;quot;zipファイルのパス&amp;quot;, [&amp;quot;圧縮�
       <pubDate>Tue, 29 Nov 2016 20:45:00 +0900</pubDate>
       
       <guid>https://www.330k.info/essay/detect_submittion_to_private_mail_from_gmail/</guid>
-      <description> 会社ではG Suite(旧Google Apps for Works)を導入しているが、 ある社員が個人のGmailアドレスに会社の情報の入ったメールを送信していた。
-幸いPCで操作していたためPCのログ監視ソフト(SKYSEA Client View)で検知し、当該従業員に注意することができた。 ただ、同じことを会社支給のiPhoneでやられた場合に無力だったことに気づいたので、G Suite側でも対策を実施。
-設定方法  「管理コンソール」の「アプリ」→「Gmail」→「詳細設定」と進む 「コンテンツ コンプライアンス」を追加 影響を受けるメールは「送信」にチェック 「次の一部がメールに一致する場合」を選択 「任意のエンベロープ受信者」が「いずれかの単語に一致する」に【登録ページ作成TIPS】登録拒否設定用フリーメールドメインリスト などから検知対象とするドメイン一覧を取得してスペース区切りにしたものを設定する (1000文字を超える場合は1000文字以内に収まるよう複数に分けて登録)    「上記の表現に一致する場合は、次の処理を行います」には「メッセージを変更」を選択 「その他の送信先」「受信者を追加」で配信先に管理者用のメールアドレスを設定(エイリアスにしておくとフィルタ作成で便利)    設定ができたら保存する(※全ユーザに適用されるまで1時間程度かかる) 管理者用のGmailの設定で、8で設定したアドレスに来たものをフィルタしてラベルをつけるようにしておく  注意事項  設定ミスすると全ユーザのメールが影響を受けるので、テスト用のOUを作ってから検証してから全ユーザに適用する コンテンツコンプライアンスでは、クレジットカード番号やパスポート番号が含まれたメールを検知可能 残念ながら執筆時点(Nov. 29 2016)では日本のマイナンバーの検知機能はない  プロモーションコード もしGmailやG Suiteを導入予定であれば、以下のリンクからお願いします。
-またプロモーションコードを入力すると初年度の料金が20%割引されます。
- G Suiteのお申し込み プロモーションコード  G Suite Basic プラン: YA3CFEWVCWTVM9A G Suite Business プラン: Y9GNVRWQUGVTQEW   </description>
+      <description>会社ではG Suite(旧Google Apps for Works)を導入しているが、 ある社員が個人のGmailアドレスに会社の情報の入ったメールを送信していた。 幸いPCで操作していたためPCのログ監視ソフト(SKYSEA Client View)で検知し、当該従業員に注意することができた。 ただ、同じことを会社支給のiPhoneでやられた場合に無力だったことに気づいたので、G Suite側でも対策を実施。 設定方法 「管理コンソール</description>
     </item>
     
     <item>
@@ -339,16 +206,7 @@ createZipFile( &amp;quot;zipファイルのパス&amp;quot;, [&amp;quot;圧縮�
       <pubDate>Fri, 11 Nov 2016 23:00:00 +0900</pubDate>
       
       <guid>https://www.330k.info/essay/make_font_embedded_pdf_from_edinet/</guid>
-      <description>EDINETで出力したPDFを会社のプレスリリースで掲載したところ、iPhoneで閲覧できない、という問題が発生した。
-PDFファイルを見てみると、日本語フォントが埋め込まれていない(下図)。
-  そのため、iPhoneなどMS系の日本語フォントがない環境では、日本語部分が真っ白の閲覧できないものになっていた。 ちなみに、Ubuntuでは別の日本語書体で代替表示された。
-  ご丁寧に印刷も低解像度に限られている(上図)。
-他社のプレスリリースを探してみると、そのままのPDFが使われていたところが多かったが、 中には低解像度で印刷して1ページが1枚の画像になったPDFも見つかった。苦労の痕跡が・・・。
-本来はそのようなPDFを作成するEDINETのシステムが悪いのだが、上の人間は「iPhoneでも見れるようにしろ」と聞かない。
-Google先生に聞いてみると、Macで見れないという2011年の投稿が見つかったので、昔からEDINETは変わっていないらしい。 続けて解決策を探すと、「PDFのセキュリティ設定を無視するビューアをつかって仮想PDFプリンタに印刷する」という方法で解決できることが分かった。
-PDFのセキュリティ設定を無視するビューアで代表的なものはEdgeやFirefox(2016年11月現在)。従って
- Windows 10なら、EdgeでPDFを開いてプリンタにMicrosoft Print to PDFを選択して印刷 Windows 7でもAcrobatなどの仮想PDFプリンタがあれば、Firefoxで開いて仮想PDFプリンタに印刷  という手順でフォントを埋め込んだPDFを作成できた。(下図はEdge + Microsoft Print to PDFで作成したもの)
-  ちなみに、このようにして作成したPDFは法的に問題ないのか弁護士の人に聞いてみたところ、OKらしい。</description>
+      <description>EDINETで出力したPDFを会社のプレスリリースで掲載したところ、iPhoneで閲覧できない、という問題が発生した。 PDFファイルを見てみると、日本語フォントが埋め込まれていない(下図)。 そのため、iPhoneなどMS系の日本語フォントがない環境では、日本語部分が真っ白の閲覧できないものになっていた。 ちなみに、Ubuntuでは別の日本語書体で代替表示された。 ご丁寧に印刷も低解像度に限られている(</description>
     </item>
     
     <item>
@@ -357,19 +215,7 @@ PDFのセキュリティ設定を無視するビューアで代表的なもの�
       <pubDate>Sun, 06 Nov 2016 17:22:00 +0900</pubDate>
       
       <guid>https://www.330k.info/essay/performance_degration_of_kanjo_bugyo/</guid>
-      <description>社内では会計システムに勘定奉行(ネットワーク版)を使っているが、 担当者から「勘定奉行で仕訳帳の表示に20秒くらいかかる」と言われたので調査してみた。
-その担当者のPC固有の問題かどうかを切り分けるため別のPCから同様の操作を行ってみたところ、同じ症状が発生した。 ということは、サーバ側に問題がありそう。
-勘定奉行のクライアントは生のSQL文をサーバに発行する仕組みなので、 Wiresharkでパケットをキャプチャすることで発行されたSQL文を把握することができる。
-その状態でサーバ側の負荷を測定してみると、特定のSQL文の処理に時間がかかっていることが分かった。
-勘定奉行ではSQL Serverをバックエンドに使っているので、 「SQL Server パフォーマンス」などでGoogle先生に聞いてみると、以下のページがヒット。
-どうする？ SQL Server のクエリ パフォーマンスが低下した！
-これに従い、サーバ上でSQL Server Management Studioを起動し、勘定奉行で使用しているデータベースで
-sp_updatestats  としたところ、1秒程度で処理が完了するようになった。 上記ページには各テーブル単位での統計情報更新や、実行プランの再作成、インデックスの再構築の方法も書かれているが、今回は行わなかった。
-このようにSQL文を直接叩きに行く方法は多分メーカ(OBC)では非推奨だと思うが、 クライアント側にsp_updatestatsを発行するメニューくらいつけてほしいものだ。
-→ 当然勘定奉行にメニューがあった。ちょっとわかりにくいところだけど。
-「データ領域管理」「データ領域保守」「データ領域変更」とメニューを辿り、「F9 統計情報」ボタンを押すと、統計情報の更新というウィンドウが表示されるので、「実行」すればよい。 対象は、現在選択しているデータ領域のみとのこと。
-ちなみに、全データベースに一括で統計情報の更新をかけるには、SQL Management Studioから、
-sp_MSforeachdb &#39;USE [?]; sp_updatestats&#39;  とする。</description>
+      <description>社内では会計システムに勘定奉行(ネットワーク版)を使っているが、 担当者から「勘定奉行で仕訳帳の表示に20秒くらいかかる」と言われたので調査してみた。 その担当者のPC固有の問題かどうかを切り分けるため別のPCから同様の操作を行ってみたところ、同じ症状が発生した。 ということは、サーバ側に問題がありそう。 勘定奉行のクライアントは生のSQL文をサーバに発行する仕組みなので、 Wiresharkでパケットをキ</description>
     </item>
     
     <item>
@@ -378,12 +224,7 @@ sp_MSforeachdb &#39;USE [?]; sp_updatestats&#39;  とする。</description>
       <pubDate>Thu, 22 Sep 2016 07:14:00 +0900</pubDate>
       
       <guid>https://www.330k.info/essay/rescue_gps_log_from_binary_data_of_holux_m241/</guid>
-      <description>GPSロガー(Holux m-241)のメモリが破損しているのか、 実は6月30日と7月3日の軽井沢→直江津ツーリングと、9月の西九州→佐多岬ツーリングでは、 ログが破損していたため、Googleのロケーション履歴を代用している。
-バイナリデータは一応吸い出せているようなので、その構造を調べると、 HOLUX m-241 LoggerUtility .trlファイル構造の覚書 より以下のような構造になっている。
- 1レコード20バイトの固定長 時刻4バイト 緯度4バイト 経度4バイト 高度3バイト 速度4バイト チェックサム1バイト  また、m-241は時折書き込み先のメモリアドレスがずれることがあるようだ、との情報も見つかったため、 バイナリエディタで除いてみると、どうも4バイトずつずれて記録されたデータがあるようだった。
-そこで
- レコードの先頭バイトを4バイトずつオフセットさせて読み込んでみる 緯度と経度が日本付近のものと思われるものを片っ端から拾う 時刻は整数型なのでとりあえず読み込む 高度、速度のデータは無視！  という方針でMathematicaのプログラムを書いてみた。
-data = Table[Module[{str, ret}, str = OpenRead[&amp;quot;2016091200.bin&amp;quot;, BinaryFormat -&amp;gt; True]; (* 最初に余分にiバイト読み込んで先頭をずらす *) Do[ BinaryRead[str, &amp;quot;Byte&amp;quot;], {i} ]; (* バイナリ形式で読み込む *) ret = Cases[ MapIndexed[ {First[#2], Sequence @@ #1} &amp;amp;, BinaryReadList[ str, {&amp;quot;Integer32&amp;quot;, &amp;quot;Real32&amp;quot;, &amp;quot;Real32&amp;quot;, &amp;quot;Byte&amp;quot;, &amp;quot;Byte&amp;quot;, &amp;quot;Byte&amp;quot;, &amp;quot;Real32&amp;quot;, &amp;quot;Byte&amp;quot;}] ], {count_, d_Integer, lat_Real, lon_Real, __} /; (30 &amp;lt; lat &amp;lt; 40 &amp;amp;&amp;amp; 125 &amp;lt; lon &amp;lt; 140) :&amp;gt; {count, DateString[DatePlus[{1970, 1, 1, 0, 0, 0}, {d, &amp;quot;Second&amp;quot;}], {&amp;quot;Year&amp;quot;, &amp;quot;-&amp;quot;, &amp;quot;Month&amp;quot;, &amp;quot;-&amp;quot;, &amp;quot;Day&amp;quot;, &amp;quot;T&amp;quot;, &amp;quot;Time&amp;quot;, &amp;quot;Z&amp;quot;}], lat, lon}]; Close[str]; ret ], {i, 0, 19, 4}];  ※ 2016091200.</description>
+      <description>GPSロガー(Holux m-241)のメモリが破損しているのか、 実は6月30日と7月3日の軽井沢→直江津ツーリングと、9月の西九州→佐多岬ツーリングでは、 ログが破損していたため、Googleのロケーション履歴を代用している。 バイナリデータは一応吸い出せているようなので、その構造を調べると、 HOLUX m-241 LoggerUtility .trlファイル構造の覚書 より以下のような構造になっている。 1レコード20バイトの固定長 時刻4バイト 緯度</description>
     </item>
     
     <item>
@@ -392,15 +233,7 @@ data = Table[Module[{str, ret}, str = OpenRead[&amp;quot;2016091200.bin&amp;quot
       <pubDate>Tue, 12 Jul 2016 22:07:00 +0900</pubDate>
       
       <guid>https://www.330k.info/essay/manage_firefox_settings_with_group_policy_without_gpo_for_firefox/</guid>
-      <description>公式の情報はこちら : https://www.mozilla.jp/business/faq/tech/setting-management/
-上記公式サイトにあるように、ActiveDirectory環境にあるFirefoxの設定を管理する場合、
- クライアント側にアドオン(GPO for Firefox)をインストール サーバ側に管理用テンプレート(ADMファイル)を配置 グループポリシーエディタで設定を編集  という手順が推奨されている。ただ、この方法だと
- 既存ユーザへの自動設定は不可(ユーザにアドオンをインストールしてもらう必要がある) ユーザがアドオンを無効化してしまう可能性がある 最新のバージョンで追加された設定項目がない場合がある  といったデメリットがあるので、公式サイト中で「MCD用設定ファイルでの実現」という方法で行うことにした。
-要件は以下の通り。
- Firefoxアカウントを使ったパスワード等の同期をさせない 強制的に最新版にアップデートさせる たまにしか社内LANにアクセスしない端末でも設定を反映させたい (公式サイトの「すべてのクライアントの設定を管理者が一括して変更したい」では常時社内LANにアクセスできる端末である必要がある)  手順は以下の通り。
- 「autoconfig.js」と「autoconfig.cfg」を公式サイトの例にしたがって記述  autoconfig.js
-pref(&amp;quot;general.config.filename&amp;quot;, &amp;quot;autoconfig.cfg&amp;quot;); pref(&amp;quot;general.config.vendor&amp;quot;, &amp;quot;autoconfig&amp;quot;); pref(&amp;quot;general.config.obscure_value&amp;quot;, 0);  autoconfig.cfg (ここではFirefoxアカウントによる同期の不許可と、自動アップデートの有効化を設定)
-lockPref(&amp;quot;loop.enabled&amp;quot;, false); lockPref(&amp;quot;services.sync.enabled&amp;quot;, false); lockPref(&amp;quot;services.sync.engine.addons&amp;quot;, false); lockPref(&amp;quot;services.sync.engine.bookmarks&amp;quot;, false); lockPref(&amp;quot;services.sync.engine.history&amp;quot;, false); lockPref(&amp;quot;services.sync.engine.passwords&amp;quot;, false); lockPref(&amp;quot;services.sync.engine.prefs&amp;quot;, false); lockPref(&amp;quot;services.sync.engine.tabs&amp;quot;, false); lockPref(&amp;quot;app.update.enabled&amp;quot;, true); lockPref(&amp;quot;app.update.auto&amp;quot;, true); lockPref(&amp;quot;browser.search.update&amp;quot;, true);   「autoconfig.js」と「autoconfig.cfg」を一般ユーザが読み取り可能なフォルダに配置 (例えば「\ドメインコントローラ\SYSVOL\ドメイン名\Deployment」など) グループポリシーの「コンピュータの構成」「基本設定」「Windowsの設定」「ファイル」を使い、 「autoconfig.js」と「autoconfig.cfg」を公式サイトで指定されたフォルダに配置。     64bit版Windowsに32bit版Firefoxがインストールされている場合は、「項目レベルで対象化する」にチェックし、 「Processor_Architecture」に「AMD64」を設定し、「%PROGRAMFILES(X86)%\Mozilla Firefox」に配置する。 ※ 両方ある場合は2つずつ設定する      最後に実際にクライアントPCにファイルが反映され、Firefoxのabout:configで設定されていることを確認</description>
+      <description>公式の情報はこちら : https://www.mozilla.jp/business/faq/tech/setting-management/ 上記公式サイトにあるように、ActiveDirectory環境にあるFirefoxの設定を管理する場合、 クライアント側にアドオン(GPO for Firefox)をインストール サーバ側に管理用テンプレート(ADMファイル)を配置 グループポリシーエディタで設定を編集 という手順が推奨されている。ただ、この方法だと 既存ユーザへの自動設定は不可(ユーザにアドオンをインストールしてもらう必要が</description>
     </item>
     
     <item>
@@ -409,10 +242,7 @@ lockPref(&amp;quot;loop.enabled&amp;quot;, false); lockPref(&amp;quot;services.s
       <pubDate>Thu, 17 Dec 2015 20:49:00 +0900</pubDate>
       
       <guid>https://www.330k.info/essay/convert-dvd-to-mpeg-in-a-batch-file/</guid>
-      <description> 社内でアシスタントからDVDをPCで再生できるようにしたい、という要望を受けたので、 DVDを入れて起動するだけのバッチファイルを作ってみた。
-DVDの中身のVTS_01_1.VOB, VTS_01_2.VOBというファイルをffmpegの-iオプションに指定すれば良いのだが、 パイプ記号「|」を使ってファイル名を連結しなければならない。 ただ、バッチファイル中でパイプ記号が入ると上手く連結できないので、 試行錯誤の結果、一旦「$$」という文字を挟んで連結した後、パイプ記号に変換、という手順になった。
-使い方  以下のテキストをメモ帳にコピー＆ペースト 下のテキスト中でFドライブを指定している部分を各自のドライブ名に変更 拡張子をbatにして保存 DVDを入れてバッチファイルを起動  原則としてバッチファイルと同じフォルダにdvd_yyyymmdd.mpegというファイルが出来上がる
-@ECHO OFF ECHO DVDから普通の動画ファイルへ変換を行います。 ECHO DVDがFドライブに入っていることを確認してください。 PAUSE SET A= FOR %%F IN (&amp;quot;F:\VIDEO_TS\VTS_01_*.VOB&amp;quot;) DO CALL SET A=%%A%%$$%%F SET TIME_TMP=%TIME: =0% SET NOW=%DATE:/=%%TIME_TMP:~0,2%%TIME_TMP:~3,2%%TIME_TMP:~6,2% SET B=&amp;quot;%A:$$=|%&amp;quot; ffmpeg -i &amp;quot;concat:%B:~2,-1%&amp;quot; -target ntsc-dvd -vcodec copy -acodec copy dvd_%NOW%.mpeg ECHO 変換が終了しました。 ECHO 出力ファイル: %~dp0 dvd_%NOW%.mpeg PAUSE  </description>
+      <description>社内でアシスタントからDVDをPCで再生できるようにしたい、という要望を受けたので、 DVDを入れて起動するだけのバッチファイルを作ってみた。 DVDの中身のVTS_01_1.VOB, VTS_01_2.VOBというファイルをffmpegの-iオプションに指定すれば良いのだが、 パイプ記号「|」を使ってファイル名を連結しなければならない。 ただ、バッチファイル中でパイプ記号が入ると上手く連結できないので、 試</description>
     </item>
     
     <item>
@@ -421,11 +251,7 @@ DVDの中身のVTS_01_1.VOB, VTS_01_2.VOBというファイルをffmpegの-iオ�
       <pubDate>Tue, 08 Dec 2015 17:40:00 +0900</pubDate>
       
       <guid>https://www.330k.info/essay/change-c-compiler-in-mathematica/</guid>
-      <description>Mathematica 8から、CompileでCコンパイラを使って直接ネイティブコードにコンパイルできるようになった。 使用するCコンパイラは、
-Needs[&amp;quot;CCompilerDriver`&amp;quot;]; CCompilerDriver`$CCompiler = { &amp;quot;Name&amp;quot; -&amp;gt; &amp;quot;GCC&amp;quot;, &amp;quot;Compiler&amp;quot; -&amp;gt; CCompilerDriver`GCCCompiler`GCCCompiler, &amp;quot;CompilerInstallation&amp;quot; -&amp;gt; &amp;quot;/usr/bin&amp;quot;, &amp;quot;CompilerName&amp;quot; -&amp;gt; Automatic };  というように、CCompilerDriver`$CCompilerを変更して指定する。
-以前からのCompile(&amp;ldquo;WVM&amp;rdquo;)と、各コンパイラの比較のため、ベンチマークを行ってみた。 検証環境は以下の通り。
- CPU: Intel Core-i7 3770 (インテル® HT テクノロジー ON) OS: Ubuntu 14.04 LTS 64bit Memory: 16 GB DDR3 1333 MHz  検証するCコンパイラは、GCC、Intel C++ Compiler、Clangの3種類。
- gcc: (Ubuntu 4.8.4-2ubuntu1~14.04) 4.8.4 icc: icc (ICC) 14.0.3 20140422 clang: Ubuntu clang version 3.4-1ubuntu3 (tags/RELEASE_34/final) (based on LLVM 3.4)  Mathematicaコードは以下。1/i^2を総和してπ^2/6を求める単純な計算を行った。 ※私の環境ではICCは/media/storage/intel/compserxe/binにインストールしているので下記コードを使用する場合は注意。</description>
+      <description>Mathematica 8から、CompileでCコンパイラを使って直接ネイティブコードにコンパイルできるようになった。 使用するCコンパイラは、 Needs[&amp;quot;CCompilerDriver`&amp;quot;]; CCompilerDriver`$CCompiler = { &amp;quot;Name&amp;quot; -&amp;gt; &amp;quot;GCC&amp;quot;, &amp;quot;Compiler&amp;quot; -&amp;gt; CCompilerDriver`GCCCompiler`GCCCompiler, &amp;quot;CompilerInstallation&amp;quot; -&amp;gt; &amp;quot;/usr/bin&amp;quot;, &amp;quot;CompilerName&amp;quot; -&amp;gt; Automatic }; というように、CCompilerDriver`$CCompilerを変更して指定する。 以前からのCompile(&amp;ldquo;WVM&amp;rdquo;)と、各コンパイラの比較のため、ベンチマークを行ってみた。 検証環境は以下の通り。 CPU: Intel Core-i7 3770 (インテル</description>
     </item>
     
     <item>
@@ -434,10 +260,7 @@ Needs[&amp;quot;CCompilerDriver`&amp;quot;]; CCompilerDriver`$CCompiler = { &amp
       <pubDate>Sun, 29 Nov 2015 00:00:00 +0900</pubDate>
       
       <guid>https://www.330k.info/essay/aggregate-metadata-from-all-pdf-office-documents/</guid>
-      <description>会社で外部に公開しているPDFファイルの作成者やタイトルにおかしいもの(社名が間違っている etc.)があることに気づき、 会社のファイルサーバにあるWord、Excel、PowerPoint、PDFファイルのメタ情報を一覧で出力し、 Excelにインポートして変なメタ情報が設定されていないかチェックするためのスクリプトを作ってみた。
-準備 まずはapacheからTikaをダウンロード(執筆時点では1.11が最新)
-wget http://ftp.jaist.ac.jp/pub/apache/tika/tika-app-1.11.jar  全メタデータを収集 とにかく全部のメタデータを収集したいときは、tikaのjarファイルと同じディレクトリに以下のようなスクリプトを配置。 検索対象のディレクトリは3行目で指定する。
-#!/bin/bash dir=~/Documents/ output=metadata.xml port=12345 tmpfile=temp.txt java -jar tika-app-1.11.jar -s -x --port $port &amp;gt; $tmpfile &amp;amp; procid=$! sleep 1 echo &amp;quot;&amp;lt;?xml version=\&amp;quot;1.0\&amp;quot; encoding=\&amp;quot;utf-8\&amp;quot; ?&amp;gt;&amp;quot; &amp;gt; $output echo &amp;quot;&amp;lt;files&amp;gt;&amp;quot; &amp;gt;&amp;gt; $output find &amp;quot;$dir&amp;quot; -iname &amp;quot;*.pdf&amp;quot; -o -iname &amp;quot;*.doc&amp;quot; -o -iname &amp;quot;*.doc?&amp;quot; -o -iname &amp;quot;*.xls&amp;quot; -o -iname &amp;quot;*.xls?&amp;quot; -o -iname &amp;quot;*.ppt&amp;quot; -o -iname &amp;quot;*.ppt?&amp;quot; | while read i do echo &amp;quot;&amp;lt;file&amp;gt;&amp;quot; &amp;gt;&amp;gt; $output echo &amp;quot; &amp;lt;filepath&amp;gt;&amp;lt;!</description>
+      <description>会社で外部に公開しているPDFファイルの作成者やタイトルにおかしいもの(社名が間違っている etc.)があることに気づき、 会社のファイルサーバにあるWord、Excel、PowerPoint、PDFファイルのメタ情報を一覧で出力し、 Excelにインポートして変なメタ情報が設定されていないかチェックするためのスクリプトを作ってみた。 準備 まずはapacheからTikaをダウンロード(執筆時点では1.11</description>
     </item>
     
     <item>
@@ -446,32 +269,7 @@ wget http://ftp.jaist.ac.jp/pub/apache/tika/tika-app-1.11.jar  全メタデー�
       <pubDate>Sun, 29 Nov 2015 00:00:00 +0900</pubDate>
       
       <guid>https://www.330k.info/essay/what_l2_forwarding_ssl_vpn_protects/</guid>
-      <description>例によってパワハラを受けた研修先で最初に受けたパワハラが、 リモートアクセスのSSL-VPNに関する技術的な質問をした時のことだった。
-研修先の会社ではJuniper社(現PulseSecure社)のSSL-VPN製品を導入しており、 クライアントPC側にはNetwork Connectというソフトウェアをインストールしていた。
-これはL2フォワーディング方式のSSL-VPNで、起動するとネットワークアダプタに仮想NICが追加される。 仮想NIC経由で通信することで外部からでも社内LANに接続できる。
-研修先企業では外出時にSSL-VPNの接続を義務付けている、という話になったときのことだった。
- パワハラ上司(自称ITエンジニア)「外出先のホテルなどでは社内システムにアクセスしない時も絶対にVPNで接続してからインターネットに接続しろ。」
- 私「なぜですか？」
- パワハラ上司「同じネットワークにいるコンピュータから盗聴や攻撃をされるだろ！」
- 私「HTTPSでないHTTPは確かに盗聴されますが、SSL-VPNで接続したところで攻撃は受けるのではないですか？」
- パワハラ上司「VPNは仮想的に専用線を張るんだ！」
- 私「仮想的に専用線を張ったところで物理的には元のネットワークにいますよね？」
- パワハラ上司「専用線で接続したら攻撃されない。だから仮想的に専用線を張ってるんだから攻撃されない！」
- 私「(喩え話じゃなくてちゃんと技術的な回答がほしいんだが…)」
- パワハラ上司「ちょっとは調べてから質問しろ」
-パワハラ上司「俺の時間もタダじゃねえんだぞ！」
-パワハラ上司「間違ったら『はい、すみません』でいいんだ。ほれ、早く言え！」
- 私「はい、すみません。」
-  とまあ、これが今思い返すと調子に乗らせる原因だったかもしれない。 研修先の自称ITエンジニアの技術力に疑念を持った最初の出来事だった。
-Network Connect起動時に作成される仮想NICがメトリックで優先されるように設定されるので、 VPN接続後のクライアント発の通信はすべて仮想NIC経由となる。
-ただ私が疑念に抱いたのは、同じ物理ネットワークの他の端末から通信が来た場合は、元の物理NICから応答するのではないか、という点だ。
-具体例としては、クライアントPCでファイル共有を有効にしていた場合、 SSL-VPNで接続していても同じネットワークにいる端末から共有しているファイルが見えてしまうのではないか。
-技術者なら実際に試してみるべき、ということで、実験してみた。
- クライアントOS: Windows 7 64bit クライアントPC: ファイル共有ON 物理ネットワーク環境: 来客用Wi-Fi(普通の家庭用Wi-Fiルータと同じ環境) SSL-VPNクライアント: Pulse Secure 5.2 (Network Connectの後継のJunos Pulseの後継) SSL-VPNアライアンス: MAG2600  という環境でSSL-VPNを接続した後、 同じ物理ネットワークの他のPCから共有されたファイルが見えるかどうかを確かめてみた。
-結果: 見えた　NetBIOS名でもアクセス可能
-物理NICに割り当てられたIPアドレスを使ってもアクセスできたが、NetBIOSによる名前解決もできた。 ということはUDPのブロードキャストにも物理NICから応答する、ということが分かった。
-物理NICが普通の通信が出来ないとカプセル化したパケットの通信もできない、というのは 普通に考えればわかると思うのだが、残念ながらパワハラエンジニアの知識レベルはその程度だった、ということか。
-結論としては、下記の通り。</description>
+      <description>例によってパワハラを受けた研修先で最初に受けたパワハラが、 リモートアクセスのSSL-VPNに関する技術的な質問をした時のことだった。 研修先の会社ではJuniper社(現PulseSecure社)のSSL-VPN製品を導入しており、 クライアントPC側にはNetwork Connectというソフトウェアをインストールしていた。 これはL2フォワーディング方式のSSL-VPNで、起動するとネットワークアダプ</description>
     </item>
     
     <item>
@@ -480,20 +278,7 @@ Network Connect起動時に作成される仮想NICがメトリックで優先�
       <pubDate>Sun, 08 Nov 2015 02:43:00 +0900</pubDate>
       
       <guid>https://www.330k.info/essay/exchange-st-5703-to-sl-r400/</guid>
-      <description>先月の軽井沢〜直江津のあと、2年ぶりに自転車をオーバーホールした。
-その一環でシフトワイヤーケーブルの交換を行ったところ、フロントディレイラーの調子がおかしい。
-フロントトリプルなので、インナー⇛センター⇛アウターは問題なく変速できるのだが、 アウター⇛センターに変速しようとすると、「バキッ、ガッチャン」と音がして、一気にインナーまで落ちてしまうか、 まったく変速操作を受け付けなくなるか、のどちらかの症状が発生。
-ネットで調べると、記 ： シマノ105 STI左レバー ST-5703不調 と同じように、ワイヤー先端のタイコが外れてしまっていた。
-何回ワイヤーのタイコの位置を直してもタイコが外れて変速操作の不調が治らない。 さて、何とかならないかと思いながら何回か変速操作をしていたところ、レバーの隙間から以下の写真のような部品が落ちてきた。
-  シマノの説明書を見ても該当する部品は見当たらないし、よく見ると穴の周囲は削れているし、 あれ？もしかして、完全に壊れちゃった？
-とはいえ、STIレバーは結構お値段がするもので、amazonで25000円くらいする。 それに今のコンポも6年目で走行距離が16000km程度(あまり走れていないな・・・)なので、そろそろ一式換装しようか、と考えていたところ。
-一式交換するとなると、11s対応のホイールも交換が必要になり20万円程度の出費を覚悟しなければならないし、 なによりせっかく来月の初めに取った遅めの夏休みに間に合わない。
-一晩考えた後、「フロントだけならWレバーでしばらく乗り切ってからコンポを一式換装しよう」ということにした。
-というわけで、早速amazonでSL-R400を購入。お盆だったがナチュラムからは翌日届いた。
-  早速説明書を読みながら取り付け。取り付け作業の中で、説明書から日本語のページを探すのが一番手間取った。
-あとはワイヤーの通し方の説明が全くないことに困惑(STIレバーの説明書には詳しく書いてあるのに)。 だが実物を見てみたら説明が不要なくらい簡単な構造であることが分かった。
-  手でクランクを回しながら変速操作をしてみると、フリクションの独特な操作感は確かにハマるものがある。 面倒なワイヤーの調整も不要。これは楽しいかもしれない。
-とりあえず来月に予定しているロングツーリングはこれで乗り切ってみる。</description>
+      <description>先月の軽井沢〜直江津のあと、2年ぶりに自転車をオーバーホールした。 その一環でシフトワイヤーケーブルの交換を行ったところ、フロントディレイラーの調子がおかしい。 フロントトリプルなので、インナー⇛センター⇛アウターは問題なく変速できるのだが、 アウター⇛センターに変速しようとすると、「バキッ、ガッチャン」と音がして、一気にインナーまで落ちてしまうか、 まったく変速操作を受け付けなくなるか、のどちらかの症状</description>
     </item>
     
     <item>
@@ -502,11 +287,7 @@ Network Connect起動時に作成される仮想NICがメトリックで優先�
       <pubDate>Mon, 26 Oct 2015 00:00:00 +0900</pubDate>
       
       <guid>https://www.330k.info/essay/first-review-of-recon-jet/</guid>
-      <description>購入したのはかなり早いタイミングだったが、なかなか試すことができなかったRecon JET。
-やっと自転車で走るときにつけて使い心地はどんなものか試すことが出来た。 ANT+対応の心拍計などは持っていないので、Recon JET単体でのテスト。
-つけ心地  普通のサングラスに比べればやはりパッドが当たる部分が痛くなるが、耐えられないほどではない 日本は車道の左側通行なので、視界の右下をディスプレイに遮られると、後方確認がしにくい  GPS  測位が遅い(m-241に比べて10分以上捕捉に時間がかかることもある) 測位の精度はm-241と同等以上(下記マップは障害物がほとんどない荒川CRを走行したとき) ただし、積算距離の精度は低い(１箇所でも位置がずれると、そのせいで距離が大きく計算される)  Recon JET(赤線)とm-241(青線)のGPSログ比較。
-  function initMap(){ var map, ctaLayer; map = new google.maps.Map(document.getElementById(&#34;mapcanvas-2015081602-kml&#34;), { center: {lat: 35.6832581, lng: 139.7555827}, zoom: 8 }); ctaLayer = new google.maps.KmlLayer({ url: &#39;https:\/\/www.330k.info\/\/essay\/first-review-of-recon-jet\/2015081602.kml&#39; }); ctaLayer.setMap(map); }  バッテリー  最大2時間半しかもたない 予備のバッテリーを持っていても、1日中走行するには耐えられない  カメラ  解像度は低いので、携帯電話のほうがよっぽどまし。 動画は撮影時間を予め15秒や1分などと予め設定してから撮影をスタートするので、使いどころが難しい。  荒川CRで実際に撮影した画像と動画
-  マップ  黒背景に道路が暗い灰色で表示されるので非常に見にくい 道路名や何号線かなどが表示されないため道に迷った時や知らない土地では無力  Recon Uplink  Recon JETを接続すると自動で記録をWeb上に上げてくれる 今までの走行記録(距離、平均速度、獲得標高など)をブラウザで見れるのは便利なので、 毎日ガチで2時間の練習ばかりする人であれば有用かもしれない  総評  サイコンの代替になるにはまだまだ性能不足(特にバッテリー)。 カメラやマップもRecon JETを使うくらいなら携帯電話(スマートフォン)のほうが断然良い。  ということで、残念ながら現時点ではロングツーリングのお供にはなれなかった。</description>
+      <description>購入したのはかなり早いタイミングだったが、なかなか試すことができなかったRecon JET。 やっと自転車で走るときにつけて使い心地はどんなものか試すことが出来た。 ANT+対応の心拍計などは持っていないので、Recon JET単体でのテスト。 つけ心地 普通のサングラスに比べればやはりパッドが当たる部分が痛くなるが、耐えられないほどではない 日本は車道の左側通行なので、視界の右下をディスプレイに遮られると、後</description>
     </item>
     
     <item>
@@ -515,20 +296,7 @@ Network Connect起動時に作成される仮想NICがメトリックで優先�
       <pubDate>Sun, 18 Oct 2015 00:00:00 +0900</pubDate>
       
       <guid>https://www.330k.info/essay/nhk-contract-cancellation-and-communication-cost-saving/</guid>
-      <description>現在所持している携帯電話は、2013年11月に購入した京セラ製のURBANO L01。
-これにはワンセグ機能が付いているため、NHKの営業センターの人に見つかり、
- 「テレビを所持していなくてもワンセグ機能付きの携帯電話を所持しているだけで契約が必要です」
- と言われ、渋々NHKとワンセグのみ受信契約をした。
-契約した時から、毎月割がなくなる2015年11月にワンセグ機能がない機種に変更することを決意していたが、 なんとauから出ているAndroidスマートフォンは(TORQUE G01を除き)すべてワンセグ機能が付いている。
-ワンセグ機能がついていないのはiPhoneとFx0のみだが、
- iPhoneのSafariでは拙作のGPXでのルート作成ができず(ダウンロードができない)、 FirefoxOSでは多分GPXファイルの作成はできるが、地図ロイドやrmapsに相当するような地図アプリがありそうにない。  私は15年近くauユーザーなので、キャリアメール(@ezweb.ne.jp)も変えたくない(変更の連絡が面倒)。
-要件をまとめると、
- ワンセグ機能が付いていないこと(NHKのワンセグ契約を解約するため) 今までの電話番号とキャリアメールのアドレスを維持すること Android端末であること(GPXファイルが作成でき、表示するアプリがあること) 電話は発信・着信ともにめったにしない データ通信も家と会社にはWi-Fiがあるので、月1GBも使わない  という条件で、携帯電話の通信料とNHKに払う受信料のトータルを削減したい。
-方針 上の要件を解決するため、色々と検討した結果、以下のような方針とした。
- ワンセグ機能がないSIMフリー端末を購入 MVNOの格安SIMを新規に契約 格安SIMはデータ通信のみ IP電話アプリ(050PlusやSMARTalk)を入れて050の番号で音声通話はできるようにする auの端末はLTEフラットを解除し、電話番号とメールアドレスを維持するための最低限の契約だけ残して実家に置く (実家にはテレビがあり、NHKと契約しているので、ワンセグ受信設備があっても大丈夫) 現在のau電話番号への着信は、SMARTalkの050番号へ転送するように設定し、新端末で着信できるようにする (転送時にauの通話料がかかるが、ほとんど着信もしない) auのキャリアメール(ezweb.ne.jp)はGmailで送受信するように設定  選んだもの  SIMフリー端末 : ASUS ZenFone 2 Laser SIMカード : DMM Mobile データSIM ライトプラン(月額477円) IP電話 : SMARTalk  ヨドバシカメラやビックカメラの実店舗で触ってみたところ、 ZenFone 2 LaserよりP8liteのほうが手に持ってしっくりくるも印象だったが、 microSDXCに対応しているという一点だけでZenFone 2 Laserに決定した。
-SIMカードは当時データ通信1GB/月で一番安いもの。
-IP電話は、ほとんど通話をしないため、通話料金ではなく月額が無料のSMARTalkを選択。
-経費(受信料 + 通信費)の変化 通信費がどれだけ節約できるかをまとめると下表のようになった。</description>
+      <description>現在所持している携帯電話は、2013年11月に購入した京セラ製のURBANO L01。 これにはワンセグ機能が付いているため、NHKの営業センターの人に見つかり、 「テレビを所持していなくてもワンセグ機能付きの携帯電話を所持しているだけで契約が必要です」 と言われ、渋々NHKとワンセグのみ受信契約をした。 契約した時から、毎月割がなくなる2015年11月にワンセグ機能がない機種に変更することを決意していたが</description>
     </item>
     
     <item>
@@ -537,17 +305,7 @@ IP電話は、ほとんど通話をしないため、通話料金ではなく月
       <pubDate>Sun, 18 Oct 2015 00:00:00 +0900</pubDate>
       
       <guid>https://www.330k.info/essay/exchange-canti-lever-brake-to-mini-v-brake/</guid>
-      <description>私が現在乗っている自転車はSURLYのCROSS-CHECKで、一応シクロクロスの分類に入る。 なので、購入時はカンチレバーブレーキ(CaneCreek SCX-5)を付けていた(当時はミニVはなかった)。
-5年間はシューをSwiss stopに交換するなどして使用してきたが、
- パワーロスが大きく、長い下り道などで手が疲れる(握力がなくなり下り道で休憩することも) チドリまでのワイヤー長さと、左右のブレーキ間のワイヤー長さの2箇所を調整する必要があり、難しい。 特にフロントでブレーキ時にビビる(ガタつく)ため、スムーズに止まれない。 (当初はフロントフォークの剛性不足かと思ったが、今回の交換で良くなったので、 おそらくチドリでワイヤーを引く構造による剛性不足と考えられる)  という問題に悩まされてきた。
-一応フォローしておくと、制動力自体には不安はなかった(握力が続く限りは)。
-ところが、シマノがミニVブレーキを発売した、というのを遅ればせながら知った。
-ネットではCROSS-CHECKへの取り付け例は見つけられたものの、 自分のブレーキレバー(5700系105)で引けるかどうかは調べきれなかったが、交換を決意。
-早速Amazonで、105グレードのBR-R573とブレーキケーブルセットを購入して交換した。
-交換作業は上記のページで詳しく解説されているので割愛。 交換後は下の写真(リア)のようになり、タイヤとのクリアランスは十分。 付属品の90度のバナナではワイヤーが横に出すぎたため、自在バナナに変更。
-  交換後、荒川CRと都内の一般道を40kmほど試走してみた。 その結果、
- ブレーキレバーを軽く握れるようになった。 制動力も強すぎることはなく、コントローラブル(シューは付属のシマノ製)。 ブレーキング時のビビリ、ガタつきがなくなり、スムーズに止まれるようになった。 ワイヤーの引きしろが少ないので、リムとシューの間のクリアランス調整はシビア。 だが、調整箇所が1箇所になったため調整作業の難易度はむしろ少し下がった。  と、概ね交換した目的を果たせた。
-唯一のデメリットとしては、ホイール(リム)に振れが生じるとすぐにシューと接触してしまうこと。 ロングライドではニップル回しも持っていったほうが良さそうだ。</description>
+      <description>私が現在乗っている自転車はSURLYのCROSS-CHECKで、一応シクロクロスの分類に入る。 なので、購入時はカンチレバーブレーキ(CaneCreek SCX-5)を付けていた(当時はミニVはなかった)。 5年間はシューをSwiss stopに交換するなどして使用してきたが、 パワーロスが大きく、長い下り道などで手が疲れる(握力がなくなり下り道で休憩することも) チドリまでのワイヤー長さと、左右のブレーキ間</description>
     </item>
     
     <item>
@@ -556,19 +314,7 @@ IP電話は、ほとんど通話をしないため、通話料金ではなく月
       <pubDate>Thu, 15 Oct 2015 00:00:00 +0900</pubDate>
       
       <guid>https://www.330k.info/essay/upload_recorded_mp3_files_to_youtube/</guid>
-      <description>私はパワハラ対策として、毎日ICレコーダーを使って秘密録音を実施している。 ただ、毎日10時間を超える録音時間のため、32kbpsで録音しても1日あたり200MB弱の音声ファイルがHDDに追加されていき、HDDの容量を圧迫していく。
-そこで、バックアップを兼ねて動画化してYoutubeにアップロードするようにし、 HDDの空き容量が減ってきたらオリジナルの録音ファイルを消去していくことにした。
-ffmpegを使い、以下の手順で実施する。
- 適当に画像ファイルを作成する 画像ファイルから無音声の動画ファイル(再生時間24時間)を作成する 無音声の動画ファイルと、毎日録音した音声ファイルを結合する 結合した動画ファイルをYoutubeにアップロード  具体的には、適当にblank.pngという名前で640x480とか好みのサイズで画像を作成し、以下のコマンドで24時間の無音声動画ファイル(blank24.mov)を作成。
-ffmpeg -y -loop 1 -r 1 -i blank.png -t 86400 blank24.mov  これでフレームレート1 fps、動画時間が24時間(86400秒)の無音声動画ファイルblank24.movができる。 私の環境では5分程度かかったが、このファイルは1度作っておけば何度でも使えるので、最初の1回だけ待てば良い。
-次に、この無音声の動画ファイル(blank24.mov)と、録音した音声ファイル(input.mp3)を結合する。
-ffmpeg -y -i blank24.mov -i input.mp3 -vcodec copy -acodec copy -shortest output.mov  -shortestオプションを加えているので、24時間のblank24.movと音声ファイルの時間のうち、短い方の時間でoutput.movが作成される。
-動画になったことにより、元のMP3ファイルよりもファイルサイズが1割ほど増える。 私の環境では12時間程度録音したものからでも1分程度のエンコード時間で動画ファイルを作成できた。
-ちなみに出来上がりの動画ファイルのコンテナがMOVなのは、録音した音声ファイルの拡張子が、 ICレコーダーで録音したMP3、Androidの録音アプリのmp4、iPhoneの録音アプリのm4aと3種類あったため、 それと競合しないコンテナ形式を選んだ。
-また、無音声動画ファイル(blank24.mov)を作成せず、1コマンドで静止画と音声ファイルを結合することも可能だが、 都度動画部分のエンコードが発生するため時間がかかる。
-毎日音声ファイルが増えていくような状況では、予め無音声動画ファイルをつくっておき、 -vcodec copyとすることで再エンコードを省略すれば、毎日の処理が高速化できる。
-ただし、Youtubeの制限により、15分の制限を解除したアカウントでも、動画の最長時間は12時間に制限される。 したがって、私は以下のようなシェルスクリプトを書いて実行している。
-#!/bin/bash find ./ -iname &amp;quot;*.mp3&amp;quot; -o -iname &amp;quot;*.mp4&amp;quot; -o -iname &amp;quot;*.m4a&amp;quot; | while read i do hour=`ffmpeg -i &amp;quot;$i&amp;quot; 2&amp;gt;&amp;amp;1 &amp;lt; /dev/null | grep Duration | sed -E &amp;quot;s/.</description>
+      <description>私はパワハラ対策として、毎日ICレコーダーを使って秘密録音を実施している。 ただ、毎日10時間を超える録音時間のため、32kbpsで録音しても1日あたり200MB弱の音声ファイルがHDDに追加されていき、HDDの容量を圧迫していく。 そこで、バックアップを兼ねて動画化してYoutubeにアップロードするようにし、 HDDの空き容量が減ってきたらオリジナルの録音ファイルを消去していくことにした。 ffmpe</description>
     </item>
     
     <item>
@@ -577,45 +323,7 @@ ffmpeg -y -i blank24.mov -i input.mp3 -vcodec copy -acodec copy -shortest output
       <pubDate>Fri, 28 Aug 2015 00:00:00 +0900</pubDate>
       
       <guid>https://www.330k.info/essay/augue-against-power-harassment-bully/</guid>
-      <description>今朝、以前パワハラを受けていた研修先(以下G社とする)の人間からメールが来た。 要約すると、以下の内容になる。
- 撤去作業終わりました
-**社(私の会社)の作業なので一般常識的に事前に連絡するのが筋です
- 確かに自分の会社が発注した作業で、G社側でネットワーク機器の撤去作業があったのだが、当然私は事前に連絡を行っていた。 それを忘れている自分を棚に上げ、偉そうにこちらに「一般常識」を説いてきた。
-他にも研修中は私に対して
- 「間違ったらすぐに『はい、すみません』と言え！！」
-「報・連・相をきちんとしろ！！」
-「社会人として失格だ！」
- と怒鳴られ続けてきた。
-以前は研修中ということで下請け同然に扱われることを甘受していたが、 現在は研修期間は終了しており、下請けのように扱われる道理はない。
-また、研修中は連日のパワハラで疲弊しきっていたが、研修終了と共に精神的に回復してきたので、 一発切り返すことにしてみた。
- 私は事前に連絡していますので、筋は通してあります。
-筋を通すという意味では、御社が原因で弊社のシステム移管が遅れていると他社経由で聞きましたが、 御社からは何の連絡もありません。
-こちらに筋を通せ、とおっしゃるならば、 御社も筋を通すべきではないでしょうか。
-もちろん私の論理に間違いがあれば、ご指摘ください。
-弊社としては御社との関係を悪化させる意図はございませんが、 御社の一方的な態度は弊社に限らず、相手に良い印象を与えないと考えます。
- 研修先の人間がまともな人間であるならば、
- 私に反論する 間違いを認める  のいずれかの連絡が来るはずだが、メールを送信して8時間たった現時点では来ていない。
-私には「『間違ったらはい、すみません』と言え！」と怒鳴り続けていたのだが、 やはり自分たちの間違いを認めて自省できるような人間ではなかったようだ。
-さて、今後の彼らの対応について予想してみる。
-恐らくだがいつもの彼らのやり口から、私のメールへの対応は反論でも謝罪でもなく、 そんなことを言うと、○○してやらんぞ！ もしくは ○○してやるぞ！ という脅迫を行ってくると予想する。
-これは現在もG社にユーザーサポート業務を一部委託していることを盾に取った脅迫だ。
-とはいえ、その対価として高額な「経営指導料」なるものをG社には支払っている。
-ただ、これが相場の4倍程度の値段で、しかも対応時間は平日の日中に限る、というものなので、 東証一部上場のG社は監査法人に経営指導料について突かれると痛い(不正な利益供与と疑われる)のではないか。
-今後、進捗があれば追記していきたい。
-増長した人間が言う「一般常識」とは何なのか、「社会人」とはどういう行動をするのだろうか。面白そうだ。
-後日談(2週間後)
-今のところ面白い展開にはならずにすんでいる。 G社は私が休暇を取っている間に、私の上司にきちんと状況を説明しに来たらしい。
-G社から私への謝罪はないものの、その後の電話の対応は非常に丁寧になった。 監査法人のコンプライアンス通報窓口へ送るメールの文面を準備していたのだが、送らずに済みそうだ。
-今後も続くと良いが・・・
-後日談その2(2ヶ月後)
-やはり彼らは嫌がらせを行ってきた。
-残念ながら私の予想は当たり、 「延長の連絡がないから今月(10月)でメールサーバの契約を切るぞ」 と一方的に通告してきた。 (現在使用しているメールサーバはクラウド型のメールサービスで、過去の経緯からG社と自分の会社で共有している)
-事前に「10月以降の支払いはG社と弊社のアカウント数に按分した額をG社から請求する」と取り決めてあるので、 今回のG社の行為は契約違反であり、もしかしたら脅迫罪にもなるかもしれない。
-さらに、私の会社で使用している分だけアカウント数が減っても メールサーバの利用料金は変わらないため、G社側にコスト削減などのメリットはない。 完全に嫌がらせ目的であり悪質である。
-もう少ししたらメールサーバも切り替えるので、ようやく完全に縁が切れる。
-心置きなく温めておいた監査法人への通報メールを送信した。
-後日談その3(2ヶ月半後)
-どうも監査法人が動いたらしい。</description>
+      <description>今朝、以前パワハラを受けていた研修先(以下G社とする)の人間からメールが来た。 要約すると、以下の内容になる。 撤去作業終わりました **社(私の会社)の作業なので一般常識的に事前に連絡するのが筋です 確かに自分の会社が発注した作業で、G社側でネットワーク機器の撤去作業があったのだが、当然私は事前に連絡を行っていた。 それを忘れている自分を棚に上げ、偉そうにこちらに「一般常識」を説いてきた。 他にも研修中は私</description>
     </item>
     
     <item>
@@ -624,16 +332,7 @@ G社から私への謝罪はないものの、その後の電話の対応は非�
       <pubDate>Tue, 04 Aug 2015 00:00:00 +0900</pubDate>
       
       <guid>https://www.330k.info/essay/install-windows-10-to-panasonic-letsnote-cf-n10/</guid>
-      <description>Windows Insider Programに登録していたので、7/31に「Windows 10がでたよ〜」というメールがGabe Aulからやってきた。
-ゆくゆくは更新プログラムが提供されるけど、早く試したい人は「メディア作成ツール」をダウンロードして使うといいよ、 とのことなので、会社で余っていたPCにインストールしてみた。
-インストール  機種: Panasonic Let&amp;rsquo;s Note CF-N10(法人向けモデル) Windows 7 32bit版からのアップグレード Office 2010、Adobe Acrobat Pro XI、トレンドマイクロウイルスバスターがインストール済み  インストール方法は基本的に http://ascii.jp/elem/000/001/034/1034923/ の通り。 ※現在は直接ISOファイルがダウンロードできる模様
-ただし、指示に従って進めていると、以下の2つのソフトウェアをアンインストールしなさい、と出てくる。
- Intel&amp;reg; Dynamic Power Performance Management Realtek High Definition Audio Driver  Realtekの方は、「アンインストール」ボタンをクリックすればOK。
-Intelの方は、 http://answers.microsoft.com/ja-jp/windows/forum/windows_8-windows_install/windows-8/cefec781-59a2-4f78-925a-0b34c70b53b7?auth=1 に情報がある。
-Let&amp;rsquo;s Noteの場合、 C:\util2\drivers\etm\DppmCleaner.bat、もしくはLPOSetting.jsを実行する、とあるが、 CF-N10の場合はバージョンが違うためか存在しない。
-仕方がないので、時期の近い他機種向けのドライバーをインストールして、上記のLPOSetting.jsを実行することで解決。 その後しばらく待てば、無事Windows 10へのアップグレードが完了した。
-インストール結果 現在のところ、インストール後の結果は以下の通り。
- ActiveDirectoryへの参加　→　○成功 グループポリシーの適用　→　△ユーザーの構成のみ有効、コンピュータの構成は有効にならない (ただし、ドメインコントローラ側(Windows Server 2012R2)でのシミュレーションでは適用されるはず) Office 2010の起動　→　△起動は成功(Outlookの設定情報は引き継げず) Adobe Acrobat Pro XIの起動　→　○成功(ただしデフォルトではEdgeでPDFを開く) ウイルスバスター　→　○問題なく動作している模様(リアルタイム検索、パターンファイルのアップデート) BitLockerによるドライブの暗号化　→　○成功(運良くCF-N10もTPMを積んでいた)  その他感想  起動時間はWindows 7とあまり変わらない感触 シャットダウンは早くなった印象 たまに画面の文字がボケる(ClearTypeの設定をいじっても変わらず) 現状ではGPOでコンピュータの構成が効いていないので、クライアント側かサーバ側で対応するタイミングが来るまでは様子見。  Aug.</description>
+      <description>Windows Insider Programに登録していたので、7/31に「Windows 10がでたよ〜」というメールがGabe Aulからやってきた。 ゆくゆくは更新プログラムが提供されるけど、早く試したい人は「メディア作成ツール」をダウンロードして使うといいよ、 とのことなので、会社で余っていたPCにインストールしてみた。 インストール 機種: Panasonic Let&amp;rsquo;s Note CF-N10(法人向けモデル) Windows 7 32bit版からのアップグレード Office 2010、A</description>
     </item>
     
     <item>
@@ -642,10 +341,7 @@ Let&amp;rsquo;s Noteの場合、 C:\util2\drivers\etm\DppmCleaner.bat、もし�
       <pubDate>Sun, 19 Jul 2015 00:00:00 +0900</pubDate>
       
       <guid>https://www.330k.info/essay/how-to-take-files-out-from-company/</guid>
-      <description>ベネッセの子会社での情報漏えい事件では、スマートフォンを使ってデータをPCから取り出していたらしい。 そこで、私の研修先の会社の社内SE部門の人たちは、以下の内部者によるファイルやデータの持ち出し対策を行っていた。
- 資産管理ソフト(SKYSEA Client View)を導入  USBメモリやスマートフォンを挿しても書き込めないように設定 ネットワーク経由でもSKYSEAにログが残るからわかる  SKYSEAの機能で知らない機器がネットワークに接続されても検知できる(ただし、よく仕組みはわかっていない模様) Webフィルタリングソフト(InterSafe CATS)も導入 会社のメールサーバ経由での送受信メールはすべて保管  M&amp;amp;Aアドバイザリーという業務の特性からとにかく情報漏えい対策にお金はかけており、 セキュリティには相当な自信をお持ちでいらっしゃった。
-ただ、素人目からしても抜け道がいくつか見えたので、研修を終えて自分の会社に戻った瞬間に以下に対して策を講じた。
- Bluetoothが使い放題で、右クリックして「送る」メニューをするだけで簡単にファイル送信可能。 またOfficeのBluetoothアドイン経由でも送信可能。 ※SKYSEAにはBluetoothに接続する機器を制限する機能があるが、iPhoneとのテザリングや無線マウス、キーボードを使用している人がいるので研修先企業では禁止にできなかった。 ネットワークの共有(ICS)や、SoftAPにより個人端末を社内LANへ接続可能 ※SKYSEAにはネットワークに登録されていないMACアドレスの端末が接続されたことを検知・遮断する機能あり。だが直接外部端末を社内ネットワークに接続しない(PCでNAPTを行う)場合は、SKYSEAでは検知不可能。 IISをインストールし、AdHocやWiFi Directで接続されると外部端末からアクセスしての持ち出しが可能。 ※SKYSEAはユーザが新たなソフトウェアをインストールすると検知できる。しかし、SKYSEAのサーバにIISも入れる必要があるためデフォルトだとIISがホワイトリストに入ってしまう。 Hyper-Vをインストールして仮想マシン経由でアクセスされると制限が効かず、ログも残らない。 各ユーザに管理者権限を与えているので、デフォルトで管理共有が有効になっており、外部端末からアクセスして持ちだし可能。 ※SKYSEAには共有フォルダの作成を制限できる機能はあるが、インストール時点で作成されていた場合は禁止できない。 NTFSのジャンクションと上記の方法(ICS、SoftAP、IIS)の組み合わせで、ローカルファイルへのアクセスに見せかけてファイルサーバのファイルも持ち出し可能なので、 ログを見てもファイルサーバからデータを持ちだしたことが分からない。 会社では携帯電話にiPhoneを採用しており、クライアントPCにはバックアップ用にiTunesをインストールしている。 構成プロファイルでApple Storeの使用を禁止しているが、  iTunesを使ってPCからApple Storeのアプリを自由にインストール可能 しかもiTunesのファイル共有機能も有効なので、iPhone経由でいくらでも外部に持ち出せる  標準ブラウザとしてFirefoxを採用しているが、Firefox Syncで個人アカウントを作成し、ブックマークやパスワードを個人PCと同期可能。 テキスト情報ならブックマークに見せかけて同期すれば持ち出せる。 Google Chromeで個人のGoogleアカウントとしてログイン、同期可能なので、Firefox Syncと同様にいろいろ持ち出せる。 また、Google Cloud Printにより家のプリンタに出力することも可能。 Google ChromeではInterSafe CATSとSKYSEAの組み合わせではログ取得ができないので、 InterSafe CATSに引っかからないウェブサイトであれば、ファイルをアップロードし放題。ログも残らない。 ※これはSKYSEAの問題ではなく、InterSafe CATSのフィルタリングがかなりエグい仕組みのため &amp;gt; Feb. 6 2016 追記: InterSafe CATS 4.3以降はこの競合問題は解決した Skype.exeを実行不可にしているものの、Skype for Business(Lync)はスルーなので、ファイル送信し放題 また、「Skype.exe」という名前のファイルを実行禁止・ファイル名変更禁止したりできるが、それでも抜け道はある ※SKYSEAはexeファイルのハッシュ値でブラックリストを作成できる　⇔　1bitでも違うexeファイルを作れば抜けられる  ※はSKYSEAの製品自体が悪いわけではないことの説明。 私はSKYSEAはいい買い物だったと思っているので誤解なきよう。</description>
+      <description>ベネッセの子会社での情報漏えい事件では、スマートフォンを使ってデータをPCから取り出していたらしい。 そこで、私の研修先の会社の社内SE部門の人たちは、以下の内部者によるファイルやデータの持ち出し対策を行っていた。 資産管理ソフト(SKYSEA Client View)を導入 USBメモリやスマートフォンを挿しても書き込めないように設定 ネットワーク経由でもSKYSEAにログが残るからわかる SKYSEAの機能で知らない</description>
     </item>
     
     <item>
@@ -654,20 +350,7 @@ Let&amp;rsquo;s Noteの場合、 C:\util2\drivers\etm\DppmCleaner.bat、もし�
       <pubDate>Wed, 15 Jul 2015 00:00:00 +0900</pubDate>
       
       <guid>https://www.330k.info/essay/results-oriented-approach-of-japan-companies-and-power-harassment/</guid>
-      <description>今年の5月までの半年間、研修先の企業で
- 自分がミスをしたり、言いがかりをつける格好の餌を与える 相手がひたすら満足するまで怒鳴りつける しばらくしたら、定番の以下の言い訳をする  「さっきのは悪気はなかった」 「お前の為を思って怒ったんだ」   のループを繰り返していた。
-周りや相手の上司に現状を訴えても、「あいつが怒りは愛があるから良いんだ」と言われる。
-パワハラに限らず、体罰をする人は皆「愛を持ってやった、愛の鞭だ」と言う。
-こうして私は不眠、吐き気、下痢などの体調不良になり、薬(イリボー、ルネスタ、レクサプロ、リボトリール)が どんどん増えていった。また、カウンセリングにも行くようになった。
-話は変わって、勤怠管理システムについて経営者と会議をしたところ、 「うちの会社(金融業)の従業員は、皆プロフェッショナルなので、結果で評価してもらいたいと思っている。 我々経営者も結果で評価する。」 という方針が経営者から出された。
-言われた瞬間はちょっとした違和感を覚えただけだったが、よくよく考えてみると、 結果で評価する、と、愛がある指導ならば何でも認められる、は矛盾している。
-愛がある指導というプロセスを持って評価していて、結果を評価していない。
-結果で評価するならば指導についても結果で評価するべきで、私の場合は
-「怒鳴りつける指導を繰り返すことで、不眠や吐き気などの体調不良と 薬による治療、カウンセリングが必要な状態となったという結果をもたらした。」
-という結果を持って評価するべきだ。
-ということは、不完全な成果主義、結果主義がパワハラを生むのではないか。
-とはいえ完全な結果主義を取ると、実際に体調不良にならなければどんな暴力的な言動も問題ない、ということになってしまう。 ただ、金融業の経営者であれば、実際に体調不良になる前でも経営上のリスクとして判断できるはずだ。
-次の会議ではちょっとこの理論でジャブを打ってみよう。</description>
+      <description>今年の5月までの半年間、研修先の企業で 自分がミスをしたり、言いがかりをつける格好の餌を与える 相手がひたすら満足するまで怒鳴りつける しばらくしたら、定番の以下の言い訳をする 「さっきのは悪気はなかった」 「お前の為を思って怒ったんだ」 のループを繰り返していた。 周りや相手の上司に現状を訴えても、「あいつが怒りは愛があるから良いんだ」と言われる。 パワハラに限らず、体罰をする人は皆「愛を持ってやった、愛の鞭だ</description>
     </item>
     
     <item>
@@ -676,15 +359,7 @@ Let&amp;rsquo;s Noteの場合、 C:\util2\drivers\etm\DppmCleaner.bat、もし�
       <pubDate>Wed, 08 Jul 2015 00:00:00 +0900</pubDate>
       
       <guid>https://www.330k.info/essay/disable_specific_windows_update_without_wsus/</guid>
-      <description>先月頃から、Windows 7の通知領域に「Windows 10を入手する」とか「無料アップグレードを予約」とかいう邪魔なMicrosoftの広告が入るようになってきた。 社内SEとしてはユーザに勝手にOSをアップグレードされるわけにはいかないので、消し去りたい。
-ネットを探してみると、やはり同様の悩みを持つ人は多いらしく、結論としては、
- GWX.exeとGWXUX.exeをタスクマネージャで強制終了する インストールされたWindows Updateの「KB3035583」をアンインストールする 再度Windows Updateがインストールさせようとしてくるので、KB3035583を右クリックして「非表示」にする  ということらしい。 → 参考サイト: 「Windows10を入手する」の通知が消えない＼(^o^)／
-さて、1人社内SEとしては以上の手順をユーザの全PCに行うのは無理なので、なんとか自動化したい。 1と2についてはコマンドプロンプトで可能なので、あっさり情報が見つかり、
-Taskkill /IM GWX.exe /F Taskkill /IM GWXUX.exe /F wusa.exe /uninstall /kb:3035583 /quiet /norestart  と書いたバッチファイルをログオンスクリプトに仕込むことで可能だった。
-問題は3の何度アンインストールしても再インストールさせようとしてくる点。 根本的な解決策はもちろんWSUSサーバを立てて、KB3035583を承認しなければ良い。
-だが、私の会社にはWSUSサーバはない。 レジストリをいじったりして特定のWindows Updateを非表示にする方法がないか、と調べてみたら、 Windows Update Agent APIというのがあることを発見。
-英語の情報しかなかったが、サンプルを参考に目的の「KB3035583」を非表示にするスクリプト(今回はJavaScript)を書いてみた。
-/********************************************************************** WSUSを使用せずに不必要なWindowsUpdateを非表示 Copyright 2015-2016 330k 使用は自己責任でお願いします **********************************************************************/ try{ // インストールしないWindowsUpdateのKB番号 var disabledKBs = [ 2876229, 2952664, 2976978, 2977759, 3021917, 3022345, 3035583, 3068708, 3075249, 3080149, 3123862, 3150513, 2990214,// Win 7 3050265, 3065987, 3075851, 3083324, 3083710, 3102810, 3112343, 3135445, 3138612, 3161608, 3044374,// Win 8.</description>
+      <description>先月頃から、Windows 7の通知領域に「Windows 10を入手する」とか「無料アップグレードを予約」とかいう邪魔なMicrosoftの広告が入るようになってきた。 社内SEとしてはユーザに勝手にOSをアップグレードされるわけにはいかないので、消し去りたい。 ネットを探してみると、やはり同様の悩みを持つ人は多いらしく、結論としては、 GWX.exeとGWXUX.exeをタスクマネージャで強制終了する イ</description>
     </item>
     
     <item>
@@ -693,17 +368,7 @@ Taskkill /IM GWX.exe /F Taskkill /IM GWXUX.exe /F wusa.exe /uninstall /kb:303558
       <pubDate>Wed, 08 Jul 2015 00:00:00 +0900</pubDate>
       
       <guid>https://www.330k.info/essay/use_ic_recorder_for_power_harassment/</guid>
-      <description>ITエンジニアとしてキャリアチェンジしたため、転職した直後から、研修として別の企業の社内SEのチームに入ることになった。
-ただ、そこには典型的なパワハラ指導者がいた。
-連日パワハラを受けたり、他の人が受けるのを狭い部屋で聞かされ続け、 精神安定剤や抗不安薬、睡眠薬がないとやっていけないようになってしまった。
-このままでは潰れかねないので、パワハラの証拠を得るべく勤務中に秘密録音をしたいと考えていくつか試してみた結果、 ICレコーダを購入するのがベストであるという結論に落ち着いた。
-なお、ICレコーダを買う前に以下の選択肢を検討した。
-Windows標準のサウンドレコーダー(ノートPC、会社ではLetsNoteの内蔵マイクを使用することを前提)  PCのマイクの性能は概して良くない(おそらくビデオ通話向けなので、PCの正面の音しか拾えない) 途中で終了すると一切録音ファイルが残らない(シャットダウンすると直前の録音は消える) 二重起動できないので、タスクマネージャで10分毎に起動しようとしても、起動と保存・終了にかかる時間があるため、実際には録音時間を9分55秒、サウンドレコーダーの起動間隔を10分などとするしかなく、5秒間は録音できない時間が生じる 会社によってはグループポリシーで禁止されているかもしれない(私の会社ではADをほとんど使いこなされていないため使用可能だった) 会議などPCから離れる場面が多い WMAで圧縮しても音声ファイルの容量が1日で1GB近くなる  会社携帯(iPhone)や個人携帯(Android)の録音アプリ  常時胸ポケットに入れて会話を録音していてもまずバレない とりあえず試す価値はある(マイクや電池の性能によっては十分実用になるかも) iPhoneの場合は、通話を録音できない(3者通話を利用したサービス・アプリはあるが、録音開始まで少々時間がかかる) マイクの性能は電話向けのものが多く、周囲の音を広く拾えるものではない 電池の消耗が速く1日もたない  WSHでWindowsの音声認識エンジンを使い、音がある時だけ録音するスクリプト  追加のソフトはインストール不要で、WSHを実行できるのであればハードルは低い 何も言われていない時は録音しないので、1日の音声ファイルの容量は150MB程度ですむ やはりPC内蔵のマイクでは周囲の音を拾えない マイクの感度を高くすると、キーボードを叩く音などでも結構反応されるが、低くすると普通の会話も反応してくれない PCから離れる場面が多い  PCの内蔵カメラで常時録画(LiveCapture3を使用)  自分のPCの正面に相手の顔を向ければ、パワハラしている時の表情も撮影できる 常時監視モードにすると、PC起動直後から終了直前まで映像と音声の記録が可能 映像込みだが1日1GB程度の容量と、意外と少ない ソフトのインストールを禁止している会社では不可能 やはりPC内蔵マイクの性能により、周囲の音が拾えない PCから離れる場面が多い  以上の検討の結果、PCや携帯ではマイクの性能が秘密録音向きではないため、 素直にICレコーダを購入してポケットに忍ばせるのが一番、となった。
-私はPanasonicのXP007(製品情報サイト)にしたが、
- ポケットに入る大きさ 1日(少なくとも12時間程度)は連続録音可能な容量と電池 PCへのデータ転送が楽(毎日録音するので、毎回microSDカードを抜き差しするのは面倒)  という条件を満たせば、他の製品でも良いと思う。
- ちなみに、ヨドバシアキバのICレコーダ売り場で製品を比較していたときに、自分がかなり悲壮な表情をしていたと思われ、店員さんも声をかけてこなかった。
-なお、少しでも購入を迷っている方は、すぐにでも買ってください！！
-精神的な安定への寄与は購入代金をはるかに上回ります。</description>
+      <description>ITエンジニアとしてキャリアチェンジしたため、転職した直後から、研修として別の企業の社内SEのチームに入ることになった。 ただ、そこには典型的なパワハラ指導者がいた。 連日パワハラを受けたり、他の人が受けるのを狭い部屋で聞かされ続け、 精神安定剤や抗不安薬、睡眠薬がないとやっていけないようになってしまった。 このままでは潰れかねないので、パワハラの証拠を得るべく勤務中に秘密録音をしたいと考えていくつか試し</description>
     </item>
     
     <item>
@@ -712,12 +377,7 @@ Windows標準のサウンドレコーダー(ノートPC、会社ではLetsNote�
       <pubDate>Wed, 20 May 2015 00:00:00 +0900</pubDate>
       
       <guid>https://www.330k.info/essay/shipment-of-recon-jet-and-uplink-needs-windows/</guid>
-      <description>2年近く前にパイロット版を予約していたRecon Jetが手元に到着した。 発送はFedEx。
-   日付 できごと     2015年4月29日 Recon社(カナダ リッチモンド)を出荷   2015年4月30日 バンクーバー   2015年5月01日 メンフィス空港から空輸   2015年5月02日 成田空港に到着   2015年5月03日 税関通過   2015年5月07日 平日のため受け取れず、FedExに電話して土曜日の午後を希望   2015年5月09日 無事到着(国内の配送は西濃運輸)    箱を開けたらこのような感じ(携帯での撮影のため画質はご容赦を)
-      説明書を読むと、
- Recon Jetの電源を入れる 付属のmicroUSBケーブルでPCと接続する ReconのサイトにアクセスしてRecon Uplinkをインストールし、初期登録をせよ  とある。
-が、Recon UplinkはWindows版とMac版しかない。 私が今持っているのはUbuntuマシンなので、以下を試してみた。
- wineで動かないかな？ → インストールを完了できず 仮想マシン(Windows XP on VirtualBox)ならどうだ！ → Windows XPには対応していないらしく、こちらも動作せず 今なら無料でWindows 10 Insider Preview版が使えるんじゃね？ → VirtualBoxで仮想マシンを作成しUplinkのインストールとソフトの起動は成功。初期登録までは上手くいったが、その後同期がいつまで待っても始まらない。  このままでは$499が無駄になってしまうので、最終的にWindows 8.</description>
+      <description>2年近く前にパイロット版を予約していたRecon Jetが手元に到着した。 発送はFedEx。 日付 できごと 2015年4月29日 Recon社(カナダ リッチモンド)を出荷 2015年4月30日 バンクーバー 2015年5月01日 メンフィス空港から空輸 2015年5月02日 成田空港に到着 2015年5月03日 税関通過 2015年5月07日 平日のため受け取れず、FedExに電話して土曜日の午後を希望 2015年5月09日 無</description>
     </item>
     
     <item>
@@ -726,11 +386,7 @@ Windows標準のサウンドレコーダー(ノートPC、会社ではLetsNote�
       <pubDate>Fri, 09 Jan 2015 00:00:00 +0900</pubDate>
       
       <guid>https://www.330k.info/essay/3d-graphics-not-showed-in-ubuntu-mathematica/</guid>
-      <description>たまたま私の環境の問題かもしれないが、
- Intel Core-i7 3770 Ubuntu 14.04 LTS Mathematica 8.0.4 Home Edition  という環境で、Mathematicaのノートブック上でPlot3DなどのGraphics3Dオブジェクトが、 うまく表示できないことに悩まされていたが、その解決法が分かった。
-メニューの「編集」→「環境設定」から、「詳細」タブを開き、「オプションインスペクタを開く」をクリック。
-  オプションインスペクタでは「グラフィックス設定」「RenderingOptions」内の&amp;rdquo;Graphics3DRenderingEngine&amp;rdquo;を デフォルトの&amp;rdquo;Automatic&amp;rdquo;から&amp;rdquo;Software&amp;rdquo;に変更する。
-  私の場合は以上で上手く行った。 Windowsではこのようなことはなかったのだが・・・。</description>
+      <description>たまたま私の環境の問題かもしれないが、 Intel Core-i7 3770 Ubuntu 14.04 LTS Mathematica 8.0.4 Home Edition という環境で、Mathematicaのノートブック上でPlot3DなどのGraphics3Dオブジェクトが、 うまく表示できないことに悩まされていたが、その解決法が分かった。 メニューの「編集」→「環境設定」から、「詳細」タブを開き、「オプションインスペクタを開く」をクリック。 オプションインスペクタでは「グラフィックス設定」「Rendering</description>
     </item>
     
     <item>
@@ -739,21 +395,7 @@ Windows標準のサウンドレコーダー(ノートPC、会社ではLetsNote�
       <pubDate>Sun, 14 Dec 2014 00:00:00 +0900</pubDate>
       
       <guid>https://www.330k.info/essay/how-to-create-graphs-for-papers-with-mathematica/</guid>
-      <description>Mathematicaで作る図やグラフは美しいんだ！ということを伝えたいので、 もう数年も前になるが、修士論文を書くときにMathematicaで作るグラフにこだわった点を思い出しながらまとめてみる。
-論文を書くために使うソフトウェア 私はpLaTeXで論文を書いたが、研究室ではWordが推奨されていた。 図表の番号を管理する必要や図表の位置がずれて飛んでいってしまうといった事態も起きないし、目次や索引、参考文献リストの作成も自動でできる。 ただ、Wordだと添削をしやすいのは確か。
-MathematicaでExportする画像の形式 Mathematicaでは多様な画像ファイル形式でExportできるが、論文用のグラフでは多分PNG、EPS、PDFから選択することになると思う。 各画像形式を比較すると、それぞれ以下の特徴がある。
- PNG  ラスタ形式のため、印刷に耐えられるようにするには予め解像度を計算して作成する必要がある 半透過色に対応 Word、pLaTeXどちらでも使える  EPS  ベクタ形式で保存できるため、印刷では自動的にプリンタの解像度で印刷してくれる 半透過色には非対応 pLaTeXで使用可 あまりにEPS画像が多いと、dvipdfm(x)が重くなるので注意  PDF  ベクタ形式で保存できる 半透過色に対応 pLaTeXで使用可 pLaTeXで使うには、予めebbやxbbで.bbファイルや.xbbファイルを作成して、pLaTeXに画像の大きさを知らせる必要がある   したがって、Wordでは基本的に画像をPNG形式で作ることになるが、pLaTeXではEPSやPDFといったベクタ形式の画像フォーマットが使えるのでおすすめ。
-私は基本的にMathematicaからPDFでグラフを作成し、 すべての画像に対してpLaTeXについてくるebbを実行するPerlスクリプトを作って実行してからpLaTeXでコンパイルしていた。
-もちろん写真はJPEG形式を使用したが、写真にいろいろ矢印や記号を書き加えるときはOpenOffice.orgのImpressでJPEG画像の上にいろいろ矢印などを書き込んでPDFにエクスポートしたものを使った。 当時はPowerPointではPDF出力できなかったためOpenOffice.orgを使ったが、今ではPowerPointでいいと思う。
-図・グラフの論文におけるサイズを決め、ImageSizeオプションを指定 おそらくほとんどの論文はA4サイズ(210mm×297mm)で作成されると思う。
-そこから左右の余白をそれぞれ30mmとすると、本文の幅は150mmとなる。 図やグラフの幅は本文より少し小さくしたいので、私は基本的に横幅140mmでグラフを作成した。
-縦幅はMathematicaではデフォルトで黄金比(GoldenRatio)を使ってくれるので、そのままで良いと思う。 2段組のときは半分の70mmとか65mmとなる。
-したがってMathematicaでは、PlotやShowなどのオプションImageSizeに
-ImageSize -&amp;gt; 140 * 72 / 25.4  と指定する。これは140mmの横幅で、72dpi(dots per inch)、1 inch = 25.4mmという意味である。
-論文用のグラフでは絶対にFrame -&amp;gt; Trueを指定する 論文用のグラフでは流儀として
-Frame -&amp;gt; True  を指定して枠のついたグラフにする。
-これはExcelなどでグラフを作るときも同様。
-枠についた目盛りを細かく調整したい場合は、FrameTicksオプションとFrameTickesStyleオプションを指定する。 また、FrameLabelで各軸のラベルと単位を書き入れるのも忘れずに。</description>
+      <description>Mathematicaで作る図やグラフは美しいんだ！ということを伝えたいので、 もう数年も前になるが、修士論文を書くときにMathematicaで作るグラフにこだわった点を思い出しながらまとめてみる。 論文を書くために使うソフトウェア 私はpLaTeXで論文を書いたが、研究室ではWordが推奨されていた。 図表の番号を管理する必要や図表の位置がずれて飛んでいってしまうといった事態も起きないし、目次や索引、</description>
     </item>
     
     <item>
@@ -762,19 +404,7 @@ Frame -&amp;gt; True  を指定して枠のついたグラフにする。
       <pubDate>Mon, 14 Jul 2014 00:00:00 +0900</pubDate>
       
       <guid>https://www.330k.info/essay/implement_perceptron_and_backpropagation_with_mathematica/</guid>
-      <description>拙作のリバーシプログラムViglaは高校時代に作ったものだが、 評価関数は手の広さと辺の形を適当に数値化したものであるためにあまり強いプログラムにはできなかった。
-当時から強いリバーシプログラムは辺や隅のパターンを評価していることは知ってはいたものの、理解出来ずじまいだった。
-今回もう一度挑戦してみようと思い、まずはMathematicaでパーセプトロンとバックプロパゲーションによる学習を実装してみた。
-簡単のため、出力関数としてはシグモイド関数のみに限定した(一般の関数にできるようにするには、各層のネット値を別に保存する必要があり、煩雑だったため)。 しかしながら、任意の隠し層の数やニューロン数に対応できるように実装した。
-というわけで、まずはシグモイド関数と順方向演算を定義。
-f[x_] := 1/(1 + Exp[-x]); perceptron[w : {__}][x_] := FoldList[(f /@ (Append[#1, 1].#2)) &amp;amp;, x, w];  wが各層の重み行列のリストで、MathematicaならFoldListを使って1行で順方向演算が定義できる。 Mathematicaでは添字が1から始まるので、通常wi0で表されることが多いバイアス成分は一番最後に置いた。
-次に、重み行列をランダムに初期化したパーセプトロンを返す関数として、以下のcreatePerceptronを定義。
-createPerceptron[dimensions_, range_] := perceptron[MapThread[ RandomReal[range, {#1, #2}] &amp;amp;, {Most[dimensions] + 1, Rest[dimensions]}]]  dimensionsは各層のニューロン数で、乱数の範囲をrangeで指定する。
-例えば、入力層のニューロン数が2、隠し層のニューロン数が2、出力層のニューロン数が1の3層パーセプトロンで、 重みが-0.2から0.2までの乱数となるパーセプトロンは、以下のようにして得られる。
-p = createPerceptron[{2, 2, 1}, {-0.2, 0.2}]  この初期状態で、入力層に{0, 0}を与えた時の出力は、
-p[{0, 0}] {{0, 0}, {0.512507, 0.510116}, {0.497566}}  となる。2番目の要素が隠し層の値で、最後の{0.497566}が出力層の値である。
-次に、バックプロパゲーションによる学習を実装する。
-backPropagation[pct : perceptron[w : {__}], x_List, teach_List, rate_: 1] := Module[{out, \[Delta], \[Delta]n, \[CapitalDelta]w}, out = pct[x]; \[Delta]n = With[{y = Last[out]}, (teach - y) y (1 - y)]; \[Delta] = Reverse@FoldList[(Most[#2[[2]]].</description>
+      <description>拙作のリバーシプログラムViglaは高校時代に作ったものだが、 評価関数は手の広さと辺の形を適当に数値化したものであるためにあまり強いプログラムにはできなかった。 当時から強いリバーシプログラムは辺や隅のパターンを評価していることは知ってはいたものの、理解出来ずじまいだった。 今回もう一度挑戦してみようと思い、まずはMathematicaでパーセプトロンとバックプロパゲーションによる学習を実装してみた。</description>
     </item>
     
     <item>
@@ -783,17 +413,7 @@ backPropagation[pct : perceptron[w : {__}], x_List, teach_List, rate_: 1] := Mod
       <pubDate>Sat, 07 Jun 2014 00:00:00 +0900</pubDate>
       
       <guid>https://www.330k.info/essay/precision-of-mathematica-geodistance-and-geographical-distance-formula/</guid>
-      <description>Mathematicaには2点の緯度と経度を与えて、その間の測地線距離を返す関数としてGeoDistanceがある。 しかしながら、ここで書かれているように、その精度には疑問が呈されているようだ。
-他の有名な測地線距離の計算方法として、
- ヒュベニの式(カシミール3Dが採用しているが、英語圏では情報が見つからない) 国土地理院の測量計算サイトの計算式のついてのドキュメントを実装したもの 完全な球体とみなして計算(Google EarthやGoogle Maps API v3のcomputeDistanceBetweenが採用、haversine formula)  が見つかったので、GeoDistanceのMethodオプション3種類(&amp;ldquo;Vincenty75&amp;rdquo;, &amp;ldquo;Robbin61&amp;rdquo;, &amp;ldquo;ExtendedNewtonRaphson&amp;rdquo;)と上記の3種類の計算方法の合計6種類について精度を評価してみた。
-正確な距離としては、GeographicLib (Wikipediaによると誤差15nmらしい)をJLink経由で使って計算したもの採用し、準拠楕円体はWGS84とした。
-ただし、完全な球体とした場合の半径はGoogle EarthやGoogle Mapsにあわせて6378137 mとした。
-ランダムな2点間の距離の精度 地球表面上で一様分布となるよう、ランダムに2点を選び、その間の距離の精度を評価した。
-  上図は横軸がGeographicLibで計算した正確な距離、縦軸が各計算方法で計算した距離である。
-y = xの直線上にあれば正確ということだが、GeoDistanceの&amp;rdquo;Robbin61&amp;rdquo;では1万kmを超えると実際よりも極端に短く計算してしまうようだ。
-またヒュベニの式は実際よりも長く計算することが多く、そのような場合について調べてみると高緯度になるほど誤差が大きくなることが分かった。
-同じ計算結果を誤差についてプロットしたものが下図である。また表は各計算方法の最大誤差である。
-     計算方法 誤差の絶対値     GeoDistance(&amp;ldquo;Vincenty75&amp;rdquo;) 7.119 * 10^-12   GeoDistance(&amp;ldquo;Robbin61&amp;rdquo;) 9.536 * 10^-1   GeoDistance(&amp;ldquo;ExtendedNewtonRaphson&amp;rdquo;) 1.247 * 10^-6   ヒュベニの式 2.022 * 10^1   測量計算サイト計算式 6.682 * 10^-3   完全球体モデル 6.</description>
+      <description>Mathematicaには2点の緯度と経度を与えて、その間の測地線距離を返す関数としてGeoDistanceがある。 しかしながら、ここで書かれているように、その精度には疑問が呈されているようだ。 他の有名な測地線距離の計算方法として、 ヒュベニの式(カシミール3Dが採用しているが、英語圏では情報が見つからない) 国土地理院の測量計算サイトの計算式のついてのドキュメントを実装したもの 完全な球体とみなして計</description>
     </item>
     
     <item>
@@ -802,15 +422,7 @@ y = xの直線上にあれば正確ということだが、GeoDistanceの&amp;rd
       <pubDate>Thu, 29 May 2014 00:00:00 +0900</pubDate>
       
       <guid>https://www.330k.info/essay/implement-of-priority-queue-for-douglas-peucker-simplify-algorithm/</guid>
-      <description>Nov. 29 2015:
- JavaScriptで実装した優先度付きキューをGitHubで公開→https://github.com/330k/priorityqueue_js/ 各ヒープのベンチマーク → http://330k.github.io/priorityqueue_js/benchmark.html  これにはFibonacci Heapも比較対象に入れてある  折れ線を間引くで書いたように、 Douglas-Peuckerアルゴリズムを改良して指定した点数まで点を削減して折れ線を簡略化する場合、 優先度付きキューを使うことになる。
-このアルゴリズムでは
- 始点と終点を結ぶ線分で最も距離が大きな点P1を選ぶ 始点と点P1を結ぶ線分で距離最大となる点P2をキューに登録(優先度は点P2と線分の距離) 点P1と終点を結ぶ線分で距離最大となる点P3をキューに登録(優先度は点P3と線分の距離) キューから距離が最大(=優先度最大)の点を選んで、2に戻る  という手順となるため、「キューに2つ登録して、1つ取り出す」ということを繰り返すことになる。
-そこで今回はランダムな優先度のデータを
- 連続して登録し、連続して取り出す(要はソートしているだけ) 「キューに2つ登録して、1つ取り出す」を繰り返すDouglas-Peuckerを想定した試験  という操作に対してどの優先度付きキューの実装が良い性能をしめすのか、ベンチマークを取ってみた。
-優先度付きキューの実装にはいくつか方法があるが、今回は以下の6種類を試してみた。
- Array.sort(): キューへの追加はArray.push()、キューから取り出すときに必要であればArray.sort()してArray.pop()する。非常に単純で楽チン。結果の検証用。 Selection: キューへの追加はArray.push()、キューから取り出すときに最大要素を選択。enqueue: O(1), dequeue: O(n2)。 Insertion: キューへの追加時に挿入ソートを行う。キューから取り出すときはArray.pop()するだけ。enqueue: O(n2), dequeue: O(1)。 Binary Insertion: キューへの追加時に二分挿入ソートを行う。あとは3と同じ。enqueue: O(n2), dequeue: O(1)。 Binary Heap: 二分ヒープ(wikipedia)での実装。ポインタなしで実装できるので省メモリ。java.util.PriorityQueueはこれらしい。enqueue: O(log(n)), dequeue: O(log(n))。 Pairing Heap: ペアリングヒープ(wikipedia: en)での実装。gcc(libstdc++)のpriority_queueはこれらしい。enqueue: O(log(n)), dequeue: O(log(n))。実装にはこれを参考にした。  いずれもJavaScriptで実装した。
-ベンチマーク結果 以下、Firefox 29とChromium 34での結果。単位はmsで、小さいほうが高速。 載せていないがVirtualBox上のWindows XPで測定してもほぼ同じ結果だった。</description>
+      <description>Nov. 29 2015: JavaScriptで実装した優先度付きキューをGitHubで公開→https://github.com/330k/priorityqueue_js/ 各ヒープのベンチマーク → http://330k.github.io/priorityqueue_js/benchmark.html これにはFibonacci Heapも比較対象に入れてある 折れ線を間引くで書いたように、 Douglas-Peuckerアルゴリズムを改良して指定した点数まで点を削減して折れ線を簡略化する場合、 優先度付きキューを使うことに</description>
     </item>
     
     <item>
@@ -819,10 +431,7 @@ y = xの直線上にあれば正確ということだが、GeoDistanceの&amp;rd
       <pubDate>Mon, 30 Dec 2013 04:36:00 +0900</pubDate>
       
       <guid>https://www.330k.info/essay/create-zip-with-alphabetical-order/</guid>
-      <description>自炊した書籍をzipで作成する際、普通に圧縮すると変な順番で格納されてしまう。 実用上ほとんど問題はないのだが、なんとなくファイル名順に格納したかったので、そのやり方をメモ。
-ls -1 ディレクトリ名 | zip -@rjDo0 圧縮ファイル名.zip  やっていることは
- lsに-1オプションをつけてファイル1行ずつでファイル名を出力(デフォルトでは文字コード順) zipに-@オプションをつけ、標準入力にファイル名を渡して圧縮(残りのオプションはお好みで)  findを使って行うときは、もう少し工夫が必要で、以下のように findの-print0オプションとsortの-zオプション、xargsの-0オプションでNull文字区切りでファイル名を出力→ソート→圧縮とする。
-find ./ -type f -print0 | sort -z | xargs -0 zip -@rjDo0 圧縮ファイル名.zip  なんとなくAndroidのPerfectViewerで見るときに表示が早くなったような気がする。たぶんプラシーボだけれど。</description>
+      <description>自炊した書籍をzipで作成する際、普通に圧縮すると変な順番で格納されてしまう。 実用上ほとんど問題はないのだが、なんとなくファイル名順に格納したかったので、そのやり方をメモ。 ls -1 ディレクトリ名 | zip -@rjDo0 圧縮ファイル名.zip やっていることは lsに-1オプションをつけてファイル1行ずつでファイル名を出力(デフォルトでは文字コード順) zipに-@オプションをつけ、標準入力にファイル名を渡して圧縮(残りのオプ</description>
     </item>
     
     <item>
@@ -831,12 +440,7 @@ find ./ -type f -print0 | sort -z | xargs -0 zip -@rjDo0 圧縮ファイル名.z
       <pubDate>Fri, 18 Oct 2013 00:00:00 +0900</pubDate>
       
       <guid>https://www.330k.info/essay/read-and-write-a-local-file-with-wolfram-cdf-player/</guid>
-      <description>Wolfram CDF Player を汎用するにあるように、 CDF PlayerでもJ/Linkを使えばローカルファイルの読み込み、書き込みができる(※CDFファイルの作成にはMathematicaが必要)。
-上記リンク先ではテキストファイルを読み込む例が載っているが、バイナリファイルとして読み込んでImportStringを使えば、 Mathematicaが対応している形式すべてのファイルを読み込むことができる。
-J/Linkでバイナリファイルを読み込むときのポイントとしては、
- &amp;ldquo;[B&amp;rdquo;というクラス名でbyte型の配列を作ってBufferedInputStream.read(byte[])で一気に読み込むことで高速化 読み込んだbyte[]がMathematicaに入った時に符号付き整数で扱われるため、FromCharacterCodeに突っ込む前に0〜255になるように修正  が挙げられる。
-一方、CDF PlayerではExportのみならずExportStringが使えない(ImportStringは使えるのに)ので、書き込むほうは不自由が残る。 ここではテキストと画像(BMP、PNG、JPEG)に限って保存する関数を作ってみた。
-ImportWithJLink[filepath_?(FileExistsQ[FindFile[#]] &amp;amp;), format_] := ( Needs[&amp;quot;JLink`&amp;quot;]; JLink`InstallJava[]; JLink`JavaBlock[ Module[{br, byte, result}, br = JLink`JavaNew[&amp;quot;java.io.BufferedInputStream&amp;quot;, JLink`JavaNew[&amp;quot;java.io.FileInputStream&amp;quot;, FindFile@filepath]]; byte = JLink`JavaNew[&amp;quot;[B&amp;quot;, {FileByteCount[FindFile@filepath]}]; br@read[byte]; result = ImportString[ FromCharacterCode[ JLink`JavaObjectToExpression[byte] /. x_?Negative :&amp;gt; x + 256], format]; br@close[]; result]]); ExportWithJLink[filepath_, string_String, format : &amp;quot;Text&amp;quot;] := ( Needs[&amp;quot;JLink`&amp;quot;]; JLink`InstallJava[]; JLink`JavaBlock[ Module[{bw}, bw = JLink`JavaNew[&amp;quot;java.io.BufferedWriter&amp;quot;, JLink`JavaNew[&amp;quot;java.io.FileWriter&amp;quot;, filepath] ]; bw@write[string]; bw@close[]; filepath ] ]); ExportWithJLink[filepath_, image_, format : &amp;quot;PNG&amp;quot; | &amp;quot;BMP&amp;quot; | &amp;quot;JPG&amp;quot;] := ( Needs[&amp;quot;JLink`&amp;quot;]; JLink`InstallJava[]; JLink`JavaBlock[ JLink`LoadJavaClass[&amp;quot;javax.</description>
+      <description>Wolfram CDF Player を汎用するにあるように、 CDF PlayerでもJ/Linkを使えばローカルファイルの読み込み、書き込みができる(※CDFファイルの作成にはMathematicaが必要)。 上記リンク先ではテキストファイルを読み込む例が載っているが、バイナリファイルとして読み込んでImportStringを使えば、 Mathematicaが対応している形式すべてのファイルを読み込むことができる。 J/Linkでバイナリ</description>
     </item>
     
     <item>
@@ -845,12 +449,7 @@ ImportWithJLink[filepath_?(FileExistsQ[FindFile[#]] &amp;amp;), format_] := ( Ne
       <pubDate>Fri, 27 Sep 2013 00:04:00 +0900</pubDate>
       
       <guid>https://www.330k.info/essay/make-a-movie-with-mathematica-and-ffmpeg/</guid>
-      <description>MathematicaのExportでAVIなどの動画ファイルを作成することは簡単に可能だが、 いかんせんすべてのフレームの画像を作成してからファイルに書きだすので、フレーム数に比例してメモリの使用量が多くなってしまう。 そのため長いムービーの作成は困難であった。
-そこで、ffmpegと併用することでメモリ使用量を抑えつつ、長編の動画ファイルを制作する。 具体的には、
- ffmpegで標準入力から読み込ませるOutputStreamオブジェクトを作成する BinaryWriteでそのストリームに各フレームの画像を書き込む 終わったらCloseでストリームを閉じる  とする。ここで、各フレーム画像の形式をPPMにしないとうまく動作しなかった(BMP、PNGなどではなぜか動作せず)。
-例えば、以下のようにするとtest001.aviができあがる。
-s = OpenWrite[ &amp;quot;!ffmpeg -y -vcodec ppm -f image2pipe -i - -vcodec rawvideo test001.avi&amp;quot;, BinaryFormat -&amp;gt; True]; Do[ BinaryWrite[s, ExportString[ Plot[Sin[x + i], {x, 0, 2 Pi} , ImageSize -&amp;gt; {640, 480} , PlotRange -&amp;gt; {{0, 2 Pi}, {-1, 1}} , Frame -&amp;gt; True] , &amp;quot;PPM&amp;quot;]] , {i, 0, 2 Pi, Pi/50} ]; Close[s]  Exportと同じような使い勝手の関数ExportMovieを作るとこんな感じになる。
-Options[ExportMovie] = { &amp;quot;FrameRate&amp;quot; -&amp;gt; 25, &amp;quot;VideoCodecOption&amp;quot; -&amp;gt; &amp;quot;-vcodec rawvideo&amp;quot;, &amp;quot;ExportOptions&amp;quot; -&amp;gt; {} }; ExportMovie[outputfilepath_String, expr_, {i_Symbol, imin_: 1, imax_, di_: 1}, OptionsPattern[]] := Module[{stream}, stream = OpenWrite[ ToString[ StringForm[ &amp;quot;!</description>
+      <description>MathematicaのExportでAVIなどの動画ファイルを作成することは簡単に可能だが、 いかんせんすべてのフレームの画像を作成してからファイルに書きだすので、フレーム数に比例してメモリの使用量が多くなってしまう。 そのため長いムービーの作成は困難であった。 そこで、ffmpegと併用することでメモリ使用量を抑えつつ、長編の動画ファイルを制作する。 具体的には、 ffmpegで標準入力から読み込ませる</description>
     </item>
     
     <item>
@@ -859,12 +458,7 @@ Options[ExportMovie] = { &amp;quot;FrameRate&amp;quot; -&amp;gt; 25, &amp;quot;V
       <pubDate>Sun, 14 Oct 2012 00:00:00 +0900</pubDate>
       
       <guid>https://www.330k.info/essay/process-blob-and-multibyte-string-from-sqlite-with-mathematica/</guid>
-      <description>ドキュメントにはないものの、MathematicaではSQLiteを扱うことができる。 しかしながら、BLOB型や文字列で日本語などを扱うには少し工夫が必要なので、メモ。
-BLOB型 select 直接BLOB型をselectすると$Failedが返ってくるので、hex関数で16進文字列として返す。
-db = Database`OpenDatabase[sqlitefilepath]; rs = Database`QueryDatabase[db, &amp;quot;select hex(column_name) from table_name&amp;quot;];  これを16進文字列→数値→バイト列→文字列と変換して、最後にImportStringで読み込むと、Mathematicaで読み込める。
-ImportSQLiteBLOB[hex_, format_] := ImportString[ FromCharacterCode[IntegerDigits[FromDigits[hex, 16], 256]], format]; ImportSQLiteBLOB[rs[[1, 1]], &amp;quot;PNG&amp;quot;]  insert insertする場合には逆に、データをExportStringで文字列に変換→バイト列→16進文字列と変換し&amp;rdquo;x&amp;rsquo;&amp;ldquo;と&amp;rdquo;&amp;lsquo;&amp;ldquo;で囲う。
-ExportSQLiteBLOB[expr_, format_] := StringJoin[&amp;quot;x&#39;&amp;quot;, IntegerString[ToCharacterCode[ExportString[expr, format]], 16, 2], &amp;quot;&#39;&amp;quot;]; Database`QueryDatabase[db, &amp;quot;insert into table_name values (&amp;quot; &amp;lt;&amp;gt; ExportSQLiteBLOB[Plot[Sin[x], {x, 0, Pi}], &amp;quot;PNG&amp;quot;] &amp;lt;&amp;gt; &amp;quot;)&amp;quot;];  マルチバイト文字列 select 日本語などマルチバイト文字列が入っていても適切に変換してくれないので、自前で変換する。
-ImportSQLiteString[str_] := FromCharacterCode[ToCharacterCode[str], &amp;quot;UTF8&amp;quot;]; rs = Database`QueryDatabase[db, &amp;quot;select column_name from table_name&amp;quot;]; ImportSQLiteString[rs[[1, 1]]]  insert そのまま突っ込むとエラーが出るので、変換してから突っ込む。ついでにシングルクォーテーションをエスケープしておく。</description>
+      <description>ドキュメントにはないものの、MathematicaではSQLiteを扱うことができる。 しかしながら、BLOB型や文字列で日本語などを扱うには少し工夫が必要なので、メモ。 BLOB型 select 直接BLOB型をselectすると$Failedが返ってくるので、hex関数で16進文字列として返す。 db = Database`OpenDatabase[sqlitefilepath]; rs = Database`QueryDatabase[db, &amp;quot;select hex(column_name) from table_name&amp;quot;]; これを16進文字列→数値→バイト列→文字列と変換して、最後にImportStringで読み込むと、</description>
     </item>
     
     <item>
@@ -873,16 +467,7 @@ ImportSQLiteString[str_] := FromCharacterCode[ToCharacterCode[str], &amp;quot;UT
       <pubDate>Tue, 09 Oct 2012 00:00:00 +0900</pubDate>
       
       <guid>https://www.330k.info/essay/how-to-make-mathematica8-process-japanese-on-ubuntu-1204-ltf-64bit/</guid>
-      <description>Mathematica 8 Home Edition 日本語版をUbuntu 12.04 LTS 64bit版にインストールしたところ、
- ディレクトリ、ファイル名に日本語が含まれるノートブックファイル(.nb)を開けない ディレクトリ、ファイル名に日本語が含まれるとImport/Exportできない、FileNamesで列挙できない ノートブック中に日本語を入力できない $SystemCharacterEncoding、$CharacterEncodingが&amp;rdquo;EUC-JP&amp;rdquo;になっている  などの言語関連の不具合があった。
-これから作るノートブックは英語だけで書けば済むが、今までに作ったノートブックファイルが開けないのがつらい。 一応Wolframのサポートにはメールを出したが、期待できそうになかった。
-/usr/local/Wolram/以下のファイルで関係有りそうなものを試行錯誤していじった結果、以下の方法で対処できたのでメモ。
- /usr/local/Wolfram/Mathematica/8.0/Executables以下の起動用スクリプトファイルMathematica、mathematicaの「LANG=ja_JP.eucJP」を「LANG=en_US.UTF-8」などに適当に変更orコメントアウト /usr/local/Wolfram/Mathematica/8.0/SystemFiles/CharacterEncodings/UTF-8.mの内容をISO8859-1.mにコピー  $SystemCharacterEncoding、$CharacterEncodingは&amp;rdquo;ISO8859-1&amp;rdquo;になってしまうのが気持ち悪いが、とりあえず実用上問題がなくなった。
-あとは本当にISO8859-1の文字コードで書かれたファイルを読み込むことができなくなってしまうが、扱う機会はないので良しとする。
-Oct. 7 2016 追記
-4年越しにWolfram Researchから連絡が来た。
- In May 2012 you reported an issue with Mathematica wherein Mathematica was unable to open files from folders with non-English cahracters in the name. We believe that the issue has been resolved in the current release of Mathematica.
-Thank you for your report and we look forward to a continued, productive relationship with you.</description>
+      <description>Mathematica 8 Home Edition 日本語版をUbuntu 12.04 LTS 64bit版にインストールしたところ、 ディレクトリ、ファイル名に日本語が含まれるノートブックファイル(.nb)を開けない ディレクトリ、ファイル名に日本語が含まれるとImport/Exportできない、FileNamesで列挙できない ノートブック中に日本語を入力できない $SystemCharacterEncoding、$CharacterEncodingが&amp;rdqu</description>
     </item>
     
     <item>
@@ -891,10 +476,7 @@ Thank you for your report and we look forward to a continued, productive relatio
       <pubDate>Sat, 25 Aug 2012 08:56:00 +0900</pubDate>
       
       <guid>https://www.330k.info/essay/format-floating-number-for-s-dyna-with-java/</guid>
-      <description>LS-DYNAのキーワードファイルを書きだすプログラムを書いたところ、浮動小数点数を固定文字数(10文字)にフォーマットする所でつまづいた。 具体的には
- String.formatやDecimalFormatの動作が遅い(String.formatよりはDecimalFormatのほうが速いが) 文字数を10文字に制限することが難しい(絶対値の大小比較を行なって桁数ごとに条件分岐をしても、四捨五入によって意図しない文字数(11文字)になる)  という問題にあたった。そこでdoubleから長さ10の文字列を力技で書きだすロジックを自作した。特徴は以下の通り。
- 正の時は先頭にスペース、負の時は先頭に&amp;rdquo;-&amp;ldquo;を入れる 10文字の制限の中で最も有効桁数が大きくなるようにフォーマット 四捨五入はしない！ DecimalFormatの15倍高速(もう少し工夫はできるが)
-private static String formatFloat10(double d){ char[] c = new char[10]; double a; if(d == 0.0){ return &amp;quot; 0.0000000&amp;quot;; } if(d &amp;lt; 0){ c[0] = &#39;-&#39;; a = -d; }else{ c[0] = &#39; &#39;; a = d; } int m = (int)Math.floor(Math.log10(a)); if(m &amp;lt;= -100){ for(int i = 1; i &amp;lt; 1 - m; i++) a *= 10; c[1] = (char)(&#39;0&#39; + Math.</description>
+      <description>LS-DYNAのキーワードファイルを書きだすプログラムを書いたところ、浮動小数点数を固定文字数(10文字)にフォーマットする所でつまづいた。 具体的には String.formatやDecimalFormatの動作が遅い(String.formatよりはDecimalFormatのほうが速いが) 文字数を10文字に制限することが難しい(絶対値の大小比較を行なって桁数ごとに条件分岐をしても、四捨五入によっ</description>
     </item>
     
     <item>
@@ -903,9 +485,7 @@ private static String formatFloat10(double d){ char[] c = new char[10]; double a
       <pubDate>Wed, 22 Sep 2010 00:00:00 +0900</pubDate>
       
       <guid>https://www.330k.info/essay/how-to-read-and-write-24bit-bitmap-files-with-vba/</guid>
-      <description>会社のPCでは自由にソフトウェアをインストールすることができないので、業務で使いそうなものはExcel VBAで自作していくことにした。 まずは手始めに24ビットビットマップの読み書きを行う標準モジュールを作成した。 VBAの機能のみで実装しており、外部のライブラリには依存しない。
-使い方  以下のソースをOfficeのマクロで標準モジュールとしてプロジェクトへ追加する。 ReadBitmap(&amp;ldquo;C:***.bmp&amp;rdquo;)で、RGBTRIPLE型の2次元配列が返る。 読み込みは一応1, 4, 8, 24, 32ビットのビットマップファイルに対応。 WriteBitmap24(&amp;ldquo;C:***.bmp&amp;rdquo;)で24ビットのビットマップファイルを書き込む。 おまけ機能として、ReadGIFJPEGでGIFとJPEGファイルも読み込みにも対応。
-&#39; Bitmap module by 330k &#39; Copyright (C) 2010 330k, All rights reserved. Option Explicit Public Type RGBTRIPLE rgbBlue As Byte rgbGreen As Byte rgbRed As Byte End Type Private Type RGBQUAD rgbBlue As Byte rgbGreen As Byte rgbRed As Byte rgbReserved As Byte End Type Private Type BITMAPFILEHEADER bfType As String * 2 bfSize As Long bfReserved1 As Integer bfReserved2 As Integer bjOffBits As Long End Type Private Type BitmapInfoHeader biSize As Long biWidth As Long biHeight As Long biPlanes As Integer biBitCount As Integer biCompression As Long biSizeImaze As Long biXPixPerMeter As Long biYPixPerMeter As Long biClrUsed As Long biClrImporant As Long End Type &#39; Read a bitmap file (1, 4, 8, 24 and 32 bit) and return image as 2-dimension array of RGBTriple Public Function ReadBitmap(strFileName As String) As RGBTRIPLE() Dim i As Long Dim j As Long Dim n As Long Dim intFileNumber As Integer Dim bjHeader As BITMAPFILEHEADER Dim biHeader As BitmapInfoHeader Dim lngColors As Long Dim rgbData() As RGBTRIPLE Dim rgbTemp As RGBTRIPLE Dim rgbTable3() As RGBTRIPLE Dim rgbTable4() As RGBQUAD Dim bytTemp As Byte intFileNumber = FreeFile() Open strFileName For Binary As intFileNumber Get intFileNumber, , bjHeader Get intFileNumber, , biHeader ReDim rgbData(0 To biHeader.</description>
+      <description>会社のPCでは自由にソフトウェアをインストールすることができないので、業務で使いそうなものはExcel VBAで自作していくことにした。 まずは手始めに24ビットビットマップの読み書きを行う標準モジュールを作成した。 VBAの機能のみで実装しており、外部のライブラリには依存しない。 使い方 以下のソースをOfficeのマクロで標準モジュールとしてプロジェクトへ追加する。 ReadBitmap(&amp;ldquo;C</description>
     </item>
     
     <item>
@@ -914,15 +494,7 @@ private static String formatFloat10(double d){ char[] c = new char[10]; double a
       <pubDate>Mon, 14 Dec 2009 22:39:00 +0900</pubDate>
       
       <guid>https://www.330k.info/essay/how-to-optimize-mathematica-programs/</guid>
-      <description>Mathematicaにおいてプログラムの実行速度を最適化する際の項目を思いつく限り挙げてみた。
-関数型パラダイムで書く 必然的に組み込み関数を多く使い、リストをまとめて操作することになるので手続き型で書くより速くなることが多い。 コード量も少なくなって読みやすくなるので、よほどのことでない限りMathematicaでは関数型で書く。
-具体的には、手続き型ループ構文(Do, For, Whileなど)をやめて、MapやThreadを使うようにする。
-出来る限り組み込みの関数を使う 組み込み関数でできることは出来る限りやらせる。 ドキュメントを探すと、Mathematicaは意外と多くのものが組み込みでできるようになっている。
-リストは全体をまとめて扱う 大概のループの中身はリストへの関数の適用や、テンソルの演算などに帰着する。
-四則演算はリストにそのまま適用可能。 内積はDot、外積はCrossがあるし、それらを一般化したInner、Outerといった関数もある。
-Mathematicaでは個々の要素に対する操作は記述しなくてもよい場合が多い。
-myDifferences1[v_] := Table[v[[i + 1]] - v[[i]], {i, Length[v] - 1}]; (* 個々の要素を操作する *) myDifferences2[v_] := Most[RotateLeft[v] - v]; (* リスト全体をまとめて操作する *) {Timing[myDifferences1[#];], Timing[myDifferences2[#];], Timing[Differences[#];]} &amp;amp;[RandomReal[{0, 5}, 5000000]] {{1.919, Null}, {0.296, Null}, {0.187, Null}}  リストの要素数変更を避ける 手続き型で要素数が分からないリストを生成するには、ReapとSowを用いる。AppendToやPrependToは厳禁。
-myPrimeChoice1[n_] := Module[{r = {}, i}, Do[If[PrimeQ[i], AppendTo[r, i]], {i, n}]; r]; myPrimeChoice2[n_] := Module[{i}, Reap[Do[If[PrimeQ[i], Sow[i]], {i, n}]][[2, 1]]]; {Timing[myPrimeChoice1[200000];], Timing[myPrimeChoice2[200000];]} {{3.</description>
+      <description>Mathematicaにおいてプログラムの実行速度を最適化する際の項目を思いつく限り挙げてみた。 関数型パラダイムで書く 必然的に組み込み関数を多く使い、リストをまとめて操作することになるので手続き型で書くより速くなることが多い。 コード量も少なくなって読みやすくなるので、よほどのことでない限りMathematicaでは関数型で書く。 具体的には、手続き型ループ構文(Do, For, Whileなど)をやめて、Ma</description>
     </item>
     
     <item>
@@ -931,14 +503,7 @@ myPrimeChoice1[n_] := Module[{r = {}, i}, Do[If[PrimeQ[i], AppendTo[r, i]], {i, 
       <pubDate>Sat, 05 Dec 2009 00:00:00 +0900</pubDate>
       
       <guid>https://www.330k.info/essay/explicit-runge-kutta-butcher-tableau/</guid>
-      <description> Explicit Runge-Kutta法の公式はいくつか知られているが、高次の公式になるほどButcher配列の項数が増えるため論文に誤植が多くなる。 それに気づかないまま実際に使うと、プログラムは正しく組めているはずなのに思うように精度が上がらないという落とし穴にはまってしまう。
-覚書として、以下に代表的と思われる公式のButcher tableauをまとめる。
-以下のButcher tableauはMathematica 8のNumericalDifferentialEquationAnalysisパッケージに含まれるRungeKuttaOrderConditionsで所定の次数条件を達成していることを確認しており、誤植が入り込まないようにそのままMathematica上で画像化している。
-使用したMathematicaノートブックはこちら。 必要な人はダウンロードして自分で計算して確認した後に使用してほしい。
-MathematicaにCやFortranのソースコード形式で吐かせるのが確実。
-※注意事項
-公式の名前や出典に関しては自信がないので、鵜呑みにしないこと。
-1段1次 Euler法   2段2次 修正Euler法   Heun法   Ralston法 3段3次 Heunの3次法   Kuttaの3次法   Ralstonの3次法 4段4次 古典的Runge-Kutta法   6段5次 Runge-Kutta-Fehlberg法のうち5次の部分   Runge-Kutta-Nystroemのうち5次の部分   Butcherによる5次公式を3つ       7段6次 Hammudによるもの   9段7次 Shanksによるもの   CooperとVernerによる7次公式   11段8次 CooperとVernerによる8次公式   16段9次 Vernerによる埋め込み型公式のうち9次のもの   </description>
+      <description>Explicit Runge-Kutta法の公式はいくつか知られているが、高次の公式になるほどButcher配列の項数が増えるため論文に誤植が多くなる。 それに気づかないまま実際に使うと、プログラムは正しく組めているはずなのに思うように精度が上がらないという落とし穴にはまってしまう。 覚書として、以下に代表的と思われる公式のButcher tableauをまとめる。 以下のButcher tableauはMathemati</description>
     </item>
     
     <item>
@@ -947,21 +512,7 @@ MathematicaにCやFortranのソースコード形式で吐かせるのが確実�
       <pubDate>Mon, 23 Nov 2009 00:00:00 +0900</pubDate>
       
       <guid>https://www.330k.info/essay/extend-import-and-export-of-mathematica7/</guid>
-      <description>MathematicaではImportやExportを使って様々な形式のファイルを読み書きできるが、 標準で対応していないファイル形式についても自分でローダやライタを作り、 それをImportやExportに対応させる方法がExtending Import &amp;amp; Export (Wolfram Library Archive)において解説されている。
-しかしこの文書は2003年のもので以前はExperimental`RegisterConverterという関数で登録すればよかったのだが、 この関数はMathematica 7にはない。
-Names[&amp;quot;*`*Register*&amp;quot;]  などとして探し回ったところ、
- ImportExport`RegisterFormat ImportExport`RegisterExport ImportExport`RegisterImport  というそれらしいものを見つけた。
-早速
-ClearAttributes[ImportExport`RegisterFormat, ReadProtected]  として読込みプロテクトを解除してどういう動作をするのか調べたところ、
- ImportExport`RegisterFormat[&amp;ldquo;ファイルフォーマット名&amp;rdquo;]としてファイルフォーマットを登録 ImportExport`RegisterImport[&amp;ldquo;ファイルフォーマット名&amp;rdquo;, myImport]で自前のローダmyImportをImportに登録 ImportExport`RegisterExport[&amp;ldquo;ファイルフォーマット名&amp;rdquo;, myExport]で自前のライタmyExportをExportに登録  という使い方をするようだ。ファイルフォーマット名は&amp;rdquo;GPX&amp;rdquo;でも&amp;rdquo;KML&amp;rdquo;でも&amp;rdquo;JSON&amp;rdquo;でも好きな名前を付けていい。
-myImportやmyExportの書式は以前と変わっていないようで、
-myImport[filename_String, options___?OptionQ] := Module[{...},...] myExport[filename_String, expression_, options___?OptionQ] := Module[{...},...]  でいい模様。
-ImportExport`RegisterFormatには以下のオプションがある。
- BinaryFormat : バイナリファイルならTrue、そうでなければFalse。 ImportExport`Encoding : よくわからないが、標準では&amp;rdquo;BASE64&amp;rdquo;、&amp;rdquo;BZIP2&amp;rdquo;、&amp;rdquo;GZIP&amp;rdquo;、&amp;rdquo;UUE&amp;rdquo;だけでTrueになっている。 ImportExport`Extensions : 対応する拡張子またはそのリスト。{&amp;rdquo;.nb&amp;rdquo;,&amp;rdquo;.html&amp;rdquo;}などと指定する。 AlphaChannel : アルファチャンネルを使う画像かどうか？Exportの際のラスタライズに関係するかも。JPEG2000やPNGなどでTrueになっている。  ただ、ImportExportExtensionsに拡張子を指定して登録しても、Exportでは大丈夫だがImportではうまく判別されない。 ImportExportRegisterImportの動作についてもう少し調べる必要がある。
-Wolfram Researchが新しいドキュメントを出してくれれば早いのだけれど…。
-Feb. 20 2010追記
-Importで自動判別させる方法が判明。
-FileFormatDump`AddFormat[&amp;quot;ファイルフォーマット名&amp;quot;, bin, bundle, archive, encoding, magic, ext, mime, test, bundletestfunc]  として、判別するときに用いられる関数のほか、MIMEタイプも登録できる模様。</description>
+      <description>MathematicaではImportやExportを使って様々な形式のファイルを読み書きできるが、 標準で対応していないファイル形式についても自分でローダやライタを作り、 それをImportやExportに対応させる方法がExtending Import &amp;amp; Export (Wolfram Library Archive)において解説されている。 しかしこの文書は2003年のもので以前はExperimental`RegisterConverterという関数で</description>
     </item>
     
     <item>
@@ -970,13 +521,7 @@ FileFormatDump`AddFormat[&amp;quot;ファイルフォーマット名&amp;quot;, 
       <pubDate>Sun, 15 Nov 2009 00:00:00 +0900</pubDate>
       
       <guid>https://www.330k.info/essay/attention-to-show-data-in-combination-of-google-sites-and-google-analytics/</guid>
-      <description>Google SitesではGoogle Analyticsを用いる設定が簡単にできるが、Google Analyticsの「サイト上のデータ表示」を行うと「閉じる」をクリックしても何の反応がない。 画面にレイヤーが重なっていろいろなデータが表示されてしまう状態から抜けられない。
-ネットを調べたところ、「閉じる」が見つからないために同じような現象に遭遇している事例は見つかったが、 「閉じる」をクリックしても、
-_siteOverlay._close()  をアドレスバーに打ち込んでもダメだった。 おそらくGoogle Sitesを利用している場合特有の現象なのだろう。
-この現象が発生することを確認したブラウザは
- Google Chrome 4.0.237.0 Mozilla Firefox 3.5.5 Opera 10 Internet Explorer 8  で、いずれもOSはWindows Vista(32ビット)。ちなみにIE8ではレイアウトも崩れていた。
-仕方がないので_siteOverlay.close()の中身をちょっと調べた。
-function () { var domain, cookiePath; if (GLOBAL_window._udo) { domain = GLOBAL_window._udo; } else if (GLOBAL_window._gat &amp;amp;&amp;amp; GLOBAL_window._gat._gasoDomain) { domain = GLOBAL_window._gat._gasoDomain; } if (domain) { domain = domain[$$PROP_replace](&amp;quot;domain=&amp;quot;, &amp;quot;&amp;quot;)[$$PROP_replace](&amp;quot;;&amp;quot;, &amp;quot;&amp;quot;)[$$PROP_replace](/ /g, &amp;quot;&amp;quot;); } if (GLOBAL_window._utcp) { cookiePath = GLOBAL_window._utcp; } else if (GLOBAL_window.</description>
+      <description>Google SitesではGoogle Analyticsを用いる設定が簡単にできるが、Google Analyticsの「サイト上のデータ表示」を行うと「閉じる」をクリックしても何の反応がない。 画面にレイヤーが重なっていろいろなデータが表示されてしまう状態から抜けられない。 ネットを調べたところ、「閉じる」が見つからないために同じような現象に遭遇している事例は見つかったが、 「閉じる」をクリックしても、 _siteOverlay._close() をアドレ</description>
     </item>
     
     <item>
@@ -985,15 +530,7 @@ function () { var domain, cookiePath; if (GLOBAL_window._udo) { domain = GLOBAL_
       <pubDate>Thu, 29 Oct 2009 00:00:00 +0900</pubDate>
       
       <guid>https://www.330k.info/essay/takakugatanonaigaihantei/</guid>
-      <description>ある点が多角形の内側にあるのか外側にあるのかを判定するには主に
- ある点から直線をひいて多角形の辺と何回交差するか判定する(偶数回なら外、奇数回なら中) ある点から多角形の各頂点を順番に見ていったときに何回転するか  の2つの方法がある。
-しかし辺との交差回数をカウントするのは、直線と辺が平行だったり、頂点で交差したりする場合などに特別な配慮が必要なので、 ここでは2番目の方法で実装する。
-点から多角形上の点を順々に見たときの偏角(反時計まわりを正とする)の和を取ればよいので、ある点Pからみた多角形上の頂点Aから頂点Bまでの偏角∠APBを求める関数をまず作成する。
-この実装方法にもベクトルの外積を考えるなど何通りか考えられるが、せっかくMathematicaを使うので楽をして、複素数にしてArgで偏角をとることにする。
-Angle[{{x1_, y1_}, {x2_, y2_}, {x3_, y3_}}] := Module[{v1 = Complex[x1 - x3, y1 - y3], v2 = Complex[x2 - x3, y2 - y3]}, If[TrueQ[v1 == 0], 0, Arg[v2/v1]] ]  多角形の内外判定はMathematicaのPolygonなどの表示に合わせ、自己交差している場合は内部と外部を交互に繰り返すものとすると、
- 偏角の和が0、±4π、±8π、…のとき点は多角形の外 偏角の和が±2π、±6π、±10π…のとき点は多角形の中  とできる。
-以上より多角形の内外を判定する関数InsidePolygonQは以下のように実装できる。
-InsidePolygonQ[poly : {{_, _} ..}, p : {_, _}] := Module[ {argsum}, argsum = Round[Total[MapThread[Angle[{##, p}] &amp;amp;, {poly, RotateLeft[poly]}]]/(2 Pi)]; OddQ[argsum] ]  丸め誤差が蓄積すると誤判定してしまうのだが、誤判定するために要求される丸め誤差はπなので、多分大丈夫だと思われる。</description>
+      <description>ある点が多角形の内側にあるのか外側にあるのかを判定するには主に ある点から直線をひいて多角形の辺と何回交差するか判定する(偶数回なら外、奇数回なら中) ある点から多角形の各頂点を順番に見ていったときに何回転するか の2つの方法がある。 しかし辺との交差回数をカウントするのは、直線と辺が平行だったり、頂点で交差したりする場合などに特別な配慮が必要なので、 ここでは2番目の方法で実装する。 点から多角形上の点を順</description>
     </item>
     
     <item>
@@ -1002,16 +539,7 @@ InsidePolygonQ[poly : {{_, _} ..}, p : {_, _}] := Module[ {argsum}, argsum = Rou
       <pubDate>Tue, 27 Oct 2009 00:00:00 +0900</pubDate>
       
       <guid>https://www.330k.info/essay/leap-second-in-au-handy-gps-ashiato-data/</guid>
-      <description>au携帯電話に入っている地図ビューアーの簡易ハンディGPS機能によって取得したGPSログ(あしあとデータ)は、
-本ファイルは、地図ビューアーにより出力されたGPS情報ファイルです。 出力日時:2009/10/27 08:56:46 +0900 +++GPSログ+++ 940669002,139.604988,35.833148  という形式になっており、「+++GPSログ+++」以下の行に時刻、経度、緯度の順番に記録される。
-GPSでは時刻を1980年1月6日0時0分0秒(GMT)からの秒数として表すが、au携帯電話の場合はこれに9時間を足した秒数になる。
-ただし、GPS時刻は1980年1月6日以降の閏秒を無視しているので、普通のGPSロガーから時刻情報を取り出すときには閏秒の処理が必要になる。 ちなみに2009年1月1日時点でGPSの原子時計は15秒進んでいる。
-3行目の出力日時は簡易ハンディGPSからあしあとデータの保存をした時の時刻となる。 上のデータは1回目の測位終了後直ちに保存したものであるので、出力日時の「2009/10/27 08:56:46」というのは「940669002」の表す時刻の数秒後であるはず。
-ところが、閏秒を考慮せずにMathematicaで
-DatePlus[DateList[{1980, 1, 6, 0, 0, 0}], {940669002, &amp;quot;Second&amp;quot;}]  とすると、
-{2009, 10, 27, 8, 56, 42.}  と返ってくる。
-電波時計と携帯電話を同時に見ていたのだが、8時56分42秒というのは測位した瞬間に電波時計が指していた時刻と一致している。 15秒前の8時56分27秒の時点ではまだ測位を開始していない。
-以上より、auの携帯電話(少なくとも私が持っているW61CA)の簡易ハンディGPSによるあしあとデータの時刻情報は閏秒について修正する必要がない(携帯電話側で修正している)と言える。</description>
+      <description>au携帯電話に入っている地図ビューアーの簡易ハンディGPS機能によって取得したGPSログ(あしあとデータ)は、 本ファイルは、地図ビューアーにより出力されたGPS情報ファイルです。 出力日時:2009/10/27 08:56:46 +0900 +++GPSログ+++ 940669002,139.604988,35.833148 という形式になっており、「+++GPSログ+++」以下の行に時刻、経度、緯度の順番に記録される。 GPSでは時刻を1980年1月6日0時0分0秒(GMT)からの秒数と</description>
     </item>
     
     <item>
@@ -1020,11 +548,7 @@ DatePlus[DateList[{1980, 1, 6, 0, 0, 0}], {940669002, &amp;quot;Second&amp;quot;
       <pubDate>Mon, 26 Oct 2009 21:47:00 +0900</pubDate>
       
       <guid>https://www.330k.info/essay/how-to-redirect-standard-input-output-of-16bit-application/</guid>
-      <description>FORTRANで書かれた古いMS-DOSプログラムを.NET/Linkを使ってMathematicaから操るパッケージを作っていたところ、 Process.StartInfo.RedirectStandardInputやRedirectStandardOutputにTrueを設定してもまったく標準入出力をリダイレクトできなかった。(※OSはVista 32bit)
-いろいろ試してみたところ、16ビットのプログラムだとリダイレクトができないらしいということが分かった。 さてどうしたものかとさらにいろいろ打開策を探してみた結果、
- FileNameに&amp;quot;cmd.exe&amp;quot;を設定して、Process.Start()でプロセスを起動。 必要ならStandardInput.WriteLine(&amp;quot;cd 16ビットプログラムのディレクトリ&amp;quot;)としてカレントディレクトリを移動。 StandardInput.WriteLine(&amp;quot;***.EXE&amp;quot;)として16ビットプログラムを起動。  とcmd.exeを間に挟むことにより、16ビットのプログラムに対しても標準入出力のリダイレクトが行えることが分かった。
-以下はMathematica+.NET/Linkによるサンプル。 標準出力は書き出されるたびにイベントハンドラで捕捉してoutputsに追加するので、Dynamic[outputs]などとしておくと、本当のターミナルの挙動に近づく。 最初にcmd.exeの出力(&amp;ldquo;Microsoft Windows [Version &amp;hellip;&amp;ldquo;)が入るので、16ビットのプログラムの出力だけがほしい場合は16ビットプログラム起動後にフラグを立てれば大丈夫。
-outputs = {}; outputhandler[o_, args_] := Module[ {data = args@Data}, AppendTo[outputs, data]; ]; NETBlock[ proc = NETNew[&amp;quot;System.Diagnostics.Process&amp;quot;]; LoadNETType[&amp;quot;System.Environment&amp;quot;]; proc@StartInfo@FileName = Environment`GetEnvironmentVariable[&amp;quot;ComSpec&amp;quot;]; proc@StartInfo@RedirectStandardInput = True; proc@StartInfo@RedirectStandardOutput = True; proc@StartInfo@UseShellExecute = False; proc@StartInfo@CreateNoWindow = True; proc@StartInfo@WorkingDirectory = DirectoryName[proc@StartInfo@FileName]; AddEventHandler[proc@OutputDataReceived, outputhandler]; proc@Start[]; proc@BeginOutputReadLine[]; proc@StandardInput@WriteLine[&amp;quot;cd &amp;quot; &amp;lt;&amp;gt; &amp;quot;16ビットプログラムのディレクトリ&amp;quot;]; proc@StandardInput@WriteLine[&amp;quot;******.EXE(16ビットプログラム)&amp;quot;]; proc@StandardInput@WriteLine[&amp;quot;16ビットプログラムの標準入力に渡す内容&amp;quot;]; proc@StandardInput@Close[]; proc@WaitForExit[]; proc@Close[]; ];  とはいっても64bit版のWindowsだと16bitのプログラムがそもそも動かない。</description>
+      <description>FORTRANで書かれた古いMS-DOSプログラムを.NET/Linkを使ってMathematicaから操るパッケージを作っていたところ、 Process.StartInfo.RedirectStandardInputやRedirectStandardOutputにTrueを設定してもまったく標準入出力をリダイレクトできなかった。(※OSはVista 32bit) いろいろ試してみたところ、16ビットのプログラム</description>
     </item>
     
     <item>
@@ -1033,13 +557,7 @@ outputs = {}; outputhandler[o_, args_] := Module[ {data = args@Data}, AppendTo[o
       <pubDate>Sun, 25 Oct 2009 00:00:00 +0900</pubDate>
       
       <guid>https://www.330k.info/essay/import-gpx-file-in-mathematica/</guid>
-      <description>MathematicaでGPXファイルを読み込んで解釈する方法のメモ。
-対象となるGPXファイルを
-xml = Import[filepath, &amp;quot;XML&amp;quot;];  でまずXMLとして読み込んでおいて、
-trk = Cases[xml, XMLElement[&amp;quot;trk&amp;quot;, _, _], Infinity];  でtrk要素を抜き出し、
-trkpt = (ToExpression[{&amp;quot;lat&amp;quot;, &amp;quot;lon&amp;quot;} /. Cases[#1, XMLElement[&amp;quot;trkpt&amp;quot;, attr_, _] :&amp;gt; attr, Infinity]] &amp;amp; ) /@ trk;  でそれぞれのtrk要素からtrkpt要素を抜き出して緯度と経度を得る。
-Sep. 28 2013追記
-Mathematica 8からは標準でGPXをImport可能になった。</description>
+      <description>MathematicaでGPXファイルを読み込んで解釈する方法のメモ。 対象となるGPXファイルを xml = Import[filepath, &amp;quot;XML&amp;quot;]; でまずXMLとして読み込んでおいて、 trk = Cases[xml, XMLElement[&amp;quot;trk&amp;quot;, _, _], Infinity]; でtrk要素を抜き出し、 trkpt = (ToExpression[{&amp;quot;lat&amp;quot;, &amp;quot;lon&amp;quot;} /. Cases[#1, XMLElement[&amp;quot;trkpt&amp;quot;, attr_, _] :&amp;gt; attr, Infinity]] &amp;amp; ) /@ trk; でそれぞれのtrk要素からtrkpt要素を抜き出して緯度と経度を得る。 Sep. 28 2013追記 Mathematica 8からは標準でGPXをImport可能になった。</description>
     </item>
     
     <item>
@@ -1048,12 +566,7 @@ Mathematica 8からは標準でGPXをImport可能になった。</description>
       <pubDate>Sun, 25 Oct 2009 00:00:00 +0900</pubDate>
       
       <guid>https://www.330k.info/essay/enumurate-amicable-numbers-with-mathematica/</guid>
-      <description>Mathematicaで友愛数を列挙するプログラム例として以下のようなものが見受けられる。
-yakuwa[n_] := DivisorSigma[1, n] - n; Do[If[(yakuwa[yakuwa[k]] == k) &amp;amp;&amp;amp; (yakuwa[k] != k), Print[{k, yakuwa[k]}]], {k, 1, 1000}];  しかし、Doでループを回してPrintで書き出していくのはMathematica的に美しくないと思う。
-Mathematicaなら関数型プログラミングとパターンマッチを用いるのが良いと思うので、私なら以下のように書く。
-Cases[NestList[DivisorSigma[1, #] - # &amp;amp;, #, 2] &amp;amp; /@ Range[100000], {a_, b_, a_} /; a &amp;lt; b -&amp;gt; {a, b}]  実行速度もこちらのほうが1割程度速い。
-この書き方から一般の社交数を求めるプログラムに拡張するのは簡単で、例えば5個組の社交数を探す場合は以下のようになる。
-Cases[NestList[DivisorSigma[1, #] - # &amp;amp;, #, 5] &amp;amp; /@ Range[100000], {a_, b__, a_} /; a &amp;lt; Min[b] -&amp;gt; {a, b}]  ただし、私の方法はメモリを大量に使う。</description>
+      <description>Mathematicaで友愛数を列挙するプログラム例として以下のようなものが見受けられる。 yakuwa[n_] := DivisorSigma[1, n] - n; Do[If[(yakuwa[yakuwa[k]] == k) &amp;amp;&amp;amp; (yakuwa[k] != k), Print[{k, yakuwa[k]}]], {k, 1, 1000}]; しかし、Doでループを回してPrintで書き出していくのはMathematica的に美しくないと思う。 Mathematicaなら関数型プログラミングとパターンマッチを用いるのが良いと思うので、私なら以下のように書く。 Cases[NestList[DivisorSigma[1, #] - # &amp;amp;, #, 2] &amp;amp; /@ Range[100000], {a_, b_, a_} /; a &amp;lt; b -&amp;gt; {a, b}] 実行速度もこちらの</description>
     </item>
     
     <item>
@@ -1062,15 +575,7 @@ Cases[NestList[DivisorSigma[1, #] - # &amp;amp;, #, 5] &amp;amp; /@ Range[100000
       <pubDate>Sat, 24 Oct 2009 00:00:00 +0900</pubDate>
       
       <guid>https://www.330k.info/essay/oresenwomabiku/</guid>
-      <description>読み込んだGPSログのデータを間引きたい、と思って調べたところ、 (Ramer-)Douglas-Peuckerのアルゴリズムというものがあることが分かった。
-基本的な考え方は、
- 折れ線の始点と終点を結ぶ線分と各点の距離を求める。 すべての点との距離が許容誤差ε以内に入っていれば始点と終点だけを返して終了。 そうでなければ距離が最大の点Pを1つ選択。 始点から点Pまでの折れ線と、点Pから終点までの折れ線のそれぞれについてまた1から処理する。  という再帰的なもの。
-再帰的なものはMathematicaの得意分野なので、MathematicaでRamer-Douglas-Peuckerのアルゴリズムを実装してみた。
-線分と点の距離 さて、まずは線分と点の距離を求める関数を作成する。
-ネットで検索すると直線と点の距離を求めるものが多いが、線分と点の距離のほうが形状をよく保存できるのではないだろうか、と個人的に考えている。
-線分ABに点Pから下ろした垂線の足が点Hだとすると、
- 線分ABと直線PHは直交⇔内積が0 点Hは直線AB上にある⇔実数tに対してB = t H(B、Hは点Aから見た点B、点Hの位置ベクトル)  の条件から、Hの座標と実数tの値が求まる。 Mathematicaを使うと
-A = {ax, ay}; B = {bx, by}; P = {px, py}; H = {x, y}; Solve[{ (H - A).(P - H) == 0, H == A + (B - A) t }, {x, y, t}][[2]] // FullSimplify {x -&amp;gt; (ay^2 bx + ax^2 px + ax ay (-by + py) - ay bx (by + py) + ax (by^2 - 2 bx px - by py) + bx (bx px + by py))/((ax - bx)^2 + (ay - by)^2), y -&amp;gt; ((ax - bx) (by (ax - px) + ay (-bx + px)) + (ay - by)^2 py)/((ax - bx)^2 + (ay - by)^2), t -&amp;gt; (ax^2 + ay^2 + bx px - ax (bx + px) + by py - ay (by + py))/((ax - bx)^2 + (ay - by)^2)}  となる。 これは2次元の場合だが、一般に</description>
+      <description>読み込んだGPSログのデータを間引きたい、と思って調べたところ、 (Ramer-)Douglas-Peuckerのアルゴリズムというものがあることが分かった。 基本的な考え方は、 折れ線の始点と終点を結ぶ線分と各点の距離を求める。 すべての点との距離が許容誤差ε以内に入っていれば始点と終点だけを返して終了。 そうでなければ距離が最大の点Pを1つ選択。 始点から点Pまでの折れ線と、点Pから終点までの折れ線のそれ</description>
     </item>
     
   </channel>

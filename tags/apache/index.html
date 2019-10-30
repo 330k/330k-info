@@ -85,11 +85,7 @@ if (!doNotTrack) {
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		海外の格安VPS、AlaphaRacksでHTTPSのHTTPサーバを立てたので、その作業録。
-環境 Chinese Year Specialという年間$8のプランを契約。 Ubuntuのバージョンは16.04なのだが、カーネルのバージョンは2.6.32の古め。 そのため、dockerは使えない。
-# uname -r 2.6.32-042stab127.2  # cat /etc/lsb-release DISTRIB_ID=Ubuntu DISTRIB_RELEASE=16.04 DISTRIB_CODENAME=xenial DISTRIB_DESCRIPTION=&quot;Ubuntu 16.04 LTS&quot;  ApacheのSSLモジュール有効化 SSLモジュールを有効化し、a2ensiteでHTTPSサイトを有効化する。 あとは設定ファイルにServerNameを追加する。
-# a2enmod ssl # vi /etc/apache2/sites-available/default-ssl.conf ServerAdmin xxx@yyy.zzz (変更) ServerName xxx.yyy.zzz (追加) # a2ensite default-ssl # service apache2 reload  Let&rsquo;s Encryptのインストールと設定 # apt-get install letsencrypt python-letsencrypt-apache  Apacheを止めてから、Let&rsquo;s Encryptを実行。
-# service apache2 stop # letsencrypt --authenticator standalone --installer apache # service apache2 start  この時点でブラウザからHTTPSでアクセスできるはずなので確認。
+		海外の格安VPS、AlaphaRacksでHTTPSのHTTPサーバを立てたので、その作業録。 環境 Chinese Year Specialという年間$8のプランを契約。 Ubuntuのバージョンは16.04なのだが、カーネルのバージョンは2.6.32の古め。 そのため、dockerは使えない。 # uname -r 2.6.32-042stab127.2 # cat /etc/lsb-release DISTRIB_ID=Ubuntu DISTRIB_RELEASE=16.04 DISTRIB_CODENAME=xenial DISTRIB_DESCRIPTION=&quot;Ubuntu 16.04 LTS&quot; ApacheのSSLモジュール有効化 SSLモジュールを有効化し、a2ensiteでHTTPSサイトを有効化
 	</div>
 </article>
 </main>

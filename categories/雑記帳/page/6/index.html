@@ -85,16 +85,7 @@ if (!doNotTrack) {
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		Mathematica 8 Home Edition 日本語版をUbuntu 12.04 LTS 64bit版にインストールしたところ、
- ディレクトリ、ファイル名に日本語が含まれるノートブックファイル(.nb)を開けない ディレクトリ、ファイル名に日本語が含まれるとImport/Exportできない、FileNamesで列挙できない ノートブック中に日本語を入力できない $SystemCharacterEncoding、$CharacterEncodingが&rdquo;EUC-JP&rdquo;になっている  などの言語関連の不具合があった。
-これから作るノートブックは英語だけで書けば済むが、今までに作ったノートブックファイルが開けないのがつらい。 一応Wolframのサポートにはメールを出したが、期待できそうになかった。
-/usr/local/Wolram/以下のファイルで関係有りそうなものを試行錯誤していじった結果、以下の方法で対処できたのでメモ。
- /usr/local/Wolfram/Mathematica/8.0/Executables以下の起動用スクリプトファイルMathematica、mathematicaの「LANG=ja_JP.eucJP」を「LANG=en_US.UTF-8」などに適当に変更orコメントアウト /usr/local/Wolfram/Mathematica/8.0/SystemFiles/CharacterEncodings/UTF-8.mの内容をISO8859-1.mにコピー  $SystemCharacterEncoding、$CharacterEncodingは&rdquo;ISO8859-1&rdquo;になってしまうのが気持ち悪いが、とりあえず実用上問題がなくなった。
-あとは本当にISO8859-1の文字コードで書かれたファイルを読み込むことができなくなってしまうが、扱う機会はないので良しとする。
-Oct. 7 2016 追記
-4年越しにWolfram Researchから連絡が来た。
- In May 2012 you reported an issue with Mathematica wherein Mathematica was unable to open files from folders with non-English cahracters in the name. We believe that the issue has been resolved in the current release of Mathematica.
-Thank you for your report and we look forward to a continued, productive relationship with you.
+		Mathematica 8 Home Edition 日本語版をUbuntu 12.04 LTS 64bit版にインストールしたところ、 ディレクトリ、ファイル名に日本語が含まれるノートブックファイル(.nb)を開けない ディレクトリ、ファイル名に日本語が含まれるとImport/Exportできない、FileNamesで列挙できない ノートブック中に日本語を入力できない $SystemCharacterEncoding、$CharacterEncodingが&rdqu
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -106,10 +97,7 @@ Thank you for your report and we look forward to a continued, productive relatio
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		LS-DYNAのキーワードファイルを書きだすプログラムを書いたところ、浮動小数点数を固定文字数(10文字)にフォーマットする所でつまづいた。 具体的には
- String.formatやDecimalFormatの動作が遅い(String.formatよりはDecimalFormatのほうが速いが) 文字数を10文字に制限することが難しい(絶対値の大小比較を行なって桁数ごとに条件分岐をしても、四捨五入によって意図しない文字数(11文字)になる)  という問題にあたった。そこでdoubleから長さ10の文字列を力技で書きだすロジックを自作した。特徴は以下の通り。
- 正の時は先頭にスペース、負の時は先頭に&rdquo;-&ldquo;を入れる 10文字の制限の中で最も有効桁数が大きくなるようにフォーマット 四捨五入はしない！ DecimalFormatの15倍高速(もう少し工夫はできるが)
-private static String formatFloat10(double d){ char[] c = new char[10]; double a; if(d == 0.0){ return &quot; 0.0000000&quot;; } if(d &lt; 0){ c[0] = '-'; a = -d; }else{ c[0] = ' '; a = d; } int m = (int)Math.floor(Math.log10(a)); if(m &lt;= -100){ for(int i = 1; i &lt; 1 - m; i++) a *= 10; c[1] = (char)('0' + Math.
+		LS-DYNAのキーワードファイルを書きだすプログラムを書いたところ、浮動小数点数を固定文字数(10文字)にフォーマットする所でつまづいた。 具体的には String.formatやDecimalFormatの動作が遅い(String.formatよりはDecimalFormatのほうが速いが) 文字数を10文字に制限することが難しい(絶対値の大小比較を行なって桁数ごとに条件分岐をしても、四捨五入によっ
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -121,9 +109,7 @@ private static String formatFloat10(double d){ char[] c = new char[10]; double a
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		会社のPCでは自由にソフトウェアをインストールすることができないので、業務で使いそうなものはExcel VBAで自作していくことにした。 まずは手始めに24ビットビットマップの読み書きを行う標準モジュールを作成した。 VBAの機能のみで実装しており、外部のライブラリには依存しない。
-使い方  以下のソースをOfficeのマクロで標準モジュールとしてプロジェクトへ追加する。 ReadBitmap(&ldquo;C:***.bmp&rdquo;)で、RGBTRIPLE型の2次元配列が返る。 読み込みは一応1, 4, 8, 24, 32ビットのビットマップファイルに対応。 WriteBitmap24(&ldquo;C:***.bmp&rdquo;)で24ビットのビットマップファイルを書き込む。 おまけ機能として、ReadGIFJPEGでGIFとJPEGファイルも読み込みにも対応。
-' Bitmap module by 330k ' Copyright (C) 2010 330k, All rights reserved. Option Explicit Public Type RGBTRIPLE rgbBlue As Byte rgbGreen As Byte rgbRed As Byte End Type Private Type RGBQUAD rgbBlue As Byte rgbGreen As Byte rgbRed As Byte rgbReserved As Byte End Type Private Type BITMAPFILEHEADER bfType As String * 2 bfSize As Long bfReserved1 As Integer bfReserved2 As Integer bjOffBits As Long End Type Private Type BitmapInfoHeader biSize As Long biWidth As Long biHeight As Long biPlanes As Integer biBitCount As Integer biCompression As Long biSizeImaze As Long biXPixPerMeter As Long biYPixPerMeter As Long biClrUsed As Long biClrImporant As Long End Type ' Read a bitmap file (1, 4, 8, 24 and 32 bit) and return image as 2-dimension array of RGBTriple Public Function ReadBitmap(strFileName As String) As RGBTRIPLE() Dim i As Long Dim j As Long Dim n As Long Dim intFileNumber As Integer Dim bjHeader As BITMAPFILEHEADER Dim biHeader As BitmapInfoHeader Dim lngColors As Long Dim rgbData() As RGBTRIPLE Dim rgbTemp As RGBTRIPLE Dim rgbTable3() As RGBTRIPLE Dim rgbTable4() As RGBQUAD Dim bytTemp As Byte intFileNumber = FreeFile() Open strFileName For Binary As intFileNumber Get intFileNumber, , bjHeader Get intFileNumber, , biHeader ReDim rgbData(0 To biHeader.
+		会社のPCでは自由にソフトウェアをインストールすることができないので、業務で使いそうなものはExcel VBAで自作していくことにした。 まずは手始めに24ビットビットマップの読み書きを行う標準モジュールを作成した。 VBAの機能のみで実装しており、外部のライブラリには依存しない。 使い方 以下のソースをOfficeのマクロで標準モジュールとしてプロジェクトへ追加する。 ReadBitmap(&ldquo;C
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -135,15 +121,7 @@ private static String formatFloat10(double d){ char[] c = new char[10]; double a
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		Mathematicaにおいてプログラムの実行速度を最適化する際の項目を思いつく限り挙げてみた。
-関数型パラダイムで書く 必然的に組み込み関数を多く使い、リストをまとめて操作することになるので手続き型で書くより速くなることが多い。 コード量も少なくなって読みやすくなるので、よほどのことでない限りMathematicaでは関数型で書く。
-具体的には、手続き型ループ構文(Do, For, Whileなど)をやめて、MapやThreadを使うようにする。
-出来る限り組み込みの関数を使う 組み込み関数でできることは出来る限りやらせる。 ドキュメントを探すと、Mathematicaは意外と多くのものが組み込みでできるようになっている。
-リストは全体をまとめて扱う 大概のループの中身はリストへの関数の適用や、テンソルの演算などに帰着する。
-四則演算はリストにそのまま適用可能。 内積はDot、外積はCrossがあるし、それらを一般化したInner、Outerといった関数もある。
-Mathematicaでは個々の要素に対する操作は記述しなくてもよい場合が多い。
-myDifferences1[v_] := Table[v[[i + 1]] - v[[i]], {i, Length[v] - 1}]; (* 個々の要素を操作する *) myDifferences2[v_] := Most[RotateLeft[v] - v]; (* リスト全体をまとめて操作する *) {Timing[myDifferences1[#];], Timing[myDifferences2[#];], Timing[Differences[#];]} &amp;[RandomReal[{0, 5}, 5000000]] {{1.919, Null}, {0.296, Null}, {0.187, Null}}  リストの要素数変更を避ける 手続き型で要素数が分からないリストを生成するには、ReapとSowを用いる。AppendToやPrependToは厳禁。
-myPrimeChoice1[n_] := Module[{r = {}, i}, Do[If[PrimeQ[i], AppendTo[r, i]], {i, n}]; r]; myPrimeChoice2[n_] := Module[{i}, Reap[Do[If[PrimeQ[i], Sow[i]], {i, n}]][[2, 1]]]; {Timing[myPrimeChoice1[200000];], Timing[myPrimeChoice2[200000];]} {{3.
+		Mathematicaにおいてプログラムの実行速度を最適化する際の項目を思いつく限り挙げてみた。 関数型パラダイムで書く 必然的に組み込み関数を多く使い、リストをまとめて操作することになるので手続き型で書くより速くなることが多い。 コード量も少なくなって読みやすくなるので、よほどのことでない限りMathematicaでは関数型で書く。 具体的には、手続き型ループ構文(Do, For, Whileなど)をやめて、Ma
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -155,14 +133,7 @@ myPrimeChoice1[n_] := Module[{r = {}, i}, Do[If[PrimeQ[i], AppendTo[r, i]], {i, 
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		 Explicit Runge-Kutta法の公式はいくつか知られているが、高次の公式になるほどButcher配列の項数が増えるため論文に誤植が多くなる。 それに気づかないまま実際に使うと、プログラムは正しく組めているはずなのに思うように精度が上がらないという落とし穴にはまってしまう。
-覚書として、以下に代表的と思われる公式のButcher tableauをまとめる。
-以下のButcher tableauはMathematica 8のNumericalDifferentialEquationAnalysisパッケージに含まれるRungeKuttaOrderConditionsで所定の次数条件を達成していることを確認しており、誤植が入り込まないようにそのままMathematica上で画像化している。
-使用したMathematicaノートブックはこちら。 必要な人はダウンロードして自分で計算して確認した後に使用してほしい。
-MathematicaにCやFortranのソースコード形式で吐かせるのが確実。
-※注意事項
-公式の名前や出典に関しては自信がないので、鵜呑みにしないこと。
-1段1次 Euler法   2段2次 修正Euler法   Heun法   Ralston法 3段3次 Heunの3次法   Kuttaの3次法   Ralstonの3次法 4段4次 古典的Runge-Kutta法   6段5次 Runge-Kutta-Fehlberg法のうち5次の部分   Runge-Kutta-Nystroemのうち5次の部分   Butcherによる5次公式を3つ       7段6次 Hammudによるもの   9段7次 Shanksによるもの   CooperとVernerによる7次公式   11段8次 CooperとVernerによる8次公式   16段9次 Vernerによる埋め込み型公式のうち9次のもの   
+		Explicit Runge-Kutta法の公式はいくつか知られているが、高次の公式になるほどButcher配列の項数が増えるため論文に誤植が多くなる。 それに気づかないまま実際に使うと、プログラムは正しく組めているはずなのに思うように精度が上がらないという落とし穴にはまってしまう。 覚書として、以下に代表的と思われる公式のButcher tableauをまとめる。 以下のButcher tableauはMathemati
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -174,21 +145,7 @@ MathematicaにCやFortranのソースコード形式で吐かせるのが確実�
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		MathematicaではImportやExportを使って様々な形式のファイルを読み書きできるが、 標準で対応していないファイル形式についても自分でローダやライタを作り、 それをImportやExportに対応させる方法がExtending Import &amp; Export (Wolfram Library Archive)において解説されている。
-しかしこの文書は2003年のもので以前はExperimental`RegisterConverterという関数で登録すればよかったのだが、 この関数はMathematica 7にはない。
-Names[&quot;*`*Register*&quot;]  などとして探し回ったところ、
- ImportExport`RegisterFormat ImportExport`RegisterExport ImportExport`RegisterImport  というそれらしいものを見つけた。
-早速
-ClearAttributes[ImportExport`RegisterFormat, ReadProtected]  として読込みプロテクトを解除してどういう動作をするのか調べたところ、
- ImportExport`RegisterFormat[&ldquo;ファイルフォーマット名&rdquo;]としてファイルフォーマットを登録 ImportExport`RegisterImport[&ldquo;ファイルフォーマット名&rdquo;, myImport]で自前のローダmyImportをImportに登録 ImportExport`RegisterExport[&ldquo;ファイルフォーマット名&rdquo;, myExport]で自前のライタmyExportをExportに登録  という使い方をするようだ。ファイルフォーマット名は&rdquo;GPX&rdquo;でも&rdquo;KML&rdquo;でも&rdquo;JSON&rdquo;でも好きな名前を付けていい。
-myImportやmyExportの書式は以前と変わっていないようで、
-myImport[filename_String, options___?OptionQ] := Module[{...},...] myExport[filename_String, expression_, options___?OptionQ] := Module[{...},...]  でいい模様。
-ImportExport`RegisterFormatには以下のオプションがある。
- BinaryFormat : バイナリファイルならTrue、そうでなければFalse。 ImportExport`Encoding : よくわからないが、標準では&rdquo;BASE64&rdquo;、&rdquo;BZIP2&rdquo;、&rdquo;GZIP&rdquo;、&rdquo;UUE&rdquo;だけでTrueになっている。 ImportExport`Extensions : 対応する拡張子またはそのリスト。{&rdquo;.nb&rdquo;,&rdquo;.html&rdquo;}などと指定する。 AlphaChannel : アルファチャンネルを使う画像かどうか？Exportの際のラスタライズに関係するかも。JPEG2000やPNGなどでTrueになっている。  ただ、ImportExportExtensionsに拡張子を指定して登録しても、Exportでは大丈夫だがImportではうまく判別されない。 ImportExportRegisterImportの動作についてもう少し調べる必要がある。
-Wolfram Researchが新しいドキュメントを出してくれれば早いのだけれど…。
-Feb. 20 2010追記
-Importで自動判別させる方法が判明。
-FileFormatDump`AddFormat[&quot;ファイルフォーマット名&quot;, bin, bundle, archive, encoding, magic, ext, mime, test, bundletestfunc]  として、判別するときに用いられる関数のほか、MIMEタイプも登録できる模様。
+		MathematicaではImportやExportを使って様々な形式のファイルを読み書きできるが、 標準で対応していないファイル形式についても自分でローダやライタを作り、 それをImportやExportに対応させる方法がExtending Import &amp; Export (Wolfram Library Archive)において解説されている。 しかしこの文書は2003年のもので以前はExperimental`RegisterConverterという関数で
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -200,13 +157,7 @@ FileFormatDump`AddFormat[&quot;ファイルフォーマット名&quot;, bin, bun
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		Google SitesではGoogle Analyticsを用いる設定が簡単にできるが、Google Analyticsの「サイト上のデータ表示」を行うと「閉じる」をクリックしても何の反応がない。 画面にレイヤーが重なっていろいろなデータが表示されてしまう状態から抜けられない。
-ネットを調べたところ、「閉じる」が見つからないために同じような現象に遭遇している事例は見つかったが、 「閉じる」をクリックしても、
-_siteOverlay._close()  をアドレスバーに打ち込んでもダメだった。 おそらくGoogle Sitesを利用している場合特有の現象なのだろう。
-この現象が発生することを確認したブラウザは
- Google Chrome 4.0.237.0 Mozilla Firefox 3.5.5 Opera 10 Internet Explorer 8  で、いずれもOSはWindows Vista(32ビット)。ちなみにIE8ではレイアウトも崩れていた。
-仕方がないので_siteOverlay.close()の中身をちょっと調べた。
-function () { var domain, cookiePath; if (GLOBAL_window._udo) { domain = GLOBAL_window._udo; } else if (GLOBAL_window._gat &amp;&amp; GLOBAL_window._gat._gasoDomain) { domain = GLOBAL_window._gat._gasoDomain; } if (domain) { domain = domain[$$PROP_replace](&quot;domain=&quot;, &quot;&quot;)[$$PROP_replace](&quot;;&quot;, &quot;&quot;)[$$PROP_replace](/ /g, &quot;&quot;); } if (GLOBAL_window._utcp) { cookiePath = GLOBAL_window._utcp; } else if (GLOBAL_window.
+		Google SitesではGoogle Analyticsを用いる設定が簡単にできるが、Google Analyticsの「サイト上のデータ表示」を行うと「閉じる」をクリックしても何の反応がない。 画面にレイヤーが重なっていろいろなデータが表示されてしまう状態から抜けられない。 ネットを調べたところ、「閉じる」が見つからないために同じような現象に遭遇している事例は見つかったが、 「閉じる」をクリックしても、 _siteOverlay._close() をアドレ
 	</div>
 </article><article class="list__item post">
 	<figure class="list__thumbnail">
@@ -223,15 +174,7 @@ function () { var domain, cookiePath; if (GLOBAL_window._udo) { domain = GLOBAL_
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		ある点が多角形の内側にあるのか外側にあるのかを判定するには主に
- ある点から直線をひいて多角形の辺と何回交差するか判定する(偶数回なら外、奇数回なら中) ある点から多角形の各頂点を順番に見ていったときに何回転するか  の2つの方法がある。
-しかし辺との交差回数をカウントするのは、直線と辺が平行だったり、頂点で交差したりする場合などに特別な配慮が必要なので、 ここでは2番目の方法で実装する。
-点から多角形上の点を順々に見たときの偏角(反時計まわりを正とする)の和を取ればよいので、ある点Pからみた多角形上の頂点Aから頂点Bまでの偏角∠APBを求める関数をまず作成する。
-この実装方法にもベクトルの外積を考えるなど何通りか考えられるが、せっかくMathematicaを使うので楽をして、複素数にしてArgで偏角をとることにする。
-Angle[{{x1_, y1_}, {x2_, y2_}, {x3_, y3_}}] := Module[{v1 = Complex[x1 - x3, y1 - y3], v2 = Complex[x2 - x3, y2 - y3]}, If[TrueQ[v1 == 0], 0, Arg[v2/v1]] ]  多角形の内外判定はMathematicaのPolygonなどの表示に合わせ、自己交差している場合は内部と外部を交互に繰り返すものとすると、
- 偏角の和が0、±4π、±8π、…のとき点は多角形の外 偏角の和が±2π、±6π、±10π…のとき点は多角形の中  とできる。
-以上より多角形の内外を判定する関数InsidePolygonQは以下のように実装できる。
-InsidePolygonQ[poly : {{_, _} ..}, p : {_, _}] := Module[ {argsum}, argsum = Round[Total[MapThread[Angle[{##, p}] &amp;, {poly, RotateLeft[poly]}]]/(2 Pi)]; OddQ[argsum] ]  丸め誤差が蓄積すると誤判定してしまうのだが、誤判定するために要求される丸め誤差はπなので、多分大丈夫だと思われる。
+		ある点が多角形の内側にあるのか外側にあるのかを判定するには主に ある点から直線をひいて多角形の辺と何回交差するか判定する(偶数回なら外、奇数回なら中) ある点から多角形の各頂点を順番に見ていったときに何回転するか の2つの方法がある。 しかし辺との交差回数をカウントするのは、直線と辺が平行だったり、頂点で交差したりする場合などに特別な配慮が必要なので、 ここでは2番目の方法で実装する。 点から多角形上の点を順
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -243,16 +186,7 @@ InsidePolygonQ[poly : {{_, _} ..}, p : {_, _}] := Module[ {argsum}, argsum = Rou
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		au携帯電話に入っている地図ビューアーの簡易ハンディGPS機能によって取得したGPSログ(あしあとデータ)は、
-本ファイルは、地図ビューアーにより出力されたGPS情報ファイルです。 出力日時:2009/10/27 08:56:46 +0900 +++GPSログ+++ 940669002,139.604988,35.833148  という形式になっており、「+++GPSログ+++」以下の行に時刻、経度、緯度の順番に記録される。
-GPSでは時刻を1980年1月6日0時0分0秒(GMT)からの秒数として表すが、au携帯電話の場合はこれに9時間を足した秒数になる。
-ただし、GPS時刻は1980年1月6日以降の閏秒を無視しているので、普通のGPSロガーから時刻情報を取り出すときには閏秒の処理が必要になる。 ちなみに2009年1月1日時点でGPSの原子時計は15秒進んでいる。
-3行目の出力日時は簡易ハンディGPSからあしあとデータの保存をした時の時刻となる。 上のデータは1回目の測位終了後直ちに保存したものであるので、出力日時の「2009/10/27 08:56:46」というのは「940669002」の表す時刻の数秒後であるはず。
-ところが、閏秒を考慮せずにMathematicaで
-DatePlus[DateList[{1980, 1, 6, 0, 0, 0}], {940669002, &quot;Second&quot;}]  とすると、
-{2009, 10, 27, 8, 56, 42.}  と返ってくる。
-電波時計と携帯電話を同時に見ていたのだが、8時56分42秒というのは測位した瞬間に電波時計が指していた時刻と一致している。 15秒前の8時56分27秒の時点ではまだ測位を開始していない。
-以上より、auの携帯電話(少なくとも私が持っているW61CA)の簡易ハンディGPSによるあしあとデータの時刻情報は閏秒について修正する必要がない(携帯電話側で修正している)と言える。
+		au携帯電話に入っている地図ビューアーの簡易ハンディGPS機能によって取得したGPSログ(あしあとデータ)は、 本ファイルは、地図ビューアーにより出力されたGPS情報ファイルです。 出力日時:2009/10/27 08:56:46 +0900 +++GPSログ+++ 940669002,139.604988,35.833148 という形式になっており、「+++GPSログ+++」以下の行に時刻、経度、緯度の順番に記録される。 GPSでは時刻を1980年1月6日0時0分0秒(GMT)からの秒数と
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -264,11 +198,7 @@ DatePlus[DateList[{1980, 1, 6, 0, 0, 0}], {940669002, &quot;Second&quot;}]  と�
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		FORTRANで書かれた古いMS-DOSプログラムを.NET/Linkを使ってMathematicaから操るパッケージを作っていたところ、 Process.StartInfo.RedirectStandardInputやRedirectStandardOutputにTrueを設定してもまったく標準入出力をリダイレクトできなかった。(※OSはVista 32bit)
-いろいろ試してみたところ、16ビットのプログラムだとリダイレクトができないらしいということが分かった。 さてどうしたものかとさらにいろいろ打開策を探してみた結果、
- FileNameに&quot;cmd.exe&quot;を設定して、Process.Start()でプロセスを起動。 必要ならStandardInput.WriteLine(&quot;cd 16ビットプログラムのディレクトリ&quot;)としてカレントディレクトリを移動。 StandardInput.WriteLine(&quot;***.EXE&quot;)として16ビットプログラムを起動。  とcmd.exeを間に挟むことにより、16ビットのプログラムに対しても標準入出力のリダイレクトが行えることが分かった。
-以下はMathematica+.NET/Linkによるサンプル。 標準出力は書き出されるたびにイベントハンドラで捕捉してoutputsに追加するので、Dynamic[outputs]などとしておくと、本当のターミナルの挙動に近づく。 最初にcmd.exeの出力(&ldquo;Microsoft Windows [Version &hellip;&ldquo;)が入るので、16ビットのプログラムの出力だけがほしい場合は16ビットプログラム起動後にフラグを立てれば大丈夫。
-outputs = {}; outputhandler[o_, args_] := Module[ {data = args@Data}, AppendTo[outputs, data]; ]; NETBlock[ proc = NETNew[&quot;System.Diagnostics.Process&quot;]; LoadNETType[&quot;System.Environment&quot;]; proc@StartInfo@FileName = Environment`GetEnvironmentVariable[&quot;ComSpec&quot;]; proc@StartInfo@RedirectStandardInput = True; proc@StartInfo@RedirectStandardOutput = True; proc@StartInfo@UseShellExecute = False; proc@StartInfo@CreateNoWindow = True; proc@StartInfo@WorkingDirectory = DirectoryName[proc@StartInfo@FileName]; AddEventHandler[proc@OutputDataReceived, outputhandler]; proc@Start[]; proc@BeginOutputReadLine[]; proc@StandardInput@WriteLine[&quot;cd &quot; &lt;&gt; &quot;16ビットプログラムのディレクトリ&quot;]; proc@StandardInput@WriteLine[&quot;******.EXE(16ビットプログラム)&quot;]; proc@StandardInput@WriteLine[&quot;16ビットプログラムの標準入力に渡す内容&quot;]; proc@StandardInput@Close[]; proc@WaitForExit[]; proc@Close[]; ];  とはいっても64bit版のWindowsだと16bitのプログラムがそもそも動かない。
+		FORTRANで書かれた古いMS-DOSプログラムを.NET/Linkを使ってMathematicaから操るパッケージを作っていたところ、 Process.StartInfo.RedirectStandardInputやRedirectStandardOutputにTrueを設定してもまったく標準入出力をリダイレクトできなかった。(※OSはVista 32bit) いろいろ試してみたところ、16ビットのプログラム
 	</div>
 </article>
 </main>

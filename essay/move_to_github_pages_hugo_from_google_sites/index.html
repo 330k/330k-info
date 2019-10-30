@@ -8,19 +8,7 @@
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
 	<meta property="og:title" content="Hugo &#43; GitHub Pages &#43; CloudFlareにGoogleサイトから移転" />
-<meta property="og:description" content="今まで独自ドメインでGoogleサイトを利用してきたが、
- 「新しいGoogleサイト」の機能が全然ダメ(特にガジェットが使えなくなる)で使い物にならない Google自身が推進している常時SSL化も独自ドメインでは機能しない(正確にはMixed Contentsを修正できない) 無駄に色々と読み込むせいで遅い  ということで他のサービスへの移転を決断。
-AWSやGCP上に構築することも考えたものの、 大したPVでもないので無料で使える組み合わせとして、以下の構成にした。
- Hugoを使って静的にサイトを生成 GitHub Pagesにアップロード CloudFlareを使って常時HTTPS化に対応  Hugo &#43; GitHub Pagesの部分は Hugo &#43; Github Pagesでブログを公開してみた を参考にした。
-Hugo Ubuntuではapt-getでHugoをインストールできる(最新版とは限らないので注意)。
-$ sudo apt-get install hugo  テーマは、少し古いバージョンのHugoでも動作するMainroadに決定。 後は以下の作業を実施。
- 今までGoogleサイトのガジェットで行っていたGoogle MapsでのKMLファイルの表示を行うShortcodeを作成。 CSSファイルをいじって横幅を拡大。 コードのシンタックスハイライトを行うため、highlight.jsを読み込むようlayouts/partials/header.htmlを修正。  GitHub GitHubにGitHub Pages用のリポジトリとHugo自体のリポジトリを作成。
-ここでUser Pages(リポジトリ名: (ユーザ名).github.io)で作成し、 CNAMEファイルで独自ドメインを設定すると、 GitHubの他のリポジトリにも独自ドメインの設定が反映される。
-そのため、今まで(ユーザ名).github.io/(プロジェクト名)/のURLが (独自ドメイン)/(プロジェクト名)/にリダイレクトされるようになる。
-既存のプロジェクトページすべてのURLが変更になってしまうし、 今後ホスティング先をGitHub Pagesから別のサービスに移行するときにまた変更することになる。 そこでUser Pagesは作成せず、Project Pagesとして作成する。
-c.f. Custom domain redirects for GitHub Pages sites
-ページ移転作業 各ページを手作業でコピペ。 1日5ページ〜10ページくらい移行作業した。
-画像については、Chromeの開発者ツールで、" />
+<meta property="og:description" content="今まで独自ドメインでGoogleサイトを利用してきたが、 「新しいGoogleサイト」の機能が全然ダメ(特にガジェットが使えなくなる)で使い物にならない Google自身が推進している常時SSL化も独自ドメインでは機能しない(正確にはMixed Contentsを修正できない) 無駄に色々と読み込むせいで遅い ということで他のサービスへの移転を決断。 AWSやGCP上に構築することも考えたものの、 大したPVで" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.330k.info/essay/move_to_github_pages_hugo_from_google_sites/" />
 <meta property="article:published_time" content="2017-08-08T19:24:04+09:00" />
@@ -28,19 +16,7 @@ c.f. Custom domain redirects for GitHub Pages sites
 
 	<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Hugo &#43; GitHub Pages &#43; CloudFlareにGoogleサイトから移転"/>
-<meta name="twitter:description" content="今まで独自ドメインでGoogleサイトを利用してきたが、
- 「新しいGoogleサイト」の機能が全然ダメ(特にガジェットが使えなくなる)で使い物にならない Google自身が推進している常時SSL化も独自ドメインでは機能しない(正確にはMixed Contentsを修正できない) 無駄に色々と読み込むせいで遅い  ということで他のサービスへの移転を決断。
-AWSやGCP上に構築することも考えたものの、 大したPVでもないので無料で使える組み合わせとして、以下の構成にした。
- Hugoを使って静的にサイトを生成 GitHub Pagesにアップロード CloudFlareを使って常時HTTPS化に対応  Hugo &#43; GitHub Pagesの部分は Hugo &#43; Github Pagesでブログを公開してみた を参考にした。
-Hugo Ubuntuではapt-getでHugoをインストールできる(最新版とは限らないので注意)。
-$ sudo apt-get install hugo  テーマは、少し古いバージョンのHugoでも動作するMainroadに決定。 後は以下の作業を実施。
- 今までGoogleサイトのガジェットで行っていたGoogle MapsでのKMLファイルの表示を行うShortcodeを作成。 CSSファイルをいじって横幅を拡大。 コードのシンタックスハイライトを行うため、highlight.jsを読み込むようlayouts/partials/header.htmlを修正。  GitHub GitHubにGitHub Pages用のリポジトリとHugo自体のリポジトリを作成。
-ここでUser Pages(リポジトリ名: (ユーザ名).github.io)で作成し、 CNAMEファイルで独自ドメインを設定すると、 GitHubの他のリポジトリにも独自ドメインの設定が反映される。
-そのため、今まで(ユーザ名).github.io/(プロジェクト名)/のURLが (独自ドメイン)/(プロジェクト名)/にリダイレクトされるようになる。
-既存のプロジェクトページすべてのURLが変更になってしまうし、 今後ホスティング先をGitHub Pagesから別のサービスに移行するときにまた変更することになる。 そこでUser Pagesは作成せず、Project Pagesとして作成する。
-c.f. Custom domain redirects for GitHub Pages sites
-ページ移転作業 各ページを手作業でコピペ。 1日5ページ〜10ページくらい移行作業した。
-画像については、Chromeの開発者ツールで、"/>
+<meta name="twitter:description" content="今まで独自ドメインでGoogleサイトを利用してきたが、 「新しいGoogleサイト」の機能が全然ダメ(特にガジェットが使えなくなる)で使い物にならない Google自身が推進している常時SSL化も独自ドメインでは機能しない(正確にはMixed Contentsを修正できない) 無駄に色々と読み込むせいで遅い ということで他のサービスへの移転を決断。 AWSやGCP上に構築することも考えたものの、 大したPVで"/>
 
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">

@@ -8,15 +8,7 @@
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
 	<meta property="og:title" content="Mathematicaにおけるプログラムの高速化手法" />
-<meta property="og:description" content="Mathematicaにおいてプログラムの実行速度を最適化する際の項目を思いつく限り挙げてみた。
-関数型パラダイムで書く 必然的に組み込み関数を多く使い、リストをまとめて操作することになるので手続き型で書くより速くなることが多い。 コード量も少なくなって読みやすくなるので、よほどのことでない限りMathematicaでは関数型で書く。
-具体的には、手続き型ループ構文(Do, For, Whileなど)をやめて、MapやThreadを使うようにする。
-出来る限り組み込みの関数を使う 組み込み関数でできることは出来る限りやらせる。 ドキュメントを探すと、Mathematicaは意外と多くのものが組み込みでできるようになっている。
-リストは全体をまとめて扱う 大概のループの中身はリストへの関数の適用や、テンソルの演算などに帰着する。
-四則演算はリストにそのまま適用可能。 内積はDot、外積はCrossがあるし、それらを一般化したInner、Outerといった関数もある。
-Mathematicaでは個々の要素に対する操作は記述しなくてもよい場合が多い。
-myDifferences1[v_] := Table[v[[i &#43; 1]] - v[[i]], {i, Length[v] - 1}]; (* 個々の要素を操作する *) myDifferences2[v_] := Most[RotateLeft[v] - v]; (* リスト全体をまとめて操作する *) {Timing[myDifferences1[#];], Timing[myDifferences2[#];], Timing[Differences[#];]} &amp;[RandomReal[{0, 5}, 5000000]] {{1.919, Null}, {0.296, Null}, {0.187, Null}}  リストの要素数変更を避ける 手続き型で要素数が分からないリストを生成するには、ReapとSowを用いる。AppendToやPrependToは厳禁。
-myPrimeChoice1[n_] := Module[{r = {}, i}, Do[If[PrimeQ[i], AppendTo[r, i]], {i, n}]; r]; myPrimeChoice2[n_] := Module[{i}, Reap[Do[If[PrimeQ[i], Sow[i]], {i, n}]][[2, 1]]]; {Timing[myPrimeChoice1[200000];], Timing[myPrimeChoice2[200000];]} {{3." />
+<meta property="og:description" content="Mathematicaにおいてプログラムの実行速度を最適化する際の項目を思いつく限り挙げてみた。 関数型パラダイムで書く 必然的に組み込み関数を多く使い、リストをまとめて操作することになるので手続き型で書くより速くなることが多い。 コード量も少なくなって読みやすくなるので、よほどのことでない限りMathematicaでは関数型で書く。 具体的には、手続き型ループ構文(Do, For, Whileなど)をやめて、Ma" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.330k.info/essay/how-to-optimize-mathematica-programs/" />
 <meta property="article:published_time" content="2009-12-14T22:39:00+09:00" />
@@ -24,15 +16,7 @@ myPrimeChoice1[n_] := Module[{r = {}, i}, Do[If[PrimeQ[i], AppendTo[r, i]], {i, 
 
 	<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Mathematicaにおけるプログラムの高速化手法"/>
-<meta name="twitter:description" content="Mathematicaにおいてプログラムの実行速度を最適化する際の項目を思いつく限り挙げてみた。
-関数型パラダイムで書く 必然的に組み込み関数を多く使い、リストをまとめて操作することになるので手続き型で書くより速くなることが多い。 コード量も少なくなって読みやすくなるので、よほどのことでない限りMathematicaでは関数型で書く。
-具体的には、手続き型ループ構文(Do, For, Whileなど)をやめて、MapやThreadを使うようにする。
-出来る限り組み込みの関数を使う 組み込み関数でできることは出来る限りやらせる。 ドキュメントを探すと、Mathematicaは意外と多くのものが組み込みでできるようになっている。
-リストは全体をまとめて扱う 大概のループの中身はリストへの関数の適用や、テンソルの演算などに帰着する。
-四則演算はリストにそのまま適用可能。 内積はDot、外積はCrossがあるし、それらを一般化したInner、Outerといった関数もある。
-Mathematicaでは個々の要素に対する操作は記述しなくてもよい場合が多い。
-myDifferences1[v_] := Table[v[[i &#43; 1]] - v[[i]], {i, Length[v] - 1}]; (* 個々の要素を操作する *) myDifferences2[v_] := Most[RotateLeft[v] - v]; (* リスト全体をまとめて操作する *) {Timing[myDifferences1[#];], Timing[myDifferences2[#];], Timing[Differences[#];]} &amp;[RandomReal[{0, 5}, 5000000]] {{1.919, Null}, {0.296, Null}, {0.187, Null}}  リストの要素数変更を避ける 手続き型で要素数が分からないリストを生成するには、ReapとSowを用いる。AppendToやPrependToは厳禁。
-myPrimeChoice1[n_] := Module[{r = {}, i}, Do[If[PrimeQ[i], AppendTo[r, i]], {i, n}]; r]; myPrimeChoice2[n_] := Module[{i}, Reap[Do[If[PrimeQ[i], Sow[i]], {i, n}]][[2, 1]]]; {Timing[myPrimeChoice1[200000];], Timing[myPrimeChoice2[200000];]} {{3."/>
+<meta name="twitter:description" content="Mathematicaにおいてプログラムの実行速度を最適化する際の項目を思いつく限り挙げてみた。 関数型パラダイムで書く 必然的に組み込み関数を多く使い、リストをまとめて操作することになるので手続き型で書くより速くなることが多い。 コード量も少なくなって読みやすくなるので、よほどのことでない限りMathematicaでは関数型で書く。 具体的には、手続き型ループ構文(Do, For, Whileなど)をやめて、Ma"/>
 
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">

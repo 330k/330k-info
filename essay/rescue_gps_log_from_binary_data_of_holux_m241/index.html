@@ -8,12 +8,7 @@
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
 	<meta property="og:title" content="m-241のバイナリデータからトラックログを吸い出す" />
-<meta property="og:description" content="GPSロガー(Holux m-241)のメモリが破損しているのか、 実は6月30日と7月3日の軽井沢→直江津ツーリングと、9月の西九州→佐多岬ツーリングでは、 ログが破損していたため、Googleのロケーション履歴を代用している。
-バイナリデータは一応吸い出せているようなので、その構造を調べると、 HOLUX m-241 LoggerUtility .trlファイル構造の覚書 より以下のような構造になっている。
- 1レコード20バイトの固定長 時刻4バイト 緯度4バイト 経度4バイト 高度3バイト 速度4バイト チェックサム1バイト  また、m-241は時折書き込み先のメモリアドレスがずれることがあるようだ、との情報も見つかったため、 バイナリエディタで除いてみると、どうも4バイトずつずれて記録されたデータがあるようだった。
-そこで
- レコードの先頭バイトを4バイトずつオフセットさせて読み込んでみる 緯度と経度が日本付近のものと思われるものを片っ端から拾う 時刻は整数型なのでとりあえず読み込む 高度、速度のデータは無視！  という方針でMathematicaのプログラムを書いてみた。
-data = Table[Module[{str, ret}, str = OpenRead[&quot;2016091200.bin&quot;, BinaryFormat -&gt; True]; (* 最初に余分にiバイト読み込んで先頭をずらす *) Do[ BinaryRead[str, &quot;Byte&quot;], {i} ]; (* バイナリ形式で読み込む *) ret = Cases[ MapIndexed[ {First[#2], Sequence @@ #1} &amp;, BinaryReadList[ str, {&quot;Integer32&quot;, &quot;Real32&quot;, &quot;Real32&quot;, &quot;Byte&quot;, &quot;Byte&quot;, &quot;Byte&quot;, &quot;Real32&quot;, &quot;Byte&quot;}] ], {count_, d_Integer, lat_Real, lon_Real, __} /; (30 &lt; lat &lt; 40 &amp;&amp; 125 &lt; lon &lt; 140) :&gt; {count, DateString[DatePlus[{1970, 1, 1, 0, 0, 0}, {d, &quot;Second&quot;}], {&quot;Year&quot;, &quot;-&quot;, &quot;Month&quot;, &quot;-&quot;, &quot;Day&quot;, &quot;T&quot;, &quot;Time&quot;, &quot;Z&quot;}], lat, lon}]; Close[str]; ret ], {i, 0, 19, 4}];  ※ 2016091200." />
+<meta property="og:description" content="GPSロガー(Holux m-241)のメモリが破損しているのか、 実は6月30日と7月3日の軽井沢→直江津ツーリングと、9月の西九州→佐多岬ツーリングでは、 ログが破損していたため、Googleのロケーション履歴を代用している。 バイナリデータは一応吸い出せているようなので、その構造を調べると、 HOLUX m-241 LoggerUtility .trlファイル構造の覚書 より以下のような構造になっている。 1レコード20バイトの固定長 時刻4バイト 緯度" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.330k.info/essay/rescue_gps_log_from_binary_data_of_holux_m241/" />
 <meta property="article:published_time" content="2016-09-22T07:14:00+09:00" />
@@ -21,12 +16,7 @@ data = Table[Module[{str, ret}, str = OpenRead[&quot;2016091200.bin&quot;, Binar
 
 	<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="m-241のバイナリデータからトラックログを吸い出す"/>
-<meta name="twitter:description" content="GPSロガー(Holux m-241)のメモリが破損しているのか、 実は6月30日と7月3日の軽井沢→直江津ツーリングと、9月の西九州→佐多岬ツーリングでは、 ログが破損していたため、Googleのロケーション履歴を代用している。
-バイナリデータは一応吸い出せているようなので、その構造を調べると、 HOLUX m-241 LoggerUtility .trlファイル構造の覚書 より以下のような構造になっている。
- 1レコード20バイトの固定長 時刻4バイト 緯度4バイト 経度4バイト 高度3バイト 速度4バイト チェックサム1バイト  また、m-241は時折書き込み先のメモリアドレスがずれることがあるようだ、との情報も見つかったため、 バイナリエディタで除いてみると、どうも4バイトずつずれて記録されたデータがあるようだった。
-そこで
- レコードの先頭バイトを4バイトずつオフセットさせて読み込んでみる 緯度と経度が日本付近のものと思われるものを片っ端から拾う 時刻は整数型なのでとりあえず読み込む 高度、速度のデータは無視！  という方針でMathematicaのプログラムを書いてみた。
-data = Table[Module[{str, ret}, str = OpenRead[&quot;2016091200.bin&quot;, BinaryFormat -&gt; True]; (* 最初に余分にiバイト読み込んで先頭をずらす *) Do[ BinaryRead[str, &quot;Byte&quot;], {i} ]; (* バイナリ形式で読み込む *) ret = Cases[ MapIndexed[ {First[#2], Sequence @@ #1} &amp;, BinaryReadList[ str, {&quot;Integer32&quot;, &quot;Real32&quot;, &quot;Real32&quot;, &quot;Byte&quot;, &quot;Byte&quot;, &quot;Byte&quot;, &quot;Real32&quot;, &quot;Byte&quot;}] ], {count_, d_Integer, lat_Real, lon_Real, __} /; (30 &lt; lat &lt; 40 &amp;&amp; 125 &lt; lon &lt; 140) :&gt; {count, DateString[DatePlus[{1970, 1, 1, 0, 0, 0}, {d, &quot;Second&quot;}], {&quot;Year&quot;, &quot;-&quot;, &quot;Month&quot;, &quot;-&quot;, &quot;Day&quot;, &quot;T&quot;, &quot;Time&quot;, &quot;Z&quot;}], lat, lon}]; Close[str]; ret ], {i, 0, 19, 4}];  ※ 2016091200."/>
+<meta name="twitter:description" content="GPSロガー(Holux m-241)のメモリが破損しているのか、 実は6月30日と7月3日の軽井沢→直江津ツーリングと、9月の西九州→佐多岬ツーリングでは、 ログが破損していたため、Googleのロケーション履歴を代用している。 バイナリデータは一応吸い出せているようなので、その構造を調べると、 HOLUX m-241 LoggerUtility .trlファイル構造の覚書 より以下のような構造になっている。 1レコード20バイトの固定長 時刻4バイト 緯度"/>
 
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">

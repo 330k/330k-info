@@ -85,11 +85,7 @@ if (!doNotTrack) {
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		ファイルサーバの空き容量が減ってきたので調べてみたら、 削除されていないOfficeファイルの一時ファイルや、Thumbs.dbが結構あることが分かった。
-Thumbs.dbはグループポリシーでネットワークドライブ上では生成しないようにしているはずだが、 ローカルのフォルダをファイルサーバにコピーすると、一緒にくっついてくるらしい。
-以下のPowerShellスクリプトをタスクスケジューラに登録して、定期的(1日1回)にゴミ掃除。
-$a = @() $a += Get-ChildItem &quot;(掃除対象フォルダのパス1)&quot; -Force -Recurse $a += Get-ChildItem &quot;(掃除対象フォルダのパス2)&quot; -Force -Recurse $a += Get-ChildItem &quot;(掃除対象フォルダのパス3)&quot; -Force -Recurse $a | Where-Object { ` $_.Name -like &quot;~*&quot; -and $_.LastWriteTime -lt (Get-Date).AddDays(-1) ` -or $_.Name -like &quot;*.tmp&quot; ` -or $_.Name -eq &quot;Thumbs.db&quot; ` -or $_.Name -eq &quot;.DS_Store&quot; ` -or $_.Name -like &quot;._*&quot; ` } | Remove-Item -Force  削除対象は以下の通り。
- 更新日時が1日以上前のOffice一時ファイル(&quot;~*&quot;) 拡張子が&quot;tmp&quot;のファイル &quot;Thumbs.db&quot; .DS_Storeや._*などのMac OSで使用されるファイル  
+		ファイルサーバの空き容量が減ってきたので調べてみたら、 削除されていないOfficeファイルの一時ファイルや、Thumbs.dbが結構あることが分かった。 Thumbs.dbはグループポリシーでネットワークドライブ上では生成しないようにしているはずだが、 ローカルのフォルダをファイルサーバにコピーすると、一緒にくっついてくるらしい。 以下のPowerShellスクリプトをタスクスケジューラに登録して、定期
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -101,22 +97,7 @@ $a = @() $a += Get-ChildItem &quot;(掃除対象フォルダのパス1)&quot; -F
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		Unicode制御文字のうち、LRO(Left-to-right override, U+202D)とRLO(Right-to-left override, U+202E)は 行中でも文字列の方向を変更する。
-1行の中に何度もLROとRLOが入ると、カーソルキーが踊って楽しいことになる。
-例: 下のテキストボックスの中の文字列を編集したり、カーソルキーで移動しようとしても上手くできないはず。
-‮‭い‮を‭ろ‮る‭は‮ぬ‭に‮り‭ほ‮ち‭へ ‮‭わ‮む‭か‮ら‭よ‮な‭た‮ね‭れ‮つ ‮‭う‮て‭ゐ‮え‭の‮こ‭お‮ふ‭く‮け‭や ‮‭あ‮す‭さ‮せ‭き‮も‭ゆ‮ひ‭め‮ゑ‭み 
-※ Edgeは表示が崩れるので、Ctrl + A→Ctrl + Cでメモ帳にコピペで確認可能。
-表示上は普通のいろは順にひらがなが並んでいるように見えるが、 実際のデータはまったく違う順序になっている。
-↓通常のテキスト (比較用)
-いろはにほへとちりぬるを わかよたれそつねならむ うゐのおくやまけふこえて あさきゆめみしゑひもせす 
-作り方 行内の文字列の順番を入れ替えつつ、LROとRLOを交互に挿入。
-以下のMathematicaコードで上記の例を作成した。
-StringScrumble[str_String] := Module[{chars, chars2}, StringJoin[Riffle[( chars = ToCharacterCode[#]; chars2 = Join[{16^^202e}, Riffle[chars, Reverse[chars]]][[1 ;; Length[chars]]]; FromCharacterCode[Riffle[chars2, {16^^202d, 16^^202e}]]) &amp; /@ StringSplit[str, &quot;\n&quot;] , StringCases[str, &quot;\n&quot;]]]] StringScrumble[&quot;いろはにほへとちりぬるを\nわかよたれそつねならむ\nうゐのおくやまけふこえて\nあさきゆめみしゑひもせす&quot;]  各種デバイス・アプリでの表示 上記の文章をメールで送信し、各種端末で受信メールで表示してみた。
-ChromeやFirefoxなどブラウザは狙い通り表示された。 Edgeはテキストボックス内ではダメだったが、それ以外の場所ではOK。 Outlookでの表示もOK。
-iPhoneのメッセージ、メール、GmailはいずれもOK。
-テキストエディタについてもどう表示されるか確認した。
-メモ帳は意外にもちゃんとBiDi対応だった。 geditは行頭にRLOがあると右寄せで表示してしまう(こういう表示のほうが正しいかもしれないが)。
- Windows 10  Edge:    Outlook:    メモ帳:     Ubuntu 16.
+		Unicode制御文字のうち、LRO(Left-to-right override, U+202D)とRLO(Right-to-left override, U+202E)は 行中でも文字列の方向を変更する。 1行の中に何度もLROとRLOが入ると、カーソルキーが踊って楽しいことになる。 例: 下のテキストボックスの中の文字列を編集したり、カーソルキーで移動しようとしても上手くできないはず。 ‮‭い‮を‭ろ‮る‭は‮ぬ‭に‮り‭ほ‮ち‭へ ‮‭わ‮
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -128,19 +109,7 @@ iPhoneのメッセージ、メール、GmailはいずれもOK。
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		今まで独自ドメインでGoogleサイトを利用してきたが、
- 「新しいGoogleサイト」の機能が全然ダメ(特にガジェットが使えなくなる)で使い物にならない Google自身が推進している常時SSL化も独自ドメインでは機能しない(正確にはMixed Contentsを修正できない) 無駄に色々と読み込むせいで遅い  ということで他のサービスへの移転を決断。
-AWSやGCP上に構築することも考えたものの、 大したPVでもないので無料で使える組み合わせとして、以下の構成にした。
- Hugoを使って静的にサイトを生成 GitHub Pagesにアップロード CloudFlareを使って常時HTTPS化に対応  Hugo + GitHub Pagesの部分は Hugo + Github Pagesでブログを公開してみた を参考にした。
-Hugo Ubuntuではapt-getでHugoをインストールできる(最新版とは限らないので注意)。
-$ sudo apt-get install hugo  テーマは、少し古いバージョンのHugoでも動作するMainroadに決定。 後は以下の作業を実施。
- 今までGoogleサイトのガジェットで行っていたGoogle MapsでのKMLファイルの表示を行うShortcodeを作成。 CSSファイルをいじって横幅を拡大。 コードのシンタックスハイライトを行うため、highlight.jsを読み込むようlayouts/partials/header.htmlを修正。  GitHub GitHubにGitHub Pages用のリポジトリとHugo自体のリポジトリを作成。
-ここでUser Pages(リポジトリ名: (ユーザ名).github.io)で作成し、 CNAMEファイルで独自ドメインを設定すると、 GitHubの他のリポジトリにも独自ドメインの設定が反映される。
-そのため、今まで(ユーザ名).github.io/(プロジェクト名)/のURLが (独自ドメイン)/(プロジェクト名)/にリダイレクトされるようになる。
-既存のプロジェクトページすべてのURLが変更になってしまうし、 今後ホスティング先をGitHub Pagesから別のサービスに移行するときにまた変更することになる。 そこでUser Pagesは作成せず、Project Pagesとして作成する。
-c.f. Custom domain redirects for GitHub Pages sites
-ページ移転作業 各ページを手作業でコピペ。 1日5ページ〜10ページくらい移行作業した。
-画像については、Chromeの開発者ツールで、
+		今まで独自ドメインでGoogleサイトを利用してきたが、 「新しいGoogleサイト」の機能が全然ダメ(特にガジェットが使えなくなる)で使い物にならない Google自身が推進している常時SSL化も独自ドメインでは機能しない(正確にはMixed Contentsを修正できない) 無駄に色々と読み込むせいで遅い ということで他のサービスへの移転を決断。 AWSやGCP上に構築することも考えたものの、 大したPVで
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -152,21 +121,7 @@ c.f. Custom domain redirects for GitHub Pages sites
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		「この動画ファイルをDVDに焼いて。簡単でしょ。」
- いやいや、DVD-Video規格に沿った動画ファイルとファイル構造にしないといけないんですけど。
-Windows用のオーサリングソフトはフリーでも色々あるが、どれが良いのかよくわからないので、 ffmpeg + dvdauthor + mkisofsでISOファイルを作成するバッチファイルを作成した。
-参考サイト : http://d.hatena.ne.jp/hikaen2/20150201/1422773879
-前準備 ffmpeg 適当にWindows用バイナリを落としてPATHを設定しておく。
-dvdauthor Windows用のバイナリをダウンロードし、PATHの通ったところに設置。
-http://www.paehl.com/open_source/?DVDAuthor
-これの下部の「From Box.net」または「From Google Drive」からダウンロード。
-mkisofs 他のソフト(cdrfde)にくっついてくるmkisofs.exeを抜き出す。
-https://cdrtfe.sourceforge.io/cdrtfe/download_en.html
-これのcdrtfe 1.5.7 zip archiveをダウンロードし、展開したファイルの中から、
- tools\cdrtools\mkisofs.exe tools\cygwin\cygwin1.dll tools\cygwin\cygwin.ini  をPATHの通ったフォルダに移動。
-バッチファイル 下記の内容のバッチファイルを作成。 CPU数に合わせてthreadsの値は変更する。
-DVDにしたい動画ファイルをドラッグ&amp;ドロップ。
-@ECHO OFF REM 動画ファイルからDVDのISOファイルを作成 SET VIDEO_FORMAT=NTSC ffmpeg -i &quot;%1&quot; -threads 4 -vf yadif=1,scale=720:480,tinterlace=4 -target ntsc-dvd -flags +ilme+ildct &quot;%~dpn1_dvd.mpeg&quot; dvdauthor -o &quot;%~dpn1_dvd&quot; -t &quot;%~dpn1_dvd.mpeg&quot; dvdauthor -o &quot;%~dpn1_dvd&quot; -T mkisofs -dvd-video -o &quot;%~dpn1_dvd.
+		「この動画ファイルをDVDに焼いて。簡単でしょ。」 いやいや、DVD-Video規格に沿った動画ファイルとファイル構造にしないといけないんですけど。 Windows用のオーサリングソフトはフリーでも色々あるが、どれが良いのかよくわからないので、 ffmpeg + dvdauthor + mkisofsでISOファイルを作成するバッチファイルを作成した。 参考サイト : http://d.hatena.ne.jp/hikaen2/20150201/1422773879 前準備 ffmpeg 適当にWindows用バイナリを落としてPATHを設定しておく。
 	</div>
 </article><article class="list__item post">
 	<figure class="list__thumbnail">
@@ -183,11 +138,7 @@ DVDにしたい動画ファイルをドラッグ&amp;ドロップ。
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		球面上に一様分布するランダムな点を生成したい時、 単純に極座標表示でθとφを一様分布させると、極付近に点が集まってしまう。
-data1 = Transpose[{Sin[t] Cos[f], Sin[t] Sin[f], Cos[t]} /. { f -&gt; RandomReal[{0, 2 Pi}, 2000], t -&gt; RandomReal[{0, Pi}, 2000]}]; g1 = ListPointPlot3D[data1, BoxRatios -&gt; {1, 1, 1}]    球面上で一様分布させるには、下記のようにθにArcCosを使う (θの位置の確率をSinθに比例させたい→累積確率分布関数はCos→逆関数はArcCos)。
-data2 = Transpose[{Sin[t] Cos[f], Sin[t] Sin[f], Cos[t]} /. { f -&gt; RandomReal[{0, 2 Pi}, 2000], t -&gt; ArcCos[RandomReal[{-1, 1}, 2000]]}]; g2 = ListPointPlot3D[data2, BoxRatios -&gt; {1, 1, 1}]    なお、多次元球面上の一様分布は球面上に一様分布する乱数の生成にあるように、 多次元ガウス分布を正規化すると得られる。
-下記は3次元の場合。
-data3 = Normalize /@ RandomReal[NormalDistribution[], {2000, 3}]; g3 = ListPointPlot3D[data3, BoxRatios -&gt; {1, 1, 1}]    
+		球面上に一様分布するランダムな点を生成したい時、 単純に極座標表示でθとφを一様分布させると、極付近に点が集まってしまう。 data1 = Transpose[{Sin[t] Cos[f], Sin[t] Sin[f], Cos[t]} /. { f -&gt; RandomReal[{0, 2 Pi}, 2000], t -&gt; RandomReal[{0, Pi}, 2000]}]; g1 = ListPointPlot3D[data1, BoxRatios -&gt; {1, 1, 1}] 球面上で一様分布させるには、下記のようにθにArcCosを使う (θの位置の確率をSinθに比例させたい→累積確率分布関数はCos→逆関数はArcCos)。 data2 = Transpose[{Sin[t] Cos[f], Sin[t] Sin[f], Cos[t]} /. { f -&gt; RandomReal[{0, 2 Pi}, 2000], t -&gt; ArcCos[RandomReal[{-1, 1}, 2000]]}]; g2 = ListPointPlot3D[data2, BoxRatios -&gt; {1, 1, 1}] なお、多次元球
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -199,11 +150,7 @@ data3 = Normalize /@ RandomReal[NormalDistribution[], {2000, 3}]; g3 = ListPoint
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		社内で余っているサーバにZabbixを入れたので、 SNMP v2cでRICOH製のプリンタ・複合機の各種情報を取得するXMLテンプレートをhttps://github.com/coreyramirezgomez/Ricoh-Printers-Zabbix-Template/blob/master/Ricoh%20Printers%20SNMP%20Template.xml を元に作成した。
-変更箇所としては以下の通り。
- SNMP Discoveryで英語のアイテム名を取得するように変更 1分間あたりの印刷枚数のアイテムとグラフを追加 Discoveryの間隔が長くした(負荷でプリンタが応答しなくなるため)  確認している機種は社内にある以下の2機種のみ。
- RICOH MP C5503 IPSiO SP 6320  ダウンロードはZabbix Share - Template Ricoh SNMP Printers。
-&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt; &lt;zabbix_export&gt; &lt;version&gt;3.2&lt;/version&gt; &lt;date&gt;2017-07-20T10:38:50Z&lt;/date&gt; &lt;groups&gt; &lt;group&gt; &lt;name&gt;Printers&lt;/name&gt; &lt;/group&gt; &lt;/groups&gt; &lt;templates&gt; &lt;template&gt; &lt;template&gt;Template SNMP Ricoh Printers&lt;/template&gt; &lt;name&gt;Template SNMP Ricoh Printers&lt;/name&gt; &lt;description/&gt; &lt;groups&gt; &lt;group&gt; &lt;name&gt;Printers&lt;/name&gt; &lt;/group&gt; &lt;/groups&gt; &lt;applications&gt; &lt;application&gt; &lt;name&gt;SNMP Enabled Printer&lt;/name&gt; &lt;/application&gt; &lt;/applications&gt; &lt;items&gt; &lt;item&gt; &lt;name&gt;Description&lt;/name&gt; &lt;type&gt;4&lt;/type&gt; &lt;snmp_community&gt;{$SNMP_COMMUNITY}&lt;/snmp_community&gt; &lt;multiplier&gt;0&lt;/multiplier&gt; &lt;snmp_oid&gt;.1.3.6.1.2.1.25.3.2.1.3.1&lt;/snmp_oid&gt; &lt;key&gt;Description&lt;/key&gt; &lt;delay&gt;60&lt;/delay&gt; &lt;history&gt;90&lt;/history&gt; &lt;trends&gt;0&lt;/trends&gt; &lt;status&gt;0&lt;/status&gt; &lt;value_type&gt;4&lt;/value_type&gt; &lt;allowed_hosts/&gt; &lt;units/&gt; &lt;delta&gt;0&lt;/delta&gt; &lt;snmpv3_contextname/&gt; &lt;snmpv3_securityname/&gt; &lt;snmpv3_securitylevel&gt;0&lt;/snmpv3_securitylevel&gt; &lt;snmpv3_authprotocol&gt;0&lt;/snmpv3_authprotocol&gt; &lt;snmpv3_authpassphrase/&gt; &lt;snmpv3_privprotocol&gt;0&lt;/snmpv3_privprotocol&gt; &lt;snmpv3_privpassphrase/&gt; &lt;formula&gt;1&lt;/formula&gt; &lt;delay_flex/&gt; &lt;params/&gt; &lt;ipmi_sensor/&gt; &lt;data_type&gt;0&lt;/data_type&gt; &lt;authtype&gt;0&lt;/authtype&gt; &lt;username/&gt; &lt;password/&gt; &lt;publickey/&gt; &lt;privatekey/&gt; &lt;port&gt;161&lt;/port&gt; &lt;description/&gt; &lt;inventory_link&gt;2&lt;/inventory_link&gt; &lt;applications&gt; &lt;application&gt; &lt;name&gt;SNMP Enabled Printer&lt;/name&gt; &lt;/application&gt; &lt;/applications&gt; &lt;valuemap/&gt; &lt;logtimefmt/&gt; &lt;/item&gt; &lt;item&gt; &lt;name&gt;Page Count&lt;/name&gt; &lt;type&gt;4&lt;/type&gt; &lt;snmp_community&gt;{$SNMP_COMMUNITY}&lt;/snmp_community&gt; &lt;multiplier&gt;0&lt;/multiplier&gt; &lt;snmp_oid&gt;.
+		社内で余っているサーバにZabbixを入れたので、 SNMP v2cでRICOH製のプリンタ・複合機の各種情報を取得するXMLテンプレートをhttps://github.com/coreyramirezgomez/Ricoh-Printers-Zabbix-Template/blob/master/Ricoh%20Printers%20SNMP%20Template.xml を元に作成した。 変更箇所としては以
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -215,11 +162,7 @@ data3 = Normalize /@ RandomReal[NormalDistribution[], {2000, 3}]; g3 = ListPoint
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		Excel VBAでUUID(GUID)を生成して使っている部分があったのだが、 先日のWindows Updateを適用してから、 CreateObject(&quot;Scriptlet.TypeLib&quot;)でエラーが出て使用できなくなってしまった。
-参考 : 2017 年 7 月のセキュリティ更新適用後、VBA から一部のオブジェクトを作成できません
-私の場合はただ単にランダムなUUIDが生成できれば良いので、 UUID v4を生成する関数を作った。
-VBの乱数の精度としては24ビットらしいので、1回の乱数生成では最大16ビット使用するようにはしている。 とはいえ乱数の品質としてはあまり高くないのでご注意を。
-Public Function GetUUID() As String 'GetUUID = Mid$(CreateObject(&quot;Scriptlet.TypeLib&quot;).GUID, 2, 36) GetUUID = Right$(&quot;0000&quot; &amp; Hex(Rnd() * 65536), 4) &amp; Right$(&quot;0000&quot; &amp; Hex(Rnd() * 65536), 4) GetUUID = GetUUID &amp; &quot;-&quot; &amp; Right$(&quot;0000&quot; &amp; Hex(Rnd() * 65536), 4) GetUUID = GetUUID &amp; &quot;-4&quot; &amp; Right$(&quot;0000&quot; &amp; Hex(Rnd() * 65536), 3) GetUUID = GetUUID &amp; &quot;-&quot; &amp; Right$(&quot;0000&quot; &amp; Hex(32768 + Rnd() * 16384), 4) GetUUID = GetUUID &amp; &quot;-&quot; &amp; Right$(&quot;0000&quot; &amp; Hex(Rnd() * 65536), 4) &amp; Right$(&quot;0000&quot; &amp; Hex(Rnd() * 65536), 4) &amp; Right$(&quot;0000&quot; &amp; Hex(Rnd() * 65536), 4) End Function  
+		Excel VBAでUUID(GUID)を生成して使っている部分があったのだが、 先日のWindows Updateを適用してから、 CreateObject(&quot;Scriptlet.TypeLib&quot;)でエラーが出て使用できなくなってしまった。 参考 : 2017 年 7 月のセキュリティ更新適用後、VBA から一部のオブジェクトを作成できません 私の場合はただ単にランダムなUUIDが生成できれば良いので、 UUID v4を生
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -231,12 +174,7 @@ Public Function GetUUID() As String 'GetUUID = Mid$(CreateObject(&quot;Scriptlet
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		会社のPCではHDD暗号化ソフトのSecureDocを使用しているが、先日1台のPCが起動しなくなったため、リカバリーディスクを使っての救出を行った際のメモ。
-SecureDocのリカバリーディスクはWindows PEベースなのだが、海外の製品なので当然英語キーボード。 起動しなくなったPCのHDDの中身は運良く復旧できそうだったのだが、 データをネットワーク経由で回収しようとしたところネットワーク設定画面でバックスラッシュが入力できなくてハマった。
-5分ほどキーボードを押しまくった後、Altキーと文字コード入力で行けることに気がついた。
-Alt押す → テンキー9 → テンキー2 → Alt離す
-で無事入力できた。
-ただ、LetsNoteのNICをWindows PEでは認識できず無駄足に。 結局USBメモリ経由で回収した。
+		会社のPCではHDD暗号化ソフトのSecureDocを使用しているが、先日1台のPCが起動しなくなったため、リカバリーディスクを使っての救出を行った際のメモ。 SecureDocのリカバリーディスクはWindows PEベースなのだが、海外の製品なので当然英語キーボード。 起動しなくなったPCのHDDの中身は運良く復旧できそうだったのだが、 データをネットワーク経由で回収しようとしたところネットワーク設定
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -248,14 +186,7 @@ Alt押す → テンキー9 → テンキー2 → Alt離す
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		ウイルス等に侵入された後の対策として、IDSやIPS製品の紹介をベンダーから受けたが、正直なところ価格が高かったのと、検知されるメッセージがSnort由来のものが多い気がしたので、自分でSnortを構築して商用製品との差を調べてみることにした。
-構築環境  PC : 余っていたノートPC Panasonic LetsNote CF-NX1 OS : Xubuntu 16.04.2 (LetsNoteの有線LANと無線LANのNICを認識できる可能性が高いディストリビューションとして選択) ルータ : Yamaha RTX810 IDSとして運用(ミラーポートの通信を監視) LetsNoteの有線LANはミラーポートに接続し、通信を監視 LetsNote自体にアクセスするときには無線LANを使用する  図(適当)   手順 基本的に、以下のドキュメント通りでOK。
-Snort 2.9.9.x on Ubuntu 14 -16
-LetsNoteでは有線LANのNICはenp0s25、無線LANはwlp2s0となった。
-注意点は以下の通り。
- rule_url=https://www.snort.org/reg-rules/|snortrules-snapshot.tar.gz|&lt;oinkcode&gt; → rule_url=https://www.snort.org/rules/|snortrules-snapshot.tar.gz|&lt;oinkcode&gt; ※微妙にURLが変わっているので注意 sudo /usr/local/bin/pulledpork.pl -c /etc/snort/pulledpork.conf -l → sudo /usr/local/bin/pulledpork.pl -c /etc/snort/pulledpork.conf -l -o /etc/snort/rules/snort.rules ※-oオプションが必要と怒られた  有線LAN(enp0s25)はミラーポートから受信だけできれば良いので、 /etc/network/interfacesを編集して使われていないネットワークのアドレスを適当に設定。 管理の通信やBASEによるログを眺めるためには無線(wlp2s0)を使用するので、 NetworkManagerを使って適当に固定IPを設定。
-RTX810はhttp://www.rtpro.yamaha.co.jp/RT/manual/rt-common/setup/lan_port-mirroring.html を参照してミラーポートを設定。
- 設定(ポート1と2の送信および受信フレームをポート4にミラー) lan port-mirroring lan1 4 in 1 2 out 1 2 解除 no lan port-mirroring lan1  結果 一応IDSとして構築できたので、現在はログを見て様子見。今のところのメモは以下。
+		ウイルス等に侵入された後の対策として、IDSやIPS製品の紹介をベンダーから受けたが、正直なところ価格が高かったのと、検知されるメッセージがSnort由来のものが多い気がしたので、自分でSnortを構築して商用製品との差を調べてみることにした。 構築環境 PC : 余っていたノートPC Panasonic LetsNote CF-NX1 OS : Xubuntu 16.04.2 (LetsNoteの有線LANと無線LANのNICを認識できる可能性が高いディストリビューションとして選択) ル
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -267,13 +198,7 @@ RTX810はhttp://www.rtpro.yamaha.co.jp/RT/manual/rt-common/setup/lan_port-mirror
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		JScriptで複数のテキストファイルを書き出し、それをZIPでまとめたかったので作成。 VBAやVBScript版を参考に作ってみた。
-参考サイト : http://kiq-creator.com/blog/?eid=33
-複数のファイルをZIP圧縮する際のコツとしては、CopyHereをするたびに待機すること。 CopyHereは非同期なので、すぐにJS側に制御が返ってくるが、 複数のファイルを一気にCopyHereしようとすると、「読み取りできません」とエラーが出る。
-使い方 以下のコード中のcreateZipFileを自分のスクリプトにコピー&amp;ペーストして
-createZipFile( &quot;zipファイルのパス&quot;, [&quot;圧縮対象ファイルのパス1&quot;, &quot;圧縮対象ファイルのパス2&quot;, ...])  とすればOK。 もしくは以下のコードをメモ帳で拡張子をjsにして保存すれば、ドラッグ&amp;ドロップでzipファイルを作成(右クリック→送る→圧縮フォルダーとほぼ同じ動作)。
-注意事項 ディレクトリには対応してません。またWindows標準では暗号化ZIPは作成できません。 また圧縮対象ファイルの存在チェック等もやってないので、必要であればエラーハンドリング処理を追加してください。
-/** Windows 標準機能でZipファイルを作成するWSH(JScript) Copyright 330k This software is released under the MIT License. http://opensource.org/licenses/mit-license.php */ var args = []; for(var i = 0; i &lt; WScript.Arguments.length; i++){ args.push(WScript.Arguments(i)); } var zipfile = args[0].replace(/(.+)\.(.+?)$/, &quot;$1.zip&quot;); createZipFile(zipfile, args); function createZipFile(zipFilePath, sourceFiles){ var shell = WScript.CreateObject(&quot;Shell.Application&quot;); var fso = WScript.CreateObject(&quot;Scripting.FileSystemObject&quot;); var file = fso.
+		JScriptで複数のテキストファイルを書き出し、それをZIPでまとめたかったので作成。 VBAやVBScript版を参考に作ってみた。 参考サイト : http://kiq-creator.com/blog/?eid=33 複数のファイルをZIP圧縮する際のコツとしては、CopyHereをするたびに待機すること。 CopyHereは非同期なので、すぐにJS側に制御が返ってくるが、 複数のファイルを一気にCopyHereしようとすると、「読み取りできません」とエラーが出る。 使い
 	</div>
 </article>
 </main>

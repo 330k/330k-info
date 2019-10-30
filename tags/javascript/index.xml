@@ -17,17 +17,7 @@
       <pubDate>Fri, 01 Mar 2019 07:01:13 +0900</pubDate>
       
       <guid>https://www.330k.info/essay/show-only-first-images/</guid>
-      <description>もうjQueryも古いと言われているが、会社のウェブサイトでjQueryプラグインのbxSliderが使われている。
-Google先生のPageSpeed Insightに注意されたとおり、レンダリングブロックするJavaScriptを後ろ(&amp;lt;/body&amp;gt;直上)に配置したところ、 2枚目以降の画像が一瞬表示されてしまう現象が発生。
-これはJSをレンダリングブロックしないように後ろに配置したり、deferをつけたときに、ブラウザが
- HTMLをロード CSSを読み込み CSSに従って要素を配置 ← このときに一瞬表示 JavaScript読み込み bxSliderプラグインによってCSS書き換え 書き換えられたCSSでDOM要素を再配置 ← このときに2番目以降が消える  という順番で処理されるため。
-なので、CSSで最初から2番目以降を表示しないようにしておけばよい。 具体的には、.bxsliderの2番目以降の子要素にdisplay: none;を指定すればよく、下記のようにする。
-&amp;lt;ul class=&amp;quot;bxslider&amp;quot;&amp;gt; &amp;lt;li&amp;gt;&amp;lt;div class=&amp;quot;slide&amp;quot;&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;/li&amp;gt; &amp;lt;li&amp;gt;&amp;lt;div class=&amp;quot;slide&amp;quot;&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;/li&amp;gt; &amp;lt;li&amp;gt;&amp;lt;div class=&amp;quot;slide&amp;quot;&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;/li&amp;gt; &amp;lt;li&amp;gt;&amp;lt;div class=&amp;quot;slide&amp;quot;&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;/li&amp;gt; &amp;lt;li&amp;gt;&amp;lt;div class=&amp;quot;slide&amp;quot;&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;/li&amp;gt; &amp;lt;li&amp;gt;&amp;lt;div class=&amp;quot;slide&amp;quot;&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;/li&amp;gt; &amp;lt;/ul&amp;gt;  .bxslider li:not(:first-child){ display: none; }  :not(:first-child)が2番目以降の子要素を示す擬似クラス。 ここ最近のブラウザならすべて対応している(:first-childはCSS2.1、:notはCSS3)。
-参考 ちょっと古い記事だが、他の方も同様の問題に対処している。
- 「bxSlider」で画像が一度に出てしまう際の対処 [bxSlider]スライドショー読み込み時に画像が一瞬バラけてしまう場合の超簡単な対処法  ただ、
- 2番目以降ではなくすべての子要素を消してしまっていて、JavaScript実行前は逆に画像が1枚も表示されず、実行後に要素の再配置が発生してしまっている  その対処として表示領域のwidthとheightを指定している  IDで2番目以降の要素を指定している  というやり方で、
- レスポンシブにするため、CSSの別の場所で細かく画像の大きさを場合分けしている ページによってスライドショーの画像の枚数やIDに違いがある  という点で私の会社のサイトに合わず、そのままでは採用できなかった。
-なお、今回の対応に寄って2番目以降の画像が一瞬表示されるという見た目の問題以外にも、 JavaScript(bxSlider)実行後も要素の再配置が発生しないので表示が高速になる利点もある。</description>
+      <description>もうjQueryも古いと言われているが、会社のウェブサイトでjQueryプラグインのbxSliderが使われている。 Google先生のPageSpeed Insightに注意されたとおり、レンダリングブロックするJavaScriptを後ろ(&amp;lt;/body&amp;gt;直上)に配置したところ、 2枚目以降の画像が一瞬表示されてしまう現象が発生。 これはJSをレンダリングブロックしないように後ろに配置したり、</description>
     </item>
     
     <item>
@@ -36,10 +26,7 @@ Google先生のPageSpeed Insightに注意されたとおり、レンダリング
       <pubDate>Mon, 02 Oct 2017 23:27:45 +0900</pubDate>
       
       <guid>https://www.330k.info/essay/measure_video_events_with_google_analytics/</guid>
-      <description>会社のウェブサイトに貼ってある動画ファイルが、実際にどれだけ再生されているのか調査するべく、 Google Analyticsのイベントで計測するためのコードを作ってみた。
-計測対象は以下のイベント。
- 再生開始(play) 最後まで再生(ended) 一時停止(pause) 再生再開(resume) シークした(seeked) どこまで再生したか(動画時間の10%, 25%, 50%, 75%, 90%)  HTML側 &amp;lt;video id=&amp;quot;movie001&amp;quot; width=&amp;quot;(動画幅)&amp;quot; height=&amp;quot;(動画高さ)&amp;quot; title=&amp;quot;Movie Title&amp;quot;&amp;gt; &amp;lt;source src=&amp;quot;(動画ファイルのパス)&amp;quot; type=&amp;quot;video/mp4&amp;quot; /&amp;gt; &amp;lt;/video  JavaScript側(jQuery使用) イベントカテゴリに「video」、イベントアクションにplay、play_endなど。 イベントラベルには動画のtitle属性をセット。
-$(function(){ var oldratio = 0.0; $(&#39;video&#39;).on(&#39;play&#39;, function(e) { on(&#39;play&#39;, function(e) { if(e.target.currentTime &amp;gt; 0){ ga(&#39;send&#39;,&#39;event&#39;,&#39;video&#39;,&#39;resume&#39;,e.target.getAttribute(&#39;title&#39;)); }else{ ga(&#39;send&#39;,&#39;event&#39;,&#39;video&#39;,&#39;play&#39;,e.target.getAttribute(&#39;title&#39;)); } }).on(&#39;ended&#39;, function(e) { ga(&#39;send&#39;,&#39;event&#39;,&#39;video&#39;,&#39;play_end&#39;,e.target.getAttribute(&#39;title&#39;)); }).on(&#39;pause&#39;, function(e) { ga(&#39;send&#39;,&#39;event&#39;,&#39;video&#39;,&#39;pause&#39;,e.target.getAttribute(&#39;title&#39;)); }).on(&#39;seeked&#39;, function(e) { ga(&#39;send&#39;,&#39;event&#39;,&#39;video&#39;,&#39;seeked&#39;,e.target.getAttribute(&#39;title&#39;)); }).on(&#39;timeupdate&#39;, function(e) { var ratio = e.target.currentTime / e.</description>
+      <description>会社のウェブサイトに貼ってある動画ファイルが、実際にどれだけ再生されているのか調査するべく、 Google Analyticsのイベントで計測するためのコードを作ってみた。 計測対象は以下のイベント。 再生開始(play) 最後まで再生(ended) 一時停止(pause) 再生再開(resume) シークした(seeked) どこまで再生したか(動画時間の10%, 25%, 50%, 75%, 90%) HTML側 &amp;lt;video id=&amp;quot;movie001&amp;quot; width=&amp;quot;(動画幅)&amp;q</description>
     </item>
     
     <item>
@@ -48,22 +35,7 @@ $(function(){ var oldratio = 0.0; $(&#39;video&#39;).on(&#39;play&#39;, function
       <pubDate>Mon, 21 Aug 2017 22:38:20 +0900</pubDate>
       
       <guid>https://www.330k.info/essay/scramble_unicode_lro_rlo/</guid>
-      <description>Unicode制御文字のうち、LRO(Left-to-right override, U+202D)とRLO(Right-to-left override, U+202E)は 行中でも文字列の方向を変更する。
-1行の中に何度もLROとRLOが入ると、カーソルキーが踊って楽しいことになる。
-例: 下のテキストボックスの中の文字列を編集したり、カーソルキーで移動しようとしても上手くできないはず。
-‮‭い‮を‭ろ‮る‭は‮ぬ‭に‮り‭ほ‮ち‭へ ‮‭わ‮む‭か‮ら‭よ‮な‭た‮ね‭れ‮つ ‮‭う‮て‭ゐ‮え‭の‮こ‭お‮ふ‭く‮け‭や ‮‭あ‮す‭さ‮せ‭き‮も‭ゆ‮ひ‭め‮ゑ‭み 
-※ Edgeは表示が崩れるので、Ctrl + A→Ctrl + Cでメモ帳にコピペで確認可能。
-表示上は普通のいろは順にひらがなが並んでいるように見えるが、 実際のデータはまったく違う順序になっている。
-↓通常のテキスト (比較用)
-いろはにほへとちりぬるを わかよたれそつねならむ うゐのおくやまけふこえて あさきゆめみしゑひもせす 
-作り方 行内の文字列の順番を入れ替えつつ、LROとRLOを交互に挿入。
-以下のMathematicaコードで上記の例を作成した。
-StringScrumble[str_String] := Module[{chars, chars2}, StringJoin[Riffle[( chars = ToCharacterCode[#]; chars2 = Join[{16^^202e}, Riffle[chars, Reverse[chars]]][[1 ;; Length[chars]]]; FromCharacterCode[Riffle[chars2, {16^^202d, 16^^202e}]]) &amp;amp; /@ StringSplit[str, &amp;quot;\n&amp;quot;] , StringCases[str, &amp;quot;\n&amp;quot;]]]] StringScrumble[&amp;quot;いろはにほへとちりぬるを\nわかよたれそつねならむ\nうゐのおくやまけふこえて\nあさきゆめみしゑひもせす&amp;quot;]  各種デバイス・アプリでの表示 上記の文章をメールで送信し、各種端末で受信メールで表示してみた。
-ChromeやFirefoxなどブラウザは狙い通り表示された。 Edgeはテキストボックス内ではダメだったが、それ以外の場所ではOK。 Outlookでの表示もOK。
-iPhoneのメッセージ、メール、GmailはいずれもOK。
-テキストエディタについてもどう表示されるか確認した。
-メモ帳は意外にもちゃんとBiDi対応だった。 geditは行頭にRLOがあると右寄せで表示してしまう(こういう表示のほうが正しいかもしれないが)。
- Windows 10  Edge:    Outlook:    メモ帳:     Ubuntu 16.</description>
+      <description>Unicode制御文字のうち、LRO(Left-to-right override, U+202D)とRLO(Right-to-left override, U+202E)は 行中でも文字列の方向を変更する。 1行の中に何度もLROとRLOが入ると、カーソルキーが踊って楽しいことになる。 例: 下のテキストボックスの中の文字列を編集したり、カーソルキーで移動しようとしても上手くできないはず。 ‮‭い‮を‭ろ‮る‭は‮ぬ‭に‮り‭ほ‮ち‭へ ‮‭わ‮</description>
     </item>
     
     <item>
@@ -72,13 +44,7 @@ iPhoneのメッセージ、メール、GmailはいずれもOK。
       <pubDate>Mon, 08 May 2017 22:37:00 +0900</pubDate>
       
       <guid>https://www.330k.info/essay/create_zip_file_with_wsh_jscript/</guid>
-      <description>JScriptで複数のテキストファイルを書き出し、それをZIPでまとめたかったので作成。 VBAやVBScript版を参考に作ってみた。
-参考サイト : http://kiq-creator.com/blog/?eid=33
-複数のファイルをZIP圧縮する際のコツとしては、CopyHereをするたびに待機すること。 CopyHereは非同期なので、すぐにJS側に制御が返ってくるが、 複数のファイルを一気にCopyHereしようとすると、「読み取りできません」とエラーが出る。
-使い方 以下のコード中のcreateZipFileを自分のスクリプトにコピー&amp;amp;ペーストして
-createZipFile( &amp;quot;zipファイルのパス&amp;quot;, [&amp;quot;圧縮対象ファイルのパス1&amp;quot;, &amp;quot;圧縮対象ファイルのパス2&amp;quot;, ...])  とすればOK。 もしくは以下のコードをメモ帳で拡張子をjsにして保存すれば、ドラッグ&amp;amp;ドロップでzipファイルを作成(右クリック→送る→圧縮フォルダーとほぼ同じ動作)。
-注意事項 ディレクトリには対応してません。またWindows標準では暗号化ZIPは作成できません。 また圧縮対象ファイルの存在チェック等もやってないので、必要であればエラーハンドリング処理を追加してください。
-/** Windows 標準機能でZipファイルを作成するWSH(JScript) Copyright 330k This software is released under the MIT License. http://opensource.org/licenses/mit-license.php */ var args = []; for(var i = 0; i &amp;lt; WScript.Arguments.length; i++){ args.push(WScript.Arguments(i)); } var zipfile = args[0].replace(/(.+)\.(.+?)$/, &amp;quot;$1.zip&amp;quot;); createZipFile(zipfile, args); function createZipFile(zipFilePath, sourceFiles){ var shell = WScript.CreateObject(&amp;quot;Shell.Application&amp;quot;); var fso = WScript.CreateObject(&amp;quot;Scripting.FileSystemObject&amp;quot;); var file = fso.</description>
+      <description>JScriptで複数のテキストファイルを書き出し、それをZIPでまとめたかったので作成。 VBAやVBScript版を参考に作ってみた。 参考サイト : http://kiq-creator.com/blog/?eid=33 複数のファイルをZIP圧縮する際のコツとしては、CopyHereをするたびに待機すること。 CopyHereは非同期なので、すぐにJS側に制御が返ってくるが、 複数のファイルを一気にCopyHereしようとすると、「読み取りできません」とエラーが出る。 使い</description>
     </item>
     
     <item>
@@ -87,18 +53,7 @@ createZipFile( &amp;quot;zipファイルのパス&amp;quot;, [&amp;quot;圧縮�
       <pubDate>Wed, 01 Jun 2016 22:42:38 +0900</pubDate>
       
       <guid>https://www.330k.info/software/plain-text-steganography-with-unicode/</guid>
-      <description>概要 ゼロ幅文字を使ってUnicodeのプレーンテキストにステガノグラフィを施す、 ブラウザのJavaScriptで動作するライブラリを書いてみた。 参考にしたのは以下のサイト
- ZERO WIDTH SPACE を使って Unicode ステガノグラフィ Unicode Text Steganography Encoders/Decoders  特徴としては以下の通り。
- デフォルトではゼロ幅文字として4種類を使用(U+200C, U+200D, U+202C, U+FEFF)し、2種類の時よりもエンコード後の文字数を減少(それでも1文字埋め込むために8文字増える) 使用する文字種はライブラリの使用者側で指定可能 使用する文字種に応じて自動的にコード長を変更(例: 2種類のときは1字(16bit)が16字になり、8種類のときは6字になる) 漢字とひらがな、カタカナの間や英単語間にゼロ幅文字を埋め込むことで、できる限り単語検索を邪魔しない(厳密には異なるUnicodeブロック間に挿入する。非英語の欧州の言語や、サロゲートペアを使用する文字の前後には単語内でも挿入される) 埋め込む位置は毎回ランダム 元の文章、隠しテキストともに多言語対応(全部UTF-16としてJavaScriptで扱っているため) GitHubのものは任意のバイナリデータにも対応  ダウンロードや、サイトに使用する際は以下のURLからどうぞ。
-https://330k.github.io/misc_tools/unicode_steganography.js
-ライセンスはMITライセンス。
-使い方は https://330k.github.io/misc_tools/unicode_steganography.html に書きました(英語です)。
-動作サンプル:  デフォルトで使用する4種の文字(U+200C, U+200D, U+202C, U+FEFF)は、 GmailやOutlook 2010、iPhoneの標準メールアプリにおいて
- ゼロ幅として表示 文字化けしない(豆腐にならない) コピー&amp;amp;ペースト時に保存されるもの  として選定した。
-U+200B(ZERO WIDTH SPACE)はブラウザからGmailで送信するときに削除される。 ただ、メーラを使ってSMTPサーバ(smtp.gmail.com)から送信するときは削除されない。
-Bidiを考慮せず左横書きに限定すれば、U+200E(LRM)やU+202B(LRO)などを追加できる。 FacebookやTwitterなど各アプリやウェブサイトの対応状況は参考サイトの2番目に詳しい。
-GitHubにアップロードした方はバイナリデータにも対応。 これは通常のステガノグラフィとは逆に、画像などのバイナリデータをプレーンテキスト中に埋め込むことになる。 ただサイズがバカでかくなって存在がバレるので、ステガノグラフィとしての意味はなさないかも。
-動作確認ブラウザ  Chromium 45 (Ubuntu 14.04 LTS) Firefox 42 (Ubuntu 14.</description>
+      <description>概要 ゼロ幅文字を使ってUnicodeのプレーンテキストにステガノグラフィを施す、 ブラウザのJavaScriptで動作するライブラリを書いてみた。 参考にしたのは以下のサイト ZERO WIDTH SPACE を使って Unicode ステガノグラフィ Unicode Text Steganography Encoders/Decoders 特徴としては以下の通り。 デフォルトではゼロ幅文字として4種類を使用(U+200C, U+200D, U+202C, U+FEFF)し、2種類の時よりもエンコード後の文字数を減少(それでも1文字埋め込むために8文字増える)</description>
     </item>
     
     <item>
@@ -107,15 +62,7 @@ GitHubにアップロードした方はバイナリデータにも対応。 こ�
       <pubDate>Thu, 29 May 2014 00:00:00 +0900</pubDate>
       
       <guid>https://www.330k.info/essay/implement-of-priority-queue-for-douglas-peucker-simplify-algorithm/</guid>
-      <description>Nov. 29 2015:
- JavaScriptで実装した優先度付きキューをGitHubで公開→https://github.com/330k/priorityqueue_js/ 各ヒープのベンチマーク → http://330k.github.io/priorityqueue_js/benchmark.html  これにはFibonacci Heapも比較対象に入れてある  折れ線を間引くで書いたように、 Douglas-Peuckerアルゴリズムを改良して指定した点数まで点を削減して折れ線を簡略化する場合、 優先度付きキューを使うことになる。
-このアルゴリズムでは
- 始点と終点を結ぶ線分で最も距離が大きな点P1を選ぶ 始点と点P1を結ぶ線分で距離最大となる点P2をキューに登録(優先度は点P2と線分の距離) 点P1と終点を結ぶ線分で距離最大となる点P3をキューに登録(優先度は点P3と線分の距離) キューから距離が最大(=優先度最大)の点を選んで、2に戻る  という手順となるため、「キューに2つ登録して、1つ取り出す」ということを繰り返すことになる。
-そこで今回はランダムな優先度のデータを
- 連続して登録し、連続して取り出す(要はソートしているだけ) 「キューに2つ登録して、1つ取り出す」を繰り返すDouglas-Peuckerを想定した試験  という操作に対してどの優先度付きキューの実装が良い性能をしめすのか、ベンチマークを取ってみた。
-優先度付きキューの実装にはいくつか方法があるが、今回は以下の6種類を試してみた。
- Array.sort(): キューへの追加はArray.push()、キューから取り出すときに必要であればArray.sort()してArray.pop()する。非常に単純で楽チン。結果の検証用。 Selection: キューへの追加はArray.push()、キューから取り出すときに最大要素を選択。enqueue: O(1), dequeue: O(n2)。 Insertion: キューへの追加時に挿入ソートを行う。キューから取り出すときはArray.pop()するだけ。enqueue: O(n2), dequeue: O(1)。 Binary Insertion: キューへの追加時に二分挿入ソートを行う。あとは3と同じ。enqueue: O(n2), dequeue: O(1)。 Binary Heap: 二分ヒープ(wikipedia)での実装。ポインタなしで実装できるので省メモリ。java.util.PriorityQueueはこれらしい。enqueue: O(log(n)), dequeue: O(log(n))。 Pairing Heap: ペアリングヒープ(wikipedia: en)での実装。gcc(libstdc++)のpriority_queueはこれらしい。enqueue: O(log(n)), dequeue: O(log(n))。実装にはこれを参考にした。  いずれもJavaScriptで実装した。
-ベンチマーク結果 以下、Firefox 29とChromium 34での結果。単位はmsで、小さいほうが高速。 載せていないがVirtualBox上のWindows XPで測定してもほぼ同じ結果だった。</description>
+      <description>Nov. 29 2015: JavaScriptで実装した優先度付きキューをGitHubで公開→https://github.com/330k/priorityqueue_js/ 各ヒープのベンチマーク → http://330k.github.io/priorityqueue_js/benchmark.html これにはFibonacci Heapも比較対象に入れてある 折れ線を間引くで書いたように、 Douglas-Peuckerアルゴリズムを改良して指定した点数まで点を削減して折れ線を簡略化する場合、 優先度付きキューを使うことに</description>
     </item>
     
   </channel>

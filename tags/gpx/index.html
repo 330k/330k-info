@@ -85,14 +85,7 @@ if (!doNotTrack) {
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		概要 GPSロガーで取ったGPXログを公開する際、
- 途切れ途切れのトラックログを結合し 日ごとにそれをまた分割し それぞれを1トラック400ポイント程度に間引いて簡略化する  という手間がかかっていたため、この一連の作業を一括処理するプログラムを作った。
-また、ツーリング中には事前に作成しておいたGPXファイルをAndroidのRMapsや地図ロイドに読み込ませて走行ルートを確認しているのだが、 GPXファイルに余分な要素があると、処理に時間がかかってしまう(あまりに重いと処理できないこともある)。
-トラックログを間引くアルゴリズムは折れ線を間引くに記載した点数を指定するタイプのDouglas-Peuckerを実装している。 メルカトル図法に投影した座標で間引いているので、Google Mapsなどメルカトル図法の地図で見た時に形状をよく保存する。
-使い方  ボタンを押してGPXファイルを選択 一括処理する内容をチェックして選択 「処理実行」ボタンをクリックして少し待つ 表示されたリンクをクリックしてGPXファイルをダウンロード  注意事項  Chrome 53、Firefox 49、Edge、IE 11にて動作を確認 IE8では動作しません IE 9, 10は環境が無いため確認できません 重いGPXファイルを処理しようとすると固まります(WorkerではXMLParserが使えないため) 複数ファイルを選択した時の並び順はOSやブラウザ、選択時の操作に依存します  なお、カシミール3DではGPXファイルをXMLとしてパースして読み込んでいるわけではないようで、 空要素(&lt;trkpt lat=&quot;***&quot; lon=&quot;***&quot; /&gt;)の形を認識できない。 そのため&lt;trkpt lat=&quot;***&quot; lon=&quot;***&quot;&gt;&lt;/trkpt&gt;の形に修正したものを出力している。
-使用例 元のGPSログをカシミール3Dで読み込んだ画面
-  デフォルト設定で一括処理した後のGPXファイルを読み込んだ画面 (このデータの場合は、6時間途切れたらトラック分割するので1日毎に分割され、それぞれが400点に間引きされている)
-  更新履歴  カシミール3Dでも読めるよう、空要素の場合は&lt;trkpt ***&gt;&lt;/trkpt&gt;の形に置換するようにした。 (May 4 2014) 優先度付きキューの実装を変更して高速化。(May 28 2014) プログラムを全面書き直し。トラックの自動分割・結合機能追加。 (Sep. 24 2016) 標高をGoogle Maps Elevations APIから取得する機能を追加して統合。 (Sep. 28 2016) ダウンロードファイル名を元の名前から変更。 (Aug.
+		概要 GPSロガーで取ったGPXログを公開する際、 途切れ途切れのトラックログを結合し 日ごとにそれをまた分割し それぞれを1トラック400ポイント程度に間引いて簡略化する という手間がかかっていたため、この一連の作業を一括処理するプログラムを作った。 また、ツーリング中には事前に作成しておいたGPXファイルをAndroidのRMapsや地図ロイドに読み込ませて走行ルートを確認しているのだが、 GPXファイルに
 	</div>
 </article><article class="list__item post">
 	<figure class="list__thumbnail">
@@ -109,13 +102,7 @@ if (!doNotTrack) {
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		思った以上に使っていただいてAPI料金の請求がすごいことになったので、申し訳ないのですが1日1000リクエストに制限しました。
-地図やルートが表示されないときは制限に引っかかっておりますので、時間を置いて再度アクセスしてください。
-  PC用フルスクリーン版 モバイル(スマートフォン)版  使い方  出発地点と目的地点を入れて「Calculate Route」をクリック。 途中経路を変えたい場合は、通常のGoogleマップのようにドラッグして変更します。「Reduce into *** points」をクリックすると、trkpt要素の数を削減します(Douglas-Peuckerアルゴリズムを使用)。赤線が簡略化されたルートです。 「Add Elevation」をクリックすると、標高(ele要素)を追加します(100点で1秒かかります)。 「Download」をクリックすると、download.gpxというファイル名でGPXファイルがダウンロードされます。  作った経緯 今までは自転車ツーリングをするとき、
- Googleマップでルートを作成 GMapToGPXでGPXファイルにする カシミール3Dで基盤地図情報(標高)で標高データを追加 累積標高などを確認 Androidの地図ロイドなどに取り込んでツーリング中に確認  というやり方でルートを検討・確認していた。
-だが&rdquo;新しいGoogleマップ&rdquo;になってから、GMapToGPXが使えなくなってしまったので、 Google Maps API v3を使ってGPXのトラックを生成する、簡単なプログラムを書いてみた。
-スマートフォンのブラウザ(標準ブラウザ、Chrome、Firefox)でも動作するので、ツーリングなどの出先でもルートを作成可能。
-注意事項  Chrome(Ubuntu, Windows 7, Windows 10)、Firefox(Ubuntu, Windows 7)、IE 11、Edgeで動作確認しています。 Google Maps APIの制限により、途中に設定できる地点は8箇所までです。 Internet Explorer 8ではダウンロードができません。テキストボックスに生成されたGPXテキストをコピーし、メモ帳などに貼り付けutf8で保存してください。 Internet Explorer 9, 10は未確認です。 iOSのSafariではGPXファイルのダウンロードができません。  主な更新・修正点  地図ロイドやルートラボに合わせ、簡略化後の点数を800点と8000点にした。(May 26 2014) Douglas-Peuckerのアルゴリズムで優先度付きキューの実装を変更し、高速化。(May 26 2014) 間引き時にメルカトル図法で投影した座標に対してDouglas-Peuckerを適用するように変更。(Jun 6 2014) モバイル版、フルスクリーン版をGitHubにホスティング先を変更。(Mar 13 2015) IEとEdgeでの動作状況を追記。(Oct.
+		思った以上に使っていただいてAPI料金の請求がすごいことになったので、申し訳ないのですが1日1000リクエストに制限しました。 地図やルートが表示されないときは制限に引っかかっておりますので、時間を置いて再度アクセスしてください。 PC用フルスクリーン版 モバイル(スマートフォン)版 使い方 出発地点と目的地点を入れて「Calculate Route」をクリック。 途中経路を変えたい場合は、通常のGoogleマ
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -127,10 +114,7 @@ if (!doNotTrack) {
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		概要 auの携帯電話の地図ビューアーの簡易ハンディGPS機能で取得したあしあとデータを結合し、GPXおよびKML形式に変換します。
-地図ビューアーで約2時間ごとにログを保存しなければならず、1日ログを取った後、複数のあしあとデータを結合するのが面倒だったため作成しました。
-GPXへの変換に際しては時刻情報を残しますので、カシミール3Dなどで速度履歴を見ることも可能です。
-ダウンロード Vectorの紹介ページへ
+		概要 auの携帯電話の地図ビューアーの簡易ハンディGPS機能で取得したあしあとデータを結合し、GPXおよびKML形式に変換します。 地図ビューアーで約2時間ごとにログを保存しなければならず、1日ログを取った後、複数のあしあとデータを結合するのが面倒だったため作成しました。 GPXへの変換に際しては時刻情報を残しますので、カシミール3Dなどで速度履歴を見ることも可能です。 ダウンロード Vectorの紹介ペー
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -142,13 +126,7 @@ GPXへの変換に際しては時刻情報を残しますので、カシミー�
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		MathematicaでGPXファイルを読み込んで解釈する方法のメモ。
-対象となるGPXファイルを
-xml = Import[filepath, &quot;XML&quot;];  でまずXMLとして読み込んでおいて、
-trk = Cases[xml, XMLElement[&quot;trk&quot;, _, _], Infinity];  でtrk要素を抜き出し、
-trkpt = (ToExpression[{&quot;lat&quot;, &quot;lon&quot;} /. Cases[#1, XMLElement[&quot;trkpt&quot;, attr_, _] :&gt; attr, Infinity]] &amp; ) /@ trk;  でそれぞれのtrk要素からtrkpt要素を抜き出して緯度と経度を得る。
-Sep. 28 2013追記
-Mathematica 8からは標準でGPXをImport可能になった。
+		MathematicaでGPXファイルを読み込んで解釈する方法のメモ。 対象となるGPXファイルを xml = Import[filepath, &quot;XML&quot;]; でまずXMLとして読み込んでおいて、 trk = Cases[xml, XMLElement[&quot;trk&quot;, _, _], Infinity]; でtrk要素を抜き出し、 trkpt = (ToExpression[{&quot;lat&quot;, &quot;lon&quot;} /. Cases[#1, XMLElement[&quot;trkpt&quot;, attr_, _] :&gt; attr, Infinity]] &amp; ) /@ trk; でそれぞれのtrk要素からtrkpt要素を抜き出して緯度と経度を得る。 Sep. 28 2013追記 Mathematica 8からは標準でGPXをImport可能になった。
 	</div>
 </article>
 </main>

@@ -85,13 +85,7 @@ if (!doNotTrack) {
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		Mathematicaの省略記法はドキュメントやヘルプで調べにくいのでまとめてみる。
-関数適用 @ (前置記法) f@aはf[a]と等価。 後ろのカッコ(])を入力しなくてもすむ。
-Plot[Evaluate@Integrate[x^2, x], {x, -3, 3}]  // (後置記法) a // fはf[a]と等価。 数値にする(N)や簡約化(Simplify、FullSimplify)でよく使う。
-In[1]:= Sin[2] // N Out[1]= 0.909297  ~ ~ (中置記法) a~f~bとすると、f[a, b]と等価になる。
-In[1]:= {1, 2}~Join~{3, 4} Out[1]= {1, 2, 3, 4}  関数適用 &amp;, #, ### (Function) 純関数。#1、#2・・・が引数を表す。#は#1と同じ。 #0は関数自体表す。##は引数全体。
-関数型プログラミングの基本。
-In[1]:= If[#1 == 1, 1, #1 #0[#1 - 1]] &amp;[10] Out[1]= 3628800  /@ (Map) f /@ {1, 2, 3, 4}はMap[f, {1, 2, 3, 4}]と等価。 関数型プログラミングの基本。
+		Mathematicaの省略記法はドキュメントやヘルプで調べにくいのでまとめてみる。 関数適用 @ (前置記法) f@aはf[a]と等価。 後ろのカッコ(])を入力しなくてもすむ。 Plot[Evaluate@Integrate[x^2, x], {x, -3, 3}] // (後置記法) a // fはf[a]と等価。 数値にする(N)や簡約化(Simplify、FullSimplify)でよく使う。 In[1]:= Sin[2] // N Out[1]= 0.909297 ~ ~ (中置記法) a~f~bとすると、f[a, b]と等価になる。 In[1]:= {1, 2}~Join~{3, 4} Out[1]= {1, 2, 3, 4} 関数適用
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -103,15 +97,7 @@ In[1]:= If[#1 == 1, 1, #1 #0[#1 - 1]] &amp;[10] Out[1]= 3628800  /@ (Map) f /@ {
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		MathematicaからCUDAを使いたかったので、GPU搭載のノートPCを購入してセットアップした。
-購入PC PC工房のGeForce 1060搭載ノートPC(OSなし) : STYLE-15FX093-i7-RNFR [OS LESS]
- CPU: Intel Core i7-7700HQ 2.8GHz Memory: 16GB Storage: SSD 240GB + HDD 2TB GPU: NVIDIA GeForce 1060 6GB  Ubuntu 17.10 日本語Remixをダウンロード 旧PC(Ubuntu 16.04)で Ubuntu Desktop 日本語 Remixのダウンロードから、ubuntu-ja-17.10-desktop-amd64.isoをダウンロード。 ddでUSBメモリに書き込む。
-sudo dd if=ubuntu-ja-17.10-desktop-amd64.iso of=/dev/sde status=progress  ファームウェア設定 新PCに電源を入れ、ファームウェア設定画面に入り、起動モードをUEFIからBIOSに変更する。
-Ubuntuインストール USBメモリを挿入してPCを再起動し、インストールする。
- 言語は日本語を選択 サードパーティー製のドライバを・・・にチェック SSD(/dev/sda)を「/」(ext4)に、HDD(/dev/sdb)を「/home」にマウント ブートローダを/dev/sdaにインストール ホームディレクトリを暗号化にチェック(お好みで)  インストールができたらUSBメモリを抜いて再起動。
-Ubuntuが無事に起動し、ログインできたら、まずはディレクトリ名を日本語から英語に直してから作業開始。
-LANG=C xdg-user-dirs-gtk-update  DKMSがうまく動かないので、カーネルのバージョンを固定する。
-sudo apt-mark hold linux-generic linux-image-generic linux-headers-generic  NVIDIA Driver 公式リポジトリにあるnvidia-387をインストールする。 デフォルトのnouveauの無効化は不要だった。
+		MathematicaからCUDAを使いたかったので、GPU搭載のノートPCを購入してセットアップした。 購入PC PC工房のGeForce 1060搭載ノートPC(OSなし) : STYLE-15FX093-i7-RNFR [OS LESS] CPU: Intel Core i7-7700HQ 2.8GHz Memory: 16GB Storage: SSD 240GB + HDD 2TB GPU: NVIDIA GeForce 1060 6GB Ubuntu 17.10 日本語Remixをダウンロード 旧PC(Ubuntu 16.04)で Ubuntu Desktop 日本語 Remixのダウンロードから、ubuntu-ja-17.10-desktop-amd64.isoをダウンロー
 	</div>
 </article><article class="list__item post">
 	<figure class="list__thumbnail">
@@ -128,11 +114,7 @@ sudo apt-mark hold linux-generic linux-image-generic linux-headers-generic  NVID
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		球面上に一様分布するランダムな点を生成したい時、 単純に極座標表示でθとφを一様分布させると、極付近に点が集まってしまう。
-data1 = Transpose[{Sin[t] Cos[f], Sin[t] Sin[f], Cos[t]} /. { f -&gt; RandomReal[{0, 2 Pi}, 2000], t -&gt; RandomReal[{0, Pi}, 2000]}]; g1 = ListPointPlot3D[data1, BoxRatios -&gt; {1, 1, 1}]    球面上で一様分布させるには、下記のようにθにArcCosを使う (θの位置の確率をSinθに比例させたい→累積確率分布関数はCos→逆関数はArcCos)。
-data2 = Transpose[{Sin[t] Cos[f], Sin[t] Sin[f], Cos[t]} /. { f -&gt; RandomReal[{0, 2 Pi}, 2000], t -&gt; ArcCos[RandomReal[{-1, 1}, 2000]]}]; g2 = ListPointPlot3D[data2, BoxRatios -&gt; {1, 1, 1}]    なお、多次元球面上の一様分布は球面上に一様分布する乱数の生成にあるように、 多次元ガウス分布を正規化すると得られる。
-下記は3次元の場合。
-data3 = Normalize /@ RandomReal[NormalDistribution[], {2000, 3}]; g3 = ListPointPlot3D[data3, BoxRatios -&gt; {1, 1, 1}]    
+		球面上に一様分布するランダムな点を生成したい時、 単純に極座標表示でθとφを一様分布させると、極付近に点が集まってしまう。 data1 = Transpose[{Sin[t] Cos[f], Sin[t] Sin[f], Cos[t]} /. { f -&gt; RandomReal[{0, 2 Pi}, 2000], t -&gt; RandomReal[{0, Pi}, 2000]}]; g1 = ListPointPlot3D[data1, BoxRatios -&gt; {1, 1, 1}] 球面上で一様分布させるには、下記のようにθにArcCosを使う (θの位置の確率をSinθに比例させたい→累積確率分布関数はCos→逆関数はArcCos)。 data2 = Transpose[{Sin[t] Cos[f], Sin[t] Sin[f], Cos[t]} /. { f -&gt; RandomReal[{0, 2 Pi}, 2000], t -&gt; ArcCos[RandomReal[{-1, 1}, 2000]]}]; g2 = ListPointPlot3D[data2, BoxRatios -&gt; {1, 1, 1}] なお、多次元球
 	</div>
 </article><article class="list__item post">
 	<figure class="list__thumbnail">
@@ -149,12 +131,7 @@ data3 = Normalize /@ RandomReal[NormalDistribution[], {2000, 3}]; g3 = ListPoint
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		GPSロガー(Holux m-241)のメモリが破損しているのか、 実は6月30日と7月3日の軽井沢→直江津ツーリングと、9月の西九州→佐多岬ツーリングでは、 ログが破損していたため、Googleのロケーション履歴を代用している。
-バイナリデータは一応吸い出せているようなので、その構造を調べると、 HOLUX m-241 LoggerUtility .trlファイル構造の覚書 より以下のような構造になっている。
- 1レコード20バイトの固定長 時刻4バイト 緯度4バイト 経度4バイト 高度3バイト 速度4バイト チェックサム1バイト  また、m-241は時折書き込み先のメモリアドレスがずれることがあるようだ、との情報も見つかったため、 バイナリエディタで除いてみると、どうも4バイトずつずれて記録されたデータがあるようだった。
-そこで
- レコードの先頭バイトを4バイトずつオフセットさせて読み込んでみる 緯度と経度が日本付近のものと思われるものを片っ端から拾う 時刻は整数型なのでとりあえず読み込む 高度、速度のデータは無視！  という方針でMathematicaのプログラムを書いてみた。
-data = Table[Module[{str, ret}, str = OpenRead[&quot;2016091200.bin&quot;, BinaryFormat -&gt; True]; (* 最初に余分にiバイト読み込んで先頭をずらす *) Do[ BinaryRead[str, &quot;Byte&quot;], {i} ]; (* バイナリ形式で読み込む *) ret = Cases[ MapIndexed[ {First[#2], Sequence @@ #1} &amp;, BinaryReadList[ str, {&quot;Integer32&quot;, &quot;Real32&quot;, &quot;Real32&quot;, &quot;Byte&quot;, &quot;Byte&quot;, &quot;Byte&quot;, &quot;Real32&quot;, &quot;Byte&quot;}] ], {count_, d_Integer, lat_Real, lon_Real, __} /; (30 &lt; lat &lt; 40 &amp;&amp; 125 &lt; lon &lt; 140) :&gt; {count, DateString[DatePlus[{1970, 1, 1, 0, 0, 0}, {d, &quot;Second&quot;}], {&quot;Year&quot;, &quot;-&quot;, &quot;Month&quot;, &quot;-&quot;, &quot;Day&quot;, &quot;T&quot;, &quot;Time&quot;, &quot;Z&quot;}], lat, lon}]; Close[str]; ret ], {i, 0, 19, 4}];  ※ 2016091200.
+		GPSロガー(Holux m-241)のメモリが破損しているのか、 実は6月30日と7月3日の軽井沢→直江津ツーリングと、9月の西九州→佐多岬ツーリングでは、 ログが破損していたため、Googleのロケーション履歴を代用している。 バイナリデータは一応吸い出せているようなので、その構造を調べると、 HOLUX m-241 LoggerUtility .trlファイル構造の覚書 より以下のような構造になっている。 1レコード20バイトの固定長 時刻4バイト 緯度
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -166,11 +143,7 @@ data = Table[Module[{str, ret}, str = OpenRead[&quot;2016091200.bin&quot;, Binar
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		Mathematica 8から、CompileでCコンパイラを使って直接ネイティブコードにコンパイルできるようになった。 使用するCコンパイラは、
-Needs[&quot;CCompilerDriver`&quot;]; CCompilerDriver`$CCompiler = { &quot;Name&quot; -&gt; &quot;GCC&quot;, &quot;Compiler&quot; -&gt; CCompilerDriver`GCCCompiler`GCCCompiler, &quot;CompilerInstallation&quot; -&gt; &quot;/usr/bin&quot;, &quot;CompilerName&quot; -&gt; Automatic };  というように、CCompilerDriver`$CCompilerを変更して指定する。
-以前からのCompile(&ldquo;WVM&rdquo;)と、各コンパイラの比較のため、ベンチマークを行ってみた。 検証環境は以下の通り。
- CPU: Intel Core-i7 3770 (インテル® HT テクノロジー ON) OS: Ubuntu 14.04 LTS 64bit Memory: 16 GB DDR3 1333 MHz  検証するCコンパイラは、GCC、Intel C++ Compiler、Clangの3種類。
- gcc: (Ubuntu 4.8.4-2ubuntu1~14.04) 4.8.4 icc: icc (ICC) 14.0.3 20140422 clang: Ubuntu clang version 3.4-1ubuntu3 (tags/RELEASE_34/final) (based on LLVM 3.4)  Mathematicaコードは以下。1/i^2を総和してπ^2/6を求める単純な計算を行った。 ※私の環境ではICCは/media/storage/intel/compserxe/binにインストールしているので下記コードを使用する場合は注意。
+		Mathematica 8から、CompileでCコンパイラを使って直接ネイティブコードにコンパイルできるようになった。 使用するCコンパイラは、 Needs[&quot;CCompilerDriver`&quot;]; CCompilerDriver`$CCompiler = { &quot;Name&quot; -&gt; &quot;GCC&quot;, &quot;Compiler&quot; -&gt; CCompilerDriver`GCCCompiler`GCCCompiler, &quot;CompilerInstallation&quot; -&gt; &quot;/usr/bin&quot;, &quot;CompilerName&quot; -&gt; Automatic }; というように、CCompilerDriver`$CCompilerを変更して指定する。 以前からのCompile(&ldquo;WVM&rdquo;)と、各コンパイラの比較のため、ベンチマークを行ってみた。 検証環境は以下の通り。 CPU: Intel Core-i7 3770 (インテル
 	</div>
 </article><article class="list__item post">
 	<figure class="list__thumbnail">
@@ -187,11 +160,7 @@ Needs[&quot;CCompilerDriver`&quot;]; CCompilerDriver`$CCompiler = { &quot;Name&q
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		たまたま私の環境の問題かもしれないが、
- Intel Core-i7 3770 Ubuntu 14.04 LTS Mathematica 8.0.4 Home Edition  という環境で、Mathematicaのノートブック上でPlot3DなどのGraphics3Dオブジェクトが、 うまく表示できないことに悩まされていたが、その解決法が分かった。
-メニューの「編集」→「環境設定」から、「詳細」タブを開き、「オプションインスペクタを開く」をクリック。
-  オプションインスペクタでは「グラフィックス設定」「RenderingOptions」内の&rdquo;Graphics3DRenderingEngine&rdquo;を デフォルトの&rdquo;Automatic&rdquo;から&rdquo;Software&rdquo;に変更する。
-  私の場合は以上で上手く行った。 Windowsではこのようなことはなかったのだが・・・。
+		たまたま私の環境の問題かもしれないが、 Intel Core-i7 3770 Ubuntu 14.04 LTS Mathematica 8.0.4 Home Edition という環境で、Mathematicaのノートブック上でPlot3DなどのGraphics3Dオブジェクトが、 うまく表示できないことに悩まされていたが、その解決法が分かった。 メニューの「編集」→「環境設定」から、「詳細」タブを開き、「オプションインスペクタを開く」をクリック。 オプションインスペクタでは「グラフィックス設定」「Rendering
 	</div>
 </article><article class="list__item post">
 	<figure class="list__thumbnail">
@@ -208,21 +177,7 @@ Needs[&quot;CCompilerDriver`&quot;]; CCompilerDriver`$CCompiler = { &quot;Name&q
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		Mathematicaで作る図やグラフは美しいんだ！ということを伝えたいので、 もう数年も前になるが、修士論文を書くときにMathematicaで作るグラフにこだわった点を思い出しながらまとめてみる。
-論文を書くために使うソフトウェア 私はpLaTeXで論文を書いたが、研究室ではWordが推奨されていた。 図表の番号を管理する必要や図表の位置がずれて飛んでいってしまうといった事態も起きないし、目次や索引、参考文献リストの作成も自動でできる。 ただ、Wordだと添削をしやすいのは確か。
-MathematicaでExportする画像の形式 Mathematicaでは多様な画像ファイル形式でExportできるが、論文用のグラフでは多分PNG、EPS、PDFから選択することになると思う。 各画像形式を比較すると、それぞれ以下の特徴がある。
- PNG  ラスタ形式のため、印刷に耐えられるようにするには予め解像度を計算して作成する必要がある 半透過色に対応 Word、pLaTeXどちらでも使える  EPS  ベクタ形式で保存できるため、印刷では自動的にプリンタの解像度で印刷してくれる 半透過色には非対応 pLaTeXで使用可 あまりにEPS画像が多いと、dvipdfm(x)が重くなるので注意  PDF  ベクタ形式で保存できる 半透過色に対応 pLaTeXで使用可 pLaTeXで使うには、予めebbやxbbで.bbファイルや.xbbファイルを作成して、pLaTeXに画像の大きさを知らせる必要がある   したがって、Wordでは基本的に画像をPNG形式で作ることになるが、pLaTeXではEPSやPDFといったベクタ形式の画像フォーマットが使えるのでおすすめ。
-私は基本的にMathematicaからPDFでグラフを作成し、 すべての画像に対してpLaTeXについてくるebbを実行するPerlスクリプトを作って実行してからpLaTeXでコンパイルしていた。
-もちろん写真はJPEG形式を使用したが、写真にいろいろ矢印や記号を書き加えるときはOpenOffice.orgのImpressでJPEG画像の上にいろいろ矢印などを書き込んでPDFにエクスポートしたものを使った。 当時はPowerPointではPDF出力できなかったためOpenOffice.orgを使ったが、今ではPowerPointでいいと思う。
-図・グラフの論文におけるサイズを決め、ImageSizeオプションを指定 おそらくほとんどの論文はA4サイズ(210mm×297mm)で作成されると思う。
-そこから左右の余白をそれぞれ30mmとすると、本文の幅は150mmとなる。 図やグラフの幅は本文より少し小さくしたいので、私は基本的に横幅140mmでグラフを作成した。
-縦幅はMathematicaではデフォルトで黄金比(GoldenRatio)を使ってくれるので、そのままで良いと思う。 2段組のときは半分の70mmとか65mmとなる。
-したがってMathematicaでは、PlotやShowなどのオプションImageSizeに
-ImageSize -&gt; 140 * 72 / 25.4  と指定する。これは140mmの横幅で、72dpi(dots per inch)、1 inch = 25.4mmという意味である。
-論文用のグラフでは絶対にFrame -&gt; Trueを指定する 論文用のグラフでは流儀として
-Frame -&gt; True  を指定して枠のついたグラフにする。
-これはExcelなどでグラフを作るときも同様。
-枠についた目盛りを細かく調整したい場合は、FrameTicksオプションとFrameTickesStyleオプションを指定する。 また、FrameLabelで各軸のラベルと単位を書き入れるのも忘れずに。
+		Mathematicaで作る図やグラフは美しいんだ！ということを伝えたいので、 もう数年も前になるが、修士論文を書くときにMathematicaで作るグラフにこだわった点を思い出しながらまとめてみる。 論文を書くために使うソフトウェア 私はpLaTeXで論文を書いたが、研究室ではWordが推奨されていた。 図表の番号を管理する必要や図表の位置がずれて飛んでいってしまうといった事態も起きないし、目次や索引、
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -234,19 +189,7 @@ Frame -&gt; True  を指定して枠のついたグラフにする。
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		拙作のリバーシプログラムViglaは高校時代に作ったものだが、 評価関数は手の広さと辺の形を適当に数値化したものであるためにあまり強いプログラムにはできなかった。
-当時から強いリバーシプログラムは辺や隅のパターンを評価していることは知ってはいたものの、理解出来ずじまいだった。
-今回もう一度挑戦してみようと思い、まずはMathematicaでパーセプトロンとバックプロパゲーションによる学習を実装してみた。
-簡単のため、出力関数としてはシグモイド関数のみに限定した(一般の関数にできるようにするには、各層のネット値を別に保存する必要があり、煩雑だったため)。 しかしながら、任意の隠し層の数やニューロン数に対応できるように実装した。
-というわけで、まずはシグモイド関数と順方向演算を定義。
-f[x_] := 1/(1 + Exp[-x]); perceptron[w : {__}][x_] := FoldList[(f /@ (Append[#1, 1].#2)) &amp;, x, w];  wが各層の重み行列のリストで、MathematicaならFoldListを使って1行で順方向演算が定義できる。 Mathematicaでは添字が1から始まるので、通常wi0で表されることが多いバイアス成分は一番最後に置いた。
-次に、重み行列をランダムに初期化したパーセプトロンを返す関数として、以下のcreatePerceptronを定義。
-createPerceptron[dimensions_, range_] := perceptron[MapThread[ RandomReal[range, {#1, #2}] &amp;, {Most[dimensions] + 1, Rest[dimensions]}]]  dimensionsは各層のニューロン数で、乱数の範囲をrangeで指定する。
-例えば、入力層のニューロン数が2、隠し層のニューロン数が2、出力層のニューロン数が1の3層パーセプトロンで、 重みが-0.2から0.2までの乱数となるパーセプトロンは、以下のようにして得られる。
-p = createPerceptron[{2, 2, 1}, {-0.2, 0.2}]  この初期状態で、入力層に{0, 0}を与えた時の出力は、
-p[{0, 0}] {{0, 0}, {0.512507, 0.510116}, {0.497566}}  となる。2番目の要素が隠し層の値で、最後の{0.497566}が出力層の値である。
-次に、バックプロパゲーションによる学習を実装する。
-backPropagation[pct : perceptron[w : {__}], x_List, teach_List, rate_: 1] := Module[{out, \[Delta], \[Delta]n, \[CapitalDelta]w}, out = pct[x]; \[Delta]n = With[{y = Last[out]}, (teach - y) y (1 - y)]; \[Delta] = Reverse@FoldList[(Most[#2[[2]]].
+		拙作のリバーシプログラムViglaは高校時代に作ったものだが、 評価関数は手の広さと辺の形を適当に数値化したものであるためにあまり強いプログラムにはできなかった。 当時から強いリバーシプログラムは辺や隅のパターンを評価していることは知ってはいたものの、理解出来ずじまいだった。 今回もう一度挑戦してみようと思い、まずはMathematicaでパーセプトロンとバックプロパゲーションによる学習を実装してみた。
 	</div>
 </article><article class="list__item post">
 	<figure class="list__thumbnail">
@@ -263,17 +206,7 @@ backPropagation[pct : perceptron[w : {__}], x_List, teach_List, rate_: 1] := Mod
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		Mathematicaには2点の緯度と経度を与えて、その間の測地線距離を返す関数としてGeoDistanceがある。 しかしながら、ここで書かれているように、その精度には疑問が呈されているようだ。
-他の有名な測地線距離の計算方法として、
- ヒュベニの式(カシミール3Dが採用しているが、英語圏では情報が見つからない) 国土地理院の測量計算サイトの計算式のついてのドキュメントを実装したもの 完全な球体とみなして計算(Google EarthやGoogle Maps API v3のcomputeDistanceBetweenが採用、haversine formula)  が見つかったので、GeoDistanceのMethodオプション3種類(&ldquo;Vincenty75&rdquo;, &ldquo;Robbin61&rdquo;, &ldquo;ExtendedNewtonRaphson&rdquo;)と上記の3種類の計算方法の合計6種類について精度を評価してみた。
-正確な距離としては、GeographicLib (Wikipediaによると誤差15nmらしい)をJLink経由で使って計算したもの採用し、準拠楕円体はWGS84とした。
-ただし、完全な球体とした場合の半径はGoogle EarthやGoogle Mapsにあわせて6378137 mとした。
-ランダムな2点間の距離の精度 地球表面上で一様分布となるよう、ランダムに2点を選び、その間の距離の精度を評価した。
-  上図は横軸がGeographicLibで計算した正確な距離、縦軸が各計算方法で計算した距離である。
-y = xの直線上にあれば正確ということだが、GeoDistanceの&rdquo;Robbin61&rdquo;では1万kmを超えると実際よりも極端に短く計算してしまうようだ。
-またヒュベニの式は実際よりも長く計算することが多く、そのような場合について調べてみると高緯度になるほど誤差が大きくなることが分かった。
-同じ計算結果を誤差についてプロットしたものが下図である。また表は各計算方法の最大誤差である。
-     計算方法 誤差の絶対値     GeoDistance(&ldquo;Vincenty75&rdquo;) 7.119 * 10^-12   GeoDistance(&ldquo;Robbin61&rdquo;) 9.536 * 10^-1   GeoDistance(&ldquo;ExtendedNewtonRaphson&rdquo;) 1.247 * 10^-6   ヒュベニの式 2.022 * 10^1   測量計算サイト計算式 6.682 * 10^-3   完全球体モデル 6.
+		Mathematicaには2点の緯度と経度を与えて、その間の測地線距離を返す関数としてGeoDistanceがある。 しかしながら、ここで書かれているように、その精度には疑問が呈されているようだ。 他の有名な測地線距離の計算方法として、 ヒュベニの式(カシミール3Dが採用しているが、英語圏では情報が見つからない) 国土地理院の測量計算サイトの計算式のついてのドキュメントを実装したもの 完全な球体とみなして計
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -285,12 +218,7 @@ y = xの直線上にあれば正確ということだが、GeoDistanceの&rdquo;
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		Wolfram CDF Player を汎用するにあるように、 CDF PlayerでもJ/Linkを使えばローカルファイルの読み込み、書き込みができる(※CDFファイルの作成にはMathematicaが必要)。
-上記リンク先ではテキストファイルを読み込む例が載っているが、バイナリファイルとして読み込んでImportStringを使えば、 Mathematicaが対応している形式すべてのファイルを読み込むことができる。
-J/Linkでバイナリファイルを読み込むときのポイントとしては、
- &ldquo;[B&rdquo;というクラス名でbyte型の配列を作ってBufferedInputStream.read(byte[])で一気に読み込むことで高速化 読み込んだbyte[]がMathematicaに入った時に符号付き整数で扱われるため、FromCharacterCodeに突っ込む前に0〜255になるように修正  が挙げられる。
-一方、CDF PlayerではExportのみならずExportStringが使えない(ImportStringは使えるのに)ので、書き込むほうは不自由が残る。 ここではテキストと画像(BMP、PNG、JPEG)に限って保存する関数を作ってみた。
-ImportWithJLink[filepath_?(FileExistsQ[FindFile[#]] &amp;), format_] := ( Needs[&quot;JLink`&quot;]; JLink`InstallJava[]; JLink`JavaBlock[ Module[{br, byte, result}, br = JLink`JavaNew[&quot;java.io.BufferedInputStream&quot;, JLink`JavaNew[&quot;java.io.FileInputStream&quot;, FindFile@filepath]]; byte = JLink`JavaNew[&quot;[B&quot;, {FileByteCount[FindFile@filepath]}]; br@read[byte]; result = ImportString[ FromCharacterCode[ JLink`JavaObjectToExpression[byte] /. x_?Negative :&gt; x + 256], format]; br@close[]; result]]); ExportWithJLink[filepath_, string_String, format : &quot;Text&quot;] := ( Needs[&quot;JLink`&quot;]; JLink`InstallJava[]; JLink`JavaBlock[ Module[{bw}, bw = JLink`JavaNew[&quot;java.io.BufferedWriter&quot;, JLink`JavaNew[&quot;java.io.FileWriter&quot;, filepath] ]; bw@write[string]; bw@close[]; filepath ] ]); ExportWithJLink[filepath_, image_, format : &quot;PNG&quot; | &quot;BMP&quot; | &quot;JPG&quot;] := ( Needs[&quot;JLink`&quot;]; JLink`InstallJava[]; JLink`JavaBlock[ JLink`LoadJavaClass[&quot;javax.
+		Wolfram CDF Player を汎用するにあるように、 CDF PlayerでもJ/Linkを使えばローカルファイルの読み込み、書き込みができる(※CDFファイルの作成にはMathematicaが必要)。 上記リンク先ではテキストファイルを読み込む例が載っているが、バイナリファイルとして読み込んでImportStringを使えば、 Mathematicaが対応している形式すべてのファイルを読み込むことができる。 J/Linkでバイナリ
 	</div>
 </article>
 </main>

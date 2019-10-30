@@ -85,19 +85,7 @@ if (!doNotTrack) {
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		私はパワハラ対策として、毎日ICレコーダーを使って秘密録音を実施している。 ただ、毎日10時間を超える録音時間のため、32kbpsで録音しても1日あたり200MB弱の音声ファイルがHDDに追加されていき、HDDの容量を圧迫していく。
-そこで、バックアップを兼ねて動画化してYoutubeにアップロードするようにし、 HDDの空き容量が減ってきたらオリジナルの録音ファイルを消去していくことにした。
-ffmpegを使い、以下の手順で実施する。
- 適当に画像ファイルを作成する 画像ファイルから無音声の動画ファイル(再生時間24時間)を作成する 無音声の動画ファイルと、毎日録音した音声ファイルを結合する 結合した動画ファイルをYoutubeにアップロード  具体的には、適当にblank.pngという名前で640x480とか好みのサイズで画像を作成し、以下のコマンドで24時間の無音声動画ファイル(blank24.mov)を作成。
-ffmpeg -y -loop 1 -r 1 -i blank.png -t 86400 blank24.mov  これでフレームレート1 fps、動画時間が24時間(86400秒)の無音声動画ファイルblank24.movができる。 私の環境では5分程度かかったが、このファイルは1度作っておけば何度でも使えるので、最初の1回だけ待てば良い。
-次に、この無音声の動画ファイル(blank24.mov)と、録音した音声ファイル(input.mp3)を結合する。
-ffmpeg -y -i blank24.mov -i input.mp3 -vcodec copy -acodec copy -shortest output.mov  -shortestオプションを加えているので、24時間のblank24.movと音声ファイルの時間のうち、短い方の時間でoutput.movが作成される。
-動画になったことにより、元のMP3ファイルよりもファイルサイズが1割ほど増える。 私の環境では12時間程度録音したものからでも1分程度のエンコード時間で動画ファイルを作成できた。
-ちなみに出来上がりの動画ファイルのコンテナがMOVなのは、録音した音声ファイルの拡張子が、 ICレコーダーで録音したMP3、Androidの録音アプリのmp4、iPhoneの録音アプリのm4aと3種類あったため、 それと競合しないコンテナ形式を選んだ。
-また、無音声動画ファイル(blank24.mov)を作成せず、1コマンドで静止画と音声ファイルを結合することも可能だが、 都度動画部分のエンコードが発生するため時間がかかる。
-毎日音声ファイルが増えていくような状況では、予め無音声動画ファイルをつくっておき、 -vcodec copyとすることで再エンコードを省略すれば、毎日の処理が高速化できる。
-ただし、Youtubeの制限により、15分の制限を解除したアカウントでも、動画の最長時間は12時間に制限される。 したがって、私は以下のようなシェルスクリプトを書いて実行している。
-#!/bin/bash find ./ -iname &quot;*.mp3&quot; -o -iname &quot;*.mp4&quot; -o -iname &quot;*.m4a&quot; | while read i do hour=`ffmpeg -i &quot;$i&quot; 2&gt;&amp;1 &lt; /dev/null | grep Duration | sed -E &quot;s/.
+		私はパワハラ対策として、毎日ICレコーダーを使って秘密録音を実施している。 ただ、毎日10時間を超える録音時間のため、32kbpsで録音しても1日あたり200MB弱の音声ファイルがHDDに追加されていき、HDDの容量を圧迫していく。 そこで、バックアップを兼ねて動画化してYoutubeにアップロードするようにし、 HDDの空き容量が減ってきたらオリジナルの録音ファイルを消去していくことにした。 ffmpe
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -109,12 +97,7 @@ ffmpeg -y -i blank24.mov -i input.mp3 -vcodec copy -acodec copy -shortest output
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		MathematicaのExportでAVIなどの動画ファイルを作成することは簡単に可能だが、 いかんせんすべてのフレームの画像を作成してからファイルに書きだすので、フレーム数に比例してメモリの使用量が多くなってしまう。 そのため長いムービーの作成は困難であった。
-そこで、ffmpegと併用することでメモリ使用量を抑えつつ、長編の動画ファイルを制作する。 具体的には、
- ffmpegで標準入力から読み込ませるOutputStreamオブジェクトを作成する BinaryWriteでそのストリームに各フレームの画像を書き込む 終わったらCloseでストリームを閉じる  とする。ここで、各フレーム画像の形式をPPMにしないとうまく動作しなかった(BMP、PNGなどではなぜか動作せず)。
-例えば、以下のようにするとtest001.aviができあがる。
-s = OpenWrite[ &quot;!ffmpeg -y -vcodec ppm -f image2pipe -i - -vcodec rawvideo test001.avi&quot;, BinaryFormat -&gt; True]; Do[ BinaryWrite[s, ExportString[ Plot[Sin[x + i], {x, 0, 2 Pi} , ImageSize -&gt; {640, 480} , PlotRange -&gt; {{0, 2 Pi}, {-1, 1}} , Frame -&gt; True] , &quot;PPM&quot;]] , {i, 0, 2 Pi, Pi/50} ]; Close[s]  Exportと同じような使い勝手の関数ExportMovieを作るとこんな感じになる。
-Options[ExportMovie] = { &quot;FrameRate&quot; -&gt; 25, &quot;VideoCodecOption&quot; -&gt; &quot;-vcodec rawvideo&quot;, &quot;ExportOptions&quot; -&gt; {} }; ExportMovie[outputfilepath_String, expr_, {i_Symbol, imin_: 1, imax_, di_: 1}, OptionsPattern[]] := Module[{stream}, stream = OpenWrite[ ToString[ StringForm[ &quot;!
+		MathematicaのExportでAVIなどの動画ファイルを作成することは簡単に可能だが、 いかんせんすべてのフレームの画像を作成してからファイルに書きだすので、フレーム数に比例してメモリの使用量が多くなってしまう。 そのため長いムービーの作成は困難であった。 そこで、ffmpegと併用することでメモリ使用量を抑えつつ、長編の動画ファイルを制作する。 具体的には、 ffmpegで標準入力から読み込ませる
 	</div>
 </article>
 </main>

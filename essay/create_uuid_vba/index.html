@@ -8,11 +8,7 @@
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
 	<meta property="og:title" content="VBAでUUIDを生成" />
-<meta property="og:description" content="Excel VBAでUUID(GUID)を生成して使っている部分があったのだが、 先日のWindows Updateを適用してから、 CreateObject(&quot;Scriptlet.TypeLib&quot;)でエラーが出て使用できなくなってしまった。
-参考 : 2017 年 7 月のセキュリティ更新適用後、VBA から一部のオブジェクトを作成できません
-私の場合はただ単にランダムなUUIDが生成できれば良いので、 UUID v4を生成する関数を作った。
-VBの乱数の精度としては24ビットらしいので、1回の乱数生成では最大16ビット使用するようにはしている。 とはいえ乱数の品質としてはあまり高くないのでご注意を。
-Public Function GetUUID() As String &#39;GetUUID = Mid$(CreateObject(&quot;Scriptlet.TypeLib&quot;).GUID, 2, 36) GetUUID = Right$(&quot;0000&quot; &amp; Hex(Rnd() * 65536), 4) &amp; Right$(&quot;0000&quot; &amp; Hex(Rnd() * 65536), 4) GetUUID = GetUUID &amp; &quot;-&quot; &amp; Right$(&quot;0000&quot; &amp; Hex(Rnd() * 65536), 4) GetUUID = GetUUID &amp; &quot;-4&quot; &amp; Right$(&quot;0000&quot; &amp; Hex(Rnd() * 65536), 3) GetUUID = GetUUID &amp; &quot;-&quot; &amp; Right$(&quot;0000&quot; &amp; Hex(32768 &#43; Rnd() * 16384), 4) GetUUID = GetUUID &amp; &quot;-&quot; &amp; Right$(&quot;0000&quot; &amp; Hex(Rnd() * 65536), 4) &amp; Right$(&quot;0000&quot; &amp; Hex(Rnd() * 65536), 4) &amp; Right$(&quot;0000&quot; &amp; Hex(Rnd() * 65536), 4) End Function  " />
+<meta property="og:description" content="Excel VBAでUUID(GUID)を生成して使っている部分があったのだが、 先日のWindows Updateを適用してから、 CreateObject(&quot;Scriptlet.TypeLib&quot;)でエラーが出て使用できなくなってしまった。 参考 : 2017 年 7 月のセキュリティ更新適用後、VBA から一部のオブジェクトを作成できません 私の場合はただ単にランダムなUUIDが生成できれば良いので、 UUID v4を生" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.330k.info/essay/create_uuid_vba/" />
 <meta property="article:published_time" content="2017-07-20T20:57:38+09:00" />
@@ -20,11 +16,7 @@ Public Function GetUUID() As String &#39;GetUUID = Mid$(CreateObject(&quot;Scrip
 
 	<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="VBAでUUIDを生成"/>
-<meta name="twitter:description" content="Excel VBAでUUID(GUID)を生成して使っている部分があったのだが、 先日のWindows Updateを適用してから、 CreateObject(&quot;Scriptlet.TypeLib&quot;)でエラーが出て使用できなくなってしまった。
-参考 : 2017 年 7 月のセキュリティ更新適用後、VBA から一部のオブジェクトを作成できません
-私の場合はただ単にランダムなUUIDが生成できれば良いので、 UUID v4を生成する関数を作った。
-VBの乱数の精度としては24ビットらしいので、1回の乱数生成では最大16ビット使用するようにはしている。 とはいえ乱数の品質としてはあまり高くないのでご注意を。
-Public Function GetUUID() As String &#39;GetUUID = Mid$(CreateObject(&quot;Scriptlet.TypeLib&quot;).GUID, 2, 36) GetUUID = Right$(&quot;0000&quot; &amp; Hex(Rnd() * 65536), 4) &amp; Right$(&quot;0000&quot; &amp; Hex(Rnd() * 65536), 4) GetUUID = GetUUID &amp; &quot;-&quot; &amp; Right$(&quot;0000&quot; &amp; Hex(Rnd() * 65536), 4) GetUUID = GetUUID &amp; &quot;-4&quot; &amp; Right$(&quot;0000&quot; &amp; Hex(Rnd() * 65536), 3) GetUUID = GetUUID &amp; &quot;-&quot; &amp; Right$(&quot;0000&quot; &amp; Hex(32768 &#43; Rnd() * 16384), 4) GetUUID = GetUUID &amp; &quot;-&quot; &amp; Right$(&quot;0000&quot; &amp; Hex(Rnd() * 65536), 4) &amp; Right$(&quot;0000&quot; &amp; Hex(Rnd() * 65536), 4) &amp; Right$(&quot;0000&quot; &amp; Hex(Rnd() * 65536), 4) End Function  "/>
+<meta name="twitter:description" content="Excel VBAでUUID(GUID)を生成して使っている部分があったのだが、 先日のWindows Updateを適用してから、 CreateObject(&quot;Scriptlet.TypeLib&quot;)でエラーが出て使用できなくなってしまった。 参考 : 2017 年 7 月のセキュリティ更新適用後、VBA から一部のオブジェクトを作成できません 私の場合はただ単にランダムなUUIDが生成できれば良いので、 UUID v4を生"/>
 
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">

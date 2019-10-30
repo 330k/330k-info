@@ -8,21 +8,7 @@
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
 	<meta property="og:title" content="Mathematica 7でImportおよびExportを拡張する" />
-<meta property="og:description" content="MathematicaではImportやExportを使って様々な形式のファイルを読み書きできるが、 標準で対応していないファイル形式についても自分でローダやライタを作り、 それをImportやExportに対応させる方法がExtending Import &amp; Export (Wolfram Library Archive)において解説されている。
-しかしこの文書は2003年のもので以前はExperimental`RegisterConverterという関数で登録すればよかったのだが、 この関数はMathematica 7にはない。
-Names[&quot;*`*Register*&quot;]  などとして探し回ったところ、
- ImportExport`RegisterFormat ImportExport`RegisterExport ImportExport`RegisterImport  というそれらしいものを見つけた。
-早速
-ClearAttributes[ImportExport`RegisterFormat, ReadProtected]  として読込みプロテクトを解除してどういう動作をするのか調べたところ、
- ImportExport`RegisterFormat[&ldquo;ファイルフォーマット名&rdquo;]としてファイルフォーマットを登録 ImportExport`RegisterImport[&ldquo;ファイルフォーマット名&rdquo;, myImport]で自前のローダmyImportをImportに登録 ImportExport`RegisterExport[&ldquo;ファイルフォーマット名&rdquo;, myExport]で自前のライタmyExportをExportに登録  という使い方をするようだ。ファイルフォーマット名は&rdquo;GPX&rdquo;でも&rdquo;KML&rdquo;でも&rdquo;JSON&rdquo;でも好きな名前を付けていい。
-myImportやmyExportの書式は以前と変わっていないようで、
-myImport[filename_String, options___?OptionQ] := Module[{...},...] myExport[filename_String, expression_, options___?OptionQ] := Module[{...},...]  でいい模様。
-ImportExport`RegisterFormatには以下のオプションがある。
- BinaryFormat : バイナリファイルならTrue、そうでなければFalse。 ImportExport`Encoding : よくわからないが、標準では&rdquo;BASE64&rdquo;、&rdquo;BZIP2&rdquo;、&rdquo;GZIP&rdquo;、&rdquo;UUE&rdquo;だけでTrueになっている。 ImportExport`Extensions : 対応する拡張子またはそのリスト。{&rdquo;.nb&rdquo;,&rdquo;.html&rdquo;}などと指定する。 AlphaChannel : アルファチャンネルを使う画像かどうか？Exportの際のラスタライズに関係するかも。JPEG2000やPNGなどでTrueになっている。  ただ、ImportExportExtensionsに拡張子を指定して登録しても、Exportでは大丈夫だがImportではうまく判別されない。 ImportExportRegisterImportの動作についてもう少し調べる必要がある。
-Wolfram Researchが新しいドキュメントを出してくれれば早いのだけれど…。
-Feb. 20 2010追記
-Importで自動判別させる方法が判明。
-FileFormatDump`AddFormat[&quot;ファイルフォーマット名&quot;, bin, bundle, archive, encoding, magic, ext, mime, test, bundletestfunc]  として、判別するときに用いられる関数のほか、MIMEタイプも登録できる模様。" />
+<meta property="og:description" content="MathematicaではImportやExportを使って様々な形式のファイルを読み書きできるが、 標準で対応していないファイル形式についても自分でローダやライタを作り、 それをImportやExportに対応させる方法がExtending Import &amp; Export (Wolfram Library Archive)において解説されている。 しかしこの文書は2003年のもので以前はExperimental`RegisterConverterという関数で" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.330k.info/essay/extend-import-and-export-of-mathematica7/" />
 <meta property="article:published_time" content="2009-11-23T00:00:00+09:00" />
@@ -30,21 +16,7 @@ FileFormatDump`AddFormat[&quot;ファイルフォーマット名&quot;, bin, bun
 
 	<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Mathematica 7でImportおよびExportを拡張する"/>
-<meta name="twitter:description" content="MathematicaではImportやExportを使って様々な形式のファイルを読み書きできるが、 標準で対応していないファイル形式についても自分でローダやライタを作り、 それをImportやExportに対応させる方法がExtending Import &amp; Export (Wolfram Library Archive)において解説されている。
-しかしこの文書は2003年のもので以前はExperimental`RegisterConverterという関数で登録すればよかったのだが、 この関数はMathematica 7にはない。
-Names[&quot;*`*Register*&quot;]  などとして探し回ったところ、
- ImportExport`RegisterFormat ImportExport`RegisterExport ImportExport`RegisterImport  というそれらしいものを見つけた。
-早速
-ClearAttributes[ImportExport`RegisterFormat, ReadProtected]  として読込みプロテクトを解除してどういう動作をするのか調べたところ、
- ImportExport`RegisterFormat[&ldquo;ファイルフォーマット名&rdquo;]としてファイルフォーマットを登録 ImportExport`RegisterImport[&ldquo;ファイルフォーマット名&rdquo;, myImport]で自前のローダmyImportをImportに登録 ImportExport`RegisterExport[&ldquo;ファイルフォーマット名&rdquo;, myExport]で自前のライタmyExportをExportに登録  という使い方をするようだ。ファイルフォーマット名は&rdquo;GPX&rdquo;でも&rdquo;KML&rdquo;でも&rdquo;JSON&rdquo;でも好きな名前を付けていい。
-myImportやmyExportの書式は以前と変わっていないようで、
-myImport[filename_String, options___?OptionQ] := Module[{...},...] myExport[filename_String, expression_, options___?OptionQ] := Module[{...},...]  でいい模様。
-ImportExport`RegisterFormatには以下のオプションがある。
- BinaryFormat : バイナリファイルならTrue、そうでなければFalse。 ImportExport`Encoding : よくわからないが、標準では&rdquo;BASE64&rdquo;、&rdquo;BZIP2&rdquo;、&rdquo;GZIP&rdquo;、&rdquo;UUE&rdquo;だけでTrueになっている。 ImportExport`Extensions : 対応する拡張子またはそのリスト。{&rdquo;.nb&rdquo;,&rdquo;.html&rdquo;}などと指定する。 AlphaChannel : アルファチャンネルを使う画像かどうか？Exportの際のラスタライズに関係するかも。JPEG2000やPNGなどでTrueになっている。  ただ、ImportExportExtensionsに拡張子を指定して登録しても、Exportでは大丈夫だがImportではうまく判別されない。 ImportExportRegisterImportの動作についてもう少し調べる必要がある。
-Wolfram Researchが新しいドキュメントを出してくれれば早いのだけれど…。
-Feb. 20 2010追記
-Importで自動判別させる方法が判明。
-FileFormatDump`AddFormat[&quot;ファイルフォーマット名&quot;, bin, bundle, archive, encoding, magic, ext, mime, test, bundletestfunc]  として、判別するときに用いられる関数のほか、MIMEタイプも登録できる模様。"/>
+<meta name="twitter:description" content="MathematicaではImportやExportを使って様々な形式のファイルを読み書きできるが、 標準で対応していないファイル形式についても自分でローダやライタを作り、 それをImportやExportに対応させる方法がExtending Import &amp; Export (Wolfram Library Archive)において解説されている。 しかしこの文書は2003年のもので以前はExperimental`RegisterConverterという関数で"/>
 
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">

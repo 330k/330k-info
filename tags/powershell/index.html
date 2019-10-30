@@ -85,11 +85,7 @@ if (!doNotTrack) {
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		ファイルサーバの空き容量が減ってきたので調べてみたら、 削除されていないOfficeファイルの一時ファイルや、Thumbs.dbが結構あることが分かった。
-Thumbs.dbはグループポリシーでネットワークドライブ上では生成しないようにしているはずだが、 ローカルのフォルダをファイルサーバにコピーすると、一緒にくっついてくるらしい。
-以下のPowerShellスクリプトをタスクスケジューラに登録して、定期的(1日1回)にゴミ掃除。
-$a = @() $a += Get-ChildItem &quot;(掃除対象フォルダのパス1)&quot; -Force -Recurse $a += Get-ChildItem &quot;(掃除対象フォルダのパス2)&quot; -Force -Recurse $a += Get-ChildItem &quot;(掃除対象フォルダのパス3)&quot; -Force -Recurse $a | Where-Object { ` $_.Name -like &quot;~*&quot; -and $_.LastWriteTime -lt (Get-Date).AddDays(-1) ` -or $_.Name -like &quot;*.tmp&quot; ` -or $_.Name -eq &quot;Thumbs.db&quot; ` -or $_.Name -eq &quot;.DS_Store&quot; ` -or $_.Name -like &quot;._*&quot; ` } | Remove-Item -Force  削除対象は以下の通り。
- 更新日時が1日以上前のOffice一時ファイル(&quot;~*&quot;) 拡張子が&quot;tmp&quot;のファイル &quot;Thumbs.db&quot; .DS_Storeや._*などのMac OSで使用されるファイル  
+		ファイルサーバの空き容量が減ってきたので調べてみたら、 削除されていないOfficeファイルの一時ファイルや、Thumbs.dbが結構あることが分かった。 Thumbs.dbはグループポリシーでネットワークドライブ上では生成しないようにしているはずだが、 ローカルのフォルダをファイルサーバにコピーすると、一緒にくっついてくるらしい。 以下のPowerShellスクリプトをタスクスケジューラに登録して、定期
 	</div>
 </article>
 </main>
