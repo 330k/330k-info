@@ -53,7 +53,7 @@
       <pubDate>Tue, 08 Dec 2015 17:40:00 +0900</pubDate>
       
       <guid>https://www.330k.info/essay/change-c-compiler-in-mathematica/</guid>
-      <description>Mathematica 8から、CompileでCコンパイラを使って直接ネイティブコードにコンパイルできるようになった。 使用するCコンパイラは、 Needs[&amp;quot;CCompilerDriver`&amp;quot;]; CCompilerDriver`$CCompiler = { &amp;quot;Name&amp;quot; -&amp;gt; &amp;quot;GCC&amp;quot;, &amp;quot;Compiler&amp;quot; -&amp;gt; CCompilerDriver`GCCCompiler`GCCCompiler, &amp;quot;CompilerInstallation&amp;quot; -&amp;gt; &amp;quot;/usr/bin&amp;quot;, &amp;quot;CompilerName&amp;quot; -&amp;gt; Automatic }; というように、CCompilerDriver`$CCompilerを変更して指定する。 以前からのCompile(&amp;ldquo;WVM&amp;rdquo;)と、各コンパイラの比較のため、ベンチマークを行ってみた。 検証環境は以下の通り。 CPU: Intel Core-i7 3770 (インテル</description>
+      <description>Mathematica 8から、CompileでCコンパイラを使って直接ネイティブコードにコンパイルできるようになった。 使用するCコンパイラは、 Needs[&amp;#34;CCompilerDriver`&amp;#34;]; CCompilerDriver`$CCompiler = { &amp;#34;Name&amp;#34; -&amp;gt; &amp;#34;GCC&amp;#34;, &amp;#34;Compiler&amp;#34; -&amp;gt; CCompilerDriver`GCCCompiler`GCCCompiler, &amp;#34;CompilerInstallation&amp;#34; -&amp;gt; &amp;#34;/usr/bin&amp;#34;, &amp;#34;CompilerName&amp;#34; -&amp;gt; Automatic }; というように、CCompilerDriver`$CCompilerを変更して指定する。 以前からのCompile(&amp;ldquo;WVM&amp;rdquo;)と、各コンパイラの比較のため、ベンチマークを行ってみた。 検証環境は以下の通り。 CPU: Intel Core-i7 3770 (インテル</description>
     </item>
     
     <item>
@@ -116,7 +116,7 @@
       <pubDate>Sun, 14 Oct 2012 00:00:00 +0900</pubDate>
       
       <guid>https://www.330k.info/essay/process-blob-and-multibyte-string-from-sqlite-with-mathematica/</guid>
-      <description>ドキュメントにはないものの、MathematicaではSQLiteを扱うことができる。 しかしながら、BLOB型や文字列で日本語などを扱うには少し工夫が必要なので、メモ。 BLOB型 select 直接BLOB型をselectすると$Failedが返ってくるので、hex関数で16進文字列として返す。 db = Database`OpenDatabase[sqlitefilepath]; rs = Database`QueryDatabase[db, &amp;quot;select hex(column_name) from table_name&amp;quot;]; これを16進文字列→数値→バイト列→文字列と変換して、最後にImportStringで読み込むと、</description>
+      <description>ドキュメントにはないものの、MathematicaではSQLiteを扱うことができる。 しかしながら、BLOB型や文字列で日本語などを扱うには少し工夫が必要なので、メモ。 BLOB型 select 直接BLOB型をselectすると$Failedが返ってくるので、hex関数で16進文字列として返す。 db = Database`OpenDatabase[sqlitefilepath]; rs = Database`QueryDatabase[db, &amp;#34;select hex(column_name) from table_name&amp;#34;]; これを16進文字列→数値→バイト列→文字列と変換して、最後にImportStringで読み込むと、</description>
     </item>
     
     <item>
@@ -125,7 +125,7 @@
       <pubDate>Tue, 09 Oct 2012 00:00:00 +0900</pubDate>
       
       <guid>https://www.330k.info/essay/how-to-make-mathematica8-process-japanese-on-ubuntu-1204-ltf-64bit/</guid>
-      <description>Mathematica 8 Home Edition 日本語版をUbuntu 12.04 LTS 64bit版にインストールしたところ、 ディレクトリ、ファイル名に日本語が含まれるノートブックファイル(.nb)を開けない ディレクトリ、ファイル名に日本語が含まれるとImport/Exportできない、FileNamesで列挙できない ノートブック中に日本語を入力できない $SystemCharacterEncoding、$CharacterEncodingが&amp;rdqu</description>
+      <description>Mathematica 8 Home Edition 日本語版をUbuntu 12.04 LTS 64bit版にインストールしたところ、 ディレクトリ、ファイル名に日本語が含まれるノートブックファイル(.nb)を開けない ディレクトリ、ファイル名に日本語が含まれるとImport/Exportできない、FileNamesで列挙できない ノートブック中に日本語を入力できない $SystemCharacterEncoding、$CharacterEncodingが&amp;quot</description>
     </item>
     
     <item>
@@ -170,7 +170,7 @@
       <pubDate>Sun, 25 Oct 2009 00:00:00 +0900</pubDate>
       
       <guid>https://www.330k.info/essay/import-gpx-file-in-mathematica/</guid>
-      <description>MathematicaでGPXファイルを読み込んで解釈する方法のメモ。 対象となるGPXファイルを xml = Import[filepath, &amp;quot;XML&amp;quot;]; でまずXMLとして読み込んでおいて、 trk = Cases[xml, XMLElement[&amp;quot;trk&amp;quot;, _, _], Infinity]; でtrk要素を抜き出し、 trkpt = (ToExpression[{&amp;quot;lat&amp;quot;, &amp;quot;lon&amp;quot;} /. Cases[#1, XMLElement[&amp;quot;trkpt&amp;quot;, attr_, _] :&amp;gt; attr, Infinity]] &amp;amp; ) /@ trk; でそれぞれのtrk要素からtrkpt要素を抜き出して緯度と経度を得る。 Sep. 28 2013追記 Mathematica 8からは標準でGPXをImport可能になった。</description>
+      <description>MathematicaでGPXファイルを読み込んで解釈する方法のメモ。 対象となるGPXファイルを xml = Import[filepath, &amp;#34;XML&amp;#34;]; でまずXMLとして読み込んでおいて、 trk = Cases[xml, XMLElement[&amp;#34;trk&amp;#34;, _, _], Infinity]; でtrk要素を抜き出し、 trkpt = (ToExpression[{&amp;#34;lat&amp;#34;, &amp;#34;lon&amp;#34;} /. Cases[#1, XMLElement[&amp;#34;trkpt&amp;#34;, attr_, _] :&amp;gt; attr, Infinity]] &amp;amp; ) /@ trk; でそれぞれのtrk要素からtrkpt要素を抜き出して緯度と経度を得る。 Sep. 28 2013追記 Mathematica 8からは標準でGPXをImport可能になった。</description>
     </item>
     
     <item>

@@ -8,7 +8,7 @@
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
 	<meta property="og:title" content="Google Analyticsで動画(Video要素)のイベントを計測" />
-<meta property="og:description" content="会社のウェブサイトに貼ってある動画ファイルが、実際にどれだけ再生されているのか調査するべく、 Google Analyticsのイベントで計測するためのコードを作ってみた。 計測対象は以下のイベント。 再生開始(play) 最後まで再生(ended) 一時停止(pause) 再生再開(resume) シークした(seeked) どこまで再生したか(動画時間の10%, 25%, 50%, 75%, 90%) HTML側 &lt;video id=&quot;movie001&quot; width=&quot;(動画幅)&q" />
+<meta property="og:description" content="会社のウェブサイトに貼ってある動画ファイルが、実際にどれだけ再生されているのか調査するべく、 Google Analyticsのイベントで計測するためのコードを作ってみた。 計測対象は以下のイベント。 再生開始(play) 最後まで再生(ended) 一時停止(pause) 再生再開(resume) シークした(seeked) どこまで再生したか(動画時間の10%, 25%, 50%, 75%, 90%) HTML側 &lt;video id=&#34;movie001&#34; width=&#34;(動画幅)&#3" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.330k.info/essay/measure_video_events_with_google_analytics/" />
 <meta property="article:published_time" content="2017-10-02T23:27:45+09:00" />
@@ -16,7 +16,7 @@
 
 	<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Google Analyticsで動画(Video要素)のイベントを計測"/>
-<meta name="twitter:description" content="会社のウェブサイトに貼ってある動画ファイルが、実際にどれだけ再生されているのか調査するべく、 Google Analyticsのイベントで計測するためのコードを作ってみた。 計測対象は以下のイベント。 再生開始(play) 最後まで再生(ended) 一時停止(pause) 再生再開(resume) シークした(seeked) どこまで再生したか(動画時間の10%, 25%, 50%, 75%, 90%) HTML側 &lt;video id=&quot;movie001&quot; width=&quot;(動画幅)&q"/>
+<meta name="twitter:description" content="会社のウェブサイトに貼ってある動画ファイルが、実際にどれだけ再生されているのか調査するべく、 Google Analyticsのイベントで計測するためのコードを作ってみた。 計測対象は以下のイベント。 再生開始(play) 最後まで再生(ended) 一時停止(pause) 再生再開(resume) シークした(seeked) どこまで再生したか(動画時間の10%, 25%, 50%, 75%, 90%) HTML側 &lt;video id=&#34;movie001&#34; width=&#34;(動画幅)&#3"/>
 
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -77,13 +77,9 @@ if (!doNotTrack) {
 			<h1 class="post__title">Google Analyticsで動画(Video要素)のイベントを計測</h1>
 			
 		</header><div class="content post__content clearfix">
-			
-
-<p>会社のウェブサイトに貼ってある動画ファイルが、実際にどれだけ再生されているのか調査するべく、
+			<p>会社のウェブサイトに貼ってある動画ファイルが、実際にどれだけ再生されているのか調査するべく、
 Google Analyticsのイベントで計測するためのコードを作ってみた。</p>
-
 <p>計測対象は以下のイベント。</p>
-
 <ul>
 <li>再生開始(play)</li>
 <li>最後まで再生(ended)</li>
@@ -92,71 +88,57 @@ Google Analyticsのイベントで計測するためのコードを作ってみ�
 <li>シークした(seeked)</li>
 <li>どこまで再生したか(動画時間の10%, 25%, 50%, 75%, 90%)</li>
 </ul>
-
-<h2 id="html側">HTML側</h2>
-
-<pre><code class="language-html">&lt;video id=&quot;movie001&quot; width=&quot;(動画幅)&quot; height=&quot;(動画高さ)&quot; title=&quot;Movie Title&quot;&gt;
-  &lt;source src=&quot;(動画ファイルのパス)&quot; type=&quot;video/mp4&quot; /&gt;
-&lt;/video
-</code></pre>
-
-<h2 id="javascript側-jquery使用">JavaScript側(jQuery使用)</h2>
-
+<h2 id="html">HTML側</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">video</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;movie001&#34;</span> <span style="color:#a6e22e">width</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;(動画幅)&#34;</span> <span style="color:#a6e22e">height</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;(動画高さ)&#34;</span> <span style="color:#a6e22e">title</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Movie Title&#34;</span>&gt;
+  &lt;<span style="color:#f92672">source</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;(動画ファイルのパス)&#34;</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;video/mp4&#34;</span> /&gt;
+<span style="color:#960050;background-color:#1e0010">&lt;</span>/video
+</code></pre></div><h2 id="javascriptjquery">JavaScript側(jQuery使用)</h2>
 <p>イベントカテゴリに「video」、イベントアクションに<code>play</code>、<code>play_end</code>など。
 イベントラベルには動画の<code>title</code>属性をセット。</p>
-
-<pre><code class="language-js">$(function(){
-  var oldratio = 0.0;
-  $('video').on('play', function(e) {
-    on('play', function(e) {
-    if(e.target.currentTime &gt; 0){
-      ga('send','event','video','resume',e.target.getAttribute('title'));
-    }else{
-      ga('send','event','video','play',e.target.getAttribute('title'));
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#a6e22e">$</span>(<span style="color:#66d9ef">function</span>(){
+  <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">oldratio</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.0</span>;
+  <span style="color:#a6e22e">$</span>(<span style="color:#e6db74">&#39;video&#39;</span>).<span style="color:#a6e22e">on</span>(<span style="color:#e6db74">&#39;play&#39;</span>, <span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">e</span>) {
+    <span style="color:#a6e22e">on</span>(<span style="color:#e6db74">&#39;play&#39;</span>, <span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">e</span>) {
+    <span style="color:#66d9ef">if</span>(<span style="color:#a6e22e">e</span>.<span style="color:#a6e22e">target</span>.<span style="color:#a6e22e">currentTime</span> <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>){
+      <span style="color:#a6e22e">ga</span>(<span style="color:#e6db74">&#39;send&#39;</span>,<span style="color:#e6db74">&#39;event&#39;</span>,<span style="color:#e6db74">&#39;video&#39;</span>,<span style="color:#e6db74">&#39;resume&#39;</span>,<span style="color:#a6e22e">e</span>.<span style="color:#a6e22e">target</span>.<span style="color:#a6e22e">getAttribute</span>(<span style="color:#e6db74">&#39;title&#39;</span>));
+    }<span style="color:#66d9ef">else</span>{
+      <span style="color:#a6e22e">ga</span>(<span style="color:#e6db74">&#39;send&#39;</span>,<span style="color:#e6db74">&#39;event&#39;</span>,<span style="color:#e6db74">&#39;video&#39;</span>,<span style="color:#e6db74">&#39;play&#39;</span>,<span style="color:#a6e22e">e</span>.<span style="color:#a6e22e">target</span>.<span style="color:#a6e22e">getAttribute</span>(<span style="color:#e6db74">&#39;title&#39;</span>));
     }
-  }).on('ended', function(e) {
-    ga('send','event','video','play_end',e.target.getAttribute('title'));
-  }).on('pause', function(e) {
-    ga('send','event','video','pause',e.target.getAttribute('title'));
-  }).on('seeked', function(e) {
-    ga('send','event','video','seeked',e.target.getAttribute('title'));
-  }).on('timeupdate', function(e) {
-    var ratio = e.target.currentTime / e.target.duration;
-    if((0.9 &lt;= ratio) &amp;&amp; (oldratio &lt; 0.9)){
-      ga('send','event','video','play_90percent',e.target.getAttribute('title'));
-    }else if((0.75 &lt;= ratio) &amp;&amp; (oldratio &lt; 0.75)){
-      ga('send','event','video','play_75percent',e.target.getAttribute('title'));
-    }else if((0.5 &lt;= ratio) &amp;&amp; (oldratio &lt; 0.5)){
-      ga('send','event','video','play_50percent',e.target.getAttribute('title'));
-    }else if((0.25 &lt;= ratio) &amp;&amp; (oldratio &lt; 0.25)){
-      ga('send','event','video','play_25percent',e.target.getAttribute('title'));
-    }else if((0.1 &lt;= ratio) &amp;&amp; (oldratio &lt; 0.1)){
-      ga('send','event','video','play_10percent',e.target.getAttribute('title'));
+  }).<span style="color:#a6e22e">on</span>(<span style="color:#e6db74">&#39;ended&#39;</span>, <span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">e</span>) {
+    <span style="color:#a6e22e">ga</span>(<span style="color:#e6db74">&#39;send&#39;</span>,<span style="color:#e6db74">&#39;event&#39;</span>,<span style="color:#e6db74">&#39;video&#39;</span>,<span style="color:#e6db74">&#39;play_end&#39;</span>,<span style="color:#a6e22e">e</span>.<span style="color:#a6e22e">target</span>.<span style="color:#a6e22e">getAttribute</span>(<span style="color:#e6db74">&#39;title&#39;</span>));
+  }).<span style="color:#a6e22e">on</span>(<span style="color:#e6db74">&#39;pause&#39;</span>, <span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">e</span>) {
+    <span style="color:#a6e22e">ga</span>(<span style="color:#e6db74">&#39;send&#39;</span>,<span style="color:#e6db74">&#39;event&#39;</span>,<span style="color:#e6db74">&#39;video&#39;</span>,<span style="color:#e6db74">&#39;pause&#39;</span>,<span style="color:#a6e22e">e</span>.<span style="color:#a6e22e">target</span>.<span style="color:#a6e22e">getAttribute</span>(<span style="color:#e6db74">&#39;title&#39;</span>));
+  }).<span style="color:#a6e22e">on</span>(<span style="color:#e6db74">&#39;seeked&#39;</span>, <span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">e</span>) {
+    <span style="color:#a6e22e">ga</span>(<span style="color:#e6db74">&#39;send&#39;</span>,<span style="color:#e6db74">&#39;event&#39;</span>,<span style="color:#e6db74">&#39;video&#39;</span>,<span style="color:#e6db74">&#39;seeked&#39;</span>,<span style="color:#a6e22e">e</span>.<span style="color:#a6e22e">target</span>.<span style="color:#a6e22e">getAttribute</span>(<span style="color:#e6db74">&#39;title&#39;</span>));
+  }).<span style="color:#a6e22e">on</span>(<span style="color:#e6db74">&#39;timeupdate&#39;</span>, <span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">e</span>) {
+    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">ratio</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">e</span>.<span style="color:#a6e22e">target</span>.<span style="color:#a6e22e">currentTime</span> <span style="color:#f92672">/</span> <span style="color:#a6e22e">e</span>.<span style="color:#a6e22e">target</span>.<span style="color:#a6e22e">duration</span>;
+    <span style="color:#66d9ef">if</span>((<span style="color:#ae81ff">0.9</span> <span style="color:#f92672">&lt;=</span> <span style="color:#a6e22e">ratio</span>) <span style="color:#f92672">&amp;&amp;</span> (<span style="color:#a6e22e">oldratio</span> <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">0.9</span>)){
+      <span style="color:#a6e22e">ga</span>(<span style="color:#e6db74">&#39;send&#39;</span>,<span style="color:#e6db74">&#39;event&#39;</span>,<span style="color:#e6db74">&#39;video&#39;</span>,<span style="color:#e6db74">&#39;play_90percent&#39;</span>,<span style="color:#a6e22e">e</span>.<span style="color:#a6e22e">target</span>.<span style="color:#a6e22e">getAttribute</span>(<span style="color:#e6db74">&#39;title&#39;</span>));
+    }<span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span>((<span style="color:#ae81ff">0.75</span> <span style="color:#f92672">&lt;=</span> <span style="color:#a6e22e">ratio</span>) <span style="color:#f92672">&amp;&amp;</span> (<span style="color:#a6e22e">oldratio</span> <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">0.75</span>)){
+      <span style="color:#a6e22e">ga</span>(<span style="color:#e6db74">&#39;send&#39;</span>,<span style="color:#e6db74">&#39;event&#39;</span>,<span style="color:#e6db74">&#39;video&#39;</span>,<span style="color:#e6db74">&#39;play_75percent&#39;</span>,<span style="color:#a6e22e">e</span>.<span style="color:#a6e22e">target</span>.<span style="color:#a6e22e">getAttribute</span>(<span style="color:#e6db74">&#39;title&#39;</span>));
+    }<span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span>((<span style="color:#ae81ff">0.5</span> <span style="color:#f92672">&lt;=</span> <span style="color:#a6e22e">ratio</span>) <span style="color:#f92672">&amp;&amp;</span> (<span style="color:#a6e22e">oldratio</span> <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">0.5</span>)){
+      <span style="color:#a6e22e">ga</span>(<span style="color:#e6db74">&#39;send&#39;</span>,<span style="color:#e6db74">&#39;event&#39;</span>,<span style="color:#e6db74">&#39;video&#39;</span>,<span style="color:#e6db74">&#39;play_50percent&#39;</span>,<span style="color:#a6e22e">e</span>.<span style="color:#a6e22e">target</span>.<span style="color:#a6e22e">getAttribute</span>(<span style="color:#e6db74">&#39;title&#39;</span>));
+    }<span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span>((<span style="color:#ae81ff">0.25</span> <span style="color:#f92672">&lt;=</span> <span style="color:#a6e22e">ratio</span>) <span style="color:#f92672">&amp;&amp;</span> (<span style="color:#a6e22e">oldratio</span> <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">0.25</span>)){
+      <span style="color:#a6e22e">ga</span>(<span style="color:#e6db74">&#39;send&#39;</span>,<span style="color:#e6db74">&#39;event&#39;</span>,<span style="color:#e6db74">&#39;video&#39;</span>,<span style="color:#e6db74">&#39;play_25percent&#39;</span>,<span style="color:#a6e22e">e</span>.<span style="color:#a6e22e">target</span>.<span style="color:#a6e22e">getAttribute</span>(<span style="color:#e6db74">&#39;title&#39;</span>));
+    }<span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span>((<span style="color:#ae81ff">0.1</span> <span style="color:#f92672">&lt;=</span> <span style="color:#a6e22e">ratio</span>) <span style="color:#f92672">&amp;&amp;</span> (<span style="color:#a6e22e">oldratio</span> <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">0.1</span>)){
+      <span style="color:#a6e22e">ga</span>(<span style="color:#e6db74">&#39;send&#39;</span>,<span style="color:#e6db74">&#39;event&#39;</span>,<span style="color:#e6db74">&#39;video&#39;</span>,<span style="color:#e6db74">&#39;play_10percent&#39;</span>,<span style="color:#a6e22e">e</span>.<span style="color:#a6e22e">target</span>.<span style="color:#a6e22e">getAttribute</span>(<span style="color:#e6db74">&#39;title&#39;</span>));
     }
-    oldratio = ratio;
+    <span style="color:#a6e22e">oldratio</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">ratio</span>;
   });
 });
-</code></pre>
-
-<h2 id="google-analyticsでの表示例">Google Analyticsでの表示例</h2>
-
+</code></pre></div><h2 id="google-analytics">Google Analyticsでの表示例</h2>
 <p>イベントカテゴリ画面。</p>
-
 <figure>
     <img src="category.png"/> 
 </figure>
 
-
 <p>イベントアクション画面。</p>
-
 <figure>
     <img src="action.png"/> 
 </figure>
 
-
 <p>1週間記録したところ、動画を埋め込んであるページのPVが約5000に対して、再生開始したのは1%程度の59で、
 さらに最後まで通して見たのはそのうち4割の約24。</p>
-
 <p>私としては5分近くもある動画を全部見ようなんて人はほとんどいない、ということは予想済みであったが、
 会社の上の人はこういうユーザ視点を持ってないんだよね。</p>
 

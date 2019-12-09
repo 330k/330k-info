@@ -77,96 +77,63 @@ if (!doNotTrack) {
 			<h1 class="post__title">陽的Runge-Kutta法のButcher tableau</h1>
 			
 		</header><div class="content post__content clearfix">
-			
-
-<p>Explicit Runge-Kutta法の公式はいくつか知られているが、高次の公式になるほどButcher配列の項数が増えるため論文に誤植が多くなる。
+			<p>Explicit Runge-Kutta法の公式はいくつか知られているが、高次の公式になるほどButcher配列の項数が増えるため論文に誤植が多くなる。
 それに気づかないまま実際に使うと、プログラムは正しく組めているはずなのに思うように精度が上がらないという落とし穴にはまってしまう。</p>
-
 <p>覚書として、以下に代表的と思われる公式のButcher tableauをまとめる。</p>
-
 <p>以下のButcher tableauはMathematica 8のNumericalDifferentialEquationAnalysisパッケージに含まれるRungeKuttaOrderConditionsで所定の次数条件を達成していることを確認しており、誤植が入り込まないようにそのままMathematica上で画像化している。</p>
-
 <p>使用したMathematicaノートブックは<a href="ExplicitRungeKuttaButcherTableau.nb">こちら</a>。
 必要な人はダウンロードして自分で計算して確認した後に使用してほしい。</p>
-
 <p>MathematicaにCやFortranのソースコード形式で吐かせるのが確実。</p>
-
 <p>※注意事項</p>
-
 <p>公式の名前や出典に関しては自信がないので、鵜呑みにしないこと。</p>
-
-<h2 id="1段1次">1段1次</h2>
-
-<h3 id="euler法">Euler法</h3>
-
+<h2 id="11">1段1次</h2>
+<h3 id="euler">Euler法</h3>
 <figure>
     <img src="ExplicitEuler.png"/> 
 </figure>
 
-
-<h2 id="2段2次">2段2次</h2>
-
-<h3 id="修正euler法">修正Euler法</h3>
-
+<h2 id="22">2段2次</h2>
+<h3 id="euler1">修正Euler法</h3>
 <figure>
     <img src="ModifiedEuler.png"/> 
 </figure>
 
-
-<h3 id="heun法">Heun法</h3>
-
+<h3 id="heun">Heun法</h3>
 <figure>
     <img src="Heun.png"/> 
 </figure>
 
-
-<h3 id="ralston法">Ralston法</h3>
-
-<h2 id="3段3次">3段3次</h2>
-
-<h3 id="heunの3次法">Heunの3次法</h3>
-
+<h3 id="ralston">Ralston法</h3>
+<h2 id="33">3段3次</h2>
+<h3 id="heun3">Heunの3次法</h3>
 <figure>
     <img src="HeunRK3.png"/> 
 </figure>
 
-
-<h3 id="kuttaの3次法">Kuttaの3次法</h3>
-
+<h3 id="kutta3">Kuttaの3次法</h3>
 <figure>
     <img src="ClassicalRK3.png"/> 
 </figure>
 
-
-<h3 id="ralstonの3次法">Ralstonの3次法</h3>
-
-<h2 id="4段4次">4段4次</h2>
-
-<h3 id="古典的runge-kutta法">古典的Runge-Kutta法</h3>
-
+<h3 id="ralston3">Ralstonの3次法</h3>
+<h2 id="44">4段4次</h2>
+<h3 id="rungekutta">古典的Runge-Kutta法</h3>
 <figure>
     <img src="ClassicalRK4.png"/> 
 </figure>
 
-
-<h2 id="6段5次">6段5次</h2>
-
-<h3 id="runge-kutta-fehlberg法のうち5次の部分">Runge-Kutta-Fehlberg法のうち5次の部分</h3>
-
+<h2 id="65">6段5次</h2>
+<h3 id="rungekuttafehlberg5">Runge-Kutta-Fehlberg法のうち5次の部分</h3>
 <figure>
     <img src="RungeKuttaFehlberg.png"/> 
 </figure>
 
-
-<h3 id="runge-kutta-nystroemのうち5次の部分">Runge-Kutta-Nystroemのうち5次の部分</h3>
-
+<h3 id="rungekuttanystroem5">Runge-Kutta-Nystroemのうち5次の部分</h3>
 <figure>
     <img src="Nystroem.png"/> 
 </figure>
 
-
-<h3 id="butcherによる5次公式を3つ">Butcherによる5次公式を3つ</h3>
-
+<h3 id="butcher53">Butcherによる5次公式を3つ</h3>
 <p><figure>
     <img src="Butcher1.png"/> 
 </figure>
@@ -179,45 +146,31 @@ if (!doNotTrack) {
     <img src="Butcher3.png"/> 
 </figure>
 </p>
-
-<h2 id="7段6次">7段6次</h2>
-
-<h3 id="hammudによるもの">Hammudによるもの</h3>
-
+<h2 id="76">7段6次</h2>
+<h3 id="hammud">Hammudによるもの</h3>
 <figure>
     <img src="Hammud6.png"/> 
 </figure>
 
-
-<h2 id="9段7次">9段7次</h2>
-
-<h3 id="shanksによるもの">Shanksによるもの</h3>
-
+<h2 id="97">9段7次</h2>
+<h3 id="shanks">Shanksによるもの</h3>
 <figure>
     <img src="Shanks7.png"/> 
 </figure>
 
-
-<h3 id="cooperとvernerによる7次公式">CooperとVernerによる7次公式</h3>
-
+<h3 id="cooperverner7">CooperとVernerによる7次公式</h3>
 <figure>
     <img src="CooperVerner7.png"/> 
 </figure>
 
-
-<h2 id="11段8次">11段8次</h2>
-
-<h3 id="cooperとvernerによる8次公式">CooperとVernerによる8次公式</h3>
-
+<h2 id="118">11段8次</h2>
+<h3 id="cooperverner8">CooperとVernerによる8次公式</h3>
 <figure>
     <img src="CooperVerner8.png"/> 
 </figure>
 
-
-<h2 id="16段9次">16段9次</h2>
-
-<h3 id="vernerによる埋め込み型公式のうち9次のもの">Vernerによる埋め込み型公式のうち9次のもの</h3>
-
+<h2 id="169">16段9次</h2>
+<h3 id="verner9">Vernerによる埋め込み型公式のうち9次のもの</h3>
 <figure>
     <img src="Verner9.png"/> 
 </figure>

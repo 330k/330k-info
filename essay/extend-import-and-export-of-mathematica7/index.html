@@ -80,91 +80,55 @@ if (!doNotTrack) {
 			<p>MathematicaではImportやExportを使って様々な形式のファイルを読み書きできるが、
 標準で対応していないファイル形式についても自分でローダやライタを作り、
 それをImportやExportに対応させる方法がExtending Import &amp; Export (Wolfram Library Archive)において解説されている。</p>
-
 <p>しかしこの文書は2003年のもので以前はExperimental`RegisterConverterという関数で登録すればよかったのだが、
 この関数はMathematica 7にはない。</p>
-
-<pre><code class="language-Mathematica">Names[&quot;*`*Register*&quot;]
-</code></pre>
-
-<p>などとして探し回ったところ、</p>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Mathematica" data-lang="Mathematica">Names[<span style="color:#e6db74">&#34;*`*Register*&#34;</span>]
+</code></pre></div><p>などとして探し回ったところ、</p>
 <ul>
 <li>ImportExport`RegisterFormat</li>
 <li>ImportExport`RegisterExport</li>
 <li>ImportExport`RegisterImport</li>
 </ul>
-
 <p>というそれらしいものを見つけた。</p>
-
 <p>早速</p>
-
-<pre><code class="language-Mathematica">ClearAttributes[ImportExport`RegisterFormat, ReadProtected]
-</code></pre>
-
-<p>として読込みプロテクトを解除してどういう動作をするのか調べたところ、</p>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Mathematica" data-lang="Mathematica">ClearAttributes[ImportExport`RegisterFormat, ReadProtected]
+</code></pre></div><p>として読込みプロテクトを解除してどういう動作をするのか調べたところ、</p>
 <ul>
 <li>ImportExport`RegisterFormat[&ldquo;ファイルフォーマット名&rdquo;]としてファイルフォーマットを登録</li>
 <li>ImportExport`RegisterImport[&ldquo;ファイルフォーマット名&rdquo;, myImport]で自前のローダmyImportをImportに登録</li>
 <li>ImportExport`RegisterExport[&ldquo;ファイルフォーマット名&rdquo;, myExport]で自前のライタmyExportをExportに登録</li>
 </ul>
-
-<p>という使い方をするようだ。ファイルフォーマット名は&rdquo;GPX&rdquo;でも&rdquo;KML&rdquo;でも&rdquo;JSON&rdquo;でも好きな名前を付けていい。</p>
-
+<p>という使い方をするようだ。ファイルフォーマット名は&quot;GPX&quot;でも&quot;KML&quot;でも&quot;JSON&quot;でも好きな名前を付けていい。</p>
 <p>myImportやmyExportの書式は以前と変わっていないようで、</p>
-
-<pre><code class="language-Mathematica">myImport[filename_String, options___?OptionQ] := Module[{...},...]
-myExport[filename_String, expression_, options___?OptionQ] := Module[{...},...]
-</code></pre>
-
-<p>でいい模様。</p>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Mathematica" data-lang="Mathematica">myImport[filename_String, options___<span style="color:#f92672">?</span>OptionQ] <span style="color:#f92672">:=</span> Module[{<span style="color:#960050;background-color:#1e0010">.</span><span style="color:#960050;background-color:#1e0010">.</span><span style="color:#960050;background-color:#1e0010">.</span>},<span style="color:#960050;background-color:#1e0010">.</span><span style="color:#960050;background-color:#1e0010">.</span><span style="color:#960050;background-color:#1e0010">.</span>]
+myExport[filename_String, expression_, options___<span style="color:#f92672">?</span>OptionQ] <span style="color:#f92672">:=</span> Module[{<span style="color:#960050;background-color:#1e0010">.</span><span style="color:#960050;background-color:#1e0010">.</span><span style="color:#960050;background-color:#1e0010">.</span>},<span style="color:#960050;background-color:#1e0010">.</span><span style="color:#960050;background-color:#1e0010">.</span><span style="color:#960050;background-color:#1e0010">.</span>]
+</code></pre></div><p>でいい模様。</p>
 <p>ImportExport`RegisterFormatには以下のオプションがある。</p>
-
 <ul>
 <li>BinaryFormat : バイナリファイルならTrue、そうでなければFalse。</li>
-<li>ImportExport`Encoding : よくわからないが、標準では&rdquo;BASE64&rdquo;、&rdquo;BZIP2&rdquo;、&rdquo;GZIP&rdquo;、&rdquo;UUE&rdquo;だけでTrueになっている。</li>
-<li>ImportExport`Extensions : 対応する拡張子またはそのリスト。{&rdquo;<em>.nb&rdquo;,&rdquo;</em>.html&rdquo;}などと指定する。</li>
+<li>ImportExport`Encoding : よくわからないが、標準では&quot;BASE64&rdquo;、&ldquo;BZIP2&rdquo;、&ldquo;GZIP&rdquo;、&ldquo;UUE&quot;だけでTrueになっている。</li>
+<li>ImportExport`Extensions : 対応する拡張子またはそのリスト。{&quot;<em>.nb&rdquo;,&quot;</em>.html&rdquo;}などと指定する。</li>
 <li>AlphaChannel : アルファチャンネルを使う画像かどうか？Exportの際のラスタライズに関係するかも。JPEG2000やPNGなどでTrueになっている。</li>
 </ul>
-
-<p>ただ、ImportExport<code>Extensionsに拡張子を指定して登録しても、Exportでは大丈夫だがImportではうまく判別されない。
-ImportExport</code>RegisterImportの動作についてもう少し調べる必要がある。</p>
-
+<p>ただ、ImportExport<code>Extensionsに拡張子を指定して登録しても、Exportでは大丈夫だがImportではうまく判別されない。 ImportExport</code>RegisterImportの動作についてもう少し調べる必要がある。</p>
 <p>Wolfram Researchが新しいドキュメントを出してくれれば早いのだけれど…。</p>
-
-<hr />
-
+<hr>
 <p>Feb. 20 2010追記</p>
-
 <p>Importで自動判別させる方法が判明。</p>
-
-<pre><code class="language-Mathematica">FileFormatDump`AddFormat[&quot;ファイルフォーマット名&quot;, bin, bundle, archive, encoding, magic, ext, mime, test, bundletestfunc]
-</code></pre>
-
-<p>として、判別するときに用いられる関数のほか、MIMEタイプも登録できる模様。</p>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Mathematica" data-lang="Mathematica">FileFormatDump`AddFormat[<span style="color:#e6db74">&#34;ファイルフォーマット名&#34;</span>, bin, bundle, archive, encoding, magic, ext, mime, test, bundletestfunc]
+</code></pre></div><p>として、判別するときに用いられる関数のほか、MIMEタイプも登録できる模様。</p>
 <p>bin(バイナリ形式か否か), bundle, archive, encoding, magicはTrueまたはFalseで指定するがbin以外の意味はよく分らない。
-extは上のExtensionsと同様に{&rdquo;<em>.nb&rdquo;,&rdquo;</em>.html&rdquo;}などの様式で指定し、mimeにはMIMEタイプのリストを{&ldquo;APPLICATION/XHTML+XML&rdquo;,&ldquo;TEXT/XML&rdquo;}のように指定する。
+extは上のExtensionsと同様に{&quot;<em>.nb&rdquo;,&quot;</em>.html&rdquo;}などの様式で指定し、mimeにはMIMEタイプのリストを{&ldquo;APPLICATION/XHTML+XML&rdquo;,&ldquo;TEXT/XML&rdquo;}のように指定する。
 testにはファイル形式を判別する関数またはNoneを指定する。たとえばXHTMLでは</p>
-
-<pre><code class="language-Mathematica">StringMatchQ[#1, ___ ~~ 
-   &quot;&lt;!DOCTYPE html PUBLIC \&quot;-//W3C//DTD XHTML&quot; ~~ __, 
-  IgnoreCase -&gt; False] &amp;
-</code></pre>
-
-<p>となっている。</p>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Mathematica" data-lang="Mathematica">StringMatchQ[#1, ___ <span style="color:#f92672">~~</span> 
+   <span style="color:#e6db74">&#34;&lt;!DOCTYPE html PUBLIC \&#34;</span><span style="color:#f92672">-</span><span style="color:#f92672">/</span><span style="color:#f92672">/</span>W3C<span style="color:#f92672">/</span><span style="color:#f92672">/</span>DTD XHTML<span style="color:#960050;background-color:#1e0010">&#34;</span> <span style="color:#f92672">~~</span> __, 
+  IgnoreCase <span style="color:#f92672">-&gt;</span> False] <span style="color:#f92672">&amp;</span>
+</code></pre></div><p>となっている。</p>
 <p>bundletestfuncは地理データ系の形式で拡張子が指定されているが、意味不明。
 とりあえずは空のリストでいいと思われる。</p>
-
-<hr />
-
+<hr>
 <p>Aug. 27 2012追記</p>
-
 <p>Mathematica 8からはImport/Exportフレームワークのドキュメントが整備された。</p>
-
 <ul>
 <li><a href="http://reference.wolfram.com/language/tutorial/DevelopingAnImportConverter.ja.html">インポートコンバータの開発</a></li>
 <li><a href="http://reference.wolfram.com/language/tutorial/DevelopingAnExportConverter.html">エキスポートコンバータの開発</a></li>

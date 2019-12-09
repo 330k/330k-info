@@ -18,7 +18,6 @@
       
       <guid>https://www.330k.info/bicycle/touring/20191124-chiba-200km/</guid>
       <description>&lt;p&gt;台風で中止になったBRM922千葉200km山だらけの代わりに開催された走行会、千葉200km(晩秋のクラシック)。&lt;/p&gt;
-
 &lt;p&gt;台風でやられた林道が復旧しないため、コースをクラシック200kmに代えて開催されたが、今回も週末は雨にやられ、ついにブルベ中に初パンクも発生。&lt;/p&gt;</description>
     </item>
     
@@ -38,7 +37,6 @@
       
       <guid>https://www.330k.info/bicycle/touring/20191026-brm1026-utsunomiya-300km/</guid>
       <description>&lt;p&gt;認定が取れるブルベとしては今シーズン最後。&lt;/p&gt;
-
 &lt;p&gt;前回の四国1000kmで余力を使い果たした反省から、タイムにこだわって走ってみた。&lt;/p&gt;</description>
     </item>
     
@@ -98,7 +96,6 @@
       
       <guid>https://www.330k.info/bicycle/touring/20190701-tohoku-route-4/</guid>
       <description>&lt;p&gt;会社の研修旅行(北海道)にあわせて、八戸まで自走してフェリーに乗って北海道入りして合流することに。&lt;/p&gt;
-
 &lt;p&gt;ただ、Garminが壊れてしまってほぼログが残せず。&lt;/p&gt;</description>
     </item>
     
@@ -109,9 +106,7 @@
       
       <guid>https://www.330k.info/bicycle/touring/20190622-brm622gunma600km-niigata/</guid>
       <description>&lt;p&gt;とりあえず申し込んでいた2つ目の600kmブルベ。&lt;/p&gt;
-
 &lt;p&gt;直前に津波を伴う震度6強の地震が新潟北部で発生し、開催が危ぶまれたものの、一部コースを変更して無事開催。&lt;/p&gt;
-
 &lt;p&gt;DNSを真剣に考えていたけれど、レンタカーによる移動、予め仮眠場所にホテルを予約しておくなど、今回初めての試みもあるので、それらのテストも兼ねて出走を決意。&lt;/p&gt;</description>
     </item>
     
@@ -178,7 +173,6 @@
       
       <guid>https://www.330k.info/bicycle/touring/20181007-14_median_line/</guid>
       <description>&lt;p&gt;GWは鹿児島スタート後熊本に入る手前でメカトラブル離脱したので、熊本スタートで中央構造線沿いに東進。&lt;/p&gt;
-
 &lt;p&gt;静岡まで到達後は日数が余ったので富士山の西側をぐるっと回って富士五湖を見て山梨から東京へ。&lt;/p&gt;</description>
     </item>
     
@@ -198,7 +192,7 @@
       <pubDate>Tue, 17 Jul 2018 07:03:25 +0900</pubDate>
       
       <guid>https://www.330k.info/essay/start-command-prompt-in-windows-10/</guid>
-      <description>元ネタ: Windows 10でコマンドプロンプトを素早く起動する方法 私が業務で使うときは以下の手順で起動している。 設定が不必要で、おそらく最速。 管理者権限でコマンドプロンプトを起動する [Windows] + [X] → [A]で管理者権限でPowerShellを起動 UACのダイアログが出たら許可する PowerShell上で「cmd」と入力してEnter。 UACがONのときでもキーストローク数は9ストローク。 コマンドプロンプトを起動しなくて</description>
+      <description>元ネタ: Windows 10でコマンドプロンプトを素早く起動する方法 私が業務で使うときは以下の手順で起動している。 設定が不必要で、おそらく最速。 管理者権限でコマンドプロンプトを起動する [Windows] + → [A]で管理者権限でPowerShellを起動 UACのダイアログが出たら許可する PowerShell上で「cmd」と入力してEnter。 UACがONのときでもキーストローク数は9ストローク。 コマンドプロンプトを起動しなくても</description>
     </item>
     
     <item>
@@ -235,7 +229,6 @@
       
       <guid>https://www.330k.info/bicycle/touring/20180427-28_kagoshima/</guid>
       <description>&lt;p&gt;今年のGWは鹿児島を出発して、阿蘇を登って大分方面へ九州を横断、フェリーで四国に渡って愛媛→徳島、さらにフェリーで和歌山あたりまで走ろうと計画。&lt;/p&gt;
-
 &lt;p&gt;ただ久しぶりのメカトラブルにより走行不能となったので鹿児島県から出ることなく終了。&lt;/p&gt;</description>
     </item>
     
@@ -245,7 +238,7 @@
       <pubDate>Mon, 26 Feb 2018 02:19:51 +0900</pubDate>
       
       <guid>https://www.330k.info/essay/letsencrypt-ubuntu-1604/</guid>
-      <description>海外の格安VPS、AlaphaRacksでHTTPSのHTTPサーバを立てたので、その作業録。 環境 Chinese Year Specialという年間$8のプランを契約。 Ubuntuのバージョンは16.04なのだが、カーネルのバージョンは2.6.32の古め。 そのため、dockerは使えない。 # uname -r 2.6.32-042stab127.2 # cat /etc/lsb-release DISTRIB_ID=Ubuntu DISTRIB_RELEASE=16.04 DISTRIB_CODENAME=xenial DISTRIB_DESCRIPTION=&amp;quot;Ubuntu 16.04 LTS&amp;quot; ApacheのSSLモジュール有効化 SSLモジュールを有効化し、a2ensiteでHTTPSサイトを有効化</description>
+      <description>海外の格安VPS、AlaphaRacksでHTTPSのHTTPサーバを立てたので、その作業録。 環境 Chinese Year Specialという年間$8のプランを契約。 Ubuntuのバージョンは16.04なのだが、カーネルのバージョンは2.6.32の古め。 そのため、dockerは使えない。 # uname -r 2.6.32-042stab127.2 # cat /etc/lsb-release DISTRIB_ID=Ubuntu DISTRIB_RELEASE=16.04 DISTRIB_CODENAME=xenial DISTRIB_DESCRIPTION=&amp;#34;Ubuntu 16.04 LTS&amp;#34; ApacheのSSLモジュール有効化 SSLモジュールを有効化し、a2ensiteでHTTPSサイトを有効化</description>
     </item>
     
     <item>
@@ -281,7 +274,7 @@
       <pubDate>Mon, 02 Oct 2017 23:27:45 +0900</pubDate>
       
       <guid>https://www.330k.info/essay/measure_video_events_with_google_analytics/</guid>
-      <description>会社のウェブサイトに貼ってある動画ファイルが、実際にどれだけ再生されているのか調査するべく、 Google Analyticsのイベントで計測するためのコードを作ってみた。 計測対象は以下のイベント。 再生開始(play) 最後まで再生(ended) 一時停止(pause) 再生再開(resume) シークした(seeked) どこまで再生したか(動画時間の10%, 25%, 50%, 75%, 90%) HTML側 &amp;lt;video id=&amp;quot;movie001&amp;quot; width=&amp;quot;(動画幅)&amp;q</description>
+      <description>会社のウェブサイトに貼ってある動画ファイルが、実際にどれだけ再生されているのか調査するべく、 Google Analyticsのイベントで計測するためのコードを作ってみた。 計測対象は以下のイベント。 再生開始(play) 最後まで再生(ended) 一時停止(pause) 再生再開(resume) シークした(seeked) どこまで再生したか(動画時間の10%, 25%, 50%, 75%, 90%) HTML側 &amp;lt;video id=&amp;#34;movie001&amp;#34; width=&amp;#34;(動画幅)&amp;#3</description>
     </item>
     
     <item>
@@ -299,7 +292,7 @@
       <pubDate>Mon, 21 Aug 2017 22:38:20 +0900</pubDate>
       
       <guid>https://www.330k.info/essay/scramble_unicode_lro_rlo/</guid>
-      <description>Unicode制御文字のうち、LRO(Left-to-right override, U+202D)とRLO(Right-to-left override, U+202E)は 行中でも文字列の方向を変更する。 1行の中に何度もLROとRLOが入ると、カーソルキーが踊って楽しいことになる。 例: 下のテキストボックスの中の文字列を編集したり、カーソルキーで移動しようとしても上手くできないはず。 ‮‭い‮を‭ろ‮る‭は‮ぬ‭に‮り‭ほ‮ち‭へ ‮‭わ‮</description>
+      <description>Unicode制御文字のうち、LRO(Left-to-right override, U+202D)とRLO(Right-to-left override, U+202E)は 行中でも文字列の方向を変更する。 1行の中に何度もLROとRLOが入ると、カーソルキーが踊って楽しいことになる。 例: 下のテキストボックスの中の文字列を編集したり、カーソルキーで移動しようとしても上手くできないはず。 ※ Edgeは表示が崩れるので、Ctrl + A→Ctrl +</description>
     </item>
     
     <item>
@@ -318,7 +311,6 @@
       
       <guid>https://www.330k.info/bicycle/touring/20170729-0806_hokkaido/</guid>
       <description>&lt;p&gt;いつかやってみたかった、苫小牧を出発して襟裳岬→納沙布岬→宗谷岬と外周部を回るルートで北海道を満喫。&lt;/p&gt;
-
 &lt;p&gt;襟裳岬からは帯広を通らず十勝平野を突っ切って一気に釧路に向かったが、自販機すら無い無補給区間できつかった。&lt;/p&gt;</description>
     </item>
     
@@ -365,7 +357,6 @@
       
       <guid>https://www.330k.info/bicycle/touring/20170715-17_castella_yatsugatake_kogen/</guid>
       <description>&lt;p&gt;自転車店スタッフが企画した、文明堂の浦和工場へカステラを食べに行くイベントに便乗。&lt;/p&gt;
-
 &lt;p&gt;本来は岩淵水門から浦和までを荒川CRを使って往復するだけのところ、復路で離脱して軽井沢や野辺山のあたりを回ってきた。&lt;/p&gt;</description>
     </item>
     
@@ -430,7 +421,6 @@
       
       <guid>https://www.330k.info/bicycle/touring/20170318-brm318chiba-2lakes/</guid>
       <description>&lt;p&gt;「ロングライドしてます」と一応言えるようになるため、初ブルベ参加してきた。&lt;/p&gt;
-
 &lt;p&gt;他人が作るコースを正確に辿ることに不慣れなため、難易度低目のコースのBRM318千葉200kmに申し込み。&lt;/p&gt;</description>
     </item>
     
@@ -441,7 +431,6 @@
       
       <guid>https://www.330k.info/bicycle/touring/20170211-12-izu-peninsula/</guid>
       <description>&lt;p&gt;早咲きの桜として有名な河津桜を見に、伊豆半島を走ってきた。&lt;/p&gt;
-
 &lt;p&gt;桜、梅、月、富士山、さらに土肥峠では雪、と風流な旅になった。&lt;/p&gt;</description>
     </item>
     
@@ -515,9 +504,7 @@
       
       <guid>https://www.330k.info/bicycle/touring/20160906-11-kokura-nagasaki-satamisaki/</guid>
       <description>&lt;p&gt;今年も1週間の夏季休暇が取れたので、自転車では未到達だった熊本、佐賀、長崎に行き、そのまま鹿児島県の本土最南端、佐多岬まで走ってきた。&lt;/p&gt;
-
 &lt;p&gt;本当は1週間の休みで北海道の道東地方を走り、22日からの4連休で九州を走る予定だったのだが、大雨と台風のため北海道のJR線が止まってしまった。&lt;/p&gt;
-
 &lt;p&gt;とはいえ、9月4日と5日は九州地方に別の台風が直撃していたため、5日の午後に新幹線で小倉駅まで輪行し、6日の朝から走行開始。&lt;/p&gt;</description>
     </item>
     
@@ -527,7 +514,7 @@
       <pubDate>Sat, 06 Aug 2016 00:00:00 +0900</pubDate>
       
       <guid>https://www.330k.info/software/create_gpx_with_google_maps/</guid>
-      <description>思った以上に使っていただいてAPI料金の請求がすごいことになったので、申し訳ないのですが1日1000リクエストに制限しました。 地図やルートが表示されないときは制限に引っかかっておりますので、時間を置いて再度アクセスしてください。 PC用フルスクリーン版 モバイル(スマートフォン)版 使い方 出発地点と目的地点を入れて「Calculate Route」をクリック。 途中経路を変えたい場合は、通常のGoogleマ</description>
+      <description>思った以上に使っていただいてAPI料金の請求がすごいことになったので、申し訳ないのですが1日1000リクエストに制限しました。地図やルートが表示されないときは制限に引っかかっておりますので、時間を置いて再度アクセスしてください。 PC用フルスクリーン版 モバイル(スマートフォン)版 使い方 出発地点と目的地点を入れて「Calculate Route」をクリック。 途中経路を変えたい場合は、通常のGoogleマ</description>
     </item>
     
     <item>
@@ -546,7 +533,6 @@
       
       <guid>https://www.330k.info/bicycle/touring/20160630-0703_karuizawa-naoetsu/</guid>
       <description>&lt;p&gt;会社の研修旅行が軽井沢で行われることになったので、それに合わせて自転車で前日入りすることにした。&lt;/p&gt;
-
 &lt;p&gt;研修終了後は東京へ戻らず、日本海を見るために直江津まで走行し、北陸新幹線にて輪行。&lt;/p&gt;</description>
     </item>
     
@@ -593,7 +579,7 @@
       <pubDate>Tue, 08 Dec 2015 17:40:00 +0900</pubDate>
       
       <guid>https://www.330k.info/essay/change-c-compiler-in-mathematica/</guid>
-      <description>Mathematica 8から、CompileでCコンパイラを使って直接ネイティブコードにコンパイルできるようになった。 使用するCコンパイラは、 Needs[&amp;quot;CCompilerDriver`&amp;quot;]; CCompilerDriver`$CCompiler = { &amp;quot;Name&amp;quot; -&amp;gt; &amp;quot;GCC&amp;quot;, &amp;quot;Compiler&amp;quot; -&amp;gt; CCompilerDriver`GCCCompiler`GCCCompiler, &amp;quot;CompilerInstallation&amp;quot; -&amp;gt; &amp;quot;/usr/bin&amp;quot;, &amp;quot;CompilerName&amp;quot; -&amp;gt; Automatic }; というように、CCompilerDriver`$CCompilerを変更して指定する。 以前からのCompile(&amp;ldquo;WVM&amp;rdquo;)と、各コンパイラの比較のため、ベンチマークを行ってみた。 検証環境は以下の通り。 CPU: Intel Core-i7 3770 (インテル</description>
+      <description>Mathematica 8から、CompileでCコンパイラを使って直接ネイティブコードにコンパイルできるようになった。 使用するCコンパイラは、 Needs[&amp;#34;CCompilerDriver`&amp;#34;]; CCompilerDriver`$CCompiler = { &amp;#34;Name&amp;#34; -&amp;gt; &amp;#34;GCC&amp;#34;, &amp;#34;Compiler&amp;#34; -&amp;gt; CCompilerDriver`GCCCompiler`GCCCompiler, &amp;#34;CompilerInstallation&amp;#34; -&amp;gt; &amp;#34;/usr/bin&amp;#34;, &amp;#34;CompilerName&amp;#34; -&amp;gt; Automatic }; というように、CCompilerDriver`$CCompilerを変更して指定する。 以前からのCompile(&amp;ldquo;WVM&amp;rdquo;)と、各コンパイラの比較のため、ベンチマークを行ってみた。 検証環境は以下の通り。 CPU: Intel Core-i7 3770 (インテル</description>
     </item>
     
     <item>
@@ -684,7 +670,7 @@
       <pubDate>Tue, 04 Aug 2015 00:00:00 +0900</pubDate>
       
       <guid>https://www.330k.info/essay/install-windows-10-to-panasonic-letsnote-cf-n10/</guid>
-      <description>Windows Insider Programに登録していたので、7/31に「Windows 10がでたよ〜」というメールがGabe Aulからやってきた。 ゆくゆくは更新プログラムが提供されるけど、早く試したい人は「メディア作成ツール」をダウンロードして使うといいよ、 とのことなので、会社で余っていたPCにインストールしてみた。 インストール 機種: Panasonic Let&amp;rsquo;s Note CF-N10(法人向けモデル) Windows 7 32bit版からのアップグレード Office 2010、A</description>
+      <description>Windows Insider Programに登録していたので、7/31に「Windows 10がでたよ〜」というメールがGabe Aulからやってきた。 ゆくゆくは更新プログラムが提供されるけど、早く試したい人は「メディア作成ツール」をダウンロードして使うといいよ、 とのことなので、会社で余っていたPCにインストールしてみた。 インストール 機種: Panasonic Let&#39;s Note CF-N10(法人向けモデル) Windows 7 32bit版からのアップグレード Office 2010、A</description>
     </item>
     
     <item>
@@ -839,7 +825,6 @@
       
       <guid>https://www.330k.info/bicycle/touring/20130709-16-yokohama-tohoku-pacific-oomazaki/</guid>
       <description>&lt;p&gt;3・11の震災当時、名古屋に住んでいたため実感が湧いていなかった。&lt;/p&gt;
-
 &lt;p&gt;被害を受けた地域を実際に走り、被害の大きさと復興具合を体感してきた。&lt;/p&gt;</description>
     </item>
     
@@ -867,7 +852,7 @@
       <pubDate>Sun, 14 Oct 2012 00:00:00 +0900</pubDate>
       
       <guid>https://www.330k.info/essay/process-blob-and-multibyte-string-from-sqlite-with-mathematica/</guid>
-      <description>ドキュメントにはないものの、MathematicaではSQLiteを扱うことができる。 しかしながら、BLOB型や文字列で日本語などを扱うには少し工夫が必要なので、メモ。 BLOB型 select 直接BLOB型をselectすると$Failedが返ってくるので、hex関数で16進文字列として返す。 db = Database`OpenDatabase[sqlitefilepath]; rs = Database`QueryDatabase[db, &amp;quot;select hex(column_name) from table_name&amp;quot;]; これを16進文字列→数値→バイト列→文字列と変換して、最後にImportStringで読み込むと、</description>
+      <description>ドキュメントにはないものの、MathematicaではSQLiteを扱うことができる。 しかしながら、BLOB型や文字列で日本語などを扱うには少し工夫が必要なので、メモ。 BLOB型 select 直接BLOB型をselectすると$Failedが返ってくるので、hex関数で16進文字列として返す。 db = Database`OpenDatabase[sqlitefilepath]; rs = Database`QueryDatabase[db, &amp;#34;select hex(column_name) from table_name&amp;#34;]; これを16進文字列→数値→バイト列→文字列と変換して、最後にImportStringで読み込むと、</description>
     </item>
     
     <item>
@@ -876,7 +861,7 @@
       <pubDate>Tue, 09 Oct 2012 00:00:00 +0900</pubDate>
       
       <guid>https://www.330k.info/essay/how-to-make-mathematica8-process-japanese-on-ubuntu-1204-ltf-64bit/</guid>
-      <description>Mathematica 8 Home Edition 日本語版をUbuntu 12.04 LTS 64bit版にインストールしたところ、 ディレクトリ、ファイル名に日本語が含まれるノートブックファイル(.nb)を開けない ディレクトリ、ファイル名に日本語が含まれるとImport/Exportできない、FileNamesで列挙できない ノートブック中に日本語を入力できない $SystemCharacterEncoding、$CharacterEncodingが&amp;rdqu</description>
+      <description>Mathematica 8 Home Edition 日本語版をUbuntu 12.04 LTS 64bit版にインストールしたところ、 ディレクトリ、ファイル名に日本語が含まれるノートブックファイル(.nb)を開けない ディレクトリ、ファイル名に日本語が含まれるとImport/Exportできない、FileNamesで列挙できない ノートブック中に日本語を入力できない $SystemCharacterEncoding、$CharacterEncodingが&amp;quot</description>
     </item>
     
     <item>
@@ -904,9 +889,7 @@
       
       <guid>https://www.330k.info/bicycle/touring/20120814-17-hakodate-wakkanai/</guid>
       <description>&lt;p&gt;自転車乗りの夢、北海道をついに走ることに。&lt;/p&gt;
-
 &lt;p&gt;青春18切符を2日分使って函館まで行き、函館から走行。&lt;/p&gt;
-
 &lt;p&gt;帰りは特急と新幹線を乗り継いだ。&lt;/p&gt;</description>
     </item>
     
@@ -917,9 +900,7 @@
       
       <guid>https://www.330k.info/bicycle/touring/20120430-0506-nagoya-kagoshima/</guid>
       <description>&lt;p&gt;ゴールデンウィークをフルに使って名古屋から鹿児島まで走行した。&lt;/p&gt;
-
 &lt;p&gt;ルートは分かりやすく、名古屋〜大阪は国道1号、大阪〜北九州は国道2号、北九州〜鹿児島は国道10号。&lt;/p&gt;
-
 &lt;p&gt;雨のため妹尾〜東広島間は輪行し、5月2日は休憩した。&lt;/p&gt;</description>
     </item>
     
@@ -930,7 +911,6 @@
       
       <guid>https://www.330k.info/bicycle/touring/20120320-biwako-lake/</guid>
       <description>&lt;p&gt;2回めのビワイチ。&lt;/p&gt;
-
 &lt;p&gt;前回の大津市街地はあまり楽しくなかったので、今回は琵琶湖大橋を渡ってショートカットした。&lt;/p&gt;</description>
     </item>
     
@@ -986,7 +966,6 @@
       
       <guid>https://www.330k.info/bicycle/touring/20110109-atsumi-peninsula/</guid>
       <description>&lt;p&gt;知多半島から渥美半島にフェリーで行き、そこから3連休の間に東へできるだけ進んでみようとした・・・。&lt;/p&gt;
-
 &lt;p&gt;結果は、1日目に膝の痛みが発生して磐田にて離脱。&lt;/p&gt;</description>
     </item>
     
@@ -1006,7 +985,6 @@
       
       <guid>https://www.330k.info/bicycle/touring/20101120-kourankei/</guid>
       <description>&lt;p&gt;愛知県では有名な紅葉スポット、香嵐渓までのんびりライド。&lt;/p&gt;
-
 &lt;p&gt;ちょっと遅めだったけれど紅葉はきれいだった。&lt;/p&gt;</description>
     </item>
     
@@ -1083,7 +1061,6 @@
       
       <guid>https://www.330k.info/bicycle/touring/20100704-chitahantou/</guid>
       <description>&lt;p&gt;名古屋(の隣)に転勤になったので、1週間前に実家から新幹線で運んできたルイガノの自転車でとりあえず知多半島一周に出ることにした。&lt;/p&gt;
-
 &lt;p&gt;コースは地図に示すように知多半島を時計回りに1周することとした。&lt;/p&gt;</description>
     </item>
     
@@ -1139,14 +1116,12 @@
       
       <guid>https://www.330k.info/bicycle/touring/20091107-08-toukaimuraibaraki/</guid>
       <description>&lt;p&gt;ホッケー社会人リーグの最終戦が茨城県東海高校のグラウンドで行われることになったので、国道6号の水戸街道部分を自転車で走破するチャンスと捉えて&lt;/p&gt;
-
 &lt;ol&gt;
 &lt;li&gt;試合前日に1日かけて東海村まで行く&lt;/li&gt;
 &lt;li&gt;試合は13時に開始されるので午前中は東海村の原子力関連施設を観光しにポタリング&lt;/li&gt;
 &lt;li&gt;ついでに試合をする&lt;/li&gt;
 &lt;li&gt;帰りは輪行&lt;/li&gt;
 &lt;/ol&gt;
-
 &lt;p&gt;という計画を立て、実行してみた。&lt;/p&gt;</description>
     </item>
     
@@ -1219,7 +1194,7 @@
       <pubDate>Sun, 25 Oct 2009 00:00:00 +0900</pubDate>
       
       <guid>https://www.330k.info/essay/import-gpx-file-in-mathematica/</guid>
-      <description>MathematicaでGPXファイルを読み込んで解釈する方法のメモ。 対象となるGPXファイルを xml = Import[filepath, &amp;quot;XML&amp;quot;]; でまずXMLとして読み込んでおいて、 trk = Cases[xml, XMLElement[&amp;quot;trk&amp;quot;, _, _], Infinity]; でtrk要素を抜き出し、 trkpt = (ToExpression[{&amp;quot;lat&amp;quot;, &amp;quot;lon&amp;quot;} /. Cases[#1, XMLElement[&amp;quot;trkpt&amp;quot;, attr_, _] :&amp;gt; attr, Infinity]] &amp;amp; ) /@ trk; でそれぞれのtrk要素からtrkpt要素を抜き出して緯度と経度を得る。 Sep. 28 2013追記 Mathematica 8からは標準でGPXをImport可能になった。</description>
+      <description>MathematicaでGPXファイルを読み込んで解釈する方法のメモ。 対象となるGPXファイルを xml = Import[filepath, &amp;#34;XML&amp;#34;]; でまずXMLとして読み込んでおいて、 trk = Cases[xml, XMLElement[&amp;#34;trk&amp;#34;, _, _], Infinity]; でtrk要素を抜き出し、 trkpt = (ToExpression[{&amp;#34;lat&amp;#34;, &amp;#34;lon&amp;#34;} /. Cases[#1, XMLElement[&amp;#34;trkpt&amp;#34;, attr_, _] :&amp;gt; attr, Infinity]] &amp;amp; ) /@ trk; でそれぞれのtrk要素からtrkpt要素を抜き出して緯度と経度を得る。 Sep. 28 2013追記 Mathematica 8からは標準でGPXをImport可能になった。</description>
     </item>
     
     <item>
@@ -1247,7 +1222,6 @@
       
       <guid>https://www.330k.info/bicycle/touring/20090918-20-takamorinagano/</guid>
       <description>&lt;p&gt;9月の連休(シルバーウィーク)を利用して、農作業の手伝いも兼ねて祖母宅まで自転車で行くことにした。&lt;/p&gt;
-
 &lt;p&gt;中山道経由も考えたが、ルートとしてはまずは甲州街道から伊那路を辿ることにした。&lt;/p&gt;</description>
     </item>
     

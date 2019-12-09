@@ -78,45 +78,32 @@ if (!doNotTrack) {
 			
 		</header><div class="content post__content clearfix">
 			<p>EDINETで出力したPDFを会社のプレスリリースで掲載したところ、iPhoneで閲覧できない、という問題が発生した。</p>
-
 <p>PDFファイルを見てみると、日本語フォントが埋め込まれていない(下図)。</p>
-
 <figure>
     <img src="EDINET002.png"/> 
 </figure>
 
-
 <p>そのため、iPhoneなどMS系の日本語フォントがない環境では、日本語部分が真っ白の閲覧できないものになっていた。
 ちなみに、Ubuntuでは別の日本語書体で代替表示された。</p>
-
 <figure>
     <img src="EDINET003.png"/> 
 </figure>
 
-
 <p>ご丁寧に印刷も低解像度に限られている(上図)。</p>
-
 <p>他社のプレスリリースを探してみると、そのままのPDFが使われていたところが多かったが、
 中には低解像度で印刷して1ページが1枚の画像になったPDFも見つかった。苦労の痕跡が・・・。</p>
-
 <p>本来はそのようなPDFを作成するEDINETのシステムが悪いのだが、上の人間は「iPhoneでも見れるようにしろ」と聞かない。</p>
-
 <p>Google先生に聞いてみると、Macで見れないという2011年の投稿が見つかったので、昔からEDINETは変わっていないらしい。
 続けて解決策を探すと、「PDFのセキュリティ設定を無視するビューアをつかって仮想PDFプリンタに印刷する」という方法で解決できることが分かった。</p>
-
 <p>PDFのセキュリティ設定を無視するビューアで代表的なものはEdgeやFirefox(2016年11月現在)。従って</p>
-
 <ul>
 <li>Windows 10なら、EdgeでPDFを開いてプリンタにMicrosoft Print to PDFを選択して印刷</li>
 <li>Windows 7でもAcrobatなどの仮想PDFプリンタがあれば、Firefoxで開いて仮想PDFプリンタに印刷</li>
 </ul>
-
 <p>という手順でフォントを埋め込んだPDFを作成できた。(下図はEdge + Microsoft Print to PDFで作成したもの)</p>
-
 <figure>
     <img src="EDINET001.png"/> 
 </figure>
-
 
 <p>ちなみに、このようにして作成したPDFは法的に問題ないのか弁護士の人に聞いてみたところ、OKらしい。</p>
 

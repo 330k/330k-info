@@ -79,153 +79,147 @@ if (!doNotTrack) {
 		</header><div class="content post__content clearfix">
 			<p>LS-DYNAのキーワードファイルを書きだすプログラムを書いたところ、浮動小数点数を固定文字数(10文字)にフォーマットする所でつまづいた。
 具体的には</p>
-
 <ul>
 <li>String.formatやDecimalFormatの動作が遅い(String.formatよりはDecimalFormatのほうが速いが)</li>
 <li>文字数を10文字に制限することが難しい(絶対値の大小比較を行なって桁数ごとに条件分岐をしても、四捨五入によって意図しない文字数(11文字)になる)</li>
 </ul>
-
 <p>という問題にあたった。そこでdoubleから長さ10の文字列を力技で書きだすロジックを自作した。特徴は以下の通り。</p>
-
 <ul>
 <li>正の時は先頭にスペース、負の時は先頭に&rdquo;-&ldquo;を入れる</li>
 <li>10文字の制限の中で最も有効桁数が大きくなるようにフォーマット</li>
 <li>四捨五入はしない！</li>
-
-<li><p>DecimalFormatの15倍高速(もう少し工夫はできるが)</p>
-
-<pre><code class="language-java">private static String formatFloat10(double d){
-char[] c = new char[10];
-double a;
-
-if(d == 0.0){
-    return &quot; 0.0000000&quot;;
-}
-if(d &lt; 0){
-    c[0] = '-';
-    a = -d;
-}else{
-    c[0] = ' ';
-    a = d;
-}
-int m = (int)Math.floor(Math.log10(a));
-
-if(m &lt;= -100){
-    for(int i = 1; i &lt; 1 - m; i++) a *= 10;
-    c[1] = (char)('0' + Math.floor(a));
-    a = (a - Math.floor(a)) * 10;
-    c[2] = '.';
-    for(int i = 3; i &lt; 5; i++){
-        /*c[i] = (char)('0' + Math.floor(a));
-        a = (a - Math.floor(a)) * 10;*/
-        double b = Math.floor(a);
-        c[i] = (char)('0' + b);
-        a = (a - b) * 10.0;
-    }
-    c[5] = 'e';
-    c[6] = '-';
-    c[7] = (char)('0' + (-m) * 0.01);
-    c[8] = (char)('0' + (-m * 0.1) % 10);
-    c[9] = (char)('0' + (-m) % 10);
-
-}else if(m &lt;= -10){
-    for(int i = 1; i &lt; 1 - m; i++) a *= 10;
-    c[1] = (char)('0' + Math.floor(a));
-    a = (a - Math.floor(a)) * 10;
-    c[2] = '.';
-    for(int i = 3; i &lt; 6; i++){
-        double b = Math.floor(a);
-        c[i] = (char)('0' + b);
-        a = (a - b) * 10.0;
-    }
-    c[6] = 'e';
-    c[7] = '-';
-    c[8] = (char)('0' + (-m) * 0.1);
-    c[9] = (char)('0' + (-m) % 10);
-
-}else if(m &lt;= -4){
-    for(int i = 1; i &lt; 1 - m; i++) a *= 10;
-    c[1] = (char)('0' + Math.floor(a));
-    a = (a - Math.floor(a)) * 10;
-    c[2] = '.';
-    for(int i = 3; i &lt; 7; i++){
-        double b = Math.floor(a);
-        c[i] = (char)('0' + b);
-        a = (a - b) * 10.0;
-    }
-    c[7] = 'e';
-    c[8] = '-';
-    c[9] = (char)('0' - m);
-
-}else if(m &lt;= -1){
-    c[1] = '0';
-    c[2] = '.';
-    a *= 10;
-    for(int i = 3; i &lt; 10; i++){
-        double b = Math.floor(a);
-        c[i] = (char)('0' + b);
-        a = (a - b) * 10.0;
-    }
-
-}else if(m &lt;= 6){
-    for(int i = 1; i &lt; m + 1; i++) a *= 0.1;
-    for(int i = 1; i &lt; 10; i++){
-        double b = Math.floor(a);
-        c[i] = (char)('0' + b);
-        a = (a - b) * 10.0;
-        if(i == m + 1){
-            c[++i] = '.';
-        }
-    }
-}else if(m &lt;= 9){
-    for(int i = 1; i &lt; m + 1; i++) a *= 0.1;
-    c[1] = (char)('0' + Math.floor(a));
-    a = (a - Math.floor(a)) * 10;
-    c[2] = '.';
-    for(int i = 3; i &lt; 8; i++){
-        double b = Math.floor(a);
-        c[i] = (char)('0' + b);
-        a = (a - b) * 10.0;
-    }
-    c[8] = 'e';
-    c[9] = (char)('0' + m);
-
-}else if(m &lt;= 99){
-    for(int i = 1; i &lt; m + 1; i++) a *= 0.1;
-    c[1] = (char)('0' + Math.floor(a));
-    a = (a - Math.floor(a)) * 10;
-    c[2] = '.';
-    for(int i = 3; i &lt; 7; i++){
-        double b = Math.floor(a);
-        c[i] = (char)('0' + b);
-        a = (a - b) * 10.0;
-    }
-    c[7] = 'e';
-    c[8] = (char)('0' + m * 0.1);
-    c[9] = (char)('0' + m % 10);
-
-}else{
-    for(int i = 1; i &lt; m + 1; i++) a *= 0.1;
-    c[1] = (char)('0' + Math.floor(a));
-    a = (a - Math.floor(a)) * 10;
-    c[2] = '.';
-    for(int i = 3; i &lt; 6; i++){
-        double b = Math.floor(a);
-        c[i] = (char)('0' + b);
-        a = (a - b) * 10.0;
-    }
-    c[6] = 'e';
-    c[7] = (char)('0' + m * 0.01);
-    c[8] = (char)('0' + (m * 0.1) % 10);
-    c[9] = (char)('0' + m % 10);
-
-}
-
-return new String(c);
-}
-</code></pre></li>
+<li>DecimalFormatの15倍高速(もう少し工夫はできるが)</li>
 </ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> String <span style="color:#a6e22e">formatFloat10</span><span style="color:#f92672">(</span><span style="color:#66d9ef">double</span> d<span style="color:#f92672">)</span><span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">char</span><span style="color:#f92672">[</span><span style="color:#f92672">]</span> c <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#66d9ef">char</span><span style="color:#f92672">[</span>10<span style="color:#f92672">]</span><span style="color:#f92672">;</span>
+    <span style="color:#66d9ef">double</span> a<span style="color:#f92672">;</span>
 
+    <span style="color:#66d9ef">if</span><span style="color:#f92672">(</span>d <span style="color:#f92672">=</span><span style="color:#f92672">=</span> 0<span style="color:#f92672">.</span><span style="color:#a6e22e">0</span><span style="color:#f92672">)</span><span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34; 0.0000000&#34;</span><span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+    <span style="color:#66d9ef">if</span><span style="color:#f92672">(</span>d <span style="color:#f92672">&lt;</span> 0<span style="color:#f92672">)</span><span style="color:#f92672">{</span>
+        c<span style="color:#f92672">[</span>0<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;-&#39;</span><span style="color:#f92672">;</span>
+        a <span style="color:#f92672">=</span> <span style="color:#f92672">-</span>d<span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span><span style="color:#66d9ef">else</span><span style="color:#f92672">{</span>
+        c<span style="color:#f92672">[</span>0<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39; &#39;</span><span style="color:#f92672">;</span>
+        a <span style="color:#f92672">=</span> d<span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+    <span style="color:#66d9ef">int</span> m <span style="color:#f92672">=</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">int</span><span style="color:#f92672">)</span>Math<span style="color:#f92672">.</span><span style="color:#a6e22e">floor</span><span style="color:#f92672">(</span>Math<span style="color:#f92672">.</span><span style="color:#a6e22e">log10</span><span style="color:#f92672">(</span>a<span style="color:#f92672">)</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+
+    <span style="color:#66d9ef">if</span><span style="color:#f92672">(</span>m <span style="color:#f92672">&lt;</span><span style="color:#f92672">=</span> <span style="color:#f92672">-</span>100<span style="color:#f92672">)</span><span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">for</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> 1<span style="color:#f92672">;</span> i <span style="color:#f92672">&lt;</span> 1 <span style="color:#f92672">-</span> m<span style="color:#f92672">;</span> i<span style="color:#f92672">+</span><span style="color:#f92672">+</span><span style="color:#f92672">)</span> a <span style="color:#f92672">*</span><span style="color:#f92672">=</span> 10<span style="color:#f92672">;</span>
+        c<span style="color:#f92672">[</span>1<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">char</span><span style="color:#f92672">)</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#39;0&#39;</span> <span style="color:#f92672">+</span> Math<span style="color:#f92672">.</span><span style="color:#a6e22e">floor</span><span style="color:#f92672">(</span>a<span style="color:#f92672">)</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+        a <span style="color:#f92672">=</span> <span style="color:#f92672">(</span>a <span style="color:#f92672">-</span> Math<span style="color:#f92672">.</span><span style="color:#a6e22e">floor</span><span style="color:#f92672">(</span>a<span style="color:#f92672">)</span><span style="color:#f92672">)</span> <span style="color:#f92672">*</span> 10<span style="color:#f92672">;</span>
+        c<span style="color:#f92672">[</span>2<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;.&#39;</span><span style="color:#f92672">;</span>
+        <span style="color:#66d9ef">for</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> 3<span style="color:#f92672">;</span> i <span style="color:#f92672">&lt;</span> 5<span style="color:#f92672">;</span> i<span style="color:#f92672">+</span><span style="color:#f92672">+</span><span style="color:#f92672">)</span><span style="color:#f92672">{</span>
+            <span style="color:#75715e">/*c[i] = (char)(&#39;0&#39; + Math.floor(a));
+</span><span style="color:#75715e">            a = (a - Math.floor(a)) * 10;*/</span>
+            <span style="color:#66d9ef">double</span> b <span style="color:#f92672">=</span> Math<span style="color:#f92672">.</span><span style="color:#a6e22e">floor</span><span style="color:#f92672">(</span>a<span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+            c<span style="color:#f92672">[</span>i<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">char</span><span style="color:#f92672">)</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#39;0&#39;</span> <span style="color:#f92672">+</span> b<span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+            a <span style="color:#f92672">=</span> <span style="color:#f92672">(</span>a <span style="color:#f92672">-</span> b<span style="color:#f92672">)</span> <span style="color:#f92672">*</span> 10<span style="color:#f92672">.</span><span style="color:#a6e22e">0</span><span style="color:#f92672">;</span>
+        <span style="color:#f92672">}</span>
+        c<span style="color:#f92672">[</span>5<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;e&#39;</span><span style="color:#f92672">;</span>
+        c<span style="color:#f92672">[</span>6<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;-&#39;</span><span style="color:#f92672">;</span>
+        c<span style="color:#f92672">[</span>7<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">char</span><span style="color:#f92672">)</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#39;0&#39;</span> <span style="color:#f92672">+</span> <span style="color:#f92672">(</span><span style="color:#f92672">-</span>m<span style="color:#f92672">)</span> <span style="color:#f92672">*</span> 0<span style="color:#f92672">.</span><span style="color:#a6e22e">01</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+        c<span style="color:#f92672">[</span>8<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">char</span><span style="color:#f92672">)</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#39;0&#39;</span> <span style="color:#f92672">+</span> <span style="color:#f92672">(</span><span style="color:#f92672">-</span>m <span style="color:#f92672">*</span> 0<span style="color:#f92672">.</span><span style="color:#a6e22e">1</span><span style="color:#f92672">)</span> <span style="color:#f92672">%</span> 10<span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+        c<span style="color:#f92672">[</span>9<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">char</span><span style="color:#f92672">)</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#39;0&#39;</span> <span style="color:#f92672">+</span> <span style="color:#f92672">(</span><span style="color:#f92672">-</span>m<span style="color:#f92672">)</span> <span style="color:#f92672">%</span> 10<span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+
+    <span style="color:#f92672">}</span><span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span><span style="color:#f92672">(</span>m <span style="color:#f92672">&lt;</span><span style="color:#f92672">=</span> <span style="color:#f92672">-</span>10<span style="color:#f92672">)</span><span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">for</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> 1<span style="color:#f92672">;</span> i <span style="color:#f92672">&lt;</span> 1 <span style="color:#f92672">-</span> m<span style="color:#f92672">;</span> i<span style="color:#f92672">+</span><span style="color:#f92672">+</span><span style="color:#f92672">)</span> a <span style="color:#f92672">*</span><span style="color:#f92672">=</span> 10<span style="color:#f92672">;</span>
+        c<span style="color:#f92672">[</span>1<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">char</span><span style="color:#f92672">)</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#39;0&#39;</span> <span style="color:#f92672">+</span> Math<span style="color:#f92672">.</span><span style="color:#a6e22e">floor</span><span style="color:#f92672">(</span>a<span style="color:#f92672">)</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+        a <span style="color:#f92672">=</span> <span style="color:#f92672">(</span>a <span style="color:#f92672">-</span> Math<span style="color:#f92672">.</span><span style="color:#a6e22e">floor</span><span style="color:#f92672">(</span>a<span style="color:#f92672">)</span><span style="color:#f92672">)</span> <span style="color:#f92672">*</span> 10<span style="color:#f92672">;</span>
+        c<span style="color:#f92672">[</span>2<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;.&#39;</span><span style="color:#f92672">;</span>
+        <span style="color:#66d9ef">for</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> 3<span style="color:#f92672">;</span> i <span style="color:#f92672">&lt;</span> 6<span style="color:#f92672">;</span> i<span style="color:#f92672">+</span><span style="color:#f92672">+</span><span style="color:#f92672">)</span><span style="color:#f92672">{</span>
+            <span style="color:#66d9ef">double</span> b <span style="color:#f92672">=</span> Math<span style="color:#f92672">.</span><span style="color:#a6e22e">floor</span><span style="color:#f92672">(</span>a<span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+            c<span style="color:#f92672">[</span>i<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">char</span><span style="color:#f92672">)</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#39;0&#39;</span> <span style="color:#f92672">+</span> b<span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+            a <span style="color:#f92672">=</span> <span style="color:#f92672">(</span>a <span style="color:#f92672">-</span> b<span style="color:#f92672">)</span> <span style="color:#f92672">*</span> 10<span style="color:#f92672">.</span><span style="color:#a6e22e">0</span><span style="color:#f92672">;</span>
+        <span style="color:#f92672">}</span>
+        c<span style="color:#f92672">[</span>6<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;e&#39;</span><span style="color:#f92672">;</span>
+        c<span style="color:#f92672">[</span>7<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;-&#39;</span><span style="color:#f92672">;</span>
+        c<span style="color:#f92672">[</span>8<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">char</span><span style="color:#f92672">)</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#39;0&#39;</span> <span style="color:#f92672">+</span> <span style="color:#f92672">(</span><span style="color:#f92672">-</span>m<span style="color:#f92672">)</span> <span style="color:#f92672">*</span> 0<span style="color:#f92672">.</span><span style="color:#a6e22e">1</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+        c<span style="color:#f92672">[</span>9<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">char</span><span style="color:#f92672">)</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#39;0&#39;</span> <span style="color:#f92672">+</span> <span style="color:#f92672">(</span><span style="color:#f92672">-</span>m<span style="color:#f92672">)</span> <span style="color:#f92672">%</span> 10<span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+
+    <span style="color:#f92672">}</span><span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span><span style="color:#f92672">(</span>m <span style="color:#f92672">&lt;</span><span style="color:#f92672">=</span> <span style="color:#f92672">-</span>4<span style="color:#f92672">)</span><span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">for</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> 1<span style="color:#f92672">;</span> i <span style="color:#f92672">&lt;</span> 1 <span style="color:#f92672">-</span> m<span style="color:#f92672">;</span> i<span style="color:#f92672">+</span><span style="color:#f92672">+</span><span style="color:#f92672">)</span> a <span style="color:#f92672">*</span><span style="color:#f92672">=</span> 10<span style="color:#f92672">;</span>
+        c<span style="color:#f92672">[</span>1<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">char</span><span style="color:#f92672">)</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#39;0&#39;</span> <span style="color:#f92672">+</span> Math<span style="color:#f92672">.</span><span style="color:#a6e22e">floor</span><span style="color:#f92672">(</span>a<span style="color:#f92672">)</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+        a <span style="color:#f92672">=</span> <span style="color:#f92672">(</span>a <span style="color:#f92672">-</span> Math<span style="color:#f92672">.</span><span style="color:#a6e22e">floor</span><span style="color:#f92672">(</span>a<span style="color:#f92672">)</span><span style="color:#f92672">)</span> <span style="color:#f92672">*</span> 10<span style="color:#f92672">;</span>
+        c<span style="color:#f92672">[</span>2<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;.&#39;</span><span style="color:#f92672">;</span>
+        <span style="color:#66d9ef">for</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> 3<span style="color:#f92672">;</span> i <span style="color:#f92672">&lt;</span> 7<span style="color:#f92672">;</span> i<span style="color:#f92672">+</span><span style="color:#f92672">+</span><span style="color:#f92672">)</span><span style="color:#f92672">{</span>
+            <span style="color:#66d9ef">double</span> b <span style="color:#f92672">=</span> Math<span style="color:#f92672">.</span><span style="color:#a6e22e">floor</span><span style="color:#f92672">(</span>a<span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+            c<span style="color:#f92672">[</span>i<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">char</span><span style="color:#f92672">)</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#39;0&#39;</span> <span style="color:#f92672">+</span> b<span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+            a <span style="color:#f92672">=</span> <span style="color:#f92672">(</span>a <span style="color:#f92672">-</span> b<span style="color:#f92672">)</span> <span style="color:#f92672">*</span> 10<span style="color:#f92672">.</span><span style="color:#a6e22e">0</span><span style="color:#f92672">;</span>
+        <span style="color:#f92672">}</span>
+        c<span style="color:#f92672">[</span>7<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;e&#39;</span><span style="color:#f92672">;</span>
+        c<span style="color:#f92672">[</span>8<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;-&#39;</span><span style="color:#f92672">;</span>
+        c<span style="color:#f92672">[</span>9<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">char</span><span style="color:#f92672">)</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#39;0&#39;</span> <span style="color:#f92672">-</span> m<span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+
+    <span style="color:#f92672">}</span><span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span><span style="color:#f92672">(</span>m <span style="color:#f92672">&lt;</span><span style="color:#f92672">=</span> <span style="color:#f92672">-</span>1<span style="color:#f92672">)</span><span style="color:#f92672">{</span>
+        c<span style="color:#f92672">[</span>1<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;0&#39;</span><span style="color:#f92672">;</span>
+        c<span style="color:#f92672">[</span>2<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;.&#39;</span><span style="color:#f92672">;</span>
+        a <span style="color:#f92672">*</span><span style="color:#f92672">=</span> 10<span style="color:#f92672">;</span>
+        <span style="color:#66d9ef">for</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> 3<span style="color:#f92672">;</span> i <span style="color:#f92672">&lt;</span> 10<span style="color:#f92672">;</span> i<span style="color:#f92672">+</span><span style="color:#f92672">+</span><span style="color:#f92672">)</span><span style="color:#f92672">{</span>
+            <span style="color:#66d9ef">double</span> b <span style="color:#f92672">=</span> Math<span style="color:#f92672">.</span><span style="color:#a6e22e">floor</span><span style="color:#f92672">(</span>a<span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+            c<span style="color:#f92672">[</span>i<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">char</span><span style="color:#f92672">)</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#39;0&#39;</span> <span style="color:#f92672">+</span> b<span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+            a <span style="color:#f92672">=</span> <span style="color:#f92672">(</span>a <span style="color:#f92672">-</span> b<span style="color:#f92672">)</span> <span style="color:#f92672">*</span> 10<span style="color:#f92672">.</span><span style="color:#a6e22e">0</span><span style="color:#f92672">;</span>
+        <span style="color:#f92672">}</span>
+
+    <span style="color:#f92672">}</span><span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span><span style="color:#f92672">(</span>m <span style="color:#f92672">&lt;</span><span style="color:#f92672">=</span> 6<span style="color:#f92672">)</span><span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">for</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> 1<span style="color:#f92672">;</span> i <span style="color:#f92672">&lt;</span> m <span style="color:#f92672">+</span> 1<span style="color:#f92672">;</span> i<span style="color:#f92672">+</span><span style="color:#f92672">+</span><span style="color:#f92672">)</span> a <span style="color:#f92672">*</span><span style="color:#f92672">=</span> 0<span style="color:#f92672">.</span><span style="color:#a6e22e">1</span><span style="color:#f92672">;</span>
+        <span style="color:#66d9ef">for</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> 1<span style="color:#f92672">;</span> i <span style="color:#f92672">&lt;</span> 10<span style="color:#f92672">;</span> i<span style="color:#f92672">+</span><span style="color:#f92672">+</span><span style="color:#f92672">)</span><span style="color:#f92672">{</span>
+            <span style="color:#66d9ef">double</span> b <span style="color:#f92672">=</span> Math<span style="color:#f92672">.</span><span style="color:#a6e22e">floor</span><span style="color:#f92672">(</span>a<span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+            c<span style="color:#f92672">[</span>i<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">char</span><span style="color:#f92672">)</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#39;0&#39;</span> <span style="color:#f92672">+</span> b<span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+            a <span style="color:#f92672">=</span> <span style="color:#f92672">(</span>a <span style="color:#f92672">-</span> b<span style="color:#f92672">)</span> <span style="color:#f92672">*</span> 10<span style="color:#f92672">.</span><span style="color:#a6e22e">0</span><span style="color:#f92672">;</span>
+            <span style="color:#66d9ef">if</span><span style="color:#f92672">(</span>i <span style="color:#f92672">=</span><span style="color:#f92672">=</span> m <span style="color:#f92672">+</span> 1<span style="color:#f92672">)</span><span style="color:#f92672">{</span>
+                c<span style="color:#f92672">[</span><span style="color:#f92672">+</span><span style="color:#f92672">+</span>i<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;.&#39;</span><span style="color:#f92672">;</span>
+            <span style="color:#f92672">}</span>
+        <span style="color:#f92672">}</span>
+    <span style="color:#f92672">}</span><span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span><span style="color:#f92672">(</span>m <span style="color:#f92672">&lt;</span><span style="color:#f92672">=</span> 9<span style="color:#f92672">)</span><span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">for</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> 1<span style="color:#f92672">;</span> i <span style="color:#f92672">&lt;</span> m <span style="color:#f92672">+</span> 1<span style="color:#f92672">;</span> i<span style="color:#f92672">+</span><span style="color:#f92672">+</span><span style="color:#f92672">)</span> a <span style="color:#f92672">*</span><span style="color:#f92672">=</span> 0<span style="color:#f92672">.</span><span style="color:#a6e22e">1</span><span style="color:#f92672">;</span>
+        c<span style="color:#f92672">[</span>1<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">char</span><span style="color:#f92672">)</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#39;0&#39;</span> <span style="color:#f92672">+</span> Math<span style="color:#f92672">.</span><span style="color:#a6e22e">floor</span><span style="color:#f92672">(</span>a<span style="color:#f92672">)</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+        a <span style="color:#f92672">=</span> <span style="color:#f92672">(</span>a <span style="color:#f92672">-</span> Math<span style="color:#f92672">.</span><span style="color:#a6e22e">floor</span><span style="color:#f92672">(</span>a<span style="color:#f92672">)</span><span style="color:#f92672">)</span> <span style="color:#f92672">*</span> 10<span style="color:#f92672">;</span>
+        c<span style="color:#f92672">[</span>2<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;.&#39;</span><span style="color:#f92672">;</span>
+        <span style="color:#66d9ef">for</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> 3<span style="color:#f92672">;</span> i <span style="color:#f92672">&lt;</span> 8<span style="color:#f92672">;</span> i<span style="color:#f92672">+</span><span style="color:#f92672">+</span><span style="color:#f92672">)</span><span style="color:#f92672">{</span>
+            <span style="color:#66d9ef">double</span> b <span style="color:#f92672">=</span> Math<span style="color:#f92672">.</span><span style="color:#a6e22e">floor</span><span style="color:#f92672">(</span>a<span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+            c<span style="color:#f92672">[</span>i<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">char</span><span style="color:#f92672">)</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#39;0&#39;</span> <span style="color:#f92672">+</span> b<span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+            a <span style="color:#f92672">=</span> <span style="color:#f92672">(</span>a <span style="color:#f92672">-</span> b<span style="color:#f92672">)</span> <span style="color:#f92672">*</span> 10<span style="color:#f92672">.</span><span style="color:#a6e22e">0</span><span style="color:#f92672">;</span>
+        <span style="color:#f92672">}</span>
+        c<span style="color:#f92672">[</span>8<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;e&#39;</span><span style="color:#f92672">;</span>
+        c<span style="color:#f92672">[</span>9<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">char</span><span style="color:#f92672">)</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#39;0&#39;</span> <span style="color:#f92672">+</span> m<span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+
+    <span style="color:#f92672">}</span><span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span><span style="color:#f92672">(</span>m <span style="color:#f92672">&lt;</span><span style="color:#f92672">=</span> 99<span style="color:#f92672">)</span><span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">for</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> 1<span style="color:#f92672">;</span> i <span style="color:#f92672">&lt;</span> m <span style="color:#f92672">+</span> 1<span style="color:#f92672">;</span> i<span style="color:#f92672">+</span><span style="color:#f92672">+</span><span style="color:#f92672">)</span> a <span style="color:#f92672">*</span><span style="color:#f92672">=</span> 0<span style="color:#f92672">.</span><span style="color:#a6e22e">1</span><span style="color:#f92672">;</span>
+        c<span style="color:#f92672">[</span>1<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">char</span><span style="color:#f92672">)</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#39;0&#39;</span> <span style="color:#f92672">+</span> Math<span style="color:#f92672">.</span><span style="color:#a6e22e">floor</span><span style="color:#f92672">(</span>a<span style="color:#f92672">)</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+        a <span style="color:#f92672">=</span> <span style="color:#f92672">(</span>a <span style="color:#f92672">-</span> Math<span style="color:#f92672">.</span><span style="color:#a6e22e">floor</span><span style="color:#f92672">(</span>a<span style="color:#f92672">)</span><span style="color:#f92672">)</span> <span style="color:#f92672">*</span> 10<span style="color:#f92672">;</span>
+        c<span style="color:#f92672">[</span>2<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;.&#39;</span><span style="color:#f92672">;</span>
+        <span style="color:#66d9ef">for</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> 3<span style="color:#f92672">;</span> i <span style="color:#f92672">&lt;</span> 7<span style="color:#f92672">;</span> i<span style="color:#f92672">+</span><span style="color:#f92672">+</span><span style="color:#f92672">)</span><span style="color:#f92672">{</span>
+            <span style="color:#66d9ef">double</span> b <span style="color:#f92672">=</span> Math<span style="color:#f92672">.</span><span style="color:#a6e22e">floor</span><span style="color:#f92672">(</span>a<span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+            c<span style="color:#f92672">[</span>i<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">char</span><span style="color:#f92672">)</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#39;0&#39;</span> <span style="color:#f92672">+</span> b<span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+            a <span style="color:#f92672">=</span> <span style="color:#f92672">(</span>a <span style="color:#f92672">-</span> b<span style="color:#f92672">)</span> <span style="color:#f92672">*</span> 10<span style="color:#f92672">.</span><span style="color:#a6e22e">0</span><span style="color:#f92672">;</span>
+        <span style="color:#f92672">}</span>
+        c<span style="color:#f92672">[</span>7<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;e&#39;</span><span style="color:#f92672">;</span>
+        c<span style="color:#f92672">[</span>8<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">char</span><span style="color:#f92672">)</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#39;0&#39;</span> <span style="color:#f92672">+</span> m <span style="color:#f92672">*</span> 0<span style="color:#f92672">.</span><span style="color:#a6e22e">1</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+        c<span style="color:#f92672">[</span>9<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">char</span><span style="color:#f92672">)</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#39;0&#39;</span> <span style="color:#f92672">+</span> m <span style="color:#f92672">%</span> 10<span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+
+    <span style="color:#f92672">}</span><span style="color:#66d9ef">else</span><span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">for</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> 1<span style="color:#f92672">;</span> i <span style="color:#f92672">&lt;</span> m <span style="color:#f92672">+</span> 1<span style="color:#f92672">;</span> i<span style="color:#f92672">+</span><span style="color:#f92672">+</span><span style="color:#f92672">)</span> a <span style="color:#f92672">*</span><span style="color:#f92672">=</span> 0<span style="color:#f92672">.</span><span style="color:#a6e22e">1</span><span style="color:#f92672">;</span>
+        c<span style="color:#f92672">[</span>1<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">char</span><span style="color:#f92672">)</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#39;0&#39;</span> <span style="color:#f92672">+</span> Math<span style="color:#f92672">.</span><span style="color:#a6e22e">floor</span><span style="color:#f92672">(</span>a<span style="color:#f92672">)</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+        a <span style="color:#f92672">=</span> <span style="color:#f92672">(</span>a <span style="color:#f92672">-</span> Math<span style="color:#f92672">.</span><span style="color:#a6e22e">floor</span><span style="color:#f92672">(</span>a<span style="color:#f92672">)</span><span style="color:#f92672">)</span> <span style="color:#f92672">*</span> 10<span style="color:#f92672">;</span>
+        c<span style="color:#f92672">[</span>2<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;.&#39;</span><span style="color:#f92672">;</span>
+        <span style="color:#66d9ef">for</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> 3<span style="color:#f92672">;</span> i <span style="color:#f92672">&lt;</span> 6<span style="color:#f92672">;</span> i<span style="color:#f92672">+</span><span style="color:#f92672">+</span><span style="color:#f92672">)</span><span style="color:#f92672">{</span>
+            <span style="color:#66d9ef">double</span> b <span style="color:#f92672">=</span> Math<span style="color:#f92672">.</span><span style="color:#a6e22e">floor</span><span style="color:#f92672">(</span>a<span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+            c<span style="color:#f92672">[</span>i<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">char</span><span style="color:#f92672">)</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#39;0&#39;</span> <span style="color:#f92672">+</span> b<span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+            a <span style="color:#f92672">=</span> <span style="color:#f92672">(</span>a <span style="color:#f92672">-</span> b<span style="color:#f92672">)</span> <span style="color:#f92672">*</span> 10<span style="color:#f92672">.</span><span style="color:#a6e22e">0</span><span style="color:#f92672">;</span>
+        <span style="color:#f92672">}</span>
+        c<span style="color:#f92672">[</span>6<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;e&#39;</span><span style="color:#f92672">;</span>
+        c<span style="color:#f92672">[</span>7<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">char</span><span style="color:#f92672">)</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#39;0&#39;</span> <span style="color:#f92672">+</span> m <span style="color:#f92672">*</span> 0<span style="color:#f92672">.</span><span style="color:#a6e22e">01</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+        c<span style="color:#f92672">[</span>8<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">char</span><span style="color:#f92672">)</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#39;0&#39;</span> <span style="color:#f92672">+</span> <span style="color:#f92672">(</span>m <span style="color:#f92672">*</span> 0<span style="color:#f92672">.</span><span style="color:#a6e22e">1</span><span style="color:#f92672">)</span> <span style="color:#f92672">%</span> 10<span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+        c<span style="color:#f92672">[</span>9<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">char</span><span style="color:#f92672">)</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#39;0&#39;</span> <span style="color:#f92672">+</span> m <span style="color:#f92672">%</span> 10<span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> String<span style="color:#f92672">(</span>c<span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+<span style="color:#f92672">}</span>
+</code></pre></div>
 		</div>
 		<footer class="post__footer">
 			

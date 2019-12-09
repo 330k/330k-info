@@ -80,81 +80,69 @@ if (!doNotTrack) {
 			<p>MathematicaのExportでAVIなどの動画ファイルを作成することは簡単に可能だが、
 いかんせんすべてのフレームの画像を作成してからファイルに書きだすので、フレーム数に比例してメモリの使用量が多くなってしまう。
 そのため長いムービーの作成は困難であった。</p>
-
 <p>そこで、ffmpegと併用することでメモリ使用量を抑えつつ、長編の動画ファイルを制作する。
 具体的には、</p>
-
 <ol>
 <li>ffmpegで標準入力から読み込ませるOutputStreamオブジェクトを作成する</li>
 <li>BinaryWriteでそのストリームに各フレームの画像を書き込む</li>
 <li>終わったらCloseでストリームを閉じる</li>
 </ol>
-
 <p>とする。ここで、各フレーム画像の形式をPPMにしないとうまく動作しなかった(BMP、PNGなどではなぜか動作せず)。</p>
-
 <p>例えば、以下のようにするとtest001.aviができあがる。</p>
-
-<pre><code class="language-Mathematica">s = OpenWrite[
-   &quot;!ffmpeg -y -vcodec ppm -f image2pipe -i - -vcodec rawvideo test001.avi&quot;, BinaryFormat -&gt; True];
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Mathematica" data-lang="Mathematica">s <span style="color:#f92672">=</span> OpenWrite[
+   <span style="color:#e6db74">&#34;!ffmpeg -y -vcodec ppm -f image2pipe -i - -vcodec rawvideo test001.avi&#34;</span>, BinaryFormat <span style="color:#f92672">-&gt;</span> True];
 Do[
   BinaryWrite[s, ExportString[
-    Plot[Sin[x + i], {x, 0, 2 Pi}
-     , ImageSize -&gt; {640, 480}
-     , PlotRange -&gt; {{0, 2 Pi}, {-1, 1}}
-     , Frame -&gt; True]
-    , &quot;PPM&quot;]]
-  , {i, 0, 2 Pi, Pi/50}
+    Plot[Sin[x <span style="color:#f92672">+</span> i], {x, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">2</span> Pi}
+     , ImageSize <span style="color:#f92672">-&gt;</span> {<span style="color:#ae81ff">640</span>, <span style="color:#ae81ff">480</span>}
+     , PlotRange <span style="color:#f92672">-&gt;</span> {{<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">2</span> Pi}, {<span style="color:#ae81ff">-1</span>, <span style="color:#ae81ff">1</span>}}
+     , Frame <span style="color:#f92672">-&gt;</span> True]
+    , <span style="color:#e6db74">&#34;PPM&#34;</span>]]
+  , {i, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">2</span> Pi, Pi<span style="color:#f92672">/</span><span style="color:#ae81ff">50</span>}
   ];
 Close[s]
-</code></pre>
-
-<p>Exportと同じような使い勝手の関数ExportMovieを作るとこんな感じになる。</p>
-
-<pre><code class="language-Mathematica">Options[ExportMovie] = {
-   &quot;FrameRate&quot; -&gt; 25,
-   &quot;VideoCodecOption&quot; -&gt; &quot;-vcodec rawvideo&quot;,
-   &quot;ExportOptions&quot; -&gt; {}
+</code></pre></div><p>Exportと同じような使い勝手の関数ExportMovieを作るとこんな感じになる。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Mathematica" data-lang="Mathematica">Options[ExportMovie] <span style="color:#f92672">=</span> {
+   <span style="color:#e6db74">&#34;FrameRate&#34;</span> <span style="color:#f92672">-&gt;</span> <span style="color:#ae81ff">25</span>,
+   <span style="color:#e6db74">&#34;VideoCodecOption&#34;</span> <span style="color:#f92672">-&gt;</span> <span style="color:#e6db74">&#34;-vcodec rawvideo&#34;</span>,
+   <span style="color:#e6db74">&#34;ExportOptions&#34;</span> <span style="color:#f92672">-&gt;</span> {}
    };
 ExportMovie[outputfilepath_String, 
-   expr_, {i_Symbol, imin_: 1, imax_, di_: 1}, OptionsPattern[]] := 
+   expr_, {i_Symbol, imin_<span style="color:#960050;background-color:#1e0010">:</span> <span style="color:#ae81ff">1</span>, imax_, di_<span style="color:#960050;background-color:#1e0010">:</span> <span style="color:#ae81ff">1</span>}, OptionsPattern[]] <span style="color:#f92672">:=</span> 
   Module[{stream},
-   stream = OpenWrite[
+   stream <span style="color:#f92672">=</span> OpenWrite[
      ToString[
       StringForm[
-       &quot;!ffmpeg -y -vcodec ppm -f image2pipe -i - -r `` `` ``&quot;
-       , OptionValue[&quot;FrameRate&quot;]
-       , OptionValue[&quot;VideoCodecOption&quot;]
+       <span style="color:#e6db74">&#34;!ffmpeg -y -vcodec ppm -f image2pipe -i - -r `` `` ``&#34;</span>
+       , OptionValue[<span style="color:#e6db74">&#34;FrameRate&#34;</span>]
+       , OptionValue[<span style="color:#e6db74">&#34;VideoCodecOption&#34;</span>]
        , outputfilepath
        ]
       ]
-     , BinaryFormat -&gt; True];
+     , BinaryFormat <span style="color:#f92672">-&gt;</span> True];
    Do[
     BinaryWrite[stream, 
-     ExportString[expr, &quot;PPM&quot;, OptionValue[&quot;ExportOptions&quot;]]]
+     ExportString[expr, <span style="color:#e6db74">&#34;PPM&#34;</span>, OptionValue[<span style="color:#e6db74">&#34;ExportOptions&#34;</span>]]]
     , {i, imin, imax, di}
     ];
    Close[stream]
    ];
-Attributes[ExportMovie] = {HoldAll};
-SyntaxInformation[ExportMovie] = {
-   &quot;ArgumentsPattern&quot; -&gt; {_, _, {_, _, _., _.}, OptionsPattern[]}
-   , &quot;LocalVariables&quot; -&gt; {&quot;Table&quot;, {3, 3}}
+Attributes[ExportMovie] <span style="color:#f92672">=</span> {HoldAll};
+SyntaxInformation[ExportMovie] <span style="color:#f92672">=</span> {
+   <span style="color:#e6db74">&#34;ArgumentsPattern&#34;</span> <span style="color:#f92672">-&gt;</span> {_, _, {_, _, _<span style="color:#960050;background-color:#1e0010">.</span>, _<span style="color:#960050;background-color:#1e0010">.</span>}, OptionsPattern[]}
+   , <span style="color:#e6db74">&#34;LocalVariables&#34;</span> <span style="color:#f92672">-&gt;</span> {<span style="color:#e6db74">&#34;Table&#34;</span>, {<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">3</span>}}
    };
-</code></pre>
-
-<p>使い方の例としては以下。反復子を使ってTableなどと同様の表記で動画が作成できる。
+</code></pre></div><p>使い方の例としては以下。反復子を使ってTableなどと同様の表記で動画が作成できる。
 また、ffmpegでサポートされていれば、Mathematicaでサポートされていない形式でも動画が作成可能。</p>
-
-<pre><code class="language-Mathematica">ExportMovie[&quot;test002.avi&quot;
- , Plot[Sin[x + i], {x, 0, 2 Pi}
-  , ImageSize -&gt; {640, 480}
-  , PlotRange -&gt; {{0, 2 Pi}, {-1, 1}}
-  , Frame -&gt; True]
- , {i, 0, 2 Pi, 2 Pi/100}
- , &quot;FrameRate&quot; -&gt; 29.97
- , &quot;VideoCodecOption&quot; -&gt; &quot;-vcodec huffyuv&quot;]
-</code></pre>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Mathematica" data-lang="Mathematica">ExportMovie[<span style="color:#e6db74">&#34;test002.avi&#34;</span>
+ , Plot[Sin[x <span style="color:#f92672">+</span> i], {x, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">2</span> Pi}
+  , ImageSize <span style="color:#f92672">-&gt;</span> {<span style="color:#ae81ff">640</span>, <span style="color:#ae81ff">480</span>}
+  , PlotRange <span style="color:#f92672">-&gt;</span> {{<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">2</span> Pi}, {<span style="color:#ae81ff">-1</span>, <span style="color:#ae81ff">1</span>}}
+  , Frame <span style="color:#f92672">-&gt;</span> True]
+ , {i, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">2</span> Pi, <span style="color:#ae81ff">2</span> Pi<span style="color:#f92672">/</span><span style="color:#ae81ff">100</span>}
+ , <span style="color:#e6db74">&#34;FrameRate&#34;</span> <span style="color:#f92672">-&gt;</span> <span style="color:#ae81ff">29.97</span>
+ , <span style="color:#e6db74">&#34;VideoCodecOption&#34;</span> <span style="color:#f92672">-&gt;</span> <span style="color:#e6db74">&#34;-vcodec huffyuv&#34;</span>]
+</code></pre></div>
 		</div>
 		<footer class="post__footer">
 			

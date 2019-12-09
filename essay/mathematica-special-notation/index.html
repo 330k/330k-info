@@ -77,125 +77,73 @@ if (!doNotTrack) {
 			<h1 class="post__title">Mathematicaの特殊・省略記法一覧</h1>
 			
 		</header><div class="content post__content clearfix">
-			
-
-<p>Mathematicaの省略記法はドキュメントやヘルプで調べにくいのでまとめてみる。</p>
-
-<h2 id="関数適用">関数適用</h2>
-
-<h3 id="前置記法">@ (前置記法)</h3>
-
+			<p>Mathematicaの省略記法はドキュメントやヘルプで調べにくいのでまとめてみる。</p>
+<h2 id="heading">関数適用</h2>
+<h3 id="-">@ (前置記法)</h3>
 <p><code>f@a</code>は<code>f[a]</code>と等価。
 後ろのカッコ(<code>]</code>)を入力しなくてもすむ。</p>
-
-<pre><code class="language-Mathematica">Plot[Evaluate@Integrate[x^2, x], {x, -3, 3}]
-</code></pre>
-
-<h3 id="後置記法">// (後置記法)</h3>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Mathematica" data-lang="Mathematica">Plot[Evaluate<span style="color:#f92672">@</span>Integrate[x<span style="color:#f92672">^</span><span style="color:#ae81ff">2</span>, x], {x, <span style="color:#ae81ff">-3</span>, <span style="color:#ae81ff">3</span>}]
+</code></pre></div><h3 id="-1">// (後置記法)</h3>
 <p><code>a // f</code>は<code>f[a]</code>と等価。
 数値にする(<code>N</code>)や簡約化(<code>Simplify</code>、<code>FullSimplify</code>)でよく使う。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Mathematica" data-lang="Mathematica">In[<span style="color:#ae81ff">1</span>]<span style="color:#f92672">:=</span> Sin[<span style="color:#ae81ff">2</span>] <span style="color:#f92672">/</span><span style="color:#f92672">/</span> N
 
-<pre><code class="language-Mathematica">In[1]:= Sin[2] // N
-
-Out[1]= 0.909297
-</code></pre>
-
-<h3 id="中置記法">~ ~ (中置記法)</h3>
-
+Out[<span style="color:#ae81ff">1</span>]<span style="color:#f92672">=</span> <span style="color:#ae81ff">0.909297</span>
+</code></pre></div><h3 id="--">~ ~ (中置記法)</h3>
 <p><code>a~f~b</code>とすると、<code>f[a, b]</code>と等価になる。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Mathematica" data-lang="Mathematica">In[<span style="color:#ae81ff">1</span>]<span style="color:#f92672">:=</span> {<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>}<span style="color:#960050;background-color:#1e0010">~</span>Join<span style="color:#960050;background-color:#1e0010">~</span>{<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>}
 
-<pre><code class="language-Mathematica">In[1]:= {1, 2}~Join~{3, 4}
-
-Out[1]= {1, 2, 3, 4}
-</code></pre>
-
-<h2 id="関数適用-1">関数適用</h2>
-
-<h3 id="function">&amp;, #, ### (Function)</h3>
-
+Out[<span style="color:#ae81ff">1</span>]<span style="color:#f92672">=</span> {<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>}
+</code></pre></div><h2 id="heading1">関数適用</h2>
+<h3 id="---function">&amp;, #, ### (Function)</h3>
 <p>純関数。<code>#1</code>、<code>#2</code>・・・が引数を表す。<code>#</code>は<code>#1</code>と同じ。
 <code>#0</code>は関数自体表す。<code>##</code>は引数全体。</p>
-
 <p>関数型プログラミングの基本。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Mathematica" data-lang="Mathematica">In[<span style="color:#ae81ff">1</span>]<span style="color:#f92672">:=</span> If[#1 <span style="color:#f92672">=</span><span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>, #1 #0[#1 <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>]] <span style="color:#f92672">&amp;</span>[<span style="color:#ae81ff">10</span>]
 
-<pre><code class="language-Mathematica">In[1]:= If[#1 == 1, 1, #1 #0[#1 - 1]] &amp;[10]
-
-Out[1]= 3628800
-</code></pre>
-
-<h3 id="map">/@ (Map)</h3>
-
+Out[<span style="color:#ae81ff">1</span>]<span style="color:#f92672">=</span> <span style="color:#ae81ff">3628800</span>
+</code></pre></div><h3 id="-map">/@ (Map)</h3>
 <p><code>f /@ {1, 2, 3, 4}</code>は<code>Map[f, {1, 2, 3, 4}]</code>と等価。
 関数型プログラミングの基本。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Mathematica" data-lang="Mathematica">In[<span style="color:#ae81ff">1</span>]<span style="color:#f92672">:=</span> f <span style="color:#f92672">/</span><span style="color:#f92672">@</span> {a, b, c, d}
 
-<pre><code class="language-Mathematica">In[1]:= f /@ {a, b, c, d}
-
-Out[1]= {f[a], f[b], f[c], f[d]}
-</code></pre>
-
-<h3 id="mapall">//@ (MapAll)</h3>
-
+Out[<span style="color:#ae81ff">1</span>]<span style="color:#f92672">=</span> {f[a], f[b], f[c], f[d]}
+</code></pre></div><h3 id="-mapall">//@ (MapAll)</h3>
 <p><code>f /@@ {1, 2, 3, 4}</code>とすると、<code>MapAll[f, {1, 2, 3, 4}]</code>と等価。
 あまり使わない。</p>
-
-<h3 id="apply">@@ (Apply)</h3>
-
+<h3 id="-apply">@@ (Apply)</h3>
 <p><code>f @@ g[a]</code>とすると、<code>g[a]</code>の頭部<code>g</code>を<code>f</code>に置き換えて<code>f[a]</code>となる。
 <code>g</code>が<code>List</code>に対して、いろいろ使うことが多い。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Mathematica" data-lang="Mathematica">In[<span style="color:#ae81ff">1</span>]<span style="color:#f92672">:=</span> Or <span style="color:#f92672">@</span><span style="color:#f92672">@</span> {False, False, True}
 
-<pre><code class="language-Mathematica">In[1]:= Or @@ {False, False, True}
-
-Out[1]= True
-</code></pre>
-
-<h3 id="apply-1">@@@ (Apply)</h3>
-
+Out[<span style="color:#ae81ff">1</span>]<span style="color:#f92672">=</span> True
+</code></pre></div><h3 id="-apply1">@@@ (Apply)</h3>
 <p>レベル1の部分に<code>Apply</code>され、<code>Apply[f, exp, {1}]</code>と等価。
 これもよく使う。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Mathematica" data-lang="Mathematica">In[<span style="color:#ae81ff">1</span>]<span style="color:#f92672">:=</span> f <span style="color:#f92672">@</span><span style="color:#f92672">@</span><span style="color:#f92672">@</span> {{a, b}, {c, d}}
 
-<pre><code class="language-Mathematica">In[1]:= f @@@ {{a, b}, {c, d}}
-
-Out[1]= {f[a, b], f[c, d]}
-</code></pre>
-
-<h3 id="replaceall">/. (ReplaceAll)</h3>
-
+Out[<span style="color:#ae81ff">1</span>]<span style="color:#f92672">=</span> {f[a, b], f[c, d]}
+</code></pre></div><h3 id="-replaceall">/. (ReplaceAll)</h3>
 <p><code>exp /. a -&gt; b</code>で<code>exp</code>中の<code>a</code>を<code>b</code>に置換する。
 Solveなどで得られた解を利用するときによく使う。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Mathematica" data-lang="Mathematica">In[<span style="color:#ae81ff">1</span>]<span style="color:#f92672">:=</span> ans <span style="color:#f92672">=</span> Solve[a x<span style="color:#f92672">^</span><span style="color:#ae81ff">2</span> <span style="color:#f92672">+</span> b x <span style="color:#f92672">+</span> c <span style="color:#f92672">=</span><span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>, x];
+x <span style="color:#f92672">/.</span> ans
 
-<pre><code class="language-Mathematica">In[1]:= ans = Solve[a x^2 + b x + c == 0, x];
-x /. ans
-
-Out[1]= {(-b - Sqrt[b^2 - 4 a c])/(2 a), (-b + Sqrt[b^2 - 4 a c])/(2 a)}
-</code></pre>
-
-<h3 id="replacerepeated">//. (ReplaceRepeated)</h3>
-
+Out[<span style="color:#ae81ff">1</span>]<span style="color:#f92672">=</span> {(<span style="color:#f92672">-</span>b <span style="color:#f92672">-</span> Sqrt[b<span style="color:#f92672">^</span><span style="color:#ae81ff">2</span> <span style="color:#f92672">-</span> <span style="color:#ae81ff">4</span> a c])<span style="color:#f92672">/</span>(<span style="color:#ae81ff">2</span> a), (<span style="color:#f92672">-</span>b <span style="color:#f92672">+</span> Sqrt[b<span style="color:#f92672">^</span><span style="color:#ae81ff">2</span> <span style="color:#f92672">-</span> <span style="color:#ae81ff">4</span> a c])<span style="color:#f92672">/</span>(<span style="color:#ae81ff">2</span> a)}
+</code></pre></div><h3 id="-replacerepeated">//. (ReplaceRepeated)</h3>
 <p><code>exp //. a -&gt; b</code>は<code>exp /. a -&gt; b</code>が変わらなくなるまで繰り返す。</p>
-
-<h2 id="数値表記">数値表記</h2>
-
-<h3 id="指数表記">*^ (指数表記)</h3>
-
+<h2 id="heading2">数値表記</h2>
+<h3 id="-2">*^ (指数表記)</h3>
 <p><code>a*^xxx</code>で<code>a * 10^xxx</code>と等価。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Mathematica" data-lang="Mathematica">In[<span style="color:#ae81ff">1</span>]<span style="color:#f92672">:=</span> <span style="color:#ae81ff">2</span><span style="color:#f92672">*</span><span style="color:#f92672">^</span><span style="color:#ae81ff">10</span>
 
-<pre><code class="language-Mathematica">In[1]:= 2*^10
-
-Out[1]= 20000000000
-</code></pre>
-
-<h3 id="baseform">^^ (BaseForm)</h3>
-
+Out[<span style="color:#ae81ff">1</span>]<span style="color:#f92672">=</span> <span style="color:#ae81ff">20000000000</span>
+</code></pre></div><h3 id="-baseform">^^ (BaseForm)</h3>
 <p><code>a^^xxxx</code>でa進数表記。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Mathematica" data-lang="Mathematica">In[<span style="color:#ae81ff">1</span>]<span style="color:#f92672">:=</span> <span style="color:#ae81ff">16</span><span style="color:#f92672">^</span><span style="color:#f92672">^</span>faceb00c
 
-<pre><code class="language-Mathematica">In[1]:= 16^^faceb00c
-
-Out[1]= 4207849484
-</code></pre>
-
-<h2 id="その他">その他</h2>
-
+Out[<span style="color:#ae81ff">1</span>]<span style="color:#f92672">=</span> <span style="color:#ae81ff">4207849484</span>
+</code></pre></div><h2 id="heading3">その他</h2>
 <p>ここに紹介したもの以外にパターンの表記などがあるが、
 パターンの表記はほとんど省略記法しか使わない。</p>
 

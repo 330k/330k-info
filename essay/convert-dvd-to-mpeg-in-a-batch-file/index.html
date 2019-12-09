@@ -77,28 +77,21 @@ if (!doNotTrack) {
 			<h1 class="post__title">ffmpegでDVDをMPEGファイルに変換</h1>
 			
 		</header><div class="content post__content clearfix">
-			
-
-<p>社内でアシスタントからDVDをPCで再生できるようにしたい、という要望を受けたので、
+			<p>社内でアシスタントからDVDをPCで再生できるようにしたい、という要望を受けたので、
 DVDを入れて起動するだけのバッチファイルを作ってみた。</p>
-
 <p>DVDの中身のVTS_01_1.VOB, VTS_01_2.VOBというファイルをffmpegの-iオプションに指定すれば良いのだが、
 パイプ記号「|」を使ってファイル名を連結しなければならない。
 ただ、バッチファイル中でパイプ記号が入ると上手く連結できないので、
 試行錯誤の結果、一旦「$$」という文字を挟んで連結した後、パイプ記号に変換、という手順になった。</p>
-
-<h3 id="使い方">使い方</h3>
-
+<h3 id="heading">使い方</h3>
 <ol>
 <li>以下のテキストをメモ帳にコピー＆ペースト</li>
 <li>下のテキスト中でFドライブを指定している部分を各自のドライブ名に変更</li>
 <li>拡張子をbatにして保存</li>
 <li>DVDを入れてバッチファイルを起動</li>
 </ol>
-
 <p>原則としてバッチファイルと同じフォルダにdvd_yyyymmdd.mpegというファイルが出来上がる</p>
-
-<pre><code class="language-DOS">@ECHO OFF
+<pre><code class="language-DOS" data-lang="DOS">@ECHO OFF
 ECHO DVDから普通の動画ファイルへ変換を行います。
 ECHO DVDがFドライブに入っていることを確認してください。
 
@@ -119,7 +112,6 @@ ECHO 出力ファイル: %~dp0 dvd_%NOW%.mpeg
 
 PAUSE
 </code></pre>
-
 		</div>
 		<footer class="post__footer">
 			

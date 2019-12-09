@@ -80,25 +80,20 @@ if (!doNotTrack) {
 			<p>Excel VBAでUUID(GUID)を生成して使っている部分があったのだが、
 先日のWindows Updateを適用してから、
 <code>CreateObject(&quot;Scriptlet.TypeLib&quot;)</code>でエラーが出て使用できなくなってしまった。</p>
-
 <p>参考 : <a href="https://blogs.msdn.microsoft.com/office_client_development_support_blog/2017/07/13/201707secupdate-cannot-create-object/">2017 年 7 月のセキュリティ更新適用後、VBA から一部のオブジェクトを作成できません</a></p>
-
 <p>私の場合はただ単にランダムなUUIDが生成できれば良いので、
 UUID v4を生成する関数を作った。</p>
-
 <p>VBの乱数の精度としては24ビットらしいので、1回の乱数生成では最大16ビット使用するようにはしている。
 とはいえ乱数の品質としてはあまり高くないのでご注意を。</p>
-
-<pre><code class="language-VB.NET">Public Function GetUUID() As String
-    'GetUUID = Mid$(CreateObject(&quot;Scriptlet.TypeLib&quot;).GUID, 2, 36)
-    GetUUID = Right$(&quot;0000&quot; &amp; Hex(Rnd() * 65536), 4) &amp; Right$(&quot;0000&quot; &amp; Hex(Rnd() * 65536), 4)
-    GetUUID = GetUUID &amp; &quot;-&quot; &amp; Right$(&quot;0000&quot; &amp; Hex(Rnd() * 65536), 4)
-    GetUUID = GetUUID &amp; &quot;-4&quot; &amp; Right$(&quot;0000&quot; &amp; Hex(Rnd() * 65536), 3)
-    GetUUID = GetUUID &amp; &quot;-&quot; &amp; Right$(&quot;0000&quot; &amp; Hex(32768 + Rnd() * 16384), 4)
-    GetUUID = GetUUID &amp; &quot;-&quot; &amp; Right$(&quot;0000&quot; &amp; Hex(Rnd() * 65536), 4) &amp; Right$(&quot;0000&quot; &amp; Hex(Rnd() * 65536), 4) &amp; Right$(&quot;0000&quot; &amp; Hex(Rnd() * 65536), 4)
-End Function
-</code></pre>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-VB.NET" data-lang="VB.NET"><span style="color:#66d9ef">Public</span> <span style="color:#66d9ef">Function</span> <span style="color:#a6e22e">GetUUID</span>() <span style="color:#f92672">As</span> <span style="color:#66d9ef">String</span>
+    <span style="color:#75715e">&#39;GetUUID = Mid$(CreateObject(&#34;Scriptlet.TypeLib&#34;).GUID, 2, 36)
+</span><span style="color:#75715e"></span>    GetUUID <span style="color:#f92672">=</span> Right<span style="color:#960050;background-color:#1e0010">$</span>(<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">0000</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">&amp;</span> Hex(Rnd() <span style="color:#f92672">*</span> 65536), 4) <span style="color:#f92672">&amp;</span> Right<span style="color:#960050;background-color:#1e0010">$</span>(<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">0000</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">&amp;</span> Hex(Rnd() <span style="color:#f92672">*</span> 65536), 4)
+    GetUUID <span style="color:#f92672">=</span> GetUUID <span style="color:#f92672">&amp;</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">-</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">&amp;</span> Right<span style="color:#960050;background-color:#1e0010">$</span>(<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">0000</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">&amp;</span> Hex(Rnd() <span style="color:#f92672">*</span> 65536), 4)
+    GetUUID <span style="color:#f92672">=</span> GetUUID <span style="color:#f92672">&amp;</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">-4</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">&amp;</span> Right<span style="color:#960050;background-color:#1e0010">$</span>(<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">0000</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">&amp;</span> Hex(Rnd() <span style="color:#f92672">*</span> 65536), 3)
+    GetUUID <span style="color:#f92672">=</span> GetUUID <span style="color:#f92672">&amp;</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">-</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">&amp;</span> Right<span style="color:#960050;background-color:#1e0010">$</span>(<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">0000</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">&amp;</span> Hex(32768 <span style="color:#f92672">+</span> Rnd() <span style="color:#f92672">*</span> 16384), 4)
+    GetUUID <span style="color:#f92672">=</span> GetUUID <span style="color:#f92672">&amp;</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">-</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">&amp;</span> Right<span style="color:#960050;background-color:#1e0010">$</span>(<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">0000</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">&amp;</span> Hex(Rnd() <span style="color:#f92672">*</span> 65536), 4) <span style="color:#f92672">&amp;</span> Right<span style="color:#960050;background-color:#1e0010">$</span>(<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">0000</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">&amp;</span> Hex(Rnd() <span style="color:#f92672">*</span> 65536), 4) <span style="color:#f92672">&amp;</span> Right<span style="color:#960050;background-color:#1e0010">$</span>(<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">0000</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">&amp;</span> Hex(Rnd() <span style="color:#f92672">*</span> 65536), 4)
+<span style="color:#66d9ef">End</span> <span style="color:#66d9ef">Function</span>
+</code></pre></div>
 		</div>
 		<footer class="post__footer">
 			

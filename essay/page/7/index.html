@@ -11,7 +11,6 @@
 <meta property="og:description" content="自転車ツーリングの記録やソフトウェアの配布、Mathematicaをメインにしたプログラミングの覚書や日ごろの雑感など。" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://www.330k.info/essay/" />
-
 <meta property="og:updated_time" content="2019-03-01T07:01:13+09:00" />
 
 	<meta name="twitter:card" content="summary"/>
@@ -85,7 +84,7 @@ if (!doNotTrack) {
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		MathematicaでGPXファイルを読み込んで解釈する方法のメモ。 対象となるGPXファイルを xml = Import[filepath, &quot;XML&quot;]; でまずXMLとして読み込んでおいて、 trk = Cases[xml, XMLElement[&quot;trk&quot;, _, _], Infinity]; でtrk要素を抜き出し、 trkpt = (ToExpression[{&quot;lat&quot;, &quot;lon&quot;} /. Cases[#1, XMLElement[&quot;trkpt&quot;, attr_, _] :&gt; attr, Infinity]] &amp; ) /@ trk; でそれぞれのtrk要素からtrkpt要素を抜き出して緯度と経度を得る。 Sep. 28 2013追記 Mathematica 8からは標準でGPXをImport可能になった。
+		MathematicaでGPXファイルを読み込んで解釈する方法のメモ。 対象となるGPXファイルを xml = Import[filepath, &#34;XML&#34;]; でまずXMLとして読み込んでおいて、 trk = Cases[xml, XMLElement[&#34;trk&#34;, _, _], Infinity]; でtrk要素を抜き出し、 trkpt = (ToExpression[{&#34;lat&#34;, &#34;lon&#34;} /. Cases[#1, XMLElement[&#34;trkpt&#34;, attr_, _] :&gt; attr, Infinity]] &amp; ) /@ trk; でそれぞれのtrk要素からtrkpt要素を抜き出して緯度と経度を得る。 Sep. 28 2013追記 Mathematica 8からは標準でGPXをImport可能になった。
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">

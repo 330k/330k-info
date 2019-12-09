@@ -77,70 +77,57 @@ if (!doNotTrack) {
 			<h1 class="post__title">Windows標準機能でZIPファイルの作成</h1>
 			
 		</header><div class="content post__content clearfix">
-			
-
-<p>JScriptで複数のテキストファイルを書き出し、それをZIPでまとめたかったので作成。
+			<p>JScriptで複数のテキストファイルを書き出し、それをZIPでまとめたかったので作成。
 VBAやVBScript版を参考に作ってみた。</p>
-
 <p>参考サイト : <a href="http://kiq-creator.com/blog/?eid=33">http://kiq-creator.com/blog/?eid=33</a></p>
-
 <p>複数のファイルをZIP圧縮する際のコツとしては、CopyHereをするたびに待機すること。
 CopyHereは非同期なので、すぐにJS側に制御が返ってくるが、
 複数のファイルを一気にCopyHereしようとすると、「読み取りできません」とエラーが出る。</p>
-
-<h3 id="使い方">使い方</h3>
-
+<h3 id="heading">使い方</h3>
 <p>以下のコード中のcreateZipFileを自分のスクリプトにコピー&amp;ペーストして</p>
-
-<pre><code class="language-js">createZipFile( &quot;zipファイルのパス&quot;, [&quot;圧縮対象ファイルのパス1&quot;, &quot;圧縮対象ファイルのパス2&quot;, ...])
-</code></pre>
-
-<p>とすればOK。
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#a6e22e">createZipFile</span>( <span style="color:#e6db74">&#34;zipファイルのパス&#34;</span>, [<span style="color:#e6db74">&#34;圧縮対象ファイルのパス1&#34;</span>, <span style="color:#e6db74">&#34;圧縮対象ファイルのパス2&#34;</span>, ...])
+</code></pre></div><p>とすればOK。
 もしくは以下のコードをメモ帳で拡張子をjsにして保存すれば、ドラッグ&amp;ドロップでzipファイルを作成(右クリック→送る→圧縮フォルダーとほぼ同じ動作)。</p>
-
-<h3 id="注意事項">注意事項</h3>
-
+<h3 id="heading1">注意事項</h3>
 <p>ディレクトリには対応してません。またWindows標準では暗号化ZIPは作成できません。
 また圧縮対象ファイルの存在チェック等もやってないので、必要であればエラーハンドリング処理を追加してください。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#75715e">/**
+</span><span style="color:#75715e"> Windows 標準機能でZipファイルを作成するWSH(JScript)
+</span><span style="color:#75715e"> Copyright 330k
+</span><span style="color:#75715e"> 
+</span><span style="color:#75715e"> This software is released under the MIT License.
+</span><span style="color:#75715e"> http://opensource.org/licenses/mit-license.php
+</span><span style="color:#75715e">*/</span>
 
-<pre><code class="language-js">/**
- Windows 標準機能でZipファイルを作成するWSH(JScript)
- Copyright 330k
- 
- This software is released under the MIT License.
- http://opensource.org/licenses/mit-license.php
-*/
+<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">args</span> <span style="color:#f92672">=</span> [];
 
-var args = [];
-
-for(var i = 0; i &lt; WScript.Arguments.length; i++){
-  args.push(WScript.Arguments(i));
+<span style="color:#66d9ef">for</span>(<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">i</span> <span style="color:#f92672">&lt;</span> <span style="color:#a6e22e">WScript</span>.<span style="color:#a6e22e">Arguments</span>.<span style="color:#a6e22e">length</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span>){
+  <span style="color:#a6e22e">args</span>.<span style="color:#a6e22e">push</span>(<span style="color:#a6e22e">WScript</span>.<span style="color:#a6e22e">Arguments</span>(<span style="color:#a6e22e">i</span>));
 }
 
-var zipfile = args[0].replace(/(.+)\.(.+?)$/, &quot;$1.zip&quot;);
+<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">zipfile</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">args</span>[<span style="color:#ae81ff">0</span>].<span style="color:#a6e22e">replace</span>(<span style="color:#e6db74">/(.+)\.(.+?)$/</span>, <span style="color:#e6db74">&#34;$1.zip&#34;</span>);
 
-createZipFile(zipfile, args);
+<span style="color:#a6e22e">createZipFile</span>(<span style="color:#a6e22e">zipfile</span>, <span style="color:#a6e22e">args</span>);
 
-function createZipFile(zipFilePath, sourceFiles){
-  var shell = WScript.CreateObject(&quot;Shell.Application&quot;);
-  var fso = WScript.CreateObject(&quot;Scripting.FileSystemObject&quot;);
-  var file = fso.OpenTextFile(zipFilePath, 2, true);
-  var i = 0;
-  var zipfile;
+<span style="color:#66d9ef">function</span> <span style="color:#a6e22e">createZipFile</span>(<span style="color:#a6e22e">zipFilePath</span>, <span style="color:#a6e22e">sourceFiles</span>){
+  <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">shell</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">WScript</span>.<span style="color:#a6e22e">CreateObject</span>(<span style="color:#e6db74">&#34;Shell.Application&#34;</span>);
+  <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">fso</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">WScript</span>.<span style="color:#a6e22e">CreateObject</span>(<span style="color:#e6db74">&#34;Scripting.FileSystemObject&#34;</span>);
+  <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">file</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">fso</span>.<span style="color:#a6e22e">OpenTextFile</span>(<span style="color:#a6e22e">zipFilePath</span>, <span style="color:#ae81ff">2</span>, <span style="color:#66d9ef">true</span>);
+  <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+  <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">zipfile</span>;
   
-  file.Write(&quot;PK\x05\x06\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0&quot;);
-  file.Close();
+  <span style="color:#a6e22e">file</span>.<span style="color:#a6e22e">Write</span>(<span style="color:#e6db74">&#34;PK\x05\x06\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0&#34;</span>);
+  <span style="color:#a6e22e">file</span>.<span style="color:#a6e22e">Close</span>();
   
-  zipfile = shell.NameSpace(zipFilePath);
-  for(i = 0; i &lt; sourceFiles.length; i++){
-  zipfile.CopyHere(sourceFiles[i]);
-    while (zipfile.Items().Count &lt;= i){
-      WScript.Sleep(100);
+  <span style="color:#a6e22e">zipfile</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">shell</span>.<span style="color:#a6e22e">NameSpace</span>(<span style="color:#a6e22e">zipFilePath</span>);
+  <span style="color:#66d9ef">for</span>(<span style="color:#a6e22e">i</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">i</span> <span style="color:#f92672">&lt;</span> <span style="color:#a6e22e">sourceFiles</span>.<span style="color:#a6e22e">length</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span>){
+  <span style="color:#a6e22e">zipfile</span>.<span style="color:#a6e22e">CopyHere</span>(<span style="color:#a6e22e">sourceFiles</span>[<span style="color:#a6e22e">i</span>]);
+    <span style="color:#66d9ef">while</span> (<span style="color:#a6e22e">zipfile</span>.<span style="color:#a6e22e">Items</span>().<span style="color:#a6e22e">Count</span> <span style="color:#f92672">&lt;=</span> <span style="color:#a6e22e">i</span>){
+      <span style="color:#a6e22e">WScript</span>.<span style="color:#a6e22e">Sleep</span>(<span style="color:#ae81ff">100</span>);
     }
   }
 }
-</code></pre>
-
+</code></pre></div>
 		</div>
 		<footer class="post__footer">
 			

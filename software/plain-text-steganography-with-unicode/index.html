@@ -77,21 +77,15 @@ if (!doNotTrack) {
 			<h1 class="post__title">Unicodeステガノグラフィ with JavaScript</h1>
 			
 		</header><div class="content post__content clearfix">
-			
-
-<h1 id="概要">概要</h1>
-
+			<h1 id="heading">概要</h1>
 <p>ゼロ幅文字を使ってUnicodeのプレーンテキストにステガノグラフィを施す、
 ブラウザのJavaScriptで動作するライブラリを書いてみた。
 参考にしたのは以下のサイト</p>
-
 <ul>
 <li><a href="http://d.hatena.ne.jp/kazuhooku/20080828/1219913655">ZERO WIDTH SPACE を使って Unicode ステガノグラフィ</a></li>
 <li><a href="http://www.irongeek.com/i.php?page=security/unicode-steganography-homoglyph-encoder">Unicode Text Steganography Encoders/Decoders</a></li>
 </ul>
-
 <p>特徴としては以下の通り。</p>
-
 <ul>
 <li>デフォルトではゼロ幅文字として4種類を使用(U+200C, U+200D, U+202C, U+FEFF)し、2種類の時よりもエンコード後の文字数を減少(それでも1文字埋め込むために8文字増える)</li>
 <li>使用する文字種はライブラリの使用者側で指定可能</li>
@@ -101,49 +95,35 @@ if (!doNotTrack) {
 <li>元の文章、隠しテキストともに多言語対応(全部UTF-16としてJavaScriptで扱っているため)</li>
 <li>GitHubのものは任意のバイナリデータにも対応</li>
 </ul>
-
 <p>ダウンロードや、サイトに使用する際は以下のURLからどうぞ。</p>
-
 <p><a href="https://330k.github.io/misc_tools/unicode_steganography.js">https://330k.github.io/misc_tools/unicode_steganography.js</a></p>
-
 <p>ライセンスはMITライセンス。</p>
-
 <p>使い方は
 <a href="https://330k.github.io/misc_tools/unicode_steganography.html">https://330k.github.io/misc_tools/unicode_steganography.html</a>
 に書きました(英語です)。</p>
-
-<h2 id="動作サンプル">動作サンプル:</h2>
-
+<h2 id="heading1">動作サンプル:</h2>
 <iframe
  src="https://330k.github.io/misc_tools/unicode_steganography_iframe.html"
  width="100%"
  height="300">
 </iframe>
 
-
 <p>デフォルトで使用する4種の文字(U+200C, U+200D, U+202C, U+FEFF)は、
 GmailやOutlook 2010、iPhoneの標準メールアプリにおいて</p>
-
 <ul>
 <li>ゼロ幅として表示</li>
 <li>文字化けしない(豆腐にならない)</li>
 <li>コピー&amp;ペースト時に保存されるもの</li>
 </ul>
-
 <p>として選定した。</p>
-
 <p>U+200B(ZERO WIDTH SPACE)はブラウザからGmailで送信するときに削除される。
 ただ、メーラを使ってSMTPサーバ(smtp.gmail.com)から送信するときは削除されない。</p>
-
 <p>Bidiを考慮せず左横書きに限定すれば、U+200E(LRM)やU+202B(LRO)などを追加できる。
 FacebookやTwitterなど各アプリやウェブサイトの対応状況は参考サイトの2番目に詳しい。</p>
-
 <p>GitHubにアップロードした方はバイナリデータにも対応。
 これは通常のステガノグラフィとは逆に、画像などのバイナリデータをプレーンテキスト中に埋め込むことになる。
 ただサイズがバカでかくなって存在がバレるので、ステガノグラフィとしての意味はなさないかも。</p>
-
-<h2 id="動作確認ブラウザ">動作確認ブラウザ</h2>
-
+<h2 id="heading2">動作確認ブラウザ</h2>
 <ul>
 <li>Chromium 45 (Ubuntu 14.04 LTS)</li>
 <li>Firefox 42 (Ubuntu 14.04 LTS)</li>
@@ -152,16 +132,12 @@ FacebookやTwitterなど各アプリやウェブサイトの対応状況は参�
 <li>Safari (iOS 9.1)</li>
 <li>Chrome (Android 4.2)</li>
 </ul>
-
-<h2 id="更新点">更新点</h2>
-
+<h2 id="heading3">更新点</h2>
 <ul>
 <li>デコードに致命的なバグがあったため修正 (May 27 2016)</li>
 <li>バイナリデータ対応版をGitHubにアップロード (May 30 2016)</li>
 </ul>
-
-<h2 id="ゼロ幅文字の対応状況">ゼロ幅文字の対応状況</h2>
-
+<h2 id="heading4">ゼロ幅文字の対応状況</h2>
 <ul>
 <li>U+200B (ZERO WIDTH SPACE) : ブラウザGmailで送信時に取り除かれる</li>
 <li>U+200D (ZERO WIDTH JOINER) : iOSメッセージアプリにて豆腐化</li>

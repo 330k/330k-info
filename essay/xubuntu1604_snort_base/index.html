@@ -77,12 +77,8 @@ if (!doNotTrack) {
 			<h1 class="post__title">Xubuntu 16.04 &#43; Snortで簡易IDS構築</h1>
 			
 		</header><div class="content post__content clearfix">
-			
-
-<p>ウイルス等に侵入された後の対策として、IDSやIPS製品の紹介をベンダーから受けたが、正直なところ価格が高かったのと、検知されるメッセージがSnort由来のものが多い気がしたので、自分でSnortを構築して商用製品との差を調べてみることにした。</p>
-
-<h2 id="構築環境">構築環境</h2>
-
+			<p>ウイルス等に侵入された後の対策として、IDSやIPS製品の紹介をベンダーから受けたが、正直なところ価格が高かったのと、検知されるメッセージがSnort由来のものが多い気がしたので、自分でSnortを構築して商用製品との差を調べてみることにした。</p>
+<h2 id="heading">構築環境</h2>
 <ul>
 <li>PC : 余っていたノートPC  Panasonic LetsNote CF-NX1</li>
 <li>OS : Xubuntu 16.04.2 (LetsNoteの有線LANと無線LANのNICを認識できる可能性が高いディストリビューションとして選択)</li>
@@ -91,52 +87,38 @@ if (!doNotTrack) {
 <li>LetsNoteの有線LANはミラーポートに接続し、通信を監視</li>
 <li>LetsNote自体にアクセスするときには無線LANを使用する</li>
 </ul>
-
-<h2 id="図-適当">図(適当)</h2>
-
+<h2 id="heading1">図(適当)</h2>
 <figure>
     <img src="snort001.png"/> 
 </figure>
 
-
-<h2 id="手順">手順</h2>
-
+<h2 id="heading2">手順</h2>
 <p>基本的に、以下のドキュメント通りでOK。</p>
-
 <p><a href="https://s3.amazonaws.com/snort-org-site/production/document_files/files/000/000/122/original/Snort_2.9.9.x_on_Ubuntu_14-16.pdf?AWSAccessKeyId=AKIAIXACIED2SPMSC7GA&amp;Expires=1495781265&amp;Signature=KgejvuGSg4bx%2Ft099F3cdwrd%2BcU%3D">Snort 2.9.9.x on Ubuntu 14 -16</a></p>
-
 <p>LetsNoteでは有線LANのNICは<code>enp0s25</code>、無線LANは<code>wlp2s0</code>となった。</p>
-
 <p>注意点は以下の通り。</p>
-
 <ul>
-<li><s><code>rule_url=https://www.snort.org/reg-rules/|snortrules-snapshot.tar.gz|&lt;oinkcode&gt;</code></s><br/>
-→ <code>rule_url=https://www.snort.org/rules/|snortrules-snapshot.tar.gz|&lt;oinkcode&gt;</code><br/>
+<li><!-- raw HTML omitted --><code>rule_url=https://www.snort.org/reg-rules/|snortrules-snapshot.tar.gz|&lt;oinkcode&gt;</code><!-- raw HTML omitted --><!-- raw HTML omitted -->
+→ <code>rule_url=https://www.snort.org/rules/|snortrules-snapshot.tar.gz|&lt;oinkcode&gt;</code><!-- raw HTML omitted -->
 ※微妙にURLが変わっているので注意</li>
-<li><s><code>sudo /usr/local/bin/pulledpork.pl -c /etc/snort/pulledpork.conf -l</code></s><br/>
-→ <code>sudo /usr/local/bin/pulledpork.pl -c /etc/snort/pulledpork.conf -l -o /etc/snort/rules/snort.rules</code><br/>
+<li><!-- raw HTML omitted --><code>sudo /usr/local/bin/pulledpork.pl -c /etc/snort/pulledpork.conf -l</code><!-- raw HTML omitted --><!-- raw HTML omitted -->
+→ <code>sudo /usr/local/bin/pulledpork.pl -c /etc/snort/pulledpork.conf -l -o /etc/snort/rules/snort.rules</code><!-- raw HTML omitted -->
 ※-oオプションが必要と怒られた</li>
 </ul>
-
 <p>有線LAN(enp0s25)はミラーポートから受信だけできれば良いので、
 /etc/network/interfacesを編集して使われていないネットワークのアドレスを適当に設定。
 管理の通信やBASEによるログを眺めるためには無線(wlp2s0)を使用するので、
 NetworkManagerを使って適当に固定IPを設定。</p>
-
-<p>RTX810は<a href="http://www.rtpro.yamaha.co.jp/RT/manual/rt-common/setup/lan_port-mirroring.html">http://www.rtpro.yamaha.co.jp/RT/manual/rt-common/setup/lan_port-mirroring.html</a>
+<p>RTX810はhttp://www.rtpro.yamaha.co.jp/RT/manual/rt-common/setup/lan_port-mirroring.html
 を参照してミラーポートを設定。</p>
-
 <ul>
-<li>設定(ポート1と2の送信および受信フレームをポート4にミラー)<br/>
+<li>設定(ポート1と2の送信および受信フレームをポート4にミラー)<!-- raw HTML omitted -->
 <code>lan port-mirroring lan1 4 in 1 2 out 1 2</code></li>
-<li>解除<br/>
+<li>解除<!-- raw HTML omitted -->
 <code>no lan port-mirroring lan1</code></li>
 </ul>
-
-<h2 id="結果">結果</h2>
-
+<h2 id="heading3">結果</h2>
 <p>一応IDSとして構築できたので、現在はログを見て様子見。今のところのメモは以下。</p>
-
 <ul>
 <li>ノートPCにSnortを構築しても、なんとか100Mbps程度は処理してくれる(ただしCPUは常に100%)</li>
 <li>商用製品はLINEの通信を検知してくれたが、Snortでは検知してくれない(自分でルールを作れ、という話か)</li>

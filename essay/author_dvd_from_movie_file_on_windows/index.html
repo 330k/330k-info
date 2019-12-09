@@ -77,57 +77,35 @@ if (!doNotTrack) {
 			<h1 class="post__title">動画ファイルからDVDオーサリング</h1>
 			
 		</header><div class="content post__content clearfix">
-			
-
-<blockquote>
+			<blockquote>
 <p>「この動画ファイルをDVDに焼いて。簡単でしょ。」</p>
 </blockquote>
-
 <p>いやいや、DVD-Video規格に沿った動画ファイルとファイル構造にしないといけないんですけど。</p>
-
 <p>Windows用のオーサリングソフトはフリーでも色々あるが、どれが良いのかよくわからないので、
 ffmpeg + dvdauthor + mkisofsでISOファイルを作成するバッチファイルを作成した。</p>
-
 <p>参考サイト : <a href="http://d.hatena.ne.jp/hikaen2/20150201/1422773879">http://d.hatena.ne.jp/hikaen2/20150201/1422773879</a></p>
-
-<h2 id="前準備">前準備</h2>
-
+<h2 id="heading">前準備</h2>
 <h3 id="ffmpeg">ffmpeg</h3>
-
 <p>適当にWindows用バイナリを落としてPATHを設定しておく。</p>
-
 <h3 id="dvdauthor">dvdauthor</h3>
-
 <p>Windows用のバイナリをダウンロードし、PATHの通ったところに設置。</p>
-
 <p><a href="http://www.paehl.com/open_source/?DVDAuthor">http://www.paehl.com/open_source/?DVDAuthor</a></p>
-
 <p>これの下部の「From Box.net」または「From Google Drive」からダウンロード。</p>
-
 <h3 id="mkisofs">mkisofs</h3>
-
 <p>他のソフト(cdrfde)にくっついてくるmkisofs.exeを抜き出す。</p>
-
 <p><a href="https://cdrtfe.sourceforge.io/cdrtfe/download_en.html">https://cdrtfe.sourceforge.io/cdrtfe/download_en.html</a></p>
-
 <p>これの<code>cdrtfe 1.5.7 zip archive</code>をダウンロードし、展開したファイルの中から、</p>
-
 <ul>
 <li><code>tools\cdrtools\mkisofs.exe</code></li>
 <li><code>tools\cygwin\cygwin1.dll</code></li>
 <li><code>tools\cygwin\cygwin.ini</code></li>
 </ul>
-
 <p>をPATHの通ったフォルダに移動。</p>
-
-<h2 id="バッチファイル">バッチファイル</h2>
-
+<h2 id="heading1">バッチファイル</h2>
 <p>下記の内容のバッチファイルを作成。
 CPU数に合わせてthreadsの値は変更する。</p>
-
 <p>DVDにしたい動画ファイルをドラッグ&amp;ドロップ。</p>
-
-<pre><code class="language-DOS">@ECHO OFF
+<pre><code class="language-DOS" data-lang="DOS">@ECHO OFF
 REM 動画ファイルからDVDのISOファイルを作成
 
 SET VIDEO_FORMAT=NTSC
@@ -143,7 +121,6 @@ DEL &quot;%~dpn1_dvd.mpeg&quot;
 
 PAUSE
 </code></pre>
-
 		</div>
 		<footer class="post__footer">
 			

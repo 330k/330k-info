@@ -77,47 +77,31 @@ if (!doNotTrack) {
 			<h1 class="post__title">GeoDistanceとその他の測地線距離算出式の精度</h1>
 			
 		</header><div class="content post__content clearfix">
-			
-
-<p>Mathematicaには2点の緯度と経度を与えて、その間の測地線距離を返す関数としてGeoDistanceがある。
+			<p>Mathematicaには2点の緯度と経度を与えて、その間の測地線距離を返す関数としてGeoDistanceがある。
 しかしながら、<a href="http://mathematica.stackexchange.com/questions/26526/how-accurate-is-geodistance">ここ</a>で書かれているように、その精度には疑問が呈されているようだ。</p>
-
 <p>他の有名な測地線距離の計算方法として、</p>
-
 <ul>
 <li>ヒュベニの式(カシミール3Dが採用しているが、英語圏では情報が見つからない)</li>
 <li><a href="http://vldb.gsi.go.jp/sokuchi/surveycalc/surveycalc/algorithm/bl2st/bl2st.htm">国土地理院の測量計算サイトの計算式のついてのドキュメント</a>を実装したもの</li>
 <li>完全な球体とみなして計算(Google Earthや<a href="https://developers.google.com/maps/documentation/javascript/reference?hl=ja#spherical">Google Maps API v3のcomputeDistanceBetween</a>が採用、haversine formula)</li>
 </ul>
-
 <p>が見つかったので、GeoDistanceのMethodオプション3種類(&ldquo;Vincenty75&rdquo;, &ldquo;Robbin61&rdquo;, &ldquo;ExtendedNewtonRaphson&rdquo;)と上記の3種類の計算方法の合計6種類について精度を評価してみた。</p>
-
 <p>正確な距離としては、<a href="http://geographiclib.sourceforge.net/">GeographicLib</a>
 (<a href="http://en.wikipedia.org/wiki/Vincenty%27s_formulae">Wikipedia</a>によると誤差15nmらしい)をJLink経由で使って計算したもの採用し、準拠楕円体はWGS84とした。</p>
-
 <p>ただし、完全な球体とした場合の半径はGoogle EarthやGoogle Mapsにあわせて6378137 mとした。</p>
-
-<h2 id="ランダムな2点間の距離の精度">ランダムな2点間の距離の精度</h2>
-
+<h2 id="2">ランダムな2点間の距離の精度</h2>
 <p>地球表面上で一様分布となるよう、ランダムに2点を選び、その間の距離の精度を評価した。</p>
-
 <figure>
     <img src="hubeny_graph001.png"/> 
 </figure>
 
-
 <p>上図は横軸がGeographicLibで計算した正確な距離、縦軸が各計算方法で計算した距離である。</p>
-
-<p>y = xの直線上にあれば正確ということだが、GeoDistanceの&rdquo;Robbin61&rdquo;では1万kmを超えると実際よりも極端に短く計算してしまうようだ。</p>
-
+<p>y = xの直線上にあれば正確ということだが、GeoDistanceの&quot;Robbin61&quot;では1万kmを超えると実際よりも極端に短く計算してしまうようだ。</p>
 <p>またヒュベニの式は実際よりも長く計算することが多く、そのような場合について調べてみると高緯度になるほど誤差が大きくなることが分かった。</p>
-
 <p>同じ計算結果を誤差についてプロットしたものが下図である。また表は各計算方法の最大誤差である。</p>
-
 <figure>
     <img src="hubeny_graph002.png"/> 
 </figure>
-
 
 <table>
 <thead>
@@ -126,42 +110,34 @@ if (!doNotTrack) {
 <th>誤差の絶対値</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td>GeoDistance(&ldquo;Vincenty75&rdquo;)</td>
 <td>7.119 * 10^-12</td>
 </tr>
-
 <tr>
 <td>GeoDistance(&ldquo;Robbin61&rdquo;)</td>
 <td>9.536 * 10^-1</td>
 </tr>
-
 <tr>
 <td>GeoDistance(&ldquo;ExtendedNewtonRaphson&rdquo;)</td>
 <td>1.247 * 10^-6</td>
 </tr>
-
 <tr>
 <td>ヒュベニの式</td>
 <td>2.022 * 10^1</td>
 </tr>
-
 <tr>
 <td>測量計算サイト計算式</td>
 <td>6.682 * 10^-3</td>
 </tr>
-
 <tr>
 <td>完全球体モデル</td>
 <td>6.410 * 10^-3</td>
 </tr>
 </tbody>
 </table>
-
 <p>以上の結果からわかることをまとめると、</p>
-
 <ul>
 <li>MathematicaのGeoDistanceで最も精度が良いのはデフォルトのVincenty75で、常に11桁程度の精度を持っている。</li>
 <li>Robbin61は1万km以内でも2桁程度で、1万kmを超えると実用にならない(誤差95%)。</li>
@@ -170,18 +146,13 @@ if (!doNotTrack) {
 <li>測量計算サイトの計算式は1万kmまでは10桁程度の精度が出ていたが、1万kmを超えると2桁程度(誤差0.7%)まで一気に落ちる。</li>
 <li>完全球体として計算する、Google EarthやGoogle Mapsの計算は2桁の精度(誤差0.6%)。</li>
 </ul>
-
 <p>ただし、測量計算サイトの計算式については、<a href="http://vldb.gsi.go.jp/sokuchi/surveycalc/surveycalc/bl2stf.html">測量計算サイトのフォーム</a>に入力して計算させると常にほぼ正しい結果が返ってくるので、ドキュメントと異なる計算が行われているのではないかと考えられる。
 反復計算の収束閾値を変えてみても結果はほぼ変わらなかった。</p>
-
-<h2 id="日本付近におけるパスの長さを計算する場合の精度と計算時間">日本付近におけるパスの長さを計算する場合の精度と計算時間</h2>
-
+<h2 id="heading">日本付近におけるパスの長さを計算する場合の精度と計算時間</h2>
 <p>次に、もう少し実用的(ここでいう実用的とは専門家ではなく一般人にとって)な場合を考えて、
 鹿児島県の枕崎から北海道の稚内までの運転経路の道のりの長さを計算させてみた。</p>
-
 <p>Google Mapsで枕崎駅から稚内駅まで一般道路のみの経路を計算させ、その結果を400点に削減したものを用いた。
 使用したデータは<a href="makurazaki_wakkanai_reduced.gpx">makurazaki_wakkanai_reduced.gpx</a>である。</p>
-
 <table>
 <thead>
 <tr>
@@ -192,7 +163,6 @@ if (!doNotTrack) {
 <th>計算時間(Compile使用時) (ms)</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td>GeographicLib</td>
@@ -201,7 +171,6 @@ if (!doNotTrack) {
 <td>212 (JLink使用)</td>
 <td>-</td>
 </tr>
-
 <tr>
 <td>GeoDistance(&ldquo;Vincenty75&rdquo;)</td>
 <td>2,541,657.039 264 922</td>
@@ -209,7 +178,6 @@ if (!doNotTrack) {
 <td>500</td>
 <td>-</td>
 </tr>
-
 <tr>
 <td>GeoDistance(&ldquo;Robbin61&rdquo;)</td>
 <td>2,538,452.677 040 755</td>
@@ -217,7 +185,6 @@ if (!doNotTrack) {
 <td>672</td>
 <td>-</td>
 </tr>
-
 <tr>
 <td>GeoDistance(&ldquo;ExtendedNewtonRaphson&rdquo;)</td>
 <td>2,541,656.533 178 208</td>
@@ -225,7 +192,6 @@ if (!doNotTrack) {
 <td>516</td>
 <td>-</td>
 </tr>
-
 <tr>
 <td>ヒュベニの式</td>
 <td>2,541,657.194 841 664</td>
@@ -233,7 +199,6 @@ if (!doNotTrack) {
 <td>152</td>
 <td>0.36</td>
 </tr>
-
 <tr>
 <td>測量計算サイト計算式</td>
 <td>2,541,657.039 253 852</td>
@@ -241,7 +206,6 @@ if (!doNotTrack) {
 <td>124</td>
 <td>0.56</td>
 </tr>
-
 <tr>
 <td>完全球体モデル</td>
 <td>2,544,345.085 547 101</td>
@@ -251,27 +215,20 @@ if (!doNotTrack) {
 </tr>
 </tbody>
 </table>
-
 <p>この表から、ヒュベニの式は7桁程度の精度が出ているが、
 Google Maps APIのDirections Serviceで得られる緯度と経度の精度は7〜8桁(小数点以下5桁)なので、
 日本付近の緯度においてパスの長さを計算する用途では十分であることが分かった。</p>
-
 <p>他の計算方法ではランダムな2点間の距離を計算する場合とほぼ同じ傾向となった。</p>
-
 <p>計算時間の面では、GeoDistanceよりもヒュベニの式や測量計算サイトの計算式のほうが4〜5倍程度高速であり、完全球体モデルはさらに5倍程度高速であった。
 ただし、ヒュベニの式、測量計算サイト計算式、完全球体モデルはCompileを使った場合、もとよりも40倍〜400倍程度高速となった。</p>
-
-<h2 id="結論">結論</h2>
-
+<h2 id="heading1">結論</h2>
 <ul>
 <li>MathematicaのGeoDistanceではデフォルトのVencenty75が11桁程度の精度が出て、最も良い。</li>
 <li>ヒュベニの式は日本付近の緯度であれば7桁程度の精度が出るが、極付近を含む場合は使えない。</li>
 <li>完全球体として計算するGoogle EarthやGoogle Mapsは2桁程度の精度(誤差0.6%程度)。</li>
 <li>測量計算サイトはドキュメントと異なる計算が行われていると考えられる。</li>
 </ul>
-
-<h2 id="追記">追記</h2>
-
+<h2 id="heading2">追記</h2>
 <ul>
 <li>GeographicLibを参考にMathematicaで測地線距離を計算するパッケージを作ってみた。→Google Code: mathematica-geodesic</li>
 <li>Google Codeが終了するのでGitHubに移転→<a href="https://github.com/330k/mathematica-geodesic">mathematica-geodesic</a> (Mar. 13 2015)</li>

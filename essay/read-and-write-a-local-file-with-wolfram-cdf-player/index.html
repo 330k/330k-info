@@ -77,99 +77,81 @@ if (!doNotTrack) {
 			<h1 class="post__title">Wolfram CDF Playerでローカルファイルの読み込みと書き込みを行う</h1>
 			
 		</header><div class="content post__content clearfix">
-			
-
-<p><a href="http://blog.hulinks.co.jp/2011/08/universal-using-of-wolfram-cdf-player.html">Wolfram CDF Player を汎用する</a>にあるように、
+			<p><a href="http://blog.hulinks.co.jp/2011/08/universal-using-of-wolfram-cdf-player.html">Wolfram CDF Player を汎用する</a>にあるように、
 CDF PlayerでもJ/Linkを使えばローカルファイルの読み込み、書き込みができる(※CDFファイルの作成にはMathematicaが必要)。</p>
-
 <p>上記リンク先ではテキストファイルを読み込む例が載っているが、バイナリファイルとして読み込んでImportStringを使えば、
 Mathematicaが対応している形式すべてのファイルを読み込むことができる。</p>
-
 <p>J/Linkでバイナリファイルを読み込むときのポイントとしては、</p>
-
 <ul>
-<li>&ldquo;[B&rdquo;というクラス名でbyte型の配列を作ってBufferedInputStream.read(byte[])で一気に読み込むことで高速化</li>
+<li>&ldquo;[B&quot;というクラス名でbyte型の配列を作ってBufferedInputStream.read(byte[])で一気に読み込むことで高速化</li>
 <li>読み込んだbyte[]がMathematicaに入った時に符号付き整数で扱われるため、FromCharacterCodeに突っ込む前に0〜255になるように修正</li>
 </ul>
-
 <p>が挙げられる。</p>
-
 <p>一方、CDF PlayerではExportのみならずExportStringが使えない(ImportStringは使えるのに)ので、書き込むほうは不自由が残る。
 ここではテキストと画像(BMP、PNG、JPEG)に限って保存する関数を作ってみた。</p>
-
-<pre><code class="language-Mathematica">ImportWithJLink[filepath_?(FileExistsQ[FindFile[#]] &amp;), format_] := (
-  Needs[&quot;JLink`&quot;];
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Mathematica" data-lang="Mathematica">ImportWithJLink[filepath_<span style="color:#f92672">?</span>(FileExistsQ[FindFile[#]] <span style="color:#f92672">&amp;</span>), format_] <span style="color:#f92672">:=</span> (
+  Needs[<span style="color:#e6db74">&#34;JLink`&#34;</span>];
   JLink`InstallJava[];
   JLink`JavaBlock[
    Module[{br, byte, result}, 
-    br = JLink`JavaNew[&quot;java.io.BufferedInputStream&quot;, 
-      JLink`JavaNew[&quot;java.io.FileInputStream&quot;, FindFile@filepath]];
-    byte = JLink`JavaNew[&quot;[B&quot;, {FileByteCount[FindFile@filepath]}];
-    br@read[byte];
-    result = 
+    br <span style="color:#f92672">=</span> JLink`JavaNew[<span style="color:#e6db74">&#34;java.io.BufferedInputStream&#34;</span>, 
+      JLink`JavaNew[<span style="color:#e6db74">&#34;java.io.FileInputStream&#34;</span>, FindFile<span style="color:#f92672">@</span>filepath]];
+    byte <span style="color:#f92672">=</span> JLink`JavaNew[<span style="color:#e6db74">&#34;[B&#34;</span>, {FileByteCount[FindFile<span style="color:#f92672">@</span>filepath]}];
+    br<span style="color:#f92672">@</span>read[byte];
+    result <span style="color:#f92672">=</span> 
      ImportString[
       FromCharacterCode[
-       JLink`JavaObjectToExpression[byte] /. x_?Negative :&gt; x + 256], 
+       JLink`JavaObjectToExpression[byte] <span style="color:#f92672">/.</span> x_<span style="color:#f92672">?</span>Negative <span style="color:#f92672">:&gt;</span> x <span style="color:#f92672">+</span> <span style="color:#ae81ff">256</span>], 
       format];
-    br@close[];
+    br<span style="color:#f92672">@</span>close[];
     result]]);
-ExportWithJLink[filepath_, string_String, format : &quot;Text&quot;] := (
-  Needs[&quot;JLink`&quot;];
+ExportWithJLink[filepath_, string_String, format <span style="color:#960050;background-color:#1e0010">:</span> <span style="color:#e6db74">&#34;Text&#34;</span>] <span style="color:#f92672">:=</span> (
+  Needs[<span style="color:#e6db74">&#34;JLink`&#34;</span>];
   JLink`InstallJava[];
   JLink`JavaBlock[
    Module[{bw},
-    bw = JLink`JavaNew[&quot;java.io.BufferedWriter&quot;,
-      JLink`JavaNew[&quot;java.io.FileWriter&quot;, filepath]
+    bw <span style="color:#f92672">=</span> JLink`JavaNew[<span style="color:#e6db74">&#34;java.io.BufferedWriter&#34;</span>,
+      JLink`JavaNew[<span style="color:#e6db74">&#34;java.io.FileWriter&#34;</span>, filepath]
       ];
-    bw@write[string];
-    bw@close[];
+    bw<span style="color:#f92672">@</span>write[string];
+    bw<span style="color:#f92672">@</span>close[];
     filepath
     ]
    ]);
-ExportWithJLink[filepath_, image_, format : &quot;PNG&quot; | &quot;BMP&quot; | &quot;JPG&quot;] := (
-  Needs[&quot;JLink`&quot;];
+ExportWithJLink[filepath_, image_, format <span style="color:#960050;background-color:#1e0010">:</span> <span style="color:#e6db74">&#34;PNG&#34;</span> <span style="color:#f92672">|</span> <span style="color:#e6db74">&#34;BMP&#34;</span> <span style="color:#f92672">|</span> <span style="color:#e6db74">&#34;JPG&#34;</span>] <span style="color:#f92672">:=</span> (
+  Needs[<span style="color:#e6db74">&#34;JLink`&#34;</span>];
   JLink`InstallJava[];
   JLink`JavaBlock[
-   JLink`LoadJavaClass[&quot;javax.imageio.ImageIO&quot;];
-   JLink`LoadJavaClass[&quot;java.awt.image.BufferedImage&quot;];
+   JLink`LoadJavaClass[<span style="color:#e6db74">&#34;javax.imageio.ImageIO&#34;</span>];
+   JLink`LoadJavaClass[<span style="color:#e6db74">&#34;java.awt.image.BufferedImage&#34;</span>];
    Module[{img, bi, width, height},
-    img = Rasterize[image];
-    {width, height} = ImageDimensions[img];
-    bi = JLink`JavaNew[&quot;java.awt.image.BufferedImage&quot;,
+    img <span style="color:#f92672">=</span> Rasterize[image];
+    {width, height} <span style="color:#f92672">=</span> ImageDimensions[img];
+    bi <span style="color:#f92672">=</span> JLink`JavaNew[<span style="color:#e6db74">&#34;java.awt.image.BufferedImage&#34;</span>,
       width, height, java`awt`image`BufferedImage`TYPEUINTUBGR
       ];
-    bi@setRGB[0, 0, width, height,
+    bi<span style="color:#f92672">@</span>setRGB[<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>, width, height,
       Flatten[
-       Apply[(#1*2^16 + #2*2^8 + #3) &amp;, 
-        ImageData[img, &quot;Byte&quot;], {2}]],
-      0, width];
+       Apply[(#1<span style="color:#f92672">*</span><span style="color:#ae81ff">2</span><span style="color:#f92672">^</span><span style="color:#ae81ff">16</span> <span style="color:#f92672">+</span> #2<span style="color:#f92672">*</span><span style="color:#ae81ff">2</span><span style="color:#f92672">^</span><span style="color:#ae81ff">8</span> <span style="color:#f92672">+</span> #3) <span style="color:#f92672">&amp;</span>, 
+        ImageData[img, <span style="color:#e6db74">&#34;Byte&#34;</span>], {<span style="color:#ae81ff">2</span>}]],
+      <span style="color:#ae81ff">0</span>, width];
     If[javax`imageio`ImageIO`write[bi, format,
-      JLink`JavaNew[&quot;java.io.File&quot;, filepath]],
-     filepath, $Failed]
+      JLink`JavaNew[<span style="color:#e6db74">&#34;java.io.File&#34;</span>, filepath]],
+     filepath, <span style="color:#960050;background-color:#1e0010">$</span>Failed]
     ]
    ]);
-</code></pre>
-
-<h2 id="例">例</h2>
-
-<h3 id="読み込み">読み込み</h3>
-
-<pre><code class="language-Mathematica">img = ImportWithJLink[&quot;ExampleData/lena.tif&quot;, &quot;TIFF&quot;]
-</code></pre>
-
-<figure>
+</code></pre></div><h2 id="heading">例</h2>
+<h3 id="heading1">読み込み</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Mathematica" data-lang="Mathematica">img <span style="color:#f92672">=</span> ImportWithJLink[<span style="color:#e6db74">&#34;ExampleData/lena.tif&#34;</span>, <span style="color:#e6db74">&#34;TIFF&#34;</span>]
+</code></pre></div><figure>
     <img src="testfile.png"/> 
 </figure>
 
-
-<h3 id="書き込み">書き込み</h3>
-
-<pre><code class="language-Mathematica">file = FileNameJoin[{$TemporaryDirectory, &quot;testfile.png&quot;}];
-ExportWithJLink[file, img, &quot;PNG&quot;];
+<h3 id="heading2">書き込み</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Mathematica" data-lang="Mathematica">file <span style="color:#f92672">=</span> FileNameJoin[{<span style="color:#960050;background-color:#1e0010">$</span>TemporaryDirectory, <span style="color:#e6db74">&#34;testfile.png&#34;</span>}];
+ExportWithJLink[file, img, <span style="color:#e6db74">&#34;PNG&#34;</span>];
 Import[file]
-</code></pre>
-
-<figure>
+</code></pre></div><figure>
     <img src="testfile.png"/> 
 </figure>
 

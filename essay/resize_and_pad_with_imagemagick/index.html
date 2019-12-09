@@ -77,12 +77,9 @@ if (!doNotTrack) {
 			<h1 class="post__title">ImageMagickでベクタ画像を綺麗な半透過PNGにする</h1>
 			
 		</header><div class="content post__content clearfix">
-			
-
-<p>ImageMagickで以下のようなことをやる機会があったのでメモ。
+			<p>ImageMagickで以下のようなことをやる機会があったのでメモ。
 今回は元画像がIllustratorファイルだったが、
 他のベクタ形式の画像からでも背景透過PNGを作成するときに使えると思う。</p>
-
 <ul>
 <li>元データはIllustratorファイル(.ai)</li>
 <li>元の画像の余白部は削除する</li>
@@ -91,17 +88,11 @@ if (!doNotTrack) {
 <li>出来上がりの画像サイズは230x180</li>
 <li>背景は透過させる(きれいに透過させたい)</li>
 </ul>
-
-<h2 id="コマンド">コマンド</h2>
-
-<pre><code class="language-bash">convert -colorspace sRGB -density 576 -filter Point &quot;元ファイル.ai&quot; -trim -alpha set -fill '#000000ff' -opaque '#ffffff' -background transparent +filter -resize 220x110 -gravity center -extent 230x180 出力ファイル.png
-</code></pre>
-
-<h3 id="説明">説明</h3>
-
+<h2 id="heading">コマンド</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">convert -colorspace sRGB -density <span style="color:#ae81ff">576</span> -filter Point <span style="color:#e6db74">&#34;元ファイル.ai&#34;</span> -trim -alpha set -fill <span style="color:#e6db74">&#39;#000000ff&#39;</span> -opaque <span style="color:#e6db74">&#39;#ffffff&#39;</span> -background transparent +filter -resize 220x110 -gravity center -extent 230x180 出力ファイル.png
+</code></pre></div><h3 id="heading1">説明</h3>
 <p>アンチエイリアスを切った状態で透過色を設定し、その後アンチエイリアスをONにして縮小するところがミソ。
 これで中間色の部分をきれいに半透過にできる。</p>
-
 <table>
 <thead>
 <tr>
@@ -109,58 +100,47 @@ if (!doNotTrack) {
 <th align="left">説明</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td align="left"><code>-colorspace sRGB</code></td>
 <td align="left">カラースペースをsRGBに設定</td>
 </tr>
-
 <tr>
 <td align="left"><code>-density 576</code></td>
 <td align="left">出力されるPNGファイルの解像度が72dpiだったので、その8倍で読み込むよう設定</td>
 </tr>
-
 <tr>
 <td align="left"><code>-filter Point</code></td>
 <td align="left">アンチエイリアスをOFFに設定</td>
 </tr>
-
 <tr>
 <td align="left"><code>&quot;元ファイル.ai&quot;</code></td>
 <td align="left">画像ファイルを読み込む</td>
 </tr>
-
 <tr>
 <td align="left"><code>-trim</code></td>
 <td align="left">元画像の余白を削除</td>
 </tr>
-
 <tr>
 <td align="left"><code>-alpha set -fill '#000000ff' -opaque '#ffffff'</code></td>
 <td align="left">白(#ffffff)を透過に指定</td>
 </tr>
-
 <tr>
 <td align="left"><code>-background transparent</code></td>
 <td align="left">出力画像の背景を透明に設定</td>
 </tr>
-
 <tr>
 <td align="left"><code>+filter</code></td>
 <td align="left">リサイズする時はアンチエイリアスON(上で設定された<code>-filter Point</code>を無効化)</td>
 </tr>
-
 <tr>
 <td align="left"><code>-resize 220x110</code></td>
 <td align="left">最大サイズを220x110に縮小</td>
 </tr>
-
 <tr>
 <td align="left"><code>-gravity center -extent 230x180</code></td>
 <td align="left">画像中央を中心に上下左右に余白を作って230x180にする</td>
 </tr>
-
 <tr>
 <td align="left"><code>出力ファイル.png</code></td>
 <td align="left">出力ファイル形式はPNG</td>

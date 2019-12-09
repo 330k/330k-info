@@ -77,122 +77,90 @@ if (!doNotTrack) {
 			<h1 class="post__title">折れ線を間引く</h1>
 			
 		</header><div class="content post__content clearfix">
-			
-
-<p>読み込んだGPSログのデータを間引きたい、と思って調べたところ、
+			<p>読み込んだGPSログのデータを間引きたい、と思って調べたところ、
 (Ramer-)Douglas-Peuckerのアルゴリズムというものがあることが分かった。</p>
-
 <p>基本的な考え方は、</p>
-
 <ol>
 <li>折れ線の始点と終点を結ぶ線分と各点の距離を求める。</li>
 <li>すべての点との距離が許容誤差ε以内に入っていれば始点と終点だけを返して終了。</li>
 <li>そうでなければ距離が最大の点Pを1つ選択。</li>
 <li>始点から点Pまでの折れ線と、点Pから終点までの折れ線のそれぞれについてまた1から処理する。</li>
 </ol>
-
 <p>という再帰的なもの。</p>
-
 <p>再帰的なものはMathematicaの得意分野なので、MathematicaでRamer-Douglas-Peuckerのアルゴリズムを実装してみた。</p>
-
-<h2 id="線分と点の距離">線分と点の距離</h2>
-
+<h2 id="heading">線分と点の距離</h2>
 <p>さて、まずは線分と点の距離を求める関数を作成する。</p>
-
 <p>ネットで検索すると直線と点の距離を求めるものが多いが、線分と点の距離のほうが形状をよく保存できるのではないだろうか、と個人的に考えている。</p>
-
 <p>線分ABに点Pから下ろした垂線の足が点Hだとすると、</p>
-
 <ul>
 <li>線分ABと直線PHは直交⇔内積が0</li>
 <li>点Hは直線AB上にある⇔実数tに対して<strong>B</strong> = t <strong>H</strong>(B、Hは点Aから見た点B、点Hの位置ベクトル)</li>
 </ul>
-
 <p>の条件から、Hの座標と実数tの値が求まる。
 Mathematicaを使うと</p>
-
-<pre><code class="language-Mathematica">A = {ax, ay}; B = {bx, by}; P = {px, py}; H = {x, y};
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Mathematica" data-lang="Mathematica">A <span style="color:#f92672">=</span> {ax, ay}; B <span style="color:#f92672">=</span> {bx, by}; P <span style="color:#f92672">=</span> {px, py}; H <span style="color:#f92672">=</span> {x, y};
 
 Solve[{
-     (H - A).(P - H) == 0,
-     H == A + (B - A) t
-     }, {x, y, t}][[2]] // FullSimplify
-{x -&gt; (ay^2 bx + ax^2 px + ax ay (-by + py) - 
-     ay bx (by + py) + ax (by^2 - 2 bx px - by py) + 
-     bx (bx px + by py))/((ax - bx)^2 + (ay - by)^2), 
- y -&gt; ((ax - bx) (by (ax - px) + ay (-bx + px)) + (ay - 
-      by)^2 py)/((ax - bx)^2 + (ay - by)^2), 
- t -&gt; (ax^2 + ay^2 + bx px - ax (bx + px) + by py - 
-   ay (by + py))/((ax - bx)^2 + (ay - by)^2)}
-</code></pre>
-
-<p>となる。
+     (H <span style="color:#f92672">-</span> A)<span style="color:#960050;background-color:#1e0010">.</span>(P <span style="color:#f92672">-</span> H) <span style="color:#f92672">=</span><span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>,
+     H <span style="color:#f92672">=</span><span style="color:#f92672">=</span> A <span style="color:#f92672">+</span> (B <span style="color:#f92672">-</span> A) t
+     }, {x, y, t}][[<span style="color:#ae81ff">2</span>]] <span style="color:#f92672">/</span><span style="color:#f92672">/</span> FullSimplify
+{x <span style="color:#f92672">-&gt;</span> (ay<span style="color:#f92672">^</span><span style="color:#ae81ff">2</span> bx <span style="color:#f92672">+</span> ax<span style="color:#f92672">^</span><span style="color:#ae81ff">2</span> px <span style="color:#f92672">+</span> ax ay (<span style="color:#f92672">-</span>by <span style="color:#f92672">+</span> py) <span style="color:#f92672">-</span> 
+     ay bx (by <span style="color:#f92672">+</span> py) <span style="color:#f92672">+</span> ax (by<span style="color:#f92672">^</span><span style="color:#ae81ff">2</span> <span style="color:#f92672">-</span> <span style="color:#ae81ff">2</span> bx px <span style="color:#f92672">-</span> by py) <span style="color:#f92672">+</span> 
+     bx (bx px <span style="color:#f92672">+</span> by py))<span style="color:#f92672">/</span>((ax <span style="color:#f92672">-</span> bx)<span style="color:#f92672">^</span><span style="color:#ae81ff">2</span> <span style="color:#f92672">+</span> (ay <span style="color:#f92672">-</span> by)<span style="color:#f92672">^</span><span style="color:#ae81ff">2</span>), 
+ y <span style="color:#f92672">-&gt;</span> ((ax <span style="color:#f92672">-</span> bx) (by (ax <span style="color:#f92672">-</span> px) <span style="color:#f92672">+</span> ay (<span style="color:#f92672">-</span>bx <span style="color:#f92672">+</span> px)) <span style="color:#f92672">+</span> (ay <span style="color:#f92672">-</span> 
+      by)<span style="color:#f92672">^</span><span style="color:#ae81ff">2</span> py)<span style="color:#f92672">/</span>((ax <span style="color:#f92672">-</span> bx)<span style="color:#f92672">^</span><span style="color:#ae81ff">2</span> <span style="color:#f92672">+</span> (ay <span style="color:#f92672">-</span> by)<span style="color:#f92672">^</span><span style="color:#ae81ff">2</span>), 
+ t <span style="color:#f92672">-&gt;</span> (ax<span style="color:#f92672">^</span><span style="color:#ae81ff">2</span> <span style="color:#f92672">+</span> ay<span style="color:#f92672">^</span><span style="color:#ae81ff">2</span> <span style="color:#f92672">+</span> bx px <span style="color:#f92672">-</span> ax (bx <span style="color:#f92672">+</span> px) <span style="color:#f92672">+</span> by py <span style="color:#f92672">-</span> 
+   ay (by <span style="color:#f92672">+</span> py))<span style="color:#f92672">/</span>((ax <span style="color:#f92672">-</span> bx)<span style="color:#f92672">^</span><span style="color:#ae81ff">2</span> <span style="color:#f92672">+</span> (ay <span style="color:#f92672">-</span> by)<span style="color:#f92672">^</span><span style="color:#ae81ff">2</span>)}
+</code></pre></div><p>となる。
 これは2次元の場合だが、一般に</p>
-
 <ul>
 <li>t == (<strong>A</strong> - <strong>B</strong>).(<strong>A</strong> - <strong>P</strong>) / (<strong>A</strong> - <strong>B</strong>).(<strong>A</strong> - <strong>B</strong>)</li>
 <li><strong>H</strong> == <strong>A</strong> + (<strong>B</strong> - <strong>A</strong>)t</li>
 </ul>
-
 <p>となるので、3次元以上の場合はこれから計算すればよい。</p>
-
 <p>実数tが0から1までの間にあるとき、垂線の足、点Hは線分AB上にある。</p>
-
 <p>よって線分ABと点Pの距離は</p>
-
 <ul>
 <li>0&lt;=t&lt;=1ならばHP</li>
 <li>t&lt;0ならばAP</li>
 <li>1&lt;tならばBP</li>
 </ul>
-
 <p>となる。以上を実装すると、</p>
-
-<pre><code class="language-Mathematica">SegmentPointDistance[{{ax_, ay_}, {bx_, by_}}, {px_, py_}] := Module[
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Mathematica" data-lang="Mathematica">SegmentPointDistance[{{ax_, ay_}, {bx_, by_}}, {px_, py_}] <span style="color:#f92672">:=</span> Module[
   {x, y, t},
-  t = (ax^2 + ay^2 + bx px - ax (bx + px) + by py - ay (by + py))/(
-   ax^2 + ay^2 - 2 ax bx + bx^2 - 2 ay by + by^2);
-  x = ax - (ax - bx) t;
-  y = ay - (ay - by) t;
+  t <span style="color:#f92672">=</span> (ax<span style="color:#f92672">^</span><span style="color:#ae81ff">2</span> <span style="color:#f92672">+</span> ay<span style="color:#f92672">^</span><span style="color:#ae81ff">2</span> <span style="color:#f92672">+</span> bx px <span style="color:#f92672">-</span> ax (bx <span style="color:#f92672">+</span> px) <span style="color:#f92672">+</span> by py <span style="color:#f92672">-</span> ay (by <span style="color:#f92672">+</span> py))<span style="color:#f92672">/</span>(
+   ax<span style="color:#f92672">^</span><span style="color:#ae81ff">2</span> <span style="color:#f92672">+</span> ay<span style="color:#f92672">^</span><span style="color:#ae81ff">2</span> <span style="color:#f92672">-</span> <span style="color:#ae81ff">2</span> ax bx <span style="color:#f92672">+</span> bx<span style="color:#f92672">^</span><span style="color:#ae81ff">2</span> <span style="color:#f92672">-</span> <span style="color:#ae81ff">2</span> ay by <span style="color:#f92672">+</span> by<span style="color:#f92672">^</span><span style="color:#ae81ff">2</span>);
+  x <span style="color:#f92672">=</span> ax <span style="color:#f92672">-</span> (ax <span style="color:#f92672">-</span> bx) t;
+  y <span style="color:#f92672">=</span> ay <span style="color:#f92672">-</span> (ay <span style="color:#f92672">-</span> by) t;
   Which[
-   TrueQ[0 &lt;= t &lt;= 1], Norm[{x, y} - {px, py}],
-   TrueQ[1 &lt; t], Norm[{bx, by} - {px, py}],
-   True, Norm[{ax, ay} - {px, py}]
+   TrueQ[<span style="color:#ae81ff">0</span> <span style="color:#f92672">&lt;</span><span style="color:#f92672">=</span> t <span style="color:#f92672">&lt;</span><span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>], Norm[{x, y} <span style="color:#f92672">-</span> {px, py}],
+   TrueQ[<span style="color:#ae81ff">1</span> <span style="color:#f92672">&lt;</span> t], Norm[{bx, by} <span style="color:#f92672">-</span> {px, py}],
+   True, Norm[{ax, ay} <span style="color:#f92672">-</span> {px, py}]
    ]
   ]
-</code></pre>
-
-<p>となる。本当は点Aと点Bが一致してしまう場合を回避しなければならない。</p>
-
-<h2 id="折れ線を間引く">折れ線を間引く</h2>
-
+</code></pre></div><p>となる。本当は点Aと点Bが一致してしまう場合を回避しなければならない。</p>
+<h2 id="heading1">折れ線を間引く</h2>
 <p>これで本題に入れる。とはいっても最初のアルゴリズムを素直に実装すればよく、</p>
-
-<pre><code class="language-Mathematica">LineSimplify[{p1 : {_, _}, midpoints : {_, _} .., p2 : {_, _}}, \[Epsilon]_] := Module[
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Mathematica" data-lang="Mathematica">LineSimplify[{p1 <span style="color:#960050;background-color:#1e0010">:</span> {_, _}, midpoints <span style="color:#960050;background-color:#1e0010">:</span> {_, _} <span style="color:#960050;background-color:#1e0010">.</span><span style="color:#960050;background-color:#1e0010">.</span>, p2 <span style="color:#960050;background-color:#1e0010">:</span> {_, _}}, <span style="color:#960050;background-color:#1e0010">\</span>[Epsilon]_] <span style="color:#f92672">:=</span> Module[
   {distance, maxdistance, maxdistanceposition},
-  distance = SegmentPointDistance[{p1, p2}, #] &amp; /@ {midpoints};
-  maxdistanceposition = Ordering[distance, -1][[1]];
-  maxdistance = distance[[maxdistanceposition]];
-  If[TrueQ[maxdistance &lt; \[Epsilon]],
+  distance <span style="color:#f92672">=</span> SegmentPointDistance[{p1, p2}, #] <span style="color:#f92672">&amp;</span> <span style="color:#f92672">/</span><span style="color:#f92672">@</span> {midpoints};
+  maxdistanceposition <span style="color:#f92672">=</span> Ordering[distance, <span style="color:#ae81ff">-1</span>][[<span style="color:#ae81ff">1</span>]];
+  maxdistance <span style="color:#f92672">=</span> distance[[maxdistanceposition]];
+  If[TrueQ[maxdistance <span style="color:#f92672">&lt;</span> <span style="color:#960050;background-color:#1e0010">\</span>[Epsilon]],
    {p1, p2},
    Join[
     LineSimplify[
-     Join[{p1}, {midpoints}[[1 ;; maxdistanceposition]]], \[Epsilon]],
+     Join[{p1}, {midpoints}[[<span style="color:#ae81ff">1</span> <span style="color:#f92672">;;</span> maxdistanceposition]]], <span style="color:#960050;background-color:#1e0010">\</span>[Epsilon]],
     Rest[LineSimplify[
       Join[{midpoints}[[
-        maxdistanceposition ;; -1]], {p2}], \[Epsilon]]]
+        maxdistanceposition <span style="color:#f92672">;;</span> <span style="color:#ae81ff">-1</span>]], {p2}], <span style="color:#960050;background-color:#1e0010">\</span>[Epsilon]]]
     ]
    ]
   ]
-LineSimplify[{p1 : {_, _}, p2 : {_, _}}, \[Epsilon]_] := {p1, p2}
-</code></pre>
-
-<p>となる。距離の最大値と最大値を与える点の番号を別々に求めているところがちょっと冗長だが仕方ない。</p>
-
-<h3 id="例">例</h3>
-
+LineSimplify[{p1 <span style="color:#960050;background-color:#1e0010">:</span> {_, _}, p2 <span style="color:#960050;background-color:#1e0010">:</span> {_, _}}, <span style="color:#960050;background-color:#1e0010">\</span>[Epsilon]_] <span style="color:#f92672">:=</span> {p1, p2}
+</code></pre></div><p>となる。距離の最大値と最大値を与える点の番号を別々に求めているところがちょっと冗長だが仕方ない。</p>
+<h3 id="heading2">例</h3>
 <p>MathematicaのCountryDataから取り出せる日本の形状データを使ってこのアルゴリズムをテストしてみた例。</p>
-
 <table>
 <thead>
 <tr>
@@ -200,7 +168,6 @@ LineSimplify[{p1 : {_, _}, p2 : {_, _}}, \[Epsilon]_] := {p1, p2}
 <th>間引き後(212点) ε=0.1</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td><figure>
@@ -214,14 +181,10 @@ LineSimplify[{p1 : {_, _}, p2 : {_, _}}, \[Epsilon]_] := {p1, p2}
 </tr>
 </tbody>
 </table>
-
-<h2 id="間引いた後の点の数を指定できるようにするには">間引いた後の点の数を指定できるようにするには</h2>
-
+<h2 id="heading3">間引いた後の点の数を指定できるようにするには</h2>
 <p>さて、Douglas-Peuckerのアルゴリズムは許容誤差εを与えて間引くので、間引いた後の点の数がいくらになるのかは指定できない。
 しかし、GPSログデータの編集・加工ツールとして有名な轍(Wadachi)では、間引いた後の点の数を指定できる。</p>
-
 <p>これを実現するには、以下のようなアルゴリズムになる。</p>
-
 <ol>
 <li>始点と終点を結ぶ線分と各点の距離を求める。</li>
 <li>距離が最大の点Pとその距離の情報をリスト(優先度付きキュー)に加える</li>
@@ -231,79 +194,67 @@ LineSimplify[{p1 : {_, _}, p2 : {_, _}}, \[Epsilon]_] := {p1, p2}
 <li>リストが空になるか、点の個数が指定した数になるまで3以降を繰り返す。</li>
 <li>残す点として登録したものだけを取り出す</li>
 </ol>
-
 <p>というアルゴリズムになる。</p>
-
 <p><a href="/software/simplify_gpx/">GPXデータを簡略化</a>ではこれを実装した。</p>
-
-<hr />
-
+<hr>
 <p>Jun. 26 2014 追記:</p>
-
 <p>Mathematica 8で実装してみた。簡単のため優先度付きキューではなく配列を毎回Sortしている。</p>
-
-<pre><code class="language-Mathematica">SegmentPointDistance2 = 
-  Compile[{{a, _Real, 1}, {b, _Real, 1}, {p, _Real, 1}}, 
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Mathematica" data-lang="Mathematica">SegmentPointDistance2 <span style="color:#f92672">=</span> 
+  Compile[{{a, _Real, <span style="color:#ae81ff">1</span>}, {b, _Real, <span style="color:#ae81ff">1</span>}, {p, _Real, <span style="color:#ae81ff">1</span>}}, 
    Module[{ax, ay, bx, by, px, py, x, y, t},
-    ax = a[[1]]; ay = a[[2]];
-    bx = b[[1]]; by = b[[2]];
-    px = p[[1]]; py = p[[2]];
-    t = (ax^2 + ay^2 + bx px - ax (bx + px) + by py - 
-        ay (by + py))/(ax^2 + ay^2 - 2 ax bx + bx^2 - 2 ay by + 
-        by^2);
-    x = ax - (ax - bx) t;
-    y = ay - (ay - by) t;
+    ax <span style="color:#f92672">=</span> a[[<span style="color:#ae81ff">1</span>]]; ay <span style="color:#f92672">=</span> a[[<span style="color:#ae81ff">2</span>]];
+    bx <span style="color:#f92672">=</span> b[[<span style="color:#ae81ff">1</span>]]; by <span style="color:#f92672">=</span> b[[<span style="color:#ae81ff">2</span>]];
+    px <span style="color:#f92672">=</span> p[[<span style="color:#ae81ff">1</span>]]; py <span style="color:#f92672">=</span> p[[<span style="color:#ae81ff">2</span>]];
+    t <span style="color:#f92672">=</span> (ax<span style="color:#f92672">^</span><span style="color:#ae81ff">2</span> <span style="color:#f92672">+</span> ay<span style="color:#f92672">^</span><span style="color:#ae81ff">2</span> <span style="color:#f92672">+</span> bx px <span style="color:#f92672">-</span> ax (bx <span style="color:#f92672">+</span> px) <span style="color:#f92672">+</span> by py <span style="color:#f92672">-</span> 
+        ay (by <span style="color:#f92672">+</span> py))<span style="color:#f92672">/</span>(ax<span style="color:#f92672">^</span><span style="color:#ae81ff">2</span> <span style="color:#f92672">+</span> ay<span style="color:#f92672">^</span><span style="color:#ae81ff">2</span> <span style="color:#f92672">-</span> <span style="color:#ae81ff">2</span> ax bx <span style="color:#f92672">+</span> bx<span style="color:#f92672">^</span><span style="color:#ae81ff">2</span> <span style="color:#f92672">-</span> <span style="color:#ae81ff">2</span> ay by <span style="color:#f92672">+</span> 
+        by<span style="color:#f92672">^</span><span style="color:#ae81ff">2</span>);
+    x <span style="color:#f92672">=</span> ax <span style="color:#f92672">-</span> (ax <span style="color:#f92672">-</span> bx) t;
+    y <span style="color:#f92672">=</span> ay <span style="color:#f92672">-</span> (ay <span style="color:#f92672">-</span> by) t;
     Which[
-     0 &lt;= t &lt;= 1, Sqrt[((x - px)^2 + (y - py)^2)],
-     1 &lt; t, Sqrt[((bx - px)^2 + (by - py)^2)],
-     True, Sqrt[((ax - px)^2 + (ay - py)^2)]
+     <span style="color:#ae81ff">0</span> <span style="color:#f92672">&lt;</span><span style="color:#f92672">=</span> t <span style="color:#f92672">&lt;</span><span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>, Sqrt[((x <span style="color:#f92672">-</span> px)<span style="color:#f92672">^</span><span style="color:#ae81ff">2</span> <span style="color:#f92672">+</span> (y <span style="color:#f92672">-</span> py)<span style="color:#f92672">^</span><span style="color:#ae81ff">2</span>)],
+     <span style="color:#ae81ff">1</span> <span style="color:#f92672">&lt;</span> t, Sqrt[((bx <span style="color:#f92672">-</span> px)<span style="color:#f92672">^</span><span style="color:#ae81ff">2</span> <span style="color:#f92672">+</span> (by <span style="color:#f92672">-</span> py)<span style="color:#f92672">^</span><span style="color:#ae81ff">2</span>)],
+     True, Sqrt[((ax <span style="color:#f92672">-</span> px)<span style="color:#f92672">^</span><span style="color:#ae81ff">2</span> <span style="color:#f92672">+</span> (ay <span style="color:#f92672">-</span> py)<span style="color:#f92672">^</span><span style="color:#ae81ff">2</span>)]
      ]
     ]
-   , CompilationTarget -&gt; &quot;C&quot;
-   , Parallelization -&gt; True
-   , RuntimeAttributes -&gt; {Listable}
+   , CompilationTarget <span style="color:#f92672">-&gt;</span> <span style="color:#e6db74">&#34;C&#34;</span>
+   , Parallelization <span style="color:#f92672">-&gt;</span> True
+   , RuntimeAttributes <span style="color:#f92672">-&gt;</span> {Listable}
    ];
-findFarthest[data_, pos1_, pos2_] /; pos2 - pos1 &gt;= 2 := 
+findFarthest[data_, pos1_, pos2_] <span style="color:#f92672">/</span>; pos2 <span style="color:#f92672">-</span> pos1 <span style="color:#f92672">&gt;</span><span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">:=</span> 
   Module[{dist, maxdist, maxpos},
-   dist = 
+   dist <span style="color:#f92672">=</span> 
     SegmentPointDistance2[data[[pos1]], data[[pos2]], 
-     data[[pos1 + 1 ;; pos2 - 1]]];
-   maxpos = Ordering[dist, -1][[1]];
-   maxdist = dist[[maxpos]];
-   {{maxdist, pos1, pos1 + maxpos, pos2}}
+     data[[pos1 <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">;;</span> pos2 <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>]]];
+   maxpos <span style="color:#f92672">=</span> Ordering[dist, <span style="color:#ae81ff">-1</span>][[<span style="color:#ae81ff">1</span>]];
+   maxdist <span style="color:#f92672">=</span> dist[[maxpos]];
+   {{maxdist, pos1, pos1 <span style="color:#f92672">+</span> maxpos, pos2}}
    ];
-findFarthest[data_, pos1_, pos2_] := {};
-lineSimplifyNStep[data_, {first_, rest___}] := 
+findFarthest[data_, pos1_, pos2_] <span style="color:#f92672">:=</span> {};
+lineSimplifyNStep[data_, {first_, rest___}] <span style="color:#f92672">:=</span> 
  Module[{dist, pos1, maxpos, pos2},
-  {dist, pos1, maxpos, pos2} = first;
+  {dist, pos1, maxpos, pos2} <span style="color:#f92672">=</span> first;
   Sow[maxpos];
-  Reverse@Sort[Join[
+  Reverse<span style="color:#f92672">@</span>Sort[Join[
      {rest},
      findFarthest[data, pos1, maxpos],
      findFarthest[data, maxpos, pos2]
      ]]
   ];
-LineSimplifyN[line : {{_, _} ..}, n_ /; n &lt;= 0] := {};
-LineSimplifyN[line : {{_, _} ..}, 1] := {First[line]};
-LineSimplifyN[line : {{_, _} ..}, 2] := {First[line], Last[line]};
-LineSimplifyN[line : {{_, _} ..}, n_] /; Length[line] &lt;= n := line;
-LineSimplifyN[line : {{_, _} ..}, n_Integer] := 
-  line[[{1, Sequence @@ Sort[
-       Reap[Nest[lineSimplifyNStep[line, #] &amp;,
-          findFarthest[line, 1, Length[line]], n - 2]][[2, 1]]
+LineSimplifyN[line <span style="color:#960050;background-color:#1e0010">:</span> {{_, _} <span style="color:#960050;background-color:#1e0010">.</span><span style="color:#960050;background-color:#1e0010">.</span>}, n_ <span style="color:#f92672">/</span>; n <span style="color:#f92672">&lt;</span><span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>] <span style="color:#f92672">:=</span> {};
+LineSimplifyN[line <span style="color:#960050;background-color:#1e0010">:</span> {{_, _} <span style="color:#960050;background-color:#1e0010">.</span><span style="color:#960050;background-color:#1e0010">.</span>}, <span style="color:#ae81ff">1</span>] <span style="color:#f92672">:=</span> {First[line]};
+LineSimplifyN[line <span style="color:#960050;background-color:#1e0010">:</span> {{_, _} <span style="color:#960050;background-color:#1e0010">.</span><span style="color:#960050;background-color:#1e0010">.</span>}, <span style="color:#ae81ff">2</span>] <span style="color:#f92672">:=</span> {First[line], Last[line]};
+LineSimplifyN[line <span style="color:#960050;background-color:#1e0010">:</span> {{_, _} <span style="color:#960050;background-color:#1e0010">.</span><span style="color:#960050;background-color:#1e0010">.</span>}, n_] <span style="color:#f92672">/</span>; Length[line] <span style="color:#f92672">&lt;</span><span style="color:#f92672">=</span> n <span style="color:#f92672">:=</span> line;
+LineSimplifyN[line <span style="color:#960050;background-color:#1e0010">:</span> {{_, _} <span style="color:#960050;background-color:#1e0010">.</span><span style="color:#960050;background-color:#1e0010">.</span>}, n_Integer] <span style="color:#f92672">:=</span> 
+  line[[{<span style="color:#ae81ff">1</span>, Sequence <span style="color:#f92672">@</span><span style="color:#f92672">@</span> Sort[
+       Reap[Nest[lineSimplifyNStep[line, #] <span style="color:#f92672">&amp;</span>,
+          findFarthest[line, <span style="color:#ae81ff">1</span>, Length[line]], n <span style="color:#f92672">-</span> <span style="color:#ae81ff">2</span>]][[<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">1</span>]]
        ], Length[line]}]];
-</code></pre>
-
-<h3 id="例-アメリカ合衆国">例(アメリカ合衆国)</h3>
-
-<pre><code class="language-Mathematica">line = CountryData[&quot;USA&quot;, &quot;Polygon&quot;][[1, 1]];
-Graphics[{Polygon[line], Red, Line@LineSimplifyN[line, 50]}]
-</code></pre>
-
-<figure>
+</code></pre></div><h3 id="heading4">例(アメリカ合衆国)</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Mathematica" data-lang="Mathematica">line <span style="color:#f92672">=</span> CountryData[<span style="color:#e6db74">&#34;USA&#34;</span>, <span style="color:#e6db74">&#34;Polygon&#34;</span>][[<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>]];
+Graphics[{Polygon[line], Red, Line<span style="color:#f92672">@</span>LineSimplifyN[line, <span style="color:#ae81ff">50</span>]}]
+</code></pre></div><figure>
     <img src="douglas-peucker-n-001.png"/> 
 </figure>
-
 
 <p>元は4672点、赤線が50点に削減したもの。</p>
 

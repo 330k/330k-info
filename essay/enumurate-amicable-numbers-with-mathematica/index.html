@@ -78,26 +78,15 @@ if (!doNotTrack) {
 			
 		</header><div class="content post__content clearfix">
 			<p>Mathematicaで友愛数を列挙するプログラム例として以下のようなものが見受けられる。</p>
-
-<pre><code class="language-Mathematica">yakuwa[n_] := DivisorSigma[1, n] - n;
-Do[If[(yakuwa[yakuwa[k]] == k) &amp;&amp; (yakuwa[k] != k), Print[{k, yakuwa[k]}]], {k, 1, 1000}];
-</code></pre>
-
-<p>しかし、Doでループを回してPrintで書き出していくのはMathematica的に美しくないと思う。</p>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Mathematica" data-lang="Mathematica">yakuwa[n_] <span style="color:#f92672">:=</span> DivisorSigma[<span style="color:#ae81ff">1</span>, n] <span style="color:#f92672">-</span> n;
+Do[If[(yakuwa[yakuwa[k]] <span style="color:#f92672">=</span><span style="color:#f92672">=</span> k) <span style="color:#f92672">&amp;&amp;</span> (yakuwa[k] <span style="color:#f92672">!</span><span style="color:#f92672">=</span> k), Print[{k, yakuwa[k]}]], {k, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1000</span>}];
+</code></pre></div><p>しかし、Doでループを回してPrintで書き出していくのはMathematica的に美しくないと思う。</p>
 <p>Mathematicaなら関数型プログラミングとパターンマッチを用いるのが良いと思うので、私なら以下のように書く。</p>
-
-<pre><code class="language-Mathematica">Cases[NestList[DivisorSigma[1, #] - # &amp;, #, 2] &amp; /@ Range[100000], {a_, b_, a_} /; a &lt; b -&gt; {a, b}]
-</code></pre>
-
-<p>実行速度もこちらのほうが1割程度速い。</p>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Mathematica" data-lang="Mathematica">Cases[NestList[DivisorSigma[<span style="color:#ae81ff">1</span>, #] <span style="color:#f92672">-</span> # <span style="color:#f92672">&amp;</span>, #, <span style="color:#ae81ff">2</span>] <span style="color:#f92672">&amp;</span> <span style="color:#f92672">/</span><span style="color:#f92672">@</span> Range[<span style="color:#ae81ff">100000</span>], {a_, b_, a_} <span style="color:#f92672">/</span>; a <span style="color:#f92672">&lt;</span> b <span style="color:#f92672">-&gt;</span> {a, b}]
+</code></pre></div><p>実行速度もこちらのほうが1割程度速い。</p>
 <p>この書き方から一般の社交数を求めるプログラムに拡張するのは簡単で、例えば5個組の社交数を探す場合は以下のようになる。</p>
-
-<pre><code class="language-Mathematica">Cases[NestList[DivisorSigma[1, #] - # &amp;, #, 5] &amp; /@ Range[100000], {a_, b__, a_} /; a &lt; Min[b] -&gt; {a, b}]
-</code></pre>
-
-<p>ただし、私の方法はメモリを大量に使う。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Mathematica" data-lang="Mathematica">Cases[NestList[DivisorSigma[<span style="color:#ae81ff">1</span>, #] <span style="color:#f92672">-</span> # <span style="color:#f92672">&amp;</span>, #, <span style="color:#ae81ff">5</span>] <span style="color:#f92672">&amp;</span> <span style="color:#f92672">/</span><span style="color:#f92672">@</span> Range[<span style="color:#ae81ff">100000</span>], {a_, b__, a_} <span style="color:#f92672">/</span>; a <span style="color:#f92672">&lt;</span> Min[b] <span style="color:#f92672">-&gt;</span> {a, b}]
+</code></pre></div><p>ただし、私の方法はメモリを大量に使う。</p>
 
 		</div>
 		<footer class="post__footer">

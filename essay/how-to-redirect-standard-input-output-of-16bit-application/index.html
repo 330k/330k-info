@@ -79,51 +79,44 @@ if (!doNotTrack) {
 		</header><div class="content post__content clearfix">
 			<p>FORTRANで書かれた古いMS-DOSプログラムを.NET/Linkを使ってMathematicaから操るパッケージを作っていたところ、
 <code>Process.StartInfo.RedirectStandardInput</code>や<code>RedirectStandardOutput</code>に<code>True</code>を設定してもまったく標準入出力をリダイレクトできなかった。(※OSはVista 32bit)</p>
-
 <p>いろいろ試してみたところ、16ビットのプログラムだとリダイレクトができないらしいということが分かった。
 さてどうしたものかとさらにいろいろ打開策を探してみた結果、</p>
-
 <ol>
 <li><code>FileName</code>に<code>&quot;cmd.exe&quot;</code>を設定して、<code>Process.Start()</code>でプロセスを起動。</li>
 <li>必要なら<code>StandardInput.WriteLine(&quot;cd 16ビットプログラムのディレクトリ&quot;)</code>としてカレントディレクトリを移動。</li>
 <li><code>StandardInput.WriteLine(&quot;***.EXE&quot;)</code>として16ビットプログラムを起動。</li>
 </ol>
-
 <p>とcmd.exeを間に挟むことにより、16ビットのプログラムに対しても標準入出力のリダイレクトが行えることが分かった。</p>
-
 <p>以下はMathematica+.NET/Linkによるサンプル。
 標準出力は書き出されるたびにイベントハンドラで捕捉してoutputsに追加するので、<code>Dynamic[outputs]</code>などとしておくと、本当のターミナルの挙動に近づく。
-最初にcmd.exeの出力(&ldquo;Microsoft Windows [Version &hellip;&ldquo;)が入るので、16ビットのプログラムの出力だけがほしい場合は16ビットプログラム起動後にフラグを立てれば大丈夫。</p>
-
-<pre><code class="language-Mathematica">outputs = {};
-outputhandler[o_, args_] := Module[
-   {data = args@Data},
+最初にcmd.exeの出力(&ldquo;Microsoft Windows [Version &hellip;&quot;)が入るので、16ビットのプログラムの出力だけがほしい場合は16ビットプログラム起動後にフラグを立てれば大丈夫。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Mathematica" data-lang="Mathematica">outputs <span style="color:#f92672">=</span> {};
+outputhandler[o_, args_] <span style="color:#f92672">:=</span> Module[
+   {data <span style="color:#f92672">=</span> args<span style="color:#f92672">@</span>Data},
    AppendTo[outputs, data];
    ];
 NETBlock[
-  proc = NETNew[&quot;System.Diagnostics.Process&quot;];
-  LoadNETType[&quot;System.Environment&quot;];
-  proc@StartInfo@FileName = Environment`GetEnvironmentVariable[&quot;ComSpec&quot;];
-  proc@StartInfo@RedirectStandardInput = True;
-  proc@StartInfo@RedirectStandardOutput = True;
-  proc@StartInfo@UseShellExecute = False;
-  proc@StartInfo@CreateNoWindow = True;
-  proc@StartInfo@WorkingDirectory = DirectoryName[proc@StartInfo@FileName];
-  AddEventHandler[proc@OutputDataReceived, outputhandler];
-  proc@Start[];
-  proc@BeginOutputReadLine[];
-  proc@StandardInput@WriteLine[&quot;cd &quot; &lt;&gt; &quot;16ビットプログラムのディレクトリ&quot;];
-  proc@StandardInput@WriteLine[&quot;******.EXE(16ビットプログラム)&quot;];
+  proc <span style="color:#f92672">=</span> NETNew[<span style="color:#e6db74">&#34;System.Diagnostics.Process&#34;</span>];
+  LoadNETType[<span style="color:#e6db74">&#34;System.Environment&#34;</span>];
+  proc<span style="color:#f92672">@</span>StartInfo<span style="color:#f92672">@</span>FileName <span style="color:#f92672">=</span> Environment`GetEnvironmentVariable[<span style="color:#e6db74">&#34;ComSpec&#34;</span>];
+  proc<span style="color:#f92672">@</span>StartInfo<span style="color:#f92672">@</span>RedirectStandardInput <span style="color:#f92672">=</span> True;
+  proc<span style="color:#f92672">@</span>StartInfo<span style="color:#f92672">@</span>RedirectStandardOutput <span style="color:#f92672">=</span> True;
+  proc<span style="color:#f92672">@</span>StartInfo<span style="color:#f92672">@</span>UseShellExecute <span style="color:#f92672">=</span> False;
+  proc<span style="color:#f92672">@</span>StartInfo<span style="color:#f92672">@</span>CreateNoWindow <span style="color:#f92672">=</span> True;
+  proc<span style="color:#f92672">@</span>StartInfo<span style="color:#f92672">@</span>WorkingDirectory <span style="color:#f92672">=</span> DirectoryName[proc<span style="color:#f92672">@</span>StartInfo<span style="color:#f92672">@</span>FileName];
+  AddEventHandler[proc<span style="color:#f92672">@</span>OutputDataReceived, outputhandler];
+  proc<span style="color:#f92672">@</span>Start[];
+  proc<span style="color:#f92672">@</span>BeginOutputReadLine[];
+  proc<span style="color:#f92672">@</span>StandardInput<span style="color:#f92672">@</span>WriteLine[<span style="color:#e6db74">&#34;cd &#34;</span> <span style="color:#f92672">&lt;&gt;</span> <span style="color:#e6db74">&#34;16ビットプログラムのディレクトリ&#34;</span>];
+  proc<span style="color:#f92672">@</span>StandardInput<span style="color:#f92672">@</span>WriteLine[<span style="color:#e6db74">&#34;******.EXE(16ビットプログラム)&#34;</span>];
   
-  proc@StandardInput@WriteLine[&quot;16ビットプログラムの標準入力に渡す内容&quot;];
-  proc@StandardInput@Close[];
+  proc<span style="color:#f92672">@</span>StandardInput<span style="color:#f92672">@</span>WriteLine[<span style="color:#e6db74">&#34;16ビットプログラムの標準入力に渡す内容&#34;</span>];
+  proc<span style="color:#f92672">@</span>StandardInput<span style="color:#f92672">@</span>Close[];
   
-  proc@WaitForExit[];
-  proc@Close[];
+  proc<span style="color:#f92672">@</span>WaitForExit[];
+  proc<span style="color:#f92672">@</span>Close[];
   ];
-</code></pre>
-
-<p>とはいっても64bit版のWindowsだと16bitのプログラムがそもそも動かない。</p>
+</code></pre></div><p>とはいっても64bit版のWindowsだと16bitのプログラムがそもそも動かない。</p>
 
 		</div>
 		<footer class="post__footer">

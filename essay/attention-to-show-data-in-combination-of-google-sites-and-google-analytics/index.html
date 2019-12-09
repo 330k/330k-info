@@ -79,77 +79,58 @@ if (!doNotTrack) {
 		</header><div class="content post__content clearfix">
 			<p>Google SitesではGoogle Analyticsを用いる設定が簡単にできるが、Google Analyticsの「サイト上のデータ表示」を行うと「閉じる」をクリックしても何の反応がない。
 画面にレイヤーが重なっていろいろなデータが表示されてしまう状態から抜けられない。</p>
-
 <p>ネットを調べたところ、「閉じる」が見つからないために同じような現象に遭遇している事例は見つかったが、
 「閉じる」をクリックしても、</p>
-
-<pre><code class="language-js">_siteOverlay._close()
-</code></pre>
-
-<p>をアドレスバーに打ち込んでもダメだった。
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#a6e22e">_siteOverlay</span>.<span style="color:#a6e22e">_close</span>()
+</code></pre></div><p>をアドレスバーに打ち込んでもダメだった。
 おそらくGoogle Sitesを利用している場合特有の現象なのだろう。</p>
-
 <p>この現象が発生することを確認したブラウザは</p>
-
 <ul>
 <li>Google Chrome 4.0.237.0</li>
 <li>Mozilla Firefox 3.5.5</li>
 <li>Opera 10</li>
 <li>Internet Explorer 8</li>
 </ul>
-
 <p>で、いずれもOSはWindows Vista(32ビット)。ちなみにIE8ではレイアウトも崩れていた。</p>
-
 <p>仕方がないので_siteOverlay.close()の中身をちょっと調べた。</p>
-
-<pre><code class="language-js">function () {
-    var domain, cookiePath;
-    if (GLOBAL_window._udo) {
-        domain = GLOBAL_window._udo;
-    } else if (GLOBAL_window._gat &amp;&amp; GLOBAL_window._gat._gasoDomain) {
-        domain = GLOBAL_window._gat._gasoDomain;
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#66d9ef">function</span> () {
+    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">domain</span>, <span style="color:#a6e22e">cookiePath</span>;
+    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">GLOBAL_window</span>.<span style="color:#a6e22e">_udo</span>) {
+        <span style="color:#a6e22e">domain</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">GLOBAL_window</span>.<span style="color:#a6e22e">_udo</span>;
+    } <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">GLOBAL_window</span>.<span style="color:#a6e22e">_gat</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">GLOBAL_window</span>.<span style="color:#a6e22e">_gat</span>.<span style="color:#a6e22e">_gasoDomain</span>) {
+        <span style="color:#a6e22e">domain</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">GLOBAL_window</span>.<span style="color:#a6e22e">_gat</span>.<span style="color:#a6e22e">_gasoDomain</span>;
     }
-    if (domain) {
-        domain = domain[$$PROP_replace](&quot;domain=&quot;, &quot;&quot;)[$$PROP_replace](&quot;;&quot;, &quot;&quot;)[$$PROP_replace](/ /g, &quot;&quot;);
+    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">domain</span>) {
+        <span style="color:#a6e22e">domain</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">domain</span>[<span style="color:#a6e22e">$$PROP_replace</span>](<span style="color:#e6db74">&#34;domain=&#34;</span>, <span style="color:#e6db74">&#34;&#34;</span>)[<span style="color:#a6e22e">$$PROP_replace</span>](<span style="color:#e6db74">&#34;;&#34;</span>, <span style="color:#e6db74">&#34;&#34;</span>)[<span style="color:#a6e22e">$$PROP_replace</span>](<span style="color:#e6db74">/ /g</span>, <span style="color:#e6db74">&#34;&#34;</span>);
     }
-    if (GLOBAL_window._utcp) {
-        cookiePath = GLOBAL_window._utcp;
-    } else if (GLOBAL_window._gat &amp;&amp; GLOBAL_window._gat._gasoCPath) {
-        cookiePath = GLOBAL_window._gat._gasoCPath;
+    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">GLOBAL_window</span>.<span style="color:#a6e22e">_utcp</span>) {
+        <span style="color:#a6e22e">cookiePath</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">GLOBAL_window</span>.<span style="color:#a6e22e">_utcp</span>;
+    } <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">GLOBAL_window</span>.<span style="color:#a6e22e">_gat</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">GLOBAL_window</span>.<span style="color:#a6e22e">_gat</span>.<span style="color:#a6e22e">_gasoCPath</span>) {
+        <span style="color:#a6e22e">cookiePath</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">GLOBAL_window</span>.<span style="color:#a6e22e">_gat</span>.<span style="color:#a6e22e">_gasoCPath</span>;
     }
-    if (domain &amp;&amp; cookiePath) {
-        goog.net.cookies[$$PROP_remove](&quot;GASO&quot;, cookiePath, &quot;.&quot; + domain);
-        GLOBAL_window.parent &amp;&amp; GLOBAL_window.close();
-        var idx = GLOBAL_document[$$PROP_location][$$PROP_href][$$PROP_indexOf](&quot;#gaso=&quot;);
-        if (idx &gt; -1) {
-            var href = GLOBAL_document[$$PROP_location][$$PROP_href][$$PROP_substring](0, idx);
-            GLOBAL_document[$$PROP_location][$$PROP_replace](href);
-        } else {
-            GLOBAL_document[$$PROP_location].reload();
+    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">domain</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">cookiePath</span>) {
+        <span style="color:#a6e22e">goog</span>.<span style="color:#a6e22e">net</span>.<span style="color:#a6e22e">cookies</span>[<span style="color:#a6e22e">$$PROP_remove</span>](<span style="color:#e6db74">&#34;GASO&#34;</span>, <span style="color:#a6e22e">cookiePath</span>, <span style="color:#e6db74">&#34;.&#34;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">domain</span>);
+        <span style="color:#a6e22e">GLOBAL_window</span>.<span style="color:#a6e22e">parent</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">GLOBAL_window</span>.<span style="color:#a6e22e">close</span>();
+        <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">idx</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">GLOBAL_document</span>[<span style="color:#a6e22e">$$PROP_location</span>][<span style="color:#a6e22e">$$PROP_href</span>][<span style="color:#a6e22e">$$PROP_indexOf</span>](<span style="color:#e6db74">&#34;#gaso=&#34;</span>);
+        <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">idx</span> <span style="color:#f92672">&gt;</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>) {
+            <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">href</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">GLOBAL_document</span>[<span style="color:#a6e22e">$$PROP_location</span>][<span style="color:#a6e22e">$$PROP_href</span>][<span style="color:#a6e22e">$$PROP_substring</span>](<span style="color:#ae81ff">0</span>, <span style="color:#a6e22e">idx</span>);
+            <span style="color:#a6e22e">GLOBAL_document</span>[<span style="color:#a6e22e">$$PROP_location</span>][<span style="color:#a6e22e">$$PROP_replace</span>](<span style="color:#a6e22e">href</span>);
+        } <span style="color:#66d9ef">else</span> {
+            <span style="color:#a6e22e">GLOBAL_document</span>[<span style="color:#a6e22e">$$PROP_location</span>].<span style="color:#a6e22e">reload</span>();
         }
     }
 }
-</code></pre>
-
-<p>このうち、</p>
-
-<pre><code class="language-js">GLOBAL_window._gat._gasoCPath
-</code></pre>
-
-<p>が空文字列になってしまっているために、Cookieが削除されずに残ってしまうようだ。</p>
-
+</code></pre></div><p>このうち、</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#a6e22e">GLOBAL_window</span>.<span style="color:#a6e22e">_gat</span>.<span style="color:#a6e22e">_gasoCPath</span>
+</code></pre></div><p>が空文字列になってしまっているために、Cookieが削除されずに残ってしまうようだ。</p>
 <p>なぜそうなってしまうのかは面倒なので調べていないが、とりあえず対処方法としては該当するCookieを削除してしまえばよいということになる。
 ドメインにあるクッキーのうち</p>
-
 <ul>
 <li>GASO</li>
 <li>aftzc</li>
 </ul>
-
 <p>という名前のCookieが追加されていたので、これらを削除する。</p>
-
 <p>ようやく解放された。</p>
-
 <p>これからは「サイト上のデータ表示」はクリックしないように気をつけよう。</p>
 
 		</div>

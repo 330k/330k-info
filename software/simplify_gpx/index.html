@@ -77,44 +77,32 @@ if (!doNotTrack) {
 			<h1 class="post__title">GPXトラックログを間引く・簡略化</h1>
 			
 		</header><div class="content post__content clearfix">
-			
-
-<iframe
+			<iframe
  src="https://330k.github.io/gpx_tools/gpx_simplify.html"
  width="100%"
  height="400">
 </iframe>
 
-
-<h1 id="概要">概要</h1>
-
+<h1 id="heading">概要</h1>
 <p>GPSロガーで取ったGPXログを公開する際、</p>
-
 <ol>
 <li>途切れ途切れのトラックログを結合し</li>
 <li>日ごとにそれをまた分割し</li>
 <li>それぞれを1トラック400ポイント程度に間引いて簡略化する</li>
 </ol>
-
 <p>という手間がかかっていたため、この一連の作業を一括処理するプログラムを作った。</p>
-
 <p>また、ツーリング中には事前に作成しておいたGPXファイルをAndroidのRMapsや地図ロイドに読み込ませて走行ルートを確認しているのだが、
 GPXファイルに余分な要素があると、処理に時間がかかってしまう(あまりに重いと処理できないこともある)。</p>
-
 <p>トラックログを間引くアルゴリズムは<a href="/essay/oresenwomabiku/">折れ線を間引く</a>に記載した点数を指定するタイプのDouglas-Peuckerを実装している。
 メルカトル図法に投影した座標で間引いているので、Google Mapsなどメルカトル図法の地図で見た時に形状をよく保存する。</p>
-
-<h2 id="使い方">使い方</h2>
-
+<h2 id="heading1">使い方</h2>
 <ol>
 <li>ボタンを押してGPXファイルを選択</li>
 <li>一括処理する内容をチェックして選択</li>
 <li>「処理実行」ボタンをクリックして少し待つ</li>
 <li>表示されたリンクをクリックしてGPXファイルをダウンロード</li>
 </ol>
-
-<h2 id="注意事項">注意事項</h2>
-
+<h2 id="heading2">注意事項</h2>
 <ul>
 <li>Chrome 53、Firefox 49、Edge、IE 11にて動作を確認</li>
 <li>IE8では動作しません</li>
@@ -122,30 +110,22 @@ GPXファイルに余分な要素があると、処理に時間がかかって�
 <li>重いGPXファイルを処理しようとすると固まります(WorkerではXMLParserが使えないため)</li>
 <li>複数ファイルを選択した時の並び順はOSやブラウザ、選択時の操作に依存します</li>
 </ul>
-
 <p>なお、カシミール3DではGPXファイルをXMLとしてパースして読み込んでいるわけではないようで、
 空要素(<code>&lt;trkpt lat=&quot;***&quot; lon=&quot;***&quot; /&gt;</code>)の形を認識できない。
 そのため<code>&lt;trkpt lat=&quot;***&quot; lon=&quot;***&quot;&gt;&lt;/trkpt&gt;</code>の形に修正したものを出力している。</p>
-
-<h2 id="使用例">使用例</h2>
-
+<h2 id="heading3">使用例</h2>
 <p>元のGPSログをカシミール3Dで読み込んだ画面</p>
-
 <figure>
     <img src="2016092401.png"/> 
 </figure>
 
-
 <p>デフォルト設定で一括処理した後のGPXファイルを読み込んだ画面
 (このデータの場合は、6時間途切れたらトラック分割するので1日毎に分割され、それぞれが400点に間引きされている)</p>
-
 <figure>
     <img src="2016092402.png"/> 
 </figure>
 
-
-<h2 id="更新履歴">更新履歴</h2>
-
+<h2 id="heading4">更新履歴</h2>
 <ul>
 <li>カシミール3Dでも読めるよう、空要素の場合は<code>&lt;trkpt ***&gt;&lt;/trkpt&gt;</code>の形に置換するようにした。 (May 4 2014)</li>
 <li>優先度付きキューの実装を変更して高速化。(May 28 2014)</li>

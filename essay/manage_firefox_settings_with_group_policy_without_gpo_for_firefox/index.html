@@ -78,80 +78,61 @@ if (!doNotTrack) {
 			
 		</header><div class="content post__content clearfix">
 			<p>公式の情報はこちら : <a href="https://www.mozilla.jp/business/faq/tech/setting-management/">https://www.mozilla.jp/business/faq/tech/setting-management/</a></p>
-
 <p>上記公式サイトにあるように、ActiveDirectory環境にあるFirefoxの設定を管理する場合、</p>
-
 <ol>
 <li>クライアント側にアドオン(GPO for Firefox)をインストール</li>
 <li>サーバ側に管理用テンプレート(ADMファイル)を配置</li>
 <li>グループポリシーエディタで設定を編集</li>
 </ol>
-
 <p>という手順が推奨されている。ただ、この方法だと</p>
-
 <ul>
 <li>既存ユーザへの自動設定は不可(ユーザにアドオンをインストールしてもらう必要がある)</li>
 <li>ユーザがアドオンを無効化してしまう可能性がある</li>
 <li>最新のバージョンで追加された設定項目がない場合がある</li>
 </ul>
-
 <p>といったデメリットがあるので、公式サイト中で「MCD用設定ファイルでの実現」という方法で行うことにした。</p>
-
 <p>要件は以下の通り。</p>
-
 <ul>
 <li>Firefoxアカウントを使ったパスワード等の同期をさせない</li>
 <li>強制的に最新版にアップデートさせる</li>
 <li>たまにしか社内LANにアクセスしない端末でも設定を反映させたい
 (公式サイトの「すべてのクライアントの設定を管理者が一括して変更したい」では常時社内LANにアクセスできる端末である必要がある)</li>
 </ul>
-
 <p>手順は以下の通り。</p>
-
 <ul>
 <li>「autoconfig.js」と「autoconfig.cfg」を公式サイトの例にしたがって記述</li>
 </ul>
-
 <p>autoconfig.js</p>
-
-<pre><code class="language-js">pref(&quot;general.config.filename&quot;, &quot;autoconfig.cfg&quot;);
-pref(&quot;general.config.vendor&quot;, &quot;autoconfig&quot;);
-pref(&quot;general.config.obscure_value&quot;, 0);
-</code></pre>
-
-<p>autoconfig.cfg (ここではFirefoxアカウントによる同期の不許可と、自動アップデートの有効化を設定)</p>
-
-<pre><code class="language-js">lockPref(&quot;loop.enabled&quot;, false);
-lockPref(&quot;services.sync.enabled&quot;, false);
-lockPref(&quot;services.sync.engine.addons&quot;, false);
-lockPref(&quot;services.sync.engine.bookmarks&quot;, false);
-lockPref(&quot;services.sync.engine.history&quot;, false);
-lockPref(&quot;services.sync.engine.passwords&quot;, false);
-lockPref(&quot;services.sync.engine.prefs&quot;, false);
-lockPref(&quot;services.sync.engine.tabs&quot;, false);
-lockPref(&quot;app.update.enabled&quot;, true);
-lockPref(&quot;app.update.auto&quot;, true);
-lockPref(&quot;browser.search.update&quot;, true);
-</code></pre>
-
-<ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#a6e22e">pref</span>(<span style="color:#e6db74">&#34;general.config.filename&#34;</span>, <span style="color:#e6db74">&#34;autoconfig.cfg&#34;</span>);
+<span style="color:#a6e22e">pref</span>(<span style="color:#e6db74">&#34;general.config.vendor&#34;</span>, <span style="color:#e6db74">&#34;autoconfig&#34;</span>);
+<span style="color:#a6e22e">pref</span>(<span style="color:#e6db74">&#34;general.config.obscure_value&#34;</span>, <span style="color:#ae81ff">0</span>);
+</code></pre></div><p>autoconfig.cfg (ここではFirefoxアカウントによる同期の不許可と、自動アップデートの有効化を設定)</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#a6e22e">lockPref</span>(<span style="color:#e6db74">&#34;loop.enabled&#34;</span>, <span style="color:#66d9ef">false</span>);
+<span style="color:#a6e22e">lockPref</span>(<span style="color:#e6db74">&#34;services.sync.enabled&#34;</span>, <span style="color:#66d9ef">false</span>);
+<span style="color:#a6e22e">lockPref</span>(<span style="color:#e6db74">&#34;services.sync.engine.addons&#34;</span>, <span style="color:#66d9ef">false</span>);
+<span style="color:#a6e22e">lockPref</span>(<span style="color:#e6db74">&#34;services.sync.engine.bookmarks&#34;</span>, <span style="color:#66d9ef">false</span>);
+<span style="color:#a6e22e">lockPref</span>(<span style="color:#e6db74">&#34;services.sync.engine.history&#34;</span>, <span style="color:#66d9ef">false</span>);
+<span style="color:#a6e22e">lockPref</span>(<span style="color:#e6db74">&#34;services.sync.engine.passwords&#34;</span>, <span style="color:#66d9ef">false</span>);
+<span style="color:#a6e22e">lockPref</span>(<span style="color:#e6db74">&#34;services.sync.engine.prefs&#34;</span>, <span style="color:#66d9ef">false</span>);
+<span style="color:#a6e22e">lockPref</span>(<span style="color:#e6db74">&#34;services.sync.engine.tabs&#34;</span>, <span style="color:#66d9ef">false</span>);
+<span style="color:#a6e22e">lockPref</span>(<span style="color:#e6db74">&#34;app.update.enabled&#34;</span>, <span style="color:#66d9ef">true</span>);
+<span style="color:#a6e22e">lockPref</span>(<span style="color:#e6db74">&#34;app.update.auto&#34;</span>, <span style="color:#66d9ef">true</span>);
+<span style="color:#a6e22e">lockPref</span>(<span style="color:#e6db74">&#34;browser.search.update&#34;</span>, <span style="color:#66d9ef">true</span>);
+</code></pre></div><ul>
 <li>「autoconfig.js」と「autoconfig.cfg」を一般ユーザが読み取り可能なフォルダに配置
 (例えば「\ドメインコントローラ\SYSVOL\ドメイン名\Deployment」など)</li>
 <li>グループポリシーの「コンピュータの構成」「基本設定」「Windowsの設定」「ファイル」を使い、
 「autoconfig.js」と「autoconfig.cfg」を公式サイトで指定されたフォルダに配置。</li>
 </ul>
-
 <figure>
     <img src="001.png"/> 
 </figure>
-
 
 <ul>
 <li>64bit版Windowsに32bit版Firefoxがインストールされている場合は、「項目レベルで対象化する」にチェックし、
 「Processor_Architecture」に「AMD64」を設定し、「%PROGRAMFILES(X86)%\Mozilla Firefox」に配置する。
 ※ 両方ある場合は2つずつ設定する</li>
 </ul>
-
 <p><figure>
     <img src="002.png"/> 
 </figure>
@@ -160,7 +141,6 @@ lockPref(&quot;browser.search.update&quot;, true);
     <img src="003.png"/> 
 </figure>
 </p>
-
 <p>最後に実際にクライアントPCにファイルが反映され、Firefoxのabout:configで設定されていることを確認</p>
 
 		</div>

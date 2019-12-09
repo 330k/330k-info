@@ -77,96 +77,63 @@ if (!doNotTrack) {
 			<h1 class="post__title">Hugo &#43; GitHub Pages &#43; CloudFlareにGoogleサイトから移転</h1>
 			
 		</header><div class="content post__content clearfix">
-			
-
-<p>今まで独自ドメインでGoogleサイトを利用してきたが、</p>
-
+			<p>今まで独自ドメインでGoogleサイトを利用してきたが、</p>
 <ul>
 <li>「新しいGoogleサイト」の機能が全然ダメ(特にガジェットが使えなくなる)で使い物にならない</li>
 <li>Google自身が推進している常時SSL化も独自ドメインでは機能しない(正確にはMixed Contentsを修正できない)</li>
 <li>無駄に色々と読み込むせいで遅い</li>
 </ul>
-
 <p>ということで他のサービスへの移転を決断。</p>
-
 <p>AWSやGCP上に構築することも考えたものの、
 大したPVでもないので無料で使える組み合わせとして、以下の構成にした。</p>
-
 <ul>
 <li>Hugoを使って静的にサイトを生成</li>
 <li>GitHub Pagesにアップロード</li>
 <li>CloudFlareを使って常時HTTPS化に対応</li>
 </ul>
-
 <p>Hugo + GitHub Pagesの部分は
 <a href="http://qiita.com/eichann/items/4fe61b8b9bbafcfbe847">Hugo + Github Pagesでブログを公開してみた</a>
 を参考にした。</p>
-
 <h2 id="hugo">Hugo</h2>
-
 <p>Ubuntuでは<code>apt-get</code>でHugoをインストールできる(最新版とは限らないので注意)。</p>
-
-<pre><code class="language-Bash">$ sudo apt-get install hugo
-</code></pre>
-
-<p>テーマは、少し古いバージョンのHugoでも動作するMainroadに決定。
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Bash" data-lang="Bash">$ sudo apt-get install hugo
+</code></pre></div><p>テーマは、少し古いバージョンのHugoでも動作するMainroadに決定。
 後は以下の作業を実施。</p>
-
 <ul>
 <li>今までGoogleサイトのガジェットで行っていたGoogle MapsでのKMLファイルの表示を行うShortcodeを作成。</li>
 <li>CSSファイルをいじって横幅を拡大。</li>
 <li>コードのシンタックスハイライトを行うため、highlight.jsを読み込むよう<code>layouts/partials/header.html</code>を修正。</li>
 </ul>
-
 <h2 id="github">GitHub</h2>
-
 <p>GitHubにGitHub Pages用のリポジトリとHugo自体のリポジトリを作成。</p>
-
 <p>ここでUser Pages(リポジトリ名: <code>(ユーザ名).github.io</code>)で作成し、
 <code>CNAME</code>ファイルで独自ドメインを設定すると、
 GitHubの他のリポジトリにも独自ドメインの設定が反映される。</p>
-
 <p>そのため、今まで<code>(ユーザ名).github.io/(プロジェクト名)/</code>のURLが
 <code>(独自ドメイン)/(プロジェクト名)/</code>にリダイレクトされるようになる。</p>
-
 <p>既存のプロジェクトページすべてのURLが変更になってしまうし、
 今後ホスティング先をGitHub Pagesから別のサービスに移行するときにまた変更することになる。
 そこでUser Pagesは作成せず、Project Pagesとして作成する。</p>
-
 <p>c.f. <a href="https://help.github.com/articles/custom-domain-redirects-for-github-pages-sites/">Custom domain redirects for GitHub Pages sites</a></p>
-
-<h2 id="ページ移転作業">ページ移転作業</h2>
-
+<h2 id="heading">ページ移転作業</h2>
 <p>各ページを手作業でコピペ。
 1日5ページ〜10ページくらい移行作業した。</p>
-
 <p>画像については、Chromeの開発者ツールで、</p>
-
-<pre><code class="language-js">document.querySelectorAll('a[href*=&quot;.jpg&quot;]').forEach(function(e){e.download=e.href;e.click()});
-</code></pre>
-
-<p>とすることで、元のページのリンク先JPEGファイルを一気にダウンロード。</p>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js">document.<span style="color:#a6e22e">querySelectorAll</span>(<span style="color:#e6db74">&#39;a[href*=&#34;.jpg&#34;]&#39;</span>).<span style="color:#a6e22e">forEach</span>(<span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">e</span>){<span style="color:#a6e22e">e</span>.<span style="color:#a6e22e">download</span><span style="color:#f92672">=</span><span style="color:#a6e22e">e</span>.<span style="color:#a6e22e">href</span>;<span style="color:#a6e22e">e</span>.<span style="color:#a6e22e">click</span>()});
+</code></pre></div><p>とすることで、元のページのリンク先JPEGファイルを一気にダウンロード。</p>
 <h2 id="cloudflare">CloudFlare</h2>
-
 <p>新サイトの構築が完了したら、CloudFlareのDNSを設定変更。</p>
-
 <p>Googleサイト利用時からCloudFlareをネームサーバとして利用していたので、以下の作業を実施。</p>
-
 <ul>
 <li>CloudFlareで<code>www.330k.info</code>のCNAMEレコードを<code>ghs.google.com</code>から<code>330k.github.io</code>に変更。</li>
 <li>SSLの設定を<code>Flexible</code>に設定。</li>
 <li>HTTPのアクセスをHTTPSにリダイレクトする<code>Always use HTTPS</code>を<code>ON</code>に設定。</li>
-<li><s>HSTSはOFFで様子見。</s> → HSTS Onに変更(includeSubdomainはOFF)</li>
+<li><!-- raw HTML omitted -->HSTSはOFFで様子見。<!-- raw HTML omitted --> → HSTS Onに変更(includeSubdomainはOFF)</li>
 <li><code>Automatic HTTPS Rewrites</code>はOFF(自力ですべての内部リンクをHTTPSに置換)。</li>
 </ul>
-
-<h2 id="cnameファイルのアップロード">CNAMEファイルのアップロード</h2>
-
+<h2 id="cname">CNAMEファイルのアップロード</h2>
 <p>最後にGitHubリポジトリに<code>www.330k.info</code>と記入したCNAMEファイルをコミットして移転作業完了。</p>
-
-<h2 id="その他">その他</h2>
-
+<h2 id="heading1">その他</h2>
 <ul>
 <li>HugoではURLがすべて小文字になるので、旧URLに大文字を含むページではFront Matterに<code>aliases = [(元のURL)]</code>を追加。</li>
 <li>User PagesにするかProject Pagesにするかでかなり迷って、少しダウンタイムが発生してしまった。</li>

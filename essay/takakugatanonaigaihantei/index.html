@@ -78,68 +78,44 @@ if (!doNotTrack) {
 			
 		</header><div class="content post__content clearfix">
 			<p>ある点が多角形の内側にあるのか外側にあるのかを判定するには主に</p>
-
 <ul>
 <li>ある点から直線をひいて多角形の辺と何回交差するか判定する(偶数回なら外、奇数回なら中)</li>
 <li>ある点から多角形の各頂点を順番に見ていったときに何回転するか</li>
 </ul>
-
 <p>の2つの方法がある。</p>
-
 <p>しかし辺との交差回数をカウントするのは、直線と辺が平行だったり、頂点で交差したりする場合などに特別な配慮が必要なので、
 ここでは2番目の方法で実装する。</p>
-
 <p>点から多角形上の点を順々に見たときの偏角(反時計まわりを正とする)の和を取ればよいので、ある点Pからみた多角形上の頂点Aから頂点Bまでの偏角∠APBを求める関数をまず作成する。</p>
-
 <p>この実装方法にもベクトルの外積を考えるなど何通りか考えられるが、せっかくMathematicaを使うので楽をして、複素数にしてArgで偏角をとることにする。</p>
-
-<pre><code class="language-Mathematica">Angle[{{x1_, y1_}, {x2_, y2_}, {x3_, y3_}}] :=
- Module[{v1 = Complex[x1 - x3, y1 - y3], v2 = Complex[x2 - x3, y2 - y3]},
-  If[TrueQ[v1 == 0], 0, Arg[v2/v1]]
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Mathematica" data-lang="Mathematica">Angle[{{x1_, y1_}, {x2_, y2_}, {x3_, y3_}}] <span style="color:#f92672">:=</span>
+ Module[{v1 <span style="color:#f92672">=</span> Complex[x1 <span style="color:#f92672">-</span> x3, y1 <span style="color:#f92672">-</span> y3], v2 <span style="color:#f92672">=</span> Complex[x2 <span style="color:#f92672">-</span> x3, y2 <span style="color:#f92672">-</span> y3]},
+  If[TrueQ[v1 <span style="color:#f92672">=</span><span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>], <span style="color:#ae81ff">0</span>, Arg[v2<span style="color:#f92672">/</span>v1]]
   ]
-</code></pre>
-
-<p>多角形の内外判定はMathematicaのPolygonなどの表示に合わせ、自己交差している場合は内部と外部を交互に繰り返すものとすると、</p>
-
+</code></pre></div><p>多角形の内外判定はMathematicaのPolygonなどの表示に合わせ、自己交差している場合は内部と外部を交互に繰り返すものとすると、</p>
 <ul>
 <li>偏角の和が0、±4π、±8π、…のとき点は多角形の外</li>
 <li>偏角の和が±2π、±6π、±10π…のとき点は多角形の中</li>
 </ul>
-
 <p>とできる。</p>
-
 <p>以上より多角形の内外を判定する関数InsidePolygonQは以下のように実装できる。</p>
-
-<pre><code class="language-Mathematica">InsidePolygonQ[poly : {{_, _} ..}, p : {_, _}] := Module[
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Mathematica" data-lang="Mathematica">InsidePolygonQ[poly <span style="color:#960050;background-color:#1e0010">:</span> {{_, _} <span style="color:#960050;background-color:#1e0010">.</span><span style="color:#960050;background-color:#1e0010">.</span>}, p <span style="color:#960050;background-color:#1e0010">:</span> {_, _}] <span style="color:#f92672">:=</span> Module[
   {argsum},
-  argsum = Round[Total[MapThread[Angle[{##, p}] &amp;, {poly, RotateLeft[poly]}]]/(2 Pi)];
+  argsum <span style="color:#f92672">=</span> Round[Total[MapThread[Angle[{##, p}] <span style="color:#f92672">&amp;</span>, {poly, RotateLeft[poly]}]]<span style="color:#f92672">/</span>(<span style="color:#ae81ff">2</span> Pi)];
   OddQ[argsum]
   ]
-</code></pre>
-
-<p>丸め誤差が蓄積すると誤判定してしまうのだが、誤判定するために要求される丸め誤差はπなので、多分大丈夫だと思われる。</p>
-
+</code></pre></div><p>丸め誤差が蓄積すると誤判定してしまうのだが、誤判定するために要求される丸め誤差はπなので、多分大丈夫だと思われる。</p>
 <p>高速化するためには、以下の書き方がMathematicaらしく簡潔で、なおかつ動作も速い。</p>
-
-<pre><code class="language-Mathematica">InsidePolygonQ2[poly : {{_, _} ..}, p : {_, _}] :=
-  Block[{a = Complex @@@ poly, b = Complex @@ p},OddQ@Round[Total@Arg[(RotateLeft[a] - b)/(a - b)]/(2 Pi)]]
-</code></pre>
-
-<hr />
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Mathematica" data-lang="Mathematica">InsidePolygonQ2[poly <span style="color:#960050;background-color:#1e0010">:</span> {{_, _} <span style="color:#960050;background-color:#1e0010">.</span><span style="color:#960050;background-color:#1e0010">.</span>}, p <span style="color:#960050;background-color:#1e0010">:</span> {_, _}] <span style="color:#f92672">:=</span>
+  Block[{a <span style="color:#f92672">=</span> Complex <span style="color:#f92672">@</span><span style="color:#f92672">@</span><span style="color:#f92672">@</span> poly, b <span style="color:#f92672">=</span> Complex <span style="color:#f92672">@</span><span style="color:#f92672">@</span> p},OddQ<span style="color:#f92672">@</span>Round[Total<span style="color:#f92672">@</span>Arg[(RotateLeft[a] <span style="color:#f92672">-</span> b)<span style="color:#f92672">/</span>(a <span style="color:#f92672">-</span> b)]<span style="color:#f92672">/</span>(<span style="color:#ae81ff">2</span> Pi)]]
+</code></pre></div><hr>
 <p>Oct. 2 2013 追記:</p>
-
 <p>有難いことにこのページがYahoo知恵袋などで結構リンクされているものの、
 Mathematicaであるためか分かりにくそうなので、上記関数の使用例を追加。</p>
-
-<pre><code class="language-Mathematica">InsidePolygonQ2[{{0, 0}, {2, 0}, {3, 1}, {1, 2}, {2, 1}}, {1, 0.3}]
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Mathematica" data-lang="Mathematica">InsidePolygonQ2[{{<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>}, {<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">0</span>}, {<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">1</span>}, {<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>}, {<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">1</span>}}, {<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">0.3</span>}]
 True
-InsidePolygonQ2[{{0, 0}, {2, 0}, {3, 1}, {1, 2}, {2, 1}}, {1, 0.8}]
+InsidePolygonQ2[{{<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>}, {<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">0</span>}, {<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">1</span>}, {<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>}, {<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">1</span>}}, {<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">0.8</span>}]
 False
-</code></pre>
-
-<p>多角形と点の位置関係は下図。(1,0.3)は多角形内部、(1,0.8)は多角形外部である。</p>
-
+</code></pre></div><p>多角形と点の位置関係は下図。(1,0.3)は多角形内部、(1,0.8)は多角形外部である。</p>
 <figure>
     <img src="graph001.png"/> 
 </figure>

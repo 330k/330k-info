@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="no-js" lang="ja-jp">
 <head>
-	<meta name="generator" content="Hugo 0.59.1" />
+	<meta name="generator" content="Hugo 0.60.0" />
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,7 +12,6 @@
 <meta property="og:description" content="自転車ツーリングの記録やソフトウェアの配布、Mathematicaをメインにしたプログラミングの覚書や日ごろの雑感など。" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://www.330k.info/" />
-
 <meta property="og:updated_time" content="2019-11-25T22:37:28+09:00" />
 
 	<meta name="twitter:card" content="summary"/>
@@ -126,14 +125,12 @@ if (!doNotTrack) {
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		<p>ホッケー社会人リーグの最終戦が茨城県東海高校のグラウンドで行われることになったので、国道6号の水戸街道部分を自転車で走破するチャンスと捉えて</p>
-
 <ol>
 <li>試合前日に1日かけて東海村まで行く</li>
 <li>試合は13時に開始されるので午前中は東海村の原子力関連施設を観光しにポタリング</li>
 <li>ついでに試合をする</li>
 <li>帰りは輪行</li>
 </ol>
-
 <p>という計画を立て、実行してみた。</p>
 	</div>
 </article><article class="list__item post">
@@ -187,7 +184,7 @@ if (!doNotTrack) {
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		MathematicaでGPXファイルを読み込んで解釈する方法のメモ。 対象となるGPXファイルを xml = Import[filepath, &quot;XML&quot;]; でまずXMLとして読み込んでおいて、 trk = Cases[xml, XMLElement[&quot;trk&quot;, _, _], Infinity]; でtrk要素を抜き出し、 trkpt = (ToExpression[{&quot;lat&quot;, &quot;lon&quot;} /. Cases[#1, XMLElement[&quot;trkpt&quot;, attr_, _] :&gt; attr, Infinity]] &amp; ) /@ trk; でそれぞれのtrk要素からtrkpt要素を抜き出して緯度と経度を得る。 Sep. 28 2013追記 Mathematica 8からは標準でGPXをImport可能になった。
+		MathematicaでGPXファイルを読み込んで解釈する方法のメモ。 対象となるGPXファイルを xml = Import[filepath, &#34;XML&#34;]; でまずXMLとして読み込んでおいて、 trk = Cases[xml, XMLElement[&#34;trk&#34;, _, _], Infinity]; でtrk要素を抜き出し、 trkpt = (ToExpression[{&#34;lat&#34;, &#34;lon&#34;} /. Cases[#1, XMLElement[&#34;trkpt&#34;, attr_, _] :&gt; attr, Infinity]] &amp; ) /@ trk; でそれぞれのtrk要素からtrkpt要素を抜き出して緯度と経度を得る。 Sep. 28 2013追記 Mathematica 8からは標準でGPXをImport可能になった。
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">

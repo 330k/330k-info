@@ -77,162 +77,103 @@ if (!doNotTrack) {
 			<h1 class="post__title">Mathematicaで論文用の図やグラフを作成するときのまとめ</h1>
 			
 		</header><div class="content post__content clearfix">
-			
-
-<p>Mathematicaで作る図やグラフは美しいんだ！ということを伝えたいので、
+			<p>Mathematicaで作る図やグラフは美しいんだ！ということを伝えたいので、
 もう数年も前になるが、修士論文を書くときにMathematicaで作るグラフにこだわった点を思い出しながらまとめてみる。</p>
-
-<h2 id="論文を書くために使うソフトウェア">論文を書くために使うソフトウェア</h2>
-
+<h2 id="heading">論文を書くために使うソフトウェア</h2>
 <p>私はpLaTeXで論文を書いたが、研究室ではWordが推奨されていた。
 図表の番号を管理する必要や図表の位置がずれて飛んでいってしまうといった事態も起きないし、目次や索引、参考文献リストの作成も自動でできる。
 ただ、Wordだと添削をしやすいのは確か。</p>
-
-<h2 id="mathematicaでexportする画像の形式">MathematicaでExportする画像の形式</h2>
-
+<h2 id="mathematicaexport">MathematicaでExportする画像の形式</h2>
 <p>Mathematicaでは多様な画像ファイル形式でExportできるが、論文用のグラフでは多分PNG、EPS、PDFから選択することになると思う。
 各画像形式を比較すると、それぞれ以下の特徴がある。</p>
-
 <ul>
 <li>PNG
-
 <ul>
 <li>ラスタ形式のため、印刷に耐えられるようにするには予め解像度を計算して作成する必要がある</li>
 <li>半透過色に対応</li>
 <li>Word、pLaTeXどちらでも使える</li>
-</ul></li>
+</ul>
+</li>
 <li>EPS
-
 <ul>
 <li>ベクタ形式で保存できるため、印刷では自動的にプリンタの解像度で印刷してくれる</li>
 <li>半透過色には非対応</li>
 <li>pLaTeXで使用可</li>
 <li>あまりにEPS画像が多いと、dvipdfm(x)が重くなるので注意</li>
-</ul></li>
+</ul>
+</li>
 <li>PDF
-
 <ul>
 <li>ベクタ形式で保存できる</li>
 <li>半透過色に対応</li>
 <li>pLaTeXで使用可</li>
 <li>pLaTeXで使うには、予めebbやxbbで.bbファイルや.xbbファイルを作成して、pLaTeXに画像の大きさを知らせる必要がある</li>
-</ul></li>
 </ul>
-
+</li>
+</ul>
 <p>したがって、Wordでは基本的に画像をPNG形式で作ることになるが、pLaTeXではEPSやPDFといったベクタ形式の画像フォーマットが使えるのでおすすめ。</p>
-
 <p>私は基本的にMathematicaからPDFでグラフを作成し、
 すべての画像に対してpLaTeXについてくるebbを実行するPerlスクリプトを作って実行してからpLaTeXでコンパイルしていた。</p>
-
 <p>もちろん写真はJPEG形式を使用したが、写真にいろいろ矢印や記号を書き加えるときはOpenOffice.orgのImpressでJPEG画像の上にいろいろ矢印などを書き込んでPDFにエクスポートしたものを使った。
 当時はPowerPointではPDF出力できなかったためOpenOffice.orgを使ったが、今ではPowerPointでいいと思う。</p>
-
-<h2 id="図-グラフの論文におけるサイズを決め-imagesizeオプションを指定">図・グラフの論文におけるサイズを決め、ImageSizeオプションを指定</h2>
-
+<h2 id="imagesize">図・グラフの論文におけるサイズを決め、ImageSizeオプションを指定</h2>
 <p>おそらくほとんどの論文はA4サイズ(210mm×297mm)で作成されると思う。</p>
-
 <p>そこから左右の余白をそれぞれ30mmとすると、本文の幅は150mmとなる。
 図やグラフの幅は本文より少し小さくしたいので、私は基本的に横幅140mmでグラフを作成した。</p>
-
 <p>縦幅はMathematicaではデフォルトで黄金比(GoldenRatio)を使ってくれるので、そのままで良いと思う。
 2段組のときは半分の70mmとか65mmとなる。</p>
-
 <p>したがってMathematicaでは、PlotやShowなどのオプションImageSizeに</p>
-
-<pre><code class="language-Mathematica">ImageSize -&gt; 140 * 72 / 25.4
-</code></pre>
-
-<p>と指定する。これは140mmの横幅で、72dpi(dots per inch)、1 inch = 25.4mmという意味である。</p>
-
-<h2 id="論文用のグラフでは絶対にframe-trueを指定する">論文用のグラフでは絶対にFrame -&gt; Trueを指定する</h2>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Mathematica" data-lang="Mathematica">ImageSize <span style="color:#f92672">-&gt;</span> <span style="color:#ae81ff">140</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">72</span> <span style="color:#f92672">/</span> <span style="color:#ae81ff">25.4</span>
+</code></pre></div><p>と指定する。これは140mmの横幅で、72dpi(dots per inch)、1 inch = 25.4mmという意味である。</p>
+<h2 id="frame--true">論文用のグラフでは絶対にFrame -&gt; Trueを指定する</h2>
 <p>論文用のグラフでは流儀として</p>
-
-<pre><code class="language-Mathematica">Frame -&gt; True
-</code></pre>
-
-<p>を指定して枠のついたグラフにする。</p>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Mathematica" data-lang="Mathematica">Frame <span style="color:#f92672">-&gt;</span> True
+</code></pre></div><p>を指定して枠のついたグラフにする。</p>
 <p>これはExcelなどでグラフを作るときも同様。</p>
-
 <p>枠についた目盛りを細かく調整したい場合は、FrameTicksオプションとFrameTickesStyleオプションを指定する。
 また、FrameLabelで各軸のラベルと単位を書き入れるのも忘れずに。</p>
-
-<h2 id="テキストを指定する部分はすべてフォント名やフォントサイズを指定する">テキストを指定する部分はすべてフォント名やフォントサイズを指定する</h2>
-
+<h2 id="heading1">テキストを指定する部分はすべてフォント名やフォントサイズを指定する</h2>
 <p>これは本文に使う本文のフォントとフォントサイズとの兼ね合いとなる。
 私は本文にTimes New Roman、10.5ptを使用したが、グラフでもこれと同じようにするため、</p>
-
-<pre><code class="language-Mathematica">Style[&quot;AbBbCc&quot;, 10.5, FontFamily -&gt; &quot;Times New Roman&quot;]
-</code></pre>
-
-<p>とした。ちなみにデフォルトではCourierとなる。</p>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Mathematica" data-lang="Mathematica">Style[<span style="color:#e6db74">&#34;AbBbCc&#34;</span>, <span style="color:#ae81ff">10.5</span>, FontFamily <span style="color:#f92672">-&gt;</span> <span style="color:#e6db74">&#34;Times New Roman&#34;</span>]
+</code></pre></div><p>とした。ちなみにデフォルトではCourierとなる。</p>
 <p>研究室や教授の考え方によっては、本文と違うゴシック体を使うように言われるかもしれないが、
 重要なのは、すべての箇所で統一することである(もちろん見にくい箇所は適切に修正する)。</p>
-
 <p>よくある指定する箇所としては、FrameLabel、FrameStyleなどである。
 その他凡例などをEpilogやInsetで入れる場合にもすべて忘れずに指定する。</p>
-
-<h2 id="すべての線の太さはabsolutethicknessで指定する">すべての線の太さはAbsoluteThicknessで指定する</h2>
-
+<h2 id="absolutethickness">すべての線の太さはAbsoluteThicknessで指定する</h2>
 <p>線の太さをThicknessで指定するとグラフ全体の大きさに対して線の太さが決まってしまう。
 上では基本的に横幅140mmでグラフを作成すると書いたが、ふつう論文ではグラフだけ2段組にしたり、
 情報量が多いグラフは見やすくするために大きくしたりするので、グラフの大きさはバラバラになってしまう。</p>
-
 <p>そうなると線の太さが統一されないので、必ずAbsoluteThicknessを使ってポイント単位で指定する。</p>
-
-<h2 id="白黒印刷されても違いがわかるようにplotstyleを指定する">白黒印刷されても違いがわかるようにPlotStyleを指定する</h2>
-
+<h2 id="plotstyle">白黒印刷されても違いがわかるようにPlotStyleを指定する</h2>
 <p>1つのグラフに複数の線がある場合は、デフォルトでは色が変わっていくだけだが、
 論文ではDashed、Dotted、DotDashedなどを使って点線、破線などにする他、
 それでも足りなければAbsoluteThicknessで太さを変えるなどして、白黒印刷されても違いを判別できるようにする。</p>
-
 <p>もちろん論文内では使い方の順序を統一する。</p>
-
 <p>ちなみに、デフォルトで使われる色は</p>
-
-<pre><code class="language-Mathematica">ColorData[1, &quot;ColorList&quot;]
-</code></pre>
-
-<p>で取得できる。</p>
-
-<h2 id="凡例はplotlegends-パッケージを使うか-epilogオプションに自前で作って加える">凡例はPlotLegends`パッケージを使うか、Epilogオプションに自前で作って加える</h2>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Mathematica" data-lang="Mathematica">ColorData[<span style="color:#ae81ff">1</span>, <span style="color:#e6db74">&#34;ColorList&#34;</span>]
+</code></pre></div><p>で取得できる。</p>
+<h2 id="plotlegendsepilog">凡例はPlotLegends`パッケージを使うか、Epilogオプションに自前で作って加える</h2>
 <p>論文で使うグラフに凡例は必須なので、PlotLegendsパッケージをロードして、PlotなどのPlotLegendオプションなどを指定する。</p>
-
 <p>PlotLegendsパッケージには凡例のスタイルや位置を決めるためのオプションが色々あるものの、
 思い通りの凡例を作るのは結構大変なので、
 Epilogオプションに自前で凡例を作ったものを入れるほうが速いかもしれない。</p>
-
-<h2 id="pngを作成するときは一旦pdfにexportして-imagemagickなどで変換する">PNGを作成するときは一旦PDFにExportして、ImageMagickなどで変換する</h2>
-
+<h2 id="pngpdfexportimagemagick">PNGを作成するときは一旦PDFにExportして、ImageMagickなどで変換する</h2>
 <p>グラフの余白部分やFrameTicksの目盛りの長さなどは、グラフ全体の大きさが変わった時に変化してしまう。
 PNG画像にするときは、Mathematicaからは一旦PDFで出力しておき、ImageMagickなどを使って</p>
-
 <pre><code>convert -density 300 ***.pdf ***.png
-</code></pre>
-
-<p>と、印刷時の解像度(この例では300dpi)を指定してPNGに変換する。</p>
-
+</code></pre><p>と、印刷時の解像度(この例では300dpi)を指定してPNGに変換する。</p>
 <p>Wordの場合、PNG画像を挿入した後、プロパティからサイズを上で決めた140mmなどと指定する。
 どうしても直接PNGにExportするときはImageResolutionを指定する</p>
-
 <p>ImageMagickでは日本語の文字が入っている時にきれいにPNGに変換できないことがあるので、
 どうしてもMathematicaからPNGでExportせざるを得ないときは、
 印刷するときの解像度をImageResolutionに指定する。</p>
-
 <p>例えば300dpiで印刷しようとするときは、</p>
-
-<pre><code class="language-Mathematica">ImageResolution -&gt; 300
-</code></pre>
-
-<p>と指定してPNGファイルをExportする。</p>
-
-<h2 id="例">例</h2>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Mathematica" data-lang="Mathematica">ImageResolution <span style="color:#f92672">-&gt;</span> <span style="color:#ae81ff">300</span>
+</code></pre></div><p>と指定してPNGファイルをExportする。</p>
+<h2 id="heading2">例</h2>
 <p>Sin[x]とCos[x]のグラフを凡例付きでグラフにする。</p>
-
 <ul>
 <li>横幅は140mmとし、縦横比は黄金比(デフォルト)</li>
 <li>グラフの線の太さは1.5ポイント</li>
@@ -241,45 +182,41 @@ PNG画像にするときは、Mathematicaからは一旦PDFで出力しておき
 <li>凡例の作成にはPlotLegendsパッケージを使用</li>
 <li>PDFでExportし、それをImageMagickでPNGに変換</li>
 </ul>
-
 <p>としたときのサンプル。</p>
-
-<pre><code class="language-Mathematica">&lt;&lt; PlotLegends`
-g = Plot[{Sin[x], Cos[x]}, {x, 0, 2 Pi},
-  Axes -&gt; {True, False},
-  AxesStyle -&gt; Directive[Black, AbsoluteThickness[0.5]],
-  Frame -&gt; True,
-  FrameStyle -&gt; AbsoluteThickness[0.5],
-  FrameTicksStyle -&gt; Directive[
-    AbsoluteThickness[0.5],
-    FontFamily -&gt; &quot;Times New Roman&quot;,
-    FontSize -&gt; 10.5
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Mathematica" data-lang="Mathematica"><span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span> PlotLegends`
+g <span style="color:#f92672">=</span> Plot[{Sin[x], Cos[x]}, {x, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">2</span> Pi},
+  Axes <span style="color:#f92672">-&gt;</span> {True, False},
+  AxesStyle <span style="color:#f92672">-&gt;</span> Directive[Black, AbsoluteThickness[<span style="color:#ae81ff">0.5</span>]],
+  Frame <span style="color:#f92672">-&gt;</span> True,
+  FrameStyle <span style="color:#f92672">-&gt;</span> AbsoluteThickness[<span style="color:#ae81ff">0.5</span>],
+  FrameTicksStyle <span style="color:#f92672">-&gt;</span> Directive[
+    AbsoluteThickness[<span style="color:#ae81ff">0.5</span>],
+    FontFamily <span style="color:#f92672">-&gt;</span> <span style="color:#e6db74">&#34;Times New Roman&#34;</span>,
+    FontSize <span style="color:#f92672">-&gt;</span> <span style="color:#ae81ff">10.5</span>
     ],
-  FrameLabel -&gt; {
-    Style[&quot;x label&quot;, 10.5, FontFamily -&gt; &quot;Times New Roman&quot;],
-    Style[&quot;y label&quot;, 10.5, FontFamily -&gt; &quot;Times New Roman&quot;]
+  FrameLabel <span style="color:#f92672">-&gt;</span> {
+    Style[<span style="color:#e6db74">&#34;x label&#34;</span>, <span style="color:#ae81ff">10.5</span>, FontFamily <span style="color:#f92672">-&gt;</span> <span style="color:#e6db74">&#34;Times New Roman&#34;</span>],
+    Style[<span style="color:#e6db74">&#34;y label&#34;</span>, <span style="color:#ae81ff">10.5</span>, FontFamily <span style="color:#f92672">-&gt;</span> <span style="color:#e6db74">&#34;Times New Roman&#34;</span>]
     },
-  ImageSize -&gt; 140*72/25.4,
-  PlotRange -&gt; {{0, 2 Pi}, Full},
-  PlotStyle -&gt; {AbsoluteThickness[1.5], 
-    Directive[AbsoluteThickness[1.5], Dotted]},
-  PlotLegend -&gt; {
-    Style[&quot;sine curve&quot;, 10.5, FontFamily -&gt; &quot;Times New Roman&quot;],
-    Style[&quot;cosine curve&quot;, 10.5, FontFamily -&gt; &quot;Times New Roman&quot;]
+  ImageSize <span style="color:#f92672">-&gt;</span> <span style="color:#ae81ff">140</span><span style="color:#f92672">*</span><span style="color:#ae81ff">72</span><span style="color:#f92672">/</span><span style="color:#ae81ff">25.4</span>,
+  PlotRange <span style="color:#f92672">-&gt;</span> {{<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">2</span> Pi}, Full},
+  PlotStyle <span style="color:#f92672">-&gt;</span> {AbsoluteThickness[<span style="color:#ae81ff">1.5</span>], 
+    Directive[AbsoluteThickness[<span style="color:#ae81ff">1.5</span>], Dotted]},
+  PlotLegend <span style="color:#f92672">-&gt;</span> {
+    Style[<span style="color:#e6db74">&#34;sine curve&#34;</span>, <span style="color:#ae81ff">10.5</span>, FontFamily <span style="color:#f92672">-&gt;</span> <span style="color:#e6db74">&#34;Times New Roman&#34;</span>],
+    Style[<span style="color:#e6db74">&#34;cosine curve&#34;</span>, <span style="color:#ae81ff">10.5</span>, FontFamily <span style="color:#f92672">-&gt;</span> <span style="color:#e6db74">&#34;Times New Roman&#34;</span>]
     },
-  LegendBorderSpace -&gt; 0.2,
-  LegendBorder -&gt; Directive[Black, AbsoluteThickness[0.5]],
-  LegendPosition -&gt; {0.05, 0.25},
-  LegendShadow -&gt; None,
-  LegendSize -&gt; 0.5,
-  LegendSpacing -&gt; 0,
-  LegendTextSpace -&gt; 3
+  LegendBorderSpace <span style="color:#f92672">-&gt;</span> <span style="color:#ae81ff">0.2</span>,
+  LegendBorder <span style="color:#f92672">-&gt;</span> Directive[Black, AbsoluteThickness[<span style="color:#ae81ff">0.5</span>]],
+  LegendPosition <span style="color:#f92672">-&gt;</span> {<span style="color:#ae81ff">0.05</span>, <span style="color:#ae81ff">0.25</span>},
+  LegendShadow <span style="color:#f92672">-&gt;</span> None,
+  LegendSize <span style="color:#f92672">-&gt;</span> <span style="color:#ae81ff">0.5</span>,
+  LegendSpacing <span style="color:#f92672">-&gt;</span> <span style="color:#ae81ff">0</span>,
+  LegendTextSpace <span style="color:#f92672">-&gt;</span> <span style="color:#ae81ff">3</span>
   ]
-Export[&quot;graph001.pdf&quot;, g]
-Run[&quot;convert -density 300 graph001.pdf graph001.png&quot;]
-</code></pre>
-
-<figure>
+Export[<span style="color:#e6db74">&#34;graph001.pdf&#34;</span>, g]<span style="color:#960050;background-color:#1e0010"></span>
+Run[<span style="color:#e6db74">&#34;convert -density 300 graph001.pdf graph001.png&#34;</span>]
+</code></pre></div><figure>
     <img src="graph001.png"/> 
 </figure>
 

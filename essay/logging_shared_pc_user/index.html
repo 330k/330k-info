@@ -77,29 +77,20 @@ if (!doNotTrack) {
 			<h1 class="post__title">共有PCの実際の使用者を記録する</h1>
 			
 		</header><div class="content post__content clearfix">
-			
-
-<p>会社で個々人のPCのセキュリティをガチガチに固めたりしていると、何かと融通がきかない。
+			<p>会社で個々人のPCのセキュリティをガチガチに固めたりしていると、何かと融通がきかない。
 そのため、セキュリティ設定緩めの共有PCを1台と共有アカウントを1個用意し、やむを得ない時には利用してもらっている。</p>
-
 <p>そのため、SKYSEAでログは取っているものの、実際に誰が操作しているのか分からない、という問題があった。</p>
-
 <p>それを解決するため、PCに付属のカメラで、ログイン時に正面にいる人の顔を記録することにした。</p>
-
-<h2 id="前準備">前準備</h2>
-
+<h2 id="heading">前準備</h2>
 <ul>
 <li>ffmpegをダウンロードする</li>
 <li>ffmpegにPATHを通す</li>
 <li>ffmpegでウェブカメラのデバイスや対応する解像度、フレームレートを調べておく</li>
 </ul>
-
 <h2 id="vbscript">VBScript</h2>
-
 <p>以下のVBScriptファイルを適当なところに配置。
 内容はスクリプト起動後、5秒間、ウェブカメラの映像を記録して、管理者用メールアドレスに送信する。</p>
-
-<pre><code class="language-VBScript">Option Explicit
+<pre><code class="language-VBScript" data-lang="VBScript">Option Explicit
 
 On Error Resume Next
 
@@ -145,16 +136,11 @@ If objFS.FileExists(strFilePath) Then
 End If
 
 objMsg.Send
-</code></pre>
-
-<h2 id="タスクスケジューラ">タスクスケジューラ</h2>
-
+</code></pre><h2 id="heading1">タスクスケジューラ</h2>
 <p>タスクスケジューラからタスクを作成し、トリガーに「ワークステーションのロック解除」に上のVBScriptが起動するように設定する。</p>
-
 <figure>
     <img src="001.png"/> 
 </figure>
-
 
 <p>これでロック解除した時、自動で管理者アカウントに動画付きメールが飛んでくるので、
 SKYSEAログと照合すれば、誰が操作したのか追跡できる。</p>

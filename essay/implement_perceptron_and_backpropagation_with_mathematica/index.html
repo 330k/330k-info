@@ -79,72 +79,45 @@ if (!doNotTrack) {
 		</header><div class="content post__content clearfix">
 			<p>拙作のリバーシプログラムViglaは高校時代に作ったものだが、
 評価関数は手の広さと辺の形を適当に数値化したものであるためにあまり強いプログラムにはできなかった。</p>
-
 <p>当時から強いリバーシプログラムは辺や隅のパターンを評価していることは知ってはいたものの、理解出来ずじまいだった。</p>
-
 <p>今回もう一度挑戦してみようと思い、まずはMathematicaでパーセプトロンとバックプロパゲーションによる学習を実装してみた。</p>
-
 <p>簡単のため、出力関数としてはシグモイド関数のみに限定した(一般の関数にできるようにするには、各層のネット値を別に保存する必要があり、煩雑だったため)。
 しかしながら、任意の隠し層の数やニューロン数に対応できるように実装した。</p>
-
 <p>というわけで、まずはシグモイド関数と順方向演算を定義。</p>
-
-<pre><code class="language-Mathematica">f[x_] := 1/(1 + Exp[-x]);
-perceptron[w : {__}][x_] := FoldList[(f /@ (Append[#1, 1].#2)) &amp;, x, w];
-</code></pre>
-
-<p>wが各層の重み行列のリストで、MathematicaならFoldListを使って1行で順方向演算が定義できる。
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Mathematica" data-lang="Mathematica">f[x_] <span style="color:#f92672">:=</span> <span style="color:#ae81ff">1</span><span style="color:#f92672">/</span>(<span style="color:#ae81ff">1</span> <span style="color:#f92672">+</span> Exp[<span style="color:#f92672">-</span>x]);
+perceptron[w <span style="color:#960050;background-color:#1e0010">:</span> {__}][x_] <span style="color:#f92672">:=</span> FoldList[(f <span style="color:#f92672">/</span><span style="color:#f92672">@</span> (Append[#1, <span style="color:#ae81ff">1</span>]<span style="color:#960050;background-color:#1e0010">.</span>#2)) <span style="color:#f92672">&amp;</span>, x, w];
+</code></pre></div><p>wが各層の重み行列のリストで、MathematicaならFoldListを使って1行で順方向演算が定義できる。
 Mathematicaでは添字が1から始まるので、通常wi0で表されることが多いバイアス成分は一番最後に置いた。</p>
-
 <p>次に、重み行列をランダムに初期化したパーセプトロンを返す関数として、以下のcreatePerceptronを定義。</p>
-
-<pre><code class="language-Mathematica">createPerceptron[dimensions_, range_] := perceptron[MapThread[
-   RandomReal[range, {#1, #2}] &amp;, {Most[dimensions] + 1, Rest[dimensions]}]]
-</code></pre>
-
-<p>dimensionsは各層のニューロン数で、乱数の範囲をrangeで指定する。</p>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Mathematica" data-lang="Mathematica">createPerceptron[dimensions_, range_] <span style="color:#f92672">:=</span> perceptron[MapThread[
+   RandomReal[range, {#1, #2}] <span style="color:#f92672">&amp;</span>, {Most[dimensions] <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>, Rest[dimensions]}]]
+</code></pre></div><p>dimensionsは各層のニューロン数で、乱数の範囲をrangeで指定する。</p>
 <p>例えば、入力層のニューロン数が2、隠し層のニューロン数が2、出力層のニューロン数が1の3層パーセプトロンで、
 重みが-0.2から0.2までの乱数となるパーセプトロンは、以下のようにして得られる。</p>
-
-<pre><code class="language-Mathematica">p = createPerceptron[{2, 2, 1}, {-0.2, 0.2}]
-</code></pre>
-
-<p>この初期状態で、入力層に{0, 0}を与えた時の出力は、</p>
-
-<pre><code class="language-Mathematica">p[{0, 0}]
-{{0, 0}, {0.512507, 0.510116}, {0.497566}}
-</code></pre>
-
-<p>となる。2番目の要素が隠し層の値で、最後の{0.497566}が出力層の値である。</p>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Mathematica" data-lang="Mathematica">p <span style="color:#f92672">=</span> createPerceptron[{<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">1</span>}, {<span style="color:#ae81ff">-0.2</span>, <span style="color:#ae81ff">0.2</span>}]
+</code></pre></div><p>この初期状態で、入力層に{0, 0}を与えた時の出力は、</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Mathematica" data-lang="Mathematica">p[{<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>}]
+{{<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>}, {<span style="color:#ae81ff">0.512507</span>, <span style="color:#ae81ff">0.510116</span>}, {<span style="color:#ae81ff">0.497566</span>}}
+</code></pre></div><p>となる。2番目の要素が隠し層の値で、最後の{0.497566}が出力層の値である。</p>
 <p>次に、バックプロパゲーションによる学習を実装する。</p>
-
-<pre><code class="language-Mathematica">backPropagation[pct : perceptron[w : {__}], x_List, teach_List, rate_: 1] := Module[{out, \[Delta], \[Delta]n, \[CapitalDelta]w},
-  out = pct[x];
-  \[Delta]n = With[{y = Last[out]}, (teach - y) y (1 - y)];
-  \[Delta] = Reverse@FoldList[(Most[#2[[2]]].#1) #2[[1]] (1 - #2[[1]]) &amp;, \[Delta]n,
-     Reverse@Rest@Transpose[{Most[out], w}]];
-  \[CapitalDelta]w = MapThread[Outer[Times, Append[#1, 1], #2] &amp;, {Most@out, \[Delta]}];
-  perceptron[w + rate \[CapitalDelta]w]
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Mathematica" data-lang="Mathematica">backPropagation[pct <span style="color:#960050;background-color:#1e0010">:</span> perceptron[w <span style="color:#960050;background-color:#1e0010">:</span> {__}], x_List, teach_List, rate_<span style="color:#960050;background-color:#1e0010">:</span> <span style="color:#ae81ff">1</span>] <span style="color:#f92672">:=</span> Module[{out, <span style="color:#960050;background-color:#1e0010">\</span>[Delta], <span style="color:#960050;background-color:#1e0010">\</span>[Delta]n, <span style="color:#960050;background-color:#1e0010">\</span>[CapitalDelta]w},
+  out <span style="color:#f92672">=</span> pct[x];
+  <span style="color:#960050;background-color:#1e0010">\</span>[Delta]n <span style="color:#f92672">=</span> With[{y <span style="color:#f92672">=</span> Last[out]}, (teach <span style="color:#f92672">-</span> y) y (<span style="color:#ae81ff">1</span> <span style="color:#f92672">-</span> y)];
+  <span style="color:#960050;background-color:#1e0010">\</span>[Delta] <span style="color:#f92672">=</span> Reverse<span style="color:#f92672">@</span>FoldList[(Most[#2[[<span style="color:#ae81ff">2</span>]]]<span style="color:#960050;background-color:#1e0010">.</span>#1) #2[[<span style="color:#ae81ff">1</span>]] (<span style="color:#ae81ff">1</span> <span style="color:#f92672">-</span> #2[[<span style="color:#ae81ff">1</span>]]) <span style="color:#f92672">&amp;</span>, <span style="color:#960050;background-color:#1e0010">\</span>[Delta]n,
+     Reverse<span style="color:#f92672">@</span>Rest<span style="color:#f92672">@</span>Transpose[{Most[out], w}]];
+  <span style="color:#960050;background-color:#1e0010">\</span>[CapitalDelta]w <span style="color:#f92672">=</span> MapThread[Outer[Times, Append[#1, <span style="color:#ae81ff">1</span>], #2] <span style="color:#f92672">&amp;</span>, {Most<span style="color:#f92672">@</span>out, <span style="color:#960050;background-color:#1e0010">\</span>[Delta]}];
+  perceptron[w <span style="color:#f92672">+</span> rate <span style="color:#960050;background-color:#1e0010">\</span>[CapitalDelta]w]
   ]
-</code></pre>
-
-<p>第1引数は学習させるパーセプトロンで、第2引数に入力層の値、第3引数に教師信号を与えると、学習後のパーセプトロンを返す関数とした。
+</code></pre></div><p>第1引数は学習させるパーセプトロンで、第2引数に入力層の値、第3引数に教師信号を与えると、学習後のパーセプトロンを返す関数とした。
 δを求める式はもう少しスマートに書けるかもしれない。</p>
-
 <p>例としてXORを学習させる場合は、以下のようにNestやFoldを用いて学習後のパーセプトロンp2を得る。</p>
-
-<pre><code class="language-Mathematica">p2 = Nest[Fold[backPropagation[#1, Sequence @@ #2] &amp;, #,
-       {{{0, 0}, {0}}, {{0, 1}, {1}}, {{1, 0}, {1}}, {{1, 1}, {0}}}] &amp;,
-  p, 2000];
-Last[p2[#]] &amp; /@ {{0, 0}, {0, 1}, {1, 0}, {1, 1}}
-{{0.0317529}, {0.965119}, {0.9649}, {0.0442608}}
-</code></pre>
-
-<p>うまく学習できたようだ。
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Mathematica" data-lang="Mathematica">p2 <span style="color:#f92672">=</span> Nest[Fold[backPropagation[#1, Sequence <span style="color:#f92672">@</span><span style="color:#f92672">@</span> #2] <span style="color:#f92672">&amp;</span>, #,
+       {{{<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>}, {<span style="color:#ae81ff">0</span>}}, {{<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>}, {<span style="color:#ae81ff">1</span>}}, {{<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">0</span>}, {<span style="color:#ae81ff">1</span>}}, {{<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>}, {<span style="color:#ae81ff">0</span>}}}] <span style="color:#f92672">&amp;</span>,
+  p, <span style="color:#ae81ff">2000</span>];
+Last[p2[#]] <span style="color:#f92672">&amp;</span> <span style="color:#f92672">/</span><span style="color:#f92672">@</span> {{<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>}, {<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>}, {<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">0</span>}, {<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>}}
+{{<span style="color:#ae81ff">0.0317529</span>}, {<span style="color:#ae81ff">0.965119</span>}, {<span style="color:#ae81ff">0.9649</span>}, {<span style="color:#ae81ff">0.0442608</span>}}
+</code></pre></div><p>うまく学習できたようだ。
 いろいろな文献を調べたが、微妙に文字や添え字に誤植があったりして苦労した。</p>
-
 <p>以上のように、パーセプトロンとバックプロパゲーションもMathematicaを使えば少ない行数でスマートに書ける。</p>
 
 		</div>

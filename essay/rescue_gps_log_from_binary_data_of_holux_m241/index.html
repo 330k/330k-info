@@ -80,11 +80,9 @@ if (!doNotTrack) {
 			<p>GPSロガー(Holux m-241)のメモリが破損しているのか、
 実は6月30日と7月3日の軽井沢→直江津ツーリングと、9月の西九州→佐多岬ツーリングでは、
 ログが破損していたため、Googleのロケーション履歴を代用している。</p>
-
 <p>バイナリデータは一応吸い出せているようなので、その構造を調べると、
 <a href="http://www.motohasi.net/GPSTools/TrlInfo.php">HOLUX m-241 LoggerUtility .trlファイル構造の覚書</a>
 より以下のような構造になっている。</p>
-
 <ul>
 <li>1レコード20バイトの固定長</li>
 <li>時刻4バイト</li>
@@ -94,86 +92,70 @@ if (!doNotTrack) {
 <li>速度4バイト</li>
 <li>チェックサム1バイト</li>
 </ul>
-
 <p>また、m-241は時折書き込み先のメモリアドレスがずれることがあるようだ、との情報も見つかったため、
 バイナリエディタで除いてみると、どうも4バイトずつずれて記録されたデータがあるようだった。</p>
-
 <p>そこで</p>
-
 <ul>
 <li>レコードの先頭バイトを4バイトずつオフセットさせて読み込んでみる</li>
 <li>緯度と経度が日本付近のものと思われるものを片っ端から拾う</li>
 <li>時刻は整数型なのでとりあえず読み込む</li>
 <li>高度、速度のデータは無視！</li>
 </ul>
-
 <p>という方針でMathematicaのプログラムを書いてみた。</p>
-
-<pre><code class="language-Mathematica">data = Table[Module[{str, ret},
-    str = OpenRead[&quot;2016091200.bin&quot;, BinaryFormat -&gt; True];
-    (* 最初に余分にiバイト読み込んで先頭をずらす *)
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Mathematica" data-lang="Mathematica">data <span style="color:#f92672">=</span> Table[Module[{str, ret},
+    str <span style="color:#f92672">=</span> OpenRead[<span style="color:#e6db74">&#34;2016091200.bin&#34;</span>, BinaryFormat <span style="color:#f92672">-&gt;</span> True];
+    <span style="color:#75715e">(* 最初に余分にiバイト読み込んで先頭をずらす *)</span>
     Do[
-     BinaryRead[str, &quot;Byte&quot;],
+     BinaryRead[str, <span style="color:#e6db74">&#34;Byte&#34;</span>],
      {i}
      ];
-    (* バイナリ形式で読み込む *)
-    ret = Cases[
+    <span style="color:#75715e">(* バイナリ形式で読み込む *)</span>
+    ret <span style="color:#f92672">=</span> Cases[
       MapIndexed[
-       {First[#2], Sequence @@ #1} &amp;,
+       {First[#2], Sequence <span style="color:#f92672">@</span><span style="color:#f92672">@</span> #1} <span style="color:#f92672">&amp;</span>,
        BinaryReadList[
-        str, {&quot;Integer32&quot;, &quot;Real32&quot;, &quot;Real32&quot;, &quot;Byte&quot;, &quot;Byte&quot;, &quot;Byte&quot;, &quot;Real32&quot;, &quot;Byte&quot;}]
+        str, {<span style="color:#e6db74">&#34;Integer32&#34;</span>, <span style="color:#e6db74">&#34;Real32&#34;</span>, <span style="color:#e6db74">&#34;Real32&#34;</span>, <span style="color:#e6db74">&#34;Byte&#34;</span>, <span style="color:#e6db74">&#34;Byte&#34;</span>, <span style="color:#e6db74">&#34;Byte&#34;</span>, <span style="color:#e6db74">&#34;Real32&#34;</span>, <span style="color:#e6db74">&#34;Byte&#34;</span>}]
        ],
-      {count_, d_Integer, lat_Real, lon_Real, __} /; (30 &lt; lat &lt; 40 &amp;&amp; 125 &lt; lon &lt; 140) :&gt;
-      {count, DateString[DatePlus[{1970, 1, 1, 0, 0, 0}, {d, &quot;Second&quot;}], {&quot;Year&quot;, &quot;-&quot;, &quot;Month&quot;, &quot;-&quot;, &quot;Day&quot;, &quot;T&quot;, &quot;Time&quot;, &quot;Z&quot;}], lat, lon}];
+      {count_, d_Integer, lat_Real, lon_Real, __} <span style="color:#f92672">/</span>; (<span style="color:#ae81ff">30</span> <span style="color:#f92672">&lt;</span> lat <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">40</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">125</span> <span style="color:#f92672">&lt;</span> lon <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">140</span>) <span style="color:#f92672">:&gt;</span>
+      {count, DateString[DatePlus[{<span style="color:#ae81ff">1970</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>}, {d, <span style="color:#e6db74">&#34;Second&#34;</span>}], {<span style="color:#e6db74">&#34;Year&#34;</span>, <span style="color:#e6db74">&#34;-&#34;</span>, <span style="color:#e6db74">&#34;Month&#34;</span>, <span style="color:#e6db74">&#34;-&#34;</span>, <span style="color:#e6db74">&#34;Day&#34;</span>, <span style="color:#e6db74">&#34;T&#34;</span>, <span style="color:#e6db74">&#34;Time&#34;</span>, <span style="color:#e6db74">&#34;Z&#34;</span>}], lat, lon}];
     Close[str];
     ret
     ],
-   {i, 0, 19, 4}];
-</code></pre>
-
-<p>※ 2016091200.binというのがバイナリ形式のm-241ログファイル名
+   {i, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">19</span>, <span style="color:#ae81ff">4</span>}];
+</code></pre></div><p>※ 2016091200.binというのがバイナリ形式のm-241ログファイル名
 　 もとのデータ順を保存するように、MapIndexedを使用している
 　 日本付近、というのは今回は緯度が30度から40度、経度が125度から140度とした</p>
-
 <p>読み込めた点数は下記の通り。</p>
-
-<pre><code class="language-Mathematica">In[2]:= Length /@ data
-Out[2]= {13083, 9326, 5019, 7715, 9721}
-</code></pre>
-
-<p>本来は「HOLUXGR241LOGGER」という文字列がレコード開始位置の基準になっているのを無視すると、
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Mathematica" data-lang="Mathematica">In[<span style="color:#ae81ff">2</span>]<span style="color:#f92672">:=</span> Length <span style="color:#f92672">/</span><span style="color:#f92672">@</span> data
+Out[<span style="color:#ae81ff">2</span>]<span style="color:#f92672">=</span> {<span style="color:#ae81ff">13083</span>, <span style="color:#ae81ff">9326</span>, <span style="color:#ae81ff">5019</span>, <span style="color:#ae81ff">7715</span>, <span style="color:#ae81ff">9721</span>}
+</code></pre></div><p>本来は「HOLUXGR241LOGGER」という文字列がレコード開始位置の基準になっているのを無視すると、
 ずれを起こしていないログが13083点、4バイトずれて記録されたのが9326点、8バイトずれて記録されたのが5019点・・・という結果となった。</p>
-
 <p>あとはこれをGPXファイルとして出力する。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Mathematica" data-lang="Mathematica">data2 <span style="color:#f92672">=</span> Sort[Flatten[data, <span style="color:#ae81ff">1</span>]];
 
-<pre><code class="language-Mathematica">data2 = Sort[Flatten[data, 1]];
-
-str = OpenWrite[&quot;20160912_rescue.gpx&quot;];
+str <span style="color:#f92672">=</span> OpenWrite[<span style="color:#e6db74">&#34;20160912_rescue.gpx&#34;</span>];
 WriteString[str, 
-  &quot;&lt;?xml version=\&quot;1.0\&quot; encoding=\&quot;UTF-8\&quot; standalone=\&quot;no\&quot; ?&gt;
-  &lt;gpx
-      version=\&quot;1.1\&quot;
-      creator=\&quot;330k.info\&quot;
-      xmlns=\&quot;http://www.topografix.com/GPX/1/1\&quot;
-      xmlns:xsi=\&quot;http://www.w3.org/2001/XMLSchema-instance\&quot;
-      xsi:schemaLocation=\&quot;http://www.topografix.com/GPX/1/1 http://www.topografix.com/GPX/1/1/gpx.xsd\&quot;&gt;
-  &lt;trk&gt;
-   &lt;name&gt;20160912&lt;/name&gt;
-   &lt;number&gt;0&lt;/number&gt;
-  &lt;trkseg&gt;&quot;];
+  <span style="color:#e6db74">&#34;&lt;?xml version=\&#34;</span><span style="color:#ae81ff">1.0</span><span style="color:#960050;background-color:#1e0010">\</span><span style="color:#e6db74">&#34; encoding=\&#34;</span>UTF<span style="color:#ae81ff">-8</span><span style="color:#960050;background-color:#1e0010">\</span><span style="color:#e6db74">&#34; standalone=\&#34;</span>no<span style="color:#960050;background-color:#1e0010">\</span><span style="color:#960050;background-color:#1e0010">&#34;</span> <span style="color:#f92672">?</span><span style="color:#f92672">&gt;</span>
+  <span style="color:#f92672">&lt;</span>gpx
+      version<span style="color:#f92672">=</span><span style="color:#960050;background-color:#1e0010">\</span><span style="color:#e6db74">&#34;1.1\&#34;</span>
+      creator<span style="color:#f92672">=</span><span style="color:#960050;background-color:#1e0010">\</span><span style="color:#e6db74">&#34;330k.info\&#34;</span>
+      xmlns<span style="color:#f92672">=</span><span style="color:#960050;background-color:#1e0010">\</span><span style="color:#e6db74">&#34;http://www.topografix.com/GPX/1/1\&#34;</span>
+      xmlns<span style="color:#960050;background-color:#1e0010">:</span>xsi<span style="color:#f92672">=</span><span style="color:#960050;background-color:#1e0010">\</span><span style="color:#e6db74">&#34;http://www.w3.org/2001/XMLSchema-instance\&#34;</span>
+      xsi<span style="color:#960050;background-color:#1e0010">:</span>schemaLocation<span style="color:#f92672">=</span><span style="color:#960050;background-color:#1e0010">\</span><span style="color:#e6db74">&#34;http://www.topografix.com/GPX/1/1 http://www.topografix.com/GPX/1/1/gpx.xsd\&#34;</span><span style="color:#f92672">&gt;</span>
+  <span style="color:#f92672">&lt;</span>trk<span style="color:#f92672">&gt;</span>
+   <span style="color:#f92672">&lt;</span>name<span style="color:#f92672">&gt;</span><span style="color:#ae81ff">20160912</span><span style="color:#f92672">&lt;</span><span style="color:#f92672">/</span>name<span style="color:#f92672">&gt;</span>
+   <span style="color:#f92672">&lt;</span>number<span style="color:#f92672">&gt;</span><span style="color:#ae81ff">0</span><span style="color:#f92672">&lt;</span><span style="color:#f92672">/</span>number<span style="color:#f92672">&gt;</span>
+  <span style="color:#f92672">&lt;</span>trkseg<span style="color:#f92672">&gt;</span><span style="color:#960050;background-color:#1e0010">&#34;</span>];
 WriteString[str,
-    ToString@
+    ToString<span style="color:#f92672">@</span>
      StringForm[
-      &quot;&lt;trkpt lat=\&quot;``\&quot; lon=\&quot;``\&quot;&gt;&lt;time&gt;``&lt;/time&gt;&lt;/trkpt&gt;\n&quot;,
-      NumberForm[#[[3]], 10], NumberForm[#[[4]], 10], #[[2]]
+      <span style="color:#e6db74">&#34;&lt;trkpt lat=\&#34;</span><span style="color:#960050;background-color:#1e0010">`</span><span style="color:#960050;background-color:#1e0010">`</span><span style="color:#960050;background-color:#1e0010">\</span><span style="color:#e6db74">&#34; lon=\&#34;</span><span style="color:#960050;background-color:#1e0010">`</span><span style="color:#960050;background-color:#1e0010">`</span><span style="color:#960050;background-color:#1e0010">\</span><span style="color:#e6db74">&#34;&gt;&lt;time&gt;``&lt;/time&gt;&lt;/trkpt&gt;\n&#34;</span>,
+      NumberForm[#[[<span style="color:#ae81ff">3</span>]], <span style="color:#ae81ff">10</span>], NumberForm[#[[<span style="color:#ae81ff">4</span>]], <span style="color:#ae81ff">10</span>], #[[<span style="color:#ae81ff">2</span>]]
       ]
-    ] &amp; /@ data2;
-WriteString[str, &quot;&lt;/trkseg&gt;&lt;/trk&gt;&lt;/gpx&gt;&quot;];
+    ] <span style="color:#f92672">&amp;</span> <span style="color:#f92672">/</span><span style="color:#f92672">@</span> data2;
+WriteString[str, <span style="color:#e6db74">&#34;&lt;/trkseg&gt;&lt;/trk&gt;&lt;/gpx&gt;&#34;</span>];
 Close[str]
-</code></pre>
-
-<p>GPSBabelを使用してGPXファイルに変換した場合と比べて、どの程度のログを救出できたか調べた。</p>
-
+</code></pre></div><p>GPSBabelを使用してGPXファイルに変換した場合と比べて、どの程度のログを救出できたか調べた。</p>
 <table>
 <thead>
 <tr>
@@ -182,26 +164,22 @@ Close[str]
 <th>2016年9月6日→2016年9月11日</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td>経路</td>
 <td>東京→軽井沢→直江津</td>
 <td>小倉→長崎→佐多岬</td>
 </tr>
-
 <tr>
 <td>トラックポイント数(GPSBabel)</td>
 <td>4039</td>
 <td>19482 ※ 異常な点を手作業で削除</td>
 </tr>
-
 <tr>
 <td>トラックポイント数(上記プログラム)</td>
 <td>12442</td>
 <td>24869 ※ 異常な点を手作業で削除</td>
 </tr>
-
 <tr>
 <td>地図</td>
 <td><figure>
@@ -215,22 +193,16 @@ Close[str]
 </tr>
 </tbody>
 </table>
-
 <p>赤線 : GPSBabelで変換したログ  青線 : 今回のプログラムで救出したログ</p>
-
 <p>結果としては、東京→軽井沢→直江津は全部救出でき、
 小倉→長崎→鹿児島間では</p>
-
 <ul>
 <li>3日目の福岡県柳川市付近</li>
 <li>4日目の熊本県宇城市→鹿児島県霧島市</li>
 <li>5日目の鹿児島県垂水市→南大隅町</li>
 </ul>
-
 <p>のトラックポイントを合計5387点を救出できた。</p>
-
 <p>福岡県糸島市→長崎県松浦市、福岡県柳川市→熊本県宇城市の区間はどうしようもなかった。</p>
-
 <p>CATEYE製サイコンも3日目と4日目にトラブルを起こしているので、
 今後はm-241の使用をとりやめ、Garminを購入する予定。</p>
 

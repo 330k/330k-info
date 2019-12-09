@@ -77,15 +77,10 @@ if (!doNotTrack) {
 			<h1 class="post__title">bxSliderで2番目以降の画像が一瞬表示されるのを防止する</h1>
 			
 		</header><div class="content post__content clearfix">
-			
-
-<p>もうjQueryも古いと言われているが、会社のウェブサイトでjQueryプラグインのbxSliderが使われている。</p>
-
+			<p>もうjQueryも古いと言われているが、会社のウェブサイトでjQueryプラグインのbxSliderが使われている。</p>
 <p>Google先生のPageSpeed Insightに注意されたとおり、レンダリングブロックするJavaScriptを後ろ(&lt;/body&gt;直上)に配置したところ、
 2枚目以降の画像が一瞬表示されてしまう現象が発生。</p>
-
 <p>これはJSをレンダリングブロックしないように後ろに配置したり、deferをつけたときに、ブラウザが</p>
-
 <ol>
 <li>HTMLをロード</li>
 <li>CSSを読み込み</li>
@@ -94,59 +89,43 @@ if (!doNotTrack) {
 <li>bxSliderプラグインによってCSS書き換え</li>
 <li>書き換えられたCSSでDOM要素を再配置 ← このときに2番目以降が消える</li>
 </ol>
-
 <p>という順番で処理されるため。</p>
-
 <p>なので、CSSで最初から2番目以降を表示しないようにしておけばよい。
 具体的には、<code>.bxslider</code>の2番目以降の子要素に<code>display: none;</code>を指定すればよく、下記のようにする。</p>
-
-<pre><code class="language-HTML">&lt;ul class=&quot;bxslider&quot;&gt;
-    &lt;li&gt;&lt;div class=&quot;slide&quot;&gt;&lt;/div&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;div class=&quot;slide&quot;&gt;&lt;/div&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;div class=&quot;slide&quot;&gt;&lt;/div&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;div class=&quot;slide&quot;&gt;&lt;/div&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;div class=&quot;slide&quot;&gt;&lt;/div&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;div class=&quot;slide&quot;&gt;&lt;/div&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</code></pre>
-
-<pre><code class="language-CSS">.bxslider li:not(:first-child){
-    display: none;
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-HTML" data-lang="HTML">&lt;<span style="color:#f92672">ul</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;bxslider&#34;</span>&gt;
+    &lt;<span style="color:#f92672">li</span>&gt;&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;slide&#34;</span>&gt;&lt;/<span style="color:#f92672">div</span>&gt;&lt;/<span style="color:#f92672">li</span>&gt;
+    &lt;<span style="color:#f92672">li</span>&gt;&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;slide&#34;</span>&gt;&lt;/<span style="color:#f92672">div</span>&gt;&lt;/<span style="color:#f92672">li</span>&gt;
+    &lt;<span style="color:#f92672">li</span>&gt;&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;slide&#34;</span>&gt;&lt;/<span style="color:#f92672">div</span>&gt;&lt;/<span style="color:#f92672">li</span>&gt;
+    &lt;<span style="color:#f92672">li</span>&gt;&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;slide&#34;</span>&gt;&lt;/<span style="color:#f92672">div</span>&gt;&lt;/<span style="color:#f92672">li</span>&gt;
+    &lt;<span style="color:#f92672">li</span>&gt;&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;slide&#34;</span>&gt;&lt;/<span style="color:#f92672">div</span>&gt;&lt;/<span style="color:#f92672">li</span>&gt;
+    &lt;<span style="color:#f92672">li</span>&gt;&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;slide&#34;</span>&gt;&lt;/<span style="color:#f92672">div</span>&gt;&lt;/<span style="color:#f92672">li</span>&gt;
+&lt;/<span style="color:#f92672">ul</span>&gt;
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-CSS" data-lang="CSS">.<span style="color:#a6e22e">bxslider</span> <span style="color:#f92672">li</span>:<span style="color:#a6e22e">not</span><span style="color:#f92672">(</span>:<span style="color:#a6e22e">first-child</span><span style="color:#f92672">)</span>{
+    <span style="color:#66d9ef">display</span>: <span style="color:#66d9ef">none</span>;
 }
-</code></pre>
-
-<p><code>:not(:first-child)</code>が2番目以降の子要素を示す擬似クラス。
+</code></pre></div><p><code>:not(:first-child)</code>が2番目以降の子要素を示す擬似クラス。
 ここ最近のブラウザならすべて対応している(<code>:first-child</code>はCSS2.1、<code>:not</code>はCSS3)。</p>
-
-<h2 id="参考">参考</h2>
-
+<h2 id="heading">参考</h2>
 <p>ちょっと古い記事だが、他の方も同様の問題に対処している。</p>
-
 <ul>
 <li><a href="https://hacknote.jp/archives/5398/">「bxSlider」で画像が一度に出てしまう際の対処</a></li>
 <li><a href="https://fukafuka295.jp/hp/bxSlider_barabara.html">[bxSlider]スライドショー読み込み時に画像が一瞬バラけてしまう場合の超簡単な対処法</a></li>
 </ul>
-
 <p>ただ、</p>
-
 <ul>
 <li>2番目以降ではなくすべての子要素を消してしまっていて、JavaScript実行前は逆に画像が1枚も表示されず、実行後に要素の再配置が発生してしまっている
-
 <ul>
 <li>その対処として表示領域の<code>width</code>と<code>height</code>を指定している</li>
-</ul></li>
+</ul>
+</li>
 <li>IDで2番目以降の要素を指定している</li>
 </ul>
-
 <p>というやり方で、</p>
-
 <ul>
 <li>レスポンシブにするため、CSSの別の場所で細かく画像の大きさを場合分けしている</li>
 <li>ページによってスライドショーの画像の枚数やIDに違いがある</li>
 </ul>
-
 <p>という点で私の会社のサイトに合わず、そのままでは採用できなかった。</p>
-
 <p>なお、今回の対応に寄って2番目以降の画像が一瞬表示されるという見た目の問題以外にも、
 JavaScript(bxSlider)実行後も要素の再配置が発生しないので表示が高速になる利点もある。</p>
 
