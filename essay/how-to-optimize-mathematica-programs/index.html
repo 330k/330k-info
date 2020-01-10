@@ -78,14 +78,14 @@ if (!doNotTrack) {
 			
 		</header><div class="content post__content clearfix">
 			<p>Mathematicaにおいてプログラムの実行速度を最適化する際の項目を思いつく限り挙げてみた。</p>
-<h3 id="heading">関数型パラダイムで書く</h3>
+<h3 id="関数型パラダイムで書く">関数型パラダイムで書く</h3>
 <p>必然的に組み込み関数を多く使い、リストをまとめて操作することになるので手続き型で書くより速くなることが多い。
 コード量も少なくなって読みやすくなるので、よほどのことでない限りMathematicaでは関数型で書く。</p>
 <p>具体的には、手続き型ループ構文(Do, For, Whileなど)をやめて、MapやThreadを使うようにする。</p>
-<h3 id="heading1">出来る限り組み込みの関数を使う</h3>
+<h3 id="出来る限り組み込みの関数を使う">出来る限り組み込みの関数を使う</h3>
 <p>組み込み関数でできることは出来る限りやらせる。
 ドキュメントを探すと、Mathematicaは意外と多くのものが組み込みでできるようになっている。</p>
-<h3 id="heading2">リストは全体をまとめて扱う</h3>
+<h3 id="リストは全体をまとめて扱う">リストは全体をまとめて扱う</h3>
 <p>大概のループの中身はリストへの関数の適用や、テンソルの演算などに帰着する。</p>
 <p>四則演算はリストにそのまま適用可能。
 内積はDot、外積はCrossがあるし、それらを一般化したInner、Outerといった関数もある。</p>
@@ -97,22 +97,22 @@ myDifferences2[v_] <span style="color:#f92672">:=</span> Most[RotateLeft[v] <spa
  Timing[myDifferences2[#];],
  Timing[Differences[#];]} <span style="color:#f92672">&amp;</span>[RandomReal[{<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">5</span>}, <span style="color:#ae81ff">5000000</span>]]
 {{<span style="color:#ae81ff">1.919</span>, Null}, {<span style="color:#ae81ff">0.296</span>, Null}, {<span style="color:#ae81ff">0.187</span>, Null}}
-</code></pre></div><h3 id="heading3">リストの要素数変更を避ける</h3>
+</code></pre></div><h3 id="リストの要素数変更を避ける">リストの要素数変更を避ける</h3>
 <p>手続き型で要素数が分からないリストを生成するには、ReapとSowを用いる。AppendToやPrependToは厳禁。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Mathematica" data-lang="Mathematica">myPrimeChoice1[n_] <span style="color:#f92672">:=</span> Module[{r <span style="color:#f92672">=</span> {}, i}, Do[If[PrimeQ[i], AppendTo[r, i]], {i, n}]; r];
 myPrimeChoice2[n_] <span style="color:#f92672">:=</span> Module[{i}, Reap[Do[If[PrimeQ[i], Sow[i]], {i, n}]][[<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">1</span>]]];
 
 {Timing[myPrimeChoice1[<span style="color:#ae81ff">200000</span>];], Timing[myPrimeChoice2[<span style="color:#ae81ff">200000</span>];]}
 {{<span style="color:#ae81ff">3.01</span>, Null}, {<span style="color:#ae81ff">0.297</span>, Null}}
-</code></pre></div><h3 id="heading4">無駄な式の生成を避ける</h3>
+</code></pre></div><h3 id="無駄な式の生成を避ける">無駄な式の生成を避ける</h3>
 <p>返り値を使わないのであればMapではなくScanを使う。</p>
-<h3 id="heading5">無駄な型変換を避ける</h3>
+<h3 id="無駄な型変換を避ける">無駄な型変換を避ける</h3>
 <p>最終結果が機械精度実数や機械精度複素数でほしいのならば、最初からその精度で計算する。桁落ちや情報落ち、丸め誤差の蓄積には注意。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Mathematica" data-lang="Mathematica">{Timing[N[Total[Table[<span style="color:#ae81ff">1</span><span style="color:#f92672">/</span>i<span style="color:#f92672">^</span><span style="color:#ae81ff">2</span>, {i, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">100000</span>}]]]],
  Timing[Total[Table[<span style="color:#ae81ff">1.</span><span style="color:#f92672">/</span>i<span style="color:#f92672">^</span><span style="color:#ae81ff">2</span>, {i, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">100000</span>}]]],
  Timing[Total[Table[<span style="color:#ae81ff">1.</span><span style="color:#f92672">/</span>i<span style="color:#f92672">^</span><span style="color:#ae81ff">2</span>, {i, <span style="color:#ae81ff">1.</span>, <span style="color:#ae81ff">100000.</span>}]]]}
 {{<span style="color:#ae81ff">2.418</span>, <span style="color:#ae81ff">1.64492</span>}, {<span style="color:#ae81ff">0.344</span>, <span style="color:#ae81ff">1.64492</span>}, {<span style="color:#ae81ff">0.046</span>, <span style="color:#ae81ff">1.64492</span>}}
-</code></pre></div><h3 id="heading6">無駄な遅延評価を避ける</h3>
+</code></pre></div><h3 id="無駄な遅延評価を避ける">無駄な遅延評価を避ける</h3>
 <p>SetDelayed(:=)やRuleDelayed(:&gt;)ではなくSet(=)やRule(-&gt;)でも良い場合はかならずSetやRuleを使う。
 SetDelayedの右辺やTableの中身などを予め記号的に評価できるときはEvaluateを使って先に評価してしまう。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Mathematica" data-lang="Mathematica">func1[x_] <span style="color:#f92672">:=</span> Integrate[Exp[<span style="color:#f92672">-</span>x0<span style="color:#f92672">^</span><span style="color:#ae81ff">2</span>] <span style="color:#f92672">+</span> x0<span style="color:#f92672">^</span><span style="color:#ae81ff">2</span> <span style="color:#f92672">+</span> x0 <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>, {x0, <span style="color:#ae81ff">0</span>, x}];
@@ -120,7 +120,7 @@ func2[x_] <span style="color:#f92672">:=</span> Evaluate[Integrate[Exp[<span sty
 
 {Timing[Do[func1[i], {i, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">100</span>}]], Timing[Do[func2[i], {i, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">100</span>}]]}
 {{<span style="color:#ae81ff">7.161</span>, Null}, {<span style="color:#ae81ff">0.</span>, Null}}
-</code></pre></div><h3 id="heading7">無駄な記号的評価を避ける</h3>
+</code></pre></div><h3 id="無駄な記号的評価を避ける">無駄な記号的評価を避ける</h3>
 <p>PlotやPlot3Dなどグラフを生成する関数や、
 FindRoot、NIntegrate、NDSolveなど数値解析を行う関数では引数を記号的に処理することによってより適切なアルゴリズムを選択しようとするが,
 式が複雑で記号的評価に時間がかかってしまう場合や解析的でないことが分かっている場合は関数の定義を引数が数値の場合に限ることで記号的評価を抑制できる.</p>
@@ -129,7 +129,7 @@ Takagi2[x_<span style="color:#f92672">?</span>NumberQ] <span style="color:#f9267
 
 {Timing[Plot[Takagi[x], {x, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>}];], Timing[Plot[Takagi2[x], {x, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>}];]}
 {{<span style="color:#ae81ff">1.256</span>, Null}, {<span style="color:#ae81ff">0.604</span>, Null}}
-</code></pre></div><h3 id="compile">Compileであらかじめコンパイルする</h3>
+</code></pre></div><h3 id="compileであらかじめコンパイルする">Compileであらかじめコンパイルする</h3>
 <p>引数やモジュール変数、戻り値がすべて機械範囲整数、機械精度実数、機械精度複素数、真偽値およびこれらの完全配列で、単純な演算を大量に行う関数の場合は予めCompileしておくことで高速化できる。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Mathematica" data-lang="Mathematica">sin1[x_] <span style="color:#f92672">:=</span> Evaluate[N<span style="color:#f92672">@</span>Normal<span style="color:#f92672">@</span>Series[Sin[x], {x, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">50</span>}]];
 sin2 <span style="color:#f92672">=</span> Compile[{x}, Evaluate[N<span style="color:#f92672">@</span>Normal<span style="color:#f92672">@</span>Series[Sin[x], {x, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">50</span>}]]];
@@ -137,7 +137,7 @@ sin2 <span style="color:#f92672">=</span> Compile[{x}, Evaluate[N<span style="co
 {Timing[Do[sin1[i], {i, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">0.00001</span>}]], 
  Timing[Do[sin2[i], {i, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">0.00001</span>}]]}
 {{<span style="color:#ae81ff">3.697</span>, Null}, {<span style="color:#ae81ff">0.624</span>, Null}}
-</code></pre></div><h3 id="compilec">CompileでCコードを生成してコンパイルする</h3>
+</code></pre></div><h3 id="compileでcコードを生成してコンパイルする">CompileでCコードを生成してコンパイルする</h3>
 <p>Jan. 8 2015追記:
 Mathematica 8からの新機能で、Compileで<code>CompilationTarget -&gt; &quot;C&quot;</code>を指定することで、Cのコードを生成して機械語にコンパイルすることができる。
 さらに<code>Parallelization -&gt; True</code>を指定すると複数のスレッドを使うようになるので、さらに高速化する場合がある。
@@ -152,7 +152,7 @@ exp4 <span style="color:#f92672">=</span> Compile[x, Module[{c <span style="colo
  Timing[Do[exp3[i], {i, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">0.00001</span>}]],
  Timing[Do[exp4[i], {i, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">0.00001</span>}]]}
 {{<span style="color:#ae81ff">23.6656</span>, Null}, {<span style="color:#ae81ff">0.757096</span>, Null}, {<span style="color:#ae81ff">0.145064</span>, Null}, {<span style="color:#ae81ff">0.096116</span>, Null}}
-</code></pre></div><h3 id="dispatch">Dispatchで呼び出しテーブルを作っておく</h3>
+</code></pre></div><h3 id="dispatchで呼び出しテーブルを作っておく">Dispatchで呼び出しテーブルを作っておく</h3>
 <p>大量の変換規則をReplaceAll(/.)で適用するときには予めDispatchで呼び出し表を作成しておく。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Mathematica" data-lang="Mathematica">rule1 <span style="color:#f92672">=</span> MapIndexed[x[#2[[<span style="color:#ae81ff">1</span>]]] <span style="color:#f92672">-&gt;</span> #1 <span style="color:#f92672">&amp;</span>, RandomInteger[<span style="color:#ae81ff">10000</span>, <span style="color:#ae81ff">10000</span>]];
 rule2 <span style="color:#f92672">=</span> Dispatch[rule1];
@@ -160,14 +160,14 @@ rule2 <span style="color:#f92672">=</span> Dispatch[rule1];
 {Timing[Do[x[i] <span style="color:#f92672">/.</span> rule1, {i, <span style="color:#ae81ff">10000</span>}]], 
  Timing[Do[x[i] <span style="color:#f92672">/.</span> rule2, {i, <span style="color:#ae81ff">10000</span>}]]}
 {{<span style="color:#ae81ff">10.124</span>, Null}, {<span style="color:#ae81ff">0.016</span>, Null}}
-</code></pre></div><h3 id="sparsearray">SparseArrayを使う</h3>
+</code></pre></div><h3 id="sparsearrayを使う">SparseArrayを使う</h3>
 <p>ほとんどの成分が0である疎行列であればSparseArrayを用いると、疎行列用のコードで計算されるので高速化する。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Mathematica" data-lang="Mathematica">matrixa <span style="color:#f92672">=</span> SparseArray[{Band[{<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>}] <span style="color:#f92672">-&gt;</span> <span style="color:#ae81ff">2</span>, Band[{<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">1</span>}] <span style="color:#f92672">-&gt;</span> <span style="color:#ae81ff">1</span>, Band[{<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>}] <span style="color:#f92672">-&gt;</span> <span style="color:#ae81ff">1</span>}, {<span style="color:#ae81ff">500</span>, <span style="color:#ae81ff">500</span>}];
 matrixb <span style="color:#f92672">=</span> Normal[matrixa];
 
 {Timing[matrixa<span style="color:#960050;background-color:#1e0010">.</span>matrixa;], Timing[matrixb<span style="color:#960050;background-color:#1e0010">.</span>matrixb;]}
 {{<span style="color:#ae81ff">0.</span>, Null}, {<span style="color:#ae81ff">2.901</span>, Null}}
-</code></pre></div><h3 id="heading8">パックアレーにする</h3>
+</code></pre></div><h3 id="パックアレーにする">パックアレーにする</h3>
 <p>すべての要素が機械範囲整数か機械精度実数、機械精度複素数のいずれか1種類の完全配列であればMathematicaはパックアレーを使う(こともある)。
 パックアレーとそうでない通常のリストの間の変換には時間がかかるので、できるかぎりパックアレーの状態を保つようにする。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Mathematica" data-lang="Mathematica">unpacked <span style="color:#f92672">=</span> Developer`FromPackedArray[Table[i <span style="color:#f92672">+</span> <span style="color:#ae81ff">2</span> j, {i, <span style="color:#ae81ff">1000</span>}, {j, <span style="color:#ae81ff">1000</span>}]];
@@ -176,13 +176,13 @@ packed <span style="color:#f92672">=</span> Developer`ToPackedArray[unpacked];
 {Timing[Developer`PackedArrayQ[Nest[Transpose, unpacked, <span style="color:#ae81ff">50</span>]]],
  Timing[Developer`PackedArrayQ[Nest[Transpose, packed, <span style="color:#ae81ff">50</span>]]]}
 {{<span style="color:#ae81ff">2.558</span>, False}, {<span style="color:#ae81ff">0.375</span>, True}}
-</code></pre></div><h3 id="patterntestcondition">パターンマッチではPatternTest(?)、Condition(/;)を避ける</h3>
+</code></pre></div><h3 id="パターンマッチではpatterntestconditionを避ける">パターンマッチではPatternTest(?)、Condition(/;)を避ける</h3>
 <p>パターンマッチではConditionよりPatternTestのほうが若干高速であるが、これらを使わずにすむのであればそちらのほうが高速である。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Mathematica" data-lang="Mathematica">{Timing[Count[RandomInteger[{<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">100</span>}, <span style="color:#ae81ff">1000000</span>]<span style="color:#f92672">/</span>RandomInteger[{<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">100</span>}, <span style="color:#ae81ff">1000000</span>], x_ <span style="color:#f92672">/</span>; IntegerQ[x]]], 
  Timing[Count[RandomInteger[{<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">100</span>}, <span style="color:#ae81ff">1000000</span>]<span style="color:#f92672">/</span>RandomInteger[{<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">100</span>}, <span style="color:#ae81ff">1000000</span>], _<span style="color:#f92672">?</span>IntegerQ]],
  Timing[Count[RandomInteger[{<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">100</span>}, <span style="color:#ae81ff">1000000</span>]<span style="color:#f92672">/</span>RandomInteger[{<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">100</span>}, <span style="color:#ae81ff">1000000</span>], _Integer]]}
 {{<span style="color:#ae81ff">1.903</span>, <span style="color:#ae81ff">47767</span>}, {<span style="color:#ae81ff">1.809</span>, <span style="color:#ae81ff">48343</span>}, {<span style="color:#ae81ff">1.42</span>, <span style="color:#ae81ff">48168</span>}}
-</code></pre></div><h3 id="listable">Listable属性を活用する</h3>
+</code></pre></div><h3 id="listable属性を活用する">Listable属性を活用する</h3>
 <p>Listable属性をうまく使えば、MapやMapThreadを使わずにリストへ関数を適用できる。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Mathematica" data-lang="Mathematica">h1[x_, y_] <span style="color:#f92672">:=</span> Boole[x<span style="color:#f92672">^</span><span style="color:#ae81ff">2</span> <span style="color:#f92672">+</span> y<span style="color:#f92672">^</span><span style="color:#ae81ff">2</span> <span style="color:#f92672">&lt;</span><span style="color:#f92672">=</span> <span style="color:#ae81ff">1.</span>];
 
@@ -194,12 +194,12 @@ SetAttributes[myLessEqual, Listable];
  Timing[Total[h2 <span style="color:#f92672">@</span><span style="color:#f92672">@</span> RandomReal[{}, {<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">400000</span>}]]]}
 {{<span style="color:#ae81ff">2.418</span>, <span style="color:#ae81ff">314145</span>}, {<span style="color:#ae81ff">1.155</span>, <span style="color:#ae81ff">314415</span>}}
 </code></pre></div><p>これは <a href="http://moriyan.jp/karakuri/nokisita/BBS_MSG_031221003623.html">http://moriyan.jp/karakuri/nokisita/BBS_MSG_031221003623.html</a> を参照すること。</p>
-<h3 id="heading9">求める精度や確度を下げる</h3>
+<h3 id="求める精度や確度を下げる">求める精度や確度を下げる</h3>
 <p>精度が必要ない場面ではNIntegrateやFindRootのPrecisionGoalやAccuracyGoalを小さく設定することで関数の評価回数や再帰の深さを小さくできる。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Mathematica" data-lang="Mathematica">Quiet[{Timing[Do[NIntegrate[Sin[<span style="color:#ae81ff">1</span><span style="color:#f92672">/</span>x], {x, <span style="color:#ae81ff">10</span><span style="color:#f92672">^</span><span style="color:#f92672">-</span>i, <span style="color:#ae81ff">1</span>}], {i, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">200</span>}]],
   Timing[Do[NIntegrate[Sin[<span style="color:#ae81ff">1</span><span style="color:#f92672">/</span>x], {x, <span style="color:#ae81ff">10</span><span style="color:#f92672">^</span><span style="color:#f92672">-</span>i, <span style="color:#ae81ff">1</span>}, AccuracyGoal <span style="color:#f92672">-&gt;</span> <span style="color:#ae81ff">3</span>, PrecisionGoal <span style="color:#f92672">-&gt;</span> <span style="color:#ae81ff">3</span>], {i, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">200</span>}]]}]
 {{<span style="color:#ae81ff">2.059</span>, Null}, {<span style="color:#ae81ff">0.952</span>, Null}}
-</code></pre></div><h3 id="interpolatingfunction">あらかじめInterpolatingFunctionにしておく</h3>
+</code></pre></div><h3 id="あらかじめinterpolatingfunctionにしておく">あらかじめInterpolatingFunctionにしておく</h3>
 <ul>
 <li>複雑な計算をして数値を返す</li>
 <li>何回も呼び出す</li>
@@ -210,12 +210,12 @@ SetAttributes[myLessEqual, Listable];
 ある関数の中でInterpolatingFunctionを呼び出して使うような場合は精度がそのInterpolatingFunctionによって決まってしまうので、
 FunctionInterpolationをかけて単一のInterpolatingFunctionにしてしまってもよい。
 目安としてInterpolatingFunctionのメッシュ点数よりも関数の呼び出し回数の方が多ければ全体としてみて高速化できるだろう。</p>
-<h3 id="heading10">並列計算させる</h3>
+<h3 id="並列計算させる">並列計算させる</h3>
 <p>Mathematica 7から標準でついてくるようになった自動並列化を用いる。
 個々の計算の粒度が粗いほうが並列化の効果があがる。
 副作用のない関数型でプログラムを書いていればDistributeDefinitionsしたあと、
 適当にParallelizeを入れたりMapをParallelMapに置換すればよい。</p>
-<h3 id="heading11">とにかく少しでも高速化するための小技</h3>
+<h3 id="とにかく少しでも高速化するための小技">とにかく少しでも高速化するための小技</h3>
 <p>労力の割に報われずプログラムが読みにくくなる、やらないほうがいいことも多い小技。</p>
 <ul>
 <li>[[1]]や[[-1]]ではなくFirstやLastを使う</li>
@@ -227,12 +227,12 @@ FunctionInterpolationをかけて単一のInterpolatingFunctionにしてしま�
 <li>機械精度実数の分数は1./6.ではなく6^^0.1(6進数の0.1)などと入力する(0.16666666666666666`よりは読みやすい)</li>
 <li>Andの中はFalseになる確率が高い順番に, Orでは逆の順番に条件式を記述する</li>
 </ul>
-<h3 id="1cmathlink">番外編1:Cで書いたプログラムをMathLink経由で呼び出す</h3>
+<h3 id="番外編1cで書いたプログラムをmathlink経由で呼び出す">番外編1:Cで書いたプログラムをMathLink経由で呼び出す</h3>
 <p>これが出来る人はこんなページ見なくても大丈夫だろうなぁ･･･。
 ドキュメントセンターの該当ページを参照。</p>
 <p>Jan. 8 2015 追記:
 Mathematica 8からCompileでCコードを生成して自動でMathLink経由で呼び出せるようになった(上記CompileでCコードを生成してコンパイルするを参照)。</p>
-<h3 id="2mathcode-cmathcode-f90">番外編2:MathCode C++かMathCode F90を買う</h3>
+<h3 id="番外編2mathcode-cかmathcode-f90を買う">番外編2:MathCode C++かMathCode F90を買う</h3>
 <p>お金があるならどうぞ。</p>
 
 		</div>
@@ -361,7 +361,7 @@ Mathematica 8からCompileでCコードを生成して自動でMathLink経由で
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2019 330k info.
+			&copy; 2020 330k info.
 			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
 		</div>
 	</div>

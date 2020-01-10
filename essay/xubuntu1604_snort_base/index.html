@@ -78,7 +78,7 @@ if (!doNotTrack) {
 			
 		</header><div class="content post__content clearfix">
 			<p>ウイルス等に侵入された後の対策として、IDSやIPS製品の紹介をベンダーから受けたが、正直なところ価格が高かったのと、検知されるメッセージがSnort由来のものが多い気がしたので、自分でSnortを構築して商用製品との差を調べてみることにした。</p>
-<h2 id="heading">構築環境</h2>
+<h2 id="構築環境">構築環境</h2>
 <ul>
 <li>PC : 余っていたノートPC  Panasonic LetsNote CF-NX1</li>
 <li>OS : Xubuntu 16.04.2 (LetsNoteの有線LANと無線LANのNICを認識できる可能性が高いディストリビューションとして選択)</li>
@@ -87,12 +87,12 @@ if (!doNotTrack) {
 <li>LetsNoteの有線LANはミラーポートに接続し、通信を監視</li>
 <li>LetsNote自体にアクセスするときには無線LANを使用する</li>
 </ul>
-<h2 id="heading1">図(適当)</h2>
+<h2 id="図適当">図(適当)</h2>
 <figure>
     <img src="snort001.png"/> 
 </figure>
 
-<h2 id="heading2">手順</h2>
+<h2 id="手順">手順</h2>
 <p>基本的に、以下のドキュメント通りでOK。</p>
 <p><a href="https://s3.amazonaws.com/snort-org-site/production/document_files/files/000/000/122/original/Snort_2.9.9.x_on_Ubuntu_14-16.pdf?AWSAccessKeyId=AKIAIXACIED2SPMSC7GA&amp;Expires=1495781265&amp;Signature=KgejvuGSg4bx%2Ft099F3cdwrd%2BcU%3D">Snort 2.9.9.x on Ubuntu 14 -16</a></p>
 <p>LetsNoteでは有線LANのNICは<code>enp0s25</code>、無線LANは<code>wlp2s0</code>となった。</p>
@@ -117,7 +117,7 @@ NetworkManagerを使って適当に固定IPを設定。</p>
 <li>解除<!-- raw HTML omitted -->
 <code>no lan port-mirroring lan1</code></li>
 </ul>
-<h2 id="heading3">結果</h2>
+<h2 id="結果">結果</h2>
 <p>一応IDSとして構築できたので、現在はログを見て様子見。今のところのメモは以下。</p>
 <ul>
 <li>ノートPCにSnortを構築しても、なんとか100Mbps程度は処理してくれる(ただしCPUは常に100%)</li>
@@ -251,7 +251,7 @@ NetworkManagerを使って適当に固定IPを設定。</p>
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2019 330k info.
+			&copy; 2020 330k info.
 			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
 		</div>
 	</div>

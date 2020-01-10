@@ -88,9 +88,9 @@ if (!doNotTrack) {
 <li>出来上がりの画像サイズは230x180</li>
 <li>背景は透過させる(きれいに透過させたい)</li>
 </ul>
-<h2 id="heading">コマンド</h2>
+<h2 id="コマンド">コマンド</h2>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">convert -colorspace sRGB -density <span style="color:#ae81ff">576</span> -filter Point <span style="color:#e6db74">&#34;元ファイル.ai&#34;</span> -trim -alpha set -fill <span style="color:#e6db74">&#39;#000000ff&#39;</span> -opaque <span style="color:#e6db74">&#39;#ffffff&#39;</span> -background transparent +filter -resize 220x110 -gravity center -extent 230x180 出力ファイル.png
-</code></pre></div><h3 id="heading1">説明</h3>
+</code></pre></div><h3 id="説明">説明</h3>
 <p>アンチエイリアスを切った状態で透過色を設定し、その後アンチエイリアスをONにして縮小するところがミソ。
 これで中間色の部分をきれいに半透過にできる。</p>
 <table>
@@ -274,7 +274,7 @@ if (!doNotTrack) {
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2019 330k info.
+			&copy; 2020 330k info.
 			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
 		</div>
 	</div>

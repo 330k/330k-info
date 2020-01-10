@@ -83,12 +83,12 @@ VBAやVBScript版を参考に作ってみた。</p>
 <p>複数のファイルをZIP圧縮する際のコツとしては、CopyHereをするたびに待機すること。
 CopyHereは非同期なので、すぐにJS側に制御が返ってくるが、
 複数のファイルを一気にCopyHereしようとすると、「読み取りできません」とエラーが出る。</p>
-<h3 id="heading">使い方</h3>
+<h3 id="使い方">使い方</h3>
 <p>以下のコード中のcreateZipFileを自分のスクリプトにコピー&amp;ペーストして</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#a6e22e">createZipFile</span>( <span style="color:#e6db74">&#34;zipファイルのパス&#34;</span>, [<span style="color:#e6db74">&#34;圧縮対象ファイルのパス1&#34;</span>, <span style="color:#e6db74">&#34;圧縮対象ファイルのパス2&#34;</span>, ...])
 </code></pre></div><p>とすればOK。
 もしくは以下のコードをメモ帳で拡張子をjsにして保存すれば、ドラッグ&amp;ドロップでzipファイルを作成(右クリック→送る→圧縮フォルダーとほぼ同じ動作)。</p>
-<h3 id="heading1">注意事項</h3>
+<h3 id="注意事項">注意事項</h3>
 <p>ディレクトリには対応してません。またWindows標準では暗号化ZIPは作成できません。
 また圧縮対象ファイルの存在チェック等もやってないので、必要であればエラーハンドリング処理を追加してください。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#75715e">/**
@@ -256,7 +256,7 @@ CopyHereは非同期なので、すぐにJS側に制御が返ってくるが、
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2019 330k info.
+			&copy; 2020 330k info.
 			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
 		</div>
 	</div>

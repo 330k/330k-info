@@ -79,7 +79,7 @@ if (!doNotTrack) {
 		</header><div class="content post__content clearfix">
 			<p>ドキュメントにはないものの、MathematicaではSQLiteを扱うことができる。
 しかしながら、BLOB型や文字列で日本語などを扱うには少し工夫が必要なので、メモ。</p>
-<h2 id="blob">BLOB型</h2>
+<h2 id="blob型">BLOB型</h2>
 <h3 id="select">select</h3>
 <p>直接BLOB型をselectすると$Failedが返ってくるので、hex関数で16進文字列として返す。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Mathematica" data-lang="Mathematica">db <span style="color:#f92672">=</span> Database`OpenDatabase[sqlitefilepath];
@@ -96,14 +96,14 @@ ImportSQLiteBLOB[rs[[<span style="color:#ae81ff">1</span>, <span style="color:#a
 Database`QueryDatabase[db, <span style="color:#e6db74">&#34;insert into table_name values (&#34;</span>
 <span style="color:#f92672">&lt;&gt;</span> ExportSQLiteBLOB[Plot[Sin[x], {x, <span style="color:#ae81ff">0</span>, Pi}], <span style="color:#e6db74">&#34;PNG&#34;</span>]
 <span style="color:#f92672">&lt;&gt;</span> <span style="color:#e6db74">&#34;)&#34;</span>];
-</code></pre></div><h2 id="heading">マルチバイト文字列</h2>
-<h3 id="select1">select</h3>
+</code></pre></div><h2 id="マルチバイト文字列">マルチバイト文字列</h2>
+<h3 id="select-1">select</h3>
 <p>日本語などマルチバイト文字列が入っていても適切に変換してくれないので、自前で変換する。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Mathematica" data-lang="Mathematica">ImportSQLiteString[str_] <span style="color:#f92672">:=</span>  
   FromCharacterCode[ToCharacterCode[str], <span style="color:#e6db74">&#34;UTF8&#34;</span>];
 rs <span style="color:#f92672">=</span> Database`QueryDatabase[db, <span style="color:#e6db74">&#34;select column_name from table_name&#34;</span>];
 ImportSQLiteString[rs[[<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>]]]
-</code></pre></div><h3 id="insert1">insert</h3>
+</code></pre></div><h3 id="insert-1">insert</h3>
 <p>そのまま突っ込むとエラーが出るので、変換してから突っ込む。ついでにシングルクォーテーションをエスケープしておく。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Mathematica" data-lang="Mathematica">ExportSQLiteString[str_] <span style="color:#f92672">:=</span> 
   <span style="color:#e6db74">&#34;&#39;&#34;</span> <span style="color:#f92672">&lt;&gt;</span> ExportString[StringReplace[str, <span style="color:#e6db74">&#34;&#39;&#34;</span> <span style="color:#f92672">-&gt;</span> <span style="color:#e6db74">&#34;&#39;&#39;&#34;</span>], <span style="color:#e6db74">&#34;TEXT&#34;</span>, 
@@ -239,7 +239,7 @@ Database`QueryDatabase[db, <span style="color:#e6db74">&#34;insert into table_na
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2019 330k info.
+			&copy; 2020 330k info.
 			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
 		</div>
 	</div>

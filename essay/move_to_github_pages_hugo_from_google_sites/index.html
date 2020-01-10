@@ -115,7 +115,7 @@ GitHubの他のリポジトリにも独自ドメインの設定が反映され�
 今後ホスティング先をGitHub Pagesから別のサービスに移行するときにまた変更することになる。
 そこでUser Pagesは作成せず、Project Pagesとして作成する。</p>
 <p>c.f. <a href="https://help.github.com/articles/custom-domain-redirects-for-github-pages-sites/">Custom domain redirects for GitHub Pages sites</a></p>
-<h2 id="heading">ページ移転作業</h2>
+<h2 id="ページ移転作業">ページ移転作業</h2>
 <p>各ページを手作業でコピペ。
 1日5ページ〜10ページくらい移行作業した。</p>
 <p>画像については、Chromeの開発者ツールで、</p>
@@ -131,9 +131,9 @@ GitHubの他のリポジトリにも独自ドメインの設定が反映され�
 <li><!-- raw HTML omitted -->HSTSはOFFで様子見。<!-- raw HTML omitted --> → HSTS Onに変更(includeSubdomainはOFF)</li>
 <li><code>Automatic HTTPS Rewrites</code>はOFF(自力ですべての内部リンクをHTTPSに置換)。</li>
 </ul>
-<h2 id="cname">CNAMEファイルのアップロード</h2>
+<h2 id="cnameファイルのアップロード">CNAMEファイルのアップロード</h2>
 <p>最後にGitHubリポジトリに<code>www.330k.info</code>と記入したCNAMEファイルをコミットして移転作業完了。</p>
-<h2 id="heading1">その他</h2>
+<h2 id="その他">その他</h2>
 <ul>
 <li>HugoではURLがすべて小文字になるので、旧URLに大文字を含むページではFront Matterに<code>aliases = [(元のURL)]</code>を追加。</li>
 <li>User PagesにするかProject Pagesにするかでかなり迷って、少しダウンタイムが発生してしまった。</li>
@@ -266,7 +266,7 @@ GitHubの他のリポジトリにも独自ドメインの設定が反映され�
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2019 330k info.
+			&copy; 2020 330k info.
 			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
 		</div>
 	</div>

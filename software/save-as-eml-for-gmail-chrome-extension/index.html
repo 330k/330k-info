@@ -78,7 +78,7 @@ if (!doNotTrack) {
 			
 		</header><div class="content post__content clearfix">
 			<p><strong>Gmailの機能拡充により標準で可能になったため、拡張機能の配布を終了しました</strong></p>
-<h1 id="heading">概要</h1>
+<h1 id="概要">概要</h1>
 <p>会社でGoogle Apps for Workを導入したところ、「Outlookの時はメールをD&amp;Dで保存できたのに、Gmailになってできなくなった」とのクレームが出てきた。
 経理の外注先や監査法人とのやりとりの際に、メールを含む関連資料1式をやりとりするニーズがあるらしい。
 Googleで検索すると、「メッセージのソースを表示」→「拡張子をemlにしてメモ帳などで保存」とする方法がみつかった(関連リンク参照)が、
@@ -90,10 +90,10 @@ Googleで検索すると、「メッセージのソースを表示」→「拡�
     <img src="icon_128.png"/> 
 </figure>
 
-<h2 id="heading1">使い方</h2>
+<h2 id="使い方">使い方</h2>
 <p>Gmailで「メッセージのソースを表示」を行うと、自動でemlファイルがダウンロードされます。
 ファイル名は「yyyymmdd_hhmmss.eml」になります(Dateヘッダから取得した日時です)。</p>
-<h3 id="heading2">仕様についての補足</h3>
+<h3 id="仕様についての補足">仕様についての補足</h3>
 <p>当初はGmail画面の「メッセージのソースを表示」の下にメニュー項目を追加して、ダウンロードさせるようにしたかったが、
 メッセージのソースを表示をした時のURL(<code>https://mail.google.com/mail/u/0/?ui=2&amp;ik=**********&amp;view=om&amp;th=*************</code>)のパラメータのうち、
 thはブラウザのlocation.pathやhrefを見ればわかるが、ikはメッセージが表示されるときにページ側のグローバルオブジェクトに格納されるため、
@@ -102,7 +102,7 @@ thはブラウザのlocation.pathやhrefを見ればわかるが、ikはメッ�
 <p>もちろんGmail APIを使えばアクセスできるとは思うのだが、そうするとユーザは最初にアプリに対してGmailを読み取る権限を許可しなければならないため、敷居が高くなってしまう。
 他の人はこれらの理由で同様の拡張機能の作成を断念したのではないだろうか。</p>
 <p>また、Outlookのように保存されるファイル名を件名にしたかったが、ありとあらゆる文字コードに対応しなければならなくなるので単純にDateヘッダから日時を取得する仕様とした。</p>
-<h3 id="heading3">関連リンク</h3>
+<h3 id="関連リンク">関連リンク</h3>
 <ul>
 <li><a href="http://%E4%BB%8A%E6%97%A5%E8%A6%9A%E3%81%88%E3%81%9F%E3%81%93%E3%81%A8.biz/?p=1637">gmailのメールをemlファイルにする | 今日覚えたことの覚え書き</a></li>
 <li><a href="https://productforums.google.com/forum/#!topic/gmail-ja/3x-Lu5jPSHE">Gmail ヘルプ フォーラム Gmailを1件だけパソコンに保存したい</a></li>
@@ -232,7 +232,7 @@ thはブラウザのlocation.pathやhrefを見ればわかるが、ikはメッ�
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2019 330k info.
+			&copy; 2020 330k info.
 			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
 		</div>
 	</div>

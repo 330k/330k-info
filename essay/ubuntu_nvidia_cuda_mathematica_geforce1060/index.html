@@ -78,7 +78,7 @@ if (!doNotTrack) {
 			
 		</header><div class="content post__content clearfix">
 			<p>MathematicaからCUDAを使いたかったので、GPU搭載のノートPCを購入してセットアップした。</p>
-<h2 id="pc">購入PC</h2>
+<h2 id="購入pc">購入PC</h2>
 <p>PC工房のGeForce 1060搭載ノートPC(OSなし) : <a href="https://www.pc-koubou.jp/products/detail.php?product_id=590109">STYLE-15FX093-i7-RNFR [OS LESS]</a></p>
 <ul>
 <li>CPU: Intel Core i7-7700HQ 2.8GHz</li>
@@ -86,14 +86,14 @@ if (!doNotTrack) {
 <li>Storage: SSD 240GB + HDD 2TB</li>
 <li>GPU: NVIDIA GeForce 1060 6GB</li>
 </ul>
-<h2 id="ubuntu-1710-remix">Ubuntu 17.10 日本語Remixをダウンロード</h2>
+<h2 id="ubuntu-1710-日本語remixをダウンロード">Ubuntu 17.10 日本語Remixをダウンロード</h2>
 <p>旧PC(Ubuntu 16.04)で
 <a href="https://www.ubuntulinux.jp/download/ja-remix">Ubuntu Desktop 日本語 Remixのダウンロード</a>から、<code>ubuntu-ja-17.10-desktop-amd64.iso</code>をダウンロード。
 ddでUSBメモリに書き込む。</p>
 <pre><code>sudo dd if=ubuntu-ja-17.10-desktop-amd64.iso of=/dev/sde status=progress
-</code></pre><h2 id="heading">ファームウェア設定</h2>
+</code></pre><h2 id="ファームウェア設定">ファームウェア設定</h2>
 <p>新PCに電源を入れ、ファームウェア設定画面に入り、起動モードをUEFIからBIOSに変更する。</p>
-<h2 id="ubuntu">Ubuntuインストール</h2>
+<h2 id="ubuntuインストール">Ubuntuインストール</h2>
 <p>USBメモリを挿入してPCを再起動し、インストールする。</p>
 <ul>
 <li>言語は日本語を選択</li>
@@ -132,7 +132,7 @@ Wolframシステム移行フォームで、新しいアクティベーション�
 <pre><code>#LANG=ja_JP.eucJP
 LANG=ja_JP.UTF-8
 </code></pre><p><code>ISO8859-1.m</code>は書き換えなくても大丈夫だった。</p>
-<h2 id="cudalink">CUDALinkの設定</h2>
+<h2 id="cudalinkの設定">CUDALinkの設定</h2>
 <p>Wolframのドキュメントには環境変数<code>NVIDIA_DRIVER_LIBRARY_PATH</code>と<code>CUDA_LIBRARY_PATH</code>を設定すれば良い、と書いてあるが、実際には読みに行ってくれない。
 (なぜか環境変数をMathematicaが読み込めていない)</p>
 <p>なので、デフォルトの位置にシンボリックリンクを作成する。</p>
@@ -297,7 +297,7 @@ Out[<span style="color:#ae81ff">9</span>]<span style="color:#f92672">=</span> {<
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2019 330k info.
+			&copy; 2020 330k info.
 			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
 		</div>
 	</div>

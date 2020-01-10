@@ -89,7 +89,7 @@ if (!doNotTrack) {
 <p>正確な距離としては、<a href="http://geographiclib.sourceforge.net/">GeographicLib</a>
 (<a href="http://en.wikipedia.org/wiki/Vincenty%27s_formulae">Wikipedia</a>によると誤差15nmらしい)をJLink経由で使って計算したもの採用し、準拠楕円体はWGS84とした。</p>
 <p>ただし、完全な球体とした場合の半径はGoogle EarthやGoogle Mapsにあわせて6378137 mとした。</p>
-<h2 id="2">ランダムな2点間の距離の精度</h2>
+<h2 id="ランダムな2点間の距離の精度">ランダムな2点間の距離の精度</h2>
 <p>地球表面上で一様分布となるよう、ランダムに2点を選び、その間の距離の精度を評価した。</p>
 <figure>
     <img src="hubeny_graph001.png"/> 
@@ -148,7 +148,7 @@ if (!doNotTrack) {
 </ul>
 <p>ただし、測量計算サイトの計算式については、<a href="http://vldb.gsi.go.jp/sokuchi/surveycalc/surveycalc/bl2stf.html">測量計算サイトのフォーム</a>に入力して計算させると常にほぼ正しい結果が返ってくるので、ドキュメントと異なる計算が行われているのではないかと考えられる。
 反復計算の収束閾値を変えてみても結果はほぼ変わらなかった。</p>
-<h2 id="heading">日本付近におけるパスの長さを計算する場合の精度と計算時間</h2>
+<h2 id="日本付近におけるパスの長さを計算する場合の精度と計算時間">日本付近におけるパスの長さを計算する場合の精度と計算時間</h2>
 <p>次に、もう少し実用的(ここでいう実用的とは専門家ではなく一般人にとって)な場合を考えて、
 鹿児島県の枕崎から北海道の稚内までの運転経路の道のりの長さを計算させてみた。</p>
 <p>Google Mapsで枕崎駅から稚内駅まで一般道路のみの経路を計算させ、その結果を400点に削減したものを用いた。
@@ -221,14 +221,14 @@ Google Maps APIのDirections Serviceで得られる緯度と経度の精度は7�
 <p>他の計算方法ではランダムな2点間の距離を計算する場合とほぼ同じ傾向となった。</p>
 <p>計算時間の面では、GeoDistanceよりもヒュベニの式や測量計算サイトの計算式のほうが4〜5倍程度高速であり、完全球体モデルはさらに5倍程度高速であった。
 ただし、ヒュベニの式、測量計算サイト計算式、完全球体モデルはCompileを使った場合、もとよりも40倍〜400倍程度高速となった。</p>
-<h2 id="heading1">結論</h2>
+<h2 id="結論">結論</h2>
 <ul>
 <li>MathematicaのGeoDistanceではデフォルトのVencenty75が11桁程度の精度が出て、最も良い。</li>
 <li>ヒュベニの式は日本付近の緯度であれば7桁程度の精度が出るが、極付近を含む場合は使えない。</li>
 <li>完全球体として計算するGoogle EarthやGoogle Mapsは2桁程度の精度(誤差0.6%程度)。</li>
 <li>測量計算サイトはドキュメントと異なる計算が行われていると考えられる。</li>
 </ul>
-<h2 id="heading2">追記</h2>
+<h2 id="追記">追記</h2>
 <ul>
 <li>GeographicLibを参考にMathematicaで測地線距離を計算するパッケージを作ってみた。→Google Code: mathematica-geodesic</li>
 <li>Google Codeが終了するのでGitHubに移転→<a href="https://github.com/330k/mathematica-geodesic">mathematica-geodesic</a> (Mar. 13 2015)</li>
@@ -363,7 +363,7 @@ Google Maps APIのDirections Serviceで得られる緯度と経度の精度は7�
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2019 330k info.
+			&copy; 2020 330k info.
 			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
 		</div>
 	</div>

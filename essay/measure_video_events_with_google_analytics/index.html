@@ -88,11 +88,11 @@ Google Analyticsのイベントで計測するためのコードを作ってみ�
 <li>シークした(seeked)</li>
 <li>どこまで再生したか(動画時間の10%, 25%, 50%, 75%, 90%)</li>
 </ul>
-<h2 id="html">HTML側</h2>
+<h2 id="html側">HTML側</h2>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">video</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;movie001&#34;</span> <span style="color:#a6e22e">width</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;(動画幅)&#34;</span> <span style="color:#a6e22e">height</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;(動画高さ)&#34;</span> <span style="color:#a6e22e">title</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Movie Title&#34;</span>&gt;
   &lt;<span style="color:#f92672">source</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;(動画ファイルのパス)&#34;</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;video/mp4&#34;</span> /&gt;
 <span style="color:#960050;background-color:#1e0010">&lt;</span>/video
-</code></pre></div><h2 id="javascriptjquery">JavaScript側(jQuery使用)</h2>
+</code></pre></div><h2 id="javascript側jquery使用">JavaScript側(jQuery使用)</h2>
 <p>イベントカテゴリに「video」、イベントアクションに<code>play</code>、<code>play_end</code>など。
 イベントラベルには動画の<code>title</code>属性をセット。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#a6e22e">$</span>(<span style="color:#66d9ef">function</span>(){
@@ -126,7 +126,7 @@ Google Analyticsのイベントで計測するためのコードを作ってみ�
     <span style="color:#a6e22e">oldratio</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">ratio</span>;
   });
 });
-</code></pre></div><h2 id="google-analytics">Google Analyticsでの表示例</h2>
+</code></pre></div><h2 id="google-analyticsでの表示例">Google Analyticsでの表示例</h2>
 <p>イベントカテゴリ画面。</p>
 <figure>
     <img src="category.png"/> 
@@ -270,7 +270,7 @@ Google Analyticsのイベントで計測するためのコードを作ってみ�
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2019 330k info.
+			&copy; 2020 330k info.
 			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
 		</div>
 	</div>

@@ -140,14 +140,14 @@ ExportWithJLink[filepath_, image_, format <span style="color:#960050;background-
      filepath, <span style="color:#960050;background-color:#1e0010">$</span>Failed]
     ]
    ]);
-</code></pre></div><h2 id="heading">例</h2>
-<h3 id="heading1">読み込み</h3>
+</code></pre></div><h2 id="例">例</h2>
+<h3 id="読み込み">読み込み</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Mathematica" data-lang="Mathematica">img <span style="color:#f92672">=</span> ImportWithJLink[<span style="color:#e6db74">&#34;ExampleData/lena.tif&#34;</span>, <span style="color:#e6db74">&#34;TIFF&#34;</span>]
 </code></pre></div><figure>
     <img src="testfile.png"/> 
 </figure>
 
-<h3 id="heading2">書き込み</h3>
+<h3 id="書き込み">書き込み</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Mathematica" data-lang="Mathematica">file <span style="color:#f92672">=</span> FileNameJoin[{<span style="color:#960050;background-color:#1e0010">$</span>TemporaryDirectory, <span style="color:#e6db74">&#34;testfile.png&#34;</span>}];
 ExportWithJLink[file, img, <span style="color:#e6db74">&#34;PNG&#34;</span>];
 Import[file]
@@ -282,7 +282,7 @@ Import[file]
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2019 330k info.
+			&copy; 2020 330k info.
 			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
 		</div>
 	</div>

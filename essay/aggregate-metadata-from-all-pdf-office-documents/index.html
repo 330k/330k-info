@@ -80,10 +80,10 @@ if (!doNotTrack) {
 			<p>会社で外部に公開しているPDFファイルの作成者やタイトルにおかしいもの(社名が間違っている etc.)があることに気づき、
 会社のファイルサーバにあるWord、Excel、PowerPoint、PDFファイルのメタ情報を一覧で出力し、
 Excelにインポートして変なメタ情報が設定されていないかチェックするためのスクリプトを作ってみた。</p>
-<h2 id="heading">準備</h2>
+<h2 id="準備">準備</h2>
 <p>まずはapacheからTikaをダウンロード(執筆時点では1.11が最新)</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">wget http://ftp.jaist.ac.jp/pub/apache/tika/tika-app-1.11.jar
-</code></pre></div><h2 id="heading1">全メタデータを収集</h2>
+</code></pre></div><h2 id="全メタデータを収集">全メタデータを収集</h2>
 <p>とにかく全部のメタデータを収集したいときは、tikaのjarファイルと同じディレクトリに以下のようなスクリプトを配置。
 検索対象のディレクトリは3行目で指定する。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e">#!/bin/bash
@@ -126,7 +126,7 @@ kill $procid
 </code></pre></div><p>という出力になり、すべてのメタデータを収集できる。</p>
 <p>また、いちいちJVMを起動すると遅いので、サーバモードでTikaを起動し(起動するまで時間がかかるので念の為1秒待機)、最後にプロセスをkillしている。
 (Apache Tikaのサーバモードの良い終了のさせ方が分からなかった)</p>
-<h2 id="heading2">必要なメタデータだけを収集</h2>
+<h2 id="必要なメタデータだけを収集">必要なメタデータだけを収集</h2>
 <p>なお、すべてのメタデータを収集するとおもすぎるので、
 必要なメタデータだけを収集するようなスクリプトも書いてみた(&ldquo;creator&quot;と&quot;title&quot;だけを抜き出す)。</p>
 <p>違いは、オプションを-xから-mに変えて、プレーンテキストでメタデータを吐かせて処理している。</p>
@@ -304,7 +304,7 @@ kill $procid
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2019 330k info.
+			&copy; 2020 330k info.
 			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
 		</div>
 	</div>

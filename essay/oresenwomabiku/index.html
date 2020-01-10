@@ -88,7 +88,7 @@ if (!doNotTrack) {
 </ol>
 <p>という再帰的なもの。</p>
 <p>再帰的なものはMathematicaの得意分野なので、MathematicaでRamer-Douglas-Peuckerのアルゴリズムを実装してみた。</p>
-<h2 id="heading">線分と点の距離</h2>
+<h2 id="線分と点の距離">線分と点の距離</h2>
 <p>さて、まずは線分と点の距離を求める関数を作成する。</p>
 <p>ネットで検索すると直線と点の距離を求めるものが多いが、線分と点の距離のほうが形状をよく保存できるのではないだろうか、と個人的に考えている。</p>
 <p>線分ABに点Pから下ろした垂線の足が点Hだとすると、</p>
@@ -139,7 +139,7 @@ Solve[{
    ]
   ]
 </code></pre></div><p>となる。本当は点Aと点Bが一致してしまう場合を回避しなければならない。</p>
-<h2 id="heading1">折れ線を間引く</h2>
+<h2 id="折れ線を間引く">折れ線を間引く</h2>
 <p>これで本題に入れる。とはいっても最初のアルゴリズムを素直に実装すればよく、</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Mathematica" data-lang="Mathematica">LineSimplify[{p1 <span style="color:#960050;background-color:#1e0010">:</span> {_, _}, midpoints <span style="color:#960050;background-color:#1e0010">:</span> {_, _} <span style="color:#960050;background-color:#1e0010">.</span><span style="color:#960050;background-color:#1e0010">.</span>, p2 <span style="color:#960050;background-color:#1e0010">:</span> {_, _}}, <span style="color:#960050;background-color:#1e0010">\</span>[Epsilon]_] <span style="color:#f92672">:=</span> Module[
   {distance, maxdistance, maxdistanceposition},
@@ -159,7 +159,7 @@ Solve[{
   ]
 LineSimplify[{p1 <span style="color:#960050;background-color:#1e0010">:</span> {_, _}, p2 <span style="color:#960050;background-color:#1e0010">:</span> {_, _}}, <span style="color:#960050;background-color:#1e0010">\</span>[Epsilon]_] <span style="color:#f92672">:=</span> {p1, p2}
 </code></pre></div><p>となる。距離の最大値と最大値を与える点の番号を別々に求めているところがちょっと冗長だが仕方ない。</p>
-<h3 id="heading2">例</h3>
+<h3 id="例">例</h3>
 <p>MathematicaのCountryDataから取り出せる日本の形状データを使ってこのアルゴリズムをテストしてみた例。</p>
 <table>
 <thead>
@@ -181,7 +181,7 @@ LineSimplify[{p1 <span style="color:#960050;background-color:#1e0010">:</span> {
 </tr>
 </tbody>
 </table>
-<h2 id="heading3">間引いた後の点の数を指定できるようにするには</h2>
+<h2 id="間引いた後の点の数を指定できるようにするには">間引いた後の点の数を指定できるようにするには</h2>
 <p>さて、Douglas-Peuckerのアルゴリズムは許容誤差εを与えて間引くので、間引いた後の点の数がいくらになるのかは指定できない。
 しかし、GPSログデータの編集・加工ツールとして有名な轍(Wadachi)では、間引いた後の点の数を指定できる。</p>
 <p>これを実現するには、以下のようなアルゴリズムになる。</p>
@@ -249,7 +249,7 @@ LineSimplifyN[line <span style="color:#960050;background-color:#1e0010">:</span>
        Reap[Nest[lineSimplifyNStep[line, #] <span style="color:#f92672">&amp;</span>,
           findFarthest[line, <span style="color:#ae81ff">1</span>, Length[line]], n <span style="color:#f92672">-</span> <span style="color:#ae81ff">2</span>]][[<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">1</span>]]
        ], Length[line]}]];
-</code></pre></div><h3 id="heading4">例(アメリカ合衆国)</h3>
+</code></pre></div><h3 id="例アメリカ合衆国">例(アメリカ合衆国)</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Mathematica" data-lang="Mathematica">line <span style="color:#f92672">=</span> CountryData[<span style="color:#e6db74">&#34;USA&#34;</span>, <span style="color:#e6db74">&#34;Polygon&#34;</span>][[<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>]];
 Graphics[{Polygon[line], Red, Line<span style="color:#f92672">@</span>LineSimplifyN[line, <span style="color:#ae81ff">50</span>]}]
 </code></pre></div><figure>
@@ -382,7 +382,7 @@ Graphics[{Polygon[line], Red, Line<span style="color:#f92672">@</span>LineSimpli
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2019 330k info.
+			&copy; 2020 330k info.
 			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
 		</div>
 	</div>

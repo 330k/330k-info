@@ -112,7 +112,7 @@ Douglas-Peuckerアルゴリズムを改良して指定した点数まで点を�
 <li>Pairing Heap: <a href="http://en.wikipedia.org/wiki/Pairing_heap">ペアリングヒープ(wikipedia: en)</a>での実装。gcc(libstdc++)のpriority_queueはこれらしい。enqueue: O(log(n)), dequeue: O(log(n))。実装には<a href="http://topcoder.g.hatena.ne.jp/spaghetti_source/20120929/1348886107">これ</a>を参考にした。</li>
 </ol>
 <p>いずれもJavaScriptで実装した。</p>
-<h2 id="heading">ベンチマーク結果</h2>
+<h2 id="ベンチマーク結果">ベンチマーク結果</h2>
 <p>以下、Firefox 29とChromium 34での結果。単位はmsで、小さいほうが高速。
 載せていないがVirtualBox上のWindows XPで測定してもほぼ同じ結果だった。</p>
 <h3 id="firefox-29-on-ubuntu-1204-lts-64bit">Firefox 29 on Ubuntu 12.04 LTS 64bit</h3>
@@ -226,7 +226,7 @@ Douglas-Peuckerアルゴリズムを改良して指定した点数まで点を�
     <img src="priority_queue_test_001.png"/> 
 </figure>
 
-<h4 id="dauglaspeucker-2enqueue-1dequeue">Dauglas-Peucker (2-enqueue, 1-dequeue)</h4>
+<h4 id="dauglas-peucker-2-enqueue-1-dequeue">Dauglas-Peucker (2-enqueue, 1-dequeue)</h4>
 <table>
 <thead>
 <tr>
@@ -337,7 +337,7 @@ Douglas-Peuckerアルゴリズムを改良して指定した点数まで点を�
 </figure>
 
 <h3 id="chromium-34-on-ubuntu-1204-lts-64bit">Chromium 34 on Ubuntu 12.04 LTS 64bit</h3>
-<h4 id="sequential1">Sequential</h4>
+<h4 id="sequential-1">Sequential</h4>
 <table>
 <thead>
 <tr>
@@ -447,7 +447,7 @@ Douglas-Peuckerアルゴリズムを改良して指定した点数まで点を�
     <img src="priority_queue_test_003.png"/> 
 </figure>
 
-<h4 id="dauglaspeucker-2enqueue-1dequeue1">Dauglas-Peucker (2-enqueue, 1-dequeue)</h4>
+<h4 id="dauglas-peucker-2-enqueue-1-dequeue-1">Dauglas-Peucker (2-enqueue, 1-dequeue)</h4>
 <table>
 <thead>
 <tr>
@@ -566,12 +566,12 @@ Douglas-Peuckerアルゴリズムを改良して指定した点数まで点を�
 <li>全体として、Firefoxのほうが2〜3倍高速。</li>
 </ul>
 <p>といったところ。</p>
-<h2 id="heading1">結論</h2>
+<h2 id="結論">結論</h2>
 <p>以上より、Douglas-Peuckerを改良したアルゴリズムで使う優先度付きキューの実装は、Pairing Heapが良いようだ。</p>
-<h2 id="heading2">補足</h2>
+<h2 id="補足">補足</h2>
 <p>さらに他のヒープでの実装を試してみた。</p>
 <p>またスマートフォン(URBANO L01、Android 4.2)でもベンチマークを取ってみた。</p>
-<h3 id="sequential2">Sequential</h3>
+<h3 id="sequential-2">Sequential</h3>
 <table>
 <thead>
 <tr>
@@ -623,7 +623,7 @@ Douglas-Peuckerアルゴリズムを改良して指定した点数まで点を�
 </tr>
 </tbody>
 </table>
-<h3 id="dauglaspeucker-2enqueue-1dequeue2">Dauglas-Peucker (2-enqueue, 1-dequeue)</h3>
+<h3 id="dauglas-peucker-2-enqueue-1-dequeue-2">Dauglas-Peucker (2-enqueue, 1-dequeue)</h3>
 <table>
 <thead>
 <tr>
@@ -808,7 +808,7 @@ Skew HeapやLeftist Heapは特に連続的な操作に対して弱いようだ�
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2019 330k info.
+			&copy; 2020 330k info.
 			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
 		</div>
 	</div>
