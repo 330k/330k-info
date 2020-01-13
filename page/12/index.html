@@ -12,7 +12,7 @@
 <meta property="og:description" content="自転車ツーリングの記録やソフトウェアの配布、Mathematicaをメインにしたプログラミングの覚書や日ごろの雑感など。" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://www.330k.info/" />
-<meta property="og:updated_time" content="2019-11-25T22:37:28+09:00" />
+<meta property="og:updated_time" content="2020-01-13T08:12:28+09:00" />
 
 	<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="330k info"/>
@@ -74,6 +74,18 @@ if (!doNotTrack) {
 			
 <main class="main list" role="main">
 	<article class="list__item post">
+	<header class="list__header">
+		<h3 class="list__title post__title ">
+			<a href="/essay/how-to-optimize-mathematica-programs/" rel="bookmark">
+			Mathematicaにおけるプログラムの高速化手法
+			</a>
+		</h3>
+		
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		Mathematicaにおいてプログラムの実行速度を最適化する際の項目を思いつく限り挙げてみた。 関数型パラダイムで書く 必然的に組み込み関数を多く使い、リストをまとめて操作することになるので手続き型で書くより速くなることが多い。 コード量も少なくなって読みやすくなるので、よほどのことでない限りMathematicaでは関数型で書く。 具体的には、手続き型ループ構文(Do, For, Whileなど)をやめて、Ma
+	</div>
+</article><article class="list__item post">
 	<header class="list__header">
 		<h3 class="list__title post__title ">
 			<a href="/essay/explicit-runge-kutta-butcher-tableau/" rel="bookmark">
@@ -198,23 +210,6 @@ if (!doNotTrack) {
 	<div class="content list__excerpt post__content clearfix">
 		Mathematicaで友愛数を列挙するプログラム例として以下のようなものが見受けられる。 yakuwa[n_] := DivisorSigma[1, n] - n; Do[If[(yakuwa[yakuwa[k]] == k) &amp;&amp; (yakuwa[k] != k), Print[{k, yakuwa[k]}]], {k, 1, 1000}]; しかし、Doでループを回してPrintで書き出していくのはMathematica的に美しくないと思う。 Mathematicaなら関数型プログラミングとパターンマッチを用いるのが良いと思うので、私なら以下のように書く。 Cases[NestList[DivisorSigma[1, #] - # &amp;, #, 2] &amp; /@ Range[100000], {a_, b_, a_} /; a &lt; b -&gt; {a, b}] 実行速度もこちらの
 	</div>
-</article><article class="list__item post">
-	<figure class="list__thumbnail">
-		<a href="https://www.330k.info/essay/oresenwomabiku/">
-			<img src="/essay/oresenwomabiku/douglas-peucker-n-001.png" alt="折れ線を間引く" />
-		</a>
-	</figure>
-	<header class="list__header">
-		<h3 class="list__title post__title ">
-			<a href="/essay/oresenwomabiku/" rel="bookmark">
-			折れ線を間引く
-			</a>
-		</h3>
-		
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		読み込んだGPSログのデータを間引きたい、と思って調べたところ、 (Ramer-)Douglas-Peuckerのアルゴリズムというものがあることが分かった。 基本的な考え方は、 折れ線の始点と終点を結ぶ線分と各点の距離を求める。 すべての点との距離が許容誤差ε以内に入っていれば始点と終点だけを返して終了。 そうでなければ距離が最大の点Pを1つ選択。 始点から点Pまでの折れ線と、点Pから終点までの折れ線のそれ
-	</div>
 </article>
 </main>
 
@@ -241,6 +236,7 @@ if (!doNotTrack) {
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20200112-brm112-nihonbashi-200km/">2020年01月12日 BRM112 日本橋200 ツールド23区</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20191124-chiba-200km/">2019年11月24日 走行会1124 晩秋のクラシック</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20191116-mystery-brevet/">2019年11月16日 ミステリーブルベ</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20191026-brm1026-utsunomiya-300km/">2019年10月26日 BRM1026 宇都宮300km 栃木路</a></li>
@@ -250,7 +246,6 @@ if (!doNotTrack) {
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20190814-brm814-shiretoko-200km/">2019年08月14日 BRM814 知床200 PW北海道</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20190810-brm810-soya-600km/">2019年08月10日 BRM810 宗谷600 PW北海道</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20190701-tohoku-route-4/">2019年07月01日〜08日 東北(国道4号)〜北海道</a></li>
-			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20190622-brm622gunma600km-niigata/">2019年06月22日 BRM622群馬600(新潟周回)</a></li>
 		</ul>
 	</div>
 </div>
@@ -293,7 +288,7 @@ if (!doNotTrack) {
 		<a class="widget-taglist__link widget__link btn" href="/tags/wsh" title="Wsh">Wsh (2)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/zabbix" title="Zabbix">Zabbix (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%82%a2%e3%83%ab%e3%82%b4%e3%83%aa%e3%82%ba%e3%83%a0" title="アルゴリズム">アルゴリズム (5)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%83%84%e3%83%bc%e3%83%aa%e3%83%b3%e3%82%b0" title="ツーリング">ツーリング (47)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%83%84%e3%83%bc%e3%83%aa%e3%83%b3%e3%82%b0" title="ツーリング">ツーリング (48)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%83%91%e3%83%af%e3%83%8f%e3%83%a9" title="パワハラ">パワハラ (5)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%83%96%e3%83%ab%e3%83%99" title="ブルベ">ブルベ (13)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e7%94%9f%e6%b4%bb" title="生活">生活 (1)</a>

@@ -4,19 +4,21 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Gmail (G Suite)でフリーメールアドレスへの送信を検知 - 330k info</title>
+	<title>2020年01月12日 BRM112 日本橋200 ツールド23区 - 330k info</title>
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
-	<meta property="og:title" content="Gmail (G Suite)でフリーメールアドレスへの送信を検知" />
-<meta property="og:description" content="会社ではG Suite(旧Google Apps for Works)を導入しているが、 ある社員が個人のGmailアドレスに会社の情報の入ったメールを送信していた。 幸いPCで操作していたためPCのログ監視ソフト(SKYSEA Client View)で検知し、当該従業員に注意することができた。 ただ、同じことを会社支給のiPhoneでやられた場合に無力だったことに気づいたので、G Suite側でも対策を実施。 設定方法 「管理コンソール" />
+	<meta property="og:title" content="2020年01月12日 BRM112 日本橋200 ツールド23区" />
+<meta property="og:description" content="2020年最初のブルベは、平坦なのに試走レポートに「200kmブルベでは高難度」と書かれた、AR日本橋の200km。
+クランクを170mmから165mmに変更してパワーメーターも取り付け、自分もレーシック手術を受けて臨んだ。" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://www.330k.info/essay/detect_submittion_to_private_mail_from_gmail/" />
-<meta property="article:published_time" content="2016-11-29T20:45:00+09:00" />
-<meta property="article:modified_time" content="2016-11-29T20:45:00+09:00" />
+<meta property="og:url" content="https://www.330k.info/bicycle/touring/20200112-brm112-nihonbashi-200km/" />
+<meta property="article:published_time" content="2020-01-13T08:12:28+09:00" />
+<meta property="article:modified_time" content="2020-01-13T08:12:28+09:00" />
 
 	<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Gmail (G Suite)でフリーメールアドレスへの送信を検知"/>
-<meta name="twitter:description" content="会社ではG Suite(旧Google Apps for Works)を導入しているが、 ある社員が個人のGmailアドレスに会社の情報の入ったメールを送信していた。 幸いPCで操作していたためPCのログ監視ソフト(SKYSEA Client View)で検知し、当該従業員に注意することができた。 ただ、同じことを会社支給のiPhoneでやられた場合に無力だったことに気づいたので、G Suite側でも対策を実施。 設定方法 「管理コンソール"/>
+<meta name="twitter:title" content="2020年01月12日 BRM112 日本橋200 ツールド23区"/>
+<meta name="twitter:description" content="2020年最初のブルベは、平坦なのに試走レポートに「200kmブルベでは高難度」と書かれた、AR日本橋の200km。
+クランクを170mmから165mmに変更してパワーメーターも取り付け、自分もレーシック手術を受けて臨んだ。"/>
 
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -54,10 +56,10 @@ if (!doNotTrack) {
 		<span class="menu__btn-title" tabindex="-1">Menu</span>
 	</button>
 	<ul class="menu__list">
-		<li class="menu__item">
+		<li class="menu__item menu__item--active">
 			<a class="menu__link" href="/bicycle/">Bicycles</a>
 		</li>
-		<li class="menu__item menu__item--active">
+		<li class="menu__item">
 			<a class="menu__link" href="/essay/">Essays</a>
 		</li>
 		<li class="menu__item">
@@ -74,62 +76,176 @@ if (!doNotTrack) {
 <main class="main" role="main">
 	<article class="post">
 		<header class="post__header">
-			<h1 class="post__title">Gmail (G Suite)でフリーメールアドレスへの送信を検知</h1>
+			<h1 class="post__title">2020年01月12日 BRM112 日本橋200 ツールド23区</h1>
 			
 		</header><div class="content post__content clearfix">
-			<p>会社ではG Suite(旧Google Apps for Works)を導入しているが、
-ある社員が個人のGmailアドレスに会社の情報の入ったメールを送信していた。</p>
-<p>幸いPCで操作していたためPCのログ監視ソフト(SKYSEA Client View)で検知し、当該従業員に注意することができた。
-ただ、同じことを会社支給のiPhoneでやられた場合に無力だったことに気づいたので、G Suite側でも対策を実施。</p>
-<h1 id="設定方法">設定方法</h1>
-<ol>
-<li>「管理コンソール」の「アプリ」→「Gmail」→「詳細設定」と進む</li>
-<li>「コンテンツ コンプライアンス」を追加</li>
-<li>影響を受けるメールは「送信」にチェック</li>
-<li>「次の一部がメールに一致する場合」を選択</li>
-<li>「任意のエンベロープ受信者」が「いずれかの単語に一致する」に<a href="http://powerbiz.jp/abiz/tips/archives/26/">【登録ページ作成TIPS】登録拒否設定用フリーメールドメインリスト</a>
-などから検知対象とするドメイン一覧を取得してスペース区切りにしたものを設定する
-(1000文字を超える場合は1000文字以内に収まるよう複数に分けて登録)
-<figure>
-    <img src="image001.png"/> 
-</figure>
-</li>
-<li>「上記の表現に一致する場合は、次の処理を行います」には「メッセージを変更」を選択</li>
-<li>「その他の送信先」「受信者を追加」で配信先に管理者用のメールアドレスを設定(エイリアスにしておくとフィルタ作成で便利)
-<figure>
-    <img src="image002.png"/> 
-</figure>
-</li>
-<li>設定ができたら保存する(※全ユーザに適用されるまで1時間程度かかる)</li>
-<li>管理者用のGmailの設定で、8で設定したアドレスに来たものをフィルタしてラベルをつけるようにしておく</li>
-</ol>
-<h1 id="注意事項">注意事項</h1>
-<ul>
-<li>設定ミスすると全ユーザのメールが影響を受けるので、テスト用のOUを作ってから検証してから全ユーザに適用する</li>
-<li>コンテンツコンプライアンスでは、クレジットカード番号やパスポート番号が含まれたメールを検知可能</li>
-<li>残念ながら執筆時点(Nov. 29 2016)では日本のマイナンバーの検知機能はない</li>
-</ul>
-<h1 id="プロモーションコード">プロモーションコード</h1>
-<p>もしGmailやG Suiteを導入予定であれば、以下のリンクからお願いします。</p>
-<p>またプロモーションコードを入力すると初年度の料金が20%割引されます。</p>
-<ul>
-<li><a href="https://goo.gl/mMg6b3">G Suiteのお申し込み</a></li>
-<li>プロモーションコード
-<ul>
-<li>G Suite Basic プラン: <code>YA3CFEWVCWTVM9A</code></li>
-<li>G Suite Business プラン: <code>Y9GNVRWQUGVTQEW</code></li>
-</ul>
-</li>
-</ul>
+			<p>2020年最初のブルベは、平坦なのに試走レポートに「200kmブルベでは高難度」と書かれた、AR日本橋の200km。</p>
+<p>クランクを170mmから165mmに変更してパワーメーターも取り付け、自分もレーシック手術を受けて臨んだ。</p>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCir56M7J9LT4-3wDVgG8etGo_HPSMWVBk&callback=initMap" async defer></script>
 
+
+
+<div id="mapcanvas-20200112_01kml" style="width: 100%; height:500px; margin:0; padding: 0"></div>
+<script>
+function initMap(){
+  var map,
+    ctaLayer;
+  map = new google.maps.Map(document.getElementById("mapcanvas-20200112_01kml"), {
+    center: {lat: 35.6832581, lng: 139.7555827},
+    zoom: 8
+  });
+  ctaLayer = new google.maps.KmlLayer({
+    url: 'https:\/\/www.330k.info\/\/bicycle\/touring\/20200112-brm112-nihonbashi-200km\/20200112_01.kml'
+  });
+  ctaLayer.setMap(map);
+}
+</script>
+<table>
+<thead>
+<tr>
+<th>区間</th>
+<th>地点</th>
+<th>距離(km)</th>
+<th>クローズ時刻</th>
+<th>到着時刻</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>スタート</td>
+<td>東京都江東区 木場公園</td>
+<td>0.0</td>
+<td>-</td>
+<td>01/12 07:00</td>
+</tr>
+<tr>
+<td>PC1</td>
+<td>ミニストップ 和泉多摩川駅前店</td>
+<td>42.0</td>
+<td>01/12 10:06</td>
+<td>01/12 09:32</td>
+</tr>
+<tr>
+<td>PC2</td>
+<td>ファミリーマート 武蔵野御殿山店</td>
+<td>106.3</td>
+<td>01/12 14:04</td>
+<td>01/12 13:15</td>
+</tr>
+<tr>
+<td>PC3</td>
+<td>ローソン 水元四丁目店</td>
+<td>150.4</td>
+<td>01/12 17:00</td>
+<td>01/12 15:56</td>
+</tr>
+<tr>
+<td>フィニッシュ</td>
+<td>ローソン 東京日本橋一丁目店</td>
+<td>202.1</td>
+<td>01/12 20:30</td>
+<td>01/12 18:54</td>
+</tr>
+</tbody>
+</table>
+<h2 id="スタート---pc1">スタート - PC1</h2>
+<p>スタートは自宅から8kmの木場公園。</p>
+<p>私は7時スタートなので、6時40分くらいに着くよう少し余裕を持って5時45分に自宅を出発。</p>
+<p>6時20分に着いてしまったので、スタート会場には行かず、しばらく近くのコンビニで待機。</p>
+<p>時間を潰してからスタート会場に入り、受付を済ませて7:00にスタート。</p>
+<figure>
+    <img src="DSC_0109.JPG"/> 
+</figure>
+
+<p>スタート直後から度重なる信号ストップにより、最初の1時間では12kmしか進めず。</p>
+<p>わかりにくいコースでミスコースした人も多数。自分もその例に漏れず。</p>
+<p>とりあえず最初のフォトチェックである羽田空港の穴守稲荷神社に到着。</p>
+<figure>
+    <img src="IMG_0296.JPG"/> 
+</figure>
+
+<p>その後多摩川CR方面に向かい、二子玉川を過ぎたところから都心方面に向かう。</p>
+<p>右折してすぐのところで最初のPC。</p>
+<figure>
+    <img src="IMG_0297.JPG"/> 
+</figure>
+
+<h2 id="pc1---pc2">PC1 - PC2</h2>
+<p>ここから都心部でフォトチェックを4つ。</p>
+<p>まずは善福寺川の橋。</p>
+<figure>
+    <img src="IMG_0299.JPG"/> 
+</figure>
+
+<p>その後、人がごった返す大久保のコリアンタウンを通って後楽園。</p>
+<figure>
+    <img src="IMG_0313.JPG"/> 
+</figure>
+
+<p>さらに皇居を反時計回りにまわって二重橋前。</p>
+<figure>
+    <img src="IMG_0317.JPG"/> 
+</figure>
+
+<p>そのまま内堀通りを1周し、半蔵門から郊外へ出て、多摩美術大学の北門。</p>
+<figure>
+    <img src="IMG_0318.JPG"/> 
+</figure>
+
+<p>そのまま多摩川方面へもどり、再度多摩川沿いを遡上して狛江から仙川を通って三鷹方面へ。</p>
+<p>玉川上水に当たって少しのところでPC2。</p>
+<h2 id="pc2---pc3">PC2 - PC3</h2>
+<p>PC2を出発してしばらくは北上。</p>
+<p>途中2回、自転車通行不可のトンネルがあるので、側道に迂回したり自転車・歩行者用通路を使って押し歩き。</p>
+<p>保谷から東進して埼玉県と東京都を何度か行ったり来たり。</p>
+<p>6個目のフォトチェックは板橋市場。</p>
+<figure>
+    <img src="IMG_0324.JPG"/> 
+</figure>
+
+<p>赤羽で阿波川を渡ってさらに東進。</p>
+<p>水元公園近くのローソンでPC3。</p>
+<figure>
+    <img src="IMG_0325.JPG"/> 
+</figure>
+
+<h2 id="pc3---finish">PC3 - Finish</h2>
+<p>水元公園から江戸川を下り、最後に怒涛のフォトチェック3連続。</p>
+<p>まずは葛西臨海公園。</p>
+<figure>
+    <img src="IMG_0328.JPG"/> 
+</figure>
+
+<p>この付近は歩道を通行する必要があるのだが、たまたま道をよく知っている人が先導してくれてたいへん助かった。</p>
+<p>そうでなければ歩道入り口を見落としていただろう。</p>
+<p>つぎに若洲公園から東京ゲートブリッジ。</p>
+<figure>
+    <img src="IMG_0333.JPG"/> 
+</figure>
+
+<p>最後に暁ふ頭公園。</p>
+<figure>
+    <img src="IMG_0338.JPG"/> 
+</figure>
+
+<p>最後は銀座を通って日本橋のゴールへ。</p>
+<figure>
+    <img src="IMG_0340.JPG"/> 
+</figure>
+
+<figure>
+    <img src="IMG_0341.JPG"/> 
+</figure>
+
+<p>その後ゴール受付の中央区スポーツセンターまで走ってブルベカードへの記入と写真チェックをスタッフに行ってもらって完了。</p>
+<p>11時間54分という200kmブルベで最長時間がかかった(Stravaで見ると、トップタイムでも11時間4分)。</p>
 		</div>
 		<footer class="post__footer">
 			
 <div class="post__tags tags clearfix">
 	<svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
 	<ul class="tags__list">
-		<li class="tags__item"><a class="tags__link btn" href="/tags/%E7%A4%BE%E5%86%85se/" rel="tag">社内SE</a></li>
-		<li class="tags__item"><a class="tags__link btn" href="/tags/gmail/" rel="tag">Gmail</a></li>
+		<li class="tags__item"><a class="tags__link btn" href="/tags/%E3%83%84%E3%83%BC%E3%83%AA%E3%83%B3%E3%82%B0/" rel="tag">ツーリング</a></li>
 	</ul>
 </div>
 		</footer>
@@ -139,10 +255,7 @@ if (!doNotTrack) {
 
 <nav class="post-nav flex">
 	<div class="post-nav__item post-nav__item--prev">
-		<a class="post-nav__link" href="/essay/make_font_embedded_pdf_from_edinet/" rel="prev"><span class="post-nav__caption">«&thinsp;Previous</span><p class="post-nav__post-title">EDINETが生成するPDFにフォントを埋め込む</p></a>
-	</div>
-	<div class="post-nav__item post-nav__item--next">
-		<a class="post-nav__link" href="/essay/create_zip_file_with_wsh_jscript/" rel="next"><span class="post-nav__caption">Next&thinsp;»</span><p class="post-nav__post-title">Windows標準機能でZIPファイルの作成</p></a>
+		<a class="post-nav__link" href="/bicycle/touring/20191124-chiba-200km/" rel="prev"><span class="post-nav__caption">«&thinsp;Previous</span><p class="post-nav__post-title">2019年11月24日 走行会1124 晩秋のクラシック</p></a>
 	</div>
 </nav>
 
