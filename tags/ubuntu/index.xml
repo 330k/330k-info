@@ -6,10 +6,19 @@
     <description>Recent content in Ubuntu on 330k info</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Tue, 15 May 2018 07:38:59 +0900</lastBuildDate>
+    <lastBuildDate>Fri, 24 Jan 2020 01:21:46 +0900</lastBuildDate>
     
 	<atom:link href="https://www.330k.info/tags/ubuntu/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Ubuntu 18.04に最新のWINE(5.0.0)をインストールする</title>
+      <link>https://www.330k.info/essay/install-wine5-to-ubuntu-18.04/</link>
+      <pubDate>Fri, 24 Jan 2020 01:21:46 +0900</pubDate>
+      
+      <guid>https://www.330k.info/essay/install-wine5-to-ubuntu-18.04/</guid>
+      <description>&lt;p&gt;WINE 5.0.0がリリースされたというので、Ubuntu 18.04.3 LTSにインストールしようとしたら、ちょっとハマったので備忘録。&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Ubuntu 18.04 LTSで文字化けしたSnapアプリをなんとかして使う</title>

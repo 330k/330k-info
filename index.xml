@@ -6,10 +6,19 @@
     <description>Recent content on 330k info</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Mon, 13 Jan 2020 08:12:28 +0900</lastBuildDate>
+    <lastBuildDate>Fri, 24 Jan 2020 01:21:46 +0900</lastBuildDate>
     
 	<atom:link href="https://www.330k.info/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Ubuntu 18.04に最新のWINE(5.0.0)をインストールする</title>
+      <link>https://www.330k.info/essay/install-wine5-to-ubuntu-18.04/</link>
+      <pubDate>Fri, 24 Jan 2020 01:21:46 +0900</pubDate>
+      
+      <guid>https://www.330k.info/essay/install-wine5-to-ubuntu-18.04/</guid>
+      <description>&lt;p&gt;WINE 5.0.0がリリースされたというので、Ubuntu 18.04.3 LTSにインストールしようとしたら、ちょっとハマったので備忘録。&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>2020年01月12日 BRM112 日本橋200 ツールド23区</title>
