@@ -104,7 +104,7 @@ sudo apt install --install-recommends winehq-stable
 E: 問題を解決することができません。壊れた変更禁止パッケージがあります。
 </code></pre></div><p>というエラーが発生し、インストールできなかった。</p>
 <p>しかし、WineHQの上の方に</p>
-<p>「Beginning with Wine 4.5, the wine-devel and wine-staging packages require libfaudio0 as a dependency. Beginning with Wine 5.0.0, the wine-stable packages will also require it. FAudio packages can be downloaded from the OBS for Ubuntu 18.04. See <a href="https://forum.winehq.org/viewtopic.php?f=8&amp;t=32192">https://forum.winehq.org/viewtopic.php?f=8&amp;t=32192</a> for details. (FAudio packages for Ubuntu 19.10 and later are in the distro's universe repository.)」</p>
+<p>「Beginning with Wine 4.5, the wine-devel and wine-staging packages require libfaudio0 as a dependency. Beginning with Wine 5.0.0, the wine-stable packages will also require it. FAudio packages can be downloaded from the OBS for Ubuntu 18.04. See <a href="https://forum.winehq.org/viewtopic.php?f=8&amp;t=32192">https://forum.winehq.org/viewtopic.php?f=8&amp;t=32192</a> for details. (FAudio packages for Ubuntu 19.10 and later are in the distro&rsquo;s universe repository.)」</p>
 <p>という記述を発見(結構目立つように書かれているのに見落としていた)。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">wget https://download.opensuse.org/repositories/Emulators:/Wine:/Debian/xUbuntu_19.04/Release.key
 sudo apt-key add Release.key
@@ -143,6 +143,7 @@ wine-5.0
 	<svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
 	<ul class="tags__list">
 		<li class="tags__item"><a class="tags__link btn" href="/tags/ubuntu/" rel="tag">Ubuntu</a></li>
+		<li class="tags__item"><a class="tags__link btn" href="/tags/wine/" rel="tag">Wine</a></li>
 	</ul>
 </div>
 		</footer>
@@ -153,6 +154,9 @@ wine-5.0
 <nav class="post-nav flex">
 	<div class="post-nav__item post-nav__item--prev">
 		<a class="post-nav__link" href="/essay/show-only-first-images/" rel="prev"><span class="post-nav__caption">«&thinsp;Previous</span><p class="post-nav__post-title">bxSliderで2番目以降の画像が一瞬表示されるのを防止する</p></a>
+	</div>
+	<div class="post-nav__item post-nav__item--next">
+		<a class="post-nav__link" href="/essay/install-google-backup-sync-on-wine/" rel="next"><span class="post-nav__caption">Next&thinsp;»</span><p class="post-nav__post-title">Googleのバックアップと同期をWineでUbuntuにインストールする</p></a>
 	</div>
 </nav>
 
@@ -173,6 +177,7 @@ wine-5.0
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/essay/install-google-backup-sync-on-wine/">Googleのバックアップと同期をWineでUbuntuにインストールする</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/install-wine5-to-ubuntu-18.04/">Ubuntu 18.04に最新のWINE(5.0.0)をインストールする</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20200112-brm112-nihonbashi-200km/">2020年01月12日 BRM112 日本橋200 ツールド23区</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20191124-chiba-200km/">2019年11月24日 走行会1124 晩秋のクラシック</a></li>
@@ -182,7 +187,6 @@ wine-5.0
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20190928-brm928-yatsugatake-400km/">2019年09月28日 BRM928 八ヶ岳1周 400km</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20190815-brm815-shari-asahikawa-300km/">2019年08月15日 BRM815 斜里旭川300 PW北海道</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20190814-brm814-shiretoko-200km/">2019年08月14日 BRM814 知床200 PW北海道</a></li>
-			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20190810-brm810-soya-600km/">2019年08月10日 BRM810 宗谷600 PW北海道</a></li>
 		</ul>
 	</div>
 </div>
@@ -219,9 +223,10 @@ wine-5.0
 		<a class="widget-taglist__link widget__link btn" href="/tags/powershell" title="Powershell">Powershell (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/sql" title="Sql">Sql (3)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/sqlserver" title="Sqlserver">Sqlserver (1)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/ubuntu" title="Ubuntu">Ubuntu (10)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/ubuntu" title="Ubuntu">Ubuntu (11)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/vba" title="Vba">Vba (3)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/windows" title="Windows">Windows (10)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/wine" title="Wine">Wine (2)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/wsh" title="Wsh">Wsh (2)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/zabbix" title="Zabbix">Zabbix (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%82%a2%e3%83%ab%e3%82%b4%e3%83%aa%e3%82%ba%e3%83%a0" title="アルゴリズム">アルゴリズム (5)</a>

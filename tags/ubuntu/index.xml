@@ -6,10 +6,20 @@
     <description>Recent content in Ubuntu on 330k info</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Fri, 24 Jan 2020 01:21:46 +0900</lastBuildDate>
+    <lastBuildDate>Fri, 24 Jan 2020 22:13:55 +0900</lastBuildDate>
     
 	<atom:link href="https://www.330k.info/tags/ubuntu/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Googleのバックアップと同期をWineでUbuntuにインストールする</title>
+      <link>https://www.330k.info/essay/install-google-backup-sync-on-wine/</link>
+      <pubDate>Fri, 24 Jan 2020 22:13:55 +0900</pubDate>
+      
+      <guid>https://www.330k.info/essay/install-google-backup-sync-on-wine/</guid>
+      <description>&lt;p&gt;Googleの「バックアップと同期」をUbuntu上で動かしたかったので、頑張ってみた。&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://gist.github.com/davidfraser/96867a8dbfa607ceba9ed363e6c1688b&#34;&gt;https://gist.github.com/davidfraser/96867a8dbfa607ceba9ed363e6c1688b&lt;/a&gt;を参考にした。&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Ubuntu 18.04に最新のWINE(5.0.0)をインストールする</title>

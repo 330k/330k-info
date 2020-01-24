@@ -6,7 +6,7 @@
     <description>Recent content in Tags on 330k info</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Fri, 24 Jan 2020 01:21:46 +0900</lastBuildDate>
+    <lastBuildDate>Fri, 24 Jan 2020 22:13:55 +0900</lastBuildDate>
     
 	<atom:link href="https://www.330k.info/tags/index.xml" rel="self" type="application/rss+xml" />
     
@@ -14,9 +14,18 @@
     <item>
       <title>Ubuntu</title>
       <link>https://www.330k.info/tags/ubuntu/</link>
-      <pubDate>Fri, 24 Jan 2020 01:21:46 +0900</pubDate>
+      <pubDate>Fri, 24 Jan 2020 22:13:55 +0900</pubDate>
       
       <guid>https://www.330k.info/tags/ubuntu/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Wine</title>
+      <link>https://www.330k.info/tags/wine/</link>
+      <pubDate>Fri, 24 Jan 2020 22:13:55 +0900</pubDate>
+      
+      <guid>https://www.330k.info/tags/wine/</guid>
       <description></description>
     </item>
     

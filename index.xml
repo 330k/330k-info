@@ -6,10 +6,20 @@
     <description>Recent content on 330k info</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Fri, 24 Jan 2020 01:21:46 +0900</lastBuildDate>
+    <lastBuildDate>Fri, 24 Jan 2020 22:13:55 +0900</lastBuildDate>
     
 	<atom:link href="https://www.330k.info/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Googleのバックアップと同期をWineでUbuntuにインストールする</title>
+      <link>https://www.330k.info/essay/install-google-backup-sync-on-wine/</link>
+      <pubDate>Fri, 24 Jan 2020 22:13:55 +0900</pubDate>
+      
+      <guid>https://www.330k.info/essay/install-google-backup-sync-on-wine/</guid>
+      <description>&lt;p&gt;Googleの「バックアップと同期」をUbuntu上で動かしたかったので、頑張ってみた。&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://gist.github.com/davidfraser/96867a8dbfa607ceba9ed363e6c1688b&#34;&gt;https://gist.github.com/davidfraser/96867a8dbfa607ceba9ed363e6c1688b&lt;/a&gt;を参考にした。&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Ubuntu 18.04に最新のWINE(5.0.0)をインストールする</title>
@@ -689,7 +699,7 @@
       <pubDate>Tue, 04 Aug 2015 00:00:00 +0900</pubDate>
       
       <guid>https://www.330k.info/essay/install-windows-10-to-panasonic-letsnote-cf-n10/</guid>
-      <description>Windows Insider Programに登録していたので、7/31に「Windows 10がでたよ〜」というメールがGabe Aulからやってきた。 ゆくゆくは更新プログラムが提供されるけど、早く試したい人は「メディア作成ツール」をダウンロードして使うといいよ、 とのことなので、会社で余っていたPCにインストールしてみた。 インストール 機種: Panasonic Let&#39;s Note CF-N10(法人向けモデル) Windows 7 32bit版からのアップグレード Office 2010、A</description>
+      <description>Windows Insider Programに登録していたので、7/31に「Windows 10がでたよ〜」というメールがGabe Aulからやってきた。 ゆくゆくは更新プログラムが提供されるけど、早く試したい人は「メディア作成ツール」をダウンロードして使うといいよ、 とのことなので、会社で余っていたPCにインストールしてみた。 インストール 機種: Panasonic Let&amp;rsquo;s Note CF-N10(法人向けモデル) Windows 7 32bit版からのアップグレード Office 2010、A</description>
     </item>
     
     <item>
