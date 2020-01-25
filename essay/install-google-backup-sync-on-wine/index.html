@@ -9,7 +9,11 @@
 	<meta name="description" content="">
 	<meta property="og:title" content="Googleのバックアップと同期をWineでUbuntuにインストールする" />
 <meta property="og:description" content="Googleの「バックアップと同期」をUbuntu上で動かしたかったので、頑張ってみた。
-https://gist.github.com/davidfraser/96867a8dbfa607ceba9ed363e6c1688bを参考にした。" />
+参考)
+
+https://gist.github.com/davidfraser/96867a8dbfa607ceba9ed363e6c1688b
+https://appdb.winehq.org/objectManager.php?sClass=version&amp;iId=38353
+" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.330k.info/essay/install-google-backup-sync-on-wine/" />
 <meta property="article:published_time" content="2020-01-24T22:13:55+09:00" />
@@ -18,7 +22,11 @@ https://gist.github.com/davidfraser/96867a8dbfa607ceba9ed363e6c1688bを参考に
 	<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Googleのバックアップと同期をWineでUbuntuにインストールする"/>
 <meta name="twitter:description" content="Googleの「バックアップと同期」をUbuntu上で動かしたかったので、頑張ってみた。
-https://gist.github.com/davidfraser/96867a8dbfa607ceba9ed363e6c1688bを参考にした。"/>
+参考)
+
+https://gist.github.com/davidfraser/96867a8dbfa607ceba9ed363e6c1688b
+https://appdb.winehq.org/objectManager.php?sClass=version&amp;iId=38353
+"/>
 
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -80,11 +88,15 @@ if (!doNotTrack) {
 			
 		</header><div class="content post__content clearfix">
 			<p>Googleの「バックアップと同期」をUbuntu上で動かしたかったので、頑張ってみた。</p>
-<p><a href="https://gist.github.com/davidfraser/96867a8dbfa607ceba9ed363e6c1688b">https://gist.github.com/davidfraser/96867a8dbfa607ceba9ed363e6c1688b</a>を参考にした。</p>
+<p>参考)</p>
+<ul>
+<li><a href="https://gist.github.com/davidfraser/96867a8dbfa607ceba9ed363e6c1688b">https://gist.github.com/davidfraser/96867a8dbfa607ceba9ed363e6c1688b</a></li>
+<li><a href="https://appdb.winehq.org/objectManager.php?sClass=version&amp;iId=38353">https://appdb.winehq.org/objectManager.php?sClass=version&amp;iId=38353</a></li>
+</ul>
 <p>まずは、新しく32ビット用のWine環境を作成。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">WINEARCH<span style="color:#f92672">=</span>win32 WINEPREFIX<span style="color:#f92672">=</span>~/.wine32 wineboot
 </code></pre></div><p>次にwinetricksでIE8、VCランタイム、日本語フォントをインストール。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">WINEARCH<span style="color:#f92672">=</span>win32 WINEPREFIX<span style="color:#f92672">=</span>~/.wine32 winetricks ie8 vcrun2008 cjkfonts
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">WINEARCH<span style="color:#f92672">=</span>win32 WINEPREFIX<span style="color:#f92672">=</span>~/.wine32 winetricks ie8 vcrun2008 cjkfonts winhttp
 </code></pre></div><p>IE8のインストール画面では適当にクリックして進む。</p>
 <p><figure>
     <img src="21-49-32.png"/> 
@@ -113,7 +125,13 @@ Running /usr/bin/wineserver -w. This will hang until all wine processes in prefi
 ------------------------------------------------------
 </code></pre><p>という表示が出て止まってしまった場合は、別のターミナルを開いて、下記を実行すると進む。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">WINEARCH<span style="color:#f92672">=</span>win32 WINEPREFIX<span style="color:#f92672">=</span>~/.wine32 wineserver -k
-</code></pre></div><p>Googleバックアップと同期のインストーラをダウンロードしてインストールする。</p>
+</code></pre></div><p>次にwincfgでライブラリの設定で、wininetとwinhttpを「内蔵版、ネイティブ版」に設定。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">WINEARCH<span style="color:#f92672">=</span>win32 WINEPREFIX<span style="color:#f92672">=</span>~/.wine32 winecfg
+</code></pre></div><figure>
+    <img src="08-55-10.png"/> 
+</figure>
+
+<p>Googleバックアップと同期のインストーラをダウンロードしてインストールする。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">wget https://dl.google.com/drive/gsync_enterprise.msi
 WINEARCH<span style="color:#f92672">=</span>win32 WINEPREFIX<span style="color:#f92672">=</span>~/.wine32 wine start gsync_enterprise.msi
 </code></pre></div><p>インストーラが終了したら、いよいよ起動(最後の引数は絶対パス)。</p>
