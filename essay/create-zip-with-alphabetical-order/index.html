@@ -36,7 +36,7 @@ if (!doNotTrack) {
 </script>
 <script async src='https://www.google-analytics.com/analytics.js'></script>
 
-	<link rel="stylesheet" href="/css/vs.css">
+	<link rel="stylesheet" href="/css/syntax.css">
 </head>
 <body class="body">
 	<div class="container container--outer">
@@ -79,7 +79,7 @@ if (!doNotTrack) {
 		</header><div class="content post__content clearfix">
 			<p>自炊した書籍をzipで作成する際、普通に圧縮すると変な順番で格納されてしまう。
 実用上ほとんど問題はないのだが、なんとなくファイル名順に格納したかったので、そのやり方をメモ。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Bash" data-lang="Bash">ls -1 ディレクトリ名 | zip -@rjDo0 圧縮ファイル名.zip
+<div class="highlight"><pre class="chroma"><code class="language-Bash" data-lang="Bash">ls -1 ディレクトリ名 <span class="p">|</span> zip -@rjDo0 圧縮ファイル名.zip
 </code></pre></div><p>やっていることは</p>
 <ol>
 <li>lsに<code>-1</code>オプションをつけてファイル1行ずつでファイル名を出力(デフォルトでは文字コード順)</li>
@@ -87,7 +87,7 @@ if (!doNotTrack) {
 </ol>
 <p>findを使って行うときは、もう少し工夫が必要で、以下のように
 findの<code>-print0</code>オプションとsortの<code>-z</code>オプション、xargsの<code>-0</code>オプションでNull文字区切りでファイル名を出力→ソート→圧縮とする。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">find ./ -type f -print0 | sort -z | xargs -0 zip -@rjDo0 圧縮ファイル名.zip
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">find ./ -type f -print0 <span class="p">|</span> sort -z <span class="p">|</span> xargs -0 zip -@rjDo0 圧縮ファイル名.zip
 </code></pre></div><p>なんとなくAndroidのPerfectViewerで見るときに表示が早くなったような気がする。たぶんプラシーボだけれど。</p>
 
 		</div>
@@ -130,6 +130,7 @@ findの<code>-print0</code>オプションとsortの<code>-z</code>オプショ�
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/essay/openldap-proxy-to-active-directory-ubuntu/">Ubuntu 18.04でActive DirectoryへのOpenLDAPプロキシを構築</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/input-tabs-in-browsers-textbox/">ブラウザのテキストボックスにタブを入力する</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/install-google-backup-sync-on-wine/">Googleのバックアップと同期をWineでUbuntuにインストールする</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/install-wine5-to-ubuntu-18.04/">Ubuntu 18.04に最新のWINE(5.0.0)をインストールする</a></li>
@@ -139,7 +140,6 @@ findの<code>-print0</code>オプションとsortの<code>-z</code>オプショ�
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20191026-brm1026-utsunomiya-300km/">2019年10月26日 BRM1026 宇都宮300km 栃木路</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20191011-brm1011-shikoku-1000km/">2019年10月11日 BRM1011 四国一周1000km</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20190928-brm928-yatsugatake-400km/">2019年09月28日 BRM928 八ヶ岳1周 400km</a></li>
-			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20190815-brm815-shari-asahikawa-300km/">2019年08月15日 BRM815 斜里旭川300 PW北海道</a></li>
 		</ul>
 	</div>
 </div>
@@ -156,6 +156,7 @@ findの<code>-print0</code>オプションとsortの<code>-z</code>オプショ�
 <div class="widget-taglist widget">
 	<h4 class="widget__title">Tags</h4>
 	<div class="widget__content">
+		<a class="widget-taglist__link widget__link btn" href="/tags/activedirectory" title="Activedirectory">Activedirectory (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/apache" title="Apache">Apache (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/bat" title="Bat">Bat (2)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/chrome" title="Chrome">Chrome (1)</a>
@@ -176,7 +177,7 @@ findの<code>-print0</code>オプションとsortの<code>-z</code>オプショ�
 		<a class="widget-taglist__link widget__link btn" href="/tags/powershell" title="Powershell">Powershell (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/sql" title="Sql">Sql (3)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/sqlserver" title="Sqlserver">Sqlserver (1)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/ubuntu" title="Ubuntu">Ubuntu (11)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/ubuntu" title="Ubuntu">Ubuntu (12)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/vba" title="Vba">Vba (3)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/windows" title="Windows">Windows (11)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/wine" title="Wine">Wine (2)</a>
@@ -187,7 +188,7 @@ findの<code>-print0</code>オプションとsortの<code>-z</code>オプショ�
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%83%91%e3%83%af%e3%83%8f%e3%83%a9" title="パワハラ">パワハラ (5)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%83%96%e3%83%ab%e3%83%99" title="ブルベ">ブルベ (14)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e7%94%9f%e6%b4%bb" title="生活">生活 (1)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%e7%a4%be%e5%86%85se" title="社内se">社内se (15)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%e7%a4%be%e5%86%85se" title="社内se">社内se (16)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e8%87%aa%e8%bb%a2%e8%bb%8a" title="自転車">自転車 (9)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e9%9b%91%e5%ad%a6" title="雑学">雑学 (1)</a>
 	</div>
@@ -224,7 +225,5 @@ findの<code>-print0</code>オプションとsortの<code>-z</code>オプショ�
 </footer>
 	</div>
 <script async defer src="/js/menu.js"></script>
-<script type="text/javascript" src="/js/highlight.pack.js"></script>
-<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
 <script data-ad-client="ca-pub-1947596544782119" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script></body>
 </html>

@@ -36,7 +36,7 @@ if (!doNotTrack) {
 </script>
 <script async src='https://www.google-analytics.com/analytics.js'></script>
 
-	<link rel="stylesheet" href="/css/vs.css">
+	<link rel="stylesheet" href="/css/syntax.css">
 </head>
 <body class="body">
 	<div class="container container--outer">
@@ -89,11 +89,11 @@ HDDの空き容量が減ってきたらオリジナルの録音ファイルを�
 <li>結合した動画ファイルをYoutubeにアップロード</li>
 </ol>
 <p>具体的には、適当にblank.pngという名前で640x480とか好みのサイズで画像を作成し、以下のコマンドで24時間の無音声動画ファイル(blank24.mov)を作成。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ffmpeg -y -loop <span style="color:#ae81ff">1</span> -r <span style="color:#ae81ff">1</span> -i blank.png -t <span style="color:#ae81ff">86400</span> blank24.mov
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">ffmpeg -y -loop <span class="m">1</span> -r <span class="m">1</span> -i blank.png -t <span class="m">86400</span> blank24.mov
 </code></pre></div><p>これでフレームレート1 fps、動画時間が24時間(86400秒)の無音声動画ファイルblank24.movができる。
 私の環境では5分程度かかったが、このファイルは1度作っておけば何度でも使えるので、最初の1回だけ待てば良い。</p>
 <p>次に、この無音声の動画ファイル(blank24.mov)と、録音した音声ファイル(input.mp3)を結合する。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ffmpeg -y -i blank24.mov -i input.mp3 -vcodec copy -acodec copy -shortest output.mov
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">ffmpeg -y -i blank24.mov -i input.mp3 -vcodec copy -acodec copy -shortest output.mov
 </code></pre></div><p><code>-shortest</code>オプションを加えているので、24時間のblank24.movと音声ファイルの時間のうち、短い方の時間でoutput.movが作成される。</p>
 <p>動画になったことにより、元のMP3ファイルよりもファイルサイズが1割ほど増える。
 私の環境では12時間程度録音したものからでも1分程度のエンコード時間で動画ファイルを作成できた。</p>
@@ -106,29 +106,29 @@ ICレコーダーで録音したMP3、Androidの録音アプリのmp4、iPhone�
 <code>-vcodec copy</code>とすることで再エンコードを省略すれば、毎日の処理が高速化できる。</p>
 <p>ただし、Youtubeの制限により、15分の制限を解除したアカウントでも、動画の最長時間は12時間に制限される。
 したがって、私は以下のようなシェルスクリプトを書いて実行している。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e">#!/bin/bash
-</span><span style="color:#75715e"></span>
-find ./ -iname <span style="color:#e6db74">&#34;*.mp3&#34;</span> -o -iname <span style="color:#e6db74">&#34;*.mp4&#34;</span> -o -iname <span style="color:#e6db74">&#34;*.m4a&#34;</span> | <span style="color:#66d9ef">while</span> read i
-<span style="color:#66d9ef">do</span>
-  hour<span style="color:#f92672">=</span><span style="color:#e6db74">`</span>ffmpeg -i <span style="color:#e6db74">&#34;</span>$i<span style="color:#e6db74">&#34;</span> 2&gt;&amp;<span style="color:#ae81ff">1</span> &lt; /dev/null | grep Duration | sed -E <span style="color:#e6db74">&#34;s/.*Duration: (.*):.*:.*, start:.*/\\1/&#34;</span><span style="color:#e6db74">`</span>
-  <span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> $hour -lt <span style="color:#ae81ff">12</span> <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span>
-     <span style="color:#75715e"># 12時間以下</span>
-      output<span style="color:#f92672">=</span><span style="color:#e6db74">${</span>i%.*<span style="color:#e6db74">}</span>.mov
-     <span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> ! -f <span style="color:#e6db74">&#34;</span>$output<span style="color:#e6db74">&#34;</span> <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span>
-        ffmpeg -y -i ./blank24.mov -i <span style="color:#e6db74">&#34;</span>$i<span style="color:#e6db74">&#34;</span> -vcodec copy -acodec copy -shortest <span style="color:#e6db74">&#34;</span>$output<span style="color:#e6db74">&#34;</span> &lt; /dev/null
-     <span style="color:#66d9ef">fi</span>
-     <span style="color:#66d9ef">else</span>
-     <span style="color:#75715e"># 12時間以上の場合は11時間で分割</span>
-     output1<span style="color:#f92672">=</span><span style="color:#e6db74">${</span>i%.*<span style="color:#e6db74">}</span>_001.mov
-     output2<span style="color:#f92672">=</span><span style="color:#e6db74">${</span>i%.*<span style="color:#e6db74">}</span>_002.mov
-     <span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> ! -f <span style="color:#e6db74">&#34;</span>$output1<span style="color:#e6db74">&#34;</span> <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span>
-        ffmpeg -y -i ./blank24.mov -i <span style="color:#e6db74">&#34;</span>$i<span style="color:#e6db74">&#34;</span> -vcodec copy -acodec copy -shortest -t 11:00:00 <span style="color:#e6db74">&#34;</span>$output1<span style="color:#e6db74">&#34;</span> &lt; /dev/null
-     <span style="color:#66d9ef">fi</span>
-     <span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> ! -f <span style="color:#e6db74">&#34;</span>$output2<span style="color:#e6db74">&#34;</span> <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span>
-        ffmpeg -y -i ./blank24.mov -ss 11:00:00 -i <span style="color:#e6db74">&#34;</span>$i<span style="color:#e6db74">&#34;</span> -vcodec copy -acodec copy -shortest <span style="color:#e6db74">&#34;</span>$output2<span style="color:#e6db74">&#34;</span> &lt; /dev/null
-     <span style="color:#66d9ef">fi</span>
-  <span style="color:#66d9ef">fi</span>
-<span style="color:#66d9ef">done</span>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="cp">#!/bin/bash
+</span><span class="cp"></span>
+find ./ -iname <span class="s2">&#34;*.mp3&#34;</span> -o -iname <span class="s2">&#34;*.mp4&#34;</span> -o -iname <span class="s2">&#34;*.m4a&#34;</span> <span class="p">|</span> <span class="k">while</span> <span class="nb">read</span> i
+<span class="k">do</span>
+  <span class="nv">hour</span><span class="o">=</span><span class="sb">`</span>ffmpeg -i <span class="s2">&#34;</span><span class="nv">$i</span><span class="s2">&#34;</span> 2&gt;<span class="p">&amp;</span><span class="m">1</span> &lt; /dev/null <span class="p">|</span> grep Duration <span class="p">|</span> sed -E <span class="s2">&#34;s/.*Duration: (.*):.*:.*, start:.*/\\1/&#34;</span><span class="sb">`</span>
+  <span class="k">if</span> <span class="o">[</span> <span class="nv">$hour</span> -lt <span class="m">12</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+     <span class="c1"># 12時間以下</span>
+      <span class="nv">output</span><span class="o">=</span><span class="si">${</span><span class="nv">i</span><span class="p">%.*</span><span class="si">}</span>.mov
+     <span class="k">if</span> <span class="o">[</span> ! -f <span class="s2">&#34;</span><span class="nv">$output</span><span class="s2">&#34;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+        ffmpeg -y -i ./blank24.mov -i <span class="s2">&#34;</span><span class="nv">$i</span><span class="s2">&#34;</span> -vcodec copy -acodec copy -shortest <span class="s2">&#34;</span><span class="nv">$output</span><span class="s2">&#34;</span> &lt; /dev/null
+     <span class="k">fi</span>
+     <span class="k">else</span>
+     <span class="c1"># 12時間以上の場合は11時間で分割</span>
+     <span class="nv">output1</span><span class="o">=</span><span class="si">${</span><span class="nv">i</span><span class="p">%.*</span><span class="si">}</span>_001.mov
+     <span class="nv">output2</span><span class="o">=</span><span class="si">${</span><span class="nv">i</span><span class="p">%.*</span><span class="si">}</span>_002.mov
+     <span class="k">if</span> <span class="o">[</span> ! -f <span class="s2">&#34;</span><span class="nv">$output1</span><span class="s2">&#34;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+        ffmpeg -y -i ./blank24.mov -i <span class="s2">&#34;</span><span class="nv">$i</span><span class="s2">&#34;</span> -vcodec copy -acodec copy -shortest -t 11:00:00 <span class="s2">&#34;</span><span class="nv">$output1</span><span class="s2">&#34;</span> &lt; /dev/null
+     <span class="k">fi</span>
+     <span class="k">if</span> <span class="o">[</span> ! -f <span class="s2">&#34;</span><span class="nv">$output2</span><span class="s2">&#34;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+        ffmpeg -y -i ./blank24.mov -ss 11:00:00 -i <span class="s2">&#34;</span><span class="nv">$i</span><span class="s2">&#34;</span> -vcodec copy -acodec copy -shortest <span class="s2">&#34;</span><span class="nv">$output2</span><span class="s2">&#34;</span> &lt; /dev/null
+     <span class="k">fi</span>
+  <span class="k">fi</span>
+<span class="k">done</span>
 </code></pre></div><p>事前に音声ファイルのDurationを調べておき、12時間以上ならば最初の11時間とその後の部分に分割するようにした。</p>
 <p>このシェルスクリプトとblank24.movを同じディレクトリに置いて実行すると、
 カレントディレクトリ以下の*.mp3、*.mp4、*.m4aファイルが、動画として*.movファイルに保存される。</p>
@@ -186,6 +186,7 @@ find ./ -iname <span style="color:#e6db74">&#34;*.mp3&#34;</span> -o -iname <spa
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/essay/openldap-proxy-to-active-directory-ubuntu/">Ubuntu 18.04でActive DirectoryへのOpenLDAPプロキシを構築</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/input-tabs-in-browsers-textbox/">ブラウザのテキストボックスにタブを入力する</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/install-google-backup-sync-on-wine/">Googleのバックアップと同期をWineでUbuntuにインストールする</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/install-wine5-to-ubuntu-18.04/">Ubuntu 18.04に最新のWINE(5.0.0)をインストールする</a></li>
@@ -195,7 +196,6 @@ find ./ -iname <span style="color:#e6db74">&#34;*.mp3&#34;</span> -o -iname <spa
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20191026-brm1026-utsunomiya-300km/">2019年10月26日 BRM1026 宇都宮300km 栃木路</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20191011-brm1011-shikoku-1000km/">2019年10月11日 BRM1011 四国一周1000km</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20190928-brm928-yatsugatake-400km/">2019年09月28日 BRM928 八ヶ岳1周 400km</a></li>
-			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20190815-brm815-shari-asahikawa-300km/">2019年08月15日 BRM815 斜里旭川300 PW北海道</a></li>
 		</ul>
 	</div>
 </div>
@@ -212,6 +212,7 @@ find ./ -iname <span style="color:#e6db74">&#34;*.mp3&#34;</span> -o -iname <spa
 <div class="widget-taglist widget">
 	<h4 class="widget__title">Tags</h4>
 	<div class="widget__content">
+		<a class="widget-taglist__link widget__link btn" href="/tags/activedirectory" title="Activedirectory">Activedirectory (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/apache" title="Apache">Apache (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/bat" title="Bat">Bat (2)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/chrome" title="Chrome">Chrome (1)</a>
@@ -232,7 +233,7 @@ find ./ -iname <span style="color:#e6db74">&#34;*.mp3&#34;</span> -o -iname <spa
 		<a class="widget-taglist__link widget__link btn" href="/tags/powershell" title="Powershell">Powershell (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/sql" title="Sql">Sql (3)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/sqlserver" title="Sqlserver">Sqlserver (1)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/ubuntu" title="Ubuntu">Ubuntu (11)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/ubuntu" title="Ubuntu">Ubuntu (12)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/vba" title="Vba">Vba (3)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/windows" title="Windows">Windows (11)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/wine" title="Wine">Wine (2)</a>
@@ -243,7 +244,7 @@ find ./ -iname <span style="color:#e6db74">&#34;*.mp3&#34;</span> -o -iname <spa
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%83%91%e3%83%af%e3%83%8f%e3%83%a9" title="パワハラ">パワハラ (5)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%83%96%e3%83%ab%e3%83%99" title="ブルベ">ブルベ (14)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e7%94%9f%e6%b4%bb" title="生活">生活 (1)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%e7%a4%be%e5%86%85se" title="社内se">社内se (15)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%e7%a4%be%e5%86%85se" title="社内se">社内se (16)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e8%87%aa%e8%bb%a2%e8%bb%8a" title="自転車">自転車 (9)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e9%9b%91%e5%ad%a6" title="雑学">雑学 (1)</a>
 	</div>
@@ -280,7 +281,5 @@ find ./ -iname <span style="color:#e6db74">&#34;*.mp3&#34;</span> -o -iname <spa
 </footer>
 	</div>
 <script async defer src="/js/menu.js"></script>
-<script type="text/javascript" src="/js/highlight.pack.js"></script>
-<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
 <script data-ad-client="ca-pub-1947596544782119" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script></body>
 </html>

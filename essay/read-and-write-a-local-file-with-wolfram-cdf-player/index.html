@@ -36,7 +36,7 @@ if (!doNotTrack) {
 </script>
 <script async src='https://www.google-analytics.com/analytics.js'></script>
 
-	<link rel="stylesheet" href="/css/vs.css">
+	<link rel="stylesheet" href="/css/syntax.css">
 </head>
 <body class="body">
 	<div class="container container--outer">
@@ -89,69 +89,69 @@ Mathematicaが対応している形式すべてのファイルを読み込むこ
 <p>が挙げられる。</p>
 <p>一方、CDF PlayerではExportのみならずExportStringが使えない(ImportStringは使えるのに)ので、書き込むほうは不自由が残る。
 ここではテキストと画像(BMP、PNG、JPEG)に限って保存する関数を作ってみた。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Mathematica" data-lang="Mathematica">ImportWithJLink[filepath_<span style="color:#f92672">?</span>(FileExistsQ[FindFile[#]] <span style="color:#f92672">&amp;</span>), format_] <span style="color:#f92672">:=</span> (
-  Needs[<span style="color:#e6db74">&#34;JLink`&#34;</span>];
-  JLink`InstallJava[];
-  JLink`JavaBlock[
-   Module[{br, byte, result}, 
-    br <span style="color:#f92672">=</span> JLink`JavaNew[<span style="color:#e6db74">&#34;java.io.BufferedInputStream&#34;</span>, 
-      JLink`JavaNew[<span style="color:#e6db74">&#34;java.io.FileInputStream&#34;</span>, FindFile<span style="color:#f92672">@</span>filepath]];
-    byte <span style="color:#f92672">=</span> JLink`JavaNew[<span style="color:#e6db74">&#34;[B&#34;</span>, {FileByteCount[FindFile<span style="color:#f92672">@</span>filepath]}];
-    br<span style="color:#f92672">@</span>read[byte];
-    result <span style="color:#f92672">=</span> 
-     ImportString[
-      FromCharacterCode[
-       JLink`JavaObjectToExpression[byte] <span style="color:#f92672">/.</span> x_<span style="color:#f92672">?</span>Negative <span style="color:#f92672">:&gt;</span> x <span style="color:#f92672">+</span> <span style="color:#ae81ff">256</span>], 
-      format];
-    br<span style="color:#f92672">@</span>close[];
-    result]]);
-ExportWithJLink[filepath_, string_String, format <span style="color:#960050;background-color:#1e0010">:</span> <span style="color:#e6db74">&#34;Text&#34;</span>] <span style="color:#f92672">:=</span> (
-  Needs[<span style="color:#e6db74">&#34;JLink`&#34;</span>];
-  JLink`InstallJava[];
-  JLink`JavaBlock[
-   Module[{bw},
-    bw <span style="color:#f92672">=</span> JLink`JavaNew[<span style="color:#e6db74">&#34;java.io.BufferedWriter&#34;</span>,
-      JLink`JavaNew[<span style="color:#e6db74">&#34;java.io.FileWriter&#34;</span>, filepath]
-      ];
-    bw<span style="color:#f92672">@</span>write[string];
-    bw<span style="color:#f92672">@</span>close[];
-    filepath
-    ]
-   ]);
-ExportWithJLink[filepath_, image_, format <span style="color:#960050;background-color:#1e0010">:</span> <span style="color:#e6db74">&#34;PNG&#34;</span> <span style="color:#f92672">|</span> <span style="color:#e6db74">&#34;BMP&#34;</span> <span style="color:#f92672">|</span> <span style="color:#e6db74">&#34;JPG&#34;</span>] <span style="color:#f92672">:=</span> (
-  Needs[<span style="color:#e6db74">&#34;JLink`&#34;</span>];
-  JLink`InstallJava[];
-  JLink`JavaBlock[
-   JLink`LoadJavaClass[<span style="color:#e6db74">&#34;javax.imageio.ImageIO&#34;</span>];
-   JLink`LoadJavaClass[<span style="color:#e6db74">&#34;java.awt.image.BufferedImage&#34;</span>];
-   Module[{img, bi, width, height},
-    img <span style="color:#f92672">=</span> Rasterize[image];
-    {width, height} <span style="color:#f92672">=</span> ImageDimensions[img];
-    bi <span style="color:#f92672">=</span> JLink`JavaNew[<span style="color:#e6db74">&#34;java.awt.image.BufferedImage&#34;</span>,
-      width, height, java`awt`image`BufferedImage`TYPEUINTUBGR
-      ];
-    bi<span style="color:#f92672">@</span>setRGB[<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>, width, height,
-      Flatten[
-       Apply[(#1<span style="color:#f92672">*</span><span style="color:#ae81ff">2</span><span style="color:#f92672">^</span><span style="color:#ae81ff">16</span> <span style="color:#f92672">+</span> #2<span style="color:#f92672">*</span><span style="color:#ae81ff">2</span><span style="color:#f92672">^</span><span style="color:#ae81ff">8</span> <span style="color:#f92672">+</span> #3) <span style="color:#f92672">&amp;</span>, 
-        ImageData[img, <span style="color:#e6db74">&#34;Byte&#34;</span>], {<span style="color:#ae81ff">2</span>}]],
-      <span style="color:#ae81ff">0</span>, width];
-    If[javax`imageio`ImageIO`write[bi, format,
-      JLink`JavaNew[<span style="color:#e6db74">&#34;java.io.File&#34;</span>, filepath]],
-     filepath, <span style="color:#960050;background-color:#1e0010">$</span>Failed]
-    ]
-   ]);
-</code></pre></div><h2 id="例">例</h2>
+<div class="highlight"><pre class="chroma"><code class="language-Mathematica" data-lang="Mathematica"><span class="n">ImportWithJLink</span><span class="p">[</span><span class="nv">filepath_</span><span class="o">?</span><span class="p">(</span><span class="n">FileExistsQ</span><span class="p">[</span><span class="n">FindFile</span><span class="p">[</span><span class="nv">#</span><span class="p">]</span><span class="p">]</span><span class="w"> </span><span class="o">&amp;</span><span class="p">)</span><span class="p">,</span><span class="w"> </span><span class="nv">format_</span><span class="p">]</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="p">(</span><span class="w">
+</span><span class="w">  </span><span class="n">Needs</span><span class="p">[</span><span class="s">&#34;JLink`&#34;</span><span class="p">]</span><span class="p">;</span><span class="w">
+</span><span class="w">  </span><span class="nn">JLink`</span><span class="n">InstallJava</span><span class="p">[</span><span class="p">]</span><span class="p">;</span><span class="w">
+</span><span class="w">  </span><span class="nn">JLink`</span><span class="n">JavaBlock</span><span class="p">[</span><span class="w">
+</span><span class="w">   </span><span class="n">Module</span><span class="p">[</span><span class="p">{</span><span class="n">br</span><span class="p">,</span><span class="w"> </span><span class="n">byte</span><span class="p">,</span><span class="w"> </span><span class="n">result</span><span class="p">}</span><span class="p">,</span><span class="w"> 
+</span><span class="w">    </span><span class="n">br</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nn">JLink`</span><span class="n">JavaNew</span><span class="p">[</span><span class="s">&#34;java.io.BufferedInputStream&#34;</span><span class="p">,</span><span class="w"> 
+</span><span class="w">      </span><span class="nn">JLink`</span><span class="n">JavaNew</span><span class="p">[</span><span class="s">&#34;java.io.FileInputStream&#34;</span><span class="p">,</span><span class="w"> </span><span class="n">FindFile</span><span class="o">@</span><span class="n">filepath</span><span class="p">]</span><span class="p">]</span><span class="p">;</span><span class="w">
+</span><span class="w">    </span><span class="n">byte</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nn">JLink`</span><span class="n">JavaNew</span><span class="p">[</span><span class="s">&#34;[B&#34;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="n">FileByteCount</span><span class="p">[</span><span class="n">FindFile</span><span class="o">@</span><span class="n">filepath</span><span class="p">]</span><span class="p">}</span><span class="p">]</span><span class="p">;</span><span class="w">
+</span><span class="w">    </span><span class="n">br</span><span class="o">@</span><span class="n">read</span><span class="p">[</span><span class="n">byte</span><span class="p">]</span><span class="p">;</span><span class="w">
+</span><span class="w">    </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> 
+</span><span class="w">     </span><span class="n">ImportString</span><span class="p">[</span><span class="w">
+</span><span class="w">      </span><span class="n">FromCharacterCode</span><span class="p">[</span><span class="w">
+</span><span class="w">       </span><span class="nn">JLink`</span><span class="n">JavaObjectToExpression</span><span class="p">[</span><span class="n">byte</span><span class="p">]</span><span class="w"> </span><span class="o">/.</span><span class="w"> </span><span class="nv">x_</span><span class="o">?</span><span class="n">Negative</span><span class="w"> </span><span class="o">:&gt;</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">256</span><span class="p">]</span><span class="p">,</span><span class="w"> 
+</span><span class="w">      </span><span class="n">format</span><span class="p">]</span><span class="p">;</span><span class="w">
+</span><span class="w">    </span><span class="n">br</span><span class="o">@</span><span class="n">close</span><span class="p">[</span><span class="p">]</span><span class="p">;</span><span class="w">
+</span><span class="w">    </span><span class="n">result</span><span class="p">]</span><span class="p">]</span><span class="p">)</span><span class="p">;</span><span class="w">
+</span><span class="w"></span><span class="n">ExportWithJLink</span><span class="p">[</span><span class="nv">filepath_</span><span class="p">,</span><span class="w"> </span><span class="nv">string_String</span><span class="p">,</span><span class="w"> </span><span class="n">format</span><span class="w"> </span><span class="err">:</span><span class="w"> </span><span class="s">&#34;Text&#34;</span><span class="p">]</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="p">(</span><span class="w">
+</span><span class="w">  </span><span class="n">Needs</span><span class="p">[</span><span class="s">&#34;JLink`&#34;</span><span class="p">]</span><span class="p">;</span><span class="w">
+</span><span class="w">  </span><span class="nn">JLink`</span><span class="n">InstallJava</span><span class="p">[</span><span class="p">]</span><span class="p">;</span><span class="w">
+</span><span class="w">  </span><span class="nn">JLink`</span><span class="n">JavaBlock</span><span class="p">[</span><span class="w">
+</span><span class="w">   </span><span class="n">Module</span><span class="p">[</span><span class="p">{</span><span class="n">bw</span><span class="p">}</span><span class="p">,</span><span class="w">
+</span><span class="w">    </span><span class="n">bw</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nn">JLink`</span><span class="n">JavaNew</span><span class="p">[</span><span class="s">&#34;java.io.BufferedWriter&#34;</span><span class="p">,</span><span class="w">
+</span><span class="w">      </span><span class="nn">JLink`</span><span class="n">JavaNew</span><span class="p">[</span><span class="s">&#34;java.io.FileWriter&#34;</span><span class="p">,</span><span class="w"> </span><span class="n">filepath</span><span class="p">]</span><span class="w">
+</span><span class="w">      </span><span class="p">]</span><span class="p">;</span><span class="w">
+</span><span class="w">    </span><span class="n">bw</span><span class="o">@</span><span class="n">write</span><span class="p">[</span><span class="n">string</span><span class="p">]</span><span class="p">;</span><span class="w">
+</span><span class="w">    </span><span class="n">bw</span><span class="o">@</span><span class="n">close</span><span class="p">[</span><span class="p">]</span><span class="p">;</span><span class="w">
+</span><span class="w">    </span><span class="n">filepath</span><span class="w">
+</span><span class="w">    </span><span class="p">]</span><span class="w">
+</span><span class="w">   </span><span class="p">]</span><span class="p">)</span><span class="p">;</span><span class="w">
+</span><span class="w"></span><span class="n">ExportWithJLink</span><span class="p">[</span><span class="nv">filepath_</span><span class="p">,</span><span class="w"> </span><span class="nv">image_</span><span class="p">,</span><span class="w"> </span><span class="n">format</span><span class="w"> </span><span class="err">:</span><span class="w"> </span><span class="s">&#34;PNG&#34;</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="s">&#34;BMP&#34;</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="s">&#34;JPG&#34;</span><span class="p">]</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="p">(</span><span class="w">
+</span><span class="w">  </span><span class="n">Needs</span><span class="p">[</span><span class="s">&#34;JLink`&#34;</span><span class="p">]</span><span class="p">;</span><span class="w">
+</span><span class="w">  </span><span class="nn">JLink`</span><span class="n">InstallJava</span><span class="p">[</span><span class="p">]</span><span class="p">;</span><span class="w">
+</span><span class="w">  </span><span class="nn">JLink`</span><span class="n">JavaBlock</span><span class="p">[</span><span class="w">
+</span><span class="w">   </span><span class="nn">JLink`</span><span class="n">LoadJavaClass</span><span class="p">[</span><span class="s">&#34;javax.imageio.ImageIO&#34;</span><span class="p">]</span><span class="p">;</span><span class="w">
+</span><span class="w">   </span><span class="nn">JLink`</span><span class="n">LoadJavaClass</span><span class="p">[</span><span class="s">&#34;java.awt.image.BufferedImage&#34;</span><span class="p">]</span><span class="p">;</span><span class="w">
+</span><span class="w">   </span><span class="n">Module</span><span class="p">[</span><span class="p">{</span><span class="n">img</span><span class="p">,</span><span class="w"> </span><span class="n">bi</span><span class="p">,</span><span class="w"> </span><span class="n">width</span><span class="p">,</span><span class="w"> </span><span class="n">height</span><span class="p">}</span><span class="p">,</span><span class="w">
+</span><span class="w">    </span><span class="n">img</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Rasterize</span><span class="p">[</span><span class="n">image</span><span class="p">]</span><span class="p">;</span><span class="w">
+</span><span class="w">    </span><span class="p">{</span><span class="n">width</span><span class="p">,</span><span class="w"> </span><span class="n">height</span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ImageDimensions</span><span class="p">[</span><span class="n">img</span><span class="p">]</span><span class="p">;</span><span class="w">
+</span><span class="w">    </span><span class="n">bi</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nn">JLink`</span><span class="n">JavaNew</span><span class="p">[</span><span class="s">&#34;java.awt.image.BufferedImage&#34;</span><span class="p">,</span><span class="w">
+</span><span class="w">      </span><span class="n">width</span><span class="p">,</span><span class="w"> </span><span class="n">height</span><span class="p">,</span><span class="w"> </span><span class="nn">java`</span><span class="nn">awt`</span><span class="nn">image`</span><span class="nn">BufferedImage`</span><span class="n">TYPEUINTUBGR</span><span class="w">
+</span><span class="w">      </span><span class="p">]</span><span class="p">;</span><span class="w">
+</span><span class="w">    </span><span class="n">bi</span><span class="o">@</span><span class="n">setRGB</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">width</span><span class="p">,</span><span class="w"> </span><span class="n">height</span><span class="p">,</span><span class="w">
+</span><span class="w">      </span><span class="n">Flatten</span><span class="p">[</span><span class="w">
+</span><span class="w">       </span><span class="n">Apply</span><span class="p">[</span><span class="p">(</span><span class="nv">#1</span><span class="o">*</span><span class="mi">2</span><span class="o">^</span><span class="mi">16</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nv">#2</span><span class="o">*</span><span class="mi">2</span><span class="o">^</span><span class="mi">8</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nv">#3</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="p">,</span><span class="w"> 
+</span><span class="w">        </span><span class="n">ImageData</span><span class="p">[</span><span class="n">img</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;Byte&#34;</span><span class="p">]</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="mi">2</span><span class="p">}</span><span class="p">]</span><span class="p">]</span><span class="p">,</span><span class="w">
+</span><span class="w">      </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">width</span><span class="p">]</span><span class="p">;</span><span class="w">
+</span><span class="w">    </span><span class="n">If</span><span class="p">[</span><span class="nn">javax`</span><span class="nn">imageio`</span><span class="nn">ImageIO`</span><span class="n">write</span><span class="p">[</span><span class="n">bi</span><span class="p">,</span><span class="w"> </span><span class="n">format</span><span class="p">,</span><span class="w">
+</span><span class="w">      </span><span class="nn">JLink`</span><span class="n">JavaNew</span><span class="p">[</span><span class="s">&#34;java.io.File&#34;</span><span class="p">,</span><span class="w"> </span><span class="n">filepath</span><span class="p">]</span><span class="p">]</span><span class="p">,</span><span class="w">
+</span><span class="w">     </span><span class="n">filepath</span><span class="p">,</span><span class="w"> </span><span class="err">$</span><span class="n">Failed</span><span class="p">]</span><span class="w">
+</span><span class="w">    </span><span class="p">]</span><span class="w">
+</span><span class="w">   </span><span class="p">]</span><span class="p">)</span><span class="p">;</span><span class="w">
+</span></code></pre></div><h2 id="例">例</h2>
 <h3 id="読み込み">読み込み</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Mathematica" data-lang="Mathematica">img <span style="color:#f92672">=</span> ImportWithJLink[<span style="color:#e6db74">&#34;ExampleData/lena.tif&#34;</span>, <span style="color:#e6db74">&#34;TIFF&#34;</span>]
-</code></pre></div><figure>
+<div class="highlight"><pre class="chroma"><code class="language-Mathematica" data-lang="Mathematica"><span class="n">img</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ImportWithJLink</span><span class="p">[</span><span class="s">&#34;ExampleData/lena.tif&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;TIFF&#34;</span><span class="p">]</span><span class="w">
+</span></code></pre></div><figure>
     <img src="testfile.png"/> 
 </figure>
 
 <h3 id="書き込み">書き込み</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Mathematica" data-lang="Mathematica">file <span style="color:#f92672">=</span> FileNameJoin[{<span style="color:#960050;background-color:#1e0010">$</span>TemporaryDirectory, <span style="color:#e6db74">&#34;testfile.png&#34;</span>}];
-ExportWithJLink[file, img, <span style="color:#e6db74">&#34;PNG&#34;</span>];
-Import[file]
-</code></pre></div><figure>
+<div class="highlight"><pre class="chroma"><code class="language-Mathematica" data-lang="Mathematica"><span class="n">file</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FileNameJoin</span><span class="p">[</span><span class="p">{</span><span class="err">$</span><span class="n">TemporaryDirectory</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;testfile.png&#34;</span><span class="p">}</span><span class="p">]</span><span class="p">;</span><span class="w">
+</span><span class="w"></span><span class="n">ExportWithJLink</span><span class="p">[</span><span class="n">file</span><span class="p">,</span><span class="w"> </span><span class="n">img</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;PNG&#34;</span><span class="p">]</span><span class="p">;</span><span class="w">
+</span><span class="w"></span><span class="n">Import</span><span class="p">[</span><span class="n">file</span><span class="p">]</span><span class="w">
+</span></code></pre></div><figure>
     <img src="testfile.png"/> 
 </figure>
 
@@ -196,6 +196,7 @@ Import[file]
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/essay/openldap-proxy-to-active-directory-ubuntu/">Ubuntu 18.04でActive DirectoryへのOpenLDAPプロキシを構築</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/input-tabs-in-browsers-textbox/">ブラウザのテキストボックスにタブを入力する</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/install-google-backup-sync-on-wine/">Googleのバックアップと同期をWineでUbuntuにインストールする</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/install-wine5-to-ubuntu-18.04/">Ubuntu 18.04に最新のWINE(5.0.0)をインストールする</a></li>
@@ -205,7 +206,6 @@ Import[file]
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20191026-brm1026-utsunomiya-300km/">2019年10月26日 BRM1026 宇都宮300km 栃木路</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20191011-brm1011-shikoku-1000km/">2019年10月11日 BRM1011 四国一周1000km</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20190928-brm928-yatsugatake-400km/">2019年09月28日 BRM928 八ヶ岳1周 400km</a></li>
-			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20190815-brm815-shari-asahikawa-300km/">2019年08月15日 BRM815 斜里旭川300 PW北海道</a></li>
 		</ul>
 	</div>
 </div>
@@ -222,6 +222,7 @@ Import[file]
 <div class="widget-taglist widget">
 	<h4 class="widget__title">Tags</h4>
 	<div class="widget__content">
+		<a class="widget-taglist__link widget__link btn" href="/tags/activedirectory" title="Activedirectory">Activedirectory (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/apache" title="Apache">Apache (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/bat" title="Bat">Bat (2)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/chrome" title="Chrome">Chrome (1)</a>
@@ -242,7 +243,7 @@ Import[file]
 		<a class="widget-taglist__link widget__link btn" href="/tags/powershell" title="Powershell">Powershell (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/sql" title="Sql">Sql (3)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/sqlserver" title="Sqlserver">Sqlserver (1)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/ubuntu" title="Ubuntu">Ubuntu (11)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/ubuntu" title="Ubuntu">Ubuntu (12)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/vba" title="Vba">Vba (3)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/windows" title="Windows">Windows (11)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/wine" title="Wine">Wine (2)</a>
@@ -253,7 +254,7 @@ Import[file]
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%83%91%e3%83%af%e3%83%8f%e3%83%a9" title="パワハラ">パワハラ (5)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%83%96%e3%83%ab%e3%83%99" title="ブルベ">ブルベ (14)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e7%94%9f%e6%b4%bb" title="生活">生活 (1)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%e7%a4%be%e5%86%85se" title="社内se">社内se (15)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%e7%a4%be%e5%86%85se" title="社内se">社内se (16)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e8%87%aa%e8%bb%a2%e8%bb%8a" title="自転車">自転車 (9)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e9%9b%91%e5%ad%a6" title="雑学">雑学 (1)</a>
 	</div>
@@ -290,7 +291,5 @@ Import[file]
 </footer>
 	</div>
 <script async defer src="/js/menu.js"></script>
-<script type="text/javascript" src="/js/highlight.pack.js"></script>
-<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
 <script data-ad-client="ca-pub-1947596544782119" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script></body>
 </html>

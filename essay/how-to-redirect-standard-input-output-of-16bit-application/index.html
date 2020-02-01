@@ -36,7 +36,7 @@ if (!doNotTrack) {
 </script>
 <script async src='https://www.google-analytics.com/analytics.js'></script>
 
-	<link rel="stylesheet" href="/css/vs.css">
+	<link rel="stylesheet" href="/css/syntax.css">
 </head>
 <body class="body">
 	<div class="container container--outer">
@@ -90,33 +90,33 @@ if (!doNotTrack) {
 <p>以下はMathematica+.NET/Linkによるサンプル。
 標準出力は書き出されるたびにイベントハンドラで捕捉してoutputsに追加するので、<code>Dynamic[outputs]</code>などとしておくと、本当のターミナルの挙動に近づく。
 最初にcmd.exeの出力(&ldquo;Microsoft Windows [Version &hellip;&quot;)が入るので、16ビットのプログラムの出力だけがほしい場合は16ビットプログラム起動後にフラグを立てれば大丈夫。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Mathematica" data-lang="Mathematica">outputs <span style="color:#f92672">=</span> {};
-outputhandler[o_, args_] <span style="color:#f92672">:=</span> Module[
-   {data <span style="color:#f92672">=</span> args<span style="color:#f92672">@</span>Data},
-   AppendTo[outputs, data];
-   ];
-NETBlock[
-  proc <span style="color:#f92672">=</span> NETNew[<span style="color:#e6db74">&#34;System.Diagnostics.Process&#34;</span>];
-  LoadNETType[<span style="color:#e6db74">&#34;System.Environment&#34;</span>];
-  proc<span style="color:#f92672">@</span>StartInfo<span style="color:#f92672">@</span>FileName <span style="color:#f92672">=</span> Environment`GetEnvironmentVariable[<span style="color:#e6db74">&#34;ComSpec&#34;</span>];
-  proc<span style="color:#f92672">@</span>StartInfo<span style="color:#f92672">@</span>RedirectStandardInput <span style="color:#f92672">=</span> True;
-  proc<span style="color:#f92672">@</span>StartInfo<span style="color:#f92672">@</span>RedirectStandardOutput <span style="color:#f92672">=</span> True;
-  proc<span style="color:#f92672">@</span>StartInfo<span style="color:#f92672">@</span>UseShellExecute <span style="color:#f92672">=</span> False;
-  proc<span style="color:#f92672">@</span>StartInfo<span style="color:#f92672">@</span>CreateNoWindow <span style="color:#f92672">=</span> True;
-  proc<span style="color:#f92672">@</span>StartInfo<span style="color:#f92672">@</span>WorkingDirectory <span style="color:#f92672">=</span> DirectoryName[proc<span style="color:#f92672">@</span>StartInfo<span style="color:#f92672">@</span>FileName];
-  AddEventHandler[proc<span style="color:#f92672">@</span>OutputDataReceived, outputhandler];
-  proc<span style="color:#f92672">@</span>Start[];
-  proc<span style="color:#f92672">@</span>BeginOutputReadLine[];
-  proc<span style="color:#f92672">@</span>StandardInput<span style="color:#f92672">@</span>WriteLine[<span style="color:#e6db74">&#34;cd &#34;</span> <span style="color:#f92672">&lt;&gt;</span> <span style="color:#e6db74">&#34;16ビットプログラムのディレクトリ&#34;</span>];
-  proc<span style="color:#f92672">@</span>StandardInput<span style="color:#f92672">@</span>WriteLine[<span style="color:#e6db74">&#34;******.EXE(16ビットプログラム)&#34;</span>];
-  
-  proc<span style="color:#f92672">@</span>StandardInput<span style="color:#f92672">@</span>WriteLine[<span style="color:#e6db74">&#34;16ビットプログラムの標準入力に渡す内容&#34;</span>];
-  proc<span style="color:#f92672">@</span>StandardInput<span style="color:#f92672">@</span>Close[];
-  
-  proc<span style="color:#f92672">@</span>WaitForExit[];
-  proc<span style="color:#f92672">@</span>Close[];
-  ];
-</code></pre></div><p>とはいっても64bit版のWindowsだと16bitのプログラムがそもそも動かない。</p>
+<div class="highlight"><pre class="chroma"><code class="language-Mathematica" data-lang="Mathematica"><span class="n">outputs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="p">}</span><span class="p">;</span><span class="w">
+</span><span class="w"></span><span class="n">outputhandler</span><span class="p">[</span><span class="nv">o_</span><span class="p">,</span><span class="w"> </span><span class="nv">args_</span><span class="p">]</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">Module</span><span class="p">[</span><span class="w">
+</span><span class="w">   </span><span class="p">{</span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">args</span><span class="o">@</span><span class="n">Data</span><span class="p">}</span><span class="p">,</span><span class="w">
+</span><span class="w">   </span><span class="n">AppendTo</span><span class="p">[</span><span class="n">outputs</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="p">]</span><span class="p">;</span><span class="w">
+</span><span class="w">   </span><span class="p">]</span><span class="p">;</span><span class="w">
+</span><span class="w"></span><span class="n">NETBlock</span><span class="p">[</span><span class="w">
+</span><span class="w">  </span><span class="n">proc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">NETNew</span><span class="p">[</span><span class="s">&#34;System.Diagnostics.Process&#34;</span><span class="p">]</span><span class="p">;</span><span class="w">
+</span><span class="w">  </span><span class="n">LoadNETType</span><span class="p">[</span><span class="s">&#34;System.Environment&#34;</span><span class="p">]</span><span class="p">;</span><span class="w">
+</span><span class="w">  </span><span class="n">proc</span><span class="o">@</span><span class="n">StartInfo</span><span class="o">@</span><span class="n">FileName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nn">Environment`</span><span class="n">GetEnvironmentVariable</span><span class="p">[</span><span class="s">&#34;ComSpec&#34;</span><span class="p">]</span><span class="p">;</span><span class="w">
+</span><span class="w">  </span><span class="n">proc</span><span class="o">@</span><span class="n">StartInfo</span><span class="o">@</span><span class="n">RedirectStandardInput</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">True</span><span class="p">;</span><span class="w">
+</span><span class="w">  </span><span class="n">proc</span><span class="o">@</span><span class="n">StartInfo</span><span class="o">@</span><span class="n">RedirectStandardOutput</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">True</span><span class="p">;</span><span class="w">
+</span><span class="w">  </span><span class="n">proc</span><span class="o">@</span><span class="n">StartInfo</span><span class="o">@</span><span class="n">UseShellExecute</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">False</span><span class="p">;</span><span class="w">
+</span><span class="w">  </span><span class="n">proc</span><span class="o">@</span><span class="n">StartInfo</span><span class="o">@</span><span class="n">CreateNoWindow</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">True</span><span class="p">;</span><span class="w">
+</span><span class="w">  </span><span class="n">proc</span><span class="o">@</span><span class="n">StartInfo</span><span class="o">@</span><span class="n">WorkingDirectory</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DirectoryName</span><span class="p">[</span><span class="n">proc</span><span class="o">@</span><span class="n">StartInfo</span><span class="o">@</span><span class="n">FileName</span><span class="p">]</span><span class="p">;</span><span class="w">
+</span><span class="w">  </span><span class="n">AddEventHandler</span><span class="p">[</span><span class="n">proc</span><span class="o">@</span><span class="n">OutputDataReceived</span><span class="p">,</span><span class="w"> </span><span class="n">outputhandler</span><span class="p">]</span><span class="p">;</span><span class="w">
+</span><span class="w">  </span><span class="n">proc</span><span class="o">@</span><span class="n">Start</span><span class="p">[</span><span class="p">]</span><span class="p">;</span><span class="w">
+</span><span class="w">  </span><span class="n">proc</span><span class="o">@</span><span class="n">BeginOutputReadLine</span><span class="p">[</span><span class="p">]</span><span class="p">;</span><span class="w">
+</span><span class="w">  </span><span class="n">proc</span><span class="o">@</span><span class="n">StandardInput</span><span class="o">@</span><span class="n">WriteLine</span><span class="p">[</span><span class="s">&#34;cd &#34;</span><span class="w"> </span><span class="o">&lt;&gt;</span><span class="w"> </span><span class="s">&#34;16ビットプログラムのディレクトリ&#34;</span><span class="p">]</span><span class="p">;</span><span class="w">
+</span><span class="w">  </span><span class="n">proc</span><span class="o">@</span><span class="n">StandardInput</span><span class="o">@</span><span class="n">WriteLine</span><span class="p">[</span><span class="s">&#34;******.EXE(16ビットプログラム)&#34;</span><span class="p">]</span><span class="p">;</span><span class="w">
+</span><span class="w">  
+</span><span class="w">  </span><span class="n">proc</span><span class="o">@</span><span class="n">StandardInput</span><span class="o">@</span><span class="n">WriteLine</span><span class="p">[</span><span class="s">&#34;16ビットプログラムの標準入力に渡す内容&#34;</span><span class="p">]</span><span class="p">;</span><span class="w">
+</span><span class="w">  </span><span class="n">proc</span><span class="o">@</span><span class="n">StandardInput</span><span class="o">@</span><span class="n">Close</span><span class="p">[</span><span class="p">]</span><span class="p">;</span><span class="w">
+</span><span class="w">  
+</span><span class="w">  </span><span class="n">proc</span><span class="o">@</span><span class="n">WaitForExit</span><span class="p">[</span><span class="p">]</span><span class="p">;</span><span class="w">
+</span><span class="w">  </span><span class="n">proc</span><span class="o">@</span><span class="n">Close</span><span class="p">[</span><span class="p">]</span><span class="p">;</span><span class="w">
+</span><span class="w">  </span><span class="p">]</span><span class="p">;</span><span class="w">
+</span></code></pre></div><p>とはいっても64bit版のWindowsだと16bitのプログラムがそもそも動かない。</p>
 
 		</div>
 		<footer class="post__footer">
@@ -159,6 +159,7 @@ NETBlock[
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/essay/openldap-proxy-to-active-directory-ubuntu/">Ubuntu 18.04でActive DirectoryへのOpenLDAPプロキシを構築</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/input-tabs-in-browsers-textbox/">ブラウザのテキストボックスにタブを入力する</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/install-google-backup-sync-on-wine/">Googleのバックアップと同期をWineでUbuntuにインストールする</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/install-wine5-to-ubuntu-18.04/">Ubuntu 18.04に最新のWINE(5.0.0)をインストールする</a></li>
@@ -168,7 +169,6 @@ NETBlock[
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20191026-brm1026-utsunomiya-300km/">2019年10月26日 BRM1026 宇都宮300km 栃木路</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20191011-brm1011-shikoku-1000km/">2019年10月11日 BRM1011 四国一周1000km</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20190928-brm928-yatsugatake-400km/">2019年09月28日 BRM928 八ヶ岳1周 400km</a></li>
-			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20190815-brm815-shari-asahikawa-300km/">2019年08月15日 BRM815 斜里旭川300 PW北海道</a></li>
 		</ul>
 	</div>
 </div>
@@ -185,6 +185,7 @@ NETBlock[
 <div class="widget-taglist widget">
 	<h4 class="widget__title">Tags</h4>
 	<div class="widget__content">
+		<a class="widget-taglist__link widget__link btn" href="/tags/activedirectory" title="Activedirectory">Activedirectory (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/apache" title="Apache">Apache (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/bat" title="Bat">Bat (2)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/chrome" title="Chrome">Chrome (1)</a>
@@ -205,7 +206,7 @@ NETBlock[
 		<a class="widget-taglist__link widget__link btn" href="/tags/powershell" title="Powershell">Powershell (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/sql" title="Sql">Sql (3)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/sqlserver" title="Sqlserver">Sqlserver (1)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/ubuntu" title="Ubuntu">Ubuntu (11)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/ubuntu" title="Ubuntu">Ubuntu (12)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/vba" title="Vba">Vba (3)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/windows" title="Windows">Windows (11)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/wine" title="Wine">Wine (2)</a>
@@ -216,7 +217,7 @@ NETBlock[
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%83%91%e3%83%af%e3%83%8f%e3%83%a9" title="パワハラ">パワハラ (5)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%83%96%e3%83%ab%e3%83%99" title="ブルベ">ブルベ (14)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e7%94%9f%e6%b4%bb" title="生活">生活 (1)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%e7%a4%be%e5%86%85se" title="社内se">社内se (15)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%e7%a4%be%e5%86%85se" title="社内se">社内se (16)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e8%87%aa%e8%bb%a2%e8%bb%8a" title="自転車">自転車 (9)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e9%9b%91%e5%ad%a6" title="雑学">雑学 (1)</a>
 	</div>
@@ -253,7 +254,5 @@ NETBlock[
 </footer>
 	</div>
 <script async defer src="/js/menu.js"></script>
-<script type="text/javascript" src="/js/highlight.pack.js"></script>
-<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
 <script data-ad-client="ca-pub-1947596544782119" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script></body>
 </html>

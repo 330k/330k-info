@@ -6,10 +6,19 @@
     <description>Recent content in 社内SE on 330k info</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Mon, 02 Oct 2017 23:44:23 +0900</lastBuildDate>
+    <lastBuildDate>Sat, 01 Feb 2020 18:10:03 +0900</lastBuildDate>
     
 	<atom:link href="https://www.330k.info/tags/%E7%A4%BE%E5%86%85se/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Ubuntu 18.04でActive DirectoryへのOpenLDAPプロキシを構築</title>
+      <link>https://www.330k.info/essay/openldap-proxy-to-active-directory-ubuntu/</link>
+      <pubDate>Sat, 01 Feb 2020 18:10:03 +0900</pubDate>
+      
+      <guid>https://www.330k.info/essay/openldap-proxy-to-active-directory-ubuntu/</guid>
+      <description>概要 Active Directoryのあるネットワークとは別のネットワークにある機器(具体的には電子黒板)から、LDAPでADユーザ情報を検索したいという要件が。 VPNなどの設定もできないので、DMZにOpenLDAPによるLDAP用のプロキシサーバを立ててみた。 手順 Ubuntu Server 18.04をインストールした状態で、まずはOpenLDAPサーバとクライアントをaptでインストール。 インストール中にパスワードなどを尋ねら</description>
+    </item>
     
     <item>
       <title>共有PCの実際の使用者を記録する</title>

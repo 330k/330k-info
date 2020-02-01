@@ -36,7 +36,7 @@ if (!doNotTrack) {
 </script>
 <script async src='https://www.google-analytics.com/analytics.js'></script>
 
-	<link rel="stylesheet" href="/css/vs.css">
+	<link rel="stylesheet" href="/css/syntax.css">
 </head>
 <body class="body">
 	<div class="container container--outer">
@@ -87,35 +87,35 @@ if (!doNotTrack) {
 ここでは2番目の方法で実装する。</p>
 <p>点から多角形上の点を順々に見たときの偏角(反時計まわりを正とする)の和を取ればよいので、ある点Pからみた多角形上の頂点Aから頂点Bまでの偏角∠APBを求める関数をまず作成する。</p>
 <p>この実装方法にもベクトルの外積を考えるなど何通りか考えられるが、せっかくMathematicaを使うので楽をして、複素数にしてArgで偏角をとることにする。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Mathematica" data-lang="Mathematica">Angle[{{x1_, y1_}, {x2_, y2_}, {x3_, y3_}}] <span style="color:#f92672">:=</span>
- Module[{v1 <span style="color:#f92672">=</span> Complex[x1 <span style="color:#f92672">-</span> x3, y1 <span style="color:#f92672">-</span> y3], v2 <span style="color:#f92672">=</span> Complex[x2 <span style="color:#f92672">-</span> x3, y2 <span style="color:#f92672">-</span> y3]},
-  If[TrueQ[v1 <span style="color:#f92672">=</span><span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>], <span style="color:#ae81ff">0</span>, Arg[v2<span style="color:#f92672">/</span>v1]]
-  ]
-</code></pre></div><p>多角形の内外判定はMathematicaのPolygonなどの表示に合わせ、自己交差している場合は内部と外部を交互に繰り返すものとすると、</p>
+<div class="highlight"><pre class="chroma"><code class="language-Mathematica" data-lang="Mathematica"><span class="n">Angle</span><span class="p">[</span><span class="p">{</span><span class="p">{</span><span class="nv">x1_</span><span class="p">,</span><span class="w"> </span><span class="nv">y1_</span><span class="p">}</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="nv">x2_</span><span class="p">,</span><span class="w"> </span><span class="nv">y2_</span><span class="p">}</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="nv">x3_</span><span class="p">,</span><span class="w"> </span><span class="nv">y3_</span><span class="p">}</span><span class="p">}</span><span class="p">]</span><span class="w"> </span><span class="o">:=</span><span class="w">
+</span><span class="w"> </span><span class="n">Module</span><span class="p">[</span><span class="p">{</span><span class="n">v1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Complex</span><span class="p">[</span><span class="n">x1</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">x3</span><span class="p">,</span><span class="w"> </span><span class="n">y1</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">y3</span><span class="p">]</span><span class="p">,</span><span class="w"> </span><span class="n">v2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Complex</span><span class="p">[</span><span class="n">x2</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">x3</span><span class="p">,</span><span class="w"> </span><span class="n">y2</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">y3</span><span class="p">]</span><span class="p">}</span><span class="p">,</span><span class="w">
+</span><span class="w">  </span><span class="n">If</span><span class="p">[</span><span class="n">TrueQ</span><span class="p">[</span><span class="n">v1</span><span class="w"> </span><span class="o">=</span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">]</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">Arg</span><span class="p">[</span><span class="n">v2</span><span class="o">/</span><span class="n">v1</span><span class="p">]</span><span class="p">]</span><span class="w">
+</span><span class="w">  </span><span class="p">]</span><span class="w">
+</span></code></pre></div><p>多角形の内外判定はMathematicaのPolygonなどの表示に合わせ、自己交差している場合は内部と外部を交互に繰り返すものとすると、</p>
 <ul>
 <li>偏角の和が0、±4π、±8π、…のとき点は多角形の外</li>
 <li>偏角の和が±2π、±6π、±10π…のとき点は多角形の中</li>
 </ul>
 <p>とできる。</p>
 <p>以上より多角形の内外を判定する関数InsidePolygonQは以下のように実装できる。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Mathematica" data-lang="Mathematica">InsidePolygonQ[poly <span style="color:#960050;background-color:#1e0010">:</span> {{_, _} <span style="color:#960050;background-color:#1e0010">.</span><span style="color:#960050;background-color:#1e0010">.</span>}, p <span style="color:#960050;background-color:#1e0010">:</span> {_, _}] <span style="color:#f92672">:=</span> Module[
-  {argsum},
-  argsum <span style="color:#f92672">=</span> Round[Total[MapThread[Angle[{##, p}] <span style="color:#f92672">&amp;</span>, {poly, RotateLeft[poly]}]]<span style="color:#f92672">/</span>(<span style="color:#ae81ff">2</span> Pi)];
-  OddQ[argsum]
-  ]
-</code></pre></div><p>丸め誤差が蓄積すると誤判定してしまうのだが、誤判定するために要求される丸め誤差はπなので、多分大丈夫だと思われる。</p>
+<div class="highlight"><pre class="chroma"><code class="language-Mathematica" data-lang="Mathematica"><span class="n">InsidePolygonQ</span><span class="p">[</span><span class="n">poly</span><span class="w"> </span><span class="err">:</span><span class="w"> </span><span class="p">{</span><span class="p">{</span><span class="nv">_</span><span class="p">,</span><span class="w"> </span><span class="nv">_</span><span class="p">}</span><span class="w"> </span><span class="err">.</span><span class="err">.</span><span class="p">}</span><span class="p">,</span><span class="w"> </span><span class="n">p</span><span class="w"> </span><span class="err">:</span><span class="w"> </span><span class="p">{</span><span class="nv">_</span><span class="p">,</span><span class="w"> </span><span class="nv">_</span><span class="p">}</span><span class="p">]</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">Module</span><span class="p">[</span><span class="w">
+</span><span class="w">  </span><span class="p">{</span><span class="n">argsum</span><span class="p">}</span><span class="p">,</span><span class="w">
+</span><span class="w">  </span><span class="n">argsum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Round</span><span class="p">[</span><span class="n">Total</span><span class="p">[</span><span class="n">MapThread</span><span class="p">[</span><span class="n">Angle</span><span class="p">[</span><span class="p">{</span><span class="nv">#</span><span class="nv">#</span><span class="p">,</span><span class="w"> </span><span class="n">p</span><span class="p">}</span><span class="p">]</span><span class="w"> </span><span class="o">&amp;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="n">poly</span><span class="p">,</span><span class="w"> </span><span class="n">RotateLeft</span><span class="p">[</span><span class="n">poly</span><span class="p">]</span><span class="p">}</span><span class="p">]</span><span class="p">]</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="w"> </span><span class="n">Pi</span><span class="p">)</span><span class="p">]</span><span class="p">;</span><span class="w">
+</span><span class="w">  </span><span class="n">OddQ</span><span class="p">[</span><span class="n">argsum</span><span class="p">]</span><span class="w">
+</span><span class="w">  </span><span class="p">]</span><span class="w">
+</span></code></pre></div><p>丸め誤差が蓄積すると誤判定してしまうのだが、誤判定するために要求される丸め誤差はπなので、多分大丈夫だと思われる。</p>
 <p>高速化するためには、以下の書き方がMathematicaらしく簡潔で、なおかつ動作も速い。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Mathematica" data-lang="Mathematica">InsidePolygonQ2[poly <span style="color:#960050;background-color:#1e0010">:</span> {{_, _} <span style="color:#960050;background-color:#1e0010">.</span><span style="color:#960050;background-color:#1e0010">.</span>}, p <span style="color:#960050;background-color:#1e0010">:</span> {_, _}] <span style="color:#f92672">:=</span>
-  Block[{a <span style="color:#f92672">=</span> Complex <span style="color:#f92672">@</span><span style="color:#f92672">@</span><span style="color:#f92672">@</span> poly, b <span style="color:#f92672">=</span> Complex <span style="color:#f92672">@</span><span style="color:#f92672">@</span> p},OddQ<span style="color:#f92672">@</span>Round[Total<span style="color:#f92672">@</span>Arg[(RotateLeft[a] <span style="color:#f92672">-</span> b)<span style="color:#f92672">/</span>(a <span style="color:#f92672">-</span> b)]<span style="color:#f92672">/</span>(<span style="color:#ae81ff">2</span> Pi)]]
-</code></pre></div><hr>
+<div class="highlight"><pre class="chroma"><code class="language-Mathematica" data-lang="Mathematica"><span class="n">InsidePolygonQ2</span><span class="p">[</span><span class="n">poly</span><span class="w"> </span><span class="err">:</span><span class="w"> </span><span class="p">{</span><span class="p">{</span><span class="nv">_</span><span class="p">,</span><span class="w"> </span><span class="nv">_</span><span class="p">}</span><span class="w"> </span><span class="err">.</span><span class="err">.</span><span class="p">}</span><span class="p">,</span><span class="w"> </span><span class="n">p</span><span class="w"> </span><span class="err">:</span><span class="w"> </span><span class="p">{</span><span class="nv">_</span><span class="p">,</span><span class="w"> </span><span class="nv">_</span><span class="p">}</span><span class="p">]</span><span class="w"> </span><span class="o">:=</span><span class="w">
+</span><span class="w">  </span><span class="n">Block</span><span class="p">[</span><span class="p">{</span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Complex</span><span class="w"> </span><span class="o">@</span><span class="o">@</span><span class="o">@</span><span class="w"> </span><span class="n">poly</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Complex</span><span class="w"> </span><span class="o">@</span><span class="o">@</span><span class="w"> </span><span class="n">p</span><span class="p">}</span><span class="p">,</span><span class="n">OddQ</span><span class="o">@</span><span class="n">Round</span><span class="p">[</span><span class="n">Total</span><span class="o">@</span><span class="n">Arg</span><span class="p">[</span><span class="p">(</span><span class="n">RotateLeft</span><span class="p">[</span><span class="n">a</span><span class="p">]</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">a</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="p">]</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="w"> </span><span class="n">Pi</span><span class="p">)</span><span class="p">]</span><span class="p">]</span><span class="w">
+</span></code></pre></div><hr>
 <p>Oct. 2 2013 追記:</p>
 <p>有難いことにこのページがYahoo知恵袋などで結構リンクされているものの、
 Mathematicaであるためか分かりにくそうなので、上記関数の使用例を追加。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Mathematica" data-lang="Mathematica">InsidePolygonQ2[{{<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>}, {<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">0</span>}, {<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">1</span>}, {<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>}, {<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">1</span>}}, {<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">0.3</span>}]
-True
-InsidePolygonQ2[{{<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>}, {<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">0</span>}, {<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">1</span>}, {<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>}, {<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">1</span>}}, {<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">0.8</span>}]
-False
-</code></pre></div><p>多角形と点の位置関係は下図。(1,0.3)は多角形内部、(1,0.8)は多角形外部である。</p>
+<div class="highlight"><pre class="chroma"><code class="language-Mathematica" data-lang="Mathematica"><span class="n">InsidePolygonQ2</span><span class="p">[</span><span class="p">{</span><span class="p">{</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">}</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">}</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">}</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">}</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">}</span><span class="p">}</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mf">0.3</span><span class="p">}</span><span class="p">]</span><span class="w">
+</span><span class="w"></span><span class="n">True</span><span class="w">
+</span><span class="w"></span><span class="n">InsidePolygonQ2</span><span class="p">[</span><span class="p">{</span><span class="p">{</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">}</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">}</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">}</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">}</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">}</span><span class="p">}</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mf">0.8</span><span class="p">}</span><span class="p">]</span><span class="w">
+</span><span class="w"></span><span class="n">False</span><span class="w">
+</span></code></pre></div><p>多角形と点の位置関係は下図。(1,0.3)は多角形内部、(1,0.8)は多角形外部である。</p>
 <figure>
     <img src="graph001.png"/> 
 </figure>
@@ -162,6 +162,7 @@ False
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/essay/openldap-proxy-to-active-directory-ubuntu/">Ubuntu 18.04でActive DirectoryへのOpenLDAPプロキシを構築</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/input-tabs-in-browsers-textbox/">ブラウザのテキストボックスにタブを入力する</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/install-google-backup-sync-on-wine/">Googleのバックアップと同期をWineでUbuntuにインストールする</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/install-wine5-to-ubuntu-18.04/">Ubuntu 18.04に最新のWINE(5.0.0)をインストールする</a></li>
@@ -171,7 +172,6 @@ False
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20191026-brm1026-utsunomiya-300km/">2019年10月26日 BRM1026 宇都宮300km 栃木路</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20191011-brm1011-shikoku-1000km/">2019年10月11日 BRM1011 四国一周1000km</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20190928-brm928-yatsugatake-400km/">2019年09月28日 BRM928 八ヶ岳1周 400km</a></li>
-			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20190815-brm815-shari-asahikawa-300km/">2019年08月15日 BRM815 斜里旭川300 PW北海道</a></li>
 		</ul>
 	</div>
 </div>
@@ -188,6 +188,7 @@ False
 <div class="widget-taglist widget">
 	<h4 class="widget__title">Tags</h4>
 	<div class="widget__content">
+		<a class="widget-taglist__link widget__link btn" href="/tags/activedirectory" title="Activedirectory">Activedirectory (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/apache" title="Apache">Apache (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/bat" title="Bat">Bat (2)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/chrome" title="Chrome">Chrome (1)</a>
@@ -208,7 +209,7 @@ False
 		<a class="widget-taglist__link widget__link btn" href="/tags/powershell" title="Powershell">Powershell (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/sql" title="Sql">Sql (3)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/sqlserver" title="Sqlserver">Sqlserver (1)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/ubuntu" title="Ubuntu">Ubuntu (11)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/ubuntu" title="Ubuntu">Ubuntu (12)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/vba" title="Vba">Vba (3)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/windows" title="Windows">Windows (11)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/wine" title="Wine">Wine (2)</a>
@@ -219,7 +220,7 @@ False
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%83%91%e3%83%af%e3%83%8f%e3%83%a9" title="パワハラ">パワハラ (5)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%83%96%e3%83%ab%e3%83%99" title="ブルベ">ブルベ (14)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e7%94%9f%e6%b4%bb" title="生活">生活 (1)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%e7%a4%be%e5%86%85se" title="社内se">社内se (15)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%e7%a4%be%e5%86%85se" title="社内se">社内se (16)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e8%87%aa%e8%bb%a2%e8%bb%8a" title="自転車">自転車 (9)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e9%9b%91%e5%ad%a6" title="雑学">雑学 (1)</a>
 	</div>
@@ -256,7 +257,5 @@ False
 </footer>
 	</div>
 <script async defer src="/js/menu.js"></script>
-<script type="text/javascript" src="/js/highlight.pack.js"></script>
-<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
 <script data-ad-client="ca-pub-1947596544782119" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script></body>
 </html>

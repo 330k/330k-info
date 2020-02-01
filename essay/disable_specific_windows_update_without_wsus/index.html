@@ -36,7 +36,7 @@ if (!doNotTrack) {
 </script>
 <script async src='https://www.google-analytics.com/analytics.js'></script>
 
-	<link rel="stylesheet" href="/css/vs.css">
+	<link rel="stylesheet" href="/css/syntax.css">
 </head>
 <body class="body">
 	<div class="container container--outer">
@@ -89,7 +89,7 @@ if (!doNotTrack) {
 → <a href="http://mayokecya.hateblo.jp/entry/2015/06/04/224123">参考サイト: 「Windows10を入手する」の通知が消えない＼(^o^)／</a></p>
 <p>さて、1人社内SEとしては以上の手順をユーザの全PCに行うのは無理なので、なんとか自動化したい。
 1と2についてはコマンドプロンプトで可能なので、あっさり情報が見つかり、</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bat" data-lang="bat">Taskkill /IM GWX.exe /F
+<div class="highlight"><pre class="chroma"><code class="language-bat" data-lang="bat">Taskkill /IM GWX.exe /F
 Taskkill /IM GWXUX.exe /F
 wusa.exe /uninstall /kb:3035583 /quiet /norestart
 </code></pre></div><p>と書いたバッチファイルをログオンスクリプトに仕込むことで可能だった。</p>
@@ -99,97 +99,97 @@ wusa.exe /uninstall /kb:3035583 /quiet /norestart
 レジストリをいじったりして特定のWindows Updateを非表示にする方法がないか、と調べてみたら、
 <a href="http://msdn.microsoft.com/en-us/library/aa387099(v=VS.85).aspx">Windows Update Agent API</a>というのがあることを発見。</p>
 <p>英語の情報しかなかったが、サンプルを参考に目的の「KB3035583」を非表示にするスクリプト(今回はJavaScript)を書いてみた。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#75715e">/**********************************************************************
-</span><span style="color:#75715e"> WSUSを使用せずに不必要なWindowsUpdateを非表示
-</span><span style="color:#75715e"> 
-</span><span style="color:#75715e"> Copyright 2015-2016 330k
-</span><span style="color:#75715e"> 使用は自己責任でお願いします
-</span><span style="color:#75715e">**********************************************************************/</span>
-<span style="color:#66d9ef">try</span>{
-  <span style="color:#75715e">// インストールしないWindowsUpdateのKB番号
-</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">disabledKBs</span> <span style="color:#f92672">=</span> [
-    <span style="color:#ae81ff">2876229</span>,
-    <span style="color:#ae81ff">2952664</span>,
-    <span style="color:#ae81ff">2976978</span>,
-    <span style="color:#ae81ff">2977759</span>,
-    <span style="color:#ae81ff">3021917</span>,
-    <span style="color:#ae81ff">3022345</span>,
-    <span style="color:#ae81ff">3035583</span>,
-    <span style="color:#ae81ff">3068708</span>,
-    <span style="color:#ae81ff">3075249</span>,
-    <span style="color:#ae81ff">3080149</span>,
-    <span style="color:#ae81ff">3123862</span>,
-    <span style="color:#ae81ff">3150513</span>,
-    <span style="color:#ae81ff">2990214</span>,<span style="color:#75715e">// Win 7
-</span><span style="color:#75715e"></span>    <span style="color:#ae81ff">3050265</span>,
-    <span style="color:#ae81ff">3065987</span>,
-    <span style="color:#ae81ff">3075851</span>,
-    <span style="color:#ae81ff">3083324</span>,
-    <span style="color:#ae81ff">3083710</span>,
-    <span style="color:#ae81ff">3102810</span>,
-    <span style="color:#ae81ff">3112343</span>,
-    <span style="color:#ae81ff">3135445</span>,
-    <span style="color:#ae81ff">3138612</span>,
-    <span style="color:#ae81ff">3161608</span>,
-    <span style="color:#ae81ff">3044374</span>,<span style="color:#75715e">// Win 8.1
-</span><span style="color:#75715e"></span>    <span style="color:#ae81ff">3050267</span>,
-    <span style="color:#ae81ff">3065988</span>,
-    <span style="color:#ae81ff">3075853</span>,
-    <span style="color:#ae81ff">3083325</span>,
-    <span style="color:#ae81ff">3083711</span>,
-    <span style="color:#ae81ff">3102812</span>,
-    <span style="color:#ae81ff">3112336</span>,
-    <span style="color:#ae81ff">3135449</span>,
-    <span style="color:#ae81ff">3138615</span>,
-    <span style="color:#ae81ff">3161606</span>
-  ].<span style="color:#a6e22e">sort</span>().<span style="color:#a6e22e">reverse</span>();
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="cm">/**********************************************************************
+</span><span class="cm"> WSUSを使用せずに不必要なWindowsUpdateを非表示
+</span><span class="cm"> 
+</span><span class="cm"> Copyright 2015-2016 330k
+</span><span class="cm"> 使用は自己責任でお願いします
+</span><span class="cm">**********************************************************************/</span>
+<span class="k">try</span><span class="p">{</span>
+  <span class="c1">// インストールしないWindowsUpdateのKB番号
+</span><span class="c1"></span>  <span class="kd">var</span> <span class="nx">disabledKBs</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="mi">2876229</span><span class="p">,</span>
+    <span class="mi">2952664</span><span class="p">,</span>
+    <span class="mi">2976978</span><span class="p">,</span>
+    <span class="mi">2977759</span><span class="p">,</span>
+    <span class="mi">3021917</span><span class="p">,</span>
+    <span class="mi">3022345</span><span class="p">,</span>
+    <span class="mi">3035583</span><span class="p">,</span>
+    <span class="mi">3068708</span><span class="p">,</span>
+    <span class="mi">3075249</span><span class="p">,</span>
+    <span class="mi">3080149</span><span class="p">,</span>
+    <span class="mi">3123862</span><span class="p">,</span>
+    <span class="mi">3150513</span><span class="p">,</span>
+    <span class="mi">2990214</span><span class="p">,</span><span class="c1">// Win 7
+</span><span class="c1"></span>    <span class="mi">3050265</span><span class="p">,</span>
+    <span class="mi">3065987</span><span class="p">,</span>
+    <span class="mi">3075851</span><span class="p">,</span>
+    <span class="mi">3083324</span><span class="p">,</span>
+    <span class="mi">3083710</span><span class="p">,</span>
+    <span class="mi">3102810</span><span class="p">,</span>
+    <span class="mi">3112343</span><span class="p">,</span>
+    <span class="mi">3135445</span><span class="p">,</span>
+    <span class="mi">3138612</span><span class="p">,</span>
+    <span class="mi">3161608</span><span class="p">,</span>
+    <span class="mi">3044374</span><span class="p">,</span><span class="c1">// Win 8.1
+</span><span class="c1"></span>    <span class="mi">3050267</span><span class="p">,</span>
+    <span class="mi">3065988</span><span class="p">,</span>
+    <span class="mi">3075853</span><span class="p">,</span>
+    <span class="mi">3083325</span><span class="p">,</span>
+    <span class="mi">3083711</span><span class="p">,</span>
+    <span class="mi">3102812</span><span class="p">,</span>
+    <span class="mi">3112336</span><span class="p">,</span>
+    <span class="mi">3135449</span><span class="p">,</span>
+    <span class="mi">3138615</span><span class="p">,</span>
+    <span class="mi">3161606</span>
+  <span class="p">]</span><span class="p">.</span><span class="nx">sort</span><span class="p">(</span><span class="p">)</span><span class="p">.</span><span class="nx">reverse</span><span class="p">(</span><span class="p">)</span><span class="p">;</span>
   
-  <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">disabledKBregexp</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> RegExp(<span style="color:#e6db74">&#39;(&#39;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">disabledKBs</span>.<span style="color:#a6e22e">join</span>(<span style="color:#e6db74">&#39;)|(&#39;</span>) <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;)&#39;</span>);
-  <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">updateSession</span>, <span style="color:#a6e22e">updateSearcher</span>, <span style="color:#a6e22e">searchResult</span>, <span style="color:#a6e22e">update</span>;
-  <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">objShell</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">WScript</span>.<span style="color:#a6e22e">CreateObject</span>(<span style="color:#e6db74">&#34;WScript.Shell&#34;</span>);
-  <span style="color:#75715e">//var fso = new ActiveXObject(&#34;Scripting.FileSystemObject&#34;);
-</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">i</span>, <span style="color:#a6e22e">j</span>;
+  <span class="kd">var</span> <span class="nx">disabledKBregexp</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">RegExp</span><span class="p">(</span><span class="s1">&#39;(&#39;</span> <span class="o">+</span> <span class="nx">disabledKBs</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="s1">&#39;)|(&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;)&#39;</span><span class="p">)</span><span class="p">;</span>
+  <span class="kd">var</span> <span class="nx">updateSession</span><span class="p">,</span> <span class="nx">updateSearcher</span><span class="p">,</span> <span class="nx">searchResult</span><span class="p">,</span> <span class="nx">update</span><span class="p">;</span>
+  <span class="kd">var</span> <span class="nx">objShell</span> <span class="o">=</span> <span class="nx">WScript</span><span class="p">.</span><span class="nx">CreateObject</span><span class="p">(</span><span class="s2">&#34;WScript.Shell&#34;</span><span class="p">)</span><span class="p">;</span>
+  <span class="c1">//var fso = new ActiveXObject(&#34;Scripting.FileSystemObject&#34;);
+</span><span class="c1"></span>  <span class="kd">var</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">j</span><span class="p">;</span>
   
-  <span style="color:#75715e">// WUA生成
-</span><span style="color:#75715e"></span>  <span style="color:#a6e22e">updateSession</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">WScript</span>.<span style="color:#a6e22e">CreateObject</span>(<span style="color:#e6db74">&#34;Microsoft.Update.Session&#34;</span>);
-  <span style="color:#a6e22e">updateSession</span>.<span style="color:#a6e22e">ClientApplicationID</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;info.330k.disable_wupdate.20160626&#34;</span>;
+  <span class="c1">// WUA生成
+</span><span class="c1"></span>  <span class="nx">updateSession</span> <span class="o">=</span> <span class="nx">WScript</span><span class="p">.</span><span class="nx">CreateObject</span><span class="p">(</span><span class="s2">&#34;Microsoft.Update.Session&#34;</span><span class="p">)</span><span class="p">;</span>
+  <span class="nx">updateSession</span><span class="p">.</span><span class="nx">ClientApplicationID</span> <span class="o">=</span> <span class="s2">&#34;info.330k.disable_wupdate.20160626&#34;</span><span class="p">;</span>
   
-  <span style="color:#75715e">// 既にインストールされているかもしれないので、まずアンインストールする
-</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">for</span>(<span style="color:#a6e22e">i</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">i</span> <span style="color:#f92672">&lt;</span> <span style="color:#a6e22e">disabledKBs</span>.<span style="color:#a6e22e">length</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span>){
-    <span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;uninstall: &#34;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">disabledKBs</span>[<span style="color:#a6e22e">i</span>]);
-    <span style="color:#a6e22e">objShell</span>.<span style="color:#a6e22e">Run</span>(<span style="color:#e6db74">&#34;wusa.exe /uninstall /kb:&#34;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">disabledKBs</span>[<span style="color:#a6e22e">i</span>] <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34; /quiet /norestart&#34;</span>, <span style="color:#ae81ff">0</span>, <span style="color:#66d9ef">true</span>);
-  }
+  <span class="c1">// 既にインストールされているかもしれないので、まずアンインストールする
+</span><span class="c1"></span>  <span class="k">for</span><span class="p">(</span><span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">disabledKBs</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span><span class="p">{</span>
+    <span class="nx">log</span><span class="p">(</span><span class="s2">&#34;uninstall: &#34;</span> <span class="o">+</span> <span class="nx">disabledKBs</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span><span class="p">)</span><span class="p">;</span>
+    <span class="nx">objShell</span><span class="p">.</span><span class="nx">Run</span><span class="p">(</span><span class="s2">&#34;wusa.exe /uninstall /kb:&#34;</span> <span class="o">+</span> <span class="nx">disabledKBs</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&#34; /quiet /norestart&#34;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="kc">true</span><span class="p">)</span><span class="p">;</span>
+  <span class="p">}</span>
   
-  <span style="color:#75715e">// 未インストールの場合は非表示にする
-</span><span style="color:#75715e"></span>  <span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;search updates which are not installed yet&#34;</span>);
-  <span style="color:#a6e22e">updateSearcher</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">updateSession</span>.<span style="color:#a6e22e">CreateUpdateSearcher</span>();
-  <span style="color:#a6e22e">searchResult</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">updateSearcher</span>.<span style="color:#a6e22e">Search</span>(<span style="color:#e6db74">&#34;IsInstalled=0 and IsHidden=0&#34;</span>);
-  <span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;updates found: &#34;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">searchResult</span>.<span style="color:#a6e22e">Updates</span>.<span style="color:#a6e22e">Count</span>);
-  <span style="color:#66d9ef">for</span>(<span style="color:#a6e22e">i</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">i</span> <span style="color:#f92672">&lt;</span> <span style="color:#a6e22e">searchResult</span>.<span style="color:#a6e22e">Updates</span>.<span style="color:#a6e22e">Count</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span>){
-    <span style="color:#a6e22e">update</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">searchResult</span>.<span style="color:#a6e22e">Updates</span>.<span style="color:#a6e22e">Item</span>(<span style="color:#a6e22e">i</span>);
-    <span style="color:#66d9ef">for</span>(<span style="color:#a6e22e">j</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">j</span> <span style="color:#f92672">&lt;</span> <span style="color:#a6e22e">update</span>.<span style="color:#a6e22e">KBArticleIDs</span>.<span style="color:#a6e22e">Count</span>; <span style="color:#a6e22e">j</span><span style="color:#f92672">++</span>){
-      <span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;found:\t&#34;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">update</span>.<span style="color:#a6e22e">KBArticleIDs</span>.<span style="color:#a6e22e">Item</span>(<span style="color:#a6e22e">j</span>));
-      <span style="color:#66d9ef">if</span>(<span style="color:#a6e22e">disabledKBregexp</span>.<span style="color:#a6e22e">test</span>(<span style="color:#a6e22e">update</span>.<span style="color:#a6e22e">KBArticleIDs</span>.<span style="color:#a6e22e">Item</span>(<span style="color:#a6e22e">j</span>))){
-        <span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;hide:\t&#34;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">update</span>.<span style="color:#a6e22e">KBArticleIDs</span>.<span style="color:#a6e22e">Item</span>(<span style="color:#a6e22e">j</span>));
-        <span style="color:#a6e22e">update</span>.<span style="color:#a6e22e">IsHidden</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>;
-        <span style="color:#66d9ef">break</span>;
-      }
-    }
-  }
-  <span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;finish&#34;</span>);
-  <span style="color:#a6e22e">WScript</span>.<span style="color:#a6e22e">Quit</span>(<span style="color:#ae81ff">0</span>);
+  <span class="c1">// 未インストールの場合は非表示にする
+</span><span class="c1"></span>  <span class="nx">log</span><span class="p">(</span><span class="s2">&#34;search updates which are not installed yet&#34;</span><span class="p">)</span><span class="p">;</span>
+  <span class="nx">updateSearcher</span> <span class="o">=</span> <span class="nx">updateSession</span><span class="p">.</span><span class="nx">CreateUpdateSearcher</span><span class="p">(</span><span class="p">)</span><span class="p">;</span>
+  <span class="nx">searchResult</span> <span class="o">=</span> <span class="nx">updateSearcher</span><span class="p">.</span><span class="nx">Search</span><span class="p">(</span><span class="s2">&#34;IsInstalled=0 and IsHidden=0&#34;</span><span class="p">)</span><span class="p">;</span>
+  <span class="nx">log</span><span class="p">(</span><span class="s2">&#34;updates found: &#34;</span> <span class="o">+</span> <span class="nx">searchResult</span><span class="p">.</span><span class="nx">Updates</span><span class="p">.</span><span class="nx">Count</span><span class="p">)</span><span class="p">;</span>
+  <span class="k">for</span><span class="p">(</span><span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">searchResult</span><span class="p">.</span><span class="nx">Updates</span><span class="p">.</span><span class="nx">Count</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span><span class="p">{</span>
+    <span class="nx">update</span> <span class="o">=</span> <span class="nx">searchResult</span><span class="p">.</span><span class="nx">Updates</span><span class="p">.</span><span class="nx">Item</span><span class="p">(</span><span class="nx">i</span><span class="p">)</span><span class="p">;</span>
+    <span class="k">for</span><span class="p">(</span><span class="nx">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">j</span> <span class="o">&lt;</span> <span class="nx">update</span><span class="p">.</span><span class="nx">KBArticleIDs</span><span class="p">.</span><span class="nx">Count</span><span class="p">;</span> <span class="nx">j</span><span class="o">++</span><span class="p">)</span><span class="p">{</span>
+      <span class="nx">log</span><span class="p">(</span><span class="s2">&#34;found:\t&#34;</span> <span class="o">+</span> <span class="nx">update</span><span class="p">.</span><span class="nx">KBArticleIDs</span><span class="p">.</span><span class="nx">Item</span><span class="p">(</span><span class="nx">j</span><span class="p">)</span><span class="p">)</span><span class="p">;</span>
+      <span class="k">if</span><span class="p">(</span><span class="nx">disabledKBregexp</span><span class="p">.</span><span class="nx">test</span><span class="p">(</span><span class="nx">update</span><span class="p">.</span><span class="nx">KBArticleIDs</span><span class="p">.</span><span class="nx">Item</span><span class="p">(</span><span class="nx">j</span><span class="p">)</span><span class="p">)</span><span class="p">)</span><span class="p">{</span>
+        <span class="nx">log</span><span class="p">(</span><span class="s2">&#34;hide:\t&#34;</span> <span class="o">+</span> <span class="nx">update</span><span class="p">.</span><span class="nx">KBArticleIDs</span><span class="p">.</span><span class="nx">Item</span><span class="p">(</span><span class="nx">j</span><span class="p">)</span><span class="p">)</span><span class="p">;</span>
+        <span class="nx">update</span><span class="p">.</span><span class="nx">IsHidden</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+        <span class="k">break</span><span class="p">;</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+  <span class="nx">log</span><span class="p">(</span><span class="s2">&#34;finish&#34;</span><span class="p">)</span><span class="p">;</span>
+  <span class="nx">WScript</span><span class="p">.</span><span class="nx">Quit</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="p">;</span>
   
-}<span style="color:#66d9ef">catch</span>(<span style="color:#a6e22e">e</span>){
-  <span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">e</span>.<span style="color:#a6e22e">message</span>);
-  <span style="color:#a6e22e">WScript</span>.<span style="color:#a6e22e">Quit</span>(<span style="color:#ae81ff">1</span>);
-}
+<span class="p">}</span><span class="k">catch</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span><span class="p">{</span>
+  <span class="nx">log</span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">message</span><span class="p">)</span><span class="p">;</span>
+  <span class="nx">WScript</span><span class="p">.</span><span class="nx">Quit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="p">;</span>
+<span class="p">}</span>
 
-<span style="color:#75715e">// CScriptで実行された場合のみログを表示する
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">message</span>){
-  <span style="color:#66d9ef">if</span>(<span style="color:#e6db74">/cscript\.exe$/i</span>.<span style="color:#a6e22e">test</span>(<span style="color:#a6e22e">WScript</span>.<span style="color:#a6e22e">FullName</span>)){
-    <span style="color:#a6e22e">WScript</span>.<span style="color:#a6e22e">Echo</span>((<span style="color:#66d9ef">new</span> Date()).<span style="color:#a6e22e">toLocaleString</span>() <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;\t&#34;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">message</span>);
-  }
-}
+<span class="c1">// CScriptで実行された場合のみログを表示する
+</span><span class="c1"></span><span class="kd">function</span> <span class="nx">log</span><span class="p">(</span><span class="nx">message</span><span class="p">)</span><span class="p">{</span>
+  <span class="k">if</span><span class="p">(</span><span class="sr">/cscript\.exe$/i</span><span class="p">.</span><span class="nx">test</span><span class="p">(</span><span class="nx">WScript</span><span class="p">.</span><span class="nx">FullName</span><span class="p">)</span><span class="p">)</span><span class="p">{</span>
+    <span class="nx">WScript</span><span class="p">.</span><span class="nx">Echo</span><span class="p">(</span><span class="p">(</span><span class="k">new</span> <span class="nb">Date</span><span class="p">(</span><span class="p">)</span><span class="p">)</span><span class="p">.</span><span class="nx">toLocaleString</span><span class="p">(</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&#34;\t&#34;</span> <span class="o">+</span> <span class="nx">message</span><span class="p">)</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div><p>今後KB3035583以外にも非表示にしたいアップデートが出るかもしれない(多分出る)ので、
 追加しやすいよう工夫してみた。</p>
 <p>これも同様にログオンスクリプトに仕込んでおけば、ユーザがまだインストールしていなければ非表示にすることができる。</p>
@@ -257,6 +257,7 @@ wusa.exe /uninstall /kb:3035583 /quiet /norestart
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/essay/openldap-proxy-to-active-directory-ubuntu/">Ubuntu 18.04でActive DirectoryへのOpenLDAPプロキシを構築</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/input-tabs-in-browsers-textbox/">ブラウザのテキストボックスにタブを入力する</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/install-google-backup-sync-on-wine/">Googleのバックアップと同期をWineでUbuntuにインストールする</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/install-wine5-to-ubuntu-18.04/">Ubuntu 18.04に最新のWINE(5.0.0)をインストールする</a></li>
@@ -266,7 +267,6 @@ wusa.exe /uninstall /kb:3035583 /quiet /norestart
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20191026-brm1026-utsunomiya-300km/">2019年10月26日 BRM1026 宇都宮300km 栃木路</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20191011-brm1011-shikoku-1000km/">2019年10月11日 BRM1011 四国一周1000km</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20190928-brm928-yatsugatake-400km/">2019年09月28日 BRM928 八ヶ岳1周 400km</a></li>
-			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20190815-brm815-shari-asahikawa-300km/">2019年08月15日 BRM815 斜里旭川300 PW北海道</a></li>
 		</ul>
 	</div>
 </div>
@@ -283,6 +283,7 @@ wusa.exe /uninstall /kb:3035583 /quiet /norestart
 <div class="widget-taglist widget">
 	<h4 class="widget__title">Tags</h4>
 	<div class="widget__content">
+		<a class="widget-taglist__link widget__link btn" href="/tags/activedirectory" title="Activedirectory">Activedirectory (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/apache" title="Apache">Apache (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/bat" title="Bat">Bat (2)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/chrome" title="Chrome">Chrome (1)</a>
@@ -303,7 +304,7 @@ wusa.exe /uninstall /kb:3035583 /quiet /norestart
 		<a class="widget-taglist__link widget__link btn" href="/tags/powershell" title="Powershell">Powershell (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/sql" title="Sql">Sql (3)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/sqlserver" title="Sqlserver">Sqlserver (1)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/ubuntu" title="Ubuntu">Ubuntu (11)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/ubuntu" title="Ubuntu">Ubuntu (12)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/vba" title="Vba">Vba (3)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/windows" title="Windows">Windows (11)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/wine" title="Wine">Wine (2)</a>
@@ -314,7 +315,7 @@ wusa.exe /uninstall /kb:3035583 /quiet /norestart
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%83%91%e3%83%af%e3%83%8f%e3%83%a9" title="パワハラ">パワハラ (5)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%83%96%e3%83%ab%e3%83%99" title="ブルベ">ブルベ (14)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e7%94%9f%e6%b4%bb" title="生活">生活 (1)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%e7%a4%be%e5%86%85se" title="社内se">社内se (15)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%e7%a4%be%e5%86%85se" title="社内se">社内se (16)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e8%87%aa%e8%bb%a2%e8%bb%8a" title="自転車">自転車 (9)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e9%9b%91%e5%ad%a6" title="雑学">雑学 (1)</a>
 	</div>
@@ -351,7 +352,5 @@ wusa.exe /uninstall /kb:3035583 /quiet /norestart
 </footer>
 	</div>
 <script async defer src="/js/menu.js"></script>
-<script type="text/javascript" src="/js/highlight.pack.js"></script>
-<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
 <script data-ad-client="ca-pub-1947596544782119" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script></body>
 </html>

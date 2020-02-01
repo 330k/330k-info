@@ -36,7 +36,7 @@ if (!doNotTrack) {
 </script>
 <script async src='https://www.google-analytics.com/analytics.js'></script>
 
-	<link rel="stylesheet" href="/css/vs.css">
+	<link rel="stylesheet" href="/css/syntax.css">
 </head>
 <body class="body">
 	<div class="container container--outer">
@@ -85,48 +85,48 @@ CopyHereは非同期なので、すぐにJS側に制御が返ってくるが、
 複数のファイルを一気にCopyHereしようとすると、「読み取りできません」とエラーが出る。</p>
 <h3 id="使い方">使い方</h3>
 <p>以下のコード中のcreateZipFileを自分のスクリプトにコピー&amp;ペーストして</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#a6e22e">createZipFile</span>( <span style="color:#e6db74">&#34;zipファイルのパス&#34;</span>, [<span style="color:#e6db74">&#34;圧縮対象ファイルのパス1&#34;</span>, <span style="color:#e6db74">&#34;圧縮対象ファイルのパス2&#34;</span>, ...])
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="nx">createZipFile</span><span class="p">(</span> <span class="s2">&#34;zipファイルのパス&#34;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&#34;圧縮対象ファイルのパス1&#34;</span><span class="p">,</span> <span class="s2">&#34;圧縮対象ファイルのパス2&#34;</span><span class="p">,</span> <span class="p">...</span><span class="p">]</span><span class="p">)</span>
 </code></pre></div><p>とすればOK。
 もしくは以下のコードをメモ帳で拡張子をjsにして保存すれば、ドラッグ&amp;ドロップでzipファイルを作成(右クリック→送る→圧縮フォルダーとほぼ同じ動作)。</p>
 <h3 id="注意事項">注意事項</h3>
 <p>ディレクトリには対応してません。またWindows標準では暗号化ZIPは作成できません。
 また圧縮対象ファイルの存在チェック等もやってないので、必要であればエラーハンドリング処理を追加してください。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#75715e">/**
-</span><span style="color:#75715e"> Windows 標準機能でZipファイルを作成するWSH(JScript)
-</span><span style="color:#75715e"> Copyright 330k
-</span><span style="color:#75715e"> 
-</span><span style="color:#75715e"> This software is released under the MIT License.
-</span><span style="color:#75715e"> http://opensource.org/licenses/mit-license.php
-</span><span style="color:#75715e">*/</span>
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="cm">/**
+</span><span class="cm"> Windows 標準機能でZipファイルを作成するWSH(JScript)
+</span><span class="cm"> Copyright 330k
+</span><span class="cm"> 
+</span><span class="cm"> This software is released under the MIT License.
+</span><span class="cm"> http://opensource.org/licenses/mit-license.php
+</span><span class="cm">*/</span>
 
-<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">args</span> <span style="color:#f92672">=</span> [];
+<span class="kd">var</span> <span class="nx">args</span> <span class="o">=</span> <span class="p">[</span><span class="p">]</span><span class="p">;</span>
 
-<span style="color:#66d9ef">for</span>(<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">i</span> <span style="color:#f92672">&lt;</span> <span style="color:#a6e22e">WScript</span>.<span style="color:#a6e22e">Arguments</span>.<span style="color:#a6e22e">length</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span>){
-  <span style="color:#a6e22e">args</span>.<span style="color:#a6e22e">push</span>(<span style="color:#a6e22e">WScript</span>.<span style="color:#a6e22e">Arguments</span>(<span style="color:#a6e22e">i</span>));
-}
+<span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">WScript</span><span class="p">.</span><span class="nx">Arguments</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span><span class="p">{</span>
+  <span class="nx">args</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">WScript</span><span class="p">.</span><span class="nx">Arguments</span><span class="p">(</span><span class="nx">i</span><span class="p">)</span><span class="p">)</span><span class="p">;</span>
+<span class="p">}</span>
 
-<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">zipfile</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">args</span>[<span style="color:#ae81ff">0</span>].<span style="color:#a6e22e">replace</span>(<span style="color:#e6db74">/(.+)\.(.+?)$/</span>, <span style="color:#e6db74">&#34;$1.zip&#34;</span>);
+<span class="kd">var</span> <span class="nx">zipfile</span> <span class="o">=</span> <span class="nx">args</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/(.+)\.(.+?)$/</span><span class="p">,</span> <span class="s2">&#34;$1.zip&#34;</span><span class="p">)</span><span class="p">;</span>
 
-<span style="color:#a6e22e">createZipFile</span>(<span style="color:#a6e22e">zipfile</span>, <span style="color:#a6e22e">args</span>);
+<span class="nx">createZipFile</span><span class="p">(</span><span class="nx">zipfile</span><span class="p">,</span> <span class="nx">args</span><span class="p">)</span><span class="p">;</span>
 
-<span style="color:#66d9ef">function</span> <span style="color:#a6e22e">createZipFile</span>(<span style="color:#a6e22e">zipFilePath</span>, <span style="color:#a6e22e">sourceFiles</span>){
-  <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">shell</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">WScript</span>.<span style="color:#a6e22e">CreateObject</span>(<span style="color:#e6db74">&#34;Shell.Application&#34;</span>);
-  <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">fso</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">WScript</span>.<span style="color:#a6e22e">CreateObject</span>(<span style="color:#e6db74">&#34;Scripting.FileSystemObject&#34;</span>);
-  <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">file</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">fso</span>.<span style="color:#a6e22e">OpenTextFile</span>(<span style="color:#a6e22e">zipFilePath</span>, <span style="color:#ae81ff">2</span>, <span style="color:#66d9ef">true</span>);
-  <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
-  <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">zipfile</span>;
+<span class="kd">function</span> <span class="nx">createZipFile</span><span class="p">(</span><span class="nx">zipFilePath</span><span class="p">,</span> <span class="nx">sourceFiles</span><span class="p">)</span><span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">shell</span> <span class="o">=</span> <span class="nx">WScript</span><span class="p">.</span><span class="nx">CreateObject</span><span class="p">(</span><span class="s2">&#34;Shell.Application&#34;</span><span class="p">)</span><span class="p">;</span>
+  <span class="kd">var</span> <span class="nx">fso</span> <span class="o">=</span> <span class="nx">WScript</span><span class="p">.</span><span class="nx">CreateObject</span><span class="p">(</span><span class="s2">&#34;Scripting.FileSystemObject&#34;</span><span class="p">)</span><span class="p">;</span>
+  <span class="kd">var</span> <span class="nx">file</span> <span class="o">=</span> <span class="nx">fso</span><span class="p">.</span><span class="nx">OpenTextFile</span><span class="p">(</span><span class="nx">zipFilePath</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="kc">true</span><span class="p">)</span><span class="p">;</span>
+  <span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="kd">var</span> <span class="nx">zipfile</span><span class="p">;</span>
   
-  <span style="color:#a6e22e">file</span>.<span style="color:#a6e22e">Write</span>(<span style="color:#e6db74">&#34;PK\x05\x06\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0&#34;</span>);
-  <span style="color:#a6e22e">file</span>.<span style="color:#a6e22e">Close</span>();
+  <span class="nx">file</span><span class="p">.</span><span class="nx">Write</span><span class="p">(</span><span class="s2">&#34;PK\x05\x06\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0&#34;</span><span class="p">)</span><span class="p">;</span>
+  <span class="nx">file</span><span class="p">.</span><span class="nx">Close</span><span class="p">(</span><span class="p">)</span><span class="p">;</span>
   
-  <span style="color:#a6e22e">zipfile</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">shell</span>.<span style="color:#a6e22e">NameSpace</span>(<span style="color:#a6e22e">zipFilePath</span>);
-  <span style="color:#66d9ef">for</span>(<span style="color:#a6e22e">i</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">i</span> <span style="color:#f92672">&lt;</span> <span style="color:#a6e22e">sourceFiles</span>.<span style="color:#a6e22e">length</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span>){
-  <span style="color:#a6e22e">zipfile</span>.<span style="color:#a6e22e">CopyHere</span>(<span style="color:#a6e22e">sourceFiles</span>[<span style="color:#a6e22e">i</span>]);
-    <span style="color:#66d9ef">while</span> (<span style="color:#a6e22e">zipfile</span>.<span style="color:#a6e22e">Items</span>().<span style="color:#a6e22e">Count</span> <span style="color:#f92672">&lt;=</span> <span style="color:#a6e22e">i</span>){
-      <span style="color:#a6e22e">WScript</span>.<span style="color:#a6e22e">Sleep</span>(<span style="color:#ae81ff">100</span>);
-    }
-  }
-}
+  <span class="nx">zipfile</span> <span class="o">=</span> <span class="nx">shell</span><span class="p">.</span><span class="nx">NameSpace</span><span class="p">(</span><span class="nx">zipFilePath</span><span class="p">)</span><span class="p">;</span>
+  <span class="k">for</span><span class="p">(</span><span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">sourceFiles</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span><span class="p">{</span>
+  <span class="nx">zipfile</span><span class="p">.</span><span class="nx">CopyHere</span><span class="p">(</span><span class="nx">sourceFiles</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span><span class="p">)</span><span class="p">;</span>
+    <span class="k">while</span> <span class="p">(</span><span class="nx">zipfile</span><span class="p">.</span><span class="nx">Items</span><span class="p">(</span><span class="p">)</span><span class="p">.</span><span class="nx">Count</span> <span class="o">&lt;=</span> <span class="nx">i</span><span class="p">)</span><span class="p">{</span>
+      <span class="nx">WScript</span><span class="p">.</span><span class="nx">Sleep</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div>
 		</div>
 		<footer class="post__footer">
@@ -170,6 +170,7 @@ CopyHereは非同期なので、すぐにJS側に制御が返ってくるが、
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/essay/openldap-proxy-to-active-directory-ubuntu/">Ubuntu 18.04でActive DirectoryへのOpenLDAPプロキシを構築</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/input-tabs-in-browsers-textbox/">ブラウザのテキストボックスにタブを入力する</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/install-google-backup-sync-on-wine/">Googleのバックアップと同期をWineでUbuntuにインストールする</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/install-wine5-to-ubuntu-18.04/">Ubuntu 18.04に最新のWINE(5.0.0)をインストールする</a></li>
@@ -179,7 +180,6 @@ CopyHereは非同期なので、すぐにJS側に制御が返ってくるが、
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20191026-brm1026-utsunomiya-300km/">2019年10月26日 BRM1026 宇都宮300km 栃木路</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20191011-brm1011-shikoku-1000km/">2019年10月11日 BRM1011 四国一周1000km</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20190928-brm928-yatsugatake-400km/">2019年09月28日 BRM928 八ヶ岳1周 400km</a></li>
-			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20190815-brm815-shari-asahikawa-300km/">2019年08月15日 BRM815 斜里旭川300 PW北海道</a></li>
 		</ul>
 	</div>
 </div>
@@ -196,6 +196,7 @@ CopyHereは非同期なので、すぐにJS側に制御が返ってくるが、
 <div class="widget-taglist widget">
 	<h4 class="widget__title">Tags</h4>
 	<div class="widget__content">
+		<a class="widget-taglist__link widget__link btn" href="/tags/activedirectory" title="Activedirectory">Activedirectory (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/apache" title="Apache">Apache (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/bat" title="Bat">Bat (2)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/chrome" title="Chrome">Chrome (1)</a>
@@ -216,7 +217,7 @@ CopyHereは非同期なので、すぐにJS側に制御が返ってくるが、
 		<a class="widget-taglist__link widget__link btn" href="/tags/powershell" title="Powershell">Powershell (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/sql" title="Sql">Sql (3)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/sqlserver" title="Sqlserver">Sqlserver (1)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/ubuntu" title="Ubuntu">Ubuntu (11)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/ubuntu" title="Ubuntu">Ubuntu (12)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/vba" title="Vba">Vba (3)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/windows" title="Windows">Windows (11)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/wine" title="Wine">Wine (2)</a>
@@ -227,7 +228,7 @@ CopyHereは非同期なので、すぐにJS側に制御が返ってくるが、
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%83%91%e3%83%af%e3%83%8f%e3%83%a9" title="パワハラ">パワハラ (5)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%83%96%e3%83%ab%e3%83%99" title="ブルベ">ブルベ (14)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e7%94%9f%e6%b4%bb" title="生活">生活 (1)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%e7%a4%be%e5%86%85se" title="社内se">社内se (15)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%e7%a4%be%e5%86%85se" title="社内se">社内se (16)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e8%87%aa%e8%bb%a2%e8%bb%8a" title="自転車">自転車 (9)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e9%9b%91%e5%ad%a6" title="雑学">雑学 (1)</a>
 	</div>
@@ -264,7 +265,5 @@ CopyHereは非同期なので、すぐにJS側に制御が返ってくるが、
 </footer>
 	</div>
 <script async defer src="/js/menu.js"></script>
-<script type="text/javascript" src="/js/highlight.pack.js"></script>
-<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
 <script data-ad-client="ca-pub-1947596544782119" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script></body>
 </html>
