@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html class="no-js" lang="ja-jp">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Ubuntu Server 18.04 &#43; SoftEther VPN &#43; AdGuard Homeで広告ブロック機能付きVPNを構築する - 330k info</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+	<meta property="og:title" content="Ubuntu Server 18.04 &#43; SoftEther VPN &#43; AdGuard Homeで広告ブロック機能付きVPNを構築する" />
+<meta property="og:description" content="どんなWi-Fiネットワークにいるときも広告をブロックしたいので、自前でAdGuard Home(DNSサーバ)とSoftEther VPN Serverを構築した。
+しかし、Ubuntuではデフォルトでsystemd-resolvedがDNSサーバとして53/udpをListenしているので、自分で別のDNSコンテンツサーバを立ち上げる際にはこのStub Serverを止める必要がある。
+さらにVPNクライアントからのDNSリクエストが来た時、きちんとAdGuard Home DNSサーバに転送してくれないので、追加の設定が必要だった。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.330k.info/essay/ubuntu-softether-adguardhome-dns-setting/" />
+<meta property="article:published_time" content="2020-02-02T21:41:17+09:00" />
+<meta property="article:modified_time" content="2020-02-02T21:41:17+09:00" />
+
+	<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Ubuntu Server 18.04 &#43; SoftEther VPN &#43; AdGuard Homeで広告ブロック機能付きVPNを構築する"/>
+<meta name="twitter:description" content="どんなWi-Fiネットワークにいるときも広告をブロックしたいので、自前でAdGuard Home(DNSサーバ)とSoftEther VPN Serverを構築した。
+しかし、Ubuntuではデフォルトでsystemd-resolvedがDNSサーバとして53/udpをListenしているので、自分で別のDNSコンテンツサーバを立ち上げる際にはこのStub Serverを止める必要がある。
+さらにVPNクライアントからのDNSリクエストが来た時、きちんとAdGuard Home DNSサーバに転送してくれないので、追加の設定が必要だった。"/>
+
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+	<link rel="stylesheet" href="/css/style.css">
+	<link rel="stylesheet" href="/css/330k.css">
+	<link rel="shortcut icon" href="/favicon.ico">
+		
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-5655726-3', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+	<link rel="stylesheet" href="/css/syntax.css">
+</head>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container">
+		<div class="logo">
+			<a class="logo__link" href="/" title="330k info" rel="home">
+				<div class="logo__title">330k info</div>
+				
+			</a>
+		</div>
+		
+<nav class="menu">
+	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+		<span class="menu__btn-title" tabindex="-1">Menu</span>
+	</button>
+	<ul class="menu__list">
+		<li class="menu__item">
+			<a class="menu__link" href="/bicycle/">Bicycles</a>
+		</li>
+		<li class="menu__item menu__item--active">
+			<a class="menu__link" href="/essay/">Essays</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/software/">Softwares</a>
+		</li>
+	</ul>
+</nav>
+
+	</div>
+</header>
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">Ubuntu Server 18.04 &#43; SoftEther VPN &#43; AdGuard Homeで広告ブロック機能付きVPNを構築する</h1>
+			
+		</header><div class="content post__content clearfix">
+			<p>どんなWi-Fiネットワークにいるときも広告をブロックしたいので、自前でAdGuard Home(DNSサーバ)とSoftEther VPN Serverを構築した。</p>
+<p>しかし、Ubuntuではデフォルトでsystemd-resolvedがDNSサーバとして53/udpをListenしているので、自分で別のDNSコンテンツサーバを立ち上げる際にはこのStub Serverを止める必要がある。</p>
+<p>さらにVPNクライアントからのDNSリクエストが来た時、きちんとAdGuard Home DNSサーバに転送してくれないので、追加の設定が必要だった。</p>
+<h2 id="インストール要約">インストール(要約)</h2>
+<h3 id="softether-vpn-server">SoftEther VPN Server</h3>
+<p><a href="https://www.softether-download.com/ja.aspx?product=softether">SoftEther ダウンロードセンター</a>から、「SoftEther VPN Server」「Linux」「Intel x64/AMD64 (64bit)」を選択してダウンロード。
+また、ビルドに必要なパッケージもインストールして、ビルドを実行する。</p>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">sudo apt update
+sudo apt install make gcc
+
+wget https://github.com/SoftEtherVPN/SoftEtherVPN_Stable/releases/download/v4.32-9731-beta/softether-vpnserver-v4.32-9731-beta-2020.01.01-linux-x64-64bit.tar.gz
+tar xvf softether-vpnserver-v4.32-9731-beta-2020.01.01-linux-x64-64bit.tar.gz
+
+<span class="nb">cd</span> vpnserver
+sudo make
+
+sudo mv vpnserver/ /usr/local/
+<span class="nb">cd</span> /usr/local/vpnserver
+
+sudo chmod <span class="m">600</span> *
+sudo chmod <span class="m">700</span> vpn*
+</code></pre></div><p>次にシステム起動時に自動でSoftEtherも起動してほしいので、systemd用のUnitファイルも作成する。</p>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">sudo nano /etc/systemd/system/vpnserver.service
+</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-text" data-lang="text">[Unit]
+Description=SoftEther VPN Server
+After=network.target network-online.target
+
+[Service]
+ExecStart=/usr/local/vpnserver/vpnserver start
+ExecStop=/usr/local/vpnserver/vpnserver stop
+Type=forking
+RestartSec=3s
+
+[Install]
+WantedBy=multi-user.target]
+</code></pre></div><p>Unitファイルを作成したら、有効化する。</p>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">sudo systemctl daemon-reload
+sudo systemctl <span class="nb">enable</span> vpnserver
+sudo systemctl start vpnserver
+</code></pre></div><p>あとはSoftEther VPN Server Manager for Windowsを使ってVPNサーバを設定し、ユーザとパスワードを作成し、Secure NAT機能を有効にしておく(VPNクライアントにDHCPでDNSサーバ情報を配布するため)。</p>
+<p>もちろんサーバ上でコマンドラインから設定しても良い。</p>
+<h3 id="adguard-home">AdGuard Home</h3>
+<p>GitHubの<a href="https://github.com/AdguardTeam/AdGuardHome/releases">Release</a>から最新版をダウンロードして、インストール。</p>
+<p>ここでは<code>/usr/local/adguard</code>にインストールした。</p>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">wget https://github.com/AdguardTeam/AdGuardHome/releases/download/v0.100.9/AdGuardHome_linux_amd64.tar.gz
+tar xvf AdGuardHome_linux_amd64.tar.gz
+
+sudo mkdir /usr/local/adguard
+sudo mv ./AdGuardHome/* /usr/local/adguard
+</code></pre></div><p>これでAdGuard Home自体はインストールできたが、このままではsystemd-resolvedが起動したままなので、
+53/udpをListenしていてAdGuard Homeが起動できない。</p>
+<p>なので<a href="https://qiita.com/shora_kujira16/items/31d09b373809a5a44ae5">Ubuntu 18.04 の systemd-resolved で local DNS stub listener の利用をやめる</a>に記述された無効化が必要。</p>
+<p>まずは<code>/etc/systemd/resolved.conf</code>を次のように編集。</p>
+<div class="highlight"><pre class="chroma"><code class="language-text" data-lang="text">[Resolve]
+DNSStubListener=no
+</code></pre></div><p>次に<code>/etc/resolv.conf</code>を<code>/run/systemd/resolve/resolv.conf</code>にリンク。</p>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">sudo rm /etc/resolv.conf
+sudo ln -s /run/systemd/resolve/resolv.conf /etc/resolv.conf
+</code></pre></div><p>systemd-resolvedを再起動。</p>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">sudo systemctl restart systemd-resolved
+</code></pre></div><p>これで53/udpが解放されたので、AdGuard Homeが起動できるはず。</p>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell"><span class="nb">cd</span> /usr/local/adguard
+sudo ./AdGuardHome -s install
+</code></pre></div><p>ここでシステムを再起動しても自動でnetplanの設定内容が<code>/etc/resolv.conf</code>に反映される。</p>
+<p>ブラウザからAdGuard Homeの設定画面にアクセスし、最低限パスワードを設定しておく。</p>
+<h3 id="その他">その他</h3>
+<p>AWSやGCPなどを利用している場合、ネットワーク・セキュリティの設定で、外部に開放するポートを設定する必要がある(私はAWS Lightsailで行った)。</p>
+<p>SoftEther VPNで使うポートと、AdGuard Homeの管理ページのポートを開放しておく。</p>
+<p>DDoS攻撃の踏み台にされる可能性があるので、外部に向けて53/udpの開放はしない。</p>
+<h2 id="softether-vpnクライアントからのdnsアクセスで広告ブロックできない現象への対応">SoftEther VPNクライアントからのDNSアクセスで広告ブロックできない現象への対応</h2>
+<p>カーネルのアップデートで再起動した後にクライアントからVPN接続すると、
+SoftEtherでSecure NATで自分(デフォルトでは<code>192.168.30.1</code>)をDNSサーバに指定しているのに、ブロックがきかない現象が発生した。</p>
+<p>AdGuard Homeのログにも出ないので、もしかしたらSoftEtherのSecure NATでは、起動時(または設定変更時)の<code>/etc/resolv.conf</code>にあるDNSサーバにクエリーを転送しているのかもしれない。</p>
+<p>この仮説が正しいかどうかは確認していないが、試行錯誤の結果、以下の2通りの解決方法を発見した。</p>
+<h3 id="解決先1-netplan経由でetcresolvconfに自サーバを追加">解決先1: netplan経由で/etc/resolv.confに自サーバを追加</h3>
+<p>上記のsystemd-resolvedのStub Serverを無効化した場合は、netplanの設定内容が<code>/etc/resolv.conf</code>に(間接的に)反映される。</p>
+<p>netplanではDHCPでアドレスを受け取る場合も、DNSサーバの情報を追加できるので、追加して設定する。</p>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">sudo nano /etc/netplan/50-cloud-init.yaml
+</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="k">network</span><span class="p">:</span><span class="w">
+</span><span class="w"></span><span class="w">    </span><span class="k">version</span><span class="p">:</span><span class="w"> </span><span class="m">2</span><span class="w">
+</span><span class="w">    </span><span class="k">ethernets</span><span class="p">:</span><span class="w">
+</span><span class="w"></span><span class="w">        </span><span class="k">eth0</span><span class="p">:</span><span class="w">
+</span><span class="w"></span><span class="w">            </span><span class="k">dhcp4</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="w">            </span><span class="k">match</span><span class="p">:</span><span class="w">
+</span><span class="w"></span><span class="w">                </span><span class="k">macaddress</span><span class="p">:</span><span class="w"> </span><span class="m">06</span><span class="p">:</span><span class="m">15</span><span class="p">:</span>3e<span class="p">:</span>a7<span class="p">:</span>4c<span class="p">:</span><span class="m">30</span><span class="w">
+</span><span class="w">            </span><span class="k">set-name</span><span class="p">:</span><span class="w"> </span>eth0<span class="w">
+</span><span class="w">            </span><span class="k">nameservers</span><span class="p">:</span><span class="w">
+</span><span class="w"></span><span class="w">                </span><span class="k">addresses</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="m">127.0</span><span class="m">.0</span><span class="m">.1</span><span class="w"> </span><span class="p">]</span><span class="w">
+</span></code></pre></div><p>AWS Lightsailの場合、DHCPでAWS内のDNSサーバ(<code>172.26.0.2</code>など)が指定されるのだが、上記により<code>127.0.0.1</code>が優先DNSサーバに指定される。</p>
+<p>確認するには、下記のコマンドを実行。</p>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">systemd-resolve --status
+</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-text" data-lang="text">(中略)
+         DNS Servers: 127.0.0.1
+                      172.26.0.2
+</code></pre></div><p>これでVPNクライアントからのDNSリクエストに対して、<code>127.0.0.1</code>が応答するようになる。</p>
+<p>ちなみに、この設定を行うと、VPNクライアント以外のDNSリクエストもすべて<code>127.0.0.1</code>(AdGuard Home)に向くので、AdGuard Homeの管理画面でログを見ることができる。</p>
+<h3 id="解決先2-securenatで配布するdnsに内部アドレスを指定する">解決先2: SecureNATで配布するDNSに、内部アドレスを指定する</h3>
+<p>AWSやGCPのように、サーバが直接グローバルIPアドレスを持っておらず、プライベートIPアドレスを持っている場合のみ使用可能な方法。</p>
+<p>SoftEther VPN ServerのSecure NATの設定で、DNSサーバがデフォルトで192.168.30.1となっている部分をサーバのプライベートIPアドレス(<code>172.26.0.57</code>)に指定すると、きちんと広告ブロックできる。</p>
+		</div>
+		<footer class="post__footer">
+			
+<div class="post__tags tags clearfix">
+	<svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item"><a class="tags__link btn" href="/tags/ubuntu/" rel="tag">Ubuntu</a></li>
+		<li class="tags__item"><a class="tags__link btn" href="/tags/vpn/" rel="tag">VPN</a></li>
+	</ul>
+</div>
+		</footer>
+	</article>
+</main>
+
+
+<nav class="post-nav flex">
+	<div class="post-nav__item post-nav__item--prev">
+		<a class="post-nav__link" href="/essay/openldap-proxy-to-active-directory-ubuntu/" rel="prev"><span class="post-nav__caption">«&thinsp;Previous</span><p class="post-nav__post-title">Ubuntu 18.04でActive DirectoryへのOpenLDAPプロキシを構築</p></a>
+	</div>
+</nav>
+
+
+			</div>
+			<aside class="sidebar sidebar--left">
+<div class="widget-recent widget">
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/software/create_gpx_with_google_maps/">Google MapsでGPXルート作成</a></li>
+			<li class="widget__item"><a class="widget__link" href="/software/simplify_gpx/">GPXトラックログを間引く・簡略化</a></li>
+			<li class="widget__item"><a class="widget__link" href="/bicycle/introduction/">自転車について</a></li>
+			<li class="widget__item"><a class="widget__link" href="/bicycle/equipments/">携行品・装備品</a></li>
+		</ul>
+	</div>
+</div>
+<div class="widget-recent widget">
+	<h4 class="widget__title">Recent Posts</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/essay/ubuntu-softether-adguardhome-dns-setting/">Ubuntu Server 18.04 &#43; SoftEther VPN &#43; AdGuard Homeで広告ブロック機能付きVPNを構築する</a></li>
+			<li class="widget__item"><a class="widget__link" href="/essay/openldap-proxy-to-active-directory-ubuntu/">Ubuntu 18.04でActive DirectoryへのOpenLDAPプロキシを構築</a></li>
+			<li class="widget__item"><a class="widget__link" href="/essay/input-tabs-in-browsers-textbox/">ブラウザのテキストボックスにタブを入力する</a></li>
+			<li class="widget__item"><a class="widget__link" href="/essay/install-google-backup-sync-on-wine/">Googleのバックアップと同期をWineでUbuntuにインストールする</a></li>
+			<li class="widget__item"><a class="widget__link" href="/essay/install-wine5-to-ubuntu-18.04/">Ubuntu 18.04に最新のWINE(5.0.0)をインストールする</a></li>
+			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20200112-brm112-nihonbashi-200km/">2020年01月12日 BRM112 日本橋200 ツールド23区</a></li>
+			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20191124-chiba-200km/">2019年11月24日 走行会1124 晩秋のクラシック</a></li>
+			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20191116-mystery-brevet/">2019年11月16日 ミステリーブルベ</a></li>
+			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20191026-brm1026-utsunomiya-300km/">2019年10月26日 BRM1026 宇都宮300km 栃木路</a></li>
+			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20191011-brm1011-shikoku-1000km/">2019年10月11日 BRM1011 四国一周1000km</a></li>
+		</ul>
+	</div>
+</div>
+<div class="widget-categories widget">
+	<h4 class="widget__title">Categories</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/categories/%e3%82%bd%e3%83%95%e3%83%88%e3%82%a6%e3%82%a7%e3%82%a2">ソフトウェア</a></li>
+			<li class="widget__item"><a class="widget__link" href="/categories/%e8%87%aa%e8%bb%a2%e8%bb%8a">自転車</a></li>
+			<li class="widget__item"><a class="widget__link" href="/categories/%e9%9b%91%e8%a8%98%e5%b8%b3">雑記帳</a></li>
+		</ul>
+	</div>
+</div>
+<div class="widget-taglist widget">
+	<h4 class="widget__title">Tags</h4>
+	<div class="widget__content">
+		<a class="widget-taglist__link widget__link btn" href="/tags/apache" title="Apache">Apache (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/bat" title="Bat">Bat (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/chrome" title="Chrome">Chrome (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/cuda" title="Cuda">Cuda (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/ffmpeg" title="Ffmpeg">Ffmpeg (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/github" title="Github">Github (5)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/gmail" title="Gmail">Gmail (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/google" title="Google">Google (3)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/gps" title="Gps">Gps (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/gpx" title="Gpx">Gpx (4)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/hta" title="Hta">Hta (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/java" title="Java">Java (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/javascript" title="Javascript">Javascript (6)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/linux" title="Linux">Linux (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/mathematica" title="Mathematica">Mathematica (20)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/net" title="Net">Net (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/powerpoint" title="Powerpoint">Powerpoint (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/powershell" title="Powershell">Powershell (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/sql" title="Sql">Sql (3)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/sqlserver" title="Sqlserver">Sqlserver (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/ubuntu" title="Ubuntu">Ubuntu (13)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/vba" title="Vba">Vba (3)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/vpn" title="Vpn">Vpn (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/windows" title="Windows">Windows (11)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/wine" title="Wine">Wine (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/wsh" title="Wsh">Wsh (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/zabbix" title="Zabbix">Zabbix (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%82%a2%e3%83%ab%e3%82%b4%e3%83%aa%e3%82%ba%e3%83%a0" title="アルゴリズム">アルゴリズム (5)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%83%84%e3%83%bc%e3%83%aa%e3%83%b3%e3%82%b0" title="ツーリング">ツーリング (47)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%83%91%e3%83%af%e3%83%8f%e3%83%a9" title="パワハラ">パワハラ (5)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%83%96%e3%83%ab%e3%83%99" title="ブルベ">ブルベ (14)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%e7%94%9f%e6%b4%bb" title="生活">生活 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%e7%a4%be%e5%86%85se" title="社内se">社内se (16)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%e8%87%aa%e8%bb%a2%e8%bb%8a" title="自転車">自転車 (9)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%e9%9b%91%e5%ad%a6" title="雑学">雑学 (1)</a>
+	</div>
+</div>
+<div class="widget-social widget">
+	<h4 class="widget-social__title widget__title">Social</h4>
+	<div class="widget-social__content widget__content">
+		<div class="widget-social__item widget__item">
+			<a class="widget-social__link widget__link btn" title="Twitter" rel="noopener noreferrer" href="https://twitter.com/330k" target="_blank">
+				<svg class="widget-social__link-icon icon icon-twitter" width="24" height="24" viewBox="0 0 384 312"><path d="m384 36.9c-14.1 6.3-29.3 10.5-45.2 12.4 16.3-9.7 28.8-25.2 34.6-43.6-15.2 9-32.1 15.6-50 19.1-14.4-15.2-34.9-24.8-57.5-24.8-43.5 0-78.8 35.3-78.8 78.8 0 6.2.7 12.2 2 17.9-65.5-3.3-123.5-34.6-162.4-82.3-6.7 11.6-10.6 25.2-10.6 39.6 0 27.3 13.9 51.4 35 65.6-12.9-.4-25.1-4-35.7-9.9v1c0 38.2 27.2 70 63.2 77.2-6.6 1.8-13.6 2.8-20.8 2.8-5.1 0-10-.5-14.8-1.4 10 31.3 39.1 54.1 73.6 54.7-27 21.1-60.9 33.7-97.8 33.7-6.4 0-12.6-.4-18.8-1.1 34.9 22.4 76.3 35.4 120.8 35.4 144.9 0 224.1-120 224.1-224.1 0-3.4-.1-6.8-.2-10.2 15.4-11.1 28.7-25 39.3-40.8z"/></svg>
+				<span>Twitter</span>
+			</a>
+		</div>
+	</div>
+</div><div class="widget-search widget">
+	<form class="widget-search__form" role="search" method="get" action="https://google.com/search">
+		<label>
+			<input class="widget-search__field" type="search" placeholder="SEARCH..." value="" name="q" aria-label="SEARCH...">
+		</label>
+		<input class="widget-search__submit" type="submit" value="Search">
+		<input type="hidden" name="sitesearch" value="https://www.330k.info/" />
+	</form>
+</div>
+</aside>
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2020 330k info.
+			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
+		</div>
+	</div>
+</footer>
+	</div>
+<script async defer src="/js/menu.js"></script>
+<script data-ad-client="ca-pub-1947596544782119" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script></body>
+</html>

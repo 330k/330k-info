@@ -11,7 +11,7 @@
 <meta property="og:description" content="自転車ツーリングの記録やソフトウェアの配布、Mathematicaをメインにしたプログラミングの覚書や日ごろの雑感など。" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://www.330k.info/essay/" />
-<meta property="og:updated_time" content="2020-02-01T18:10:03+09:00" />
+<meta property="og:updated_time" content="2020-02-02T21:41:17+09:00" />
 
 	<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Essays"/>
@@ -75,6 +75,25 @@ if (!doNotTrack) {
 	<header class="main__header">
 		<h1 class="main__title">Essays</h1>
 	</header><article class="list__item post">
+	<figure class="list__thumbnail">
+		<a href="https://www.330k.info/essay/ubuntu-softether-adguardhome-dns-setting/">
+			<img src="https://camo.githubusercontent.com/5e2bfa17c27773b70ca99ddd3b70995f15d24b62/68747470733a2f2f63646e2e616467756172642e636f6d2f7075626c69632f416467756172642f436f6d6d6f6e2f616467756172645f686f6d652e676966" alt="Ubuntu Server 18.04 &#43; SoftEther VPN &#43; AdGuard Homeで広告ブロック機能付きVPNを構築する" />
+		</a>
+	</figure>
+	<header class="list__header">
+		<h3 class="list__title post__title ">
+			<a href="/essay/ubuntu-softether-adguardhome-dns-setting/" rel="bookmark">
+			Ubuntu Server 18.04 &#43; SoftEther VPN &#43; AdGuard Homeで広告ブロック機能付きVPNを構築する
+			</a>
+		</h3>
+		
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		<p>どんなWi-Fiネットワークにいるときも広告をブロックしたいので、自前でAdGuard Home(DNSサーバ)とSoftEther VPN Serverを構築した。</p>
+<p>しかし、Ubuntuではデフォルトでsystemd-resolvedがDNSサーバとして53/udpをListenしているので、自分で別のDNSコンテンツサーバを立ち上げる際にはこのStub Serverを止める必要がある。</p>
+<p>さらにVPNクライアントからのDNSリクエストが来た時、きちんとAdGuard Home DNSサーバに転送してくれないので、追加の設定が必要だった。</p>
+	</div>
+</article><article class="list__item post">
 	<figure class="list__thumbnail">
 		<a href="https://www.330k.info/essay/openldap-proxy-to-active-directory-ubuntu/">
 			<img src="https://www.openldap.org/images/headers/LDAPworm.gif" alt="Ubuntu 18.04でActive DirectoryへのOpenLDAPプロキシを構築" />
@@ -219,18 +238,6 @@ if (!doNotTrack) {
 	<div class="content list__excerpt post__content clearfix">
 		Ubuntu 17.10から18.04 LTSにアップデートしたところ、それまで使っていたコミックビューア(comix)がなくなっていた。 Ubuntuソフトウェアから探したところ、mcomix-tabetaiというSnapパッケージがあったので、それをインストールしたところ、日本語が全部豆腐に・・・。 ということで、一旦英語にして起動。 ターミナルから以下のコマンドを入力。 $ LANG=C mcomix-tabetai 設定(Preferences)から言
 	</div>
-</article><article class="list__item post">
-	<header class="list__header">
-		<h3 class="list__title post__title ">
-			<a href="/essay/letsencrypt-ubuntu-1604/" rel="bookmark">
-			Ubuntu 16.04 &#43; Apache 2.4にLet&#39;s Encryptを設定する
-			</a>
-		</h3>
-		
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		海外の格安VPS、AlaphaRacksでHTTPSのHTTPサーバを立てたので、その作業録。 環境 Chinese Year Specialという年間$8のプランを契約。 Ubuntuのバージョンは16.04なのだが、カーネルのバージョンは2.6.32の古め。 そのため、dockerは使えない。 # uname -r 2.6.32-042stab127.2 # cat /etc/lsb-release DISTRIB_ID=Ubuntu DISTRIB_RELEASE=16.04 DISTRIB_CODENAME=xenial DISTRIB_DESCRIPTION=&#34;Ubuntu 16.04 LTS&#34; ApacheのSSLモジュール有効化 SSLモジュールを有効化し、a2ensiteでHTTPSサイトを有効化
-	</div>
 </article>
 </main>
 
@@ -257,6 +264,7 @@ if (!doNotTrack) {
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/essay/ubuntu-softether-adguardhome-dns-setting/">Ubuntu Server 18.04 &#43; SoftEther VPN &#43; AdGuard Homeで広告ブロック機能付きVPNを構築する</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/openldap-proxy-to-active-directory-ubuntu/">Ubuntu 18.04でActive DirectoryへのOpenLDAPプロキシを構築</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/input-tabs-in-browsers-textbox/">ブラウザのテキストボックスにタブを入力する</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/install-google-backup-sync-on-wine/">Googleのバックアップと同期をWineでUbuntuにインストールする</a></li>
@@ -266,7 +274,6 @@ if (!doNotTrack) {
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20191116-mystery-brevet/">2019年11月16日 ミステリーブルベ</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20191026-brm1026-utsunomiya-300km/">2019年10月26日 BRM1026 宇都宮300km 栃木路</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20191011-brm1011-shikoku-1000km/">2019年10月11日 BRM1011 四国一周1000km</a></li>
-			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20190928-brm928-yatsugatake-400km/">2019年09月28日 BRM928 八ヶ岳1周 400km</a></li>
 		</ul>
 	</div>
 </div>
@@ -303,8 +310,9 @@ if (!doNotTrack) {
 		<a class="widget-taglist__link widget__link btn" href="/tags/powershell" title="Powershell">Powershell (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/sql" title="Sql">Sql (3)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/sqlserver" title="Sqlserver">Sqlserver (1)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/ubuntu" title="Ubuntu">Ubuntu (12)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/ubuntu" title="Ubuntu">Ubuntu (13)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/vba" title="Vba">Vba (3)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/vpn" title="Vpn">Vpn (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/windows" title="Windows">Windows (11)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/wine" title="Wine">Wine (2)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/wsh" title="Wsh">Wsh (2)</a>

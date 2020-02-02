@@ -11,7 +11,7 @@
 <meta property="og:description" content="自転車ツーリングの記録やソフトウェアの配布、Mathematicaをメインにしたプログラミングの覚書や日ごろの雑感など。" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://www.330k.info/essay/" />
-<meta property="og:updated_time" content="2020-02-01T18:10:03+09:00" />
+<meta property="og:updated_time" content="2020-02-02T21:41:17+09:00" />
 
 	<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Essays"/>
@@ -75,6 +75,18 @@ if (!doNotTrack) {
 	<header class="main__header">
 		<h1 class="main__title">Essays</h1>
 	</header><article class="list__item post">
+	<header class="list__header">
+		<h3 class="list__title post__title ">
+			<a href="/essay/zabbix_ricoh_printer_template_xml/" rel="bookmark">
+			RICOHプリンタ・複合機用のZabbix用テンプレート
+			</a>
+		</h3>
+		
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		社内で余っているサーバにZabbixを入れたので、 SNMP v2cでRICOH製のプリンタ・複合機の各種情報を取得するXMLテンプレートをhttps://github.com/coreyramirezgomez/Ricoh-Printers-Zabbix-Template/blob/master/Ricoh%20Printers%20SNMP%20Template.xml を元に作成した。 変更箇所としては以
+	</div>
+</article><article class="list__item post">
 	<header class="list__header">
 		<h3 class="list__title post__title ">
 			<a href="/essay/create_uuid_vba/" rel="bookmark">
@@ -192,18 +204,6 @@ if (!doNotTrack) {
 	<div class="content list__excerpt post__content clearfix">
 		公式の情報はこちら : https://www.mozilla.jp/business/faq/tech/setting-management/ 上記公式サイトにあるように、ActiveDirectory環境にあるFirefoxの設定を管理する場合、 クライアント側にアドオン(GPO for Firefox)をインストール サーバ側に管理用テンプレート(ADMファイル)を配置 グループポリシーエディタで設定を編集 という手順が推奨されている。ただ、この方法だと 既存ユーザへの自動設定は不可(ユーザにアドオンをインストールしてもらう必要が
 	</div>
-</article><article class="list__item post">
-	<header class="list__header">
-		<h3 class="list__title post__title ">
-			<a href="/essay/convert-dvd-to-mpeg-in-a-batch-file/" rel="bookmark">
-			ffmpegでDVDをMPEGファイルに変換
-			</a>
-		</h3>
-		
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		社内でアシスタントからDVDをPCで再生できるようにしたい、という要望を受けたので、 DVDを入れて起動するだけのバッチファイルを作ってみた。 DVDの中身のVTS_01_1.VOB, VTS_01_2.VOBというファイルをffmpegの-iオプションに指定すれば良いのだが、 パイプ記号「|」を使ってファイル名を連結しなければならない。 ただ、バッチファイル中でパイプ記号が入ると上手く連結できないので、 試
-	</div>
 </article>
 </main>
 
@@ -231,6 +231,7 @@ if (!doNotTrack) {
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/essay/ubuntu-softether-adguardhome-dns-setting/">Ubuntu Server 18.04 &#43; SoftEther VPN &#43; AdGuard Homeで広告ブロック機能付きVPNを構築する</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/openldap-proxy-to-active-directory-ubuntu/">Ubuntu 18.04でActive DirectoryへのOpenLDAPプロキシを構築</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/input-tabs-in-browsers-textbox/">ブラウザのテキストボックスにタブを入力する</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/install-google-backup-sync-on-wine/">Googleのバックアップと同期をWineでUbuntuにインストールする</a></li>
@@ -240,7 +241,6 @@ if (!doNotTrack) {
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20191116-mystery-brevet/">2019年11月16日 ミステリーブルベ</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20191026-brm1026-utsunomiya-300km/">2019年10月26日 BRM1026 宇都宮300km 栃木路</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20191011-brm1011-shikoku-1000km/">2019年10月11日 BRM1011 四国一周1000km</a></li>
-			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20190928-brm928-yatsugatake-400km/">2019年09月28日 BRM928 八ヶ岳1周 400km</a></li>
 		</ul>
 	</div>
 </div>
@@ -277,8 +277,9 @@ if (!doNotTrack) {
 		<a class="widget-taglist__link widget__link btn" href="/tags/powershell" title="Powershell">Powershell (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/sql" title="Sql">Sql (3)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/sqlserver" title="Sqlserver">Sqlserver (1)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/ubuntu" title="Ubuntu">Ubuntu (12)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/ubuntu" title="Ubuntu">Ubuntu (13)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/vba" title="Vba">Vba (3)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/vpn" title="Vpn">Vpn (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/windows" title="Windows">Windows (11)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/wine" title="Wine">Wine (2)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/wsh" title="Wsh">Wsh (2)</a>
