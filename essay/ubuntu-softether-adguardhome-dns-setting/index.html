@@ -180,7 +180,8 @@ SoftEtherでSecure NATで自分(デフォルトでは<code>192.168.30.1</code>)�
 <p>ちなみに、この設定を行うと、VPNクライアント以外のDNSリクエストもすべて<code>127.0.0.1</code>(AdGuard Home)に向くので、AdGuard Homeの管理画面でログを見ることができる。</p>
 <h3 id="解決先2-securenatで配布するdnsに内部アドレスを指定する">解決先2: SecureNATで配布するDNSに、内部アドレスを指定する</h3>
 <p>AWSやGCPのように、サーバが直接グローバルIPアドレスを持っておらず、プライベートIPアドレスを持っている場合のみ使用可能な方法。</p>
-<p>SoftEther VPN ServerのSecure NATの設定で、DNSサーバがデフォルトで192.168.30.1となっている部分をサーバのプライベートIPアドレス(<code>172.26.0.57</code>)に指定すると、きちんと広告ブロックできる。</p>
+<p>SoftEther VPN ServerのSecure NATの設定で、DNSサーバがデフォルトで192.168.30.1となっている部分をサーバのプライベートIPアドレス(<code>172.26.0.57</code>など)に指定すると、きちんと広告ブロックできる。</p>
+<p>ただしプライベートIPアドレスが変更されるとSoftEtherの設定変更が必要。</p>
 		</div>
 		<footer class="post__footer">
 			
