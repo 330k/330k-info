@@ -169,7 +169,8 @@ SoftEtherでSecure NATで自分(デフォルトでは<code>192.168.30.1</code>)�
 </span><span class="w">            </span><span class="k">set-name</span><span class="p">:</span><span class="w"> </span>eth0<span class="w">
 </span><span class="w">            </span><span class="k">nameservers</span><span class="p">:</span><span class="w">
 </span><span class="w"></span><span class="w">                </span><span class="k">addresses</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="m">127.0</span><span class="m">.0</span><span class="m">.1</span><span class="w"> </span><span class="p">]</span><span class="w">
-</span></code></pre></div><p>AWS Lightsailの場合、DHCPでAWS内のDNSサーバ(<code>172.26.0.2</code>など)が指定されるのだが、上記により<code>127.0.0.1</code>が優先DNSサーバに指定される。</p>
+</span></code></pre></div><p>下の2行が追加部分。</p>
+<p>AWS Lightsailの場合、DHCPでAWS内のDNSサーバ(<code>172.26.0.2</code>など)が指定されるのだが、上記により<code>127.0.0.1</code>が優先DNSサーバに指定される。</p>
 <p>確認するには、下記のコマンドを実行。</p>
 <div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">systemd-resolve --status
 </code></pre></div><div class="highlight"><pre class="chroma"><code class="language-text" data-lang="text">(中略)
