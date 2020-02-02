@@ -6,10 +6,22 @@
     <description>Recent content in Ubuntu on 330k info</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Sun, 02 Feb 2020 21:41:17 +0900</lastBuildDate>
+    <lastBuildDate>Mon, 03 Feb 2020 00:57:37 +0900</lastBuildDate>
     
 	<atom:link href="https://www.330k.info/tags/ubuntu/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>将棋倶楽部24をdockerで動かす</title>
+      <link>https://www.330k.info/essay/shogi24-on-ubuntu-docker/</link>
+      <pubDate>Mon, 03 Feb 2020 00:57:37 +0900</pubDate>
+      
+      <guid>https://www.330k.info/essay/shogi24-on-ubuntu-docker/</guid>
+      <description>&lt;p&gt;将棋倶楽部24は強者が集まるネット将棋として有名だが、残念なことにJava製である。&lt;/p&gt;
+&lt;p&gt;UbuntuをはじめLinuxではブラウザでJavaプラグインが動作しないようになっているので、ウェブ版は動かない。&lt;/p&gt;
+&lt;p&gt;アプリ版ももうかなり古くなったJava 8(しかもOpenJDKではなくOracle)を要求するので、そのために古いJavaを入れたくない。&lt;/p&gt;
+&lt;p&gt;なのでdockerでコンテナにして動くようにしてみた。&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Ubuntu Server 18.04 &#43; SoftEther VPN &#43; AdGuard Homeで広告ブロック機能付きVPNを構築する</title>

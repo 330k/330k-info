@@ -6,15 +6,24 @@
     <description>Recent content in Tags on 330k info</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Sun, 02 Feb 2020 21:41:17 +0900</lastBuildDate>
+    <lastBuildDate>Mon, 03 Feb 2020 00:57:37 +0900</lastBuildDate>
     
 	<atom:link href="https://www.330k.info/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
+      <title>Java</title>
+      <link>https://www.330k.info/tags/java/</link>
+      <pubDate>Mon, 03 Feb 2020 00:57:37 +0900</pubDate>
+      
+      <guid>https://www.330k.info/tags/java/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Ubuntu</title>
       <link>https://www.330k.info/tags/ubuntu/</link>
-      <pubDate>Sun, 02 Feb 2020 21:41:17 +0900</pubDate>
+      <pubDate>Mon, 03 Feb 2020 00:57:37 +0900</pubDate>
       
       <guid>https://www.330k.info/tags/ubuntu/</guid>
       <description></description>
@@ -287,15 +296,6 @@
       <pubDate>Thu, 15 Oct 2015 00:00:00 +0900</pubDate>
       
       <guid>https://www.330k.info/tags/ffmpeg/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Java</title>
-      <link>https://www.330k.info/tags/java/</link>
-      <pubDate>Sat, 25 Aug 2012 08:56:00 +0900</pubDate>
-      
-      <guid>https://www.330k.info/tags/java/</guid>
       <description></description>
     </item>
     
