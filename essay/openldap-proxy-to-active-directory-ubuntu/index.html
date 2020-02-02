@@ -93,7 +93,7 @@ sudo apt install slapd ldap-utils
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">sudo wget http://lism.sourceforge.jp/docs/ad.schema -O /etc/ldap/schema/ad.schema
 </code></pre></div><p>設定ファイルを次のように作成。</p>
 <div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">$ sudo nano /etc/ldap/slapd.conf
-</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-text" data-lang="text">include                 /etc/ldap/schema/core.schema
+</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">include                 /etc/ldap/schema/core.schema
 include                 /etc/ldap/schema/cosine.schema
 include                 /etc/ldap/schema/inetorgperson.schema
 include                 /etc/ldap/schema/misc.schema
@@ -106,25 +106,25 @@ moduleload              back_ldap
 pidfile                 /var/run/slapd/slapd.pid
 argsfile                /var/run/slapd/slapd.args
 
-loglevel                256
+loglevel                <span class="m">256</span>
 
-# アクセス制限の設定
+<span class="c1"># アクセス制限の設定</span>
 access to *
-  by peername.ip=127.0.0.1 read
-  by peername.ip=***.***.***.*** read
+  by peername.ip<span class="o">=</span>127.0.0.1 <span class="nb">read</span>
+  by peername.ip<span class="o">=</span>***.***.***.*** <span class="nb">read</span> <span class="c1"># このLDAPプロキシにアクセスする機器のIP</span>
   by * none
 
-# LDAPプロキシの設定
+<span class="c1"># LDAPプロキシの設定</span>
 database        ldap
-readonly        yes
-suffix          &#34;OU=****,DC=***,DC=****&#34;
-uri             ldap://***.***.***.***:389/
+<span class="nb">readonly</span>        yes
+suffix          <span class="s2">&#34;OU=****,DC=***,DC=****&#34;</span> <span class="c1"># ADで検索するときに追加するsuffix</span>
+uri             ldap://***.***.***.***:389/ <span class="c1"># ADサーバのIPアドレス</span>
 rebind-as-user
-idassert-bind   bindmethod=simple
-                binddn=&#34;CN=****,OU=****,OU=***,DC=***,DC=***&#34; # ADでの検索を実行するユーザ
-                credentials=&#34;******&#34; # パスワード
-                mode=none
-idassert-authzFrom      &#34;*&#34;
+idassert-bind   <span class="nv">bindmethod</span><span class="o">=</span>simple
+                <span class="nv">binddn</span><span class="o">=</span><span class="s2">&#34;CN=****,OU=****,OU=***,DC=***,DC=***&#34;</span> <span class="c1"># ADでの検索を実行するユーザ</span>
+                <span class="nv">credentials</span><span class="o">=</span><span class="s2">&#34;******&#34;</span> <span class="c1"># パスワード</span>
+                <span class="nv">mode</span><span class="o">=</span>none
+idassert-authzFrom      <span class="s2">&#34;*&#34;</span>
 </code></pre></div><p><code>/etc/ldap/slapd.d</code>ディレクトリがあると<code>/etc/ldap/slapd.conf</code>を読んでくれないので、ディレクトリの方をリネーム。</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">sudo mv /etc/ldap/slapd.d /etc/ldap/_slapd.d
 </code></pre></div><p>設定できたのでサービスを再起動。</p>
