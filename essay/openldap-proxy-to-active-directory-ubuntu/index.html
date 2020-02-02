@@ -8,7 +8,9 @@
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
 	<meta property="og:title" content="Ubuntu 18.04でActive DirectoryへのOpenLDAPプロキシを構築" />
-<meta property="og:description" content="概要 Active Directoryのあるネットワークとは別のネットワークにある機器(具体的には電子黒板)から、LDAPでADユーザ情報を検索したいという要件が。 VPNなどの設定もできないので、DMZにOpenLDAPによるLDAP用のプロキシサーバを立ててみた。 手順 Ubuntu Server 18.04をインストールした状態で、まずはOpenLDAPサーバとクライアントをaptでインストール。 インストール中にパスワードなどを尋ねら" />
+<meta property="og:description" content="概要
+Active Directoryのあるネットワークとは別のネットワークにある機器(具体的には電子黒板)から、LDAPでADユーザ情報を検索したいという要件が。
+VPNなどの設定もできないので、DMZにOpenLDAPによるLDAP用のプロキシサーバを立ててみた。" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.330k.info/essay/openldap-proxy-to-active-directory-ubuntu/" />
 <meta property="article:published_time" content="2020-02-01T18:10:03+09:00" />
@@ -16,7 +18,9 @@
 
 	<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Ubuntu 18.04でActive DirectoryへのOpenLDAPプロキシを構築"/>
-<meta name="twitter:description" content="概要 Active Directoryのあるネットワークとは別のネットワークにある機器(具体的には電子黒板)から、LDAPでADユーザ情報を検索したいという要件が。 VPNなどの設定もできないので、DMZにOpenLDAPによるLDAP用のプロキシサーバを立ててみた。 手順 Ubuntu Server 18.04をインストールした状態で、まずはOpenLDAPサーバとクライアントをaptでインストール。 インストール中にパスワードなどを尋ねら"/>
+<meta name="twitter:description" content="概要
+Active Directoryのあるネットワークとは別のネットワークにある機器(具体的には電子黒板)から、LDAPでADユーザ情報を検索したいという要件が。
+VPNなどの設定もできないので、DMZにOpenLDAPによるLDAP用のプロキシサーバを立ててみた。"/>
 
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -128,7 +132,6 @@ idassert-authzFrom      &#34;*&#34;
 </code></pre></div><h2 id="確認">確認</h2>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">ldapsearch -b <span class="s2">&#34;(ADユーザのDN)&#34;</span> -w <span class="s2">&#34;(パスワード)&#34;</span> -h 127.0.0.1 -x <span class="s2">&#34;OU=***,DC=***,DC=***(BaseDN)&#34;</span>
 </code></pre></div><p>ちなみに<code>127.0.0.1</code>を<code>localhost</code>にすると、IPv6(<code>::1</code>)になってしまい、アクセス許可をしていないので弾かれるのでご注意。</p>
-
 		</div>
 		<footer class="post__footer">
 			
@@ -137,7 +140,6 @@ idassert-authzFrom      &#34;*&#34;
 	<ul class="tags__list">
 		<li class="tags__item"><a class="tags__link btn" href="/tags/%E7%A4%BE%E5%86%85se/" rel="tag">社内SE</a></li>
 		<li class="tags__item"><a class="tags__link btn" href="/tags/ubuntu/" rel="tag">Ubuntu</a></li>
-		<li class="tags__item"><a class="tags__link btn" href="/tags/activedirectory/" rel="tag">ActiveDirectory</a></li>
 	</ul>
 </div>
 		</footer>
@@ -194,7 +196,6 @@ idassert-authzFrom      &#34;*&#34;
 <div class="widget-taglist widget">
 	<h4 class="widget__title">Tags</h4>
 	<div class="widget__content">
-		<a class="widget-taglist__link widget__link btn" href="/tags/activedirectory" title="Activedirectory">Activedirectory (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/apache" title="Apache">Apache (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/bat" title="Bat">Bat (2)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/chrome" title="Chrome">Chrome (1)</a>

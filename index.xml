@@ -17,7 +17,9 @@
       <pubDate>Sat, 01 Feb 2020 18:10:03 +0900</pubDate>
       
       <guid>https://www.330k.info/essay/openldap-proxy-to-active-directory-ubuntu/</guid>
-      <description>概要 Active Directoryのあるネットワークとは別のネットワークにある機器(具体的には電子黒板)から、LDAPでADユーザ情報を検索したいという要件が。 VPNなどの設定もできないので、DMZにOpenLDAPによるLDAP用のプロキシサーバを立ててみた。 手順 Ubuntu Server 18.04をインストールした状態で、まずはOpenLDAPサーバとクライアントをaptでインストール。 インストール中にパスワードなどを尋ねら</description>
+      <description>&lt;h1 id=&#34;概要&#34;&gt;概要&lt;/h1&gt;
+&lt;p&gt;Active Directoryのあるネットワークとは別のネットワークにある機器(具体的には電子黒板)から、LDAPでADユーザ情報を検索したいという要件が。&lt;/p&gt;
+&lt;p&gt;VPNなどの設定もできないので、DMZにOpenLDAPによるLDAP用のプロキシサーバを立ててみた。&lt;/p&gt;</description>
     </item>
     
     <item>
