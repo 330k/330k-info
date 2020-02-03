@@ -90,7 +90,8 @@ if (!doNotTrack) {
 <h2 id="結論">結論</h2>
 <p>東京道場限定だが、後述の手順を使って作ったDockerイメージをDocker Hubにアップロードしているので、すぐ使いたい方は以下でOK。</p>
 <div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">xhost local:
-docker run -it --rm -e DISPLAY -e <span class="nv">QT_X11_NO_MITSHM</span><span class="o">=</span><span class="m">1</span> -e <span class="nv">_JAVA_OPTIONS</span><span class="o">=</span><span class="s2">&#34;-Duser.language=ja -Duser.country=JP&#34;</span> -v /tmp/.X11-unix:/tmp/.X11-unix 330k/shogi24
+docker run -it --rm -e DISPLAY -e <span class="nv">QT_X11_NO_MITSHM</span><span class="o">=</span><span class="m">1</span> -e <span class="nv">_JAVA_OPTIONS</span><span class="o">=</span><span class="s2">&#34;-Duser.language=ja -Duser.country=JP&#34;</span> <span class="se">\
+</span><span class="se"></span>  -v /tmp/.X11-unix:/tmp/.X11-unix 330k/shogi24
 </code></pre></div><h2 id="dockerイメージ作成">Dockerイメージ作成</h2>
 <p>GUIでの操作が必要となったため、Dockerfile化できなかった。</p>
 <p>以下の手順で同様のDockerイメージを作成できる。</p>
@@ -150,7 +151,8 @@ CONTAINER IDは<code>docker ps</code>で調べる。</p>
 </code></pre></div><p>コミットが出来たらコンテナに戻って終了する。</p>
 <p>以降は起動したいときに、以下を入力すれば起動できる。</p>
 <div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">xhost local:
-docker run -it --rm -e DISPLAY -e <span class="nv">QT_X11_NO_MITSHM</span><span class="o">=</span><span class="m">1</span> -e <span class="nv">_JAVA_OPTIONS</span><span class="o">=</span><span class="s2">&#34;-Duser.language=ja -Duser.country=JP&#34;</span> -v /tmp/.X11-unix:/tmp/.X11-unix <span class="o">(</span>上で付けた名前<span class="o">)</span>
+docker run -it --rm -e DISPLAY -e <span class="nv">QT_X11_NO_MITSHM</span><span class="o">=</span><span class="m">1</span> -e <span class="nv">_JAVA_OPTIONS</span><span class="o">=</span><span class="s2">&#34;-Duser.language=ja -Duser.country=JP&#34;</span> <span class="se">\
+</span><span class="se"></span>  -v /tmp/.X11-unix:/tmp/.X11-unix <span class="o">(</span>上で付けた名前<span class="o">)</span>
 </code></pre></div><figure>
     <img src="2020-02-03%2021-15-49.png"/> 
 </figure>
