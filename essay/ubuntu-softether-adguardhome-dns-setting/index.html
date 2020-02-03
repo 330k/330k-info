@@ -115,7 +115,7 @@ Type=forking
 RestartSec=3s
 
 [Install]
-WantedBy=multi-user.target]
+WantedBy=multi-user.target
 </code></pre></div><p>Unitファイルを作成したら、有効化する。</p>
 <div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">sudo systemctl daemon-reload
 sudo systemctl <span class="nb">enable</span> vpnserver

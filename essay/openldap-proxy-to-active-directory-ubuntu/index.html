@@ -8,8 +8,7 @@
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
 	<meta property="og:title" content="Ubuntu 18.04でActive DirectoryへのOpenLDAPプロキシを構築" />
-<meta property="og:description" content="概要
-Active Directoryのあるネットワークとは別のネットワークにある機器(具体的には電子黒板)から、LDAPでADユーザ情報を検索したいという要件が。
+<meta property="og:description" content="Active Directoryのあるネットワークとは別のネットワークにある機器(具体的には電子黒板)から、LDAPでADユーザ情報を検索したいという要件が。
 VPNなどの設定もできないので、DMZにOpenLDAPによるLDAP用のプロキシサーバを立ててみた。" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.330k.info/essay/openldap-proxy-to-active-directory-ubuntu/" />
@@ -18,8 +17,7 @@ VPNなどの設定もできないので、DMZにOpenLDAPによるLDAP用のプ�
 
 	<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Ubuntu 18.04でActive DirectoryへのOpenLDAPプロキシを構築"/>
-<meta name="twitter:description" content="概要
-Active Directoryのあるネットワークとは別のネットワークにある機器(具体的には電子黒板)から、LDAPでADユーザ情報を検索したいという要件が。
+<meta name="twitter:description" content="Active Directoryのあるネットワークとは別のネットワークにある機器(具体的には電子黒板)から、LDAPでADユーザ情報を検索したいという要件が。
 VPNなどの設定もできないので、DMZにOpenLDAPによるLDAP用のプロキシサーバを立ててみた。"/>
 
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
@@ -81,8 +79,7 @@ if (!doNotTrack) {
 			<h1 class="post__title">Ubuntu 18.04でActive DirectoryへのOpenLDAPプロキシを構築</h1>
 			
 		</header><div class="content post__content clearfix">
-			<h1 id="概要">概要</h1>
-<p>Active Directoryのあるネットワークとは別のネットワークにある機器(具体的には電子黒板)から、LDAPでADユーザ情報を検索したいという要件が。</p>
+			<p>Active Directoryのあるネットワークとは別のネットワークにある機器(具体的には電子黒板)から、LDAPでADユーザ情報を検索したいという要件が。</p>
 <p>VPNなどの設定もできないので、DMZにOpenLDAPによるLDAP用のプロキシサーバを立ててみた。</p>
 <h2 id="手順">手順</h2>
 <p>Ubuntu Server 18.04をインストールした状態で、まずはOpenLDAPサーバとクライアントをaptでインストール。
