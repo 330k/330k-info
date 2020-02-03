@@ -19,7 +19,7 @@
       <guid>https://www.330k.info/essay/shogi24-on-ubuntu-docker/</guid>
       <description>&lt;p&gt;将棋倶楽部24は強者が集まるネット将棋として有名だが、残念なことにJava製である。&lt;/p&gt;
 &lt;p&gt;UbuntuをはじめLinuxではブラウザでJavaプラグインが動作しないようになっているので、ウェブ版は動かない。&lt;/p&gt;
-&lt;p&gt;アプリ版ももうかなり古くなったJava 8(しかもOpenJDKではなくOracle)を要求するので、そのために古いJavaを入れたくない。&lt;/p&gt;
+&lt;p&gt;アプリ版ももうかなり古くなったJava 8(しかもOpenJDKではなくOracle)を要求するので、そのために古いJavaを今の環境に入れたくない。&lt;/p&gt;
 &lt;p&gt;なのでdockerでコンテナにして動くようにしてみた。&lt;/p&gt;</description>
     </item>
     
