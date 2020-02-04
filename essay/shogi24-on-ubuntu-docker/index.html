@@ -100,28 +100,32 @@ docker run -it --rm -e DISPLAY -e <span class="nv">QT_X11_NO_MITSHM</span><span 
 <div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">xhost local:
 docker run -it --rm -e DISPLAY -e <span class="nv">QT_X11_NO_MITSHM</span><span class="o">=</span><span class="m">1</span> -v /tmp/.X11-unix:/tmp/.X11-unix relateiq/oracle-java8
 </code></pre></div><p>以下はコンテナ内で作業。</p>
-<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">apt-get update
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell"><span class="c1"># GUIの表示に必要なパッケージと日本語フォントをインストール</span>
+apt-get update
 apt-get install libxtst6 libxi6 libxrender1 fonts-takao-pgothic -y
+<span class="c1"># 日本語フォントをJavaで使えるようにシンボリックリンクを作成</span>
 mkdir /usr/lib/jvm/java-8-oracle/jre/lib/fonts/fallback/
 ln -s /usr/share/fonts/truetype/takao-gothic/TakaoPGothic.ttf /usr/lib/jvm/java-8-oracle/jre/lib/fonts/fallback/
-
+<span class="c1"># 東京道場のjnlpファイルをダウンロード(他の道場を使いたい場合は変更)</span>
 <span class="nb">cd</span> /root
 wget http://internet2.shogidojo.net/dojo/24TokyoDojo.jnlp
 
+<span class="c1"># 一度起動を試みる</span>
 javaws 24TokyoDojo.jnlp
-</code></pre></div><p>ここまで行くと、</p>
+</code></pre></div><p>すると、</p>
 <div class="highlight"><pre class="chroma"><code class="language-text" data-lang="text">Disabling Java as it is too old and likely to be out of date. To reenable use jcontrol utility
 </code></pre></div><p>というメッセージが出るので、指示に従って<code>jcontrol</code>を起動する。</p>
 <div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">jcontrol
-</code></pre></div><p>するとJavaの設定画面が表示されるので、「Enable Java content in the browser」にチェックを入れて「OK」。</p>
+</code></pre></div><p>Javaの設定画面が表示されるので、「Enable Java content in the browser」にチェックを入れて「OK」。</p>
 <figure>
     <img src="2020-02-03%2001-07-52.png"/> 
 </figure>
 
 <p>これで将棋倶楽部24が起動できるようになる。</p>
+<p>もう一度起動。</p>
 <div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">javaws 24TokyoDojo.jnlp
-</code></pre></div><p>最初の起動時だけ、起動を許可するか、ショートカットを作成するかどうかを聞かれるので回答しておく。
-<figure>
+</code></pre></div><p>最初の起動時だけ、起動を許可するか、ショートカットを作成するかどうかを聞かれるので回答しておく。</p>
+<p><figure>
     <img src="2020-02-03%2001-17-59.png"/> 
 </figure>
 
