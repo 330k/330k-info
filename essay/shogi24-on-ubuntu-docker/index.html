@@ -93,10 +93,9 @@ if (!doNotTrack) {
 docker run -it --rm -e DISPLAY -e <span class="nv">QT_X11_NO_MITSHM</span><span class="o">=</span><span class="m">1</span> -e <span class="nv">_JAVA_OPTIONS</span><span class="o">=</span><span class="s2">&#34;-Duser.language=ja -Duser.country=JP&#34;</span> <span class="se">\
 </span><span class="se"></span>  -v /tmp/.X11-unix:/tmp/.X11-unix 330k/shogi24
 </code></pre></div><h2 id="dockerイメージ作成">Dockerイメージ作成</h2>
-<p>GUIでの操作が必要となったため、Dockerfile化できなかった。</p>
-<p>以下の手順で同様のDockerイメージを作成できる。</p>
+<p>GUIでの操作が必要となったため、Dockerfile化できなかったが、以下の手順で同様のDockerイメージを作成できる。</p>
 <p>現在はwebupd8teリポジトリが変わっており、同じDockerfileを使ってもOracle Java 8をインストールできないので、
-まずはOracle Java 8をインストール済みのイメージを起動。</p>
+過去に作られたOracle Java 8をインストール済みのイメージを起動。</p>
 <div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">xhost local:
 docker run -it --rm -e DISPLAY -e <span class="nv">QT_X11_NO_MITSHM</span><span class="o">=</span><span class="m">1</span> -v /tmp/.X11-unix:/tmp/.X11-unix relateiq/oracle-java8
 </code></pre></div><p>以下はコンテナ内で作業。</p>
