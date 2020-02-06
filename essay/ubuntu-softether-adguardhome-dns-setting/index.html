@@ -10,7 +10,7 @@
 	<meta property="og:title" content="Ubuntu Server 18.04 &#43; SoftEther VPN &#43; AdGuard Homeで広告ブロック機能付きVPNを構築する" />
 <meta property="og:description" content="どんなWi-Fiネットワークにいるときも広告をブロックしたいので、自前でAdGuard Home(DNSサーバ)とSoftEther VPN Serverを構築した。
 しかし、Ubuntuではデフォルトでsystemd-resolvedがDNSサーバとして53/udpをListenしているので、自分で別のDNSコンテンツサーバを立ち上げる際にはこのStub Serverを止める必要がある。
-さらにVPNクライアントからのDNSリクエストが来た時、きちんとAdGuard Home DNSサーバに転送してくれないので、追加の設定が必要だった。" />
+さらにサーバ再起動後、VPNクライアントからのDNSリクエストが来た時、きちんとAdGuard Home DNSサーバに転送してくれないので、追加の設定が必要だった。" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.330k.info/essay/ubuntu-softether-adguardhome-dns-setting/" />
 <meta property="article:published_time" content="2020-02-02T21:41:17+09:00" />
@@ -20,7 +20,7 @@
 <meta name="twitter:title" content="Ubuntu Server 18.04 &#43; SoftEther VPN &#43; AdGuard Homeで広告ブロック機能付きVPNを構築する"/>
 <meta name="twitter:description" content="どんなWi-Fiネットワークにいるときも広告をブロックしたいので、自前でAdGuard Home(DNSサーバ)とSoftEther VPN Serverを構築した。
 しかし、Ubuntuではデフォルトでsystemd-resolvedがDNSサーバとして53/udpをListenしているので、自分で別のDNSコンテンツサーバを立ち上げる際にはこのStub Serverを止める必要がある。
-さらにVPNクライアントからのDNSリクエストが来た時、きちんとAdGuard Home DNSサーバに転送してくれないので、追加の設定が必要だった。"/>
+さらにサーバ再起動後、VPNクライアントからのDNSリクエストが来た時、きちんとAdGuard Home DNSサーバに転送してくれないので、追加の設定が必要だった。"/>
 
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -83,7 +83,7 @@ if (!doNotTrack) {
 		</header><div class="content post__content clearfix">
 			<p>どんなWi-Fiネットワークにいるときも広告をブロックしたいので、自前でAdGuard Home(DNSサーバ)とSoftEther VPN Serverを構築した。</p>
 <p>しかし、Ubuntuではデフォルトでsystemd-resolvedがDNSサーバとして53/udpをListenしているので、自分で別のDNSコンテンツサーバを立ち上げる際にはこのStub Serverを止める必要がある。</p>
-<p>さらにVPNクライアントからのDNSリクエストが来た時、きちんとAdGuard Home DNSサーバに転送してくれないので、追加の設定が必要だった。</p>
+<p>さらにサーバ再起動後、VPNクライアントからのDNSリクエストが来た時、きちんとAdGuard Home DNSサーバに転送してくれないので、追加の設定が必要だった。</p>
 <h2 id="インストール要約">インストール(要約)</h2>
 <h3 id="softether-vpn-server">SoftEther VPN Server</h3>
 <p><a href="https://www.softether-download.com/ja.aspx?product=softether">SoftEther ダウンロードセンター</a>から、「SoftEther VPN Server」「Linux」「Intel x64/AMD64 (64bit)」を選択してダウンロード。
@@ -120,9 +120,7 @@ WantedBy=multi-user.target
 <div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">sudo systemctl daemon-reload
 sudo systemctl <span class="nb">enable</span> vpnserver
 sudo systemctl start vpnserver
-</code></pre></div><p>あとはSoftEther VPN Server Manager for Windowsを使ってVPNサーバを設定し、ユーザとパスワードを作成し、Secure NAT機能を有効にしておく(VPNクライアントにDHCPでDNSサーバ情報を配布するため)。</p>
-<p>もちろんサーバ上でコマンドラインから設定しても良い。</p>
-<h3 id="adguard-home">AdGuard Home</h3>
+</code></pre></div><h3 id="adguard-home">AdGuard Home</h3>
 <p>GitHubの<a href="https://github.com/AdguardTeam/AdGuardHome/releases">Release</a>から最新版をダウンロードして、インストール。</p>
 <p>ここでは<code>/usr/local/adguard</code>にインストールした。</p>
 <div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">wget https://github.com/AdguardTeam/AdGuardHome/releases/download/v0.100.9/AdGuardHome_linux_amd64.tar.gz
@@ -145,12 +143,14 @@ sudo ln -s /run/systemd/resolve/resolv.conf /etc/resolv.conf
 <div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell"><span class="nb">cd</span> /usr/local/adguard
 sudo ./AdGuardHome -s install
 </code></pre></div><p>ここでシステムを再起動しても自動でnetplanの設定内容が<code>/etc/resolv.conf</code>に反映される。</p>
-<p>ブラウザからAdGuard Homeの設定画面にアクセスし、最低限パスワードを設定しておく。</p>
-<h3 id="その他">その他</h3>
+<h3 id="ネットワーク設定と初期設定">ネットワーク設定と初期設定</h3>
 <p>AWSやGCPなどを利用している場合、ネットワーク・セキュリティの設定で、外部に開放するポートを設定する必要がある(私はAWS Lightsailで行った)。</p>
 <p>SoftEther VPNで使うポートと、AdGuard Homeの管理ページのポートを開放しておく。</p>
 <p>DDoS攻撃の踏み台にされる可能性があるので、外部に向けて53/udpの開放はしない。</p>
-<h2 id="softether-vpnクライアントからのdnsアクセスで広告ブロックできない現象への対応">SoftEther VPNクライアントからのDNSアクセスで広告ブロックできない現象への対応</h2>
+<p>ブラウザからAdGuard Homeの初期設定等を行っておく。</p>
+<p>あとはSoftEther VPN Server Manager for WindowsかコマンドラインでVPNサーバを設定する。</p>
+<p>接続するユーザとパスワードを作成し、Secure NAT機能を有効にしておく(VPNクライアントにDHCPでDNSサーバ情報を配布するため)。</p>
+<h2 id="softether-vpnクライアントからのdnsリクエストが広告ブロックできない現象への対応">SoftEther VPNクライアントからのDNSリクエストが広告ブロックできない現象への対応</h2>
 <p>カーネルのアップデートで再起動した後にクライアントからVPN接続すると、
 SoftEtherでSecure NATで自分(デフォルトでは<code>192.168.30.1</code>)をDNSサーバに指定しているのに、ブロックがきかない現象が発生した。</p>
 <p>AdGuard Homeのログにも出ないので、もしかしたらSoftEtherのSecure NATでは、起動時(または設定変更時)の<code>/etc/resolv.conf</code>にあるDNSサーバにクエリーを転送しているのかもしれない。</p>

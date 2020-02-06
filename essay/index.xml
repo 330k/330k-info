@@ -31,7 +31,7 @@
       <guid>https://www.330k.info/essay/ubuntu-softether-adguardhome-dns-setting/</guid>
       <description>&lt;p&gt;どんなWi-Fiネットワークにいるときも広告をブロックしたいので、自前でAdGuard Home(DNSサーバ)とSoftEther VPN Serverを構築した。&lt;/p&gt;
 &lt;p&gt;しかし、Ubuntuではデフォルトでsystemd-resolvedがDNSサーバとして53/udpをListenしているので、自分で別のDNSコンテンツサーバを立ち上げる際にはこのStub Serverを止める必要がある。&lt;/p&gt;
-&lt;p&gt;さらにVPNクライアントからのDNSリクエストが来た時、きちんとAdGuard Home DNSサーバに転送してくれないので、追加の設定が必要だった。&lt;/p&gt;</description>
+&lt;p&gt;さらにサーバ再起動後、VPNクライアントからのDNSリクエストが来た時、きちんとAdGuard Home DNSサーバに転送してくれないので、追加の設定が必要だった。&lt;/p&gt;</description>
     </item>
     
     <item>
