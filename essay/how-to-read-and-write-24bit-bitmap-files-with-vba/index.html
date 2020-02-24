@@ -89,7 +89,7 @@ VBAの機能のみで実装しており、外部のライブラリには依存�
 <li>おまけ機能として、ReadGIFJPEGでGIFとJPEGファイルも読み込みにも対応。</li>
 </ul>
 <div class="highlight"><pre class="chroma"><code class="language-VB.NET" data-lang="VB.NET"><span class="c">&#39; Bitmap module by 330k
-</span><span class="c"></span><span class="c">&#39; Copyright (C) 2010 330k, All rights reserved.
+</span><span class="c">&#39; Copyright (C) 2010 330k, All rights reserved.
 </span><span class="c"></span><span class="k">Option</span> <span class="n">Explicit</span>
 
 <span class="k">Public</span> <span class="n">Type</span> <span class="n">RGBTRIPLE</span>
@@ -126,7 +126,7 @@ VBAの機能のみで実装しており、外部のライブラリには依存�
 <span class="k">End</span> <span class="n">Type</span>
 
 <span class="c">&#39; Read a bitmap file (1, 4, 8, 24 and 32 bit) and return image as 2-dimension array of RGBTriple
-</span><span class="c"></span><span class="k">Public</span> <span class="k">Function</span> <span class="nf">ReadBitmap</span><span class="p">(</span><span class="n">strFileName</span> <span class="ow">As</span> <span class="kt">String</span><span class="p">)</span> <span class="ow">As</span> <span class="n">RGBTRIPLE</span><span class="p">(</span><span class="p">)</span>
+</span><span class="c"></span><span class="k">Public</span> <span class="k">Function</span> <span class="nf">ReadBitmap</span><span class="p">(</span><span class="n">strFileName</span> <span class="ow">As</span> <span class="kt">String</span><span class="p">)</span> <span class="ow">As</span> <span class="n">RGBTRIPLE</span><span class="p">()</span>
     <span class="k">Dim</span> <span class="n">i</span> <span class="ow">As</span> <span class="kt">Long</span>
     <span class="k">Dim</span> <span class="n">j</span> <span class="ow">As</span> <span class="kt">Long</span>
     <span class="k">Dim</span> <span class="n">n</span> <span class="ow">As</span> <span class="kt">Long</span>
@@ -134,19 +134,19 @@ VBAの機能のみで実装しており、外部のライブラリには依存�
     <span class="k">Dim</span> <span class="n">bjHeader</span> <span class="ow">As</span> <span class="n">BITMAPFILEHEADER</span>
     <span class="k">Dim</span> <span class="n">biHeader</span> <span class="ow">As</span> <span class="n">BitmapInfoHeader</span>
     <span class="k">Dim</span> <span class="n">lngColors</span> <span class="ow">As</span> <span class="kt">Long</span>
-    <span class="k">Dim</span> <span class="n">rgbData</span><span class="p">(</span><span class="p">)</span> <span class="ow">As</span> <span class="n">RGBTRIPLE</span>
+    <span class="k">Dim</span> <span class="n">rgbData</span><span class="p">()</span> <span class="ow">As</span> <span class="n">RGBTRIPLE</span>
     <span class="k">Dim</span> <span class="n">rgbTemp</span> <span class="ow">As</span> <span class="n">RGBTRIPLE</span>
-    <span class="k">Dim</span> <span class="n">rgbTable3</span><span class="p">(</span><span class="p">)</span> <span class="ow">As</span> <span class="n">RGBTRIPLE</span>
-    <span class="k">Dim</span> <span class="n">rgbTable4</span><span class="p">(</span><span class="p">)</span> <span class="ow">As</span> <span class="n">RGBQUAD</span>
+    <span class="k">Dim</span> <span class="n">rgbTable3</span><span class="p">()</span> <span class="ow">As</span> <span class="n">RGBTRIPLE</span>
+    <span class="k">Dim</span> <span class="n">rgbTable4</span><span class="p">()</span> <span class="ow">As</span> <span class="n">RGBQUAD</span>
     <span class="k">Dim</span> <span class="n">bytTemp</span> <span class="ow">As</span> <span class="kt">Byte</span>
     
-    <span class="n">intFileNumber</span> <span class="o">=</span> <span class="n">FreeFile</span><span class="p">(</span><span class="p">)</span>
+    <span class="n">intFileNumber</span> <span class="o">=</span> <span class="n">FreeFile</span><span class="p">()</span>
     <span class="n">Open</span> <span class="n">strFileName</span> <span class="k">For</span> <span class="n">Binary</span> <span class="ow">As</span> <span class="n">intFileNumber</span>
         <span class="k">Get</span> <span class="n">intFileNumber</span><span class="p">,</span> <span class="p">,</span> <span class="n">bjHeader</span>
         <span class="k">Get</span> <span class="n">intFileNumber</span><span class="p">,</span> <span class="p">,</span> <span class="n">biHeader</span>
         
         <span class="k">ReDim</span> <span class="n">rgbData</span><span class="p">(</span><span class="n">0</span> <span class="k">To</span> <span class="n">biHeader</span><span class="p">.</span><span class="n">biHeight</span> <span class="o">-</span> <span class="n">1</span><span class="p">,</span> <span class="n">0</span> <span class="k">To</span> <span class="n">biHeader</span><span class="p">.</span><span class="n">biWidth</span> <span class="o">-</span> <span class="n">1</span><span class="p">)</span> <span class="ow">As</span> <span class="n">RGBTRIPLE</span>
-        <span class="n">n</span> <span class="o">=</span> <span class="p">(</span><span class="n">4</span> <span class="o">-</span> <span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">Int</span><span class="p">(</span><span class="o">-</span><span class="n">biHeader</span><span class="p">.</span><span class="n">biWidth</span> <span class="o">*</span> <span class="p">(</span><span class="n">biHeader</span><span class="p">.</span><span class="n">biBitCount</span> <span class="o">/</span> <span class="n">8</span><span class="p">)</span><span class="p">)</span><span class="p">)</span> <span class="ow">Mod</span> <span class="n">4</span><span class="p">)</span><span class="p">)</span> <span class="ow">Mod</span> <span class="n">4</span>
+        <span class="n">n</span> <span class="o">=</span> <span class="p">(</span><span class="n">4</span> <span class="o">-</span> <span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">Int</span><span class="p">(</span><span class="o">-</span><span class="n">biHeader</span><span class="p">.</span><span class="n">biWidth</span> <span class="o">*</span> <span class="p">(</span><span class="n">biHeader</span><span class="p">.</span><span class="n">biBitCount</span> <span class="o">/</span> <span class="n">8</span><span class="p">)))</span> <span class="ow">Mod</span> <span class="n">4</span><span class="p">))</span> <span class="ow">Mod</span> <span class="n">4</span>
         <span class="n">lngColors</span> <span class="o">=</span> <span class="n">IIf</span><span class="p">(</span><span class="n">biHeader</span><span class="p">.</span><span class="n">biClrUsed</span> <span class="o">=</span> <span class="n">0</span><span class="p">,</span> <span class="n">2</span> <span class="o">^</span> <span class="n">biHeader</span><span class="p">.</span><span class="n">biBitCount</span><span class="p">,</span> <span class="n">biHeader</span><span class="p">.</span><span class="n">biClrUsed</span><span class="p">)</span>
         
         <span class="k">Select</span> <span class="k">Case</span> <span class="n">biHeader</span><span class="p">.</span><span class="n">biBitCount</span>
@@ -229,7 +229,7 @@ VBAの機能のみで実装しており、外部のライブラリには依存�
 <span class="k">End</span> <span class="k">Function</span>
 
 <span class="c">&#39; Write a bitmap file (24-bit only) from 2-dimension array of RGBTriple
-</span><span class="c"></span><span class="k">Public</span> <span class="k">Sub</span> <span class="nf">WriteBitmap24</span><span class="p">(</span><span class="n">strFileName</span> <span class="ow">As</span> <span class="kt">String</span><span class="p">,</span> <span class="n">rgbData</span><span class="p">(</span><span class="p">)</span> <span class="ow">As</span> <span class="n">RGBTRIPLE</span><span class="p">)</span>
+</span><span class="c"></span><span class="k">Public</span> <span class="k">Sub</span> <span class="nf">WriteBitmap24</span><span class="p">(</span><span class="n">strFileName</span> <span class="ow">As</span> <span class="kt">String</span><span class="p">,</span> <span class="n">rgbData</span><span class="p">()</span> <span class="ow">As</span> <span class="n">RGBTRIPLE</span><span class="p">)</span>
     <span class="k">Dim</span> <span class="n">i</span> <span class="ow">As</span> <span class="kt">Long</span>
     <span class="k">Dim</span> <span class="n">j</span> <span class="ow">As</span> <span class="kt">Long</span>
     <span class="k">Dim</span> <span class="n">n</span> <span class="ow">As</span> <span class="kt">Long</span>
@@ -242,10 +242,10 @@ VBAの機能のみで実装しており、外部のライブラリには依存�
     
     <span class="n">lngHeight</span> <span class="o">=</span> <span class="n">UBound</span><span class="p">(</span><span class="n">rgbData</span><span class="p">,</span> <span class="n">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">1</span>
     <span class="n">lngWidth</span> <span class="o">=</span> <span class="n">UBound</span><span class="p">(</span><span class="n">rgbData</span><span class="p">,</span> <span class="n">2</span><span class="p">)</span> <span class="o">+</span> <span class="n">1</span>
-    <span class="n">n</span> <span class="o">=</span> <span class="p">(</span><span class="n">4</span> <span class="o">-</span> <span class="p">(</span><span class="n">lngWidth</span> <span class="o">*</span> <span class="n">3</span> <span class="ow">Mod</span> <span class="n">4</span><span class="p">)</span><span class="p">)</span> <span class="ow">Mod</span> <span class="n">4</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="p">(</span><span class="n">4</span> <span class="o">-</span> <span class="p">(</span><span class="n">lngWidth</span> <span class="o">*</span> <span class="n">3</span> <span class="ow">Mod</span> <span class="n">4</span><span class="p">))</span> <span class="ow">Mod</span> <span class="n">4</span>
     
     <span class="k">With</span> <span class="n">bjHeader</span>
-        <span class="p">.</span><span class="n">bfType</span> <span class="o">=</span> <span class="s">&#34;</span><span class="s">BM</span><span class="s">&#34;</span>
+        <span class="p">.</span><span class="n">bfType</span> <span class="o">=</span> <span class="s">&#34;BM&#34;</span>
         <span class="p">.</span><span class="n">bfSize</span> <span class="o">=</span> <span class="n">Len</span><span class="p">(</span><span class="n">bjHeader</span><span class="p">)</span> <span class="o">+</span> <span class="n">Len</span><span class="p">(</span><span class="n">biHeader</span><span class="p">)</span> <span class="o">+</span> <span class="n">3</span> <span class="o">*</span> <span class="n">lngHeight</span> <span class="o">*</span> <span class="n">lngWidth</span>
         <span class="p">.</span><span class="n">bjOffBits</span> <span class="o">=</span> <span class="n">Len</span><span class="p">(</span><span class="n">bjHeader</span><span class="p">)</span> <span class="o">+</span> <span class="n">Len</span><span class="p">(</span><span class="n">biHeader</span><span class="p">)</span>
     <span class="k">End</span> <span class="k">With</span>
@@ -263,11 +263,11 @@ VBAの機能のみで実装しており、外部のライブラリには依存�
         <span class="p">.</span><span class="n">biClrImporant</span> <span class="o">=</span> <span class="n">0</span>
     <span class="k">End</span> <span class="k">With</span>
     
-    <span class="k">If</span> <span class="n">Len</span><span class="p">(</span><span class="n">Dir</span><span class="p">(</span><span class="n">strFileName</span><span class="p">)</span><span class="p">)</span> <span class="k">Then</span>
+    <span class="k">If</span> <span class="n">Len</span><span class="p">(</span><span class="n">Dir</span><span class="p">(</span><span class="n">strFileName</span><span class="p">))</span> <span class="k">Then</span>
         <span class="n">Kill</span> <span class="n">strFileName</span>
     <span class="k">End</span> <span class="k">If</span>
     
-    <span class="n">intFileNumber</span> <span class="o">=</span> <span class="n">FreeFile</span><span class="p">(</span><span class="p">)</span>
+    <span class="n">intFileNumber</span> <span class="o">=</span> <span class="n">FreeFile</span><span class="p">()</span>
     <span class="n">Open</span> <span class="n">strFileName</span> <span class="k">For</span> <span class="n">Binary</span> <span class="ow">As</span> <span class="n">intFileNumber</span>
         <span class="n">Put</span> <span class="n">intFileNumber</span><span class="p">,</span> <span class="p">,</span> <span class="n">bjHeader</span>
         <span class="n">Put</span> <span class="n">intFileNumber</span><span class="p">,</span> <span class="p">,</span> <span class="n">biHeader</span>
@@ -284,12 +284,12 @@ VBAの機能のみで実装しており、外部のライブラリには依存�
 <span class="k">End</span> <span class="k">Sub</span>
 
 <span class="c">&#39; Read GIF or JPEG files as RGBTRIPLE()
-</span><span class="c"></span><span class="k">Public</span> <span class="k">Function</span> <span class="nf">ReadGIFJPEG</span><span class="p">(</span><span class="n">strFileName</span> <span class="ow">As</span> <span class="kt">String</span><span class="p">)</span> <span class="ow">As</span> <span class="n">RGBTRIPLE</span><span class="p">(</span><span class="p">)</span>
+</span><span class="c"></span><span class="k">Public</span> <span class="k">Function</span> <span class="nf">ReadGIFJPEG</span><span class="p">(</span><span class="n">strFileName</span> <span class="ow">As</span> <span class="kt">String</span><span class="p">)</span> <span class="ow">As</span> <span class="n">RGBTRIPLE</span><span class="p">()</span>
     <span class="k">Dim</span> <span class="n">objPicture</span> <span class="ow">As</span> <span class="n">IPictureDisp</span>
     <span class="k">Dim</span> <span class="n">strTempFile</span> <span class="ow">As</span> <span class="kt">String</span>
     
     <span class="k">Set</span> <span class="n">objPicture</span> <span class="o">=</span> <span class="n">LoadPicture</span><span class="p">(</span><span class="n">strFileName</span><span class="p">)</span>
-    <span class="n">strTempFile</span> <span class="o">=</span> <span class="n">GetTempName</span><span class="p">(</span><span class="p">)</span>
+    <span class="n">strTempFile</span> <span class="o">=</span> <span class="n">GetTempName</span><span class="p">()</span>
     
     <span class="n">SavePicture</span> <span class="n">objPicture</span><span class="p">,</span> <span class="n">strTempFile</span>
     
@@ -299,34 +299,34 @@ VBAの機能のみで実装しており、外部のライブラリには依存�
 <span class="k">End</span> <span class="k">Function</span>
 
 <span class="c">&#39; Private Functions
-</span><span class="c"></span><span class="k">Private</span> <span class="k">Function</span> <span class="nf">ConvertRGBQuadToRGBTriple</span><span class="p">(</span><span class="n">rgbSource</span><span class="p">(</span><span class="p">)</span> <span class="ow">As</span> <span class="n">RGBQUAD</span><span class="p">)</span> <span class="ow">As</span> <span class="n">RGBTRIPLE</span><span class="p">(</span><span class="p">)</span>
+</span><span class="c"></span><span class="k">Private</span> <span class="k">Function</span> <span class="nf">ConvertRGBQuadToRGBTriple</span><span class="p">(</span><span class="n">rgbSource</span><span class="p">()</span> <span class="ow">As</span> <span class="n">RGBQUAD</span><span class="p">)</span> <span class="ow">As</span> <span class="n">RGBTRIPLE</span><span class="p">()</span>
     <span class="k">Dim</span> <span class="n">i</span> <span class="ow">As</span> <span class="kt">Long</span>
     <span class="k">Dim</span> <span class="n">j</span> <span class="ow">As</span> <span class="kt">Long</span>
-    <span class="k">Dim</span> <span class="n">rgbResult</span><span class="p">(</span><span class="p">)</span> <span class="ow">As</span> <span class="n">RGBTRIPLE</span>
+    <span class="k">Dim</span> <span class="n">rgbResult</span><span class="p">()</span> <span class="ow">As</span> <span class="n">RGBTRIPLE</span>
     
-    <span class="k">ReDim</span> <span class="n">rgbResult</span><span class="p">(</span><span class="n">0</span> <span class="k">To</span> <span class="n">UBound</span><span class="p">(</span><span class="n">rgbSource</span><span class="p">,</span> <span class="n">1</span><span class="p">)</span><span class="p">)</span> <span class="ow">As</span> <span class="n">RGBTRIPLE</span>
+    <span class="k">ReDim</span> <span class="n">rgbResult</span><span class="p">(</span><span class="n">0</span> <span class="k">To</span> <span class="n">UBound</span><span class="p">(</span><span class="n">rgbSource</span><span class="p">,</span> <span class="n">1</span><span class="p">))</span> <span class="ow">As</span> <span class="n">RGBTRIPLE</span>
     
     <span class="k">For</span> <span class="n">i</span> <span class="o">=</span> <span class="n">0</span> <span class="k">To</span> <span class="n">UBound</span><span class="p">(</span><span class="n">rgbSource</span><span class="p">,</span> <span class="n">1</span><span class="p">)</span>
-        <span class="n">rgbResult</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="p">.</span><span class="n">rgbBlue</span> <span class="o">=</span> <span class="n">rgbSource</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="p">.</span><span class="n">rgbBlue</span>
-        <span class="n">rgbResult</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="p">.</span><span class="n">rgbGreen</span> <span class="o">=</span> <span class="n">rgbSource</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="p">.</span><span class="n">rgbGreen</span>
-        <span class="n">rgbResult</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="p">.</span><span class="n">rgbRed</span> <span class="o">=</span> <span class="n">rgbSource</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="p">.</span><span class="n">rgbRed</span>
+        <span class="n">rgbResult</span><span class="p">(</span><span class="n">i</span><span class="p">).</span><span class="n">rgbBlue</span> <span class="o">=</span> <span class="n">rgbSource</span><span class="p">(</span><span class="n">i</span><span class="p">).</span><span class="n">rgbBlue</span>
+        <span class="n">rgbResult</span><span class="p">(</span><span class="n">i</span><span class="p">).</span><span class="n">rgbGreen</span> <span class="o">=</span> <span class="n">rgbSource</span><span class="p">(</span><span class="n">i</span><span class="p">).</span><span class="n">rgbGreen</span>
+        <span class="n">rgbResult</span><span class="p">(</span><span class="n">i</span><span class="p">).</span><span class="n">rgbRed</span> <span class="o">=</span> <span class="n">rgbSource</span><span class="p">(</span><span class="n">i</span><span class="p">).</span><span class="n">rgbRed</span>
     <span class="k">Next</span>
     
     <span class="n">ConvertRGBQuadToRGBTriple</span> <span class="o">=</span> <span class="n">rgbResult</span>
 <span class="k">End</span> <span class="k">Function</span>
 
-<span class="k">Private</span> <span class="k">Function</span> <span class="nf">ConvertRGBQuadToRGBTriple2</span><span class="p">(</span><span class="n">rgbSource</span><span class="p">(</span><span class="p">)</span> <span class="ow">As</span> <span class="n">RGBQUAD</span><span class="p">)</span> <span class="ow">As</span> <span class="n">RGBTRIPLE</span><span class="p">(</span><span class="p">)</span>
+<span class="k">Private</span> <span class="k">Function</span> <span class="nf">ConvertRGBQuadToRGBTriple2</span><span class="p">(</span><span class="n">rgbSource</span><span class="p">()</span> <span class="ow">As</span> <span class="n">RGBQUAD</span><span class="p">)</span> <span class="ow">As</span> <span class="n">RGBTRIPLE</span><span class="p">()</span>
     <span class="k">Dim</span> <span class="n">i</span> <span class="ow">As</span> <span class="kt">Long</span>
     <span class="k">Dim</span> <span class="n">j</span> <span class="ow">As</span> <span class="kt">Long</span>
-    <span class="k">Dim</span> <span class="n">rgbResult</span><span class="p">(</span><span class="p">)</span> <span class="ow">As</span> <span class="n">RGBTRIPLE</span>
+    <span class="k">Dim</span> <span class="n">rgbResult</span><span class="p">()</span> <span class="ow">As</span> <span class="n">RGBTRIPLE</span>
     
-    <span class="k">ReDim</span> <span class="n">rgbResult</span><span class="p">(</span><span class="n">0</span> <span class="k">To</span> <span class="n">UBound</span><span class="p">(</span><span class="n">rgbSource</span><span class="p">,</span> <span class="n">1</span><span class="p">)</span><span class="p">,</span> <span class="n">0</span> <span class="k">To</span> <span class="n">UBound</span><span class="p">(</span><span class="n">rgbSource</span><span class="p">,</span> <span class="n">2</span><span class="p">)</span><span class="p">)</span> <span class="ow">As</span> <span class="n">RGBTRIPLE</span>
+    <span class="k">ReDim</span> <span class="n">rgbResult</span><span class="p">(</span><span class="n">0</span> <span class="k">To</span> <span class="n">UBound</span><span class="p">(</span><span class="n">rgbSource</span><span class="p">,</span> <span class="n">1</span><span class="p">),</span> <span class="n">0</span> <span class="k">To</span> <span class="n">UBound</span><span class="p">(</span><span class="n">rgbSource</span><span class="p">,</span> <span class="n">2</span><span class="p">))</span> <span class="ow">As</span> <span class="n">RGBTRIPLE</span>
     
     <span class="k">For</span> <span class="n">i</span> <span class="o">=</span> <span class="n">0</span> <span class="k">To</span> <span class="n">UBound</span><span class="p">(</span><span class="n">rgbSource</span><span class="p">,</span> <span class="n">1</span><span class="p">)</span>
         <span class="k">For</span> <span class="n">j</span> <span class="o">=</span> <span class="n">0</span> <span class="k">To</span> <span class="n">UBound</span><span class="p">(</span><span class="n">rgbSource</span><span class="p">,</span> <span class="n">2</span><span class="p">)</span>
-            <span class="n">rgbResult</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">)</span><span class="p">.</span><span class="n">rgbBlue</span> <span class="o">=</span> <span class="n">rgbSource</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">)</span><span class="p">.</span><span class="n">rgbBlue</span>
-            <span class="n">rgbResult</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">)</span><span class="p">.</span><span class="n">rgbGreen</span> <span class="o">=</span> <span class="n">rgbSource</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">)</span><span class="p">.</span><span class="n">rgbGreen</span>
-            <span class="n">rgbResult</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">)</span><span class="p">.</span><span class="n">rgbRed</span> <span class="o">=</span> <span class="n">rgbSource</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">)</span><span class="p">.</span><span class="n">rgbRed</span>
+            <span class="n">rgbResult</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">).</span><span class="n">rgbBlue</span> <span class="o">=</span> <span class="n">rgbSource</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">).</span><span class="n">rgbBlue</span>
+            <span class="n">rgbResult</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">).</span><span class="n">rgbGreen</span> <span class="o">=</span> <span class="n">rgbSource</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">).</span><span class="n">rgbGreen</span>
+            <span class="n">rgbResult</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">).</span><span class="n">rgbRed</span> <span class="o">=</span> <span class="n">rgbSource</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">).</span><span class="n">rgbRed</span>
         <span class="k">Next</span>
     <span class="k">Next</span>
     
@@ -373,6 +373,7 @@ VBAの機能のみで実装しており、外部のライブラリには依存�
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20200222-brm222-tokyo-600km/">2020年02月22日〜23日 BRM222 東京600 とことん沖縄2</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20200215-brm225-chiba-300km/">2020年02月15日 BRM215 千葉300 佐原</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/shogi24-on-ubuntu-docker/">将棋倶楽部24をUbuntu &#43; dockerで動かす</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/ubuntu-softether-adguardhome-dns-setting/">Ubuntu Server 18.04 &#43; SoftEther VPN &#43; AdGuard Homeで広告ブロック機能付きVPNを構築する</a></li>
@@ -392,7 +393,6 @@ VBAの機能のみで実装しており、外部のライブラリには依存�
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20190701-tohoku-route-4/">2019年07月01日〜08日 東北(国道4号)〜北海道</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20190622-brm622gunma600km-niigata/">2019年06月22日 BRM622群馬600(新潟周回)</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20190601-brm601-hitachi-600km/">2019年06月01日 BRM601 日立600</a></li>
-			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20190428-aizu/">2019年04月28日〜29日 会津</a></li>
 		</ul>
 	</div>
 </div>
@@ -439,7 +439,7 @@ VBAの機能のみで実装しており、外部のライブラリには依存�
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%82%a2%e3%83%ab%e3%82%b4%e3%83%aa%e3%82%ba%e3%83%a0" title="アルゴリズム">アルゴリズム (5)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%83%84%e3%83%bc%e3%83%aa%e3%83%b3%e3%82%b0" title="ツーリング">ツーリング (47)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%83%91%e3%83%af%e3%83%8f%e3%83%a9" title="パワハラ">パワハラ (5)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%83%96%e3%83%ab%e3%83%99" title="ブルベ">ブルベ (15)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%83%96%e3%83%ab%e3%83%99" title="ブルベ">ブルベ (16)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e7%94%9f%e6%b4%bb" title="生活">生活 (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e7%a4%be%e5%86%85se" title="社内se">社内se (16)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e8%87%aa%e8%bb%a2%e8%bb%8a" title="自転車">自転車 (9)</a>
