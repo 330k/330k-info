@@ -92,6 +92,11 @@ if (!doNotTrack) {
 		Mathematicaには2点の緯度と経度を与えて、その間の測地線距離を返す関数としてGeoDistanceがある。 しかしながら、ここで書かれているように、その精度には疑問が呈されているようだ。 他の有名な測地線距離の計算方法として、 ヒュベニの式(カシミール3Dが採用しているが、英語圏では情報が見つからない) 国土地理院の測量計算サイトの計算式のついてのドキュメントを実装したもの 完全な球体とみなして計
 	</div>
 </article><article class="list__item post">
+	<figure class="list__thumbnail">
+		<a href="https://www.330k.info/essay/implement-of-priority-queue-for-douglas-peucker-simplify-algorithm/">
+			<img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="Douglas-Peucker向けの優先度付きキュー実装の検討" />
+		</a>
+	</figure>
 	<header class="list__header">
 		<h3 class="list__title post__title ">
 			<a href="/essay/implement-of-priority-queue-for-douglas-peucker-simplify-algorithm/" rel="bookmark">
@@ -116,6 +121,11 @@ if (!doNotTrack) {
 		自炊した書籍をzipで作成する際、普通に圧縮すると変な順番で格納されてしまう。 実用上ほとんど問題はないのだが、なんとなくファイル名順に格納したかったので、そのやり方をメモ。 ls -1 ディレクトリ名 | zip -@rjDo0 圧縮ファイル名.zip やっていることは lsに-1オプションをつけてファイル1行ずつでファイル名を出力(デフォルトでは文字コード順) zipに-@オプションをつけ、標準入力にファイル名を渡して圧縮(残りのオプ
 	</div>
 </article><article class="list__item post">
+	<figure class="list__thumbnail">
+		<a href="https://www.330k.info/essay/read-and-write-a-local-file-with-wolfram-cdf-player/">
+			<img src="https://static.macupdate.com/products/29980/m/wolfram-cdf-player-logo.webp?v=1568303147" alt="Wolfram CDF Playerでローカルファイルの読み込みと書き込みを行う" />
+		</a>
+	</figure>
 	<header class="list__header">
 		<h3 class="list__title post__title ">
 			<a href="/essay/read-and-write-a-local-file-with-wolfram-cdf-player/" rel="bookmark">
@@ -128,6 +138,11 @@ if (!doNotTrack) {
 		Wolfram CDF Player を汎用するにあるように、 CDF PlayerでもJ/Linkを使えばローカルファイルの読み込み、書き込みができる(※CDFファイルの作成にはMathematicaが必要)。 上記リンク先ではテキストファイルを読み込む例が載っているが、バイナリファイルとして読み込んでImportStringを使えば、 Mathematicaが対応している形式すべてのファイルを読み込むことができる。 J/Linkでバイナリ
 	</div>
 </article><article class="list__item post">
+	<figure class="list__thumbnail">
+		<a href="https://www.330k.info/essay/make-a-movie-with-mathematica-and-ffmpeg/">
+			<img src="https://www.ipros.jp/public/product/image/f59/396065002/IPROS3632825140790521490.png?h=220&amp;w=220" alt="ffmpeg &#43; Mathematicaで動画ファイルを作成する" />
+		</a>
+	</figure>
 	<header class="list__header">
 		<h3 class="list__title post__title ">
 			<a href="/essay/make-a-movie-with-mathematica-and-ffmpeg/" rel="bookmark">
@@ -140,6 +155,11 @@ if (!doNotTrack) {
 		MathematicaのExportでAVIなどの動画ファイルを作成することは簡単に可能だが、 いかんせんすべてのフレームの画像を作成してからファイルに書きだすので、フレーム数に比例してメモリの使用量が多くなってしまう。 そのため長いムービーの作成は困難であった。 そこで、ffmpegと併用することでメモリ使用量を抑えつつ、長編の動画ファイルを制作する。 具体的には、 ffmpegで標準入力から読み込ませる
 	</div>
 </article><article class="list__item post">
+	<figure class="list__thumbnail">
+		<a href="https://www.330k.info/essay/process-blob-and-multibyte-string-from-sqlite-with-mathematica/">
+			<img src="https://www.ipros.jp/public/product/image/f59/396065002/IPROS3632825140790521490.png?h=220&amp;w=220" alt="MathematicaからSQLiteでBLOBとマルチバイト文字列を扱う" />
+		</a>
+	</figure>
 	<header class="list__header">
 		<h3 class="list__title post__title ">
 			<a href="/essay/process-blob-and-multibyte-string-from-sqlite-with-mathematica/" rel="bookmark">
@@ -152,6 +172,11 @@ if (!doNotTrack) {
 		ドキュメントにはないものの、MathematicaではSQLiteを扱うことができる。 しかしながら、BLOB型や文字列で日本語などを扱うには少し工夫が必要なので、メモ。 BLOB型 select 直接BLOB型をselectすると$Failedが返ってくるので、hex関数で16進文字列として返す。 db=Database`OpenDatabase[sqlitefilepath];rs=Database`QueryDatabase[db,&#34;select hex(column_name) from table_name&#34;];これを16進文字列→数値→バイト列→文字列と変換して、最後にImportStr
 	</div>
 </article><article class="list__item post">
+	<figure class="list__thumbnail">
+		<a href="https://www.330k.info/essay/how-to-make-mathematica8-process-japanese-on-ubuntu-1204-ltf-64bit/">
+			<img src="https://www.ipros.jp/public/product/image/f59/396065002/IPROS3632825140790521490.png?h=220&amp;w=220" alt="Mathematica on Ubuntu 12.04 LTSで日本語関連のトラブル" />
+		</a>
+	</figure>
 	<header class="list__header">
 		<h3 class="list__title post__title ">
 			<a href="/essay/how-to-make-mathematica8-process-japanese-on-ubuntu-1204-ltf-64bit/" rel="bookmark">
@@ -176,6 +201,11 @@ if (!doNotTrack) {
 		LS-DYNAのキーワードファイルを書きだすプログラムを書いたところ、浮動小数点数を固定文字数(10文字)にフォーマットする所でつまづいた。 具体的には String.formatやDecimalFormatの動作が遅い(String.formatよりはDecimalFormatのほうが速いが) 文字数を10文字に制限することが難しい(絶対値の大小比較を行なって桁数ごとに条件分岐をしても、四捨五入によっ
 	</div>
 </article><article class="list__item post">
+	<figure class="list__thumbnail">
+		<a href="https://www.330k.info/essay/how-to-read-and-write-24bit-bitmap-files-with-vba/">
+			<img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="VBAでビットマップ(bmp)を読み書き" />
+		</a>
+	</figure>
 	<header class="list__header">
 		<h3 class="list__title post__title ">
 			<a href="/essay/how-to-read-and-write-24bit-bitmap-files-with-vba/" rel="bookmark">
@@ -188,6 +218,11 @@ if (!doNotTrack) {
 		会社のPCでは自由にソフトウェアをインストールすることができないので、業務で使いそうなものはExcel VBAで自作していくことにした。 まずは手始めに24ビットビットマップの読み書きを行う標準モジュールを作成した。 VBAの機能のみで実装しており、外部のライブラリには依存しない。 使い方 以下のソースをOfficeのマクロで標準モジュールとしてプロジェクトへ追加する。 ReadBitmap(&ldquo;C
 	</div>
 </article><article class="list__item post">
+	<figure class="list__thumbnail">
+		<a href="https://www.330k.info/essay/how-to-optimize-mathematica-programs/">
+			<img src="https://www.ipros.jp/public/product/image/f59/396065002/IPROS3632825140790521490.png?h=220&amp;w=220" alt="Mathematicaにおけるプログラムの高速化手法" />
+		</a>
+	</figure>
 	<header class="list__header">
 		<h3 class="list__title post__title ">
 			<a href="/essay/how-to-optimize-mathematica-programs/" rel="bookmark">
