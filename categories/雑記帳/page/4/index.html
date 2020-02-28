@@ -11,7 +11,7 @@
 <meta property="og:description" content="自転車ツーリングの記録やソフトウェアの配布、Mathematicaをメインにしたプログラミングの覚書や日ごろの雑感など。" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://www.330k.info/categories/%E9%9B%91%E8%A8%98%E5%B8%B3/" />
-<meta property="og:updated_time" content="2020-02-03T00:57:37+09:00" />
+<meta property="og:updated_time" content="2020-02-28T20:55:25+09:00" />
 
 	<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="雑記帳"/>
@@ -75,6 +75,23 @@ if (!doNotTrack) {
 	<header class="main__header">
 		<h1 class="main__title">雑記帳</h1>
 	</header><article class="list__item post">
+	<figure class="list__thumbnail">
+		<a href="https://www.330k.info/essay/rescue_gps_log_from_binary_data_of_holux_m241/">
+			<img src="/essay/rescue_gps_log_from_binary_data_of_holux_m241/20160703_rescue_map.png" alt="m-241のバイナリデータからトラックログを吸い出す" />
+		</a>
+	</figure>
+	<header class="list__header">
+		<h3 class="list__title post__title ">
+			<a href="/essay/rescue_gps_log_from_binary_data_of_holux_m241/" rel="bookmark">
+			m-241のバイナリデータからトラックログを吸い出す
+			</a>
+		</h3>
+		
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		GPSロガー(Holux m-241)のメモリが破損しているのか、 実は6月30日と7月3日の軽井沢→直江津ツーリングと、9月の西九州→佐多岬ツーリングでは、 ログが破損していたため、Googleのロケーション履歴を代用している。 バイナリデータは一応吸い出せているようなので、その構造を調べると、 HOLUX m-241 LoggerUtility .trlファイル構造の覚書 より以下のような構造になっている。 1レコード20バイトの固定長 時刻4バイト 緯度
+	</div>
+</article><article class="list__item post">
 	<header class="list__header">
 		<h3 class="list__title post__title ">
 			<a href="/essay/manage_firefox_settings_with_group_policy_without_gpo_for_firefox/" rel="bookmark">
@@ -222,23 +239,6 @@ if (!doNotTrack) {
 	<div class="content list__excerpt post__content clearfix">
 		私が現在乗っている自転車はSURLYのCROSS-CHECKで、一応シクロクロスの分類に入る。 なので、購入時はカンチレバーブレーキ(CaneCreek SCX-5)を付けていた(当時はミニVはなかった)。 5年間はシューをSwiss stopに交換するなどして使用してきたが、 パワーロスが大きく、長い下り道などで手が疲れる(握力がなくなり下り道で休憩することも) チドリまでのワイヤー長さと、左右のブレーキ間
 	</div>
-</article><article class="list__item post">
-	<figure class="list__thumbnail">
-		<a href="https://www.330k.info/essay/upload_recorded_mp3_files_to_youtube/">
-			<img src="https://www.youtube.com/about/static/svgs/icons/brand-resources/YouTube-logo-full_color_light.svg?cache=72a5d9c" alt="秘密録音した音声ファイルをYoutubeにバックアップ" />
-		</a>
-	</figure>
-	<header class="list__header">
-		<h3 class="list__title post__title ">
-			<a href="/essay/upload_recorded_mp3_files_to_youtube/" rel="bookmark">
-			秘密録音した音声ファイルをYoutubeにバックアップ
-			</a>
-		</h3>
-		
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		私はパワハラ対策として、毎日ICレコーダーを使って秘密録音を実施している。 ただ、毎日10時間を超える録音時間のため、32kbpsで録音しても1日あたり200MB弱の音声ファイルがHDDに追加されていき、HDDの容量を圧迫していく。 そこで、バックアップを兼ねて動画化してYoutubeにアップロードするようにし、 HDDの空き容量が減ってきたらオリジナルの録音ファイルを消去していくことにした。 ffmpe
-	</div>
 </article>
 </main>
 
@@ -266,6 +266,7 @@ if (!doNotTrack) {
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/essay/webchecker_shell_script/">ウェブサイトの差分を検知してメール通知するシェルスクリプト</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20200222-brm222-tokyo-600km/">2020年02月22日〜23日 BRM222 東京600 とことん沖縄2</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20200215-brm225-chiba-300km/">2020年02月15日 BRM215 千葉300 佐原</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/shogi24-on-ubuntu-docker/">将棋倶楽部24をUbuntu &#43; dockerで動かす</a></li>
@@ -285,7 +286,6 @@ if (!doNotTrack) {
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20190810-brm810-soya-600km/">2019年08月10日 BRM810 宗谷600 PW北海道</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20190701-tohoku-route-4/">2019年07月01日〜08日 東北(国道4号)〜北海道</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20190622-brm622gunma600km-niigata/">2019年06月22日 BRM622群馬600(新潟周回)</a></li>
-			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20190601-brm601-hitachi-600km/">2019年06月01日 BRM601 日立600</a></li>
 		</ul>
 	</div>
 </div>
@@ -302,7 +302,9 @@ if (!doNotTrack) {
 <div class="widget-taglist widget">
 	<h4 class="widget__title">Tags</h4>
 	<div class="widget__content">
+		<a class="widget-taglist__link widget__link btn" href="/tags/.net" title=".net">.net (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/apache" title="Apache">Apache (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/bash" title="Bash">Bash (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/bat" title="Bat">Bat (2)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/chrome" title="Chrome">Chrome (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/cuda" title="Cuda">Cuda (1)</a>
@@ -313,16 +315,15 @@ if (!doNotTrack) {
 		<a class="widget-taglist__link widget__link btn" href="/tags/gps" title="Gps">Gps (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/gpx" title="Gpx">Gpx (4)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/hta" title="Hta">Hta (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/imagemagick" title="Imagemagick">Imagemagick (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/java" title="Java">Java (3)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/javascript" title="Javascript">Javascript (6)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/linux" title="Linux">Linux (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/mathematica" title="Mathematica">Mathematica (20)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/net" title="Net">Net (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/powerpoint" title="Powerpoint">Powerpoint (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/powershell" title="Powershell">Powershell (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/sql" title="Sql">Sql (3)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/sqlserver" title="Sqlserver">Sqlserver (1)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/ubuntu" title="Ubuntu">Ubuntu (14)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/ubuntu" title="Ubuntu">Ubuntu (15)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/vba" title="Vba">Vba (3)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/vpn" title="Vpn">Vpn (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/windows" title="Windows">Windows (11)</a>

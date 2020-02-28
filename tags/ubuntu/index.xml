@@ -6,10 +6,21 @@
     <description>Recent content in Ubuntu on 330k info</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Mon, 03 Feb 2020 00:57:37 +0900</lastBuildDate>
+    <lastBuildDate>Fri, 28 Feb 2020 20:55:25 +0900</lastBuildDate>
     
 	<atom:link href="https://www.330k.info/tags/ubuntu/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>ウェブサイトの差分を検知してメール通知するシェルスクリプト</title>
+      <link>https://www.330k.info/essay/webchecker_shell_script/</link>
+      <pubDate>Fri, 28 Feb 2020 20:55:25 +0900</pubDate>
+      
+      <guid>https://www.330k.info/essay/webchecker_shell_script/</guid>
+      <description>&lt;p&gt;2020年は数多くのブルベに参加することになったが、各BRMでウェブサイトの更新を監視するのは辛い。&lt;/p&gt;
+&lt;p&gt;無料のウェブサービスもあるが、登録件数が不足したり、どこが変更されたのか分からなかったりしたので、
+変更を検知したら差分箇所をメールで送信するシェルスクリプトを書いてみた。&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>将棋倶楽部24をUbuntu &#43; dockerで動かす</title>

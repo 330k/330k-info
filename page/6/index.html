@@ -12,7 +12,7 @@
 <meta property="og:description" content="自転車ツーリングの記録やソフトウェアの配布、Mathematicaをメインにしたプログラミングの覚書や日ごろの雑感など。" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://www.330k.info/" />
-<meta property="og:updated_time" content="2020-02-24T17:47:42+09:00" />
+<meta property="og:updated_time" content="2020-02-28T20:55:25+09:00" />
 
 	<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="330k info"/>
@@ -74,6 +74,18 @@ if (!doNotTrack) {
 			
 <main class="main list" role="main">
 	<article class="list__item post">
+	<header class="list__header">
+		<h3 class="list__title post__title ">
+			<a href="/essay/xubuntu1604_snort_base/" rel="bookmark">
+			Xubuntu 16.04 &#43; Snortで簡易IDS構築
+			</a>
+		</h3>
+		
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		ウイルス等に侵入された後の対策として、IDSやIPS製品の紹介をベンダーから受けたが、正直なところ価格が高かったのと、検知されるメッセージがSnort由来のものが多い気がしたので、自分でSnortを構築して商用製品との差を調べてみることにした。 構築環境 PC : 余っていたノートPC Panasonic LetsNote CF-NX1 OS : Xubuntu 16.04.2 (LetsNoteの有線LANと無線LANのNICを認識できる可能性が高いディストリビューションとして選択) ル
+	</div>
+</article><article class="list__item post">
 	<figure class="list__thumbnail">
 		<a href="https://www.330k.info/essay/create_zip_file_with_wsh_jscript/">
 			<img src="https://icon-icons.com/icons2/1488/PNG/256/5314-windows_102509.png" alt="Windows標準機能でZIPファイルの作成" />
@@ -223,25 +235,6 @@ if (!doNotTrack) {
 	<div class="content list__excerpt post__content clearfix">
 		GPSロガー(Holux m-241)のメモリが破損しているのか、 実は6月30日と7月3日の軽井沢→直江津ツーリングと、9月の西九州→佐多岬ツーリングでは、 ログが破損していたため、Googleのロケーション履歴を代用している。 バイナリデータは一応吸い出せているようなので、その構造を調べると、 HOLUX m-241 LoggerUtility .trlファイル構造の覚書 より以下のような構造になっている。 1レコード20バイトの固定長 時刻4バイト 緯度
 	</div>
-</article><article class="list__item post">
-	<figure class="list__thumbnail">
-		<a href="https://www.330k.info/bicycle/touring/20160906-11-kokura-nagasaki-satamisaki/">
-			<img src="/bicycle/touring/20160906-11-kokura-nagasaki-satamisaki/P_20160910_160742.jpg" alt="2016年09月06日〜11日 小倉〜長崎〜佐多岬" />
-		</a>
-	</figure>
-	<header class="list__header">
-		<h3 class="list__title post__title ">
-			<a href="/bicycle/touring/20160906-11-kokura-nagasaki-satamisaki/" rel="bookmark">
-			2016年09月06日〜11日 小倉〜長崎〜佐多岬
-			</a>
-		</h3>
-		
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		<p>今年も1週間の夏季休暇が取れたので、自転車では未到達だった熊本、佐賀、長崎に行き、そのまま鹿児島県の本土最南端、佐多岬まで走ってきた。</p>
-<p>本当は1週間の休みで北海道の道東地方を走り、22日からの4連休で九州を走る予定だったのだが、大雨と台風のため北海道のJR線が止まってしまった。</p>
-<p>とはいえ、9月4日と5日は九州地方に別の台風が直撃していたため、5日の午後に新幹線で小倉駅まで輪行し、6日の朝から走行開始。</p>
-	</div>
 </article>
 </main>
 
@@ -268,6 +261,7 @@ if (!doNotTrack) {
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/essay/webchecker_shell_script/">ウェブサイトの差分を検知してメール通知するシェルスクリプト</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20200222-brm222-tokyo-600km/">2020年02月22日〜23日 BRM222 東京600 とことん沖縄2</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20200215-brm225-chiba-300km/">2020年02月15日 BRM215 千葉300 佐原</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/shogi24-on-ubuntu-docker/">将棋倶楽部24をUbuntu &#43; dockerで動かす</a></li>
@@ -287,7 +281,6 @@ if (!doNotTrack) {
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20190810-brm810-soya-600km/">2019年08月10日 BRM810 宗谷600 PW北海道</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20190701-tohoku-route-4/">2019年07月01日〜08日 東北(国道4号)〜北海道</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20190622-brm622gunma600km-niigata/">2019年06月22日 BRM622群馬600(新潟周回)</a></li>
-			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20190601-brm601-hitachi-600km/">2019年06月01日 BRM601 日立600</a></li>
 		</ul>
 	</div>
 </div>
@@ -304,7 +297,9 @@ if (!doNotTrack) {
 <div class="widget-taglist widget">
 	<h4 class="widget__title">Tags</h4>
 	<div class="widget__content">
+		<a class="widget-taglist__link widget__link btn" href="/tags/.net" title=".net">.net (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/apache" title="Apache">Apache (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/bash" title="Bash">Bash (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/bat" title="Bat">Bat (2)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/chrome" title="Chrome">Chrome (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/cuda" title="Cuda">Cuda (1)</a>
@@ -315,16 +310,15 @@ if (!doNotTrack) {
 		<a class="widget-taglist__link widget__link btn" href="/tags/gps" title="Gps">Gps (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/gpx" title="Gpx">Gpx (4)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/hta" title="Hta">Hta (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/imagemagick" title="Imagemagick">Imagemagick (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/java" title="Java">Java (3)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/javascript" title="Javascript">Javascript (6)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/linux" title="Linux">Linux (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/mathematica" title="Mathematica">Mathematica (20)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/net" title="Net">Net (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/powerpoint" title="Powerpoint">Powerpoint (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/powershell" title="Powershell">Powershell (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/sql" title="Sql">Sql (3)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/sqlserver" title="Sqlserver">Sqlserver (1)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/ubuntu" title="Ubuntu">Ubuntu (14)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/ubuntu" title="Ubuntu">Ubuntu (15)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/vba" title="Vba">Vba (3)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/vpn" title="Vpn">Vpn (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/windows" title="Windows">Windows (11)</a>

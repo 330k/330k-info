@@ -3,27 +3,52 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://www.330k.info/</loc>
+    <lastmod>2020-02-28T20:55:25+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.330k.info/tags/bash/</loc>
+    <lastmod>2020-02-28T20:55:25+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.330k.info/categories/</loc>
+    <lastmod>2020-02-28T20:55:25+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.330k.info/essay/</loc>
+    <lastmod>2020-02-28T20:55:25+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.330k.info/tags/</loc>
+    <lastmod>2020-02-28T20:55:25+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.330k.info/tags/ubuntu/</loc>
+    <lastmod>2020-02-28T20:55:25+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.330k.info/essay/webchecker_shell_script/</loc>
+    <lastmod>2020-02-28T20:55:25+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.330k.info/categories/%E9%9B%91%E8%A8%98%E5%B8%B3/</loc>
+    <lastmod>2020-02-28T20:55:25+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://www.330k.info/bicycle/touring/20200222-brm222-tokyo-600km/</loc>
     <lastmod>2020-02-24T17:47:42+09:00</lastmod>
   </url>
   
   <url>
-    <loc>https://www.330k.info/</loc>
-    <lastmod>2020-02-24T17:47:42+09:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://www.330k.info/bicycle/</loc>
-    <lastmod>2020-02-24T17:47:42+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://www.330k.info/categories/</loc>
-    <lastmod>2020-02-24T17:47:42+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://www.330k.info/tags/</loc>
     <lastmod>2020-02-24T17:47:42+09:00</lastmod>
   </url>
   
@@ -43,27 +68,12 @@
   </url>
   
   <url>
-    <loc>https://www.330k.info/essay/</loc>
-    <lastmod>2020-02-03T00:57:37+09:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://www.330k.info/tags/java/</loc>
     <lastmod>2020-02-03T00:57:37+09:00</lastmod>
   </url>
   
   <url>
-    <loc>https://www.330k.info/tags/ubuntu/</loc>
-    <lastmod>2020-02-03T00:57:37+09:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://www.330k.info/essay/shogi24-on-ubuntu-docker/</loc>
-    <lastmod>2020-02-03T00:57:37+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://www.330k.info/categories/%E9%9B%91%E8%A8%98%E5%B8%B3/</loc>
     <lastmod>2020-02-03T00:57:37+09:00</lastmod>
   </url>
   
@@ -273,12 +283,12 @@
   </url>
   
   <url>
-    <loc>https://www.330k.info/essay/resize_and_pad_with_imagemagick/</loc>
+    <loc>https://www.330k.info/tags/imagemagick/</loc>
     <lastmod>2017-10-19T20:48:53+09:00</lastmod>
   </url>
   
   <url>
-    <loc>https://www.330k.info/tags/linux/</loc>
+    <loc>https://www.330k.info/essay/resize_and_pad_with_imagemagick/</loc>
     <lastmod>2017-10-19T20:48:53+09:00</lastmod>
   </url>
   
@@ -868,12 +878,12 @@
   </url>
   
   <url>
-    <loc>https://www.330k.info/essay/how-to-redirect-standard-input-output-of-16bit-application/</loc>
+    <loc>https://www.330k.info/tags/.net/</loc>
     <lastmod>2009-10-26T21:47:00+09:00</lastmod>
   </url>
   
   <url>
-    <loc>https://www.330k.info/tags/net/</loc>
+    <loc>https://www.330k.info/essay/how-to-redirect-standard-input-output-of-16bit-application/</loc>
     <lastmod>2009-10-26T21:47:00+09:00</lastmod>
   </url>
   
