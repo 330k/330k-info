@@ -6,10 +6,21 @@
     <description>Recent content in 雑記帳 on 330k info</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Fri, 28 Feb 2020 20:55:25 +0900</lastBuildDate>
+    <lastBuildDate>Sun, 01 Mar 2020 23:12:35 +0900</lastBuildDate>
     
 	<atom:link href="https://www.330k.info/categories/%E9%9B%91%E8%A8%98%E5%B8%B3/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Audax Japanのリザルト検索画面で、自分のリザルトをブックマークに保存する</title>
+      <link>https://www.330k.info/essay/bookmark-audax-japan-result/</link>
+      <pubDate>Sun, 01 Mar 2020 23:12:35 +0900</pubDate>
+      
+      <guid>https://www.330k.info/essay/bookmark-audax-japan-result/</guid>
+      <description>&lt;p&gt;オダックスジャパン(Audax Japan)に&lt;a href=&#34;https://www.audax-japan.org/aj-2/org-join/&#34;&gt;会員登録&lt;/a&gt;すると、
+自分が参加したブルベのリザルトをウェブ上で&lt;a href=&#34;https://homologation.audax-japan.org/alluser/bycode/form&#34;&gt;検索&lt;/a&gt;できるようになる。&lt;/p&gt;
+&lt;p&gt;これはこれで非常に便利なのだが、毎回自分の会員番号を入力するのも手間なのも確か。&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>ウェブサイトの差分を検知してメール通知するシェルスクリプト</title>
