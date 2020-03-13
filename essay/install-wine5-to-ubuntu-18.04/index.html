@@ -81,10 +81,11 @@ if (!doNotTrack) {
 <p>もとはUbuntu標準リポジトリからインストールしていたバージョンがインストールされていた。</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ wine --version
 wine-3.0 <span class="o">(</span>Ubuntu 3.0-1ubuntu1<span class="o">)</span>
-</code></pre></div><p>まずはWineHQにある手順通りに</p>
+</code></pre></div><p>まずは<a href="https://wiki.winehq.org/Ubuntu">WineHQ</a>にある手順通りに</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">sudo dpkg --add-architecture i386 
 wget -nc https://dl.winehq.org/wine-builds/winehq.key
 sudo apt-key add winehq.key
+sudo apt-add-repository <span class="s1">&#39;deb https://dl.winehq.org/wine-builds/ubuntu/ bionic main&#39;</span>
 rm winehq.key
 
 sudo apt update
