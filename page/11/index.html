@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="no-js" lang="ja-jp">
 <head>
-	<meta name="generator" content="Hugo 0.67.0" />
+	<meta name="generator" content="Hugo 0.68.1" />
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,7 +12,7 @@
 <meta property="og:description" content="自転車ツーリングの記録やソフトウェアの配布、Mathematicaをメインにしたプログラミングの覚書や日ごろの雑感など。" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://www.330k.info/" />
-<meta property="og:updated_time" content="2020-03-01T23:12:35+09:00" />
+<meta property="og:updated_time" content="2020-03-24T19:54:33+09:00" />
 
 	<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="330k info"/>
@@ -74,6 +74,18 @@ if (!doNotTrack) {
 			
 <main class="main list" role="main">
 	<article class="list__item post">
+	<header class="list__header">
+		<h3 class="list__title post__title ">
+			<a href="/essay/format-floating-number-for-s-dyna-with-java/" rel="bookmark">
+			LS-DYNA用の浮動小数点数をフォーマット
+			</a>
+		</h3>
+		
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		LS-DYNAのキーワードファイルを書きだすプログラムを書いたところ、浮動小数点数を固定文字数(10文字)にフォーマットする所でつまづいた。 具体的には String.formatやDecimalFormatの動作が遅い(String.formatよりはDecimalFormatのほうが速いが) 文字数を10文字に制限することが難しい(絶対値の大小比較を行なって桁数ごとに条件分岐をしても、四捨五入によっ
+	</div>
+</article><article class="list__item post">
 	<figure class="list__thumbnail">
 		<a href="https://www.330k.info/bicycle/touring/20120814-17-hakodate-wakkanai/">
 			<img src="/bicycle/touring/20120814-17-hakodate-wakkanai/DSCF3234.jpg" alt="2012年08月14日〜17日 函館〜稚内" />
@@ -232,23 +244,6 @@ if (!doNotTrack) {
 		<p>知多半島から渥美半島にフェリーで行き、そこから3連休の間に東へできるだけ進んでみようとした・・・。</p>
 <p>結果は、1日目に膝の痛みが発生して磐田にて離脱。</p>
 	</div>
-</article><article class="list__item post">
-	<figure class="list__thumbnail">
-		<a href="https://www.330k.info/bicycle/touring/20101121-mikawa-wan/">
-			<img src="/bicycle/touring/20101121-mikawa-wan/CA3A0021.jpg" alt="2010年11月21日 三河湾一周" />
-		</a>
-	</figure>
-	<header class="list__header">
-		<h3 class="list__title post__title ">
-			<a href="/bicycle/touring/20101121-mikawa-wan/" rel="bookmark">
-			2010年11月21日 三河湾一周
-			</a>
-		</h3>
-		
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		<p>伊勢湾一周の次は三河湾一周だ、ということで走ってきた。</p>
-	</div>
 </article>
 </main>
 
@@ -275,6 +270,7 @@ if (!doNotTrack) {
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20200320-brm320-kinki-600km/">2020年03月20日 BRM320近畿600 京都→熊本 あんたがたどこさ</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/bookmark-audax-japan-result/">Audax Japanのリザルト検索画面で、自分のリザルトをブックマークに保存する</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/webchecker_shell_script/">ウェブサイトの差分を検知してメール通知するシェルスクリプト</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20200222-brm222-tokyo-600km/">2020年02月22日〜23日 BRM222 東京600 とことん沖縄2</a></li>
@@ -294,7 +290,6 @@ if (!doNotTrack) {
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20190815-brm815-shari-asahikawa-300km/">2019年08月15日 BRM815 斜里旭川300 PW北海道</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20190814-brm814-shiretoko-200km/">2019年08月14日 BRM814 知床200 PW北海道</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20190810-brm810-soya-600km/">2019年08月10日 BRM810 宗谷600 PW北海道</a></li>
-			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20190701-tohoku-route-4/">2019年07月01日〜08日 東北(国道4号)〜北海道</a></li>
 		</ul>
 	</div>
 </div>
@@ -342,7 +337,7 @@ if (!doNotTrack) {
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%82%a2%e3%83%ab%e3%82%b4%e3%83%aa%e3%82%ba%e3%83%a0" title="アルゴリズム">アルゴリズム (5)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%83%84%e3%83%bc%e3%83%aa%e3%83%b3%e3%82%b0" title="ツーリング">ツーリング (47)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%83%91%e3%83%af%e3%83%8f%e3%83%a9" title="パワハラ">パワハラ (5)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%83%96%e3%83%ab%e3%83%99" title="ブルベ">ブルベ (16)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%83%96%e3%83%ab%e3%83%99" title="ブルベ">ブルベ (17)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e7%94%9f%e6%b4%bb" title="生活">生活 (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e7%a4%be%e5%86%85se" title="社内se">社内se (16)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e8%87%aa%e8%bb%a2%e8%bb%8a" title="自転車">自転車 (10)</a>
