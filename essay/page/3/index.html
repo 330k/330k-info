@@ -12,7 +12,7 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://www.330k.info/essay/" />
 <meta property="og:image" content="https://www.330k.info/apple-touch-icon.png"/>
-<meta property="og:updated_time" content="2020-03-01T23:12:35+09:00" />
+<meta property="og:updated_time" content="2020-06-08T21:04:06+09:00" />
 
 	<meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://www.330k.info/apple-touch-icon.png"/>
@@ -78,6 +78,18 @@ if (!doNotTrack) {
 	<header class="main__header">
 		<h1 class="main__title">Essays</h1>
 	</header><article class="list__item post">
+	<header class="list__header">
+		<h3 class="list__title post__title ">
+			<a href="/essay/scramble_unicode_lro_rlo/" rel="bookmark">
+			Unicode制御文字(LRO, RLO)でコピー・改変を防止 (構想)
+			</a>
+		</h3>
+		
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		Unicode制御文字のうち、LRO(Left-to-right override, U+202D)とRLO(Right-to-left override, U+202E)は 行中でも文字列の方向を変更する。 1行の中に何度もLROとRLOが入ると、カーソルキーが踊って楽しいことになる。 例: 下のテキストボックスの中の文字列を編集したり、カーソルキーで移動しようとしても上手くできないはず。 ※ Edgeは表示が崩れるので、Ctrl + A→Ctrl +
+	</div>
+</article><article class="list__item post">
 	<figure class="list__thumbnail">
 		<a href="https://www.330k.info/essay/move_to_github_pages_hugo_from_google_sites/">
 			<img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="Hugo &#43; GitHub Pages &#43; CloudFlareにGoogleサイトから移転" />
@@ -220,23 +232,6 @@ if (!doNotTrack) {
 	<div class="content list__excerpt post__content clearfix">
 		会社ではG Suite(旧Google Apps for Works)を導入しているが、 ある社員が個人のGmailアドレスに会社の情報の入ったメールを送信していた。 幸いPCで操作していたためPCのログ監視ソフト(SKYSEA Client View)で検知し、当該従業員に注意することができた。 ただ、同じことを会社支給のiPhoneでやられた場合に無力だったことに気づいたので、G Suite側でも対策を実施。 設定方法 「管理コンソール
 	</div>
-</article><article class="list__item post">
-	<figure class="list__thumbnail">
-		<a href="https://www.330k.info/essay/make_font_embedded_pdf_from_edinet/">
-			<img src="/essay/make_font_embedded_pdf_from_edinet/EDINET001.png" alt="EDINETが生成するPDFにフォントを埋め込む" />
-		</a>
-	</figure>
-	<header class="list__header">
-		<h3 class="list__title post__title ">
-			<a href="/essay/make_font_embedded_pdf_from_edinet/" rel="bookmark">
-			EDINETが生成するPDFにフォントを埋め込む
-			</a>
-		</h3>
-		
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		EDINETで出力したPDFを会社のプレスリリースで掲載したところ、iPhoneで閲覧できない、という問題が発生した。 PDFファイルを見てみると、日本語フォントが埋め込まれていない(下図)。 そのため、iPhoneなどMS系の日本語フォントがない環境では、日本語部分が真っ白の閲覧できないものになっていた。 ちなみに、Ubuntuでは別の日本語書体で代替表示された。 ご丁寧に印刷も低解像度に限られている(
-	</div>
 </article>
 </main>
 
@@ -264,6 +259,7 @@ if (!doNotTrack) {
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/essay/watch_global_ip_address/">どんなときもWiFiの接続がよく切れるので、接続状態を監視してみた</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20200320-brm320-kinki-600km/">2020年03月20日 BRM320近畿600 京都→熊本 あんたがたどこさ</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/bookmark-audax-japan-result/">Audax Japanのリザルト検索画面で、自分のリザルトをブックマークに保存する</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/webchecker_shell_script/">ウェブサイトの差分を検知してメール通知するシェルスクリプト</a></li>
@@ -283,7 +279,6 @@ if (!doNotTrack) {
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20190928-brm928-yatsugatake-400km/">2019年09月28日 BRM928 八ヶ岳1周 400km</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20190815-brm815-shari-asahikawa-300km/">2019年08月15日 BRM815 斜里旭川300 PW北海道</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20190814-brm814-shiretoko-200km/">2019年08月14日 BRM814 知床200 PW北海道</a></li>
-			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20190810-brm810-soya-600km/">2019年08月10日 BRM810 宗谷600 PW北海道</a></li>
 		</ul>
 	</div>
 </div>
@@ -301,7 +296,7 @@ if (!doNotTrack) {
 	<h4 class="widget__title">Tags</h4>
 	<div class="widget__content">
 		<a class="widget-taglist__link widget__link btn" href="/tags/apache" title="Apache">Apache (1)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/bash" title="Bash">Bash (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/bash" title="Bash">Bash (2)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/bat" title="Bat">Bat (2)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/chrome" title="Chrome">Chrome (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/cuda" title="Cuda">Cuda (1)</a>

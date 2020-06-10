@@ -6,10 +6,21 @@
     <description>Recent content in 雑記帳 on 330k info</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Sun, 01 Mar 2020 23:12:35 +0900</lastBuildDate>
+    <lastBuildDate>Mon, 08 Jun 2020 21:04:06 +0900</lastBuildDate>
     
 	<atom:link href="https://www.330k.info/categories/%E9%9B%91%E8%A8%98%E5%B8%B3/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>どんなときもWiFiの接続がよく切れるので、接続状態を監視してみた</title>
+      <link>https://www.330k.info/essay/watch_global_ip_address/</link>
+      <pubDate>Mon, 08 Jun 2020 21:04:06 +0900</pubDate>
+      
+      <guid>https://www.330k.info/essay/watch_global_ip_address/</guid>
+      <description>&lt;p&gt;自宅ではどんなときもWiFiを使っているのだが、接続がよく切れる。&lt;/p&gt;
+&lt;p&gt;どのような動作をしているのか統計を取るため、
+自分のグローバルIPアドレスを監視するスクリプトを書いてデータを取ってみた。&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Audax Japanのリザルト検索画面で、自分のリザルトをブックマークに保存する</title>

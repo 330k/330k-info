@@ -4,21 +4,26 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>404 Page not found - 330k info</title>
+	<title>どんなときもWiFiの接続がよく切れるので、接続状態を監視してみた - 330k info</title>
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
-	<meta property="og:title" content="404 Page not found" />
-<meta property="og:description" content="自転車ツーリングの記録やソフトウェアの配布、Mathematicaをメインにしたプログラミングの覚書や日ごろの雑感など。" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://www.330k.info/404.html" />
-<meta property="og:image" content="https://www.330k.info/apple-touch-icon.png"/>
-
+	<meta property="og:title" content="どんなときもWiFiの接続がよく切れるので、接続状態を監視してみた" />
+<meta property="og:description" content="自宅ではどんなときもWiFiを使っているのだが、接続がよく切れる。
+どのような動作をしているのか統計を取るため、
+自分のグローバルIPアドレスを監視するスクリプトを書いてデータを取ってみた。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.330k.info/essay/watch_global_ip_address/" />
+<meta property="og:image" content="https://donnatokimo-wifi.jp/img/default/common/logo.png" />
+<meta property="article:published_time" content="2020-06-08T21:04:06+09:00" />
+<meta property="article:modified_time" content="2020-06-08T21:04:06+09:00" />
 
 	<meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:image" content="https://www.330k.info/apple-touch-icon.png"/>
+<meta name="twitter:image" content="https://donnatokimo-wifi.jp/img/default/common/logo.png"/>
 
-<meta name="twitter:title" content="404 Page not found"/>
-<meta name="twitter:description" content="自転車ツーリングの記録やソフトウェアの配布、Mathematicaをメインにしたプログラミングの覚書や日ごろの雑感など。"/>
+<meta name="twitter:title" content="どんなときもWiFiの接続がよく切れるので、接続状態を監視してみた"/>
+<meta name="twitter:description" content="自宅ではどんなときもWiFiを使っているのだが、接続がよく切れる。
+どのような動作をしているのか統計を取るため、
+自分のグローバルIPアドレスを監視するスクリプトを書いてデータを取ってみた。"/>
 
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -59,7 +64,7 @@ if (!doNotTrack) {
 		<li class="menu__item">
 			<a class="menu__link" href="/bicycle/">Bicycles</a>
 		</li>
-		<li class="menu__item">
+		<li class="menu__item menu__item--active">
 			<a class="menu__link" href="/essay/">Essays</a>
 		</li>
 		<li class="menu__item">
@@ -74,15 +79,142 @@ if (!doNotTrack) {
 			<div class="primary">
 			
 <main class="main" role="main">
-	<div class="warning">
-		<h1 class="warning__headline">404. Page not found</h1>
-		<p class="warning__text">The page you were looking for appears to have been moved, deleted or does not exist. Please, use search or go to <a href="/">main page</a>.</p>
-	</div>
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">どんなときもWiFiの接続がよく切れるので、接続状態を監視してみた</h1>
+			
+		</header><div class="content post__content clearfix">
+			<p>自宅ではどんなときもWiFiを使っているのだが、接続がよく切れる。</p>
+<p>どのような動作をしているのか統計を取るため、
+自分のグローバルIPアドレスを監視するスクリプトを書いてデータを取ってみた。</p>
+<h2 id="スクリプト">スクリプト</h2>
+<p>作成したスクリプトは以下。</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="cp">#!/bin/bash
+</span><span class="cp"></span>
+<span class="nv">IP_OLD</span><span class="o">=</span><span class="s2">&#34;&#34;</span>
+
+<span class="k">while</span> <span class="nb">true</span>
+<span class="k">do</span>
+  <span class="nv">INETIP</span><span class="o">=</span><span class="sb">`</span>dig +timeout<span class="o">=</span><span class="m">3</span> +tries<span class="o">=</span><span class="m">1</span> +noall +answer inet-ip.info <span class="p">|</span> rev <span class="p">|</span> cut -f1 <span class="p">|</span> rev<span class="sb">`</span>
+  <span class="k">if</span> <span class="o">[[</span> <span class="si">${</span><span class="nv">INETIP</span><span class="si">}</span> <span class="o">=</span>~ ^<span class="o">[</span>0-9<span class="o">]{</span>1,3<span class="o">}</span><span class="se">\.</span><span class="o">[</span>0-9<span class="o">]{</span>1,3<span class="o">}</span><span class="se">\.</span><span class="o">[</span>0-9<span class="o">]{</span>1,3<span class="o">}</span><span class="se">\.</span><span class="o">[</span>0-9<span class="o">]{</span>1,3<span class="o">}</span>$ <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
+    <span class="nv">IP</span><span class="o">=</span><span class="sb">`</span>curl -m <span class="m">3</span> --connect-timeout <span class="m">3</span> -s -H <span class="s2">&#34;Host: inet-ip.info&#34;</span> http://<span class="si">${</span><span class="nv">INETIP</span><span class="si">}</span><span class="sb">`</span>
+  <span class="k">else</span>
+    <span class="nv">IP</span><span class="o">=</span><span class="s2">&#34;&#34;</span>
+  <span class="k">fi</span>
+
+  <span class="k">if</span> <span class="o">[[</span> <span class="si">${</span><span class="nv">IP</span><span class="si">}</span> <span class="o">=</span>~ ^<span class="o">[</span>0-9<span class="o">]{</span>1,3<span class="o">}</span><span class="se">\.</span><span class="o">[</span>0-9<span class="o">]{</span>1,3<span class="o">}</span><span class="se">\.</span><span class="o">[</span>0-9<span class="o">]{</span>1,3<span class="o">}</span><span class="se">\.</span><span class="o">[</span>0-9<span class="o">]{</span>1,3<span class="o">}</span>$ <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
+    <span class="k">if</span> <span class="o">[[</span> <span class="s2">&#34;</span><span class="nv">$IP</span><span class="s2">&#34;</span> !<span class="o">=</span> <span class="s2">&#34;</span><span class="nv">$IP_OLD</span><span class="s2">&#34;</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
+      <span class="nv">IP_OLD</span><span class="o">=</span><span class="s2">&#34;</span><span class="nv">$IP</span><span class="s2">&#34;</span>
+      <span class="nb">echo</span> -n <span class="sb">`</span>date <span class="s1">&#39;+%Y/%m/%d %H:%M:%S&#39;</span><span class="sb">`</span>
+      <span class="nb">printf</span> <span class="s2">&#34; %-15s &#34;</span> <span class="s2">&#34;</span><span class="nv">$IP</span><span class="s2">&#34;</span>
+      dig +timeout<span class="o">=</span><span class="m">3</span> +tries<span class="o">=</span><span class="m">1</span> -x <span class="nv">$IP</span> +noall +answer <span class="p">|</span> grep PTR <span class="p">|</span> rev <span class="p">|</span> cut -f1 <span class="p">|</span> rev
+    <span class="k">fi</span>
+  <span class="k">else</span>
+   <span class="k">if</span> <span class="o">[[</span> <span class="s2">&#34;</span><span class="nv">$IP_OLD</span><span class="s2">&#34;</span> !<span class="o">=</span> <span class="s2">&#34;&#34;</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
+     <span class="nv">IP_OLD</span><span class="o">=</span><span class="s2">&#34;&#34;</span>
+     <span class="nb">echo</span> <span class="sb">`</span>date <span class="s1">&#39;+%Y/%m/%d %H:%M:%S&#39;</span><span class="sb">`</span><span class="s2">&#34; Connection Error&#34;</span>
+   <span class="k">fi</span>
+  <span class="k">fi</span>
+
+  sleep <span class="m">5</span>
+<span class="k">done</span>
+</code></pre></div><p><code>http://inet-ip.info/</code>にアクセスして自分のグローバルIPアドレスを得て、逆引きして現在どのキャリアに接続しているのかを監視。</p>
+<p><code>curl http://inet-ip.info</code>とせずに、わざわざ<code>dig</code>でアドレス解決をしてからIPアドレスで<code>curl</code>しているのは、
+<code>curl</code>のタイムアウトに関するオプション(<code>-m 3 --connect-timeout 3 </code>)が、DNS解決にかかる時間に効かず、
+接続が切れたとき<code>curl</code>のDNS解決ができずに待ち続けてしまうことを防ぐため。</p>
+<p>これによって接続が切れたときにほぼ確実に検知できるようになった。</p>
+<h2 id="結果">結果</h2>
+<p>家の窓側に固定して1週間ほど動かし続けた結果は以下。</p>
+<pre><code>2020/06/07 14:07:49 36.11.225.113   UQ036011225113.au-net.ne.jp.
+2020/06/07 22:30:40 Connection Error
+2020/06/07 22:30:54 126.204.162.103 om126204162103.6.openmobile.ne.jp.
+2020/06/08 00:27:17 Connection Error
+2020/06/08 00:32:10 126.255.181.41  om126255181041.24.openmobile.ne.jp.
+2020/06/08 02:05:31 Connection Error
+2020/06/08 02:05:44 133.106.73.85   133-106-73-85.mvno.rakuten.jp.
+2020/06/08 02:05:52 Connection Error
+2020/06/08 02:05:59 133.106.73.85   133-106-73-85.mvno.rakuten.jp.
+2020/06/08 05:33:01 Connection Error
+2020/06/08 05:35:48 126.200.125.73  om126200125073.15.openmobile.ne.jp.
+2020/06/08 06:17:51 Connection Error
+2020/06/08 06:18:12 126.186.33.215  om126186033215.7.openmobile.ne.jp.
+2020/06/08 14:57:33 Connection Error
+2020/06/08 14:57:43 126.186.33.215  
+2020/06/08 14:58:05 Connection Error
+2020/06/08 14:58:16 126.186.33.215  om126186033215.7.openmobile.ne.jp.
+2020/06/08 14:58:27 Connection Error
+2020/06/08 14:58:33 126.186.33.215  om126186033215.7.openmobile.ne.jp.
+2020/06/08 14:58:49 Connection Error
+2020/06/08 14:58:55 126.186.33.215  om126186033215.7.openmobile.ne.jp.
+2020/06/08 14:59:11 Connection Error
+2020/06/08 14:59:22 126.186.33.215  om126186033215.7.openmobile.ne.jp.
+2020/06/08 14:59:27 Connection Error
+2020/06/08 14:59:33 126.186.33.215  om126186033215.7.openmobile.ne.jp.
+2020/06/08 14:59:38 Connection Error
+2020/06/08 14:59:49 126.186.33.215  om126186033215.7.openmobile.ne.jp.
+2020/06/08 15:00:11 Connection Error
+2020/06/08 15:00:38 126.186.33.215  om126186033215.7.openmobile.ne.jp.
+2020/06/08 15:00:44 Connection Error
+2020/06/08 15:00:49 126.186.33.215  om126186033215.7.openmobile.ne.jp.
+2020/06/08 15:00:55 Connection Error
+2020/06/08 15:01:16 126.186.33.215  om126186033215.7.openmobile.ne.jp.
+2020/06/08 15:01:27 Connection Error
+2020/06/08 15:01:47 126.186.33.215  om126186033215.7.openmobile.ne.jp.
+2020/06/08 17:06:51 Connection Error
+2020/06/08 17:07:12 126.255.107.112 om126255107112.24.openmobile.ne.jp.
+2020/06/08 18:45:39 Connection Error
+2020/06/08 18:46:16 126.255.129.23  om126255129023.24.openmobile.ne.jp.
+2020/06/09 00:27:33 Connection Error
+2020/06/09 00:32:21 126.208.146.99  om126208146099.22.openmobile.ne.jp.
+2020/06/09 01:59:33 Connection Error
+2020/06/09 01:59:46 133.106.67.16   133-106-67-16.mvno.rakuten.jp.
+2020/06/09 05:32:57 Connection Error
+2020/06/09 05:35:43 126.208.140.255 om126208140255.22.openmobile.ne.jp.
+2020/06/09 06:16:30 Connection Error
+2020/06/09 06:16:51 126.34.116.55   om126034116055.18.openmobile.ne.jp.
+2020/06/09 06:56:03 Connection Error
+2020/06/09 06:56:32 36.11.225.152   UQ036011225152.au-net.ne.jp.
+2020/06/10 02:20:06 Connection Error
+2020/06/10 08:03:26 126.234.125.4   om126234125004.16.openmobile.ne.jp.
+</code></pre><p>補足として</p>
+<ul>
+<li>2020/06/10 08:01に端末再起動を実施</li>
+</ul>
+<h2 id="考察">考察</h2>
+<p>接続先キャリアとしては、</p>
+<ul>
+<li>KDDI(<code>*.au-net.ne.jp</code>)</li>
+<li>楽天MVNO(<code>.mvno.rakuten.jp</code>) ※たぶんドコモ回線</li>
+<li>ソフトバンク(<code>*.openmobile.ne.jp</code>)</li>
+</ul>
+<p>の3キャリアが使われている。これはどんなときもWiFiの説明通り。</p>
+<p>接続先APの切替時には <strong>15秒から5分間程度の切断が発生</strong> し、APが切り替わらないときも <strong>5秒から30秒程度の切断が発生</strong> する。</p>
+<p>ソフトバンクの同一APに対して接続と切断を30秒〜1分程度の間隔で繰り返す事象も発生した。</p>
+<p>また、1つのAPへの接続持続時間としては、だいたい <strong>1時間から10時間</strong>。</p>
+<p>要するに、 <strong>1時間から10時間程度の間隔でに回線切断が発生</strong> する。</p>
+		</div>
+		<footer class="post__footer">
+			
+<div class="post__tags tags clearfix">
+	<svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item"><a class="tags__link btn" href="/tags/bash/" rel="tag">Bash</a></li>
+	</ul>
+</div>
+		</footer>
+	</article>
 </main>
 
+
+<nav class="post-nav flex">
+	<div class="post-nav__item post-nav__item--prev">
+		<a class="post-nav__link" href="/essay/bookmark-audax-japan-result/" rel="prev"><span class="post-nav__caption">«&thinsp;Previous</span><p class="post-nav__post-title">Audax Japanのリザルト検索画面で、自分のリザルトをブックマークに保存する</p></a>
+	</div>
+</nav>
+
+
 			</div>
-			
-<aside class="sidebar sidebar--left">
+			<aside class="sidebar sidebar--left">
 <div class="widget-recent widget">
 	<div class="widget__content">
 		<ul class="widget__list">
