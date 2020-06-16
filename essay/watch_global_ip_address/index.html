@@ -252,13 +252,106 @@ if (!doNotTrack) {
 <li>楽天MVNO(<code>.mvno.rakuten.jp</code>) ※たぶんドコモ回線</li>
 <li>ソフトバンク(<code>*.openmobile.ne.jp</code>)</li>
 </ul>
-<p>の3キャリアが使われている。これはどんなときもWiFiの説明通り。ソフトバンクが多い。</p>
-<p>また、1つのAPへの接続持続時間としては最長で約22時間だったが、だいたい <strong>1時間から10時間</strong> 。</p>
+<p>の3キャリアが使われている。これはどんなときもWiFiの説明通り。</p>
+<p>接続時間の合計162時間のうち、ソフトバンクが99時間、auが56時間、楽天MVNOが7時間という内訳だった。</p>
+<p>なお接続時間の合計は162時間に対して、切断時間の合計は6時間だったので、稼働率は96%程度。</p>
+<p>接続の持続時間、切断時間、切断時間の内AP切替にかかった時間の分布は下表。</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th align="right">持続時間分布</th>
+<th align="right">切断時間分布</th>
+<th align="right">AP切替時間</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>5秒以内</td>
+<td align="right">5</td>
+<td align="right">16</td>
+<td align="right">0</td>
+</tr>
+<tr>
+<td>10秒以内</td>
+<td align="right">9</td>
+<td align="right">10</td>
+<td align="right">0</td>
+</tr>
+<tr>
+<td>30秒以内</td>
+<td align="right">15</td>
+<td align="right">25</td>
+<td align="right">9</td>
+</tr>
+<tr>
+<td>1分以内</td>
+<td align="right">5</td>
+<td align="right">3</td>
+<td align="right">2</td>
+</tr>
+<tr>
+<td>5分以内</td>
+<td align="right">0</td>
+<td align="right">4</td>
+<td align="right">4</td>
+</tr>
+<tr>
+<td>10分以内</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+</tr>
+<tr>
+<td>30分以内</td>
+<td align="right">1</td>
+<td align="right">0</td>
+<td align="right">0</td>
+</tr>
+<tr>
+<td>1時間以内</td>
+<td align="right">5</td>
+<td align="right">0</td>
+<td align="right">0</td>
+</tr>
+<tr>
+<td>2時間以内</td>
+<td align="right">4</td>
+<td align="right">0</td>
+<td align="right">0</td>
+</tr>
+<tr>
+<td>5時間以内</td>
+<td align="right">5</td>
+<td align="right">0</td>
+<td align="right">0</td>
+</tr>
+<tr>
+<td>10時間以内</td>
+<td align="right">5</td>
+<td align="right">1</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td>20時間以内</td>
+<td align="right">3</td>
+<td align="right">0</td>
+<td align="right">0</td>
+</tr>
+<tr>
+<td>20時間以上</td>
+<td align="right">2</td>
+<td align="right">0</td>
+<td align="right">0</td>
+</tr>
+</tbody>
+</table>
+<p>接続の持続時間は、接続が安定せず同じAPに何度もつなぎ直す場合の1分以内と、安定する1時間以上に別れる結果となった。</p>
+<p>最長の接続持続時間は約22時間だったが、<strong>接続が安定しているときでも1時間から10時間で切断される</strong> 。</p>
 <p>この間隔で回線が一時的に切断され、このときにダウンロードやWeb会議をしていると中断される。</p>
 <p>なお、20時間接続が持続した時の1回は、その後6時間近く接続できず、端末の再起動が必要になった。</p>
-<p>その他、接続先APの切替時には <strong>15秒から5分間程度の切断が発生</strong> し、APが切り替わらないときも <strong>5秒から30秒程度の切断が発生</strong> する。</p>
-<p>同一APに対して接続と切断を30秒〜1分程度の間隔で繰り返す事象も発生した。</p>
-<p>WiMAX 2+ではこのような事象はめったに発生しないので、 <strong>固定回線の代替としては厳しい</strong> 、というのが結論か。</p>
+<p><strong>AP切替を伴わない切断時はほぼ1分以内に回復する</strong> 一方、 <strong>AP切替時は再接続まで1〜5分間かかる</strong>。</p>
+<p>WiMAX 2+ではこのような事象はめったに発生せず数日間は同じ接続が維持されるので、 <strong>固定回線の代替としては厳しい</strong> 、というのが結論か。</p>
 		</div>
 		<footer class="post__footer">
 			
