@@ -6,10 +6,19 @@
     <description>Recent content on 330k info</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Mon, 08 Jun 2020 21:04:06 +0900</lastBuildDate>
+    <lastBuildDate>Sun, 21 Jun 2020 21:52:08 +0900</lastBuildDate>
     
 	<atom:link href="https://www.330k.info/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>HugoでRICOH THETAの360度画像を表示する(ThView.js使用)</title>
+      <link>https://www.330k.info/essay/hugo-thview-js/</link>
+      <pubDate>Sun, 21 Jun 2020 21:52:08 +0900</pubDate>
+      
+      <guid>https://www.330k.info/essay/hugo-thview-js/</guid>
+      <description>&lt;p&gt;HugoからThView.js (&lt;a href=&#34;https://github.com/aike/thview.js&#34;&gt;https://github.com/aike/thview.js&lt;/a&gt;)を使って360度画像を表示するショートコードを作成した。&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>どんなときもWiFiの接続がよく切れるので、接続状態を監視してみた</title>

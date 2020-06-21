@@ -6,10 +6,19 @@
     <description>Recent content in Tags on 330k info</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Mon, 08 Jun 2020 21:04:06 +0900</lastBuildDate>
+    <lastBuildDate>Sun, 21 Jun 2020 21:52:08 +0900</lastBuildDate>
     
 	<atom:link href="https://www.330k.info/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>HUGO</title>
+      <link>https://www.330k.info/tags/hugo/</link>
+      <pubDate>Sun, 21 Jun 2020 21:52:08 +0900</pubDate>
+      
+      <guid>https://www.330k.info/tags/hugo/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Bash</title>

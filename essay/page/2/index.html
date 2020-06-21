@@ -12,7 +12,7 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://www.330k.info/essay/" />
 <meta property="og:image" content="https://www.330k.info/apple-touch-icon.png"/>
-<meta property="og:updated_time" content="2020-06-08T21:04:06+09:00" />
+<meta property="og:updated_time" content="2020-06-21T21:52:08+09:00" />
 
 	<meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://www.330k.info/apple-touch-icon.png"/>
@@ -78,6 +78,18 @@ if (!doNotTrack) {
 	<header class="main__header">
 		<h1 class="main__title">Essays</h1>
 	</header><article class="list__item post">
+	<header class="list__header">
+		<h3 class="list__title post__title ">
+			<a href="/essay/show-only-first-images/" rel="bookmark">
+			bxSliderで2番目以降の画像が一瞬表示されるのを防止する
+			</a>
+		</h3>
+		
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		もうjQueryも古いと言われているが、会社のウェブサイトでjQueryプラグインのbxSliderが使われている。 Google先生のPageSpeed Insightに注意されたとおり、レンダリングブロックするJavaScriptを後ろ(&lt;/body&gt;直上)に配置したところ、 2枚目以降の画像が一瞬表示されてしまう現象が発生。 これはJSをレンダリングブロックしないように後ろに配置したり、
+	</div>
+</article><article class="list__item post">
 	<figure class="list__thumbnail">
 		<a href="https://www.330k.info/essay/start-command-prompt-in-windows-10/">
 			<img src="/essay/start-command-prompt-in-windows-10/002.png" alt="Windows 10でコマンドプロンプトを素早く起動する方法" />
@@ -220,18 +232,6 @@ if (!doNotTrack) {
 	<div class="content list__excerpt post__content clearfix">
 		会社のウェブサイトに貼ってある動画ファイルが、実際にどれだけ再生されているのか調査するべく、 Google Analyticsのイベントで計測するためのコードを作ってみた。 計測対象は以下のイベント。 再生開始(play) 最後まで再生(ended) 一時停止(pause) 再生再開(resume) シークした(seeked) どこまで再生したか(動画時間の10%, 25%, 50%, 75%, 90%) HTML側 &lt;video id=&#34;movie001&#34; width=&#34;(動画幅)&#3
 	</div>
-</article><article class="list__item post">
-	<header class="list__header">
-		<h3 class="list__title post__title ">
-			<a href="/essay/delete_temporary_files_with_powershell/" rel="bookmark">
-			Officeの一時ファイルやThumbs.dbなどをPowerShellで一掃
-			</a>
-		</h3>
-		
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		ファイルサーバの空き容量が減ってきたので調べてみたら、 削除されていないOfficeファイルの一時ファイルや、Thumbs.dbが結構あることが分かった。 Thumbs.dbはグループポリシーでネットワークドライブ上では生成しないようにしているはずだが、 ローカルのフォルダをファイルサーバにコピーすると、一緒にくっついてくるらしい。 以下のPowerShellスクリプトをタスクスケジューラに登録して、定期
-	</div>
 </article>
 </main>
 
@@ -259,6 +259,7 @@ if (!doNotTrack) {
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/essay/hugo-thview-js/">HugoでRICOH THETAの360度画像を表示する(ThView.js使用)</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/watch_global_ip_address/">どんなときもWiFiの接続がよく切れるので、接続状態を監視してみた</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20200320-brm320-kinki-600km/">2020年03月20日 BRM320近畿600 京都→熊本 あんたがたどこさ</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/bookmark-audax-japan-result/">Audax Japanのリザルト検索画面で、自分のリザルトをブックマークに保存する</a></li>
@@ -278,7 +279,6 @@ if (!doNotTrack) {
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20191011-brm1011-shikoku-1000km/">2019年10月11日 BRM1011 四国一周1000km</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20190928-brm928-yatsugatake-400km/">2019年09月28日 BRM928 八ヶ岳1周 400km</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20190815-brm815-shari-asahikawa-300km/">2019年08月15日 BRM815 斜里旭川300 PW北海道</a></li>
-			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20190814-brm814-shiretoko-200km/">2019年08月14日 BRM814 知床200 PW北海道</a></li>
 		</ul>
 	</div>
 </div>
@@ -308,6 +308,7 @@ if (!doNotTrack) {
 		<a class="widget-taglist__link widget__link btn" href="/tags/gps" title="Gps">Gps (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/gpx" title="Gpx">Gpx (4)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/hta" title="Hta">Hta (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/hugo" title="Hugo">Hugo (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/imagemagick" title="Imagemagick">Imagemagick (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/java" title="Java">Java (3)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/javascript" title="Javascript">Javascript (6)</a>
