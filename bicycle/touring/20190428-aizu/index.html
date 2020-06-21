@@ -153,24 +153,34 @@ function initMap(){
 
 
 
+
+
+
+
+
+
 <div id='wrapper-thviewer-r0010042_20190428140253jpg' style="position:relative;width:100%;max-width:640px;">
  <div id='thviewer-r0010042_20190428140253jpg'></div>
  <img src="/images/23591.svg" style="width:64px; position:absolute; top:0px; right: 0px;"/>
 </div>
 <script defer>
 window.addEventListener("DOMContentLoaded", function(){
-  var path = 'R0010042_20190428140253.JPG';
+  const path = 'R0010042_20190428140253.JPG';
   THREE.ImageUtils.crossOrigin = "*";
-  var width = document.getElementById('wrapper-thviewer-r0010042_20190428140253jpg').offsetWidth;
+  const width =  640 ;
+  const height = '' || (width * 0.75);
 
-  var img1 = new ThView({
+  const img1 = new ThView({
     id:'thviewer-r0010042_20190428140253jpg',
     file: path,
     width: width,
-    height: width * 0.75,
-    rotation: true,
-    firstview: 270
-    });
+    height: height,
+    rotation:  true ,
+    firstview:  270 ,
+    zoom:  70 ,
+    degree: JSON.parse("[0, 0, 0]"),
+    speed:  20 
+  });
 }, false);
 </script>
 
@@ -197,24 +207,34 @@ window.addEventListener("DOMContentLoaded", function(){
 
 
 
+
+
+
+
+
+
 <div id='wrapper-thviewer-r0010057_20190429125013jpg' style="position:relative;width:100%;max-width:640px;">
  <div id='thviewer-r0010057_20190429125013jpg'></div>
  <img src="/images/23591.svg" style="width:64px; position:absolute; top:0px; right: 0px;"/>
 </div>
 <script defer>
 window.addEventListener("DOMContentLoaded", function(){
-  var path = 'R0010057_20190429125013.JPG';
+  const path = 'R0010057_20190429125013.JPG';
   THREE.ImageUtils.crossOrigin = "*";
-  var width = document.getElementById('wrapper-thviewer-r0010057_20190429125013jpg').offsetWidth;
+  const width =  640 ;
+  const height = '' || (width * 0.75);
 
-  var img1 = new ThView({
+  const img1 = new ThView({
     id:'thviewer-r0010057_20190429125013jpg',
     file: path,
     width: width,
-    height: width * 0.75,
-    rotation: true,
-    firstview: 270
-    });
+    height: height,
+    rotation:  true ,
+    firstview:  270 ,
+    zoom:  70 ,
+    degree: JSON.parse("[0, 0, 0]"),
+    speed:  20 
+  });
 }, false);
 </script>
 
