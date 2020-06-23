@@ -159,6 +159,7 @@ function initMap(){
 
 
 
+
 <div id='wrapper-thviewer-r0010042_20190428140253jpg' style="position:relative;width:100%;max-width:640px;">
  <div id='thviewer-r0010042_20190428140253jpg'></div>
  <img src="/images/23591.svg" style="width:64px; position:absolute; top:0px; right: 0px;"/>
@@ -167,8 +168,16 @@ function initMap(){
 window.addEventListener("DOMContentLoaded", function(){
   const path = 'R0010042_20190428140253.JPG';
   THREE.ImageUtils.crossOrigin = "*";
-  const width =  640 ;
-  const height = '' || (width * 0.75);
+  const width = document.getElementById('wrapper-thviewer-r0010042_20190428140253jpg').offsetWidth;
+  const orgwidth =  640 ;
+  let height =  0 ;
+  const ratio = width / orgwidth;
+  
+  if(height === 0){
+    height = width * 0.75;
+  }else{
+    height = height * ratio;
+  }
 
   const img1 = new ThView({
     id:'thviewer-r0010042_20190428140253jpg',
@@ -213,6 +222,7 @@ window.addEventListener("DOMContentLoaded", function(){
 
 
 
+
 <div id='wrapper-thviewer-r0010057_20190429125013jpg' style="position:relative;width:100%;max-width:640px;">
  <div id='thviewer-r0010057_20190429125013jpg'></div>
  <img src="/images/23591.svg" style="width:64px; position:absolute; top:0px; right: 0px;"/>
@@ -221,8 +231,16 @@ window.addEventListener("DOMContentLoaded", function(){
 window.addEventListener("DOMContentLoaded", function(){
   const path = 'R0010057_20190429125013.JPG';
   THREE.ImageUtils.crossOrigin = "*";
-  const width =  640 ;
-  const height = '' || (width * 0.75);
+  const width = document.getElementById('wrapper-thviewer-r0010057_20190429125013jpg').offsetWidth;
+  const orgwidth =  640 ;
+  let height =  0 ;
+  const ratio = width / orgwidth;
+  
+  if(height === 0){
+    height = width * 0.75;
+  }else{
+    height = height * ratio;
+  }
 
   const img1 = new ThView({
     id:'thviewer-r0010057_20190429125013jpg',
