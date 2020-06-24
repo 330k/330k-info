@@ -245,7 +245,7 @@ window.addEventListener("DOMContentLoaded", function(){
     file: path,
     width: width,
     height: height,
-    rotation:  true ,
+    rotation: "true".toLowerCase() === 'true',
     firstview:  270 ,
     zoom:  70 ,
     degree: JSON.parse("[0, 0, -8]"),

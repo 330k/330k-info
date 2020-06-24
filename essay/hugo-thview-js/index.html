@@ -97,7 +97,7 @@ if (!doNotTrack) {
 {{ $id := anchorize (.Get &#34;src&#34;) }}
 {{ $width := int (default 640 (.Get &#34;width&#34;)) }}
 {{ $height := int (default 0 (.Get &#34;height&#34;)) }}
-{{ $rotation := default true (.Get &#34;rotation&#34;) }}
+{{ $rotation := default &#34;true&#34; (string (.Get &#34;rotation&#34;)) }}
 {{ $firstview := int (default 270 (.Get &#34;firstview&#34;)) }}
 {{ $zoom := int (default 70 (.Get &#34;zoom&#34;)) }}
 {{ $degree := default &#34;[0, 0, 0]&#34; (.Get &#34;degree&#34;) }}
@@ -126,7 +126,7 @@ if (!doNotTrack) {
     <span class="nx">file</span><span class="o">:</span> <span class="nx">path</span><span class="p">,</span>
     <span class="nx">width</span><span class="o">:</span> <span class="nx">width</span><span class="p">,</span>
     <span class="nx">height</span><span class="o">:</span> <span class="nx">height</span><span class="p">,</span>
-    <span class="nx">rotation</span><span class="o">:</span> <span class="p">{{</span> <span class="nx">$rotation</span> <span class="p">}},</span>
+    <span class="nx">rotation</span><span class="o">:</span> <span class="p">{{</span> <span class="nx">$rotation</span> <span class="p">}}.</span><span class="nx">toLowerCase</span><span class="p">()</span> <span class="o">===</span> <span class="s1">&#39;true&#39;</span><span class="p">,</span>
     <span class="nx">firstview</span><span class="o">:</span> <span class="p">{{</span> <span class="nx">$firstview</span> <span class="p">}},</span>
     <span class="nx">zoom</span><span class="o">:</span> <span class="p">{{</span> <span class="nx">$zoom</span> <span class="p">}},</span>
     <span class="nx">degree</span><span class="o">:</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">({{</span> <span class="nx">$degree</span> <span class="p">}}),</span>
@@ -176,7 +176,7 @@ window.addEventListener("DOMContentLoaded", function(){
     file: path,
     width: width,
     height: height,
-    rotation:  true ,
+    rotation: "true".toLowerCase() === 'true',
     firstview:  270 ,
     zoom:  70 ,
     degree: JSON.parse("[0, 0, -10]"),
