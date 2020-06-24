@@ -84,16 +84,24 @@ if (!doNotTrack) {
 		</header><div class="content post__content clearfix">
 			<p>GWは鹿児島スタート後熊本に入る手前でメカトラブル離脱したので、熊本スタートで中央構造線沿いに東進。</p>
 <p>静岡まで到達後は日数が余ったので富士山の西側をぐるっと回って富士五湖を見て山梨から東京へ。</p>
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCir56M7J9LT4-3wDVgG8etGo_HPSMWVBk&callback=initMap" async defer></script>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCir56M7J9LT4-3wDVgG8etGo_HPSMWVBk&callback=initMap" defer></script>
 
 
 
-<div id="mapcanvas-20181007-14_median_linekml" style="width: 100%; height:500px; margin:0; padding: 0"></div>
+<div id="mapcanvas-1" style="width: 100%; height:500px; margin:0; padding: 0"></div>
 <script>
+
+const initfuncs = [];
 function initMap(){
+  for(let i = 0; i < initfuncs.length; i++){
+    initfuncs[i]();
+  }
+}
+
+initfuncs.push(function(){
   var map,
     ctaLayer;
-  map = new google.maps.Map(document.getElementById("mapcanvas-20181007-14_median_linekml"), {
+  map = new google.maps.Map(document.getElementById("mapcanvas-1"), {
     center: {lat: 35.6832581, lng: 139.7555827},
     zoom: 8
   });
@@ -101,7 +109,7 @@ function initMap(){
     url: 'https:\/\/www.330k.info\/\/bicycle\/touring\/20181007-14_median_line\/20181007-14_median_line.kml'
   });
   ctaLayer.setMap(map);
-}
+});
 </script>
 <table>
 <thead>

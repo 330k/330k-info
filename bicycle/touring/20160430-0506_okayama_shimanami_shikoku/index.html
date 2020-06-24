@@ -84,16 +84,24 @@ if (!doNotTrack) {
 		</header><div class="content post__content clearfix">
 			<p>今年のGWは10連休が取れたので、当初は愛媛県から大分に渡り、
 熊本→佐賀→長崎とまだ自転車では行ったことのない県を制覇するつもりだったが、あいにくの熊本地震により四国の西側を半周するルートに変更。</p>
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCir56M7J9LT4-3wDVgG8etGo_HPSMWVBk&callback=initMap" async defer></script>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCir56M7J9LT4-3wDVgG8etGo_HPSMWVBk&callback=initMap" defer></script>
 
 
 
-<div id="mapcanvas-20160430-0506kml" style="width: 100%; height:500px; margin:0; padding: 0"></div>
+<div id="mapcanvas-1" style="width: 100%; height:500px; margin:0; padding: 0"></div>
 <script>
+
+const initfuncs = [];
 function initMap(){
+  for(let i = 0; i < initfuncs.length; i++){
+    initfuncs[i]();
+  }
+}
+
+initfuncs.push(function(){
   var map,
     ctaLayer;
-  map = new google.maps.Map(document.getElementById("mapcanvas-20160430-0506kml"), {
+  map = new google.maps.Map(document.getElementById("mapcanvas-1"), {
     center: {lat: 35.6832581, lng: 139.7555827},
     zoom: 8
   });
@@ -101,7 +109,7 @@ function initMap(){
     url: 'https:\/\/www.330k.info\/\/bicycle\/touring\/20160430-0506_okayama_shimanami_shikoku\/20160430-0506.kml'
   });
   ctaLayer.setMap(map);
-}
+});
 </script>
 <table>
 <thead>

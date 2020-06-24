@@ -87,16 +87,24 @@ if (!doNotTrack) {
 			<p>今年も1週間の夏季休暇が取れたので、自転車では未到達だった熊本、佐賀、長崎に行き、そのまま鹿児島県の本土最南端、佐多岬まで走ってきた。</p>
 <p>本当は1週間の休みで北海道の道東地方を走り、22日からの4連休で九州を走る予定だったのだが、大雨と台風のため北海道のJR線が止まってしまった。</p>
 <p>とはいえ、9月4日と5日は九州地方に別の台風が直撃していたため、5日の午後に新幹線で小倉駅まで輪行し、6日の朝から走行開始。</p>
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCir56M7J9LT4-3wDVgG8etGo_HPSMWVBk&callback=initMap" async defer></script>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCir56M7J9LT4-3wDVgG8etGo_HPSMWVBk&callback=initMap" defer></script>
 
 
 
-<div id="mapcanvas-20160906-11_001kml" style="width: 100%; height:500px; margin:0; padding: 0"></div>
+<div id="mapcanvas-1" style="width: 100%; height:500px; margin:0; padding: 0"></div>
 <script>
+
+const initfuncs = [];
 function initMap(){
+  for(let i = 0; i < initfuncs.length; i++){
+    initfuncs[i]();
+  }
+}
+
+initfuncs.push(function(){
   var map,
     ctaLayer;
-  map = new google.maps.Map(document.getElementById("mapcanvas-20160906-11_001kml"), {
+  map = new google.maps.Map(document.getElementById("mapcanvas-1"), {
     center: {lat: 35.6832581, lng: 139.7555827},
     zoom: 8
   });
@@ -104,7 +112,7 @@ function initMap(){
     url: 'https:\/\/www.330k.info\/\/bicycle\/touring\/20160906-11-kokura-nagasaki-satamisaki\/20160906-11_001.kml'
   });
   ctaLayer.setMap(map);
-}
+});
 </script>
 <table>
 <thead>

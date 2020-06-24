@@ -84,16 +84,24 @@ if (!doNotTrack) {
 		</header><div class="content post__content clearfix">
 			<p>日本海側に行くなら冬になる前にしなくては！ということで思いつきで金沢まで行ってみた。
 敦賀で1泊して金沢まで行き、帰りは輪行した。</p>
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCir56M7J9LT4-3wDVgG8etGo_HPSMWVBk&callback=initMap" async defer></script>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCir56M7J9LT4-3wDVgG8etGo_HPSMWVBk&callback=initMap" defer></script>
 
 
 
-<div id="mapcanvas-20100919kml" style="width: 100%; height:500px; margin:0; padding: 0"></div>
+<div id="mapcanvas-1" style="width: 100%; height:500px; margin:0; padding: 0"></div>
 <script>
+
+const initfuncs = [];
 function initMap(){
+  for(let i = 0; i < initfuncs.length; i++){
+    initfuncs[i]();
+  }
+}
+
+initfuncs.push(function(){
   var map,
     ctaLayer;
-  map = new google.maps.Map(document.getElementById("mapcanvas-20100919kml"), {
+  map = new google.maps.Map(document.getElementById("mapcanvas-1"), {
     center: {lat: 35.6832581, lng: 139.7555827},
     zoom: 8
   });
@@ -101,7 +109,7 @@ function initMap(){
     url: 'https:\/\/www.330k.info\/\/bicycle\/touring\/20100919-20-nagoya-kanazawa\/20100919.kml'
   });
   ctaLayer.setMap(map);
-}
+});
 </script>
 <h2 id="1日目名古屋敦賀">1日目(名古屋→敦賀)</h2>
 <p>まずは養老の滝に行く時にも使ったルートで、名古屋から国道1号→国道155号→愛知県道125号と通って木曽三川を越え、国道258号を北上して関ヶ原を目指す。

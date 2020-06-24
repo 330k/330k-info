@@ -84,16 +84,24 @@ if (!doNotTrack) {
 		</header><div class="content post__content clearfix">
 			<p>9月の連休(シルバーウィーク)を利用して、農作業の手伝いも兼ねて祖母宅まで自転車で行くことにした。</p>
 <p>中山道経由も考えたが、ルートとしてはまずは甲州街道から伊那路を辿ることにした。</p>
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCir56M7J9LT4-3wDVgG8etGo_HPSMWVBk&callback=initMap" async defer></script>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCir56M7J9LT4-3wDVgG8etGo_HPSMWVBk&callback=initMap" defer></script>
 
 
 
-<div id="mapcanvas-20090918-20kml" style="width: 100%; height:500px; margin:0; padding: 0"></div>
+<div id="mapcanvas-1" style="width: 100%; height:500px; margin:0; padding: 0"></div>
 <script>
+
+const initfuncs = [];
 function initMap(){
+  for(let i = 0; i < initfuncs.length; i++){
+    initfuncs[i]();
+  }
+}
+
+initfuncs.push(function(){
   var map,
     ctaLayer;
-  map = new google.maps.Map(document.getElementById("mapcanvas-20090918-20kml"), {
+  map = new google.maps.Map(document.getElementById("mapcanvas-1"), {
     center: {lat: 35.6832581, lng: 139.7555827},
     zoom: 8
   });
@@ -101,7 +109,7 @@ function initMap(){
     url: 'https:\/\/www.330k.info\/\/bicycle\/touring\/20090918-20-takamorinagano\/20090918-20.kml'
   });
   ctaLayer.setMap(map);
-}
+});
 </script>
 <h2 id="1日目">1日目</h2>
 <p>前日夜に京都より帰宅してから体調が万全とは言えなかったものの、天気予報を見るとなんとか雨は降らない模様。</p>

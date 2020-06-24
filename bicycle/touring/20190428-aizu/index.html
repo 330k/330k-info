@@ -81,16 +81,24 @@ if (!doNotTrack) {
 			
 		</header><div class="content post__content clearfix">
 			<p>平成から令和へ変わるGW。休めるか決まっていなかったため、予定を立てられずにいたが、結果的に休めたのでとりあえず出発してみることに。</p>
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCir56M7J9LT4-3wDVgG8etGo_HPSMWVBk&callback=initMap" async defer></script>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCir56M7J9LT4-3wDVgG8etGo_HPSMWVBk&callback=initMap" defer></script>
 
 
 
-<div id="mapcanvas-2019042801kml" style="width: 100%; height:500px; margin:0; padding: 0"></div>
+<div id="mapcanvas-1" style="width: 100%; height:500px; margin:0; padding: 0"></div>
 <script>
+
+const initfuncs = [];
 function initMap(){
+  for(let i = 0; i < initfuncs.length; i++){
+    initfuncs[i]();
+  }
+}
+
+initfuncs.push(function(){
   var map,
     ctaLayer;
-  map = new google.maps.Map(document.getElementById("mapcanvas-2019042801kml"), {
+  map = new google.maps.Map(document.getElementById("mapcanvas-1"), {
     center: {lat: 35.6832581, lng: 139.7555827},
     zoom: 8
   });
@@ -98,7 +106,7 @@ function initMap(){
     url: 'https:\/\/www.330k.info\/\/bicycle\/touring\/20190428-aizu\/2019042801.kml'
   });
   ctaLayer.setMap(map);
-}
+});
 </script>
 <table>
 <thead>
@@ -160,15 +168,15 @@ function initMap(){
 
 
 
-<div id='wrapper-thviewer-r0010042_20190428140253jpg' style="position:relative;width:100%;max-width:640px;">
- <div id='thviewer-r0010042_20190428140253jpg'></div>
+<div id='wrapper-thviewer-thview-1' style="position:relative;width:100%;max-width:640px;">
+ <div id='thviewer-thview-1'></div>
  <img src="/images/23591.svg" style="width:64px; position:absolute; top:0px; right: 0px;"/>
 </div>
 <script defer>
 window.addEventListener("DOMContentLoaded", function(){
   const path = 'R0010042_20190428140253.JPG';
   THREE.ImageUtils.crossOrigin = "*";
-  const width = document.getElementById('wrapper-thviewer-r0010042_20190428140253jpg').offsetWidth;
+  const width = document.getElementById('wrapper-thviewer-thview-1').offsetWidth;
   const orgwidth =  640 ;
   let height =  0 ;
   const ratio = width / orgwidth;
@@ -180,7 +188,7 @@ window.addEventListener("DOMContentLoaded", function(){
   }
 
   const img1 = new ThView({
-    id:'thviewer-r0010042_20190428140253jpg',
+    id:'thviewer-thview-1',
     file: path,
     width: width,
     height: height,
@@ -223,15 +231,16 @@ window.addEventListener("DOMContentLoaded", function(){
 
 
 
-<div id='wrapper-thviewer-r0010057_20190429125013jpg' style="position:relative;width:100%;max-width:640px;">
- <div id='thviewer-r0010057_20190429125013jpg'></div>
+
+<div id='wrapper-thviewer-thview-2' style="position:relative;width:100%;max-width:640px;">
+ <div id='thviewer-thview-2'></div>
  <img src="/images/23591.svg" style="width:64px; position:absolute; top:0px; right: 0px;"/>
 </div>
 <script defer>
 window.addEventListener("DOMContentLoaded", function(){
   const path = 'R0010057_20190429125013.JPG';
   THREE.ImageUtils.crossOrigin = "*";
-  const width = document.getElementById('wrapper-thviewer-r0010057_20190429125013jpg').offsetWidth;
+  const width = document.getElementById('wrapper-thviewer-thview-2').offsetWidth;
   const orgwidth =  640 ;
   let height =  0 ;
   const ratio = width / orgwidth;
@@ -243,7 +252,7 @@ window.addEventListener("DOMContentLoaded", function(){
   }
 
   const img1 = new ThView({
-    id:'thviewer-r0010057_20190429125013jpg',
+    id:'thviewer-thview-2',
     file: path,
     width: width,
     height: height,

@@ -88,13 +88,14 @@ if (!doNotTrack) {
 </ul>
 <h2 id="準備">準備</h2>
 <p>以下の内容のテキストファイルを<code>thview.html</code>というファイル名で<code>layouts/shortcodes</code>ディレクトリの下に保存する。</p>
-<div class="highlight"><pre class="chroma"><code class="language-html" data-lang="html">{{ if .Page.Scratch.Get &#34;thviewer-loaded&#34; }}
+<div class="highlight"><pre class="chroma"><code class="language-html" data-lang="html">{{ if .Page.Scratch.Get &#34;thviewer-count&#34; }}
+{{ .Page.Scratch.Add &#34;thviewer-count&#34; 1 }}
 {{ else }}
 <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&#39;https://cdnjs.cloudflare.com/ajax/libs/three.js/r76/three.js&#39;</span> <span class="na">defer</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
 <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&#39;https://cdn.rawgit.com/aike/thview.js/master/thview.js&#39;</span> <span class="na">defer</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
-{{ .Page.Scratch.Add &#34;thviewer-loaded&#34; 1 }}
+{{ .Page.Scratch.Add &#34;thviewer-count&#34; 1 }}
 {{ end }}
-{{ $id := anchorize (.Get &#34;src&#34;) }}
+{{ $id := printf &#34;%s%d&#34; &#34;thview-&#34; (.Page.Scratch.Get &#34;thviewer-count&#34;) }}
 {{ $width := int (default 640 (.Get &#34;width&#34;)) }}
 {{ $height := int (default 0 (.Get &#34;height&#34;)) }}
 {{ $rotation := default &#34;true&#34; (string (.Get &#34;rotation&#34;)) }}
@@ -152,15 +153,15 @@ if (!doNotTrack) {
 
 
 
-<div id='wrapper-thviewer-bicycletouring20190810-brm810-soya-600kmr0010322_20190810155931jpg' style="position:relative;width:100%;max-width:640px;">
- <div id='thviewer-bicycletouring20190810-brm810-soya-600kmr0010322_20190810155931jpg'></div>
+<div id='wrapper-thviewer-thview-1' style="position:relative;width:100%;max-width:640px;">
+ <div id='thviewer-thview-1'></div>
  <img src="/images/23591.svg" style="width:64px; position:absolute; top:0px; right: 0px;"/>
 </div>
 <script defer>
 window.addEventListener("DOMContentLoaded", function(){
   const path = '\/bicycle\/touring\/20190810-brm810-soya-600km\/R0010322_20190810155931.JPG';
   THREE.ImageUtils.crossOrigin = "*";
-  const width = document.getElementById('wrapper-thviewer-bicycletouring20190810-brm810-soya-600kmr0010322_20190810155931jpg').offsetWidth;
+  const width = document.getElementById('wrapper-thviewer-thview-1').offsetWidth;
   const orgwidth =  640 ;
   let height =  0 ;
   const ratio = width / orgwidth;
@@ -172,7 +173,7 @@ window.addEventListener("DOMContentLoaded", function(){
   }
 
   const img1 = new ThView({
-    id:'thviewer-bicycletouring20190810-brm810-soya-600kmr0010322_20190810155931jpg',
+    id:'thviewer-thview-1',
     file: path,
     width: width,
     height: height,
