@@ -6,10 +6,21 @@
     <description>Recent content in JavaScript on 330k info</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Fri, 01 Mar 2019 07:01:13 +0900</lastBuildDate>
+    <lastBuildDate>Thu, 25 Jun 2020 21:15:24 +0900</lastBuildDate>
     
 	<atom:link href="https://www.330k.info/tags/javascript/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>GASのgoogle.script.runをPromise化する</title>
+      <link>https://www.330k.info/essay/gas_google_script_run_convert_promise/</link>
+      <pubDate>Thu, 25 Jun 2020 21:15:24 +0900</pubDate>
+      
+      <guid>https://www.330k.info/essay/gas_google_script_run_convert_promise/</guid>
+      <description>&lt;p&gt;GASでクライアント側のJavaScriptから、サーバ側のJavaScriptを呼び出す時、&lt;code&gt;google.script.run&lt;/code&gt;を使用する。&lt;/p&gt;
+&lt;p&gt;ただこれは非同期処理でありながらPromiseを返さず、独自に&lt;code&gt;withSuccessHandler&lt;/code&gt;と&lt;code&gt;withFailureHandler&lt;/code&gt;にコールバックを設定する必要があり、ちょっと面倒。&lt;/p&gt;
+&lt;p&gt;ということで、Promise化するコードを作ってみた。&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>bxSliderで2番目以降の画像が一瞬表示されるのを防止する</title>

@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html class="no-js" lang="ja-jp">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>GASのgoogle.script.runをPromise化する - 330k info</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+	<meta property="og:title" content="GASのgoogle.script.runをPromise化する" />
+<meta property="og:description" content="GASでクライアント側のJavaScriptから、サーバ側のJavaScriptを呼び出す時、google.script.runを使用する。
+ただこれは非同期処理でありながらPromiseを返さず、独自にwithSuccessHandlerとwithFailureHandlerにコールバックを設定する必要があり、ちょっと面倒。
+ということで、Promise化するコードを作ってみた。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.330k.info/essay/gas_google_script_run_convert_promise/" />
+<meta property="og:image" content="https://www.330k.info/essay/gas_google_script_run_convert_promise/chromebook-apps-script_960.png" />
+<meta property="article:published_time" content="2020-06-25T21:15:24+09:00" />
+<meta property="article:modified_time" content="2020-06-25T21:15:24+09:00" />
+
+	<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://www.330k.info/essay/gas_google_script_run_convert_promise/chromebook-apps-script_960.png"/>
+
+<meta name="twitter:title" content="GASのgoogle.script.runをPromise化する"/>
+<meta name="twitter:description" content="GASでクライアント側のJavaScriptから、サーバ側のJavaScriptを呼び出す時、google.script.runを使用する。
+ただこれは非同期処理でありながらPromiseを返さず、独自にwithSuccessHandlerとwithFailureHandlerにコールバックを設定する必要があり、ちょっと面倒。
+ということで、Promise化するコードを作ってみた。"/>
+
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+	<link rel="stylesheet" href="/css/style.css">
+	<link rel="stylesheet" href="/css/330k.css">
+	<link rel="shortcut icon" href="/favicon.ico">
+		
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-5655726-3', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+	<link rel="stylesheet" href="/css/syntax.css">
+</head>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container">
+		<div class="logo">
+			<a class="logo__link" href="/" title="330k info" rel="home">
+				<div class="logo__title">330k info</div>
+				
+			</a>
+		</div>
+		
+<nav class="menu">
+	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+		<span class="menu__btn-title" tabindex="-1">Menu</span>
+	</button>
+	<ul class="menu__list">
+		<li class="menu__item">
+			<a class="menu__link" href="/bicycle/">Bicycles</a>
+		</li>
+		<li class="menu__item menu__item--active">
+			<a class="menu__link" href="/essay/">Essays</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/software/">Softwares</a>
+		</li>
+	</ul>
+</nav>
+
+	</div>
+</header>
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">GASのgoogle.script.runをPromise化する</h1>
+			
+		</header><div class="content post__content clearfix">
+			<p>GASでクライアント側のJavaScriptから、サーバ側のJavaScriptを呼び出す時、<code>google.script.run</code>を使用する。</p>
+<p>ただこれは非同期処理でありながらPromiseを返さず、独自に<code>withSuccessHandler</code>と<code>withFailureHandler</code>にコールバックを設定する必要があり、ちょっと面倒。</p>
+<p>ということで、Promise化するコードを作ってみた。</p>
+<p>クライアント側のJavaScriptに下記コードを入れる。</p>
+<div class="highlight"><pre class="chroma"><code class="language-JavaScript" data-lang="JavaScript"><span class="kd">function</span> <span class="nx">gasRun</span><span class="p">(</span><span class="nx">func</span><span class="p">){</span>
+  <span class="k">return</span> <span class="k">new</span> <span class="nb">Promise</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">resolve</span><span class="p">,</span> <span class="nx">reject</span><span class="p">){</span>
+    <span class="nx">google</span><span class="p">.</span><span class="nx">script</span><span class="p">.</span><span class="nx">run</span><span class="p">.</span><span class="nx">withSuccessHandler</span><span class="p">(</span><span class="kd">function</span><span class="p">(...</span><span class="nx">args</span><span class="p">){</span>
+      <span class="nx">resolve</span><span class="p">(...</span><span class="nx">args</span><span class="p">);</span>
+    <span class="p">}).</span><span class="nx">withFailureHandler</span><span class="p">(</span><span class="kd">function</span><span class="p">(...</span><span class="nx">args</span><span class="p">){</span>
+      <span class="nx">reject</span><span class="p">(...</span><span class="nx">args</span><span class="p">);</span>
+    <span class="p">})[</span><span class="nx">func</span><span class="p">]();</span>
+  <span class="p">});</span>
+<span class="p">}</span>
+</code></pre></div><h2 id="使い方">使い方</h2>
+<p>GASサーバ側の<code>doSomething</code>関数を呼び出す場合に、クライアント側で以下のように使う。</p>
+<div class="highlight"><pre class="chroma"><code class="language-JavaScript" data-lang="JavaScript"><span class="nx">gasRun</span><span class="p">(</span><span class="s1">&#39;doSomething&#39;</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">){</span>
+    <span class="c1">// 成功時
+</span><span class="c1"></span>    <span class="nx">hogehoge</span><span class="p">;</span>
+<span class="p">}).</span><span class="k">catch</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">){</span>
+    <span class="c1">// エラー時
+</span><span class="c1"></span>    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">e</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div><p><code>await</code>を使って下記のように同期処理のようにも書ける。</p>
+<div class="highlight"><pre class="chroma"><code class="language-JavaScript" data-lang="JavaScript"><span class="p">(</span><span class="nx">async</span> <span class="p">()=&gt;</span> <span class="p">{</span>
+  <span class="kr">const</span> <span class="nx">ret</span> <span class="o">=</span> <span class="nx">await</span> <span class="nx">gasRun</span><span class="p">(</span><span class="s1">&#39;doSomething&#39;</span><span class="p">);</span>
+<span class="p">})();</span>
+</code></pre></div><h2 id="他の実装例">他の実装例</h2>
+<ul>
+<li><a href="https://qiita.com/37cohina/items/b3bb08d4c52c5e7e3022">google.script.run が Promise を返すようにする - Qiita</a></li>
+<li><a href="https://note.com/torufurukawa/n/n23610ee49b4a">google.script.run を async/await で使う｜Toru Furukawa｜note</a></li>
+</ul>
+		</div>
+		<footer class="post__footer">
+			
+<div class="post__tags tags clearfix">
+	<svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item"><a class="tags__link btn" href="/tags/javascript/" rel="tag">JavaScript</a></li>
+		<li class="tags__item"><a class="tags__link btn" href="/tags/gas/" rel="tag">GAS</a></li>
+	</ul>
+</div>
+		</footer>
+	</article>
+</main>
+
+
+<nav class="post-nav flex">
+	<div class="post-nav__item post-nav__item--prev">
+		<a class="post-nav__link" href="/essay/hugo-thview-js/" rel="prev"><span class="post-nav__caption">«&thinsp;Previous</span><p class="post-nav__post-title">HugoでRICOH THETAの360度画像を表示する(ThView.js使用)</p></a>
+	</div>
+</nav>
+
+
+			</div>
+			<aside class="sidebar sidebar--left">
+<div class="widget-recent widget">
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/software/create_gpx_with_google_maps/">Google MapsでGPXルート作成</a></li>
+			<li class="widget__item"><a class="widget__link" href="/software/simplify_gpx/">GPXトラックログを間引く・簡略化</a></li>
+			<li class="widget__item"><a class="widget__link" href="/bicycle/introduction/">自転車について</a></li>
+			<li class="widget__item"><a class="widget__link" href="/bicycle/equipments/">携行品・装備品</a></li>
+		</ul>
+	</div>
+</div>
+<div class="widget-recent widget">
+	<h4 class="widget__title">Recent Posts</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/essay/gas_google_script_run_convert_promise/">GASのgoogle.script.runをPromise化する</a></li>
+			<li class="widget__item"><a class="widget__link" href="/essay/hugo-thview-js/">HugoでRICOH THETAの360度画像を表示する(ThView.js使用)</a></li>
+			<li class="widget__item"><a class="widget__link" href="/essay/watch_global_ip_address/">どんなときもWiFiの接続がよく切れるので、接続状態を監視してみた</a></li>
+			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20200320-brm320-kinki-600km/">2020年03月20日 BRM320近畿600 京都→熊本 あんたがたどこさ</a></li>
+			<li class="widget__item"><a class="widget__link" href="/essay/bookmark-audax-japan-result/">Audax Japanのリザルト検索画面で、自分のリザルトをブックマークに保存する</a></li>
+			<li class="widget__item"><a class="widget__link" href="/essay/webchecker_shell_script/">ウェブサイトの差分を検知してメール通知するシェルスクリプト</a></li>
+			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20200222-brm222-tokyo-600km/">2020年02月22日〜23日 BRM222 東京600 とことん沖縄2</a></li>
+			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20200215-brm225-chiba-300km/">2020年02月15日 BRM215 千葉300 佐原</a></li>
+			<li class="widget__item"><a class="widget__link" href="/essay/shogi24-on-ubuntu-docker/">将棋倶楽部24をUbuntu &#43; dockerで動かす</a></li>
+			<li class="widget__item"><a class="widget__link" href="/essay/ubuntu-softether-adguardhome-dns-setting/">Ubuntu Server 18.04 &#43; SoftEther VPN &#43; AdGuard Homeで広告ブロック機能付きVPNを構築する</a></li>
+			<li class="widget__item"><a class="widget__link" href="/essay/openldap-proxy-to-active-directory-ubuntu/">Ubuntu 18.04でActive DirectoryへのOpenLDAPプロキシを構築</a></li>
+			<li class="widget__item"><a class="widget__link" href="/essay/input-tabs-in-browsers-textbox/">ブラウザのテキストボックスにタブを入力する</a></li>
+			<li class="widget__item"><a class="widget__link" href="/essay/install-google-backup-sync-on-wine/">Googleのバックアップと同期をWineでUbuntuにインストールする</a></li>
+			<li class="widget__item"><a class="widget__link" href="/essay/install-wine5-to-ubuntu-18.04/">Ubuntu 18.04に最新のWINE(5.0.0)をインストールする</a></li>
+			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20200112-brm112-nihonbashi-200km/">2020年01月12日 BRM112 日本橋200 ツールド23区</a></li>
+			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20191124-chiba-200km/">2019年11月24日 走行会1124 晩秋のクラシック</a></li>
+			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20191116-mystery-brevet/">2019年11月16日 ミステリーブルベ</a></li>
+			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20191026-brm1026-utsunomiya-300km/">2019年10月26日 BRM1026 宇都宮300km 栃木路</a></li>
+			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20191011-brm1011-shikoku-1000km/">2019年10月11日 BRM1011 四国一周1000km</a></li>
+			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20190928-brm928-yatsugatake-400km/">2019年09月28日 BRM928 八ヶ岳1周 400km</a></li>
+		</ul>
+	</div>
+</div>
+<div class="widget-categories widget">
+	<h4 class="widget__title">Categories</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/categories/%e3%82%bd%e3%83%95%e3%83%88%e3%82%a6%e3%82%a7%e3%82%a2">ソフトウェア</a></li>
+			<li class="widget__item"><a class="widget__link" href="/categories/%e8%87%aa%e8%bb%a2%e8%bb%8a">自転車</a></li>
+			<li class="widget__item"><a class="widget__link" href="/categories/%e9%9b%91%e8%a8%98%e5%b8%b3">雑記帳</a></li>
+		</ul>
+	</div>
+</div>
+<div class="widget-taglist widget">
+	<h4 class="widget__title">Tags</h4>
+	<div class="widget__content">
+		<a class="widget-taglist__link widget__link btn" href="/tags/apache" title="Apache">Apache (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/bash" title="Bash">Bash (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/bat" title="Bat">Bat (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/chrome" title="Chrome">Chrome (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/cuda" title="Cuda">Cuda (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/dotnet" title="Dotnet">Dotnet (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/ffmpeg" title="Ffmpeg">Ffmpeg (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/gas" title="Gas">Gas (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/github" title="Github">Github (5)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/gmail" title="Gmail">Gmail (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/google" title="Google">Google (3)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/gps" title="Gps">Gps (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/gpx" title="Gpx">Gpx (4)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/hta" title="Hta">Hta (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/hugo" title="Hugo">Hugo (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/imagemagick" title="Imagemagick">Imagemagick (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/java" title="Java">Java (3)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/javascript" title="Javascript">Javascript (7)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/mathematica" title="Mathematica">Mathematica (20)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/powerpoint" title="Powerpoint">Powerpoint (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/powershell" title="Powershell">Powershell (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/sql" title="Sql">Sql (3)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/sqlserver" title="Sqlserver">Sqlserver (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/ubuntu" title="Ubuntu">Ubuntu (15)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/vba" title="Vba">Vba (3)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/vpn" title="Vpn">Vpn (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/windows" title="Windows">Windows (11)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/wine" title="Wine">Wine (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/wsh" title="Wsh">Wsh (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/zabbix" title="Zabbix">Zabbix (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%82%a2%e3%83%ab%e3%82%b4%e3%83%aa%e3%82%ba%e3%83%a0" title="アルゴリズム">アルゴリズム (5)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%83%84%e3%83%bc%e3%83%aa%e3%83%b3%e3%82%b0" title="ツーリング">ツーリング (47)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%83%91%e3%83%af%e3%83%8f%e3%83%a9" title="パワハラ">パワハラ (5)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%83%96%e3%83%ab%e3%83%99" title="ブルベ">ブルベ (17)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%e7%94%9f%e6%b4%bb" title="生活">生活 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%e7%a4%be%e5%86%85se" title="社内se">社内se (16)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%e8%87%aa%e8%bb%a2%e8%bb%8a" title="自転車">自転車 (10)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%e9%9b%91%e5%ad%a6" title="雑学">雑学 (1)</a>
+	</div>
+</div>
+<div class="widget-social widget">
+	<h4 class="widget-social__title widget__title">Social</h4>
+	<div class="widget-social__content widget__content">
+		<div class="widget-social__item widget__item">
+			<a class="widget-social__link widget__link btn" title="Twitter" rel="noopener noreferrer" href="https://twitter.com/330k" target="_blank">
+				<svg class="widget-social__link-icon icon icon-twitter" width="24" height="24" viewBox="0 0 384 312"><path d="m384 36.9c-14.1 6.3-29.3 10.5-45.2 12.4 16.3-9.7 28.8-25.2 34.6-43.6-15.2 9-32.1 15.6-50 19.1-14.4-15.2-34.9-24.8-57.5-24.8-43.5 0-78.8 35.3-78.8 78.8 0 6.2.7 12.2 2 17.9-65.5-3.3-123.5-34.6-162.4-82.3-6.7 11.6-10.6 25.2-10.6 39.6 0 27.3 13.9 51.4 35 65.6-12.9-.4-25.1-4-35.7-9.9v1c0 38.2 27.2 70 63.2 77.2-6.6 1.8-13.6 2.8-20.8 2.8-5.1 0-10-.5-14.8-1.4 10 31.3 39.1 54.1 73.6 54.7-27 21.1-60.9 33.7-97.8 33.7-6.4 0-12.6-.4-18.8-1.1 34.9 22.4 76.3 35.4 120.8 35.4 144.9 0 224.1-120 224.1-224.1 0-3.4-.1-6.8-.2-10.2 15.4-11.1 28.7-25 39.3-40.8z"/></svg>
+				<span>Twitter</span>
+			</a>
+		</div>
+	</div>
+</div><div class="widget-search widget">
+	<form class="widget-search__form" role="search" method="get" action="https://google.com/search">
+		<label>
+			<input class="widget-search__field" type="search" placeholder="SEARCH..." value="" name="q" aria-label="SEARCH...">
+		</label>
+		<input class="widget-search__submit" type="submit" value="Search">
+		<input type="hidden" name="sitesearch" value="https://www.330k.info/" />
+	</form>
+</div>
+</aside>
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2020 330k info.
+			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
+		</div>
+	</div>
+</footer>
+	</div>
+<script async defer src="/js/menu.js"></script>
+<script data-ad-client="ca-pub-1947596544782119" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script></body>
+</html>

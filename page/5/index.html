@@ -13,7 +13,7 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://www.330k.info/" />
 <meta property="og:image" content="https://www.330k.info/apple-touch-icon.png"/>
-<meta property="og:updated_time" content="2020-06-21T21:52:08+09:00" />
+<meta property="og:updated_time" content="2020-06-25T21:15:24+09:00" />
 
 	<meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://www.330k.info/apple-touch-icon.png"/>
@@ -77,6 +77,18 @@ if (!doNotTrack) {
 			
 <main class="main list" role="main">
 	<article class="list__item post">
+	<header class="list__header">
+		<h3 class="list__title post__title ">
+			<a href="/essay/resize_and_pad_with_imagemagick/" rel="bookmark">
+			ImageMagickでベクタ画像を綺麗な半透過PNGにする
+			</a>
+		</h3>
+		
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		ImageMagickで以下のようなことをやる機会があったのでメモ。 今回は元画像がIllustratorファイルだったが、 他のベクタ形式の画像からでも背景透過PNGを作成するときに使えると思う。 元データはIllustratorファイル(.ai) 元の画像の余白部は削除する 220x110の長方形に入るようにリサイズ 上下左右に余白をつける 出来上がりの画像サイズは230x180 背景は透過させる(きれいに透
+	</div>
+</article><article class="list__item post">
 	<figure class="list__thumbnail">
 		<a href="https://www.330k.info/essay/logging_shared_pc_user/">
 			<img src="/essay/logging_shared_pc_user/001.png" alt="共有PCの実際の使用者を記録する" />
@@ -215,18 +227,6 @@ if (!doNotTrack) {
 	<div class="content list__excerpt post__content clearfix">
 		社内で余っているサーバにZabbixを入れたので、 SNMP v2cでRICOH製のプリンタ・複合機の各種情報を取得するXMLテンプレートをhttps://github.com/coreyramirezgomez/Ricoh-Printers-Zabbix-Template/blob/master/Ricoh%20Printers%20SNMP%20Template.xml を元に作成した。 変更箇所としては以
 	</div>
-</article><article class="list__item post">
-	<header class="list__header">
-		<h3 class="list__title post__title ">
-			<a href="/essay/create_uuid_vba/" rel="bookmark">
-			VBAでUUIDを生成
-			</a>
-		</h3>
-		
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		Excel VBAでUUID(GUID)を生成して使っている部分があったのだが、 先日のWindows Updateを適用してから、 CreateObject(&quot;Scriptlet.TypeLib&quot;)でエラーが出て使用できなくなってしまった。 参考 : 2017 年 7 月のセキュリティ更新適用後、VBA から一部のオブジェクトを作成できません 私の場合はただ単にランダムなUUIDが生成できれば良いので、 UUID v4を生
-	</div>
 </article>
 </main>
 
@@ -253,6 +253,7 @@ if (!doNotTrack) {
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/essay/gas_google_script_run_convert_promise/">GASのgoogle.script.runをPromise化する</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/hugo-thview-js/">HugoでRICOH THETAの360度画像を表示する(ThView.js使用)</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/watch_global_ip_address/">どんなときもWiFiの接続がよく切れるので、接続状態を監視してみた</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20200320-brm320-kinki-600km/">2020年03月20日 BRM320近畿600 京都→熊本 あんたがたどこさ</a></li>
@@ -272,7 +273,6 @@ if (!doNotTrack) {
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20191026-brm1026-utsunomiya-300km/">2019年10月26日 BRM1026 宇都宮300km 栃木路</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20191011-brm1011-shikoku-1000km/">2019年10月11日 BRM1011 四国一周1000km</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20190928-brm928-yatsugatake-400km/">2019年09月28日 BRM928 八ヶ岳1周 400km</a></li>
-			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20190815-brm815-shari-asahikawa-300km/">2019年08月15日 BRM815 斜里旭川300 PW北海道</a></li>
 		</ul>
 	</div>
 </div>
@@ -296,6 +296,7 @@ if (!doNotTrack) {
 		<a class="widget-taglist__link widget__link btn" href="/tags/cuda" title="Cuda">Cuda (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/dotnet" title="Dotnet">Dotnet (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/ffmpeg" title="Ffmpeg">Ffmpeg (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/gas" title="Gas">Gas (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/github" title="Github">Github (5)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/gmail" title="Gmail">Gmail (2)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/google" title="Google">Google (3)</a>
@@ -305,7 +306,7 @@ if (!doNotTrack) {
 		<a class="widget-taglist__link widget__link btn" href="/tags/hugo" title="Hugo">Hugo (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/imagemagick" title="Imagemagick">Imagemagick (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/java" title="Java">Java (3)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/javascript" title="Javascript">Javascript (6)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/javascript" title="Javascript">Javascript (7)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/mathematica" title="Mathematica">Mathematica (20)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/powerpoint" title="Powerpoint">Powerpoint (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/powershell" title="Powershell">Powershell (1)</a>
