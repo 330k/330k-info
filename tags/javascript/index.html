@@ -93,8 +93,8 @@ if (!doNotTrack) {
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		<p>GASでクライアント側のJavaScriptから、サーバ側のJavaScriptを呼び出す時、<code>google.script.run</code>を使用する。</p>
-<p>ただこれは非同期処理でありながらPromiseを返さず、独自に<code>withSuccessHandler</code>と<code>withFailureHandler</code>にコールバックを設定する必要があり、ちょっと面倒。</p>
-<p>ということで、Promise化するコードを作ってみた。</p>
+<p>ただこれは非同期処理でありながらPromiseを返さず、独自に<code>withSuccessHandler</code>と<code>withFailureHandler</code>にコールバックを設定する必要があるので、ちょっと面倒。</p>
+<p>ということで、Promise化するコードを作ってみた(V8エンジン限定)。</p>
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">

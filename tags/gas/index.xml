@@ -18,8 +18,8 @@
       
       <guid>https://www.330k.info/essay/gas_google_script_run_convert_promise/</guid>
       <description>&lt;p&gt;GASでクライアント側のJavaScriptから、サーバ側のJavaScriptを呼び出す時、&lt;code&gt;google.script.run&lt;/code&gt;を使用する。&lt;/p&gt;
-&lt;p&gt;ただこれは非同期処理でありながらPromiseを返さず、独自に&lt;code&gt;withSuccessHandler&lt;/code&gt;と&lt;code&gt;withFailureHandler&lt;/code&gt;にコールバックを設定する必要があり、ちょっと面倒。&lt;/p&gt;
-&lt;p&gt;ということで、Promise化するコードを作ってみた。&lt;/p&gt;</description>
+&lt;p&gt;ただこれは非同期処理でありながらPromiseを返さず、独自に&lt;code&gt;withSuccessHandler&lt;/code&gt;と&lt;code&gt;withFailureHandler&lt;/code&gt;にコールバックを設定する必要があるので、ちょっと面倒。&lt;/p&gt;
+&lt;p&gt;ということで、Promise化するコードを作ってみた(V8エンジン限定)。&lt;/p&gt;</description>
     </item>
     
   </channel>

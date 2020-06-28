@@ -9,8 +9,8 @@
 	<meta name="description" content="">
 	<meta property="og:title" content="GASのgoogle.script.runをPromise化する" />
 <meta property="og:description" content="GASでクライアント側のJavaScriptから、サーバ側のJavaScriptを呼び出す時、google.script.runを使用する。
-ただこれは非同期処理でありながらPromiseを返さず、独自にwithSuccessHandlerとwithFailureHandlerにコールバックを設定する必要があり、ちょっと面倒。
-ということで、Promise化するコードを作ってみた。" />
+ただこれは非同期処理でありながらPromiseを返さず、独自にwithSuccessHandlerとwithFailureHandlerにコールバックを設定する必要があるので、ちょっと面倒。
+ということで、Promise化するコードを作ってみた(V8エンジン限定)。" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.330k.info/essay/gas_google_script_run_convert_promise/" />
 <meta property="og:image" content="https://www.330k.info/essay/gas_google_script_run_convert_promise/chromebook-apps-script_960.png" />
@@ -22,8 +22,8 @@
 
 <meta name="twitter:title" content="GASのgoogle.script.runをPromise化する"/>
 <meta name="twitter:description" content="GASでクライアント側のJavaScriptから、サーバ側のJavaScriptを呼び出す時、google.script.runを使用する。
-ただこれは非同期処理でありながらPromiseを返さず、独自にwithSuccessHandlerとwithFailureHandlerにコールバックを設定する必要があり、ちょっと面倒。
-ということで、Promise化するコードを作ってみた。"/>
+ただこれは非同期処理でありながらPromiseを返さず、独自にwithSuccessHandlerとwithFailureHandlerにコールバックを設定する必要があるので、ちょっと面倒。
+ということで、Promise化するコードを作ってみた(V8エンジン限定)。"/>
 
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -85,8 +85,8 @@ if (!doNotTrack) {
 			
 		</header><div class="content post__content clearfix">
 			<p>GASでクライアント側のJavaScriptから、サーバ側のJavaScriptを呼び出す時、<code>google.script.run</code>を使用する。</p>
-<p>ただこれは非同期処理でありながらPromiseを返さず、独自に<code>withSuccessHandler</code>と<code>withFailureHandler</code>にコールバックを設定する必要があり、ちょっと面倒。</p>
-<p>ということで、Promise化するコードを作ってみた。</p>
+<p>ただこれは非同期処理でありながらPromiseを返さず、独自に<code>withSuccessHandler</code>と<code>withFailureHandler</code>にコールバックを設定する必要があるので、ちょっと面倒。</p>
+<p>ということで、Promise化するコードを作ってみた(V8エンジン限定)。</p>
 <p>クライアント側のJavaScriptに下記コードを入れる。</p>
 <div class="highlight"><pre class="chroma"><code class="language-JavaScript" data-lang="JavaScript"><span class="kd">function</span> <span class="nx">gasRun</span><span class="p">(</span><span class="nx">func</span><span class="p">){</span>
   <span class="k">return</span> <span class="k">new</span> <span class="nb">Promise</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">resolve</span><span class="p">,</span> <span class="nx">reject</span><span class="p">){</span>
@@ -98,17 +98,22 @@ if (!doNotTrack) {
   <span class="p">});</span>
 <span class="p">}</span>
 </code></pre></div><h2 id="使い方">使い方</h2>
-<p>GASサーバ側の<code>doSomething</code>関数を呼び出す場合に、クライアント側で以下のように使う。</p>
-<div class="highlight"><pre class="chroma"><code class="language-JavaScript" data-lang="JavaScript"><span class="nx">gasRun</span><span class="p">(</span><span class="s1">&#39;doSomething&#39;</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">){</span>
-    <span class="c1">// 成功時
-</span><span class="c1"></span>    <span class="nx">hogehoge</span><span class="p">;</span>
+<p>GASサーバ側の<code>doSomething1</code>, <code>doSomething2</code>, <code>doSomething3</code>を順番に呼び出す場合には、クライアント側で以下のように使う。</p>
+<div class="highlight"><pre class="chroma"><code class="language-JavaScript" data-lang="JavaScript"><span class="nx">gasRun</span><span class="p">(</span><span class="s1">&#39;doSomething1&#39;</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">){</span>
+  <span class="c1">// doSomething1成功時
+</span><span class="c1"></span>  <span class="k">return</span> <span class="nx">gasRun</span><span class="p">(</span><span class="s1">&#39;doSomething2&#39;</span><span class="p">);</span>
+<span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">){</span>
+  <span class="c1">// doSomething2成功時
+</span><span class="c1"></span>  <span class="k">return</span> <span class="nx">gasRun</span><span class="p">(</span><span class="s1">&#39;doSomething3&#39;</span><span class="p">);</span>
 <span class="p">}).</span><span class="k">catch</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">){</span>
-    <span class="c1">// エラー時
-</span><span class="c1"></span>    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">e</span><span class="p">);</span>
+  <span class="c1">// エラー時
+</span><span class="c1"></span>  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">e</span><span class="p">);</span>
 <span class="p">});</span>
 </code></pre></div><p><code>await</code>を使って下記のように同期処理のようにも書ける。</p>
 <div class="highlight"><pre class="chroma"><code class="language-JavaScript" data-lang="JavaScript"><span class="p">(</span><span class="nx">async</span> <span class="p">()=&gt;</span> <span class="p">{</span>
-  <span class="kr">const</span> <span class="nx">ret</span> <span class="o">=</span> <span class="nx">await</span> <span class="nx">gasRun</span><span class="p">(</span><span class="s1">&#39;doSomething&#39;</span><span class="p">);</span>
+  <span class="kr">const</span> <span class="nx">result1</span> <span class="o">=</span> <span class="nx">await</span> <span class="nx">gasRun</span><span class="p">(</span><span class="s1">&#39;doSomething1&#39;</span><span class="p">);</span>
+  <span class="kr">const</span> <span class="nx">result2</span> <span class="o">=</span> <span class="nx">await</span> <span class="nx">gasRun</span><span class="p">(</span><span class="s1">&#39;doSomething2&#39;</span><span class="p">);</span>
+  <span class="kr">const</span> <span class="nx">result3</span> <span class="o">=</span> <span class="nx">await</span> <span class="nx">gasRun</span><span class="p">(</span><span class="s1">&#39;doSomething3&#39;</span><span class="p">);</span>
 <span class="p">})();</span>
 </code></pre></div><h2 id="他の実装例">他の実装例</h2>
 <ul>
