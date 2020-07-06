@@ -8,7 +8,7 @@
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
 	<meta property="og:title" content="Unicode制御文字(LRO, RLO)でコピー・改変を防止 (構想)" />
-<meta property="og:description" content="Unicode制御文字のうち、LRO(Left-to-right override, U&#43;202D)とRLO(Right-to-left override, U&#43;202E)は 行中でも文字列の方向を変更する。 1行の中に何度もLROとRLOが入ると、カーソルキーが踊って楽しいことになる。 例: 下のテキストボックスの中の文字列を編集したり、カーソルキーで移動しようとしても上手くできないはず。 ※ Edgeは表示が崩れるので、Ctrl &#43; A→Ctrl &#43;" />
+<meta property="og:description" content="Unicode制御文字のうち、LRO(Left-to-right override, U&#43;202D)とRLO(Right-to-left override, U&#43;202E)は 行中でも文字列の方向を変更する。 1行の中に何度もLROとRLOが入ると、カーソルキーが踊って楽しいことになる。 例: 下のテキストボックスの中の文字列を編集したり、カーソルキーで移動しようとしても上手くできないはず。 ‮‭い‮を‭ろ‮る‭は‮ぬ‭に‮り‭ほ‮ち‭へ ‮‭わ‮" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.330k.info/essay/scramble_unicode_lro_rlo/" />
 <meta property="og:image" content="https://www.330k.info/apple-touch-icon.png"/>
@@ -19,7 +19,7 @@
 <meta name="twitter:image" content="https://www.330k.info/apple-touch-icon.png"/>
 
 <meta name="twitter:title" content="Unicode制御文字(LRO, RLO)でコピー・改変を防止 (構想)"/>
-<meta name="twitter:description" content="Unicode制御文字のうち、LRO(Left-to-right override, U&#43;202D)とRLO(Right-to-left override, U&#43;202E)は 行中でも文字列の方向を変更する。 1行の中に何度もLROとRLOが入ると、カーソルキーが踊って楽しいことになる。 例: 下のテキストボックスの中の文字列を編集したり、カーソルキーで移動しようとしても上手くできないはず。 ※ Edgeは表示が崩れるので、Ctrl &#43; A→Ctrl &#43;"/>
+<meta name="twitter:description" content="Unicode制御文字のうち、LRO(Left-to-right override, U&#43;202D)とRLO(Right-to-left override, U&#43;202E)は 行中でも文字列の方向を変更する。 1行の中に何度もLROとRLOが入ると、カーソルキーが踊って楽しいことになる。 例: 下のテキストボックスの中の文字列を編集したり、カーソルキーで移動しようとしても上手くできないはず。 ‮‭い‮を‭ろ‮る‭は‮ぬ‭に‮り‭ほ‮ち‭へ ‮‭わ‮"/>
 
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -84,12 +84,22 @@ if (!doNotTrack) {
 行中でも文字列の方向を変更する。</p>
 <p>1行の中に何度もLROとRLOが入ると、カーソルキーが踊って楽しいことになる。</p>
 <p>例: 下のテキストボックスの中の文字列を編集したり、カーソルキーで移動しようとしても上手くできないはず。</p>
-<!-- raw HTML omitted -->
+<textarea cols="50" rows="5">
+‮‭い‮を‭ろ‮る‭は‮ぬ‭に‮り‭ほ‮ち‭へ
+‮‭わ‮む‭か‮ら‭よ‮な‭た‮ね‭れ‮つ
+‮‭う‮て‭ゐ‮え‭の‮こ‭お‮ふ‭く‮け‭や
+‮‭あ‮す‭さ‮せ‭き‮も‭ゆ‮ひ‭め‮ゑ‭み
+</textarea>
 <p>※ Edgeは表示が崩れるので、<code>Ctrl + A</code>→<code>Ctrl + C</code>でメモ帳にコピペで確認可能。</p>
 <p>表示上は普通のいろは順にひらがなが並んでいるように見えるが、
 実際のデータはまったく違う順序になっている。</p>
 <p>↓通常のテキスト (比較用)</p>
-<!-- raw HTML omitted -->
+<textarea cols="50" rows="5">
+いろはにほへとちりぬるを
+わかよたれそつねならむ
+うゐのおくやまけふこえて
+あさきゆめみしゑひもせす
+</textarea>
 <h2 id="作り方">作り方</h2>
 <p>行内の文字列の順番を入れ替えつつ、LROとRLOを交互に挿入。</p>
 <p>以下のMathematicaコードで上記の例を作成した。</p>
@@ -211,6 +221,7 @@ geditは行頭にRLOがあると右寄せで表示してしまう(こういう�
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/essay/switch-wscript-to-cscript-js/">起動時にWScriptからCScriptへ自動で切り替える(JScript)</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/gas_google_script_run_convert_promise/">GASのgoogle.script.runをPromise化する</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/hugo-thview-js/">HugoでRICOH THETAの360度画像を表示する(ThView.js使用)</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/watch_global_ip_address/">どんなときもWiFiの接続がよく切れるので、接続状態を監視してみた</a></li>
@@ -230,7 +241,6 @@ geditは行頭にRLOがあると右寄せで表示してしまう(こういう�
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20191116-mystery-brevet/">2019年11月16日 ミステリーブルベ</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20191026-brm1026-utsunomiya-300km/">2019年10月26日 BRM1026 宇都宮300km 栃木路</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20191011-brm1011-shikoku-1000km/">2019年10月11日 BRM1011 四国一周1000km</a></li>
-			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20190928-brm928-yatsugatake-400km/">2019年09月28日 BRM928 八ヶ岳1周 400km</a></li>
 		</ul>
 	</div>
 </div>
@@ -264,7 +274,7 @@ geditは行頭にRLOがあると右寄せで表示してしまう(こういう�
 		<a class="widget-taglist__link widget__link btn" href="/tags/hugo" title="Hugo">Hugo (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/imagemagick" title="Imagemagick">Imagemagick (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/java" title="Java">Java (3)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/javascript" title="Javascript">Javascript (7)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/javascript" title="Javascript">Javascript (8)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/mathematica" title="Mathematica">Mathematica (20)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/powerpoint" title="Powerpoint">Powerpoint (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/powershell" title="Powershell">Powershell (1)</a>
@@ -273,9 +283,9 @@ geditは行頭にRLOがあると右寄せで表示してしまう(こういう�
 		<a class="widget-taglist__link widget__link btn" href="/tags/ubuntu" title="Ubuntu">Ubuntu (15)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/vba" title="Vba">Vba (3)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/vpn" title="Vpn">Vpn (1)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/windows" title="Windows">Windows (11)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/windows" title="Windows">Windows (12)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/wine" title="Wine">Wine (2)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/wsh" title="Wsh">Wsh (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/wsh" title="Wsh">Wsh (3)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/zabbix" title="Zabbix">Zabbix (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%82%a2%e3%83%ab%e3%82%b4%e3%83%aa%e3%82%ba%e3%83%a0" title="アルゴリズム">アルゴリズム (5)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%83%84%e3%83%bc%e3%83%aa%e3%83%b3%e3%82%b0" title="ツーリング">ツーリング (47)</a>

@@ -101,11 +101,11 @@ if (!doNotTrack) {
 <p>LetsNoteでは有線LANのNICは<code>enp0s25</code>、無線LANは<code>wlp2s0</code>となった。</p>
 <p>注意点は以下の通り。</p>
 <ul>
-<li><!-- raw HTML omitted --><code>rule_url=https://www.snort.org/reg-rules/|snortrules-snapshot.tar.gz|&lt;oinkcode&gt;</code><!-- raw HTML omitted --><!-- raw HTML omitted -->
-→ <code>rule_url=https://www.snort.org/rules/|snortrules-snapshot.tar.gz|&lt;oinkcode&gt;</code><!-- raw HTML omitted -->
+<li><s><code>rule_url=https://www.snort.org/reg-rules/|snortrules-snapshot.tar.gz|&lt;oinkcode&gt;</code></s><br/>
+→ <code>rule_url=https://www.snort.org/rules/|snortrules-snapshot.tar.gz|&lt;oinkcode&gt;</code><br/>
 ※微妙にURLが変わっているので注意</li>
-<li><!-- raw HTML omitted --><code>sudo /usr/local/bin/pulledpork.pl -c /etc/snort/pulledpork.conf -l</code><!-- raw HTML omitted --><!-- raw HTML omitted -->
-→ <code>sudo /usr/local/bin/pulledpork.pl -c /etc/snort/pulledpork.conf -l -o /etc/snort/rules/snort.rules</code><!-- raw HTML omitted -->
+<li><s><code>sudo /usr/local/bin/pulledpork.pl -c /etc/snort/pulledpork.conf -l</code></s><br/>
+→ <code>sudo /usr/local/bin/pulledpork.pl -c /etc/snort/pulledpork.conf -l -o /etc/snort/rules/snort.rules</code><br/>
 ※-oオプションが必要と怒られた</li>
 </ul>
 <p>有線LAN(enp0s25)はミラーポートから受信だけできれば良いので、
@@ -115,9 +115,9 @@ NetworkManagerを使って適当に固定IPを設定。</p>
 <p>RTX810はhttp://www.rtpro.yamaha.co.jp/RT/manual/rt-common/setup/lan_port-mirroring.html
 を参照してミラーポートを設定。</p>
 <ul>
-<li>設定(ポート1と2の送信および受信フレームをポート4にミラー)<!-- raw HTML omitted -->
+<li>設定(ポート1と2の送信および受信フレームをポート4にミラー)<br/>
 <code>lan port-mirroring lan1 4 in 1 2 out 1 2</code></li>
-<li>解除<!-- raw HTML omitted -->
+<li>解除<br/>
 <code>no lan port-mirroring lan1</code></li>
 </ul>
 <h2 id="結果">結果</h2>
@@ -168,6 +168,7 @@ NetworkManagerを使って適当に固定IPを設定。</p>
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/essay/switch-wscript-to-cscript-js/">起動時にWScriptからCScriptへ自動で切り替える(JScript)</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/gas_google_script_run_convert_promise/">GASのgoogle.script.runをPromise化する</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/hugo-thview-js/">HugoでRICOH THETAの360度画像を表示する(ThView.js使用)</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/watch_global_ip_address/">どんなときもWiFiの接続がよく切れるので、接続状態を監視してみた</a></li>
@@ -187,7 +188,6 @@ NetworkManagerを使って適当に固定IPを設定。</p>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20191116-mystery-brevet/">2019年11月16日 ミステリーブルベ</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20191026-brm1026-utsunomiya-300km/">2019年10月26日 BRM1026 宇都宮300km 栃木路</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20191011-brm1011-shikoku-1000km/">2019年10月11日 BRM1011 四国一周1000km</a></li>
-			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20190928-brm928-yatsugatake-400km/">2019年09月28日 BRM928 八ヶ岳1周 400km</a></li>
 		</ul>
 	</div>
 </div>
@@ -221,7 +221,7 @@ NetworkManagerを使って適当に固定IPを設定。</p>
 		<a class="widget-taglist__link widget__link btn" href="/tags/hugo" title="Hugo">Hugo (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/imagemagick" title="Imagemagick">Imagemagick (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/java" title="Java">Java (3)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/javascript" title="Javascript">Javascript (7)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/javascript" title="Javascript">Javascript (8)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/mathematica" title="Mathematica">Mathematica (20)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/powerpoint" title="Powerpoint">Powerpoint (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/powershell" title="Powershell">Powershell (1)</a>
@@ -230,9 +230,9 @@ NetworkManagerを使って適当に固定IPを設定。</p>
 		<a class="widget-taglist__link widget__link btn" href="/tags/ubuntu" title="Ubuntu">Ubuntu (15)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/vba" title="Vba">Vba (3)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/vpn" title="Vpn">Vpn (1)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/windows" title="Windows">Windows (11)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/windows" title="Windows">Windows (12)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/wine" title="Wine">Wine (2)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/wsh" title="Wsh">Wsh (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/wsh" title="Wsh">Wsh (3)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/zabbix" title="Zabbix">Zabbix (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%82%a2%e3%83%ab%e3%82%b4%e3%83%aa%e3%82%ba%e3%83%a0" title="アルゴリズム">アルゴリズム (5)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%83%84%e3%83%bc%e3%83%aa%e3%83%b3%e3%82%b0" title="ツーリング">ツーリング (47)</a>

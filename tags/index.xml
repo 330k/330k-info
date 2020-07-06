@@ -6,10 +6,37 @@
     <description>Recent content in Tags on 330k info</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Thu, 25 Jun 2020 21:15:24 +0900</lastBuildDate>
+    <lastBuildDate>Mon, 06 Jul 2020 16:55:30 +0900</lastBuildDate>
     
 	<atom:link href="https://www.330k.info/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>JavaScript</title>
+      <link>https://www.330k.info/tags/javascript/</link>
+      <pubDate>Mon, 06 Jul 2020 16:55:30 +0900</pubDate>
+      
+      <guid>https://www.330k.info/tags/javascript/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Windows</title>
+      <link>https://www.330k.info/tags/windows/</link>
+      <pubDate>Mon, 06 Jul 2020 16:55:30 +0900</pubDate>
+      
+      <guid>https://www.330k.info/tags/windows/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>WSH</title>
+      <link>https://www.330k.info/tags/wsh/</link>
+      <pubDate>Mon, 06 Jul 2020 16:55:30 +0900</pubDate>
+      
+      <guid>https://www.330k.info/tags/wsh/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>GAS</title>
@@ -17,15 +44,6 @@
       <pubDate>Thu, 25 Jun 2020 21:15:24 +0900</pubDate>
       
       <guid>https://www.330k.info/tags/gas/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>JavaScript</title>
-      <link>https://www.330k.info/tags/javascript/</link>
-      <pubDate>Thu, 25 Jun 2020 21:15:24 +0900</pubDate>
-      
-      <guid>https://www.330k.info/tags/javascript/</guid>
       <description></description>
     </item>
     
@@ -98,15 +116,6 @@
       <pubDate>Sat, 01 Feb 2020 18:10:03 +0900</pubDate>
       
       <guid>https://www.330k.info/tags/%E7%A4%BE%E5%86%85se/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Windows</title>
-      <link>https://www.330k.info/tags/windows/</link>
-      <pubDate>Sat, 25 Jan 2020 10:33:56 +0900</pubDate>
-      
-      <guid>https://www.330k.info/tags/windows/</guid>
       <description></description>
     </item>
     
@@ -233,15 +242,6 @@
       <pubDate>Thu, 20 Jul 2017 20:57:38 +0900</pubDate>
       
       <guid>https://www.330k.info/tags/vba/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>WSH</title>
-      <link>https://www.330k.info/tags/wsh/</link>
-      <pubDate>Mon, 08 May 2017 22:37:00 +0900</pubDate>
-      
-      <guid>https://www.330k.info/tags/wsh/</guid>
       <description></description>
     </item>
     

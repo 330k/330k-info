@@ -4,17 +4,47 @@
   
   <url>
     <loc>https://www.330k.info/</loc>
-    <lastmod>2020-06-25T21:15:24+09:00</lastmod>
+    <lastmod>2020-07-06T16:55:30+09:00</lastmod>
   </url>
   
   <url>
     <loc>https://www.330k.info/categories/</loc>
-    <lastmod>2020-06-25T21:15:24+09:00</lastmod>
+    <lastmod>2020-07-06T16:55:30+09:00</lastmod>
   </url>
   
   <url>
     <loc>https://www.330k.info/essay/</loc>
-    <lastmod>2020-06-25T21:15:24+09:00</lastmod>
+    <lastmod>2020-07-06T16:55:30+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.330k.info/tags/javascript/</loc>
+    <lastmod>2020-07-06T16:55:30+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.330k.info/tags/</loc>
+    <lastmod>2020-07-06T16:55:30+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.330k.info/tags/windows/</loc>
+    <lastmod>2020-07-06T16:55:30+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.330k.info/tags/wsh/</loc>
+    <lastmod>2020-07-06T16:55:30+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.330k.info/essay/switch-wscript-to-cscript-js/</loc>
+    <lastmod>2020-07-06T16:55:30+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.330k.info/categories/%E9%9B%91%E8%A8%98%E5%B8%B3/</loc>
+    <lastmod>2020-07-06T16:55:30+09:00</lastmod>
   </url>
   
   <url>
@@ -24,21 +54,6 @@
   
   <url>
     <loc>https://www.330k.info/essay/gas_google_script_run_convert_promise/</loc>
-    <lastmod>2020-06-25T21:15:24+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://www.330k.info/tags/javascript/</loc>
-    <lastmod>2020-06-25T21:15:24+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://www.330k.info/tags/</loc>
-    <lastmod>2020-06-25T21:15:24+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://www.330k.info/categories/%E9%9B%91%E8%A8%98%E5%B8%B3/</loc>
     <lastmod>2020-06-25T21:15:24+09:00</lastmod>
   </url>
   
@@ -140,11 +155,6 @@
   <url>
     <loc>https://www.330k.info/tags/%E7%A4%BE%E5%86%85se/</loc>
     <lastmod>2020-02-01T18:10:03+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://www.330k.info/tags/windows/</loc>
-    <lastmod>2020-01-25T10:33:56+09:00</lastmod>
   </url>
   
   <url>
@@ -444,11 +454,6 @@
   
   <url>
     <loc>https://www.330k.info/essay/create_zip_file_with_wsh_jscript/</loc>
-    <lastmod>2017-05-08T22:37:00+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://www.330k.info/tags/wsh/</loc>
     <lastmod>2017-05-08T22:37:00+09:00</lastmod>
   </url>
   
