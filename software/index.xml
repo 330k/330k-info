@@ -6,10 +6,19 @@
     <description>Recent content in Softwares on 330k info</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Sun, 06 Nov 2016 22:34:45 +0900</lastBuildDate>
+    <lastBuildDate>Sat, 11 Jul 2020 19:41:44 +0900</lastBuildDate>
     
 	<atom:link href="https://www.330k.info/software/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>キャノンボール専用 風向き予測(β)</title>
+      <link>https://www.330k.info/software/cannonball-wind-map/</link>
+      <pubDate>Sat, 11 Jul 2020 19:41:44 +0900</pubDate>
+      
+      <guid>https://www.330k.info/software/cannonball-wind-map/</guid>
+      <description>キャノンボール専用の簡易版Epic Ride Weatherです。 OpenWeatherのWeather APIの無料範囲で取得できるデータを使っています。 スタート時刻を選ぶことで各地点通過時刻に最も近い時刻の予報データを表示します(カーソルキーに対応) 取得できる予報データは48時間後までなので、最大24時間後のスタート時刻まで表示できます 6時間に1回データを取得しています 現時点では大阪スタートのみ対応 地点は</description>
+    </item>
     
     <item>
       <title>Gmailをeml形式で保存するChrome拡張機能</title>

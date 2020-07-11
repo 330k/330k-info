@@ -4,12 +4,52 @@
   
   <url>
     <loc>https://www.330k.info/</loc>
-    <lastmod>2020-07-06T16:55:30+09:00</lastmod>
+    <lastmod>2020-07-11T19:41:44+09:00</lastmod>
   </url>
   
   <url>
     <loc>https://www.330k.info/categories/</loc>
-    <lastmod>2020-07-06T16:55:30+09:00</lastmod>
+    <lastmod>2020-07-11T19:41:44+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.330k.info/tags/github/</loc>
+    <lastmod>2020-07-11T19:41:44+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.330k.info/tags/google/</loc>
+    <lastmod>2020-07-11T19:41:44+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.330k.info/tags/gpx/</loc>
+    <lastmod>2020-07-11T19:41:44+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.330k.info/software/</loc>
+    <lastmod>2020-07-11T19:41:44+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.330k.info/tags/</loc>
+    <lastmod>2020-07-11T19:41:44+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.330k.info/software/cannonball-wind-map/</loc>
+    <lastmod>2020-07-11T19:41:44+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.330k.info/categories/%E3%82%BD%E3%83%95%E3%83%88%E3%82%A6%E3%82%A7%E3%82%A2/</loc>
+    <lastmod>2020-07-11T19:41:44+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.330k.info/tags/%E8%87%AA%E8%BB%A2%E8%BB%8A/</loc>
+    <lastmod>2020-07-11T19:41:44+09:00</lastmod>
   </url>
   
   <url>
@@ -19,11 +59,6 @@
   
   <url>
     <loc>https://www.330k.info/tags/javascript/</loc>
-    <lastmod>2020-07-06T16:55:30+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://www.330k.info/tags/</loc>
     <lastmod>2020-07-06T16:55:30+09:00</lastmod>
   </url>
   
@@ -99,11 +134,6 @@
   
   <url>
     <loc>https://www.330k.info/essay/bookmark-audax-japan-result/</loc>
-    <lastmod>2020-03-01T23:12:35+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://www.330k.info/tags/%E8%87%AA%E8%BB%A2%E8%BB%8A/</loc>
     <lastmod>2020-03-01T23:12:35+09:00</lastmod>
   </url>
   
@@ -348,11 +378,6 @@
   </url>
   
   <url>
-    <loc>https://www.330k.info/tags/google/</loc>
-    <lastmod>2017-10-02T23:27:45+09:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://www.330k.info/essay/measure_video_events_with_google_analytics/</loc>
     <lastmod>2017-10-02T23:27:45+09:00</lastmod>
   </url>
@@ -370,11 +395,6 @@
   <url>
     <loc>https://www.330k.info/essay/scramble_unicode_lro_rlo/</loc>
     <lastmod>2017-08-21T22:38:20+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://www.330k.info/tags/github/</loc>
-    <lastmod>2017-08-08T19:24:04+09:00</lastmod>
   </url>
   
   <url>
@@ -503,16 +523,6 @@
   </url>
   
   <url>
-    <loc>https://www.330k.info/software/</loc>
-    <lastmod>2016-11-06T22:34:45+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://www.330k.info/categories/%E3%82%BD%E3%83%95%E3%83%88%E3%82%A6%E3%82%A7%E3%82%A2/</loc>
-    <lastmod>2016-11-06T22:34:45+09:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://www.330k.info/tags/sql/</loc>
     <lastmod>2016-11-06T17:22:00+09:00</lastmod>
   </url>
@@ -525,11 +535,6 @@
   <url>
     <loc>https://www.330k.info/essay/performance_degration_of_kanjo_bugyo/</loc>
     <lastmod>2016-11-06T17:22:00+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://www.330k.info/tags/gpx/</loc>
-    <lastmod>2016-09-28T00:00:00+09:00</lastmod>
   </url>
   
   <url>
