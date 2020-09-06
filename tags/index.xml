@@ -6,10 +6,19 @@
     <description>Recent content in Tags on 330k info</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Sun, 30 Aug 2020 23:35:03 +0900</lastBuildDate>
+    <lastBuildDate>Sun, 06 Sep 2020 19:51:09 +0900</lastBuildDate>
     
 	<atom:link href="https://www.330k.info/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>ブルベ</title>
+      <link>https://www.330k.info/tags/%E3%83%96%E3%83%AB%E3%83%99/</link>
+      <pubDate>Sun, 06 Sep 2020 19:51:09 +0900</pubDate>
+      
+      <guid>https://www.330k.info/tags/%E3%83%96%E3%83%AB%E3%83%99/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>ツーリング</title>
@@ -116,15 +125,6 @@
       <pubDate>Mon, 08 Jun 2020 21:04:06 +0900</pubDate>
       
       <guid>https://www.330k.info/tags/bash/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>ブルベ</title>
-      <link>https://www.330k.info/tags/%E3%83%96%E3%83%AB%E3%83%99/</link>
-      <pubDate>Tue, 24 Mar 2020 19:54:33 +0900</pubDate>
-      
-      <guid>https://www.330k.info/tags/%E3%83%96%E3%83%AB%E3%83%99/</guid>
       <description></description>
     </item>
     
