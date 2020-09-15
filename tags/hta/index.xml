@@ -6,11 +6,7 @@
     <description>Recent content in HTA on 330k info</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Wed, 13 Jan 2016 22:42:14 +0900</lastBuildDate>
-    
-	<atom:link href="https://www.330k.info/tags/hta/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Wed, 13 Jan 2016 22:42:14 +0900</lastBuildDate><atom:link href="https://www.330k.info/tags/hta/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>HTA SQLツール</title>
       <link>https://www.330k.info/software/hta-sql-tool/</link>

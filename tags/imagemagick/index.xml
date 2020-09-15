@@ -6,11 +6,7 @@
     <description>Recent content in ImageMagick on 330k info</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Thu, 19 Oct 2017 20:48:53 +0900</lastBuildDate>
-    
-	<atom:link href="https://www.330k.info/tags/imagemagick/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Thu, 19 Oct 2017 20:48:53 +0900</lastBuildDate><atom:link href="https://www.330k.info/tags/imagemagick/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>ImageMagickでベクタ画像を綺麗な半透過PNGにする</title>
       <link>https://www.330k.info/essay/resize_and_pad_with_imagemagick/</link>

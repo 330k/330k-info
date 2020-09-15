@@ -6,11 +6,7 @@
     <description>Recent content in GPS on 330k info</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Tue, 27 Oct 2009 00:00:00 +0900</lastBuildDate>
-    
-	<atom:link href="https://www.330k.info/tags/gps/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Tue, 27 Oct 2009 00:00:00 +0900</lastBuildDate><atom:link href="https://www.330k.info/tags/gps/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>簡易ハンディGPSによるあしあとデータの時刻情報</title>
       <link>https://www.330k.info/essay/leap-second-in-au-handy-gps-ashiato-data/</link>

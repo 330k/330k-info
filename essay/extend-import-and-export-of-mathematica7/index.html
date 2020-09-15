@@ -109,8 +109,8 @@ if (!doNotTrack) {
 <p>ImportExport`RegisterFormatには以下のオプションがある。</p>
 <ul>
 <li>BinaryFormat : バイナリファイルならTrue、そうでなければFalse。</li>
-<li>ImportExport`Encoding : よくわからないが、標準では&quot;BASE64&rdquo;、&ldquo;BZIP2&rdquo;、&ldquo;GZIP&rdquo;、&ldquo;UUE&quot;だけでTrueになっている。</li>
-<li>ImportExport`Extensions : 対応する拡張子またはそのリスト。{&quot;<em>.nb&rdquo;,&quot;</em>.html&rdquo;}などと指定する。</li>
+<li>ImportExport`Encoding : よくわからないが、標準では&quot;BASE64&quot;、&ldquo;BZIP2&rdquo;、&ldquo;GZIP&rdquo;、&ldquo;UUE&quot;だけでTrueになっている。</li>
+<li>ImportExport`Extensions : 対応する拡張子またはそのリスト。{&quot;<em>.nb&rdquo;,&quot;</em>.html&quot;}などと指定する。</li>
 <li>AlphaChannel : アルファチャンネルを使う画像かどうか？Exportの際のラスタライズに関係するかも。JPEG2000やPNGなどでTrueになっている。</li>
 </ul>
 <p>ただ、ImportExport<code>Extensionsに拡張子を指定して登録しても、Exportでは大丈夫だがImportではうまく判別されない。 ImportExport</code>RegisterImportの動作についてもう少し調べる必要がある。</p>
@@ -121,7 +121,7 @@ if (!doNotTrack) {
 <div class="highlight"><pre class="chroma"><code class="language-Mathematica" data-lang="Mathematica"><span class="nn">FileFormatDump`</span><span class="n">AddFormat</span><span class="p">[</span><span class="s">&#34;ファイルフォーマット名&#34;</span><span class="p">,</span><span class="w"> </span><span class="n">bin</span><span class="p">,</span><span class="w"> </span><span class="n">bundle</span><span class="p">,</span><span class="w"> </span><span class="n">archive</span><span class="p">,</span><span class="w"> </span><span class="n">encoding</span><span class="p">,</span><span class="w"> </span><span class="n">magic</span><span class="p">,</span><span class="w"> </span><span class="n">ext</span><span class="p">,</span><span class="w"> </span><span class="n">mime</span><span class="p">,</span><span class="w"> </span><span class="n">test</span><span class="p">,</span><span class="w"> </span><span class="n">bundletestfunc</span><span class="p">]</span><span class="w">
 </span></code></pre></div><p>として、判別するときに用いられる関数のほか、MIMEタイプも登録できる模様。</p>
 <p>bin(バイナリ形式か否か), bundle, archive, encoding, magicはTrueまたはFalseで指定するがbin以外の意味はよく分らない。
-extは上のExtensionsと同様に{&quot;<em>.nb&rdquo;,&quot;</em>.html&rdquo;}などの様式で指定し、mimeにはMIMEタイプのリストを{&ldquo;APPLICATION/XHTML+XML&rdquo;,&ldquo;TEXT/XML&rdquo;}のように指定する。
+extは上のExtensionsと同様に{&quot;<em>.nb&quot;,&quot;</em>.html&quot;}などの様式で指定し、mimeにはMIMEタイプのリストを{&ldquo;APPLICATION/XHTML+XML&rdquo;,&ldquo;TEXT/XML&rdquo;}のように指定する。
 testにはファイル形式を判別する関数またはNoneを指定する。たとえばXHTMLでは</p>
 <div class="highlight"><pre class="chroma"><code class="language-Mathematica" data-lang="Mathematica"><span class="n">StringMatchQ</span><span class="p">[</span><span class="nv">#1</span><span class="p">,</span><span class="w"> </span><span class="nv">___</span><span class="w"> </span><span class="o">~~</span><span class="w"> 
 </span><span class="w">   </span><span class="s">&#34;&lt;!DOCTYPE html PUBLIC \&#34;</span><span class="o">-//</span><span class="n">W3C</span><span class="o">//</span><span class="n">DTD</span><span class="w"> </span><span class="n">XHTML</span><span class="err">&#34;</span><span class="w"> </span><span class="o">~~</span><span class="w"> </span><span class="nv">__</span><span class="p">,</span><span class="w"> 
@@ -178,6 +178,7 @@ testにはファイル形式を判別する関数またはNoneを指定する。
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20200911-sr600-fukushima/">2020年09月11日 SR600 福島</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20200905-brm905-tokyo-300km/">2020年09月05日 BRM905 東京300 ウルトラオレンヂ</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20200830-ashio/">2020年08月30日 足尾〜滝ヶ原峠(途中で撤退)</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20200808-konseitoge-400/">2020年08月08日 勝手に金精峠400km</a></li>
@@ -197,7 +198,6 @@ testにはファイル形式を判別する関数またはNoneを指定する。
 			<li class="widget__item"><a class="widget__link" href="/essay/input-tabs-in-browsers-textbox/">ブラウザのテキストボックスにタブを入力する</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/install-google-backup-sync-on-wine/">Googleのバックアップと同期をWineでUbuntuにインストールする</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/install-wine5-to-ubuntu-18.04/">Ubuntu 18.04に最新のWINE(5.0.0)をインストールする</a></li>
-			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20200112-brm112-nihonbashi-200km/">2020年01月12日 BRM112 日本橋200 ツールド23区</a></li>
 		</ul>
 	</div>
 </div>
@@ -248,7 +248,7 @@ testにはファイル形式を判別する関数またはNoneを指定する。
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%82%a2%e3%83%ab%e3%82%b4%e3%83%aa%e3%82%ba%e3%83%a0" title="アルゴリズム">アルゴリズム (5)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%83%84%e3%83%bc%e3%83%aa%e3%83%b3%e3%82%b0" title="ツーリング">ツーリング (49)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%83%91%e3%83%af%e3%83%8f%e3%83%a9" title="パワハラ">パワハラ (5)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%83%96%e3%83%ab%e3%83%99" title="ブルベ">ブルベ (18)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%83%96%e3%83%ab%e3%83%99" title="ブルベ">ブルベ (19)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%83%ac%e3%83%93%e3%83%a5%e3%83%bc" title="レビュー">レビュー (2)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e7%94%9f%e6%b4%bb" title="生活">生活 (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e7%a4%be%e5%86%85se" title="社内se">社内se (16)</a>
