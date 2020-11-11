@@ -80,8 +80,8 @@ if (!doNotTrack) {
 			<h1 class="post__title">Compileで使用するCコンパイラを変更する</h1>
 			
 		</header><div class="content post__content clearfix">
-			<p>Mathematica 8から、CompileでCコンパイラを使って直接ネイティブコードにコンパイルできるようになった。
-使用するCコンパイラは、</p>
+			<p>Mathematica 8から、<code>Compile</code>でCコンパイラを使って直接ネイティブコードにコンパイルできるようになった。</p>
+<p>使用するCコンパイラは、</p>
 <div class="highlight"><pre class="chroma"><code class="language-Mathematica" data-lang="Mathematica"><span class="n">Needs</span><span class="p">[</span><span class="s">&#34;CCompilerDriver`&#34;</span><span class="p">];</span><span class="w">
 </span><span class="w"></span><span class="nn">CCompilerDriver`</span><span class="err">$</span><span class="n">CCompiler</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w">
 </span><span class="w">   </span><span class="s">&#34;Name&#34;</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="s">&#34;GCC&#34;</span><span class="p">,</span><span class="w"> 
@@ -89,8 +89,8 @@ if (!doNotTrack) {
 </span><span class="w">   </span><span class="s">&#34;CompilerInstallation&#34;</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="s">&#34;/usr/bin&#34;</span><span class="p">,</span><span class="w">
 </span><span class="w">   </span><span class="s">&#34;CompilerName&#34;</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">Automatic</span><span class="w">
 </span><span class="w"></span><span class="p">};</span><span class="w">
-</span></code></pre></div><p>というように、CCompilerDriver`$CCompilerを変更して指定する。</p>
-<p>以前からのCompile(&ldquo;WVM&rdquo;)と、各コンパイラの比較のため、ベンチマークを行ってみた。
+</span></code></pre></div><p>というように、<code>CCompilerDriver`$CCompiler</code>を変更して指定する。</p>
+<p>以前からの<code>Compile</code>(&ldquo;WVM&rdquo;)と、各コンパイラの比較のため、ベンチマークを行ってみた。
 検証環境は以下の通り。</p>
 <ul>
 <li>CPU: Intel Core-i7 3770 (インテル® HT テクノロジー ON)</li>
@@ -170,7 +170,7 @@ if (!doNotTrack) {
 なお、呼び出す際のオーバーヘッドも計測してみたが、これはWVMでもネイティブコードでも変わらなかった。</p>
 <p>結論としては、以下の通り。</p>
 <ul>
-<li>Mathematica 8以上ではCompileのオプションCompilationTarget-&gt;&ldquo;C&quot;を指定して、ネイティブコードにコンパイルした方が数倍高速</li>
+<li>Mathematica 8以上では<code>Compile</code>のオプション<code>CompilationTarget-&gt;&quot;C&quot;</code>を指定して、ネイティブコードにコンパイルした方が数倍高速</li>
 <li>Intel C++ CompilerとClangはともにGCCよりも3倍弱高速</li>
 <li>高速化したい場合は、Mathematicaに加えてCコンパイラもインストールしよう</li>
 </ul>

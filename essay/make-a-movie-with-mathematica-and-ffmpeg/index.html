@@ -80,15 +80,15 @@ if (!doNotTrack) {
 			<h1 class="post__title">ffmpeg &#43; Mathematicaで動画ファイルを作成する</h1>
 			
 		</header><div class="content post__content clearfix">
-			<p>MathematicaのExportでAVIなどの動画ファイルを作成することは簡単に可能だが、
+			<p>Mathematicaの<code>Export</code>でAVIなどの動画ファイルを作成することは簡単に可能だが、
 いかんせんすべてのフレームの画像を作成してからファイルに書きだすので、フレーム数に比例してメモリの使用量が多くなってしまう。
 そのため長いムービーの作成は困難であった。</p>
 <p>そこで、ffmpegと併用することでメモリ使用量を抑えつつ、長編の動画ファイルを制作する。
 具体的には、</p>
 <ol>
-<li>ffmpegで標準入力から読み込ませるOutputStreamオブジェクトを作成する</li>
-<li>BinaryWriteでそのストリームに各フレームの画像を書き込む</li>
-<li>終わったらCloseでストリームを閉じる</li>
+<li>ffmpegで標準入力から読み込ませる<code>OutputStream</code>オブジェクトを作成する</li>
+<li><code>BinaryWrite</code>でそのストリームに各フレームの画像を書き込む</li>
+<li>終わったら<code>Close</code>でストリームを閉じる</li>
 </ol>
 <p>とする。ここで、各フレーム画像の形式をPPMにしないとうまく動作しなかった(BMP、PNGなどではなぜか動作せず)。</p>
 <p>例えば、以下のようにするとtest001.aviができあがる。</p>
@@ -104,7 +104,7 @@ if (!doNotTrack) {
 </span><span class="w">  </span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="n">Pi</span><span class="p">,</span><span class="w"> </span><span class="n">Pi</span><span class="o">/</span><span class="mi">50</span><span class="p">}</span><span class="w">
 </span><span class="w">  </span><span class="p">];</span><span class="w">
 </span><span class="w"></span><span class="n">Close</span><span class="p">[</span><span class="n">s</span><span class="p">]</span><span class="w">
-</span></code></pre></div><p>Exportと同じような使い勝手の関数ExportMovieを作るとこんな感じになる。</p>
+</span></code></pre></div><p><code>Export</code>と同じような使い勝手の関数<code>ExportMovie</code>を作るとこんな感じになる。</p>
 <div class="highlight"><pre class="chroma"><code class="language-Mathematica" data-lang="Mathematica"><span class="n">Options</span><span class="p">[</span><span class="n">ExportMovie</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w">
 </span><span class="w">   </span><span class="s">&#34;FrameRate&#34;</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span><span class="w">
 </span><span class="w">   </span><span class="s">&#34;VideoCodecOption&#34;</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="s">&#34;-vcodec rawvideo&#34;</span><span class="p">,</span><span class="w">
@@ -135,7 +135,7 @@ if (!doNotTrack) {
 </span><span class="w">   </span><span class="s">&#34;ArgumentsPattern&#34;</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">{</span><span class="nv">_</span><span class="p">,</span><span class="w"> </span><span class="nv">_</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="nv">_</span><span class="p">,</span><span class="w"> </span><span class="nv">_</span><span class="p">,</span><span class="w"> </span><span class="nv">_</span><span class="err">.</span><span class="p">,</span><span class="w"> </span><span class="nv">_</span><span class="err">.</span><span class="p">},</span><span class="w"> </span><span class="n">OptionsPattern</span><span class="p">[]}</span><span class="w">
 </span><span class="w">   </span><span class="p">,</span><span class="w"> </span><span class="s">&#34;LocalVariables&#34;</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">{</span><span class="s">&#34;Table&#34;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">}}</span><span class="w">
 </span><span class="w">   </span><span class="p">};</span><span class="w">
-</span></code></pre></div><p>使い方の例としては以下。反復子を使ってTableなどと同様の表記で動画が作成できる。
+</span></code></pre></div><p>使い方の例としては以下。反復子を使って<code>Table</code>などと同様の表記で動画が作成できる。
 また、ffmpegでサポートされていれば、Mathematicaでサポートされていない形式でも動画が作成可能。</p>
 <div class="highlight"><pre class="chroma"><code class="language-Mathematica" data-lang="Mathematica"><span class="n">ExportMovie</span><span class="p">[</span><span class="s">&#34;test002.avi&#34;</span><span class="w">
 </span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="n">Plot</span><span class="p">[</span><span class="n">Sin</span><span class="p">[</span><span class="n">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">i</span><span class="p">],</span><span class="w"> </span><span class="p">{</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="n">Pi</span><span class="p">}</span><span class="w">

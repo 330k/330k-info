@@ -123,9 +123,9 @@ if (!doNotTrack) {
 <p>おそらくほとんどの論文はA4サイズ(210mm×297mm)で作成されると思う。</p>
 <p>そこから左右の余白をそれぞれ30mmとすると、本文の幅は150mmとなる。
 図やグラフの幅は本文より少し小さくしたいので、私は基本的に横幅140mmでグラフを作成した。</p>
-<p>縦幅はMathematicaではデフォルトで黄金比(GoldenRatio)を使ってくれるので、そのままで良いと思う。
+<p>縦幅はMathematicaではデフォルトで黄金比(<code>GoldenRatio</code>)を使ってくれるので、そのままで良いと思う。
 2段組のときは半分の70mmとか65mmとなる。</p>
-<p>したがってMathematicaでは、PlotやShowなどのオプションImageSizeに</p>
+<p>したがってMathematicaでは、<code>Plot</code>や<code>Show</code>などのオプション<code>ImageSize</code>に</p>
 <div class="highlight"><pre class="chroma"><code class="language-Mathematica" data-lang="Mathematica"><span class="n">ImageSize</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="mi">140</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">72</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">25.4</span><span class="w">
 </span></code></pre></div><p>と指定する。これは140mmの横幅で、72dpi(dots per inch)、1 inch = 25.4mmという意味である。</p>
 <h2 id="論文用のグラフでは絶対にframe---trueを指定する">論文用のグラフでは絶対にFrame -&gt; Trueを指定する</h2>
@@ -133,8 +133,8 @@ if (!doNotTrack) {
 <div class="highlight"><pre class="chroma"><code class="language-Mathematica" data-lang="Mathematica"><span class="n">Frame</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">True</span><span class="w">
 </span></code></pre></div><p>を指定して枠のついたグラフにする。</p>
 <p>これはExcelなどでグラフを作るときも同様。</p>
-<p>枠についた目盛りを細かく調整したい場合は、FrameTicksオプションとFrameTickesStyleオプションを指定する。
-また、FrameLabelで各軸のラベルと単位を書き入れるのも忘れずに。</p>
+<p>枠についた目盛りを細かく調整したい場合は、<code>FrameTicks</code>オプションと<code>FrameTickesStyle</code>オプションを指定する。
+また、<code>FrameLabel</code>で各軸のラベルと単位を書き入れるのも忘れずに。</p>
 <h2 id="テキストを指定する部分はすべてフォント名やフォントサイズを指定する">テキストを指定する部分はすべてフォント名やフォントサイズを指定する</h2>
 <p>これは本文に使う本文のフォントとフォントサイズとの兼ね合いとなる。
 私は本文にTimes New Roman、10.5ptを使用したが、グラフでもこれと同じようにするため、</p>
@@ -142,41 +142,41 @@ if (!doNotTrack) {
 </span></code></pre></div><p>とした。ちなみにデフォルトではCourierとなる。</p>
 <p>研究室や教授の考え方によっては、本文と違うゴシック体を使うように言われるかもしれないが、
 重要なのは、すべての箇所で統一することである(もちろん見にくい箇所は適切に修正する)。</p>
-<p>よくある指定する箇所としては、FrameLabel、FrameStyleなどである。
-その他凡例などをEpilogやInsetで入れる場合にもすべて忘れずに指定する。</p>
+<p>よくある指定する箇所としては、<code>FrameLabel</code>、<code>FrameStyle</code>などである。
+その他凡例などを<code>Epilog</code>や<code>Inset</code>で入れる場合にもすべて忘れずに指定する。</p>
 <h2 id="すべての線の太さはabsolutethicknessで指定する">すべての線の太さはAbsoluteThicknessで指定する</h2>
-<p>線の太さをThicknessで指定するとグラフ全体の大きさに対して線の太さが決まってしまう。
+<p>線の太さを<code>Thickness</code>で指定するとグラフ全体の大きさに対して線の太さが決まってしまう。
 上では基本的に横幅140mmでグラフを作成すると書いたが、ふつう論文ではグラフだけ2段組にしたり、
 情報量が多いグラフは見やすくするために大きくしたりするので、グラフの大きさはバラバラになってしまう。</p>
-<p>そうなると線の太さが統一されないので、必ずAbsoluteThicknessを使ってポイント単位で指定する。</p>
+<p>そうなると線の太さが統一されないので、必ず<code>AbsoluteThickness</code>を使ってポイント単位で指定する。</p>
 <h2 id="白黒印刷されても違いがわかるようにplotstyleを指定する">白黒印刷されても違いがわかるようにPlotStyleを指定する</h2>
 <p>1つのグラフに複数の線がある場合は、デフォルトでは色が変わっていくだけだが、
-論文ではDashed、Dotted、DotDashedなどを使って点線、破線などにする他、
-それでも足りなければAbsoluteThicknessで太さを変えるなどして、白黒印刷されても違いを判別できるようにする。</p>
+論文では<code>Dashed</code>、<code>Dotted</code>、<code>DotDashed</code>などを使って点線、破線などにする他、
+それでも足りなければ<code>AbsoluteThickness</code>で太さを変えるなどして、白黒印刷されても違いを判別できるようにする。</p>
 <p>もちろん論文内では使い方の順序を統一する。</p>
 <p>ちなみに、デフォルトで使われる色は</p>
 <div class="highlight"><pre class="chroma"><code class="language-Mathematica" data-lang="Mathematica"><span class="n">ColorData</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;ColorList&#34;</span><span class="p">]</span><span class="w">
 </span></code></pre></div><p>で取得できる。</p>
 <h2 id="凡例はplotlegendsパッケージを使うかepilogオプションに自前で作って加える">凡例はPlotLegends`パッケージを使うか、Epilogオプションに自前で作って加える</h2>
-<p>論文で使うグラフに凡例は必須なので、PlotLegendsパッケージをロードして、PlotなどのPlotLegendオプションなどを指定する。</p>
+<p>論文で使うグラフに凡例は必須なので、PlotLegendsパッケージをロードして、<code>Plot</code>などの<code>PlotLegend</code>オプションなどを指定する。</p>
 <p>PlotLegendsパッケージには凡例のスタイルや位置を決めるためのオプションが色々あるものの、
 思い通りの凡例を作るのは結構大変なので、
-Epilogオプションに自前で凡例を作ったものを入れるほうが速いかもしれない。</p>
+<code>Epilog</code>オプションに自前で凡例を作ったものを入れるほうが手っ取り早いかもしれない。</p>
 <h2 id="pngを作成するときは一旦pdfにexportしてimagemagickなどで変換する">PNGを作成するときは一旦PDFにExportして、ImageMagickなどで変換する</h2>
-<p>グラフの余白部分やFrameTicksの目盛りの長さなどは、グラフ全体の大きさが変わった時に変化してしまう。
+<p>グラフの余白部分や<code>FrameTicks</code>の目盛りの長さなどは、グラフ全体の大きさが変わった時に変化してしまう。
 PNG画像にするときは、Mathematicaからは一旦PDFで出力しておき、ImageMagickなどを使って</p>
 <pre><code>convert -density 300 ***.pdf ***.png
 </code></pre><p>と、印刷時の解像度(この例では300dpi)を指定してPNGに変換する。</p>
 <p>Wordの場合、PNG画像を挿入した後、プロパティからサイズを上で決めた140mmなどと指定する。
 どうしても直接PNGにExportするときはImageResolutionを指定する</p>
 <p>ImageMagickでは日本語の文字が入っている時にきれいにPNGに変換できないことがあるので、
-どうしてもMathematicaからPNGでExportせざるを得ないときは、
-印刷するときの解像度をImageResolutionに指定する。</p>
+どうしてもMathematicaからPNGで<code>Export</code>せざるを得ないときは、
+印刷するときの解像度を<code>ImageResolution</code>に指定する。</p>
 <p>例えば300dpiで印刷しようとするときは、</p>
 <div class="highlight"><pre class="chroma"><code class="language-Mathematica" data-lang="Mathematica"><span class="n">ImageResolution</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="mi">300</span><span class="w">
-</span></code></pre></div><p>と指定してPNGファイルをExportする。</p>
+</span></code></pre></div><p>と指定してPNGファイルを<code>Export</code>する。</p>
 <h2 id="例">例</h2>
-<p>Sin[x]とCos[x]のグラフを凡例付きでグラフにする。</p>
+<p><code>Sin[x]</code>と<code>Cos[x]</code>のグラフを凡例付きでグラフにする。</p>
 <ul>
 <li>横幅は140mmとし、縦横比は黄金比(デフォルト)</li>
 <li>グラフの線の太さは1.5ポイント</li>

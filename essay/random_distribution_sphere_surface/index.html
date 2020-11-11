@@ -90,8 +90,8 @@ if (!doNotTrack) {
     <img src="001.png"/> 
 </figure>
 
-<p>球面上で一様分布させるには、下記のようにθにArcCosを使う
-(θの位置の確率をSinθに比例させたい→累積確率分布関数はCos→逆関数はArcCos)。</p>
+<p>球面上で一様分布させるには、下記のようにθに<code>ArcCos</code>を使う
+(θの位置の確率をSinθに比例させたい→累積確率分布関数は<code>Cos</code>→逆関数は<code>ArcCos</code>)。</p>
 <div class="highlight"><pre class="chroma"><code class="language-Mathematica" data-lang="Mathematica"><span class="n">data2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Transpose</span><span class="p">[{</span><span class="n">Sin</span><span class="p">[</span><span class="n">t</span><span class="p">]</span><span class="w"> </span><span class="n">Cos</span><span class="p">[</span><span class="n">f</span><span class="p">],</span><span class="w"> </span><span class="n">Sin</span><span class="p">[</span><span class="n">t</span><span class="p">]</span><span class="w"> </span><span class="n">Sin</span><span class="p">[</span><span class="n">f</span><span class="p">],</span><span class="w"> </span><span class="n">Cos</span><span class="p">[</span><span class="n">t</span><span class="p">]}</span><span class="w"> </span><span class="o">/.</span><span class="w"> </span><span class="p">{</span><span class="w">
 </span><span class="w">     </span><span class="n">f</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">RandomReal</span><span class="p">[{</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="n">Pi</span><span class="p">},</span><span class="w"> </span><span class="mi">2000</span><span class="p">],</span><span class="w">
 </span><span class="w">     </span><span class="n">t</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">ArcCos</span><span class="p">[</span><span class="n">RandomReal</span><span class="p">[{</span><span class="mi">-1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">},</span><span class="w"> </span><span class="mi">2000</span><span class="p">]]}];</span><span class="w">

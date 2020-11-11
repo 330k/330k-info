@@ -11,12 +11,12 @@
 <meta property="og:description" content="Wolfram CDF Player を汎用するにあるように、 CDF PlayerでもJ/Linkを使えばローカルファイルの読み込み、書き込みができる(※CDFファイルの作成にはMathematicaが必要)。 上記リンク先ではテキストファイルを読み込む例が載っているが、バイナリファイルとして読み込んでImportStringを使えば、 Mathematicaが対応している形式すべてのファイルを読み込むことができる。 J/Linkでバイナリ" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.330k.info/essay/read-and-write-a-local-file-with-wolfram-cdf-player/" />
-<meta property="og:image" content="https://static.macupdate.com/products/29980/m/wolfram-cdf-player-logo.webp?v=1568303147" />
+<meta property="og:image" content="https://www.ipros.jp/public/product/image/f59/396065002/IPROS3632825140790521490.png?h=220&w=220" />
 <meta property="article:published_time" content="2013-10-18T00:00:00+09:00" />
 <meta property="article:modified_time" content="2013-10-18T00:00:00+09:00" />
 
 	<meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:image" content="https://static.macupdate.com/products/29980/m/wolfram-cdf-player-logo.webp?v=1568303147"/>
+<meta name="twitter:image" content="https://www.ipros.jp/public/product/image/f59/396065002/IPROS3632825140790521490.png?h=220&w=220"/>
 
 <meta name="twitter:title" content="Wolfram CDF Playerでローカルファイルの読み込みと書き込みを行う"/>
 <meta name="twitter:description" content="Wolfram CDF Player を汎用するにあるように、 CDF PlayerでもJ/Linkを使えばローカルファイルの読み込み、書き込みができる(※CDFファイルの作成にはMathematicaが必要)。 上記リンク先ではテキストファイルを読み込む例が載っているが、バイナリファイルとして読み込んでImportStringを使えば、 Mathematicaが対応している形式すべてのファイルを読み込むことができる。 J/Linkでバイナリ"/>
@@ -82,15 +82,15 @@ if (!doNotTrack) {
 		</header><div class="content post__content clearfix">
 			<p><a href="http://blog.hulinks.co.jp/2011/08/universal-using-of-wolfram-cdf-player.html">Wolfram CDF Player を汎用する</a>にあるように、
 CDF PlayerでもJ/Linkを使えばローカルファイルの読み込み、書き込みができる(※CDFファイルの作成にはMathematicaが必要)。</p>
-<p>上記リンク先ではテキストファイルを読み込む例が載っているが、バイナリファイルとして読み込んでImportStringを使えば、
+<p>上記リンク先ではテキストファイルを読み込む例が載っているが、バイナリファイルとして読み込んで<code>ImportString</code>を使えば、
 Mathematicaが対応している形式すべてのファイルを読み込むことができる。</p>
 <p>J/Linkでバイナリファイルを読み込むときのポイントとしては、</p>
 <ul>
-<li>&ldquo;[B&quot;というクラス名でbyte型の配列を作ってBufferedInputStream.read(byte[])で一気に読み込むことで高速化</li>
-<li>読み込んだbyte[]がMathematicaに入った時に符号付き整数で扱われるため、FromCharacterCodeに突っ込む前に0〜255になるように修正</li>
+<li><code>&quot;[B&quot;</code>というクラス名でbyte型の配列を作って<code>BufferedInputStream.read(byte[])</code>で一気に読み込むことで高速化</li>
+<li>読み込んだbyte[]がMathematicaに入った時に符号付き整数で扱われるため、<code>FromCharacterCode</code>に突っ込む前に0〜255になるように修正</li>
 </ul>
 <p>が挙げられる。</p>
-<p>一方、CDF PlayerではExportのみならずExportStringが使えない(ImportStringは使えるのに)ので、書き込むほうは不自由が残る。
+<p>一方、CDF Playerでは<code>Export</code>のみならず<code>ExportString</code>が使えない(<code>ImportString</code>は使えるのに)ので、書き込むほうは不自由が残る。
 ここではテキストと画像(BMP、PNG、JPEG)に限って保存する関数を作ってみた。</p>
 <div class="highlight"><pre class="chroma"><code class="language-Mathematica" data-lang="Mathematica"><span class="n">ImportWithJLink</span><span class="p">[</span><span class="nv">filepath_</span><span class="o">?</span><span class="p">(</span><span class="n">FileExistsQ</span><span class="p">[</span><span class="n">FindFile</span><span class="p">[</span><span class="nv">#</span><span class="p">]]</span><span class="w"> </span><span class="o">&amp;</span><span class="p">),</span><span class="w"> </span><span class="nv">format_</span><span class="p">]</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="p">(</span><span class="w">
 </span><span class="w">  </span><span class="n">Needs</span><span class="p">[</span><span class="s">&#34;JLink`&#34;</span><span class="p">];</span><span class="w">
