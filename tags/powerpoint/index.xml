@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>PowerPoint on 330k info</title>
+    <link>https://www.330k.info/tags/powerpoint/</link>
+    <description>Recent content in PowerPoint on 330k info</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja-jp</language>
+    <lastBuildDate>Sun, 25 Oct 2009 22:42:27 +0900</lastBuildDate><atom:link href="https://www.330k.info/tags/powerpoint/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>PPTX外部リンク抽出</title>
+      <link>https://www.330k.info/software/extract-exlinks-pptx/</link>
+      <pubDate>Sun, 25 Oct 2009 22:42:27 +0900</pubDate>
+      
+      <guid>https://www.330k.info/software/extract-exlinks-pptx/</guid>
+      <description>概要 PowerPointで動画を入れることはよくあるが、その動画がどこにあるファイルなのか分からなくなることがよくある。 一応、PowerPointでもパスを表示させることはできるのだが、何せ表示できる文字数が短すぎて分からない、という無駄機能状態。 ↑このように「ファイルへのリンクの編集」で表示させることはできるのだが、 深い階層のファイルを参照していると、表示しきれない。 幸い、最新のPowerPoi</description>
+    </item>
+    
+  </channel>
+</rss>

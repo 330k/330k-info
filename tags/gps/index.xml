@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>GPS on 330k info</title>
+    <link>https://www.330k.info/tags/gps/</link>
+    <description>Recent content in GPS on 330k info</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja-jp</language>
+    <lastBuildDate>Tue, 27 Oct 2009 00:00:00 +0900</lastBuildDate><atom:link href="https://www.330k.info/tags/gps/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>簡易ハンディGPSによるあしあとデータの時刻情報</title>
+      <link>https://www.330k.info/essay/leap-second-in-au-handy-gps-ashiato-data/</link>
+      <pubDate>Tue, 27 Oct 2009 00:00:00 +0900</pubDate>
+      
+      <guid>https://www.330k.info/essay/leap-second-in-au-handy-gps-ashiato-data/</guid>
+      <description>au携帯電話に入っている地図ビューアーの簡易ハンディGPS機能によって取得したGPSログ(あしあとデータ)は、 本ファイルは、地図ビューアーにより出力されたGPS情報ファイルです。 出力日時:2009/10/27 08:56:46 +0900 +++GPSログ+++ 940669002,139.604988,35.833148 という形式になっており、「+++GPSログ+++」以下の行に時刻、経度、緯度の順番に記録される。 GPSでは時刻を1980年1月6日0時0分0秒(GMT)からの秒数と</description>
+    </item>
+    
+  </channel>
+</rss>

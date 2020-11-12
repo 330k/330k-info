@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>GAS on 330k info</title>
+    <link>https://www.330k.info/tags/gas/</link>
+    <description>Recent content in GAS on 330k info</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja-jp</language>
+    <lastBuildDate>Thu, 25 Jun 2020 21:15:24 +0900</lastBuildDate><atom:link href="https://www.330k.info/tags/gas/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>GASのgoogle.script.runをPromise化する</title>
+      <link>https://www.330k.info/essay/gas_google_script_run_convert_promise/</link>
+      <pubDate>Thu, 25 Jun 2020 21:15:24 +0900</pubDate>
+      
+      <guid>https://www.330k.info/essay/gas_google_script_run_convert_promise/</guid>
+      <description>&lt;p&gt;GASでクライアント側のJavaScriptから、サーバ側のJavaScriptを呼び出す時、&lt;code&gt;google.script.run&lt;/code&gt;を使用する。&lt;/p&gt;
+&lt;p&gt;ただこれは非同期処理でありながらPromiseを返さず、独自に&lt;code&gt;withSuccessHandler&lt;/code&gt;と&lt;code&gt;withFailureHandler&lt;/code&gt;にコールバックを設定する必要があるので、ちょっと面倒。&lt;/p&gt;
+&lt;p&gt;ということで、Promise化するコードを作ってみた(V8エンジン限定)。&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

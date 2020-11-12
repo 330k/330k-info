@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>VBA on 330k info</title>
+    <link>https://www.330k.info/tags/vba/</link>
+    <description>Recent content in VBA on 330k info</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja-jp</language>
+    <lastBuildDate>Thu, 20 Jul 2017 20:57:38 +0900</lastBuildDate><atom:link href="https://www.330k.info/tags/vba/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>VBAでUUIDを生成</title>
+      <link>https://www.330k.info/essay/create_uuid_vba/</link>
+      <pubDate>Thu, 20 Jul 2017 20:57:38 +0900</pubDate>
+      
+      <guid>https://www.330k.info/essay/create_uuid_vba/</guid>
+      <description>Excel VBAでUUID(GUID)を生成して使っている部分があったのだが、 先日のWindows Updateを適用してから、 CreateObject(&amp;quot;Scriptlet.TypeLib&amp;quot;)でエラーが出て使用できなくなってしまった。 参考 : 2017 年 7 月のセキュリティ更新適用後、VBA から一部のオブジェクトを作成できません 私の場合はただ単にランダムなUUIDが生成できれば良いので、 UUID v4を生</description>
+    </item>
+    
+    <item>
+      <title>VBAでビットマップ(bmp)を読み書き</title>
+      <link>https://www.330k.info/essay/how-to-read-and-write-24bit-bitmap-files-with-vba/</link>
+      <pubDate>Wed, 22 Sep 2010 00:00:00 +0900</pubDate>
+      
+      <guid>https://www.330k.info/essay/how-to-read-and-write-24bit-bitmap-files-with-vba/</guid>
+      <description>会社のPCでは自由にソフトウェアをインストールすることができないので、業務で使いそうなものはExcel VBAで自作していくことにした。 まずは手始めに24ビットビットマップの読み書きを行う標準モジュールを作成した。 VBAの機能のみで実装しており、外部のライブラリには依存しない。 使い方 以下のソースをOfficeのマクロで標準モジュールとしてプロジェクトへ追加する。 ReadBitmap(&amp;ldquo;C</description>
+    </item>
+    
+    <item>
+      <title>漢字コード変換モジュール for VB6/VBA</title>
+      <link>https://www.330k.info/software/kcconvert/</link>
+      <pubDate>Sun, 25 Oct 2009 22:43:13 +0900</pubDate>
+      
+      <guid>https://www.330k.info/software/kcconvert/</guid>
+      <description>概要 VB6およびExcelなどのVBAにおいて日本語の文字コード変換機能を提供するモジュール。 外部ライブラリを使用せずに変換を行う。 以下の文字コード間の相互変換が可能。 Shift-JIS EUC-JP JIS UTF-8(BOMなし, あり) UTF-16LE(BOMなし, あり) UTF-16BE(BOMあり) ダウンロード Vectorの紹介ページへ</description>
+    </item>
+    
+  </channel>
+</rss>

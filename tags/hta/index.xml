@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>HTA on 330k info</title>
+    <link>https://www.330k.info/tags/hta/</link>
+    <description>Recent content in HTA on 330k info</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja-jp</language>
+    <lastBuildDate>Wed, 13 Jan 2016 22:42:14 +0900</lastBuildDate><atom:link href="https://www.330k.info/tags/hta/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>HTA SQLツール</title>
+      <link>https://www.330k.info/software/hta-sql-tool/</link>
+      <pubDate>Wed, 13 Jan 2016 22:42:14 +0900</pubDate>
+      
+      <guid>https://www.330k.info/software/hta-sql-tool/</guid>
+      <description>概要 今は廃れたHTA(HTML Application)で書いた、汎用SQLツールです。 Windows上で動作し、 CSVファイル(*.csv) Excelファイル(.xls、.xlsx、.xlsm、.xlsb) Accessファイル(*.mdb) などをADODB経由で開いてSQLクエリを実行できます。 CSVファイルはディレクトリ⇔データベース、CSVファイル⇔テーブルとして扱われ、 ExcelファイルはE</description>
+    </item>
+    
+  </channel>
+</rss>

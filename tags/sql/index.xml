@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>SQL on 330k info</title>
+    <link>https://www.330k.info/tags/sql/</link>
+    <description>Recent content in SQL on 330k info</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja-jp</language>
+    <lastBuildDate>Sun, 06 Nov 2016 17:22:00 +0900</lastBuildDate><atom:link href="https://www.330k.info/tags/sql/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>勘定奉行の性能劣化に対処</title>
+      <link>https://www.330k.info/essay/performance_degration_of_kanjo_bugyo/</link>
+      <pubDate>Sun, 06 Nov 2016 17:22:00 +0900</pubDate>
+      
+      <guid>https://www.330k.info/essay/performance_degration_of_kanjo_bugyo/</guid>
+      <description>社内では会計システムに勘定奉行(ネットワーク版)を使っているが、 担当者から「勘定奉行で仕訳帳の表示に20秒くらいかかる」と言われたので調査してみた。 その担当者のPC固有の問題かどうかを切り分けるため別のPCから同様の操作を行ってみたところ、同じ症状が発生した。 ということは、サーバ側に問題がありそう。 勘定奉行のクライアントは生のSQL文をサーバに発行する仕組みなので、 Wiresharkでパケットをキ</description>
+    </item>
+    
+    <item>
+      <title>HTA SQLツール</title>
+      <link>https://www.330k.info/software/hta-sql-tool/</link>
+      <pubDate>Wed, 13 Jan 2016 22:42:14 +0900</pubDate>
+      
+      <guid>https://www.330k.info/software/hta-sql-tool/</guid>
+      <description>概要 今は廃れたHTA(HTML Application)で書いた、汎用SQLツールです。 Windows上で動作し、 CSVファイル(*.csv) Excelファイル(.xls、.xlsx、.xlsm、.xlsb) Accessファイル(*.mdb) などをADODB経由で開いてSQLクエリを実行できます。 CSVファイルはディレクトリ⇔データベース、CSVファイル⇔テーブルとして扱われ、 ExcelファイルはE</description>
+    </item>
+    
+    <item>
+      <title>MathematicaからSQLiteでBLOBとマルチバイト文字列を扱う</title>
+      <link>https://www.330k.info/essay/process-blob-and-multibyte-string-from-sqlite-with-mathematica/</link>
+      <pubDate>Sun, 14 Oct 2012 00:00:00 +0900</pubDate>
+      
+      <guid>https://www.330k.info/essay/process-blob-and-multibyte-string-from-sqlite-with-mathematica/</guid>
+      <description>ドキュメントにはないものの、MathematicaではSQLiteを扱うことができる。 しかしながら、BLOB型や文字列で日本語などを扱うには少し工夫が必要なので、メモ。 BLOB型 select 直接BLOB型をselectすると$Failedが返ってくるので、hex関数で16進文字列として返す。 db=Database`OpenDatabase[sqlitefilepath];rs=Database`QueryDatabase[db,&amp;#34;select hex(column_name) from table_name&amp;#34;];これを16進文字列→数値→バイト列→文字列と変換して、最後にImportStr</description>
+    </item>
+    
+  </channel>
+</rss>

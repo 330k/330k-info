@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>SQLServer on 330k info</title>
+    <link>https://www.330k.info/tags/sqlserver/</link>
+    <description>Recent content in SQLServer on 330k info</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja-jp</language>
+    <lastBuildDate>Sun, 06 Nov 2016 17:22:00 +0900</lastBuildDate><atom:link href="https://www.330k.info/tags/sqlserver/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>勘定奉行の性能劣化に対処</title>
+      <link>https://www.330k.info/essay/performance_degration_of_kanjo_bugyo/</link>
+      <pubDate>Sun, 06 Nov 2016 17:22:00 +0900</pubDate>
+      
+      <guid>https://www.330k.info/essay/performance_degration_of_kanjo_bugyo/</guid>
+      <description>社内では会計システムに勘定奉行(ネットワーク版)を使っているが、 担当者から「勘定奉行で仕訳帳の表示に20秒くらいかかる」と言われたので調査してみた。 その担当者のPC固有の問題かどうかを切り分けるため別のPCから同様の操作を行ってみたところ、同じ症状が発生した。 ということは、サーバ側に問題がありそう。 勘定奉行のクライアントは生のSQL文をサーバに発行する仕組みなので、 Wiresharkでパケットをキ</description>
+    </item>
+    
+  </channel>
+</rss>
