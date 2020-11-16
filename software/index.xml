@@ -13,7 +13,7 @@
       <pubDate>Sat, 11 Jul 2020 19:41:44 +0900</pubDate>
       
       <guid>https://www.330k.info/software/cannonball-wind-map/</guid>
-      <description>キャノンボール専用の簡易版Epic Ride Weatherです。 OpenWeatherのWeather APIの無料範囲で取得できるデータを使っています。 スタート時刻を選ぶことで各地点通過時刻に最も近い時刻の予報データを表示します(カーソルキーに対応) 取得できる予報データは48時間後までなので、最大24時間後のスタート時刻まで表示できます 2時間に1回データを取得しています 地点は伊賀越ルートで風の影響が大きそ</description>
+      <description>キャノンボール専用の簡易版Epic Ride Weatherです。 OpenWeatherのWeather APIの無料範囲で取得できるデータを使っています。 スタート時刻を選ぶことで各地点通過時刻に最も近い時刻の予報データを表示します(カーソルキーに対応) 取得できる予報データは48時間後までです。目標時間24時間の場合は最大24時間後、18時間の場合は最大30時間後のスタート時刻まで予報を表示できます 2時間に1</description>
     </item>
     
     <item>

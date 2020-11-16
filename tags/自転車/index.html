@@ -92,7 +92,7 @@ if (!doNotTrack) {
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		キャノンボール専用の簡易版Epic Ride Weatherです。 OpenWeatherのWeather APIの無料範囲で取得できるデータを使っています。 スタート時刻を選ぶことで各地点通過時刻に最も近い時刻の予報データを表示します(カーソルキーに対応) 取得できる予報データは48時間後までなので、最大24時間後のスタート時刻まで表示できます 2時間に1回データを取得しています 地点は伊賀越ルートで風の影響が大きそ
+		キャノンボール専用の簡易版Epic Ride Weatherです。 OpenWeatherのWeather APIの無料範囲で取得できるデータを使っています。 スタート時刻を選ぶことで各地点通過時刻に最も近い時刻の予報データを表示します(カーソルキーに対応) 取得できる予報データは48時間後までです。目標時間24時間の場合は最大24時間後、18時間の場合は最大30時間後のスタート時刻まで予報を表示できます 2時間に1
 	</div>
 </article><article class="list__item post">
 	<figure class="list__thumbnail">
@@ -263,7 +263,8 @@ ANT+対応の心拍計などは持っていないので、Recon JET単体での�
 			</div>
 			
 <aside class="sidebar sidebar--left">
-<div class="widget-recent widget">
+<div class="widget-fixedpage widget">
+	<h4 class="widget__title">固定ページ</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
 			<li class="widget__item"><a class="widget__link" href="/software/create_gpx_with_google_maps/">Google MapsでGPXルート作成</a></li>

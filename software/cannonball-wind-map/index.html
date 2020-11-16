@@ -8,7 +8,7 @@
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
 	<meta property="og:title" content="キャノンボール専用 天候・風向き予測(β)" />
-<meta property="og:description" content="キャノンボール専用の簡易版Epic Ride Weatherです。 OpenWeatherのWeather APIの無料範囲で取得できるデータを使っています。 スタート時刻を選ぶことで各地点通過時刻に最も近い時刻の予報データを表示します(カーソルキーに対応) 取得できる予報データは48時間後までなので、最大24時間後のスタート時刻まで表示できます 2時間に1回データを取得しています 地点は伊賀越ルートで風の影響が大きそ" />
+<meta property="og:description" content="キャノンボール専用の簡易版Epic Ride Weatherです。 OpenWeatherのWeather APIの無料範囲で取得できるデータを使っています。 スタート時刻を選ぶことで各地点通過時刻に最も近い時刻の予報データを表示します(カーソルキーに対応) 取得できる予報データは48時間後までです。目標時間24時間の場合は最大24時間後、18時間の場合は最大30時間後のスタート時刻まで予報を表示できます 2時間に1" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.330k.info/software/cannonball-wind-map/" />
 <meta property="og:image" content="https://www.330k.info/software/cannonball-wind-map/cannonball_ogimage.png" />
@@ -19,7 +19,7 @@
 <meta name="twitter:image" content="https://www.330k.info/software/cannonball-wind-map/cannonball_ogimage.png"/>
 
 <meta name="twitter:title" content="キャノンボール専用 天候・風向き予測(β)"/>
-<meta name="twitter:description" content="キャノンボール専用の簡易版Epic Ride Weatherです。 OpenWeatherのWeather APIの無料範囲で取得できるデータを使っています。 スタート時刻を選ぶことで各地点通過時刻に最も近い時刻の予報データを表示します(カーソルキーに対応) 取得できる予報データは48時間後までなので、最大24時間後のスタート時刻まで表示できます 2時間に1回データを取得しています 地点は伊賀越ルートで風の影響が大きそ"/>
+<meta name="twitter:description" content="キャノンボール専用の簡易版Epic Ride Weatherです。 OpenWeatherのWeather APIの無料範囲で取得できるデータを使っています。 スタート時刻を選ぶことで各地点通過時刻に最も近い時刻の予報データを表示します(カーソルキーに対応) 取得できる予報データは48時間後までです。目標時間24時間の場合は最大24時間後、18時間の場合は最大30時間後のスタート時刻まで予報を表示できます 2時間に1"/>
 
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -90,9 +90,9 @@ if (!doNotTrack) {
 <p>OpenWeatherの<a href="https://openweathermap.org/api">Weather API</a>の無料範囲で取得できるデータを使っています。</p>
 <ul>
 <li>スタート時刻を選ぶことで各地点通過時刻に最も近い時刻の予報データを表示します(カーソルキーに対応)</li>
-<li>取得できる予報データは48時間後までなので、最大24時間後のスタート時刻まで表示できます</li>
+<li>取得できる予報データは48時間後までです。目標時間24時間の場合は最大24時間後、18時間の場合は最大30時間後のスタート時刻まで予報を表示できます</li>
 <li>2時間に1回データを取得しています</li>
-<li>地点は伊賀越ルートで風の影響が大きそうな平地を選定しました</li>
+<li>地点は伊賀越ルートで風の影響が大きそうな(かつ局地的な地形の影響を受けにくい)平地を選定しました</li>
 </ul>
 <p>※気象業務法によって予報業務を許可なく行うことができません(参考: <a href="https://www.jma.go.jp/jma/kishou/minkan/q_a_m.html">気象庁 | 気象等の予報業務許可についてよくお寄せいただくご質問</a>)ので、OpenWeatherのデータは一切加工せずに表示しています。</p>
 <h3 id="その他リンク">その他リンク</h3>
@@ -130,7 +130,8 @@ if (!doNotTrack) {
 
 			</div>
 			<aside class="sidebar sidebar--left">
-<div class="widget-recent widget">
+<div class="widget-fixedpage widget">
+	<h4 class="widget__title">固定ページ</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
 			<li class="widget__item"><a class="widget__link" href="/software/create_gpx_with_google_maps/">Google MapsでGPXルート作成</a></li>
