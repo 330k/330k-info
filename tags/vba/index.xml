@@ -31,7 +31,8 @@
       <pubDate>Sun, 25 Oct 2009 22:43:13 +0900</pubDate>
       
       <guid>https://www.330k.info/software/kcconvert/</guid>
-      <description>概要 VB6およびExcelなどのVBAにおいて日本語の文字コード変換機能を提供するモジュール。 外部ライブラリを使用せずに変換を行う。 以下の文字コード間の相互変換が可能。 Shift-JIS EUC-JP JIS UTF-8(BOMなし, あり) UTF-16LE(BOMなし, あり) UTF-16BE(BOMあり) ダウンロード Vectorの紹介ページへ</description>
+      <description>&lt;p&gt;VB6およびExcelなどのVBAにおいて日本語の文字コード変換機能を提供するモジュール。
+外部ライブラリを使用せずに変換を行う。&lt;/p&gt;</description>
     </item>
     
   </channel>

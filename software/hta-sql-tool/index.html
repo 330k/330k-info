@@ -8,7 +8,8 @@
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
 	<meta property="og:title" content="HTA SQLツール" />
-<meta property="og:description" content="概要 今は廃れたHTA(HTML Application)で書いた、汎用SQLツールです。 Windows上で動作し、 CSVファイル(*.csv) Excelファイル(.xls、.xlsx、.xlsm、.xlsb) Accessファイル(*.mdb) などをADODB経由で開いてSQLクエリを実行できます。 CSVファイルはディレクトリ⇔データベース、CSVファイル⇔テーブルとして扱われ、 ExcelファイルはE" />
+<meta property="og:description" content="今は廃れたHTA(HTML Application)で書いた、汎用SQLツール。
+AccessがなくてもCSVファイルやExcelファイルに対してSQLを実行。" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.330k.info/software/hta-sql-tool/" />
 <meta property="og:image" content="https://www.330k.info/software/hta-sql-tool/htasql001.png" />
@@ -19,7 +20,8 @@
 <meta name="twitter:image" content="https://www.330k.info/software/hta-sql-tool/htasql001.png"/>
 
 <meta name="twitter:title" content="HTA SQLツール"/>
-<meta name="twitter:description" content="概要 今は廃れたHTA(HTML Application)で書いた、汎用SQLツールです。 Windows上で動作し、 CSVファイル(*.csv) Excelファイル(.xls、.xlsx、.xlsm、.xlsb) Accessファイル(*.mdb) などをADODB経由で開いてSQLクエリを実行できます。 CSVファイルはディレクトリ⇔データベース、CSVファイル⇔テーブルとして扱われ、 ExcelファイルはE"/>
+<meta name="twitter:description" content="今は廃れたHTA(HTML Application)で書いた、汎用SQLツール。
+AccessがなくてもCSVファイルやExcelファイルに対してSQLを実行。"/>
 
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -80,11 +82,12 @@ if (!doNotTrack) {
 			<h1 class="post__title">HTA SQLツール</h1>
 			
 		</header><div class="content post__content clearfix">
-			<h1 id="概要">概要</h1>
-<p>今は廃れたHTA(HTML Application)で書いた、汎用SQLツールです。
-Windows上で動作し、</p>
+			<p>今は廃れたHTA(HTML Application)で書いた、汎用SQLツール。
+AccessがなくてもCSVファイルやExcelファイルに対してSQLを実行。</p>
+<h1 id="概要">概要</h1>
+<p>特別なソフトのインストール無しで動作し、</p>
 <ul>
-<li>CSVファイル(*.csv)</li>
+<li>CSVファイル(<em>.csv)、TSVファイル(</em>.tsv)</li>
 <li>Excelファイル(<em>.xls、</em>.xlsx、<em>.xlsm、</em>.xlsb)</li>
 <li>Accessファイル(*.mdb)</li>
 </ul>
@@ -356,7 +359,6 @@ select intoで直接ファイルに書き出すこともできます。</p>
 <li>Windows 8</li>
 </ul>
 <p>ExcelファイルやAccessファイルを扱うにはMicrosoft Officeが必要です。</p>
-
 		</div>
 		<footer class="post__footer">
 			

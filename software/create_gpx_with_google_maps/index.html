@@ -8,7 +8,7 @@
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
 	<meta property="og:title" content="Google MapsでGPXルート作成" />
-<meta property="og:description" content="思った以上に使っていただいてAPI料金の請求がすごいことになったので、申し訳ないのですが1日1000リクエストに制限しました。 地図やルートが表示されないときは制限に引っかかっておりますので、時間を置いて再度アクセスしてください。 PC用フルスクリーン版 モバイル(スマートフォン)版 使い方 出発地点と目的地点を入れて「Calculate Route」をクリック。 途中経路を変えたい場合は、通常のGoogleマ" />
+<meta property="og:description" content="Google Maps API v3を利用してGPXファイルを作成するオンラインツール。" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.330k.info/software/create_gpx_with_google_maps/" />
 <meta property="og:image" content="https://www.330k.info/software/create_gpx_with_google_maps/gmaplogo_235.png" />
@@ -19,7 +19,7 @@
 <meta name="twitter:image" content="https://www.330k.info/software/create_gpx_with_google_maps/gmaplogo_235.png"/>
 
 <meta name="twitter:title" content="Google MapsでGPXルート作成"/>
-<meta name="twitter:description" content="思った以上に使っていただいてAPI料金の請求がすごいことになったので、申し訳ないのですが1日1000リクエストに制限しました。 地図やルートが表示されないときは制限に引っかかっておりますので、時間を置いて再度アクセスしてください。 PC用フルスクリーン版 モバイル(スマートフォン)版 使い方 出発地点と目的地点を入れて「Calculate Route」をクリック。 途中経路を変えたい場合は、通常のGoogleマ"/>
+<meta name="twitter:description" content="Google Maps API v3を利用してGPXファイルを作成するオンラインツール。"/>
 
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -80,11 +80,37 @@ if (!doNotTrack) {
 			<h1 class="post__title">Google MapsでGPXルート作成</h1>
 			
 		</header><div class="content post__content clearfix">
-			<p><strong><span style="color:red;">思った以上に使っていただいてAPI料金の請求がすごいことになったので、申し訳ないのですが1日1000リクエストに制限しました。<br />地図やルートが表示されないときは制限に引っかかっておりますので、時間を置いて再度アクセスしてください。</span></strong></p>
+			<p>Google Maps API v3を利用してGPXファイルを作成するオンラインツール。</p>
+<p><strong><span style="color:red;">思った以上に使っていただいてAPI料金の請求がすごいことになったので、申し訳ないのですが1日1000リクエストに制限しました。<br />地図やルートが表示されないときは制限に引っかかっておりますので、時間を置いて再度アクセスしてください。</span></strong></p>
+
+
+
+
+<script defer>
+window.addEventListener("message", function(e){
+  console.log(e.origin);
+  console.log(e.data);
+  if(e.origin === getOriginFromUrl('https:\/\/330k.github.io\/gmapgpx\/create_gpx_route.html')){
+    
+  }
+}, false);
+function getOriginFromUrl(path){
+  var result = path.replace(/\\/g, '/').match(/(^[^:]+:\/\/[^/]*)/);
+  if(!result){
+    return '';
+  }else{
+    return result[1];
+  }
+};
+
+</script>
 <iframe
  src="https://330k.github.io/gmapgpx/create_gpx_route.html"
  width="100%"
- height="600">
+ height="600"
+ id="iframe-1"
+ style="border: none;"
+>
 </iframe>
 
 <ul>
@@ -94,6 +120,7 @@ if (!doNotTrack) {
 <h2 id="使い方">使い方</h2>
 <ul>
 <li>出発地点と目的地点を入れて「Calculate Route」をクリック。</li>
+<li>もしくは地図上で右クリックして出発地点や到着地点を指定。</li>
 <li>途中経路を変えたい場合は、通常のGoogleマップのようにドラッグして変更します。「Reduce into *** points」をクリックすると、trkpt要素の数を削減します(Douglas-Peuckerアルゴリズムを使用)。赤線が簡略化されたルートです。</li>
 <li>「Add Elevation」をクリックすると、標高(ele要素)を追加します(100点で1秒かかります)。</li>
 <li>「Download」をクリックすると、download.gpxというファイル名でGPXファイルがダウンロードされます。</li>
@@ -140,7 +167,6 @@ Google Maps API v3を使ってGPXのトラックを生成する、簡単なプ�
 <li>表示を高速化、UIのサイズを保存する機能を追加。(Aug. 26 2016)</li>
 <li>API使用を1日あたり1000レクエストに制限。(Aug. 2 2019)</li>
 </ul>
-
 		</div>
 		<footer class="post__footer">
 			

@@ -81,7 +81,7 @@
       <pubDate>Wed, 01 Jun 2016 22:42:38 +0900</pubDate>
       
       <guid>https://www.330k.info/software/plain-text-steganography-with-unicode/</guid>
-      <description>概要 ゼロ幅文字を使ってUnicodeのプレーンテキストにステガノグラフィを施す、 ブラウザのJavaScriptで動作するライブラリを書いてみた。 参考にしたのは以下のサイト ZERO WIDTH SPACE を使って Unicode ステガノグラフィ Unicode Text Steganography Encoders/Decoders 特徴としては以下の通り。 デフォルトではゼロ幅文字として4種類を使用(U+200C, U+200D, U+202C, U+FEFF)し、2種類の時よりもエンコード後の文字数を減少(それでも1文字埋め込むために8文字増える)</description>
+      <description>&lt;p&gt;ゼロ幅文字を使ってUnicodeのプレーンテキストにステガノグラフィを施す、ブラウザのJavaScriptで動作するライブラリ。&lt;/p&gt;</description>
     </item>
     
     <item>

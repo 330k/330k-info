@@ -13,7 +13,8 @@
       <pubDate>Wed, 13 Jan 2016 22:42:14 +0900</pubDate>
       
       <guid>https://www.330k.info/software/hta-sql-tool/</guid>
-      <description>概要 今は廃れたHTA(HTML Application)で書いた、汎用SQLツールです。 Windows上で動作し、 CSVファイル(*.csv) Excelファイル(.xls、.xlsx、.xlsm、.xlsb) Accessファイル(*.mdb) などをADODB経由で開いてSQLクエリを実行できます。 CSVファイルはディレクトリ⇔データベース、CSVファイル⇔テーブルとして扱われ、 ExcelファイルはE</description>
+      <description>&lt;p&gt;今は廃れたHTA(HTML Application)で書いた、汎用SQLツール。
+AccessがなくてもCSVファイルやExcelファイルに対してSQLを実行。&lt;/p&gt;</description>
     </item>
     
   </channel>

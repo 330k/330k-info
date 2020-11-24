@@ -8,7 +8,8 @@
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
 	<meta property="og:title" content="キャノンボール専用 天候・風向き予測(β)" />
-<meta property="og:description" content="キャノンボール専用の簡易版Epic Ride Weatherです。 OpenWeatherのWeather APIの無料範囲で取得できるデータを使っています。 スタート時刻を選ぶことで各地点通過時刻に最も近い時刻の予報データを表示します(カーソルキーに対応) 取得できる予報データは48時間後までです。目標時間24時間の場合は最大24時間後、18時間の場合は最大30時間後のスタート時刻まで予報を表示できます 2時間に1" />
+<meta property="og:description" content="キャノンボール専用の簡易版Epic Ride Weatherです。
+OpenWeatherのWeather APIの無料範囲で取得できるデータを使っています。" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.330k.info/software/cannonball-wind-map/" />
 <meta property="og:image" content="https://www.330k.info/software/cannonball-wind-map/cannonball_ogimage.png" />
@@ -19,7 +20,8 @@
 <meta name="twitter:image" content="https://www.330k.info/software/cannonball-wind-map/cannonball_ogimage.png"/>
 
 <meta name="twitter:title" content="キャノンボール専用 天候・風向き予測(β)"/>
-<meta name="twitter:description" content="キャノンボール専用の簡易版Epic Ride Weatherです。 OpenWeatherのWeather APIの無料範囲で取得できるデータを使っています。 スタート時刻を選ぶことで各地点通過時刻に最も近い時刻の予報データを表示します(カーソルキーに対応) 取得できる予報データは48時間後までです。目標時間24時間の場合は最大24時間後、18時間の場合は最大30時間後のスタート時刻まで予報を表示できます 2時間に1"/>
+<meta name="twitter:description" content="キャノンボール専用の簡易版Epic Ride Weatherです。
+OpenWeatherのWeather APIの無料範囲で取得できるデータを使っています。"/>
 
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -80,14 +82,36 @@ if (!doNotTrack) {
 			<h1 class="post__title">キャノンボール専用 天候・風向き予測(β)</h1>
 			
 		</header><div class="content post__content clearfix">
-			<iframe
+			<p>キャノンボール専用の簡易版Epic Ride Weatherです。</p>
+<p>OpenWeatherの<a href="https://openweathermap.org/api">Weather API</a>の無料範囲で取得できるデータを使っています。</p>
+<script defer>
+window.addEventListener("message", function(e){
+  console.log(e.origin);
+  console.log(e.data);
+  if(e.origin === getOriginFromUrl('https:\/\/script.google.com\/macros\/s\/AKfycbzEM3Ls9HrRu96kdAFoPEu1H9ddKIwYQbjSlAZ6MOF5PEjwc6c\/exec')){
+    
+  }
+}, false);
+function getOriginFromUrl(path){
+  var result = path.replace(/\\/g, '/').match(/(^[^:]+:\/\/[^/]*)/);
+  if(!result){
+    return '';
+  }else{
+    return result[1];
+  }
+};
+
+</script>
+<iframe
  src="https://script.google.com/macros/s/AKfycbzEM3Ls9HrRu96kdAFoPEu1H9ddKIwYQbjSlAZ6MOF5PEjwc6c/exec"
  width="100%"
- height="800">
+ height="800"
+ id="iframe-1"
+ style="border: none;"
+>
 </iframe>
 
-<p>キャノンボール専用の簡易版Epic Ride Weatherです。</p>
-<p>OpenWeatherの<a href="https://openweathermap.org/api">Weather API</a>の無料範囲で取得できるデータを使っています。</p>
+<h2 id="特徴仕様">特徴・仕様</h2>
 <ul>
 <li>スタート時刻を選ぶことで各地点通過時刻に最も近い時刻の予報データを表示します(カーソルキーに対応)</li>
 <li>取得できる予報データは48時間後までです。目標時間24時間の場合は最大24時間後、18時間の場合は最大30時間後のスタート時刻まで予報を表示できます</li>
@@ -95,14 +119,13 @@ if (!doNotTrack) {
 <li>地点は伊賀越ルートで風の影響が大きそうな(かつ局地的な地形の影響を受けにくい)平地を選定しました</li>
 </ul>
 <p>※気象業務法によって予報業務を許可なく行うことができません(参考: <a href="https://www.jma.go.jp/jma/kishou/minkan/q_a_m.html">気象庁 | 気象等の予報業務許可についてよくお寄せいただくご質問</a>)ので、OpenWeatherのデータは一切加工せずに表示しています。</p>
-<h3 id="その他リンク">その他リンク</h3>
+<h2 id="その他リンク">その他リンク</h2>
 <ul>
 <li><a href="https://www.epicrideweather.com/">Epic Ride Weather</a></li>
 <li><a href="https://www.windy.com/?35.199,138.123,8">Windy.com</a></li>
 <li><a href="https://www.windfinder.com/#8/35.0412/137.9196/">Windfinder</a></li>
 <li><a href="https://openweathermap.org/api/one-call-api">One Call API: weather data for any geographical coordinate - OpenWeatherMap</a></li>
 </ul>
-
 		</div>
 		<footer class="post__footer">
 			
