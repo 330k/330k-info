@@ -101,8 +101,8 @@ if (!doNotTrack) {
 <p>sendmailのために、今回はssmtpを使って設定してみる。</p>
 <p>postfixのほうが好きな方はそちらで。</p>
 <p>まずはssmtpをインストール。</p>
-<pre><code>sudo apt install ssmtp
-</code></pre><p>設定ファイル(<code>/etc/ssmtp/ssmtp.conf</code>)を編集し、使うメールアカウントに沿って設定箇所を記入。</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">sudo apt install ssmtp
+</code></pre></div><p>設定ファイル(<code>/etc/ssmtp/ssmtp.conf</code>)を編集し、使うメールアカウントに沿って設定箇所を記入。</p>
 <div class="highlight"><pre class="chroma"><code class="language-text" data-lang="text">#
 # Config file for sSMTP sendmail
 #
@@ -154,36 +154,41 @@ FromLineOverride=YES
   <span class="nv">url</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span> <span class="nv">$s</span> <span class="p">|</span> <span class="nv">$cut</span> -d<span class="s1">&#39;|&#39;</span> -f 2<span class="k">)</span>
   <span class="nv">begin</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span> <span class="nv">$s</span> <span class="p">|</span> <span class="nv">$cut</span> -d<span class="s1">&#39;|&#39;</span> -f <span class="m">3</span> <span class="p">|</span> sed <span class="s1">&#39;s|/|\\/|g&#39;</span><span class="k">)</span>
   <span class="nv">end</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span> <span class="nv">$s</span> <span class="p">|</span> <span class="nv">$cut</span> -d<span class="s1">&#39;|&#39;</span> -f <span class="m">4</span> <span class="p">|</span> sed <span class="s1">&#39;s|/|\\/|g&#39;</span><span class="k">)</span>
-  <span class="nv">newfile</span><span class="o">=</span><span class="si">${</span><span class="nv">SCRIPT_DIR</span><span class="si">}</span>/result/<span class="nv">$name</span>/new.html
-  <span class="nv">oldfile</span><span class="o">=</span><span class="si">${</span><span class="nv">SCRIPT_DIR</span><span class="si">}</span>/result/<span class="nv">$name</span>/old.html
-  <span class="nv">newrange</span><span class="o">=</span><span class="si">${</span><span class="nv">SCRIPT_DIR</span><span class="si">}</span>/result/<span class="nv">$name</span>/new_range.html
-  <span class="nv">oldrange</span><span class="o">=</span><span class="si">${</span><span class="nv">SCRIPT_DIR</span><span class="si">}</span>/result/<span class="nv">$name</span>/old_range.html
-  <span class="nv">errorcount</span><span class="o">=</span><span class="si">${</span><span class="nv">SCRIPT_DIR</span><span class="si">}</span>/result/<span class="nv">$name</span>/count.txt
+  <span class="nv">newfile</span><span class="o">=</span><span class="s2">&#34;</span><span class="si">${</span><span class="nv">SCRIPT_DIR</span><span class="si">}</span><span class="s2">/result/</span><span class="nv">$name</span><span class="s2">/new.html&#34;</span>
+  <span class="nv">oldfile</span><span class="o">=</span><span class="s2">&#34;</span><span class="si">${</span><span class="nv">SCRIPT_DIR</span><span class="si">}</span><span class="s2">/result/</span><span class="nv">$name</span><span class="s2">/old.html&#34;</span>
+  <span class="nv">newrange</span><span class="o">=</span><span class="s2">&#34;</span><span class="si">${</span><span class="nv">SCRIPT_DIR</span><span class="si">}</span><span class="s2">/result/</span><span class="nv">$name</span><span class="s2">/new_range.html&#34;</span>
+  <span class="nv">oldrange</span><span class="o">=</span><span class="s2">&#34;</span><span class="si">${</span><span class="nv">SCRIPT_DIR</span><span class="si">}</span><span class="s2">/result/</span><span class="nv">$name</span><span class="s2">/old_range.html&#34;</span>
+  <span class="nv">errorcount</span><span class="o">=</span><span class="s2">&#34;</span><span class="si">${</span><span class="nv">SCRIPT_DIR</span><span class="si">}</span><span class="s2">/result/</span><span class="nv">$name</span><span class="s2">/count.txt&#34;</span>
 
   <span class="k">if</span> <span class="o">[[</span> <span class="s2">&#34;</span><span class="nv">$name</span><span class="s2">&#34;</span> <span class="o">==</span> <span class="s2">&#34;&#34;</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
     <span class="k">continue</span>
   <span class="k">fi</span>
 
-  <span class="nb">echo</span> -n <span class="nv">$name</span><span class="s2">&#34; &#34;</span>
-  <span class="nb">echo</span> -n <span class="nv">$url</span><span class="s2">&#34; &#34;</span>
-  <span class="nb">echo</span> -n <span class="nv">$begin</span><span class="s2">&#34; &#34;</span>
-  <span class="nb">echo</span> -n <span class="nv">$end</span><span class="s2">&#34; &#34;</span>
+  <span class="c1"># 先頭が&#34;#&#34;の場合はスキップ</span>
+  <span class="k">if</span> <span class="o">[[</span> <span class="s2">&#34;</span><span class="si">${</span><span class="nv">name</span><span class="p">:</span><span class="nv">0</span><span class="p">:</span><span class="nv">1</span><span class="si">}</span><span class="s2">&#34;</span> <span class="o">==</span> <span class="s2">&#34;#&#34;</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
+    <span class="k">continue</span>
+  <span class="k">fi</span>
+
+  <span class="nb">echo</span> <span class="s2">&#34;NAME:    &#34;</span><span class="nv">$name</span>
+  <span class="nb">echo</span> <span class="s2">&#34;  URL:   &#34;</span><span class="nv">$url</span>
+  <span class="nb">echo</span> <span class="s2">&#34;  BEGIN: &#34;</span><span class="nv">$begin</span>
+  <span class="nb">echo</span> <span class="s2">&#34;  END:   &#34;</span><span class="nv">$end</span>
   <span class="nb">echo</span> <span class="s2">&#34;&#34;</span>
 
-  mkdir -p <span class="si">${</span><span class="nv">SCRIPT_DIR</span><span class="si">}</span>/result/<span class="nv">$name</span>/
+  mkdir -p <span class="s2">&#34;</span><span class="si">${</span><span class="nv">SCRIPT_DIR</span><span class="si">}</span><span class="s2">/result/</span><span class="nv">$name</span><span class="s2">/&#34;</span>
 
-  <span class="nv">$curl</span> <span class="s2">&#34;</span><span class="nv">$url</span><span class="s2">&#34;</span> &gt; <span class="si">${</span><span class="nv">newfile</span><span class="si">}</span> 2&gt;/dev/null
+  <span class="nv">statuscode</span><span class="o">=</span><span class="k">$(</span><span class="nv">$curl</span> <span class="s2">&#34;</span><span class="nv">$url</span><span class="s2">&#34;</span> -o <span class="s2">&#34;</span><span class="si">${</span><span class="nv">newfile</span><span class="si">}</span><span class="s2">&#34;</span> -w <span class="s1">&#39;%{http_code}\n&#39;</span> -s<span class="k">)</span>
 
-  <span class="k">if</span> <span class="o">[[</span> ! -s <span class="s2">&#34;</span><span class="nv">$newfile</span><span class="s2">&#34;</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
-    <span class="nb">echo</span> <span class="s2">&#34;Not Found&#34;</span>
-    <span class="nv">count</span><span class="o">=</span><span class="k">$(</span>cat <span class="si">${</span><span class="nv">errorcount</span><span class="si">}</span><span class="k">)</span>
-    <span class="nb">echo</span> <span class="k">$((</span><span class="o">++</span>count<span class="k">))</span> &gt; <span class="si">${</span><span class="nv">errorcount</span><span class="si">}</span>
+  <span class="k">if</span> <span class="o">[[</span> <span class="s2">&#34;</span><span class="si">${</span><span class="nv">statuscode</span><span class="si">}</span><span class="s2">&#34;</span> !<span class="o">=</span> <span class="s2">&#34;200&#34;</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
+    <span class="nb">echo</span> <span class="s2">&#34;Status Code Error&#34;</span>
+    <span class="nv">count</span><span class="o">=</span><span class="k">$(</span>cat <span class="s2">&#34;</span><span class="si">${</span><span class="nv">errorcount</span><span class="si">}</span><span class="s2">&#34;</span><span class="k">)</span>
+    <span class="nb">echo</span> <span class="k">$((</span><span class="o">++</span>count<span class="k">))</span> &gt; <span class="s2">&#34;</span><span class="si">${</span><span class="nv">errorcount</span><span class="si">}</span><span class="s2">&#34;</span>
 
     <span class="k">if</span> <span class="o">[[</span> <span class="si">${</span><span class="nv">count</span><span class="si">}</span> -eq <span class="m">3</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
       <span class="nv">tmp</span><span class="o">=</span><span class="k">$(</span>mktemp<span class="k">)</span>
       <span class="nb">echo</span> <span class="s2">&#34;To: </span><span class="si">${</span><span class="nv">MAILTO</span><span class="si">}</span><span class="s2">&#34;</span> &gt; <span class="nv">$tmp</span>
       <span class="nb">echo</span> <span class="s2">&#34;From: </span><span class="si">${</span><span class="nv">MAILFROM</span><span class="si">}</span><span class="s2">&#34;</span> &gt;&gt; <span class="nv">$tmp</span>
-      <span class="nb">echo</span> <span class="s2">&#34;Subject: </span><span class="si">${</span><span class="nv">name</span><span class="si">}</span><span class="s2"> Deleted&#34;</span> &gt;&gt; <span class="nv">$tmp</span>
+      <span class="nb">echo</span> <span class="s2">&#34;Subject: </span><span class="si">${</span><span class="nv">name</span><span class="si">}</span><span class="s2"> Error&#34;</span> &gt;&gt; <span class="nv">$tmp</span>
       <span class="nb">echo</span> <span class="s2">&#34;&#34;</span> &gt;&gt; <span class="nv">$tmp</span>
       <span class="nb">echo</span> <span class="s2">&#34;</span><span class="si">${</span><span class="nv">url</span><span class="si">}</span><span class="s2">&#34;</span> &gt;&gt; <span class="nv">$tmp</span>
 
@@ -193,11 +198,14 @@ FromLineOverride=YES
     <span class="k">fi</span>
 
   <span class="k">elif</span> <span class="o">[[</span> -f <span class="s2">&#34;</span><span class="nv">$oldfile</span><span class="s2">&#34;</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
-    cat <span class="nv">$oldfile</span> <span class="p">|</span> <span class="nv">$awk</span> <span class="s2">&#34;/</span><span class="si">${</span><span class="nv">begin</span><span class="si">}</span><span class="s2">/,/</span><span class="si">${</span><span class="nv">end</span><span class="si">}</span><span class="s2">/&#34;</span> &gt; <span class="si">${</span><span class="nv">oldrange</span><span class="si">}</span>
-    cat <span class="nv">$newfile</span> <span class="p">|</span> <span class="nv">$awk</span> <span class="s2">&#34;/</span><span class="si">${</span><span class="nv">begin</span><span class="si">}</span><span class="s2">/,/</span><span class="si">${</span><span class="nv">end</span><span class="si">}</span><span class="s2">/&#34;</span> &gt; <span class="si">${</span><span class="nv">newrange</span><span class="si">}</span>
-    <span class="nb">echo</span> <span class="s1">&#39;0&#39;</span> &gt; <span class="si">${</span><span class="nv">errorcount</span><span class="si">}</span>
+    cat <span class="s2">&#34;</span><span class="nv">$oldfile</span><span class="s2">&#34;</span> <span class="p">|</span> <span class="nv">$awk</span> <span class="s2">&#34;/</span><span class="si">${</span><span class="nv">begin</span><span class="si">}</span><span class="s2">/,/</span><span class="si">${</span><span class="nv">end</span><span class="si">}</span><span class="s2">/&#34;</span> &gt; <span class="s2">&#34;</span><span class="si">${</span><span class="nv">oldrange</span><span class="si">}</span><span class="s2">&#34;</span>
+    cat <span class="s2">&#34;</span><span class="nv">$newfile</span><span class="s2">&#34;</span> <span class="p">|</span> <span class="nv">$awk</span> <span class="s2">&#34;/</span><span class="si">${</span><span class="nv">begin</span><span class="si">}</span><span class="s2">/,/</span><span class="si">${</span><span class="nv">end</span><span class="si">}</span><span class="s2">/&#34;</span> &gt; <span class="s2">&#34;</span><span class="si">${</span><span class="nv">newrange</span><span class="si">}</span><span class="s2">&#34;</span>
+    <span class="nb">echo</span> <span class="s1">&#39;0&#39;</span> &gt; <span class="s2">&#34;</span><span class="si">${</span><span class="nv">errorcount</span><span class="si">}</span><span class="s2">&#34;</span>
 
-    <span class="k">if</span> ! <span class="nv">$diff</span> <span class="si">${</span><span class="nv">oldrange</span><span class="si">}</span> <span class="si">${</span><span class="nv">newrange</span><span class="si">}</span> &gt;/dev/null 2&gt;<span class="p">&amp;</span>1<span class="p">;</span> <span class="k">then</span>
+    <span class="k">if</span> <span class="o">[[</span> ! -s <span class="s2">&#34;</span><span class="si">${</span><span class="nv">newrange</span><span class="si">}</span><span class="s2">&#34;</span> <span class="o">]]</span><span class="p">;</span><span class="k">then</span>
+      cp <span class="s2">&#34;</span><span class="si">${</span><span class="nv">newfile</span><span class="si">}</span><span class="s2">&#34;</span> <span class="s2">&#34;</span><span class="si">${</span><span class="nv">newfile</span><span class="si">}</span><span class="s2">&#34;</span>.<span class="k">$(</span>date <span class="s1">&#39;+%Y%m%d%H%M&#39;</span><span class="k">)</span>
+    <span class="k">fi</span>
+    <span class="k">if</span> ! <span class="nv">$diff</span> <span class="s2">&#34;</span><span class="si">${</span><span class="nv">oldrange</span><span class="si">}</span><span class="s2">&#34;</span> <span class="s2">&#34;</span><span class="si">${</span><span class="nv">newrange</span><span class="si">}</span><span class="s2">&#34;</span> &gt;/dev/null 2&gt;<span class="p">&amp;</span>1<span class="p">;</span> <span class="k">then</span>
       <span class="nb">echo</span> -n <span class="s2">&#34;CHANGED &#34;</span>
       <span class="nv">tmp</span><span class="o">=</span><span class="k">$(</span>mktemp<span class="k">)</span>
       <span class="nb">echo</span> <span class="s2">&#34;To: </span><span class="si">${</span><span class="nv">MAILTO</span><span class="si">}</span><span class="s2">&#34;</span> &gt; <span class="nv">$tmp</span>
@@ -206,25 +214,25 @@ FromLineOverride=YES
       <span class="nb">echo</span> <span class="s2">&#34;&#34;</span> &gt;&gt; <span class="nv">$tmp</span>
       <span class="nb">echo</span> <span class="s2">&#34;</span><span class="si">${</span><span class="nv">url</span><span class="si">}</span><span class="s2">&#34;</span> &gt;&gt; <span class="nv">$tmp</span>
       <span class="nb">echo</span> <span class="s2">&#34;&#34;</span> &gt;&gt; <span class="nv">$tmp</span>
-      <span class="nv">$diff</span> <span class="si">${</span><span class="nv">oldrange</span><span class="si">}</span> <span class="si">${</span><span class="nv">newrange</span><span class="si">}</span> -u &gt;&gt; <span class="nv">$tmp</span>
+      <span class="nv">$diff</span> <span class="s2">&#34;</span><span class="si">${</span><span class="nv">oldrange</span><span class="si">}</span><span class="s2">&#34;</span> <span class="s2">&#34;</span><span class="si">${</span><span class="nv">newrange</span><span class="si">}</span><span class="s2">&#34;</span> -u &gt;&gt; <span class="nv">$tmp</span>
 
       <span class="nv">$sendmail</span> -t &lt; <span class="nv">$tmp</span>
       <span class="nb">echo</span> -n <span class="s2">&#34;MAIL Sent&#34;</span>
       rm <span class="nv">$tmp</span>
 
-      cp <span class="si">${</span><span class="nv">newfile</span><span class="si">}</span> <span class="si">${</span><span class="nv">oldfile</span><span class="si">}</span>
+      cp <span class="s2">&#34;</span><span class="si">${</span><span class="nv">newfile</span><span class="si">}</span><span class="s2">&#34;</span> <span class="s2">&#34;</span><span class="si">${</span><span class="nv">oldfile</span><span class="si">}</span><span class="s2">&#34;</span>
     <span class="k">else</span>
       <span class="nb">echo</span> -n <span class="s2">&#34;NO CHANGED &#34;</span>
     <span class="k">fi</span>
   <span class="k">else</span>
     <span class="nb">echo</span> -n <span class="s2">&#34;NEW &#34;</span>
-    mv <span class="si">${</span><span class="nv">newfile</span><span class="si">}</span> <span class="si">${</span><span class="nv">oldfile</span><span class="si">}</span>
+    mv <span class="s2">&#34;</span><span class="si">${</span><span class="nv">newfile</span><span class="si">}</span><span class="s2">&#34;</span> <span class="s2">&#34;</span><span class="si">${</span><span class="nv">oldfile</span><span class="si">}</span><span class="s2">&#34;</span>
   <span class="k">fi</span>
   <span class="nb">echo</span> <span class="s2">&#34;&#34;</span>
 <span class="k">done</span> &lt; <span class="si">${</span><span class="nv">LISTFILE</span><span class="si">}</span>
 </code></pre></div><p>実行権限を付与。</p>
-<pre><code>chmod +x webchecker.sh
-</code></pre><h2 id="設定ファイル">設定ファイル</h2>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">chmod +x webchecker.sh
+</code></pre></div><h2 id="設定ファイル">設定ファイル</h2>
 <p><code>checklist.txt</code>という名前で監視対象のURLと範囲を設定するファイルを<code>webchecker.sh</code>と同じディレクトリに作成。</p>
 <div class="highlight"><pre class="chroma"><code class="language-text" data-lang="text">BRM229|https://randonneurs.tokyo/?p=9950|&lt;header&gt;|&lt;footer&gt;
 BRM320|https://audax-kinki.com/20brm0320_600/|&lt;section&gt;|&lt;footer&gt;
@@ -248,16 +256,16 @@ RM430-Cue|https://randonneurs.tokyo/?p=11738|&lt;header&gt;|&lt;footer&gt;
 </ul>
 <h2 id="動作確認">動作確認</h2>
 <p>bash上で</p>
-<pre><code>./webchecker.sh
-</code></pre><p>とすると、初回は「NEW」、2回目以降で変更がなければ「NO CHANGED」と表示される。</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">./webchecker.sh
+</code></pre></div><p>とすると、初回は「NEW」、2回目以降で変更がなければ「NO CHANGED」と表示される。</p>
 <p>2回目以降で前回取得時から変更があれば「CHANGED」と表示され、メールが届くはず。</p>
 <p>なお、正常に取得できなかった時は3回目にメールするようにした(1回だと結構誤検知が発生した)。</p>
 <h2 id="cronの設定">cronの設定</h2>
 <p>あとは<code>cron</code>で定期的に実行されるようにする。</p>
-<pre><code>crontab -e
-</code></pre><p>5分おきに実行するなら下記のようにする。</p>
-<pre><code>*/5 * * * * /home/ubuntu/webchecker/webchecker.sh &gt; /dev/null 2&gt;&amp;1
-</code></pre><h2 id="実行例">実行例</h2>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">crontab -e
+</code></pre></div><p>5分おきに実行するなら下記のようにする。</p>
+<div class="highlight"><pre class="chroma"><code class="language-text" data-lang="text">*/5 * * * * /home/ubuntu/webchecker/webchecker.sh &gt; /dev/null 2&gt;&amp;1
+</code></pre></div><h2 id="実行例">実行例</h2>
 <p>あとは設定がうまくできていれば、次のようなメールが届く。</p>
 <div class="highlight"><pre class="chroma"><code class="language-text" data-lang="text">https://randonneurs.tokyo/?p=9950
 
