@@ -8,9 +8,9 @@
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
 	<meta property="og:title" content="ガルーンからGoogleカレンダーに同期する(GAS使用)" />
-<meta property="og:description" content="Cybozuのガルーンはよくできたソフトウェアなのだが、他のサービスとの連携、という点では使いにくかった。
-以前からSOAP APIはあったものの、繰り返し予定が難関で、ベタ打ちしなければならない箇所が多かったため、同期ツールの作成を断念していた。
-だが、REST APIが登場し、繰り返し予定が1件ずつ返されるようになってとても処理しやすくなったので、GAS上で動作する、ガルーンからGoogleカレンダーへの一方向同期スクリプトを作成した。" />
+<meta property="og:description" content="Cybozuのガルーン(Garoon)はよくできたソフトウェアなのだが、他のサービスとの連携、という点では使いにくかった。
+以前からSOAP APIはあったものの、繰り返し予定が難関で、実際の日にちを都度計算しなければならず、同期ツールの作成を断念していた。
+だがREST APIが登場し、繰り返し予定が1件ずつ返されるようになってとても処理しやすくなったので、GASで動作するガルーンからGoogleカレンダーへの一方向同期スクリプトを作成した。" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.330k.info/essay/sync-garoon-google-calendar/" />
 <meta property="og:image" content="https://www.330k.info/essay/sync-garoon-google-calendar/thumb.jpg" />
@@ -21,9 +21,9 @@
 <meta name="twitter:image" content="https://www.330k.info/essay/sync-garoon-google-calendar/thumb.jpg"/>
 
 <meta name="twitter:title" content="ガルーンからGoogleカレンダーに同期する(GAS使用)"/>
-<meta name="twitter:description" content="Cybozuのガルーンはよくできたソフトウェアなのだが、他のサービスとの連携、という点では使いにくかった。
-以前からSOAP APIはあったものの、繰り返し予定が難関で、ベタ打ちしなければならない箇所が多かったため、同期ツールの作成を断念していた。
-だが、REST APIが登場し、繰り返し予定が1件ずつ返されるようになってとても処理しやすくなったので、GAS上で動作する、ガルーンからGoogleカレンダーへの一方向同期スクリプトを作成した。"/>
+<meta name="twitter:description" content="Cybozuのガルーン(Garoon)はよくできたソフトウェアなのだが、他のサービスとの連携、という点では使いにくかった。
+以前からSOAP APIはあったものの、繰り返し予定が難関で、実際の日にちを都度計算しなければならず、同期ツールの作成を断念していた。
+だがREST APIが登場し、繰り返し予定が1件ずつ返されるようになってとても処理しやすくなったので、GASで動作するガルーンからGoogleカレンダーへの一方向同期スクリプトを作成した。"/>
 
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -84,9 +84,10 @@ if (!doNotTrack) {
 			<h1 class="post__title">ガルーンからGoogleカレンダーに同期する(GAS使用)</h1>
 			
 		</header><div class="content post__content clearfix">
-			<p>Cybozuのガルーンはよくできたソフトウェアなのだが、他のサービスとの連携、という点では使いにくかった。</p>
-<p>以前からSOAP APIはあったものの、繰り返し予定が難関で、ベタ打ちしなければならない箇所が多かったため、同期ツールの作成を断念していた。</p>
-<p>だが、REST APIが登場し、繰り返し予定が1件ずつ返されるようになってとても処理しやすくなったので、GAS上で動作する、ガルーンからGoogleカレンダーへの一方向同期スクリプトを作成した。</p>
+			<p>Cybozuのガルーン(Garoon)はよくできたソフトウェアなのだが、他のサービスとの連携、という点では使いにくかった。</p>
+<p>以前からSOAP APIはあったものの、繰り返し予定が難関で、実際の日にちを都度計算しなければならず、同期ツールの作成を断念していた。</p>
+<p>だがREST APIが登場し、繰り返し予定が1件ずつ返されるようになってとても処理しやすくなったので、GASで動作するガルーンからGoogleカレンダーへの一方向同期スクリプトを作成した。</p>
+<p>サイボウズ公式で、Javaで動作するサンプルプログラム(<a href="https://developer.cybozu.io/hc/ja/articles/204426680-Google%E3%82%AB%E3%83%AC%E3%83%B3%E3%83%80%E3%83%BC%E9%80%A3%E6%90%BA-Garoon%E3%81%AE%E4%BA%88%E5%AE%9A%E3%82%92Google%E3%82%AB%E3%83%AC%E3%83%B3%E3%83%80%E3%83%BC%E3%81%AB%E8%A1%A8%E7%A4%BA-">Googleカレンダー連携 - Garoonの予定をGoogleカレンダーに表示 - – cybozu developer network</a>)があるものの、手順が多く、またGoogle Workspaceの設定でカレンダーの「予備カレンダーの外部共有オプション」を「すべての情報を共有する (外部ユーザーにカレンダーの変更を許可する)」に設定する必要があり、セキュリティ上許可できなかった。</p>
 <h2 id="作成手順">作成手順</h2>
 <h3 id="作成タイムゾーンの設定">作成〜タイムゾーンの設定</h3>
 <p>まずはGoogleドライブからGoogle Apps Scriptを作成する。</p>
@@ -268,6 +269,12 @@ repeatIdに関してはまだドキュメントに載っていないので、将
 <p>Googleカレンダーのほうが意外とすぐに制限に引っかかるので、とりあえず6時間に一度同期するようにしておく。</p>
 <h2 id="googleカレンダーで表示">Googleカレンダーで表示</h2>
 <p>うまく動いていればGoogleカレンダーに新たなカレンダーが加わり、そこにガルーンの予定が見れるはず。</p>
+<h2 id="references">References</h2>
+<ul>
+<li><a href="https://developer.cybozu.io/hc/ja/articles/360000503306">Garoon REST APIの共通仕様 – cybozu developer network</a></li>
+<li><a href="https://developer.cybozu.io/hc/ja/articles/360000440583">予定の取得（GET） – cybozu developer network</a></li>
+<li><a href="https://developer.cybozu.io/hc/ja/articles/115005314266">スケジュールオブジェクト – cybozu developer network</a></li>
+</ul>
 		</div>
 		<footer class="post__footer">
 			
