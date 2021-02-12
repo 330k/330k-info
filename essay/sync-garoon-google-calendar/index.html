@@ -167,6 +167,9 @@ if (!doNotTrack) {
 
     <span class="kd">let</span> <span class="nx">gcalevent</span><span class="p">;</span>
     <span class="kr">const</span> <span class="nx">eventtitle</span> <span class="o">=</span> <span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">eventMenu</span> <span class="o">?</span> <span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">eventMenu</span> <span class="o">+</span> <span class="s2">&#34; &#34;</span><span class="p">)</span> <span class="o">:</span> <span class="s2">&#34;&#34;</span><span class="p">)</span> <span class="o">+</span> <span class="nx">event</span><span class="p">.</span><span class="nx">subject</span><span class="p">;</span>
+    <span class="kr">const</span> <span class="nx">eventoptions</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="s2">&#34;description&#34;</span><span class="o">:</span> <span class="nx">event</span><span class="p">.</span><span class="nx">notes</span>
+    <span class="p">}</span>
 
     <span class="k">if</span><span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">isAllDay</span><span class="p">){</span>
       <span class="kd">let</span> <span class="nx">eventstart</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">start</span><span class="p">.</span><span class="nx">dateTime</span><span class="p">);</span>
@@ -174,7 +177,7 @@ if (!doNotTrack) {
 
       <span class="c1">//終日予定の終了時刻はガルーンは当日の23:59:59で返ってくるが、Google Calendarは翌日00:00:00にする
 </span><span class="c1"></span>      <span class="nx">eventend</span><span class="p">.</span><span class="nx">setSeconds</span><span class="p">(</span><span class="nx">eventend</span><span class="p">.</span><span class="nx">getSeconds</span><span class="p">()</span> <span class="o">+</span> <span class="mi">1</span><span class="p">);</span>
-      <span class="nx">gcalevent</span> <span class="o">=</span> <span class="nx">calendar</span><span class="p">.</span><span class="nx">createAllDayEvent</span><span class="p">(</span><span class="nx">eventtitle</span><span class="p">,</span> <span class="nx">eventstart</span><span class="p">,</span> <span class="nx">eventend</span><span class="p">);</span>
+      <span class="nx">gcalevent</span> <span class="o">=</span> <span class="nx">calendar</span><span class="p">.</span><span class="nx">createAllDayEvent</span><span class="p">(</span><span class="nx">eventtitle</span><span class="p">,</span> <span class="nx">eventstart</span><span class="p">,</span> <span class="nx">eventend</span><span class="p">,</span> <span class="nx">eventoptions</span><span class="p">);</span>
 
     <span class="p">}</span><span class="k">else</span><span class="p">{</span>
       <span class="kd">let</span> <span class="nx">eventstart</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">start</span><span class="p">.</span><span class="nx">dateTime</span><span class="p">);</span>
@@ -184,10 +187,9 @@ if (!doNotTrack) {
       <span class="p">}</span><span class="k">else</span><span class="p">{</span>
         <span class="nx">eventend</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">end</span><span class="p">.</span><span class="nx">dateTime</span><span class="p">);</span>
       <span class="p">}</span>
-      <span class="nx">gcalevent</span> <span class="o">=</span> <span class="nx">calendar</span><span class="p">.</span><span class="nx">createEvent</span><span class="p">(</span><span class="nx">eventtitle</span><span class="p">,</span> <span class="nx">eventstart</span><span class="p">,</span> <span class="nx">eventend</span><span class="p">);</span>
+      <span class="nx">gcalevent</span> <span class="o">=</span> <span class="nx">calendar</span><span class="p">.</span><span class="nx">createEvent</span><span class="p">(</span><span class="nx">eventtitle</span><span class="p">,</span> <span class="nx">eventstart</span><span class="p">,</span> <span class="nx">eventend</span><span class="p">,</span> <span class="nx">eventoptions</span><span class="p">);</span>
     <span class="p">}</span>
 
-    <span class="nx">gcalevent</span><span class="p">.</span><span class="nx">setDescription</span><span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">notes</span><span class="p">);</span>
     <span class="nx">gcalevent</span><span class="p">.</span><span class="nx">setTag</span><span class="p">(</span><span class="nx">TAG_GAROON_UNIQUE_EVENT_ID</span><span class="p">,</span> <span class="nx">uniqueid</span><span class="p">);</span>
     <span class="nx">gcalevent</span><span class="p">.</span><span class="nx">setTag</span><span class="p">(</span><span class="nx">TAG_GAROON_SYNC_DATETIME</span><span class="p">,</span> <span class="nx">today</span><span class="p">.</span><span class="nx">toUTCString</span><span class="p">());</span>
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&#34;CREATED&#34;</span><span class="p">);</span>
