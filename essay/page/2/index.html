@@ -12,7 +12,7 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://www.330k.info/essay/" />
 <meta property="og:image" content="https://www.330k.info/apple-touch-icon.png"/>
-<meta property="og:updated_time" content="2020-07-27T15:31:50+09:00" />
+<meta property="og:updated_time" content="2021-02-12T13:15:47+09:00" />
 
 	<meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://www.330k.info/apple-touch-icon.png"/>
@@ -78,6 +78,24 @@ if (!doNotTrack) {
 	<header class="main__header">
 		<h1 class="main__title">Essays</h1>
 	</header><article class="list__item post">
+	<figure class="list__thumbnail">
+		<a href="https://www.330k.info/essay/openldap-proxy-to-active-directory-ubuntu/">
+			<img src="https://www.openldap.org/images/headers/LDAPworm.gif" alt="Ubuntu 18.04でActive DirectoryへのOpenLDAPプロキシを構築" />
+		</a>
+	</figure>
+	<header class="list__header">
+		<h3 class="list__title post__title ">
+			<a href="/essay/openldap-proxy-to-active-directory-ubuntu/" rel="bookmark">
+			Ubuntu 18.04でActive DirectoryへのOpenLDAPプロキシを構築
+			</a>
+		</h3>
+		
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		<p>Active Directoryのあるネットワークとは別のネットワークにある機器(具体的には電子黒板)から、LDAPでADユーザ情報を検索したいという要件が。</p>
+<p>VPNなどの設定もできないので、DMZにOpenLDAPによるLDAP用のプロキシサーバを立ててみた。</p>
+	</div>
+</article><article class="list__item post">
 	<figure class="list__thumbnail">
 		<a href="https://www.330k.info/essay/input-tabs-in-browsers-textbox/">
 			<img src="/essay/input-tabs-in-browsers-textbox/thumb.png" alt="ブラウザのテキストボックスにタブを入力する" />
@@ -230,23 +248,6 @@ if (!doNotTrack) {
 	<div class="content list__excerpt post__content clearfix">
 		海外の格安VPS、AlaphaRacksでHTTPSのHTTPサーバを立てたので、その作業録。 環境 Chinese Year Specialという年間$8のプランを契約。 Ubuntuのバージョンは16.04なのだが、カーネルのバージョンは2.6.32の古め。 そのため、dockerは使えない。 # uname -r 2.6.32-042stab127.2 # cat /etc/lsb-release DISTRIB_ID=Ubuntu DISTRIB_RELEASE=16.04 DISTRIB_CODENAME=xenial DISTRIB_DESCRIPTION=&#34;Ubuntu 16.04 LTS&#34; ApacheのSSLモジュール有効化 SSLモジュールを有効化し、a2ensiteでHTTPSサイトを有効化
 	</div>
-</article><article class="list__item post">
-	<figure class="list__thumbnail">
-		<a href="https://www.330k.info/essay/ubuntu_nvidia_cuda_mathematica_geforce1060/">
-			<img src="https://assets.ubuntu.com/v1/29985a98-ubuntu-logo32.png" alt="GeForce 1060搭載ノートPCにUbuntu 17.10 &#43; NVIDIAドライバ &#43; CUDA &#43; Mathematia 8をインストール" />
-		</a>
-	</figure>
-	<header class="list__header">
-		<h3 class="list__title post__title ">
-			<a href="/essay/ubuntu_nvidia_cuda_mathematica_geforce1060/" rel="bookmark">
-			GeForce 1060搭載ノートPCにUbuntu 17.10 &#43; NVIDIAドライバ &#43; CUDA &#43; Mathematia 8をインストール
-			</a>
-		</h3>
-		
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		MathematicaからCUDAを使いたかったので、GPU搭載のノートPCを購入してセットアップした。 購入PC PC工房のGeForce 1060搭載ノートPC(OSなし) : STYLE-15FX093-i7-RNFR [OS LESS] CPU: Intel Core i7-7700HQ 2.8GHz Memory: 16GB Storage: SSD 240GB + HDD 2TB GPU: NVIDIA GeForce 1060 6GB Ubuntu 17.10 日本語Remixをダウンロード 旧PC(Ubuntu 16.04)で Ubuntu Desktop 日本語 Remixのダウンロードから、ubuntu-ja-17.10-desktop-amd64.isoをダウンロー
-	</div>
 </article>
 </main>
 
@@ -277,6 +278,7 @@ if (!doNotTrack) {
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/essay/sync-garoon-google-calendar/">ガルーンからGoogleカレンダーに同期する(GAS使用)</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20210102-brm102-tokyo-300-ushimado/">2021年01月02日 BRM102 東京200 いってこい牛窓</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20201226-brm1226-kanagawa-300-izu/">2020年12月26日 BRM1226 神奈川300 伊豆</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20201219-21-kasumigaura/">2020年12月19日-21日 真・霞ヶ浦一周</a></li>
@@ -296,7 +298,6 @@ if (!doNotTrack) {
 			<li class="widget__item"><a class="widget__link" href="/essay/hugo-thview-js/">HugoでRICOH THETAの360度画像を表示する(ThView.js使用)</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/watch_global_ip_address/">どんなときもWiFiの接続がよく切れるので、接続状態を監視してみた</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20200320-brm320-kinki-600km/">2020年03月20日 BRM320近畿600 京都→熊本 あんたがたどこさ</a></li>
-			<li class="widget__item"><a class="widget__link" href="/essay/bookmark-audax-japan-result/">Audax Japanのリザルト検索画面で、自分のリザルトをブックマークに保存する</a></li>
 		</ul>
 	</div>
 </div>
@@ -318,13 +319,15 @@ if (!doNotTrack) {
 		<a class="widget-taglist__link widget__link btn" href="/tags/bat" title="Bat">Bat (2)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/chrome" title="Chrome">Chrome (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/cuda" title="Cuda">Cuda (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/cybozu" title="Cybozu">Cybozu (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/dotnet" title="Dotnet">Dotnet (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/ffmpeg" title="Ffmpeg">Ffmpeg (2)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/garmin" title="Garmin">Garmin (1)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/gas" title="Gas">Gas (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/garoon" title="Garoon">Garoon (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/gas" title="Gas">Gas (2)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/github" title="Github">Github (6)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/gmail" title="Gmail">Gmail (2)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/google" title="Google">Google (4)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/google" title="Google">Google (5)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/gps" title="Gps">Gps (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/gpx" title="Gpx">Gpx (5)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/hta" title="Hta">Hta (1)</a>

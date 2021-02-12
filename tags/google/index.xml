@@ -6,7 +6,18 @@
     <description>Recent content in Google on 330k info</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Sat, 11 Jul 2020 19:41:44 +0900</lastBuildDate><atom:link href="https://www.330k.info/tags/google/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 12 Feb 2021 13:15:47 +0900</lastBuildDate><atom:link href="https://www.330k.info/tags/google/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>ガルーンからGoogleカレンダーに同期する(GAS使用)</title>
+      <link>https://www.330k.info/essay/sync-garoon-google-calendar/</link>
+      <pubDate>Fri, 12 Feb 2021 13:15:47 +0900</pubDate>
+      
+      <guid>https://www.330k.info/essay/sync-garoon-google-calendar/</guid>
+      <description>&lt;p&gt;Cybozuのガルーンはよくできたソフトウェアなのだが、他のサービスとの連携、という点では使いにくかった。&lt;/p&gt;
+&lt;p&gt;以前からSOAP APIはあったものの、繰り返し予定が難関で、ベタ打ちしなければならない箇所が多かったため、同期ツールの作成を断念していた。&lt;/p&gt;
+&lt;p&gt;だが、REST APIが登場し、繰り返し予定が1件ずつ返されるようになってとても処理しやすくなったので、GAS上で動作する、ガルーンからGoogleカレンダーへの一方向同期スクリプトを作成した。&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>キャノンボール専用 天候・風向き予測(β)</title>
       <link>https://www.330k.info/software/cannonball-wind-map/</link>

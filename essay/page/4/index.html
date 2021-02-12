@@ -12,7 +12,7 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://www.330k.info/essay/" />
 <meta property="og:image" content="https://www.330k.info/apple-touch-icon.png"/>
-<meta property="og:updated_time" content="2020-07-27T15:31:50+09:00" />
+<meta property="og:updated_time" content="2021-02-12T13:15:47+09:00" />
 
 	<meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://www.330k.info/apple-touch-icon.png"/>
@@ -78,6 +78,18 @@ if (!doNotTrack) {
 	<header class="main__header">
 		<h1 class="main__title">Essays</h1>
 	</header><article class="list__item post">
+	<header class="list__header">
+		<h3 class="list__title post__title ">
+			<a href="/essay/create_uuid_vba/" rel="bookmark">
+			VBAでUUIDを生成
+			</a>
+		</h3>
+		
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		Excel VBAでUUID(GUID)を生成して使っている部分があったのだが、 先日のWindows Updateを適用してから、 CreateObject(&quot;Scriptlet.TypeLib&quot;)でエラーが出て使用できなくなってしまった。 参考 : 2017 年 7 月のセキュリティ更新適用後、VBA から一部のオブジェクトを作成できません 私の場合はただ単にランダムなUUIDが生成できれば良いので、 UUID v4を生
+	</div>
+</article><article class="list__item post">
 	<figure class="list__thumbnail">
 		<a href="https://www.330k.info/essay/input_backslach_with_us_keyboard_layout/">
 			<img src="https://icon-icons.com/icons2/1488/PNG/256/5314-windows_102509.png" alt="英語版Windows PE環境でバックスラッシュを入力" />
@@ -215,23 +227,6 @@ if (!doNotTrack) {
 	<div class="content list__excerpt post__content clearfix">
 		社内でアシスタントからDVDをPCで再生できるようにしたい、という要望を受けたので、 DVDを入れて起動するだけのバッチファイルを作ってみた。 DVDの中身のVTS_01_1.VOB, VTS_01_2.VOBというファイルをffmpegの-iオプションに指定すれば良いのだが、 パイプ記号「|」を使ってファイル名を連結しなければならない。 ただ、バッチファイル中でパイプ記号が入ると上手く連結できないので、 試
 	</div>
-</article><article class="list__item post">
-	<figure class="list__thumbnail">
-		<a href="https://www.330k.info/essay/change-c-compiler-in-mathematica/">
-			<img src="https://www.ipros.jp/public/product/image/f59/396065002/IPROS3632825140790521490.png?h=220&amp;w=220" alt="Compileで使用するCコンパイラを変更する" />
-		</a>
-	</figure>
-	<header class="list__header">
-		<h3 class="list__title post__title ">
-			<a href="/essay/change-c-compiler-in-mathematica/" rel="bookmark">
-			Compileで使用するCコンパイラを変更する
-			</a>
-		</h3>
-		
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		Mathematica 8から、CompileでCコンパイラを使って直接ネイティブコードにコンパイルできるようになった。 使用するCコンパイラは、 Needs[&#34;CCompilerDriver`&#34;];CCompilerDriver`$CCompiler={&#34;Name&#34;-&gt;&#34;GCC&#34;,&#34;Compiler&#34;-&gt;CCompilerDriver`GCCCo
-	</div>
 </article>
 </main>
 
@@ -262,6 +257,7 @@ if (!doNotTrack) {
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/essay/sync-garoon-google-calendar/">ガルーンからGoogleカレンダーに同期する(GAS使用)</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20210102-brm102-tokyo-300-ushimado/">2021年01月02日 BRM102 東京200 いってこい牛窓</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20201226-brm1226-kanagawa-300-izu/">2020年12月26日 BRM1226 神奈川300 伊豆</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20201219-21-kasumigaura/">2020年12月19日-21日 真・霞ヶ浦一周</a></li>
@@ -281,7 +277,6 @@ if (!doNotTrack) {
 			<li class="widget__item"><a class="widget__link" href="/essay/hugo-thview-js/">HugoでRICOH THETAの360度画像を表示する(ThView.js使用)</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/watch_global_ip_address/">どんなときもWiFiの接続がよく切れるので、接続状態を監視してみた</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20200320-brm320-kinki-600km/">2020年03月20日 BRM320近畿600 京都→熊本 あんたがたどこさ</a></li>
-			<li class="widget__item"><a class="widget__link" href="/essay/bookmark-audax-japan-result/">Audax Japanのリザルト検索画面で、自分のリザルトをブックマークに保存する</a></li>
 		</ul>
 	</div>
 </div>
@@ -303,13 +298,15 @@ if (!doNotTrack) {
 		<a class="widget-taglist__link widget__link btn" href="/tags/bat" title="Bat">Bat (2)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/chrome" title="Chrome">Chrome (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/cuda" title="Cuda">Cuda (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/cybozu" title="Cybozu">Cybozu (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/dotnet" title="Dotnet">Dotnet (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/ffmpeg" title="Ffmpeg">Ffmpeg (2)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/garmin" title="Garmin">Garmin (1)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/gas" title="Gas">Gas (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/garoon" title="Garoon">Garoon (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/gas" title="Gas">Gas (2)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/github" title="Github">Github (6)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/gmail" title="Gmail">Gmail (2)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/google" title="Google">Google (4)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/google" title="Google">Google (5)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/gps" title="Gps">Gps (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/gpx" title="Gpx">Gpx (5)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/hta" title="Hta">Hta (1)</a>
