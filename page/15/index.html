@@ -13,7 +13,7 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://www.330k.info/" />
 <meta property="og:image" content="https://www.330k.info/apple-touch-icon.png"/>
-<meta property="og:updated_time" content="2021-02-12T13:15:47+09:00" />
+<meta property="og:updated_time" content="2021-02-12T16:39:17+09:00" />
 
 	<meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://www.330k.info/apple-touch-icon.png"/>
@@ -88,7 +88,18 @@ if (!doNotTrack) {
 			Mathematicaにおけるプログラムの高速化手法
 			</a>
 		</h3>
-		
+		<div class="list__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
+	<time class="meta__text" datetime="2009-12-14T22:39:00">December 14, 2009</time>
+	<time class="meta__text" datetime="2020-11-12T00:03:48"> (Last Modified: November 12, 2020)</time>
+</div>
+
+<div class="meta__item-categories meta__item">
+	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+	<span class="meta__text"><a class="meta__link" href="/categories/%e9%9b%91%e8%a8%98%e5%b8%b3" rel="category">雑記帳</a></span>
+</div>
+</div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		Mathematicaにおいてプログラムの実行速度を最適化する際の項目を思いつく限り挙げてみた。 関数型パラダイムで書く 必然的に組み込み関数を多く使い、リストをまとめて操作することになるので手続き型で書くより速くなることが多い。 コード量も少なくなって読みやすくなるので、よほどのことでない限りMathematicaでは関数型で書く。 具体的には、手続き型ループ構文(Do, For, Whileなど)をやめて、Ma
@@ -105,7 +116,18 @@ if (!doNotTrack) {
 			陽的Runge-Kutta法のButcher tableau
 			</a>
 		</h3>
-		
+		<div class="list__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
+	<time class="meta__text" datetime="2009-12-05T00:00:00">December 05, 2009</time>
+	<time class="meta__text" datetime="2020-05-18T11:51:16"> (Last Modified: May 18, 2020)</time>
+</div>
+
+<div class="meta__item-categories meta__item">
+	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+	<span class="meta__text"><a class="meta__link" href="/categories/%e9%9b%91%e8%a8%98%e5%b8%b3" rel="category">雑記帳</a></span>
+</div>
+</div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		Explicit Runge-Kutta法の公式はいくつか知られているが、高次の公式になるほどButcher配列の項数が増えるため論文に誤植が多くなる。 それに気づかないまま実際に使うと、プログラムは正しく組めているはずなのに思うように精度が上がらないという落とし穴にはまってしまう。 覚書として、以下に代表的と思われる公式のButcher tableauをまとめる。 以下のButcher tableauはMathemati
@@ -122,7 +144,18 @@ if (!doNotTrack) {
 			Mathematica 7でImportおよびExportを拡張する
 			</a>
 		</h3>
-		
+		<div class="list__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
+	<time class="meta__text" datetime="2009-11-23T00:00:00">November 23, 2009</time>
+	<time class="meta__text" datetime="2020-11-12T00:09:02"> (Last Modified: November 12, 2020)</time>
+</div>
+
+<div class="meta__item-categories meta__item">
+	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+	<span class="meta__text"><a class="meta__link" href="/categories/%e9%9b%91%e8%a8%98%e5%b8%b3" rel="category">雑記帳</a></span>
+</div>
+</div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		MathematicaではImportやExportを使って様々な形式のファイルを読み書きできるが、 標準で対応していないファイル形式についても自分でローダやライタを作り、 それをImportやExportに対応させる方法がExtending Import &amp; Export (Wolfram Library Archive)において解説されている。 しかしこの文書は2003年のもので以前はExperimental`RegisterConverterという関数で
@@ -139,7 +172,18 @@ if (!doNotTrack) {
 			Google Sites &#43; Google Analyticsで「サイト上のデータ表示」は要注意
 			</a>
 		</h3>
-		
+		<div class="list__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
+	<time class="meta__text" datetime="2009-11-15T00:00:00">November 15, 2009</time>
+	<time class="meta__text" datetime="2020-05-18T11:51:16"> (Last Modified: May 18, 2020)</time>
+</div>
+
+<div class="meta__item-categories meta__item">
+	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+	<span class="meta__text"><a class="meta__link" href="/categories/%e9%9b%91%e8%a8%98%e5%b8%b3" rel="category">雑記帳</a></span>
+</div>
+</div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		Google SitesではGoogle Analyticsを用いる設定が簡単にできるが、Google Analyticsの「サイト上のデータ表示」を行うと「閉じる」をクリックしても何の反応がない。 画面にレイヤーが重なっていろいろなデータが表示されてしまう状態から抜けられない。 ネットを調べたところ、「閉じる」が見つからないために同じような現象に遭遇している事例は見つかったが、 「閉じる」をクリックしても、 _siteOverlay._close() をアドレ
@@ -156,7 +200,18 @@ if (!doNotTrack) {
 			2009年11月07日〜08日 東海村(茨城)
 			</a>
 		</h3>
-		
+		<div class="list__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
+	<time class="meta__text" datetime="2009-11-07T21:43:03">November 07, 2009</time>
+	<time class="meta__text" datetime="2020-05-18T11:51:16"> (Last Modified: May 18, 2020)</time>
+</div>
+
+<div class="meta__item-categories meta__item">
+	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+	<span class="meta__text"><a class="meta__link" href="/categories/%e8%87%aa%e8%bb%a2%e8%bb%8a" rel="category">自転車</a></span>
+</div>
+</div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		<p>ホッケー社会人リーグの最終戦が茨城県東海高校のグラウンドで行われることになったので、国道6号の水戸街道部分を自転車で走破するチャンスと捉えて</p>
@@ -180,7 +235,18 @@ if (!doNotTrack) {
 			多角形の内外判定
 			</a>
 		</h3>
-		
+		<div class="list__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
+	<time class="meta__text" datetime="2009-10-29T00:00:00">October 29, 2009</time>
+	<time class="meta__text" datetime="2020-11-12T00:32:00"> (Last Modified: November 12, 2020)</time>
+</div>
+
+<div class="meta__item-categories meta__item">
+	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+	<span class="meta__text"><a class="meta__link" href="/categories/%e9%9b%91%e8%a8%98%e5%b8%b3" rel="category">雑記帳</a></span>
+</div>
+</div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		ある点が多角形の内側にあるのか外側にあるのかを判定するには主に ある点から直線をひいて多角形の辺と何回交差するか判定する(偶数回なら外、奇数回なら中) ある点から多角形の各頂点を順番に見ていったときに何回転するか の2つの方法がある。 しかし辺との交差回数をカウントするのは、直線と辺が平行だったり、頂点で交差したりする場合などに特別な配慮が必要なので、 ここでは2番目の方法で実装する。 点から多角形上の点を順
@@ -192,7 +258,18 @@ if (!doNotTrack) {
 			簡易ハンディGPSによるあしあとデータの時刻情報
 			</a>
 		</h3>
-		
+		<div class="list__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
+	<time class="meta__text" datetime="2009-10-27T00:00:00">October 27, 2009</time>
+	<time class="meta__text" datetime="2017-09-11T19:59:45"> (Last Modified: September 11, 2017)</time>
+</div>
+
+<div class="meta__item-categories meta__item">
+	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+	<span class="meta__text"><a class="meta__link" href="/categories/%e9%9b%91%e8%a8%98%e5%b8%b3" rel="category">雑記帳</a></span>
+</div>
+</div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		au携帯電話に入っている地図ビューアーの簡易ハンディGPS機能によって取得したGPSログ(あしあとデータ)は、 本ファイルは、地図ビューアーにより出力されたGPS情報ファイルです。 出力日時:2009/10/27 08:56:46 +0900 +++GPSログ+++ 940669002,139.604988,35.833148 という形式になっており、「+++GPSログ+++」以下の行に時刻、経度、緯度の順番に記録される。 GPSでは時刻を1980年1月6日0時0分0秒(GMT)からの秒数と
@@ -209,7 +286,18 @@ if (!doNotTrack) {
 			16ビットアプリケーションの標準入出力をリダイレクト
 			</a>
 		</h3>
-		
+		<div class="list__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
+	<time class="meta__text" datetime="2009-10-26T21:47:00">October 26, 2009</time>
+	<time class="meta__text" datetime="2020-05-18T11:51:16"> (Last Modified: May 18, 2020)</time>
+</div>
+
+<div class="meta__item-categories meta__item">
+	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+	<span class="meta__text"><a class="meta__link" href="/categories/%e9%9b%91%e8%a8%98%e5%b8%b3" rel="category">雑記帳</a></span>
+</div>
+</div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		FORTRANで書かれた古いMS-DOSプログラムを.NET/Linkを使ってMathematicaから操るパッケージを作っていたところ、 Process.StartInfo.RedirectStandardInputやRedirectStandardOutputにTrueを設定してもまったく標準入出力をリダイレクトできなかった。(※OSはVista 32bit) いろいろ試してみたところ、16ビットのプログラム
@@ -226,7 +314,18 @@ if (!doNotTrack) {
 			GPXファイルを読み込む
 			</a>
 		</h3>
-		
+		<div class="list__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
+	<time class="meta__text" datetime="2009-10-25T00:00:00">October 25, 2009</time>
+	<time class="meta__text" datetime="2020-05-18T11:51:16"> (Last Modified: May 18, 2020)</time>
+</div>
+
+<div class="meta__item-categories meta__item">
+	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+	<span class="meta__text"><a class="meta__link" href="/categories/%e9%9b%91%e8%a8%98%e5%b8%b3" rel="category">雑記帳</a></span>
+</div>
+</div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		MathematicaでGPXファイルを読み込んで解釈する方法のメモ。 対象となるGPXファイルを xml=Import[filepath,&#34;XML&#34;];でまずXMLとして読み込んでおいて、 trk=Cases[xml,XMLElement[&#34;trk&#34;,_,_],Infinity];でtrk要素を抜き出し、 trkpt=(ToExpression[{&#34;lat&#34
@@ -243,7 +342,18 @@ if (!doNotTrack) {
 			友愛数を列挙する
 			</a>
 		</h3>
-		
+		<div class="list__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
+	<time class="meta__text" datetime="2009-10-25T00:00:00">October 25, 2009</time>
+	<time class="meta__text" datetime="2020-11-12T00:32:50"> (Last Modified: November 12, 2020)</time>
+</div>
+
+<div class="meta__item-categories meta__item">
+	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+	<span class="meta__text"><a class="meta__link" href="/categories/%e9%9b%91%e8%a8%98%e5%b8%b3" rel="category">雑記帳</a></span>
+</div>
+</div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		Mathematicaで友愛数を列挙するプログラム例として以下のようなものが見受けられる。 yakuwa[n_]:=DivisorSigma[1,n]-n;Do[If[(yakuwa[yakuwa[k]]==k)&amp;&amp;(yakuwa[k]!=k),Print[{k,yakuwa[k]}]],{k,1,1000}];しかし、Doでループを回してPrintで書き出していくのはMathema

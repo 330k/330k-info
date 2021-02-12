@@ -12,7 +12,7 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://www.330k.info/tags/%E3%82%A2%E3%83%AB%E3%82%B4%E3%83%AA%E3%82%BA%E3%83%A0/" />
 <meta property="og:image" content="https://www.330k.info/apple-touch-icon.png"/>
-<meta property="og:updated_time" content="2017-07-22T19:32:46+09:00" />
+<meta property="og:updated_time" content="2020-11-12T00:32:00+09:00" />
 
 	<meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://www.330k.info/apple-touch-icon.png"/>
@@ -89,7 +89,18 @@ if (!doNotTrack) {
 			球面上の一様分布
 			</a>
 		</h3>
-		
+		<div class="list__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
+	<time class="meta__text" datetime="2017-07-22T19:32:46">July 22, 2017</time>
+	<time class="meta__text" datetime="2020-11-12T00:10:08"> (Last Modified: November 12, 2020)</time>
+</div>
+
+<div class="meta__item-categories meta__item">
+	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+	<span class="meta__text"><a class="meta__link" href="/categories/%e9%9b%91%e8%a8%98%e5%b8%b3" rel="category">雑記帳</a></span>
+</div>
+</div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		球面上に一様分布するランダムな点を生成したい時、 単純に極座標表示でθとφを一様分布させると、極付近に点が集まってしまう。 data1=Transpose[{Sin[t]Cos[f],Sin[t]Sin[f],Cos[t]}/.{f-&gt;RandomReal[{0,2Pi},2000],t-&gt;RandomReal[{0,Pi},2000]}];g1=ListPointPlot3D[data1,BoxRatios-&gt;{1,1,1}] 球面上で一様分布させるには、下記のようにθにArcCosを使う (θの位置の確率をSinθに比例させたい→累積確率分布関数はCos→逆関数はArcCos)。 data2=Transpose[{Sin[t]Cos[f],Sin[t]Sin[f],Cos[t]}/.{f-&gt;RandomReal[{0,2Pi},2000],t-&gt;ArcCos[RandomReal[{-1,1},2000]]}];g2=ListPointPlot3D[data2,BoxRatios-&gt;{1,1,1}] なお、多次元球面上の一様分布は球面上に一様分布する乱数の生成にあるように、 多次元ガウス分布を正規化すると得られる。 下記は3
@@ -106,7 +117,18 @@ if (!doNotTrack) {
 			Douglas-Peucker向けの優先度付きキュー実装の検討
 			</a>
 		</h3>
-		
+		<div class="list__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
+	<time class="meta__text" datetime="2014-05-29T00:00:00">May 29, 2014</time>
+	<time class="meta__text" datetime="2020-05-18T11:51:16"> (Last Modified: May 18, 2020)</time>
+</div>
+
+<div class="meta__item-categories meta__item">
+	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+	<span class="meta__text"><a class="meta__link" href="/categories/%e9%9b%91%e8%a8%98%e5%b8%b3" rel="category">雑記帳</a></span>
+</div>
+</div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		Nov. 29 2015: JavaScriptで実装した優先度付きキューをGitHubで公開→https://github.com/330k/priorityqueue_js/ 各ヒープのベンチマーク → http://330k.github.io/priorityqueue_js/benchmark.html これにはFibonacci Heapも比較対象に入れてある 折れ線を間引くで書いたように、 Douglas-Peuckerアルゴリズムを改良して指定した点数まで点を削減して折れ線を簡略化する場合、 優先度付きキューを使うことに
@@ -123,7 +145,18 @@ if (!doNotTrack) {
 			陽的Runge-Kutta法のButcher tableau
 			</a>
 		</h3>
-		
+		<div class="list__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
+	<time class="meta__text" datetime="2009-12-05T00:00:00">December 05, 2009</time>
+	<time class="meta__text" datetime="2020-05-18T11:51:16"> (Last Modified: May 18, 2020)</time>
+</div>
+
+<div class="meta__item-categories meta__item">
+	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+	<span class="meta__text"><a class="meta__link" href="/categories/%e9%9b%91%e8%a8%98%e5%b8%b3" rel="category">雑記帳</a></span>
+</div>
+</div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		Explicit Runge-Kutta法の公式はいくつか知られているが、高次の公式になるほどButcher配列の項数が増えるため論文に誤植が多くなる。 それに気づかないまま実際に使うと、プログラムは正しく組めているはずなのに思うように精度が上がらないという落とし穴にはまってしまう。 覚書として、以下に代表的と思われる公式のButcher tableauをまとめる。 以下のButcher tableauはMathemati
@@ -140,7 +173,18 @@ if (!doNotTrack) {
 			多角形の内外判定
 			</a>
 		</h3>
-		
+		<div class="list__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
+	<time class="meta__text" datetime="2009-10-29T00:00:00">October 29, 2009</time>
+	<time class="meta__text" datetime="2020-11-12T00:32:00"> (Last Modified: November 12, 2020)</time>
+</div>
+
+<div class="meta__item-categories meta__item">
+	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+	<span class="meta__text"><a class="meta__link" href="/categories/%e9%9b%91%e8%a8%98%e5%b8%b3" rel="category">雑記帳</a></span>
+</div>
+</div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		ある点が多角形の内側にあるのか外側にあるのかを判定するには主に ある点から直線をひいて多角形の辺と何回交差するか判定する(偶数回なら外、奇数回なら中) ある点から多角形の各頂点を順番に見ていったときに何回転するか の2つの方法がある。 しかし辺との交差回数をカウントするのは、直線と辺が平行だったり、頂点で交差したりする場合などに特別な配慮が必要なので、 ここでは2番目の方法で実装する。 点から多角形上の点を順
@@ -157,7 +201,18 @@ if (!doNotTrack) {
 			折れ線を間引く
 			</a>
 		</h3>
-		
+		<div class="list__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
+	<time class="meta__text" datetime="2009-10-24T00:00:00">October 24, 2009</time>
+	<time class="meta__text" datetime="2020-05-18T11:51:16"> (Last Modified: May 18, 2020)</time>
+</div>
+
+<div class="meta__item-categories meta__item">
+	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+	<span class="meta__text"><a class="meta__link" href="/categories/%e9%9b%91%e8%a8%98%e5%b8%b3" rel="category">雑記帳</a></span>
+</div>
+</div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		読み込んだGPSログのデータを間引きたい、と思って調べたところ、 (Ramer-)Douglas-Peuckerのアルゴリズムというものがあることが分かった。 基本的な考え方は、 折れ線の始点と終点を結ぶ線分と各点の距離を求める。 すべての点との距離が許容誤差ε以内に入っていれば始点と終点だけを返して終了。 そうでなければ距離が最大の点Pを1つ選択。 始点から点Pまでの折れ線と、点Pから終点までの折れ線のそれ

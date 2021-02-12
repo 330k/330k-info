@@ -12,7 +12,7 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://www.330k.info/tags/mathematica/" />
 <meta property="og:image" content="https://www.330k.info/apple-touch-icon.png"/>
-<meta property="og:updated_time" content="2018-05-22T04:34:15+09:00" />
+<meta property="og:updated_time" content="2020-11-12T00:32:50+09:00" />
 
 	<meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://www.330k.info/apple-touch-icon.png"/>
@@ -89,7 +89,18 @@ if (!doNotTrack) {
 			ffmpeg &#43; Mathematicaで動画ファイルを作成する
 			</a>
 		</h3>
-		
+		<div class="list__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
+	<time class="meta__text" datetime="2013-09-27T00:04:00">September 27, 2013</time>
+	<time class="meta__text" datetime="2020-11-12T00:28:18"> (Last Modified: November 12, 2020)</time>
+</div>
+
+<div class="meta__item-categories meta__item">
+	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+	<span class="meta__text"><a class="meta__link" href="/categories/%e9%9b%91%e8%a8%98%e5%b8%b3" rel="category">雑記帳</a></span>
+</div>
+</div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		MathematicaのExportでAVIなどの動画ファイルを作成することは簡単に可能だが、 いかんせんすべてのフレームの画像を作成してからファイルに書きだすので、フレーム数に比例してメモリの使用量が多くなってしまう。 そのため長いムービーの作成は困難であった。 そこで、ffmpegと併用することでメモリ使用量を抑えつつ、長編の動画ファイルを制作する。 具体的には、 ffmpegで標準入力から読み込ませる
@@ -106,7 +117,18 @@ if (!doNotTrack) {
 			MathematicaからSQLiteでBLOBとマルチバイト文字列を扱う
 			</a>
 		</h3>
-		
+		<div class="list__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
+	<time class="meta__text" datetime="2012-10-14T00:00:00">October 14, 2012</time>
+	<time class="meta__text" datetime="2020-11-12T00:29:21"> (Last Modified: November 12, 2020)</time>
+</div>
+
+<div class="meta__item-categories meta__item">
+	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+	<span class="meta__text"><a class="meta__link" href="/categories/%e9%9b%91%e8%a8%98%e5%b8%b3" rel="category">雑記帳</a></span>
+</div>
+</div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		ドキュメントにはないものの、MathematicaではSQLiteを扱うことができる。 しかしながら、BLOB型や文字列で日本語などを扱うには少し工夫が必要なので、メモ。 BLOB型 select 直接BLOB型をselectすると$Failedが返ってくるので、hex関数で16進文字列として返す。 db=Database`OpenDatabase[sqlitefilepath];rs=Database`QueryDatabase[db,&#34;select hex(column_name) from table_name&#34;];これを16進文字列→数値→バイト列→文字列と変換して、最後にImportStr
@@ -123,7 +145,18 @@ if (!doNotTrack) {
 			Mathematica on Ubuntu 12.04 LTSで日本語関連のトラブル
 			</a>
 		</h3>
-		
+		<div class="list__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
+	<time class="meta__text" datetime="2012-10-09T00:00:00">October 09, 2012</time>
+	<time class="meta__text" datetime="2020-11-12T00:30:52"> (Last Modified: November 12, 2020)</time>
+</div>
+
+<div class="meta__item-categories meta__item">
+	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+	<span class="meta__text"><a class="meta__link" href="/categories/%e9%9b%91%e8%a8%98%e5%b8%b3" rel="category">雑記帳</a></span>
+</div>
+</div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		Mathematica 8 Home Edition 日本語版をUbuntu 12.04 LTS 64bit版にインストールしたところ、 ディレクトリ、ファイル名に日本語が含まれるノートブックファイル(.nb)を開けない ディレクトリ、ファイル名に日本語が含まれるとImport/Exportできない、FileNamesで列挙できない ノートブック中に日本語を入力できない $SystemCharacterEncoding、$CharacterEncodingが&quot
@@ -140,7 +173,18 @@ if (!doNotTrack) {
 			Mathematicaにおけるプログラムの高速化手法
 			</a>
 		</h3>
-		
+		<div class="list__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
+	<time class="meta__text" datetime="2009-12-14T22:39:00">December 14, 2009</time>
+	<time class="meta__text" datetime="2020-11-12T00:03:48"> (Last Modified: November 12, 2020)</time>
+</div>
+
+<div class="meta__item-categories meta__item">
+	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+	<span class="meta__text"><a class="meta__link" href="/categories/%e9%9b%91%e8%a8%98%e5%b8%b3" rel="category">雑記帳</a></span>
+</div>
+</div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		Mathematicaにおいてプログラムの実行速度を最適化する際の項目を思いつく限り挙げてみた。 関数型パラダイムで書く 必然的に組み込み関数を多く使い、リストをまとめて操作することになるので手続き型で書くより速くなることが多い。 コード量も少なくなって読みやすくなるので、よほどのことでない限りMathematicaでは関数型で書く。 具体的には、手続き型ループ構文(Do, For, Whileなど)をやめて、Ma
@@ -157,7 +201,18 @@ if (!doNotTrack) {
 			Mathematica 7でImportおよびExportを拡張する
 			</a>
 		</h3>
-		
+		<div class="list__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
+	<time class="meta__text" datetime="2009-11-23T00:00:00">November 23, 2009</time>
+	<time class="meta__text" datetime="2020-11-12T00:09:02"> (Last Modified: November 12, 2020)</time>
+</div>
+
+<div class="meta__item-categories meta__item">
+	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+	<span class="meta__text"><a class="meta__link" href="/categories/%e9%9b%91%e8%a8%98%e5%b8%b3" rel="category">雑記帳</a></span>
+</div>
+</div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		MathematicaではImportやExportを使って様々な形式のファイルを読み書きできるが、 標準で対応していないファイル形式についても自分でローダやライタを作り、 それをImportやExportに対応させる方法がExtending Import &amp; Export (Wolfram Library Archive)において解説されている。 しかしこの文書は2003年のもので以前はExperimental`RegisterConverterという関数で
@@ -174,7 +229,18 @@ if (!doNotTrack) {
 			多角形の内外判定
 			</a>
 		</h3>
-		
+		<div class="list__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
+	<time class="meta__text" datetime="2009-10-29T00:00:00">October 29, 2009</time>
+	<time class="meta__text" datetime="2020-11-12T00:32:00"> (Last Modified: November 12, 2020)</time>
+</div>
+
+<div class="meta__item-categories meta__item">
+	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+	<span class="meta__text"><a class="meta__link" href="/categories/%e9%9b%91%e8%a8%98%e5%b8%b3" rel="category">雑記帳</a></span>
+</div>
+</div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		ある点が多角形の内側にあるのか外側にあるのかを判定するには主に ある点から直線をひいて多角形の辺と何回交差するか判定する(偶数回なら外、奇数回なら中) ある点から多角形の各頂点を順番に見ていったときに何回転するか の2つの方法がある。 しかし辺との交差回数をカウントするのは、直線と辺が平行だったり、頂点で交差したりする場合などに特別な配慮が必要なので、 ここでは2番目の方法で実装する。 点から多角形上の点を順
@@ -191,7 +257,18 @@ if (!doNotTrack) {
 			16ビットアプリケーションの標準入出力をリダイレクト
 			</a>
 		</h3>
-		
+		<div class="list__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
+	<time class="meta__text" datetime="2009-10-26T21:47:00">October 26, 2009</time>
+	<time class="meta__text" datetime="2020-05-18T11:51:16"> (Last Modified: May 18, 2020)</time>
+</div>
+
+<div class="meta__item-categories meta__item">
+	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+	<span class="meta__text"><a class="meta__link" href="/categories/%e9%9b%91%e8%a8%98%e5%b8%b3" rel="category">雑記帳</a></span>
+</div>
+</div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		FORTRANで書かれた古いMS-DOSプログラムを.NET/Linkを使ってMathematicaから操るパッケージを作っていたところ、 Process.StartInfo.RedirectStandardInputやRedirectStandardOutputにTrueを設定してもまったく標準入出力をリダイレクトできなかった。(※OSはVista 32bit) いろいろ試してみたところ、16ビットのプログラム
@@ -208,7 +285,18 @@ if (!doNotTrack) {
 			GPXファイルを読み込む
 			</a>
 		</h3>
-		
+		<div class="list__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
+	<time class="meta__text" datetime="2009-10-25T00:00:00">October 25, 2009</time>
+	<time class="meta__text" datetime="2020-05-18T11:51:16"> (Last Modified: May 18, 2020)</time>
+</div>
+
+<div class="meta__item-categories meta__item">
+	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+	<span class="meta__text"><a class="meta__link" href="/categories/%e9%9b%91%e8%a8%98%e5%b8%b3" rel="category">雑記帳</a></span>
+</div>
+</div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		MathematicaでGPXファイルを読み込んで解釈する方法のメモ。 対象となるGPXファイルを xml=Import[filepath,&#34;XML&#34;];でまずXMLとして読み込んでおいて、 trk=Cases[xml,XMLElement[&#34;trk&#34;,_,_],Infinity];でtrk要素を抜き出し、 trkpt=(ToExpression[{&#34;lat&#34
@@ -225,7 +313,18 @@ if (!doNotTrack) {
 			友愛数を列挙する
 			</a>
 		</h3>
-		
+		<div class="list__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
+	<time class="meta__text" datetime="2009-10-25T00:00:00">October 25, 2009</time>
+	<time class="meta__text" datetime="2020-11-12T00:32:50"> (Last Modified: November 12, 2020)</time>
+</div>
+
+<div class="meta__item-categories meta__item">
+	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+	<span class="meta__text"><a class="meta__link" href="/categories/%e9%9b%91%e8%a8%98%e5%b8%b3" rel="category">雑記帳</a></span>
+</div>
+</div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		Mathematicaで友愛数を列挙するプログラム例として以下のようなものが見受けられる。 yakuwa[n_]:=DivisorSigma[1,n]-n;Do[If[(yakuwa[yakuwa[k]]==k)&amp;&amp;(yakuwa[k]!=k),Print[{k,yakuwa[k]}]],{k,1,1000}];しかし、Doでループを回してPrintで書き出していくのはMathema
@@ -242,7 +341,18 @@ if (!doNotTrack) {
 			折れ線を間引く
 			</a>
 		</h3>
-		
+		<div class="list__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
+	<time class="meta__text" datetime="2009-10-24T00:00:00">October 24, 2009</time>
+	<time class="meta__text" datetime="2020-05-18T11:51:16"> (Last Modified: May 18, 2020)</time>
+</div>
+
+<div class="meta__item-categories meta__item">
+	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+	<span class="meta__text"><a class="meta__link" href="/categories/%e9%9b%91%e8%a8%98%e5%b8%b3" rel="category">雑記帳</a></span>
+</div>
+</div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		読み込んだGPSログのデータを間引きたい、と思って調べたところ、 (Ramer-)Douglas-Peuckerのアルゴリズムというものがあることが分かった。 基本的な考え方は、 折れ線の始点と終点を結ぶ線分と各点の距離を求める。 すべての点との距離が許容誤差ε以内に入っていれば始点と終点だけを返して終了。 そうでなければ距離が最大の点Pを1つ選択。 始点から点Pまでの折れ線と、点Pから終点までの折れ線のそれ

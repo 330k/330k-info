@@ -12,7 +12,7 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://www.330k.info/tags/sql/" />
 <meta property="og:image" content="https://www.330k.info/apple-touch-icon.png"/>
-<meta property="og:updated_time" content="2016-11-06T17:22:00+09:00" />
+<meta property="og:updated_time" content="2020-11-24T23:29:44+09:00" />
 
 	<meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://www.330k.info/apple-touch-icon.png"/>
@@ -84,7 +84,18 @@ if (!doNotTrack) {
 			勘定奉行の性能劣化に対処
 			</a>
 		</h3>
-		
+		<div class="list__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
+	<time class="meta__text" datetime="2016-11-06T17:22:00">November 06, 2016</time>
+	<time class="meta__text" datetime="2019-09-09T23:18:25"> (Last Modified: September 09, 2019)</time>
+</div>
+
+<div class="meta__item-categories meta__item">
+	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+	<span class="meta__text"><a class="meta__link" href="/categories/%e9%9b%91%e8%a8%98%e5%b8%b3" rel="category">雑記帳</a></span>
+</div>
+</div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		社内では会計システムに勘定奉行(ネットワーク版)を使っているが、 担当者から「勘定奉行で仕訳帳の表示に20秒くらいかかる」と言われたので調査してみた。 その担当者のPC固有の問題かどうかを切り分けるため別のPCから同様の操作を行ってみたところ、同じ症状が発生した。 ということは、サーバ側に問題がありそう。 勘定奉行のクライアントは生のSQL文をサーバに発行する仕組みなので、 Wiresharkでパケットをキ
@@ -101,7 +112,18 @@ if (!doNotTrack) {
 			HTA SQLツール
 			</a>
 		</h3>
-		
+		<div class="list__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
+	<time class="meta__text" datetime="2016-01-13T22:42:14">January 13, 2016</time>
+	<time class="meta__text" datetime="2020-11-24T23:29:44"> (Last Modified: November 24, 2020)</time>
+</div>
+
+<div class="meta__item-categories meta__item">
+	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+	<span class="meta__text"><a class="meta__link" href="/categories/%e3%82%bd%e3%83%95%e3%83%88%e3%82%a6%e3%82%a7%e3%82%a2" rel="category">ソフトウェア</a></span>
+</div>
+</div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		<p>今は廃れたHTA(HTML Application)で書いた、汎用SQLツール。
@@ -119,7 +141,18 @@ AccessがなくてもCSVファイルやExcelファイルに対してSQLを実行
 			MathematicaからSQLiteでBLOBとマルチバイト文字列を扱う
 			</a>
 		</h3>
-		
+		<div class="list__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
+	<time class="meta__text" datetime="2012-10-14T00:00:00">October 14, 2012</time>
+	<time class="meta__text" datetime="2020-11-12T00:29:21"> (Last Modified: November 12, 2020)</time>
+</div>
+
+<div class="meta__item-categories meta__item">
+	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+	<span class="meta__text"><a class="meta__link" href="/categories/%e9%9b%91%e8%a8%98%e5%b8%b3" rel="category">雑記帳</a></span>
+</div>
+</div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		ドキュメントにはないものの、MathematicaではSQLiteを扱うことができる。 しかしながら、BLOB型や文字列で日本語などを扱うには少し工夫が必要なので、メモ。 BLOB型 select 直接BLOB型をselectすると$Failedが返ってくるので、hex関数で16進文字列として返す。 db=Database`OpenDatabase[sqlitefilepath];rs=Database`QueryDatabase[db,&#34;select hex(column_name) from table_name&#34;];これを16進文字列→数値→バイト列→文字列と変換して、最後にImportStr
