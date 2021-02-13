@@ -15,7 +15,7 @@
 <meta property="og:url" content="https://www.330k.info/essay/sync-garoon-google-calendar/" />
 <meta property="og:image" content="https://www.330k.info/essay/sync-garoon-google-calendar/thumb.jpg" />
 <meta property="article:published_time" content="2021-02-12T13:15:47+09:00" />
-<meta property="article:modified_time" content="2021-02-13T19:11:25+09:00" />
+<meta property="article:modified_time" content="2021-02-13T19:33:54+09:00" />
 
 	<meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://www.330k.info/essay/sync-garoon-google-calendar/thumb.jpg"/>
@@ -86,7 +86,7 @@ if (!doNotTrack) {
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
 	<time class="meta__text" datetime="2021-02-12T13:15:47">February 12, 2021</time>
-	<time class="meta__text" datetime="2021-02-13T19:11:25"> (Last Modified: February 13, 2021)</time>
+	<time class="meta__text" datetime="2021-02-13T19:33:54"> (Last Modified: February 13, 2021)</time>
 </div>
 
 <div class="meta__item-categories meta__item">
@@ -98,7 +98,6 @@ if (!doNotTrack) {
 			<p>Cybozuのガルーン(Garoon)はよくできたソフトウェアなのだが、他のサービスとの連携、という点では使いにくかった。</p>
 <p>以前からSOAP APIはあったものの、繰り返し予定が難関で、実際の日にちを都度計算しなければならず、同期ツールの作成を断念していた。</p>
 <p>だがREST APIが登場し、繰り返し予定が1件ずつ返されるようになってとても処理しやすくなったので、GASで動作するガルーンからGoogleカレンダーへの一方向同期スクリプトを作成した。</p>
-<p>サイボウズ公式で、Javaで動作するサンプルプログラム(<a href="https://developer.cybozu.io/hc/ja/articles/204426680-Google%E3%82%AB%E3%83%AC%E3%83%B3%E3%83%80%E3%83%BC%E9%80%A3%E6%90%BA-Garoon%E3%81%AE%E4%BA%88%E5%AE%9A%E3%82%92Google%E3%82%AB%E3%83%AC%E3%83%B3%E3%83%80%E3%83%BC%E3%81%AB%E8%A1%A8%E7%A4%BA-">Googleカレンダー連携 - Garoonの予定をGoogleカレンダーに表示 - – cybozu developer network</a>)があるものの、手順が多く、またGoogle Workspaceの設定でカレンダーの「予備カレンダーの外部共有オプション」を「すべての情報を共有する (外部ユーザーにカレンダーの変更を許可する)」に設定する必要があり、セキュリティ上許可できなかった。</p>
 <h2 id="作成手順">作成手順</h2>
 <h3 id="作成タイムゾーンの設定">作成〜タイムゾーンの設定</h3>
 <p>まずはGoogleドライブからGoogle Apps Scriptを作成する。</p>
@@ -232,7 +231,7 @@ if (!doNotTrack) {
 </span><span class="cm"> */</span>
 <span class="kd">function</span> <span class="nx">getSyncCalendar</span><span class="p">(){</span>
   <span class="kr">const</span> <span class="nx">calendarname</span> <span class="o">=</span> <span class="nx">PropertiesService</span><span class="p">.</span><span class="nx">getUserProperties</span><span class="p">().</span><span class="nx">getProperty</span><span class="p">(</span><span class="s2">&#34;CalendarName&#34;</span><span class="p">);</span>
-  <span class="kr">const</span> <span class="nx">calendars</span> <span class="o">=</span> <span class="nx">CalendarApp</span><span class="p">.</span><span class="nx">getCalendarsByName</span><span class="p">(</span><span class="nx">calendarname</span><span class="p">);</span>
+  <span class="kr">const</span> <span class="nx">calendars</span> <span class="o">=</span> <span class="nx">CalendarApp</span><span class="p">.</span><span class="nx">getOwnedCalendarsByName</span><span class="p">(</span><span class="nx">calendarname</span><span class="p">);</span>
 
   <span class="k">if</span><span class="p">(</span><span class="nx">calendars</span><span class="p">.</span><span class="nx">length</span><span class="p">){</span>
     <span class="k">return</span> <span class="nx">calendars</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
@@ -279,8 +278,22 @@ repeatIdに関してはまだドキュメントに載っていないので、将
 </figure>
 
 <p>Googleカレンダーのほうが意外とすぐに制限に引っかかるので、とりあえず6時間に一度同期するようにしておく。</p>
-<h2 id="googleカレンダーで表示">Googleカレンダーで表示</h2>
+<h3 id="googleカレンダーで表示">Googleカレンダーで表示</h3>
 <p>うまく動いていればGoogleカレンダーに新たなカレンダーが加わり、そこにガルーンの予定が見れるはず。</p>
+<h2 id="備考">備考</h2>
+<h2 id="サイボウズ公式のプログラム">サイボウズ公式のプログラム</h2>
+<p>サイボウズ公式で、Javaで動作するサンプルプログラム(<a href="https://developer.cybozu.io/hc/ja/articles/204426680-Google%E3%82%AB%E3%83%AC%E3%83%B3%E3%83%80%E3%83%BC%E9%80%A3%E6%90%BA-Garoon%E3%81%AE%E4%BA%88%E5%AE%9A%E3%82%92Google%E3%82%AB%E3%83%AC%E3%83%B3%E3%83%80%E3%83%BC%E3%81%AB%E8%A1%A8%E7%A4%BA-">Googleカレンダー連携 - Garoonの予定をGoogleカレンダーに表示 - – cybozu developer network</a>)は当然うまく動作する。</p>
+<p>しかしながら</p>
+<ul>
+<li>動作させるまでの手順が多い</li>
+<li>自動で同期させるためには24時間稼働のマシンを用意して、cronなどでタスクを設定する必要がある</li>
+<li>サービスアカウントはドメインのメンバーではない(参考: <a href="https://cloud.google.com/iam/docs/service-accounts?hl=ja">サービス アカウント  |  Cloud IAM のドキュメント  |  Google Cloud</a>)ため、Google Workspaceの設定でカレンダーの「予備カレンダーの外部共有オプション」を「すべての情報を共有する (外部ユーザーにカレンダーの変更を許可する)」に設定する必要がある</li>
+</ul>
+<p>といった欠点がある。</p>
+<p>本プログラムであれば実行するのは自分自身なので、セキュリティレベルを下げることなくGaroonからGoogleカレンダーへの同期ができ、GAS上で動くので自分でマシンを用意する必要がない。</p>
+<p>ちなみに社内ではユーザ向けに、上記のスクリプトに加えてUserPropertiesの設定とトリガーの設定を行う画面を作成し、ウェブアプリとして公開した(「ウェブアプリケーションにアクセスしているユーザーとして実行」および「ドメイン内の全ユーザがアクセス可能」と設定)。</p>
+<p>この場合でも実行するのは同じドメインのユーザなので、Google Workspaceの設定は変える必要はない。</p>
+<p>ただし、Google Apps Scriptのファイル自体を実行するユーザ(=アクセスするユーザ)が読み取り権限を持っていないとトリガーの実行ができなかったので、スクリプトを全員に閲覧者として共有しておく必要がある。</p>
 <h2 id="references">References</h2>
 <ul>
 <li><a href="https://developer.cybozu.io/hc/ja/articles/360000503306">Garoon REST APIの共通仕様 – cybozu developer network</a></li>
