@@ -15,7 +15,7 @@
 <meta property="og:url" content="https://www.330k.info/essay/sync-garoon-google-calendar/" />
 <meta property="og:image" content="https://www.330k.info/essay/sync-garoon-google-calendar/thumb.jpg" />
 <meta property="article:published_time" content="2021-02-12T13:15:47+09:00" />
-<meta property="article:modified_time" content="2021-02-13T18:21:25+09:00" />
+<meta property="article:modified_time" content="2021-02-13T19:11:25+09:00" />
 
 	<meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://www.330k.info/essay/sync-garoon-google-calendar/thumb.jpg"/>
@@ -86,7 +86,7 @@ if (!doNotTrack) {
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
 	<time class="meta__text" datetime="2021-02-12T13:15:47">February 12, 2021</time>
-	<time class="meta__text" datetime="2021-02-13T18:21:25"> (Last Modified: February 13, 2021)</time>
+	<time class="meta__text" datetime="2021-02-13T19:11:25"> (Last Modified: February 13, 2021)</time>
 </div>
 
 <div class="meta__item-categories meta__item">
@@ -201,7 +201,7 @@ if (!doNotTrack) {
     <span class="p">}</span>
 
     <span class="nx">gcalevent</span><span class="p">.</span><span class="nx">setTag</span><span class="p">(</span><span class="nx">TAG_GAROON_UNIQUE_EVENT_ID</span><span class="p">,</span> <span class="nx">uniqueid</span><span class="p">);</span>
-    <span class="nx">gcalevent</span><span class="p">.</span><span class="nx">setTag</span><span class="p">(</span><span class="nx">TAG_GAROON_SYNC_DATETIME</span><span class="p">,</span> <span class="nx">today</span><span class="p">.</span><span class="nx">toUTCString</span><span class="p">());</span>
+    <span class="nx">gcalevent</span><span class="p">.</span><span class="nx">setTag</span><span class="p">(</span><span class="nx">TAG_GAROON_SYNC_DATETIME</span><span class="p">,</span> <span class="nx">today</span><span class="p">.</span><span class="nx">toISOString</span><span class="p">());</span>
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&#34;CREATED&#34;</span><span class="p">);</span>
 
     <span class="c1">// sleepなしで連続追加するとすぐにエラーが出るので暫定対処
