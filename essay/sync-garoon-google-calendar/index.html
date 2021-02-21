@@ -15,7 +15,7 @@
 <meta property="og:url" content="https://www.330k.info/essay/sync-garoon-google-calendar/" />
 <meta property="og:image" content="https://www.330k.info/essay/sync-garoon-google-calendar/thumb.jpg" />
 <meta property="article:published_time" content="2021-02-12T13:15:47+09:00" />
-<meta property="article:modified_time" content="2021-02-21T18:30:08+09:00" />
+<meta property="article:modified_time" content="2021-02-21T19:28:37+09:00" />
 
 	<meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://www.330k.info/essay/sync-garoon-google-calendar/thumb.jpg"/>
@@ -86,7 +86,7 @@ if (!doNotTrack) {
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
 	<time class="meta__text" datetime="2021-02-12T13:15:47">February 12, 2021</time>
-	<time class="meta__text" datetime="2021-02-21T18:30:08"> (Last Modified: February 21, 2021)</time>
+	<time class="meta__text" datetime="2021-02-21T19:28:37"> (Last Modified: February 21, 2021)</time>
 </div>
 
 <div class="meta__item-categories meta__item">
@@ -289,7 +289,7 @@ repeatIdに関してはまだドキュメントに載っていないので、将
 <li>自動で同期させるためには24時間稼働のマシンを用意して、cronなどでタスクを設定する必要がある</li>
 <li>サービスアカウントはドメインのメンバーではない(参考: <a href="https://cloud.google.com/iam/docs/service-accounts?hl=ja">サービス アカウント  |  Cloud IAM のドキュメント  |  Google Cloud</a>)ため、Google Workspaceの設定でカレンダーの「予備カレンダーの外部共有オプション」を「すべての情報を共有する (外部ユーザーにカレンダーの変更を許可する)」に設定する必要がある</li>
 </ul>
-<p>といった欠点がある。</p>
+<p>といった欠点がある(その代わりオンプレ版のガルーンでも動作可能という長所あり)。</p>
 <p>本プログラムであれば実行するのは自分自身なので、予備カレンダーの外部共有オプションを変更することなくGaroonからGoogleカレンダーへの同期ができ、またGAS上で動くので自分でマシンを用意する必要がない。</p>
 <p>ちなみに社内ではユーザ向けに、上記のスクリプトに加えてUserPropertiesの設定とトリガーの設定を行う画面を作成し、ウェブアプリとして公開した(「ウェブアプリケーションにアクセスしているユーザーとして実行」および「ドメイン内の全ユーザがアクセス可能」と設定)。</p>
 <p>この場合でも実行するのは同じドメインのユーザなので、予備カレンダーの外部共有オプションは変える必要はない。</p>
