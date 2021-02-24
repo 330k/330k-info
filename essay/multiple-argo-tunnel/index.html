@@ -14,7 +14,7 @@
 <meta property="og:url" content="https://www.330k.info/essay/multiple-argo-tunnel/" />
 <meta property="og:image" content="https://www.cloudflare.com/img/logo-cloudflare-dark.svg" />
 <meta property="article:published_time" content="2021-02-25T03:47:57+09:00" />
-<meta property="article:modified_time" content="2021-02-25T04:25:48+09:00" />
+<meta property="article:modified_time" content="2021-02-25T04:42:44+09:00" />
 
 	<meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://www.cloudflare.com/img/logo-cloudflare-dark.svg"/>
@@ -84,7 +84,7 @@ if (!doNotTrack) {
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
 	<time class="meta__text" datetime="2021-02-25T03:47:57">February 25, 2021</time>
-	<time class="meta__text" datetime="2021-02-25T04:25:48"> (Last Modified: February 25, 2021)</time>
+	<time class="meta__text" datetime="2021-02-25T04:42:44"> (Last Modified: February 25, 2021)</time>
 </div>
 
 <div class="meta__item-categories meta__item">
@@ -121,7 +121,7 @@ WantedBy=multi-user.target
 </code></pre></div><p>あとは<code>/etc/cloudflared/</code>ディレクトリに<code>config-(設定名).yml</code>という名前で設定ファイルを作成。</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">sudo nano /etc/cloudflared/config-test001.yml
 </code></pre></div><p>設定ファイルの内容は以下のような感じ。</p>
-<div class="highlight"><pre class="chroma"><code class="language-yml" data-lang="yml"><span class="nt">ostname</span><span class="p">:</span><span class="w"> </span><span class="l">test001.example.com</span><span class="w">
+<div class="highlight"><pre class="chroma"><code class="language-yml" data-lang="yml"><span class="nt">hostname</span><span class="p">:</span><span class="w"> </span><span class="l">test001.example.com</span><span class="w">
 </span><span class="w"></span><span class="nt">tunnel</span><span class="p">:</span><span class="w"> </span><span class="l">a75c4ff3-a8ed-471e-8d76-e30b780b98f7</span><span class="w">
 </span><span class="w"></span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l">https://localhost:8080/</span><span class="w">
 </span><span class="w"></span><span class="nt">no-tls-verify</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
