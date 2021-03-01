@@ -98,22 +98,34 @@ if (!doNotTrack) {
 
 
 <script defer>
-window.addEventListener("message", function(e){
-  console.log(e.origin);
-  console.log(e.data);
-  if(e.origin === getOriginFromUrl('https:\/\/330k.github.io\/gmapgpx\/create_gpx_route.html')){
-    
-  }
-}, false);
-function getOriginFromUrl(path){
-  var result = path.replace(/\\/g, '/').match(/(^[^:]+:\/\/[^/]*)/);
-  if(!result){
-    return '';
-  }else{
-    return result[1];
-  }
-};
+{
+  iframe_id = 'iframe-1';
+  iframe_src = 'https:\/\/330k.github.io\/gmapgpx\/create_gpx_route.html';
 
+  
+  window.addEventListener("message", function(e){
+    console.log(e.origin);
+    console.log(e.data);
+    if(e.origin === getOriginFromUrl(iframe_src)){
+      document.getElementById(iframe_id).height = (JSON.parse(e.data)).height;
+    }
+  }, false);
+  function getOriginFromUrl(path){
+    var result = path.replace(/\\/g, '/').match(/(^[^:]+:\/\/[^/]*)/);
+    if(!result){
+      return '';
+    }else{
+      return result[1];
+    }
+  };
+
+  
+  window.addEventListener("DOMContentLoaded", function(e){
+    if(document.documentElement.clientHeight < document.getElementById(iframe_id).height){
+      document.getElementById(iframe_id).height = document.documentElement.clientHeight;
+    }
+  });
+}
 </script>
 <iframe
  src="https://330k.github.io/gmapgpx/create_gpx_route.html"

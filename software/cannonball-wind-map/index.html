@@ -96,22 +96,34 @@ if (!doNotTrack) {
 			<p>自分用に作成したキャノンボール専用の簡易版Epic Ride Weatherです。</p>
 <p>OpenWeatherの<a href="https://openweathermap.org/api">Weather API</a>の無料範囲で取得できるデータを使っています。</p>
 <script defer>
-window.addEventListener("message", function(e){
-  console.log(e.origin);
-  console.log(e.data);
-  if(e.origin === getOriginFromUrl('https:\/\/script.google.com\/macros\/s\/AKfycbxhE6w1VWZ2z9AdiLTH-sRXyk6Ib12O8EYphqok-kEptb3BgHm3Sb26\/exec')){
-    
-  }
-}, false);
-function getOriginFromUrl(path){
-  var result = path.replace(/\\/g, '/').match(/(^[^:]+:\/\/[^/]*)/);
-  if(!result){
-    return '';
-  }else{
-    return result[1];
-  }
-};
+{
+  iframe_id = 'iframe-1';
+  iframe_src = 'https:\/\/script.google.com\/macros\/s\/AKfycbxhE6w1VWZ2z9AdiLTH-sRXyk6Ib12O8EYphqok-kEptb3BgHm3Sb26\/exec';
 
+  
+  window.addEventListener("message", function(e){
+    console.log(e.origin);
+    console.log(e.data);
+    if(e.origin === getOriginFromUrl(iframe_src)){
+      document.getElementById(iframe_id).height = (JSON.parse(e.data)).height;
+    }
+  }, false);
+  function getOriginFromUrl(path){
+    var result = path.replace(/\\/g, '/').match(/(^[^:]+:\/\/[^/]*)/);
+    if(!result){
+      return '';
+    }else{
+      return result[1];
+    }
+  };
+
+  
+  window.addEventListener("DOMContentLoaded", function(e){
+    if(document.documentElement.clientHeight < document.getElementById(iframe_id).height){
+      document.getElementById(iframe_id).height = document.documentElement.clientHeight;
+    }
+  });
+}
 </script>
 <iframe
  src="https://script.google.com/macros/s/AKfycbxhE6w1VWZ2z9AdiLTH-sRXyk6Ib12O8EYphqok-kEptb3BgHm3Sb26/exec"

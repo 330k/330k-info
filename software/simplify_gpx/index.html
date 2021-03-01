@@ -93,22 +93,34 @@ if (!doNotTrack) {
 		</header><div class="content post__content clearfix">
 			<p>GPXファイルを一括で結合・分割・間引き・軽量化などを行うオンラインツール。</p>
 <script defer>
-window.addEventListener("message", function(e){
-  console.log(e.origin);
-  console.log(e.data);
-  if(e.origin === getOriginFromUrl('https:\/\/330k.github.io\/gpx_tools\/gpx_simplify.html')){
-    
-  }
-}, false);
-function getOriginFromUrl(path){
-  var result = path.replace(/\\/g, '/').match(/(^[^:]+:\/\/[^/]*)/);
-  if(!result){
-    return '';
-  }else{
-    return result[1];
-  }
-};
+{
+  iframe_id = 'iframe-1';
+  iframe_src = 'https:\/\/330k.github.io\/gpx_tools\/gpx_simplify.html';
 
+  
+  window.addEventListener("message", function(e){
+    console.log(e.origin);
+    console.log(e.data);
+    if(e.origin === getOriginFromUrl(iframe_src)){
+      document.getElementById(iframe_id).height = (JSON.parse(e.data)).height;
+    }
+  }, false);
+  function getOriginFromUrl(path){
+    var result = path.replace(/\\/g, '/').match(/(^[^:]+:\/\/[^/]*)/);
+    if(!result){
+      return '';
+    }else{
+      return result[1];
+    }
+  };
+
+  
+  window.addEventListener("DOMContentLoaded", function(e){
+    if(document.documentElement.clientHeight < document.getElementById(iframe_id).height){
+      document.getElementById(iframe_id).height = document.documentElement.clientHeight;
+    }
+  });
+}
 </script>
 <iframe
  src="https://330k.github.io/gpx_tools/gpx_simplify.html"
