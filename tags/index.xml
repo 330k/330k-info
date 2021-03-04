@@ -6,7 +6,16 @@
     <description>Recent content in Tags on 330k info</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Thu, 25 Feb 2021 03:47:57 +0900</lastBuildDate><atom:link href="https://www.330k.info/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 04 Mar 2021 17:01:31 +0900</lastBuildDate><atom:link href="https://www.330k.info/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>JavaScript</title>
+      <link>https://www.330k.info/tags/javascript/</link>
+      <pubDate>Thu, 04 Mar 2021 17:01:31 +0900</pubDate>
+      
+      <guid>https://www.330k.info/tags/javascript/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>Cloudflare</title>
       <link>https://www.330k.info/tags/cloudflare/</link>
@@ -49,15 +58,6 @@
       <pubDate>Fri, 12 Feb 2021 13:15:47 +0900</pubDate>
       
       <guid>https://www.330k.info/tags/google/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>JavaScript</title>
-      <link>https://www.330k.info/tags/javascript/</link>
-      <pubDate>Fri, 12 Feb 2021 13:15:47 +0900</pubDate>
-      
-      <guid>https://www.330k.info/tags/javascript/</guid>
       <description></description>
     </item>
     
