@@ -4,22 +4,22 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>キャノンボール専用 天候・風向き予測(β) - 330k info</title>
+	<title>キャノンボール専用 天候・風向き予測 - 330k info</title>
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
-	<meta property="og:title" content="キャノンボール専用 天候・風向き予測(β)" />
+	<meta property="og:title" content="キャノンボール専用 天候・風向き予測" />
 <meta property="og:description" content="自分用に作成したキャノンボール専用の簡易版Epic Ride Weatherです。
 OpenWeatherのWeather APIの無料範囲で取得できるデータを使っています。" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.330k.info/software/cannonball-wind-map/" />
 <meta property="og:image" content="https://www.330k.info/software/cannonball-wind-map/cannonball_ogimage.png" />
 <meta property="article:published_time" content="2020-07-11T19:41:44+09:00" />
-<meta property="article:modified_time" content="2021-03-01T16:56:19+09:00" />
+<meta property="article:modified_time" content="2021-03-04T14:49:42+09:00" />
 
 	<meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://www.330k.info/software/cannonball-wind-map/cannonball_ogimage.png"/>
 
-<meta name="twitter:title" content="キャノンボール専用 天候・風向き予測(β)"/>
+<meta name="twitter:title" content="キャノンボール専用 天候・風向き予測"/>
 <meta name="twitter:description" content="自分用に作成したキャノンボール専用の簡易版Epic Ride Weatherです。
 OpenWeatherのWeather APIの無料範囲で取得できるデータを使っています。"/>
 
@@ -79,12 +79,12 @@ if (!doNotTrack) {
 <main class="main" role="main">
 	<article class="post">
 		<header class="post__header">
-			<h1 class="post__title">キャノンボール専用 天候・風向き予測(β)</h1>
+			<h1 class="post__title">キャノンボール専用 天候・風向き予測</h1>
 			<div class="post__meta meta">
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
 	<time class="meta__text" datetime="2020-07-11T19:41:44">July 11, 2020</time>
-	<time class="meta__text" datetime="2021-03-01T16:56:19"> (Last Modified: March 01, 2021)</time>
+	<time class="meta__text" datetime="2021-03-04T14:49:42"> (Last Modified: March 04, 2021)</time>
 </div>
 
 <div class="meta__item-categories meta__item">
@@ -137,10 +137,11 @@ if (!doNotTrack) {
 
 <h2 id="特徴仕様">特徴・仕様</h2>
 <ul>
-<li>スタート時刻を選ぶことで各地点通過時刻に最も近い時刻の予報データを表示します(カーソルキーに対応)</li>
-<li>取得できる予報データは48時間後までです。目標時間24時間の場合は最大24時間後、18時間の場合は最大30時間後のスタート時刻まで予報を表示できます</li>
-<li>2時間に1回データを取得しています</li>
-<li>地点は伊賀越ルートで風の影響が大きそうな(かつ局地的な地形の影響を受けにくい)平地を選定しました</li>
+<li>スタート時刻を選ぶことで各地点通過時刻に最も近い時刻の予報データを表示します(カーソルキーに対応)。</li>
+<li>取得できる予報データは48時間後までです。目標時間24時間の場合は最大24時間後、18時間の場合は最大30時間後のスタート時刻まで予報を表示できます。</li>
+<li>2時間に1回データを取得しています。</li>
+<li>地点は伊賀越ルートで風の影響が大きそうな(かつ局地的な地形の影響を受けにくい)平地を選定しました。</li>
+<li>矢印の長さは風速の平方根に比例、矢印の面積が風速と比例します。(長さと風速を比例させると差が大きくなりすぎて見にくかったため)</li>
 </ul>
 <p>※気象業務法によって予報業務を許可なく行うことができません(参考: <a href="https://www.jma.go.jp/jma/kishou/minkan/q_a_m.html">気象庁 | 気象等の予報業務許可についてよくお寄せいただくご質問</a>)ので、OpenWeatherのデータは一切加工せずに表示しています。</p>
 <h2 id="その他リンク">その他リンク</h2>
@@ -155,6 +156,7 @@ if (!doNotTrack) {
 <li>Feb. 26 2021: 画面サイズの小さいデバイスでもレイアウトを崩れにくく修正</li>
 <li>Feb. 26 2021: 自前のフルスクリーンボタンを実装。PCおよびAndroidスマホで見やすく。</li>
 <li>Mar. 1 2021: iframeの高さを画面高さを超えないよう自動調整。Android、iPhoneからもスクロール不要かつ一覧性を向上。</li>
+<li>Mar. 4 2021: 読み込み高速化。(β)を外す。</li>
 </ul>
 		</div>
 		<footer class="post__footer">
@@ -189,7 +191,7 @@ if (!doNotTrack) {
 		<ul class="widget__list">
 			<li class="widget__item"><a class="widget__link" href="/software/create_gpx_with_google_maps/">Google MapsでGPXルート作成</a></li>
 			<li class="widget__item"><a class="widget__link" href="/software/simplify_gpx/">GPXトラックログを間引く・簡略化</a></li>
-			<li class="widget__item"><a class="widget__link" href="/software/cannonball-wind-map/">キャノンボール専用 天候・風向き予測(β)</a></li>
+			<li class="widget__item"><a class="widget__link" href="/software/cannonball-wind-map/">キャノンボール専用 天候・風向き予測</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/introduction/">自転車について</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/equipments/">携行品・装備品</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20201004-osaka-tokyo-cannonball/">2020年10月04日 大阪→東京 キャノンボール 23時間37分</a></li>
