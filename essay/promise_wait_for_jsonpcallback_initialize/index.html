@@ -14,7 +14,7 @@
 <meta property="og:url" content="https://www.330k.info/essay/promise_wait_for_jsonpcallback_initialize/" />
 <meta property="og:image" content="https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Unofficial_JavaScript_logo_2.svg/240px-Unofficial_JavaScript_logo_2.svg.png" />
 <meta property="article:published_time" content="2021-03-04T17:01:31+09:00" />
-<meta property="article:modified_time" content="2021-03-09T20:11:20+09:00" />
+<meta property="article:modified_time" content="2021-03-12T02:43:49+09:00" />
 
 	<meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Unofficial_JavaScript_logo_2.svg/240px-Unofficial_JavaScript_logo_2.svg.png"/>
@@ -84,7 +84,7 @@ if (!doNotTrack) {
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
 	<time class="meta__text" datetime="2021-03-04T17:01:31">March 04, 2021</time>
-	<time class="meta__text" datetime="2021-03-09T20:11:20"> (Last Modified: March 09, 2021)</time>
+	<time class="meta__text" datetime="2021-03-12T02:43:49"> (Last Modified: March 12, 2021)</time>
 </div>
 
 <div class="meta__item-categories meta__item">
@@ -124,8 +124,8 @@ if (!doNotTrack) {
 <span class="p">);</span>
 </code></pre></div><div class="highlight"><pre class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">script</span> <span class="na">async</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&amp;callback=initMap&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
 </code></pre></div><h2 id="使用例2">使用例2</h2>
-<p>単体でPromise化してもあまり恩恵は大きくないのだが、
-複数呼び出す際にはPromise化することで<code>Promise.all</code>を使って並列して呼び出しつつ、すべてが完了するのを待機してから次の処理に移る、といったことが可能。</p>
+<p>単体でPromise化してもあまり恩恵は大きくないのだが、複数のライブラリを使用していてすべてのライブラリの読み込み完了後に何かしら処理をしたい、
+といった場合に<code>Promise.all</code>を使って並列して読み込みつつ、すべてが完了するのを待機してから次の処理に移る、といったことが可能。</p>
 <div class="highlight"><pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="kd">let</span> <span class="nx">gr1</span><span class="p">,</span> <span class="nx">gr2</span><span class="p">;</span>
 <span class="kd">function</span> <span class="nx">callback1</span><span class="p">(){</span>
   <span class="nx">gr1</span><span class="p">();</span>
