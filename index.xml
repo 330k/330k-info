@@ -6,7 +6,18 @@
     <description>Recent content on 330k info</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Thu, 04 Mar 2021 17:01:31 +0900</lastBuildDate><atom:link href="https://www.330k.info/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 30 Mar 2021 19:10:03 +0900</lastBuildDate><atom:link href="https://www.330k.info/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>2021年03月27日 SR600 阿蘇ジオツーリズム</title>
+      <link>https://www.330k.info/bicycle/touring/20210327-sr600-aso-geotourism/</link>
+      <pubDate>Tue, 30 Mar 2021 19:10:03 +0900</pubDate>
+      
+      <guid>https://www.330k.info/bicycle/touring/20210327-sr600-aso-geotourism/</guid>
+      <description>&lt;p&gt;緊急事態宣言でブルベが延期されたり東京都在住では出走できなかったりと、3ヶ月近く長距離を走れていなかったのだが、いきなりSR600を走ることに。&lt;/p&gt;
+&lt;p&gt;全体的にSR600とは思えないほど路面がよく、平地や下りで貯金を稼ぎやすいコース。&lt;/p&gt;
+&lt;p&gt;55時間58分で完走し、エントリーナンバー1番の責任を果たした。&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>JavaScriptライブラリの初期化完了やJSONPのコールバック関数をPromise化する</title>
       <link>https://www.330k.info/essay/promise_wait_for_jsonpcallback_initialize/</link>
