@@ -6,7 +6,25 @@
     <description>Recent content in Tags on 330k info</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Mon, 12 Apr 2021 09:34:57 +0900</lastBuildDate><atom:link href="https://www.330k.info/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 07 May 2021 21:01:21 +0900</lastBuildDate><atom:link href="https://www.330k.info/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Mathematica</title>
+      <link>https://www.330k.info/tags/mathematica/</link>
+      <pubDate>Fri, 07 May 2021 21:01:21 +0900</pubDate>
+      
+      <guid>https://www.330k.info/tags/mathematica/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Ubuntu</title>
+      <link>https://www.330k.info/tags/ubuntu/</link>
+      <pubDate>Fri, 07 May 2021 21:01:21 +0900</pubDate>
+      
+      <guid>https://www.330k.info/tags/ubuntu/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>BRM400km</title>
       <link>https://www.330k.info/tags/brm400km/</link>
@@ -215,15 +233,6 @@
     </item>
     
     <item>
-      <title>Ubuntu</title>
-      <link>https://www.330k.info/tags/ubuntu/</link>
-      <pubDate>Fri, 28 Feb 2020 20:55:25 +0900</pubDate>
-      
-      <guid>https://www.330k.info/tags/ubuntu/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>Java</title>
       <link>https://www.330k.info/tags/java/</link>
       <pubDate>Mon, 03 Feb 2020 00:57:37 +0900</pubDate>
@@ -274,15 +283,6 @@
       <pubDate>Wed, 30 May 2018 20:06:18 +0900</pubDate>
       
       <guid>https://www.330k.info/tags/%E9%9B%91%E5%AD%A6/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Mathematica</title>
-      <link>https://www.330k.info/tags/mathematica/</link>
-      <pubDate>Tue, 22 May 2018 04:34:15 +0900</pubDate>
-      
-      <guid>https://www.330k.info/tags/mathematica/</guid>
       <description></description>
     </item>
     

@@ -11,10 +11,10 @@
 <meta property="og:description" content="今は廃れたHTA(HTML Application)で書いた、汎用SQLツール。
 AccessがなくてもCSVファイルやExcelファイルに対してSQLを実行。" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://www.330k.info/software/hta-sql-tool/" />
-<meta property="og:image" content="https://www.330k.info/software/hta-sql-tool/htasql001.png" />
-<meta property="article:published_time" content="2016-01-13T22:42:14+09:00" />
-<meta property="article:modified_time" content="2021-03-04T20:08:19+09:00" />
+<meta property="og:url" content="https://www.330k.info/software/hta-sql-tool/" /><meta property="og:image" content="https://www.330k.info/software/hta-sql-tool/htasql001.png" /><meta property="article:section" content="software" />
+<meta property="article:published_time" content="2016-01-13T22:42:14&#43;09:00" />
+<meta property="article:modified_time" content="2021-03-04T20:08:19&#43;09:00" />
+
 
 	<meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://www.330k.info/software/hta-sql-tool/htasql001.png"/>
@@ -109,8 +109,7 @@ ExcelファイルはExcelブック⇔データベース、シート⇔テーブ�
 出力された表はExcelに貼り付けやすいようTSV形式で持っています。
 select intoで直接ファイルに書き出すこともできます。</p>
 <h2 id="スクリーンショット">スクリーンショット</h2>
-<figure>
-    <img src="htasql001.png"/> 
+<figure><img src="htasql001.png"/>
 </figure>
 
 <h2 id="ダウンロード">ダウンロード</h2>
@@ -163,12 +162,12 @@ select intoで直接ファイルに書き出すこともできます。</p>
     <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;filename&#39;</span><span class="p">).</span><span class="nx">value</span> <span class="o">=</span> <span class="nx">filepath</span><span class="p">;</span>
     <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;fileselector&#39;</span><span class="p">).</span><span class="nx">parentNode</span><span class="p">.</span><span class="nx">innerHTML</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;fileselector&#39;</span><span class="p">).</span><span class="nx">parentNode</span><span class="p">.</span><span class="nx">innerHTML</span><span class="p">;</span>
     <span class="nx">setTimeout</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
-        <span class="nx">_loadDatabase</span><span class="p">(</span><span class="nx">filepath</span><span class="p">,</span> <span class="nx">readonly</span><span class="p">,</span> <span class="nx">hdr</span><span class="p">);</span>
+        <span class="mi">_</span><span class="nx">loadDatabase</span><span class="p">(</span><span class="nx">filepath</span><span class="p">,</span> <span class="nx">readonly</span><span class="p">,</span> <span class="nx">hdr</span><span class="p">);</span>
     <span class="p">},</span> <span class="mi">10</span><span class="p">);</span> <span class="c1">// wait for unlock file
 </span><span class="c1"></span>    <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
 <span class="p">}</span>
 
-<span class="kd">function</span> <span class="nx">_loadDatabase</span><span class="p">(</span> <span class="nx">filepath</span><span class="p">,</span> <span class="nx">readonly</span><span class="p">,</span> <span class="nx">hdr</span> <span class="p">){</span>
+<span class="kd">function</span> <span class="mi">_</span><span class="nx">loadDatabase</span><span class="p">(</span> <span class="nx">filepath</span><span class="p">,</span> <span class="nx">readonly</span><span class="p">,</span> <span class="nx">hdr</span> <span class="p">){</span>
     <span class="nx">closeADO</span><span class="p">();</span>
     <span class="nx">ado</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">ActiveXObject</span><span class="p">(</span><span class="s2">&#34;ADODB.Connection&#34;</span><span class="p">);</span>
     <span class="kd">var</span> <span class="nx">connect</span> <span class="o">=</span> <span class="p">[];</span>
@@ -415,6 +414,7 @@ select intoで直接ファイルに書き出すこともできます。</p>
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/essay/open-mathematica-notebook-in-ubuntu/">UbuntuでMathematicaノートブックを関連付ける</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20210410-brm410-utsunomiya-400km/">2021年04月10日 BRM410 宇都宮400 ランドネきたかん(西回り)</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20210327-sr600-aso-geotourism/">2021年03月27日 SR600 阿蘇ジオツーリズム</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/promise_wait_for_jsonpcallback_initialize/">JavaScriptライブラリの初期化完了やJSONPのコールバック関数をPromise化する</a></li>
@@ -434,7 +434,6 @@ select intoで直接ファイルに書き出すこともできます。</p>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20200830-ashio/">2020年08月30日 足尾〜滝ヶ原峠(途中で撤退)</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20200808-konseitoge-400/">2020年08月08日 勝手に金精峠400km</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/download-all-activities-from-garmin-connect/">Garmin Connectでこれまでのすべてのアクティビティを一括ダウンロードする</a></li>
-			<li class="widget__item"><a class="widget__link" href="/essay/switch-wscript-to-cscript-js/">起動時にWScriptからCScriptへ自動で切り替える(JScript)</a></li>
 		</ul>
 	</div>
 </div>
@@ -478,15 +477,15 @@ select intoで直接ファイルに書き出すこともできます。</p>
 		<a class="widget-taglist__link widget__link btn" href="/tags/imagemagick" title="Imagemagick">Imagemagick (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/java" title="Java">Java (3)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/javascript" title="Javascript">Javascript (11)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/mathematica" title="Mathematica">Mathematica (20)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/mathematica" title="Mathematica">Mathematica (21)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/powerpoint" title="Powerpoint">Powerpoint (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/powershell" title="Powershell">Powershell (1)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/sql" title="Sql">Sql (3)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/sql" title="SQL">SQL (3)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/sqlserver" title="Sqlserver">Sqlserver (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/sr600" title="Sr600">Sr600 (3)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/ubuntu" title="Ubuntu">Ubuntu (15)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/ubuntu" title="Ubuntu">Ubuntu (16)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/vba" title="Vba">Vba (3)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/vpn" title="Vpn">Vpn (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/vpn" title="VPN">VPN (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/windows" title="Windows">Windows (12)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/wine" title="Wine">Wine (2)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/wsh" title="Wsh">Wsh (3)</a>

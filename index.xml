@@ -6,7 +6,17 @@
     <description>Recent content on 330k info</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Mon, 12 Apr 2021 09:34:57 +0900</lastBuildDate><atom:link href="https://www.330k.info/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 07 May 2021 21:01:21 +0900</lastBuildDate><atom:link href="https://www.330k.info/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>UbuntuでMathematicaノートブックを関連付ける</title>
+      <link>https://www.330k.info/essay/open-mathematica-notebook-in-ubuntu/</link>
+      <pubDate>Fri, 07 May 2021 21:01:21 +0900</pubDate>
+      
+      <guid>https://www.330k.info/essay/open-mathematica-notebook-in-ubuntu/</guid>
+      <description>&lt;p&gt;Ubuntuのアップデート時にMathematicaノートブックをNautilusから起動できなくなってしまって少し面倒だったので、再度設定を行った。&lt;/p&gt;
+&lt;p&gt;ついでに、すでにMathematicaが起動している時に2つ目のノートブックをNautilusから開いた時、デフォルトでは別プロセスのMathematicaが起動してしまってライセンスが要求されてしまう点にも対処した。&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>2021年04月10日 BRM410 宇都宮400 ランドネきたかん(西回り)</title>
       <link>https://www.330k.info/bicycle/touring/20210410-brm410-utsunomiya-400km/</link>
