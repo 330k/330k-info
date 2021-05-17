@@ -77,6 +77,34 @@ if (!doNotTrack) {
 <main class="main list" role="main">
 	<article class="list__item post">
 	<figure class="list__thumbnail">
+		<a href="https://www.330k.info/essay/random_distribution_sphere_surface/">
+			<img src="/essay/random_distribution_sphere_surface/002.png" alt="球面上の一様分布" />
+		</a>
+	</figure>
+	<header class="list__header">
+		<h3 class="list__title post__title ">
+			<a href="/essay/random_distribution_sphere_surface/" rel="bookmark">
+			球面上の一様分布
+			</a>
+		</h3>
+		<div class="list__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
+	<time class="meta__text" datetime="2017-07-22T19:32:46">July 22, 2017</time>
+	<time class="meta__text" datetime="2020-11-12T00:10:08"> (Last Modified: November 12, 2020)</time>
+</div>
+
+<div class="meta__item-categories meta__item">
+	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+	<span class="meta__text"><a class="meta__link" href="/categories/%e9%9b%91%e8%a8%98%e5%b8%b3" rel="category">雑記帳</a></span>
+</div>
+</div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		球面上に一様分布するランダムな点を生成したい時、 単純に極座標表示でθとφを一様分布させると、極付近に点が集まってしまう。 data1=Transpose[{Sin[t]Cos[f],Sin[t]Sin[f],Cos[t]}/.{f-&gt;RandomReal[{0,2Pi},2000],t-&gt;RandomReal[{0,Pi},2000]}];g1=ListPointPlot3D[data1,BoxRatios-&gt;{1,1,1}] 球面上で一様分布させるには、下記のようにθにArcCosを使う (θの位置の確率をSinθに比例させたい→累積確率分布関数はCos→逆関数はArcCos)。 data2=Transpose[{Sin[t]Cos[f],Sin[t]Sin[f],Cos[t]}/.{f-&gt;RandomReal[{0,2Pi},2000],t-&gt;ArcCos[RandomReal[{-1,1},2000]]}];g2=ListPointPlot3D[data2,BoxRatios-&gt;{1,1,1}] なお、多次元球面上の一様分布は球面上に一様分布する乱数の生成にあるように、 多次元ガウス分布を正規化すると得られる。 下記は3
+	</div>
+</article><article class="list__item post">
+	<figure class="list__thumbnail">
 		<a href="https://www.330k.info/essay/zabbix_ricoh_printer_template_xml/">
 			<img src="https://share.zabbix.com/images/headers/share-logo.png" alt="RICOHプリンタ・複合機用のZabbix用テンプレート" />
 		</a>
@@ -318,35 +346,6 @@ if (!doNotTrack) {
 	<div class="content list__excerpt post__content clearfix">
 		<p>2017年のGWは適当に天気の良さそうな方向に走った結果、岐阜の山中から能登半島を回るコースになった。</p>
 	</div>
-</article><article class="list__item post">
-	<figure class="list__thumbnail">
-		<a href="https://www.330k.info/bicycle/touring/20170318-brm318chiba-2lakes/">
-			<img src="/bicycle/touring/20170318-brm318chiba-2lakes/IMG_1328.jpg" alt="2017年03月18日 BRM318千葉200km 2レイク" />
-		</a>
-	</figure>
-	<header class="list__header">
-		<h3 class="list__title post__title ">
-			<a href="/bicycle/touring/20170318-brm318chiba-2lakes/" rel="bookmark">
-			2017年03月18日 BRM318千葉200km 2レイク
-			</a>
-		</h3>
-		<div class="list__meta meta">
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
-	<time class="meta__text" datetime="2017-03-18T21:53:04">March 18, 2017</time>
-	<time class="meta__text" datetime="2021-04-01T20:37:08"> (Last Modified: April 01, 2021)</time>
-</div>
-
-<div class="meta__item-categories meta__item">
-	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
-	<span class="meta__text"><a class="meta__link" href="/categories/%e8%87%aa%e8%bb%a2%e8%bb%8a" rel="category">自転車</a></span>
-</div>
-</div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		<p>「ロングライドしてます」と一応言えるようになるため、初ブルベ参加してきた。</p>
-<p>他人が作るコースを正確に辿ることに不慣れなため、難易度低目のコースのBRM318千葉200kmに申し込み。</p>
-	</div>
 </article>
 </main>
 
@@ -376,6 +375,7 @@ if (!doNotTrack) {
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/essay/disable-volume-auto-adjust-windows-10/">Windows 10の自動音量調整(フェードイン)を無効化する</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/open-mathematica-notebook-in-ubuntu/">UbuntuでMathematicaノートブックを関連付ける</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20210410-brm410-utsunomiya-400km/">2021年04月10日 BRM410 宇都宮400 ランドネきたかん(西回り)</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20210327-sr600-aso-geotourism/">2021年03月27日 SR600 阿蘇ジオツーリズム</a></li>
@@ -395,7 +395,6 @@ if (!doNotTrack) {
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20200905-brm905-tokyo-300km/">2020年09月05日 BRM905 東京300 ウルトラオレンヂ</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20200830-ashio/">2020年08月30日 足尾〜滝ヶ原峠(途中で撤退)</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20200808-konseitoge-400/">2020年08月08日 勝手に金精峠400km</a></li>
-			<li class="widget__item"><a class="widget__link" href="/essay/download-all-activities-from-garmin-connect/">Garmin Connectでこれまでのすべてのアクティビティを一括ダウンロードする</a></li>
 		</ul>
 	</div>
 </div>
@@ -448,7 +447,7 @@ if (!doNotTrack) {
 		<a class="widget-taglist__link widget__link btn" href="/tags/ubuntu" title="Ubuntu">Ubuntu (16)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/vba" title="Vba">Vba (3)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/vpn" title="VPN">VPN (1)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/windows" title="Windows">Windows (12)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/windows" title="Windows">Windows (13)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/wine" title="Wine">Wine (2)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/wsh" title="Wsh">Wsh (3)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/zabbix" title="Zabbix">Zabbix (1)</a>
