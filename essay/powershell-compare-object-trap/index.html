@@ -4,22 +4,22 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>16ビットアプリケーションの標準入出力をリダイレクト - 330k info</title>
+	<title>PowerShellのCompare-Object(diff)の罠 - 330k info</title>
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
-	<meta property="og:title" content="16ビットアプリケーションの標準入出力をリダイレクト" />
-<meta property="og:description" content="FORTRANで書かれた古いMS-DOSプログラムを.NET/Linkを使ってMathematicaから操るパッケージを作っていたところ、 Process.StartInfo.RedirectStandardInputやRedirectStandardOutputにTrueを設定してもまったく標準入出力をリダイレクトできなかった。(※OSはVista 32bit) いろいろ試してみたところ、16ビットのプログラム" />
+	<meta property="og:title" content="PowerShellのCompare-Object(diff)の罠" />
+<meta property="og:description" content="PowerShellでdiff相当のCompare-Objectを使って、差分だけ処理するスクリプトを書こうとしたら、PowerShellの仕様による罠にハマった。" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://www.330k.info/essay/how-to-redirect-standard-input-output-of-16bit-application/" /><meta property="og:image" content="https://www.ipros.jp/public/product/image/f59/396065002/IPROS3632825140790521490.png?h=220&w=220" /><meta property="article:section" content="essay" />
-<meta property="article:published_time" content="2009-10-26T21:47:00&#43;09:00" />
-<meta property="article:modified_time" content="2020-05-18T11:51:16&#43;09:00" />
+<meta property="og:url" content="https://www.330k.info/essay/powershell-compare-object-trap/" /><meta property="og:image" content="https://www.330k.info/essay/powershell-compare-object-trap/file_type_powershell_icon_130243.png" /><meta property="article:section" content="essay" />
+<meta property="article:published_time" content="2021-05-31T23:10:39&#43;09:00" />
+<meta property="article:modified_time" content="2021-05-31T23:40:05&#43;09:00" />
 
 
 	<meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:image" content="https://www.ipros.jp/public/product/image/f59/396065002/IPROS3632825140790521490.png?h=220&w=220"/>
+<meta name="twitter:image" content="https://www.330k.info/essay/powershell-compare-object-trap/file_type_powershell_icon_130243.png"/>
 
-<meta name="twitter:title" content="16ビットアプリケーションの標準入出力をリダイレクト"/>
-<meta name="twitter:description" content="FORTRANで書かれた古いMS-DOSプログラムを.NET/Linkを使ってMathematicaから操るパッケージを作っていたところ、 Process.StartInfo.RedirectStandardInputやRedirectStandardOutputにTrueを設定してもまったく標準入出力をリダイレクトできなかった。(※OSはVista 32bit) いろいろ試してみたところ、16ビットのプログラム"/>
+<meta name="twitter:title" content="PowerShellのCompare-Object(diff)の罠"/>
+<meta name="twitter:description" content="PowerShellでdiff相当のCompare-Objectを使って、差分だけ処理するスクリプトを書こうとしたら、PowerShellの仕様による罠にハマった。"/>
 
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -77,12 +77,12 @@ if (!doNotTrack) {
 <main class="main" role="main">
 	<article class="post">
 		<header class="post__header">
-			<h1 class="post__title">16ビットアプリケーションの標準入出力をリダイレクト</h1>
+			<h1 class="post__title">PowerShellのCompare-Object(diff)の罠</h1>
 			<div class="post__meta meta">
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
-	<time class="meta__text" datetime="2009-10-26T21:47:00">October 26, 2009</time>
-	<time class="meta__text" datetime="2020-05-18T11:51:16"> (Last Modified: May 18, 2020)</time>
+	<time class="meta__text" datetime="2021-05-31T23:10:39">May 31, 2021</time>
+	<time class="meta__text" datetime="2021-05-31T23:40:05"> (Last Modified: May 31, 2021)</time>
 </div>
 
 <div class="meta__item-categories meta__item">
@@ -91,55 +91,124 @@ if (!doNotTrack) {
 </div>
 </div>
 		</header><div class="content post__content clearfix">
-			<p>FORTRANで書かれた古いMS-DOSプログラムを.NET/Linkを使ってMathematicaから操るパッケージを作っていたところ、
-<code>Process.StartInfo.RedirectStandardInput</code>や<code>RedirectStandardOutput</code>に<code>True</code>を設定してもまったく標準入出力をリダイレクトできなかった。(※OSはVista 32bit)</p>
-<p>いろいろ試してみたところ、16ビットのプログラムだとリダイレクトができないらしいということが分かった。
-さてどうしたものかとさらにいろいろ打開策を探してみた結果、</p>
-<ol>
-<li><code>FileName</code>に<code>&quot;cmd.exe&quot;</code>を設定して、<code>Process.Start()</code>でプロセスを起動。</li>
-<li>必要なら<code>StandardInput.WriteLine(&quot;cd 16ビットプログラムのディレクトリ&quot;)</code>としてカレントディレクトリを移動。</li>
-<li><code>StandardInput.WriteLine(&quot;***.EXE&quot;)</code>として16ビットプログラムを起動。</li>
-</ol>
-<p>とcmd.exeを間に挟むことにより、16ビットのプログラムに対しても標準入出力のリダイレクトが行えることが分かった。</p>
-<p>以下はMathematica+.NET/Linkによるサンプル。
-標準出力は書き出されるたびにイベントハンドラで捕捉してoutputsに追加するので、<code>Dynamic[outputs]</code>などとしておくと、本当のターミナルの挙動に近づく。
-最初にcmd.exeの出力(&ldquo;Microsoft Windows [Version &hellip;&quot;)が入るので、16ビットのプログラムの出力だけがほしい場合は16ビットプログラム起動後にフラグを立てれば大丈夫。</p>
-<div class="highlight"><pre class="chroma"><code class="language-Mathematica" data-lang="Mathematica"><span class="n">outputs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{};</span><span class="w">
-</span><span class="w"></span><span class="n">outputhandler</span><span class="p">[</span><span class="nv">o_</span><span class="p">,</span><span class="w"> </span><span class="nv">args_</span><span class="p">]</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">Module</span><span class="p">[</span><span class="w">
-</span><span class="w">   </span><span class="p">{</span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">args</span><span class="o">@</span><span class="n">Data</span><span class="p">},</span><span class="w">
-</span><span class="w">   </span><span class="n">AppendTo</span><span class="p">[</span><span class="n">outputs</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="p">];</span><span class="w">
-</span><span class="w">   </span><span class="p">];</span><span class="w">
-</span><span class="w"></span><span class="n">NETBlock</span><span class="p">[</span><span class="w">
-</span><span class="w">  </span><span class="n">proc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">NETNew</span><span class="p">[</span><span class="s">&#34;System.Diagnostics.Process&#34;</span><span class="p">];</span><span class="w">
-</span><span class="w">  </span><span class="n">LoadNETType</span><span class="p">[</span><span class="s">&#34;System.Environment&#34;</span><span class="p">];</span><span class="w">
-</span><span class="w">  </span><span class="n">proc</span><span class="o">@</span><span class="n">StartInfo</span><span class="o">@</span><span class="n">FileName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nn">Environment`</span><span class="n">GetEnvironmentVariable</span><span class="p">[</span><span class="s">&#34;ComSpec&#34;</span><span class="p">];</span><span class="w">
-</span><span class="w">  </span><span class="n">proc</span><span class="o">@</span><span class="n">StartInfo</span><span class="o">@</span><span class="n">RedirectStandardInput</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">True</span><span class="p">;</span><span class="w">
-</span><span class="w">  </span><span class="n">proc</span><span class="o">@</span><span class="n">StartInfo</span><span class="o">@</span><span class="n">RedirectStandardOutput</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">True</span><span class="p">;</span><span class="w">
-</span><span class="w">  </span><span class="n">proc</span><span class="o">@</span><span class="n">StartInfo</span><span class="o">@</span><span class="n">UseShellExecute</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">False</span><span class="p">;</span><span class="w">
-</span><span class="w">  </span><span class="n">proc</span><span class="o">@</span><span class="n">StartInfo</span><span class="o">@</span><span class="n">CreateNoWindow</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">True</span><span class="p">;</span><span class="w">
-</span><span class="w">  </span><span class="n">proc</span><span class="o">@</span><span class="n">StartInfo</span><span class="o">@</span><span class="n">WorkingDirectory</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DirectoryName</span><span class="p">[</span><span class="n">proc</span><span class="o">@</span><span class="n">StartInfo</span><span class="o">@</span><span class="n">FileName</span><span class="p">];</span><span class="w">
-</span><span class="w">  </span><span class="n">AddEventHandler</span><span class="p">[</span><span class="n">proc</span><span class="o">@</span><span class="n">OutputDataReceived</span><span class="p">,</span><span class="w"> </span><span class="n">outputhandler</span><span class="p">];</span><span class="w">
-</span><span class="w">  </span><span class="n">proc</span><span class="o">@</span><span class="n">Start</span><span class="p">[];</span><span class="w">
-</span><span class="w">  </span><span class="n">proc</span><span class="o">@</span><span class="n">BeginOutputReadLine</span><span class="p">[];</span><span class="w">
-</span><span class="w">  </span><span class="n">proc</span><span class="o">@</span><span class="n">StandardInput</span><span class="o">@</span><span class="n">WriteLine</span><span class="p">[</span><span class="s">&#34;cd &#34;</span><span class="w"> </span><span class="o">&lt;&gt;</span><span class="w"> </span><span class="s">&#34;16ビットプログラムのディレクトリ&#34;</span><span class="p">];</span><span class="w">
-</span><span class="w">  </span><span class="n">proc</span><span class="o">@</span><span class="n">StandardInput</span><span class="o">@</span><span class="n">WriteLine</span><span class="p">[</span><span class="s">&#34;******.EXE(16ビットプログラム)&#34;</span><span class="p">];</span><span class="w">
-</span><span class="w">  
-</span><span class="w">  </span><span class="n">proc</span><span class="o">@</span><span class="n">StandardInput</span><span class="o">@</span><span class="n">WriteLine</span><span class="p">[</span><span class="s">&#34;16ビットプログラムの標準入力に渡す内容&#34;</span><span class="p">];</span><span class="w">
-</span><span class="w">  </span><span class="n">proc</span><span class="o">@</span><span class="n">StandardInput</span><span class="o">@</span><span class="n">Close</span><span class="p">[];</span><span class="w">
-</span><span class="w">  
-</span><span class="w">  </span><span class="n">proc</span><span class="o">@</span><span class="n">WaitForExit</span><span class="p">[];</span><span class="w">
-</span><span class="w">  </span><span class="n">proc</span><span class="o">@</span><span class="n">Close</span><span class="p">[];</span><span class="w">
-</span><span class="w">  </span><span class="p">];</span><span class="w">
-</span></code></pre></div><p>とはいっても64bit版のWindowsだと16bitのプログラムがそもそも動かない。</p>
+			<p>PowerShellで<code>diff</code>相当の<code>Compare-Object</code>を使って、差分だけ処理するスクリプトを書こうとしたら、PowerShellの仕様による罠にハマった。</p>
+<h2 id="結論">結論</h2>
+<p><code>Compare-Object</code>で比較した結果は、差異の個数によって型が変わる。</p>
+<ul>
+<li>差異がなかった(0個)の場合、<code>$null</code>が返る</li>
+<li>差異が1個の場合、単一の<code>PSCustomObject</code>が返る</li>
+<li>差異が2個以上の場合、<code>PSCustomObject</code>の配列が返る</li>
+</ul>
+<p>この挙動の違いにより、結果を変数に保存したり、パイプにつないだりする場合に注意が必要になる。</p>
+<p>必ず配列を返して欲しい場合は<code>@()</code>で囲むのが安全。</p>
+<h2 id="実際の挙動">実際の挙動</h2>
+<p>環境はWindows 10でPowerShellのバージョンは5.1。</p>
+<p>まずは差異の個数が0、1、2となるよう、<code>Compare-Object</code>で比較する。</p>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="nb">PS </span><span class="n">T:</span><span class="p">\&gt;</span> <span class="nv">$diff0</span> <span class="p">=</span> <span class="nb">Compare-Object</span> <span class="p">@(</span><span class="n">1</span><span class="p">,</span><span class="n">2</span><span class="p">,</span><span class="n">3</span><span class="p">)</span> <span class="p">@(</span><span class="n">1</span><span class="p">,</span><span class="n">2</span><span class="p">,</span><span class="n">3</span><span class="p">)</span>
+<span class="nb">PS </span><span class="n">T:</span><span class="p">\&gt;</span> <span class="nv">$diff1</span> <span class="p">=</span> <span class="nb">Compare-Object</span> <span class="p">@(</span><span class="n">1</span><span class="p">,</span><span class="n">2</span><span class="p">,</span><span class="n">3</span><span class="p">)</span> <span class="p">@(</span><span class="n">1</span><span class="p">,</span><span class="n">2</span><span class="p">)</span>
+<span class="nb">PS </span><span class="n">T:</span><span class="p">\&gt;</span> <span class="nv">$diff2</span> <span class="p">=</span> <span class="nb">Compare-Object</span> <span class="p">@(</span><span class="n">1</span><span class="p">,</span><span class="n">2</span><span class="p">,</span><span class="n">3</span><span class="p">)</span> <span class="p">@(</span><span class="n">1</span><span class="p">)</span>
+</code></pre></div><p>上で説明したように、<code>$diff0</code>は<code>$null</code>が、<code>$diff1</code>は<code>PSCustomObject</code>が、<code>$diff2</code>は配列が返ってくる。</p>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="nb">PS </span><span class="n">T:</span><span class="p">\&gt;</span> <span class="nv">$diff0</span>
+<span class="nb">PS </span><span class="n">T:</span><span class="p">\&gt;</span> <span class="nv">$diff1</span>
 
+<span class="n">InputObject</span> <span class="n">SideIndicator</span>
+<span class="p">-----------</span> <span class="p">-------------</span>
+          <span class="n">3</span> <span class="p">&lt;=</span>
+
+<span class="nb">PS </span><span class="n">T:</span><span class="p">\&gt;</span> <span class="nv">$diff2</span>
+
+<span class="n">InputObject</span> <span class="n">SideIndicator</span>
+<span class="p">-----------</span> <span class="p">-------------</span>
+          <span class="n">2</span> <span class="p">&lt;=</span>
+          <span class="n">3</span> <span class="p">&lt;=</span>
+</code></pre></div><p><code>$diff1</code>と<code>$diff2</code>の違いはコンソールに出力するとわかりにくいので、<code>getType()</code>を使って確認。</p>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="nb">PS </span><span class="n">T:</span><span class="p">\&gt;</span> <span class="nv">$diff0</span><span class="p">.</span><span class="n">getType</span><span class="p">()</span>
+<span class="n">null</span> <span class="n">値の式ではメソッドを呼び出せません</span><span class="err">。</span>
+<span class="n">発生場所</span> <span class="n">行</span><span class="err">:</span><span class="n">1</span> <span class="n">文字</span><span class="err">:</span><span class="n">1</span>
+<span class="p">+</span> <span class="nv">$diff0</span><span class="p">.</span><span class="n">getType</span><span class="p">()</span>
+<span class="p">+</span> <span class="p">~~~~~~~~~~~~~~~~</span>
+    <span class="p">+</span> <span class="n">CategoryInfo</span>          <span class="err">:</span> <span class="n">InvalidOperation</span><span class="err">:</span> <span class="p">(</span><span class="err">:</span><span class="p">)</span> <span class="p">[]</span><span class="err">、</span><span class="n">RuntimeException</span>
+    <span class="p">+</span> <span class="n">FullyQualifiedErrorId</span> <span class="err">:</span> <span class="n">InvokeMethodOnNull</span>
+
+<span class="nb">PS </span><span class="n">T:</span><span class="p">\&gt;</span> <span class="nv">$diff1</span><span class="p">.</span><span class="n">getType</span><span class="p">()</span>
+
+<span class="n">IsPublic</span> <span class="n">IsSerial</span> <span class="n">Name</span>                                     <span class="n">BaseType</span>
+<span class="p">--------</span> <span class="p">--------</span> <span class="p">----</span>                                     <span class="p">--------</span>
+<span class="n">True</span>     <span class="n">False</span>    <span class="n">PSCustomObject</span>                           <span class="n">System</span><span class="p">.</span><span class="n">Object</span>
+
+<span class="nb">PS </span><span class="n">T:</span><span class="p">\&gt;</span> <span class="nv">$diff2</span><span class="p">.</span><span class="n">getType</span><span class="p">()</span>
+
+<span class="n">IsPublic</span> <span class="n">IsSerial</span> <span class="n">Name</span>                                     <span class="n">BaseType</span>
+<span class="p">--------</span> <span class="p">--------</span> <span class="p">----</span>                                     <span class="p">--------</span>
+<span class="n">True</span>     <span class="n">True</span>     <span class="n">Object</span><span class="p">[]</span>                                 <span class="n">System</span><span class="p">.</span><span class="n">Array</span>
+</code></pre></div><p>このため、<code>Length</code>プロパティを使って差異があるかどうかを判定するのは上手くいかない。</p>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="c"># 差分が1個のときだけLengthプロパティが無い(なぜか$nullにLengthプロパティがある)</span>
+<span class="nb">PS </span><span class="n">T:</span><span class="p">\&gt;</span> <span class="nv">$diff0</span><span class="p">.</span><span class="n">Length</span>
+<span class="n">0</span>
+<span class="nb">PS </span><span class="n">T:</span><span class="p">\&gt;</span> <span class="nv">$diff1</span><span class="p">.</span><span class="n">Length</span>
+<span class="nb">PS </span><span class="n">T:</span><span class="p">\&gt;</span> <span class="nv">$diff2</span><span class="p">.</span><span class="n">Length</span>
+<span class="n">2</span>
+
+<span class="c"># 差分があるかどうかを調べたいときは-ne 0を使う</span>
+<span class="nb">PS </span><span class="n">T:</span><span class="p">\&gt;</span> <span class="nv">$diff0</span><span class="p">.</span><span class="n">Length</span> <span class="o">-ne</span> <span class="n">0</span>
+<span class="n">False</span>
+<span class="nb">PS </span><span class="n">T:</span><span class="p">\&gt;</span> <span class="nv">$diff1</span><span class="p">.</span><span class="n">Length</span> <span class="o">-ne</span> <span class="n">0</span>
+<span class="n">True</span>
+<span class="nb">PS </span><span class="n">T:</span><span class="p">\&gt;</span> <span class="nv">$diff2</span><span class="p">.</span><span class="n">Length</span> <span class="o">-ne</span> <span class="n">0</span>
+<span class="n">True</span>
+
+<span class="c"># 同じように見えて-gt 0は使えない</span>
+<span class="nb">PS </span><span class="n">T:</span><span class="p">\&gt;</span> <span class="nv">$diff0</span><span class="p">.</span><span class="n">Length</span> <span class="o">-gt</span> <span class="n">0</span>
+<span class="n">False</span>
+<span class="nb">PS </span><span class="n">T:</span><span class="p">\&gt;</span> <span class="nv">$diff1</span><span class="p">.</span><span class="n">Length</span> <span class="o">-gt</span> <span class="n">0</span>
+<span class="n">False</span>
+<span class="nb">PS </span><span class="n">T:</span><span class="p">\&gt;</span> <span class="nv">$diff2</span><span class="p">.</span><span class="n">Length</span> <span class="o">-gt</span> <span class="n">0</span>
+<span class="n">True</span>
+</code></pre></div><p>対処法としては、<strong><code>Compare-Object</code>の結果を<code>@()</code>で囲んで、必ず配列が返ってくるようにするのが安全。</strong></p>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="nb">PS </span><span class="n">T:</span><span class="p">\&gt;</span> <span class="nv">$diff0_2</span> <span class="p">=</span> <span class="p">@(</span><span class="nb">Compare-Object</span> <span class="p">@(</span><span class="n">1</span><span class="p">,</span><span class="n">2</span><span class="p">,</span><span class="n">3</span><span class="p">)</span> <span class="p">@(</span><span class="n">1</span><span class="p">,</span><span class="n">2</span><span class="p">,</span><span class="n">3</span><span class="p">))</span>
+<span class="nb">PS </span><span class="n">T:</span><span class="p">\&gt;</span> <span class="nv">$diff1_2</span> <span class="p">=</span> <span class="p">@(</span><span class="nb">Compare-Object</span> <span class="p">@(</span><span class="n">1</span><span class="p">,</span><span class="n">2</span><span class="p">,</span><span class="n">3</span><span class="p">)</span> <span class="p">@(</span><span class="n">1</span><span class="p">,</span><span class="n">2</span><span class="p">))</span>
+<span class="nb">PS </span><span class="n">T:</span><span class="p">\&gt;</span> <span class="nv">$diff2_2</span> <span class="p">=</span> <span class="p">@(</span><span class="nb">Compare-Object</span> <span class="p">@(</span><span class="n">1</span><span class="p">,</span><span class="n">2</span><span class="p">,</span><span class="n">3</span><span class="p">)</span> <span class="p">@(</span><span class="n">1</span><span class="p">))</span>
+
+<span class="c"># GetType()で必ず配列が返る</span>
+<span class="nb">PS </span><span class="n">T:</span><span class="p">\&gt;</span> <span class="nv">$diff0_2</span><span class="p">.</span><span class="n">GetType</span><span class="p">()</span>
+
+<span class="n">IsPublic</span> <span class="n">IsSerial</span> <span class="n">Name</span>                                     <span class="n">BaseType</span>
+<span class="p">--------</span> <span class="p">--------</span> <span class="p">----</span>                                     <span class="p">--------</span>
+<span class="n">True</span>     <span class="n">True</span>     <span class="n">Object</span><span class="p">[]</span>                                 <span class="n">System</span><span class="p">.</span><span class="n">Array</span>
+
+
+<span class="nb">PS </span><span class="n">T:</span><span class="p">\&gt;</span> <span class="nv">$diff1_2</span><span class="p">.</span><span class="n">GetType</span><span class="p">()</span>
+
+<span class="n">IsPublic</span> <span class="n">IsSerial</span> <span class="n">Name</span>                                     <span class="n">BaseType</span>
+<span class="p">--------</span> <span class="p">--------</span> <span class="p">----</span>                                     <span class="p">--------</span>
+<span class="n">True</span>     <span class="n">True</span>     <span class="n">Object</span><span class="p">[]</span>                                 <span class="n">System</span><span class="p">.</span><span class="n">Array</span>
+
+
+<span class="nb">PS </span><span class="n">T:</span><span class="p">\&gt;</span> <span class="nv">$diff2_2</span><span class="p">.</span><span class="n">GetType</span><span class="p">()</span>
+
+<span class="n">IsPublic</span> <span class="n">IsSerial</span> <span class="n">Name</span>                                     <span class="n">BaseType</span>
+<span class="p">--------</span> <span class="p">--------</span> <span class="p">----</span>                                     <span class="p">--------</span>
+<span class="n">True</span>     <span class="n">True</span>     <span class="n">Object</span><span class="p">[]</span>                                 <span class="n">System</span><span class="p">.</span><span class="n">Array</span>
+
+<span class="c"># Lengthプロパティも必ず存在する</span>
+<span class="nb">PS </span><span class="n">T:</span><span class="p">\&gt;</span> <span class="nv">$diff0_2</span><span class="p">.</span><span class="n">Length</span>
+<span class="n">0</span>
+<span class="nb">PS </span><span class="n">T:</span><span class="p">\&gt;</span> <span class="nv">$diff1_2</span><span class="p">.</span><span class="n">Length</span>
+<span class="n">1</span>
+<span class="nb">PS </span><span class="n">T:</span><span class="p">\&gt;</span> <span class="nv">$diff2_2</span><span class="p">.</span><span class="n">Length</span>
+<span class="n">2</span>
+</code></pre></div><h2 id="参考">参考</h2>
+<ul>
+<li><a href="https://blog.shibata.tech/entry/2018/05/31/214439">PowerShellの&quot;罠&quot;と呼ばれるモノについて - しばたテックブログ</a></li>
+<li><a href="https://operationslab.wordpress.com/2013/03/11/powershell-%E3%81%A7%E3%81%AF%E5%AD%98%E5%9C%A8%E3%81%97%E3%81%AA%E3%81%84%E3%83%97%E3%83%AD%E3%83%91%E3%83%86%E3%82%A3%E3%81%B8%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9%E3%81%99%E3%82%8B%E3%81%A8-null/">PowerShell では存在しないプロパティへアクセスすると $null が返る | Operations Lab.</a></li>
+</ul>
 		</div>
 		<footer class="post__footer">
 			
 <div class="post__tags tags clearfix">
 	<svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
 	<ul class="tags__list">
-		<li class="tags__item"><a class="tags__link btn" href="/tags/mathematica/" rel="tag">Mathematica</a></li>
-		<li class="tags__item"><a class="tags__link btn" href="/tags/dotnet/" rel="tag">DOTNET</a></li>
+		<li class="tags__item"><a class="tags__link btn" href="/tags/powershell/" rel="tag">PowerShell</a></li>
 	</ul>
 </div>
 		</footer>
@@ -149,10 +218,7 @@ if (!doNotTrack) {
 
 <nav class="post-nav flex">
 	<div class="post-nav__item post-nav__item--prev">
-		<a class="post-nav__link" href="/essay/import-gpx-file-in-mathematica/" rel="prev"><span class="post-nav__caption">«&thinsp;Previous</span><p class="post-nav__post-title">GPXファイルを読み込む</p></a>
-	</div>
-	<div class="post-nav__item post-nav__item--next">
-		<a class="post-nav__link" href="/essay/leap-second-in-au-handy-gps-ashiato-data/" rel="next"><span class="post-nav__caption">Next&thinsp;»</span><p class="post-nav__post-title">簡易ハンディGPSによるあしあとデータの時刻情報</p></a>
+		<a class="post-nav__link" href="/essay/disable-volume-auto-adjust-windows-10/" rel="prev"><span class="post-nav__caption">«&thinsp;Previous</span><p class="post-nav__post-title">Windows 10の自動音量調整(フェードイン)を無効化する</p></a>
 	</div>
 </nav>
 
