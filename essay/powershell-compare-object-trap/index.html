@@ -12,7 +12,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.330k.info/essay/powershell-compare-object-trap/" /><meta property="og:image" content="https://www.330k.info/essay/powershell-compare-object-trap/file_type_powershell_icon_130243.png" /><meta property="article:section" content="essay" />
 <meta property="article:published_time" content="2021-05-31T23:10:39&#43;09:00" />
-<meta property="article:modified_time" content="2021-05-31T23:44:34&#43;09:00" />
+<meta property="article:modified_time" content="2021-06-01T01:54:32&#43;09:00" />
 
 
 	<meta name="twitter:card" content="summary_large_image"/>
@@ -82,7 +82,7 @@ if (!doNotTrack) {
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
 	<time class="meta__text" datetime="2021-05-31T23:10:39">May 31, 2021</time>
-	<time class="meta__text" datetime="2021-05-31T23:44:34"> (Last Modified: May 31, 2021)</time>
+	<time class="meta__text" datetime="2021-06-01T01:54:32"> (Last Modified: June 01, 2021)</time>
 </div>
 
 <div class="meta__item-categories meta__item">
@@ -92,7 +92,7 @@ if (!doNotTrack) {
 </div>
 		</header><div class="content post__content clearfix">
 			<p>PowerShellで<code>diff</code>相当の<code>Compare-Object</code>を使って、差分だけ処理するスクリプトを書こうとしたら、PowerShellの仕様による罠にハマった。</p>
-<h2 id="結論">結論</h2>
+<h2 id="要旨">要旨</h2>
 <p><code>Compare-Object</code>で比較した結果は、差異の個数によって型が変わる。</p>
 <ul>
 <li>差異がなかった(0個)の場合、<code>$null</code>が返る</li>
