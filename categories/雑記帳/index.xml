@@ -6,7 +6,17 @@
     <description>Recent content in 雑記帳 on 330k info</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Mon, 31 May 2021 23:10:39 +0900</lastBuildDate><atom:link href="https://www.330k.info/categories/%E9%9B%91%E8%A8%98%E5%B8%B3/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 16 Jun 2021 02:50:08 +0900</lastBuildDate><atom:link href="https://www.330k.info/categories/%E9%9B%91%E8%A8%98%E5%B8%B3/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>LXDホストのIPアドレスを変更する</title>
+      <link>https://www.330k.info/essay/change-lxd-host-ip-address/</link>
+      <pubDate>Wed, 16 Jun 2021 02:50:08 +0900</pubDate>
+      
+      <guid>https://www.330k.info/essay/change-lxd-host-ip-address/</guid>
+      <description>&lt;p&gt;LXD(lxc)でネットワークアクセスを有効にしていて、特定のIPアドレスに限っている場合、ホストのIPアドレスを変更した際にlxcコマンドがエラーとなる。&lt;/p&gt;
+&lt;p&gt;設定を行う&lt;code&gt;lxc config edit&lt;/code&gt;自体が動作しないので対処法に困ったが、何とか見つけることが出来た。&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>PowerShellのCompare-Object(diff)の罠</title>
       <link>https://www.330k.info/essay/powershell-compare-object-trap/</link>

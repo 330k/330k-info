@@ -6,7 +6,17 @@
     <description>Recent content in Ubuntu on 330k info</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Fri, 07 May 2021 21:01:21 +0900</lastBuildDate><atom:link href="https://www.330k.info/tags/ubuntu/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 16 Jun 2021 02:50:08 +0900</lastBuildDate><atom:link href="https://www.330k.info/tags/ubuntu/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>LXDホストのIPアドレスを変更する</title>
+      <link>https://www.330k.info/essay/change-lxd-host-ip-address/</link>
+      <pubDate>Wed, 16 Jun 2021 02:50:08 +0900</pubDate>
+      
+      <guid>https://www.330k.info/essay/change-lxd-host-ip-address/</guid>
+      <description>&lt;p&gt;LXD(lxc)でネットワークアクセスを有効にしていて、特定のIPアドレスに限っている場合、ホストのIPアドレスを変更した際にlxcコマンドがエラーとなる。&lt;/p&gt;
+&lt;p&gt;設定を行う&lt;code&gt;lxc config edit&lt;/code&gt;自体が動作しないので対処法に困ったが、何とか見つけることが出来た。&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>UbuntuでMathematicaノートブックを関連付ける</title>
       <link>https://www.330k.info/essay/open-mathematica-notebook-in-ubuntu/</link>
