@@ -8,18 +8,18 @@
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
 	<meta property="og:title" content="LinuxのOpenVPNクライアントでスプリットトンネリング" />
-<meta property="og:description" content="OpenVPNのLinuxクライアントを使ってスプリットトンネルのVPN接続をしようとした所、route-nopullが効かなかったので、別の対処を行った。" />
+<meta property="og:description" content="OpenVPNのLinuxクライアントを使ってスプリットトンネルのVPN接続をしようとした所、route-nopullが効かなかったので、別の対処を行った。→redirect-gateway def1を削除。" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.330k.info/essay/openvpn-client-split-tunnel/" /><meta property="og:image" content="https://www.330k.info/essay/openvpn-client-split-tunnel/openvpn.png" /><meta property="article:section" content="essay" />
 <meta property="article:published_time" content="2021-06-22T04:34:59&#43;09:00" />
-<meta property="article:modified_time" content="2021-06-22T04:56:27&#43;09:00" />
+<meta property="article:modified_time" content="2021-06-24T08:44:03&#43;09:00" />
 
 
 	<meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://www.330k.info/essay/openvpn-client-split-tunnel/openvpn.png"/>
 
 <meta name="twitter:title" content="LinuxのOpenVPNクライアントでスプリットトンネリング"/>
-<meta name="twitter:description" content="OpenVPNのLinuxクライアントを使ってスプリットトンネルのVPN接続をしようとした所、route-nopullが効かなかったので、別の対処を行った。"/>
+<meta name="twitter:description" content="OpenVPNのLinuxクライアントを使ってスプリットトンネルのVPN接続をしようとした所、route-nopullが効かなかったので、別の対処を行った。→redirect-gateway def1を削除。"/>
 
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -82,7 +82,7 @@ if (!doNotTrack) {
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
 	<time class="meta__text" datetime="2021-06-22T04:34:59">June 22, 2021</time>
-	<time class="meta__text" datetime="2021-06-22T04:56:27"> (Last Modified: June 22, 2021)</time>
+	<time class="meta__text" datetime="2021-06-24T08:44:03"> (Last Modified: June 24, 2021)</time>
 </div>
 
 <div class="meta__item-categories meta__item">
@@ -91,11 +91,17 @@ if (!doNotTrack) {
 </div>
 </div>
 		</header><div class="content post__content clearfix">
-			<p>OpenVPNのLinuxクライアントを使ってスプリットトンネルのVPN接続をしようとした所、<code>route-nopull</code>が効かなかったので、別の対処を行った。</p>
+			<p>OpenVPNのLinuxクライアントを使ってスプリットトンネルのVPN接続をしようとした所、<s><code>route-nopull</code>が効かなかったので、別の対処を行った。</s>→<code>redirect-gateway def1</code>を削除。</p>
 <h2 id="現象">現象</h2>
-<p>OpenVPNでは接続後、ルーティングテーブルに<code>0.0.0.0/1</code>と<code>128.0.0.0/1</code>を追加するので、基本的にすべての通信がVPN経由となる。</p>
-<p>対処法として調べると、まず<code>route-nopull</code>を記述することでスプリットトンネルが可能、という記述が見つかったのだが、効果がなかった。</p>
+<p>CentOSにOpenVPNのクライアントをインストールし、スプリットトンネルとするためにVPN接続プロファイルに<code>route-nopull</code>を指定した。</p>
+<p>しかしながら、それでも接続後のルーティングテーブルに<code>0.0.0.0/1</code>と<code>128.0.0.0/1</code>を追加され、すべての通信がVPN経由となってしまった。</p>
 <h2 id="対処法">対処法</h2>
+<p>設定ファイル中の<code>redirect-gateway def1</code>が<code>route-nopull</code>に優先されてしまうため、<code>redirect-gateway def1</code>を削除して<code>route-nopull</code>と<code>route</code>を指定する。</p>
+<div class="highlight"><pre class="chroma"><code class="language-txt" data-lang="txt"># redirect-gateway def1
+route-nopull
+route 192.168.10.0 255.255.255.0
+</code></pre></div><h2 id="対処法-古いバージョン向け">対処法 (古いバージョン向け)</h2>
+<p><strong>以下の対処法でも動作はするが、上記の方法が簡潔</strong>。</p>
 <p><code>route-nopull</code>の代わりに<code>route-noexec</code>を指定することで解決した。</p>
 <p>ただしそのままではVPN接続の認証/切断後にルーティングテーブルが変更されないので、必要なものは自分で追加/削除する必要があり、そのために<code>route-up</code>と<code>route-pre-down</code>も指定する。</p>
 <p>また、<code>route-up</code>と<code>route-pre-down</code>に指定したスクリプトを実行するには、<code>script-security 2</code>の記載も必要。</p>
@@ -109,7 +115,7 @@ route-pre-down &#34;/etc/openvpn/client/vpnconnection1_route-pre-down.sh&#34;
 </code></pre></div><p><code>vpnconnection1_route-up.sh</code>は以下のように記述し、<code>chmod +x</code>で実行権限を付与。</p>
 <p>この場合は<code>192.168.10.0/24</code>のみVPN経由とする設定。</p>
 <p><code>${route_vpn_gateway}</code>はOpenVPNから渡される環境変数であり、その他は<a href="https://openvpn.net/community-resources/reference-manual-for-openvpn-2-4/">Reference manual for OpenVPN 2.4 | OpenVPN</a>を参照のこと。</p>
-<p>また<code>ip</code>コマンドはフルパスで記述しておいたほうが良い。</p>
+<p>また<code>ip</code>コマンドはフルパスで記述しておいたほうが良い(UbuntuとCentOSで違う)。</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="cp">#!/bin/bash
 </span><span class="cp"></span>
 /usr/sbin/ip route add 192.168.10.0/24 via <span class="si">${</span><span class="nv">route_vpn_gateway</span><span class="si">}</span>
@@ -119,9 +125,11 @@ route-pre-down &#34;/etc/openvpn/client/vpnconnection1_route-pre-down.sh&#34;
 /usr/sbin/ip route del 192.168.10.0/24 via <span class="si">${</span><span class="nv">route_vpn_gateway</span><span class="si">}</span>
 </code></pre></div><p>サービスとしての起動方法は通常通り。</p>
 <div class="highlight"><pre class="chroma"><code class="language-txt" data-lang="txt">sudo systemctl start openvpn-client@vpnconnection1
-</code></pre></div><h2 id="参考">参考</h2>
+</code></pre></div><p>ちなみに、systemdのUnitファイルの方で<code>ExecStartPost</code>を指定しておいて、そこでルーティングテーブルを削除しても良さそうに見えるが、再接続された場合に再度ルーティングテーブルが追加されてしまうのでNG。</p>
+<h2 id="参考">参考</h2>
 <ul>
 <li><a href="https://forums.openvpn.net/viewtopic.php?t=22819">Client not honoring route-nopull in config - OpenVPN Support Forum</a></li>
+<li><a href="https://unix.stackexchange.com/questions/16500/how-to-refuse-routes-that-are-pushed-by-openvpn-server/337675">networking - How to refuse routes that are PUSHed by OpenVPN server? - Unix &amp; Linux Stack Exchange</a></li>
 </ul>
 		</div>
 		<footer class="post__footer">
