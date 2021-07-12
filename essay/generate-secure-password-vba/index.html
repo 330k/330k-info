@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html class="no-js" lang="ja-jp">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>VBAで要件(ポリシー)に沿ったランダムパスワードを生成 - 330k info</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+	<meta property="og:title" content="VBAで要件(ポリシー)に沿ったランダムパスワードを生成" />
+<meta property="og:description" content="VBAでのランダムパスワード生成なんて出尽くされていると思ったけれど、意外とスマートな実装がなかったので自分で書いてみた。
+単純に使用可能な文字種からランダムに文字を選択して連結するだけでは、「英小文字、英大文字、数字を必ず1文字以上含む」などのポリシーに沿っていない文字列が生成されてしまう可能性があるが、
+1回の処理で必ずポリシーに沿った文字列を生成する関数を作成した。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.330k.info/essay/generate-secure-password-vba/" /><meta property="og:image" content="https://www.330k.info/images/excel.svg" /><meta property="article:section" content="essay" />
+<meta property="article:published_time" content="2021-07-12T19:04:37+09:00" />
+<meta property="article:modified_time" content="2021-07-12T19:54:55+09:00" />
+
+
+	<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://www.330k.info/images/excel.svg"/>
+
+<meta name="twitter:title" content="VBAで要件(ポリシー)に沿ったランダムパスワードを生成"/>
+<meta name="twitter:description" content="VBAでのランダムパスワード生成なんて出尽くされていると思ったけれど、意外とスマートな実装がなかったので自分で書いてみた。
+単純に使用可能な文字種からランダムに文字を選択して連結するだけでは、「英小文字、英大文字、数字を必ず1文字以上含む」などのポリシーに沿っていない文字列が生成されてしまう可能性があるが、
+1回の処理で必ずポリシーに沿った文字列を生成する関数を作成した。"/>
+
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+	<link rel="stylesheet" href="/css/style.css">
+	<link rel="stylesheet" href="/css/330k.css">
+	<link rel="shortcut icon" href="/favicon.ico">
+		
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-5655726-3', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+	<link rel="stylesheet" href="/css/syntax.css">
+</head>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container">
+		<div class="logo">
+			<a class="logo__link" href="/" title="330k info" rel="home">
+				<div class="logo__title">330k info</div>
+				
+			</a>
+		</div>
+		
+<nav class="menu">
+	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+		<span class="menu__btn-title" tabindex="-1">Menu</span>
+	</button>
+	<ul class="menu__list">
+		<li class="menu__item">
+			<a class="menu__link" href="/bicycle/">Bicycles</a>
+		</li>
+		<li class="menu__item menu__item--active">
+			<a class="menu__link" href="/essay/">Essays</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/software/">Softwares</a>
+		</li>
+	</ul>
+</nav>
+
+	</div>
+</header>
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">VBAで要件(ポリシー)に沿ったランダムパスワードを生成</h1>
+			<div class="post__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
+	<time class="meta__text" datetime="2021-07-12T19:04:37">July 12, 2021</time>
+	<time class="meta__text" datetime="2021-07-12T19:54:55"> (Last Modified: July 12, 2021)</time>
+</div>
+
+<div class="meta__item-categories meta__item">
+	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+	<span class="meta__text"><a class="meta__link" href="/categories/%e9%9b%91%e8%a8%98%e5%b8%b3" rel="category">雑記帳</a></span>
+</div>
+</div>
+		</header><div class="content post__content clearfix">
+			<p>VBAでのランダムパスワード生成なんて出尽くされていると思ったけれど、意外とスマートな実装がなかったので自分で書いてみた。</p>
+<p>単純に使用可能な文字種からランダムに文字を選択して連結するだけでは、「英小文字、英大文字、数字を必ず1文字以上含む」などのポリシーに沿っていない文字列が生成されてしまう可能性があるが、
+1回の処理で必ずポリシーに沿った文字列を生成する関数を作成した。</p>
+<h2 id="実装">実装</h2>
+<p>とりあえず作ったものはこちら。</p>
+<div class="highlight"><pre class="chroma"><code class="language-VB.NET" data-lang="VB.NET"><span class="c">&#39; パスワード用のランダム文字列を生成する
+</span><span class="c"></span><span class="k">Public</span> <span class="k">Function</span> <span class="nf">GeneratePassword</span><span class="p">(</span><span class="n">iLength</span> <span class="ow">As</span> <span class="kt">Integer</span><span class="p">,</span> <span class="k">Optional</span> <span class="n">bAllowLower</span> <span class="ow">As</span> <span class="kt">Boolean</span> <span class="o">=</span> <span class="k">True</span><span class="p">,</span> <span class="k">Optional</span> <span class="n">bAllowUpper</span> <span class="ow">As</span> <span class="kt">Boolean</span> <span class="o">=</span> <span class="k">True</span><span class="p">,</span> _
+  <span class="k">Optional</span> <span class="n">bAllowNumber</span> <span class="ow">As</span> <span class="kt">Boolean</span> <span class="o">=</span> <span class="k">True</span><span class="p">,</span> <span class="k">Optional</span> <span class="n">bAllowSymbol</span> <span class="ow">As</span> <span class="kt">Boolean</span> <span class="o">=</span> <span class="k">False</span><span class="p">,</span> <span class="k">Optional</span> <span class="n">bRequireLower</span> <span class="ow">As</span> <span class="kt">Boolean</span> <span class="o">=</span> <span class="k">True</span><span class="p">,</span> _
+  <span class="k">Optional</span> <span class="n">bRequireUpper</span> <span class="ow">As</span> <span class="kt">Boolean</span> <span class="o">=</span> <span class="k">True</span><span class="p">,</span> <span class="k">Optional</span> <span class="n">bRequireNumber</span> <span class="ow">As</span> <span class="kt">Boolean</span> <span class="o">=</span> <span class="k">True</span><span class="p">,</span> <span class="k">Optional</span> <span class="n">bRequireSymbol</span> <span class="ow">As</span> <span class="kt">Boolean</span> <span class="o">=</span> <span class="k">False</span><span class="p">,</span> _
+  <span class="k">Optional</span> <span class="n">sSymbols</span> <span class="ow">As</span> <span class="kt">String</span> <span class="o">=</span> <span class="s">&#34;!#$%&amp;()=^-|@[]{}:;,.&#34;</span><span class="p">)</span> <span class="ow">As</span> <span class="kt">String</span>
+    <span class="k">Dim</span> <span class="n">sPassword</span> <span class="ow">As</span> <span class="kt">String</span>
+    <span class="k">Dim</span> <span class="n">i</span> <span class="ow">As</span> <span class="kt">Long</span>
+    <span class="k">Dim</span> <span class="n">sTotalChars</span> <span class="ow">As</span> <span class="kt">String</span>
+   
+    <span class="k">Const</span> <span class="n">S_LOWER</span> <span class="ow">As</span> <span class="kt">String</span> <span class="o">=</span> <span class="s">&#34;abcdefghijklmnopqrstuvwxyz&#34;</span>
+    <span class="k">Const</span> <span class="n">S_UPPER</span> <span class="ow">As</span> <span class="kt">String</span> <span class="o">=</span> <span class="s">&#34;ABCDEFGHIJKLMNOPQRSTUVWXYZ&#34;</span>
+    <span class="k">Const</span> <span class="n">S_NUMBER</span> <span class="ow">As</span> <span class="kt">String</span> <span class="o">=</span> <span class="s">&#34;0123456789&#34;</span>
+   
+    <span class="c">&#39; 使用可能文字種
+</span><span class="c"></span>    <span class="k">If</span> <span class="n">bAllowLower</span> <span class="k">Then</span>
+        <span class="n">sTotalChars</span> <span class="o">=</span> <span class="n">sTotalChars</span> <span class="o">&amp;</span> <span class="n">S_LOWER</span>
+    <span class="k">End</span> <span class="k">If</span>
+    <span class="k">If</span> <span class="n">bAllowUpper</span> <span class="k">Then</span>
+        <span class="n">sTotalChars</span> <span class="o">=</span> <span class="n">sTotalChars</span> <span class="o">&amp;</span> <span class="n">S_UPPER</span>
+    <span class="k">End</span> <span class="k">If</span>
+    <span class="k">If</span> <span class="n">bAllowNumber</span> <span class="k">Then</span>
+        <span class="n">sTotalChars</span> <span class="o">=</span> <span class="n">sTotalChars</span> <span class="o">&amp;</span> <span class="n">S_NUMBER</span>
+    <span class="k">End</span> <span class="k">If</span>
+    <span class="k">If</span> <span class="n">bAllowSymbol</span> <span class="k">Then</span>
+        <span class="n">sTotalChars</span> <span class="o">=</span> <span class="n">sTotalChars</span> <span class="o">&amp;</span> <span class="n">sSymbols</span>
+    <span class="k">End</span> <span class="k">If</span>
+   
+    <span class="c">&#39; 任意の文字種が可能な部分を生成
+</span><span class="c"></span>    <span class="k">For</span> <span class="n">i</span> <span class="o">=</span> <span class="n">1</span> <span class="k">To</span> <span class="n">iLength</span> <span class="o">-</span> <span class="n">Abs</span><span class="p">(</span><span class="n">bRequireLower</span> <span class="o">+</span> <span class="n">bRequireUpper</span> <span class="o">+</span> <span class="n">bRequireNumber</span> <span class="o">+</span> <span class="n">bRequireSymbol</span><span class="p">)</span>
+        <span class="n">sPassword</span> <span class="o">=</span> <span class="n">sPassword</span> <span class="o">&amp;</span> <span class="n">Mid</span><span class="p">(</span><span class="n">sTotalChars</span><span class="p">,</span> <span class="n">Int</span><span class="p">(</span><span class="n">Len</span><span class="p">(</span><span class="n">sTotalChars</span><span class="p">)</span> <span class="o">*</span> <span class="n">Rnd</span> <span class="o">+</span> <span class="n">1</span><span class="p">),</span> <span class="n">1</span><span class="p">)</span>
+    <span class="k">Next</span> <span class="n">i</span>
+   
+    <span class="c">&#39; 必須とされる文字種の文字を1文字ずつ挿入
+</span><span class="c"></span>    <span class="k">If</span> <span class="n">bRequireLower</span> <span class="k">Then</span>
+        <span class="n">i</span> <span class="o">=</span> <span class="n">Int</span><span class="p">((</span><span class="n">Len</span><span class="p">(</span><span class="n">sPassword</span><span class="p">)</span> <span class="o">+</span> <span class="n">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">Rnd</span> <span class="o">+</span> <span class="n">1</span><span class="p">)</span>
+        <span class="n">sPassword</span> <span class="o">=</span> <span class="n">Mid</span><span class="err">$</span><span class="p">(</span><span class="n">sPassword</span><span class="p">,</span> <span class="n">1</span><span class="p">,</span> <span class="n">i</span> <span class="o">-</span> <span class="n">1</span><span class="p">)</span> <span class="o">&amp;</span> <span class="n">Mid</span><span class="p">(</span><span class="n">S_LOWER</span><span class="p">,</span> <span class="n">Int</span><span class="p">(</span><span class="n">Len</span><span class="p">(</span><span class="n">S_LOWER</span><span class="p">)</span> <span class="o">*</span> <span class="n">Rnd</span> <span class="o">+</span> <span class="n">1</span><span class="p">),</span> <span class="n">1</span><span class="p">)</span> <span class="o">&amp;</span> <span class="n">Mid</span><span class="err">$</span><span class="p">(</span><span class="n">sPassword</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
+    <span class="k">End</span> <span class="k">If</span>
+    <span class="k">If</span> <span class="n">bRequireUpper</span> <span class="k">Then</span>
+        <span class="n">i</span> <span class="o">=</span> <span class="n">Int</span><span class="p">((</span><span class="n">Len</span><span class="p">(</span><span class="n">sPassword</span><span class="p">)</span> <span class="o">+</span> <span class="n">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">Rnd</span> <span class="o">+</span> <span class="n">1</span><span class="p">)</span>
+        <span class="n">sPassword</span> <span class="o">=</span> <span class="n">Mid</span><span class="err">$</span><span class="p">(</span><span class="n">sPassword</span><span class="p">,</span> <span class="n">1</span><span class="p">,</span> <span class="n">i</span> <span class="o">-</span> <span class="n">1</span><span class="p">)</span> <span class="o">&amp;</span> <span class="n">Mid</span><span class="p">(</span><span class="n">S_UPPER</span><span class="p">,</span> <span class="n">Int</span><span class="p">(</span><span class="n">Len</span><span class="p">(</span><span class="n">S_UPPER</span><span class="p">)</span> <span class="o">*</span> <span class="n">Rnd</span> <span class="o">+</span> <span class="n">1</span><span class="p">),</span> <span class="n">1</span><span class="p">)</span> <span class="o">&amp;</span> <span class="n">Mid</span><span class="err">$</span><span class="p">(</span><span class="n">sPassword</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
+    <span class="k">End</span> <span class="k">If</span>
+    <span class="k">If</span> <span class="n">bRequireNumber</span> <span class="k">Then</span>
+        <span class="n">i</span> <span class="o">=</span> <span class="n">Int</span><span class="p">((</span><span class="n">Len</span><span class="p">(</span><span class="n">sPassword</span><span class="p">)</span> <span class="o">+</span> <span class="n">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">Rnd</span> <span class="o">+</span> <span class="n">1</span><span class="p">)</span>
+        <span class="n">sPassword</span> <span class="o">=</span> <span class="n">Mid</span><span class="err">$</span><span class="p">(</span><span class="n">sPassword</span><span class="p">,</span> <span class="n">1</span><span class="p">,</span> <span class="n">i</span> <span class="o">-</span> <span class="n">1</span><span class="p">)</span> <span class="o">&amp;</span> <span class="n">Mid</span><span class="p">(</span><span class="n">S_NUMBER</span><span class="p">,</span> <span class="n">Int</span><span class="p">(</span><span class="n">Len</span><span class="p">(</span><span class="n">S_NUMBER</span><span class="p">)</span> <span class="o">*</span> <span class="n">Rnd</span> <span class="o">+</span> <span class="n">1</span><span class="p">),</span> <span class="n">1</span><span class="p">)</span> <span class="o">&amp;</span> <span class="n">Mid</span><span class="err">$</span><span class="p">(</span><span class="n">sPassword</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
+    <span class="k">End</span> <span class="k">If</span>
+    <span class="k">If</span> <span class="n">bRequireSymbol</span> <span class="k">Then</span>
+        <span class="n">i</span> <span class="o">=</span> <span class="n">Int</span><span class="p">((</span><span class="n">Len</span><span class="p">(</span><span class="n">sPassword</span><span class="p">)</span> <span class="o">+</span> <span class="n">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">Rnd</span> <span class="o">+</span> <span class="n">1</span><span class="p">)</span>
+        <span class="n">sPassword</span> <span class="o">=</span> <span class="n">Mid</span><span class="err">$</span><span class="p">(</span><span class="n">sPassword</span><span class="p">,</span> <span class="n">1</span><span class="p">,</span> <span class="n">i</span> <span class="o">-</span> <span class="n">1</span><span class="p">)</span> <span class="o">&amp;</span> <span class="n">Mid</span><span class="p">(</span><span class="n">sSymbols</span><span class="p">,</span> <span class="n">Int</span><span class="p">(</span><span class="n">Len</span><span class="p">(</span><span class="n">sSymbols</span><span class="p">)</span> <span class="o">*</span> <span class="n">Rnd</span> <span class="o">+</span> <span class="n">1</span><span class="p">),</span> <span class="n">1</span><span class="p">)</span> <span class="o">&amp;</span> <span class="n">Mid</span><span class="err">$</span><span class="p">(</span><span class="n">sPassword</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
+    <span class="k">End</span> <span class="k">If</span>
+   
+    <span class="n">GeneratePassword</span> <span class="o">=</span> <span class="n">sPassword</span>
+
+<span class="k">End</span> <span class="k">Function</span>
+</code></pre></div><h2 id="説明">説明</h2>
+<p>各引数の説明は以下。</p>
+<ul>
+<li><code>iLength</code>: 生成するパスワードの長さ</li>
+<li><code>bAllowLower</code>: 省略可。英小文字を使用するか。デフォルト<code>True</code>。</li>
+<li><code>bAllowUpper</code>: 省略可。英大文字を使用するか。デフォルト<code>True</code>。</li>
+<li><code>bAllowNumber</code>: 省略可。数字を使用するか。デフォルト<code>True</code>。</li>
+<li><code>bAllowSymbol</code>: 省略可。記号を使用するか。デフォルト<code>False</code>。</li>
+<li><code>bRequireLower</code>: 省略可。英小文字を1文字以上使用することを要求するか。デフォルト<code>True</code>。</li>
+<li><code>bRequireUpper</code>: 省略可。英大文字を1文字以上使用することを要求するか。デフォルト<code>True</code>。</li>
+<li><code>bRequireNumber</code>: 省略可。数字を1文字以上使用することを要求するか。デフォルト<code>True</code>。</li>
+<li><code>bRequireSymbol</code>: 省略可。記号を1文字以上使用することを要求するか。デフォルト<code>False</code>。</li>
+<li><code>sSymbols</code>: 省略可。記号として使用する文字。デフォルト<code>!#$%&amp;()=^-|@[]{}:;,.</code>。</li>
+</ul>
+<p>単純なやり方として、各文字種が含まれているかをチェックして合格するまでランダムに文字列を生成することを繰り返す、という方法は考えられるが、あまりスマートとは言えない。</p>
+<p>必ず1度で要件に沿ったパスワードが生成できるよう、以下の手順で生成している。</p>
+<p>例として「英小文字、英大文字、数字を必ず1文字以上含む、12文字のパスワード」を生成する場合、</p>
+<ol>
+<li>12文字中の9文字については英小文字、英大文字、数字はそれぞれ0文字以上でよいので、単純に<code>[a-zA-Z0-9]</code>から1文字ずつランダムに取り出す方法が使って9文字の文字列を生成。</li>
+<li>必ず1文字以上必要な英小文字(<code>[a-z]</code>)から1つ選び、生成された9文字の前後および各文字間、合計10個の挿入可能位置から1つを選んで挿入。</li>
+<li>同様に、必ず1文字以上必要な英大文字(<code>[A-Z]</code>)から1つ選び、10文字の前後および各文字間、合計11個の挿入可能位置から1つを選んで挿入。</li>
+<li>最後に数字も同様に、<code>[0-9]</code>から1つ選び、生成された11文字の前後および各文字間、合計12個の挿入可能位置から1つを選んで挿入。</li>
+</ol>
+<p>という順序で生成すれば、必ず要件に沿ったパスワードを1回の処理で生成できる。</p>
+<h2 id="実行例">実行例</h2>
+<p><code>GeneratePassword(10)</code>: 英小文字、英大文字、数字を1文字以上含む、10文字。</p>
+<div class="highlight"><pre class="chroma"><code class="language-text" data-lang="text">B9ZJQVrseM
+wYkkAE9cU0
+feWc79QQ1S
+jq1bu3ocVR
+9MeCMCg6ls
+7TAFCkC1zR
+ZudA9RE6ZN
+xv7xsXn3V3
+vHZjXA9HeA
+hbxE3k0ZOM
+</code></pre></div><p><code>GeneratePassword(10, True, True, True, True, True, True, True, True)</code>: 英小文字、英大文字、数字に加えて記号を1文字以上含む、10文字。</p>
+<div class="highlight"><pre class="chroma"><code class="language-text" data-lang="text">b:t8r@KG^n
+&amp;Wp}vjT1bA
+q(5u,o1[Kw
+7W,^y2MUtb
+eXO-NKb4)$
+[3rW48O3.=
+i73zhvZS)F
+=#%8FpVEIQ
+nS0troQ:G(
+31.w.FDLM6
+</code></pre></div><p>なお、引数の<code>True</code>、<code>False</code>の組み合わせチェックはしていないので悪しからず。</p>
+<p>例えば<code>bAllowSymbol</code>に<code>False</code>、<code>bRequireSymbol</code>に<code>True</code>を指定した場合、必ず記号が1文字だけ含まれた文字列が生成される。</p>
+		</div>
+		<footer class="post__footer">
+			
+<div class="post__tags tags clearfix">
+	<svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item"><a class="tags__link btn" href="/tags/vba/" rel="tag">VBA</a></li>
+	</ul>
+</div>
+		</footer>
+	</article>
+</main>
+
+
+<nav class="post-nav flex">
+	<div class="post-nav__item post-nav__item--prev">
+		<a class="post-nav__link" href="/essay/openvpn-client-split-tunnel/" rel="prev"><span class="post-nav__caption">«&thinsp;Previous</span><p class="post-nav__post-title">LinuxのOpenVPNクライアントでスプリットトンネリング</p></a>
+	</div>
+</nav>
+
+
+			</div>
+			<aside class="sidebar sidebar--left">
+<div class="widget-fixedpage widget">
+	<h4 class="widget__title">固定ページ</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/software/create_gpx_with_google_maps/">Google MapsでGPXルート作成</a></li>
+			<li class="widget__item"><a class="widget__link" href="/software/simplify_gpx/">GPXトラックログを間引く・簡略化</a></li>
+			<li class="widget__item"><a class="widget__link" href="/software/cannonball-wind-map/">キャノンボール専用 天候・風向き予測</a></li>
+			<li class="widget__item"><a class="widget__link" href="/bicycle/introduction/">自転車について</a></li>
+			<li class="widget__item"><a class="widget__link" href="/bicycle/equipments/">携行品・装備品</a></li>
+			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20201004-osaka-tokyo-cannonball/">2020年10月04日 大阪→東京 キャノンボール 23時間37分</a></li>
+		</ul>
+	</div>
+</div>
+<div class="widget-recent widget">
+	<h4 class="widget__title">Recent Posts</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/essay/generate-secure-password-vba/">VBAで要件(ポリシー)に沿ったランダムパスワードを生成</a></li>
+			<li class="widget__item"><a class="widget__link" href="/essay/openvpn-client-split-tunnel/">LinuxのOpenVPNクライアントでスプリットトンネリング</a></li>
+			<li class="widget__item"><a class="widget__link" href="/essay/change-lxd-host-ip-address/">LXDホストのIPアドレスを変更する</a></li>
+			<li class="widget__item"><a class="widget__link" href="/essay/powershell-compare-object-trap/">PowerShellのCompare-Object(diff)の罠</a></li>
+			<li class="widget__item"><a class="widget__link" href="/essay/disable-volume-auto-adjust-windows-10/">Windows 10の自動音量調整(フェードイン)を無効化する</a></li>
+			<li class="widget__item"><a class="widget__link" href="/essay/open-mathematica-notebook-in-ubuntu/">UbuntuでMathematicaノートブックを関連付ける</a></li>
+			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20210410-brm410-utsunomiya-400km/">2021年04月10日 BRM410 宇都宮400 ランドネきたかん(西回り)</a></li>
+			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20210327-sr600-aso-geotourism/">2021年03月27日 SR600 阿蘇ジオツーリズム</a></li>
+			<li class="widget__item"><a class="widget__link" href="/essay/promise_wait_for_jsonpcallback_initialize/">JavaScriptライブラリの初期化完了やJSONPのコールバック関数をPromise化する</a></li>
+			<li class="widget__item"><a class="widget__link" href="/essay/multiple-argo-tunnel/">Argo Tunnelで複数のトンネルをサービスとして起動</a></li>
+			<li class="widget__item"><a class="widget__link" href="/essay/sync-garoon-google-calendar/">ガルーンからGoogleカレンダーに同期する(GAS使用)</a></li>
+			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20210102-brm102-tokyo-300-ushimado/">2021年01月02日 BRM102 東京200 いってこい牛窓</a></li>
+			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20201226-brm1226-kanagawa-300-izu/">2020年12月26日 BRM1226 神奈川300 伊豆</a></li>
+			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20201219-21-kasumigaura/">2020年12月19日-21日 真・霞ヶ浦一周</a></li>
+			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20201120-sr600-kii-mountains-world-heritage/">2020年11月20日 SR600 紀伊山地</a></li>
+			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20201031-brm1031-tokyo-300km/">2020年10月31日 BRM1031 東京400 清水さった峠</a></li>
+			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20201024-brm1024-saitama-attack-nihonkai-600km/">2020年10月24日 BRM1024 埼玉600 アタック日本海</a></li>
+			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20201017-brm1017-yokohama-aoba-izu-300km/">2020年10月17日 BRM1017 横浜あおばスーパー300km 伊豆(酷)</a></li>
+			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20201004-osaka-tokyo-cannonball/">2020年10月04日 大阪→東京 キャノンボール 23時間37分</a></li>
+			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20200919-brm919-fukuoka-1000km/">2020年09月19日 BRM919 福岡1000 筑後</a></li>
+		</ul>
+	</div>
+</div>
+<div class="widget-categories widget">
+	<h4 class="widget__title">Categories</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/categories/%e3%82%bd%e3%83%95%e3%83%88%e3%82%a6%e3%82%a7%e3%82%a2">ソフトウェア</a></li>
+			<li class="widget__item"><a class="widget__link" href="/categories/%e8%87%aa%e8%bb%a2%e8%bb%8a">自転車</a></li>
+			<li class="widget__item"><a class="widget__link" href="/categories/%e9%9b%91%e8%a8%98%e5%b8%b3">雑記帳</a></li>
+		</ul>
+	</div>
+</div>
+<div class="widget-taglist widget">
+	<h4 class="widget__title">Tags</h4>
+	<div class="widget__content">
+		<a class="widget-taglist__link widget__link btn" href="/tags/apache" title="Apache">Apache (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/bash" title="Bash">Bash (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/bat" title="Bat">Bat (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/brm1000km" title="Brm1000km">Brm1000km (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/brm200km" title="Brm200km">Brm200km (5)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/brm300km" title="Brm300km">Brm300km (7)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/brm400km" title="Brm400km">Brm400km (4)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/brm600km" title="Brm600km">Brm600km (6)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/chrome" title="Chrome">Chrome (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/cloudflare" title="Cloudflare">Cloudflare (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/cuda" title="Cuda">Cuda (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/cybozu" title="Cybozu">Cybozu (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/dotnet" title="Dotnet">Dotnet (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/ffmpeg" title="Ffmpeg">Ffmpeg (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/garmin" title="Garmin">Garmin (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/garoon" title="Garoon">Garoon (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/gas" title="Gas">Gas (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/github" title="Github">Github (6)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/gmail" title="Gmail">Gmail (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/google" title="Google">Google (5)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/gps" title="Gps">Gps (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/gpx" title="Gpx">Gpx (5)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/hta" title="Hta">Hta (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/hugo" title="Hugo">Hugo (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/imagemagick" title="Imagemagick">Imagemagick (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/java" title="Java">Java (3)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/javascript" title="Javascript">Javascript (11)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/lxd" title="Lxd">Lxd (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/mathematica" title="Mathematica">Mathematica (21)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/openvpn" title="Openvpn">Openvpn (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/powerpoint" title="Powerpoint">Powerpoint (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/powershell" title="Powershell">Powershell (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/sql" title="SQL">SQL (3)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/sqlserver" title="Sqlserver">Sqlserver (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/sr600" title="Sr600">Sr600 (3)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/ubuntu" title="Ubuntu">Ubuntu (18)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/vba" title="Vba">Vba (4)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/vpn" title="VPN">VPN (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/windows" title="Windows">Windows (13)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/wine" title="Wine">Wine (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/wsh" title="Wsh">Wsh (3)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/zabbix" title="Zabbix">Zabbix (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%82%a2%e3%83%ab%e3%82%b4%e3%83%aa%e3%82%ba%e3%83%a0" title="アルゴリズム">アルゴリズム (5)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%82%ad%e3%83%a3%e3%83%8e%e3%83%b3%e3%83%9c%e3%83%bc%e3%83%ab" title="キャノンボール">キャノンボール (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%83%84%e3%83%bc%e3%83%aa%e3%83%b3%e3%82%b0" title="ツーリング">ツーリング (50)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%83%91%e3%83%af%e3%83%8f%e3%83%a9" title="パワハラ">パワハラ (5)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%83%96%e3%83%ab%e3%83%99" title="ブルベ">ブルベ (29)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%83%ac%e3%83%93%e3%83%a5%e3%83%bc" title="レビュー">レビュー (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%e7%94%9f%e6%b4%bb" title="生活">生活 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%e7%a4%be%e5%86%85se" title="社内se">社内se (16)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%e8%87%aa%e8%bb%a2%e8%bb%8a" title="自転車">自転車 (11)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%e8%b5%b0%e8%a1%8c%e4%bc%9a" title="走行会">走行会 (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%e9%9b%91%e5%ad%a6" title="雑学">雑学 (1)</a>
+	</div>
+</div>
+<div class="widget-social widget">
+	<h4 class="widget-social__title widget__title">Social</h4>
+	<div class="widget-social__content widget__content">
+		<div class="widget-social__item widget__item">
+			<a class="widget-social__link widget__link btn" title="Twitter" rel="noopener noreferrer" href="https://twitter.com/330k" target="_blank">
+				<svg class="widget-social__link-icon icon icon-twitter" width="24" height="24" viewBox="0 0 384 312"><path d="m384 36.9c-14.1 6.3-29.3 10.5-45.2 12.4 16.3-9.7 28.8-25.2 34.6-43.6-15.2 9-32.1 15.6-50 19.1-14.4-15.2-34.9-24.8-57.5-24.8-43.5 0-78.8 35.3-78.8 78.8 0 6.2.7 12.2 2 17.9-65.5-3.3-123.5-34.6-162.4-82.3-6.7 11.6-10.6 25.2-10.6 39.6 0 27.3 13.9 51.4 35 65.6-12.9-.4-25.1-4-35.7-9.9v1c0 38.2 27.2 70 63.2 77.2-6.6 1.8-13.6 2.8-20.8 2.8-5.1 0-10-.5-14.8-1.4 10 31.3 39.1 54.1 73.6 54.7-27 21.1-60.9 33.7-97.8 33.7-6.4 0-12.6-.4-18.8-1.1 34.9 22.4 76.3 35.4 120.8 35.4 144.9 0 224.1-120 224.1-224.1 0-3.4-.1-6.8-.2-10.2 15.4-11.1 28.7-25 39.3-40.8z"/></svg>
+				<span>Twitter</span>
+			</a>
+		</div>
+	</div>
+</div><div class="widget-search widget">
+	<form class="widget-search__form" role="search" method="get" action="https://google.com/search">
+		<label>
+			<input class="widget-search__field" type="search" placeholder="SEARCH..." value="" name="q" aria-label="SEARCH...">
+		</label>
+		<input class="widget-search__submit" type="submit" value="Search">
+		<input type="hidden" name="sitesearch" value="https://www.330k.info/" />
+	</form>
+</div>
+</aside>
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2021 330k info.
+			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
+		</div>
+	</div>
+</footer>
+	</div>
+<script async defer src="/js/menu.js"></script>
+<script data-ad-client="ca-pub-1947596544782119" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script></body>
+</html>

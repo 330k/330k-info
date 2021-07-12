@@ -6,7 +6,18 @@
     <description>Recent content in 雑記帳 on 330k info</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Tue, 22 Jun 2021 04:34:59 +0900</lastBuildDate><atom:link href="https://www.330k.info/categories/%E9%9B%91%E8%A8%98%E5%B8%B3/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 12 Jul 2021 19:04:37 +0900</lastBuildDate><atom:link href="https://www.330k.info/categories/%E9%9B%91%E8%A8%98%E5%B8%B3/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>VBAで要件(ポリシー)に沿ったランダムパスワードを生成</title>
+      <link>https://www.330k.info/essay/generate-secure-password-vba/</link>
+      <pubDate>Mon, 12 Jul 2021 19:04:37 +0900</pubDate>
+      
+      <guid>https://www.330k.info/essay/generate-secure-password-vba/</guid>
+      <description>&lt;p&gt;VBAでのランダムパスワード生成なんて出尽くされていると思ったけれど、意外とスマートな実装がなかったので自分で書いてみた。&lt;/p&gt;
+&lt;p&gt;単純に使用可能な文字種からランダムに文字を選択して連結するだけでは、「英小文字、英大文字、数字を必ず1文字以上含む」などのポリシーに沿っていない文字列が生成されてしまう可能性があるが、
+1回の処理で必ずポリシーに沿った文字列を生成する関数を作成した。&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>LinuxのOpenVPNクライアントでスプリットトンネリング</title>
       <link>https://www.330k.info/essay/openvpn-client-split-tunnel/</link>
