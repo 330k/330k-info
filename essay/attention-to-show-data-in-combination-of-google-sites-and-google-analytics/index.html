@@ -95,7 +95,7 @@ if (!doNotTrack) {
 画面にレイヤーが重なっていろいろなデータが表示されてしまう状態から抜けられない。</p>
 <p>ネットを調べたところ、「閉じる」が見つからないために同じような現象に遭遇している事例は見つかったが、
 「閉じる」をクリックしても、</p>
-<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="mi">_</span><span class="nx">siteOverlay</span><span class="p">.</span><span class="mi">_</span><span class="nx">close</span><span class="p">()</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="mi">_</span><span class="nx">siteOverlay</span><span class="p">.</span><span class="mi">_</span><span class="nx">close</span><span class="p">()</span>
 </code></pre></div><p>をアドレスバーに打ち込んでもダメだった。
 おそらくGoogle Sitesを利用している場合特有の現象なのだろう。</p>
 <p>この現象が発生することを確認したブラウザは</p>
@@ -107,7 +107,7 @@ if (!doNotTrack) {
 </ul>
 <p>で、いずれもOSはWindows Vista(32ビット)。ちなみにIE8ではレイアウトも崩れていた。</p>
 <p>仕方がないので_siteOverlay.close()の中身をちょっと調べた。</p>
-<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
     <span class="kd">var</span> <span class="nx">domain</span><span class="p">,</span> <span class="nx">cookiePath</span><span class="p">;</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">GLOBAL_window</span><span class="p">.</span><span class="mi">_</span><span class="nx">udo</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">domain</span> <span class="o">=</span> <span class="nx">GLOBAL_window</span><span class="p">.</span><span class="mi">_</span><span class="nx">udo</span><span class="p">;</span>
@@ -135,7 +135,7 @@ if (!doNotTrack) {
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div><p>このうち、</p>
-<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="nx">GLOBAL_window</span><span class="p">.</span><span class="mi">_</span><span class="nx">gat</span><span class="p">.</span><span class="mi">_</span><span class="nx">gasoCPath</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="nx">GLOBAL_window</span><span class="p">.</span><span class="mi">_</span><span class="nx">gat</span><span class="p">.</span><span class="mi">_</span><span class="nx">gasoCPath</span>
 </code></pre></div><p>が空文字列になってしまっているために、Cookieが削除されずに残ってしまうようだ。</p>
 <p>なぜそうなってしまうのかは面倒なので調べていないが、とりあえず対処方法としては該当するCookieを削除してしまえばよいということになる。
 ドメインにあるクッキーのうち</p>
@@ -181,6 +181,7 @@ if (!doNotTrack) {
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20210722-sr600-oirase/">2021年07月22日 SR600 奥入瀬</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20210718-shibu-toge/">2021年07月18日 渋峠(自走)</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/generate-secure-password-vba/">VBAで要件(ポリシー)に沿ったランダムパスワードを生成</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/openvpn-client-split-tunnel/">LinuxのOpenVPNクライアントでスプリットトンネリング</a></li>
@@ -200,7 +201,6 @@ if (!doNotTrack) {
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20201031-brm1031-tokyo-300km/">2020年10月31日 BRM1031 東京400 清水さった峠</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20201024-brm1024-saitama-attack-nihonkai-600km/">2020年10月24日 BRM1024 埼玉600 アタック日本海</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20201017-brm1017-yokohama-aoba-izu-300km/">2020年10月17日 BRM1017 横浜あおばスーパー300km 伊豆(酷)</a></li>
-			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20201004-osaka-tokyo-cannonball/">2020年10月04日 大阪→東京 キャノンボール 23時間37分</a></li>
 		</ul>
 	</div>
 </div>
@@ -251,7 +251,7 @@ if (!doNotTrack) {
 		<a class="widget-taglist__link widget__link btn" href="/tags/powershell" title="Powershell">Powershell (2)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/sql" title="SQL">SQL (3)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/sqlserver" title="Sqlserver">Sqlserver (1)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/sr600" title="Sr600">Sr600 (3)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/sr600" title="Sr600">Sr600 (4)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/ubuntu" title="Ubuntu">Ubuntu (18)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/vba" title="Vba">Vba (4)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/vpn" title="VPN">VPN (1)</a>
@@ -263,7 +263,7 @@ if (!doNotTrack) {
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%82%ad%e3%83%a3%e3%83%8e%e3%83%b3%e3%83%9c%e3%83%bc%e3%83%ab" title="キャノンボール">キャノンボール (2)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%83%84%e3%83%bc%e3%83%aa%e3%83%b3%e3%82%b0" title="ツーリング">ツーリング (51)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%83%91%e3%83%af%e3%83%8f%e3%83%a9" title="パワハラ">パワハラ (5)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%83%96%e3%83%ab%e3%83%99" title="ブルベ">ブルベ (29)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%83%96%e3%83%ab%e3%83%99" title="ブルベ">ブルベ (30)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%83%ac%e3%83%93%e3%83%a5%e3%83%bc" title="レビュー">レビュー (2)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e7%94%9f%e6%b4%bb" title="生活">生活 (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e7%a4%be%e5%86%85se" title="社内se">社内se (16)</a>

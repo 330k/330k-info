@@ -137,11 +137,11 @@ if (!doNotTrack) {
 <p>縦幅はMathematicaではデフォルトで黄金比(<code>GoldenRatio</code>)を使ってくれるので、そのままで良いと思う。
 2段組のときは半分の70mmとか65mmとなる。</p>
 <p>したがってMathematicaでは、<code>Plot</code>や<code>Show</code>などのオプション<code>ImageSize</code>に</p>
-<div class="highlight"><pre class="chroma"><code class="language-Mathematica" data-lang="Mathematica"><span class="n">ImageSize</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="mi">140</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">72</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">25.4</span><span class="w">
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-Mathematica" data-lang="Mathematica"><span class="n">ImageSize</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="mi">140</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">72</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">25.4</span><span class="w">
 </span></code></pre></div><p>と指定する。これは140mmの横幅で、72dpi(dots per inch)、1 inch = 25.4mmという意味である。</p>
 <h2 id="論文用のグラフでは絶対にframe---trueを指定する">論文用のグラフでは絶対にFrame -&gt; Trueを指定する</h2>
 <p>論文用のグラフでは流儀として</p>
-<div class="highlight"><pre class="chroma"><code class="language-Mathematica" data-lang="Mathematica"><span class="n">Frame</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">True</span><span class="w">
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-Mathematica" data-lang="Mathematica"><span class="n">Frame</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">True</span><span class="w">
 </span></code></pre></div><p>を指定して枠のついたグラフにする。</p>
 <p>これはExcelなどでグラフを作るときも同様。</p>
 <p>枠についた目盛りを細かく調整したい場合は、<code>FrameTicks</code>オプションと<code>FrameTickesStyle</code>オプションを指定する。
@@ -149,7 +149,7 @@ if (!doNotTrack) {
 <h2 id="テキストを指定する部分はすべてフォント名やフォントサイズを指定する">テキストを指定する部分はすべてフォント名やフォントサイズを指定する</h2>
 <p>これは本文に使う本文のフォントとフォントサイズとの兼ね合いとなる。
 私は本文にTimes New Roman、10.5ptを使用したが、グラフでもこれと同じようにするため、</p>
-<div class="highlight"><pre class="chroma"><code class="language-Mathematica" data-lang="Mathematica"><span class="n">Style</span><span class="p">[</span><span class="s">&#34;AbBbCc&#34;</span><span class="p">,</span><span class="w"> </span><span class="mf">10.5</span><span class="p">,</span><span class="w"> </span><span class="n">FontFamily</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="s">&#34;Times New Roman&#34;</span><span class="p">]</span><span class="w">
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-Mathematica" data-lang="Mathematica"><span class="n">Style</span><span class="p">[</span><span class="s">&#34;AbBbCc&#34;</span><span class="p">,</span><span class="w"> </span><span class="mf">10.5</span><span class="p">,</span><span class="w"> </span><span class="n">FontFamily</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="s">&#34;Times New Roman&#34;</span><span class="p">]</span><span class="w">
 </span></code></pre></div><p>とした。ちなみにデフォルトではCourierとなる。</p>
 <p>研究室や教授の考え方によっては、本文と違うゴシック体を使うように言われるかもしれないが、
 重要なのは、すべての箇所で統一することである(もちろん見にくい箇所は適切に修正する)。</p>
@@ -166,7 +166,7 @@ if (!doNotTrack) {
 それでも足りなければ<code>AbsoluteThickness</code>で太さを変えるなどして、白黒印刷されても違いを判別できるようにする。</p>
 <p>もちろん論文内では使い方の順序を統一する。</p>
 <p>ちなみに、デフォルトで使われる色は</p>
-<div class="highlight"><pre class="chroma"><code class="language-Mathematica" data-lang="Mathematica"><span class="n">ColorData</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;ColorList&#34;</span><span class="p">]</span><span class="w">
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-Mathematica" data-lang="Mathematica"><span class="n">ColorData</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;ColorList&#34;</span><span class="p">]</span><span class="w">
 </span></code></pre></div><p>で取得できる。</p>
 <h2 id="凡例はplotlegendsパッケージを使うかepilogオプションに自前で作って加える">凡例はPlotLegends`パッケージを使うか、Epilogオプションに自前で作って加える</h2>
 <p>論文で使うグラフに凡例は必須なので、PlotLegendsパッケージをロードして、<code>Plot</code>などの<code>PlotLegend</code>オプションなどを指定する。</p>
@@ -184,7 +184,7 @@ PNG画像にするときは、Mathematicaからは一旦PDFで出力しておき
 どうしてもMathematicaからPNGで<code>Export</code>せざるを得ないときは、
 印刷するときの解像度を<code>ImageResolution</code>に指定する。</p>
 <p>例えば300dpiで印刷しようとするときは、</p>
-<div class="highlight"><pre class="chroma"><code class="language-Mathematica" data-lang="Mathematica"><span class="n">ImageResolution</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="mi">300</span><span class="w">
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-Mathematica" data-lang="Mathematica"><span class="n">ImageResolution</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="mi">300</span><span class="w">
 </span></code></pre></div><p>と指定してPNGファイルを<code>Export</code>する。</p>
 <h2 id="例">例</h2>
 <p><code>Sin[x]</code>と<code>Cos[x]</code>のグラフを凡例付きでグラフにする。</p>
@@ -197,7 +197,7 @@ PNG画像にするときは、Mathematicaからは一旦PDFで出力しておき
 <li>PDFでExportし、それをImageMagickでPNGに変換</li>
 </ul>
 <p>としたときのサンプル。</p>
-<div class="highlight"><pre class="chroma"><code class="language-Mathematica" data-lang="Mathematica"><span class="o">&lt;&lt;</span><span class="w"> </span><span class="nn">PlotLegends`</span><span class="w">
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-Mathematica" data-lang="Mathematica"><span class="o">&lt;&lt;</span><span class="w"> </span><span class="nn">PlotLegends`</span><span class="w">
 </span><span class="w"></span><span class="n">g</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Plot</span><span class="p">[{</span><span class="n">Sin</span><span class="p">[</span><span class="n">x</span><span class="p">],</span><span class="w"> </span><span class="n">Cos</span><span class="p">[</span><span class="n">x</span><span class="p">]},</span><span class="w"> </span><span class="p">{</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="n">Pi</span><span class="p">},</span><span class="w">
 </span><span class="w">  </span><span class="n">Axes</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">{</span><span class="n">True</span><span class="p">,</span><span class="w"> </span><span class="n">False</span><span class="p">},</span><span class="w">
 </span><span class="w">  </span><span class="n">AxesStyle</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">Directive</span><span class="p">[</span><span class="n">Black</span><span class="p">,</span><span class="w"> </span><span class="n">AbsoluteThickness</span><span class="p">[</span><span class="mf">0.5</span><span class="p">]],</span><span class="w">
@@ -277,6 +277,7 @@ PNG画像にするときは、Mathematicaからは一旦PDFで出力しておき
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20210722-sr600-oirase/">2021年07月22日 SR600 奥入瀬</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20210718-shibu-toge/">2021年07月18日 渋峠(自走)</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/generate-secure-password-vba/">VBAで要件(ポリシー)に沿ったランダムパスワードを生成</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/openvpn-client-split-tunnel/">LinuxのOpenVPNクライアントでスプリットトンネリング</a></li>
@@ -296,7 +297,6 @@ PNG画像にするときは、Mathematicaからは一旦PDFで出力しておき
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20201031-brm1031-tokyo-300km/">2020年10月31日 BRM1031 東京400 清水さった峠</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20201024-brm1024-saitama-attack-nihonkai-600km/">2020年10月24日 BRM1024 埼玉600 アタック日本海</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20201017-brm1017-yokohama-aoba-izu-300km/">2020年10月17日 BRM1017 横浜あおばスーパー300km 伊豆(酷)</a></li>
-			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20201004-osaka-tokyo-cannonball/">2020年10月04日 大阪→東京 キャノンボール 23時間37分</a></li>
 		</ul>
 	</div>
 </div>
@@ -347,7 +347,7 @@ PNG画像にするときは、Mathematicaからは一旦PDFで出力しておき
 		<a class="widget-taglist__link widget__link btn" href="/tags/powershell" title="Powershell">Powershell (2)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/sql" title="SQL">SQL (3)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/sqlserver" title="Sqlserver">Sqlserver (1)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/sr600" title="Sr600">Sr600 (3)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/sr600" title="Sr600">Sr600 (4)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/ubuntu" title="Ubuntu">Ubuntu (18)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/vba" title="Vba">Vba (4)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/vpn" title="VPN">VPN (1)</a>
@@ -359,7 +359,7 @@ PNG画像にするときは、Mathematicaからは一旦PDFで出力しておき
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%82%ad%e3%83%a3%e3%83%8e%e3%83%b3%e3%83%9c%e3%83%bc%e3%83%ab" title="キャノンボール">キャノンボール (2)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%83%84%e3%83%bc%e3%83%aa%e3%83%b3%e3%82%b0" title="ツーリング">ツーリング (51)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%83%91%e3%83%af%e3%83%8f%e3%83%a9" title="パワハラ">パワハラ (5)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%83%96%e3%83%ab%e3%83%99" title="ブルベ">ブルベ (29)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%83%96%e3%83%ab%e3%83%99" title="ブルベ">ブルベ (30)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%83%ac%e3%83%93%e3%83%a5%e3%83%bc" title="レビュー">レビュー (2)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e7%94%9f%e6%b4%bb" title="生活">生活 (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e7%a4%be%e5%86%85se" title="社内se">社内se (16)</a>

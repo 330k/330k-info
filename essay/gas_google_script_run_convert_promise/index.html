@@ -99,7 +99,7 @@ if (!doNotTrack) {
 <p>ただこれは非同期処理でありながらPromiseを返さず、独自に<code>withSuccessHandler</code>と<code>withFailureHandler</code>にコールバックを設定する必要があるので、ちょっと面倒。</p>
 <p>ということで、Promise化するコードを作ってみた(V8エンジン限定)。</p>
 <p>クライアント側のJavaScriptに下記コードを入れる。</p>
-<div class="highlight"><pre class="chroma"><code class="language-JavaScript" data-lang="JavaScript"><span class="kd">function</span> <span class="nx">gasRun</span><span class="p">(</span><span class="nx">func</span><span class="p">,</span> <span class="p">...</span><span class="nx">args</span><span class="p">){</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-JavaScript" data-lang="JavaScript"><span class="kd">function</span> <span class="nx">gasRun</span><span class="p">(</span><span class="nx">func</span><span class="p">,</span> <span class="p">...</span><span class="nx">args</span><span class="p">){</span>
   <span class="k">return</span> <span class="k">new</span> <span class="nb">Promise</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">resolve</span><span class="p">,</span> <span class="nx">reject</span><span class="p">){</span>
     <span class="nx">google</span><span class="p">.</span><span class="nx">script</span><span class="p">.</span><span class="nx">run</span><span class="p">.</span><span class="nx">withSuccessHandler</span><span class="p">(</span><span class="kd">function</span><span class="p">(...</span><span class="nx">e</span><span class="p">){</span>
       <span class="nx">resolve</span><span class="p">(...</span><span class="nx">e</span><span class="p">);</span>
@@ -110,7 +110,7 @@ if (!doNotTrack) {
 <span class="p">}</span>
 </code></pre></div><h2 id="使い方">使い方</h2>
 <p>GASサーバ側の<code>doSomething1</code>, <code>doSomething2</code>, <code>doSomething3</code>を順番に呼び出す場合には、クライアント側で以下のように使う。</p>
-<div class="highlight"><pre class="chroma"><code class="language-JavaScript" data-lang="JavaScript"><span class="nx">gasRun</span><span class="p">(</span><span class="s1">&#39;doSomething1&#39;</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">){</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-JavaScript" data-lang="JavaScript"><span class="nx">gasRun</span><span class="p">(</span><span class="s1">&#39;doSomething1&#39;</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">){</span>
   <span class="c1">// doSomething1成功時
 </span><span class="c1"></span>  <span class="k">return</span> <span class="nx">gasRun</span><span class="p">(</span><span class="s1">&#39;doSomething2&#39;</span><span class="p">);</span>
 <span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">){</span>
@@ -121,13 +121,13 @@ if (!doNotTrack) {
 </span><span class="c1"></span>  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">e</span><span class="p">);</span>
 <span class="p">});</span>
 </code></pre></div><p><code>await</code>を使って下記のように同期処理のようにも書ける(というかこちらのほうが圧倒的に書きやすくなる)。</p>
-<div class="highlight"><pre class="chroma"><code class="language-JavaScript" data-lang="JavaScript"><span class="p">(</span><span class="kr">async</span> <span class="p">()=&gt;</span> <span class="p">{</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-JavaScript" data-lang="JavaScript"><span class="p">(</span><span class="kr">async</span> <span class="p">()=&gt;</span> <span class="p">{</span>
   <span class="kr">const</span> <span class="nx">result1</span> <span class="o">=</span> <span class="kr">await</span> <span class="nx">gasRun</span><span class="p">(</span><span class="s1">&#39;doSomething1&#39;</span><span class="p">);</span>
   <span class="kr">const</span> <span class="nx">result2</span> <span class="o">=</span> <span class="kr">await</span> <span class="nx">gasRun</span><span class="p">(</span><span class="s1">&#39;doSomething2&#39;</span><span class="p">);</span>
   <span class="kr">const</span> <span class="nx">result3</span> <span class="o">=</span> <span class="kr">await</span> <span class="nx">gasRun</span><span class="p">(</span><span class="s1">&#39;doSomething3&#39;</span><span class="p">);</span>
 <span class="p">})();</span>
 </code></pre></div><p><code>doSomething(arg1, arg2, ...)</code>のように引数を渡す時は以下のように<code>gasRun</code>の第2引数以下に指定する。</p>
-<div class="highlight"><pre class="chroma"><code class="language-JavaScript" data-lang="JavaScript"><span class="nx">gasRun</span><span class="p">(</span><span class="s1">&#39;doSomething&#39;</span><span class="p">,</span> <span class="nx">arg1</span><span class="p">,</span> <span class="nx">arg2</span><span class="p">);</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-JavaScript" data-lang="JavaScript"><span class="nx">gasRun</span><span class="p">(</span><span class="s1">&#39;doSomething&#39;</span><span class="p">,</span> <span class="nx">arg1</span><span class="p">,</span> <span class="nx">arg2</span><span class="p">);</span>
 </code></pre></div><h2 id="他の実装例">他の実装例</h2>
 <ul>
 <li><a href="https://qiita.com/37cohina/items/b3bb08d4c52c5e7e3022">google.script.run が Promise を返すようにする - Qiita</a></li>
@@ -177,6 +177,7 @@ if (!doNotTrack) {
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20210722-sr600-oirase/">2021年07月22日 SR600 奥入瀬</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20210718-shibu-toge/">2021年07月18日 渋峠(自走)</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/generate-secure-password-vba/">VBAで要件(ポリシー)に沿ったランダムパスワードを生成</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/openvpn-client-split-tunnel/">LinuxのOpenVPNクライアントでスプリットトンネリング</a></li>
@@ -196,7 +197,6 @@ if (!doNotTrack) {
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20201031-brm1031-tokyo-300km/">2020年10月31日 BRM1031 東京400 清水さった峠</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20201024-brm1024-saitama-attack-nihonkai-600km/">2020年10月24日 BRM1024 埼玉600 アタック日本海</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20201017-brm1017-yokohama-aoba-izu-300km/">2020年10月17日 BRM1017 横浜あおばスーパー300km 伊豆(酷)</a></li>
-			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20201004-osaka-tokyo-cannonball/">2020年10月04日 大阪→東京 キャノンボール 23時間37分</a></li>
 		</ul>
 	</div>
 </div>
@@ -247,7 +247,7 @@ if (!doNotTrack) {
 		<a class="widget-taglist__link widget__link btn" href="/tags/powershell" title="Powershell">Powershell (2)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/sql" title="SQL">SQL (3)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/sqlserver" title="Sqlserver">Sqlserver (1)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/sr600" title="Sr600">Sr600 (3)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/sr600" title="Sr600">Sr600 (4)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/ubuntu" title="Ubuntu">Ubuntu (18)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/vba" title="Vba">Vba (4)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/vpn" title="VPN">VPN (1)</a>
@@ -259,7 +259,7 @@ if (!doNotTrack) {
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%82%ad%e3%83%a3%e3%83%8e%e3%83%b3%e3%83%9c%e3%83%bc%e3%83%ab" title="キャノンボール">キャノンボール (2)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%83%84%e3%83%bc%e3%83%aa%e3%83%b3%e3%82%b0" title="ツーリング">ツーリング (51)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%83%91%e3%83%af%e3%83%8f%e3%83%a9" title="パワハラ">パワハラ (5)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%83%96%e3%83%ab%e3%83%99" title="ブルベ">ブルベ (29)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%83%96%e3%83%ab%e3%83%99" title="ブルベ">ブルベ (30)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%83%ac%e3%83%93%e3%83%a5%e3%83%bc" title="レビュー">レビュー (2)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e7%94%9f%e6%b4%bb" title="生活">生活 (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e7%a4%be%e5%86%85se" title="社内se">社内se (16)</a>

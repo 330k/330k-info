@@ -93,10 +93,10 @@ if (!doNotTrack) {
 		</header><div class="content post__content clearfix">
 			<p>WINE 5.0.0がリリースされたというので、Ubuntu 18.04.3 LTSにインストールしようとしたら、ちょっとハマったので備忘録。</p>
 <p>もとはUbuntu標準リポジトリからインストールしていたバージョンがインストールされていた。</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ wine --version
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ wine --version
 wine-3.0 <span class="o">(</span>Ubuntu 3.0-1ubuntu1<span class="o">)</span>
 </code></pre></div><p>まずは<a href="https://wiki.winehq.org/Ubuntu">WineHQ</a>にある手順通りに</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">sudo dpkg --add-architecture i386 
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">sudo dpkg --add-architecture i386 
 wget -nc https://dl.winehq.org/wine-builds/winehq.key
 sudo apt-key add winehq.key
 sudo apt-add-repository <span class="s1">&#39;deb https://dl.winehq.org/wine-builds/ubuntu/ bionic main&#39;</span>
@@ -105,7 +105,7 @@ rm winehq.key
 sudo apt update
 sudo apt install --install-recommends winehq-stable
 </code></pre></div><p>としたところ、</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">パッケージリストを読み込んでいます... 完了
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">パッケージリストを読み込んでいます... 完了
 依存関係ツリーを作成しています                
 状態情報を読み取っています... 完了
 インストールすることができないパッケージがありました。おそらく、あり得
@@ -121,7 +121,7 @@ E: 問題を解決することができません。壊れた変更禁止パッ�
 <p>しかし、WineHQの上の方に</p>
 <p>「Beginning with Wine 4.5, the wine-devel and wine-staging packages require libfaudio0 as a dependency. Beginning with Wine 5.0.0, the wine-stable packages will also require it. FAudio packages can be downloaded from the OBS for Ubuntu 18.04. See <a href="https://forum.winehq.org/viewtopic.php?f=8&amp;t=32192">https://forum.winehq.org/viewtopic.php?f=8&amp;t=32192</a> for details. (FAudio packages for Ubuntu 19.10 and later are in the distro&rsquo;s universe repository.)」</p>
 <p>という記述を発見(結構目立つように書かれているのに見落としていた)。</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">wget https://download.opensuse.org/repositories/Emulators:/Wine:/Debian/xUbuntu_19.04/Release.key
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">wget https://download.opensuse.org/repositories/Emulators:/Wine:/Debian/xUbuntu_19.04/Release.key
 sudo apt-key add Release.key
 sudo apt-add-repository <span class="s1">&#39;deb https://download.opensuse.org/repositories/Emulators:/Wine:/Debian/xUbuntu_18.04/ ./&#39;</span>
 
@@ -129,7 +129,7 @@ sudo apt update
 
 sudo apt install --install-recommends winehq-stable
 </code></pre></div><p>その結果・・・</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">パッケージリストを読み込んでいます... 完了
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">パッケージリストを読み込んでいます... 完了
 依存関係ツリーを作成しています                
 状態情報を読み取っています... 完了
 以下のパッケージが自動でインストールされましたが、もう必要とされていません:
@@ -148,7 +148,7 @@ sudo apt install --install-recommends winehq-stable
 この操作後に追加で <span class="m">879</span> MB のディスク容量が消費されます。
 続行しますか? <span class="o">[</span>Y/n<span class="o">]</span>
 </code></pre></div><p>として、めでたくインストールできた。</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ wine --version
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ wine --version
 wine-5.0
 </code></pre></div><p>ついでに<code>winetricks</code>もインストールして起動したところ、いろいろ初期設定が走ったので、アップデートには<code>winetricks</code>も必須かも。</p>
 		</div>
@@ -195,6 +195,7 @@ wine-5.0
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20210722-sr600-oirase/">2021年07月22日 SR600 奥入瀬</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20210718-shibu-toge/">2021年07月18日 渋峠(自走)</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/generate-secure-password-vba/">VBAで要件(ポリシー)に沿ったランダムパスワードを生成</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/openvpn-client-split-tunnel/">LinuxのOpenVPNクライアントでスプリットトンネリング</a></li>
@@ -214,7 +215,6 @@ wine-5.0
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20201031-brm1031-tokyo-300km/">2020年10月31日 BRM1031 東京400 清水さった峠</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20201024-brm1024-saitama-attack-nihonkai-600km/">2020年10月24日 BRM1024 埼玉600 アタック日本海</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20201017-brm1017-yokohama-aoba-izu-300km/">2020年10月17日 BRM1017 横浜あおばスーパー300km 伊豆(酷)</a></li>
-			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20201004-osaka-tokyo-cannonball/">2020年10月04日 大阪→東京 キャノンボール 23時間37分</a></li>
 		</ul>
 	</div>
 </div>
@@ -265,7 +265,7 @@ wine-5.0
 		<a class="widget-taglist__link widget__link btn" href="/tags/powershell" title="Powershell">Powershell (2)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/sql" title="SQL">SQL (3)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/sqlserver" title="Sqlserver">Sqlserver (1)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/sr600" title="Sr600">Sr600 (3)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/sr600" title="Sr600">Sr600 (4)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/ubuntu" title="Ubuntu">Ubuntu (18)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/vba" title="Vba">Vba (4)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/vpn" title="VPN">VPN (1)</a>
@@ -277,7 +277,7 @@ wine-5.0
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%82%ad%e3%83%a3%e3%83%8e%e3%83%b3%e3%83%9c%e3%83%bc%e3%83%ab" title="キャノンボール">キャノンボール (2)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%83%84%e3%83%bc%e3%83%aa%e3%83%b3%e3%82%b0" title="ツーリング">ツーリング (51)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%83%91%e3%83%af%e3%83%8f%e3%83%a9" title="パワハラ">パワハラ (5)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%83%96%e3%83%ab%e3%83%99" title="ブルベ">ブルベ (29)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%83%96%e3%83%ab%e3%83%99" title="ブルベ">ブルベ (30)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%83%ac%e3%83%93%e3%83%a5%e3%83%bc" title="レビュー">レビュー (2)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e7%94%9f%e6%b4%bb" title="生活">生活 (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e7%a4%be%e5%86%85se" title="社内se">社内se (16)</a>

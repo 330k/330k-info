@@ -97,7 +97,7 @@ if (!doNotTrack) {
 <p>しかしながら、それでも接続後のルーティングテーブルに<code>0.0.0.0/1</code>と<code>128.0.0.0/1</code>を追加され、すべての通信がVPN経由となってしまった。</p>
 <h2 id="対処法">対処法</h2>
 <p>設定ファイル中の<code>redirect-gateway def1</code>が<code>route-nopull</code>に優先されてしまうため、<code>redirect-gateway def1</code>を削除して<code>route-nopull</code>と<code>route</code>を指定する。</p>
-<div class="highlight"><pre class="chroma"><code class="language-txt" data-lang="txt"># redirect-gateway def1
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-txt" data-lang="txt"># redirect-gateway def1
 route-nopull
 route 192.168.10.0 255.255.255.0
 </code></pre></div><h2 id="対処法-あまり洗練されていない方法">対処法 (あまり洗練されていない方法)</h2>
@@ -107,7 +107,7 @@ route 192.168.10.0 255.255.255.0
 <p>また、<code>route-up</code>と<code>route-pre-down</code>に指定したスクリプトを実行するには、<code>script-security 2</code>の記載も必要。</p>
 <p>以下はsystemdを使うUbuntuおよびCentOSで動作確認した。</p>
 <p>例えば設定ファイル(<code>/etc/openvpn/client/vpnconnection1.conf</code>)に以下の記述を追加する。</p>
-<div class="highlight"><pre class="chroma"><code class="language-txt" data-lang="txt">script-security 2
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-txt" data-lang="txt">script-security 2
 pull
 route-noexec
 route-up &#34;/etc/openvpn/client/vpnconnection1_route-up.sh&#34;
@@ -116,15 +116,15 @@ route-pre-down &#34;/etc/openvpn/client/vpnconnection1_route-pre-down.sh&#34;
 <p>この場合は<code>192.168.10.0/24</code>のみVPN経由とする設定。</p>
 <p><code>${route_vpn_gateway}</code>はOpenVPNから渡される環境変数であり、その他は<a href="https://openvpn.net/community-resources/reference-manual-for-openvpn-2-4/">Reference manual for OpenVPN 2.4 | OpenVPN</a>を参照のこと。</p>
 <p>また<code>ip</code>コマンドはフルパスで記述しておいたほうが良い(UbuntuとCentOSで異なるので注意)。</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="cp">#!/bin/bash
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="cp">#!/bin/bash
 </span><span class="cp"></span>
 /usr/sbin/ip route add 192.168.10.0/24 via <span class="si">${</span><span class="nv">route_vpn_gateway</span><span class="si">}</span>
 </code></pre></div><p>同様に<code>vpnconnection1_route-pre-down.sh</code>も以下のように記述し、<code>chmod +x</code>しておく。</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="cp">#!/bin/bash
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="cp">#!/bin/bash
 </span><span class="cp"></span>
 /usr/sbin/ip route del 192.168.10.0/24 via <span class="si">${</span><span class="nv">route_vpn_gateway</span><span class="si">}</span>
 </code></pre></div><p>サービスとしての起動方法は通常通り。</p>
-<div class="highlight"><pre class="chroma"><code class="language-txt" data-lang="txt">sudo systemctl start openvpn-client@vpnconnection1
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-txt" data-lang="txt">sudo systemctl start openvpn-client@vpnconnection1
 </code></pre></div><p>ちなみに、systemdのUnitファイルの方で<code>ExecStartPost</code>を指定しておいて、そこでルーティングテーブルを削除しても良さそうに見えるが、再接続された場合に再度ルーティングテーブルが追加されてしまうのでNG。</p>
 <h2 id="参考">参考</h2>
 <ul>
@@ -175,6 +175,7 @@ route-pre-down &#34;/etc/openvpn/client/vpnconnection1_route-pre-down.sh&#34;
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20210722-sr600-oirase/">2021年07月22日 SR600 奥入瀬</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20210718-shibu-toge/">2021年07月18日 渋峠(自走)</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/generate-secure-password-vba/">VBAで要件(ポリシー)に沿ったランダムパスワードを生成</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/openvpn-client-split-tunnel/">LinuxのOpenVPNクライアントでスプリットトンネリング</a></li>
@@ -194,7 +195,6 @@ route-pre-down &#34;/etc/openvpn/client/vpnconnection1_route-pre-down.sh&#34;
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20201031-brm1031-tokyo-300km/">2020年10月31日 BRM1031 東京400 清水さった峠</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20201024-brm1024-saitama-attack-nihonkai-600km/">2020年10月24日 BRM1024 埼玉600 アタック日本海</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20201017-brm1017-yokohama-aoba-izu-300km/">2020年10月17日 BRM1017 横浜あおばスーパー300km 伊豆(酷)</a></li>
-			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20201004-osaka-tokyo-cannonball/">2020年10月04日 大阪→東京 キャノンボール 23時間37分</a></li>
 		</ul>
 	</div>
 </div>
@@ -245,7 +245,7 @@ route-pre-down &#34;/etc/openvpn/client/vpnconnection1_route-pre-down.sh&#34;
 		<a class="widget-taglist__link widget__link btn" href="/tags/powershell" title="Powershell">Powershell (2)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/sql" title="SQL">SQL (3)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/sqlserver" title="Sqlserver">Sqlserver (1)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/sr600" title="Sr600">Sr600 (3)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/sr600" title="Sr600">Sr600 (4)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/ubuntu" title="Ubuntu">Ubuntu (18)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/vba" title="Vba">Vba (4)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/vpn" title="VPN">VPN (1)</a>
@@ -257,7 +257,7 @@ route-pre-down &#34;/etc/openvpn/client/vpnconnection1_route-pre-down.sh&#34;
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%82%ad%e3%83%a3%e3%83%8e%e3%83%b3%e3%83%9c%e3%83%bc%e3%83%ab" title="キャノンボール">キャノンボール (2)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%83%84%e3%83%bc%e3%83%aa%e3%83%b3%e3%82%b0" title="ツーリング">ツーリング (51)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%83%91%e3%83%af%e3%83%8f%e3%83%a9" title="パワハラ">パワハラ (5)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%83%96%e3%83%ab%e3%83%99" title="ブルベ">ブルベ (29)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%83%96%e3%83%ab%e3%83%99" title="ブルベ">ブルベ (30)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%83%ac%e3%83%93%e3%83%a5%e3%83%bc" title="レビュー">レビュー (2)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e7%94%9f%e6%b4%bb" title="生活">生活 (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e7%a4%be%e5%86%85se" title="社内se">社内se (16)</a>

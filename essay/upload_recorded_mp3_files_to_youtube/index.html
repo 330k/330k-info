@@ -103,11 +103,11 @@ HDDの空き容量が減ってきたらオリジナルの録音ファイルを�
 <li>結合した動画ファイルをYoutubeにアップロード</li>
 </ol>
 <p>具体的には、適当にblank.pngという名前で640x480とか好みのサイズで画像を作成し、以下のコマンドで24時間の無音声動画ファイル(blank24.mov)を作成。</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">ffmpeg -y -loop <span class="m">1</span> -r <span class="m">1</span> -i blank.png -t <span class="m">86400</span> blank24.mov
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">ffmpeg -y -loop <span class="m">1</span> -r <span class="m">1</span> -i blank.png -t <span class="m">86400</span> blank24.mov
 </code></pre></div><p>これでフレームレート1 fps、動画時間が24時間(86400秒)の無音声動画ファイルblank24.movができる。
 私の環境では5分程度かかったが、このファイルは1度作っておけば何度でも使えるので、最初の1回だけ待てば良い。</p>
 <p>次に、この無音声の動画ファイル(blank24.mov)と、録音した音声ファイル(input.mp3)を結合する。</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">ffmpeg -y -i blank24.mov -i input.mp3 -vcodec copy -acodec copy -shortest output.mov
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">ffmpeg -y -i blank24.mov -i input.mp3 -vcodec copy -acodec copy -shortest output.mov
 </code></pre></div><p><code>-shortest</code>オプションを加えているので、24時間のblank24.movと音声ファイルの時間のうち、短い方の時間でoutput.movが作成される。</p>
 <p>動画になったことにより、元のMP3ファイルよりもファイルサイズが1割ほど増える。
 私の環境では12時間程度録音したものからでも1分程度のエンコード時間で動画ファイルを作成できた。</p>
@@ -120,7 +120,7 @@ ICレコーダーで録音したMP3、Androidの録音アプリのmp4、iPhone�
 <code>-vcodec copy</code>とすることで再エンコードを省略すれば、毎日の処理が高速化できる。</p>
 <p>ただし、Youtubeの制限により、15分の制限を解除したアカウントでも、動画の最長時間は12時間に制限される。
 したがって、私は以下のようなシェルスクリプトを書いて実行している。</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="cp">#!/bin/bash
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="cp">#!/bin/bash
 </span><span class="cp"></span>
 find ./ -iname <span class="s2">&#34;*.mp3&#34;</span> -o -iname <span class="s2">&#34;*.mp4&#34;</span> -o -iname <span class="s2">&#34;*.m4a&#34;</span> <span class="p">|</span> <span class="k">while</span> <span class="nb">read</span> i
 <span class="k">do</span>
@@ -203,6 +203,7 @@ find ./ -iname <span class="s2">&#34;*.mp3&#34;</span> -o -iname <span class="s2
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20210722-sr600-oirase/">2021年07月22日 SR600 奥入瀬</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20210718-shibu-toge/">2021年07月18日 渋峠(自走)</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/generate-secure-password-vba/">VBAで要件(ポリシー)に沿ったランダムパスワードを生成</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/openvpn-client-split-tunnel/">LinuxのOpenVPNクライアントでスプリットトンネリング</a></li>
@@ -222,7 +223,6 @@ find ./ -iname <span class="s2">&#34;*.mp3&#34;</span> -o -iname <span class="s2
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20201031-brm1031-tokyo-300km/">2020年10月31日 BRM1031 東京400 清水さった峠</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20201024-brm1024-saitama-attack-nihonkai-600km/">2020年10月24日 BRM1024 埼玉600 アタック日本海</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20201017-brm1017-yokohama-aoba-izu-300km/">2020年10月17日 BRM1017 横浜あおばスーパー300km 伊豆(酷)</a></li>
-			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20201004-osaka-tokyo-cannonball/">2020年10月04日 大阪→東京 キャノンボール 23時間37分</a></li>
 		</ul>
 	</div>
 </div>
@@ -273,7 +273,7 @@ find ./ -iname <span class="s2">&#34;*.mp3&#34;</span> -o -iname <span class="s2
 		<a class="widget-taglist__link widget__link btn" href="/tags/powershell" title="Powershell">Powershell (2)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/sql" title="SQL">SQL (3)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/sqlserver" title="Sqlserver">Sqlserver (1)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/sr600" title="Sr600">Sr600 (3)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/sr600" title="Sr600">Sr600 (4)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/ubuntu" title="Ubuntu">Ubuntu (18)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/vba" title="Vba">Vba (4)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/vpn" title="VPN">VPN (1)</a>
@@ -285,7 +285,7 @@ find ./ -iname <span class="s2">&#34;*.mp3&#34;</span> -o -iname <span class="s2
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%82%ad%e3%83%a3%e3%83%8e%e3%83%b3%e3%83%9c%e3%83%bc%e3%83%ab" title="キャノンボール">キャノンボール (2)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%83%84%e3%83%bc%e3%83%aa%e3%83%b3%e3%82%b0" title="ツーリング">ツーリング (51)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%83%91%e3%83%af%e3%83%8f%e3%83%a9" title="パワハラ">パワハラ (5)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%83%96%e3%83%ab%e3%83%99" title="ブルベ">ブルベ (29)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%83%96%e3%83%ab%e3%83%99" title="ブルベ">ブルベ (30)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%83%ac%e3%83%93%e3%83%a5%e3%83%bc" title="レビュー">レビュー (2)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e7%94%9f%e6%b4%bb" title="生活">生活 (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e7%a4%be%e5%86%85se" title="社内se">社内se (16)</a>

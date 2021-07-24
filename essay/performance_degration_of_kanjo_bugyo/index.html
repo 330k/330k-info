@@ -102,7 +102,7 @@ Wiresharkでパケットをキャプチャすることで発行されたSQL文�
 「SQL Server パフォーマンス」などでGoogle先生に聞いてみると、以下のページがヒット。</p>
 <p><a href="https://blogs.msdn.microsoft.com/jpsql/2013/09/03/sql-server-5/">どうする？ SQL Server のクエリ パフォーマンスが低下した！</a></p>
 <p>これに従い、サーバ上でSQL Server Management Studioを起動し、勘定奉行で使用しているデータベースで</p>
-<div class="highlight"><pre class="chroma"><code class="language-SQL" data-lang="SQL"><span class="n">sp_updatestats</span><span class="w">
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-SQL" data-lang="SQL"><span class="n">sp_updatestats</span><span class="w">
 </span></code></pre></div><p>としたところ、1秒程度で処理が完了するようになった。
 上記ページには各テーブル単位での統計情報更新や、実行プランの再作成、インデックスの再構築の方法も書かれているが、今回は行わなかった。</p>
 <p>このようにSQL文を直接叩きに行く方法は多分メーカ(OBC)では非推奨だと思うが、
@@ -111,7 +111,7 @@ Wiresharkでパケットをキャプチャすることで発行されたSQL文�
 <p>「データ領域管理」「データ領域保守」「データ領域変更」とメニューを辿り、「F9 統計情報」ボタンを押すと、統計情報の更新というウィンドウが表示されるので、「実行」すればよい。
 対象は、現在選択しているデータ領域のみとのこと。</p>
 <p>ちなみに、全データベースに一括で統計情報の更新をかけるには、SQL Management Studioから、</p>
-<div class="highlight"><pre class="chroma"><code class="language-SQL" data-lang="SQL"><span class="w"> </span><span class="n">sp_MSforeachdb</span><span class="w"> </span><span class="s1">&#39;USE [?]; sp_updatestats&#39;</span><span class="w">
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-SQL" data-lang="SQL"><span class="w"> </span><span class="n">sp_MSforeachdb</span><span class="w"> </span><span class="s1">&#39;USE [?]; sp_updatestats&#39;</span><span class="w">
 </span></code></pre></div><p>とする。</p>
 
 		</div>
@@ -159,6 +159,7 @@ Wiresharkでパケットをキャプチャすることで発行されたSQL文�
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20210722-sr600-oirase/">2021年07月22日 SR600 奥入瀬</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20210718-shibu-toge/">2021年07月18日 渋峠(自走)</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/generate-secure-password-vba/">VBAで要件(ポリシー)に沿ったランダムパスワードを生成</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/openvpn-client-split-tunnel/">LinuxのOpenVPNクライアントでスプリットトンネリング</a></li>
@@ -178,7 +179,6 @@ Wiresharkでパケットをキャプチャすることで発行されたSQL文�
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20201031-brm1031-tokyo-300km/">2020年10月31日 BRM1031 東京400 清水さった峠</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20201024-brm1024-saitama-attack-nihonkai-600km/">2020年10月24日 BRM1024 埼玉600 アタック日本海</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20201017-brm1017-yokohama-aoba-izu-300km/">2020年10月17日 BRM1017 横浜あおばスーパー300km 伊豆(酷)</a></li>
-			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20201004-osaka-tokyo-cannonball/">2020年10月04日 大阪→東京 キャノンボール 23時間37分</a></li>
 		</ul>
 	</div>
 </div>
@@ -229,7 +229,7 @@ Wiresharkでパケットをキャプチャすることで発行されたSQL文�
 		<a class="widget-taglist__link widget__link btn" href="/tags/powershell" title="Powershell">Powershell (2)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/sql" title="SQL">SQL (3)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/sqlserver" title="Sqlserver">Sqlserver (1)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/sr600" title="Sr600">Sr600 (3)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/sr600" title="Sr600">Sr600 (4)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/ubuntu" title="Ubuntu">Ubuntu (18)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/vba" title="Vba">Vba (4)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/vpn" title="VPN">VPN (1)</a>
@@ -241,7 +241,7 @@ Wiresharkでパケットをキャプチャすることで発行されたSQL文�
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%82%ad%e3%83%a3%e3%83%8e%e3%83%b3%e3%83%9c%e3%83%bc%e3%83%ab" title="キャノンボール">キャノンボール (2)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%83%84%e3%83%bc%e3%83%aa%e3%83%b3%e3%82%b0" title="ツーリング">ツーリング (51)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%83%91%e3%83%af%e3%83%8f%e3%83%a9" title="パワハラ">パワハラ (5)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%83%96%e3%83%ab%e3%83%99" title="ブルベ">ブルベ (29)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%83%96%e3%83%ab%e3%83%99" title="ブルベ">ブルベ (30)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%83%ac%e3%83%93%e3%83%a5%e3%83%bc" title="レビュー">レビュー (2)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e7%94%9f%e6%b4%bb" title="生活">生活 (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e7%a4%be%e5%86%85se" title="社内se">社内se (16)</a>

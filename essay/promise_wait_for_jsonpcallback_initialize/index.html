@@ -97,7 +97,7 @@ if (!doNotTrack) {
 <p>グローバル環境が少し汚れるが、一般にJSONPのコールバックをPromise化できる。</p>
 <h2 id="やり方">やり方</h2>
 <p>以下のやり方で、<code>callback</code>の実行時にコンソールに<code>&quot;SOLVED&quot;</code>と表示できる。</p>
-<div class="highlight"><pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="kd">let</span> <span class="nx">globalresolve</span><span class="p">;</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="kd">let</span> <span class="nx">globalresolve</span><span class="p">;</span>
 <span class="kd">function</span> <span class="nx">callback</span><span class="p">(){</span>
   <span class="nx">globalresolve</span><span class="p">();</span>
 <span class="p">}</span>
@@ -114,7 +114,7 @@ if (!doNotTrack) {
 <p>という流れでPromise化できる。</p>
 <h2 id="使用例1">使用例1</h2>
 <p>Google Maps JavaScript APIの読み込み完了時に関数<code>initMap</code>を呼ぶようにする場合。</p>
-<div class="highlight"><pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="kd">let</span> <span class="nx">mapresolve</span><span class="p">;</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="kd">let</span> <span class="nx">mapresolve</span><span class="p">;</span>
 <span class="kd">function</span> <span class="nx">initMap</span><span class="p">()</span> <span class="p">{</span>
   <span class="nx">mapresolve</span><span class="p">();</span>
 <span class="p">}</span>
@@ -122,11 +122,11 @@ if (!doNotTrack) {
 <span class="p">(</span><span class="k">new</span> <span class="nb">Promise</span><span class="p">((</span><span class="nx">resolve</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span><span class="nx">mapresolve</span> <span class="o">=</span> <span class="nx">resolve</span><span class="p">;})).</span><span class="nx">then</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="p">{</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&#34;SOLVED&#34;</span><span class="p">)}</span>
 <span class="p">);</span>
-</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">script</span> <span class="na">async</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&amp;callback=initMap&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">script</span> <span class="na">async</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&amp;callback=initMap&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
 </code></pre></div><h2 id="使用例2">使用例2</h2>
 <p>単体でPromise化してもあまり恩恵は大きくないのだが、複数のライブラリを使用していてすべてのライブラリの読み込み完了後に何かしら処理をしたい、
 といった場合に<code>Promise.all</code>を使って並列して読み込みつつ、すべてが完了するのを待機してから次の処理に移る、といったことが可能。</p>
-<div class="highlight"><pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="kd">let</span> <span class="nx">gr1</span><span class="p">,</span> <span class="nx">gr2</span><span class="p">;</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="kd">let</span> <span class="nx">gr1</span><span class="p">,</span> <span class="nx">gr2</span><span class="p">;</span>
 <span class="kd">function</span> <span class="nx">callback1</span><span class="p">(){</span>
   <span class="nx">gr1</span><span class="p">();</span>
 <span class="p">}</span>
@@ -142,7 +142,7 @@ if (!doNotTrack) {
 <span class="p">});</span>
 </code></pre></div><h2 id="できる限りグローバルを汚したくない場合">できる限りグローバルを汚したくない場合</h2>
 <p>一応、細かくスコープを区切ればグローバルに保管用変数を追加しなくてもPromise化可能(<code>callback</code>の巻き上げが起こらないので、<code>callback = () =&gt; outerresolve();</code>が実行される前にコールバック関数が呼び出されてしまうとNGな点は注意)。</p>
-<div class="highlight"><pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="kd">let</span> <span class="nx">callback</span><span class="p">;</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="kd">let</span> <span class="nx">callback</span><span class="p">;</span>
 <span class="p">{</span>
   <span class="kd">let</span> <span class="nx">outerresolve</span><span class="p">;</span>
   <span class="nx">callback</span> <span class="o">=</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="nx">outerresolve</span><span class="p">();</span>
@@ -198,6 +198,7 @@ if (!doNotTrack) {
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20210722-sr600-oirase/">2021年07月22日 SR600 奥入瀬</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20210718-shibu-toge/">2021年07月18日 渋峠(自走)</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/generate-secure-password-vba/">VBAで要件(ポリシー)に沿ったランダムパスワードを生成</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/openvpn-client-split-tunnel/">LinuxのOpenVPNクライアントでスプリットトンネリング</a></li>
@@ -217,7 +218,6 @@ if (!doNotTrack) {
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20201031-brm1031-tokyo-300km/">2020年10月31日 BRM1031 東京400 清水さった峠</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20201024-brm1024-saitama-attack-nihonkai-600km/">2020年10月24日 BRM1024 埼玉600 アタック日本海</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20201017-brm1017-yokohama-aoba-izu-300km/">2020年10月17日 BRM1017 横浜あおばスーパー300km 伊豆(酷)</a></li>
-			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20201004-osaka-tokyo-cannonball/">2020年10月04日 大阪→東京 キャノンボール 23時間37分</a></li>
 		</ul>
 	</div>
 </div>
@@ -268,7 +268,7 @@ if (!doNotTrack) {
 		<a class="widget-taglist__link widget__link btn" href="/tags/powershell" title="Powershell">Powershell (2)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/sql" title="SQL">SQL (3)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/sqlserver" title="Sqlserver">Sqlserver (1)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/sr600" title="Sr600">Sr600 (3)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/sr600" title="Sr600">Sr600 (4)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/ubuntu" title="Ubuntu">Ubuntu (18)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/vba" title="Vba">Vba (4)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/vpn" title="VPN">VPN (1)</a>
@@ -280,7 +280,7 @@ if (!doNotTrack) {
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%82%ad%e3%83%a3%e3%83%8e%e3%83%b3%e3%83%9c%e3%83%bc%e3%83%ab" title="キャノンボール">キャノンボール (2)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%83%84%e3%83%bc%e3%83%aa%e3%83%b3%e3%82%b0" title="ツーリング">ツーリング (51)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%83%91%e3%83%af%e3%83%8f%e3%83%a9" title="パワハラ">パワハラ (5)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%83%96%e3%83%ab%e3%83%99" title="ブルベ">ブルベ (29)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%83%96%e3%83%ab%e3%83%99" title="ブルベ">ブルベ (30)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%83%ac%e3%83%93%e3%83%a5%e3%83%bc" title="レビュー">レビュー (2)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e7%94%9f%e6%b4%bb" title="生活">生活 (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e7%a4%be%e5%86%85se" title="社内se">社内se (16)</a>

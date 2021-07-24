@@ -98,13 +98,13 @@ if (!doNotTrack) {
 <h2 id="手順">手順</h2>
 <p>Ubuntu Server 18.04をインストールした状態で、まずはOpenLDAPサーバとクライアントをaptでインストール。
 インストール中にパスワードなどを尋ねられるが、何も入れずエンター連打。</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">sudo apt update
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">sudo apt update
 sudo apt install slapd ldap-utils
 </code></pre></div><p>ActiveDirectory用のスキーマを追加でダウンロード。</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">sudo wget http://lism.sourceforge.jp/docs/ad.schema -O /etc/ldap/schema/ad.schema
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">sudo wget http://lism.sourceforge.jp/docs/ad.schema -O /etc/ldap/schema/ad.schema
 </code></pre></div><p>設定ファイルを次のように作成。</p>
-<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">$ sudo nano /etc/ldap/slapd.conf
-</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">include                 /etc/ldap/schema/core.schema
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ sudo nano /etc/ldap/slapd.conf
+</code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">include                 /etc/ldap/schema/core.schema
 include                 /etc/ldap/schema/cosine.schema
 include                 /etc/ldap/schema/inetorgperson.schema
 include                 /etc/ldap/schema/misc.schema
@@ -137,11 +137,11 @@ idassert-bind   <span class="nv">bindmethod</span><span class="o">=</span>simple
                 <span class="nv">mode</span><span class="o">=</span>none
 idassert-authzFrom      <span class="s2">&#34;*&#34;</span>
 </code></pre></div><p><code>/etc/ldap/slapd.d</code>ディレクトリがあると<code>/etc/ldap/slapd.conf</code>を読んでくれないので、ディレクトリの方をリネーム。</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">sudo mv /etc/ldap/slapd.d /etc/ldap/_slapd.d
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">sudo mv /etc/ldap/slapd.d /etc/ldap/_slapd.d
 </code></pre></div><p>設定できたのでサービスを再起動。</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">sudo systemctl restart slapd
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">sudo systemctl restart slapd
 </code></pre></div><h2 id="確認">確認</h2>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">ldapsearch -b <span class="s2">&#34;(ADユーザのDN)&#34;</span> -w <span class="s2">&#34;(パスワード)&#34;</span> -h 127.0.0.1 -x <span class="s2">&#34;OU=***,DC=***,DC=***(BaseDN)&#34;</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">ldapsearch -b <span class="s2">&#34;(ADユーザのDN)&#34;</span> -w <span class="s2">&#34;(パスワード)&#34;</span> -h 127.0.0.1 -x <span class="s2">&#34;OU=***,DC=***,DC=***(BaseDN)&#34;</span>
 </code></pre></div><p>ちなみに<code>127.0.0.1</code>を<code>localhost</code>にすると、IPv6(<code>::1</code>)になってしまい、アクセス許可をしていないので弾かれるのでご注意。</p>
 		</div>
 		<footer class="post__footer">
@@ -187,6 +187,7 @@ idassert-authzFrom      <span class="s2">&#34;*&#34;</span>
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20210722-sr600-oirase/">2021年07月22日 SR600 奥入瀬</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20210718-shibu-toge/">2021年07月18日 渋峠(自走)</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/generate-secure-password-vba/">VBAで要件(ポリシー)に沿ったランダムパスワードを生成</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/openvpn-client-split-tunnel/">LinuxのOpenVPNクライアントでスプリットトンネリング</a></li>
@@ -206,7 +207,6 @@ idassert-authzFrom      <span class="s2">&#34;*&#34;</span>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20201031-brm1031-tokyo-300km/">2020年10月31日 BRM1031 東京400 清水さった峠</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20201024-brm1024-saitama-attack-nihonkai-600km/">2020年10月24日 BRM1024 埼玉600 アタック日本海</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20201017-brm1017-yokohama-aoba-izu-300km/">2020年10月17日 BRM1017 横浜あおばスーパー300km 伊豆(酷)</a></li>
-			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20201004-osaka-tokyo-cannonball/">2020年10月04日 大阪→東京 キャノンボール 23時間37分</a></li>
 		</ul>
 	</div>
 </div>
@@ -257,7 +257,7 @@ idassert-authzFrom      <span class="s2">&#34;*&#34;</span>
 		<a class="widget-taglist__link widget__link btn" href="/tags/powershell" title="Powershell">Powershell (2)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/sql" title="SQL">SQL (3)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/sqlserver" title="Sqlserver">Sqlserver (1)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/sr600" title="Sr600">Sr600 (3)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/sr600" title="Sr600">Sr600 (4)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/ubuntu" title="Ubuntu">Ubuntu (18)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/vba" title="Vba">Vba (4)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/vpn" title="VPN">VPN (1)</a>
@@ -269,7 +269,7 @@ idassert-authzFrom      <span class="s2">&#34;*&#34;</span>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%82%ad%e3%83%a3%e3%83%8e%e3%83%b3%e3%83%9c%e3%83%bc%e3%83%ab" title="キャノンボール">キャノンボール (2)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%83%84%e3%83%bc%e3%83%aa%e3%83%b3%e3%82%b0" title="ツーリング">ツーリング (51)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%83%91%e3%83%af%e3%83%8f%e3%83%a9" title="パワハラ">パワハラ (5)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%83%96%e3%83%ab%e3%83%99" title="ブルベ">ブルベ (29)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%83%96%e3%83%ab%e3%83%99" title="ブルベ">ブルベ (30)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%83%ac%e3%83%93%e3%83%a5%e3%83%bc" title="レビュー">レビュー (2)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e7%94%9f%e6%b4%bb" title="生活">生活 (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e7%a4%be%e5%86%85se" title="社内se">社内se (16)</a>

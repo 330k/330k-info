@@ -100,7 +100,7 @@ if (!doNotTrack) {
 1回の処理で必ずポリシーに沿った文字列を生成する関数を作成した。</p>
 <h2 id="実装">実装</h2>
 <p>とりあえず作ったものはこちら。</p>
-<div class="highlight"><pre class="chroma"><code class="language-VB.NET" data-lang="VB.NET"><span class="c">&#39; パスワード用のランダム文字列を生成する
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-VB.NET" data-lang="VB.NET"><span class="c">&#39; パスワード用のランダム文字列を生成する
 </span><span class="c"></span><span class="k">Public</span> <span class="k">Function</span> <span class="nf">GeneratePassword</span><span class="p">(</span><span class="n">iLength</span> <span class="ow">As</span> <span class="kt">Integer</span><span class="p">,</span> <span class="k">Optional</span> <span class="n">bAllowLower</span> <span class="ow">As</span> <span class="kt">Boolean</span> <span class="o">=</span> <span class="k">True</span><span class="p">,</span> <span class="k">Optional</span> <span class="n">bAllowUpper</span> <span class="ow">As</span> <span class="kt">Boolean</span> <span class="o">=</span> <span class="k">True</span><span class="p">,</span> _
   <span class="k">Optional</span> <span class="n">bAllowNumber</span> <span class="ow">As</span> <span class="kt">Boolean</span> <span class="o">=</span> <span class="k">True</span><span class="p">,</span> <span class="k">Optional</span> <span class="n">bAllowSymbol</span> <span class="ow">As</span> <span class="kt">Boolean</span> <span class="o">=</span> <span class="k">False</span><span class="p">,</span> <span class="k">Optional</span> <span class="n">bRequireLower</span> <span class="ow">As</span> <span class="kt">Boolean</span> <span class="o">=</span> <span class="k">True</span><span class="p">,</span> _
   <span class="k">Optional</span> <span class="n">bRequireUpper</span> <span class="ow">As</span> <span class="kt">Boolean</span> <span class="o">=</span> <span class="k">True</span><span class="p">,</span> <span class="k">Optional</span> <span class="n">bRequireNumber</span> <span class="ow">As</span> <span class="kt">Boolean</span> <span class="o">=</span> <span class="k">True</span><span class="p">,</span> <span class="k">Optional</span> <span class="n">bRequireSymbol</span> <span class="ow">As</span> <span class="kt">Boolean</span> <span class="o">=</span> <span class="k">False</span><span class="p">,</span> _
@@ -185,7 +185,7 @@ if (!doNotTrack) {
 <p>という順序で生成すれば、必ず要件に沿ったパスワードを1回の処理で生成できる。</p>
 <h2 id="実行例">実行例</h2>
 <p><code>GeneratePassword(10)</code>: 英小文字、英大文字、数字を1文字以上含む、10文字。</p>
-<div class="highlight"><pre class="chroma"><code class="language-text" data-lang="text">B9ZJQVrseM
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text">B9ZJQVrseM
 wYkkAE9cU0
 feWc79QQ1S
 jq1bu3ocVR
@@ -196,7 +196,7 @@ xv7xsXn3V3
 vHZjXA9HeA
 hbxE3k0ZOM
 </code></pre></div><p><code>GeneratePassword(10, True, True, True, True, True, True, True, True)</code>: 英小文字、英大文字、数字に加えて記号を1文字以上含む、10文字。</p>
-<div class="highlight"><pre class="chroma"><code class="language-text" data-lang="text">b:t8r@KG^n
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text">b:t8r@KG^n
 &amp;Wp}vjT1bA
 q(5u,o1[Kw
 7W,^y2MUtb
@@ -248,6 +248,7 @@ nS0troQ:G(
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20210722-sr600-oirase/">2021年07月22日 SR600 奥入瀬</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20210718-shibu-toge/">2021年07月18日 渋峠(自走)</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/generate-secure-password-vba/">VBAで要件(ポリシー)に沿ったランダムパスワードを生成</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/openvpn-client-split-tunnel/">LinuxのOpenVPNクライアントでスプリットトンネリング</a></li>
@@ -267,7 +268,6 @@ nS0troQ:G(
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20201031-brm1031-tokyo-300km/">2020年10月31日 BRM1031 東京400 清水さった峠</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20201024-brm1024-saitama-attack-nihonkai-600km/">2020年10月24日 BRM1024 埼玉600 アタック日本海</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20201017-brm1017-yokohama-aoba-izu-300km/">2020年10月17日 BRM1017 横浜あおばスーパー300km 伊豆(酷)</a></li>
-			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20201004-osaka-tokyo-cannonball/">2020年10月04日 大阪→東京 キャノンボール 23時間37分</a></li>
 		</ul>
 	</div>
 </div>
@@ -318,7 +318,7 @@ nS0troQ:G(
 		<a class="widget-taglist__link widget__link btn" href="/tags/powershell" title="Powershell">Powershell (2)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/sql" title="SQL">SQL (3)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/sqlserver" title="Sqlserver">Sqlserver (1)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/sr600" title="Sr600">Sr600 (3)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/sr600" title="Sr600">Sr600 (4)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/ubuntu" title="Ubuntu">Ubuntu (18)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/vba" title="Vba">Vba (4)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/vpn" title="VPN">VPN (1)</a>
@@ -330,7 +330,7 @@ nS0troQ:G(
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%82%ad%e3%83%a3%e3%83%8e%e3%83%b3%e3%83%9c%e3%83%bc%e3%83%ab" title="キャノンボール">キャノンボール (2)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%83%84%e3%83%bc%e3%83%aa%e3%83%b3%e3%82%b0" title="ツーリング">ツーリング (51)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%83%91%e3%83%af%e3%83%8f%e3%83%a9" title="パワハラ">パワハラ (5)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%83%96%e3%83%ab%e3%83%99" title="ブルベ">ブルベ (29)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%83%96%e3%83%ab%e3%83%99" title="ブルベ">ブルベ (30)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%83%ac%e3%83%93%e3%83%a5%e3%83%bc" title="レビュー">レビュー (2)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e7%94%9f%e6%b4%bb" title="生活">生活 (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e7%a4%be%e5%86%85se" title="社内se">社内se (16)</a>

@@ -102,7 +102,7 @@ if (!doNotTrack) {
 <h3 id="softether-vpn-server">SoftEther VPN Server</h3>
 <p><a href="https://www.softether-download.com/ja.aspx?product=softether">SoftEther ダウンロードセンター</a>から、「SoftEther VPN Server」「Linux」「Intel x64/AMD64 (64bit)」を選択してダウンロード。
 また、ビルドに必要なパッケージもインストールして、ビルドを実行する。</p>
-<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">sudo apt update
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">sudo apt update
 sudo apt install make gcc
 
 wget https://github.com/SoftEtherVPN/SoftEtherVPN_Stable/releases/download/v4.32-9731-beta/softether-vpnserver-v4.32-9731-beta-2020.01.01-linux-x64-64bit.tar.gz
@@ -117,8 +117,8 @@ sudo mv vpnserver/ /usr/local/
 sudo chmod <span class="m">600</span> *
 sudo chmod <span class="m">700</span> vpn*
 </code></pre></div><p>次にシステム起動時に自動でSoftEtherも起動してほしいので、systemd用のUnitファイルも作成する。</p>
-<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">sudo nano /etc/systemd/system/vpnserver.service
-</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-text" data-lang="text">[Unit]
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">sudo nano /etc/systemd/system/vpnserver.service
+</code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text">[Unit]
 Description=SoftEther VPN Server
 After=network.target network-online.target
 
@@ -131,13 +131,13 @@ RestartSec=3s
 [Install]
 WantedBy=multi-user.target
 </code></pre></div><p>Unitファイルを作成したら、有効化する。</p>
-<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">sudo systemctl daemon-reload
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">sudo systemctl daemon-reload
 sudo systemctl <span class="nb">enable</span> vpnserver
 sudo systemctl start vpnserver
 </code></pre></div><h3 id="adguard-home">AdGuard Home</h3>
 <p>GitHubの<a href="https://github.com/AdguardTeam/AdGuardHome/releases">Release</a>から最新版をダウンロードして、インストール。</p>
 <p>ここでは<code>/usr/local/adguard</code>にインストールした。</p>
-<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">wget https://github.com/AdguardTeam/AdGuardHome/releases/download/v0.100.9/AdGuardHome_linux_amd64.tar.gz
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">wget https://github.com/AdguardTeam/AdGuardHome/releases/download/v0.100.9/AdGuardHome_linux_amd64.tar.gz
 tar xvf AdGuardHome_linux_amd64.tar.gz
 
 sudo mkdir /usr/local/adguard
@@ -146,15 +146,15 @@ sudo mv ./AdGuardHome/* /usr/local/adguard
 53/udpをListenしていてAdGuard Homeが起動できない。</p>
 <p>なので<a href="https://qiita.com/shora_kujira16/items/31d09b373809a5a44ae5">Ubuntu 18.04 の systemd-resolved で local DNS stub listener の利用をやめる</a>に記述された無効化が必要。</p>
 <p>まずは<code>/etc/systemd/resolved.conf</code>を次のように編集。</p>
-<div class="highlight"><pre class="chroma"><code class="language-text" data-lang="text">[Resolve]
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text">[Resolve]
 DNSStubListener=no
 </code></pre></div><p>次に<code>/etc/resolv.conf</code>を<code>/run/systemd/resolve/resolv.conf</code>にリンク。</p>
-<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">sudo rm /etc/resolv.conf
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">sudo rm /etc/resolv.conf
 sudo ln -s /run/systemd/resolve/resolv.conf /etc/resolv.conf
 </code></pre></div><p>systemd-resolvedを再起動。</p>
-<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">sudo systemctl restart systemd-resolved
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">sudo systemctl restart systemd-resolved
 </code></pre></div><p>これで53/udpが解放されたので、AdGuard Homeが起動できるはず。</p>
-<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell"><span class="nb">cd</span> /usr/local/adguard
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="nb">cd</span> /usr/local/adguard
 sudo ./AdGuardHome -s install
 </code></pre></div><p>ここでシステムを再起動しても自動でnetplanの設定内容が<code>/etc/resolv.conf</code>に反映される。</p>
 <h3 id="ネットワーク設定と初期設定">ネットワーク設定と初期設定</h3>
@@ -172,8 +172,8 @@ SoftEtherでSecure NATで自分(デフォルトでは<code>192.168.30.1</code>)�
 <h3 id="解決先1-netplan経由でetcresolvconfに自サーバを追加">解決先1: netplan経由で/etc/resolv.confに自サーバを追加</h3>
 <p>上記のsystemd-resolvedのStub Serverを無効化した場合は、netplanの設定内容が<code>/etc/resolv.conf</code>に(間接的に)反映される。</p>
 <p>netplanではDHCPでアドレスを受け取る場合も、DNSサーバの情報を追加できるので、追加して設定する。</p>
-<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">sudo nano /etc/netplan/50-cloud-init.yaml
-</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="nt">network</span><span class="p">:</span><span class="w">
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">sudo nano /etc/netplan/50-cloud-init.yaml
+</code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="nt">network</span><span class="p">:</span><span class="w">
 </span><span class="w">    </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="m">2</span><span class="w">
 </span><span class="w">    </span><span class="nt">ethernets</span><span class="p">:</span><span class="w">
 </span><span class="w">        </span><span class="nt">eth0</span><span class="p">:</span><span class="w">
@@ -186,8 +186,8 @@ SoftEtherでSecure NATで自分(デフォルトでは<code>192.168.30.1</code>)�
 </span></code></pre></div><p>下の2行が追加部分。</p>
 <p>AWS Lightsailの場合、DHCPでAWS内のDNSサーバ(<code>172.26.0.2</code>など)が指定されるのだが、上記により<code>127.0.0.1</code>が優先DNSサーバに指定される。</p>
 <p>確認するには、下記のコマンドを実行。</p>
-<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">systemd-resolve --status
-</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-text" data-lang="text">(中略)
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">systemd-resolve --status
+</code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text">(中略)
          DNS Servers: 127.0.0.1
                       172.26.0.2
 </code></pre></div><p>これでVPNクライアントからのDNSリクエストに対して、<code>127.0.0.1</code>が応答するようになる。</p>
@@ -240,6 +240,7 @@ SoftEtherでSecure NATで自分(デフォルトでは<code>192.168.30.1</code>)�
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20210722-sr600-oirase/">2021年07月22日 SR600 奥入瀬</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20210718-shibu-toge/">2021年07月18日 渋峠(自走)</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/generate-secure-password-vba/">VBAで要件(ポリシー)に沿ったランダムパスワードを生成</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/openvpn-client-split-tunnel/">LinuxのOpenVPNクライアントでスプリットトンネリング</a></li>
@@ -259,7 +260,6 @@ SoftEtherでSecure NATで自分(デフォルトでは<code>192.168.30.1</code>)�
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20201031-brm1031-tokyo-300km/">2020年10月31日 BRM1031 東京400 清水さった峠</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20201024-brm1024-saitama-attack-nihonkai-600km/">2020年10月24日 BRM1024 埼玉600 アタック日本海</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20201017-brm1017-yokohama-aoba-izu-300km/">2020年10月17日 BRM1017 横浜あおばスーパー300km 伊豆(酷)</a></li>
-			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20201004-osaka-tokyo-cannonball/">2020年10月04日 大阪→東京 キャノンボール 23時間37分</a></li>
 		</ul>
 	</div>
 </div>
@@ -310,7 +310,7 @@ SoftEtherでSecure NATで自分(デフォルトでは<code>192.168.30.1</code>)�
 		<a class="widget-taglist__link widget__link btn" href="/tags/powershell" title="Powershell">Powershell (2)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/sql" title="SQL">SQL (3)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/sqlserver" title="Sqlserver">Sqlserver (1)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/sr600" title="Sr600">Sr600 (3)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/sr600" title="Sr600">Sr600 (4)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/ubuntu" title="Ubuntu">Ubuntu (18)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/vba" title="Vba">Vba (4)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/vpn" title="VPN">VPN (1)</a>
@@ -322,7 +322,7 @@ SoftEtherでSecure NATで自分(デフォルトでは<code>192.168.30.1</code>)�
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%82%ad%e3%83%a3%e3%83%8e%e3%83%b3%e3%83%9c%e3%83%bc%e3%83%ab" title="キャノンボール">キャノンボール (2)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%83%84%e3%83%bc%e3%83%aa%e3%83%b3%e3%82%b0" title="ツーリング">ツーリング (51)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%83%91%e3%83%af%e3%83%8f%e3%83%a9" title="パワハラ">パワハラ (5)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%83%96%e3%83%ab%e3%83%99" title="ブルベ">ブルベ (29)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%83%96%e3%83%ab%e3%83%99" title="ブルベ">ブルベ (30)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%83%ac%e3%83%93%e3%83%a5%e3%83%bc" title="レビュー">レビュー (2)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e7%94%9f%e6%b4%bb" title="生活">生活 (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e7%a4%be%e5%86%85se" title="社内se">社内se (16)</a>

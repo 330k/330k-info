@@ -97,7 +97,7 @@ if (!doNotTrack) {
 <p>そこで、ユニットファイルを少し変更して1台のマシン上で複数のトンネルを起動できるようにした。</p>
 <h2 id="ユニットファイルの作成">ユニットファイルの作成</h2>
 <p>以下の内容で<code>/etc/systemd/system/cloudflared@.service</code>を作成する(要root)。</p>
-<div class="highlight"><pre class="chroma"><code class="language-text" data-lang="text">[Unit]
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text">[Unit]
 Description=Argo Tunnel (%I)
 After=network.target
 
@@ -113,25 +113,25 @@ WantedBy=multi-user.target
 </code></pre></div><p>もしかしたら<code>ExecStart=/usr/local/bin/cloudflared --config /etc/cloudflared/config-%i.yml --no-autoupdate tunnel run</code>の部分は
 <code>ExecStart=/usr/local/bin/cloudflared tunnel --config /etc/cloudflared/config-%i.yml --no-autoupdate run</code>と順序を変えたほうが良いかも。</p>
 <p>保存したらユニットファイルを再読込み。</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">sudo systemctl daemon-reload
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">sudo systemctl daemon-reload
 </code></pre></div><h2 id="起動">起動</h2>
 <p>チュートリアル(<a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-apps">Connect applications · Cloudflare for Teams documentation</a>)に従ってトンネルを作成。</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">cloudflared tunnel create test001
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">cloudflared tunnel create test001
 </code></pre></div><p><code>~/.cloudflared</code>以下に作成された.jsonファイルを<code>/etc/cloudflared</code>に移動する。</p>
 <p>また、<code>~/.cloudflared/cert.pem</code>も<code>/etc/cloudflared</code>に移動しないとサービスが起動しなかった(ドキュメントには既存のトンネルの接続には<code>cert.pem</code>は不要、と書いてあったのだが…)。</p>
 <p>次にルートを設定。</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">cloudflared tunnel route dns test001 test001.example.com
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">cloudflared tunnel route dns test001 test001.example.com
 </code></pre></div><p>あとは<code>/etc/cloudflared/</code>ディレクトリに<code>config-(設定名).yml</code>という名前で設定ファイルを作成。</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">sudo nano /etc/cloudflared/config-test001.yml
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">sudo nano /etc/cloudflared/config-test001.yml
 </code></pre></div><p>設定ファイルの内容は以下のような感じ。</p>
-<div class="highlight"><pre class="chroma"><code class="language-yml" data-lang="yml"><span class="nt">hostname</span><span class="p">:</span><span class="w"> </span><span class="l">test001.example.com</span><span class="w">
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yml" data-lang="yml"><span class="nt">hostname</span><span class="p">:</span><span class="w"> </span><span class="l">test001.example.com</span><span class="w">
 </span><span class="w"></span><span class="nt">tunnel</span><span class="p">:</span><span class="w"> </span><span class="l">a75c4ff3-a8ed-471e-8d76-e30b780b98f7</span><span class="w">
 </span><span class="w"></span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l">https://localhost:8080/</span><span class="w">
 </span><span class="w"></span><span class="nt">no-tls-verify</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
 </span><span class="w"></span><span class="nt">logfile</span><span class="p">:</span><span class="w"> </span><span class="l">/var/log/cloudflared_test001.log</span><span class="w">
 </span><span class="w"></span><span class="nt">credentials-file</span><span class="p">:</span><span class="w"> </span><span class="l">/etc/cloudflared/a75c4ff3-a8ed-471e-8d76-e30b780b98f7.json</span><span class="w">
 </span></code></pre></div><p>ここまでできれば、あとは<code>@</code>に続けて設定名を指定してユニットを起動する。</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">sudo systemctl start cloudflared@test001
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">sudo systemctl start cloudflared@test001
 </code></pre></div><p>複数のトンネルを起動する時は上記手順を繰り返せばOK。</p>
 <p>Cloudflareとしては複数起動する場合はdockerを使うことを想定しているのかも。</p>
 		</div>
@@ -177,6 +177,7 @@ WantedBy=multi-user.target
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20210722-sr600-oirase/">2021年07月22日 SR600 奥入瀬</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20210718-shibu-toge/">2021年07月18日 渋峠(自走)</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/generate-secure-password-vba/">VBAで要件(ポリシー)に沿ったランダムパスワードを生成</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/openvpn-client-split-tunnel/">LinuxのOpenVPNクライアントでスプリットトンネリング</a></li>
@@ -196,7 +197,6 @@ WantedBy=multi-user.target
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20201031-brm1031-tokyo-300km/">2020年10月31日 BRM1031 東京400 清水さった峠</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20201024-brm1024-saitama-attack-nihonkai-600km/">2020年10月24日 BRM1024 埼玉600 アタック日本海</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20201017-brm1017-yokohama-aoba-izu-300km/">2020年10月17日 BRM1017 横浜あおばスーパー300km 伊豆(酷)</a></li>
-			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20201004-osaka-tokyo-cannonball/">2020年10月04日 大阪→東京 キャノンボール 23時間37分</a></li>
 		</ul>
 	</div>
 </div>
@@ -247,7 +247,7 @@ WantedBy=multi-user.target
 		<a class="widget-taglist__link widget__link btn" href="/tags/powershell" title="Powershell">Powershell (2)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/sql" title="SQL">SQL (3)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/sqlserver" title="Sqlserver">Sqlserver (1)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/sr600" title="Sr600">Sr600 (3)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/sr600" title="Sr600">Sr600 (4)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/ubuntu" title="Ubuntu">Ubuntu (18)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/vba" title="Vba">Vba (4)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/vpn" title="VPN">VPN (1)</a>
@@ -259,7 +259,7 @@ WantedBy=multi-user.target
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%82%ad%e3%83%a3%e3%83%8e%e3%83%b3%e3%83%9c%e3%83%bc%e3%83%ab" title="キャノンボール">キャノンボール (2)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%83%84%e3%83%bc%e3%83%aa%e3%83%b3%e3%82%b0" title="ツーリング">ツーリング (51)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%83%91%e3%83%af%e3%83%8f%e3%83%a9" title="パワハラ">パワハラ (5)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%83%96%e3%83%ab%e3%83%99" title="ブルベ">ブルベ (29)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%83%96%e3%83%ab%e3%83%99" title="ブルベ">ブルベ (30)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%83%ac%e3%83%93%e3%83%a5%e3%83%bc" title="レビュー">レビュー (2)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e7%94%9f%e6%b4%bb" title="生活">生活 (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e7%a4%be%e5%86%85se" title="社内se">社内se (16)</a>

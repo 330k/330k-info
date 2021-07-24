@@ -103,7 +103,7 @@ if (!doNotTrack) {
 <p>なのでdockerでコンテナにして動くようにしてみた。</p>
 <h2 id="結論">結論</h2>
 <p>東京道場限定だが、後述の手順を使って作ったDockerイメージをDocker Hubにアップロードしているので、すぐ使いたい方は以下でOK。</p>
-<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">xhost local:
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">xhost local:
 docker run -it --rm -e DISPLAY -e <span class="nv">QT_X11_NO_MITSHM</span><span class="o">=</span><span class="m">1</span> -e <span class="nv">_JAVA_OPTIONS</span><span class="o">=</span><span class="s2">&#34;-Duser.language=ja -Duser.country=JP&#34;</span> <span class="se">\
 </span><span class="se"></span>  -v /tmp/.X11-unix:/tmp/.X11-unix 330k/shogi24
 </code></pre></div><p>※音を出す方法は未確認</p>
@@ -111,10 +111,10 @@ docker run -it --rm -e DISPLAY -e <span class="nv">QT_X11_NO_MITSHM</span><span 
 <p>GUIでの操作が必要となったため、Dockerfile化できなかったが、以下の手順で同様のDockerイメージを作成できる。</p>
 <p>現在はwebupd8teリポジトリが変わっており、同じDockerfileを使ってもOracle Java 8をインストールできないので、
 過去に作られたOracle Java 8をインストール済みのイメージを起動。</p>
-<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">xhost local:
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">xhost local:
 docker run -it --rm -e DISPLAY -e <span class="nv">QT_X11_NO_MITSHM</span><span class="o">=</span><span class="m">1</span> -v /tmp/.X11-unix:/tmp/.X11-unix relateiq/oracle-java8
 </code></pre></div><p>以下はコンテナ内で作業。</p>
-<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell"><span class="c1"># GUIの表示に必要なパッケージと日本語フォントをインストール</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="c1"># GUIの表示に必要なパッケージと日本語フォントをインストール</span>
 apt-get update
 apt-get install libxtst6 libxi6 libxrender1 fonts-takao-pgothic -y
 <span class="c1"># 日本語フォントをJavaで使えるようにシンボリックリンクを作成</span>
@@ -127,16 +127,16 @@ wget http://internet2.shogidojo.net/dojo/24TokyoDojo.jnlp
 <span class="c1"># 一度起動を試みる</span>
 javaws 24TokyoDojo.jnlp
 </code></pre></div><p>すると、</p>
-<div class="highlight"><pre class="chroma"><code class="language-text" data-lang="text">Disabling Java as it is too old and likely to be out of date. To reenable use jcontrol utility
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text">Disabling Java as it is too old and likely to be out of date. To reenable use jcontrol utility
 </code></pre></div><p>というメッセージが出るので、指示に従って<code>jcontrol</code>を起動する。</p>
-<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">jcontrol
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">jcontrol
 </code></pre></div><p>Javaの設定画面が表示されるので、「Enable Java content in the browser」にチェックを入れて「OK」。</p>
 <figure><img src="2020-02-03%2001-07-52.png"/>
 </figure>
 
 <p>これで将棋倶楽部24が起動できるようになる。</p>
 <p>もう一度起動。</p>
-<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">javaws 24TokyoDojo.jnlp
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">javaws 24TokyoDojo.jnlp
 </code></pre></div><p>最初の起動時だけ、起動を許可するか、ショートカットを作成するかどうかを聞かれるので回答しておく。</p>
 <p><figure><img src="2020-02-03%2001-17-59.png"/>
 </figure>
@@ -146,8 +146,8 @@ javaws 24TokyoDojo.jnlp
 </p>
 <p>起動できたら一旦将棋倶楽部24を終了。</p>
 <p>次に起動スクリプトを用意。</p>
-<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">vi /entrypoint.sh
-</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="cp">#!/bin/bash
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">vi /entrypoint.sh
+</code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="cp">#!/bin/bash
 </span><span class="cp"></span>
 /usr/bin/javaws /root/24TokyoDojo.jnlp
 
@@ -159,13 +159,13 @@ javaws 24TokyoDojo.jnlp
     <span class="nb">break</span>
   <span class="k">fi</span>
 <span class="k">done</span>
-</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">chomd +x /entrypoint.sh
+</code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">chomd +x /entrypoint.sh
 </code></pre></div><p>これで作業は完了なので、別ターミナルを立ち上げてDockerイメージにcommitする。
 CONTAINER IDは<code>docker ps</code>で調べる。</p>
-<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">docker commit --change<span class="o">=</span><span class="s1">&#39;ENTRYPOINT [ &#34;/entrypoint.sh&#34; ]&#39;</span> <span class="o">(</span>コンテナのCONTAINER ID<span class="o">)</span>  <span class="o">(</span>好きな名前<span class="o">)</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">docker commit --change<span class="o">=</span><span class="s1">&#39;ENTRYPOINT [ &#34;/entrypoint.sh&#34; ]&#39;</span> <span class="o">(</span>コンテナのCONTAINER ID<span class="o">)</span>  <span class="o">(</span>好きな名前<span class="o">)</span>
 </code></pre></div><p>コミットが出来たらコンテナに戻って終了する。</p>
 <p>以降は起動したいときに、以下を入力すれば起動できる。</p>
-<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">xhost local:
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">xhost local:
 docker run -it --rm -e DISPLAY -e <span class="nv">QT_X11_NO_MITSHM</span><span class="o">=</span><span class="m">1</span> -e <span class="nv">_JAVA_OPTIONS</span><span class="o">=</span><span class="s2">&#34;-Duser.language=ja -Duser.country=JP&#34;</span> <span class="se">\
 </span><span class="se"></span>  -v /tmp/.X11-unix:/tmp/.X11-unix <span class="o">(</span>上で付けた名前<span class="o">)</span>
 </code></pre></div><figure><img src="2020-02-03%2021-15-49.png"/>
@@ -214,6 +214,7 @@ docker run -it --rm -e DISPLAY -e <span class="nv">QT_X11_NO_MITSHM</span><span 
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20210722-sr600-oirase/">2021年07月22日 SR600 奥入瀬</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20210718-shibu-toge/">2021年07月18日 渋峠(自走)</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/generate-secure-password-vba/">VBAで要件(ポリシー)に沿ったランダムパスワードを生成</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/openvpn-client-split-tunnel/">LinuxのOpenVPNクライアントでスプリットトンネリング</a></li>
@@ -233,7 +234,6 @@ docker run -it --rm -e DISPLAY -e <span class="nv">QT_X11_NO_MITSHM</span><span 
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20201031-brm1031-tokyo-300km/">2020年10月31日 BRM1031 東京400 清水さった峠</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20201024-brm1024-saitama-attack-nihonkai-600km/">2020年10月24日 BRM1024 埼玉600 アタック日本海</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20201017-brm1017-yokohama-aoba-izu-300km/">2020年10月17日 BRM1017 横浜あおばスーパー300km 伊豆(酷)</a></li>
-			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20201004-osaka-tokyo-cannonball/">2020年10月04日 大阪→東京 キャノンボール 23時間37分</a></li>
 		</ul>
 	</div>
 </div>
@@ -284,7 +284,7 @@ docker run -it --rm -e DISPLAY -e <span class="nv">QT_X11_NO_MITSHM</span><span 
 		<a class="widget-taglist__link widget__link btn" href="/tags/powershell" title="Powershell">Powershell (2)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/sql" title="SQL">SQL (3)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/sqlserver" title="Sqlserver">Sqlserver (1)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/sr600" title="Sr600">Sr600 (3)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/sr600" title="Sr600">Sr600 (4)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/ubuntu" title="Ubuntu">Ubuntu (18)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/vba" title="Vba">Vba (4)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/vpn" title="VPN">VPN (1)</a>
@@ -296,7 +296,7 @@ docker run -it --rm -e DISPLAY -e <span class="nv">QT_X11_NO_MITSHM</span><span 
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%82%ad%e3%83%a3%e3%83%8e%e3%83%b3%e3%83%9c%e3%83%bc%e3%83%ab" title="キャノンボール">キャノンボール (2)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%83%84%e3%83%bc%e3%83%aa%e3%83%b3%e3%82%b0" title="ツーリング">ツーリング (51)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%83%91%e3%83%af%e3%83%8f%e3%83%a9" title="パワハラ">パワハラ (5)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%83%96%e3%83%ab%e3%83%99" title="ブルベ">ブルベ (29)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%83%96%e3%83%ab%e3%83%99" title="ブルベ">ブルベ (30)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%83%ac%e3%83%93%e3%83%a5%e3%83%bc" title="レビュー">レビュー (2)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e7%94%9f%e6%b4%bb" title="生活">生活 (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e7%a4%be%e5%86%85se" title="社内se">社内se (16)</a>

@@ -112,9 +112,9 @@ if (!doNotTrack) {
 <p>sendmailのために、今回はssmtpを使って設定してみる。</p>
 <p>postfixのほうが好きな方はそちらで。</p>
 <p>まずはssmtpをインストール。</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">sudo apt install ssmtp
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">sudo apt install ssmtp
 </code></pre></div><p>設定ファイル(<code>/etc/ssmtp/ssmtp.conf</code>)を編集し、使うメールアカウントに沿って設定箇所を記入。</p>
-<div class="highlight"><pre class="chroma"><code class="language-text" data-lang="text">#
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text">#
 # Config file for sSMTP sendmail
 #
 # The person who gets all mail for userids &lt; 1000
@@ -143,7 +143,7 @@ AuthMethod=LOGIN
 FromLineOverride=YES
 </code></pre></div><h2 id="スクリプト本体">スクリプト本体</h2>
 <p><code>webchecker.sh</code>という名前で下記の内容を書き込む。</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="cp">#!/bin/bash
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="cp">#!/bin/bash
 </span><span class="cp"></span>
 <span class="nv">SCRIPT_DIR</span><span class="o">=</span><span class="k">$(</span><span class="nb">cd</span> <span class="k">$(</span>dirname <span class="nv">$0</span><span class="k">)</span><span class="p">;</span><span class="nb">pwd</span><span class="k">)</span>
 <span class="nv">LISTFILE</span><span class="o">=</span><span class="si">${</span><span class="nv">SCRIPT_DIR</span><span class="si">}</span>/checklist.txt
@@ -242,10 +242,10 @@ FromLineOverride=YES
   <span class="nb">echo</span> <span class="s2">&#34;&#34;</span>
 <span class="k">done</span> &lt; <span class="si">${</span><span class="nv">LISTFILE</span><span class="si">}</span>
 </code></pre></div><p>実行権限を付与。</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">chmod +x webchecker.sh
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">chmod +x webchecker.sh
 </code></pre></div><h2 id="設定ファイル">設定ファイル</h2>
 <p><code>checklist.txt</code>という名前で監視対象のURLと範囲を設定するファイルを<code>webchecker.sh</code>と同じディレクトリに作成。</p>
-<div class="highlight"><pre class="chroma"><code class="language-text" data-lang="text">BRM229|https://randonneurs.tokyo/?p=9950|&lt;header&gt;|&lt;footer&gt;
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text">BRM229|https://randonneurs.tokyo/?p=9950|&lt;header&gt;|&lt;footer&gt;
 BRM320|https://audax-kinki.com/20brm0320_600/|&lt;section&gt;|&lt;footer&gt;
 BRM328|https://randonneurs.tokyo/?p=9960|&lt;header&gt;|&lt;footer&gt;
 BRM411|http://www.aj-kanagawa.org/brmkako-no-kaisai/brm2020/brm411-300|&lt;td id=&#34;sites-canvas-wrapper&#34;&gt;|DNS連絡フォーム&lt;/h2&gt;
@@ -267,18 +267,18 @@ RM430-Cue|https://randonneurs.tokyo/?p=11738|&lt;header&gt;|&lt;footer&gt;
 </ul>
 <h2 id="動作確認">動作確認</h2>
 <p>bash上で</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">./webchecker.sh
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">./webchecker.sh
 </code></pre></div><p>とすると、初回は「NEW」、2回目以降で変更がなければ「NO CHANGED」と表示される。</p>
 <p>2回目以降で前回取得時から変更があれば「CHANGED」と表示され、メールが届くはず。</p>
 <p>なお、正常に取得できなかった時は3回目にメールするようにした(1回だと結構誤検知が発生した)。</p>
 <h2 id="cronの設定">cronの設定</h2>
 <p>あとは<code>cron</code>で定期的に実行されるようにする。</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">crontab -e
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">crontab -e
 </code></pre></div><p>5分おきに実行するなら下記のようにする。</p>
-<div class="highlight"><pre class="chroma"><code class="language-text" data-lang="text">*/5 * * * * /home/ubuntu/webchecker/webchecker.sh &gt; /dev/null 2&gt;&amp;1
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text">*/5 * * * * /home/ubuntu/webchecker/webchecker.sh &gt; /dev/null 2&gt;&amp;1
 </code></pre></div><h2 id="実行例">実行例</h2>
 <p>あとは設定がうまくできていれば、次のようなメールが届く。</p>
-<div class="highlight"><pre class="chroma"><code class="language-text" data-lang="text">https://randonneurs.tokyo/?p=9950
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text">https://randonneurs.tokyo/?p=9950
 
 --- /home/ubuntu/webchecker/result/BRM229/old_range.html        2020-02-28 09:55:01.681675366 +0000
 +++ /home/ubuntu/webchecker/result/BRM229/new_range.html        2020-02-28 09:55:01.685675416 +0000
@@ -337,6 +337,7 @@ RM430-Cue|https://randonneurs.tokyo/?p=11738|&lt;header&gt;|&lt;footer&gt;
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20210722-sr600-oirase/">2021年07月22日 SR600 奥入瀬</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20210718-shibu-toge/">2021年07月18日 渋峠(自走)</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/generate-secure-password-vba/">VBAで要件(ポリシー)に沿ったランダムパスワードを生成</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/openvpn-client-split-tunnel/">LinuxのOpenVPNクライアントでスプリットトンネリング</a></li>
@@ -356,7 +357,6 @@ RM430-Cue|https://randonneurs.tokyo/?p=11738|&lt;header&gt;|&lt;footer&gt;
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20201031-brm1031-tokyo-300km/">2020年10月31日 BRM1031 東京400 清水さった峠</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20201024-brm1024-saitama-attack-nihonkai-600km/">2020年10月24日 BRM1024 埼玉600 アタック日本海</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20201017-brm1017-yokohama-aoba-izu-300km/">2020年10月17日 BRM1017 横浜あおばスーパー300km 伊豆(酷)</a></li>
-			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20201004-osaka-tokyo-cannonball/">2020年10月04日 大阪→東京 キャノンボール 23時間37分</a></li>
 		</ul>
 	</div>
 </div>
@@ -407,7 +407,7 @@ RM430-Cue|https://randonneurs.tokyo/?p=11738|&lt;header&gt;|&lt;footer&gt;
 		<a class="widget-taglist__link widget__link btn" href="/tags/powershell" title="Powershell">Powershell (2)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/sql" title="SQL">SQL (3)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/sqlserver" title="Sqlserver">Sqlserver (1)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/sr600" title="Sr600">Sr600 (3)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/sr600" title="Sr600">Sr600 (4)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/ubuntu" title="Ubuntu">Ubuntu (18)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/vba" title="Vba">Vba (4)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/vpn" title="VPN">VPN (1)</a>
@@ -419,7 +419,7 @@ RM430-Cue|https://randonneurs.tokyo/?p=11738|&lt;header&gt;|&lt;footer&gt;
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%82%ad%e3%83%a3%e3%83%8e%e3%83%b3%e3%83%9c%e3%83%bc%e3%83%ab" title="キャノンボール">キャノンボール (2)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%83%84%e3%83%bc%e3%83%aa%e3%83%b3%e3%82%b0" title="ツーリング">ツーリング (51)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%83%91%e3%83%af%e3%83%8f%e3%83%a9" title="パワハラ">パワハラ (5)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%83%96%e3%83%ab%e3%83%99" title="ブルベ">ブルベ (29)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%83%96%e3%83%ab%e3%83%99" title="ブルベ">ブルベ (30)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%83%ac%e3%83%93%e3%83%a5%e3%83%bc" title="レビュー">レビュー (2)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e7%94%9f%e6%b4%bb" title="生活">生活 (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e7%a4%be%e5%86%85se" title="社内se">社内se (16)</a>

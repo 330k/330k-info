@@ -103,7 +103,7 @@ if (!doNotTrack) {
 </ol>
 <p>とする。ここで、各フレーム画像の形式をPPMにしないとうまく動作しなかった(BMP、PNGなどではなぜか動作せず)。</p>
 <p>例えば、以下のようにするとtest001.aviができあがる。</p>
-<div class="highlight"><pre class="chroma"><code class="language-Mathematica" data-lang="Mathematica"><span class="n">s</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">OpenWrite</span><span class="p">[</span><span class="w">
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-Mathematica" data-lang="Mathematica"><span class="n">s</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">OpenWrite</span><span class="p">[</span><span class="w">
 </span><span class="w">   </span><span class="s">&#34;!ffmpeg -y -vcodec ppm -f image2pipe -i - -vcodec rawvideo test001.avi&#34;</span><span class="p">,</span><span class="w"> </span><span class="n">BinaryFormat</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">True</span><span class="p">];</span><span class="w">
 </span><span class="w"></span><span class="n">Do</span><span class="p">[</span><span class="w">
 </span><span class="w">  </span><span class="n">BinaryWrite</span><span class="p">[</span><span class="n">s</span><span class="p">,</span><span class="w"> </span><span class="n">ExportString</span><span class="p">[</span><span class="w">
@@ -116,7 +116,7 @@ if (!doNotTrack) {
 </span><span class="w">  </span><span class="p">];</span><span class="w">
 </span><span class="w"></span><span class="n">Close</span><span class="p">[</span><span class="n">s</span><span class="p">]</span><span class="w">
 </span></code></pre></div><p><code>Export</code>と同じような使い勝手の関数<code>ExportMovie</code>を作るとこんな感じになる。</p>
-<div class="highlight"><pre class="chroma"><code class="language-Mathematica" data-lang="Mathematica"><span class="n">Options</span><span class="p">[</span><span class="n">ExportMovie</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w">
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-Mathematica" data-lang="Mathematica"><span class="n">Options</span><span class="p">[</span><span class="n">ExportMovie</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w">
 </span><span class="w">   </span><span class="s">&#34;FrameRate&#34;</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span><span class="w">
 </span><span class="w">   </span><span class="s">&#34;VideoCodecOption&#34;</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="s">&#34;-vcodec rawvideo&#34;</span><span class="p">,</span><span class="w">
 </span><span class="w">   </span><span class="s">&#34;ExportOptions&#34;</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">{}</span><span class="w">
@@ -148,7 +148,7 @@ if (!doNotTrack) {
 </span><span class="w">   </span><span class="p">};</span><span class="w">
 </span></code></pre></div><p>使い方の例としては以下。反復子を使って<code>Table</code>などと同様の表記で動画が作成できる。
 また、ffmpegでサポートされていれば、Mathematicaでサポートされていない形式でも動画が作成可能。</p>
-<div class="highlight"><pre class="chroma"><code class="language-Mathematica" data-lang="Mathematica"><span class="n">ExportMovie</span><span class="p">[</span><span class="s">&#34;test002.avi&#34;</span><span class="w">
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-Mathematica" data-lang="Mathematica"><span class="n">ExportMovie</span><span class="p">[</span><span class="s">&#34;test002.avi&#34;</span><span class="w">
 </span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="n">Plot</span><span class="p">[</span><span class="n">Sin</span><span class="p">[</span><span class="n">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">i</span><span class="p">],</span><span class="w"> </span><span class="p">{</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="n">Pi</span><span class="p">}</span><span class="w">
 </span><span class="w">  </span><span class="p">,</span><span class="w"> </span><span class="n">ImageSize</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">{</span><span class="mi">640</span><span class="p">,</span><span class="w"> </span><span class="mi">480</span><span class="p">}</span><span class="w">
 </span><span class="w">  </span><span class="p">,</span><span class="w"> </span><span class="n">PlotRange</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">{{</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="n">Pi</span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="mi">-1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">}}</span><span class="w">
@@ -201,6 +201,7 @@ if (!doNotTrack) {
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20210722-sr600-oirase/">2021年07月22日 SR600 奥入瀬</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20210718-shibu-toge/">2021年07月18日 渋峠(自走)</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/generate-secure-password-vba/">VBAで要件(ポリシー)に沿ったランダムパスワードを生成</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/openvpn-client-split-tunnel/">LinuxのOpenVPNクライアントでスプリットトンネリング</a></li>
@@ -220,7 +221,6 @@ if (!doNotTrack) {
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20201031-brm1031-tokyo-300km/">2020年10月31日 BRM1031 東京400 清水さった峠</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20201024-brm1024-saitama-attack-nihonkai-600km/">2020年10月24日 BRM1024 埼玉600 アタック日本海</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20201017-brm1017-yokohama-aoba-izu-300km/">2020年10月17日 BRM1017 横浜あおばスーパー300km 伊豆(酷)</a></li>
-			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20201004-osaka-tokyo-cannonball/">2020年10月04日 大阪→東京 キャノンボール 23時間37分</a></li>
 		</ul>
 	</div>
 </div>
@@ -271,7 +271,7 @@ if (!doNotTrack) {
 		<a class="widget-taglist__link widget__link btn" href="/tags/powershell" title="Powershell">Powershell (2)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/sql" title="SQL">SQL (3)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/sqlserver" title="Sqlserver">Sqlserver (1)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/sr600" title="Sr600">Sr600 (3)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/sr600" title="Sr600">Sr600 (4)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/ubuntu" title="Ubuntu">Ubuntu (18)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/vba" title="Vba">Vba (4)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/vpn" title="VPN">VPN (1)</a>
@@ -283,7 +283,7 @@ if (!doNotTrack) {
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%82%ad%e3%83%a3%e3%83%8e%e3%83%b3%e3%83%9c%e3%83%bc%e3%83%ab" title="キャノンボール">キャノンボール (2)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%83%84%e3%83%bc%e3%83%aa%e3%83%b3%e3%82%b0" title="ツーリング">ツーリング (51)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%83%91%e3%83%af%e3%83%8f%e3%83%a9" title="パワハラ">パワハラ (5)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%83%96%e3%83%ab%e3%83%99" title="ブルベ">ブルベ (29)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%83%96%e3%83%ab%e3%83%99" title="ブルベ">ブルベ (30)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%83%ac%e3%83%93%e3%83%a5%e3%83%bc" title="レビュー">レビュー (2)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e7%94%9f%e6%b4%bb" title="生活">生活 (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e7%a4%be%e5%86%85se" title="社内se">社内se (16)</a>
