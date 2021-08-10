@@ -104,99 +104,99 @@ if (!doNotTrack) {
 <h2 id="実際の挙動">実際の挙動</h2>
 <p>環境はWindows 10でPowerShellのバージョンは5.1。</p>
 <p>まずは差異の個数が0、1、2となるよう、<code>Compare-Object</code>で比較する。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="nb">PS </span><span class="n">T:</span><span class="p">\&gt;</span> <span class="nv">$diff0</span> <span class="p">=</span> <span class="nb">Compare-Object</span> <span class="p">@(</span><span class="n">1</span><span class="p">,</span><span class="n">2</span><span class="p">,</span><span class="n">3</span><span class="p">)</span> <span class="p">@(</span><span class="n">1</span><span class="p">,</span><span class="n">2</span><span class="p">,</span><span class="n">3</span><span class="p">)</span>
-<span class="nb">PS </span><span class="n">T:</span><span class="p">\&gt;</span> <span class="nv">$diff1</span> <span class="p">=</span> <span class="nb">Compare-Object</span> <span class="p">@(</span><span class="n">1</span><span class="p">,</span><span class="n">2</span><span class="p">,</span><span class="n">3</span><span class="p">)</span> <span class="p">@(</span><span class="n">1</span><span class="p">,</span><span class="n">2</span><span class="p">)</span>
-<span class="nb">PS </span><span class="n">T:</span><span class="p">\&gt;</span> <span class="nv">$diff2</span> <span class="p">=</span> <span class="nb">Compare-Object</span> <span class="p">@(</span><span class="n">1</span><span class="p">,</span><span class="n">2</span><span class="p">,</span><span class="n">3</span><span class="p">)</span> <span class="p">@(</span><span class="n">1</span><span class="p">)</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell">PS T:\&gt; $diff0 = Compare-Object @(1,2,3) @(1,2,3)
+PS T:\&gt; $diff1 = Compare-Object @(1,2,3) @(1,2)
+PS T:\&gt; $diff2 = Compare-Object @(1,2,3) @(1)
 </code></pre></div><p>上で説明したように、<code>$diff0</code>は<code>$null</code>が、<code>$diff1</code>は<code>PSCustomObject</code>が、<code>$diff2</code>は配列が返ってくる。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="nb">PS </span><span class="n">T:</span><span class="p">\&gt;</span> <span class="nv">$diff0</span>
-<span class="nb">PS </span><span class="n">T:</span><span class="p">\&gt;</span> <span class="nv">$diff1</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell">PS T:\&gt; $diff0
+PS T:\&gt; $diff1
 
-<span class="n">InputObject</span> <span class="n">SideIndicator</span>
-<span class="p">-----------</span> <span class="p">-------------</span>
-          <span class="n">3</span> <span class="p">&lt;=</span>
+InputObject SideIndicator
+----------- -------------
+          3 &lt;=
 
-<span class="nb">PS </span><span class="n">T:</span><span class="p">\&gt;</span> <span class="nv">$diff2</span>
+PS T:\&gt; $diff2
 
-<span class="n">InputObject</span> <span class="n">SideIndicator</span>
-<span class="p">-----------</span> <span class="p">-------------</span>
-          <span class="n">2</span> <span class="p">&lt;=</span>
-          <span class="n">3</span> <span class="p">&lt;=</span>
+InputObject SideIndicator
+----------- -------------
+          2 &lt;=
+          3 &lt;=
 </code></pre></div><p><code>$diff1</code>と<code>$diff2</code>の違いはコンソールに出力するとわかりにくいので、<code>getType()</code>を使って確認。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="nb">PS </span><span class="n">T:</span><span class="p">\&gt;</span> <span class="nv">$diff0</span><span class="p">.</span><span class="n">getType</span><span class="p">()</span>
-<span class="n">null</span> <span class="n">値の式ではメソッドを呼び出せません</span><span class="err">。</span>
-<span class="n">発生場所</span> <span class="n">行</span><span class="err">:</span><span class="n">1</span> <span class="n">文字</span><span class="err">:</span><span class="n">1</span>
-<span class="p">+</span> <span class="nv">$diff0</span><span class="p">.</span><span class="n">getType</span><span class="p">()</span>
-<span class="p">+</span> <span class="p">~~~~~~~~~~~~~~~~</span>
-    <span class="p">+</span> <span class="n">CategoryInfo</span>          <span class="err">:</span> <span class="n">InvalidOperation</span><span class="err">:</span> <span class="p">(</span><span class="err">:</span><span class="p">)</span> <span class="p">[]</span><span class="err">、</span><span class="n">RuntimeException</span>
-    <span class="p">+</span> <span class="n">FullyQualifiedErrorId</span> <span class="err">:</span> <span class="n">InvokeMethodOnNull</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell">PS T:\&gt; $diff0.getType()
+null 値の式ではメソッドを呼び出せません<span style="">。</span>
+発生場所 行<span style="">:</span>1 文字<span style="">:</span>1
++ $diff0.getType()
++ ~~~~~~~~~~~~~~~~
+    + CategoryInfo          <span style="">:</span> InvalidOperation<span style="">:</span> (<span style="">:</span>) []<span style="">、</span>RuntimeException
+    + FullyQualifiedErrorId <span style="">:</span> InvokeMethodOnNull
 
-<span class="nb">PS </span><span class="n">T:</span><span class="p">\&gt;</span> <span class="nv">$diff1</span><span class="p">.</span><span class="n">getType</span><span class="p">()</span>
+PS T:\&gt; $diff1.getType()
 
-<span class="n">IsPublic</span> <span class="n">IsSerial</span> <span class="n">Name</span>                                     <span class="n">BaseType</span>
-<span class="p">--------</span> <span class="p">--------</span> <span class="p">----</span>                                     <span class="p">--------</span>
-<span class="n">True</span>     <span class="n">False</span>    <span class="n">PSCustomObject</span>                           <span class="n">System</span><span class="p">.</span><span class="n">Object</span>
+IsPublic IsSerial Name                                     BaseType
+-------- -------- ----                                     --------
+True     False    PSCustomObject                           System.Object
 
-<span class="nb">PS </span><span class="n">T:</span><span class="p">\&gt;</span> <span class="nv">$diff2</span><span class="p">.</span><span class="n">getType</span><span class="p">()</span>
+PS T:\&gt; $diff2.getType()
 
-<span class="n">IsPublic</span> <span class="n">IsSerial</span> <span class="n">Name</span>                                     <span class="n">BaseType</span>
-<span class="p">--------</span> <span class="p">--------</span> <span class="p">----</span>                                     <span class="p">--------</span>
-<span class="n">True</span>     <span class="n">True</span>     <span class="n">Object</span><span class="p">[]</span>                                 <span class="n">System</span><span class="p">.</span><span class="n">Array</span>
+IsPublic IsSerial Name                                     BaseType
+-------- -------- ----                                     --------
+True     True     Object[]                                 System.Array
 </code></pre></div><p>このため、<code>Length</code>プロパティを使って差異があるかどうかを判定するのは上手くいかない(もちろん、<code>Length</code>プロパティを使わず、<code>$diff0 -neq $null</code>のようにすれば、差分があるかどうか自体は判定可能)。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="c"># 差分が1個のときだけLengthプロパティが無い(なぜか$nullにはLengthプロパティがある)</span>
-<span class="nb">PS </span><span class="n">T:</span><span class="p">\&gt;</span> <span class="nv">$diff0</span><span class="p">.</span><span class="n">Length</span>
-<span class="n">0</span>
-<span class="nb">PS </span><span class="n">T:</span><span class="p">\&gt;</span> <span class="nv">$diff1</span><span class="p">.</span><span class="n">Length</span>
-<span class="nb">PS </span><span class="n">T:</span><span class="p">\&gt;</span> <span class="nv">$diff2</span><span class="p">.</span><span class="n">Length</span>
-<span class="n">2</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell"><span style="color:#008000"># 差分が1個のときだけLengthプロパティが無い(なぜか$nullにはLengthプロパティがある)</span>
+PS T:\&gt; $diff0.Length
+0
+PS T:\&gt; $diff1.Length
+PS T:\&gt; $diff2.Length
+2
 
-<span class="c"># 差分があるかどうかを調べたいときは-ne 0を使えば一応正しく判定可能</span>
-<span class="nb">PS </span><span class="n">T:</span><span class="p">\&gt;</span> <span class="nv">$diff0</span><span class="p">.</span><span class="n">Length</span> <span class="o">-ne</span> <span class="n">0</span>
-<span class="n">False</span>
-<span class="nb">PS </span><span class="n">T:</span><span class="p">\&gt;</span> <span class="nv">$diff1</span><span class="p">.</span><span class="n">Length</span> <span class="o">-ne</span> <span class="n">0</span>
-<span class="n">True</span>
-<span class="nb">PS </span><span class="n">T:</span><span class="p">\&gt;</span> <span class="nv">$diff2</span><span class="p">.</span><span class="n">Length</span> <span class="o">-ne</span> <span class="n">0</span>
-<span class="n">True</span>
+<span style="color:#008000"># 差分があるかどうかを調べたいときは-ne 0を使えば一応正しく判定可能</span>
+PS T:\&gt; $diff0.Length -ne 0
+False
+PS T:\&gt; $diff1.Length -ne 0
+True
+PS T:\&gt; $diff2.Length -ne 0
+True
 
-<span class="c"># 同じように見えて-gt 0は使えない</span>
-<span class="nb">PS </span><span class="n">T:</span><span class="p">\&gt;</span> <span class="nv">$diff0</span><span class="p">.</span><span class="n">Length</span> <span class="o">-gt</span> <span class="n">0</span>
-<span class="n">False</span>
-<span class="nb">PS </span><span class="n">T:</span><span class="p">\&gt;</span> <span class="nv">$diff1</span><span class="p">.</span><span class="n">Length</span> <span class="o">-gt</span> <span class="n">0</span>
-<span class="n">False</span>
-<span class="nb">PS </span><span class="n">T:</span><span class="p">\&gt;</span> <span class="nv">$diff2</span><span class="p">.</span><span class="n">Length</span> <span class="o">-gt</span> <span class="n">0</span>
-<span class="n">True</span>
+<span style="color:#008000"># 同じように見えて-gt 0は使えない</span>
+PS T:\&gt; $diff0.Length -gt 0
+False
+PS T:\&gt; $diff1.Length -gt 0
+False
+PS T:\&gt; $diff2.Length -gt 0
+True
 </code></pre></div><p>対処法としては、<strong><code>Compare-Object</code>の結果を<code>@()</code>で囲んで、必ず配列が返ってくるようにするのが安全。</strong></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="nb">PS </span><span class="n">T:</span><span class="p">\&gt;</span> <span class="nv">$diff0_2</span> <span class="p">=</span> <span class="p">@(</span><span class="nb">Compare-Object</span> <span class="p">@(</span><span class="n">1</span><span class="p">,</span><span class="n">2</span><span class="p">,</span><span class="n">3</span><span class="p">)</span> <span class="p">@(</span><span class="n">1</span><span class="p">,</span><span class="n">2</span><span class="p">,</span><span class="n">3</span><span class="p">))</span>
-<span class="nb">PS </span><span class="n">T:</span><span class="p">\&gt;</span> <span class="nv">$diff1_2</span> <span class="p">=</span> <span class="p">@(</span><span class="nb">Compare-Object</span> <span class="p">@(</span><span class="n">1</span><span class="p">,</span><span class="n">2</span><span class="p">,</span><span class="n">3</span><span class="p">)</span> <span class="p">@(</span><span class="n">1</span><span class="p">,</span><span class="n">2</span><span class="p">))</span>
-<span class="nb">PS </span><span class="n">T:</span><span class="p">\&gt;</span> <span class="nv">$diff2_2</span> <span class="p">=</span> <span class="p">@(</span><span class="nb">Compare-Object</span> <span class="p">@(</span><span class="n">1</span><span class="p">,</span><span class="n">2</span><span class="p">,</span><span class="n">3</span><span class="p">)</span> <span class="p">@(</span><span class="n">1</span><span class="p">))</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell">PS T:\&gt; $diff0_2 = @(Compare-Object @(1,2,3) @(1,2,3))
+PS T:\&gt; $diff1_2 = @(Compare-Object @(1,2,3) @(1,2))
+PS T:\&gt; $diff2_2 = @(Compare-Object @(1,2,3) @(1))
 
-<span class="c"># GetType()で必ず配列が返る</span>
-<span class="nb">PS </span><span class="n">T:</span><span class="p">\&gt;</span> <span class="nv">$diff0_2</span><span class="p">.</span><span class="n">GetType</span><span class="p">()</span>
+<span style="color:#008000"># GetType()で必ず配列が返る</span>
+PS T:\&gt; $diff0_2.GetType()
 
-<span class="n">IsPublic</span> <span class="n">IsSerial</span> <span class="n">Name</span>                                     <span class="n">BaseType</span>
-<span class="p">--------</span> <span class="p">--------</span> <span class="p">----</span>                                     <span class="p">--------</span>
-<span class="n">True</span>     <span class="n">True</span>     <span class="n">Object</span><span class="p">[]</span>                                 <span class="n">System</span><span class="p">.</span><span class="n">Array</span>
-
-
-<span class="nb">PS </span><span class="n">T:</span><span class="p">\&gt;</span> <span class="nv">$diff1_2</span><span class="p">.</span><span class="n">GetType</span><span class="p">()</span>
-
-<span class="n">IsPublic</span> <span class="n">IsSerial</span> <span class="n">Name</span>                                     <span class="n">BaseType</span>
-<span class="p">--------</span> <span class="p">--------</span> <span class="p">----</span>                                     <span class="p">--------</span>
-<span class="n">True</span>     <span class="n">True</span>     <span class="n">Object</span><span class="p">[]</span>                                 <span class="n">System</span><span class="p">.</span><span class="n">Array</span>
+IsPublic IsSerial Name                                     BaseType
+-------- -------- ----                                     --------
+True     True     Object[]                                 System.Array
 
 
-<span class="nb">PS </span><span class="n">T:</span><span class="p">\&gt;</span> <span class="nv">$diff2_2</span><span class="p">.</span><span class="n">GetType</span><span class="p">()</span>
+PS T:\&gt; $diff1_2.GetType()
 
-<span class="n">IsPublic</span> <span class="n">IsSerial</span> <span class="n">Name</span>                                     <span class="n">BaseType</span>
-<span class="p">--------</span> <span class="p">--------</span> <span class="p">----</span>                                     <span class="p">--------</span>
-<span class="n">True</span>     <span class="n">True</span>     <span class="n">Object</span><span class="p">[]</span>                                 <span class="n">System</span><span class="p">.</span><span class="n">Array</span>
+IsPublic IsSerial Name                                     BaseType
+-------- -------- ----                                     --------
+True     True     Object[]                                 System.Array
 
-<span class="c"># Lengthプロパティも必ず存在する</span>
-<span class="nb">PS </span><span class="n">T:</span><span class="p">\&gt;</span> <span class="nv">$diff0_2</span><span class="p">.</span><span class="n">Length</span>
-<span class="n">0</span>
-<span class="nb">PS </span><span class="n">T:</span><span class="p">\&gt;</span> <span class="nv">$diff1_2</span><span class="p">.</span><span class="n">Length</span>
-<span class="n">1</span>
-<span class="nb">PS </span><span class="n">T:</span><span class="p">\&gt;</span> <span class="nv">$diff2_2</span><span class="p">.</span><span class="n">Length</span>
-<span class="n">2</span>
+
+PS T:\&gt; $diff2_2.GetType()
+
+IsPublic IsSerial Name                                     BaseType
+-------- -------- ----                                     --------
+True     True     Object[]                                 System.Array
+
+<span style="color:#008000"># Lengthプロパティも必ず存在する</span>
+PS T:\&gt; $diff0_2.Length
+0
+PS T:\&gt; $diff1_2.Length
+1
+PS T:\&gt; $diff2_2.Length
+2
 </code></pre></div><h2 id="参考">参考</h2>
 <ul>
 <li><a href="https://blog.shibata.tech/entry/2018/05/31/214439">PowerShellの&quot;罠&quot;と呼ばれるモノについて - しばたテックブログ</a></li>

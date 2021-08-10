@@ -114,141 +114,141 @@ if (!doNotTrack) {
 <p>またスクリプトエンジンとしてV8エンジンを使用するよう、「Chrome V8ランタイムを有効にする」にチェックが入っていることを確認。</p>
 <h3 id="メインスクリプト">メインスクリプト</h3>
 <p>次にスクリプト本体として、以下のコードを入れる。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript:gsync.js" data-lang="javascript:gsync.js"><span class="cm">/**
-</span><span class="cm"> * ガルーンの予定をREST APIを使用して取得しGoogle Calendarに同期
-</span><span class="cm"> */</span>
-<span class="kd">function</span> <span class="nx">syncGroonSchedule</span><span class="p">()</span> <span class="p">{</span>
-  <span class="kr">const</span> <span class="nx">TAG_GAROON_UNIQUE_EVENT_ID</span> <span class="o">=</span> <span class="s2">&#34;GAROON_UNIQUE_EVENT_ID&#34;</span><span class="p">;</span>
-  <span class="kr">const</span> <span class="nx">TAG_GAROON_SYNC_DATETIME</span> <span class="o">=</span> <span class="s2">&#34;GAROON_SYNC_DATETIME&#34;</span><span class="p">;</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript:gsync.js" data-lang="javascript:gsync.js"><span style="color:#008000">/**
+</span><span style="color:#008000"> * ガルーンの予定をREST APIを使用して取得しGoogle Calendarに同期
+</span><span style="color:#008000"> */</span>
+<span style="color:#00f">function</span> syncGroonSchedule() {
+  <span style="color:#00f">const</span> TAG_GAROON_UNIQUE_EVENT_ID = <span style="color:#a31515">&#34;GAROON_UNIQUE_EVENT_ID&#34;</span>;
+  <span style="color:#00f">const</span> TAG_GAROON_SYNC_DATETIME = <span style="color:#a31515">&#34;GAROON_SYNC_DATETIME&#34;</span>;
 
-  <span class="kr">const</span> <span class="nx">userproperties</span> <span class="o">=</span> <span class="nx">PropertiesService</span><span class="p">.</span><span class="nx">getUserProperties</span><span class="p">().</span><span class="nx">getProperties</span><span class="p">();</span>
-  <span class="kr">const</span> <span class="nx">cybozuuser</span> <span class="o">=</span> <span class="nx">userproperties</span><span class="p">[</span><span class="s2">&#34;CybozuUser&#34;</span><span class="p">];</span>
-  <span class="kr">const</span> <span class="nx">cybozupass</span> <span class="o">=</span> <span class="nx">userproperties</span><span class="p">[</span><span class="s2">&#34;CybozuPassword&#34;</span><span class="p">];</span>
-  <span class="kr">const</span> <span class="nx">syncdaysbefore</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">userproperties</span><span class="p">[</span><span class="s2">&#34;SyncDaysBefore&#34;</span><span class="p">]);</span>
-  <span class="kr">const</span> <span class="nx">syncdaysafter</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">userproperties</span><span class="p">[</span><span class="s2">&#34;SyncDaysAfter&#34;</span><span class="p">]);</span>
+  <span style="color:#00f">const</span> userproperties = PropertiesService.getUserProperties().getProperties();
+  <span style="color:#00f">const</span> cybozuuser = userproperties[<span style="color:#a31515">&#34;CybozuUser&#34;</span>];
+  <span style="color:#00f">const</span> cybozupass = userproperties[<span style="color:#a31515">&#34;CybozuPassword&#34;</span>];
+  <span style="color:#00f">const</span> syncdaysbefore = JSON.parse(userproperties[<span style="color:#a31515">&#34;SyncDaysBefore&#34;</span>]);
+  <span style="color:#00f">const</span> syncdaysafter = JSON.parse(userproperties[<span style="color:#a31515">&#34;SyncDaysAfter&#34;</span>]);
   
-  <span class="kr">const</span> <span class="nx">today</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">();</span>
-  <span class="kr">const</span> <span class="nx">datestart</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">(</span><span class="nx">today</span><span class="p">);</span>
-  <span class="kr">const</span> <span class="nx">dateend</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">(</span><span class="nx">today</span><span class="p">);</span>
+  <span style="color:#00f">const</span> today = <span style="color:#00f">new</span> Date();
+  <span style="color:#00f">const</span> datestart = <span style="color:#00f">new</span> Date(today);
+  <span style="color:#00f">const</span> dateend = <span style="color:#00f">new</span> Date(today);
   
-  <span class="nx">datestart</span><span class="p">.</span><span class="nx">setDate</span><span class="p">(</span><span class="nx">today</span><span class="p">.</span><span class="nx">getDate</span><span class="p">()</span> <span class="o">-</span> <span class="nx">syncdaysbefore</span><span class="p">);</span>
-  <span class="nx">datestart</span><span class="p">.</span><span class="nx">setHours</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
-  <span class="nx">dateend</span><span class="p">.</span><span class="nx">setDate</span><span class="p">(</span><span class="nx">today</span><span class="p">.</span><span class="nx">getDate</span><span class="p">()</span> <span class="o">+</span> <span class="nx">syncdaysafter</span><span class="p">);</span>
-  <span class="nx">dateend</span><span class="p">.</span><span class="nx">setHours</span><span class="p">(</span><span class="mi">23</span><span class="p">,</span> <span class="mi">59</span><span class="p">,</span> <span class="mi">59</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">([</span><span class="nx">datestart</span><span class="p">,</span> <span class="nx">dateend</span><span class="p">]);</span>
+  datestart.setDate(today.getDate() - syncdaysbefore);
+  datestart.setHours(0, 0, 0, 0);
+  dateend.setDate(today.getDate() + syncdaysafter);
+  dateend.setHours(23, 59, 59, 0);
+  console.log([datestart, dateend]);
 
-  <span class="c1">// Garoonの予定一覧をREST APIを使って取得(とりあえず最大200件。GASの6分の実行制限時間があるため、360件以上に対応するならスプレッドシートに書き出しておく、などの処理が必要)
-</span><span class="c1"></span>  <span class="kr">const</span> <span class="nx">result</span> <span class="o">=</span> <span class="nx">UrlFetchApp</span><span class="p">.</span><span class="nx">fetch</span><span class="p">(</span><span class="s2">&#34;https://*****.cybozu.com/g/api/v1/schedule/events?rangeStart=&#34;</span>
-   <span class="o">+</span> <span class="nb">encodeURIComponent</span><span class="p">(</span><span class="nx">formatISODateTime</span><span class="p">(</span><span class="nx">datestart</span><span class="p">))</span> <span class="o">+</span> <span class="s2">&#34;&amp;rangeEnd=&#34;</span> <span class="o">+</span> <span class="nb">encodeURIComponent</span><span class="p">(</span><span class="nx">formatISODateTime</span><span class="p">(</span><span class="nx">dateend</span><span class="p">))</span> <span class="o">+</span> <span class="s2">&#34;&amp;orderBy=start%20asc&amp;limit=200&#34;</span><span class="p">,</span> <span class="p">{</span>
-    <span class="nx">method</span><span class="o">:</span> <span class="s2">&#34;get&#34;</span><span class="p">,</span>
-    <span class="nx">headers</span><span class="o">:</span> <span class="p">{</span>
-      <span class="s2">&#34;X-Cybozu-Authorization&#34;</span><span class="o">:</span> <span class="nx">Utilities</span><span class="p">.</span><span class="nx">base64Encode</span><span class="p">(</span><span class="nx">cybozuuser</span> <span class="o">+</span> <span class="s2">&#34;:&#34;</span> <span class="o">+</span> <span class="nx">cybozupass</span><span class="p">),</span>
-      <span class="s2">&#34;Content-Type&#34;</span><span class="o">:</span> <span class="s2">&#34;application/json&#34;</span>
-    <span class="p">}</span>
-  <span class="p">});</span>
-  <span class="c1">//console.log(result.getContentText(&#34;UTF-8&#34;));
-</span><span class="c1"></span>  <span class="kr">const</span> <span class="nx">events</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">result</span><span class="p">.</span><span class="nx">getContentText</span><span class="p">(</span><span class="s2">&#34;UTF-8&#34;</span><span class="p">)).</span><span class="nx">events</span><span class="p">;</span>
+  <span style="color:#008000">// Garoonの予定一覧をREST APIを使って取得(とりあえず最大200件。GASの6分の実行制限時間があるため、360件以上に対応するならスプレッドシートに書き出しておく、などの処理が必要)
+</span><span style="color:#008000"></span>  <span style="color:#00f">const</span> result = UrlFetchApp.fetch(<span style="color:#a31515">&#34;https://*****.cybozu.com/g/api/v1/schedule/events?rangeStart=&#34;</span>
+   + encodeURIComponent(formatISODateTime(datestart)) + <span style="color:#a31515">&#34;&amp;rangeEnd=&#34;</span> + encodeURIComponent(formatISODateTime(dateend)) + <span style="color:#a31515">&#34;&amp;orderBy=start%20asc&amp;limit=200&#34;</span>, {
+    method: <span style="color:#a31515">&#34;get&#34;</span>,
+    headers: {
+      <span style="color:#a31515">&#34;X-Cybozu-Authorization&#34;</span>: Utilities.base64Encode(cybozuuser + <span style="color:#a31515">&#34;:&#34;</span> + cybozupass),
+      <span style="color:#a31515">&#34;Content-Type&#34;</span>: <span style="color:#a31515">&#34;application/json&#34;</span>
+    }
+  });
+  <span style="color:#008000">//console.log(result.getContentText(&#34;UTF-8&#34;));
+</span><span style="color:#008000"></span>  <span style="color:#00f">const</span> events = JSON.parse(result.getContentText(<span style="color:#a31515">&#34;UTF-8&#34;</span>)).events;
   
-  <span class="c1">// 期間内のGoogleカレンダー予定を取得
-</span><span class="c1"></span>  <span class="kr">const</span> <span class="nx">calendar</span> <span class="o">=</span> <span class="nx">getSyncCalendar</span><span class="p">();</span>
-  <span class="kr">const</span> <span class="nx">gcalexistingevents</span> <span class="o">=</span> <span class="nx">calendar</span><span class="p">.</span><span class="nx">getEvents</span><span class="p">(</span><span class="nx">datestart</span><span class="p">,</span> <span class="nx">dateend</span><span class="p">);</span>
+  <span style="color:#008000">// 期間内のGoogleカレンダー予定を取得
+</span><span style="color:#008000"></span>  <span style="color:#00f">const</span> calendar = getSyncCalendar();
+  <span style="color:#00f">const</span> gcalexistingevents = calendar.getEvents(datestart, dateend);
 
-  <span class="k">for</span><span class="p">(</span><span class="kr">const</span> <span class="nx">event</span> <span class="k">of</span> <span class="nx">events</span><span class="p">){</span>
-    <span class="kd">let</span> <span class="nx">uniqueid</span> <span class="o">=</span> <span class="nx">getGaroonUniqueEventID</span><span class="p">(</span><span class="nx">event</span><span class="p">);</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">([</span><span class="s2">&#34;GAROON EVENT&#34;</span><span class="p">,</span> <span class="nx">event</span><span class="p">.</span><span class="nx">subject</span><span class="p">,</span> <span class="nx">event</span><span class="p">.</span><span class="nx">start</span><span class="p">.</span><span class="nx">dateTime</span><span class="p">,</span> <span class="nx">event</span><span class="p">.</span><span class="nx">updatedAt</span><span class="p">,</span> <span class="nx">uniqueid</span><span class="p">]);</span>
+  <span style="color:#00f">for</span>(<span style="color:#00f">const</span> event <span style="color:#00f">of</span> events){
+    <span style="color:#00f">let</span> uniqueid = getGaroonUniqueEventID(event);
+    console.log([<span style="color:#a31515">&#34;GAROON EVENT&#34;</span>, event.subject, event.start.dateTime, event.updatedAt, uniqueid]);
 
-    <span class="kr">const</span> <span class="nx">gcalexistingevent</span> <span class="o">=</span> <span class="nx">gcalexistingevents</span><span class="p">.</span><span class="nx">find</span><span class="p">((</span><span class="nx">e</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="nx">e</span><span class="p">.</span><span class="nx">getTag</span><span class="p">(</span><span class="nx">TAG_GAROON_UNIQUE_EVENT_ID</span><span class="p">)</span> <span class="o">===</span> <span class="nx">uniqueid</span><span class="p">);</span>
-    <span class="k">if</span><span class="p">(</span><span class="nx">gcalexistingevent</span><span class="p">){</span>
-      <span class="c1">// ガルーンの予定がすでにGoogle Calendarに存在する
-</span><span class="c1"></span>      <span class="k">if</span><span class="p">((</span><span class="k">new</span> <span class="nb">Date</span><span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">updatedAt</span><span class="p">)).</span><span class="nx">getTime</span><span class="p">()</span> <span class="o">&gt;</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">(</span><span class="nx">gcalexistingevent</span><span class="p">.</span><span class="nx">getTag</span><span class="p">(</span><span class="nx">TAG_GAROON_SYNC_DATETIME</span><span class="p">)).</span><span class="nx">getTime</span><span class="p">()){</span>
-        <span class="c1">// 最終同期日時よりも更新日時が新しいときは既存のイベントを削除
-</span><span class="c1"></span>        <span class="nx">gcalexistingevent</span><span class="p">.</span><span class="nx">deleteEvent</span><span class="p">();</span>
-        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&#34;UPDATED. DELETED EXISTING EVENT&#34;</span><span class="p">);</span>
+    <span style="color:#00f">const</span> gcalexistingevent = gcalexistingevents.find((e) =&gt; e.getTag(TAG_GAROON_UNIQUE_EVENT_ID) === uniqueid);
+    <span style="color:#00f">if</span>(gcalexistingevent){
+      <span style="color:#008000">// ガルーンの予定がすでにGoogle Calendarに存在する
+</span><span style="color:#008000"></span>      <span style="color:#00f">if</span>((<span style="color:#00f">new</span> Date(event.updatedAt)).getTime() &gt; <span style="color:#00f">new</span> Date(gcalexistingevent.getTag(TAG_GAROON_SYNC_DATETIME)).getTime()){
+        <span style="color:#008000">// 最終同期日時よりも更新日時が新しいときは既存のイベントを削除
+</span><span style="color:#008000"></span>        gcalexistingevent.deleteEvent();
+        console.log(<span style="color:#a31515">&#34;UPDATED. DELETED EXISTING EVENT&#34;</span>);
 
-      <span class="p">}</span><span class="k">else</span><span class="p">{</span>
-        <span class="c1">// 更新がない場合はスキップ
-</span><span class="c1"></span>        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&#34;SKIPPED&#34;</span><span class="p">);</span>
-        <span class="k">continue</span><span class="p">;</span>
-      <span class="p">}</span>
-    <span class="p">}</span>
+      }<span style="color:#00f">else</span>{
+        <span style="color:#008000">// 更新がない場合はスキップ
+</span><span style="color:#008000"></span>        console.log(<span style="color:#a31515">&#34;SKIPPED&#34;</span>);
+        <span style="color:#00f">continue</span>;
+      }
+    }
 
-    <span class="kd">let</span> <span class="nx">gcalevent</span><span class="p">;</span>
-    <span class="kr">const</span> <span class="nx">eventtitle</span> <span class="o">=</span> <span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">eventMenu</span> <span class="o">?</span> <span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">eventMenu</span> <span class="o">+</span> <span class="s2">&#34; &#34;</span><span class="p">)</span> <span class="o">:</span> <span class="s2">&#34;&#34;</span><span class="p">)</span> <span class="o">+</span> <span class="nx">event</span><span class="p">.</span><span class="nx">subject</span><span class="p">;</span>
-    <span class="kr">const</span> <span class="nx">eventoptions</span> <span class="o">=</span> <span class="p">{</span>
-      <span class="s2">&#34;description&#34;</span><span class="o">:</span> <span class="nx">event</span><span class="p">.</span><span class="nx">notes</span>
-    <span class="p">}</span>
+    <span style="color:#00f">let</span> gcalevent;
+    <span style="color:#00f">const</span> eventtitle = (event.eventMenu ? (event.eventMenu + <span style="color:#a31515">&#34; &#34;</span>) : <span style="color:#a31515">&#34;&#34;</span>) + event.subject;
+    <span style="color:#00f">const</span> eventoptions = {
+      <span style="color:#a31515">&#34;description&#34;</span>: event.notes
+    }
 
-    <span class="k">if</span><span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">isAllDay</span><span class="p">){</span>
-      <span class="kd">let</span> <span class="nx">eventstart</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">start</span><span class="p">.</span><span class="nx">dateTime</span><span class="p">);</span>
-      <span class="kd">let</span> <span class="nx">eventend</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">end</span><span class="p">.</span><span class="nx">dateTime</span><span class="p">);</span>
+    <span style="color:#00f">if</span>(event.isAllDay){
+      <span style="color:#00f">let</span> eventstart = <span style="color:#00f">new</span> Date(event.start.dateTime);
+      <span style="color:#00f">let</span> eventend = <span style="color:#00f">new</span> Date(event.end.dateTime);
 
-      <span class="c1">//終日予定の終了時刻はガルーンは当日の23:59:59で返ってくるが、Google Calendarは翌日00:00:00にする
-</span><span class="c1"></span>      <span class="nx">eventend</span><span class="p">.</span><span class="nx">setSeconds</span><span class="p">(</span><span class="nx">eventend</span><span class="p">.</span><span class="nx">getSeconds</span><span class="p">()</span> <span class="o">+</span> <span class="mi">1</span><span class="p">);</span>
-      <span class="nx">gcalevent</span> <span class="o">=</span> <span class="nx">calendar</span><span class="p">.</span><span class="nx">createAllDayEvent</span><span class="p">(</span><span class="nx">eventtitle</span><span class="p">,</span> <span class="nx">eventstart</span><span class="p">,</span> <span class="nx">eventend</span><span class="p">,</span> <span class="nx">eventoptions</span><span class="p">);</span>
+      <span style="color:#008000">//終日予定の終了時刻はガルーンは当日の23:59:59で返ってくるが、Google Calendarは翌日00:00:00にする
+</span><span style="color:#008000"></span>      eventend.setSeconds(eventend.getSeconds() + 1);
+      gcalevent = calendar.createAllDayEvent(eventtitle, eventstart, eventend, eventoptions);
 
-    <span class="p">}</span><span class="k">else</span><span class="p">{</span>
-      <span class="kd">let</span> <span class="nx">eventstart</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">start</span><span class="p">.</span><span class="nx">dateTime</span><span class="p">);</span>
-      <span class="kd">let</span> <span class="nx">eventend</span><span class="p">;</span>
-      <span class="k">if</span><span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">isStartOnly</span><span class="p">){</span>
-        <span class="nx">eventend</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">start</span><span class="p">.</span><span class="nx">dateTime</span><span class="p">);</span>
-      <span class="p">}</span><span class="k">else</span><span class="p">{</span>
-        <span class="nx">eventend</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">end</span><span class="p">.</span><span class="nx">dateTime</span><span class="p">);</span>
-      <span class="p">}</span>
-      <span class="nx">gcalevent</span> <span class="o">=</span> <span class="nx">calendar</span><span class="p">.</span><span class="nx">createEvent</span><span class="p">(</span><span class="nx">eventtitle</span><span class="p">,</span> <span class="nx">eventstart</span><span class="p">,</span> <span class="nx">eventend</span><span class="p">,</span> <span class="nx">eventoptions</span><span class="p">);</span>
-    <span class="p">}</span>
+    }<span style="color:#00f">else</span>{
+      <span style="color:#00f">let</span> eventstart = <span style="color:#00f">new</span> Date(event.start.dateTime);
+      <span style="color:#00f">let</span> eventend;
+      <span style="color:#00f">if</span>(event.isStartOnly){
+        eventend = <span style="color:#00f">new</span> Date(event.start.dateTime);
+      }<span style="color:#00f">else</span>{
+        eventend = <span style="color:#00f">new</span> Date(event.end.dateTime);
+      }
+      gcalevent = calendar.createEvent(eventtitle, eventstart, eventend, eventoptions);
+    }
 
-    <span class="nx">gcalevent</span><span class="p">.</span><span class="nx">setTag</span><span class="p">(</span><span class="nx">TAG_GAROON_UNIQUE_EVENT_ID</span><span class="p">,</span> <span class="nx">uniqueid</span><span class="p">);</span>
-    <span class="nx">gcalevent</span><span class="p">.</span><span class="nx">setTag</span><span class="p">(</span><span class="nx">TAG_GAROON_SYNC_DATETIME</span><span class="p">,</span> <span class="nx">today</span><span class="p">.</span><span class="nx">toISOString</span><span class="p">());</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&#34;CREATED&#34;</span><span class="p">);</span>
+    gcalevent.setTag(TAG_GAROON_UNIQUE_EVENT_ID, uniqueid);
+    gcalevent.setTag(TAG_GAROON_SYNC_DATETIME, today.toISOString());
+    console.log(<span style="color:#a31515">&#34;CREATED&#34;</span>);
 
-    <span class="c1">// sleepなしで連続追加するとすぐにエラーが出るので暫定対処
-</span><span class="c1"></span>    <span class="nx">Utilities</span><span class="p">.</span><span class="nx">sleep</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
-  <span class="p">}</span>
+    <span style="color:#008000">// sleepなしで連続追加するとすぐにエラーが出るので暫定対処
+</span><span style="color:#008000"></span>    Utilities.sleep(1000);
+  }
 
-  <span class="c1">// ガルーンで削除された予定をGoogle Calendarから削除
-</span><span class="c1"></span>  <span class="kr">const</span> <span class="nx">garoonuniqueeventids</span> <span class="o">=</span> <span class="nx">events</span><span class="p">.</span><span class="nx">map</span><span class="p">((</span><span class="nx">e</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="nx">getGaroonUniqueEventID</span><span class="p">(</span><span class="nx">e</span><span class="p">));</span>
-  <span class="k">for</span><span class="p">(</span><span class="kr">const</span> <span class="nx">e</span> <span class="k">of</span> <span class="nx">gcalexistingevents</span><span class="p">){</span>
-    <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nx">garoonuniqueeventids</span><span class="p">.</span><span class="nx">includes</span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">getTag</span><span class="p">(</span><span class="nx">TAG_GAROON_UNIQUE_EVENT_ID</span><span class="p">))){</span>
-      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&#34;DELETED: &#34;</span> <span class="o">+</span> <span class="nx">e</span><span class="p">.</span><span class="nx">getTitle</span><span class="p">());</span>
-      <span class="nx">e</span><span class="p">.</span><span class="nx">deleteEvent</span><span class="p">();</span>
-    <span class="p">}</span>
-  <span class="p">}</span>
-<span class="p">}</span>
+  <span style="color:#008000">// ガルーンで削除された予定をGoogle Calendarから削除
+</span><span style="color:#008000"></span>  <span style="color:#00f">const</span> garoonuniqueeventids = events.map((e) =&gt; getGaroonUniqueEventID(e));
+  <span style="color:#00f">for</span>(<span style="color:#00f">const</span> e <span style="color:#00f">of</span> gcalexistingevents){
+    <span style="color:#00f">if</span>(!garoonuniqueeventids.includes(e.getTag(TAG_GAROON_UNIQUE_EVENT_ID))){
+      console.log(<span style="color:#a31515">&#34;DELETED: &#34;</span> + e.getTitle());
+      e.deleteEvent();
+    }
+  }
+}
 
-<span class="cm">/**
-</span><span class="cm"> * Google CalendarのTagに設定する予定ID(GaroonのeventIdとreapeatIdの組み合わせて一意にする)
-</span><span class="cm"> * @return {string}
-</span><span class="cm"> */</span>
-<span class="kd">function</span> <span class="nx">getGaroonUniqueEventID</span><span class="p">(</span><span class="nx">garoonevent</span><span class="p">){</span>
-  <span class="k">return</span> <span class="nx">garoonevent</span><span class="p">.</span><span class="nx">id</span> <span class="o">+</span> <span class="p">(</span><span class="nx">garoonevent</span><span class="p">.</span><span class="nx">repeatId</span> <span class="o">?</span> <span class="p">(</span><span class="s2">&#34;-&#34;</span> <span class="o">+</span> <span class="nx">garoonevent</span><span class="p">.</span><span class="nx">repeatId</span><span class="p">)</span> <span class="o">:</span> <span class="s2">&#34;&#34;</span><span class="p">);</span>
-<span class="p">}</span>
+<span style="color:#008000">/**
+</span><span style="color:#008000"> * Google CalendarのTagに設定する予定ID(GaroonのeventIdとreapeatIdの組み合わせて一意にする)
+</span><span style="color:#008000"> * @return {string}
+</span><span style="color:#008000"> */</span>
+<span style="color:#00f">function</span> getGaroonUniqueEventID(garoonevent){
+  <span style="color:#00f">return</span> garoonevent.id + (garoonevent.repeatId ? (<span style="color:#a31515">&#34;-&#34;</span> + garoonevent.repeatId) : <span style="color:#a31515">&#34;&#34;</span>);
+}
 
-<span class="cm">/**
-</span><span class="cm"> * 同期対象のGoogle Calendarを取得(存在しなければ作成する)
-</span><span class="cm"> * @return {CalendarApp.Calendar}
-</span><span class="cm"> */</span>
-<span class="kd">function</span> <span class="nx">getSyncCalendar</span><span class="p">(){</span>
-  <span class="kr">const</span> <span class="nx">calendarname</span> <span class="o">=</span> <span class="nx">PropertiesService</span><span class="p">.</span><span class="nx">getUserProperties</span><span class="p">().</span><span class="nx">getProperty</span><span class="p">(</span><span class="s2">&#34;CalendarName&#34;</span><span class="p">);</span>
-  <span class="kr">const</span> <span class="nx">calendars</span> <span class="o">=</span> <span class="nx">CalendarApp</span><span class="p">.</span><span class="nx">getOwnedCalendarsByName</span><span class="p">(</span><span class="nx">calendarname</span><span class="p">);</span>
+<span style="color:#008000">/**
+</span><span style="color:#008000"> * 同期対象のGoogle Calendarを取得(存在しなければ作成する)
+</span><span style="color:#008000"> * @return {CalendarApp.Calendar}
+</span><span style="color:#008000"> */</span>
+<span style="color:#00f">function</span> getSyncCalendar(){
+  <span style="color:#00f">const</span> calendarname = PropertiesService.getUserProperties().getProperty(<span style="color:#a31515">&#34;CalendarName&#34;</span>);
+  <span style="color:#00f">const</span> calendars = CalendarApp.getOwnedCalendarsByName(calendarname);
 
-  <span class="k">if</span><span class="p">(</span><span class="nx">calendars</span><span class="p">.</span><span class="nx">length</span><span class="p">){</span>
-    <span class="k">return</span> <span class="nx">calendars</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
-  <span class="p">}</span><span class="k">else</span><span class="p">{</span>
-    <span class="kr">const</span> <span class="nx">calendar</span> <span class="o">=</span> <span class="nx">CalendarApp</span><span class="p">.</span><span class="nx">createCalendar</span><span class="p">(</span><span class="nx">calendarname</span><span class="p">);</span>
-    <span class="k">return</span> <span class="nx">calendar</span><span class="p">;</span>
-  <span class="p">}</span>
-<span class="p">}</span>
+  <span style="color:#00f">if</span>(calendars.length){
+    <span style="color:#00f">return</span> calendars[0];
+  }<span style="color:#00f">else</span>{
+    <span style="color:#00f">const</span> calendar = CalendarApp.createCalendar(calendarname);
+    <span style="color:#00f">return</span> calendar;
+  }
+}
 
-<span class="cm">/**
-</span><span class="cm"> * 日付をyyyy-MM-ddTHH:mm:ss+hh:mm形式にする
-</span><span class="cm"> * @param {Date} d
-</span><span class="cm"> * @return {string}
-</span><span class="cm"> */</span>
-<span class="kd">function</span> <span class="nx">formatISODateTime</span><span class="p">(</span><span class="nx">d</span><span class="p">){</span>
-  <span class="k">return</span> <span class="nx">d</span><span class="p">.</span><span class="nx">getFullYear</span><span class="p">()</span> <span class="o">+</span> <span class="s2">&#34;-&#34;</span> <span class="o">+</span> <span class="p">(</span><span class="s2">&#34;0&#34;</span> <span class="o">+</span> <span class="p">(</span><span class="nx">d</span><span class="p">.</span><span class="nx">getMonth</span><span class="p">()</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)).</span><span class="nx">slice</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&#34;-&#34;</span> <span class="o">+</span> <span class="p">(</span><span class="s2">&#34;0&#34;</span> <span class="o">+</span> <span class="nx">d</span><span class="p">.</span><span class="nx">getDate</span><span class="p">()).</span><span class="nx">slice</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span>
-   <span class="o">+</span> <span class="s2">&#34;T&#34;</span> <span class="o">+</span> <span class="p">(</span><span class="s2">&#34;0&#34;</span> <span class="o">+</span> <span class="nx">d</span><span class="p">.</span><span class="nx">getHours</span><span class="p">()).</span><span class="nx">slice</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&#34;:&#34;</span> <span class="o">+</span> <span class="p">(</span><span class="s2">&#34;0&#34;</span> <span class="o">+</span> <span class="nx">d</span><span class="p">.</span><span class="nx">getMinutes</span><span class="p">()).</span><span class="nx">slice</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&#34;:&#34;</span> <span class="o">+</span> <span class="p">(</span><span class="s2">&#34;0&#34;</span> <span class="o">+</span> <span class="nx">d</span><span class="p">.</span><span class="nx">getSeconds</span><span class="p">()).</span><span class="nx">slice</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span>
-   <span class="o">+</span> <span class="p">(</span><span class="nx">d</span><span class="p">.</span><span class="nx">getTimezoneOffset</span><span class="p">()</span> <span class="o">&lt;=</span> <span class="mi">0</span> <span class="o">?</span> <span class="s2">&#34;+&#34;</span> <span class="o">:</span> <span class="s2">&#34;-&#34;</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="s2">&#34;0&#34;</span> <span class="o">+</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">floor</span><span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nx">abs</span><span class="p">(</span><span class="nx">d</span><span class="p">.</span><span class="nx">getTimezoneOffset</span><span class="p">())</span> <span class="o">/</span> <span class="mi">60</span><span class="p">)).</span><span class="nx">slice</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&#34;:&#34;</span> <span class="o">+</span> <span class="p">(</span><span class="s2">&#34;0&#34;</span> <span class="o">+</span> <span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nx">abs</span><span class="p">(</span><span class="nx">d</span><span class="p">.</span><span class="nx">getTimezoneOffset</span><span class="p">())</span> <span class="o">%</span> <span class="mi">60</span><span class="p">)).</span><span class="nx">slice</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">);</span>
-<span class="p">}</span>
+<span style="color:#008000">/**
+</span><span style="color:#008000"> * 日付をyyyy-MM-ddTHH:mm:ss+hh:mm形式にする
+</span><span style="color:#008000"> * @param {Date} d
+</span><span style="color:#008000"> * @return {string}
+</span><span style="color:#008000"> */</span>
+<span style="color:#00f">function</span> formatISODateTime(d){
+  <span style="color:#00f">return</span> d.getFullYear() + <span style="color:#a31515">&#34;-&#34;</span> + (<span style="color:#a31515">&#34;0&#34;</span> + (d.getMonth() + 1)).slice(-2) + <span style="color:#a31515">&#34;-&#34;</span> + (<span style="color:#a31515">&#34;0&#34;</span> + d.getDate()).slice(-2)
+   + <span style="color:#a31515">&#34;T&#34;</span> + (<span style="color:#a31515">&#34;0&#34;</span> + d.getHours()).slice(-2) + <span style="color:#a31515">&#34;:&#34;</span> + (<span style="color:#a31515">&#34;0&#34;</span> + d.getMinutes()).slice(-2) + <span style="color:#a31515">&#34;:&#34;</span> + (<span style="color:#a31515">&#34;0&#34;</span> + d.getSeconds()).slice(-2)
+   + (d.getTimezoneOffset() &lt;= 0 ? <span style="color:#a31515">&#34;+&#34;</span> : <span style="color:#a31515">&#34;-&#34;</span>) + (<span style="color:#a31515">&#34;0&#34;</span> + Math.floor(Math.abs(d.getTimezoneOffset()) / 60)).slice(-2) + <span style="color:#a31515">&#34;:&#34;</span> + (<span style="color:#a31515">&#34;0&#34;</span> + (Math.abs(d.getTimezoneOffset()) % 60)).slice(-2);
+}
 </code></pre></div><p>コード中、<code>https://*****.cybozu.com/g/api/v1/schedule/</code>の部分は使っている環境のリクエストURIに書き換える。</p>
 <p>参照) <a href="https://developer.cybozu.io/hc/ja/articles/360000503306-Garoon-REST-API%E3%81%AE%E5%85%B1%E9%80%9A%E4%BB%95%E6%A7%98#step4">Garoon REST APIの共通仕様 – cybozu developer network</a></p>
 <p>仕組みとしては、GoogleカレンダーにタグとしてガルーンのeventIdとrepeatIdを組み合わせたものを保存することで、ガルーンの予定との対応を保存している。
@@ -257,15 +257,15 @@ repeatIdに関してはまだドキュメントに載っていないので、将
 <h3 id="初期設定">初期設定</h3>
 <p>UserPropertiesに設定値を保存するため、適当にスクリプトファイルを作成し、下記内容の関数を作成。</p>
 <p>Cybozuのユーザ名とパスワードを自分のものに書き換えて(他のところもお好みで)、IDEから関数<code>initialize</code>を実行しておく。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">initialize</span><span class="p">(){</span>
-  <span class="nx">PropertiesService</span><span class="p">.</span><span class="nx">getUserProperties</span><span class="p">().</span><span class="nx">setProperties</span><span class="p">({</span>
-    <span class="s2">&#34;CybozuUser&#34;</span><span class="o">:</span> <span class="s2">&#34;****&#34;</span><span class="p">,</span>
-    <span class="s2">&#34;CybozuPassword&#34;</span><span class="o">:</span> <span class="s2">&#34;****&#34;</span><span class="p">,</span>
-    <span class="s2">&#34;SyncDaysBefore&#34;</span><span class="o">:</span> <span class="mi">7</span><span class="p">,</span>
-    <span class="s2">&#34;SyncDaysAfter&#34;</span><span class="o">:</span> <span class="mi">30</span><span class="p">,</span>
-    <span class="s2">&#34;CalendarName&#34;</span><span class="o">:</span> <span class="s2">&#34;Garoon&#34;</span>
-  <span class="p">})</span>
-<span class="p">}</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#00f">function</span> initialize(){
+  PropertiesService.getUserProperties().setProperties({
+    <span style="color:#a31515">&#34;CybozuUser&#34;</span>: <span style="color:#a31515">&#34;****&#34;</span>,
+    <span style="color:#a31515">&#34;CybozuPassword&#34;</span>: <span style="color:#a31515">&#34;****&#34;</span>,
+    <span style="color:#a31515">&#34;SyncDaysBefore&#34;</span>: 7,
+    <span style="color:#a31515">&#34;SyncDaysAfter&#34;</span>: 30,
+    <span style="color:#a31515">&#34;CalendarName&#34;</span>: <span style="color:#a31515">&#34;Garoon&#34;</span>
+  })
+}
 </code></pre></div><p>一度実行したら不要なので削除しておく(面倒だし、機密情報をスクリプトにベタ書きしたくないからUserPropertiesに保存してるのに。何とかなりませんかね、Google先生)。</p>
 <h3 id="初回起動およびトリガーの設定">初回起動およびトリガーの設定</h3>
 <p>一度<code>syncGroonSchedule</code>をIDEから実行し、動作することを確認。</p>

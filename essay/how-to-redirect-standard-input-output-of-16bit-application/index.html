@@ -104,33 +104,33 @@ if (!doNotTrack) {
 <p>以下はMathematica+.NET/Linkによるサンプル。
 標準出力は書き出されるたびにイベントハンドラで捕捉してoutputsに追加するので、<code>Dynamic[outputs]</code>などとしておくと、本当のターミナルの挙動に近づく。
 最初にcmd.exeの出力(&ldquo;Microsoft Windows [Version &hellip;&quot;)が入るので、16ビットのプログラムの出力だけがほしい場合は16ビットプログラム起動後にフラグを立てれば大丈夫。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-Mathematica" data-lang="Mathematica"><span class="n">outputs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{};</span><span class="w">
-</span><span class="w"></span><span class="n">outputhandler</span><span class="p">[</span><span class="nv">o_</span><span class="p">,</span><span class="w"> </span><span class="nv">args_</span><span class="p">]</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">Module</span><span class="p">[</span><span class="w">
-</span><span class="w">   </span><span class="p">{</span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">args</span><span class="o">@</span><span class="n">Data</span><span class="p">},</span><span class="w">
-</span><span class="w">   </span><span class="n">AppendTo</span><span class="p">[</span><span class="n">outputs</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="p">];</span><span class="w">
-</span><span class="w">   </span><span class="p">];</span><span class="w">
-</span><span class="w"></span><span class="n">NETBlock</span><span class="p">[</span><span class="w">
-</span><span class="w">  </span><span class="n">proc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">NETNew</span><span class="p">[</span><span class="s">&#34;System.Diagnostics.Process&#34;</span><span class="p">];</span><span class="w">
-</span><span class="w">  </span><span class="n">LoadNETType</span><span class="p">[</span><span class="s">&#34;System.Environment&#34;</span><span class="p">];</span><span class="w">
-</span><span class="w">  </span><span class="n">proc</span><span class="o">@</span><span class="n">StartInfo</span><span class="o">@</span><span class="n">FileName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nn">Environment`</span><span class="n">GetEnvironmentVariable</span><span class="p">[</span><span class="s">&#34;ComSpec&#34;</span><span class="p">];</span><span class="w">
-</span><span class="w">  </span><span class="n">proc</span><span class="o">@</span><span class="n">StartInfo</span><span class="o">@</span><span class="n">RedirectStandardInput</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">True</span><span class="p">;</span><span class="w">
-</span><span class="w">  </span><span class="n">proc</span><span class="o">@</span><span class="n">StartInfo</span><span class="o">@</span><span class="n">RedirectStandardOutput</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">True</span><span class="p">;</span><span class="w">
-</span><span class="w">  </span><span class="n">proc</span><span class="o">@</span><span class="n">StartInfo</span><span class="o">@</span><span class="n">UseShellExecute</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">False</span><span class="p">;</span><span class="w">
-</span><span class="w">  </span><span class="n">proc</span><span class="o">@</span><span class="n">StartInfo</span><span class="o">@</span><span class="n">CreateNoWindow</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">True</span><span class="p">;</span><span class="w">
-</span><span class="w">  </span><span class="n">proc</span><span class="o">@</span><span class="n">StartInfo</span><span class="o">@</span><span class="n">WorkingDirectory</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DirectoryName</span><span class="p">[</span><span class="n">proc</span><span class="o">@</span><span class="n">StartInfo</span><span class="o">@</span><span class="n">FileName</span><span class="p">];</span><span class="w">
-</span><span class="w">  </span><span class="n">AddEventHandler</span><span class="p">[</span><span class="n">proc</span><span class="o">@</span><span class="n">OutputDataReceived</span><span class="p">,</span><span class="w"> </span><span class="n">outputhandler</span><span class="p">];</span><span class="w">
-</span><span class="w">  </span><span class="n">proc</span><span class="o">@</span><span class="n">Start</span><span class="p">[];</span><span class="w">
-</span><span class="w">  </span><span class="n">proc</span><span class="o">@</span><span class="n">BeginOutputReadLine</span><span class="p">[];</span><span class="w">
-</span><span class="w">  </span><span class="n">proc</span><span class="o">@</span><span class="n">StandardInput</span><span class="o">@</span><span class="n">WriteLine</span><span class="p">[</span><span class="s">&#34;cd &#34;</span><span class="w"> </span><span class="o">&lt;&gt;</span><span class="w"> </span><span class="s">&#34;16ビットプログラムのディレクトリ&#34;</span><span class="p">];</span><span class="w">
-</span><span class="w">  </span><span class="n">proc</span><span class="o">@</span><span class="n">StandardInput</span><span class="o">@</span><span class="n">WriteLine</span><span class="p">[</span><span class="s">&#34;******.EXE(16ビットプログラム)&#34;</span><span class="p">];</span><span class="w">
-</span><span class="w">  
-</span><span class="w">  </span><span class="n">proc</span><span class="o">@</span><span class="n">StandardInput</span><span class="o">@</span><span class="n">WriteLine</span><span class="p">[</span><span class="s">&#34;16ビットプログラムの標準入力に渡す内容&#34;</span><span class="p">];</span><span class="w">
-</span><span class="w">  </span><span class="n">proc</span><span class="o">@</span><span class="n">StandardInput</span><span class="o">@</span><span class="n">Close</span><span class="p">[];</span><span class="w">
-</span><span class="w">  
-</span><span class="w">  </span><span class="n">proc</span><span class="o">@</span><span class="n">WaitForExit</span><span class="p">[];</span><span class="w">
-</span><span class="w">  </span><span class="n">proc</span><span class="o">@</span><span class="n">Close</span><span class="p">[];</span><span class="w">
-</span><span class="w">  </span><span class="p">];</span><span class="w">
-</span></code></pre></div><p>とはいっても64bit版のWindowsだと16bitのプログラムがそもそも動かない。</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Mathematica" data-lang="Mathematica">outputs = {};
+outputhandler[o_, args_] := Module[
+   {data = args@Data},
+   AppendTo[outputs, data];
+   ];
+NETBlock[
+  proc = NETNew[<span style="color:#a31515">&#34;System.Diagnostics.Process&#34;</span>];
+  LoadNETType[<span style="color:#a31515">&#34;System.Environment&#34;</span>];
+  proc@StartInfo@FileName = Environment`GetEnvironmentVariable[<span style="color:#a31515">&#34;ComSpec&#34;</span>];
+  proc@StartInfo@RedirectStandardInput = True;
+  proc@StartInfo@RedirectStandardOutput = True;
+  proc@StartInfo@UseShellExecute = False;
+  proc@StartInfo@CreateNoWindow = True;
+  proc@StartInfo@WorkingDirectory = DirectoryName[proc@StartInfo@FileName];
+  AddEventHandler[proc@OutputDataReceived, outputhandler];
+  proc@Start[];
+  proc@BeginOutputReadLine[];
+  proc@StandardInput@WriteLine[<span style="color:#a31515">&#34;cd &#34;</span> &lt;&gt; <span style="color:#a31515">&#34;16ビットプログラムのディレクトリ&#34;</span>];
+  proc@StandardInput@WriteLine[<span style="color:#a31515">&#34;******.EXE(16ビットプログラム)&#34;</span>];
+  
+  proc@StandardInput@WriteLine[<span style="color:#a31515">&#34;16ビットプログラムの標準入力に渡す内容&#34;</span>];
+  proc@StandardInput@Close[];
+  
+  proc@WaitForExit[];
+  proc@Close[];
+  ];
+</code></pre></div><p>とはいっても64bit版のWindowsだと16bitのプログラムがそもそも動かない。</p>
 
 		</div>
 		<footer class="post__footer">

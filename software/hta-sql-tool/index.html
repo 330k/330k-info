@@ -115,252 +115,252 @@ select intoで直接ファイルに書き出すこともできます。</p>
 <h2 id="ダウンロード">ダウンロード</h2>
 <p><a href="https://gist.github.com/330k/52e780c78cca3325c0f6">Gistからダウンロード</a></p>
 <p>もしくは以下のソースコードをメモ帳にコピー＆ペーストし、拡張子をhtaに変更してください。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
-<span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
-<span class="c">&lt;!--
-</span><span class="c">  HTA SQL Tool by 330k
-</span><span class="c">  Copyright (c) 2016 330k
-</span><span class="c">  This software is released under the MIT License.
-</span><span class="c">  http://opensource.org/licenses/mit-license.php
-</span><span class="c">--&gt;</span>
-<span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>HTA SQL Tool by 330k<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
-<span class="p">&lt;</span><span class="nt">HTA:APPLICATION</span> <span class="na">ID</span><span class="o">=</span><span class="s">&#34;USQLEXE&#34;</span> <span class="na">APPLICATIONNAME</span><span class="o">=</span><span class="s">&#34;USQLEXE&#34;</span> <span class="na">BORDER</span><span class="o">=</span><span class="s">&#34;thick&#34;</span> <span class="na">BORDERSTYLE</span><span class="o">=</span><span class="s">&#34;normal&#34;</span>
-<span class="na">CAPTION</span><span class="o">=</span><span class="s">&#34;yes&#34;</span> <span class="na">ICON</span><span class="o">=</span><span class="s">&#34;C:\WINDOWS\system32\rsnotify.exe&#34;</span> <span class="na">INNERBORDER</span><span class="o">=</span><span class="s">&#34;no&#34;</span>
-<span class="na">MAXIMIZEBUTTON</span><span class="o">=</span><span class="s">&#34;yes&#34;</span> <span class="na">MINIMIZEBUTTON</span><span class="o">=</span><span class="s">&#34;yes&#34;</span> <span class="na">SHOWINTASKBAR</span><span class="o">=</span><span class="s">&#34;yes&#34;</span> <span class="na">SINGLEINSTANCE</span><span class="o">=</span><span class="s">&#34;no&#34;</span>
-<span class="na">SYSMENU</span><span class="o">=</span><span class="s">&#34;yes&#34;</span> <span class="na">VERSION</span><span class="o">=</span><span class="s">&#34;1.0&#34;</span> <span class="na">WINDOWSTATE</span><span class="o">=</span><span class="s">&#34;normal&#34;</span> <span class="na">SCROLL</span><span class="o">=</span><span class="s">&#34;no&#34;</span> <span class="na">SCROLLFLAT</span><span class="o">=</span><span class="s">&#34;no&#34;</span>
-<span class="na">SELECTION</span><span class="o">=</span><span class="s">&#34;yes&#34;</span> <span class="na">CONTEXTMENU</span><span class="o">=</span><span class="s">&#34;yes&#34;</span> <span class="na">NAVIGABLE</span><span class="o">=</span><span class="s">&#34;yes&#34;</span> <span class="p">/&gt;</span>
-<span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
-<span class="p">&lt;</span><span class="nt">script</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;text/javascript&#34;</span><span class="p">&gt;</span>
-<span class="kd">var</span> <span class="nx">doc</span> <span class="o">=</span> <span class="nb">document</span><span class="p">;</span>
-<span class="nb">eval</span><span class="p">(</span><span class="s1">&#39;var document = doc&#39;</span><span class="p">);</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;html&gt;
+&lt;head&gt;
+<span style="color:#008000">&lt;!--
+</span><span style="color:#008000">  HTA SQL Tool by 330k
+</span><span style="color:#008000">  Copyright (c) 2016 330k
+</span><span style="color:#008000">  This software is released under the MIT License.
+</span><span style="color:#008000">  http://opensource.org/licenses/mit-license.php
+</span><span style="color:#008000">--&gt;</span>
+&lt;title&gt;HTA SQL Tool by 330k&lt;/title&gt;
+&lt;HTA:APPLICATION ID=<span style="color:#a31515">&#34;USQLEXE&#34;</span> APPLICATIONNAME=<span style="color:#a31515">&#34;USQLEXE&#34;</span> BORDER=<span style="color:#a31515">&#34;thick&#34;</span> BORDERSTYLE=<span style="color:#a31515">&#34;normal&#34;</span>
+CAPTION=<span style="color:#a31515">&#34;yes&#34;</span> ICON=<span style="color:#a31515">&#34;C:\WINDOWS\system32\rsnotify.exe&#34;</span> INNERBORDER=<span style="color:#a31515">&#34;no&#34;</span>
+MAXIMIZEBUTTON=<span style="color:#a31515">&#34;yes&#34;</span> MINIMIZEBUTTON=<span style="color:#a31515">&#34;yes&#34;</span> SHOWINTASKBAR=<span style="color:#a31515">&#34;yes&#34;</span> SINGLEINSTANCE=<span style="color:#a31515">&#34;no&#34;</span>
+SYSMENU=<span style="color:#a31515">&#34;yes&#34;</span> VERSION=<span style="color:#a31515">&#34;1.0&#34;</span> WINDOWSTATE=<span style="color:#a31515">&#34;normal&#34;</span> SCROLL=<span style="color:#a31515">&#34;no&#34;</span> SCROLLFLAT=<span style="color:#a31515">&#34;no&#34;</span>
+SELECTION=<span style="color:#a31515">&#34;yes&#34;</span> CONTEXTMENU=<span style="color:#a31515">&#34;yes&#34;</span> NAVIGABLE=<span style="color:#a31515">&#34;yes&#34;</span> /&gt;
+&lt;/head&gt;
+&lt;script type=<span style="color:#a31515">&#34;text/javascript&#34;</span>&gt;
+<span style="color:#00f">var</span> doc = document;
+eval(<span style="color:#a31515">&#39;var document = doc&#39;</span>);
 
-<span class="kd">var</span> <span class="nx">shell</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">ActiveXObject</span><span class="p">(</span><span class="s1">&#39;WScript.Shell&#39;</span><span class="p">);</span>
-<span class="c1">//var http = new ActiveXObject(&#34;Msxml2.XMLHTTP&#34;);
-</span><span class="c1"></span><span class="kd">var</span> <span class="nx">fso</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">ActiveXObject</span><span class="p">(</span><span class="s1">&#39;Scripting.FileSystemObject&#39;</span><span class="p">);</span>
-<span class="kd">var</span> <span class="nx">ado</span><span class="p">;</span>
-<span class="kd">var</span> <span class="nx">result_tsv</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
+<span style="color:#00f">var</span> shell = <span style="color:#00f">new</span> ActiveXObject(<span style="color:#a31515">&#39;WScript.Shell&#39;</span>);
+<span style="color:#008000">//var http = new ActiveXObject(&#34;Msxml2.XMLHTTP&#34;);
+</span><span style="color:#008000"></span><span style="color:#00f">var</span> fso = <span style="color:#00f">new</span> ActiveXObject(<span style="color:#a31515">&#39;Scripting.FileSystemObject&#39;</span>);
+<span style="color:#00f">var</span> ado;
+<span style="color:#00f">var</span> result_tsv = <span style="color:#a31515">&#39;&#39;</span>;
 
-<span class="nb">window</span><span class="p">.</span><span class="nx">onunload</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(){</span>
-    <span class="nx">closeADO</span><span class="p">();</span>
-<span class="p">};</span>
-<span class="nb">window</span><span class="p">.</span><span class="nx">onresize</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(){</span>
-    <span class="nb">document</span><span class="p">.</span><span class="nx">all</span><span class="p">.</span><span class="nx">result</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">height</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">clientHeight</span> <span class="o">-</span> <span class="nb">document</span><span class="p">.</span><span class="nx">all</span><span class="p">.</span><span class="nx">t1</span><span class="p">.</span><span class="nx">clientHeight</span> <span class="o">-</span> <span class="nb">document</span><span class="p">.</span><span class="nx">all</span><span class="p">.</span><span class="nx">status</span><span class="p">.</span><span class="nx">clientHeight</span><span class="p">;</span> <span class="p">};</span> <span class="nb">window</span><span class="p">.</span><span class="nx">onload</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(){</span>
-    <span class="nb">window</span><span class="p">.</span><span class="nx">onresize</span><span class="p">();</span>
-    <span class="k">try</span><span class="p">{</span>
-        <span class="nb">document</span><span class="p">.</span><span class="nx">all</span><span class="p">.</span><span class="nx">sql</span><span class="p">.</span><span class="nx">value</span> <span class="o">=</span> <span class="nx">shell</span><span class="p">.</span><span class="nx">RegRead</span><span class="p">(</span><span class="s2">&#34;HKCU\\SQLEXEC\\SQLLOG&#34;</span><span class="p">);</span>
-<span class="c1">//        document.all.filename.value = shell.RegRead(&#34;HKCU\\SQLEXEC\\LASTDB&#34;);
-</span><span class="c1">//        alert(USQLEXE.commandLine);
-</span><span class="c1"></span>    <span class="p">}</span><span class="k">catch</span><span class="p">(</span> <span class="nx">e</span> <span class="p">){</span>
-<span class="c1">//    	alert(e.message);
-</span><span class="c1"></span>    <span class="p">}</span>
-<span class="p">};</span>
+window.onunload = <span style="color:#00f">function</span>(){
+    closeADO();
+};
+window.onresize = <span style="color:#00f">function</span>(){
+    document.all.result.style.height = document.body.clientHeight - document.all.t1.clientHeight - document.all.status.clientHeight; }; window.onload = <span style="color:#00f">function</span>(){
+    window.onresize();
+    <span style="color:#00f">try</span>{
+        document.all.sql.value = shell.RegRead(<span style="color:#a31515">&#34;HKCU\\SQLEXEC\\SQLLOG&#34;</span>);
+<span style="color:#008000">//        document.all.filename.value = shell.RegRead(&#34;HKCU\\SQLEXEC\\LASTDB&#34;);
+</span><span style="color:#008000">//        alert(USQLEXE.commandLine);
+</span><span style="color:#008000"></span>    }<span style="color:#00f">catch</span>( e ){
+<span style="color:#008000">//    	alert(e.message);
+</span><span style="color:#008000"></span>    }
+};
 
-<span class="kd">function</span> <span class="nx">loadDatabase</span><span class="p">(){</span>
-    <span class="kd">var</span> <span class="nx">filepath</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;fileselector&#39;</span><span class="p">).</span><span class="nx">value</span> <span class="o">||</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;filename&#39;</span><span class="p">).</span><span class="nx">value</span><span class="p">;</span>
-    <span class="kd">var</span> <span class="nx">readonly</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;readonly&#39;</span><span class="p">).</span><span class="nx">value</span><span class="p">;</span>
-    <span class="kd">var</span> <span class="nx">hdr</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;hdr&#39;</span><span class="p">).</span><span class="nx">value</span><span class="p">;</span>
-    <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;filename&#39;</span><span class="p">).</span><span class="nx">value</span> <span class="o">=</span> <span class="nx">filepath</span><span class="p">;</span>
-    <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;fileselector&#39;</span><span class="p">).</span><span class="nx">parentNode</span><span class="p">.</span><span class="nx">innerHTML</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;fileselector&#39;</span><span class="p">).</span><span class="nx">parentNode</span><span class="p">.</span><span class="nx">innerHTML</span><span class="p">;</span>
-    <span class="nx">setTimeout</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
-        <span class="mi">_</span><span class="nx">loadDatabase</span><span class="p">(</span><span class="nx">filepath</span><span class="p">,</span> <span class="nx">readonly</span><span class="p">,</span> <span class="nx">hdr</span><span class="p">);</span>
-    <span class="p">},</span> <span class="mi">10</span><span class="p">);</span> <span class="c1">// wait for unlock file
-</span><span class="c1"></span>    <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
-<span class="p">}</span>
+<span style="color:#00f">function</span> loadDatabase(){
+    <span style="color:#00f">var</span> filepath = document.getElementById(<span style="color:#a31515">&#39;fileselector&#39;</span>).value || document.getElementById(<span style="color:#a31515">&#39;filename&#39;</span>).value;
+    <span style="color:#00f">var</span> readonly = document.getElementById(<span style="color:#a31515">&#39;readonly&#39;</span>).value;
+    <span style="color:#00f">var</span> hdr = document.getElementById(<span style="color:#a31515">&#39;hdr&#39;</span>).value;
+    document.getElementById(<span style="color:#a31515">&#39;filename&#39;</span>).value = filepath;
+    document.getElementById(<span style="color:#a31515">&#39;fileselector&#39;</span>).parentNode.innerHTML = document.getElementById(<span style="color:#a31515">&#39;fileselector&#39;</span>).parentNode.innerHTML;
+    setTimeout(<span style="color:#00f">function</span>(){
+        _loadDatabase(filepath, readonly, hdr);
+    }, 10); <span style="color:#008000">// wait for unlock file
+</span><span style="color:#008000"></span>    <span style="color:#00f">return</span> <span style="color:#00f">false</span>;
+}
 
-<span class="kd">function</span> <span class="mi">_</span><span class="nx">loadDatabase</span><span class="p">(</span> <span class="nx">filepath</span><span class="p">,</span> <span class="nx">readonly</span><span class="p">,</span> <span class="nx">hdr</span> <span class="p">){</span>
-    <span class="nx">closeADO</span><span class="p">();</span>
-    <span class="nx">ado</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">ActiveXObject</span><span class="p">(</span><span class="s2">&#34;ADODB.Connection&#34;</span><span class="p">);</span>
-    <span class="kd">var</span> <span class="nx">connect</span> <span class="o">=</span> <span class="p">[];</span>
+<span style="color:#00f">function</span> _loadDatabase( filepath, readonly, hdr ){
+    closeADO();
+    ado = <span style="color:#00f">new</span> ActiveXObject(<span style="color:#a31515">&#34;ADODB.Connection&#34;</span>);
+    <span style="color:#00f">var</span> connect = [];
 
-    <span class="k">if</span><span class="p">(</span> <span class="nx">filepath</span><span class="p">.</span><span class="nx">match</span><span class="p">(</span><span class="sr">/\.xls$/i</span><span class="p">)</span> <span class="p">){</span>
-        <span class="nx">connect</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="s1">&#39;Driver={Microsoft Excel Driver (*.xls)}; DBQ=&#39;</span> <span class="o">+</span> <span class="nx">filepath</span> <span class="o">+</span> <span class="s1">&#39;;HDR=&#39;</span> <span class="o">+</span> <span class="p">(</span><span class="nx">hdr</span> <span class="o">?</span> <span class="s1">&#39;Yes&#39;</span> <span class="o">:</span> <span class="s1">&#39;No&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;;ReadOnly=&#39;</span> <span class="o">+</span> <span class="p">(</span><span class="nx">readonly</span> <span class="o">?</span> <span class="mi">1</span> <span class="o">:</span> <span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;;&#34;&#39;</span><span class="p">);</span>
-        <span class="nx">connect</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="s1">&#39;Provider=Microsoft.Jet.OLEDB.4.0;Excel 8.0;DATABASE=&#39;</span> <span class="o">+</span> <span class="nx">filepath</span> <span class="o">+</span> <span class="s1">&#39;;HDR=&#39;</span> <span class="o">+</span> <span class="p">(</span><span class="nx">hdr</span> <span class="o">?</span> <span class="s1">&#39;Yes&#39;</span> <span class="o">:</span> <span class="s1">&#39;No&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;;ReadOnly=&#39;</span> <span class="o">+</span> <span class="p">(</span><span class="nx">readonly</span> <span class="o">?</span> <span class="mi">1</span> <span class="o">:</span> <span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;;&#34;&#39;</span><span class="p">);</span>
-        <span class="nx">connect</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="s1">&#39;Provider=Microsoft.ACE.OLEDB.12.0;Data Source=&#39;</span> <span class="o">+</span> <span class="nx">filepath</span> <span class="o">+</span> <span class="s1">&#39;;Extended Properties=&#34;Excel 8.0;HDR=&#39;</span> <span class="o">+</span> <span class="p">(</span><span class="nx">hdr</span> <span class="o">?</span> <span class="s1">&#39;Yes&#39;</span> <span class="o">:</span> <span class="s1">&#39;No&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;;ReadOnly=&#39;</span> <span class="o">+</span> <span class="p">(</span><span class="nx">readonly</span> <span class="o">?</span> <span class="mi">1</span> <span class="o">:</span> <span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;;&#34;&#39;</span><span class="p">);</span>
-        <span class="nx">connect</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="s1">&#39;Provider=MSDASQL.1;Extended Properties=&#34;DBQ=&#39;</span> <span class="o">+</span> <span class="nx">filepath</span> <span class="o">+</span> <span class="s1">&#39;;DefaultDir=C:\;Driver={Microsoft Excel Driver (*.xls)};DriverId=790;&#34;&#39;</span><span class="p">);</span>
-    <span class="p">}</span><span class="k">else</span> <span class="k">if</span><span class="p">(</span> <span class="nx">filepath</span><span class="p">.</span><span class="nx">match</span><span class="p">(</span><span class="sr">/(\.xlsx|\.xlsm|\.xlsb)$/i</span><span class="p">)</span> <span class="p">){</span>
-        <span class="nx">connect</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="s1">&#39;Provider=Microsoft.ACE.OLEDB.12.0; Data Source=&#39;</span> <span class="o">+</span> <span class="nx">filepath</span> <span class="o">+</span> <span class="s1">&#39;; Extended Properties=&#34;Excel 12.0;HDR=&#39;</span> <span class="o">+</span> <span class="p">(</span><span class="nx">hdr</span> <span class="o">?</span> <span class="s1">&#39;Yes&#39;</span> <span class="o">:</span><span class="s1">&#39;No&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;;ReadOnly=&#39;</span> <span class="o">+</span> <span class="p">(</span><span class="nx">readonly</span> <span class="o">?</span> <span class="mi">1</span> <span class="o">:</span> <span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;;&#34;&#39;</span><span class="p">);</span>
-        <span class="nx">connect</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="s1">&#39;Provider=Microsoft.ACE.OLEDB.12.0; Data Source=&#39;</span> <span class="o">+</span> <span class="nx">filepath</span> <span class="o">+</span> <span class="s1">&#39;; Extended Properties=&#34;Excel 12.0 Xml;HDR=&#39;</span> <span class="o">+</span> <span class="p">(</span><span class="nx">hdr</span> <span class="o">?</span> <span class="s1">&#39;Yes&#39;</span> <span class="o">:</span><span class="s1">&#39;No&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;;ReadOnly=&#39;</span> <span class="o">+</span> <span class="p">(</span><span class="nx">readonly</span> <span class="o">?</span> <span class="mi">1</span> <span class="o">:</span> <span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;;&#34;&#39;</span><span class="p">);</span>
-        <span class="nx">connect</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="s1">&#39;Provider=Microsoft.ACE.OLEDB.12.0; Data Source=&#39;</span> <span class="o">+</span> <span class="nx">filepath</span> <span class="o">+</span> <span class="s1">&#39;; Extended Properties=&#34;Excel 12.0 Macro;HDR=&#39;</span> <span class="o">+</span> <span class="p">(</span><span class="nx">hdr</span> <span class="o">?</span> <span class="s1">&#39;Yes&#39;</span> <span class="o">:</span><span class="s1">&#39;No&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;;ReadOnly=&#39;</span> <span class="o">+</span> <span class="p">(</span><span class="nx">readonly</span> <span class="o">?</span> <span class="mi">1</span> <span class="o">:</span> <span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;;&#34;&#39;</span><span class="p">);</span>
-        <span class="nx">connect</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="s1">&#39;Provider=Microsoft.ACE.OLEDB.12.0; Data Source=&#39;</span> <span class="o">+</span> <span class="nx">filepath</span> <span class="o">+</span> <span class="s1">&#39;; Extended Properties=&#34;Excel 12.0;IMEX=1;HDR=&#39;</span> <span class="o">+</span> <span class="p">(</span><span class="nx">hdr</span> <span class="o">?</span> <span class="s1">&#39;Yes&#39;</span> <span class="o">:</span><span class="s1">&#39;No&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;;ReadOnly=&#39;</span> <span class="o">+</span> <span class="p">(</span><span class="nx">readonly</span> <span class="o">?</span> <span class="mi">1</span> <span class="o">:</span> <span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;;&#34;&#39;</span><span class="p">);</span>
-        <span class="nx">connect</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="s1">&#39;Provider=Microsoft.ACE.OLEDB.12.0; Data Source=&#39;</span> <span class="o">+</span> <span class="nx">filepath</span> <span class="o">+</span> <span class="s1">&#39;; Extended Properties=&#34;Excel 14.0;HDR=&#39;</span> <span class="o">+</span> <span class="p">(</span><span class="nx">hdr</span> <span class="o">?</span> <span class="s1">&#39;Yes&#39;</span> <span class="o">:</span><span class="s1">&#39;No&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;;ReadOnly=&#39;</span> <span class="o">+</span> <span class="p">(</span><span class="nx">readonly</span> <span class="o">?</span> <span class="mi">1</span> <span class="o">:</span> <span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;;&#34;&#39;</span><span class="p">);</span>
-        <span class="nx">connect</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="s1">&#39;Provider=Microsoft.ACE.OLEDB.12.0; Data Source=&#39;</span> <span class="o">+</span> <span class="nx">filepath</span> <span class="o">+</span> <span class="s1">&#39;; Extended Properties=&#34;Excel 14.0;IMEX=1;HDR=&#39;</span> <span class="o">+</span> <span class="p">(</span><span class="nx">hdr</span> <span class="o">?</span> <span class="s1">&#39;Yes&#39;</span> <span class="o">:</span><span class="s1">&#39;No&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;;ReadOnly=&#39;</span> <span class="o">+</span> <span class="p">(</span><span class="nx">readonly</span> <span class="o">?</span> <span class="mi">1</span> <span class="o">:</span> <span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;;&#34;&#39;</span><span class="p">);</span>
-        <span class="nx">connect</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="s1">&#39;Driver={Microsoft Excel Driver (*.xls, *.xlsx, *.xlsm, *.xlsb)}; DBQ=&#39;</span> <span class="o">+</span> <span class="nx">filepath</span> <span class="o">+</span> <span class="s1">&#39;;ReadOnly=&#39;</span> <span class="o">+</span> <span class="p">(</span><span class="nx">readonly</span> <span class="o">?</span> <span class="mi">1</span> <span class="o">:</span> <span class="mi">0</span><span class="p">));</span>
-    <span class="p">}</span><span class="k">else</span> <span class="k">if</span><span class="p">(</span> <span class="nx">filepath</span><span class="p">.</span><span class="nx">match</span><span class="p">(</span><span class="sr">/\.csv$/i</span><span class="p">)</span> <span class="p">){</span>
-        <span class="nx">connect</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="s1">&#39;Driver={Microsoft Text Driver (*.txt; *.csv)}; DBQ=&#39;</span> <span class="o">+</span> <span class="nx">fso</span><span class="p">.</span><span class="nx">GetParentFolderName</span><span class="p">(</span><span class="nx">filepath</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;;ReadOnly=&#39;</span> <span class="o">+</span> <span class="p">(</span><span class="nx">readonly</span> <span class="o">?</span> <span class="mi">1</span> <span class="o">:</span> <span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;;FirstRowHasNames=&#39;</span> <span class="o">+</span> <span class="p">(</span><span class="nx">hdr</span> <span class="o">?</span> <span class="s1">&#39;1&#39;</span> <span class="o">:</span> <span class="s1">&#39;0&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;;MaxScanRows=8;&#39;</span><span class="p">);</span>
-        <span class="nx">connect</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="s1">&#39;Driver={Microsoft Text Driver (*.txt; *.csv)}; DBQ=&#39;</span> <span class="o">+</span> <span class="nx">fso</span><span class="p">.</span><span class="nx">GetParentFolderName</span><span class="p">(</span><span class="nx">filepath</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;;ReadOnly=&#39;</span> <span class="o">+</span> <span class="p">(</span><span class="nx">readonly</span> <span class="o">?</span> <span class="mi">1</span> <span class="o">:</span> <span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;;FirstRowHasNames=&#39;</span> <span class="o">+</span> <span class="p">(</span><span class="nx">hdr</span> <span class="o">?</span> <span class="s1">&#39;1&#39;</span> <span class="o">:</span> <span class="s1">&#39;0&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;;&#39;</span><span class="p">);</span>
-        <span class="nx">connect</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="s1">&#39;Provider=Microsoft.Jet.OLEDB.4.0;TEXT;DATABASE=&#39;</span> <span class="o">+</span> <span class="nx">fso</span><span class="p">.</span><span class="nx">GetParentFolderName</span><span class="p">(</span><span class="nx">filepath</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;;ReadOnly=&#39;</span> <span class="o">+</span> <span class="p">(</span><span class="nx">readonly</span> <span class="o">?</span> <span class="mi">1</span> <span class="o">:</span> <span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;;FirstRowHasNames=&#39;</span> <span class="o">+</span> <span class="p">(</span><span class="nx">hdr</span> <span class="o">?</span> <span class="s1">&#39;1&#39;</span> <span class="o">:</span> <span class="s1">&#39;0&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;;&#39;</span><span class="p">);</span>
-    <span class="p">}</span><span class="k">else</span> <span class="k">if</span><span class="p">(</span> <span class="nx">filepath</span><span class="p">.</span><span class="nx">match</span><span class="p">(</span><span class="sr">/(\.txt|\.tsv)$/i</span><span class="p">)</span> <span class="p">){</span>
-        <span class="nx">connect</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="s1">&#39;Driver={Microsoft Text Driver (*.txt; *.csv)}; DBQ=&#39;</span> <span class="o">+</span> <span class="nx">fso</span><span class="p">.</span><span class="nx">GetParentFolderName</span><span class="p">(</span><span class="nx">filepath</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;;ReadOnly=&#39;</span> <span class="o">+</span> <span class="p">(</span><span class="nx">readonly</span> <span class="o">?</span> <span class="mi">1</span> <span class="o">:</span> <span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;;FirstRowHasNames=&#39;</span> <span class="o">+</span> <span class="p">(</span><span class="nx">hdr</span> <span class="o">?</span> <span class="s1">&#39;1&#39;</span> <span class="o">:</span> <span class="s1">&#39;0&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;;Format=TabDelimited&#39;</span> <span class="o">+</span> <span class="s1">&#39;;MaxScanRows=8;&#39;</span><span class="p">);</span>
-        <span class="nx">connect</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="s1">&#39;Driver={Microsoft Text Driver (*.txt; *.csv)}; DBQ=&#39;</span> <span class="o">+</span> <span class="nx">fso</span><span class="p">.</span><span class="nx">GetParentFolderName</span><span class="p">(</span><span class="nx">filepath</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;;ReadOnly=&#39;</span> <span class="o">+</span> <span class="p">(</span><span class="nx">readonly</span> <span class="o">?</span> <span class="mi">1</span> <span class="o">:</span> <span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;;FirstRowHasNames=&#39;</span> <span class="o">+</span> <span class="p">(</span><span class="nx">hdr</span> <span class="o">?</span> <span class="s1">&#39;1&#39;</span> <span class="o">:</span> <span class="s1">&#39;0&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;;Format=TabDelimited&#39;</span> <span class="o">+</span> <span class="s1">&#39;;&#39;</span><span class="p">);</span>
-        <span class="nx">connect</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="s1">&#39;Provider=Microsoft.Jet.OLEDB.4.0;TEXT;DATABASE=&#39;</span> <span class="o">+</span> <span class="nx">fso</span><span class="p">.</span><span class="nx">GetParentFolderName</span><span class="p">(</span><span class="nx">filepath</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;;ReadOnly=&#39;</span> <span class="o">+</span> <span class="p">(</span><span class="nx">readonly</span> <span class="o">?</span> <span class="mi">1</span> <span class="o">:</span> <span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;;FirstRowHasNames=&#39;</span> <span class="o">+</span> <span class="p">(</span><span class="nx">hdr</span> <span class="o">?</span> <span class="s1">&#39;1&#39;</span> <span class="o">:</span> <span class="s1">&#39;0&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;;Format=TabDelimited&#39;</span> <span class="o">+</span> <span class="s1">&#39;;&#39;</span><span class="p">);</span>
-    <span class="p">}</span><span class="k">else</span> <span class="k">if</span><span class="p">(</span> <span class="nx">filepath</span><span class="p">.</span><span class="nx">match</span><span class="p">(</span><span class="sr">/\.mdb$/i</span><span class="p">)</span> <span class="p">){</span>
-        <span class="nx">connect</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="s1">&#39;Provider=Microsoft Office 12.0 Access Database Engine OLE DB Provider;Data Source=&#34;&#39;</span> <span class="o">+</span> <span class="nx">filepath</span> <span class="o">+</span> <span class="s1">&#39;&#34;;&#39;</span><span class="p">);</span>
-        <span class="nx">connect</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="s1">&#39;Provider=Microsoft.Jet.OLEDB.4.0;Data Source=&#34;&#39;</span> <span class="o">+</span> <span class="nx">filepath</span> <span class="o">+</span> <span class="s1">&#39;&#34;;&#39;</span><span class="p">);</span>
-    <span class="p">}</span><span class="k">else</span> <span class="k">if</span><span class="p">(</span> <span class="nx">filepath</span><span class="p">.</span><span class="nx">match</span><span class="p">(</span><span class="sr">/(\.html|\.html)$/i</span><span class="p">)</span> <span class="p">){</span>
-        <span class="nx">connect</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="s1">&#39;Provider=Microsoft.Jet.OLEDB.4.0;Extended Properties=&#34;HTML Import;DATABASE=&#39;</span> <span class="o">+</span> <span class="nx">filepath</span> <span class="o">+</span> <span class="s1">&#39;&#34;;&#39;</span><span class="p">);</span>
-    <span class="p">}</span><span class="k">else</span><span class="p">{</span>
-        <span class="nx">alert</span><span class="p">(</span><span class="s1">&#39;Unsupported File!&#39;</span><span class="p">);</span>
-    <span class="p">}</span>
+    <span style="color:#00f">if</span>( filepath.match(<span style="color:#a31515">/\.xls$/i</span>) ){
+        connect.push(<span style="color:#a31515">&#39;Driver={Microsoft Excel Driver (*.xls)}; DBQ=&#39;</span> + filepath + <span style="color:#a31515">&#39;;HDR=&#39;</span> + (hdr ? <span style="color:#a31515">&#39;Yes&#39;</span> : <span style="color:#a31515">&#39;No&#39;</span>) + <span style="color:#a31515">&#39;;ReadOnly=&#39;</span> + (readonly ? 1 : 0) + <span style="color:#a31515">&#39;;&#34;&#39;</span>);
+        connect.push(<span style="color:#a31515">&#39;Provider=Microsoft.Jet.OLEDB.4.0;Excel 8.0;DATABASE=&#39;</span> + filepath + <span style="color:#a31515">&#39;;HDR=&#39;</span> + (hdr ? <span style="color:#a31515">&#39;Yes&#39;</span> : <span style="color:#a31515">&#39;No&#39;</span>) + <span style="color:#a31515">&#39;;ReadOnly=&#39;</span> + (readonly ? 1 : 0) + <span style="color:#a31515">&#39;;&#34;&#39;</span>);
+        connect.push(<span style="color:#a31515">&#39;Provider=Microsoft.ACE.OLEDB.12.0;Data Source=&#39;</span> + filepath + <span style="color:#a31515">&#39;;Extended Properties=&#34;Excel 8.0;HDR=&#39;</span> + (hdr ? <span style="color:#a31515">&#39;Yes&#39;</span> : <span style="color:#a31515">&#39;No&#39;</span>) + <span style="color:#a31515">&#39;;ReadOnly=&#39;</span> + (readonly ? 1 : 0) + <span style="color:#a31515">&#39;;&#34;&#39;</span>);
+        connect.push(<span style="color:#a31515">&#39;Provider=MSDASQL.1;Extended Properties=&#34;DBQ=&#39;</span> + filepath + <span style="color:#a31515">&#39;;DefaultDir=C:\;Driver={Microsoft Excel Driver (*.xls)};DriverId=790;&#34;&#39;</span>);
+    }<span style="color:#00f">else</span> <span style="color:#00f">if</span>( filepath.match(<span style="color:#a31515">/(\.xlsx|\.xlsm|\.xlsb)$/i</span>) ){
+        connect.push(<span style="color:#a31515">&#39;Provider=Microsoft.ACE.OLEDB.12.0; Data Source=&#39;</span> + filepath + <span style="color:#a31515">&#39;; Extended Properties=&#34;Excel 12.0;HDR=&#39;</span> + (hdr ? <span style="color:#a31515">&#39;Yes&#39;</span> :<span style="color:#a31515">&#39;No&#39;</span>) + <span style="color:#a31515">&#39;;ReadOnly=&#39;</span> + (readonly ? 1 : 0) + <span style="color:#a31515">&#39;;&#34;&#39;</span>);
+        connect.push(<span style="color:#a31515">&#39;Provider=Microsoft.ACE.OLEDB.12.0; Data Source=&#39;</span> + filepath + <span style="color:#a31515">&#39;; Extended Properties=&#34;Excel 12.0 Xml;HDR=&#39;</span> + (hdr ? <span style="color:#a31515">&#39;Yes&#39;</span> :<span style="color:#a31515">&#39;No&#39;</span>) + <span style="color:#a31515">&#39;;ReadOnly=&#39;</span> + (readonly ? 1 : 0) + <span style="color:#a31515">&#39;;&#34;&#39;</span>);
+        connect.push(<span style="color:#a31515">&#39;Provider=Microsoft.ACE.OLEDB.12.0; Data Source=&#39;</span> + filepath + <span style="color:#a31515">&#39;; Extended Properties=&#34;Excel 12.0 Macro;HDR=&#39;</span> + (hdr ? <span style="color:#a31515">&#39;Yes&#39;</span> :<span style="color:#a31515">&#39;No&#39;</span>) + <span style="color:#a31515">&#39;;ReadOnly=&#39;</span> + (readonly ? 1 : 0) + <span style="color:#a31515">&#39;;&#34;&#39;</span>);
+        connect.push(<span style="color:#a31515">&#39;Provider=Microsoft.ACE.OLEDB.12.0; Data Source=&#39;</span> + filepath + <span style="color:#a31515">&#39;; Extended Properties=&#34;Excel 12.0;IMEX=1;HDR=&#39;</span> + (hdr ? <span style="color:#a31515">&#39;Yes&#39;</span> :<span style="color:#a31515">&#39;No&#39;</span>) + <span style="color:#a31515">&#39;;ReadOnly=&#39;</span> + (readonly ? 1 : 0) + <span style="color:#a31515">&#39;;&#34;&#39;</span>);
+        connect.push(<span style="color:#a31515">&#39;Provider=Microsoft.ACE.OLEDB.12.0; Data Source=&#39;</span> + filepath + <span style="color:#a31515">&#39;; Extended Properties=&#34;Excel 14.0;HDR=&#39;</span> + (hdr ? <span style="color:#a31515">&#39;Yes&#39;</span> :<span style="color:#a31515">&#39;No&#39;</span>) + <span style="color:#a31515">&#39;;ReadOnly=&#39;</span> + (readonly ? 1 : 0) + <span style="color:#a31515">&#39;;&#34;&#39;</span>);
+        connect.push(<span style="color:#a31515">&#39;Provider=Microsoft.ACE.OLEDB.12.0; Data Source=&#39;</span> + filepath + <span style="color:#a31515">&#39;; Extended Properties=&#34;Excel 14.0;IMEX=1;HDR=&#39;</span> + (hdr ? <span style="color:#a31515">&#39;Yes&#39;</span> :<span style="color:#a31515">&#39;No&#39;</span>) + <span style="color:#a31515">&#39;;ReadOnly=&#39;</span> + (readonly ? 1 : 0) + <span style="color:#a31515">&#39;;&#34;&#39;</span>);
+        connect.push(<span style="color:#a31515">&#39;Driver={Microsoft Excel Driver (*.xls, *.xlsx, *.xlsm, *.xlsb)}; DBQ=&#39;</span> + filepath + <span style="color:#a31515">&#39;;ReadOnly=&#39;</span> + (readonly ? 1 : 0));
+    }<span style="color:#00f">else</span> <span style="color:#00f">if</span>( filepath.match(<span style="color:#a31515">/\.csv$/i</span>) ){
+        connect.push(<span style="color:#a31515">&#39;Driver={Microsoft Text Driver (*.txt; *.csv)}; DBQ=&#39;</span> + fso.GetParentFolderName(filepath) + <span style="color:#a31515">&#39;;ReadOnly=&#39;</span> + (readonly ? 1 : 0) + <span style="color:#a31515">&#39;;FirstRowHasNames=&#39;</span> + (hdr ? <span style="color:#a31515">&#39;1&#39;</span> : <span style="color:#a31515">&#39;0&#39;</span>) + <span style="color:#a31515">&#39;;MaxScanRows=8;&#39;</span>);
+        connect.push(<span style="color:#a31515">&#39;Driver={Microsoft Text Driver (*.txt; *.csv)}; DBQ=&#39;</span> + fso.GetParentFolderName(filepath) + <span style="color:#a31515">&#39;;ReadOnly=&#39;</span> + (readonly ? 1 : 0) + <span style="color:#a31515">&#39;;FirstRowHasNames=&#39;</span> + (hdr ? <span style="color:#a31515">&#39;1&#39;</span> : <span style="color:#a31515">&#39;0&#39;</span>) + <span style="color:#a31515">&#39;;&#39;</span>);
+        connect.push(<span style="color:#a31515">&#39;Provider=Microsoft.Jet.OLEDB.4.0;TEXT;DATABASE=&#39;</span> + fso.GetParentFolderName(filepath) + <span style="color:#a31515">&#39;;ReadOnly=&#39;</span> + (readonly ? 1 : 0) + <span style="color:#a31515">&#39;;FirstRowHasNames=&#39;</span> + (hdr ? <span style="color:#a31515">&#39;1&#39;</span> : <span style="color:#a31515">&#39;0&#39;</span>) + <span style="color:#a31515">&#39;;&#39;</span>);
+    }<span style="color:#00f">else</span> <span style="color:#00f">if</span>( filepath.match(<span style="color:#a31515">/(\.txt|\.tsv)$/i</span>) ){
+        connect.push(<span style="color:#a31515">&#39;Driver={Microsoft Text Driver (*.txt; *.csv)}; DBQ=&#39;</span> + fso.GetParentFolderName(filepath) + <span style="color:#a31515">&#39;;ReadOnly=&#39;</span> + (readonly ? 1 : 0) + <span style="color:#a31515">&#39;;FirstRowHasNames=&#39;</span> + (hdr ? <span style="color:#a31515">&#39;1&#39;</span> : <span style="color:#a31515">&#39;0&#39;</span>) + <span style="color:#a31515">&#39;;Format=TabDelimited&#39;</span> + <span style="color:#a31515">&#39;;MaxScanRows=8;&#39;</span>);
+        connect.push(<span style="color:#a31515">&#39;Driver={Microsoft Text Driver (*.txt; *.csv)}; DBQ=&#39;</span> + fso.GetParentFolderName(filepath) + <span style="color:#a31515">&#39;;ReadOnly=&#39;</span> + (readonly ? 1 : 0) + <span style="color:#a31515">&#39;;FirstRowHasNames=&#39;</span> + (hdr ? <span style="color:#a31515">&#39;1&#39;</span> : <span style="color:#a31515">&#39;0&#39;</span>) + <span style="color:#a31515">&#39;;Format=TabDelimited&#39;</span> + <span style="color:#a31515">&#39;;&#39;</span>);
+        connect.push(<span style="color:#a31515">&#39;Provider=Microsoft.Jet.OLEDB.4.0;TEXT;DATABASE=&#39;</span> + fso.GetParentFolderName(filepath) + <span style="color:#a31515">&#39;;ReadOnly=&#39;</span> + (readonly ? 1 : 0) + <span style="color:#a31515">&#39;;FirstRowHasNames=&#39;</span> + (hdr ? <span style="color:#a31515">&#39;1&#39;</span> : <span style="color:#a31515">&#39;0&#39;</span>) + <span style="color:#a31515">&#39;;Format=TabDelimited&#39;</span> + <span style="color:#a31515">&#39;;&#39;</span>);
+    }<span style="color:#00f">else</span> <span style="color:#00f">if</span>( filepath.match(<span style="color:#a31515">/\.mdb$/i</span>) ){
+        connect.push(<span style="color:#a31515">&#39;Provider=Microsoft Office 12.0 Access Database Engine OLE DB Provider;Data Source=&#34;&#39;</span> + filepath + <span style="color:#a31515">&#39;&#34;;&#39;</span>);
+        connect.push(<span style="color:#a31515">&#39;Provider=Microsoft.Jet.OLEDB.4.0;Data Source=&#34;&#39;</span> + filepath + <span style="color:#a31515">&#39;&#34;;&#39;</span>);
+    }<span style="color:#00f">else</span> <span style="color:#00f">if</span>( filepath.match(<span style="color:#a31515">/(\.html|\.html)$/i</span>) ){
+        connect.push(<span style="color:#a31515">&#39;Provider=Microsoft.Jet.OLEDB.4.0;Extended Properties=&#34;HTML Import;DATABASE=&#39;</span> + filepath + <span style="color:#a31515">&#39;&#34;;&#39;</span>);
+    }<span style="color:#00f">else</span>{
+        alert(<span style="color:#a31515">&#39;Unsupported File!&#39;</span>);
+    }
 
-    <span class="nb">document</span><span class="p">.</span><span class="nx">all</span><span class="p">.</span><span class="nx">result</span><span class="p">.</span><span class="nx">innerHTML</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
-    <span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="k">in</span> <span class="nx">connect</span><span class="p">){</span>
-        <span class="nb">document</span><span class="p">.</span><span class="nx">all</span><span class="p">.</span><span class="nx">result</span><span class="p">.</span><span class="nx">innerHTML</span> <span class="o">+=</span> <span class="s1">&#39;Connect String:&lt;br /&gt;&lt;pre&gt;&#39;</span> <span class="o">+</span> <span class="nx">connect</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="o">+</span> <span class="s1">&#39;&lt;/pre&gt;&#39;</span><span class="p">;</span>
-        <span class="k">try</span><span class="p">{</span>
-            <span class="nx">ado</span><span class="p">.</span><span class="nx">Open</span><span class="p">(</span><span class="nx">connect</span><span class="p">[</span><span class="nx">i</span><span class="p">]);</span>
-            <span class="nx">setStatusText</span><span class="p">(</span><span class="s1">&#39;Connected Successfully.&#39;</span><span class="p">);</span>
-            <span class="k">break</span><span class="p">;</span>
-        <span class="p">}</span><span class="k">catch</span><span class="p">(</span><span class="nx">e</span><span class="p">){</span>
-<span class="c1">//            alert(e.message);
-</span><span class="c1"></span>            <span class="nb">document</span><span class="p">.</span><span class="nx">all</span><span class="p">.</span><span class="nx">result</span><span class="p">.</span><span class="nx">innerHTML</span> <span class="o">+=</span> <span class="s1">&#39;Failed:&lt;pre&gt;&#39;</span> <span class="o">+</span> <span class="nx">e</span><span class="p">.</span><span class="nx">message</span> <span class="o">+</span> <span class="s1">&#39;&lt;/pre&gt;&#39;</span><span class="p">;</span>
-            <span class="nx">setStatusText</span><span class="p">(</span><span class="s1">&#39;Connection Failed.&#39;</span><span class="p">);</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-<span class="kd">function</span> <span class="nx">executeSQL</span><span class="p">(</span> <span class="nx">sql</span> <span class="p">){</span>
-    <span class="k">try</span><span class="p">{</span>
-        <span class="kd">var</span> <span class="nx">times</span> <span class="o">=</span> <span class="p">[</span><span class="k">new</span> <span class="nb">Date</span><span class="p">()];</span>
+    document.all.result.innerHTML = <span style="color:#a31515">&#39;&#39;</span>;
+    <span style="color:#00f">for</span>(<span style="color:#00f">var</span> i <span style="color:#00f">in</span> connect){
+        document.all.result.innerHTML += <span style="color:#a31515">&#39;Connect String:&lt;br /&gt;&lt;pre&gt;&#39;</span> + connect[i] + <span style="color:#a31515">&#39;&lt;/pre&gt;&#39;</span>;
+        <span style="color:#00f">try</span>{
+            ado.Open(connect[i]);
+            setStatusText(<span style="color:#a31515">&#39;Connected Successfully.&#39;</span>);
+            <span style="color:#00f">break</span>;
+        }<span style="color:#00f">catch</span>(e){
+<span style="color:#008000">//            alert(e.message);
+</span><span style="color:#008000"></span>            document.all.result.innerHTML += <span style="color:#a31515">&#39;Failed:&lt;pre&gt;&#39;</span> + e.message + <span style="color:#a31515">&#39;&lt;/pre&gt;&#39;</span>;
+            setStatusText(<span style="color:#a31515">&#39;Connection Failed.&#39;</span>);
+        }
+    }
+}
+<span style="color:#00f">function</span> executeSQL( sql ){
+    <span style="color:#00f">try</span>{
+        <span style="color:#00f">var</span> times = [<span style="color:#00f">new</span> Date()];
 
-        <span class="nx">setStatusText</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">);</span>
+        setStatusText(<span style="color:#a31515">&#39;&#39;</span>);
 
-        <span class="kd">var</span> <span class="nx">rs</span> <span class="o">=</span> <span class="nx">ado</span><span class="p">.</span><span class="nx">Execute</span><span class="p">(</span><span class="nx">sql</span><span class="p">);</span>
-        <span class="nx">times</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">()</span> <span class="p">);</span>
+        <span style="color:#00f">var</span> rs = ado.Execute(sql);
+        times.push( <span style="color:#00f">new</span> Date() );
 
-        <span class="kd">var</span> <span class="nx">buf2</span> <span class="o">=</span> <span class="nx">createTableFromRecordSet</span><span class="p">(</span> <span class="nx">rs</span> <span class="p">);</span>
-        <span class="nx">times</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">()</span> <span class="p">);</span>
+        <span style="color:#00f">var</span> buf2 = createTableFromRecordSet( rs );
+        times.push( <span style="color:#00f">new</span> Date() );
 
-        <span class="nb">document</span><span class="p">.</span><span class="nx">all</span><span class="p">.</span><span class="nx">result</span><span class="p">.</span><span class="nx">innerHTML</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
-        <span class="nb">document</span><span class="p">.</span><span class="nx">all</span><span class="p">.</span><span class="nx">result</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span> <span class="nx">buf2</span><span class="p">.</span><span class="nx">dom_table</span> <span class="p">);</span>
-        <span class="nb">window</span><span class="p">.</span><span class="nx">result_tsv</span> <span class="o">=</span> <span class="nx">buf2</span><span class="p">.</span><span class="nx">tsv</span><span class="p">;</span>
-        <span class="nx">times</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">()</span> <span class="p">);</span>
+        document.all.result.innerHTML = <span style="color:#a31515">&#39;&#39;</span>;
+        document.all.result.appendChild( buf2.dom_table );
+        window.result_tsv = buf2.tsv;
+        times.push( <span style="color:#00f">new</span> Date() );
 
-        <span class="nx">setStatusText</span><span class="p">(</span><span class="s2">&#34;Records: &#34;</span> <span class="o">+</span> <span class="nx">buf2</span><span class="p">.</span><span class="nx">count</span>
-            <span class="o">+</span> <span class="s2">&#34;,\tSQL Execution Time: &#34;</span> <span class="o">+</span> <span class="p">(</span><span class="nx">times</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="nx">times</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-            <span class="o">+</span> <span class="s2">&#34;ms,\tTable Construction Time: &#34;</span> <span class="o">+</span> <span class="p">(</span><span class="nx">times</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">-</span> <span class="nx">times</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
-            <span class="o">+</span> <span class="s2">&#34;ms,\tDrawing Time: &#34;</span> <span class="o">+</span> <span class="p">(</span><span class="nx">times</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">-</span> <span class="nx">times</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span> <span class="o">+</span> <span class="s2">&#34;ms&#34;</span><span class="p">);</span>
-        <span class="nx">shell</span><span class="p">.</span><span class="nx">RegWrite</span><span class="p">(</span><span class="s2">&#34;HKCU\\SQLEXEC\\SQLLOG&#34;</span><span class="p">,</span> <span class="nx">sql</span><span class="p">,</span> <span class="s2">&#34;REG_SZ&#34;</span><span class="p">);</span>
-        <span class="nx">shell</span><span class="p">.</span><span class="nx">RegWrite</span><span class="p">(</span><span class="s2">&#34;HKCU\\SQLEXEC\\LASTDB&#34;</span><span class="p">,</span> <span class="nb">document</span><span class="p">.</span><span class="nx">all</span><span class="p">.</span><span class="nx">filename</span><span class="p">.</span><span class="nx">value</span><span class="p">,</span> <span class="s2">&#34;REG_SZ&#34;</span><span class="p">)</span>
+        setStatusText(<span style="color:#a31515">&#34;Records: &#34;</span> + buf2.count
+            + <span style="color:#a31515">&#34;,\tSQL Execution Time: &#34;</span> + (times[1] - times[0])
+            + <span style="color:#a31515">&#34;ms,\tTable Construction Time: &#34;</span> + (times[2] - times[1])
+            + <span style="color:#a31515">&#34;ms,\tDrawing Time: &#34;</span> + (times[3] - times[2]) + <span style="color:#a31515">&#34;ms&#34;</span>);
+        shell.RegWrite(<span style="color:#a31515">&#34;HKCU\\SQLEXEC\\SQLLOG&#34;</span>, sql, <span style="color:#a31515">&#34;REG_SZ&#34;</span>);
+        shell.RegWrite(<span style="color:#a31515">&#34;HKCU\\SQLEXEC\\LASTDB&#34;</span>, document.all.filename.value, <span style="color:#a31515">&#34;REG_SZ&#34;</span>)
 
-    <span class="p">}</span><span class="k">catch</span><span class="p">(</span> <span class="nx">e</span> <span class="p">){</span>
-        <span class="nx">alert</span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">message</span><span class="p">);</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-<span class="kd">function</span> <span class="nx">getTableStructure</span><span class="p">(){</span>
-    <span class="k">try</span><span class="p">{</span>
-        <span class="c1">//var rs = ado.OpenSchema(20);
-</span><span class="c1"></span>        <span class="kd">var</span> <span class="nx">rs</span> <span class="o">=</span> <span class="nx">ado</span><span class="p">.</span><span class="nx">OpenSchema</span><span class="p">(</span><span class="mi">4</span><span class="p">);</span>
-        <span class="nb">document</span><span class="p">.</span><span class="nx">all</span><span class="p">.</span><span class="nx">result</span><span class="p">.</span><span class="nx">innerHTML</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
-        <span class="nb">document</span><span class="p">.</span><span class="nx">all</span><span class="p">.</span><span class="nx">result</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span> <span class="nx">createTableFromRecordSet</span><span class="p">(</span> <span class="nx">rs</span> <span class="p">).</span><span class="nx">dom_table</span> <span class="p">);</span>
+    }<span style="color:#00f">catch</span>( e ){
+        alert(e.message);
+    }
+}
+<span style="color:#00f">function</span> getTableStructure(){
+    <span style="color:#00f">try</span>{
+        <span style="color:#008000">//var rs = ado.OpenSchema(20);
+</span><span style="color:#008000"></span>        <span style="color:#00f">var</span> rs = ado.OpenSchema(4);
+        document.all.result.innerHTML = <span style="color:#a31515">&#39;&#39;</span>;
+        document.all.result.appendChild( createTableFromRecordSet( rs ).dom_table );
 
-    <span class="p">}</span><span class="k">catch</span><span class="p">(</span> <span class="nx">e</span> <span class="p">){</span>
-        <span class="nx">alert</span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">message</span><span class="p">);</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-<span class="kd">function</span> <span class="nx">copyTable</span><span class="p">(){</span>
-    <span class="nx">clipboardData</span><span class="p">.</span><span class="nx">setData</span><span class="p">(</span><span class="s2">&#34;Text&#34;</span><span class="p">,</span> <span class="nb">window</span><span class="p">.</span><span class="nx">result_tsv</span><span class="p">);</span> <span class="p">}</span> <span class="kd">function</span> <span class="nx">setStatusText</span><span class="p">(</span> <span class="nx">mes</span> <span class="p">){</span>
-    <span class="nb">document</span><span class="p">.</span><span class="nx">all</span><span class="p">.</span><span class="nx">status</span><span class="p">.</span><span class="nx">innerHTML</span> <span class="o">=</span> <span class="nx">mes</span><span class="p">;</span>
-<span class="p">}</span>
-<span class="kd">function</span> <span class="nx">closeADO</span><span class="p">(){</span>
-    <span class="k">try</span><span class="p">{</span>
-        <span class="nx">ado</span><span class="p">.</span><span class="nx">Close</span><span class="p">();</span>
-    <span class="p">}</span><span class="k">catch</span><span class="p">(</span> <span class="nx">e</span> <span class="p">){</span>
+    }<span style="color:#00f">catch</span>( e ){
+        alert(e.message);
+    }
+}
+<span style="color:#00f">function</span> copyTable(){
+    clipboardData.setData(<span style="color:#a31515">&#34;Text&#34;</span>, window.result_tsv); } <span style="color:#00f">function</span> setStatusText( mes ){
+    document.all.status.innerHTML = mes;
+}
+<span style="color:#00f">function</span> closeADO(){
+    <span style="color:#00f">try</span>{
+        ado.Close();
+    }<span style="color:#00f">catch</span>( e ){
 
-    <span class="p">}</span>
-    <span class="nx">ado</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
-    <span class="nx">setStatusText</span><span class="p">(</span><span class="s1">&#39;Disconnected Successfully.&#39;</span><span class="p">);</span> 
-<span class="p">}</span>
+    }
+    ado = <span style="color:#00f">null</span>;
+    setStatusText(<span style="color:#a31515">&#39;Disconnected Successfully.&#39;</span>); 
+}
 
-<span class="kd">function</span> <span class="nx">createTableFromRecordSet</span><span class="p">(</span> <span class="nx">rs</span> <span class="p">){</span>
-    <span class="kd">var</span> <span class="nx">table</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">&#39;table&#39;</span><span class="p">);</span>
-    <span class="kd">var</span> <span class="nx">tbody</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">&#39;tbody&#39;</span><span class="p">);</span>
-    <span class="kd">var</span> <span class="nx">row</span><span class="p">;</span>
-    <span class="kd">var</span> <span class="nx">cell</span><span class="p">;</span>
-    <span class="kd">var</span> <span class="nx">buf_tsv</span> <span class="o">=</span> <span class="p">[];</span>
-    <span class="kd">var</span> <span class="nx">buf_tsv_row</span> <span class="o">=</span> <span class="p">[];</span>
-    <span class="kd">var</span> <span class="nx">count</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span style="color:#00f">function</span> createTableFromRecordSet( rs ){
+    <span style="color:#00f">var</span> table = document.createElement(<span style="color:#a31515">&#39;table&#39;</span>);
+    <span style="color:#00f">var</span> tbody = document.createElement(<span style="color:#a31515">&#39;tbody&#39;</span>);
+    <span style="color:#00f">var</span> row;
+    <span style="color:#00f">var</span> cell;
+    <span style="color:#00f">var</span> buf_tsv = [];
+    <span style="color:#00f">var</span> buf_tsv_row = [];
+    <span style="color:#00f">var</span> count = 0;
 
-    <span class="k">if</span><span class="p">(</span> <span class="o">!</span><span class="nx">rs</span><span class="p">.</span><span class="nx">Eof</span> <span class="p">){</span>
-        <span class="kd">var</span> <span class="nx">fc</span> <span class="o">=</span> <span class="nx">rs</span><span class="p">.</span><span class="nx">Fields</span><span class="p">.</span><span class="nx">Count</span><span class="p">;</span>
+    <span style="color:#00f">if</span>( !rs.Eof ){
+        <span style="color:#00f">var</span> fc = rs.Fields.Count;
 
-        <span class="nx">row</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">&#39;tr&#39;</span><span class="p">);</span>
-        <span class="k">for</span><span class="p">(</span> <span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">fc</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">){</span>
-            <span class="nx">cell</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">&#39;th&#39;</span><span class="p">);</span>
-            <span class="nx">cell</span><span class="p">.</span><span class="nx">innerText</span> <span class="o">=</span> <span class="nx">rs</span><span class="p">.</span><span class="nx">Fields</span><span class="p">(</span><span class="nx">i</span><span class="p">).</span><span class="nx">name</span><span class="p">;</span>
-            <span class="nx">cell</span><span class="p">.</span><span class="nx">title</span> <span class="o">=</span> <span class="nx">rs</span><span class="p">.</span><span class="nx">Fields</span><span class="p">(</span><span class="nx">i</span><span class="p">).</span><span class="nx">Type</span><span class="p">;</span>
-            <span class="nx">row</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">cell</span><span class="p">);</span>
-            <span class="nx">buf_tsv_row</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span> <span class="nx">escapeTSV</span><span class="p">(</span><span class="nx">rs</span><span class="p">.</span><span class="nx">Fields</span><span class="p">(</span><span class="nx">i</span><span class="p">).</span><span class="nx">name</span><span class="p">)</span> <span class="p">);</span>
-        <span class="p">}</span>
-        <span class="nx">tbody</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">row</span><span class="p">);</span>
-        <span class="nx">buf_tsv</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span> <span class="nx">buf_tsv_row</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="s1">&#39;\t&#39;</span><span class="p">)</span> <span class="p">);</span>
-        <span class="k">while</span><span class="p">(</span> <span class="o">!</span><span class="nx">rs</span><span class="p">.</span><span class="nx">Eof</span> <span class="p">){</span>
-            <span class="nx">row</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">&#39;tr&#39;</span><span class="p">);</span>
-            <span class="nx">buf_tsv_row</span> <span class="o">=</span> <span class="p">[];</span>
-            <span class="k">for</span><span class="p">(</span> <span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">fc</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">){</span>
-                <span class="kd">var</span> <span class="nx">v</span> <span class="o">=</span> <span class="nx">rs</span><span class="p">.</span><span class="nx">Fields</span><span class="p">(</span><span class="nx">i</span><span class="p">).</span><span class="nx">value</span><span class="p">;</span>
-                <span class="nx">cell</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">&#39;td&#39;</span><span class="p">);</span>
-                <span class="nx">cell</span><span class="p">.</span><span class="nx">innerText</span> <span class="o">=</span> <span class="nx">v</span><span class="p">;</span>
-                <span class="nx">row</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">cell</span><span class="p">);</span>
-                <span class="nx">buf_tsv_row</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span> <span class="nx">escapeTSV</span><span class="p">(</span><span class="nx">v</span><span class="p">)</span> <span class="p">);</span>
-            <span class="p">}</span>
-            <span class="nx">tbody</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">row</span><span class="p">);</span>
-            <span class="nx">buf_tsv</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span> <span class="nx">buf_tsv_row</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="s1">&#39;\t&#39;</span><span class="p">)</span> <span class="p">);</span>
-            <span class="nx">count</span><span class="o">++</span><span class="p">;</span>
-            <span class="nx">rs</span><span class="p">.</span><span class="nx">MoveNext</span><span class="p">();</span>
-        <span class="p">}</span>
-        <span class="nx">table</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">tbody</span><span class="p">);</span>
-    <span class="p">}</span>
+        row = document.createElement(<span style="color:#a31515">&#39;tr&#39;</span>);
+        <span style="color:#00f">for</span>( <span style="color:#00f">var</span> i = 0; i &lt; fc; i++ ){
+            cell = document.createElement(<span style="color:#a31515">&#39;th&#39;</span>);
+            cell.innerText = rs.Fields(i).name;
+            cell.title = rs.Fields(i).Type;
+            row.appendChild(cell);
+            buf_tsv_row.push( escapeTSV(rs.Fields(i).name) );
+        }
+        tbody.appendChild(row);
+        buf_tsv.push( buf_tsv_row.join(<span style="color:#a31515">&#39;\t&#39;</span>) );
+        <span style="color:#00f">while</span>( !rs.Eof ){
+            row = document.createElement(<span style="color:#a31515">&#39;tr&#39;</span>);
+            buf_tsv_row = [];
+            <span style="color:#00f">for</span>( <span style="color:#00f">var</span> i = 0; i &lt; fc; i++ ){
+                <span style="color:#00f">var</span> v = rs.Fields(i).value;
+                cell = document.createElement(<span style="color:#a31515">&#39;td&#39;</span>);
+                cell.innerText = v;
+                row.appendChild(cell);
+                buf_tsv_row.push( escapeTSV(v) );
+            }
+            tbody.appendChild(row);
+            buf_tsv.push( buf_tsv_row.join(<span style="color:#a31515">&#39;\t&#39;</span>) );
+            count++;
+            rs.MoveNext();
+        }
+        table.appendChild(tbody);
+    }
 
-    <span class="k">return</span> <span class="p">{</span><span class="s2">&#34;count&#34;</span><span class="o">:</span><span class="nx">count</span><span class="p">,</span><span class="s2">&#34;dom_table&#34;</span><span class="o">:</span><span class="nx">table</span><span class="p">,</span><span class="s2">&#34;tsv&#34;</span><span class="o">:</span><span class="nx">buf_tsv</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="s1">&#39;\n&#39;</span><span class="p">)}</span>
-<span class="p">}</span>
+    <span style="color:#00f">return</span> {<span style="color:#a31515">&#34;count&#34;</span>:count,<span style="color:#a31515">&#34;dom_table&#34;</span>:table,<span style="color:#a31515">&#34;tsv&#34;</span>:buf_tsv.join(<span style="color:#a31515">&#39;\n&#39;</span>)}
+}
 
-<span class="kd">function</span> <span class="nx">escapeTSV</span><span class="p">(</span><span class="nx">data</span><span class="p">){</span>
-    <span class="k">if</span><span class="p">(</span><span class="k">typeof</span> <span class="nx">data</span> <span class="o">==</span> <span class="s1">&#39;string&#39;</span><span class="p">){</span>
-        <span class="nx">data</span> <span class="o">=</span> <span class="s1">&#39;&#34;&#39;</span> <span class="o">+</span> <span class="nx">data</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/&#34;/g</span><span class="p">,</span><span class="s1">&#39;&#34;&#34;&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;&#34;&#39;</span><span class="p">;</span>
-    <span class="p">}</span>
-    <span class="k">return</span> <span class="nx">data</span><span class="p">;</span>
-<span class="p">}</span>
-<span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
-<span class="p">&lt;</span><span class="nt">style</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;text/css&#34;</span><span class="p">&gt;</span>
-<span class="o">*</span>    <span class="p">{</span> <span class="k">margin</span><span class="p">:</span> <span class="mi">0</span><span class="p">;</span> <span class="k">padding</span><span class="p">:</span> <span class="mi">0</span><span class="p">;</span> <span class="k">font-family</span><span class="p">:</span> <span class="kc">sans-serif</span><span class="p">;</span> <span class="k">font-size</span><span class="p">:</span> <span class="mi">10</span><span class="kt">pt</span><span class="p">;</span> <span class="p">}</span>
-<span class="c">/*table    { table-layout: fixed; }*/</span>
-<span class="c">/*td    {}*/</span>
-<span class="nt">textarea</span>    <span class="p">{</span> <span class="k">font-family</span><span class="p">:</span> <span class="n">FixedSys</span><span class="p">,</span><span class="kc">monospace</span><span class="p">;</span> <span class="k">font-size</span><span class="p">:</span> <span class="mi">10</span><span class="kt">pt</span><span class="p">;</span> <span class="p">}</span>
-<span class="nt">button</span>    <span class="p">{</span> <span class="k">width</span><span class="p">:</span> <span class="mi">100</span><span class="kt">px</span><span class="p">;</span> <span class="k">font-size</span><span class="p">:</span> <span class="mi">9</span><span class="kt">pt</span><span class="p">;}</span>
-<span class="p">#</span><span class="nn">result</span> <span class="nt">table</span>    <span class="p">{</span> <span class="k">border-collapse</span><span class="p">:</span> <span class="kc">collapse</span><span class="p">;</span> <span class="k">border</span><span class="p">:</span> <span class="mi">1</span><span class="kt">px</span> <span class="kc">solid</span> <span class="kc">black</span><span class="p">;</span> <span class="p">}</span>
-<span class="p">#</span><span class="nn">result</span> <span class="nt">td</span><span class="o">,</span><span class="nt">th</span>    <span class="p">{</span> <span class="k">border</span><span class="p">:</span> <span class="mi">1</span><span class="kt">px</span> <span class="kc">solid</span> <span class="kc">black</span><span class="p">;</span> <span class="k">vertical-align</span><span class="p">:</span> <span class="kc">bottom</span><span class="p">;</span> <span class="k">word-break</span><span class="p">:</span> <span class="n">keep-all</span><span class="p">;</span> <span class="p">}</span>
-<span class="p">#</span><span class="nn">result</span> <span class="nt">th</span>    <span class="p">{</span> <span class="k">background</span><span class="p">:</span> <span class="nb">rgb</span><span class="p">(</span><span class="mi">192</span><span class="p">,</span><span class="mi">192</span><span class="p">,</span><span class="mi">192</span><span class="p">);</span> <span class="p">}</span>
-<span class="nt">pre</span> <span class="p">{</span> <span class="k">font-family</span><span class="p">:</span> <span class="kc">monospace</span><span class="p">;</span> <span class="p">}</span>
-<span class="p">&lt;/</span><span class="nt">style</span><span class="p">&gt;</span>
-<span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
-<span class="p">&lt;</span><span class="nt">form</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;f1&#34;</span> <span class="na">onsubmit</span><span class="o">=</span><span class="s">&#34;return false;&#34;</span> <span class="na">action</span><span class="o">=</span><span class="s">&#34;#&#34;</span><span class="p">&gt;</span>
-<span class="p">&lt;</span><span class="nt">table</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;t1&#34;</span> <span class="na">style</span><span class="o">=</span><span class="s">&#34;width:100%;height:100px;padding:10px;&#34;</span><span class="p">&gt;</span>
-<span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>
+<span style="color:#00f">function</span> escapeTSV(data){
+    <span style="color:#00f">if</span>(<span style="color:#00f">typeof</span> data == <span style="color:#a31515">&#39;string&#39;</span>){
+        data = <span style="color:#a31515">&#39;&#34;&#39;</span> + data.replace(<span style="color:#a31515">/&#34;/g</span>,<span style="color:#a31515">&#39;&#34;&#34;&#39;</span>) + <span style="color:#a31515">&#39;&#34;&#39;</span>;
+    }
+    <span style="color:#00f">return</span> data;
+}
+&lt;/script&gt;
+&lt;style type=<span style="color:#a31515">&#34;text/css&#34;</span>&gt;
+*    { <span style="color:#00f">margin</span>: 0; <span style="color:#00f">padding</span>: 0; <span style="color:#00f">font-family</span>: <span style="color:#00f">sans-serif</span>; <span style="color:#00f">font-size</span>: 10<span style="color:#2b91af">pt</span>; }
+<span style="color:#008000">/*table    { table-layout: fixed; }*/</span>
+<span style="color:#008000">/*td    {}*/</span>
+textarea    { <span style="color:#00f">font-family</span>: FixedSys,<span style="color:#00f">monospace</span>; <span style="color:#00f">font-size</span>: 10<span style="color:#2b91af">pt</span>; }
+button    { <span style="color:#00f">width</span>: 100<span style="color:#2b91af">px</span>; <span style="color:#00f">font-size</span>: 9<span style="color:#2b91af">pt</span>;}
+#result table    { <span style="color:#00f">border-collapse</span>: <span style="color:#00f">collapse</span>; <span style="color:#00f">border</span>: 1<span style="color:#2b91af">px</span> <span style="color:#00f">solid</span> <span style="color:#00f">black</span>; }
+#result td,th    { <span style="color:#00f">border</span>: 1<span style="color:#2b91af">px</span> <span style="color:#00f">solid</span> <span style="color:#00f">black</span>; <span style="color:#00f">vertical-align</span>: <span style="color:#00f">bottom</span>; <span style="color:#00f">word-break</span>: keep-all; }
+#result th    { <span style="color:#00f">background</span>: rgb(192,192,192); }
+pre { <span style="color:#00f">font-family</span>: <span style="color:#00f">monospace</span>; }
+&lt;/style&gt;
+&lt;body&gt;
+&lt;form id=<span style="color:#a31515">&#34;f1&#34;</span> onsubmit=<span style="color:#a31515">&#34;return false;&#34;</span> action=<span style="color:#a31515">&#34;#&#34;</span>&gt;
+&lt;table id=<span style="color:#a31515">&#34;t1&#34;</span> style=<span style="color:#a31515">&#34;width:100%;height:100px;padding:10px;&#34;</span>&gt;
+&lt;tr&gt;
+    &lt;td&gt;
         Select Database(*.xls, *.xlsx or *.csv) File
-        <span class="p">&lt;</span><span class="nt">label</span> <span class="na">for</span><span class="o">=</span><span class="s">&#34;readonly&#34;</span><span class="p">&gt;&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;checkbox&#34;</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;readonly&#34;</span> <span class="na">checked</span><span class="o">=</span><span class="s">&#34;checked&#34;</span> <span class="p">/&gt;</span>Read Only<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
-        <span class="p">&lt;</span><span class="nt">label</span> <span class="na">for</span><span class="o">=</span><span class="s">&#34;hdr&#34;</span><span class="p">&gt;&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;checkbox&#34;</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;hdr&#34;</span> <span class="na">checked</span><span class="o">=</span><span class="s">&#34;checked&#34;</span> <span class="p">/&gt;</span>Use First Row as Headers<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;&lt;</span><span class="nt">br</span> <span class="p">/&gt;</span>
-        <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;text&#34;</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;filename&#34;</span> <span class="na">style</span><span class="o">=</span><span class="s">&#34;width:80%;&#34;</span> <span class="na">readonly</span><span class="o">=</span><span class="s">&#34;readonly&#34;</span> <span class="p">/&gt;&lt;</span><span class="nt">span</span><span class="p">&gt;&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;file&#34;</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;fileselector&#34;</span> <span class="na">onchange</span><span class="o">=</span><span class="s">&#34;loadDatabase();&#34;</span> <span class="na">style</span><span class="o">=</span><span class="s">&#34;width:20%;&#34;</span> <span class="p">/&gt;&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
-    <span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">td</span> <span class="na">style</span><span class="o">=</span><span class="s">&#34;width:100px;&#34;</span><span class="p">&gt;</span>
-        <span class="p">&lt;</span><span class="nt">button</span> <span class="na">onclick</span><span class="o">=</span><span class="s">&#34;loadDatabase();&#34;</span> <span class="na">style</span><span class="o">=</span><span class="s">&#34;height:50%;&#34;</span><span class="p">&gt;</span>Reopen<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;&lt;</span><span class="nt">br</span> <span class="p">/&gt;</span>
-        <span class="p">&lt;</span><span class="nt">button</span> <span class="na">onclick</span><span class="o">=</span><span class="s">&#34;closeADO();&#34;</span> <span class="na">style</span><span class="o">=</span><span class="s">&#34;height:50%;&#34;</span><span class="p">&gt;</span>Close<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
-    <span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
-<span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
-<span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>
-        SQL<span class="p">&lt;</span><span class="nt">br</span> <span class="p">/&gt;</span>
-        <span class="p">&lt;</span><span class="nt">textarea</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;sql&#34;</span> <span class="na">style</span><span class="o">=</span><span class="s">&#34;width:100%;height:100px;scroll:auto;&#34;</span> <span class="na">wrap</span><span class="o">=</span><span class="s">&#34;off&#34;</span><span class="p">&gt;</span>select * from [Sheet1$]<span class="p">&lt;/</span><span class="nt">textarea</span><span class="p">&gt;</span>
-    <span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>
-        <span class="p">&lt;</span><span class="nt">button</span> <span class="na">onclick</span><span class="o">=</span><span class="s">&#34;executeSQL(this.form.sql.value);&#34;</span><span class="p">&gt;</span>Execute SQL<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;&lt;</span><span class="nt">br</span> <span class="p">/&gt;</span>
-        <span class="p">&lt;</span><span class="nt">button</span> <span class="na">onclick</span><span class="o">=</span><span class="s">&#34;copyTable();&#34;</span><span class="p">&gt;</span>Copy Table<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;&lt;</span><span class="nt">br</span> <span class="p">/&gt;</span>
-        <span class="p">&lt;</span><span class="nt">button</span> <span class="na">onclick</span><span class="o">=</span><span class="s">&#34;getTableStructure();&#34;</span><span class="p">&gt;</span>Meta Information<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
-    <span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
-<span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
-<span class="p">&lt;/</span><span class="nt">table</span><span class="p">&gt;</span>
-<span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
-<span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;result&#34;</span> <span class="na">style</span><span class="o">=</span><span class="s">&#34;width:100%;height:500px;overflow:scroll;background:white;padding:10px;border-top:1px solid gray;border-bottom:1px solid threedhighlight;&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span> <span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;status&#34;</span> <span class="na">style</span><span class="o">=</span><span class="s">&#34;width:1980px;height:20px;overflow:hidden;background:buttonface;&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
-<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
-<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+        &lt;label for=<span style="color:#a31515">&#34;readonly&#34;</span>&gt;&lt;input type=<span style="color:#a31515">&#34;checkbox&#34;</span> id=<span style="color:#a31515">&#34;readonly&#34;</span> checked=<span style="color:#a31515">&#34;checked&#34;</span> /&gt;Read Only&lt;/label&gt;
+        &lt;label for=<span style="color:#a31515">&#34;hdr&#34;</span>&gt;&lt;input type=<span style="color:#a31515">&#34;checkbox&#34;</span> id=<span style="color:#a31515">&#34;hdr&#34;</span> checked=<span style="color:#a31515">&#34;checked&#34;</span> /&gt;Use First Row as Headers&lt;/label&gt;&lt;br /&gt;
+        &lt;input type=<span style="color:#a31515">&#34;text&#34;</span> id=<span style="color:#a31515">&#34;filename&#34;</span> style=<span style="color:#a31515">&#34;width:80%;&#34;</span> readonly=<span style="color:#a31515">&#34;readonly&#34;</span> /&gt;&lt;span&gt;&lt;input type=<span style="color:#a31515">&#34;file&#34;</span> id=<span style="color:#a31515">&#34;fileselector&#34;</span> onchange=<span style="color:#a31515">&#34;loadDatabase();&#34;</span> style=<span style="color:#a31515">&#34;width:20%;&#34;</span> /&gt;&lt;/span&gt;
+    &lt;/td&gt;
+    &lt;td style=<span style="color:#a31515">&#34;width:100px;&#34;</span>&gt;
+        &lt;button onclick=<span style="color:#a31515">&#34;loadDatabase();&#34;</span> style=<span style="color:#a31515">&#34;height:50%;&#34;</span>&gt;Reopen&lt;/button&gt;&lt;br /&gt;
+        &lt;button onclick=<span style="color:#a31515">&#34;closeADO();&#34;</span> style=<span style="color:#a31515">&#34;height:50%;&#34;</span>&gt;Close&lt;/button&gt;
+    &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+    &lt;td&gt;
+        SQL&lt;br /&gt;
+        &lt;textarea id=<span style="color:#a31515">&#34;sql&#34;</span> style=<span style="color:#a31515">&#34;width:100%;height:100px;scroll:auto;&#34;</span> wrap=<span style="color:#a31515">&#34;off&#34;</span>&gt;select * from [Sheet1$]&lt;/textarea&gt;
+    &lt;/td&gt;
+    &lt;td&gt;
+        &lt;button onclick=<span style="color:#a31515">&#34;executeSQL(this.form.sql.value);&#34;</span>&gt;Execute SQL&lt;/button&gt;&lt;br /&gt;
+        &lt;button onclick=<span style="color:#a31515">&#34;copyTable();&#34;</span>&gt;Copy Table&lt;/button&gt;&lt;br /&gt;
+        &lt;button onclick=<span style="color:#a31515">&#34;getTableStructure();&#34;</span>&gt;Meta Information&lt;/button&gt;
+    &lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+&lt;/form&gt;
+&lt;div id=<span style="color:#a31515">&#34;result&#34;</span> style=<span style="color:#a31515">&#34;width:100%;height:500px;overflow:scroll;background:white;padding:10px;border-top:1px solid gray;border-bottom:1px solid threedhighlight;&#34;</span>&gt;&lt;/div&gt; &lt;div id=<span style="color:#a31515">&#34;status&#34;</span> style=<span style="color:#a31515">&#34;width:1980px;height:20px;overflow:hidden;background:buttonface;&#34;</span>&gt;&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
 </code></pre></div><h2 id="動作os">動作OS</h2>
 <ul>
 <li>Windows XP</li>

@@ -106,17 +106,17 @@ if (!doNotTrack) {
 <p>という順番で処理されるため。</p>
 <p>なので、CSSで最初から2番目以降を表示しないようにしておけばよい。
 具体的には、<code>.bxslider</code>の2番目以降の子要素に<code>display: none;</code>を指定すればよく、下記のようにする。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-HTML" data-lang="HTML"><span class="p">&lt;</span><span class="nt">ul</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;bxslider&#34;</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;slide&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;slide&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;slide&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;slide&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;slide&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;slide&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
-<span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
-</code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-CSS" data-lang="CSS"><span class="p">.</span><span class="nc">bxslider</span> <span class="nt">li</span><span class="p">:</span><span class="nd">not</span><span class="o">(</span><span class="p">:</span><span class="nd">first-child</span><span class="o">)</span><span class="p">{</span>
-    <span class="k">display</span><span class="p">:</span> <span class="kc">none</span><span class="p">;</span>
-<span class="p">}</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-HTML" data-lang="HTML">&lt;ul class=<span style="color:#a31515">&#34;bxslider&#34;</span>&gt;
+    &lt;li&gt;&lt;div class=<span style="color:#a31515">&#34;slide&#34;</span>&gt;&lt;/div&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;div class=<span style="color:#a31515">&#34;slide&#34;</span>&gt;&lt;/div&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;div class=<span style="color:#a31515">&#34;slide&#34;</span>&gt;&lt;/div&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;div class=<span style="color:#a31515">&#34;slide&#34;</span>&gt;&lt;/div&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;div class=<span style="color:#a31515">&#34;slide&#34;</span>&gt;&lt;/div&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;div class=<span style="color:#a31515">&#34;slide&#34;</span>&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</code></pre></div><div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-CSS" data-lang="CSS">.<span style="color:#2b91af">bxslider</span> li:not(:first-child){
+    <span style="color:#00f">display</span>: <span style="color:#00f">none</span>;
+}
 </code></pre></div><p><code>:not(:first-child)</code>が2番目以降の子要素を示す擬似クラス。
 ここ最近のブラウザならすべて対応している(<code>:first-child</code>はCSS2.1、<code>:not</code>はCSS3)。</p>
 <h2 id="参考">参考</h2>

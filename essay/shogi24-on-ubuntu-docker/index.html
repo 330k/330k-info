@@ -103,40 +103,40 @@ if (!doNotTrack) {
 <p>なのでdockerでコンテナにして動くようにしてみた。</p>
 <h2 id="結論">結論</h2>
 <p>東京道場限定だが、後述の手順を使って作ったDockerイメージをDocker Hubにアップロードしているので、すぐ使いたい方は以下でOK。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">xhost local:
-docker run -it --rm -e DISPLAY -e <span class="nv">QT_X11_NO_MITSHM</span><span class="o">=</span><span class="m">1</span> -e <span class="nv">_JAVA_OPTIONS</span><span class="o">=</span><span class="s2">&#34;-Duser.language=ja -Duser.country=JP&#34;</span> <span class="se">\
-</span><span class="se"></span>  -v /tmp/.X11-unix:/tmp/.X11-unix 330k/shogi24
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">xhost local:
+docker run -it --rm -e DISPLAY -e QT_X11_NO_MITSHM=1 -e _JAVA_OPTIONS=<span style="color:#a31515">&#34;-Duser.language=ja -Duser.country=JP&#34;</span> <span style="color:#a31515">\
+</span><span style="color:#a31515"></span>  -v /tmp/.X11-unix:/tmp/.X11-unix 330k/shogi24
 </code></pre></div><p>※音を出す方法は未確認</p>
 <h2 id="dockerイメージ作成">Dockerイメージ作成</h2>
 <p>GUIでの操作が必要となったため、Dockerfile化できなかったが、以下の手順で同様のDockerイメージを作成できる。</p>
 <p>現在はwebupd8teリポジトリが変わっており、同じDockerfileを使ってもOracle Java 8をインストールできないので、
 過去に作られたOracle Java 8をインストール済みのイメージを起動。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">xhost local:
-docker run -it --rm -e DISPLAY -e <span class="nv">QT_X11_NO_MITSHM</span><span class="o">=</span><span class="m">1</span> -v /tmp/.X11-unix:/tmp/.X11-unix relateiq/oracle-java8
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">xhost local:
+docker run -it --rm -e DISPLAY -e QT_X11_NO_MITSHM=1 -v /tmp/.X11-unix:/tmp/.X11-unix relateiq/oracle-java8
 </code></pre></div><p>以下はコンテナ内で作業。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="c1"># GUIの表示に必要なパッケージと日本語フォントをインストール</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#008000"># GUIの表示に必要なパッケージと日本語フォントをインストール</span>
 apt-get update
 apt-get install libxtst6 libxi6 libxrender1 fonts-takao-pgothic -y
-<span class="c1"># 日本語フォントをJavaで使えるようにシンボリックリンクを作成</span>
+<span style="color:#008000"># 日本語フォントをJavaで使えるようにシンボリックリンクを作成</span>
 mkdir /usr/lib/jvm/java-8-oracle/jre/lib/fonts/fallback/
 ln -s /usr/share/fonts/truetype/takao-gothic/TakaoPGothic.ttf /usr/lib/jvm/java-8-oracle/jre/lib/fonts/fallback/
-<span class="c1"># 東京道場のjnlpファイルをダウンロード(他の道場を使いたい場合は変更)</span>
-<span class="nb">cd</span> /root
+<span style="color:#008000"># 東京道場のjnlpファイルをダウンロード(他の道場を使いたい場合は変更)</span>
+cd /root
 wget http://internet2.shogidojo.net/dojo/24TokyoDojo.jnlp
 
-<span class="c1"># 一度起動を試みる</span>
+<span style="color:#008000"># 一度起動を試みる</span>
 javaws 24TokyoDojo.jnlp
 </code></pre></div><p>すると、</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text">Disabling Java as it is too old and likely to be out of date. To reenable use jcontrol utility
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">Disabling Java as it is too old and likely to be out of date. To reenable use jcontrol utility
 </code></pre></div><p>というメッセージが出るので、指示に従って<code>jcontrol</code>を起動する。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">jcontrol
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">jcontrol
 </code></pre></div><p>Javaの設定画面が表示されるので、「Enable Java content in the browser」にチェックを入れて「OK」。</p>
 <figure><img src="2020-02-03%2001-07-52.png"/>
 </figure>
 
 <p>これで将棋倶楽部24が起動できるようになる。</p>
 <p>もう一度起動。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">javaws 24TokyoDojo.jnlp
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">javaws 24TokyoDojo.jnlp
 </code></pre></div><p>最初の起動時だけ、起動を許可するか、ショートカットを作成するかどうかを聞かれるので回答しておく。</p>
 <p><figure><img src="2020-02-03%2001-17-59.png"/>
 </figure>
@@ -146,28 +146,28 @@ javaws 24TokyoDojo.jnlp
 </p>
 <p>起動できたら一旦将棋倶楽部24を終了。</p>
 <p>次に起動スクリプトを用意。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">vi /entrypoint.sh
-</code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="cp">#!/bin/bash
-</span><span class="cp"></span>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">vi /entrypoint.sh
+</code></pre></div><div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#00f">#!/bin/bash
+</span><span style="color:#00f"></span>
 /usr/bin/javaws /root/24TokyoDojo.jnlp
 
-<span class="k">while</span> :
-<span class="k">do</span>
-  sleep <span class="m">1</span>
-  <span class="nv">PID</span><span class="o">=</span><span class="k">$(</span>/bin/ps <span class="p">|</span> /bin/grep java <span class="p">|</span> /bin/sed -E <span class="s1">&#39;s/ *([0-9]+).+/\1/g&#39;</span><span class="k">)</span>
-  <span class="k">if</span> <span class="o">[</span> <span class="s2">&#34;</span><span class="nv">$PID</span><span class="s2">&#34;</span> <span class="o">==</span> <span class="s2">&#34;&#34;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
-    <span class="nb">break</span>
-  <span class="k">fi</span>
-<span class="k">done</span>
-</code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">chomd +x /entrypoint.sh
+<span style="color:#00f">while</span> :
+<span style="color:#00f">do</span>
+  sleep 1
+  PID=<span style="color:#00f">$(</span>/bin/ps | /bin/grep java | /bin/sed -E <span style="color:#a31515">&#39;s/ *([0-9]+).+/\1/g&#39;</span><span style="color:#00f">)</span>
+  <span style="color:#00f">if</span> [ <span style="color:#a31515">&#34;</span>$PID<span style="color:#a31515">&#34;</span> == <span style="color:#a31515">&#34;&#34;</span> ]; <span style="color:#00f">then</span>
+    break
+  <span style="color:#00f">fi</span>
+<span style="color:#00f">done</span>
+</code></pre></div><div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">chomd +x /entrypoint.sh
 </code></pre></div><p>これで作業は完了なので、別ターミナルを立ち上げてDockerイメージにcommitする。
 CONTAINER IDは<code>docker ps</code>で調べる。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">docker commit --change<span class="o">=</span><span class="s1">&#39;ENTRYPOINT [ &#34;/entrypoint.sh&#34; ]&#39;</span> <span class="o">(</span>コンテナのCONTAINER ID<span class="o">)</span>  <span class="o">(</span>好きな名前<span class="o">)</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">docker commit --change=<span style="color:#a31515">&#39;ENTRYPOINT [ &#34;/entrypoint.sh&#34; ]&#39;</span> (コンテナのCONTAINER ID)  (好きな名前)
 </code></pre></div><p>コミットが出来たらコンテナに戻って終了する。</p>
 <p>以降は起動したいときに、以下を入力すれば起動できる。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">xhost local:
-docker run -it --rm -e DISPLAY -e <span class="nv">QT_X11_NO_MITSHM</span><span class="o">=</span><span class="m">1</span> -e <span class="nv">_JAVA_OPTIONS</span><span class="o">=</span><span class="s2">&#34;-Duser.language=ja -Duser.country=JP&#34;</span> <span class="se">\
-</span><span class="se"></span>  -v /tmp/.X11-unix:/tmp/.X11-unix <span class="o">(</span>上で付けた名前<span class="o">)</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">xhost local:
+docker run -it --rm -e DISPLAY -e QT_X11_NO_MITSHM=1 -e _JAVA_OPTIONS=<span style="color:#a31515">&#34;-Duser.language=ja -Duser.country=JP&#34;</span> <span style="color:#a31515">\
+</span><span style="color:#a31515"></span>  -v /tmp/.X11-unix:/tmp/.X11-unix (上で付けた名前)
 </code></pre></div><figure><img src="2020-02-03%2021-15-49.png"/>
 </figure>
 		</div>

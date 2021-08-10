@@ -104,135 +104,135 @@ if (!doNotTrack) {
 <li>四捨五入はしない！</li>
 <li>DecimalFormatの15倍高速(もう少し工夫はできるが)</li>
 </ul>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kd">private</span> <span class="kd">static</span> <span class="n">String</span> <span class="nf">formatFloat10</span><span class="o">(</span><span class="kt">double</span> <span class="n">d</span><span class="o">){</span>
-    <span class="kt">char</span><span class="o">[]</span> <span class="n">c</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">char</span><span class="o">[</span><span class="n">10</span><span class="o">];</span>
-    <span class="kt">double</span> <span class="n">a</span><span class="o">;</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#00f">private</span> <span style="color:#00f">static</span> String formatFloat10(<span style="color:#2b91af">double</span> d){
+    <span style="color:#2b91af">char</span>[] c = <span style="color:#00f">new</span> <span style="color:#2b91af">char</span>[10];
+    <span style="color:#2b91af">double</span> a;
 
-    <span class="k">if</span><span class="o">(</span><span class="n">d</span> <span class="o">==</span> <span class="n">0</span><span class="o">.</span><span class="na">0</span><span class="o">){</span>
-        <span class="k">return</span> <span class="s">&#34; 0.0000000&#34;</span><span class="o">;</span>
-    <span class="o">}</span>
-    <span class="k">if</span><span class="o">(</span><span class="n">d</span> <span class="o">&lt;</span> <span class="n">0</span><span class="o">){</span>
-        <span class="n">c</span><span class="o">[</span><span class="n">0</span><span class="o">]</span> <span class="o">=</span> <span class="sc">&#39;-&#39;</span><span class="o">;</span>
-        <span class="n">a</span> <span class="o">=</span> <span class="o">-</span><span class="n">d</span><span class="o">;</span>
-    <span class="o">}</span><span class="k">else</span><span class="o">{</span>
-        <span class="n">c</span><span class="o">[</span><span class="n">0</span><span class="o">]</span> <span class="o">=</span> <span class="sc">&#39; &#39;</span><span class="o">;</span>
-        <span class="n">a</span> <span class="o">=</span> <span class="n">d</span><span class="o">;</span>
-    <span class="o">}</span>
-    <span class="kt">int</span> <span class="n">m</span> <span class="o">=</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span><span class="n">Math</span><span class="o">.</span><span class="na">floor</span><span class="o">(</span><span class="n">Math</span><span class="o">.</span><span class="na">log10</span><span class="o">(</span><span class="n">a</span><span class="o">));</span>
+    <span style="color:#00f">if</span>(d == 0.0){
+        <span style="color:#00f">return</span> <span style="color:#a31515">&#34; 0.0000000&#34;</span>;
+    }
+    <span style="color:#00f">if</span>(d &lt; 0){
+        c[0] = <span style="color:#a31515">&#39;-&#39;</span>;
+        a = -d;
+    }<span style="color:#00f">else</span>{
+        c[0] = <span style="color:#a31515">&#39; &#39;</span>;
+        a = d;
+    }
+    <span style="color:#2b91af">int</span> m = (<span style="color:#2b91af">int</span>)Math.floor(Math.log10(a));
 
-    <span class="k">if</span><span class="o">(</span><span class="n">m</span> <span class="o">&lt;=</span> <span class="o">-</span><span class="n">100</span><span class="o">){</span>
-        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">1</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">1</span> <span class="o">-</span> <span class="n">m</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="n">a</span> <span class="o">*=</span> <span class="n">10</span><span class="o">;</span>
-        <span class="n">c</span><span class="o">[</span><span class="n">1</span><span class="o">]</span> <span class="o">=</span> <span class="o">(</span><span class="kt">char</span><span class="o">)(</span><span class="sc">&#39;0&#39;</span> <span class="o">+</span> <span class="n">Math</span><span class="o">.</span><span class="na">floor</span><span class="o">(</span><span class="n">a</span><span class="o">));</span>
-        <span class="n">a</span> <span class="o">=</span> <span class="o">(</span><span class="n">a</span> <span class="o">-</span> <span class="n">Math</span><span class="o">.</span><span class="na">floor</span><span class="o">(</span><span class="n">a</span><span class="o">))</span> <span class="o">*</span> <span class="n">10</span><span class="o">;</span>
-        <span class="n">c</span><span class="o">[</span><span class="n">2</span><span class="o">]</span> <span class="o">=</span> <span class="sc">&#39;.&#39;</span><span class="o">;</span>
-        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">3</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">5</span><span class="o">;</span> <span class="n">i</span><span class="o">++){</span>
-            <span class="cm">/*c[i] = (char)(&#39;0&#39; + Math.floor(a));
-</span><span class="cm">            a = (a - Math.floor(a)) * 10;*/</span>
-            <span class="kt">double</span> <span class="n">b</span> <span class="o">=</span> <span class="n">Math</span><span class="o">.</span><span class="na">floor</span><span class="o">(</span><span class="n">a</span><span class="o">);</span>
-            <span class="n">c</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="o">(</span><span class="kt">char</span><span class="o">)(</span><span class="sc">&#39;0&#39;</span> <span class="o">+</span> <span class="n">b</span><span class="o">);</span>
-            <span class="n">a</span> <span class="o">=</span> <span class="o">(</span><span class="n">a</span> <span class="o">-</span> <span class="n">b</span><span class="o">)</span> <span class="o">*</span> <span class="n">10</span><span class="o">.</span><span class="na">0</span><span class="o">;</span>
-        <span class="o">}</span>
-        <span class="n">c</span><span class="o">[</span><span class="n">5</span><span class="o">]</span> <span class="o">=</span> <span class="sc">&#39;e&#39;</span><span class="o">;</span>
-        <span class="n">c</span><span class="o">[</span><span class="n">6</span><span class="o">]</span> <span class="o">=</span> <span class="sc">&#39;-&#39;</span><span class="o">;</span>
-        <span class="n">c</span><span class="o">[</span><span class="n">7</span><span class="o">]</span> <span class="o">=</span> <span class="o">(</span><span class="kt">char</span><span class="o">)(</span><span class="sc">&#39;0&#39;</span> <span class="o">+</span> <span class="o">(-</span><span class="n">m</span><span class="o">)</span> <span class="o">*</span> <span class="n">0</span><span class="o">.</span><span class="na">01</span><span class="o">);</span>
-        <span class="n">c</span><span class="o">[</span><span class="n">8</span><span class="o">]</span> <span class="o">=</span> <span class="o">(</span><span class="kt">char</span><span class="o">)(</span><span class="sc">&#39;0&#39;</span> <span class="o">+</span> <span class="o">(-</span><span class="n">m</span> <span class="o">*</span> <span class="n">0</span><span class="o">.</span><span class="na">1</span><span class="o">)</span> <span class="o">%</span> <span class="n">10</span><span class="o">);</span>
-        <span class="n">c</span><span class="o">[</span><span class="n">9</span><span class="o">]</span> <span class="o">=</span> <span class="o">(</span><span class="kt">char</span><span class="o">)(</span><span class="sc">&#39;0&#39;</span> <span class="o">+</span> <span class="o">(-</span><span class="n">m</span><span class="o">)</span> <span class="o">%</span> <span class="n">10</span><span class="o">);</span>
+    <span style="color:#00f">if</span>(m &lt;= -100){
+        <span style="color:#00f">for</span>(<span style="color:#2b91af">int</span> i = 1; i &lt; 1 - m; i++) a *= 10;
+        c[1] = (<span style="color:#2b91af">char</span>)(<span style="color:#a31515">&#39;0&#39;</span> + Math.floor(a));
+        a = (a - Math.floor(a)) * 10;
+        c[2] = <span style="color:#a31515">&#39;.&#39;</span>;
+        <span style="color:#00f">for</span>(<span style="color:#2b91af">int</span> i = 3; i &lt; 5; i++){
+            <span style="color:#008000">/*c[i] = (char)(&#39;0&#39; + Math.floor(a));
+</span><span style="color:#008000">            a = (a - Math.floor(a)) * 10;*/</span>
+            <span style="color:#2b91af">double</span> b = Math.floor(a);
+            c[i] = (<span style="color:#2b91af">char</span>)(<span style="color:#a31515">&#39;0&#39;</span> + b);
+            a = (a - b) * 10.0;
+        }
+        c[5] = <span style="color:#a31515">&#39;e&#39;</span>;
+        c[6] = <span style="color:#a31515">&#39;-&#39;</span>;
+        c[7] = (<span style="color:#2b91af">char</span>)(<span style="color:#a31515">&#39;0&#39;</span> + (-m) * 0.01);
+        c[8] = (<span style="color:#2b91af">char</span>)(<span style="color:#a31515">&#39;0&#39;</span> + (-m * 0.1) % 10);
+        c[9] = (<span style="color:#2b91af">char</span>)(<span style="color:#a31515">&#39;0&#39;</span> + (-m) % 10);
 
-    <span class="o">}</span><span class="k">else</span> <span class="k">if</span><span class="o">(</span><span class="n">m</span> <span class="o">&lt;=</span> <span class="o">-</span><span class="n">10</span><span class="o">){</span>
-        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">1</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">1</span> <span class="o">-</span> <span class="n">m</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="n">a</span> <span class="o">*=</span> <span class="n">10</span><span class="o">;</span>
-        <span class="n">c</span><span class="o">[</span><span class="n">1</span><span class="o">]</span> <span class="o">=</span> <span class="o">(</span><span class="kt">char</span><span class="o">)(</span><span class="sc">&#39;0&#39;</span> <span class="o">+</span> <span class="n">Math</span><span class="o">.</span><span class="na">floor</span><span class="o">(</span><span class="n">a</span><span class="o">));</span>
-        <span class="n">a</span> <span class="o">=</span> <span class="o">(</span><span class="n">a</span> <span class="o">-</span> <span class="n">Math</span><span class="o">.</span><span class="na">floor</span><span class="o">(</span><span class="n">a</span><span class="o">))</span> <span class="o">*</span> <span class="n">10</span><span class="o">;</span>
-        <span class="n">c</span><span class="o">[</span><span class="n">2</span><span class="o">]</span> <span class="o">=</span> <span class="sc">&#39;.&#39;</span><span class="o">;</span>
-        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">3</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">6</span><span class="o">;</span> <span class="n">i</span><span class="o">++){</span>
-            <span class="kt">double</span> <span class="n">b</span> <span class="o">=</span> <span class="n">Math</span><span class="o">.</span><span class="na">floor</span><span class="o">(</span><span class="n">a</span><span class="o">);</span>
-            <span class="n">c</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="o">(</span><span class="kt">char</span><span class="o">)(</span><span class="sc">&#39;0&#39;</span> <span class="o">+</span> <span class="n">b</span><span class="o">);</span>
-            <span class="n">a</span> <span class="o">=</span> <span class="o">(</span><span class="n">a</span> <span class="o">-</span> <span class="n">b</span><span class="o">)</span> <span class="o">*</span> <span class="n">10</span><span class="o">.</span><span class="na">0</span><span class="o">;</span>
-        <span class="o">}</span>
-        <span class="n">c</span><span class="o">[</span><span class="n">6</span><span class="o">]</span> <span class="o">=</span> <span class="sc">&#39;e&#39;</span><span class="o">;</span>
-        <span class="n">c</span><span class="o">[</span><span class="n">7</span><span class="o">]</span> <span class="o">=</span> <span class="sc">&#39;-&#39;</span><span class="o">;</span>
-        <span class="n">c</span><span class="o">[</span><span class="n">8</span><span class="o">]</span> <span class="o">=</span> <span class="o">(</span><span class="kt">char</span><span class="o">)(</span><span class="sc">&#39;0&#39;</span> <span class="o">+</span> <span class="o">(-</span><span class="n">m</span><span class="o">)</span> <span class="o">*</span> <span class="n">0</span><span class="o">.</span><span class="na">1</span><span class="o">);</span>
-        <span class="n">c</span><span class="o">[</span><span class="n">9</span><span class="o">]</span> <span class="o">=</span> <span class="o">(</span><span class="kt">char</span><span class="o">)(</span><span class="sc">&#39;0&#39;</span> <span class="o">+</span> <span class="o">(-</span><span class="n">m</span><span class="o">)</span> <span class="o">%</span> <span class="n">10</span><span class="o">);</span>
+    }<span style="color:#00f">else</span> <span style="color:#00f">if</span>(m &lt;= -10){
+        <span style="color:#00f">for</span>(<span style="color:#2b91af">int</span> i = 1; i &lt; 1 - m; i++) a *= 10;
+        c[1] = (<span style="color:#2b91af">char</span>)(<span style="color:#a31515">&#39;0&#39;</span> + Math.floor(a));
+        a = (a - Math.floor(a)) * 10;
+        c[2] = <span style="color:#a31515">&#39;.&#39;</span>;
+        <span style="color:#00f">for</span>(<span style="color:#2b91af">int</span> i = 3; i &lt; 6; i++){
+            <span style="color:#2b91af">double</span> b = Math.floor(a);
+            c[i] = (<span style="color:#2b91af">char</span>)(<span style="color:#a31515">&#39;0&#39;</span> + b);
+            a = (a - b) * 10.0;
+        }
+        c[6] = <span style="color:#a31515">&#39;e&#39;</span>;
+        c[7] = <span style="color:#a31515">&#39;-&#39;</span>;
+        c[8] = (<span style="color:#2b91af">char</span>)(<span style="color:#a31515">&#39;0&#39;</span> + (-m) * 0.1);
+        c[9] = (<span style="color:#2b91af">char</span>)(<span style="color:#a31515">&#39;0&#39;</span> + (-m) % 10);
 
-    <span class="o">}</span><span class="k">else</span> <span class="k">if</span><span class="o">(</span><span class="n">m</span> <span class="o">&lt;=</span> <span class="o">-</span><span class="n">4</span><span class="o">){</span>
-        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">1</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">1</span> <span class="o">-</span> <span class="n">m</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="n">a</span> <span class="o">*=</span> <span class="n">10</span><span class="o">;</span>
-        <span class="n">c</span><span class="o">[</span><span class="n">1</span><span class="o">]</span> <span class="o">=</span> <span class="o">(</span><span class="kt">char</span><span class="o">)(</span><span class="sc">&#39;0&#39;</span> <span class="o">+</span> <span class="n">Math</span><span class="o">.</span><span class="na">floor</span><span class="o">(</span><span class="n">a</span><span class="o">));</span>
-        <span class="n">a</span> <span class="o">=</span> <span class="o">(</span><span class="n">a</span> <span class="o">-</span> <span class="n">Math</span><span class="o">.</span><span class="na">floor</span><span class="o">(</span><span class="n">a</span><span class="o">))</span> <span class="o">*</span> <span class="n">10</span><span class="o">;</span>
-        <span class="n">c</span><span class="o">[</span><span class="n">2</span><span class="o">]</span> <span class="o">=</span> <span class="sc">&#39;.&#39;</span><span class="o">;</span>
-        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">3</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">7</span><span class="o">;</span> <span class="n">i</span><span class="o">++){</span>
-            <span class="kt">double</span> <span class="n">b</span> <span class="o">=</span> <span class="n">Math</span><span class="o">.</span><span class="na">floor</span><span class="o">(</span><span class="n">a</span><span class="o">);</span>
-            <span class="n">c</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="o">(</span><span class="kt">char</span><span class="o">)(</span><span class="sc">&#39;0&#39;</span> <span class="o">+</span> <span class="n">b</span><span class="o">);</span>
-            <span class="n">a</span> <span class="o">=</span> <span class="o">(</span><span class="n">a</span> <span class="o">-</span> <span class="n">b</span><span class="o">)</span> <span class="o">*</span> <span class="n">10</span><span class="o">.</span><span class="na">0</span><span class="o">;</span>
-        <span class="o">}</span>
-        <span class="n">c</span><span class="o">[</span><span class="n">7</span><span class="o">]</span> <span class="o">=</span> <span class="sc">&#39;e&#39;</span><span class="o">;</span>
-        <span class="n">c</span><span class="o">[</span><span class="n">8</span><span class="o">]</span> <span class="o">=</span> <span class="sc">&#39;-&#39;</span><span class="o">;</span>
-        <span class="n">c</span><span class="o">[</span><span class="n">9</span><span class="o">]</span> <span class="o">=</span> <span class="o">(</span><span class="kt">char</span><span class="o">)(</span><span class="sc">&#39;0&#39;</span> <span class="o">-</span> <span class="n">m</span><span class="o">);</span>
+    }<span style="color:#00f">else</span> <span style="color:#00f">if</span>(m &lt;= -4){
+        <span style="color:#00f">for</span>(<span style="color:#2b91af">int</span> i = 1; i &lt; 1 - m; i++) a *= 10;
+        c[1] = (<span style="color:#2b91af">char</span>)(<span style="color:#a31515">&#39;0&#39;</span> + Math.floor(a));
+        a = (a - Math.floor(a)) * 10;
+        c[2] = <span style="color:#a31515">&#39;.&#39;</span>;
+        <span style="color:#00f">for</span>(<span style="color:#2b91af">int</span> i = 3; i &lt; 7; i++){
+            <span style="color:#2b91af">double</span> b = Math.floor(a);
+            c[i] = (<span style="color:#2b91af">char</span>)(<span style="color:#a31515">&#39;0&#39;</span> + b);
+            a = (a - b) * 10.0;
+        }
+        c[7] = <span style="color:#a31515">&#39;e&#39;</span>;
+        c[8] = <span style="color:#a31515">&#39;-&#39;</span>;
+        c[9] = (<span style="color:#2b91af">char</span>)(<span style="color:#a31515">&#39;0&#39;</span> - m);
 
-    <span class="o">}</span><span class="k">else</span> <span class="k">if</span><span class="o">(</span><span class="n">m</span> <span class="o">&lt;=</span> <span class="o">-</span><span class="n">1</span><span class="o">){</span>
-        <span class="n">c</span><span class="o">[</span><span class="n">1</span><span class="o">]</span> <span class="o">=</span> <span class="sc">&#39;0&#39;</span><span class="o">;</span>
-        <span class="n">c</span><span class="o">[</span><span class="n">2</span><span class="o">]</span> <span class="o">=</span> <span class="sc">&#39;.&#39;</span><span class="o">;</span>
-        <span class="n">a</span> <span class="o">*=</span> <span class="n">10</span><span class="o">;</span>
-        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">3</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">10</span><span class="o">;</span> <span class="n">i</span><span class="o">++){</span>
-            <span class="kt">double</span> <span class="n">b</span> <span class="o">=</span> <span class="n">Math</span><span class="o">.</span><span class="na">floor</span><span class="o">(</span><span class="n">a</span><span class="o">);</span>
-            <span class="n">c</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="o">(</span><span class="kt">char</span><span class="o">)(</span><span class="sc">&#39;0&#39;</span> <span class="o">+</span> <span class="n">b</span><span class="o">);</span>
-            <span class="n">a</span> <span class="o">=</span> <span class="o">(</span><span class="n">a</span> <span class="o">-</span> <span class="n">b</span><span class="o">)</span> <span class="o">*</span> <span class="n">10</span><span class="o">.</span><span class="na">0</span><span class="o">;</span>
-        <span class="o">}</span>
+    }<span style="color:#00f">else</span> <span style="color:#00f">if</span>(m &lt;= -1){
+        c[1] = <span style="color:#a31515">&#39;0&#39;</span>;
+        c[2] = <span style="color:#a31515">&#39;.&#39;</span>;
+        a *= 10;
+        <span style="color:#00f">for</span>(<span style="color:#2b91af">int</span> i = 3; i &lt; 10; i++){
+            <span style="color:#2b91af">double</span> b = Math.floor(a);
+            c[i] = (<span style="color:#2b91af">char</span>)(<span style="color:#a31515">&#39;0&#39;</span> + b);
+            a = (a - b) * 10.0;
+        }
 
-    <span class="o">}</span><span class="k">else</span> <span class="k">if</span><span class="o">(</span><span class="n">m</span> <span class="o">&lt;=</span> <span class="n">6</span><span class="o">){</span>
-        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">1</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">m</span> <span class="o">+</span> <span class="n">1</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="n">a</span> <span class="o">*=</span> <span class="n">0</span><span class="o">.</span><span class="na">1</span><span class="o">;</span>
-        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">1</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">10</span><span class="o">;</span> <span class="n">i</span><span class="o">++){</span>
-            <span class="kt">double</span> <span class="n">b</span> <span class="o">=</span> <span class="n">Math</span><span class="o">.</span><span class="na">floor</span><span class="o">(</span><span class="n">a</span><span class="o">);</span>
-            <span class="n">c</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="o">(</span><span class="kt">char</span><span class="o">)(</span><span class="sc">&#39;0&#39;</span> <span class="o">+</span> <span class="n">b</span><span class="o">);</span>
-            <span class="n">a</span> <span class="o">=</span> <span class="o">(</span><span class="n">a</span> <span class="o">-</span> <span class="n">b</span><span class="o">)</span> <span class="o">*</span> <span class="n">10</span><span class="o">.</span><span class="na">0</span><span class="o">;</span>
-            <span class="k">if</span><span class="o">(</span><span class="n">i</span> <span class="o">==</span> <span class="n">m</span> <span class="o">+</span> <span class="n">1</span><span class="o">){</span>
-                <span class="n">c</span><span class="o">[++</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="sc">&#39;.&#39;</span><span class="o">;</span>
-            <span class="o">}</span>
-        <span class="o">}</span>
-    <span class="o">}</span><span class="k">else</span> <span class="k">if</span><span class="o">(</span><span class="n">m</span> <span class="o">&lt;=</span> <span class="n">9</span><span class="o">){</span>
-        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">1</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">m</span> <span class="o">+</span> <span class="n">1</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="n">a</span> <span class="o">*=</span> <span class="n">0</span><span class="o">.</span><span class="na">1</span><span class="o">;</span>
-        <span class="n">c</span><span class="o">[</span><span class="n">1</span><span class="o">]</span> <span class="o">=</span> <span class="o">(</span><span class="kt">char</span><span class="o">)(</span><span class="sc">&#39;0&#39;</span> <span class="o">+</span> <span class="n">Math</span><span class="o">.</span><span class="na">floor</span><span class="o">(</span><span class="n">a</span><span class="o">));</span>
-        <span class="n">a</span> <span class="o">=</span> <span class="o">(</span><span class="n">a</span> <span class="o">-</span> <span class="n">Math</span><span class="o">.</span><span class="na">floor</span><span class="o">(</span><span class="n">a</span><span class="o">))</span> <span class="o">*</span> <span class="n">10</span><span class="o">;</span>
-        <span class="n">c</span><span class="o">[</span><span class="n">2</span><span class="o">]</span> <span class="o">=</span> <span class="sc">&#39;.&#39;</span><span class="o">;</span>
-        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">3</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">8</span><span class="o">;</span> <span class="n">i</span><span class="o">++){</span>
-            <span class="kt">double</span> <span class="n">b</span> <span class="o">=</span> <span class="n">Math</span><span class="o">.</span><span class="na">floor</span><span class="o">(</span><span class="n">a</span><span class="o">);</span>
-            <span class="n">c</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="o">(</span><span class="kt">char</span><span class="o">)(</span><span class="sc">&#39;0&#39;</span> <span class="o">+</span> <span class="n">b</span><span class="o">);</span>
-            <span class="n">a</span> <span class="o">=</span> <span class="o">(</span><span class="n">a</span> <span class="o">-</span> <span class="n">b</span><span class="o">)</span> <span class="o">*</span> <span class="n">10</span><span class="o">.</span><span class="na">0</span><span class="o">;</span>
-        <span class="o">}</span>
-        <span class="n">c</span><span class="o">[</span><span class="n">8</span><span class="o">]</span> <span class="o">=</span> <span class="sc">&#39;e&#39;</span><span class="o">;</span>
-        <span class="n">c</span><span class="o">[</span><span class="n">9</span><span class="o">]</span> <span class="o">=</span> <span class="o">(</span><span class="kt">char</span><span class="o">)(</span><span class="sc">&#39;0&#39;</span> <span class="o">+</span> <span class="n">m</span><span class="o">);</span>
+    }<span style="color:#00f">else</span> <span style="color:#00f">if</span>(m &lt;= 6){
+        <span style="color:#00f">for</span>(<span style="color:#2b91af">int</span> i = 1; i &lt; m + 1; i++) a *= 0.1;
+        <span style="color:#00f">for</span>(<span style="color:#2b91af">int</span> i = 1; i &lt; 10; i++){
+            <span style="color:#2b91af">double</span> b = Math.floor(a);
+            c[i] = (<span style="color:#2b91af">char</span>)(<span style="color:#a31515">&#39;0&#39;</span> + b);
+            a = (a - b) * 10.0;
+            <span style="color:#00f">if</span>(i == m + 1){
+                c[++i] = <span style="color:#a31515">&#39;.&#39;</span>;
+            }
+        }
+    }<span style="color:#00f">else</span> <span style="color:#00f">if</span>(m &lt;= 9){
+        <span style="color:#00f">for</span>(<span style="color:#2b91af">int</span> i = 1; i &lt; m + 1; i++) a *= 0.1;
+        c[1] = (<span style="color:#2b91af">char</span>)(<span style="color:#a31515">&#39;0&#39;</span> + Math.floor(a));
+        a = (a - Math.floor(a)) * 10;
+        c[2] = <span style="color:#a31515">&#39;.&#39;</span>;
+        <span style="color:#00f">for</span>(<span style="color:#2b91af">int</span> i = 3; i &lt; 8; i++){
+            <span style="color:#2b91af">double</span> b = Math.floor(a);
+            c[i] = (<span style="color:#2b91af">char</span>)(<span style="color:#a31515">&#39;0&#39;</span> + b);
+            a = (a - b) * 10.0;
+        }
+        c[8] = <span style="color:#a31515">&#39;e&#39;</span>;
+        c[9] = (<span style="color:#2b91af">char</span>)(<span style="color:#a31515">&#39;0&#39;</span> + m);
 
-    <span class="o">}</span><span class="k">else</span> <span class="k">if</span><span class="o">(</span><span class="n">m</span> <span class="o">&lt;=</span> <span class="n">99</span><span class="o">){</span>
-        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">1</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">m</span> <span class="o">+</span> <span class="n">1</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="n">a</span> <span class="o">*=</span> <span class="n">0</span><span class="o">.</span><span class="na">1</span><span class="o">;</span>
-        <span class="n">c</span><span class="o">[</span><span class="n">1</span><span class="o">]</span> <span class="o">=</span> <span class="o">(</span><span class="kt">char</span><span class="o">)(</span><span class="sc">&#39;0&#39;</span> <span class="o">+</span> <span class="n">Math</span><span class="o">.</span><span class="na">floor</span><span class="o">(</span><span class="n">a</span><span class="o">));</span>
-        <span class="n">a</span> <span class="o">=</span> <span class="o">(</span><span class="n">a</span> <span class="o">-</span> <span class="n">Math</span><span class="o">.</span><span class="na">floor</span><span class="o">(</span><span class="n">a</span><span class="o">))</span> <span class="o">*</span> <span class="n">10</span><span class="o">;</span>
-        <span class="n">c</span><span class="o">[</span><span class="n">2</span><span class="o">]</span> <span class="o">=</span> <span class="sc">&#39;.&#39;</span><span class="o">;</span>
-        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">3</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">7</span><span class="o">;</span> <span class="n">i</span><span class="o">++){</span>
-            <span class="kt">double</span> <span class="n">b</span> <span class="o">=</span> <span class="n">Math</span><span class="o">.</span><span class="na">floor</span><span class="o">(</span><span class="n">a</span><span class="o">);</span>
-            <span class="n">c</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="o">(</span><span class="kt">char</span><span class="o">)(</span><span class="sc">&#39;0&#39;</span> <span class="o">+</span> <span class="n">b</span><span class="o">);</span>
-            <span class="n">a</span> <span class="o">=</span> <span class="o">(</span><span class="n">a</span> <span class="o">-</span> <span class="n">b</span><span class="o">)</span> <span class="o">*</span> <span class="n">10</span><span class="o">.</span><span class="na">0</span><span class="o">;</span>
-        <span class="o">}</span>
-        <span class="n">c</span><span class="o">[</span><span class="n">7</span><span class="o">]</span> <span class="o">=</span> <span class="sc">&#39;e&#39;</span><span class="o">;</span>
-        <span class="n">c</span><span class="o">[</span><span class="n">8</span><span class="o">]</span> <span class="o">=</span> <span class="o">(</span><span class="kt">char</span><span class="o">)(</span><span class="sc">&#39;0&#39;</span> <span class="o">+</span> <span class="n">m</span> <span class="o">*</span> <span class="n">0</span><span class="o">.</span><span class="na">1</span><span class="o">);</span>
-        <span class="n">c</span><span class="o">[</span><span class="n">9</span><span class="o">]</span> <span class="o">=</span> <span class="o">(</span><span class="kt">char</span><span class="o">)(</span><span class="sc">&#39;0&#39;</span> <span class="o">+</span> <span class="n">m</span> <span class="o">%</span> <span class="n">10</span><span class="o">);</span>
+    }<span style="color:#00f">else</span> <span style="color:#00f">if</span>(m &lt;= 99){
+        <span style="color:#00f">for</span>(<span style="color:#2b91af">int</span> i = 1; i &lt; m + 1; i++) a *= 0.1;
+        c[1] = (<span style="color:#2b91af">char</span>)(<span style="color:#a31515">&#39;0&#39;</span> + Math.floor(a));
+        a = (a - Math.floor(a)) * 10;
+        c[2] = <span style="color:#a31515">&#39;.&#39;</span>;
+        <span style="color:#00f">for</span>(<span style="color:#2b91af">int</span> i = 3; i &lt; 7; i++){
+            <span style="color:#2b91af">double</span> b = Math.floor(a);
+            c[i] = (<span style="color:#2b91af">char</span>)(<span style="color:#a31515">&#39;0&#39;</span> + b);
+            a = (a - b) * 10.0;
+        }
+        c[7] = <span style="color:#a31515">&#39;e&#39;</span>;
+        c[8] = (<span style="color:#2b91af">char</span>)(<span style="color:#a31515">&#39;0&#39;</span> + m * 0.1);
+        c[9] = (<span style="color:#2b91af">char</span>)(<span style="color:#a31515">&#39;0&#39;</span> + m % 10);
 
-    <span class="o">}</span><span class="k">else</span><span class="o">{</span>
-        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">1</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">m</span> <span class="o">+</span> <span class="n">1</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="n">a</span> <span class="o">*=</span> <span class="n">0</span><span class="o">.</span><span class="na">1</span><span class="o">;</span>
-        <span class="n">c</span><span class="o">[</span><span class="n">1</span><span class="o">]</span> <span class="o">=</span> <span class="o">(</span><span class="kt">char</span><span class="o">)(</span><span class="sc">&#39;0&#39;</span> <span class="o">+</span> <span class="n">Math</span><span class="o">.</span><span class="na">floor</span><span class="o">(</span><span class="n">a</span><span class="o">));</span>
-        <span class="n">a</span> <span class="o">=</span> <span class="o">(</span><span class="n">a</span> <span class="o">-</span> <span class="n">Math</span><span class="o">.</span><span class="na">floor</span><span class="o">(</span><span class="n">a</span><span class="o">))</span> <span class="o">*</span> <span class="n">10</span><span class="o">;</span>
-        <span class="n">c</span><span class="o">[</span><span class="n">2</span><span class="o">]</span> <span class="o">=</span> <span class="sc">&#39;.&#39;</span><span class="o">;</span>
-        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">3</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">6</span><span class="o">;</span> <span class="n">i</span><span class="o">++){</span>
-            <span class="kt">double</span> <span class="n">b</span> <span class="o">=</span> <span class="n">Math</span><span class="o">.</span><span class="na">floor</span><span class="o">(</span><span class="n">a</span><span class="o">);</span>
-            <span class="n">c</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="o">(</span><span class="kt">char</span><span class="o">)(</span><span class="sc">&#39;0&#39;</span> <span class="o">+</span> <span class="n">b</span><span class="o">);</span>
-            <span class="n">a</span> <span class="o">=</span> <span class="o">(</span><span class="n">a</span> <span class="o">-</span> <span class="n">b</span><span class="o">)</span> <span class="o">*</span> <span class="n">10</span><span class="o">.</span><span class="na">0</span><span class="o">;</span>
-        <span class="o">}</span>
-        <span class="n">c</span><span class="o">[</span><span class="n">6</span><span class="o">]</span> <span class="o">=</span> <span class="sc">&#39;e&#39;</span><span class="o">;</span>
-        <span class="n">c</span><span class="o">[</span><span class="n">7</span><span class="o">]</span> <span class="o">=</span> <span class="o">(</span><span class="kt">char</span><span class="o">)(</span><span class="sc">&#39;0&#39;</span> <span class="o">+</span> <span class="n">m</span> <span class="o">*</span> <span class="n">0</span><span class="o">.</span><span class="na">01</span><span class="o">);</span>
-        <span class="n">c</span><span class="o">[</span><span class="n">8</span><span class="o">]</span> <span class="o">=</span> <span class="o">(</span><span class="kt">char</span><span class="o">)(</span><span class="sc">&#39;0&#39;</span> <span class="o">+</span> <span class="o">(</span><span class="n">m</span> <span class="o">*</span> <span class="n">0</span><span class="o">.</span><span class="na">1</span><span class="o">)</span> <span class="o">%</span> <span class="n">10</span><span class="o">);</span>
-        <span class="n">c</span><span class="o">[</span><span class="n">9</span><span class="o">]</span> <span class="o">=</span> <span class="o">(</span><span class="kt">char</span><span class="o">)(</span><span class="sc">&#39;0&#39;</span> <span class="o">+</span> <span class="n">m</span> <span class="o">%</span> <span class="n">10</span><span class="o">);</span>
+    }<span style="color:#00f">else</span>{
+        <span style="color:#00f">for</span>(<span style="color:#2b91af">int</span> i = 1; i &lt; m + 1; i++) a *= 0.1;
+        c[1] = (<span style="color:#2b91af">char</span>)(<span style="color:#a31515">&#39;0&#39;</span> + Math.floor(a));
+        a = (a - Math.floor(a)) * 10;
+        c[2] = <span style="color:#a31515">&#39;.&#39;</span>;
+        <span style="color:#00f">for</span>(<span style="color:#2b91af">int</span> i = 3; i &lt; 6; i++){
+            <span style="color:#2b91af">double</span> b = Math.floor(a);
+            c[i] = (<span style="color:#2b91af">char</span>)(<span style="color:#a31515">&#39;0&#39;</span> + b);
+            a = (a - b) * 10.0;
+        }
+        c[6] = <span style="color:#a31515">&#39;e&#39;</span>;
+        c[7] = (<span style="color:#2b91af">char</span>)(<span style="color:#a31515">&#39;0&#39;</span> + m * 0.01);
+        c[8] = (<span style="color:#2b91af">char</span>)(<span style="color:#a31515">&#39;0&#39;</span> + (m * 0.1) % 10);
+        c[9] = (<span style="color:#2b91af">char</span>)(<span style="color:#a31515">&#39;0&#39;</span> + m % 10);
 
-    <span class="o">}</span>
+    }
 
-    <span class="k">return</span> <span class="k">new</span> <span class="n">String</span><span class="o">(</span><span class="n">c</span><span class="o">);</span>
-<span class="o">}</span>
+    <span style="color:#00f">return</span> <span style="color:#00f">new</span> String(c);
+}
 </code></pre></div>
 		</div>
 		<footer class="post__footer">

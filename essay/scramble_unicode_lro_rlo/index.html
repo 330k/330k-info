@@ -8,7 +8,7 @@
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
 	<meta property="og:title" content="Unicode制御文字(LRO, RLO)でコピー・改変を防止 (構想)" />
-<meta property="og:description" content="Unicode制御文字のうち、LRO(Left-to-right override, U&#43;202D)とRLO(Right-to-left override, U&#43;202E)は 行中でも文字列の方向を変更する。 1行の中に何度もLROとRLOが入ると、カーソルキーが踊って楽しいことになる。 例: 下のテキストボックスの中の文字列を編集したり、カーソルキーで移動しようとしても上手くできないはず。 ‮‭い‮を‭ろ‮る‭は‮ぬ‭に‮り‭ほ‮ち‭へ ‮‭わ‮" />
+<meta property="og:description" content="Unicode制御文字のうち、LRO(Left-to-right override, U&#43;202D)とRLO(Right-to-left override, U&#43;202E)は 行中でも文字列の方向を変更する。 1行の中に何度もLROとRLOが入ると、カーソルキーが踊って楽しいことになる。 例: 下のテキストボックスの中の文字列を編集したり、カーソルキーで移動しようとしても上手くできないはず。 ※ Edgeは表示が崩れるので、Ctrl &#43; A→Ctrl &#43;" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.330k.info/essay/scramble_unicode_lro_rlo/" /><meta property="og:image" content="https://www.330k.info/apple-touch-icon.png"/><meta property="article:section" content="essay" />
 <meta property="article:published_time" content="2017-08-21T22:38:20+09:00" />
@@ -19,7 +19,7 @@
 <meta name="twitter:image" content="https://www.330k.info/apple-touch-icon.png"/>
 
 <meta name="twitter:title" content="Unicode制御文字(LRO, RLO)でコピー・改変を防止 (構想)"/>
-<meta name="twitter:description" content="Unicode制御文字のうち、LRO(Left-to-right override, U&#43;202D)とRLO(Right-to-left override, U&#43;202E)は 行中でも文字列の方向を変更する。 1行の中に何度もLROとRLOが入ると、カーソルキーが踊って楽しいことになる。 例: 下のテキストボックスの中の文字列を編集したり、カーソルキーで移動しようとしても上手くできないはず。 ‮‭い‮を‭ろ‮る‭は‮ぬ‭に‮り‭ほ‮ち‭へ ‮‭わ‮"/>
+<meta name="twitter:description" content="Unicode制御文字のうち、LRO(Left-to-right override, U&#43;202D)とRLO(Right-to-left override, U&#43;202E)は 行中でも文字列の方向を変更する。 1行の中に何度もLROとRLOが入ると、カーソルキーが踊って楽しいことになる。 例: 下のテキストボックスの中の文字列を編集したり、カーソルキーで移動しようとしても上手くできないはず。 ※ Edgeは表示が崩れるので、Ctrl &#43; A→Ctrl &#43;"/>
 
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -95,35 +95,27 @@ if (!doNotTrack) {
 行中でも文字列の方向を変更する。</p>
 <p>1行の中に何度もLROとRLOが入ると、カーソルキーが踊って楽しいことになる。</p>
 <p>例: 下のテキストボックスの中の文字列を編集したり、カーソルキーで移動しようとしても上手くできないはず。</p>
-<textarea cols="50" rows="5">
-‮‭い‮を‭ろ‮る‭は‮ぬ‭に‮り‭ほ‮ち‭へ
-‮‭わ‮む‭か‮ら‭よ‮な‭た‮ね‭れ‮つ
-‮‭う‮て‭ゐ‮え‭の‮こ‭お‮ふ‭く‮け‭や
-‮‭あ‮す‭さ‮せ‭き‮も‭ゆ‮ひ‭め‮ゑ‭み
-</textarea>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
 <p>※ Edgeは表示が崩れるので、<code>Ctrl + A</code>→<code>Ctrl + C</code>でメモ帳にコピペで確認可能。</p>
 <p>表示上は普通のいろは順にひらがなが並んでいるように見えるが、
 実際のデータはまったく違う順序になっている。</p>
 <p>↓通常のテキスト (比較用)</p>
-<textarea cols="50" rows="5">
-いろはにほへとちりぬるを
-わかよたれそつねならむ
-うゐのおくやまけふこえて
-あさきゆめみしゑひもせす
-</textarea>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
 <h2 id="作り方">作り方</h2>
 <p>行内の文字列の順番を入れ替えつつ、LROとRLOを交互に挿入。</p>
 <p>以下のMathematicaコードで上記の例を作成した。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-Mathematica" data-lang="Mathematica"><span class="n">StringScrumble</span><span class="p">[</span><span class="nv">str_String</span><span class="p">]</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">Module</span><span class="p">[{</span><span class="n">chars</span><span class="p">,</span><span class="w"> </span><span class="n">chars2</span><span class="p">},</span><span class="w">
-</span><span class="w">  </span><span class="n">StringJoin</span><span class="p">[</span><span class="n">Riffle</span><span class="p">[(</span><span class="w">
-</span><span class="w">    </span><span class="n">chars</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ToCharacterCode</span><span class="p">[</span><span class="nv">#</span><span class="p">];</span><span class="w">
-</span><span class="w">    </span><span class="n">chars2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Join</span><span class="p">[{</span><span class="mi">16</span><span class="o">^^</span><span class="mi">202</span><span class="n">e</span><span class="p">},</span><span class="w"> </span><span class="n">Riffle</span><span class="p">[</span><span class="n">chars</span><span class="p">,</span><span class="w"> </span><span class="n">Reverse</span><span class="p">[</span><span class="n">chars</span><span class="p">]]][[</span><span class="mi">1</span><span class="w"> </span><span class="o">;;</span><span class="w"> </span><span class="n">Length</span><span class="p">[</span><span class="n">chars</span><span class="p">]]];</span><span class="w">
-</span><span class="w">    </span><span class="n">FromCharacterCode</span><span class="p">[</span><span class="n">Riffle</span><span class="p">[</span><span class="n">chars2</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="mi">16</span><span class="o">^^</span><span class="mi">202</span><span class="n">d</span><span class="p">,</span><span class="w"> </span><span class="mi">16</span><span class="o">^^</span><span class="mi">202</span><span class="n">e</span><span class="p">}]])</span><span class="w"> </span><span class="o">&amp;</span><span class="w">
-</span><span class="w">   </span><span class="o">/@</span><span class="w"> </span><span class="n">StringSplit</span><span class="p">[</span><span class="n">str</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;\n&#34;</span><span class="p">]</span><span class="w">
-</span><span class="w">  </span><span class="p">,</span><span class="w"> </span><span class="n">StringCases</span><span class="p">[</span><span class="n">str</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;\n&#34;</span><span class="p">]]]]</span><span class="w">
-</span><span class="w">
-</span><span class="w"></span><span class="n">StringScrumble</span><span class="p">[</span><span class="s">&#34;いろはにほへとちりぬるを\nわかよたれそつねならむ\nうゐのおくやまけふこえて\nあさきゆめみしゑひもせす&#34;</span><span class="p">]</span><span class="w">
-</span></code></pre></div><h2 id="各種デバイスアプリでの表示">各種デバイス・アプリでの表示</h2>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Mathematica" data-lang="Mathematica">StringScrumble[str_String] := Module[{chars, chars2},
+  StringJoin[Riffle[(
+    chars = ToCharacterCode[#];
+    chars2 = Join[{16^^202e}, Riffle[chars, Reverse[chars]]][[1 ;; Length[chars]]];
+    FromCharacterCode[Riffle[chars2, {16^^202d, 16^^202e}]]) &amp;
+   /@ StringSplit[str, <span style="color:#a31515">&#34;\n&#34;</span>]
+  , StringCases[str, <span style="color:#a31515">&#34;\n&#34;</span>]]]]
+
+StringScrumble[<span style="color:#a31515">&#34;いろはにほへとちりぬるを\nわかよたれそつねならむ\nうゐのおくやまけふこえて\nあさきゆめみしゑひもせす&#34;</span>]
+</code></pre></div><h2 id="各種デバイスアプリでの表示">各種デバイス・アプリでの表示</h2>
 <p>上記の文章をメールで送信し、各種端末で受信メールで表示してみた。</p>
 <p>ChromeやFirefoxなどブラウザは狙い通り表示された。
 Edgeはテキストボックス内ではダメだったが、それ以外の場所ではOK。

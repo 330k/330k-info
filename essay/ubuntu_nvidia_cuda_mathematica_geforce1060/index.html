@@ -128,13 +128,13 @@ ddでUSBメモリに書き込む。</p>
 sudo apt install nvidia-387
 </code></pre><h2 id="cuda-91">CUDA 9.1</h2>
 <p><a href="https://developer.nvidia.com/cuda-downloads">CUDA Toolkit 9.1 Download</a>からUbuntu 17.04用の「deb (network)」をダウンロード。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">sudo dpkg -i cuda-repo-ubuntu1704_9.1.85-1_amd64.deb
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo dpkg -i cuda-repo-ubuntu1704_9.1.85-1_amd64.deb
 sudo apt-key adv --fetch-keys https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1704/x86_64/7fa2af80.pub
 sudo apt update
 sudo apt install cuda
 </code></pre></div><p>環境変数を設定する。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span>/usr/local/cuda/bin:<span class="nv">$PATH</span>
-<span class="nb">export</span> <span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span>/usr/local/cuda:<span class="nv">$LD_LIBRARY_PATH</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">export PATH=/usr/local/cuda/bin:$PATH
+export LD_LIBRARY_PATH=/usr/local/cuda:$LD_LIBRARY_PATH
 </code></pre></div><h2 id="mathematica-804-home-edition">Mathematica 8.0.4 Home Edition</h2>
 <p><a href="https://www.hulinks.co.jp/support/mathematica/reissue.html">代理店の手順</a>に従い、
 Wolframシステム移行フォームで、新しいアクティベーションキーを取得する。</p>
@@ -154,35 +154,35 @@ LANG=ja_JP.UTF-8
 sudo ln -s /usr/lib/nvidia-387/tls/libnvidia-tls.so.387.26 /usr/lib64/libnvidia-tls.so.387.26
 sudo ln -s /usr/lib/x86_64-linux-gnu/libcuda.so /usr/lib64/libcuda.so
 </code></pre><p>Mathematicaを起動して確認する。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-Mathematica" data-lang="Mathematica"><span class="n">In</span><span class="p">[</span><span class="mi">7</span><span class="p">]</span><span class="o">:=</span><span class="w"> </span><span class="n">Needs</span><span class="p">[</span><span class="s">&#34;CUDALink`&#34;</span><span class="p">]</span><span class="w">
-</span><span class="w">
-</span><span class="w"></span><span class="n">In</span><span class="p">[</span><span class="mi">8</span><span class="p">]</span><span class="o">:=</span><span class="w"> </span><span class="n">CUDAQ</span><span class="p">[]</span><span class="w">
-</span><span class="w">
-</span><span class="w"></span><span class="n">Out</span><span class="p">[</span><span class="mi">8</span><span class="p">]</span><span class="o">=</span><span class="w"> </span><span class="n">True</span><span class="w">
-</span><span class="w">
-</span><span class="w"></span><span class="n">In</span><span class="p">[</span><span class="mi">9</span><span class="p">]</span><span class="o">:=</span><span class="w"> </span><span class="n">CUDAInformation</span><span class="p">[]</span><span class="w">
-</span><span class="w">
-</span><span class="w"></span><span class="n">Out</span><span class="p">[</span><span class="mi">9</span><span class="p">]</span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">1</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">{</span><span class="s">&#34;Name&#34;</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="s">&#34;GeForce GTX 1060&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;Clock Rate&#34;</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="mi">1733000</span><span class="p">,</span><span class="w"> 
-</span><span class="w">   </span><span class="s">&#34;Compute Capabilities&#34;</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="mf">6.1</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;GPU Overlap&#34;</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> 
-</span><span class="w">   </span><span class="s">&#34;Maximum Block Dimensions&#34;</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">{</span><span class="mi">1024</span><span class="p">,</span><span class="w"> </span><span class="mi">1024</span><span class="p">,</span><span class="w"> </span><span class="mi">64</span><span class="p">},</span><span class="w"> 
-</span><span class="w">   </span><span class="s">&#34;Maximum Grid Dimensions&#34;</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">{</span><span class="mi">2147483647</span><span class="p">,</span><span class="w"> </span><span class="mi">65535</span><span class="p">,</span><span class="w"> </span><span class="mi">65535</span><span class="p">},</span><span class="w"> 
-</span><span class="w">   </span><span class="s">&#34;Maximum Threads Per Block&#34;</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="mi">1024</span><span class="p">,</span><span class="w"> 
-</span><span class="w">   </span><span class="s">&#34;Maximum Shared Memory Per Block&#34;</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="mi">49152</span><span class="p">,</span><span class="w"> 
-</span><span class="w">   </span><span class="s">&#34;Total Constant Memory&#34;</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="mi">65536</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;Warp Size&#34;</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="mi">32</span><span class="p">,</span><span class="w"> 
-</span><span class="w">   </span><span class="s">&#34;Maximum Pitch&#34;</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="mi">2147483647</span><span class="p">,</span><span class="w"> 
-</span><span class="w">   </span><span class="s">&#34;Maximum Registers Per Block&#34;</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="mi">65536</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;Texture Alignment&#34;</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="mi">512</span><span class="p">,</span><span class="w">
-</span><span class="w">    </span><span class="s">&#34;Multiprocessor Count&#34;</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;Core Count&#34;</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="mi">320</span><span class="p">,</span><span class="w"> 
-</span><span class="w">   </span><span class="s">&#34;Execution Timeout&#34;</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;Integrated&#34;</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">False</span><span class="p">,</span><span class="w"> 
-</span><span class="w">   </span><span class="s">&#34;Can Map Host Memory&#34;</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">True</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;Compute Mode&#34;</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="s">&#34;Default&#34;</span><span class="p">,</span><span class="w"> 
-</span><span class="w">   </span><span class="s">&#34;Texture1D Width&#34;</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="mi">131072</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;Texture2D Width&#34;</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="mi">131072</span><span class="p">,</span><span class="w"> 
-</span><span class="w">   </span><span class="s">&#34;Texture2D Height&#34;</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="mi">65536</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;Texture3D Width&#34;</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="mi">16384</span><span class="p">,</span><span class="w"> 
-</span><span class="w">   </span><span class="s">&#34;Texture3D Height&#34;</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="mi">16384</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;Texture3D Depth&#34;</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="mi">16384</span><span class="p">,</span><span class="w"> 
-</span><span class="w">   </span><span class="s">&#34;Texture2D Array Width&#34;</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="mi">32768</span><span class="p">,</span><span class="w"> 
-</span><span class="w">   </span><span class="s">&#34;Texture2D Array Height&#34;</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="mi">32768</span><span class="p">,</span><span class="w"> 
-</span><span class="w">   </span><span class="s">&#34;Texture2D Array Slices&#34;</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="mi">2048</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;Surface Alignment&#34;</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="mi">512</span><span class="p">,</span><span class="w"> 
-</span><span class="w">   </span><span class="s">&#34;Concurrent Kernels&#34;</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">True</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;ECC Enabled&#34;</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">False</span><span class="p">,</span><span class="w"> 
-</span><span class="w">   </span><span class="s">&#34;TCC Enabled&#34;</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">False</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;Total Memory&#34;</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="mi">6367739902</span><span class="p">}}</span><span class="w">
-</span></code></pre></div>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Mathematica" data-lang="Mathematica">In[7]:= Needs[<span style="color:#a31515">&#34;CUDALink`&#34;</span>]
+
+In[8]:= CUDAQ[]
+
+Out[8]= True
+
+In[9]:= CUDAInformation[]
+
+Out[9]= {1 -&gt; {<span style="color:#a31515">&#34;Name&#34;</span> -&gt; <span style="color:#a31515">&#34;GeForce GTX 1060&#34;</span>, <span style="color:#a31515">&#34;Clock Rate&#34;</span> -&gt; 1733000, 
+   <span style="color:#a31515">&#34;Compute Capabilities&#34;</span> -&gt; 6.1, <span style="color:#a31515">&#34;GPU Overlap&#34;</span> -&gt; 1, 
+   <span style="color:#a31515">&#34;Maximum Block Dimensions&#34;</span> -&gt; {1024, 1024, 64}, 
+   <span style="color:#a31515">&#34;Maximum Grid Dimensions&#34;</span> -&gt; {2147483647, 65535, 65535}, 
+   <span style="color:#a31515">&#34;Maximum Threads Per Block&#34;</span> -&gt; 1024, 
+   <span style="color:#a31515">&#34;Maximum Shared Memory Per Block&#34;</span> -&gt; 49152, 
+   <span style="color:#a31515">&#34;Total Constant Memory&#34;</span> -&gt; 65536, <span style="color:#a31515">&#34;Warp Size&#34;</span> -&gt; 32, 
+   <span style="color:#a31515">&#34;Maximum Pitch&#34;</span> -&gt; 2147483647, 
+   <span style="color:#a31515">&#34;Maximum Registers Per Block&#34;</span> -&gt; 65536, <span style="color:#a31515">&#34;Texture Alignment&#34;</span> -&gt; 512,
+    <span style="color:#a31515">&#34;Multiprocessor Count&#34;</span> -&gt; 10, <span style="color:#a31515">&#34;Core Count&#34;</span> -&gt; 320, 
+   <span style="color:#a31515">&#34;Execution Timeout&#34;</span> -&gt; 1, <span style="color:#a31515">&#34;Integrated&#34;</span> -&gt; False, 
+   <span style="color:#a31515">&#34;Can Map Host Memory&#34;</span> -&gt; True, <span style="color:#a31515">&#34;Compute Mode&#34;</span> -&gt; <span style="color:#a31515">&#34;Default&#34;</span>, 
+   <span style="color:#a31515">&#34;Texture1D Width&#34;</span> -&gt; 131072, <span style="color:#a31515">&#34;Texture2D Width&#34;</span> -&gt; 131072, 
+   <span style="color:#a31515">&#34;Texture2D Height&#34;</span> -&gt; 65536, <span style="color:#a31515">&#34;Texture3D Width&#34;</span> -&gt; 16384, 
+   <span style="color:#a31515">&#34;Texture3D Height&#34;</span> -&gt; 16384, <span style="color:#a31515">&#34;Texture3D Depth&#34;</span> -&gt; 16384, 
+   <span style="color:#a31515">&#34;Texture2D Array Width&#34;</span> -&gt; 32768, 
+   <span style="color:#a31515">&#34;Texture2D Array Height&#34;</span> -&gt; 32768, 
+   <span style="color:#a31515">&#34;Texture2D Array Slices&#34;</span> -&gt; 2048, <span style="color:#a31515">&#34;Surface Alignment&#34;</span> -&gt; 512, 
+   <span style="color:#a31515">&#34;Concurrent Kernels&#34;</span> -&gt; True, <span style="color:#a31515">&#34;ECC Enabled&#34;</span> -&gt; False, 
+   <span style="color:#a31515">&#34;TCC Enabled&#34;</span> -&gt; False, <span style="color:#a31515">&#34;Total Memory&#34;</span> -&gt; 6367739902}}
+</code></pre></div>
 		</div>
 		<footer class="post__footer">
 			

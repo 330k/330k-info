@@ -96,47 +96,47 @@ if (!doNotTrack) {
 Excelにインポートして変なメタ情報が設定されていないかチェックするためのスクリプトを作ってみた。</p>
 <h2 id="準備">準備</h2>
 <p>まずはapacheからTikaをダウンロード(執筆時点では1.11が最新)</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">wget http://ftp.jaist.ac.jp/pub/apache/tika/tika-app-1.11.jar
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">wget http://ftp.jaist.ac.jp/pub/apache/tika/tika-app-1.11.jar
 </code></pre></div><h2 id="全メタデータを収集">全メタデータを収集</h2>
 <p>とにかく全部のメタデータを収集したいときは、tikaのjarファイルと同じディレクトリに以下のようなスクリプトを配置。
 検索対象のディレクトリは3行目で指定する。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="cp">#!/bin/bash
-</span><span class="cp"></span>
-<span class="nv">dir</span><span class="o">=</span>~/Documents/
-<span class="nv">output</span><span class="o">=</span>metadata.xml
-<span class="nv">port</span><span class="o">=</span><span class="m">12345</span>
-<span class="nv">tmpfile</span><span class="o">=</span>temp.txt
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#00f">#!/bin/bash
+</span><span style="color:#00f"></span>
+dir=~/Documents/
+output=metadata.xml
+port=12345
+tmpfile=temp.txt
 
-java -jar tika-app-1.11.jar -s -x --port <span class="nv">$port</span> &gt; <span class="nv">$tmpfile</span> <span class="p">&amp;</span>
-<span class="nv">procid</span><span class="o">=</span><span class="nv">$!</span>
-sleep <span class="m">1</span>
+java -jar tika-app-1.11.jar -s -x --port $port &gt; $tmpfile &amp;
+procid=$!
+sleep 1
 
-<span class="nb">echo</span> <span class="s2">&#34;&lt;?xml version=\&#34;1.0\&#34; encoding=\&#34;utf-8\&#34; ?&gt;&#34;</span> &gt; <span class="nv">$output</span>
-<span class="nb">echo</span> <span class="s2">&#34;&lt;files&gt;&#34;</span> &gt;&gt; <span class="nv">$output</span>
-find <span class="s2">&#34;</span><span class="nv">$dir</span><span class="s2">&#34;</span> -iname <span class="s2">&#34;*.pdf&#34;</span> -o -iname <span class="s2">&#34;*.doc&#34;</span> -o -iname <span class="s2">&#34;*.doc?&#34;</span> -o -iname <span class="s2">&#34;*.xls&#34;</span> -o -iname <span class="s2">&#34;*.xls?&#34;</span> -o -iname <span class="s2">&#34;*.ppt&#34;</span> -o -iname <span class="s2">&#34;*.ppt?&#34;</span> <span class="p">|</span> <span class="k">while</span> <span class="nb">read</span> i
-<span class="k">do</span>
-  <span class="nb">echo</span> <span class="s2">&#34;&lt;file&gt;&#34;</span> &gt;&gt; <span class="nv">$output</span>
-  <span class="nb">echo</span> <span class="s2">&#34; &lt;filepath&gt;&lt;![CDATA[</span><span class="nv">$i</span><span class="s2">]]&gt;&lt;/filepath&gt;&#34;</span> &gt;&gt; <span class="nv">$output</span>
-  cat <span class="s2">&#34;</span><span class="nv">$i</span><span class="s2">&#34;</span> <span class="p">|</span> nc 127.0.0.1 <span class="nv">$port</span> &gt; <span class="nv">$tmpfile</span>
-  cat <span class="s2">&#34;</span><span class="nv">$tmpfile</span><span class="s2">&#34;</span> <span class="p">|</span> grep -E <span class="s2">&#34;^&lt;meta &#34;</span> &gt;&gt; <span class="nv">$output</span>
-  <span class="nb">echo</span> <span class="s2">&#34;&lt;/file&gt;&#34;</span> &gt;&gt; <span class="nv">$output</span>
-<span class="k">done</span>
-<span class="nb">echo</span> <span class="s2">&#34;&lt;/files&gt;&#34;</span> &gt;&gt; <span class="nv">$output</span>
+echo <span style="color:#a31515">&#34;&lt;?xml version=\&#34;1.0\&#34; encoding=\&#34;utf-8\&#34; ?&gt;&#34;</span> &gt; $output
+echo <span style="color:#a31515">&#34;&lt;files&gt;&#34;</span> &gt;&gt; $output
+find <span style="color:#a31515">&#34;</span>$dir<span style="color:#a31515">&#34;</span> -iname <span style="color:#a31515">&#34;*.pdf&#34;</span> -o -iname <span style="color:#a31515">&#34;*.doc&#34;</span> -o -iname <span style="color:#a31515">&#34;*.doc?&#34;</span> -o -iname <span style="color:#a31515">&#34;*.xls&#34;</span> -o -iname <span style="color:#a31515">&#34;*.xls?&#34;</span> -o -iname <span style="color:#a31515">&#34;*.ppt&#34;</span> -o -iname <span style="color:#a31515">&#34;*.ppt?&#34;</span> | <span style="color:#00f">while</span> read i
+<span style="color:#00f">do</span>
+  echo <span style="color:#a31515">&#34;&lt;file&gt;&#34;</span> &gt;&gt; $output
+  echo <span style="color:#a31515">&#34; &lt;filepath&gt;&lt;![CDATA[</span>$i<span style="color:#a31515">]]&gt;&lt;/filepath&gt;&#34;</span> &gt;&gt; $output
+  cat <span style="color:#a31515">&#34;</span>$i<span style="color:#a31515">&#34;</span> | nc 127.0.0.1 $port &gt; $tmpfile
+  cat <span style="color:#a31515">&#34;</span>$tmpfile<span style="color:#a31515">&#34;</span> | grep -E <span style="color:#a31515">&#34;^&lt;meta &#34;</span> &gt;&gt; $output
+  echo <span style="color:#a31515">&#34;&lt;/file&gt;&#34;</span> &gt;&gt; $output
+<span style="color:#00f">done</span>
+echo <span style="color:#a31515">&#34;&lt;/files&gt;&#34;</span> &gt;&gt; $output
 
-<span class="nb">kill</span> <span class="nv">$procid</span>
+kill $procid
 </code></pre></div><p>これに実行権限をつけて実行すると、同じディレクトリにmetadata.xmlというXMLファイルが生成される。</p>
 <p>すると、metadata.xmlが</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="cp">&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34; ?&gt;</span>
-<span class="nt">&lt;files&gt;</span>
-<span class="nt">&lt;file&gt;</span>
- <span class="nt">&lt;filepath&gt;</span><span class="cp">&lt;![CDATA[/home/***/Documents/*************.pdf]]&gt;</span><span class="nt">&lt;/filepath&gt;</span>
-<span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">&#34;pdf:PDFVersion&#34;</span> <span class="na">content=</span><span class="s">&#34;1.5&#34;</span><span class="nt">/&gt;</span>
-<span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">&#34;xmp:CreatorTool&#34;</span> <span class="na">content=</span><span class="s">&#34;****&#34;</span><span class="nt">/&gt;</span>
-<span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">&#34;Keywords&#34;</span> <span class="na">content=</span><span class="s">&#34;キーワード&#34;</span><span class="nt">/&gt;</span>
-<span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">&#34;access_permission:modify_annotations&#34;</span> <span class="na">content=</span><span class="s">&#34;true&#34;</span><span class="nt">/&gt;</span>
-<span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">&#34;access_permission:can_print_degraded&#34;</span> <span class="na">content=</span><span class="s">&#34;true&#34;</span><span class="nt">/&gt;</span>
-<span class="nt">&lt;/file&gt;</span>
-<span class="nt">&lt;/files&gt;</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#00f">&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34; ?&gt;</span>
+&lt;files&gt;
+&lt;file&gt;
+ &lt;filepath&gt;<span style="color:#00f">&lt;![CDATA[/home/***/Documents/*************.pdf]]&gt;</span>&lt;/filepath&gt;
+&lt;meta name=<span style="color:#a31515">&#34;pdf:PDFVersion&#34;</span> content=<span style="color:#a31515">&#34;1.5&#34;</span>/&gt;
+&lt;meta name=<span style="color:#a31515">&#34;xmp:CreatorTool&#34;</span> content=<span style="color:#a31515">&#34;****&#34;</span>/&gt;
+&lt;meta name=<span style="color:#a31515">&#34;Keywords&#34;</span> content=<span style="color:#a31515">&#34;キーワード&#34;</span>/&gt;
+&lt;meta name=<span style="color:#a31515">&#34;access_permission:modify_annotations&#34;</span> content=<span style="color:#a31515">&#34;true&#34;</span>/&gt;
+&lt;meta name=<span style="color:#a31515">&#34;access_permission:can_print_degraded&#34;</span> content=<span style="color:#a31515">&#34;true&#34;</span>/&gt;
+&lt;/file&gt;
+&lt;/files&gt;
 </code></pre></div><p>という出力になり、すべてのメタデータを収集できる。</p>
 <p>また、いちいちJVMを起動すると遅いので、サーバモードでTikaを起動し(起動するまで時間がかかるので念の為1秒待機)、最後にプロセスをkillしている。
 (Apache Tikaのサーバモードの良い終了のさせ方が分からなかった)</p>
@@ -144,50 +144,50 @@ find <span class="s2">&#34;</span><span class="nv">$dir</span><span class="s2">&
 <p>なお、すべてのメタデータを収集するとおもすぎるので、
 必要なメタデータだけを収集するようなスクリプトも書いてみた(&ldquo;creator&quot;と&quot;title&quot;だけを抜き出す)。</p>
 <p>違いは、オプションを-xから-mに変えて、プレーンテキストでメタデータを吐かせて処理している。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="cp">#!/bin/bash
-</span><span class="cp"></span>
-<span class="nv">dir</span><span class="o">=</span>~/Documents/
-<span class="nv">output</span><span class="o">=</span>metadata.xml
-<span class="nv">port</span><span class="o">=</span><span class="m">12345</span>
-<span class="nv">tmpfile</span><span class="o">=</span>temp.txt
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#00f">#!/bin/bash
+</span><span style="color:#00f"></span>
+dir=~/Documents/
+output=metadata.xml
+port=12345
+tmpfile=temp.txt
 
-java -jar tika-app-1.11.jar -s -m --port <span class="nv">$port</span> &gt; <span class="nv">$tmpfile</span> <span class="p">&amp;</span>
-<span class="nv">procid</span><span class="o">=</span><span class="nv">$!</span>
-sleep <span class="m">1</span>
+java -jar tika-app-1.11.jar -s -m --port $port &gt; $tmpfile &amp;
+procid=$!
+sleep 1
 
-<span class="nb">echo</span> <span class="s2">&#34;&lt;?xml version=\&#34;1.0\&#34; encoding=\&#34;utf-8\&#34; ?&gt;&#34;</span> &gt; <span class="nv">$output</span>
-<span class="nb">echo</span> <span class="s2">&#34;&lt;files&gt;&#34;</span> &gt;&gt; <span class="nv">$output</span>
-find <span class="s2">&#34;</span><span class="nv">$dir</span><span class="s2">&#34;</span> -iname <span class="s2">&#34;*.pdf&#34;</span> -o -iname <span class="s2">&#34;*.doc&#34;</span> -o -iname <span class="s2">&#34;*.doc?&#34;</span> -o -iname <span class="s2">&#34;*.xls&#34;</span> -o -iname <span class="s2">&#34;*.xls?&#34;</span> -o -iname <span class="s2">&#34;*.ppt&#34;</span> -o -iname <span class="s2">&#34;*.ppt?&#34;</span> <span class="p">|</span> <span class="k">while</span> <span class="nb">read</span> i
-<span class="k">do</span>
-  <span class="nb">echo</span> <span class="s2">&#34;&lt;file&gt;&#34;</span> &gt;&gt; <span class="nv">$output</span>
-  <span class="nb">echo</span> <span class="s2">&#34; &lt;filepath&gt;&lt;![CDATA[</span><span class="nv">$i</span><span class="s2">]]&gt;&lt;/filepath&gt;&#34;</span> &gt;&gt; <span class="nv">$output</span>
-  cat <span class="s2">&#34;</span><span class="nv">$i</span><span class="s2">&#34;</span> <span class="p">|</span> nc 127.0.0.1 <span class="nv">$port</span> &gt; <span class="nv">$tmpfile</span>
-  <span class="k">for</span> j in <span class="s2">&#34;creator&#34;</span> <span class="s2">&#34;title&#34;</span>
-  <span class="k">do</span>
-    <span class="nb">echo</span> -n <span class="s2">&#34; &lt;</span><span class="nv">$j</span><span class="s2">&gt;&lt;![CDATA[&#34;</span> &gt;&gt; <span class="nv">$output</span>
-    cat <span class="s2">&#34;</span><span class="nv">$tmpfile</span><span class="s2">&#34;</span> <span class="p">|</span> perl -ne <span class="s2">&#34;print if s|^</span><span class="nv">$j</span><span class="s2">: (.+)\n</span>$<span class="s2">|\\1|&#34;</span> &gt;&gt; <span class="nv">$output</span>
-    <span class="nb">echo</span> <span class="s2">&#34;]]&gt;&lt;/</span><span class="nv">$j</span><span class="s2">&gt;&#34;</span> &gt;&gt; <span class="nv">$output</span>
-  <span class="k">done</span>
-  <span class="nb">echo</span> <span class="s2">&#34;&lt;/file&gt;&#34;</span> &gt;&gt; <span class="nv">$output</span>
-<span class="k">done</span>
-<span class="nb">echo</span> <span class="s2">&#34;&lt;/files&gt;&#34;</span> &gt;&gt; <span class="nv">$output</span>
+echo <span style="color:#a31515">&#34;&lt;?xml version=\&#34;1.0\&#34; encoding=\&#34;utf-8\&#34; ?&gt;&#34;</span> &gt; $output
+echo <span style="color:#a31515">&#34;&lt;files&gt;&#34;</span> &gt;&gt; $output
+find <span style="color:#a31515">&#34;</span>$dir<span style="color:#a31515">&#34;</span> -iname <span style="color:#a31515">&#34;*.pdf&#34;</span> -o -iname <span style="color:#a31515">&#34;*.doc&#34;</span> -o -iname <span style="color:#a31515">&#34;*.doc?&#34;</span> -o -iname <span style="color:#a31515">&#34;*.xls&#34;</span> -o -iname <span style="color:#a31515">&#34;*.xls?&#34;</span> -o -iname <span style="color:#a31515">&#34;*.ppt&#34;</span> -o -iname <span style="color:#a31515">&#34;*.ppt?&#34;</span> | <span style="color:#00f">while</span> read i
+<span style="color:#00f">do</span>
+  echo <span style="color:#a31515">&#34;&lt;file&gt;&#34;</span> &gt;&gt; $output
+  echo <span style="color:#a31515">&#34; &lt;filepath&gt;&lt;![CDATA[</span>$i<span style="color:#a31515">]]&gt;&lt;/filepath&gt;&#34;</span> &gt;&gt; $output
+  cat <span style="color:#a31515">&#34;</span>$i<span style="color:#a31515">&#34;</span> | nc 127.0.0.1 $port &gt; $tmpfile
+  <span style="color:#00f">for</span> j in <span style="color:#a31515">&#34;creator&#34;</span> <span style="color:#a31515">&#34;title&#34;</span>
+  <span style="color:#00f">do</span>
+    echo -n <span style="color:#a31515">&#34; &lt;</span>$j<span style="color:#a31515">&gt;&lt;![CDATA[&#34;</span> &gt;&gt; $output
+    cat <span style="color:#a31515">&#34;</span>$tmpfile<span style="color:#a31515">&#34;</span> | perl -ne <span style="color:#a31515">&#34;print if s|^</span>$j<span style="color:#a31515">: (.+)\n</span>$<span style="color:#a31515">|\\1|&#34;</span> &gt;&gt; $output
+    echo <span style="color:#a31515">&#34;]]&gt;&lt;/</span>$j<span style="color:#a31515">&gt;&#34;</span> &gt;&gt; $output
+  <span style="color:#00f">done</span>
+  echo <span style="color:#a31515">&#34;&lt;/file&gt;&#34;</span> &gt;&gt; $output
+<span style="color:#00f">done</span>
+echo <span style="color:#a31515">&#34;&lt;/files&gt;&#34;</span> &gt;&gt; $output
 
-<span class="nb">kill</span> <span class="nv">$procid</span>
+kill $procid
 </code></pre></div><p>手抜き実装のため、&ldquo;dc:creator&quot;などを指定すると、XMLとしてはInvalidになってしまうので注意(dcが名前空間扱いになってしまう)。</p>
 <p>この場合は、出力結果として、</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="cp">&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34; ?&gt;</span>
-<span class="nt">&lt;files&gt;</span>
-<span class="nt">&lt;file&gt;</span>
- <span class="nt">&lt;filepath&gt;</span><span class="cp">&lt;![CDATA[/home/***/Documents/**********************.pdf]]&gt;</span><span class="nt">&lt;/filepath&gt;</span>
- <span class="nt">&lt;creator&gt;</span><span class="cp">&lt;![CDATA[作成者名]]&gt;</span><span class="nt">&lt;/creator&gt;</span>
- <span class="nt">&lt;title&gt;</span><span class="cp">&lt;![CDATA[テストタイトル]]&gt;</span><span class="nt">&lt;/title&gt;</span>
-<span class="nt">&lt;/file&gt;</span>
-<span class="nt">&lt;file&gt;</span>
- <span class="nt">&lt;filepath&gt;</span><span class="cp">&lt;![CDATA[/home/***/Documents/**********************.pdf]]&gt;</span><span class="nt">&lt;/filepath&gt;</span>
- <span class="nt">&lt;creator&gt;</span><span class="cp">&lt;![CDATA[作成者名]]&gt;</span><span class="nt">&lt;/creator&gt;</span>
- <span class="nt">&lt;title&gt;</span><span class="cp">&lt;![CDATA[テストタイトル]]&gt;</span><span class="nt">&lt;/title&gt;</span>
-<span class="nt">&lt;/file&gt;</span>
-<span class="nt">&lt;/files&gt;</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#00f">&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34; ?&gt;</span>
+&lt;files&gt;
+&lt;file&gt;
+ &lt;filepath&gt;<span style="color:#00f">&lt;![CDATA[/home/***/Documents/**********************.pdf]]&gt;</span>&lt;/filepath&gt;
+ &lt;creator&gt;<span style="color:#00f">&lt;![CDATA[作成者名]]&gt;</span>&lt;/creator&gt;
+ &lt;title&gt;<span style="color:#00f">&lt;![CDATA[テストタイトル]]&gt;</span>&lt;/title&gt;
+&lt;/file&gt;
+&lt;file&gt;
+ &lt;filepath&gt;<span style="color:#00f">&lt;![CDATA[/home/***/Documents/**********************.pdf]]&gt;</span>&lt;/filepath&gt;
+ &lt;creator&gt;<span style="color:#00f">&lt;![CDATA[作成者名]]&gt;</span>&lt;/creator&gt;
+ &lt;title&gt;<span style="color:#00f">&lt;![CDATA[テストタイトル]]&gt;</span>&lt;/title&gt;
+&lt;/file&gt;
+&lt;/files&gt;
 </code></pre></div><p>という感じのXMLファイルが生成されるので、あとは煮るなり焼くなり。
 この形式だとExcelでXMLをインポートするのも楽。
 ただし、改行が入っているメタデータは1行目だけになる。</p>

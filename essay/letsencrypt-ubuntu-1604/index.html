@@ -96,39 +96,39 @@ if (!doNotTrack) {
 <p>Chinese Year Specialという年間$8のプランを契約。
 Ubuntuのバージョンは16.04なのだが、カーネルのバージョンは2.6.32の古め。
 そのため、dockerは使えない。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># uname -r</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#008000"># uname -r</span>
 2.6.32-042stab127.2
-</code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># cat /etc/lsb-release </span>
-<span class="nv">DISTRIB_ID</span><span class="o">=</span>Ubuntu
-<span class="nv">DISTRIB_RELEASE</span><span class="o">=</span>16.04
-<span class="nv">DISTRIB_CODENAME</span><span class="o">=</span>xenial
-<span class="nv">DISTRIB_DESCRIPTION</span><span class="o">=</span><span class="s2">&#34;Ubuntu 16.04 LTS&#34;</span>
+</code></pre></div><div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#008000"># cat /etc/lsb-release </span>
+DISTRIB_ID=Ubuntu
+DISTRIB_RELEASE=16.04
+DISTRIB_CODENAME=xenial
+DISTRIB_DESCRIPTION=<span style="color:#a31515">&#34;Ubuntu 16.04 LTS&#34;</span>
 </code></pre></div><h2 id="apacheのsslモジュール有効化">ApacheのSSLモジュール有効化</h2>
 <p>SSLモジュールを有効化し、<code>a2ensite</code>でHTTPSサイトを有効化する。
 あとは設定ファイルに<code>ServerName</code>を追加する。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># a2enmod ssl</span>
-<span class="c1"># vi /etc/apache2/sites-available/default-ssl.conf</span>
-        ServerAdmin xxx@yyy.zzz <span class="o">(</span>変更<span class="o">)</span>
-        ServerName xxx.yyy.zzz <span class="o">(</span>追加<span class="o">)</span>
-<span class="c1"># a2ensite default-ssl</span>
-<span class="c1"># service apache2 reload</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#008000"># a2enmod ssl</span>
+<span style="color:#008000"># vi /etc/apache2/sites-available/default-ssl.conf</span>
+        ServerAdmin xxx@yyy.zzz (変更)
+        ServerName xxx.yyy.zzz (追加)
+<span style="color:#008000"># a2ensite default-ssl</span>
+<span style="color:#008000"># service apache2 reload</span>
 </code></pre></div><h2 id="lets-encryptのインストールと設定">Let&rsquo;s Encryptのインストールと設定</h2>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># apt-get install letsencrypt python-letsencrypt-apache</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#008000"># apt-get install letsencrypt python-letsencrypt-apache</span>
 </code></pre></div><p>Apacheを止めてから、Let&rsquo;s Encryptを実行。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># service apache2 stop</span>
-<span class="c1"># letsencrypt --authenticator standalone --installer apache</span>
-<span class="c1"># service apache2 start</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#008000"># service apache2 stop</span>
+<span style="color:#008000"># letsencrypt --authenticator standalone --installer apache</span>
+<span style="color:#008000"># service apache2 start</span>
 </code></pre></div><p>この時点でブラウザからHTTPSでアクセスできるはずなので確認。</p>
 <p>Let&rsquo;s Encryptのスクリプトがリダイレクトの設定を失敗したときは、
 HTTPサイトの設定にHTTPSへのリダイレクトを追加する。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># vi /etc/apache2/sites-available/000-default.conf</span>
-        Redirect <span class="s2">&#34;/&#34;</span> <span class="s2">&#34;https://****/&#34;</span> <span class="o">(</span>追加<span class="o">)</span>
-<span class="c1"># service apache2 restart</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#008000"># vi /etc/apache2/sites-available/000-default.conf</span>
+        Redirect <span style="color:#a31515">&#34;/&#34;</span> <span style="color:#a31515">&#34;https://****/&#34;</span> (追加)
+<span style="color:#008000"># service apache2 restart</span>
 </code></pre></div><h2 id="cronへの追加">cronへの追加</h2>
 <p>Let&rsquo;s Encryptの証明書は有効期限が3ヶ月なので、定期的にスクリプトを実行する必要がある。
 cronで定期的に実行するように設定する。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># crontab -e</span>
-<span class="m">0</span> <span class="m">0</span> <span class="m">1</span> * * service apache2 stop<span class="p">;</span> letsencrypt renew<span class="p">;</span> service apache2 start
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#008000"># crontab -e</span>
+0 0 1 * * service apache2 stop; letsencrypt renew; service apache2 start
 </code></pre></div>
 		</div>
 		<footer class="post__footer">

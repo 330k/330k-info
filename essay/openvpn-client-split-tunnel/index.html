@@ -91,13 +91,13 @@ if (!doNotTrack) {
 </div>
 </div>
 		</header><div class="content post__content clearfix">
-			<p>OpenVPNのLinuxクライアントを使ってスプリットトンネルのVPN接続をしようとした所、<s><code>route-nopull</code>が効かなかったので、別の対処を行った。</s>→<code>redirect-gateway def1</code>を削除。</p>
+			<p>OpenVPNのLinuxクライアントを使ってスプリットトンネルのVPN接続をしようとした所、<!-- raw HTML omitted --><code>route-nopull</code>が効かなかったので、別の対処を行った。<!-- raw HTML omitted -->→<code>redirect-gateway def1</code>を削除。</p>
 <h2 id="現象">現象</h2>
 <p>CentOSにOpenVPNのクライアントをインストールし、スプリットトンネルとするためにVPN接続プロファイルに<code>route-nopull</code>を指定した。</p>
 <p>しかしながら、それでも接続後のルーティングテーブルに<code>0.0.0.0/1</code>と<code>128.0.0.0/1</code>を追加され、すべての通信がVPN経由となってしまった。</p>
 <h2 id="対処法">対処法</h2>
 <p>設定ファイル中の<code>redirect-gateway def1</code>が<code>route-nopull</code>に優先されてしまうため、<code>redirect-gateway def1</code>を削除して<code>route-nopull</code>と<code>route</code>を指定する。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-txt" data-lang="txt"># redirect-gateway def1
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-txt" data-lang="txt"># redirect-gateway def1
 route-nopull
 route 192.168.10.0 255.255.255.0
 </code></pre></div><h2 id="対処法-あまり洗練されていない方法">対処法 (あまり洗練されていない方法)</h2>
@@ -107,7 +107,7 @@ route 192.168.10.0 255.255.255.0
 <p>また、<code>route-up</code>と<code>route-pre-down</code>に指定したスクリプトを実行するには、<code>script-security 2</code>の記載も必要。</p>
 <p>以下はsystemdを使うUbuntuおよびCentOSで動作確認した。</p>
 <p>例えば設定ファイル(<code>/etc/openvpn/client/vpnconnection1.conf</code>)に以下の記述を追加する。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-txt" data-lang="txt">script-security 2
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-txt" data-lang="txt">script-security 2
 pull
 route-noexec
 route-up &#34;/etc/openvpn/client/vpnconnection1_route-up.sh&#34;
@@ -116,15 +116,15 @@ route-pre-down &#34;/etc/openvpn/client/vpnconnection1_route-pre-down.sh&#34;
 <p>この場合は<code>192.168.10.0/24</code>のみVPN経由とする設定。</p>
 <p><code>${route_vpn_gateway}</code>はOpenVPNから渡される環境変数であり、その他は<a href="https://openvpn.net/community-resources/reference-manual-for-openvpn-2-4/">Reference manual for OpenVPN 2.4 | OpenVPN</a>を参照のこと。</p>
 <p>また<code>ip</code>コマンドはフルパスで記述しておいたほうが良い(UbuntuとCentOSで異なるので注意)。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="cp">#!/bin/bash
-</span><span class="cp"></span>
-/usr/sbin/ip route add 192.168.10.0/24 via <span class="si">${</span><span class="nv">route_vpn_gateway</span><span class="si">}</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#00f">#!/bin/bash
+</span><span style="color:#00f"></span>
+/usr/sbin/ip route add 192.168.10.0/24 via <span style="color:#a31515">${</span>route_vpn_gateway<span style="color:#a31515">}</span>
 </code></pre></div><p>同様に<code>vpnconnection1_route-pre-down.sh</code>も以下のように記述し、<code>chmod +x</code>しておく。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="cp">#!/bin/bash
-</span><span class="cp"></span>
-/usr/sbin/ip route del 192.168.10.0/24 via <span class="si">${</span><span class="nv">route_vpn_gateway</span><span class="si">}</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#00f">#!/bin/bash
+</span><span style="color:#00f"></span>
+/usr/sbin/ip route del 192.168.10.0/24 via <span style="color:#a31515">${</span>route_vpn_gateway<span style="color:#a31515">}</span>
 </code></pre></div><p>サービスとしての起動方法は通常通り。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-txt" data-lang="txt">sudo systemctl start openvpn-client@vpnconnection1
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-txt" data-lang="txt">sudo systemctl start openvpn-client@vpnconnection1
 </code></pre></div><p>ちなみに、systemdのUnitファイルの方で<code>ExecStartPost</code>を指定しておいて、そこでルーティングテーブルを削除しても良さそうに見えるが、再接続された場合に再度ルーティングテーブルが追加されてしまうのでNG。</p>
 <h2 id="参考">参考</h2>
 <ul>

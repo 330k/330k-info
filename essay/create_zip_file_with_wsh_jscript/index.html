@@ -99,48 +99,48 @@ CopyHereは非同期なので、すぐにJS側に制御が返ってくるが、
 複数のファイルを一気にCopyHereしようとすると、「読み取りできません」とエラーが出る。</p>
 <h3 id="使い方">使い方</h3>
 <p>以下のコード中のcreateZipFileを自分のスクリプトにコピー&amp;ペーストして</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="nx">createZipFile</span><span class="p">(</span> <span class="s2">&#34;zipファイルのパス&#34;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&#34;圧縮対象ファイルのパス1&#34;</span><span class="p">,</span> <span class="s2">&#34;圧縮対象ファイルのパス2&#34;</span><span class="p">,</span> <span class="p">...])</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js">createZipFile( <span style="color:#a31515">&#34;zipファイルのパス&#34;</span>, [<span style="color:#a31515">&#34;圧縮対象ファイルのパス1&#34;</span>, <span style="color:#a31515">&#34;圧縮対象ファイルのパス2&#34;</span>, ...])
 </code></pre></div><p>とすればOK。
 もしくは以下のコードをメモ帳で拡張子をjsにして保存すれば、ドラッグ&amp;ドロップでzipファイルを作成(右クリック→送る→圧縮フォルダーとほぼ同じ動作)。</p>
 <h3 id="注意事項">注意事項</h3>
 <p>ディレクトリには対応してません。またWindows標準では暗号化ZIPは作成できません。
 また圧縮対象ファイルの存在チェック等もやってないので、必要であればエラーハンドリング処理を追加してください。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="cm">/**
-</span><span class="cm"> Windows 標準機能でZipファイルを作成するWSH(JScript)
-</span><span class="cm"> Copyright 330k
-</span><span class="cm"> 
-</span><span class="cm"> This software is released under the MIT License.
-</span><span class="cm"> http://opensource.org/licenses/mit-license.php
-</span><span class="cm">*/</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#008000">/**
+</span><span style="color:#008000"> Windows 標準機能でZipファイルを作成するWSH(JScript)
+</span><span style="color:#008000"> Copyright 330k
+</span><span style="color:#008000"> 
+</span><span style="color:#008000"> This software is released under the MIT License.
+</span><span style="color:#008000"> http://opensource.org/licenses/mit-license.php
+</span><span style="color:#008000">*/</span>
 
-<span class="kd">var</span> <span class="nx">args</span> <span class="o">=</span> <span class="p">[];</span>
+<span style="color:#00f">var</span> args = [];
 
-<span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">WScript</span><span class="p">.</span><span class="nx">Arguments</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">){</span>
-  <span class="nx">args</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">WScript</span><span class="p">.</span><span class="nx">Arguments</span><span class="p">(</span><span class="nx">i</span><span class="p">));</span>
-<span class="p">}</span>
+<span style="color:#00f">for</span>(<span style="color:#00f">var</span> i = 0; i &lt; WScript.Arguments.length; i++){
+  args.push(WScript.Arguments(i));
+}
 
-<span class="kd">var</span> <span class="nx">zipfile</span> <span class="o">=</span> <span class="nx">args</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/(.+)\.(.+?)$/</span><span class="p">,</span> <span class="s2">&#34;$1.zip&#34;</span><span class="p">);</span>
+<span style="color:#00f">var</span> zipfile = args[0].replace(<span style="color:#a31515">/(.+)\.(.+?)$/</span>, <span style="color:#a31515">&#34;$1.zip&#34;</span>);
 
-<span class="nx">createZipFile</span><span class="p">(</span><span class="nx">zipfile</span><span class="p">,</span> <span class="nx">args</span><span class="p">);</span>
+createZipFile(zipfile, args);
 
-<span class="kd">function</span> <span class="nx">createZipFile</span><span class="p">(</span><span class="nx">zipFilePath</span><span class="p">,</span> <span class="nx">sourceFiles</span><span class="p">){</span>
-  <span class="kd">var</span> <span class="nx">shell</span> <span class="o">=</span> <span class="nx">WScript</span><span class="p">.</span><span class="nx">CreateObject</span><span class="p">(</span><span class="s2">&#34;Shell.Application&#34;</span><span class="p">);</span>
-  <span class="kd">var</span> <span class="nx">fso</span> <span class="o">=</span> <span class="nx">WScript</span><span class="p">.</span><span class="nx">CreateObject</span><span class="p">(</span><span class="s2">&#34;Scripting.FileSystemObject&#34;</span><span class="p">);</span>
-  <span class="kd">var</span> <span class="nx">file</span> <span class="o">=</span> <span class="nx">fso</span><span class="p">.</span><span class="nx">OpenTextFile</span><span class="p">(</span><span class="nx">zipFilePath</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
-  <span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-  <span class="kd">var</span> <span class="nx">zipfile</span><span class="p">;</span>
+<span style="color:#00f">function</span> createZipFile(zipFilePath, sourceFiles){
+  <span style="color:#00f">var</span> shell = WScript.CreateObject(<span style="color:#a31515">&#34;Shell.Application&#34;</span>);
+  <span style="color:#00f">var</span> fso = WScript.CreateObject(<span style="color:#a31515">&#34;Scripting.FileSystemObject&#34;</span>);
+  <span style="color:#00f">var</span> file = fso.OpenTextFile(zipFilePath, 2, <span style="color:#00f">true</span>);
+  <span style="color:#00f">var</span> i = 0;
+  <span style="color:#00f">var</span> zipfile;
   
-  <span class="nx">file</span><span class="p">.</span><span class="nx">Write</span><span class="p">(</span><span class="s2">&#34;PK\x05\x06\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0&#34;</span><span class="p">);</span>
-  <span class="nx">file</span><span class="p">.</span><span class="nx">Close</span><span class="p">();</span>
+  file.Write(<span style="color:#a31515">&#34;PK\x05\x06\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0&#34;</span>);
+  file.Close();
   
-  <span class="nx">zipfile</span> <span class="o">=</span> <span class="nx">shell</span><span class="p">.</span><span class="nx">NameSpace</span><span class="p">(</span><span class="nx">zipFilePath</span><span class="p">);</span>
-  <span class="k">for</span><span class="p">(</span><span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">sourceFiles</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">){</span>
-  <span class="nx">zipfile</span><span class="p">.</span><span class="nx">CopyHere</span><span class="p">(</span><span class="nx">sourceFiles</span><span class="p">[</span><span class="nx">i</span><span class="p">]);</span>
-    <span class="k">while</span> <span class="p">(</span><span class="nx">zipfile</span><span class="p">.</span><span class="nx">Items</span><span class="p">().</span><span class="nx">Count</span> <span class="o">&lt;=</span> <span class="nx">i</span><span class="p">){</span>
-      <span class="nx">WScript</span><span class="p">.</span><span class="nx">Sleep</span><span class="p">(</span><span class="mi">100</span><span class="p">);</span>
-    <span class="p">}</span>
-  <span class="p">}</span>
-<span class="p">}</span>
+  zipfile = shell.NameSpace(zipFilePath);
+  <span style="color:#00f">for</span>(i = 0; i &lt; sourceFiles.length; i++){
+  zipfile.CopyHere(sourceFiles[i]);
+    <span style="color:#00f">while</span> (zipfile.Items().Count &lt;= i){
+      WScript.Sleep(100);
+    }
+  }
+}
 </code></pre></div>
 		</div>
 		<footer class="post__footer">

@@ -104,64 +104,64 @@ if (!doNotTrack) {
 <p><code>lxd init</code>のときに訊かれる、「ネットワーク経由でLXDにアクセスできるようにするか？」という質問に<code>yes</code>と回答し、
 その次の使用するIPアドレスを訊く質問に特定のNICに割り当てられているIPアドレスを設定した場合、
 ローカルの<code>lxc</code>コマンドもこのIPアドレスに対して通信する。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text">Would you like the LXD server to be available over the network? (yes/no) [default=no]: yes
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">Would you like the LXD server to be available over the network? (yes/no) [default=no]: yes
 Address to bind LXD to (not including port) [default=all]:192.168.10.217
 </code></pre></div><p>そのため、ホストのIPアドレスを変更した後に<code>lxc</code>コマンドを実行しようとしてもソケットと通信できないとエラーが出る。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ lxc list
-Error: Get <span class="s2">&#34;http://unix.socket/1.0&#34;</span>: EOF
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ lxc list
+Error: Get <span style="color:#a31515">&#34;http://unix.socket/1.0&#34;</span>: EOF
 </code></pre></div><h2 id="解決手順">解決手順</h2>
 <p>そこで、ループバックアドレスとして変更前のIPアドレスを追加する(サブネットマスクは<code>/32</code>)。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ sudo ip -4 addr add 192.168.10.217/32 dev lo
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ sudo ip -4 addr add 192.168.10.217/32 dev lo
 </code></pre></div><p>正常に<code>lxc list</code>が動作することを確認。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ lxc list
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ lxc list
 +--------------+---------+------------------------+------+-----------+-----------+
-<span class="p">|</span>     NAME     <span class="p">|</span>  STATE  <span class="p">|</span>          IPV4          <span class="p">|</span> IPV6 <span class="p">|</span>   TYPE    <span class="p">|</span> SNAPSHOTS <span class="p">|</span>
+|     NAME     |  STATE  |          IPV4          | IPV6 |   TYPE    | SNAPSHOTS |
 +--------------+---------+------------------------+------+-----------+-----------+
-<span class="p">|</span> ******       <span class="p">|</span> RUNNING <span class="p">|</span> ***.***.**.198 <span class="o">(</span>eth0<span class="o">)</span>  <span class="p">|</span>      <span class="p">|</span> CONTAINER <span class="p">|</span> <span class="m">0</span>         <span class="p">|</span>
+| ******       | RUNNING | ***.***.**.198 (eth0)  |      | CONTAINER | 0         |
 +--------------+---------+------------------------+------+-----------+-----------+
-<span class="p">|</span> ************ <span class="p">|</span> RUNNING <span class="p">|</span> ***.***.***.102 <span class="o">(</span>eth0<span class="o">)</span> <span class="p">|</span>      <span class="p">|</span> CONTAINER <span class="p">|</span> <span class="m">0</span>         <span class="p">|</span>
+| ************ | RUNNING | ***.***.***.102 (eth0) |      | CONTAINER | 0         |
 +--------------+---------+------------------------+------+-----------+-----------+
-<span class="p">|</span> *****        <span class="p">|</span> RUNNING <span class="p">|</span> **.***.***.146 <span class="o">(</span>eth0<span class="o">)</span>  <span class="p">|</span>      <span class="p">|</span> CONTAINER <span class="p">|</span> <span class="m">0</span>         <span class="p">|</span>
+| *****        | RUNNING | **.***.***.146 (eth0)  |      | CONTAINER | 0         |
 +--------------+---------+------------------------+------+-----------+-----------+
-<span class="p">|</span> ********     <span class="p">|</span> RUNNING <span class="p">|</span> **.***.***.227 <span class="o">(</span>eth0<span class="o">)</span>  <span class="p">|</span>      <span class="p">|</span> CONTAINER <span class="p">|</span> <span class="m">0</span>         <span class="p">|</span>
+| ********     | RUNNING | **.***.***.227 (eth0)  |      | CONTAINER | 0         |
 +--------------+---------+------------------------+------+-----------+-----------+
-<span class="p">|</span> ********     <span class="p">|</span> RUNNING <span class="p">|</span> **.***.***.177 <span class="o">(</span>eth0<span class="o">)</span>  <span class="p">|</span>      <span class="p">|</span> CONTAINER <span class="p">|</span> <span class="m">0</span>         <span class="p">|</span>
+| ********     | RUNNING | **.***.***.177 (eth0)  |      | CONTAINER | 0         |
 +--------------+---------+------------------------+------+-----------+-----------+
-<span class="p">|</span> ********     <span class="p">|</span> RUNNING <span class="p">|</span> ***.***.***.103 <span class="o">(</span>eth0<span class="o">)</span> <span class="p">|</span>      <span class="p">|</span> CONTAINER <span class="p">|</span> <span class="m">0</span>         <span class="p">|</span>
+| ********     | RUNNING | ***.***.***.103 (eth0) |      | CONTAINER | 0         |
 +--------------+---------+------------------------+------+-----------+-----------+
-<span class="p">|</span> ******       <span class="p">|</span> RUNNING <span class="p">|</span> ***.***.***.104 <span class="o">(</span>eth0<span class="o">)</span> <span class="p">|</span>      <span class="p">|</span> CONTAINER <span class="p">|</span> <span class="m">0</span>         <span class="p">|</span>
+| ******       | RUNNING | ***.***.***.104 (eth0) |      | CONTAINER | 0         |
 +--------------+---------+------------------------+------+-----------+-----------+
 </code></pre></div><p>この状態でなら<code>lxc config ***</code>が実行できる。変更前の設定は、以前のIPアドレスのまま。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ lxc config show
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ lxc config show
 config:
   core.https_address: 192.168.10.217:8443
-  core.trust_password: <span class="nb">true</span>
+  core.trust_password: true
 </code></pre></div><p><code>lxc config edit</code>でviを起動して設定を変更する。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ lxc config edit
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ lxc config edit
 </code></pre></div><p>もう一度<code>lxc config show</code>を実行して、設定が書き換わっていること(この例では<code>192.168.10.161</code>に変更した)を確認。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ lxc config show
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ lxc config show
 config:
   core.https_address: 192.168.10.161:8443
-  core.trust_password: <span class="nb">true</span>
+  core.trust_password: true
 </code></pre></div><p>一時的に追加したループバックアドレスを削除し、動作確認して完了。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ sudo ip -4 addr del 192.168.10.217/32 dev lo
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ sudo ip -4 addr del 192.168.10.217/32 dev lo
 $ lxc list
 +--------------+---------+------------------------+------+-----------+-----------+
-<span class="p">|</span>     NAME     <span class="p">|</span>  STATE  <span class="p">|</span>          IPV4          <span class="p">|</span> IPV6 <span class="p">|</span>   TYPE    <span class="p">|</span> SNAPSHOTS <span class="p">|</span>
+|     NAME     |  STATE  |          IPV4          | IPV6 |   TYPE    | SNAPSHOTS |
 +--------------+---------+------------------------+------+-----------+-----------+
-<span class="p">|</span> ******       <span class="p">|</span> RUNNING <span class="p">|</span> ***.***.**.198 <span class="o">(</span>eth0<span class="o">)</span>  <span class="p">|</span>      <span class="p">|</span> CONTAINER <span class="p">|</span> <span class="m">0</span>         <span class="p">|</span>
+| ******       | RUNNING | ***.***.**.198 (eth0)  |      | CONTAINER | 0         |
 +--------------+---------+------------------------+------+-----------+-----------+
-<span class="p">|</span> ************ <span class="p">|</span> RUNNING <span class="p">|</span> ***.***.***.102 <span class="o">(</span>eth0<span class="o">)</span> <span class="p">|</span>      <span class="p">|</span> CONTAINER <span class="p">|</span> <span class="m">0</span>         <span class="p">|</span>
+| ************ | RUNNING | ***.***.***.102 (eth0) |      | CONTAINER | 0         |
 +--------------+---------+------------------------+------+-----------+-----------+
-<span class="p">|</span> *****        <span class="p">|</span> RUNNING <span class="p">|</span> **.***.***.146 <span class="o">(</span>eth0<span class="o">)</span>  <span class="p">|</span>      <span class="p">|</span> CONTAINER <span class="p">|</span> <span class="m">0</span>         <span class="p">|</span>
+| *****        | RUNNING | **.***.***.146 (eth0)  |      | CONTAINER | 0         |
 +--------------+---------+------------------------+------+-----------+-----------+
-<span class="p">|</span> ********     <span class="p">|</span> RUNNING <span class="p">|</span> **.***.***.227 <span class="o">(</span>eth0<span class="o">)</span>  <span class="p">|</span>      <span class="p">|</span> CONTAINER <span class="p">|</span> <span class="m">0</span>         <span class="p">|</span>
+| ********     | RUNNING | **.***.***.227 (eth0)  |      | CONTAINER | 0         |
 +--------------+---------+------------------------+------+-----------+-----------+
-<span class="p">|</span> ********     <span class="p">|</span> RUNNING <span class="p">|</span> **.***.***.177 <span class="o">(</span>eth0<span class="o">)</span>  <span class="p">|</span>      <span class="p">|</span> CONTAINER <span class="p">|</span> <span class="m">0</span>         <span class="p">|</span>
+| ********     | RUNNING | **.***.***.177 (eth0)  |      | CONTAINER | 0         |
 +--------------+---------+------------------------+------+-----------+-----------+
-<span class="p">|</span> ********     <span class="p">|</span> RUNNING <span class="p">|</span> ***.***.***.103 <span class="o">(</span>eth0<span class="o">)</span> <span class="p">|</span>      <span class="p">|</span> CONTAINER <span class="p">|</span> <span class="m">0</span>         <span class="p">|</span>
+| ********     | RUNNING | ***.***.***.103 (eth0) |      | CONTAINER | 0         |
 +--------------+---------+------------------------+------+-----------+-----------+
-<span class="p">|</span> ******       <span class="p">|</span> RUNNING <span class="p">|</span> ***.***.***.104 <span class="o">(</span>eth0<span class="o">)</span> <span class="p">|</span>      <span class="p">|</span> CONTAINER <span class="p">|</span> <span class="m">0</span>         <span class="p">|</span>
+| ******       | RUNNING | ***.***.***.104 (eth0) |      | CONTAINER | 0         |
 +--------------+---------+------------------------+------+-----------+-----------+
 </code></pre></div><h2 id="参考">参考</h2>
 <ul>

@@ -130,7 +130,7 @@ if (!doNotTrack) {
 </div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		ドキュメントにはないものの、MathematicaではSQLiteを扱うことができる。 しかしながら、BLOB型や文字列で日本語などを扱うには少し工夫が必要なので、メモ。 BLOB型 select 直接BLOB型をselectすると$Failedが返ってくるので、hex関数で16進文字列として返す。 db=Database`OpenDatabase[sqlitefilepath];rs=Database`QueryDatabase[db,&#34;select hex(column_name) from table_name&#34;];これを16進文字列→数値→バイト列→文字列と変換して、最後にImportStr
+		ドキュメントにはないものの、MathematicaではSQLiteを扱うことができる。 しかしながら、BLOB型や文字列で日本語などを扱うには少し工夫が必要なので、メモ。 BLOB型 select 直接BLOB型をselectすると$Failedが返ってくるので、hex関数で16進文字列として返す。 db = Database`OpenDatabase[sqlitefilepath]; rs = Database`QueryDatabase[db, &#34;select hex(column_name) from table_name&#34;]; これを16進文字列→数値→バイト列→文字列と変換して、最後にImportStringで読み込むと、
 	</div>
 </article><article class="list__item post">
 	<figure class="list__thumbnail">

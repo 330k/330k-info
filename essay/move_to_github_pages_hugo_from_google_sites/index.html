@@ -110,7 +110,7 @@ if (!doNotTrack) {
 を参考にした。</p>
 <h2 id="hugo">Hugo</h2>
 <p>Ubuntuでは<code>apt-get</code>でHugoをインストールできる(最新版とは限らないので注意)。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-Bash" data-lang="Bash">$ sudo apt-get install hugo
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Bash" data-lang="Bash">$ sudo apt-get install hugo
 </code></pre></div><p>テーマは、少し古いバージョンのHugoでも動作するMainroadに決定。
 後は以下の作業を実施。</p>
 <ul>
@@ -133,7 +133,7 @@ GitHubの他のリポジトリにも独自ドメインの設定が反映され�
 <p>各ページを手作業でコピペ。
 1日5ページ〜10ページくらい移行作業した。</p>
 <p>画像については、Chromeの開発者ツールで、</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="nb">document</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="s1">&#39;a[href*=&#34;.jpg&#34;]&#39;</span><span class="p">).</span><span class="nx">forEach</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">){</span><span class="nx">e</span><span class="p">.</span><span class="nx">download</span><span class="o">=</span><span class="nx">e</span><span class="p">.</span><span class="nx">href</span><span class="p">;</span><span class="nx">e</span><span class="p">.</span><span class="nx">click</span><span class="p">()});</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js">document.querySelectorAll(<span style="color:#a31515">&#39;a[href*=&#34;.jpg&#34;]&#39;</span>).forEach(<span style="color:#00f">function</span>(e){e.download=e.href;e.click()});
 </code></pre></div><p>とすることで、元のページのリンク先JPEGファイルを一気にダウンロード。</p>
 <h2 id="cloudflare">CloudFlare</h2>
 <p>新サイトの構築が完了したら、CloudFlareのDNSを設定変更。</p>
@@ -142,7 +142,7 @@ GitHubの他のリポジトリにも独自ドメインの設定が反映され�
 <li>CloudFlareで<code>www.330k.info</code>のCNAMEレコードを<code>ghs.google.com</code>から<code>330k.github.io</code>に変更。</li>
 <li>SSLの設定を<code>Flexible</code>に設定。</li>
 <li>HTTPのアクセスをHTTPSにリダイレクトする<code>Always use HTTPS</code>を<code>ON</code>に設定。</li>
-<li><s>HSTSはOFFで様子見。</s> → HSTS Onに変更(includeSubdomainはOFF)</li>
+<li><!-- raw HTML omitted -->HSTSはOFFで様子見。<!-- raw HTML omitted --> → HSTS Onに変更(includeSubdomainはOFF)</li>
 <li><code>Automatic HTTPS Rewrites</code>はOFF(自力ですべての内部リンクをHTTPSに置換)。</li>
 </ul>
 <h2 id="cnameファイルのアップロード">CNAMEファイルのアップロード</h2>

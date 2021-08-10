@@ -100,59 +100,59 @@ if (!doNotTrack) {
 1回の処理で必ずポリシーに沿った文字列を生成する関数を作成した。</p>
 <h2 id="実装">実装</h2>
 <p>とりあえず作ったものはこちら。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-VB.NET" data-lang="VB.NET"><span class="c">&#39; パスワード用のランダム文字列を生成する
-</span><span class="c"></span><span class="k">Public</span> <span class="k">Function</span> <span class="nf">GeneratePassword</span><span class="p">(</span><span class="n">iLength</span> <span class="ow">As</span> <span class="kt">Integer</span><span class="p">,</span> <span class="k">Optional</span> <span class="n">bAllowLower</span> <span class="ow">As</span> <span class="kt">Boolean</span> <span class="o">=</span> <span class="k">True</span><span class="p">,</span> <span class="k">Optional</span> <span class="n">bAllowUpper</span> <span class="ow">As</span> <span class="kt">Boolean</span> <span class="o">=</span> <span class="k">True</span><span class="p">,</span> _
-  <span class="k">Optional</span> <span class="n">bAllowNumber</span> <span class="ow">As</span> <span class="kt">Boolean</span> <span class="o">=</span> <span class="k">True</span><span class="p">,</span> <span class="k">Optional</span> <span class="n">bAllowSymbol</span> <span class="ow">As</span> <span class="kt">Boolean</span> <span class="o">=</span> <span class="k">False</span><span class="p">,</span> <span class="k">Optional</span> <span class="n">bRequireLower</span> <span class="ow">As</span> <span class="kt">Boolean</span> <span class="o">=</span> <span class="k">True</span><span class="p">,</span> _
-  <span class="k">Optional</span> <span class="n">bRequireUpper</span> <span class="ow">As</span> <span class="kt">Boolean</span> <span class="o">=</span> <span class="k">True</span><span class="p">,</span> <span class="k">Optional</span> <span class="n">bRequireNumber</span> <span class="ow">As</span> <span class="kt">Boolean</span> <span class="o">=</span> <span class="k">True</span><span class="p">,</span> <span class="k">Optional</span> <span class="n">bRequireSymbol</span> <span class="ow">As</span> <span class="kt">Boolean</span> <span class="o">=</span> <span class="k">False</span><span class="p">,</span> _
-  <span class="k">Optional</span> <span class="n">sSymbols</span> <span class="ow">As</span> <span class="kt">String</span> <span class="o">=</span> <span class="s">&#34;!#$%&amp;()=^-|@[]{}:;,.&#34;</span><span class="p">)</span> <span class="ow">As</span> <span class="kt">String</span>
-    <span class="k">Dim</span> <span class="n">sPassword</span> <span class="ow">As</span> <span class="kt">String</span>
-    <span class="k">Dim</span> <span class="n">i</span> <span class="ow">As</span> <span class="kt">Long</span>
-    <span class="k">Dim</span> <span class="n">sTotalChars</span> <span class="ow">As</span> <span class="kt">String</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-VB.NET" data-lang="VB.NET"><span style="color:#008000">&#39; パスワード用のランダム文字列を生成する
+</span><span style="color:#008000"></span><span style="color:#00f">Public</span> <span style="color:#00f">Function</span> GeneratePassword(iLength <span style="color:#00f">As</span> <span style="color:#2b91af">Integer</span>, <span style="color:#00f">Optional</span> bAllowLower <span style="color:#00f">As</span> <span style="color:#2b91af">Boolean</span> = <span style="color:#00f">True</span>, <span style="color:#00f">Optional</span> bAllowUpper <span style="color:#00f">As</span> <span style="color:#2b91af">Boolean</span> = <span style="color:#00f">True</span>, _
+  <span style="color:#00f">Optional</span> bAllowNumber <span style="color:#00f">As</span> <span style="color:#2b91af">Boolean</span> = <span style="color:#00f">True</span>, <span style="color:#00f">Optional</span> bAllowSymbol <span style="color:#00f">As</span> <span style="color:#2b91af">Boolean</span> = <span style="color:#00f">False</span>, <span style="color:#00f">Optional</span> bRequireLower <span style="color:#00f">As</span> <span style="color:#2b91af">Boolean</span> = <span style="color:#00f">True</span>, _
+  <span style="color:#00f">Optional</span> bRequireUpper <span style="color:#00f">As</span> <span style="color:#2b91af">Boolean</span> = <span style="color:#00f">True</span>, <span style="color:#00f">Optional</span> bRequireNumber <span style="color:#00f">As</span> <span style="color:#2b91af">Boolean</span> = <span style="color:#00f">True</span>, <span style="color:#00f">Optional</span> bRequireSymbol <span style="color:#00f">As</span> <span style="color:#2b91af">Boolean</span> = <span style="color:#00f">False</span>, _
+  <span style="color:#00f">Optional</span> sSymbols <span style="color:#00f">As</span> <span style="color:#2b91af">String</span> = <span style="color:#a31515">&#34;!#$%&amp;()=^-|@[]{}:;,.&#34;</span>) <span style="color:#00f">As</span> <span style="color:#2b91af">String</span>
+    <span style="color:#00f">Dim</span> sPassword <span style="color:#00f">As</span> <span style="color:#2b91af">String</span>
+    <span style="color:#00f">Dim</span> i <span style="color:#00f">As</span> <span style="color:#2b91af">Long</span>
+    <span style="color:#00f">Dim</span> sTotalChars <span style="color:#00f">As</span> <span style="color:#2b91af">String</span>
    
-    <span class="k">Const</span> <span class="n">S_LOWER</span> <span class="ow">As</span> <span class="kt">String</span> <span class="o">=</span> <span class="s">&#34;abcdefghijklmnopqrstuvwxyz&#34;</span>
-    <span class="k">Const</span> <span class="n">S_UPPER</span> <span class="ow">As</span> <span class="kt">String</span> <span class="o">=</span> <span class="s">&#34;ABCDEFGHIJKLMNOPQRSTUVWXYZ&#34;</span>
-    <span class="k">Const</span> <span class="n">S_NUMBER</span> <span class="ow">As</span> <span class="kt">String</span> <span class="o">=</span> <span class="s">&#34;0123456789&#34;</span>
+    <span style="color:#00f">Const</span> S_LOWER <span style="color:#00f">As</span> <span style="color:#2b91af">String</span> = <span style="color:#a31515">&#34;abcdefghijklmnopqrstuvwxyz&#34;</span>
+    <span style="color:#00f">Const</span> S_UPPER <span style="color:#00f">As</span> <span style="color:#2b91af">String</span> = <span style="color:#a31515">&#34;ABCDEFGHIJKLMNOPQRSTUVWXYZ&#34;</span>
+    <span style="color:#00f">Const</span> S_NUMBER <span style="color:#00f">As</span> <span style="color:#2b91af">String</span> = <span style="color:#a31515">&#34;0123456789&#34;</span>
    
-    <span class="c">&#39; 使用可能文字種
-</span><span class="c"></span>    <span class="k">If</span> <span class="n">bAllowLower</span> <span class="k">Then</span>
-        <span class="n">sTotalChars</span> <span class="o">=</span> <span class="n">sTotalChars</span> <span class="o">&amp;</span> <span class="n">S_LOWER</span>
-    <span class="k">End</span> <span class="k">If</span>
-    <span class="k">If</span> <span class="n">bAllowUpper</span> <span class="k">Then</span>
-        <span class="n">sTotalChars</span> <span class="o">=</span> <span class="n">sTotalChars</span> <span class="o">&amp;</span> <span class="n">S_UPPER</span>
-    <span class="k">End</span> <span class="k">If</span>
-    <span class="k">If</span> <span class="n">bAllowNumber</span> <span class="k">Then</span>
-        <span class="n">sTotalChars</span> <span class="o">=</span> <span class="n">sTotalChars</span> <span class="o">&amp;</span> <span class="n">S_NUMBER</span>
-    <span class="k">End</span> <span class="k">If</span>
-    <span class="k">If</span> <span class="n">bAllowSymbol</span> <span class="k">Then</span>
-        <span class="n">sTotalChars</span> <span class="o">=</span> <span class="n">sTotalChars</span> <span class="o">&amp;</span> <span class="n">sSymbols</span>
-    <span class="k">End</span> <span class="k">If</span>
+    <span style="color:#008000">&#39; 使用可能文字種
+</span><span style="color:#008000"></span>    <span style="color:#00f">If</span> bAllowLower <span style="color:#00f">Then</span>
+        sTotalChars = sTotalChars &amp; S_LOWER
+    <span style="color:#00f">End</span> <span style="color:#00f">If</span>
+    <span style="color:#00f">If</span> bAllowUpper <span style="color:#00f">Then</span>
+        sTotalChars = sTotalChars &amp; S_UPPER
+    <span style="color:#00f">End</span> <span style="color:#00f">If</span>
+    <span style="color:#00f">If</span> bAllowNumber <span style="color:#00f">Then</span>
+        sTotalChars = sTotalChars &amp; S_NUMBER
+    <span style="color:#00f">End</span> <span style="color:#00f">If</span>
+    <span style="color:#00f">If</span> bAllowSymbol <span style="color:#00f">Then</span>
+        sTotalChars = sTotalChars &amp; sSymbols
+    <span style="color:#00f">End</span> <span style="color:#00f">If</span>
    
-    <span class="c">&#39; 任意の文字種が可能な部分を生成
-</span><span class="c"></span>    <span class="k">For</span> <span class="n">i</span> <span class="o">=</span> <span class="n">1</span> <span class="k">To</span> <span class="n">iLength</span> <span class="o">-</span> <span class="n">Abs</span><span class="p">(</span><span class="n">bRequireLower</span> <span class="o">+</span> <span class="n">bRequireUpper</span> <span class="o">+</span> <span class="n">bRequireNumber</span> <span class="o">+</span> <span class="n">bRequireSymbol</span><span class="p">)</span>
-        <span class="n">sPassword</span> <span class="o">=</span> <span class="n">sPassword</span> <span class="o">&amp;</span> <span class="n">Mid</span><span class="p">(</span><span class="n">sTotalChars</span><span class="p">,</span> <span class="n">Int</span><span class="p">(</span><span class="n">Len</span><span class="p">(</span><span class="n">sTotalChars</span><span class="p">)</span> <span class="o">*</span> <span class="n">Rnd</span> <span class="o">+</span> <span class="n">1</span><span class="p">),</span> <span class="n">1</span><span class="p">)</span>
-    <span class="k">Next</span> <span class="n">i</span>
+    <span style="color:#008000">&#39; 任意の文字種が可能な部分を生成
+</span><span style="color:#008000"></span>    <span style="color:#00f">For</span> i = 1 <span style="color:#00f">To</span> iLength - Abs(bRequireLower + bRequireUpper + bRequireNumber + bRequireSymbol)
+        sPassword = sPassword &amp; Mid(sTotalChars, Int(Len(sTotalChars) * Rnd + 1), 1)
+    <span style="color:#00f">Next</span> i
    
-    <span class="c">&#39; 必須とされる文字種の文字を1文字ずつ挿入
-</span><span class="c"></span>    <span class="k">If</span> <span class="n">bRequireLower</span> <span class="k">Then</span>
-        <span class="n">i</span> <span class="o">=</span> <span class="n">Int</span><span class="p">((</span><span class="n">Len</span><span class="p">(</span><span class="n">sPassword</span><span class="p">)</span> <span class="o">+</span> <span class="n">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">Rnd</span> <span class="o">+</span> <span class="n">1</span><span class="p">)</span>
-        <span class="n">sPassword</span> <span class="o">=</span> <span class="n">Mid</span><span class="err">$</span><span class="p">(</span><span class="n">sPassword</span><span class="p">,</span> <span class="n">1</span><span class="p">,</span> <span class="n">i</span> <span class="o">-</span> <span class="n">1</span><span class="p">)</span> <span class="o">&amp;</span> <span class="n">Mid</span><span class="p">(</span><span class="n">S_LOWER</span><span class="p">,</span> <span class="n">Int</span><span class="p">(</span><span class="n">Len</span><span class="p">(</span><span class="n">S_LOWER</span><span class="p">)</span> <span class="o">*</span> <span class="n">Rnd</span> <span class="o">+</span> <span class="n">1</span><span class="p">),</span> <span class="n">1</span><span class="p">)</span> <span class="o">&amp;</span> <span class="n">Mid</span><span class="err">$</span><span class="p">(</span><span class="n">sPassword</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
-    <span class="k">End</span> <span class="k">If</span>
-    <span class="k">If</span> <span class="n">bRequireUpper</span> <span class="k">Then</span>
-        <span class="n">i</span> <span class="o">=</span> <span class="n">Int</span><span class="p">((</span><span class="n">Len</span><span class="p">(</span><span class="n">sPassword</span><span class="p">)</span> <span class="o">+</span> <span class="n">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">Rnd</span> <span class="o">+</span> <span class="n">1</span><span class="p">)</span>
-        <span class="n">sPassword</span> <span class="o">=</span> <span class="n">Mid</span><span class="err">$</span><span class="p">(</span><span class="n">sPassword</span><span class="p">,</span> <span class="n">1</span><span class="p">,</span> <span class="n">i</span> <span class="o">-</span> <span class="n">1</span><span class="p">)</span> <span class="o">&amp;</span> <span class="n">Mid</span><span class="p">(</span><span class="n">S_UPPER</span><span class="p">,</span> <span class="n">Int</span><span class="p">(</span><span class="n">Len</span><span class="p">(</span><span class="n">S_UPPER</span><span class="p">)</span> <span class="o">*</span> <span class="n">Rnd</span> <span class="o">+</span> <span class="n">1</span><span class="p">),</span> <span class="n">1</span><span class="p">)</span> <span class="o">&amp;</span> <span class="n">Mid</span><span class="err">$</span><span class="p">(</span><span class="n">sPassword</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
-    <span class="k">End</span> <span class="k">If</span>
-    <span class="k">If</span> <span class="n">bRequireNumber</span> <span class="k">Then</span>
-        <span class="n">i</span> <span class="o">=</span> <span class="n">Int</span><span class="p">((</span><span class="n">Len</span><span class="p">(</span><span class="n">sPassword</span><span class="p">)</span> <span class="o">+</span> <span class="n">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">Rnd</span> <span class="o">+</span> <span class="n">1</span><span class="p">)</span>
-        <span class="n">sPassword</span> <span class="o">=</span> <span class="n">Mid</span><span class="err">$</span><span class="p">(</span><span class="n">sPassword</span><span class="p">,</span> <span class="n">1</span><span class="p">,</span> <span class="n">i</span> <span class="o">-</span> <span class="n">1</span><span class="p">)</span> <span class="o">&amp;</span> <span class="n">Mid</span><span class="p">(</span><span class="n">S_NUMBER</span><span class="p">,</span> <span class="n">Int</span><span class="p">(</span><span class="n">Len</span><span class="p">(</span><span class="n">S_NUMBER</span><span class="p">)</span> <span class="o">*</span> <span class="n">Rnd</span> <span class="o">+</span> <span class="n">1</span><span class="p">),</span> <span class="n">1</span><span class="p">)</span> <span class="o">&amp;</span> <span class="n">Mid</span><span class="err">$</span><span class="p">(</span><span class="n">sPassword</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
-    <span class="k">End</span> <span class="k">If</span>
-    <span class="k">If</span> <span class="n">bRequireSymbol</span> <span class="k">Then</span>
-        <span class="n">i</span> <span class="o">=</span> <span class="n">Int</span><span class="p">((</span><span class="n">Len</span><span class="p">(</span><span class="n">sPassword</span><span class="p">)</span> <span class="o">+</span> <span class="n">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">Rnd</span> <span class="o">+</span> <span class="n">1</span><span class="p">)</span>
-        <span class="n">sPassword</span> <span class="o">=</span> <span class="n">Mid</span><span class="err">$</span><span class="p">(</span><span class="n">sPassword</span><span class="p">,</span> <span class="n">1</span><span class="p">,</span> <span class="n">i</span> <span class="o">-</span> <span class="n">1</span><span class="p">)</span> <span class="o">&amp;</span> <span class="n">Mid</span><span class="p">(</span><span class="n">sSymbols</span><span class="p">,</span> <span class="n">Int</span><span class="p">(</span><span class="n">Len</span><span class="p">(</span><span class="n">sSymbols</span><span class="p">)</span> <span class="o">*</span> <span class="n">Rnd</span> <span class="o">+</span> <span class="n">1</span><span class="p">),</span> <span class="n">1</span><span class="p">)</span> <span class="o">&amp;</span> <span class="n">Mid</span><span class="err">$</span><span class="p">(</span><span class="n">sPassword</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
-    <span class="k">End</span> <span class="k">If</span>
+    <span style="color:#008000">&#39; 必須とされる文字種の文字を1文字ずつ挿入
+</span><span style="color:#008000"></span>    <span style="color:#00f">If</span> bRequireLower <span style="color:#00f">Then</span>
+        i = Int((Len(sPassword) + 1) * Rnd + 1)
+        sPassword = Mid<span style="">$</span>(sPassword, 1, i - 1) &amp; Mid(S_LOWER, Int(Len(S_LOWER) * Rnd + 1), 1) &amp; Mid<span style="">$</span>(sPassword, i)
+    <span style="color:#00f">End</span> <span style="color:#00f">If</span>
+    <span style="color:#00f">If</span> bRequireUpper <span style="color:#00f">Then</span>
+        i = Int((Len(sPassword) + 1) * Rnd + 1)
+        sPassword = Mid<span style="">$</span>(sPassword, 1, i - 1) &amp; Mid(S_UPPER, Int(Len(S_UPPER) * Rnd + 1), 1) &amp; Mid<span style="">$</span>(sPassword, i)
+    <span style="color:#00f">End</span> <span style="color:#00f">If</span>
+    <span style="color:#00f">If</span> bRequireNumber <span style="color:#00f">Then</span>
+        i = Int((Len(sPassword) + 1) * Rnd + 1)
+        sPassword = Mid<span style="">$</span>(sPassword, 1, i - 1) &amp; Mid(S_NUMBER, Int(Len(S_NUMBER) * Rnd + 1), 1) &amp; Mid<span style="">$</span>(sPassword, i)
+    <span style="color:#00f">End</span> <span style="color:#00f">If</span>
+    <span style="color:#00f">If</span> bRequireSymbol <span style="color:#00f">Then</span>
+        i = Int((Len(sPassword) + 1) * Rnd + 1)
+        sPassword = Mid<span style="">$</span>(sPassword, 1, i - 1) &amp; Mid(sSymbols, Int(Len(sSymbols) * Rnd + 1), 1) &amp; Mid<span style="">$</span>(sPassword, i)
+    <span style="color:#00f">End</span> <span style="color:#00f">If</span>
    
-    <span class="n">GeneratePassword</span> <span class="o">=</span> <span class="n">sPassword</span>
+    GeneratePassword = sPassword
 
-<span class="k">End</span> <span class="k">Function</span>
+<span style="color:#00f">End</span> <span style="color:#00f">Function</span>
 </code></pre></div><h2 id="説明">説明</h2>
 <p>各引数の説明は以下。</p>
 <ul>
@@ -185,7 +185,7 @@ if (!doNotTrack) {
 <p>という順序で生成すれば、必ず要件に沿ったパスワードを1回の処理で生成できる。</p>
 <h2 id="実行例">実行例</h2>
 <p><code>GeneratePassword(10)</code>: 英小文字、英大文字、数字を1文字以上含む、10文字。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text">B9ZJQVrseM
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">B9ZJQVrseM
 wYkkAE9cU0
 feWc79QQ1S
 jq1bu3ocVR
@@ -196,7 +196,7 @@ xv7xsXn3V3
 vHZjXA9HeA
 hbxE3k0ZOM
 </code></pre></div><p><code>GeneratePassword(10, True, True, True, True, True, True, True, True)</code>: 英小文字、英大文字、数字に加えて記号を1文字以上含む、10文字。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text">b:t8r@KG^n
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">b:t8r@KG^n
 &amp;Wp}vjT1bA
 q(5u,o1[Kw
 7W,^y2MUtb

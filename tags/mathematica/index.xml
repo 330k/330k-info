@@ -23,7 +23,7 @@
       <pubDate>Tue, 22 May 2018 04:34:15 +0900</pubDate>
       
       <guid>https://www.330k.info/essay/mathematica-special-notation/</guid>
-      <description>Mathematicaの省略記法はドキュメントやヘルプで調べにくいのでまとめてみる。 関数適用 @ (前置記法) f@aはf[a]と等価。 後ろのカッコ(])を入力しなくてもすむ。 Plot[Evaluate@Integrate[x^2,x],{x,-3,3}]// (後置記法) a // fはf[a]と等価。 数値にする(N)や簡約化(Simplify、FullSimplify)でよく使う。 In[1]:=Sin[2]//NOut[1]=0.909297~ ~ (中置記法) a~f~bとすると、f[a, b]と等価になる。 In[1]:={1,2}~Join~{3,4}O</description>
+      <description>Mathematicaの省略記法はドキュメントやヘルプで調べにくいのでまとめてみる。 関数適用 @ (前置記法) f@aはf[a]と等価。 後ろのカッコ(])を入力しなくてもすむ。 Plot[Evaluate@Integrate[x^2, x], {x, -3, 3}] // (後置記法) a // fはf[a]と等価。 数値にする(N)や簡約化(Simplify、FullSimplify)でよく使う。 In[1]:= Sin[2] // N Out[1]= 0.909297 ~ ~ (中置記法) a~f~bとすると、f[a, b]と等価になる。 In[1]:= {1, 2}~Join~{3, 4} Out[1]= {1, 2, 3, 4} 関数適用</description>
     </item>
     
     <item>
@@ -41,7 +41,7 @@
       <pubDate>Sat, 22 Jul 2017 19:32:46 +0900</pubDate>
       
       <guid>https://www.330k.info/essay/random_distribution_sphere_surface/</guid>
-      <description>球面上に一様分布するランダムな点を生成したい時、 単純に極座標表示でθとφを一様分布させると、極付近に点が集まってしまう。 data1=Transpose[{Sin[t]Cos[f],Sin[t]Sin[f],Cos[t]}/.{f-&amp;gt;RandomReal[{0,2Pi},2000],t-&amp;gt;RandomReal[{0,Pi},2000]}];g1=ListPointPlot3D[data1,BoxRatios-&amp;gt;{1,1,1}] 球面上で一様分布させるには、下記のようにθにArcCosを使う (θの位置の確率をSinθに比例させたい→累積確率分布関数はCos→逆関数はArcCos)。 data2=Transpose[{Sin[t]Cos[f],Sin[t]Sin[f],Cos[t]}/.{f-&amp;gt;RandomReal[{0,2Pi},2000],t-&amp;gt;ArcCos[RandomReal[{-1,1},2000]]}];g2=ListPointPlot3D[data2,BoxRatios-&amp;gt;{1,1,1}] なお、多次元球面上の一様分布は球面上に一様分布する乱数の生成にあるように、 多次元ガウス分布を正規化すると得られる。 下記は3</description>
+      <description>球面上に一様分布するランダムな点を生成したい時、 単純に極座標表示でθとφを一様分布させると、極付近に点が集まってしまう。 data1 = Transpose[{Sin[t] Cos[f], Sin[t] Sin[f], Cos[t]} /. { f -&amp;gt; RandomReal[{0, 2 Pi}, 2000], t -&amp;gt; RandomReal[{0, Pi}, 2000]}]; g1 = ListPointPlot3D[data1, BoxRatios -&amp;gt; {1, 1, 1}] 球面上で一様分布させるには、下記のようにθにArcCosを使う (θの位置の確率をSinθに比例させたい→累積確率分布関数はCos→逆関数はArcCos)。 data2 = Transpose[{Sin[t] Cos[f], Sin[t] Sin[f], Cos[t]} /. { f -&amp;gt; RandomReal[{0, 2 Pi}, 2000], t -&amp;gt; ArcCos[RandomReal[{-1, 1}, 2000]]}]; g2 = ListPointPlot3D[data2, BoxRatios -&amp;gt; {1, 1, 1}] なお、多次元球</description>
     </item>
     
     <item>
@@ -59,7 +59,7 @@
       <pubDate>Tue, 08 Dec 2015 17:40:00 +0900</pubDate>
       
       <guid>https://www.330k.info/essay/change-c-compiler-in-mathematica/</guid>
-      <description>Mathematica 8から、CompileでCコンパイラを使って直接ネイティブコードにコンパイルできるようになった。 使用するCコンパイラは、 Needs[&amp;#34;CCompilerDriver`&amp;#34;];CCompilerDriver`$CCompiler={&amp;#34;Name&amp;#34;-&amp;gt;&amp;#34;GCC&amp;#34;,&amp;#34;Compiler&amp;#34;-&amp;gt;CCompilerDriver`GCCCo</description>
+      <description>Mathematica 8から、CompileでCコンパイラを使って直接ネイティブコードにコンパイルできるようになった。 使用するCコンパイラは、 Needs[&amp;#34;CCompilerDriver`&amp;#34;]; CCompilerDriver`$CCompiler = { &amp;#34;Name&amp;#34; -&amp;gt; &amp;#34;GCC&amp;#34;, &amp;#34;Compiler&amp;#34; -&amp;gt; CCompilerDriver`GCCCompiler`GCCCompiler, &amp;#34;CompilerInstallation&amp;#34; -&amp;gt; &amp;#34;/usr/bin&amp;#34;, &amp;#34;CompilerName&amp;#34; -&amp;gt; Automatic }; というように、CCompilerDriver`$CCompilerを変更して指定する。 以前からのCompile(&amp;ldquo;WVM&amp;rdquo;)と、各コンパイラの比較のため、ベンチマークを行ってみた。 検証環境は以下の通り。 CPU: Intel Core-i7 3770 (インテル</description>
     </item>
     
     <item>
@@ -122,7 +122,7 @@
       <pubDate>Sun, 14 Oct 2012 00:00:00 +0900</pubDate>
       
       <guid>https://www.330k.info/essay/process-blob-and-multibyte-string-from-sqlite-with-mathematica/</guid>
-      <description>ドキュメントにはないものの、MathematicaではSQLiteを扱うことができる。 しかしながら、BLOB型や文字列で日本語などを扱うには少し工夫が必要なので、メモ。 BLOB型 select 直接BLOB型をselectすると$Failedが返ってくるので、hex関数で16進文字列として返す。 db=Database`OpenDatabase[sqlitefilepath];rs=Database`QueryDatabase[db,&amp;#34;select hex(column_name) from table_name&amp;#34;];これを16進文字列→数値→バイト列→文字列と変換して、最後にImportStr</description>
+      <description>ドキュメントにはないものの、MathematicaではSQLiteを扱うことができる。 しかしながら、BLOB型や文字列で日本語などを扱うには少し工夫が必要なので、メモ。 BLOB型 select 直接BLOB型をselectすると$Failedが返ってくるので、hex関数で16進文字列として返す。 db = Database`OpenDatabase[sqlitefilepath]; rs = Database`QueryDatabase[db, &amp;#34;select hex(column_name) from table_name&amp;#34;]; これを16進文字列→数値→バイト列→文字列と変換して、最後にImportStringで読み込むと、</description>
     </item>
     
     <item>
@@ -176,7 +176,7 @@
       <pubDate>Sun, 25 Oct 2009 00:00:00 +0900</pubDate>
       
       <guid>https://www.330k.info/essay/import-gpx-file-in-mathematica/</guid>
-      <description>MathematicaでGPXファイルを読み込んで解釈する方法のメモ。 対象となるGPXファイルを xml=Import[filepath,&amp;#34;XML&amp;#34;];でまずXMLとして読み込んでおいて、 trk=Cases[xml,XMLElement[&amp;#34;trk&amp;#34;,_,_],Infinity];でtrk要素を抜き出し、 trkpt=(ToExpression[{&amp;#34;lat&amp;#34</description>
+      <description>MathematicaでGPXファイルを読み込んで解釈する方法のメモ。 対象となるGPXファイルを xml = Import[filepath, &amp;#34;XML&amp;#34;]; でまずXMLとして読み込んでおいて、 trk = Cases[xml, XMLElement[&amp;#34;trk&amp;#34;, _, _], Infinity]; でtrk要素を抜き出し、 trkpt = (ToExpression[{&amp;#34;lat&amp;#34;, &amp;#34;lon&amp;#34;} /. Cases[#1, XMLElement[&amp;#34;trkpt&amp;#34;, attr_, _] :&amp;gt; attr, Infinity]] &amp;amp; ) /@ trk; でそれぞれのtrk要素からtrkpt要素を抜き出して緯度と経度を得る。 Sep. 28 2013追記 Mathematica 8からは標準でGPXをImport可能になった。</description>
     </item>
     
     <item>
@@ -185,7 +185,7 @@
       <pubDate>Sun, 25 Oct 2009 00:00:00 +0900</pubDate>
       
       <guid>https://www.330k.info/essay/enumurate-amicable-numbers-with-mathematica/</guid>
-      <description>Mathematicaで友愛数を列挙するプログラム例として以下のようなものが見受けられる。 yakuwa[n_]:=DivisorSigma[1,n]-n;Do[If[(yakuwa[yakuwa[k]]==k)&amp;amp;&amp;amp;(yakuwa[k]!=k),Print[{k,yakuwa[k]}]],{k,1,1000}];しかし、Doでループを回してPrintで書き出していくのはMathema</description>
+      <description>Mathematicaで友愛数を列挙するプログラム例として以下のようなものが見受けられる。 yakuwa[n_] := DivisorSigma[1, n] - n; Do[If[(yakuwa[yakuwa[k]] == k) &amp;amp;&amp;amp; (yakuwa[k] != k), Print[{k, yakuwa[k]}]], {k, 1, 1000}]; しかし、Doでループを回してPrintで書き出していくのはMathematica的に美しくないと思う。 Mathematicaなら関数型プログラミングとパターンマッチを用いるのが良いと思うので、私なら以下のように書く。 Cases[NestList[DivisorSigma[1, #] - # &amp;amp;, #, 2] &amp;amp; /@ Range[100000], {a_, b_, a_} /; a &amp;lt; b -&amp;gt; {a, b}] 実行速度もこちらの</description>
     </item>
     
     <item>

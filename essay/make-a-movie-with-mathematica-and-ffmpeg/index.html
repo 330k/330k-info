@@ -103,60 +103,60 @@ if (!doNotTrack) {
 </ol>
 <p>とする。ここで、各フレーム画像の形式をPPMにしないとうまく動作しなかった(BMP、PNGなどではなぜか動作せず)。</p>
 <p>例えば、以下のようにするとtest001.aviができあがる。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-Mathematica" data-lang="Mathematica"><span class="n">s</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">OpenWrite</span><span class="p">[</span><span class="w">
-</span><span class="w">   </span><span class="s">&#34;!ffmpeg -y -vcodec ppm -f image2pipe -i - -vcodec rawvideo test001.avi&#34;</span><span class="p">,</span><span class="w"> </span><span class="n">BinaryFormat</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">True</span><span class="p">];</span><span class="w">
-</span><span class="w"></span><span class="n">Do</span><span class="p">[</span><span class="w">
-</span><span class="w">  </span><span class="n">BinaryWrite</span><span class="p">[</span><span class="n">s</span><span class="p">,</span><span class="w"> </span><span class="n">ExportString</span><span class="p">[</span><span class="w">
-</span><span class="w">    </span><span class="n">Plot</span><span class="p">[</span><span class="n">Sin</span><span class="p">[</span><span class="n">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">i</span><span class="p">],</span><span class="w"> </span><span class="p">{</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="n">Pi</span><span class="p">}</span><span class="w">
-</span><span class="w">     </span><span class="p">,</span><span class="w"> </span><span class="n">ImageSize</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">{</span><span class="mi">640</span><span class="p">,</span><span class="w"> </span><span class="mi">480</span><span class="p">}</span><span class="w">
-</span><span class="w">     </span><span class="p">,</span><span class="w"> </span><span class="n">PlotRange</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">{{</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="n">Pi</span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="mi">-1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">}}</span><span class="w">
-</span><span class="w">     </span><span class="p">,</span><span class="w"> </span><span class="n">Frame</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">True</span><span class="p">]</span><span class="w">
-</span><span class="w">    </span><span class="p">,</span><span class="w"> </span><span class="s">&#34;PPM&#34;</span><span class="p">]]</span><span class="w">
-</span><span class="w">  </span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="n">Pi</span><span class="p">,</span><span class="w"> </span><span class="n">Pi</span><span class="o">/</span><span class="mi">50</span><span class="p">}</span><span class="w">
-</span><span class="w">  </span><span class="p">];</span><span class="w">
-</span><span class="w"></span><span class="n">Close</span><span class="p">[</span><span class="n">s</span><span class="p">]</span><span class="w">
-</span></code></pre></div><p><code>Export</code>と同じような使い勝手の関数<code>ExportMovie</code>を作るとこんな感じになる。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-Mathematica" data-lang="Mathematica"><span class="n">Options</span><span class="p">[</span><span class="n">ExportMovie</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w">
-</span><span class="w">   </span><span class="s">&#34;FrameRate&#34;</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span><span class="w">
-</span><span class="w">   </span><span class="s">&#34;VideoCodecOption&#34;</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="s">&#34;-vcodec rawvideo&#34;</span><span class="p">,</span><span class="w">
-</span><span class="w">   </span><span class="s">&#34;ExportOptions&#34;</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">{}</span><span class="w">
-</span><span class="w">   </span><span class="p">};</span><span class="w">
-</span><span class="w"></span><span class="n">ExportMovie</span><span class="p">[</span><span class="nv">outputfilepath_String</span><span class="p">,</span><span class="w"> 
-</span><span class="w">   </span><span class="nv">expr_</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="nv">i_Symbol</span><span class="p">,</span><span class="w"> </span><span class="nv">imin_</span><span class="err">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="nv">imax_</span><span class="p">,</span><span class="w"> </span><span class="nv">di_</span><span class="err">:</span><span class="w"> </span><span class="mi">1</span><span class="p">},</span><span class="w"> </span><span class="n">OptionsPattern</span><span class="p">[]]</span><span class="w"> </span><span class="o">:=</span><span class="w"> 
-</span><span class="w">  </span><span class="n">Module</span><span class="p">[{</span><span class="n">stream</span><span class="p">},</span><span class="w">
-</span><span class="w">   </span><span class="n">stream</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">OpenWrite</span><span class="p">[</span><span class="w">
-</span><span class="w">     </span><span class="n">ToString</span><span class="p">[</span><span class="w">
-</span><span class="w">      </span><span class="n">StringForm</span><span class="p">[</span><span class="w">
-</span><span class="w">       </span><span class="s">&#34;!ffmpeg -y -vcodec ppm -f image2pipe -i - -r `` `` ``&#34;</span><span class="w">
-</span><span class="w">       </span><span class="p">,</span><span class="w"> </span><span class="n">OptionValue</span><span class="p">[</span><span class="s">&#34;FrameRate&#34;</span><span class="p">]</span><span class="w">
-</span><span class="w">       </span><span class="p">,</span><span class="w"> </span><span class="n">OptionValue</span><span class="p">[</span><span class="s">&#34;VideoCodecOption&#34;</span><span class="p">]</span><span class="w">
-</span><span class="w">       </span><span class="p">,</span><span class="w"> </span><span class="n">outputfilepath</span><span class="w">
-</span><span class="w">       </span><span class="p">]</span><span class="w">
-</span><span class="w">      </span><span class="p">]</span><span class="w">
-</span><span class="w">     </span><span class="p">,</span><span class="w"> </span><span class="n">BinaryFormat</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">True</span><span class="p">];</span><span class="w">
-</span><span class="w">   </span><span class="n">Do</span><span class="p">[</span><span class="w">
-</span><span class="w">    </span><span class="n">BinaryWrite</span><span class="p">[</span><span class="n">stream</span><span class="p">,</span><span class="w"> 
-</span><span class="w">     </span><span class="n">ExportString</span><span class="p">[</span><span class="n">expr</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;PPM&#34;</span><span class="p">,</span><span class="w"> </span><span class="n">OptionValue</span><span class="p">[</span><span class="s">&#34;ExportOptions&#34;</span><span class="p">]]]</span><span class="w">
-</span><span class="w">    </span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">imin</span><span class="p">,</span><span class="w"> </span><span class="n">imax</span><span class="p">,</span><span class="w"> </span><span class="n">di</span><span class="p">}</span><span class="w">
-</span><span class="w">    </span><span class="p">];</span><span class="w">
-</span><span class="w">   </span><span class="n">Close</span><span class="p">[</span><span class="n">stream</span><span class="p">]</span><span class="w">
-</span><span class="w">   </span><span class="p">];</span><span class="w">
-</span><span class="w"></span><span class="n">Attributes</span><span class="p">[</span><span class="n">ExportMovie</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="n">HoldAll</span><span class="p">};</span><span class="w">
-</span><span class="w"></span><span class="n">SyntaxInformation</span><span class="p">[</span><span class="n">ExportMovie</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w">
-</span><span class="w">   </span><span class="s">&#34;ArgumentsPattern&#34;</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">{</span><span class="nv">_</span><span class="p">,</span><span class="w"> </span><span class="nv">_</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="nv">_</span><span class="p">,</span><span class="w"> </span><span class="nv">_</span><span class="p">,</span><span class="w"> </span><span class="nv">_</span><span class="err">.</span><span class="p">,</span><span class="w"> </span><span class="nv">_</span><span class="err">.</span><span class="p">},</span><span class="w"> </span><span class="n">OptionsPattern</span><span class="p">[]}</span><span class="w">
-</span><span class="w">   </span><span class="p">,</span><span class="w"> </span><span class="s">&#34;LocalVariables&#34;</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">{</span><span class="s">&#34;Table&#34;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">}}</span><span class="w">
-</span><span class="w">   </span><span class="p">};</span><span class="w">
-</span></code></pre></div><p>使い方の例としては以下。反復子を使って<code>Table</code>などと同様の表記で動画が作成できる。
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Mathematica" data-lang="Mathematica">s = OpenWrite[
+   <span style="color:#a31515">&#34;!ffmpeg -y -vcodec ppm -f image2pipe -i - -vcodec rawvideo test001.avi&#34;</span>, BinaryFormat -&gt; True];
+Do[
+  BinaryWrite[s, ExportString[
+    Plot[Sin[x + i], {x, 0, 2 Pi}
+     , ImageSize -&gt; {640, 480}
+     , PlotRange -&gt; {{0, 2 Pi}, {-1, 1}}
+     , Frame -&gt; True]
+    , <span style="color:#a31515">&#34;PPM&#34;</span>]]
+  , {i, 0, 2 Pi, Pi/50}
+  ];
+Close[s]
+</code></pre></div><p><code>Export</code>と同じような使い勝手の関数<code>ExportMovie</code>を作るとこんな感じになる。</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Mathematica" data-lang="Mathematica">Options[ExportMovie] = {
+   <span style="color:#a31515">&#34;FrameRate&#34;</span> -&gt; 25,
+   <span style="color:#a31515">&#34;VideoCodecOption&#34;</span> -&gt; <span style="color:#a31515">&#34;-vcodec rawvideo&#34;</span>,
+   <span style="color:#a31515">&#34;ExportOptions&#34;</span> -&gt; {}
+   };
+ExportMovie[outputfilepath_String, 
+   expr_, {i_Symbol, imin_<span style="">:</span> 1, imax_, di_<span style="">:</span> 1}, OptionsPattern[]] := 
+  Module[{stream},
+   stream = OpenWrite[
+     ToString[
+      StringForm[
+       <span style="color:#a31515">&#34;!ffmpeg -y -vcodec ppm -f image2pipe -i - -r `` `` ``&#34;</span>
+       , OptionValue[<span style="color:#a31515">&#34;FrameRate&#34;</span>]
+       , OptionValue[<span style="color:#a31515">&#34;VideoCodecOption&#34;</span>]
+       , outputfilepath
+       ]
+      ]
+     , BinaryFormat -&gt; True];
+   Do[
+    BinaryWrite[stream, 
+     ExportString[expr, <span style="color:#a31515">&#34;PPM&#34;</span>, OptionValue[<span style="color:#a31515">&#34;ExportOptions&#34;</span>]]]
+    , {i, imin, imax, di}
+    ];
+   Close[stream]
+   ];
+Attributes[ExportMovie] = {HoldAll};
+SyntaxInformation[ExportMovie] = {
+   <span style="color:#a31515">&#34;ArgumentsPattern&#34;</span> -&gt; {_, _, {_, _, _<span style="">.</span>, _<span style="">.</span>}, OptionsPattern[]}
+   , <span style="color:#a31515">&#34;LocalVariables&#34;</span> -&gt; {<span style="color:#a31515">&#34;Table&#34;</span>, {3, 3}}
+   };
+</code></pre></div><p>使い方の例としては以下。反復子を使って<code>Table</code>などと同様の表記で動画が作成できる。
 また、ffmpegでサポートされていれば、Mathematicaでサポートされていない形式でも動画が作成可能。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-Mathematica" data-lang="Mathematica"><span class="n">ExportMovie</span><span class="p">[</span><span class="s">&#34;test002.avi&#34;</span><span class="w">
-</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="n">Plot</span><span class="p">[</span><span class="n">Sin</span><span class="p">[</span><span class="n">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">i</span><span class="p">],</span><span class="w"> </span><span class="p">{</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="n">Pi</span><span class="p">}</span><span class="w">
-</span><span class="w">  </span><span class="p">,</span><span class="w"> </span><span class="n">ImageSize</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">{</span><span class="mi">640</span><span class="p">,</span><span class="w"> </span><span class="mi">480</span><span class="p">}</span><span class="w">
-</span><span class="w">  </span><span class="p">,</span><span class="w"> </span><span class="n">PlotRange</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">{{</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="n">Pi</span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="mi">-1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">}}</span><span class="w">
-</span><span class="w">  </span><span class="p">,</span><span class="w"> </span><span class="n">Frame</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">True</span><span class="p">]</span><span class="w">
-</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="n">Pi</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="n">Pi</span><span class="o">/</span><span class="mi">100</span><span class="p">}</span><span class="w">
-</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="s">&#34;FrameRate&#34;</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="mf">29.97</span><span class="w">
-</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="s">&#34;VideoCodecOption&#34;</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="s">&#34;-vcodec huffyuv&#34;</span><span class="p">]</span><span class="w">
-</span></code></pre></div>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Mathematica" data-lang="Mathematica">ExportMovie[<span style="color:#a31515">&#34;test002.avi&#34;</span>
+ , Plot[Sin[x + i], {x, 0, 2 Pi}
+  , ImageSize -&gt; {640, 480}
+  , PlotRange -&gt; {{0, 2 Pi}, {-1, 1}}
+  , Frame -&gt; True]
+ , {i, 0, 2 Pi, 2 Pi/100}
+ , <span style="color:#a31515">&#34;FrameRate&#34;</span> -&gt; 29.97
+ , <span style="color:#a31515">&#34;VideoCodecOption&#34;</span> -&gt; <span style="color:#a31515">&#34;-vcodec huffyuv&#34;</span>]
+</code></pre></div>
 		</div>
 		<footer class="post__footer">
 			

@@ -106,834 +106,834 @@ SNMP v2cでRICOH製のプリンタ・複合機の各種情報を取得するXML�
 <li>IPSiO SP 6320</li>
 </ul>
 <p>ダウンロードは<a href="https://share.zabbix.com/printers/ricoh/template-ricoh-snmp-printers">Zabbix Share - Template Ricoh SNMP Printers</a>。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-XML" data-lang="XML"><span class="cp">&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34;?&gt;</span>
-<span class="nt">&lt;zabbix_export&gt;</span>
-    <span class="nt">&lt;version&gt;</span>3.2<span class="nt">&lt;/version&gt;</span>
-    <span class="nt">&lt;date&gt;</span>2017-07-20T10:38:50Z<span class="nt">&lt;/date&gt;</span>
-    <span class="nt">&lt;groups&gt;</span>
-        <span class="nt">&lt;group&gt;</span>
-            <span class="nt">&lt;name&gt;</span>Printers<span class="nt">&lt;/name&gt;</span>
-        <span class="nt">&lt;/group&gt;</span>
-    <span class="nt">&lt;/groups&gt;</span>
-    <span class="nt">&lt;templates&gt;</span>
-        <span class="nt">&lt;template&gt;</span>
-            <span class="nt">&lt;template&gt;</span>Template SNMP Ricoh Printers<span class="nt">&lt;/template&gt;</span>
-            <span class="nt">&lt;name&gt;</span>Template SNMP Ricoh Printers<span class="nt">&lt;/name&gt;</span>
-            <span class="nt">&lt;description/&gt;</span>
-            <span class="nt">&lt;groups&gt;</span>
-                <span class="nt">&lt;group&gt;</span>
-                    <span class="nt">&lt;name&gt;</span>Printers<span class="nt">&lt;/name&gt;</span>
-                <span class="nt">&lt;/group&gt;</span>
-            <span class="nt">&lt;/groups&gt;</span>
-            <span class="nt">&lt;applications&gt;</span>
-                <span class="nt">&lt;application&gt;</span>
-                    <span class="nt">&lt;name&gt;</span>SNMP Enabled Printer<span class="nt">&lt;/name&gt;</span>
-                <span class="nt">&lt;/application&gt;</span>
-            <span class="nt">&lt;/applications&gt;</span>
-            <span class="nt">&lt;items&gt;</span>
-                <span class="nt">&lt;item&gt;</span>
-                    <span class="nt">&lt;name&gt;</span>Description<span class="nt">&lt;/name&gt;</span>
-                    <span class="nt">&lt;type&gt;</span>4<span class="nt">&lt;/type&gt;</span>
-                    <span class="nt">&lt;snmp_community&gt;</span>{$SNMP_COMMUNITY}<span class="nt">&lt;/snmp_community&gt;</span>
-                    <span class="nt">&lt;multiplier&gt;</span>0<span class="nt">&lt;/multiplier&gt;</span>
-                    <span class="nt">&lt;snmp_oid&gt;</span>.1.3.6.1.2.1.25.3.2.1.3.1<span class="nt">&lt;/snmp_oid&gt;</span>
-                    <span class="nt">&lt;key&gt;</span>Description<span class="nt">&lt;/key&gt;</span>
-                    <span class="nt">&lt;delay&gt;</span>60<span class="nt">&lt;/delay&gt;</span>
-                    <span class="nt">&lt;history&gt;</span>90<span class="nt">&lt;/history&gt;</span>
-                    <span class="nt">&lt;trends&gt;</span>0<span class="nt">&lt;/trends&gt;</span>
-                    <span class="nt">&lt;status&gt;</span>0<span class="nt">&lt;/status&gt;</span>
-                    <span class="nt">&lt;value_type&gt;</span>4<span class="nt">&lt;/value_type&gt;</span>
-                    <span class="nt">&lt;allowed_hosts/&gt;</span>
-                    <span class="nt">&lt;units/&gt;</span>
-                    <span class="nt">&lt;delta&gt;</span>0<span class="nt">&lt;/delta&gt;</span>
-                    <span class="nt">&lt;snmpv3_contextname/&gt;</span>
-                    <span class="nt">&lt;snmpv3_securityname/&gt;</span>
-                    <span class="nt">&lt;snmpv3_securitylevel&gt;</span>0<span class="nt">&lt;/snmpv3_securitylevel&gt;</span>
-                    <span class="nt">&lt;snmpv3_authprotocol&gt;</span>0<span class="nt">&lt;/snmpv3_authprotocol&gt;</span>
-                    <span class="nt">&lt;snmpv3_authpassphrase/&gt;</span>
-                    <span class="nt">&lt;snmpv3_privprotocol&gt;</span>0<span class="nt">&lt;/snmpv3_privprotocol&gt;</span>
-                    <span class="nt">&lt;snmpv3_privpassphrase/&gt;</span>
-                    <span class="nt">&lt;formula&gt;</span>1<span class="nt">&lt;/formula&gt;</span>
-                    <span class="nt">&lt;delay_flex/&gt;</span>
-                    <span class="nt">&lt;params/&gt;</span>
-                    <span class="nt">&lt;ipmi_sensor/&gt;</span>
-                    <span class="nt">&lt;data_type&gt;</span>0<span class="nt">&lt;/data_type&gt;</span>
-                    <span class="nt">&lt;authtype&gt;</span>0<span class="nt">&lt;/authtype&gt;</span>
-                    <span class="nt">&lt;username/&gt;</span>
-                    <span class="nt">&lt;password/&gt;</span>
-                    <span class="nt">&lt;publickey/&gt;</span>
-                    <span class="nt">&lt;privatekey/&gt;</span>
-                    <span class="nt">&lt;port&gt;</span>161<span class="nt">&lt;/port&gt;</span>
-                    <span class="nt">&lt;description/&gt;</span>
-                    <span class="nt">&lt;inventory_link&gt;</span>2<span class="nt">&lt;/inventory_link&gt;</span>
-                    <span class="nt">&lt;applications&gt;</span>
-                        <span class="nt">&lt;application&gt;</span>
-                            <span class="nt">&lt;name&gt;</span>SNMP Enabled Printer<span class="nt">&lt;/name&gt;</span>
-                        <span class="nt">&lt;/application&gt;</span>
-                    <span class="nt">&lt;/applications&gt;</span>
-                    <span class="nt">&lt;valuemap/&gt;</span>
-                    <span class="nt">&lt;logtimefmt/&gt;</span>
-                <span class="nt">&lt;/item&gt;</span>
-                <span class="nt">&lt;item&gt;</span>
-                    <span class="nt">&lt;name&gt;</span>Page Count<span class="nt">&lt;/name&gt;</span>
-                    <span class="nt">&lt;type&gt;</span>4<span class="nt">&lt;/type&gt;</span>
-                    <span class="nt">&lt;snmp_community&gt;</span>{$SNMP_COMMUNITY}<span class="nt">&lt;/snmp_community&gt;</span>
-                    <span class="nt">&lt;multiplier&gt;</span>0<span class="nt">&lt;/multiplier&gt;</span>
-                    <span class="nt">&lt;snmp_oid&gt;</span>.1.3.6.1.2.1.43.10.2.1.4.1.1<span class="nt">&lt;/snmp_oid&gt;</span>
-                    <span class="nt">&lt;key&gt;</span>PageCount<span class="nt">&lt;/key&gt;</span>
-                    <span class="nt">&lt;delay&gt;</span>60<span class="nt">&lt;/delay&gt;</span>
-                    <span class="nt">&lt;history&gt;</span>90<span class="nt">&lt;/history&gt;</span>
-                    <span class="nt">&lt;trends&gt;</span>365<span class="nt">&lt;/trends&gt;</span>
-                    <span class="nt">&lt;status&gt;</span>0<span class="nt">&lt;/status&gt;</span>
-                    <span class="nt">&lt;value_type&gt;</span>3<span class="nt">&lt;/value_type&gt;</span>
-                    <span class="nt">&lt;allowed_hosts/&gt;</span>
-                    <span class="nt">&lt;units/&gt;</span>
-                    <span class="nt">&lt;delta&gt;</span>0<span class="nt">&lt;/delta&gt;</span>
-                    <span class="nt">&lt;snmpv3_contextname/&gt;</span>
-                    <span class="nt">&lt;snmpv3_securityname/&gt;</span>
-                    <span class="nt">&lt;snmpv3_securitylevel&gt;</span>0<span class="nt">&lt;/snmpv3_securitylevel&gt;</span>
-                    <span class="nt">&lt;snmpv3_authprotocol&gt;</span>0<span class="nt">&lt;/snmpv3_authprotocol&gt;</span>
-                    <span class="nt">&lt;snmpv3_authpassphrase/&gt;</span>
-                    <span class="nt">&lt;snmpv3_privprotocol&gt;</span>0<span class="nt">&lt;/snmpv3_privprotocol&gt;</span>
-                    <span class="nt">&lt;snmpv3_privpassphrase/&gt;</span>
-                    <span class="nt">&lt;formula&gt;</span>1<span class="nt">&lt;/formula&gt;</span>
-                    <span class="nt">&lt;delay_flex/&gt;</span>
-                    <span class="nt">&lt;params/&gt;</span>
-                    <span class="nt">&lt;ipmi_sensor/&gt;</span>
-                    <span class="nt">&lt;data_type&gt;</span>0<span class="nt">&lt;/data_type&gt;</span>
-                    <span class="nt">&lt;authtype&gt;</span>0<span class="nt">&lt;/authtype&gt;</span>
-                    <span class="nt">&lt;username/&gt;</span>
-                    <span class="nt">&lt;password/&gt;</span>
-                    <span class="nt">&lt;publickey/&gt;</span>
-                    <span class="nt">&lt;privatekey/&gt;</span>
-                    <span class="nt">&lt;port&gt;</span>161<span class="nt">&lt;/port&gt;</span>
-                    <span class="nt">&lt;description/&gt;</span>
-                    <span class="nt">&lt;inventory_link&gt;</span>0<span class="nt">&lt;/inventory_link&gt;</span>
-                    <span class="nt">&lt;applications&gt;</span>
-                        <span class="nt">&lt;application&gt;</span>
-                            <span class="nt">&lt;name&gt;</span>SNMP Enabled Printer<span class="nt">&lt;/name&gt;</span>
-                        <span class="nt">&lt;/application&gt;</span>
-                    <span class="nt">&lt;/applications&gt;</span>
-                    <span class="nt">&lt;valuemap/&gt;</span>
-                    <span class="nt">&lt;logtimefmt/&gt;</span>
-                <span class="nt">&lt;/item&gt;</span>
-                <span class="nt">&lt;item&gt;</span>
-                    <span class="nt">&lt;name&gt;</span>Page Count / Min<span class="nt">&lt;/name&gt;</span>
-                    <span class="nt">&lt;type&gt;</span>4<span class="nt">&lt;/type&gt;</span>
-                    <span class="nt">&lt;snmp_community&gt;</span>{$SNMP_COMMUNITY}<span class="nt">&lt;/snmp_community&gt;</span>
-                    <span class="nt">&lt;multiplier&gt;</span>1<span class="nt">&lt;/multiplier&gt;</span>
-                    <span class="nt">&lt;snmp_oid&gt;</span>.1.3.6.1.2.1.43.10.2.1.4.1.1<span class="nt">&lt;/snmp_oid&gt;</span>
-                    <span class="nt">&lt;key&gt;</span>PageCountPerMinute<span class="nt">&lt;/key&gt;</span>
-                    <span class="nt">&lt;delay&gt;</span>60<span class="nt">&lt;/delay&gt;</span>
-                    <span class="nt">&lt;history&gt;</span>90<span class="nt">&lt;/history&gt;</span>
-                    <span class="nt">&lt;trends&gt;</span>365<span class="nt">&lt;/trends&gt;</span>
-                    <span class="nt">&lt;status&gt;</span>0<span class="nt">&lt;/status&gt;</span>
-                    <span class="nt">&lt;value_type&gt;</span>0<span class="nt">&lt;/value_type&gt;</span>
-                    <span class="nt">&lt;allowed_hosts/&gt;</span>
-                    <span class="nt">&lt;units/&gt;</span>
-                    <span class="nt">&lt;delta&gt;</span>1<span class="nt">&lt;/delta&gt;</span>
-                    <span class="nt">&lt;snmpv3_contextname/&gt;</span>
-                    <span class="nt">&lt;snmpv3_securityname/&gt;</span>
-                    <span class="nt">&lt;snmpv3_securitylevel&gt;</span>0<span class="nt">&lt;/snmpv3_securitylevel&gt;</span>
-                    <span class="nt">&lt;snmpv3_authprotocol&gt;</span>0<span class="nt">&lt;/snmpv3_authprotocol&gt;</span>
-                    <span class="nt">&lt;snmpv3_authpassphrase/&gt;</span>
-                    <span class="nt">&lt;snmpv3_privprotocol&gt;</span>0<span class="nt">&lt;/snmpv3_privprotocol&gt;</span>
-                    <span class="nt">&lt;snmpv3_privpassphrase/&gt;</span>
-                    <span class="nt">&lt;formula&gt;</span>60<span class="nt">&lt;/formula&gt;</span>
-                    <span class="nt">&lt;delay_flex/&gt;</span>
-                    <span class="nt">&lt;params/&gt;</span>
-                    <span class="nt">&lt;ipmi_sensor/&gt;</span>
-                    <span class="nt">&lt;data_type&gt;</span>0<span class="nt">&lt;/data_type&gt;</span>
-                    <span class="nt">&lt;authtype&gt;</span>0<span class="nt">&lt;/authtype&gt;</span>
-                    <span class="nt">&lt;username/&gt;</span>
-                    <span class="nt">&lt;password/&gt;</span>
-                    <span class="nt">&lt;publickey/&gt;</span>
-                    <span class="nt">&lt;privatekey/&gt;</span>
-                    <span class="nt">&lt;port&gt;</span>161<span class="nt">&lt;/port&gt;</span>
-                    <span class="nt">&lt;description/&gt;</span>
-                    <span class="nt">&lt;inventory_link&gt;</span>0<span class="nt">&lt;/inventory_link&gt;</span>
-                    <span class="nt">&lt;applications&gt;</span>
-                        <span class="nt">&lt;application&gt;</span>
-                            <span class="nt">&lt;name&gt;</span>SNMP Enabled Printer<span class="nt">&lt;/name&gt;</span>
-                        <span class="nt">&lt;/application&gt;</span>
-                    <span class="nt">&lt;/applications&gt;</span>
-                    <span class="nt">&lt;valuemap/&gt;</span>
-                    <span class="nt">&lt;logtimefmt/&gt;</span>
-                <span class="nt">&lt;/item&gt;</span>
-                <span class="nt">&lt;item&gt;</span>
-                    <span class="nt">&lt;name&gt;</span>Status<span class="nt">&lt;/name&gt;</span>
-                    <span class="nt">&lt;type&gt;</span>4<span class="nt">&lt;/type&gt;</span>
-                    <span class="nt">&lt;snmp_community&gt;</span>{$SNMP_COMMUNITY}<span class="nt">&lt;/snmp_community&gt;</span>
-                    <span class="nt">&lt;multiplier&gt;</span>0<span class="nt">&lt;/multiplier&gt;</span>
-                    <span class="nt">&lt;snmp_oid&gt;</span>.1.3.6.1.2.1.25.3.2.1.5.1<span class="nt">&lt;/snmp_oid&gt;</span>
-                    <span class="nt">&lt;key&gt;</span>PrinterStatus<span class="nt">&lt;/key&gt;</span>
-                    <span class="nt">&lt;delay&gt;</span>60<span class="nt">&lt;/delay&gt;</span>
-                    <span class="nt">&lt;history&gt;</span>90<span class="nt">&lt;/history&gt;</span>
-                    <span class="nt">&lt;trends&gt;</span>365<span class="nt">&lt;/trends&gt;</span>
-                    <span class="nt">&lt;status&gt;</span>0<span class="nt">&lt;/status&gt;</span>
-                    <span class="nt">&lt;value_type&gt;</span>3<span class="nt">&lt;/value_type&gt;</span>
-                    <span class="nt">&lt;allowed_hosts/&gt;</span>
-                    <span class="nt">&lt;units/&gt;</span>
-                    <span class="nt">&lt;delta&gt;</span>0<span class="nt">&lt;/delta&gt;</span>
-                    <span class="nt">&lt;snmpv3_contextname/&gt;</span>
-                    <span class="nt">&lt;snmpv3_securityname/&gt;</span>
-                    <span class="nt">&lt;snmpv3_securitylevel&gt;</span>0<span class="nt">&lt;/snmpv3_securitylevel&gt;</span>
-                    <span class="nt">&lt;snmpv3_authprotocol&gt;</span>0<span class="nt">&lt;/snmpv3_authprotocol&gt;</span>
-                    <span class="nt">&lt;snmpv3_authpassphrase/&gt;</span>
-                    <span class="nt">&lt;snmpv3_privprotocol&gt;</span>0<span class="nt">&lt;/snmpv3_privprotocol&gt;</span>
-                    <span class="nt">&lt;snmpv3_privpassphrase/&gt;</span>
-                    <span class="nt">&lt;formula&gt;</span>1<span class="nt">&lt;/formula&gt;</span>
-                    <span class="nt">&lt;delay_flex/&gt;</span>
-                    <span class="nt">&lt;params/&gt;</span>
-                    <span class="nt">&lt;ipmi_sensor/&gt;</span>
-                    <span class="nt">&lt;data_type&gt;</span>0<span class="nt">&lt;/data_type&gt;</span>
-                    <span class="nt">&lt;authtype&gt;</span>0<span class="nt">&lt;/authtype&gt;</span>
-                    <span class="nt">&lt;username/&gt;</span>
-                    <span class="nt">&lt;password/&gt;</span>
-                    <span class="nt">&lt;publickey/&gt;</span>
-                    <span class="nt">&lt;privatekey/&gt;</span>
-                    <span class="nt">&lt;port&gt;</span>161<span class="nt">&lt;/port&gt;</span>
-                    <span class="nt">&lt;description/&gt;</span>
-                    <span class="nt">&lt;inventory_link&gt;</span>0<span class="nt">&lt;/inventory_link&gt;</span>
-                    <span class="nt">&lt;applications&gt;</span>
-                        <span class="nt">&lt;application&gt;</span>
-                            <span class="nt">&lt;name&gt;</span>SNMP Enabled Printer<span class="nt">&lt;/name&gt;</span>
-                        <span class="nt">&lt;/application&gt;</span>
-                    <span class="nt">&lt;/applications&gt;</span>
-                    <span class="nt">&lt;valuemap/&gt;</span>
-                    <span class="nt">&lt;logtimefmt/&gt;</span>
-                <span class="nt">&lt;/item&gt;</span>
-            <span class="nt">&lt;/items&gt;</span>
-            <span class="nt">&lt;discovery_rules&gt;</span>
-                <span class="nt">&lt;discovery_rule&gt;</span>
-                    <span class="nt">&lt;name&gt;</span>DetailCounters<span class="nt">&lt;/name&gt;</span>
-                    <span class="nt">&lt;type&gt;</span>4<span class="nt">&lt;/type&gt;</span>
-                    <span class="nt">&lt;snmp_community&gt;</span>{$SNMP_COMMUNITY}<span class="nt">&lt;/snmp_community&gt;</span>
-                    <span class="nt">&lt;snmp_oid&gt;</span>discovery[{#SNMPVALUE},.1.3.6.1.4.1.367.3.2.1.2.19.5.1.5]<span class="nt">&lt;/snmp_oid&gt;</span>
-                    <span class="nt">&lt;key&gt;</span>DetailCountersID<span class="nt">&lt;/key&gt;</span>
-                    <span class="nt">&lt;delay&gt;</span>300<span class="nt">&lt;/delay&gt;</span>
-                    <span class="nt">&lt;status&gt;</span>0<span class="nt">&lt;/status&gt;</span>
-                    <span class="nt">&lt;allowed_hosts/&gt;</span>
-                    <span class="nt">&lt;snmpv3_contextname/&gt;</span>
-                    <span class="nt">&lt;snmpv3_securityname/&gt;</span>
-                    <span class="nt">&lt;snmpv3_securitylevel&gt;</span>0<span class="nt">&lt;/snmpv3_securitylevel&gt;</span>
-                    <span class="nt">&lt;snmpv3_authprotocol&gt;</span>0<span class="nt">&lt;/snmpv3_authprotocol&gt;</span>
-                    <span class="nt">&lt;snmpv3_authpassphrase/&gt;</span>
-                    <span class="nt">&lt;snmpv3_privprotocol&gt;</span>0<span class="nt">&lt;/snmpv3_privprotocol&gt;</span>
-                    <span class="nt">&lt;snmpv3_privpassphrase/&gt;</span>
-                    <span class="nt">&lt;delay_flex/&gt;</span>
-                    <span class="nt">&lt;params/&gt;</span>
-                    <span class="nt">&lt;ipmi_sensor/&gt;</span>
-                    <span class="nt">&lt;authtype&gt;</span>0<span class="nt">&lt;/authtype&gt;</span>
-                    <span class="nt">&lt;username/&gt;</span>
-                    <span class="nt">&lt;password/&gt;</span>
-                    <span class="nt">&lt;publickey/&gt;</span>
-                    <span class="nt">&lt;privatekey/&gt;</span>
-                    <span class="nt">&lt;port&gt;</span>161<span class="nt">&lt;/port&gt;</span>
-                    <span class="nt">&lt;filter&gt;</span>
-                        <span class="nt">&lt;evaltype&gt;</span>0<span class="nt">&lt;/evaltype&gt;</span>
-                        <span class="nt">&lt;formula/&gt;</span>
-                        <span class="nt">&lt;conditions/&gt;</span>
-                    <span class="nt">&lt;/filter&gt;</span>
-                    <span class="nt">&lt;lifetime&gt;</span>30<span class="nt">&lt;/lifetime&gt;</span>
-                    <span class="nt">&lt;description/&gt;</span>
-                    <span class="nt">&lt;item_prototypes&gt;</span>
-                        <span class="nt">&lt;item_prototype&gt;</span>
-                            <span class="nt">&lt;name&gt;</span>DetailCounters[{#SNMPVALUE}]<span class="nt">&lt;/name&gt;</span>
-                            <span class="nt">&lt;type&gt;</span>4<span class="nt">&lt;/type&gt;</span>
-                            <span class="nt">&lt;snmp_community&gt;</span>{$SNMP_COMMUNITY}<span class="nt">&lt;/snmp_community&gt;</span>
-                            <span class="nt">&lt;multiplier&gt;</span>0<span class="nt">&lt;/multiplier&gt;</span>
-                            <span class="nt">&lt;snmp_oid&gt;</span>.1.3.6.1.4.1.367.3.2.1.2.19.5.1.9.{#SNMPINDEX}<span class="nt">&lt;/snmp_oid&gt;</span>
-                            <span class="nt">&lt;key&gt;</span>DetailCountersID[{#SNMPVALUE}]<span class="nt">&lt;/key&gt;</span>
-                            <span class="nt">&lt;delay&gt;</span>3600<span class="nt">&lt;/delay&gt;</span>
-                            <span class="nt">&lt;history&gt;</span>90<span class="nt">&lt;/history&gt;</span>
-                            <span class="nt">&lt;trends&gt;</span>365<span class="nt">&lt;/trends&gt;</span>
-                            <span class="nt">&lt;status&gt;</span>0<span class="nt">&lt;/status&gt;</span>
-                            <span class="nt">&lt;value_type&gt;</span>3<span class="nt">&lt;/value_type&gt;</span>
-                            <span class="nt">&lt;allowed_hosts/&gt;</span>
-                            <span class="nt">&lt;units/&gt;</span>
-                            <span class="nt">&lt;delta&gt;</span>0<span class="nt">&lt;/delta&gt;</span>
-                            <span class="nt">&lt;snmpv3_contextname/&gt;</span>
-                            <span class="nt">&lt;snmpv3_securityname/&gt;</span>
-                            <span class="nt">&lt;snmpv3_securitylevel&gt;</span>0<span class="nt">&lt;/snmpv3_securitylevel&gt;</span>
-                            <span class="nt">&lt;snmpv3_authprotocol&gt;</span>0<span class="nt">&lt;/snmpv3_authprotocol&gt;</span>
-                            <span class="nt">&lt;snmpv3_authpassphrase/&gt;</span>
-                            <span class="nt">&lt;snmpv3_privprotocol&gt;</span>0<span class="nt">&lt;/snmpv3_privprotocol&gt;</span>
-                            <span class="nt">&lt;snmpv3_privpassphrase/&gt;</span>
-                            <span class="nt">&lt;formula&gt;</span>1<span class="nt">&lt;/formula&gt;</span>
-                            <span class="nt">&lt;delay_flex/&gt;</span>
-                            <span class="nt">&lt;params/&gt;</span>
-                            <span class="nt">&lt;ipmi_sensor/&gt;</span>
-                            <span class="nt">&lt;data_type&gt;</span>0<span class="nt">&lt;/data_type&gt;</span>
-                            <span class="nt">&lt;authtype&gt;</span>0<span class="nt">&lt;/authtype&gt;</span>
-                            <span class="nt">&lt;username/&gt;</span>
-                            <span class="nt">&lt;password/&gt;</span>
-                            <span class="nt">&lt;publickey/&gt;</span>
-                            <span class="nt">&lt;privatekey/&gt;</span>
-                            <span class="nt">&lt;port&gt;</span>161<span class="nt">&lt;/port&gt;</span>
-                            <span class="nt">&lt;description/&gt;</span>
-                            <span class="nt">&lt;inventory_link&gt;</span>0<span class="nt">&lt;/inventory_link&gt;</span>
-                            <span class="nt">&lt;applications&gt;</span>
-                                <span class="nt">&lt;application&gt;</span>
-                                    <span class="nt">&lt;name&gt;</span>SNMP Enabled Printer<span class="nt">&lt;/name&gt;</span>
-                                <span class="nt">&lt;/application&gt;</span>
-                            <span class="nt">&lt;/applications&gt;</span>
-                            <span class="nt">&lt;valuemap/&gt;</span>
-                            <span class="nt">&lt;logtimefmt/&gt;</span>
-                            <span class="nt">&lt;application_prototypes/&gt;</span>
-                        <span class="nt">&lt;/item_prototype&gt;</span>
-                    <span class="nt">&lt;/item_prototypes&gt;</span>
-                    <span class="nt">&lt;trigger_prototypes/&gt;</span>
-                    <span class="nt">&lt;graph_prototypes/&gt;</span>
-                    <span class="nt">&lt;host_prototypes/&gt;</span>
-                <span class="nt">&lt;/discovery_rule&gt;</span>
-                <span class="nt">&lt;discovery_rule&gt;</span>
-                    <span class="nt">&lt;name&gt;</span>Parts<span class="nt">&lt;/name&gt;</span>
-                    <span class="nt">&lt;type&gt;</span>4<span class="nt">&lt;/type&gt;</span>
-                    <span class="nt">&lt;snmp_community&gt;</span>{$SNMP_COMMUNITY}<span class="nt">&lt;/snmp_community&gt;</span>
-                    <span class="nt">&lt;snmp_oid&gt;</span>discovery[{#SNMPVALUE},.1.3.6.1.2.1.43.6.1.1.2.1]<span class="nt">&lt;/snmp_oid&gt;</span>
-                    <span class="nt">&lt;key&gt;</span>PartsID<span class="nt">&lt;/key&gt;</span>
-                    <span class="nt">&lt;delay&gt;</span>300<span class="nt">&lt;/delay&gt;</span>
-                    <span class="nt">&lt;status&gt;</span>0<span class="nt">&lt;/status&gt;</span>
-                    <span class="nt">&lt;allowed_hosts/&gt;</span>
-                    <span class="nt">&lt;snmpv3_contextname/&gt;</span>
-                    <span class="nt">&lt;snmpv3_securityname/&gt;</span>
-                    <span class="nt">&lt;snmpv3_securitylevel&gt;</span>0<span class="nt">&lt;/snmpv3_securitylevel&gt;</span>
-                    <span class="nt">&lt;snmpv3_authprotocol&gt;</span>0<span class="nt">&lt;/snmpv3_authprotocol&gt;</span>
-                    <span class="nt">&lt;snmpv3_authpassphrase/&gt;</span>
-                    <span class="nt">&lt;snmpv3_privprotocol&gt;</span>0<span class="nt">&lt;/snmpv3_privprotocol&gt;</span>
-                    <span class="nt">&lt;snmpv3_privpassphrase/&gt;</span>
-                    <span class="nt">&lt;delay_flex/&gt;</span>
-                    <span class="nt">&lt;params/&gt;</span>
-                    <span class="nt">&lt;ipmi_sensor/&gt;</span>
-                    <span class="nt">&lt;authtype&gt;</span>0<span class="nt">&lt;/authtype&gt;</span>
-                    <span class="nt">&lt;username/&gt;</span>
-                    <span class="nt">&lt;password/&gt;</span>
-                    <span class="nt">&lt;publickey/&gt;</span>
-                    <span class="nt">&lt;privatekey/&gt;</span>
-                    <span class="nt">&lt;port&gt;</span>161<span class="nt">&lt;/port&gt;</span>
-                    <span class="nt">&lt;filter&gt;</span>
-                        <span class="nt">&lt;evaltype&gt;</span>0<span class="nt">&lt;/evaltype&gt;</span>
-                        <span class="nt">&lt;formula/&gt;</span>
-                        <span class="nt">&lt;conditions/&gt;</span>
-                    <span class="nt">&lt;/filter&gt;</span>
-                    <span class="nt">&lt;lifetime&gt;</span>30<span class="nt">&lt;/lifetime&gt;</span>
-                    <span class="nt">&lt;description/&gt;</span>
-                    <span class="nt">&lt;item_prototypes&gt;</span>
-                        <span class="nt">&lt;item_prototype&gt;</span>
-                            <span class="nt">&lt;name&gt;</span>Part {#SNMPVALUE} Status<span class="nt">&lt;/name&gt;</span>
-                            <span class="nt">&lt;type&gt;</span>4<span class="nt">&lt;/type&gt;</span>
-                            <span class="nt">&lt;snmp_community&gt;</span>{$SNMP_COMMUNITY}<span class="nt">&lt;/snmp_community&gt;</span>
-                            <span class="nt">&lt;multiplier&gt;</span>0<span class="nt">&lt;/multiplier&gt;</span>
-                            <span class="nt">&lt;snmp_oid&gt;</span>.1.3.6.1.2.1.43.6.1.1.3.1.{#SNMPINDEX}<span class="nt">&lt;/snmp_oid&gt;</span>
-                            <span class="nt">&lt;key&gt;</span>PartStatus[{#SNMPVALUE}]<span class="nt">&lt;/key&gt;</span>
-                            <span class="nt">&lt;delay&gt;</span>300<span class="nt">&lt;/delay&gt;</span>
-                            <span class="nt">&lt;history&gt;</span>90<span class="nt">&lt;/history&gt;</span>
-                            <span class="nt">&lt;trends&gt;</span>365<span class="nt">&lt;/trends&gt;</span>
-                            <span class="nt">&lt;status&gt;</span>0<span class="nt">&lt;/status&gt;</span>
-                            <span class="nt">&lt;value_type&gt;</span>3<span class="nt">&lt;/value_type&gt;</span>
-                            <span class="nt">&lt;allowed_hosts/&gt;</span>
-                            <span class="nt">&lt;units/&gt;</span>
-                            <span class="nt">&lt;delta&gt;</span>0<span class="nt">&lt;/delta&gt;</span>
-                            <span class="nt">&lt;snmpv3_contextname/&gt;</span>
-                            <span class="nt">&lt;snmpv3_securityname/&gt;</span>
-                            <span class="nt">&lt;snmpv3_securitylevel&gt;</span>0<span class="nt">&lt;/snmpv3_securitylevel&gt;</span>
-                            <span class="nt">&lt;snmpv3_authprotocol&gt;</span>0<span class="nt">&lt;/snmpv3_authprotocol&gt;</span>
-                            <span class="nt">&lt;snmpv3_authpassphrase/&gt;</span>
-                            <span class="nt">&lt;snmpv3_privprotocol&gt;</span>0<span class="nt">&lt;/snmpv3_privprotocol&gt;</span>
-                            <span class="nt">&lt;snmpv3_privpassphrase/&gt;</span>
-                            <span class="nt">&lt;formula&gt;</span>1<span class="nt">&lt;/formula&gt;</span>
-                            <span class="nt">&lt;delay_flex/&gt;</span>
-                            <span class="nt">&lt;params/&gt;</span>
-                            <span class="nt">&lt;ipmi_sensor/&gt;</span>
-                            <span class="nt">&lt;data_type&gt;</span>0<span class="nt">&lt;/data_type&gt;</span>
-                            <span class="nt">&lt;authtype&gt;</span>0<span class="nt">&lt;/authtype&gt;</span>
-                            <span class="nt">&lt;username/&gt;</span>
-                            <span class="nt">&lt;password/&gt;</span>
-                            <span class="nt">&lt;publickey/&gt;</span>
-                            <span class="nt">&lt;privatekey/&gt;</span>
-                            <span class="nt">&lt;port&gt;</span>161<span class="nt">&lt;/port&gt;</span>
-                            <span class="nt">&lt;description/&gt;</span>
-                            <span class="nt">&lt;inventory_link&gt;</span>0<span class="nt">&lt;/inventory_link&gt;</span>
-                            <span class="nt">&lt;applications&gt;</span>
-                                <span class="nt">&lt;application&gt;</span>
-                                    <span class="nt">&lt;name&gt;</span>SNMP Enabled Printer<span class="nt">&lt;/name&gt;</span>
-                                <span class="nt">&lt;/application&gt;</span>
-                            <span class="nt">&lt;/applications&gt;</span>
-                            <span class="nt">&lt;valuemap/&gt;</span>
-                            <span class="nt">&lt;logtimefmt/&gt;</span>
-                            <span class="nt">&lt;application_prototypes/&gt;</span>
-                        <span class="nt">&lt;/item_prototype&gt;</span>
-                    <span class="nt">&lt;/item_prototypes&gt;</span>
-                    <span class="nt">&lt;trigger_prototypes&gt;</span>
-                        <span class="nt">&lt;trigger_prototype&gt;</span>
-                            <span class="nt">&lt;expression&gt;</span>{Template SNMP Ricoh Printers:PartStatus[{#SNMPVALUE}].last(0)}<span class="ni">&amp;lt;&amp;gt;</span>4<span class="nt">&lt;/expression&gt;</span>
-                            <span class="nt">&lt;recovery_mode&gt;</span>0<span class="nt">&lt;/recovery_mode&gt;</span>
-                            <span class="nt">&lt;recovery_expression/&gt;</span>
-                            <span class="nt">&lt;name&gt;</span>Cover Open<span class="nt">&lt;/name&gt;</span>
-                            <span class="nt">&lt;correlation_mode&gt;</span>0<span class="nt">&lt;/correlation_mode&gt;</span>
-                            <span class="nt">&lt;correlation_tag/&gt;</span>
-                            <span class="nt">&lt;url/&gt;</span>
-                            <span class="nt">&lt;status&gt;</span>0<span class="nt">&lt;/status&gt;</span>
-                            <span class="nt">&lt;priority&gt;</span>2<span class="nt">&lt;/priority&gt;</span>
-                            <span class="nt">&lt;description/&gt;</span>
-                            <span class="nt">&lt;type&gt;</span>0<span class="nt">&lt;/type&gt;</span>
-                            <span class="nt">&lt;manual_close&gt;</span>0<span class="nt">&lt;/manual_close&gt;</span>
-                            <span class="nt">&lt;dependencies/&gt;</span>
-                            <span class="nt">&lt;tags/&gt;</span>
-                        <span class="nt">&lt;/trigger_prototype&gt;</span>
-                        <span class="nt">&lt;trigger_prototype&gt;</span>
-                            <span class="nt">&lt;expression&gt;</span>{Template SNMP Ricoh Printers:PartStatus[{#SNMPVALUE}].last(0)}<span class="ni">&amp;lt;&amp;gt;</span>4 and {Template SNMP Ricoh Printers:PartStatus[{#SNMPVALUE}].last(0)}<span class="ni">&amp;lt;&amp;gt;</span>3<span class="nt">&lt;/expression&gt;</span>
-                            <span class="nt">&lt;recovery_mode&gt;</span>0<span class="nt">&lt;/recovery_mode&gt;</span>
-                            <span class="nt">&lt;recovery_expression/&gt;</span>
-                            <span class="nt">&lt;name&gt;</span>Unknown: {ITEM.LASTVALUE}<span class="nt">&lt;/name&gt;</span>
-                            <span class="nt">&lt;correlation_mode&gt;</span>0<span class="nt">&lt;/correlation_mode&gt;</span>
-                            <span class="nt">&lt;correlation_tag/&gt;</span>
-                            <span class="nt">&lt;url/&gt;</span>
-                            <span class="nt">&lt;status&gt;</span>0<span class="nt">&lt;/status&gt;</span>
-                            <span class="nt">&lt;priority&gt;</span>0<span class="nt">&lt;/priority&gt;</span>
-                            <span class="nt">&lt;description/&gt;</span>
-                            <span class="nt">&lt;type&gt;</span>0<span class="nt">&lt;/type&gt;</span>
-                            <span class="nt">&lt;manual_close&gt;</span>0<span class="nt">&lt;/manual_close&gt;</span>
-                            <span class="nt">&lt;dependencies/&gt;</span>
-                            <span class="nt">&lt;tags/&gt;</span>
-                        <span class="nt">&lt;/trigger_prototype&gt;</span>
-                    <span class="nt">&lt;/trigger_prototypes&gt;</span>
-                    <span class="nt">&lt;graph_prototypes/&gt;</span>
-                    <span class="nt">&lt;host_prototypes/&gt;</span>
-                <span class="nt">&lt;/discovery_rule&gt;</span>
-                <span class="nt">&lt;discovery_rule&gt;</span>
-                    <span class="nt">&lt;name&gt;</span>Toners<span class="nt">&lt;/name&gt;</span>
-                    <span class="nt">&lt;type&gt;</span>4<span class="nt">&lt;/type&gt;</span>
-                    <span class="nt">&lt;snmp_community&gt;</span>{$SNMP_COMMUNITY}<span class="nt">&lt;/snmp_community&gt;</span>
-                    <span class="nt">&lt;snmp_oid&gt;</span>discovery[{#SNMPVALUE},.1.3.6.1.4.1.367.3.2.1.2.24.1.1.2]<span class="nt">&lt;/snmp_oid&gt;</span>
-                    <span class="nt">&lt;key&gt;</span>TonersID<span class="nt">&lt;/key&gt;</span>
-                    <span class="nt">&lt;delay&gt;</span>300<span class="nt">&lt;/delay&gt;</span>
-                    <span class="nt">&lt;status&gt;</span>0<span class="nt">&lt;/status&gt;</span>
-                    <span class="nt">&lt;allowed_hosts/&gt;</span>
-                    <span class="nt">&lt;snmpv3_contextname/&gt;</span>
-                    <span class="nt">&lt;snmpv3_securityname/&gt;</span>
-                    <span class="nt">&lt;snmpv3_securitylevel&gt;</span>0<span class="nt">&lt;/snmpv3_securitylevel&gt;</span>
-                    <span class="nt">&lt;snmpv3_authprotocol&gt;</span>0<span class="nt">&lt;/snmpv3_authprotocol&gt;</span>
-                    <span class="nt">&lt;snmpv3_authpassphrase/&gt;</span>
-                    <span class="nt">&lt;snmpv3_privprotocol&gt;</span>0<span class="nt">&lt;/snmpv3_privprotocol&gt;</span>
-                    <span class="nt">&lt;snmpv3_privpassphrase/&gt;</span>
-                    <span class="nt">&lt;delay_flex/&gt;</span>
-                    <span class="nt">&lt;params/&gt;</span>
-                    <span class="nt">&lt;ipmi_sensor/&gt;</span>
-                    <span class="nt">&lt;authtype&gt;</span>0<span class="nt">&lt;/authtype&gt;</span>
-                    <span class="nt">&lt;username/&gt;</span>
-                    <span class="nt">&lt;password/&gt;</span>
-                    <span class="nt">&lt;publickey/&gt;</span>
-                    <span class="nt">&lt;privatekey/&gt;</span>
-                    <span class="nt">&lt;port&gt;</span>161<span class="nt">&lt;/port&gt;</span>
-                    <span class="nt">&lt;filter&gt;</span>
-                        <span class="nt">&lt;evaltype&gt;</span>0<span class="nt">&lt;/evaltype&gt;</span>
-                        <span class="nt">&lt;formula/&gt;</span>
-                        <span class="nt">&lt;conditions/&gt;</span>
-                    <span class="nt">&lt;/filter&gt;</span>
-                    <span class="nt">&lt;lifetime&gt;</span>30<span class="nt">&lt;/lifetime&gt;</span>
-                    <span class="nt">&lt;description/&gt;</span>
-                    <span class="nt">&lt;item_prototypes&gt;</span>
-                        <span class="nt">&lt;item_prototype&gt;</span>
-                            <span class="nt">&lt;name&gt;</span>Tonor {#SNMPVALUE} Level<span class="nt">&lt;/name&gt;</span>
-                            <span class="nt">&lt;type&gt;</span>4<span class="nt">&lt;/type&gt;</span>
-                            <span class="nt">&lt;snmp_community&gt;</span>{$SNMP_COMMUNITY}<span class="nt">&lt;/snmp_community&gt;</span>
-                            <span class="nt">&lt;multiplier&gt;</span>0<span class="nt">&lt;/multiplier&gt;</span>
-                            <span class="nt">&lt;snmp_oid&gt;</span>.1.3.6.1.4.1.367.3.2.1.2.24.1.1.5.{#SNMPINDEX}<span class="nt">&lt;/snmp_oid&gt;</span>
-                            <span class="nt">&lt;key&gt;</span>TonerLevel[{#SNMPVALUE}]<span class="nt">&lt;/key&gt;</span>
-                            <span class="nt">&lt;delay&gt;</span>300<span class="nt">&lt;/delay&gt;</span>
-                            <span class="nt">&lt;history&gt;</span>90<span class="nt">&lt;/history&gt;</span>
-                            <span class="nt">&lt;trends&gt;</span>365<span class="nt">&lt;/trends&gt;</span>
-                            <span class="nt">&lt;status&gt;</span>0<span class="nt">&lt;/status&gt;</span>
-                            <span class="nt">&lt;value_type&gt;</span>0<span class="nt">&lt;/value_type&gt;</span>
-                            <span class="nt">&lt;allowed_hosts/&gt;</span>
-                            <span class="nt">&lt;units/&gt;</span>
-                            <span class="nt">&lt;delta&gt;</span>0<span class="nt">&lt;/delta&gt;</span>
-                            <span class="nt">&lt;snmpv3_contextname/&gt;</span>
-                            <span class="nt">&lt;snmpv3_securityname/&gt;</span>
-                            <span class="nt">&lt;snmpv3_securitylevel&gt;</span>0<span class="nt">&lt;/snmpv3_securitylevel&gt;</span>
-                            <span class="nt">&lt;snmpv3_authprotocol&gt;</span>0<span class="nt">&lt;/snmpv3_authprotocol&gt;</span>
-                            <span class="nt">&lt;snmpv3_authpassphrase/&gt;</span>
-                            <span class="nt">&lt;snmpv3_privprotocol&gt;</span>0<span class="nt">&lt;/snmpv3_privprotocol&gt;</span>
-                            <span class="nt">&lt;snmpv3_privpassphrase/&gt;</span>
-                            <span class="nt">&lt;formula&gt;</span>1<span class="nt">&lt;/formula&gt;</span>
-                            <span class="nt">&lt;delay_flex/&gt;</span>
-                            <span class="nt">&lt;params/&gt;</span>
-                            <span class="nt">&lt;ipmi_sensor/&gt;</span>
-                            <span class="nt">&lt;data_type&gt;</span>0<span class="nt">&lt;/data_type&gt;</span>
-                            <span class="nt">&lt;authtype&gt;</span>0<span class="nt">&lt;/authtype&gt;</span>
-                            <span class="nt">&lt;username/&gt;</span>
-                            <span class="nt">&lt;password/&gt;</span>
-                            <span class="nt">&lt;publickey/&gt;</span>
-                            <span class="nt">&lt;privatekey/&gt;</span>
-                            <span class="nt">&lt;port&gt;</span>161<span class="nt">&lt;/port&gt;</span>
-                            <span class="nt">&lt;description/&gt;</span>
-                            <span class="nt">&lt;inventory_link&gt;</span>0<span class="nt">&lt;/inventory_link&gt;</span>
-                            <span class="nt">&lt;applications&gt;</span>
-                                <span class="nt">&lt;application&gt;</span>
-                                    <span class="nt">&lt;name&gt;</span>SNMP Enabled Printer<span class="nt">&lt;/name&gt;</span>
-                                <span class="nt">&lt;/application&gt;</span>
-                            <span class="nt">&lt;/applications&gt;</span>
-                            <span class="nt">&lt;valuemap/&gt;</span>
-                            <span class="nt">&lt;logtimefmt/&gt;</span>
-                            <span class="nt">&lt;application_prototypes/&gt;</span>
-                        <span class="nt">&lt;/item_prototype&gt;</span>
-                    <span class="nt">&lt;/item_prototypes&gt;</span>
-                    <span class="nt">&lt;trigger_prototypes&gt;</span>
-                        <span class="nt">&lt;trigger_prototype&gt;</span>
-                            <span class="nt">&lt;expression&gt;</span>{Template SNMP Ricoh Printers:TonerLevel[{#SNMPVALUE}].last(0)}<span class="ni">&amp;lt;</span>10<span class="nt">&lt;/expression&gt;</span>
-                            <span class="nt">&lt;recovery_mode&gt;</span>0<span class="nt">&lt;/recovery_mode&gt;</span>
-                            <span class="nt">&lt;recovery_expression/&gt;</span>
-                            <span class="nt">&lt;name&gt;</span>{#SNMPVALUE} Critical: {ITEM.LASTVALUE}<span class="nt">&lt;/name&gt;</span>
-                            <span class="nt">&lt;correlation_mode&gt;</span>0<span class="nt">&lt;/correlation_mode&gt;</span>
-                            <span class="nt">&lt;correlation_tag/&gt;</span>
-                            <span class="nt">&lt;url/&gt;</span>
-                            <span class="nt">&lt;status&gt;</span>0<span class="nt">&lt;/status&gt;</span>
-                            <span class="nt">&lt;priority&gt;</span>4<span class="nt">&lt;/priority&gt;</span>
-                            <span class="nt">&lt;description/&gt;</span>
-                            <span class="nt">&lt;type&gt;</span>0<span class="nt">&lt;/type&gt;</span>
-                            <span class="nt">&lt;manual_close&gt;</span>0<span class="nt">&lt;/manual_close&gt;</span>
-                            <span class="nt">&lt;dependencies/&gt;</span>
-                            <span class="nt">&lt;tags/&gt;</span>
-                        <span class="nt">&lt;/trigger_prototype&gt;</span>
-                        <span class="nt">&lt;trigger_prototype&gt;</span>
-                            <span class="nt">&lt;expression&gt;</span>{Template SNMP Ricoh Printers:TonerLevel[{#SNMPVALUE}].last(0)}<span class="ni">&amp;lt;</span>30 and {Template SNMP Ricoh Printers:TonerLevel[{#SNMPVALUE}].last(0)}<span class="ni">&amp;gt;</span>10<span class="nt">&lt;/expression&gt;</span>
-                            <span class="nt">&lt;recovery_mode&gt;</span>0<span class="nt">&lt;/recovery_mode&gt;</span>
-                            <span class="nt">&lt;recovery_expression/&gt;</span>
-                            <span class="nt">&lt;name&gt;</span>{#SNMPVALUE} Warning: {ITEM.LASTVALUE}<span class="nt">&lt;/name&gt;</span>
-                            <span class="nt">&lt;correlation_mode&gt;</span>0<span class="nt">&lt;/correlation_mode&gt;</span>
-                            <span class="nt">&lt;correlation_tag/&gt;</span>
-                            <span class="nt">&lt;url/&gt;</span>
-                            <span class="nt">&lt;status&gt;</span>0<span class="nt">&lt;/status&gt;</span>
-                            <span class="nt">&lt;priority&gt;</span>2<span class="nt">&lt;/priority&gt;</span>
-                            <span class="nt">&lt;description/&gt;</span>
-                            <span class="nt">&lt;type&gt;</span>0<span class="nt">&lt;/type&gt;</span>
-                            <span class="nt">&lt;manual_close&gt;</span>0<span class="nt">&lt;/manual_close&gt;</span>
-                            <span class="nt">&lt;dependencies/&gt;</span>
-                            <span class="nt">&lt;tags/&gt;</span>
-                        <span class="nt">&lt;/trigger_prototype&gt;</span>
-                    <span class="nt">&lt;/trigger_prototypes&gt;</span>
-                    <span class="nt">&lt;graph_prototypes&gt;</span>
-                        <span class="nt">&lt;graph_prototype&gt;</span>
-                            <span class="nt">&lt;name&gt;</span>Tonor Level -  {#SNMPVALUE}<span class="nt">&lt;/name&gt;</span>
-                            <span class="nt">&lt;width&gt;</span>900<span class="nt">&lt;/width&gt;</span>
-                            <span class="nt">&lt;height&gt;</span>200<span class="nt">&lt;/height&gt;</span>
-                            <span class="nt">&lt;yaxismin&gt;</span>0.0000<span class="nt">&lt;/yaxismin&gt;</span>
-                            <span class="nt">&lt;yaxismax&gt;</span>100.0000<span class="nt">&lt;/yaxismax&gt;</span>
-                            <span class="nt">&lt;show_work_period&gt;</span>1<span class="nt">&lt;/show_work_period&gt;</span>
-                            <span class="nt">&lt;show_triggers&gt;</span>1<span class="nt">&lt;/show_triggers&gt;</span>
-                            <span class="nt">&lt;type&gt;</span>0<span class="nt">&lt;/type&gt;</span>
-                            <span class="nt">&lt;show_legend&gt;</span>1<span class="nt">&lt;/show_legend&gt;</span>
-                            <span class="nt">&lt;show_3d&gt;</span>0<span class="nt">&lt;/show_3d&gt;</span>
-                            <span class="nt">&lt;percent_left&gt;</span>0.0000<span class="nt">&lt;/percent_left&gt;</span>
-                            <span class="nt">&lt;percent_right&gt;</span>0.0000<span class="nt">&lt;/percent_right&gt;</span>
-                            <span class="nt">&lt;ymin_type_1&gt;</span>1<span class="nt">&lt;/ymin_type_1&gt;</span>
-                            <span class="nt">&lt;ymax_type_1&gt;</span>1<span class="nt">&lt;/ymax_type_1&gt;</span>
-                            <span class="nt">&lt;ymin_item_1&gt;</span>0<span class="nt">&lt;/ymin_item_1&gt;</span>
-                            <span class="nt">&lt;ymax_item_1&gt;</span>0<span class="nt">&lt;/ymax_item_1&gt;</span>
-                            <span class="nt">&lt;graph_items&gt;</span>
-                                <span class="nt">&lt;graph_item&gt;</span>
-                                    <span class="nt">&lt;sortorder&gt;</span>0<span class="nt">&lt;/sortorder&gt;</span>
-                                    <span class="nt">&lt;drawtype&gt;</span>0<span class="nt">&lt;/drawtype&gt;</span>
-                                    <span class="nt">&lt;color&gt;</span>1A7C11<span class="nt">&lt;/color&gt;</span>
-                                    <span class="nt">&lt;yaxisside&gt;</span>0<span class="nt">&lt;/yaxisside&gt;</span>
-                                    <span class="nt">&lt;calc_fnc&gt;</span>2<span class="nt">&lt;/calc_fnc&gt;</span>
-                                    <span class="nt">&lt;type&gt;</span>0<span class="nt">&lt;/type&gt;</span>
-                                    <span class="nt">&lt;item&gt;</span>
-                                        <span class="nt">&lt;host&gt;</span>Template SNMP Ricoh Printers<span class="nt">&lt;/host&gt;</span>
-                                        <span class="nt">&lt;key&gt;</span>TonerLevel[{#SNMPVALUE}]<span class="nt">&lt;/key&gt;</span>
-                                    <span class="nt">&lt;/item&gt;</span>
-                                <span class="nt">&lt;/graph_item&gt;</span>
-                            <span class="nt">&lt;/graph_items&gt;</span>
-                        <span class="nt">&lt;/graph_prototype&gt;</span>
-                    <span class="nt">&lt;/graph_prototypes&gt;</span>
-                    <span class="nt">&lt;host_prototypes/&gt;</span>
-                <span class="nt">&lt;/discovery_rule&gt;</span>
-                <span class="nt">&lt;discovery_rule&gt;</span>
-                    <span class="nt">&lt;name&gt;</span>Trays<span class="nt">&lt;/name&gt;</span>
-                    <span class="nt">&lt;type&gt;</span>4<span class="nt">&lt;/type&gt;</span>
-                    <span class="nt">&lt;snmp_community&gt;</span>{$SNMP_COMMUNITY}<span class="nt">&lt;/snmp_community&gt;</span>
-                    <span class="nt">&lt;snmp_oid&gt;</span>discovery[{#SNMPVALUE},.1.3.6.1.2.1.43.8.2.1.13.1]<span class="nt">&lt;/snmp_oid&gt;</span>
-                    <span class="nt">&lt;key&gt;</span>TraysID<span class="nt">&lt;/key&gt;</span>
-                    <span class="nt">&lt;delay&gt;</span>300<span class="nt">&lt;/delay&gt;</span>
-                    <span class="nt">&lt;status&gt;</span>0<span class="nt">&lt;/status&gt;</span>
-                    <span class="nt">&lt;allowed_hosts/&gt;</span>
-                    <span class="nt">&lt;snmpv3_contextname/&gt;</span>
-                    <span class="nt">&lt;snmpv3_securityname/&gt;</span>
-                    <span class="nt">&lt;snmpv3_securitylevel&gt;</span>0<span class="nt">&lt;/snmpv3_securitylevel&gt;</span>
-                    <span class="nt">&lt;snmpv3_authprotocol&gt;</span>0<span class="nt">&lt;/snmpv3_authprotocol&gt;</span>
-                    <span class="nt">&lt;snmpv3_authpassphrase/&gt;</span>
-                    <span class="nt">&lt;snmpv3_privprotocol&gt;</span>0<span class="nt">&lt;/snmpv3_privprotocol&gt;</span>
-                    <span class="nt">&lt;snmpv3_privpassphrase/&gt;</span>
-                    <span class="nt">&lt;delay_flex/&gt;</span>
-                    <span class="nt">&lt;params/&gt;</span>
-                    <span class="nt">&lt;ipmi_sensor/&gt;</span>
-                    <span class="nt">&lt;authtype&gt;</span>0<span class="nt">&lt;/authtype&gt;</span>
-                    <span class="nt">&lt;username/&gt;</span>
-                    <span class="nt">&lt;password/&gt;</span>
-                    <span class="nt">&lt;publickey/&gt;</span>
-                    <span class="nt">&lt;privatekey/&gt;</span>
-                    <span class="nt">&lt;port&gt;</span>161<span class="nt">&lt;/port&gt;</span>
-                    <span class="nt">&lt;filter&gt;</span>
-                        <span class="nt">&lt;evaltype&gt;</span>0<span class="nt">&lt;/evaltype&gt;</span>
-                        <span class="nt">&lt;formula/&gt;</span>
-                        <span class="nt">&lt;conditions/&gt;</span>
-                    <span class="nt">&lt;/filter&gt;</span>
-                    <span class="nt">&lt;lifetime&gt;</span>30<span class="nt">&lt;/lifetime&gt;</span>
-                    <span class="nt">&lt;description/&gt;</span>
-                    <span class="nt">&lt;item_prototypes&gt;</span>
-                        <span class="nt">&lt;item_prototype&gt;</span>
-                            <span class="nt">&lt;name&gt;</span>Tray {#SNMPVALUE} Current Level<span class="nt">&lt;/name&gt;</span>
-                            <span class="nt">&lt;type&gt;</span>4<span class="nt">&lt;/type&gt;</span>
-                            <span class="nt">&lt;snmp_community&gt;</span>{$SNMP_COMMUNITY}<span class="nt">&lt;/snmp_community&gt;</span>
-                            <span class="nt">&lt;multiplier&gt;</span>0<span class="nt">&lt;/multiplier&gt;</span>
-                            <span class="nt">&lt;snmp_oid&gt;</span>.1.3.6.1.2.1.43.8.2.1.10.1.{#SNMPINDEX}<span class="nt">&lt;/snmp_oid&gt;</span>
-                            <span class="nt">&lt;key&gt;</span>TrayCurrentLevel[{#SNMPVALUE}]<span class="nt">&lt;/key&gt;</span>
-                            <span class="nt">&lt;delay&gt;</span>300<span class="nt">&lt;/delay&gt;</span>
-                            <span class="nt">&lt;history&gt;</span>90<span class="nt">&lt;/history&gt;</span>
-                            <span class="nt">&lt;trends&gt;</span>365<span class="nt">&lt;/trends&gt;</span>
-                            <span class="nt">&lt;status&gt;</span>0<span class="nt">&lt;/status&gt;</span>
-                            <span class="nt">&lt;value_type&gt;</span>3<span class="nt">&lt;/value_type&gt;</span>
-                            <span class="nt">&lt;allowed_hosts/&gt;</span>
-                            <span class="nt">&lt;units/&gt;</span>
-                            <span class="nt">&lt;delta&gt;</span>0<span class="nt">&lt;/delta&gt;</span>
-                            <span class="nt">&lt;snmpv3_contextname/&gt;</span>
-                            <span class="nt">&lt;snmpv3_securityname/&gt;</span>
-                            <span class="nt">&lt;snmpv3_securitylevel&gt;</span>0<span class="nt">&lt;/snmpv3_securitylevel&gt;</span>
-                            <span class="nt">&lt;snmpv3_authprotocol&gt;</span>0<span class="nt">&lt;/snmpv3_authprotocol&gt;</span>
-                            <span class="nt">&lt;snmpv3_authpassphrase/&gt;</span>
-                            <span class="nt">&lt;snmpv3_privprotocol&gt;</span>0<span class="nt">&lt;/snmpv3_privprotocol&gt;</span>
-                            <span class="nt">&lt;snmpv3_privpassphrase/&gt;</span>
-                            <span class="nt">&lt;formula&gt;</span>1<span class="nt">&lt;/formula&gt;</span>
-                            <span class="nt">&lt;delay_flex/&gt;</span>
-                            <span class="nt">&lt;params/&gt;</span>
-                            <span class="nt">&lt;ipmi_sensor/&gt;</span>
-                            <span class="nt">&lt;data_type&gt;</span>0<span class="nt">&lt;/data_type&gt;</span>
-                            <span class="nt">&lt;authtype&gt;</span>0<span class="nt">&lt;/authtype&gt;</span>
-                            <span class="nt">&lt;username/&gt;</span>
-                            <span class="nt">&lt;password/&gt;</span>
-                            <span class="nt">&lt;publickey/&gt;</span>
-                            <span class="nt">&lt;privatekey/&gt;</span>
-                            <span class="nt">&lt;port&gt;</span>161<span class="nt">&lt;/port&gt;</span>
-                            <span class="nt">&lt;description/&gt;</span>
-                            <span class="nt">&lt;inventory_link&gt;</span>0<span class="nt">&lt;/inventory_link&gt;</span>
-                            <span class="nt">&lt;applications&gt;</span>
-                                <span class="nt">&lt;application&gt;</span>
-                                    <span class="nt">&lt;name&gt;</span>SNMP Enabled Printer<span class="nt">&lt;/name&gt;</span>
-                                <span class="nt">&lt;/application&gt;</span>
-                            <span class="nt">&lt;/applications&gt;</span>
-                            <span class="nt">&lt;valuemap/&gt;</span>
-                            <span class="nt">&lt;logtimefmt/&gt;</span>
-                            <span class="nt">&lt;application_prototypes/&gt;</span>
-                        <span class="nt">&lt;/item_prototype&gt;</span>
-                        <span class="nt">&lt;item_prototype&gt;</span>
-                            <span class="nt">&lt;name&gt;</span>Tray {#SNMPVALUE} Max Level<span class="nt">&lt;/name&gt;</span>
-                            <span class="nt">&lt;type&gt;</span>4<span class="nt">&lt;/type&gt;</span>
-                            <span class="nt">&lt;snmp_community&gt;</span>{$SNMP_COMMUNITY}<span class="nt">&lt;/snmp_community&gt;</span>
-                            <span class="nt">&lt;multiplier&gt;</span>0<span class="nt">&lt;/multiplier&gt;</span>
-                            <span class="nt">&lt;snmp_oid&gt;</span>.1.3.6.1.2.1.43.8.2.1.9.1.{#SNMPINDEX}<span class="nt">&lt;/snmp_oid&gt;</span>
-                            <span class="nt">&lt;key&gt;</span>TrayMaxLevel[{#SNMPVALUE}]<span class="nt">&lt;/key&gt;</span>
-                            <span class="nt">&lt;delay&gt;</span>300<span class="nt">&lt;/delay&gt;</span>
-                            <span class="nt">&lt;history&gt;</span>90<span class="nt">&lt;/history&gt;</span>
-                            <span class="nt">&lt;trends&gt;</span>365<span class="nt">&lt;/trends&gt;</span>
-                            <span class="nt">&lt;status&gt;</span>0<span class="nt">&lt;/status&gt;</span>
-                            <span class="nt">&lt;value_type&gt;</span>3<span class="nt">&lt;/value_type&gt;</span>
-                            <span class="nt">&lt;allowed_hosts/&gt;</span>
-                            <span class="nt">&lt;units/&gt;</span>
-                            <span class="nt">&lt;delta&gt;</span>0<span class="nt">&lt;/delta&gt;</span>
-                            <span class="nt">&lt;snmpv3_contextname/&gt;</span>
-                            <span class="nt">&lt;snmpv3_securityname/&gt;</span>
-                            <span class="nt">&lt;snmpv3_securitylevel&gt;</span>0<span class="nt">&lt;/snmpv3_securitylevel&gt;</span>
-                            <span class="nt">&lt;snmpv3_authprotocol&gt;</span>0<span class="nt">&lt;/snmpv3_authprotocol&gt;</span>
-                            <span class="nt">&lt;snmpv3_authpassphrase/&gt;</span>
-                            <span class="nt">&lt;snmpv3_privprotocol&gt;</span>0<span class="nt">&lt;/snmpv3_privprotocol&gt;</span>
-                            <span class="nt">&lt;snmpv3_privpassphrase/&gt;</span>
-                            <span class="nt">&lt;formula&gt;</span>1<span class="nt">&lt;/formula&gt;</span>
-                            <span class="nt">&lt;delay_flex/&gt;</span>
-                            <span class="nt">&lt;params/&gt;</span>
-                            <span class="nt">&lt;ipmi_sensor/&gt;</span>
-                            <span class="nt">&lt;data_type&gt;</span>0<span class="nt">&lt;/data_type&gt;</span>
-                            <span class="nt">&lt;authtype&gt;</span>0<span class="nt">&lt;/authtype&gt;</span>
-                            <span class="nt">&lt;username/&gt;</span>
-                            <span class="nt">&lt;password/&gt;</span>
-                            <span class="nt">&lt;publickey/&gt;</span>
-                            <span class="nt">&lt;privatekey/&gt;</span>
-                            <span class="nt">&lt;port&gt;</span>161<span class="nt">&lt;/port&gt;</span>
-                            <span class="nt">&lt;description/&gt;</span>
-                            <span class="nt">&lt;inventory_link&gt;</span>0<span class="nt">&lt;/inventory_link&gt;</span>
-                            <span class="nt">&lt;applications&gt;</span>
-                                <span class="nt">&lt;application&gt;</span>
-                                    <span class="nt">&lt;name&gt;</span>SNMP Enabled Printer<span class="nt">&lt;/name&gt;</span>
-                                <span class="nt">&lt;/application&gt;</span>
-                            <span class="nt">&lt;/applications&gt;</span>
-                            <span class="nt">&lt;valuemap/&gt;</span>
-                            <span class="nt">&lt;logtimefmt/&gt;</span>
-                            <span class="nt">&lt;application_prototypes/&gt;</span>
-                        <span class="nt">&lt;/item_prototype&gt;</span>
-                    <span class="nt">&lt;/item_prototypes&gt;</span>
-                    <span class="nt">&lt;trigger_prototypes&gt;</span>
-                        <span class="nt">&lt;trigger_prototype&gt;</span>
-                            <span class="nt">&lt;expression&gt;</span>{Template SNMP Ricoh Printers:TrayCurrentLevel[{#SNMPVALUE}].last(0)}<span class="ni">&amp;lt;</span>{Template SNMP Ricoh Printers:TrayMaxLevel[{#SNMPVALUE}].last(0)}/4<span class="nt">&lt;/expression&gt;</span>
-                            <span class="nt">&lt;recovery_mode&gt;</span>0<span class="nt">&lt;/recovery_mode&gt;</span>
-                            <span class="nt">&lt;recovery_expression/&gt;</span>
-                            <span class="nt">&lt;name&gt;</span>{#SNMPVALUE} - Critical: {ITEM.LASTVALUE}<span class="nt">&lt;/name&gt;</span>
-                            <span class="nt">&lt;correlation_mode&gt;</span>0<span class="nt">&lt;/correlation_mode&gt;</span>
-                            <span class="nt">&lt;correlation_tag/&gt;</span>
-                            <span class="nt">&lt;url/&gt;</span>
-                            <span class="nt">&lt;status&gt;</span>0<span class="nt">&lt;/status&gt;</span>
-                            <span class="nt">&lt;priority&gt;</span>4<span class="nt">&lt;/priority&gt;</span>
-                            <span class="nt">&lt;description/&gt;</span>
-                            <span class="nt">&lt;type&gt;</span>0<span class="nt">&lt;/type&gt;</span>
-                            <span class="nt">&lt;manual_close&gt;</span>0<span class="nt">&lt;/manual_close&gt;</span>
-                            <span class="nt">&lt;dependencies/&gt;</span>
-                            <span class="nt">&lt;tags/&gt;</span>
-                        <span class="nt">&lt;/trigger_prototype&gt;</span>
-                        <span class="nt">&lt;trigger_prototype&gt;</span>
-                            <span class="nt">&lt;expression&gt;</span>{Template SNMP Ricoh Printers:TrayCurrentLevel[{#SNMPVALUE}].last(0)}<span class="ni">&amp;lt;</span>{Template SNMP Ricoh Printers:TrayMaxLevel[{#SNMPVALUE}].last(0)}/2 and {Template SNMP Ricoh Printers:TrayCurrentLevel[{#SNMPVALUE}].last(0)}<span class="ni">&amp;gt;</span>{Template SNMP Ricoh Printers:TrayMaxLevel[{#SNMPVALUE}].last(0)}/4<span class="nt">&lt;/expression&gt;</span>
-                            <span class="nt">&lt;recovery_mode&gt;</span>0<span class="nt">&lt;/recovery_mode&gt;</span>
-                            <span class="nt">&lt;recovery_expression/&gt;</span>
-                            <span class="nt">&lt;name&gt;</span>{#SNMPVALUE} - Warning: {ITEM.LASTVALUE}<span class="nt">&lt;/name&gt;</span>
-                            <span class="nt">&lt;correlation_mode&gt;</span>0<span class="nt">&lt;/correlation_mode&gt;</span>
-                            <span class="nt">&lt;correlation_tag/&gt;</span>
-                            <span class="nt">&lt;url/&gt;</span>
-                            <span class="nt">&lt;status&gt;</span>0<span class="nt">&lt;/status&gt;</span>
-                            <span class="nt">&lt;priority&gt;</span>2<span class="nt">&lt;/priority&gt;</span>
-                            <span class="nt">&lt;description/&gt;</span>
-                            <span class="nt">&lt;type&gt;</span>0<span class="nt">&lt;/type&gt;</span>
-                            <span class="nt">&lt;manual_close&gt;</span>0<span class="nt">&lt;/manual_close&gt;</span>
-                            <span class="nt">&lt;dependencies/&gt;</span>
-                            <span class="nt">&lt;tags/&gt;</span>
-                        <span class="nt">&lt;/trigger_prototype&gt;</span>
-                    <span class="nt">&lt;/trigger_prototypes&gt;</span>
-                    <span class="nt">&lt;graph_prototypes&gt;</span>
-                        <span class="nt">&lt;graph_prototype&gt;</span>
-                            <span class="nt">&lt;name&gt;</span>Tray Level -  {#SNMPVALUE}<span class="nt">&lt;/name&gt;</span>
-                            <span class="nt">&lt;width&gt;</span>900<span class="nt">&lt;/width&gt;</span>
-                            <span class="nt">&lt;height&gt;</span>200<span class="nt">&lt;/height&gt;</span>
-                            <span class="nt">&lt;yaxismin&gt;</span>0.0000<span class="nt">&lt;/yaxismin&gt;</span>
-                            <span class="nt">&lt;yaxismax&gt;</span>100.0000<span class="nt">&lt;/yaxismax&gt;</span>
-                            <span class="nt">&lt;show_work_period&gt;</span>1<span class="nt">&lt;/show_work_period&gt;</span>
-                            <span class="nt">&lt;show_triggers&gt;</span>1<span class="nt">&lt;/show_triggers&gt;</span>
-                            <span class="nt">&lt;type&gt;</span>0<span class="nt">&lt;/type&gt;</span>
-                            <span class="nt">&lt;show_legend&gt;</span>1<span class="nt">&lt;/show_legend&gt;</span>
-                            <span class="nt">&lt;show_3d&gt;</span>0<span class="nt">&lt;/show_3d&gt;</span>
-                            <span class="nt">&lt;percent_left&gt;</span>0.0000<span class="nt">&lt;/percent_left&gt;</span>
-                            <span class="nt">&lt;percent_right&gt;</span>0.0000<span class="nt">&lt;/percent_right&gt;</span>
-                            <span class="nt">&lt;ymin_type_1&gt;</span>0<span class="nt">&lt;/ymin_type_1&gt;</span>
-                            <span class="nt">&lt;ymax_type_1&gt;</span>0<span class="nt">&lt;/ymax_type_1&gt;</span>
-                            <span class="nt">&lt;ymin_item_1&gt;</span>0<span class="nt">&lt;/ymin_item_1&gt;</span>
-                            <span class="nt">&lt;ymax_item_1&gt;</span>0<span class="nt">&lt;/ymax_item_1&gt;</span>
-                            <span class="nt">&lt;graph_items&gt;</span>
-                                <span class="nt">&lt;graph_item&gt;</span>
-                                    <span class="nt">&lt;sortorder&gt;</span>0<span class="nt">&lt;/sortorder&gt;</span>
-                                    <span class="nt">&lt;drawtype&gt;</span>0<span class="nt">&lt;/drawtype&gt;</span>
-                                    <span class="nt">&lt;color&gt;</span>1A7C11<span class="nt">&lt;/color&gt;</span>
-                                    <span class="nt">&lt;yaxisside&gt;</span>0<span class="nt">&lt;/yaxisside&gt;</span>
-                                    <span class="nt">&lt;calc_fnc&gt;</span>2<span class="nt">&lt;/calc_fnc&gt;</span>
-                                    <span class="nt">&lt;type&gt;</span>0<span class="nt">&lt;/type&gt;</span>
-                                    <span class="nt">&lt;item&gt;</span>
-                                        <span class="nt">&lt;host&gt;</span>Template SNMP Ricoh Printers<span class="nt">&lt;/host&gt;</span>
-                                        <span class="nt">&lt;key&gt;</span>TrayCurrentLevel[{#SNMPVALUE}]<span class="nt">&lt;/key&gt;</span>
-                                    <span class="nt">&lt;/item&gt;</span>
-                                <span class="nt">&lt;/graph_item&gt;</span>
-                                <span class="nt">&lt;graph_item&gt;</span>
-                                    <span class="nt">&lt;sortorder&gt;</span>1<span class="nt">&lt;/sortorder&gt;</span>
-                                    <span class="nt">&lt;drawtype&gt;</span>0<span class="nt">&lt;/drawtype&gt;</span>
-                                    <span class="nt">&lt;color&gt;</span>F63100<span class="nt">&lt;/color&gt;</span>
-                                    <span class="nt">&lt;yaxisside&gt;</span>0<span class="nt">&lt;/yaxisside&gt;</span>
-                                    <span class="nt">&lt;calc_fnc&gt;</span>2<span class="nt">&lt;/calc_fnc&gt;</span>
-                                    <span class="nt">&lt;type&gt;</span>0<span class="nt">&lt;/type&gt;</span>
-                                    <span class="nt">&lt;item&gt;</span>
-                                        <span class="nt">&lt;host&gt;</span>Template SNMP Ricoh Printers<span class="nt">&lt;/host&gt;</span>
-                                        <span class="nt">&lt;key&gt;</span>TrayMaxLevel[{#SNMPVALUE}]<span class="nt">&lt;/key&gt;</span>
-                                    <span class="nt">&lt;/item&gt;</span>
-                                <span class="nt">&lt;/graph_item&gt;</span>
-                            <span class="nt">&lt;/graph_items&gt;</span>
-                        <span class="nt">&lt;/graph_prototype&gt;</span>
-                    <span class="nt">&lt;/graph_prototypes&gt;</span>
-                    <span class="nt">&lt;host_prototypes/&gt;</span>
-                <span class="nt">&lt;/discovery_rule&gt;</span>
-            <span class="nt">&lt;/discovery_rules&gt;</span>
-            <span class="nt">&lt;httptests/&gt;</span>
-            <span class="nt">&lt;macros/&gt;</span>
-            <span class="nt">&lt;templates&gt;</span>
-                <span class="nt">&lt;template&gt;</span>
-                    <span class="nt">&lt;name&gt;</span>Template SNMP Generic<span class="nt">&lt;/name&gt;</span>
-                <span class="nt">&lt;/template&gt;</span>
-            <span class="nt">&lt;/templates&gt;</span>
-            <span class="nt">&lt;screens/&gt;</span>
-        <span class="nt">&lt;/template&gt;</span>
-    <span class="nt">&lt;/templates&gt;</span>
-    <span class="nt">&lt;triggers&gt;</span>
-        <span class="nt">&lt;trigger&gt;</span>
-            <span class="nt">&lt;expression&gt;</span>{Template SNMP Ricoh Printers:PrinterStatus.last(0)}<span class="ni">&amp;lt;&amp;gt;</span>2 and {Template SNMP Ricoh Printers:PrinterStatus.last(0)}<span class="ni">&amp;lt;&amp;gt;</span>1 and {Template SNMP Ricoh Printers:PrinterStatus.last(0)}<span class="ni">&amp;lt;&amp;gt;</span>5<span class="nt">&lt;/expression&gt;</span>
-            <span class="nt">&lt;recovery_mode&gt;</span>0<span class="nt">&lt;/recovery_mode&gt;</span>
-            <span class="nt">&lt;recovery_expression/&gt;</span>
-            <span class="nt">&lt;name&gt;</span>Printer Error<span class="nt">&lt;/name&gt;</span>
-            <span class="nt">&lt;correlation_mode&gt;</span>0<span class="nt">&lt;/correlation_mode&gt;</span>
-            <span class="nt">&lt;correlation_tag/&gt;</span>
-            <span class="nt">&lt;url/&gt;</span>
-            <span class="nt">&lt;status&gt;</span>0<span class="nt">&lt;/status&gt;</span>
-            <span class="nt">&lt;priority&gt;</span>2<span class="nt">&lt;/priority&gt;</span>
-            <span class="nt">&lt;description/&gt;</span>
-            <span class="nt">&lt;type&gt;</span>0<span class="nt">&lt;/type&gt;</span>
-            <span class="nt">&lt;manual_close&gt;</span>0<span class="nt">&lt;/manual_close&gt;</span>
-            <span class="nt">&lt;dependencies/&gt;</span>
-            <span class="nt">&lt;tags/&gt;</span>
-        <span class="nt">&lt;/trigger&gt;</span>
-        <span class="nt">&lt;trigger&gt;</span>
-            <span class="nt">&lt;expression&gt;</span>{Template SNMP Ricoh Printers:PrinterStatus.last(0)}<span class="ni">&amp;lt;&amp;gt;</span>2 and {Template SNMP Ricoh Printers:PrinterStatus.last(0)}<span class="ni">&amp;lt;&amp;gt;</span>3 and {Template SNMP Ricoh Printers:PrinterStatus.last(0)}<span class="ni">&amp;lt;&amp;gt;</span>4<span class="nt">&lt;/expression&gt;</span>
-            <span class="nt">&lt;recovery_mode&gt;</span>0<span class="nt">&lt;/recovery_mode&gt;</span>
-            <span class="nt">&lt;recovery_expression/&gt;</span>
-            <span class="nt">&lt;name&gt;</span>Printer Unknown Error<span class="nt">&lt;/name&gt;</span>
-            <span class="nt">&lt;correlation_mode&gt;</span>0<span class="nt">&lt;/correlation_mode&gt;</span>
-            <span class="nt">&lt;correlation_tag/&gt;</span>
-            <span class="nt">&lt;url/&gt;</span>
-            <span class="nt">&lt;status&gt;</span>0<span class="nt">&lt;/status&gt;</span>
-            <span class="nt">&lt;priority&gt;</span>4<span class="nt">&lt;/priority&gt;</span>
-            <span class="nt">&lt;description/&gt;</span>
-            <span class="nt">&lt;type&gt;</span>0<span class="nt">&lt;/type&gt;</span>
-            <span class="nt">&lt;manual_close&gt;</span>0<span class="nt">&lt;/manual_close&gt;</span>
-            <span class="nt">&lt;dependencies/&gt;</span>
-            <span class="nt">&lt;tags/&gt;</span>
-        <span class="nt">&lt;/trigger&gt;</span>
-    <span class="nt">&lt;/triggers&gt;</span>
-    <span class="nt">&lt;graphs&gt;</span>
-        <span class="nt">&lt;graph&gt;</span>
-            <span class="nt">&lt;name&gt;</span>Print Pages / Minute<span class="nt">&lt;/name&gt;</span>
-            <span class="nt">&lt;width&gt;</span>900<span class="nt">&lt;/width&gt;</span>
-            <span class="nt">&lt;height&gt;</span>200<span class="nt">&lt;/height&gt;</span>
-            <span class="nt">&lt;yaxismin&gt;</span>0.0000<span class="nt">&lt;/yaxismin&gt;</span>
-            <span class="nt">&lt;yaxismax&gt;</span>100.0000<span class="nt">&lt;/yaxismax&gt;</span>
-            <span class="nt">&lt;show_work_period&gt;</span>1<span class="nt">&lt;/show_work_period&gt;</span>
-            <span class="nt">&lt;show_triggers&gt;</span>0<span class="nt">&lt;/show_triggers&gt;</span>
-            <span class="nt">&lt;type&gt;</span>0<span class="nt">&lt;/type&gt;</span>
-            <span class="nt">&lt;show_legend&gt;</span>0<span class="nt">&lt;/show_legend&gt;</span>
-            <span class="nt">&lt;show_3d&gt;</span>0<span class="nt">&lt;/show_3d&gt;</span>
-            <span class="nt">&lt;percent_left&gt;</span>0.0000<span class="nt">&lt;/percent_left&gt;</span>
-            <span class="nt">&lt;percent_right&gt;</span>0.0000<span class="nt">&lt;/percent_right&gt;</span>
-            <span class="nt">&lt;ymin_type_1&gt;</span>1<span class="nt">&lt;/ymin_type_1&gt;</span>
-            <span class="nt">&lt;ymax_type_1&gt;</span>0<span class="nt">&lt;/ymax_type_1&gt;</span>
-            <span class="nt">&lt;ymin_item_1&gt;</span>0<span class="nt">&lt;/ymin_item_1&gt;</span>
-            <span class="nt">&lt;ymax_item_1&gt;</span>0<span class="nt">&lt;/ymax_item_1&gt;</span>
-            <span class="nt">&lt;graph_items&gt;</span>
-                <span class="nt">&lt;graph_item&gt;</span>
-                    <span class="nt">&lt;sortorder&gt;</span>0<span class="nt">&lt;/sortorder&gt;</span>
-                    <span class="nt">&lt;drawtype&gt;</span>1<span class="nt">&lt;/drawtype&gt;</span>
-                    <span class="nt">&lt;color&gt;</span>1A7C11<span class="nt">&lt;/color&gt;</span>
-                    <span class="nt">&lt;yaxisside&gt;</span>0<span class="nt">&lt;/yaxisside&gt;</span>
-                    <span class="nt">&lt;calc_fnc&gt;</span>2<span class="nt">&lt;/calc_fnc&gt;</span>
-                    <span class="nt">&lt;type&gt;</span>0<span class="nt">&lt;/type&gt;</span>
-                    <span class="nt">&lt;item&gt;</span>
-                        <span class="nt">&lt;host&gt;</span>Template SNMP Ricoh Printers<span class="nt">&lt;/host&gt;</span>
-                        <span class="nt">&lt;key&gt;</span>PageCountPerMinute<span class="nt">&lt;/key&gt;</span>
-                    <span class="nt">&lt;/item&gt;</span>
-                <span class="nt">&lt;/graph_item&gt;</span>
-            <span class="nt">&lt;/graph_items&gt;</span>
-        <span class="nt">&lt;/graph&gt;</span>
-    <span class="nt">&lt;/graphs&gt;</span>
-<span class="nt">&lt;/zabbix_export&gt;</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-XML" data-lang="XML"><span style="color:#00f">&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34;?&gt;</span>
+&lt;zabbix_export&gt;
+    &lt;version&gt;3.2&lt;/version&gt;
+    &lt;date&gt;2017-07-20T10:38:50Z&lt;/date&gt;
+    &lt;groups&gt;
+        &lt;group&gt;
+            &lt;name&gt;Printers&lt;/name&gt;
+        &lt;/group&gt;
+    &lt;/groups&gt;
+    &lt;templates&gt;
+        &lt;template&gt;
+            &lt;template&gt;Template SNMP Ricoh Printers&lt;/template&gt;
+            &lt;name&gt;Template SNMP Ricoh Printers&lt;/name&gt;
+            &lt;description/&gt;
+            &lt;groups&gt;
+                &lt;group&gt;
+                    &lt;name&gt;Printers&lt;/name&gt;
+                &lt;/group&gt;
+            &lt;/groups&gt;
+            &lt;applications&gt;
+                &lt;application&gt;
+                    &lt;name&gt;SNMP Enabled Printer&lt;/name&gt;
+                &lt;/application&gt;
+            &lt;/applications&gt;
+            &lt;items&gt;
+                &lt;item&gt;
+                    &lt;name&gt;Description&lt;/name&gt;
+                    &lt;type&gt;4&lt;/type&gt;
+                    &lt;snmp_community&gt;{$SNMP_COMMUNITY}&lt;/snmp_community&gt;
+                    &lt;multiplier&gt;0&lt;/multiplier&gt;
+                    &lt;snmp_oid&gt;.1.3.6.1.2.1.25.3.2.1.3.1&lt;/snmp_oid&gt;
+                    &lt;key&gt;Description&lt;/key&gt;
+                    &lt;delay&gt;60&lt;/delay&gt;
+                    &lt;history&gt;90&lt;/history&gt;
+                    &lt;trends&gt;0&lt;/trends&gt;
+                    &lt;status&gt;0&lt;/status&gt;
+                    &lt;value_type&gt;4&lt;/value_type&gt;
+                    &lt;allowed_hosts/&gt;
+                    &lt;units/&gt;
+                    &lt;delta&gt;0&lt;/delta&gt;
+                    &lt;snmpv3_contextname/&gt;
+                    &lt;snmpv3_securityname/&gt;
+                    &lt;snmpv3_securitylevel&gt;0&lt;/snmpv3_securitylevel&gt;
+                    &lt;snmpv3_authprotocol&gt;0&lt;/snmpv3_authprotocol&gt;
+                    &lt;snmpv3_authpassphrase/&gt;
+                    &lt;snmpv3_privprotocol&gt;0&lt;/snmpv3_privprotocol&gt;
+                    &lt;snmpv3_privpassphrase/&gt;
+                    &lt;formula&gt;1&lt;/formula&gt;
+                    &lt;delay_flex/&gt;
+                    &lt;params/&gt;
+                    &lt;ipmi_sensor/&gt;
+                    &lt;data_type&gt;0&lt;/data_type&gt;
+                    &lt;authtype&gt;0&lt;/authtype&gt;
+                    &lt;username/&gt;
+                    &lt;password/&gt;
+                    &lt;publickey/&gt;
+                    &lt;privatekey/&gt;
+                    &lt;port&gt;161&lt;/port&gt;
+                    &lt;description/&gt;
+                    &lt;inventory_link&gt;2&lt;/inventory_link&gt;
+                    &lt;applications&gt;
+                        &lt;application&gt;
+                            &lt;name&gt;SNMP Enabled Printer&lt;/name&gt;
+                        &lt;/application&gt;
+                    &lt;/applications&gt;
+                    &lt;valuemap/&gt;
+                    &lt;logtimefmt/&gt;
+                &lt;/item&gt;
+                &lt;item&gt;
+                    &lt;name&gt;Page Count&lt;/name&gt;
+                    &lt;type&gt;4&lt;/type&gt;
+                    &lt;snmp_community&gt;{$SNMP_COMMUNITY}&lt;/snmp_community&gt;
+                    &lt;multiplier&gt;0&lt;/multiplier&gt;
+                    &lt;snmp_oid&gt;.1.3.6.1.2.1.43.10.2.1.4.1.1&lt;/snmp_oid&gt;
+                    &lt;key&gt;PageCount&lt;/key&gt;
+                    &lt;delay&gt;60&lt;/delay&gt;
+                    &lt;history&gt;90&lt;/history&gt;
+                    &lt;trends&gt;365&lt;/trends&gt;
+                    &lt;status&gt;0&lt;/status&gt;
+                    &lt;value_type&gt;3&lt;/value_type&gt;
+                    &lt;allowed_hosts/&gt;
+                    &lt;units/&gt;
+                    &lt;delta&gt;0&lt;/delta&gt;
+                    &lt;snmpv3_contextname/&gt;
+                    &lt;snmpv3_securityname/&gt;
+                    &lt;snmpv3_securitylevel&gt;0&lt;/snmpv3_securitylevel&gt;
+                    &lt;snmpv3_authprotocol&gt;0&lt;/snmpv3_authprotocol&gt;
+                    &lt;snmpv3_authpassphrase/&gt;
+                    &lt;snmpv3_privprotocol&gt;0&lt;/snmpv3_privprotocol&gt;
+                    &lt;snmpv3_privpassphrase/&gt;
+                    &lt;formula&gt;1&lt;/formula&gt;
+                    &lt;delay_flex/&gt;
+                    &lt;params/&gt;
+                    &lt;ipmi_sensor/&gt;
+                    &lt;data_type&gt;0&lt;/data_type&gt;
+                    &lt;authtype&gt;0&lt;/authtype&gt;
+                    &lt;username/&gt;
+                    &lt;password/&gt;
+                    &lt;publickey/&gt;
+                    &lt;privatekey/&gt;
+                    &lt;port&gt;161&lt;/port&gt;
+                    &lt;description/&gt;
+                    &lt;inventory_link&gt;0&lt;/inventory_link&gt;
+                    &lt;applications&gt;
+                        &lt;application&gt;
+                            &lt;name&gt;SNMP Enabled Printer&lt;/name&gt;
+                        &lt;/application&gt;
+                    &lt;/applications&gt;
+                    &lt;valuemap/&gt;
+                    &lt;logtimefmt/&gt;
+                &lt;/item&gt;
+                &lt;item&gt;
+                    &lt;name&gt;Page Count / Min&lt;/name&gt;
+                    &lt;type&gt;4&lt;/type&gt;
+                    &lt;snmp_community&gt;{$SNMP_COMMUNITY}&lt;/snmp_community&gt;
+                    &lt;multiplier&gt;1&lt;/multiplier&gt;
+                    &lt;snmp_oid&gt;.1.3.6.1.2.1.43.10.2.1.4.1.1&lt;/snmp_oid&gt;
+                    &lt;key&gt;PageCountPerMinute&lt;/key&gt;
+                    &lt;delay&gt;60&lt;/delay&gt;
+                    &lt;history&gt;90&lt;/history&gt;
+                    &lt;trends&gt;365&lt;/trends&gt;
+                    &lt;status&gt;0&lt;/status&gt;
+                    &lt;value_type&gt;0&lt;/value_type&gt;
+                    &lt;allowed_hosts/&gt;
+                    &lt;units/&gt;
+                    &lt;delta&gt;1&lt;/delta&gt;
+                    &lt;snmpv3_contextname/&gt;
+                    &lt;snmpv3_securityname/&gt;
+                    &lt;snmpv3_securitylevel&gt;0&lt;/snmpv3_securitylevel&gt;
+                    &lt;snmpv3_authprotocol&gt;0&lt;/snmpv3_authprotocol&gt;
+                    &lt;snmpv3_authpassphrase/&gt;
+                    &lt;snmpv3_privprotocol&gt;0&lt;/snmpv3_privprotocol&gt;
+                    &lt;snmpv3_privpassphrase/&gt;
+                    &lt;formula&gt;60&lt;/formula&gt;
+                    &lt;delay_flex/&gt;
+                    &lt;params/&gt;
+                    &lt;ipmi_sensor/&gt;
+                    &lt;data_type&gt;0&lt;/data_type&gt;
+                    &lt;authtype&gt;0&lt;/authtype&gt;
+                    &lt;username/&gt;
+                    &lt;password/&gt;
+                    &lt;publickey/&gt;
+                    &lt;privatekey/&gt;
+                    &lt;port&gt;161&lt;/port&gt;
+                    &lt;description/&gt;
+                    &lt;inventory_link&gt;0&lt;/inventory_link&gt;
+                    &lt;applications&gt;
+                        &lt;application&gt;
+                            &lt;name&gt;SNMP Enabled Printer&lt;/name&gt;
+                        &lt;/application&gt;
+                    &lt;/applications&gt;
+                    &lt;valuemap/&gt;
+                    &lt;logtimefmt/&gt;
+                &lt;/item&gt;
+                &lt;item&gt;
+                    &lt;name&gt;Status&lt;/name&gt;
+                    &lt;type&gt;4&lt;/type&gt;
+                    &lt;snmp_community&gt;{$SNMP_COMMUNITY}&lt;/snmp_community&gt;
+                    &lt;multiplier&gt;0&lt;/multiplier&gt;
+                    &lt;snmp_oid&gt;.1.3.6.1.2.1.25.3.2.1.5.1&lt;/snmp_oid&gt;
+                    &lt;key&gt;PrinterStatus&lt;/key&gt;
+                    &lt;delay&gt;60&lt;/delay&gt;
+                    &lt;history&gt;90&lt;/history&gt;
+                    &lt;trends&gt;365&lt;/trends&gt;
+                    &lt;status&gt;0&lt;/status&gt;
+                    &lt;value_type&gt;3&lt;/value_type&gt;
+                    &lt;allowed_hosts/&gt;
+                    &lt;units/&gt;
+                    &lt;delta&gt;0&lt;/delta&gt;
+                    &lt;snmpv3_contextname/&gt;
+                    &lt;snmpv3_securityname/&gt;
+                    &lt;snmpv3_securitylevel&gt;0&lt;/snmpv3_securitylevel&gt;
+                    &lt;snmpv3_authprotocol&gt;0&lt;/snmpv3_authprotocol&gt;
+                    &lt;snmpv3_authpassphrase/&gt;
+                    &lt;snmpv3_privprotocol&gt;0&lt;/snmpv3_privprotocol&gt;
+                    &lt;snmpv3_privpassphrase/&gt;
+                    &lt;formula&gt;1&lt;/formula&gt;
+                    &lt;delay_flex/&gt;
+                    &lt;params/&gt;
+                    &lt;ipmi_sensor/&gt;
+                    &lt;data_type&gt;0&lt;/data_type&gt;
+                    &lt;authtype&gt;0&lt;/authtype&gt;
+                    &lt;username/&gt;
+                    &lt;password/&gt;
+                    &lt;publickey/&gt;
+                    &lt;privatekey/&gt;
+                    &lt;port&gt;161&lt;/port&gt;
+                    &lt;description/&gt;
+                    &lt;inventory_link&gt;0&lt;/inventory_link&gt;
+                    &lt;applications&gt;
+                        &lt;application&gt;
+                            &lt;name&gt;SNMP Enabled Printer&lt;/name&gt;
+                        &lt;/application&gt;
+                    &lt;/applications&gt;
+                    &lt;valuemap/&gt;
+                    &lt;logtimefmt/&gt;
+                &lt;/item&gt;
+            &lt;/items&gt;
+            &lt;discovery_rules&gt;
+                &lt;discovery_rule&gt;
+                    &lt;name&gt;DetailCounters&lt;/name&gt;
+                    &lt;type&gt;4&lt;/type&gt;
+                    &lt;snmp_community&gt;{$SNMP_COMMUNITY}&lt;/snmp_community&gt;
+                    &lt;snmp_oid&gt;discovery[{#SNMPVALUE},.1.3.6.1.4.1.367.3.2.1.2.19.5.1.5]&lt;/snmp_oid&gt;
+                    &lt;key&gt;DetailCountersID&lt;/key&gt;
+                    &lt;delay&gt;300&lt;/delay&gt;
+                    &lt;status&gt;0&lt;/status&gt;
+                    &lt;allowed_hosts/&gt;
+                    &lt;snmpv3_contextname/&gt;
+                    &lt;snmpv3_securityname/&gt;
+                    &lt;snmpv3_securitylevel&gt;0&lt;/snmpv3_securitylevel&gt;
+                    &lt;snmpv3_authprotocol&gt;0&lt;/snmpv3_authprotocol&gt;
+                    &lt;snmpv3_authpassphrase/&gt;
+                    &lt;snmpv3_privprotocol&gt;0&lt;/snmpv3_privprotocol&gt;
+                    &lt;snmpv3_privpassphrase/&gt;
+                    &lt;delay_flex/&gt;
+                    &lt;params/&gt;
+                    &lt;ipmi_sensor/&gt;
+                    &lt;authtype&gt;0&lt;/authtype&gt;
+                    &lt;username/&gt;
+                    &lt;password/&gt;
+                    &lt;publickey/&gt;
+                    &lt;privatekey/&gt;
+                    &lt;port&gt;161&lt;/port&gt;
+                    &lt;filter&gt;
+                        &lt;evaltype&gt;0&lt;/evaltype&gt;
+                        &lt;formula/&gt;
+                        &lt;conditions/&gt;
+                    &lt;/filter&gt;
+                    &lt;lifetime&gt;30&lt;/lifetime&gt;
+                    &lt;description/&gt;
+                    &lt;item_prototypes&gt;
+                        &lt;item_prototype&gt;
+                            &lt;name&gt;DetailCounters[{#SNMPVALUE}]&lt;/name&gt;
+                            &lt;type&gt;4&lt;/type&gt;
+                            &lt;snmp_community&gt;{$SNMP_COMMUNITY}&lt;/snmp_community&gt;
+                            &lt;multiplier&gt;0&lt;/multiplier&gt;
+                            &lt;snmp_oid&gt;.1.3.6.1.4.1.367.3.2.1.2.19.5.1.9.{#SNMPINDEX}&lt;/snmp_oid&gt;
+                            &lt;key&gt;DetailCountersID[{#SNMPVALUE}]&lt;/key&gt;
+                            &lt;delay&gt;3600&lt;/delay&gt;
+                            &lt;history&gt;90&lt;/history&gt;
+                            &lt;trends&gt;365&lt;/trends&gt;
+                            &lt;status&gt;0&lt;/status&gt;
+                            &lt;value_type&gt;3&lt;/value_type&gt;
+                            &lt;allowed_hosts/&gt;
+                            &lt;units/&gt;
+                            &lt;delta&gt;0&lt;/delta&gt;
+                            &lt;snmpv3_contextname/&gt;
+                            &lt;snmpv3_securityname/&gt;
+                            &lt;snmpv3_securitylevel&gt;0&lt;/snmpv3_securitylevel&gt;
+                            &lt;snmpv3_authprotocol&gt;0&lt;/snmpv3_authprotocol&gt;
+                            &lt;snmpv3_authpassphrase/&gt;
+                            &lt;snmpv3_privprotocol&gt;0&lt;/snmpv3_privprotocol&gt;
+                            &lt;snmpv3_privpassphrase/&gt;
+                            &lt;formula&gt;1&lt;/formula&gt;
+                            &lt;delay_flex/&gt;
+                            &lt;params/&gt;
+                            &lt;ipmi_sensor/&gt;
+                            &lt;data_type&gt;0&lt;/data_type&gt;
+                            &lt;authtype&gt;0&lt;/authtype&gt;
+                            &lt;username/&gt;
+                            &lt;password/&gt;
+                            &lt;publickey/&gt;
+                            &lt;privatekey/&gt;
+                            &lt;port&gt;161&lt;/port&gt;
+                            &lt;description/&gt;
+                            &lt;inventory_link&gt;0&lt;/inventory_link&gt;
+                            &lt;applications&gt;
+                                &lt;application&gt;
+                                    &lt;name&gt;SNMP Enabled Printer&lt;/name&gt;
+                                &lt;/application&gt;
+                            &lt;/applications&gt;
+                            &lt;valuemap/&gt;
+                            &lt;logtimefmt/&gt;
+                            &lt;application_prototypes/&gt;
+                        &lt;/item_prototype&gt;
+                    &lt;/item_prototypes&gt;
+                    &lt;trigger_prototypes/&gt;
+                    &lt;graph_prototypes/&gt;
+                    &lt;host_prototypes/&gt;
+                &lt;/discovery_rule&gt;
+                &lt;discovery_rule&gt;
+                    &lt;name&gt;Parts&lt;/name&gt;
+                    &lt;type&gt;4&lt;/type&gt;
+                    &lt;snmp_community&gt;{$SNMP_COMMUNITY}&lt;/snmp_community&gt;
+                    &lt;snmp_oid&gt;discovery[{#SNMPVALUE},.1.3.6.1.2.1.43.6.1.1.2.1]&lt;/snmp_oid&gt;
+                    &lt;key&gt;PartsID&lt;/key&gt;
+                    &lt;delay&gt;300&lt;/delay&gt;
+                    &lt;status&gt;0&lt;/status&gt;
+                    &lt;allowed_hosts/&gt;
+                    &lt;snmpv3_contextname/&gt;
+                    &lt;snmpv3_securityname/&gt;
+                    &lt;snmpv3_securitylevel&gt;0&lt;/snmpv3_securitylevel&gt;
+                    &lt;snmpv3_authprotocol&gt;0&lt;/snmpv3_authprotocol&gt;
+                    &lt;snmpv3_authpassphrase/&gt;
+                    &lt;snmpv3_privprotocol&gt;0&lt;/snmpv3_privprotocol&gt;
+                    &lt;snmpv3_privpassphrase/&gt;
+                    &lt;delay_flex/&gt;
+                    &lt;params/&gt;
+                    &lt;ipmi_sensor/&gt;
+                    &lt;authtype&gt;0&lt;/authtype&gt;
+                    &lt;username/&gt;
+                    &lt;password/&gt;
+                    &lt;publickey/&gt;
+                    &lt;privatekey/&gt;
+                    &lt;port&gt;161&lt;/port&gt;
+                    &lt;filter&gt;
+                        &lt;evaltype&gt;0&lt;/evaltype&gt;
+                        &lt;formula/&gt;
+                        &lt;conditions/&gt;
+                    &lt;/filter&gt;
+                    &lt;lifetime&gt;30&lt;/lifetime&gt;
+                    &lt;description/&gt;
+                    &lt;item_prototypes&gt;
+                        &lt;item_prototype&gt;
+                            &lt;name&gt;Part {#SNMPVALUE} Status&lt;/name&gt;
+                            &lt;type&gt;4&lt;/type&gt;
+                            &lt;snmp_community&gt;{$SNMP_COMMUNITY}&lt;/snmp_community&gt;
+                            &lt;multiplier&gt;0&lt;/multiplier&gt;
+                            &lt;snmp_oid&gt;.1.3.6.1.2.1.43.6.1.1.3.1.{#SNMPINDEX}&lt;/snmp_oid&gt;
+                            &lt;key&gt;PartStatus[{#SNMPVALUE}]&lt;/key&gt;
+                            &lt;delay&gt;300&lt;/delay&gt;
+                            &lt;history&gt;90&lt;/history&gt;
+                            &lt;trends&gt;365&lt;/trends&gt;
+                            &lt;status&gt;0&lt;/status&gt;
+                            &lt;value_type&gt;3&lt;/value_type&gt;
+                            &lt;allowed_hosts/&gt;
+                            &lt;units/&gt;
+                            &lt;delta&gt;0&lt;/delta&gt;
+                            &lt;snmpv3_contextname/&gt;
+                            &lt;snmpv3_securityname/&gt;
+                            &lt;snmpv3_securitylevel&gt;0&lt;/snmpv3_securitylevel&gt;
+                            &lt;snmpv3_authprotocol&gt;0&lt;/snmpv3_authprotocol&gt;
+                            &lt;snmpv3_authpassphrase/&gt;
+                            &lt;snmpv3_privprotocol&gt;0&lt;/snmpv3_privprotocol&gt;
+                            &lt;snmpv3_privpassphrase/&gt;
+                            &lt;formula&gt;1&lt;/formula&gt;
+                            &lt;delay_flex/&gt;
+                            &lt;params/&gt;
+                            &lt;ipmi_sensor/&gt;
+                            &lt;data_type&gt;0&lt;/data_type&gt;
+                            &lt;authtype&gt;0&lt;/authtype&gt;
+                            &lt;username/&gt;
+                            &lt;password/&gt;
+                            &lt;publickey/&gt;
+                            &lt;privatekey/&gt;
+                            &lt;port&gt;161&lt;/port&gt;
+                            &lt;description/&gt;
+                            &lt;inventory_link&gt;0&lt;/inventory_link&gt;
+                            &lt;applications&gt;
+                                &lt;application&gt;
+                                    &lt;name&gt;SNMP Enabled Printer&lt;/name&gt;
+                                &lt;/application&gt;
+                            &lt;/applications&gt;
+                            &lt;valuemap/&gt;
+                            &lt;logtimefmt/&gt;
+                            &lt;application_prototypes/&gt;
+                        &lt;/item_prototype&gt;
+                    &lt;/item_prototypes&gt;
+                    &lt;trigger_prototypes&gt;
+                        &lt;trigger_prototype&gt;
+                            &lt;expression&gt;{Template SNMP Ricoh Printers:PartStatus[{#SNMPVALUE}].last(0)}&amp;lt;&amp;gt;4&lt;/expression&gt;
+                            &lt;recovery_mode&gt;0&lt;/recovery_mode&gt;
+                            &lt;recovery_expression/&gt;
+                            &lt;name&gt;Cover Open&lt;/name&gt;
+                            &lt;correlation_mode&gt;0&lt;/correlation_mode&gt;
+                            &lt;correlation_tag/&gt;
+                            &lt;url/&gt;
+                            &lt;status&gt;0&lt;/status&gt;
+                            &lt;priority&gt;2&lt;/priority&gt;
+                            &lt;description/&gt;
+                            &lt;type&gt;0&lt;/type&gt;
+                            &lt;manual_close&gt;0&lt;/manual_close&gt;
+                            &lt;dependencies/&gt;
+                            &lt;tags/&gt;
+                        &lt;/trigger_prototype&gt;
+                        &lt;trigger_prototype&gt;
+                            &lt;expression&gt;{Template SNMP Ricoh Printers:PartStatus[{#SNMPVALUE}].last(0)}&amp;lt;&amp;gt;4 and {Template SNMP Ricoh Printers:PartStatus[{#SNMPVALUE}].last(0)}&amp;lt;&amp;gt;3&lt;/expression&gt;
+                            &lt;recovery_mode&gt;0&lt;/recovery_mode&gt;
+                            &lt;recovery_expression/&gt;
+                            &lt;name&gt;Unknown: {ITEM.LASTVALUE}&lt;/name&gt;
+                            &lt;correlation_mode&gt;0&lt;/correlation_mode&gt;
+                            &lt;correlation_tag/&gt;
+                            &lt;url/&gt;
+                            &lt;status&gt;0&lt;/status&gt;
+                            &lt;priority&gt;0&lt;/priority&gt;
+                            &lt;description/&gt;
+                            &lt;type&gt;0&lt;/type&gt;
+                            &lt;manual_close&gt;0&lt;/manual_close&gt;
+                            &lt;dependencies/&gt;
+                            &lt;tags/&gt;
+                        &lt;/trigger_prototype&gt;
+                    &lt;/trigger_prototypes&gt;
+                    &lt;graph_prototypes/&gt;
+                    &lt;host_prototypes/&gt;
+                &lt;/discovery_rule&gt;
+                &lt;discovery_rule&gt;
+                    &lt;name&gt;Toners&lt;/name&gt;
+                    &lt;type&gt;4&lt;/type&gt;
+                    &lt;snmp_community&gt;{$SNMP_COMMUNITY}&lt;/snmp_community&gt;
+                    &lt;snmp_oid&gt;discovery[{#SNMPVALUE},.1.3.6.1.4.1.367.3.2.1.2.24.1.1.2]&lt;/snmp_oid&gt;
+                    &lt;key&gt;TonersID&lt;/key&gt;
+                    &lt;delay&gt;300&lt;/delay&gt;
+                    &lt;status&gt;0&lt;/status&gt;
+                    &lt;allowed_hosts/&gt;
+                    &lt;snmpv3_contextname/&gt;
+                    &lt;snmpv3_securityname/&gt;
+                    &lt;snmpv3_securitylevel&gt;0&lt;/snmpv3_securitylevel&gt;
+                    &lt;snmpv3_authprotocol&gt;0&lt;/snmpv3_authprotocol&gt;
+                    &lt;snmpv3_authpassphrase/&gt;
+                    &lt;snmpv3_privprotocol&gt;0&lt;/snmpv3_privprotocol&gt;
+                    &lt;snmpv3_privpassphrase/&gt;
+                    &lt;delay_flex/&gt;
+                    &lt;params/&gt;
+                    &lt;ipmi_sensor/&gt;
+                    &lt;authtype&gt;0&lt;/authtype&gt;
+                    &lt;username/&gt;
+                    &lt;password/&gt;
+                    &lt;publickey/&gt;
+                    &lt;privatekey/&gt;
+                    &lt;port&gt;161&lt;/port&gt;
+                    &lt;filter&gt;
+                        &lt;evaltype&gt;0&lt;/evaltype&gt;
+                        &lt;formula/&gt;
+                        &lt;conditions/&gt;
+                    &lt;/filter&gt;
+                    &lt;lifetime&gt;30&lt;/lifetime&gt;
+                    &lt;description/&gt;
+                    &lt;item_prototypes&gt;
+                        &lt;item_prototype&gt;
+                            &lt;name&gt;Tonor {#SNMPVALUE} Level&lt;/name&gt;
+                            &lt;type&gt;4&lt;/type&gt;
+                            &lt;snmp_community&gt;{$SNMP_COMMUNITY}&lt;/snmp_community&gt;
+                            &lt;multiplier&gt;0&lt;/multiplier&gt;
+                            &lt;snmp_oid&gt;.1.3.6.1.4.1.367.3.2.1.2.24.1.1.5.{#SNMPINDEX}&lt;/snmp_oid&gt;
+                            &lt;key&gt;TonerLevel[{#SNMPVALUE}]&lt;/key&gt;
+                            &lt;delay&gt;300&lt;/delay&gt;
+                            &lt;history&gt;90&lt;/history&gt;
+                            &lt;trends&gt;365&lt;/trends&gt;
+                            &lt;status&gt;0&lt;/status&gt;
+                            &lt;value_type&gt;0&lt;/value_type&gt;
+                            &lt;allowed_hosts/&gt;
+                            &lt;units/&gt;
+                            &lt;delta&gt;0&lt;/delta&gt;
+                            &lt;snmpv3_contextname/&gt;
+                            &lt;snmpv3_securityname/&gt;
+                            &lt;snmpv3_securitylevel&gt;0&lt;/snmpv3_securitylevel&gt;
+                            &lt;snmpv3_authprotocol&gt;0&lt;/snmpv3_authprotocol&gt;
+                            &lt;snmpv3_authpassphrase/&gt;
+                            &lt;snmpv3_privprotocol&gt;0&lt;/snmpv3_privprotocol&gt;
+                            &lt;snmpv3_privpassphrase/&gt;
+                            &lt;formula&gt;1&lt;/formula&gt;
+                            &lt;delay_flex/&gt;
+                            &lt;params/&gt;
+                            &lt;ipmi_sensor/&gt;
+                            &lt;data_type&gt;0&lt;/data_type&gt;
+                            &lt;authtype&gt;0&lt;/authtype&gt;
+                            &lt;username/&gt;
+                            &lt;password/&gt;
+                            &lt;publickey/&gt;
+                            &lt;privatekey/&gt;
+                            &lt;port&gt;161&lt;/port&gt;
+                            &lt;description/&gt;
+                            &lt;inventory_link&gt;0&lt;/inventory_link&gt;
+                            &lt;applications&gt;
+                                &lt;application&gt;
+                                    &lt;name&gt;SNMP Enabled Printer&lt;/name&gt;
+                                &lt;/application&gt;
+                            &lt;/applications&gt;
+                            &lt;valuemap/&gt;
+                            &lt;logtimefmt/&gt;
+                            &lt;application_prototypes/&gt;
+                        &lt;/item_prototype&gt;
+                    &lt;/item_prototypes&gt;
+                    &lt;trigger_prototypes&gt;
+                        &lt;trigger_prototype&gt;
+                            &lt;expression&gt;{Template SNMP Ricoh Printers:TonerLevel[{#SNMPVALUE}].last(0)}&amp;lt;10&lt;/expression&gt;
+                            &lt;recovery_mode&gt;0&lt;/recovery_mode&gt;
+                            &lt;recovery_expression/&gt;
+                            &lt;name&gt;{#SNMPVALUE} Critical: {ITEM.LASTVALUE}&lt;/name&gt;
+                            &lt;correlation_mode&gt;0&lt;/correlation_mode&gt;
+                            &lt;correlation_tag/&gt;
+                            &lt;url/&gt;
+                            &lt;status&gt;0&lt;/status&gt;
+                            &lt;priority&gt;4&lt;/priority&gt;
+                            &lt;description/&gt;
+                            &lt;type&gt;0&lt;/type&gt;
+                            &lt;manual_close&gt;0&lt;/manual_close&gt;
+                            &lt;dependencies/&gt;
+                            &lt;tags/&gt;
+                        &lt;/trigger_prototype&gt;
+                        &lt;trigger_prototype&gt;
+                            &lt;expression&gt;{Template SNMP Ricoh Printers:TonerLevel[{#SNMPVALUE}].last(0)}&amp;lt;30 and {Template SNMP Ricoh Printers:TonerLevel[{#SNMPVALUE}].last(0)}&amp;gt;10&lt;/expression&gt;
+                            &lt;recovery_mode&gt;0&lt;/recovery_mode&gt;
+                            &lt;recovery_expression/&gt;
+                            &lt;name&gt;{#SNMPVALUE} Warning: {ITEM.LASTVALUE}&lt;/name&gt;
+                            &lt;correlation_mode&gt;0&lt;/correlation_mode&gt;
+                            &lt;correlation_tag/&gt;
+                            &lt;url/&gt;
+                            &lt;status&gt;0&lt;/status&gt;
+                            &lt;priority&gt;2&lt;/priority&gt;
+                            &lt;description/&gt;
+                            &lt;type&gt;0&lt;/type&gt;
+                            &lt;manual_close&gt;0&lt;/manual_close&gt;
+                            &lt;dependencies/&gt;
+                            &lt;tags/&gt;
+                        &lt;/trigger_prototype&gt;
+                    &lt;/trigger_prototypes&gt;
+                    &lt;graph_prototypes&gt;
+                        &lt;graph_prototype&gt;
+                            &lt;name&gt;Tonor Level -  {#SNMPVALUE}&lt;/name&gt;
+                            &lt;width&gt;900&lt;/width&gt;
+                            &lt;height&gt;200&lt;/height&gt;
+                            &lt;yaxismin&gt;0.0000&lt;/yaxismin&gt;
+                            &lt;yaxismax&gt;100.0000&lt;/yaxismax&gt;
+                            &lt;show_work_period&gt;1&lt;/show_work_period&gt;
+                            &lt;show_triggers&gt;1&lt;/show_triggers&gt;
+                            &lt;type&gt;0&lt;/type&gt;
+                            &lt;show_legend&gt;1&lt;/show_legend&gt;
+                            &lt;show_3d&gt;0&lt;/show_3d&gt;
+                            &lt;percent_left&gt;0.0000&lt;/percent_left&gt;
+                            &lt;percent_right&gt;0.0000&lt;/percent_right&gt;
+                            &lt;ymin_type_1&gt;1&lt;/ymin_type_1&gt;
+                            &lt;ymax_type_1&gt;1&lt;/ymax_type_1&gt;
+                            &lt;ymin_item_1&gt;0&lt;/ymin_item_1&gt;
+                            &lt;ymax_item_1&gt;0&lt;/ymax_item_1&gt;
+                            &lt;graph_items&gt;
+                                &lt;graph_item&gt;
+                                    &lt;sortorder&gt;0&lt;/sortorder&gt;
+                                    &lt;drawtype&gt;0&lt;/drawtype&gt;
+                                    &lt;color&gt;1A7C11&lt;/color&gt;
+                                    &lt;yaxisside&gt;0&lt;/yaxisside&gt;
+                                    &lt;calc_fnc&gt;2&lt;/calc_fnc&gt;
+                                    &lt;type&gt;0&lt;/type&gt;
+                                    &lt;item&gt;
+                                        &lt;host&gt;Template SNMP Ricoh Printers&lt;/host&gt;
+                                        &lt;key&gt;TonerLevel[{#SNMPVALUE}]&lt;/key&gt;
+                                    &lt;/item&gt;
+                                &lt;/graph_item&gt;
+                            &lt;/graph_items&gt;
+                        &lt;/graph_prototype&gt;
+                    &lt;/graph_prototypes&gt;
+                    &lt;host_prototypes/&gt;
+                &lt;/discovery_rule&gt;
+                &lt;discovery_rule&gt;
+                    &lt;name&gt;Trays&lt;/name&gt;
+                    &lt;type&gt;4&lt;/type&gt;
+                    &lt;snmp_community&gt;{$SNMP_COMMUNITY}&lt;/snmp_community&gt;
+                    &lt;snmp_oid&gt;discovery[{#SNMPVALUE},.1.3.6.1.2.1.43.8.2.1.13.1]&lt;/snmp_oid&gt;
+                    &lt;key&gt;TraysID&lt;/key&gt;
+                    &lt;delay&gt;300&lt;/delay&gt;
+                    &lt;status&gt;0&lt;/status&gt;
+                    &lt;allowed_hosts/&gt;
+                    &lt;snmpv3_contextname/&gt;
+                    &lt;snmpv3_securityname/&gt;
+                    &lt;snmpv3_securitylevel&gt;0&lt;/snmpv3_securitylevel&gt;
+                    &lt;snmpv3_authprotocol&gt;0&lt;/snmpv3_authprotocol&gt;
+                    &lt;snmpv3_authpassphrase/&gt;
+                    &lt;snmpv3_privprotocol&gt;0&lt;/snmpv3_privprotocol&gt;
+                    &lt;snmpv3_privpassphrase/&gt;
+                    &lt;delay_flex/&gt;
+                    &lt;params/&gt;
+                    &lt;ipmi_sensor/&gt;
+                    &lt;authtype&gt;0&lt;/authtype&gt;
+                    &lt;username/&gt;
+                    &lt;password/&gt;
+                    &lt;publickey/&gt;
+                    &lt;privatekey/&gt;
+                    &lt;port&gt;161&lt;/port&gt;
+                    &lt;filter&gt;
+                        &lt;evaltype&gt;0&lt;/evaltype&gt;
+                        &lt;formula/&gt;
+                        &lt;conditions/&gt;
+                    &lt;/filter&gt;
+                    &lt;lifetime&gt;30&lt;/lifetime&gt;
+                    &lt;description/&gt;
+                    &lt;item_prototypes&gt;
+                        &lt;item_prototype&gt;
+                            &lt;name&gt;Tray {#SNMPVALUE} Current Level&lt;/name&gt;
+                            &lt;type&gt;4&lt;/type&gt;
+                            &lt;snmp_community&gt;{$SNMP_COMMUNITY}&lt;/snmp_community&gt;
+                            &lt;multiplier&gt;0&lt;/multiplier&gt;
+                            &lt;snmp_oid&gt;.1.3.6.1.2.1.43.8.2.1.10.1.{#SNMPINDEX}&lt;/snmp_oid&gt;
+                            &lt;key&gt;TrayCurrentLevel[{#SNMPVALUE}]&lt;/key&gt;
+                            &lt;delay&gt;300&lt;/delay&gt;
+                            &lt;history&gt;90&lt;/history&gt;
+                            &lt;trends&gt;365&lt;/trends&gt;
+                            &lt;status&gt;0&lt;/status&gt;
+                            &lt;value_type&gt;3&lt;/value_type&gt;
+                            &lt;allowed_hosts/&gt;
+                            &lt;units/&gt;
+                            &lt;delta&gt;0&lt;/delta&gt;
+                            &lt;snmpv3_contextname/&gt;
+                            &lt;snmpv3_securityname/&gt;
+                            &lt;snmpv3_securitylevel&gt;0&lt;/snmpv3_securitylevel&gt;
+                            &lt;snmpv3_authprotocol&gt;0&lt;/snmpv3_authprotocol&gt;
+                            &lt;snmpv3_authpassphrase/&gt;
+                            &lt;snmpv3_privprotocol&gt;0&lt;/snmpv3_privprotocol&gt;
+                            &lt;snmpv3_privpassphrase/&gt;
+                            &lt;formula&gt;1&lt;/formula&gt;
+                            &lt;delay_flex/&gt;
+                            &lt;params/&gt;
+                            &lt;ipmi_sensor/&gt;
+                            &lt;data_type&gt;0&lt;/data_type&gt;
+                            &lt;authtype&gt;0&lt;/authtype&gt;
+                            &lt;username/&gt;
+                            &lt;password/&gt;
+                            &lt;publickey/&gt;
+                            &lt;privatekey/&gt;
+                            &lt;port&gt;161&lt;/port&gt;
+                            &lt;description/&gt;
+                            &lt;inventory_link&gt;0&lt;/inventory_link&gt;
+                            &lt;applications&gt;
+                                &lt;application&gt;
+                                    &lt;name&gt;SNMP Enabled Printer&lt;/name&gt;
+                                &lt;/application&gt;
+                            &lt;/applications&gt;
+                            &lt;valuemap/&gt;
+                            &lt;logtimefmt/&gt;
+                            &lt;application_prototypes/&gt;
+                        &lt;/item_prototype&gt;
+                        &lt;item_prototype&gt;
+                            &lt;name&gt;Tray {#SNMPVALUE} Max Level&lt;/name&gt;
+                            &lt;type&gt;4&lt;/type&gt;
+                            &lt;snmp_community&gt;{$SNMP_COMMUNITY}&lt;/snmp_community&gt;
+                            &lt;multiplier&gt;0&lt;/multiplier&gt;
+                            &lt;snmp_oid&gt;.1.3.6.1.2.1.43.8.2.1.9.1.{#SNMPINDEX}&lt;/snmp_oid&gt;
+                            &lt;key&gt;TrayMaxLevel[{#SNMPVALUE}]&lt;/key&gt;
+                            &lt;delay&gt;300&lt;/delay&gt;
+                            &lt;history&gt;90&lt;/history&gt;
+                            &lt;trends&gt;365&lt;/trends&gt;
+                            &lt;status&gt;0&lt;/status&gt;
+                            &lt;value_type&gt;3&lt;/value_type&gt;
+                            &lt;allowed_hosts/&gt;
+                            &lt;units/&gt;
+                            &lt;delta&gt;0&lt;/delta&gt;
+                            &lt;snmpv3_contextname/&gt;
+                            &lt;snmpv3_securityname/&gt;
+                            &lt;snmpv3_securitylevel&gt;0&lt;/snmpv3_securitylevel&gt;
+                            &lt;snmpv3_authprotocol&gt;0&lt;/snmpv3_authprotocol&gt;
+                            &lt;snmpv3_authpassphrase/&gt;
+                            &lt;snmpv3_privprotocol&gt;0&lt;/snmpv3_privprotocol&gt;
+                            &lt;snmpv3_privpassphrase/&gt;
+                            &lt;formula&gt;1&lt;/formula&gt;
+                            &lt;delay_flex/&gt;
+                            &lt;params/&gt;
+                            &lt;ipmi_sensor/&gt;
+                            &lt;data_type&gt;0&lt;/data_type&gt;
+                            &lt;authtype&gt;0&lt;/authtype&gt;
+                            &lt;username/&gt;
+                            &lt;password/&gt;
+                            &lt;publickey/&gt;
+                            &lt;privatekey/&gt;
+                            &lt;port&gt;161&lt;/port&gt;
+                            &lt;description/&gt;
+                            &lt;inventory_link&gt;0&lt;/inventory_link&gt;
+                            &lt;applications&gt;
+                                &lt;application&gt;
+                                    &lt;name&gt;SNMP Enabled Printer&lt;/name&gt;
+                                &lt;/application&gt;
+                            &lt;/applications&gt;
+                            &lt;valuemap/&gt;
+                            &lt;logtimefmt/&gt;
+                            &lt;application_prototypes/&gt;
+                        &lt;/item_prototype&gt;
+                    &lt;/item_prototypes&gt;
+                    &lt;trigger_prototypes&gt;
+                        &lt;trigger_prototype&gt;
+                            &lt;expression&gt;{Template SNMP Ricoh Printers:TrayCurrentLevel[{#SNMPVALUE}].last(0)}&amp;lt;{Template SNMP Ricoh Printers:TrayMaxLevel[{#SNMPVALUE}].last(0)}/4&lt;/expression&gt;
+                            &lt;recovery_mode&gt;0&lt;/recovery_mode&gt;
+                            &lt;recovery_expression/&gt;
+                            &lt;name&gt;{#SNMPVALUE} - Critical: {ITEM.LASTVALUE}&lt;/name&gt;
+                            &lt;correlation_mode&gt;0&lt;/correlation_mode&gt;
+                            &lt;correlation_tag/&gt;
+                            &lt;url/&gt;
+                            &lt;status&gt;0&lt;/status&gt;
+                            &lt;priority&gt;4&lt;/priority&gt;
+                            &lt;description/&gt;
+                            &lt;type&gt;0&lt;/type&gt;
+                            &lt;manual_close&gt;0&lt;/manual_close&gt;
+                            &lt;dependencies/&gt;
+                            &lt;tags/&gt;
+                        &lt;/trigger_prototype&gt;
+                        &lt;trigger_prototype&gt;
+                            &lt;expression&gt;{Template SNMP Ricoh Printers:TrayCurrentLevel[{#SNMPVALUE}].last(0)}&amp;lt;{Template SNMP Ricoh Printers:TrayMaxLevel[{#SNMPVALUE}].last(0)}/2 and {Template SNMP Ricoh Printers:TrayCurrentLevel[{#SNMPVALUE}].last(0)}&amp;gt;{Template SNMP Ricoh Printers:TrayMaxLevel[{#SNMPVALUE}].last(0)}/4&lt;/expression&gt;
+                            &lt;recovery_mode&gt;0&lt;/recovery_mode&gt;
+                            &lt;recovery_expression/&gt;
+                            &lt;name&gt;{#SNMPVALUE} - Warning: {ITEM.LASTVALUE}&lt;/name&gt;
+                            &lt;correlation_mode&gt;0&lt;/correlation_mode&gt;
+                            &lt;correlation_tag/&gt;
+                            &lt;url/&gt;
+                            &lt;status&gt;0&lt;/status&gt;
+                            &lt;priority&gt;2&lt;/priority&gt;
+                            &lt;description/&gt;
+                            &lt;type&gt;0&lt;/type&gt;
+                            &lt;manual_close&gt;0&lt;/manual_close&gt;
+                            &lt;dependencies/&gt;
+                            &lt;tags/&gt;
+                        &lt;/trigger_prototype&gt;
+                    &lt;/trigger_prototypes&gt;
+                    &lt;graph_prototypes&gt;
+                        &lt;graph_prototype&gt;
+                            &lt;name&gt;Tray Level -  {#SNMPVALUE}&lt;/name&gt;
+                            &lt;width&gt;900&lt;/width&gt;
+                            &lt;height&gt;200&lt;/height&gt;
+                            &lt;yaxismin&gt;0.0000&lt;/yaxismin&gt;
+                            &lt;yaxismax&gt;100.0000&lt;/yaxismax&gt;
+                            &lt;show_work_period&gt;1&lt;/show_work_period&gt;
+                            &lt;show_triggers&gt;1&lt;/show_triggers&gt;
+                            &lt;type&gt;0&lt;/type&gt;
+                            &lt;show_legend&gt;1&lt;/show_legend&gt;
+                            &lt;show_3d&gt;0&lt;/show_3d&gt;
+                            &lt;percent_left&gt;0.0000&lt;/percent_left&gt;
+                            &lt;percent_right&gt;0.0000&lt;/percent_right&gt;
+                            &lt;ymin_type_1&gt;0&lt;/ymin_type_1&gt;
+                            &lt;ymax_type_1&gt;0&lt;/ymax_type_1&gt;
+                            &lt;ymin_item_1&gt;0&lt;/ymin_item_1&gt;
+                            &lt;ymax_item_1&gt;0&lt;/ymax_item_1&gt;
+                            &lt;graph_items&gt;
+                                &lt;graph_item&gt;
+                                    &lt;sortorder&gt;0&lt;/sortorder&gt;
+                                    &lt;drawtype&gt;0&lt;/drawtype&gt;
+                                    &lt;color&gt;1A7C11&lt;/color&gt;
+                                    &lt;yaxisside&gt;0&lt;/yaxisside&gt;
+                                    &lt;calc_fnc&gt;2&lt;/calc_fnc&gt;
+                                    &lt;type&gt;0&lt;/type&gt;
+                                    &lt;item&gt;
+                                        &lt;host&gt;Template SNMP Ricoh Printers&lt;/host&gt;
+                                        &lt;key&gt;TrayCurrentLevel[{#SNMPVALUE}]&lt;/key&gt;
+                                    &lt;/item&gt;
+                                &lt;/graph_item&gt;
+                                &lt;graph_item&gt;
+                                    &lt;sortorder&gt;1&lt;/sortorder&gt;
+                                    &lt;drawtype&gt;0&lt;/drawtype&gt;
+                                    &lt;color&gt;F63100&lt;/color&gt;
+                                    &lt;yaxisside&gt;0&lt;/yaxisside&gt;
+                                    &lt;calc_fnc&gt;2&lt;/calc_fnc&gt;
+                                    &lt;type&gt;0&lt;/type&gt;
+                                    &lt;item&gt;
+                                        &lt;host&gt;Template SNMP Ricoh Printers&lt;/host&gt;
+                                        &lt;key&gt;TrayMaxLevel[{#SNMPVALUE}]&lt;/key&gt;
+                                    &lt;/item&gt;
+                                &lt;/graph_item&gt;
+                            &lt;/graph_items&gt;
+                        &lt;/graph_prototype&gt;
+                    &lt;/graph_prototypes&gt;
+                    &lt;host_prototypes/&gt;
+                &lt;/discovery_rule&gt;
+            &lt;/discovery_rules&gt;
+            &lt;httptests/&gt;
+            &lt;macros/&gt;
+            &lt;templates&gt;
+                &lt;template&gt;
+                    &lt;name&gt;Template SNMP Generic&lt;/name&gt;
+                &lt;/template&gt;
+            &lt;/templates&gt;
+            &lt;screens/&gt;
+        &lt;/template&gt;
+    &lt;/templates&gt;
+    &lt;triggers&gt;
+        &lt;trigger&gt;
+            &lt;expression&gt;{Template SNMP Ricoh Printers:PrinterStatus.last(0)}&amp;lt;&amp;gt;2 and {Template SNMP Ricoh Printers:PrinterStatus.last(0)}&amp;lt;&amp;gt;1 and {Template SNMP Ricoh Printers:PrinterStatus.last(0)}&amp;lt;&amp;gt;5&lt;/expression&gt;
+            &lt;recovery_mode&gt;0&lt;/recovery_mode&gt;
+            &lt;recovery_expression/&gt;
+            &lt;name&gt;Printer Error&lt;/name&gt;
+            &lt;correlation_mode&gt;0&lt;/correlation_mode&gt;
+            &lt;correlation_tag/&gt;
+            &lt;url/&gt;
+            &lt;status&gt;0&lt;/status&gt;
+            &lt;priority&gt;2&lt;/priority&gt;
+            &lt;description/&gt;
+            &lt;type&gt;0&lt;/type&gt;
+            &lt;manual_close&gt;0&lt;/manual_close&gt;
+            &lt;dependencies/&gt;
+            &lt;tags/&gt;
+        &lt;/trigger&gt;
+        &lt;trigger&gt;
+            &lt;expression&gt;{Template SNMP Ricoh Printers:PrinterStatus.last(0)}&amp;lt;&amp;gt;2 and {Template SNMP Ricoh Printers:PrinterStatus.last(0)}&amp;lt;&amp;gt;3 and {Template SNMP Ricoh Printers:PrinterStatus.last(0)}&amp;lt;&amp;gt;4&lt;/expression&gt;
+            &lt;recovery_mode&gt;0&lt;/recovery_mode&gt;
+            &lt;recovery_expression/&gt;
+            &lt;name&gt;Printer Unknown Error&lt;/name&gt;
+            &lt;correlation_mode&gt;0&lt;/correlation_mode&gt;
+            &lt;correlation_tag/&gt;
+            &lt;url/&gt;
+            &lt;status&gt;0&lt;/status&gt;
+            &lt;priority&gt;4&lt;/priority&gt;
+            &lt;description/&gt;
+            &lt;type&gt;0&lt;/type&gt;
+            &lt;manual_close&gt;0&lt;/manual_close&gt;
+            &lt;dependencies/&gt;
+            &lt;tags/&gt;
+        &lt;/trigger&gt;
+    &lt;/triggers&gt;
+    &lt;graphs&gt;
+        &lt;graph&gt;
+            &lt;name&gt;Print Pages / Minute&lt;/name&gt;
+            &lt;width&gt;900&lt;/width&gt;
+            &lt;height&gt;200&lt;/height&gt;
+            &lt;yaxismin&gt;0.0000&lt;/yaxismin&gt;
+            &lt;yaxismax&gt;100.0000&lt;/yaxismax&gt;
+            &lt;show_work_period&gt;1&lt;/show_work_period&gt;
+            &lt;show_triggers&gt;0&lt;/show_triggers&gt;
+            &lt;type&gt;0&lt;/type&gt;
+            &lt;show_legend&gt;0&lt;/show_legend&gt;
+            &lt;show_3d&gt;0&lt;/show_3d&gt;
+            &lt;percent_left&gt;0.0000&lt;/percent_left&gt;
+            &lt;percent_right&gt;0.0000&lt;/percent_right&gt;
+            &lt;ymin_type_1&gt;1&lt;/ymin_type_1&gt;
+            &lt;ymax_type_1&gt;0&lt;/ymax_type_1&gt;
+            &lt;ymin_item_1&gt;0&lt;/ymin_item_1&gt;
+            &lt;ymax_item_1&gt;0&lt;/ymax_item_1&gt;
+            &lt;graph_items&gt;
+                &lt;graph_item&gt;
+                    &lt;sortorder&gt;0&lt;/sortorder&gt;
+                    &lt;drawtype&gt;1&lt;/drawtype&gt;
+                    &lt;color&gt;1A7C11&lt;/color&gt;
+                    &lt;yaxisside&gt;0&lt;/yaxisside&gt;
+                    &lt;calc_fnc&gt;2&lt;/calc_fnc&gt;
+                    &lt;type&gt;0&lt;/type&gt;
+                    &lt;item&gt;
+                        &lt;host&gt;Template SNMP Ricoh Printers&lt;/host&gt;
+                        &lt;key&gt;PageCountPerMinute&lt;/key&gt;
+                    &lt;/item&gt;
+                &lt;/graph_item&gt;
+            &lt;/graph_items&gt;
+        &lt;/graph&gt;
+    &lt;/graphs&gt;
+&lt;/zabbix_export&gt;
 </code></pre></div>
 		</div>
 		<footer class="post__footer">

@@ -100,35 +100,35 @@ if (!doNotTrack) {
 自分のグローバルIPアドレスを監視するスクリプトを書いてデータを取ってみた。</p>
 <h2 id="スクリプト">スクリプト</h2>
 <p>作成したスクリプトは以下。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="cp">#!/bin/bash
-</span><span class="cp"></span>
-<span class="nv">IP_OLD</span><span class="o">=</span><span class="s2">&#34;&#34;</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#00f">#!/bin/bash
+</span><span style="color:#00f"></span>
+IP_OLD=<span style="color:#a31515">&#34;&#34;</span>
 
-<span class="k">while</span> <span class="nb">true</span>
-<span class="k">do</span>
-  <span class="nv">INETIP</span><span class="o">=</span><span class="sb">`</span>dig +timeout<span class="o">=</span><span class="m">3</span> +tries<span class="o">=</span><span class="m">1</span> +noall +answer inet-ip.info <span class="p">|</span> rev <span class="p">|</span> cut -f1 <span class="p">|</span> rev<span class="sb">`</span>
-  <span class="k">if</span> <span class="o">[[</span> <span class="si">${</span><span class="nv">INETIP</span><span class="si">}</span> <span class="o">=</span>~ ^<span class="o">[</span>0-9<span class="o">]{</span>1,3<span class="o">}</span><span class="se">\.</span><span class="o">[</span>0-9<span class="o">]{</span>1,3<span class="o">}</span><span class="se">\.</span><span class="o">[</span>0-9<span class="o">]{</span>1,3<span class="o">}</span><span class="se">\.</span><span class="o">[</span>0-9<span class="o">]{</span>1,3<span class="o">}</span>$ <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
-    <span class="nv">IP</span><span class="o">=</span><span class="sb">`</span>curl -m <span class="m">3</span> --connect-timeout <span class="m">3</span> -s -H <span class="s2">&#34;Host: inet-ip.info&#34;</span> http://<span class="si">${</span><span class="nv">INETIP</span><span class="si">}</span><span class="sb">`</span>
-  <span class="k">else</span>
-    <span class="nv">IP</span><span class="o">=</span><span class="s2">&#34;&#34;</span>
-  <span class="k">fi</span>
+<span style="color:#00f">while</span> true
+<span style="color:#00f">do</span>
+  INETIP=<span style="color:#a31515">`</span>dig +timeout=3 +tries=1 +noall +answer inet-ip.info | rev | cut -f1 | rev<span style="color:#a31515">`</span>
+  <span style="color:#00f">if</span> [[ <span style="color:#a31515">${</span>INETIP<span style="color:#a31515">}</span> =~ ^[0-9]{1,3}<span style="color:#a31515">\.</span>[0-9]{1,3}<span style="color:#a31515">\.</span>[0-9]{1,3}<span style="color:#a31515">\.</span>[0-9]{1,3}$ ]]; <span style="color:#00f">then</span>
+    IP=<span style="color:#a31515">`</span>curl -m 3 --connect-timeout 3 -s -H <span style="color:#a31515">&#34;Host: inet-ip.info&#34;</span> http://<span style="color:#a31515">${</span>INETIP<span style="color:#a31515">}</span><span style="color:#a31515">`</span>
+  <span style="color:#00f">else</span>
+    IP=<span style="color:#a31515">&#34;&#34;</span>
+  <span style="color:#00f">fi</span>
 
-  <span class="k">if</span> <span class="o">[[</span> <span class="si">${</span><span class="nv">IP</span><span class="si">}</span> <span class="o">=</span>~ ^<span class="o">[</span>0-9<span class="o">]{</span>1,3<span class="o">}</span><span class="se">\.</span><span class="o">[</span>0-9<span class="o">]{</span>1,3<span class="o">}</span><span class="se">\.</span><span class="o">[</span>0-9<span class="o">]{</span>1,3<span class="o">}</span><span class="se">\.</span><span class="o">[</span>0-9<span class="o">]{</span>1,3<span class="o">}</span>$ <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
-    <span class="k">if</span> <span class="o">[[</span> <span class="s2">&#34;</span><span class="nv">$IP</span><span class="s2">&#34;</span> !<span class="o">=</span> <span class="s2">&#34;</span><span class="nv">$IP_OLD</span><span class="s2">&#34;</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
-      <span class="nv">IP_OLD</span><span class="o">=</span><span class="s2">&#34;</span><span class="nv">$IP</span><span class="s2">&#34;</span>
-      <span class="nb">echo</span> -n <span class="sb">`</span>date <span class="s1">&#39;+%Y/%m/%d %H:%M:%S&#39;</span><span class="sb">`</span>
-      <span class="nb">printf</span> <span class="s2">&#34; %-15s &#34;</span> <span class="s2">&#34;</span><span class="nv">$IP</span><span class="s2">&#34;</span>
-      dig +timeout<span class="o">=</span><span class="m">3</span> +tries<span class="o">=</span><span class="m">1</span> -x <span class="nv">$IP</span> +noall +answer <span class="p">|</span> grep PTR <span class="p">|</span> rev <span class="p">|</span> cut -f1 <span class="p">|</span> rev
-    <span class="k">fi</span>
-  <span class="k">else</span>
-   <span class="k">if</span> <span class="o">[[</span> <span class="s2">&#34;</span><span class="nv">$IP_OLD</span><span class="s2">&#34;</span> !<span class="o">=</span> <span class="s2">&#34;&#34;</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
-     <span class="nv">IP_OLD</span><span class="o">=</span><span class="s2">&#34;&#34;</span>
-     <span class="nb">echo</span> <span class="sb">`</span>date <span class="s1">&#39;+%Y/%m/%d %H:%M:%S&#39;</span><span class="sb">`</span><span class="s2">&#34; Connection Error&#34;</span>
-   <span class="k">fi</span>
-  <span class="k">fi</span>
+  <span style="color:#00f">if</span> [[ <span style="color:#a31515">${</span>IP<span style="color:#a31515">}</span> =~ ^[0-9]{1,3}<span style="color:#a31515">\.</span>[0-9]{1,3}<span style="color:#a31515">\.</span>[0-9]{1,3}<span style="color:#a31515">\.</span>[0-9]{1,3}$ ]]; <span style="color:#00f">then</span>
+    <span style="color:#00f">if</span> [[ <span style="color:#a31515">&#34;</span>$IP<span style="color:#a31515">&#34;</span> != <span style="color:#a31515">&#34;</span>$IP_OLD<span style="color:#a31515">&#34;</span> ]]; <span style="color:#00f">then</span>
+      IP_OLD=<span style="color:#a31515">&#34;</span>$IP<span style="color:#a31515">&#34;</span>
+      echo -n <span style="color:#a31515">`</span>date <span style="color:#a31515">&#39;+%Y/%m/%d %H:%M:%S&#39;</span><span style="color:#a31515">`</span>
+      printf <span style="color:#a31515">&#34; %-15s &#34;</span> <span style="color:#a31515">&#34;</span>$IP<span style="color:#a31515">&#34;</span>
+      dig +timeout=3 +tries=1 -x $IP +noall +answer | grep PTR | rev | cut -f1 | rev
+    <span style="color:#00f">fi</span>
+  <span style="color:#00f">else</span>
+   <span style="color:#00f">if</span> [[ <span style="color:#a31515">&#34;</span>$IP_OLD<span style="color:#a31515">&#34;</span> != <span style="color:#a31515">&#34;&#34;</span> ]]; <span style="color:#00f">then</span>
+     IP_OLD=<span style="color:#a31515">&#34;&#34;</span>
+     echo <span style="color:#a31515">`</span>date <span style="color:#a31515">&#39;+%Y/%m/%d %H:%M:%S&#39;</span><span style="color:#a31515">`</span><span style="color:#a31515">&#34; Connection Error&#34;</span>
+   <span style="color:#00f">fi</span>
+  <span style="color:#00f">fi</span>
 
-  sleep <span class="m">5</span>
-<span class="k">done</span>
+  sleep 5
+<span style="color:#00f">done</span>
 </code></pre></div><p><code>http://inet-ip.info/</code>にアクセスして自分のグローバルIPアドレスを得て、逆引きして現在どのキャリアに接続しているのかを監視。</p>
 <p><code>curl http://inet-ip.info</code>とせずに、わざわざ<code>dig</code>でアドレス解決をしてからIPアドレスで<code>curl</code>しているのは、
 <code>curl</code>のタイムアウトに関するオプション(<code>-m 3 --connect-timeout 3 </code>)が、DNS解決にかかる時間に効かず、

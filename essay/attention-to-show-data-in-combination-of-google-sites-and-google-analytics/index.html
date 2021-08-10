@@ -95,7 +95,7 @@ if (!doNotTrack) {
 画面にレイヤーが重なっていろいろなデータが表示されてしまう状態から抜けられない。</p>
 <p>ネットを調べたところ、「閉じる」が見つからないために同じような現象に遭遇している事例は見つかったが、
 「閉じる」をクリックしても、</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="mi">_</span><span class="nx">siteOverlay</span><span class="p">.</span><span class="mi">_</span><span class="nx">close</span><span class="p">()</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js">_siteOverlay._close()
 </code></pre></div><p>をアドレスバーに打ち込んでもダメだった。
 おそらくGoogle Sitesを利用している場合特有の現象なのだろう。</p>
 <p>この現象が発生することを確認したブラウザは</p>
@@ -107,35 +107,35 @@ if (!doNotTrack) {
 </ul>
 <p>で、いずれもOSはWindows Vista(32ビット)。ちなみにIE8ではレイアウトも崩れていた。</p>
 <p>仕方がないので_siteOverlay.close()の中身をちょっと調べた。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
-    <span class="kd">var</span> <span class="nx">domain</span><span class="p">,</span> <span class="nx">cookiePath</span><span class="p">;</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">GLOBAL_window</span><span class="p">.</span><span class="mi">_</span><span class="nx">udo</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">domain</span> <span class="o">=</span> <span class="nx">GLOBAL_window</span><span class="p">.</span><span class="mi">_</span><span class="nx">udo</span><span class="p">;</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">GLOBAL_window</span><span class="p">.</span><span class="mi">_</span><span class="nx">gat</span> <span class="o">&amp;&amp;</span> <span class="nx">GLOBAL_window</span><span class="p">.</span><span class="mi">_</span><span class="nx">gat</span><span class="p">.</span><span class="mi">_</span><span class="nx">gasoDomain</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">domain</span> <span class="o">=</span> <span class="nx">GLOBAL_window</span><span class="p">.</span><span class="mi">_</span><span class="nx">gat</span><span class="p">.</span><span class="mi">_</span><span class="nx">gasoDomain</span><span class="p">;</span>
-    <span class="p">}</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">domain</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">domain</span> <span class="o">=</span> <span class="nx">domain</span><span class="p">[</span><span class="nx">$$PROP_replace</span><span class="p">](</span><span class="s2">&#34;domain=&#34;</span><span class="p">,</span> <span class="s2">&#34;&#34;</span><span class="p">)[</span><span class="nx">$$PROP_replace</span><span class="p">](</span><span class="s2">&#34;;&#34;</span><span class="p">,</span> <span class="s2">&#34;&#34;</span><span class="p">)[</span><span class="nx">$$PROP_replace</span><span class="p">](</span><span class="sr">/ /g</span><span class="p">,</span> <span class="s2">&#34;&#34;</span><span class="p">);</span>
-    <span class="p">}</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">GLOBAL_window</span><span class="p">.</span><span class="mi">_</span><span class="nx">utcp</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">cookiePath</span> <span class="o">=</span> <span class="nx">GLOBAL_window</span><span class="p">.</span><span class="mi">_</span><span class="nx">utcp</span><span class="p">;</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">GLOBAL_window</span><span class="p">.</span><span class="mi">_</span><span class="nx">gat</span> <span class="o">&amp;&amp;</span> <span class="nx">GLOBAL_window</span><span class="p">.</span><span class="mi">_</span><span class="nx">gat</span><span class="p">.</span><span class="mi">_</span><span class="nx">gasoCPath</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">cookiePath</span> <span class="o">=</span> <span class="nx">GLOBAL_window</span><span class="p">.</span><span class="mi">_</span><span class="nx">gat</span><span class="p">.</span><span class="mi">_</span><span class="nx">gasoCPath</span><span class="p">;</span>
-    <span class="p">}</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">domain</span> <span class="o">&amp;&amp;</span> <span class="nx">cookiePath</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">goog</span><span class="p">.</span><span class="nx">net</span><span class="p">.</span><span class="nx">cookies</span><span class="p">[</span><span class="nx">$$PROP_remove</span><span class="p">](</span><span class="s2">&#34;GASO&#34;</span><span class="p">,</span> <span class="nx">cookiePath</span><span class="p">,</span> <span class="s2">&#34;.&#34;</span> <span class="o">+</span> <span class="nx">domain</span><span class="p">);</span>
-        <span class="nx">GLOBAL_window</span><span class="p">.</span><span class="nx">parent</span> <span class="o">&amp;&amp;</span> <span class="nx">GLOBAL_window</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>
-        <span class="kd">var</span> <span class="nx">idx</span> <span class="o">=</span> <span class="nx">GLOBAL_document</span><span class="p">[</span><span class="nx">$$PROP_location</span><span class="p">][</span><span class="nx">$$PROP_href</span><span class="p">][</span><span class="nx">$$PROP_indexOf</span><span class="p">](</span><span class="s2">&#34;#gaso=&#34;</span><span class="p">);</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nx">idx</span> <span class="o">&gt;</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
-            <span class="kd">var</span> <span class="nx">href</span> <span class="o">=</span> <span class="nx">GLOBAL_document</span><span class="p">[</span><span class="nx">$$PROP_location</span><span class="p">][</span><span class="nx">$$PROP_href</span><span class="p">][</span><span class="nx">$$PROP_substring</span><span class="p">](</span><span class="mi">0</span><span class="p">,</span> <span class="nx">idx</span><span class="p">);</span>
-            <span class="nx">GLOBAL_document</span><span class="p">[</span><span class="nx">$$PROP_location</span><span class="p">][</span><span class="nx">$$PROP_replace</span><span class="p">](</span><span class="nx">href</span><span class="p">);</span>
-        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-            <span class="nx">GLOBAL_document</span><span class="p">[</span><span class="nx">$$PROP_location</span><span class="p">].</span><span class="nx">reload</span><span class="p">();</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#00f">function</span> () {
+    <span style="color:#00f">var</span> domain, cookiePath;
+    <span style="color:#00f">if</span> (GLOBAL_window._udo) {
+        domain = GLOBAL_window._udo;
+    } <span style="color:#00f">else</span> <span style="color:#00f">if</span> (GLOBAL_window._gat &amp;&amp; GLOBAL_window._gat._gasoDomain) {
+        domain = GLOBAL_window._gat._gasoDomain;
+    }
+    <span style="color:#00f">if</span> (domain) {
+        domain = domain[$$PROP_replace](<span style="color:#a31515">&#34;domain=&#34;</span>, <span style="color:#a31515">&#34;&#34;</span>)[$$PROP_replace](<span style="color:#a31515">&#34;;&#34;</span>, <span style="color:#a31515">&#34;&#34;</span>)[$$PROP_replace](<span style="color:#a31515">/ /g</span>, <span style="color:#a31515">&#34;&#34;</span>);
+    }
+    <span style="color:#00f">if</span> (GLOBAL_window._utcp) {
+        cookiePath = GLOBAL_window._utcp;
+    } <span style="color:#00f">else</span> <span style="color:#00f">if</span> (GLOBAL_window._gat &amp;&amp; GLOBAL_window._gat._gasoCPath) {
+        cookiePath = GLOBAL_window._gat._gasoCPath;
+    }
+    <span style="color:#00f">if</span> (domain &amp;&amp; cookiePath) {
+        goog.net.cookies[$$PROP_remove](<span style="color:#a31515">&#34;GASO&#34;</span>, cookiePath, <span style="color:#a31515">&#34;.&#34;</span> + domain);
+        GLOBAL_window.parent &amp;&amp; GLOBAL_window.close();
+        <span style="color:#00f">var</span> idx = GLOBAL_document[$$PROP_location][$$PROP_href][$$PROP_indexOf](<span style="color:#a31515">&#34;#gaso=&#34;</span>);
+        <span style="color:#00f">if</span> (idx &gt; -1) {
+            <span style="color:#00f">var</span> href = GLOBAL_document[$$PROP_location][$$PROP_href][$$PROP_substring](0, idx);
+            GLOBAL_document[$$PROP_location][$$PROP_replace](href);
+        } <span style="color:#00f">else</span> {
+            GLOBAL_document[$$PROP_location].reload();
+        }
+    }
+}
 </code></pre></div><p>このうち、</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="nx">GLOBAL_window</span><span class="p">.</span><span class="mi">_</span><span class="nx">gat</span><span class="p">.</span><span class="mi">_</span><span class="nx">gasoCPath</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js">GLOBAL_window._gat._gasoCPath
 </code></pre></div><p>が空文字列になってしまっているために、Cookieが削除されずに残ってしまうようだ。</p>
 <p>なぜそうなってしまうのかは面倒なので調べていないが、とりあえず対処方法としては該当するCookieを削除してしまえばよいということになる。
 ドメインにあるクッキーのうち</p>

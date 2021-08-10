@@ -96,18 +96,18 @@ if (!doNotTrack) {
 <p><code>Thumbs.db</code>はグループポリシーでネットワークドライブ上では生成しないようにしているはずだが、
 ローカルのフォルダをファイルサーバにコピーすると、一緒にくっついてくるらしい。</p>
 <p>以下のPowerShellスクリプトをタスクスケジューラに登録して、定期的(1日1回)にゴミ掃除。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-PowerShell" data-lang="PowerShell"><span class="nv">$a</span> <span class="p">=</span> <span class="p">@()</span>
-<span class="nv">$a</span> <span class="p">+=</span> <span class="nb">Get-ChildItem</span> <span class="s2">&#34;(掃除対象フォルダのパス1)&#34;</span> <span class="n">-Force</span> <span class="n">-Recurse</span>
-<span class="nv">$a</span> <span class="p">+=</span> <span class="nb">Get-ChildItem</span> <span class="s2">&#34;(掃除対象フォルダのパス2)&#34;</span> <span class="n">-Force</span> <span class="n">-Recurse</span>
-<span class="nv">$a</span> <span class="p">+=</span> <span class="nb">Get-ChildItem</span> <span class="s2">&#34;(掃除対象フォルダのパス3)&#34;</span> <span class="n">-Force</span> <span class="n">-Recurse</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-PowerShell" data-lang="PowerShell">$a = @()
+$a += Get-ChildItem <span style="color:#a31515">&#34;(掃除対象フォルダのパス1)&#34;</span> -Force -Recurse
+$a += Get-ChildItem <span style="color:#a31515">&#34;(掃除対象フォルダのパス2)&#34;</span> -Force -Recurse
+$a += Get-ChildItem <span style="color:#a31515">&#34;(掃除対象フォルダのパス3)&#34;</span> -Force -Recurse
 
-<span class="nv">$a</span> <span class="p">|</span> <span class="nb">Where-Object</span> <span class="p">{</span> <span class="p">`</span>
-  <span class="nv">$_</span><span class="p">.</span><span class="n">Name</span> <span class="o">-like</span> <span class="s2">&#34;~*&#34;</span> <span class="o">-and</span> <span class="nv">$_</span><span class="p">.</span><span class="n">LastWriteTime</span> <span class="o">-lt</span> <span class="p">(</span><span class="nb">Get-Date</span><span class="p">).</span><span class="n">AddDays</span><span class="p">(-</span><span class="n">1</span><span class="p">)</span> <span class="p">`</span>
-  <span class="o">-or</span> <span class="nv">$_</span><span class="p">.</span><span class="n">Name</span> <span class="o">-like</span> <span class="s2">&#34;*.tmp&#34;</span> <span class="p">`</span>
-  <span class="o">-or</span> <span class="nv">$_</span><span class="p">.</span><span class="n">Name</span> <span class="o">-eq</span> <span class="s2">&#34;Thumbs.db&#34;</span> <span class="p">`</span>
-  <span class="o">-or</span> <span class="nv">$_</span><span class="p">.</span><span class="n">Name</span> <span class="o">-eq</span> <span class="s2">&#34;.DS_Store&#34;</span> <span class="p">`</span>
-  <span class="o">-or</span> <span class="nv">$_</span><span class="p">.</span><span class="n">Name</span> <span class="o">-like</span> <span class="s2">&#34;._*&#34;</span> <span class="p">`</span>
-  <span class="p">}</span> <span class="p">|</span> <span class="nb">Remove-Item</span> <span class="n">-Force</span>
+$a | Where-Object { `
+  $_.Name -like <span style="color:#a31515">&#34;~*&#34;</span> -and $_.LastWriteTime -lt (Get-Date).AddDays(-1) `
+  -or $_.Name -like <span style="color:#a31515">&#34;*.tmp&#34;</span> `
+  -or $_.Name -eq <span style="color:#a31515">&#34;Thumbs.db&#34;</span> `
+  -or $_.Name -eq <span style="color:#a31515">&#34;.DS_Store&#34;</span> `
+  -or $_.Name -like <span style="color:#a31515">&#34;._*&#34;</span> `
+  } | Remove-Item -Force
 </code></pre></div><p>削除対象は以下の通り。</p>
 <ul>
 <li>更新日時が1日以上前のOffice一時ファイル(<code>&quot;~*&quot;</code>)</li>

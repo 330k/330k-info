@@ -111,11 +111,11 @@ if (!doNotTrack) {
 <p>LetsNoteでは有線LANのNICは<code>enp0s25</code>、無線LANは<code>wlp2s0</code>となった。</p>
 <p>注意点は以下の通り。</p>
 <ul>
-<li><s><code>rule_url=https://www.snort.org/reg-rules/|snortrules-snapshot.tar.gz|&lt;oinkcode&gt;</code></s><br/>
-→ <code>rule_url=https://www.snort.org/rules/|snortrules-snapshot.tar.gz|&lt;oinkcode&gt;</code><br/>
+<li><!-- raw HTML omitted --><code>rule_url=https://www.snort.org/reg-rules/|snortrules-snapshot.tar.gz|&lt;oinkcode&gt;</code><!-- raw HTML omitted --><!-- raw HTML omitted -->
+→ <code>rule_url=https://www.snort.org/rules/|snortrules-snapshot.tar.gz|&lt;oinkcode&gt;</code><!-- raw HTML omitted -->
 ※微妙にURLが変わっているので注意</li>
-<li><s><code>sudo /usr/local/bin/pulledpork.pl -c /etc/snort/pulledpork.conf -l</code></s><br/>
-→ <code>sudo /usr/local/bin/pulledpork.pl -c /etc/snort/pulledpork.conf -l -o /etc/snort/rules/snort.rules</code><br/>
+<li><!-- raw HTML omitted --><code>sudo /usr/local/bin/pulledpork.pl -c /etc/snort/pulledpork.conf -l</code><!-- raw HTML omitted --><!-- raw HTML omitted -->
+→ <code>sudo /usr/local/bin/pulledpork.pl -c /etc/snort/pulledpork.conf -l -o /etc/snort/rules/snort.rules</code><!-- raw HTML omitted -->
 ※-oオプションが必要と怒られた</li>
 </ul>
 <p>有線LAN(enp0s25)はミラーポートから受信だけできれば良いので、
@@ -125,9 +125,9 @@ NetworkManagerを使って適当に固定IPを設定。</p>
 <p>RTX810はhttp://www.rtpro.yamaha.co.jp/RT/manual/rt-common/setup/lan_port-mirroring.html
 を参照してミラーポートを設定。</p>
 <ul>
-<li>設定(ポート1と2の送信および受信フレームをポート4にミラー)<br/>
+<li>設定(ポート1と2の送信および受信フレームをポート4にミラー)<!-- raw HTML omitted -->
 <code>lan port-mirroring lan1 4 in 1 2 out 1 2</code></li>
-<li>解除<br/>
+<li>解除<!-- raw HTML omitted -->
 <code>no lan port-mirroring lan1</code></li>
 </ul>
 <h2 id="結果">結果</h2>

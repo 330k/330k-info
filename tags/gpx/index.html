@@ -210,7 +210,7 @@ if (!doNotTrack) {
 </div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		MathematicaでGPXファイルを読み込んで解釈する方法のメモ。 対象となるGPXファイルを xml=Import[filepath,&#34;XML&#34;];でまずXMLとして読み込んでおいて、 trk=Cases[xml,XMLElement[&#34;trk&#34;,_,_],Infinity];でtrk要素を抜き出し、 trkpt=(ToExpression[{&#34;lat&#34
+		MathematicaでGPXファイルを読み込んで解釈する方法のメモ。 対象となるGPXファイルを xml = Import[filepath, &#34;XML&#34;]; でまずXMLとして読み込んでおいて、 trk = Cases[xml, XMLElement[&#34;trk&#34;, _, _], Infinity]; でtrk要素を抜き出し、 trkpt = (ToExpression[{&#34;lat&#34;, &#34;lon&#34;} /. Cases[#1, XMLElement[&#34;trkpt&#34;, attr_, _] :&gt; attr, Infinity]] &amp; ) /@ trk; でそれぞれのtrk要素からtrkpt要素を抜き出して緯度と経度を得る。 Sep. 28 2013追記 Mathematica 8からは標準でGPXをImport可能になった。
 	</div>
 </article>
 </main>

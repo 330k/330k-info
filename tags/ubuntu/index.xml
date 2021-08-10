@@ -13,7 +13,7 @@
       <pubDate>Tue, 22 Jun 2021 04:34:59 +0900</pubDate>
       
       <guid>https://www.330k.info/essay/openvpn-client-split-tunnel/</guid>
-      <description>&lt;p&gt;OpenVPNのLinuxクライアントを使ってスプリットトンネルのVPN接続をしようとした所、&lt;s&gt;&lt;code&gt;route-nopull&lt;/code&gt;が効かなかったので、別の対処を行った。&lt;/s&gt;→&lt;code&gt;redirect-gateway def1&lt;/code&gt;を削除。&lt;/p&gt;</description>
+      <description>&lt;p&gt;OpenVPNのLinuxクライアントを使ってスプリットトンネルのVPN接続をしようとした所、&lt;!-- raw HTML omitted --&gt;&lt;code&gt;route-nopull&lt;/code&gt;が効かなかったので、別の対処を行った。&lt;!-- raw HTML omitted --&gt;→&lt;code&gt;redirect-gateway def1&lt;/code&gt;を削除。&lt;/p&gt;</description>
     </item>
     
     <item>

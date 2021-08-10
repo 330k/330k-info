@@ -97,19 +97,19 @@ if (!doNotTrack) {
 <p>そこで<code>wscript</code>で起動した場合に、引数を含めて<code>cscript</code>で起動し直すスニペットを作成した。</p>
 <p>以下のコードを<code>.js</code>ファイルの先頭部分に配置すればOK。
 即時関数で括ってあるのでグローバルな環境を汚染せず、他の箇所に影響しないようにしている。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-JavaScript" data-lang="JavaScript"><span class="c1">// WScriptで起動時にCScriptに変更
-</span><span class="c1"></span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
-  <span class="k">if</span><span class="p">(</span><span class="nx">WScript</span><span class="p">.</span><span class="nx">FullName</span><span class="p">.</span><span class="nx">match</span><span class="p">(</span><span class="sr">/WScript\.exe$/i</span><span class="p">)){</span>
-    <span class="kd">var</span> <span class="nx">wshell</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">ActiveXObject</span><span class="p">(</span><span class="s2">&#34;WScript.Shell&#34;</span><span class="p">);</span>
-    <span class="kd">var</span> <span class="nx">cmd</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&#34;cscript&#34;</span><span class="p">,</span> <span class="s2">&#34;\&#34;&#34;</span> <span class="o">+</span> <span class="nx">WScript</span><span class="p">.</span><span class="nx">ScriptFullName</span> <span class="o">+</span> <span class="s2">&#34;\&#34;&#34;</span><span class="p">];</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JavaScript" data-lang="JavaScript"><span style="color:#008000">// WScriptで起動時にCScriptに変更
+</span><span style="color:#008000"></span>(<span style="color:#00f">function</span>(){
+  <span style="color:#00f">if</span>(WScript.FullName.match(<span style="color:#a31515">/WScript\.exe$/i</span>)){
+    <span style="color:#00f">var</span> wshell = <span style="color:#00f">new</span> ActiveXObject(<span style="color:#a31515">&#34;WScript.Shell&#34;</span>);
+    <span style="color:#00f">var</span> cmd = [<span style="color:#a31515">&#34;cscript&#34;</span>, <span style="color:#a31515">&#34;\&#34;&#34;</span> + WScript.ScriptFullName + <span style="color:#a31515">&#34;\&#34;&#34;</span>];
    
-    <span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">WScript</span><span class="p">.</span><span class="nx">Arguments</span><span class="p">.</span><span class="nx">Count</span><span class="p">();</span> <span class="nx">i</span><span class="o">++</span><span class="p">){</span>
-      <span class="nx">cmd</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="s2">&#34;\&#34;&#34;</span> <span class="o">+</span> <span class="nx">WScript</span><span class="p">.</span><span class="nx">Arguments</span><span class="p">.</span><span class="nx">Item</span><span class="p">(</span><span class="nx">i</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&#34;\&#34;&#34;</span><span class="p">);</span>
-    <span class="p">}</span>
-    <span class="nx">wshell</span><span class="p">.</span><span class="nx">Run</span><span class="p">(</span><span class="nx">cmd</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="s2">&#34; &#34;</span><span class="p">),</span> <span class="mi">1</span><span class="p">,</span> <span class="kc">false</span><span class="p">);</span>
-    <span class="nx">WScript</span><span class="p">.</span><span class="nx">Quit</span><span class="p">();</span>
-  <span class="p">}</span>
-<span class="p">})();</span>
+    <span style="color:#00f">for</span>(<span style="color:#00f">var</span> i = 0; i &lt; WScript.Arguments.Count(); i++){
+      cmd.push(<span style="color:#a31515">&#34;\&#34;&#34;</span> + WScript.Arguments.Item(i) + <span style="color:#a31515">&#34;\&#34;&#34;</span>);
+    }
+    wshell.Run(cmd.join(<span style="color:#a31515">&#34; &#34;</span>), 1, <span style="color:#00f">false</span>);
+    WScript.Quit();
+  }
+})();
 </code></pre></div>
 		</div>
 		<footer class="post__footer">

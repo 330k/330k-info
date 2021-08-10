@@ -99,35 +99,35 @@ if (!doNotTrack) {
 <p>ただこれは非同期処理でありながらPromiseを返さず、独自に<code>withSuccessHandler</code>と<code>withFailureHandler</code>にコールバックを設定する必要があるので、ちょっと面倒。</p>
 <p>ということで、Promise化するコードを作ってみた(V8エンジン限定)。</p>
 <p>クライアント側のJavaScriptに下記コードを入れる。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-JavaScript" data-lang="JavaScript"><span class="kd">function</span> <span class="nx">gasRun</span><span class="p">(</span><span class="nx">func</span><span class="p">,</span> <span class="p">...</span><span class="nx">args</span><span class="p">){</span>
-  <span class="k">return</span> <span class="k">new</span> <span class="nb">Promise</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">resolve</span><span class="p">,</span> <span class="nx">reject</span><span class="p">){</span>
-    <span class="nx">google</span><span class="p">.</span><span class="nx">script</span><span class="p">.</span><span class="nx">run</span><span class="p">.</span><span class="nx">withSuccessHandler</span><span class="p">(</span><span class="kd">function</span><span class="p">(...</span><span class="nx">e</span><span class="p">){</span>
-      <span class="nx">resolve</span><span class="p">(...</span><span class="nx">e</span><span class="p">);</span>
-    <span class="p">}).</span><span class="nx">withFailureHandler</span><span class="p">(</span><span class="kd">function</span><span class="p">(...</span><span class="nx">e</span><span class="p">){</span>
-      <span class="nx">reject</span><span class="p">(...</span><span class="nx">e</span><span class="p">);</span>
-    <span class="p">})[</span><span class="nx">func</span><span class="p">](...</span><span class="nx">args</span><span class="p">);</span>
-  <span class="p">});</span>
-<span class="p">}</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JavaScript" data-lang="JavaScript"><span style="color:#00f">function</span> gasRun(func, ...args){
+  <span style="color:#00f">return</span> <span style="color:#00f">new</span> Promise(<span style="color:#00f">function</span>(resolve, reject){
+    google.script.run.withSuccessHandler(<span style="color:#00f">function</span>(...e){
+      resolve(...e);
+    }).withFailureHandler(<span style="color:#00f">function</span>(...e){
+      reject(...e);
+    })[func](...args);
+  });
+}
 </code></pre></div><h2 id="使い方">使い方</h2>
 <p>GASサーバ側の<code>doSomething1</code>, <code>doSomething2</code>, <code>doSomething3</code>を順番に呼び出す場合には、クライアント側で以下のように使う。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-JavaScript" data-lang="JavaScript"><span class="nx">gasRun</span><span class="p">(</span><span class="s1">&#39;doSomething1&#39;</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">){</span>
-  <span class="c1">// doSomething1成功時
-</span><span class="c1"></span>  <span class="k">return</span> <span class="nx">gasRun</span><span class="p">(</span><span class="s1">&#39;doSomething2&#39;</span><span class="p">);</span>
-<span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">){</span>
-  <span class="c1">// doSomething2成功時
-</span><span class="c1"></span>  <span class="k">return</span> <span class="nx">gasRun</span><span class="p">(</span><span class="s1">&#39;doSomething3&#39;</span><span class="p">);</span>
-<span class="p">}).</span><span class="k">catch</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">){</span>
-  <span class="c1">// エラー時
-</span><span class="c1"></span>  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">e</span><span class="p">);</span>
-<span class="p">});</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JavaScript" data-lang="JavaScript">gasRun(<span style="color:#a31515">&#39;doSomething1&#39;</span>).then(<span style="color:#00f">function</span>(e){
+  <span style="color:#008000">// doSomething1成功時
+</span><span style="color:#008000"></span>  <span style="color:#00f">return</span> gasRun(<span style="color:#a31515">&#39;doSomething2&#39;</span>);
+}).then(<span style="color:#00f">function</span>(e){
+  <span style="color:#008000">// doSomething2成功時
+</span><span style="color:#008000"></span>  <span style="color:#00f">return</span> gasRun(<span style="color:#a31515">&#39;doSomething3&#39;</span>);
+}).<span style="color:#00f">catch</span>(<span style="color:#00f">function</span>(e){
+  <span style="color:#008000">// エラー時
+</span><span style="color:#008000"></span>  console.log(e);
+});
 </code></pre></div><p><code>await</code>を使って下記のように同期処理のようにも書ける(というかこちらのほうが圧倒的に書きやすくなる)。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-JavaScript" data-lang="JavaScript"><span class="p">(</span><span class="kr">async</span> <span class="p">()=&gt;</span> <span class="p">{</span>
-  <span class="kr">const</span> <span class="nx">result1</span> <span class="o">=</span> <span class="kr">await</span> <span class="nx">gasRun</span><span class="p">(</span><span class="s1">&#39;doSomething1&#39;</span><span class="p">);</span>
-  <span class="kr">const</span> <span class="nx">result2</span> <span class="o">=</span> <span class="kr">await</span> <span class="nx">gasRun</span><span class="p">(</span><span class="s1">&#39;doSomething2&#39;</span><span class="p">);</span>
-  <span class="kr">const</span> <span class="nx">result3</span> <span class="o">=</span> <span class="kr">await</span> <span class="nx">gasRun</span><span class="p">(</span><span class="s1">&#39;doSomething3&#39;</span><span class="p">);</span>
-<span class="p">})();</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JavaScript" data-lang="JavaScript">(<span style="color:#00f">async</span> ()=&gt; {
+  <span style="color:#00f">const</span> result1 = <span style="color:#00f">await</span> gasRun(<span style="color:#a31515">&#39;doSomething1&#39;</span>);
+  <span style="color:#00f">const</span> result2 = <span style="color:#00f">await</span> gasRun(<span style="color:#a31515">&#39;doSomething2&#39;</span>);
+  <span style="color:#00f">const</span> result3 = <span style="color:#00f">await</span> gasRun(<span style="color:#a31515">&#39;doSomething3&#39;</span>);
+})();
 </code></pre></div><p><code>doSomething(arg1, arg2, ...)</code>のように引数を渡す時は以下のように<code>gasRun</code>の第2引数以下に指定する。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-JavaScript" data-lang="JavaScript"><span class="nx">gasRun</span><span class="p">(</span><span class="s1">&#39;doSomething&#39;</span><span class="p">,</span> <span class="nx">arg1</span><span class="p">,</span> <span class="nx">arg2</span><span class="p">);</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JavaScript" data-lang="JavaScript">gasRun(<span style="color:#a31515">&#39;doSomething&#39;</span>, arg1, arg2);
 </code></pre></div><h2 id="他の実装例">他の実装例</h2>
 <ul>
 <li><a href="https://qiita.com/37cohina/items/b3bb08d4c52c5e7e3022">google.script.run が Promise を返すようにする - Qiita</a></li>

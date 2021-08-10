@@ -131,7 +131,7 @@ if (!doNotTrack) {
 </div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		Mathematicaの省略記法はドキュメントやヘルプで調べにくいのでまとめてみる。 関数適用 @ (前置記法) f@aはf[a]と等価。 後ろのカッコ(])を入力しなくてもすむ。 Plot[Evaluate@Integrate[x^2,x],{x,-3,3}]// (後置記法) a // fはf[a]と等価。 数値にする(N)や簡約化(Simplify、FullSimplify)でよく使う。 In[1]:=Sin[2]//NOut[1]=0.909297~ ~ (中置記法) a~f~bとすると、f[a, b]と等価になる。 In[1]:={1,2}~Join~{3,4}O
+		Mathematicaの省略記法はドキュメントやヘルプで調べにくいのでまとめてみる。 関数適用 @ (前置記法) f@aはf[a]と等価。 後ろのカッコ(])を入力しなくてもすむ。 Plot[Evaluate@Integrate[x^2, x], {x, -3, 3}] // (後置記法) a // fはf[a]と等価。 数値にする(N)や簡約化(Simplify、FullSimplify)でよく使う。 In[1]:= Sin[2] // N Out[1]= 0.909297 ~ ~ (中置記法) a~f~bとすると、f[a, b]と等価になる。 In[1]:= {1, 2}~Join~{3, 4} Out[1]= {1, 2, 3, 4} 関数適用
 	</div>
 </article><article class="list__item post">
 	<figure class="list__thumbnail">
@@ -177,7 +177,7 @@ if (!doNotTrack) {
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
 	<time class="meta__text" datetime="2017-07-22T19:32:46">July 22, 2017</time>
-	<time class="meta__text" datetime="2020-11-12T00:10:08"> (Last Modified: November 12, 2020)</time>
+	<time class="meta__text" datetime="2021-08-07T20:17:47"> (Last Modified: August 07, 2021)</time>
 </div>
 
 <div class="meta__item-categories meta__item">
@@ -187,7 +187,7 @@ if (!doNotTrack) {
 </div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		球面上に一様分布するランダムな点を生成したい時、 単純に極座標表示でθとφを一様分布させると、極付近に点が集まってしまう。 data1=Transpose[{Sin[t]Cos[f],Sin[t]Sin[f],Cos[t]}/.{f-&gt;RandomReal[{0,2Pi},2000],t-&gt;RandomReal[{0,Pi},2000]}];g1=ListPointPlot3D[data1,BoxRatios-&gt;{1,1,1}] 球面上で一様分布させるには、下記のようにθにArcCosを使う (θの位置の確率をSinθに比例させたい→累積確率分布関数はCos→逆関数はArcCos)。 data2=Transpose[{Sin[t]Cos[f],Sin[t]Sin[f],Cos[t]}/.{f-&gt;RandomReal[{0,2Pi},2000],t-&gt;ArcCos[RandomReal[{-1,1},2000]]}];g2=ListPointPlot3D[data2,BoxRatios-&gt;{1,1,1}] なお、多次元球面上の一様分布は球面上に一様分布する乱数の生成にあるように、 多次元ガウス分布を正規化すると得られる。 下記は3
+		球面上に一様分布するランダムな点を生成したい時、 単純に極座標表示でθとφを一様分布させると、極付近に点が集まってしまう。 data1 = Transpose[{Sin[t] Cos[f], Sin[t] Sin[f], Cos[t]} /. { f -&gt; RandomReal[{0, 2 Pi}, 2000], t -&gt; RandomReal[{0, Pi}, 2000]}]; g1 = ListPointPlot3D[data1, BoxRatios -&gt; {1, 1, 1}] 球面上で一様分布させるには、下記のようにθにArcCosを使う (θの位置の確率をSinθに比例させたい→累積確率分布関数はCos→逆関数はArcCos)。 data2 = Transpose[{Sin[t] Cos[f], Sin[t] Sin[f], Cos[t]} /. { f -&gt; RandomReal[{0, 2 Pi}, 2000], t -&gt; ArcCos[RandomReal[{-1, 1}, 2000]]}]; g2 = ListPointPlot3D[data2, BoxRatios -&gt; {1, 1, 1}] なお、多次元球
 	</div>
 </article><article class="list__item post">
 	<figure class="list__thumbnail">
@@ -243,7 +243,7 @@ if (!doNotTrack) {
 </div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		Mathematica 8から、CompileでCコンパイラを使って直接ネイティブコードにコンパイルできるようになった。 使用するCコンパイラは、 Needs[&#34;CCompilerDriver`&#34;];CCompilerDriver`$CCompiler={&#34;Name&#34;-&gt;&#34;GCC&#34;,&#34;Compiler&#34;-&gt;CCompilerDriver`GCCCo
+		Mathematica 8から、CompileでCコンパイラを使って直接ネイティブコードにコンパイルできるようになった。 使用するCコンパイラは、 Needs[&#34;CCompilerDriver`&#34;]; CCompilerDriver`$CCompiler = { &#34;Name&#34; -&gt; &#34;GCC&#34;, &#34;Compiler&#34; -&gt; CCompilerDriver`GCCCompiler`GCCCompiler, &#34;CompilerInstallation&#34; -&gt; &#34;/usr/bin&#34;, &#34;CompilerName&#34; -&gt; Automatic }; というように、CCompilerDriver`$CCompilerを変更して指定する。 以前からのCompile(&ldquo;WVM&rdquo;)と、各コンパイラの比較のため、ベンチマークを行ってみた。 検証環境は以下の通り。 CPU: Intel Core-i7 3770 (インテル
 	</div>
 </article><article class="list__item post">
 	<figure class="list__thumbnail">
