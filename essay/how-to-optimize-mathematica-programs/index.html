@@ -12,7 +12,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.330k.info/essay/how-to-optimize-mathematica-programs/" /><meta property="og:image" content="https://www.ipros.jp/public/product/image/f59/396065002/IPROS3632825140790521490.png?h=220&w=220" /><meta property="article:section" content="essay" />
 <meta property="article:published_time" content="2009-12-14T22:39:00+09:00" />
-<meta property="article:modified_time" content="2020-11-12T00:03:48+09:00" />
+<meta property="article:modified_time" content="2021-08-17T16:55:24+09:00" />
 
 
 	<meta name="twitter:card" content="summary_large_image"/>
@@ -82,7 +82,7 @@ if (!doNotTrack) {
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
 	<time class="meta__text" datetime="2009-12-14T22:39:00">December 14, 2009</time>
-	<time class="meta__text" datetime="2020-11-12T00:03:48"> (Last Modified: November 12, 2020)</time>
+	<time class="meta__text" datetime="2021-08-17T16:55:24"> (Last Modified: August 17, 2021)</time>
 </div>
 
 <div class="meta__item-categories meta__item">
@@ -96,10 +96,16 @@ if (!doNotTrack) {
 <p>必然的に組み込み関数を多く使い、リストをまとめて操作することになるので手続き型で書くより速くなることが多い。
 コード量も少なくなって読みやすくなるので、よほどのことでない限りMathematicaでは関数型で書く。</p>
 <p>具体的には、手続き型ループ構文(<code>Do</code>, <code>For</code>, <code>While</code>など)をやめて、<code>Map</code>や<code>Thread</code>を使うようにする。</p>
-<h3 id="出来る限り組み込みの関数を使う">出来る限り組み込みの関数を使う</h3>
+<h3 id="出来る限り組み込みの関数を使い呼び出し回数を減らす">出来る限り組み込みの関数を使い、呼び出し回数を減らす</h3>
 <p>組み込み関数でできることは出来る限りやらせる。
 ドキュメントを探すと、Mathematicaは意外と多くのものが組み込みでできるようになっている。</p>
-<h3 id="リストは全体をまとめて扱う">リストは全体をまとめて扱う</h3>
+<p>例えば、整数商を求める場合は<code>Floor[a / b]</code>とするより組み込み関数一発で<code>Quotient[a, b]</code>として関数呼び出し回数を減らすと高速化する。</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Mathematica" data-lang="Mathematica">v = RandomInteger[{1, 10}, {10000, 2}];
+{Timing[Floor[#[[1]]/#[[2]]] &amp; /@ v;], 
+ Timing[Quotient[#[[1]], #[[2]]] &amp; /@ v;]}
+
+{{0.037664, Null}, {0.00116, Null}}
+</code></pre></div><h3 id="リストは全体をまとめて扱う">リストは全体をまとめて扱う</h3>
 <p>大概のループの中身はリストへの関数の適用や、テンソルの演算などに帰着する。</p>
 <p>四則演算はリストにそのまま適用可能。
 内積は<code>Dot</code>、外積は<code>Cross</code>があるし、それらを一般化した<code>Inner</code>、<code>Outer</code>といった関数もある。</p>
