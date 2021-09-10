@@ -39,6 +39,7 @@ if (!doNotTrack) {
 </script>
 <script async src='https://www.google-analytics.com/analytics.js'></script>
 
+	<script defer src="/js/330k.js"></script>
 	<link rel="stylesheet" href="/css/syntax.css">
 </head>
 <body class="body">
@@ -104,7 +105,7 @@ if (!doNotTrack) {
 <p>旧PC(Ubuntu 16.04)で
 <a href="https://www.ubuntulinux.jp/download/ja-remix">Ubuntu Desktop 日本語 Remixのダウンロード</a>から、<code>ubuntu-ja-17.10-desktop-amd64.iso</code>をダウンロード。
 ddでUSBメモリに書き込む。</p>
-<pre><code>sudo dd if=ubuntu-ja-17.10-desktop-amd64.iso of=/dev/sde status=progress
+<pre tabindex="0"><code>sudo dd if=ubuntu-ja-17.10-desktop-amd64.iso of=/dev/sde status=progress
 </code></pre><h2 id="ファームウェア設定">ファームウェア設定</h2>
 <p>新PCに電源を入れ、ファームウェア設定画面に入り、起動モードをUEFIからBIOSに変更する。</p>
 <h2 id="ubuntuインストール">Ubuntuインストール</h2>
@@ -118,13 +119,13 @@ ddでUSBメモリに書き込む。</p>
 </ul>
 <p>インストールができたらUSBメモリを抜いて再起動。</p>
 <p>Ubuntuが無事に起動し、ログインできたら、まずはディレクトリ名を日本語から英語に直してから作業開始。</p>
-<pre><code>LANG=C xdg-user-dirs-gtk-update
+<pre tabindex="0"><code>LANG=C xdg-user-dirs-gtk-update
 </code></pre><p>DKMSがうまく動かないので、カーネルのバージョンを固定する。</p>
-<pre><code>sudo apt-mark hold linux-generic linux-image-generic linux-headers-generic
+<pre tabindex="0"><code>sudo apt-mark hold linux-generic linux-image-generic linux-headers-generic
 </code></pre><h2 id="nvidia-driver">NVIDIA Driver</h2>
 <p>公式リポジトリにあるnvidia-387をインストールする。
 デフォルトの<code>nouveau</code>の無効化は不要だった。</p>
-<pre><code>sudo apt update
+<pre tabindex="0"><code>sudo apt update
 sudo apt install nvidia-387
 </code></pre><h2 id="cuda-91">CUDA 9.1</h2>
 <p><a href="https://developer.nvidia.com/cuda-downloads">CUDA Toolkit 9.1 Download</a>からUbuntu 17.04用の「deb (network)」をダウンロード。</p>
@@ -140,17 +141,17 @@ export LD_LIBRARY_PATH=/usr/local/cuda:$LD_LIBRARY_PATH
 Wolframシステム移行フォームで、新しいアクティベーションキーを取得する。</p>
 <p>アクティベーションキーが記載されたメールが届いたら、インストールスクリプトを起動する。
 インストール途中に届いたアクティベーションコードを入力。</p>
-<pre><code>sudo ./Mathematica_8.0.4_Japanese_LINUX.sh
+<pre tabindex="0"><code>sudo ./Mathematica_8.0.4_Japanese_LINUX.sh
 </code></pre><p>そのままでは日本語を扱えないので修正する。
 <code>/usr/local/Wolfram/Mathematica/8.0/Executables/Mathematica</code>の9行目付近を下記のように修正する。</p>
-<pre><code>#LANG=ja_JP.eucJP
+<pre tabindex="0"><code>#LANG=ja_JP.eucJP
 LANG=ja_JP.UTF-8
 </code></pre><p><code>ISO8859-1.m</code>は書き換えなくても大丈夫だった。</p>
 <h2 id="cudalinkの設定">CUDALinkの設定</h2>
 <p>Wolframのドキュメントには環境変数<code>NVIDIA_DRIVER_LIBRARY_PATH</code>と<code>CUDA_LIBRARY_PATH</code>を設定すれば良い、と書いてあるが、実際には読みに行ってくれない。
 (なぜか環境変数をMathematicaが読み込めていない)</p>
 <p>なので、デフォルトの位置にシンボリックリンクを作成する。</p>
-<pre><code>sudo mkdir /usr/lib64
+<pre tabindex="0"><code>sudo mkdir /usr/lib64
 sudo ln -s /usr/lib/nvidia-387/tls/libnvidia-tls.so.387.26 /usr/lib64/libnvidia-tls.so.387.26
 sudo ln -s /usr/lib/x86_64-linux-gnu/libcuda.so /usr/lib64/libcuda.so
 </code></pre><p>Mathematicaを起動して確認する。</p>

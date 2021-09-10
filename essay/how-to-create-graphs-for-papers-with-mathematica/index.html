@@ -39,6 +39,7 @@ if (!doNotTrack) {
 </script>
 <script async src='https://www.google-analytics.com/analytics.js'></script>
 
+	<script defer src="/js/330k.js"></script>
 	<link rel="stylesheet" href="/css/syntax.css">
 </head>
 <body class="body">
@@ -176,7 +177,7 @@ if (!doNotTrack) {
 <h2 id="pngを作成するときは一旦pdfにexportしてimagemagickなどで変換する">PNGを作成するときは一旦PDFにExportして、ImageMagickなどで変換する</h2>
 <p>グラフの余白部分や<code>FrameTicks</code>の目盛りの長さなどは、グラフ全体の大きさが変わった時に変化してしまう。
 PNG画像にするときは、Mathematicaからは一旦PDFで出力しておき、ImageMagickなどを使って</p>
-<pre><code>convert -density 300 ***.pdf ***.png
+<pre tabindex="0"><code>convert -density 300 ***.pdf ***.png
 </code></pre><p>と、印刷時の解像度(この例では300dpi)を指定してPNGに変換する。</p>
 <p>Wordの場合、PNG画像を挿入した後、プロパティからサイズを上で決めた140mmなどと指定する。
 どうしても直接PNGにExportするときはImageResolutionを指定する</p>
