@@ -6,7 +6,17 @@
     <description>Recent content on 330k info</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Sat, 24 Jul 2021 19:35:50 +0900</lastBuildDate><atom:link href="https://www.330k.info/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 14 Sep 2021 22:48:02 +0900</lastBuildDate><atom:link href="https://www.330k.info/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>逆グーデルマン関数の計算式のJavaScriptにおける精度</title>
+      <link>https://www.330k.info/essay/precise_comparison_of_gudermannian_function/</link>
+      <pubDate>Tue, 14 Sep 2021 22:48:02 +0900</pubDate>
+      
+      <guid>https://www.330k.info/essay/precise_comparison_of_gudermannian_function/</guid>
+      <description>&lt;p&gt;メルカトル図法の投影座標の計算に逆グーデルマン関数を用いる(&lt;a href=&#34;https://ja.wikipedia.org/wiki/%E3%83%A1%E3%83%AB%E3%82%AB%E3%83%88%E3%83%AB%E5%9B%B3%E6%B3%95&#34;&gt;メルカトル図法 - Wikipedia&lt;/a&gt;)が、等価な計算式が複数ある。&lt;/p&gt;
+&lt;p&gt;JavaScriptで計算する際に、どの計算式を用いるのが誤差が少なくなるのか調査した。&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>2021年07月22日 SR600 奥入瀬</title>
       <link>https://www.330k.info/bicycle/touring/20210722-sr600-oirase/</link>
