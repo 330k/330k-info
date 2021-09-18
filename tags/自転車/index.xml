@@ -6,7 +6,16 @@
     <description>Recent content in 自転車 on 330k info</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Sat, 11 Jul 2020 19:41:44 +0900</lastBuildDate><atom:link href="https://www.330k.info/tags/%E8%87%AA%E8%BB%A2%E8%BB%8A/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 10 Sep 2021 23:56:36 +0900</lastBuildDate><atom:link href="https://www.330k.info/tags/%E8%87%AA%E8%BB%A2%E8%BB%8A/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>GPXルート沿いコンビニ・道の駅検索</title>
+      <link>https://www.330k.info/software/gpx-nearby-search/</link>
+      <pubDate>Fri, 10 Sep 2021 23:56:36 +0900</pubDate>
+      
+      <guid>https://www.330k.info/software/gpx-nearby-search/</guid>
+      <description>&lt;p&gt;GPXファイルからルート沿いのコンビニ・道の駅の検索を行うオンラインツール。&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>キャノンボール専用 天候・風向き予測</title>
       <link>https://www.330k.info/software/cannonball-wind-map/</link>
