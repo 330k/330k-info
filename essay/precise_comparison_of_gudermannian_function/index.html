@@ -13,7 +13,7 @@ JavaScriptで計算する際に、どの計算式を用いるのが誤差が少�
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.330k.info/essay/precise_comparison_of_gudermannian_function/" /><meta property="og:image" content="https://www.330k.info/images/geometry-1044090.jpg" /><meta property="article:section" content="essay" />
 <meta property="article:published_time" content="2021-09-14T22:48:02+09:00" />
-<meta property="article:modified_time" content="2021-09-15T00:12:15+09:00" />
+<meta property="article:modified_time" content="2021-09-19T08:11:48+09:00" />
 
 
 	<meta name="twitter:card" content="summary_large_image"/>
@@ -85,7 +85,7 @@ if (!doNotTrack) {
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
 	<time class="meta__text" datetime="2021-09-14T22:48:02">September 14, 2021</time>
-	<time class="meta__text" datetime="2021-09-15T00:12:15"> (Last Modified: September 15, 2021)</time>
+	<time class="meta__text" datetime="2021-09-19T08:11:48"> (Last Modified: September 19, 2021)</time>
 </div>
 
 <div class="meta__item-categories meta__item">
@@ -248,15 +248,19 @@ if (!doNotTrack) {
 </table>
 <p>これらから、(3)の計算式が最も誤差が少なく、またxの値によらず安定している。</p>
 <p><code>Math.asinh</code>はInternet Explorerには実装されていない(<a href="https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Math/asinh">Math.asinh() - JavaScript | MDN</a>)ので、
-IEでも動作する(1)、(4)、(5)が次点として選択肢として入る。</p>
-<p>ただし(1)のみx = 0のとき-1.11e-16と0でない値が返ってくる点は注意。</p>
+IEでも動作する(1)、(4)、(5)が次点として選択肢として入るが、</p>
+<ul>
+<li>(1)はx = 0のとき-1.11e-16と0でない値が返ってくる</li>
+<li>計算速度が(5)が最も速い</li>
+</ul>
+<p>の2点から、(5)が良いと考えられる。</p>
 <p>Google ChromeとFirefoxの違いは(3)のみで、他の5つはほとんど同じ計算結果となった。</p>
 <p>精度より計算速度を優先する場合は、(6)が1番速い結果となった。</p>
 <h2 id="結論">結論</h2>
 <ul>
 <li>計算式は(3)の<code>x =&gt; Math.asinh(Math.tan(x))</code>が最も精度がよく、Chrome、Firefox、Edgeなどのモダンブラウザではこれを使うのが良い。</li>
-<li><code>Math.asinh</code>が実装されていないIEをサポートする場合は(1)、(4)、(5)のいずれか。</li>
-<li>計算速度を優先する場合は(6)。</li>
+<li><code>Math.asinh</code>が実装されていないIEをサポートする場合は(5)の<code>x =&gt; Math.log((1.0+Math.sin(x))/Math.cos(x))</code>。</li>
+<li>計算速度を優先する場合は(6)の<code>x =&gt; 0.5*Math.log((1.0+Math.sin(x))/(1.0-Math.sin(x)))</code>。</li>
 </ul>
 		</div>
 		<footer class="post__footer">
