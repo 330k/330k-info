@@ -9,7 +9,9 @@ const googlemap = {
   markers: [],
   circle: null
 };
-const hotellist = [];
+const searchresult = {
+  hotellist: []
+};
 
 /**
  * Google Maps JavaScript API Initialize Callback
@@ -38,11 +40,11 @@ function initMap(){
       fillOpacity: 0.3
     });
     
-    const hotellist = await getHotelList(e.latLng.lat(), e.latLng.lng(), radius);
+    searchresult.hotellist = await getHotelList(e.latLng.lat(), e.latLng.lng(), radius);
     
-    console.log(hotellist);
+    console.log(searchresult.hotellist);
     
-    showHotelList(hotellist);
+    showHotelList(searchresult.hotellist);
     hideLoader();
     
   });
@@ -98,8 +100,22 @@ function showHotelList(hotels){
   const ele_tbody = document.getElementById("tbody_hotel");
   ele_tbody.innerHTML = "";
   
-  for(i = 0; i < hotels.length; i++){
-    const hotel = hotels[i];
+  const hotels2 = hotels.sort((a,b) => {
+    const c1 = a.hotelDetailInfo.lastCheckinTime ? a.hotelDetailInfo.lastCheckinTime : "";
+    const c2 = b.hotelDetailInfo.lastCheckinTime ? b.hotelDetailInfo.lastCheckinTime : "";
+    
+    if(c1 > c2){
+      return -1;
+    }else if(c1 < c2){
+      return 1;
+    }else{
+      return 0;
+    }
+  });
+  console.log(hotels2);
+
+  for(i = 0; i < hotels2.length; i++){
+    const hotel = hotels2[i];
     const hotel_no = hotel.hotelBasicInfo.hotelNo;
     const hotel_row_id = "hotel_" + hotel_no;
     const ele_tr = document.createElement("tr");
