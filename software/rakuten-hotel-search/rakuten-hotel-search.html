@@ -25,7 +25,8 @@ function initMap(){
   googlemap.map = new google.maps.Map(document.getElementById('map_canvas'), {
     zoom: 6,
     mapTypeId: google.maps.MapTypeId.ROADMAP,
-    center: new google.maps.LatLng(35.681382, 139.766084)
+    center: new google.maps.LatLng(35.681382, 139.766084),
+    fullscreenControl: false
   });
   
   googlemap.map.addListener("click", async function(e){
