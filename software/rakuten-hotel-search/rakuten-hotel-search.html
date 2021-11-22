@@ -116,8 +116,10 @@ function showHotelList(searchresult){
   googlemap.markers = [];
   const ele_tbody = document.getElementById("tbody_hotel");
   ele_tbody.innerHTML = "";
+
+  const hasCoinLaundry = (hotel) => hotel.hotelFacilitiesInfo.hotelFacilities.some((e) => /コインランドリー/.test(e.item));
   
-  // 最終チェックイン時刻が遅い順にソート
+  // 最終チェックイン時刻が遅い、洗濯機がある順にソート
   const hotels2 = searchresult.hotels.sort((a,b) => {
     const c1 = a.hotelDetailInfo.lastCheckinTime ? a.hotelDetailInfo.lastCheckinTime : "";
     const c2 = b.hotelDetailInfo.lastCheckinTime ? b.hotelDetailInfo.lastCheckinTime : "";
@@ -127,7 +129,10 @@ function showHotelList(searchresult){
     }else if(c1 < c2){
       return 1;
     }else{
-      return 0;
+      const h1 = hasCoinLaundry(a) ? 1 : 0;
+      const h2 = hasCoinLaundry(b) ? 1 : 0;
+
+      return h2 - h1;
     }
   });
   console.log(hotels2);
@@ -141,13 +146,13 @@ function showHotelList(searchresult){
     ele_tr.id = hotel_row_id;
     ele_tr.innerHTML = "<td>" + (i + 1) + "</td>"
       + "<td><a href='" + hotel.hotelBasicInfo.hotelInformationUrl + "' target='_blank'>" + hotel.hotelBasicInfo.hotelName + "</a></td>"
-      + "<td>" + hotel.hotelDetailInfo.checkinTime + "-" + hotel.hotelDetailInfo.lastCheckinTime + "</td>"
+      + "<td>" + hotel.hotelDetailInfo.checkinTime + "-" + (hotel.hotelDetailInfo.lastCheckinTime ? hotel.hotelDetailInfo.lastCheckinTime : "") + "</td>"
       + "<td>" + (hotel.hotelFacilitiesInfo.hotelFacilities.some((e) => /コインランドリー/.test(e.item)) ? "✓" : "") + "</td>"
     
     const infowindow = new google.maps.InfoWindow({
       content: "<a href='" + hotel.hotelBasicInfo.hotelInformationUrl + "' target='_blank'>" + hotel.hotelBasicInfo.hotelName + "</a>"
-        + "<br><br>チェックイン時間: " + hotel.hotelDetailInfo.checkinTime + "-" + hotel.hotelDetailInfo.lastCheckinTime
-        + "<br>洗濯機: " + (hotel.hotelFacilitiesInfo.hotelFacilities.some((e) => /コインランドリー/.test(e.item)) ? "あり" : "なし")
+        + "<br><br>チェックイン時間: " + hotel.hotelDetailInfo.checkinTime + "-" + (hotel.hotelDetailInfo.lastCheckinTime ? hotel.hotelDetailInfo.lastCheckinTime : "")
+        + "<br>洗濯機: " + (hasCoinLaundry(hotel) ? "あり" : "なし")
         + "<br>最安値: " + (hotel.hotelBasicInfo.hotelMinCharge ? (hotel.hotelBasicInfo.hotelMinCharge + "円") : "情報なし")
         
         + "<br><br><img src='" + hotel.hotelBasicInfo.hotelThumbnailUrl + "'/>"
