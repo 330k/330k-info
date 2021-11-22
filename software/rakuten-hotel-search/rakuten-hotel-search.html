@@ -14,9 +14,6 @@ const googlemap = {
   markers: [],
   circle: null
 };
-const searchresult = {
-  hotellist: []
-};
 
 /**
  * Google Maps JavaScript API Initialize Callback
@@ -32,8 +29,6 @@ function initMap(){
   googlemap.map.addListener("click", async function(e){
     const radius = 3;
   
-    console.log([e.latLng.lat(), e.latLng.lng()]);
-    
     clearResult();
     showLoader();
     
@@ -46,13 +41,10 @@ function initMap(){
       fillOpacity: 0.3
     });
     
-    searchresult.hotellist = await getHotelList(e.latLng.lat(), e.latLng.lng(), radius);
-    
-    console.log(searchresult.hotellist);
-    
-    showHotelList(searchresult.hotellist);
+    const searchresult = await getHotelList(e.latLng.lat(), e.latLng.lng(), radius);
+    showHotelList(searchresult);
     hideLoader();
-    
+
   });
   
   googlemap.map.addListener("rightclick", function(e){
@@ -65,48 +57,65 @@ function initMap(){
 
 /**
  * 楽天トラベルAPIでホテルを検索
+ * @param {number} latitude 緯度
+ * @param {number} longitude 経度
+ * @param {number} radius 半径(km)
+ * @return {{status:string,hotels:Array}}
  */
 async function getHotelList(latitude, longitude, radius){
   const lat = latitude.toFixed(6);
   const lon = longitude.toFixed(6);
   const r = radius.toFixed(1);
+
+  const result = {
+    status: "",
+    hotels: []
+  };
   
   const url = `https://app.rakuten.co.jp/services/api/Travel/SimpleHotelSearch/20170426?applicationId=1008123474471814322&affiliateId=219cb501.2d23fbc2.219cb502.49f3944c&format=json&datumType=1&latitude=${lat}&longitude=${lon}&searchRadius=${r}&responseType=large&allReturnFlag=1`;
   
-  const response = await fetch(url);
-  const result = await response.json();
+  try{
+    const response = await fetch(url);
+    const json = await response.json();
     
-  if(result.hotels && result.hotels.length > 0){
-    const hotels = [];
-    
-    result.hotels.map((hotel) => {
-      const hotelinfo = {};
-      
-      hotel.hotel.map((obj) => {
-        Object.keys(obj).map((key) => {
-          hotelinfo[key] = obj[key];
+    result.status = "SUCCESS";
+
+    if(json.hotels && json.hotels.length > 0){
+      json.hotels.map((hotel) => {
+        const hotelinfo = {};
+        
+        hotel.hotel.map((obj) => {
+          Object.keys(obj).map((key) => {
+            hotelinfo[key] = obj[key];
+          });
         });
+        
+        result.hotels.push(hotelinfo);
       });
       
-      hotels.push(hotelinfo);
-    });
-    
-    return hotels;
-    
-  }else{
-    return [];
+    }
+    if(json.error){
+      result.status = "ERROR";
+    }
+
+  }catch(e){
+    console.log("ERROR");
+    result.status = "ERROR";
   }
+
+  return result;
 }
 
 /**
  * 検索結果を表示
  */
-function showHotelList(hotels){
+function showHotelList(searchresult){
   googlemap.markers = [];
   const ele_tbody = document.getElementById("tbody_hotel");
   ele_tbody.innerHTML = "";
   
-  const hotels2 = hotels.sort((a,b) => {
+  // 最終チェックイン時刻が遅い順にソート
+  const hotels2 = searchresult.hotels.sort((a,b) => {
     const c1 = a.hotelDetailInfo.lastCheckinTime ? a.hotelDetailInfo.lastCheckinTime : "";
     const c2 = b.hotelDetailInfo.lastCheckinTime ? b.hotelDetailInfo.lastCheckinTime : "";
     
@@ -176,12 +185,14 @@ function showHotelList(hotels){
     ele_tbody.appendChild(ele_tr);
     googlemap.markers.push(marker);
   }
-  /*
-  lines.push("</table>");
-  
-  lines.push("<p>検索結果: " + hotels.length + "件</p>");
-  
-  document.getElementById("hotel_list").innerHTML = lines.join("\n");*/
+
+  if(searchresult.status === "SUCCESS"){
+    document.getElementById("message").innerHTML = "検索結果: " + searchresult.hotels.length + "件</p>";
+  }else if(searchresult.status === "ERROR"){
+    document.getElementById("message").innerHTML = "API呼び出しエラー";
+  }else{
+    document.getElementById("message").innerHTML = "";
+  }
 }
 
 /**
@@ -191,11 +202,17 @@ function clearResult(){
   if(googlemap.circle){
     googlemap.circle.setMap(null);
   }
+  googlemap.circle = null;
+
   googlemap.markers.map((e) => {
     e.setMap(null);
   });
+  googlemap.markers = null;
   
-  showHotelList([]);
+  showHotelList({
+    status: "",
+    hotels: []
+  });
 }
 
 function hideLoader(){
@@ -296,6 +313,7 @@ if (!doNotTrack) {
 <tbody id="tbody_hotel">
 </tbody>
 </table>
+<div id="message"></div>
 </div>
 </div>
 <div id="loader_bg">
