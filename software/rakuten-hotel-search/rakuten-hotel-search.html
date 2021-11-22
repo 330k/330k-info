@@ -66,13 +66,15 @@ async function getHotelList(latitude, longitude, radius){
   const lat = latitude.toFixed(6);
   const lon = longitude.toFixed(6);
   const r = radius.toFixed(1);
+  const appid = "1008123474471814322";
+  const affid = "219cb501.2d23fbc2.219cb502.49f3944c";
 
   const result = {
     status: "",
     hotels: []
   };
   
-  const url = `https://app.rakuten.co.jp/services/api/Travel/SimpleHotelSearch/20170426?applicationId=1008123474471814322&affiliateId=219cb501.2d23fbc2.219cb502.49f3944c&format=json&datumType=1&latitude=${lat}&longitude=${lon}&searchRadius=${r}&responseType=large&allReturnFlag=1`;
+  const url = `https://app.rakuten.co.jp/services/api/Travel/SimpleHotelSearch/20170426?applicationId=${appid}&affiliateId=${affid}&format=json&datumType=1&latitude=${lat}&longitude=${lon}&searchRadius=${r}&responseType=large&allReturnFlag=1`;
   
   try{
     const response = await fetch(url);
@@ -308,17 +310,17 @@ if (!doNotTrack) {
 </head>
 <body>
 <div id="wrapper">
-<div id="map_canvas"></div>
 <div id="hotel_list">
 <table id="table_hotels">
 <thead>
-<tr><th>No</th><th>ホテル名</th><th style="width: 12em;">チェックイン</th><th>洗濯機</th></tr>
+<tr><th style="width: 2em;">No</th><th>ホテル名</th><th style="width: 11em;">チェックイン</th><th style="width: 4em;">洗濯機</th></tr>
 </thead>
 <tbody id="tbody_hotel">
 </tbody>
 </table>
 <div id="message"></div>
 </div>
+<div id="map_canvas"></div>
 </div>
 <div id="loader_bg">
 <div id="loader">
