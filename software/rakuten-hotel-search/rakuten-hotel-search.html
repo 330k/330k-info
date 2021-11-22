@@ -95,11 +95,12 @@ async function getHotelList(latitude, longitude, radius){
       
     }
     if(json.error){
-      result.status = "ERROR";
+      console.log(json.error);
+      result.status = json.error;
     }
 
   }catch(e){
-    console.log("ERROR");
+    console.log(e);
     result.status = "ERROR";
   }
 
@@ -145,6 +146,7 @@ function showHotelList(searchresult){
       content: "<a href='" + hotel.hotelBasicInfo.hotelInformationUrl + "' target='_blank'>" + hotel.hotelBasicInfo.hotelName + "</a>"
         + "<br><br>チェックイン時間: " + hotel.hotelDetailInfo.checkinTime + "-" + hotel.hotelDetailInfo.lastCheckinTime
         + "<br>洗濯機: " + (hotel.hotelFacilitiesInfo.hotelFacilities.some((e) => /コインランドリー/.test(e.item)) ? "あり" : "なし")
+        + "<br>最安値: " + (hotel.hotelBasicInfo.hotelMinCharge ? (hotel.hotelBasicInfo.hotelMinCharge + "円") : "情報なし")
         
         + "<br><br><img src='" + hotel.hotelBasicInfo.hotelThumbnailUrl + "'/>"
         + (hotel.hotelBasicInfo.roomThumbnailUrl ? "<img src='" + hotel.hotelBasicInfo.roomThumbnailUrl + "'/>" : "")
@@ -188,6 +190,8 @@ function showHotelList(searchresult){
 
   if(searchresult.status === "SUCCESS"){
     document.getElementById("message").innerHTML = "検索結果: " + searchresult.hotels.length + "件</p>";
+  }else if(searchresult.status === "not_found"){
+    document.getElementById("message").innerHTML = "見つかりませんでした";
   }else if(searchresult.status === "ERROR"){
     document.getElementById("message").innerHTML = "API呼び出しエラー";
   }else{
