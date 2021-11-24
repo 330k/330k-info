@@ -7,7 +7,10 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://www.330k.info/software/rakuten-hotel-search/rakuten-hotel-search.html" />
 <meta property="og:image" content="https://www.330k.info/apple-touch-icon.png"/>
+<!--<meta name="viewport" content="width=640">-->
 <script defer src="https://maps.google.com/maps/api/js?key=AIzaSyA_aFkNjCuqBNETe8bxBk8_cnRQtQzdOG8&amp;callback=initMap"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
 <script>
 const googlemap = {
   map: null,
@@ -15,6 +18,17 @@ const googlemap = {
   circle: null
 };
 
+jQuery(function(){
+  $("#hotel_list").resizable({
+    handles: 'e'
+  });
+  
+  const resize = function(e){
+    $("#map_canvas").width($(document).width() - $("#hotel_list").width() - 15);
+  };
+  $("#hotel_list").resize(resize);
+  $(window).resize(resize);
+});
 /**
  * Google Maps JavaScript API Initialize Callback
  */
@@ -147,7 +161,7 @@ function showHotelList(searchresult){
     ele_tr.innerHTML = "<td>" + (i + 1) + "</td>"
       + "<td><a href='" + hotel.hotelBasicInfo.hotelInformationUrl + "' target='_blank'>" + hotel.hotelBasicInfo.hotelName + "</a></td>"
       + "<td>" + hotel.hotelDetailInfo.checkinTime + "-" + (hotel.hotelDetailInfo.lastCheckinTime ? hotel.hotelDetailInfo.lastCheckinTime : "") + "</td>"
-      + "<td>" + (hotel.hotelFacilitiesInfo.hotelFacilities.some((e) => /コインランドリー/.test(e.item)) ? "✓" : "") + "</td>"
+      + "<td>" + (hasCoinLaundry(hotel) ? "✓" : "") + "</td>"
     
     const infowindow = new google.maps.InfoWindow({
       content: "<a href='" + hotel.hotelBasicInfo.hotelInformationUrl + "' target='_blank'>" + hotel.hotelBasicInfo.hotelName + "</a>"
@@ -244,35 +258,29 @@ if (!doNotTrack) {
 }
 </script>
 <script async src='https://www.google-analytics.com/analytics.js'></script>
-<!--<meta name="viewport" content="width=640">-->
+<link rel="stylesheet" href="//code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css">
 <style>
 * { margin: 0; padding: 0}
 #wrapper {
   width: 100%;
   height: 100%;
   overflow: hidden;
-  display: flex;
-  flex-direction: row;
-  flex-wrap:wrap;
 }
 #map_canvas {
-/*  position: absolute;
-  top: 0;
-  left: 0;
-  width: 75%;*/
-  height: 100%;
-  flex-basis: 75%;
-  flex-grow: 1;
-}
-#hotel_list {
-/*  position: absolute;
+  position: absolute;
   top: 0;
   right: 0;
-  width: 25%;*/
+  width: 75%;
   height: 100%;
+}
+#hotel_list {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 25%;
+  height: 100%;
+  overflow-x: hidden;
   overflow-y: scroll;
-  flex-basis: 25%;
-  flex-grow: 1;
   background-color: #fff;
 }
 #hotel_list table {
@@ -281,6 +289,9 @@ if (!doNotTrack) {
 }
 #hotel_list table thead {
   background-color: #eee;
+}
+#hotel_list table tbody {
+  
 }
 #hotel_list table td {
   border-width: 1px 0;
