@@ -4,26 +4,24 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>2021年10月16日 BRM1009 近畿300 神戸VT 淡路監獄 - 330k info</title>
+	<title>Mathematicaプログラムの難読化・隠しメッセージ埋め込み手法の検討 - 330k info</title>
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
-	<meta property="og:title" content="2021年10月16日 BRM1009 近畿300 神戸VT 淡路監獄" />
-<meta property="og:description" content="本来は1月に開催予定だった神戸300VALE TUDE淡路山脈(別名:淡路監獄)。
-延期により秋開催に変更され、N2BRMになったので出走日を選択可能になったのだが、都合により最終日に出走。
-SR600を2本走っていたため調子が上がっており、時間は19時間32分とギリギリになったものの、余裕は残して無事完走。" />
+	<meta property="og:title" content="Mathematicaプログラムの難読化・隠しメッセージ埋め込み手法の検討" />
+<meta property="og:description" content="Mathematicaのプログラムを難読化し、またそこに隠しメッセージを埋め込む手法をいくつか検討してみた。
+円周率をモンテカルロ法で求めるプログラムを難読化し、隠しメッセージを埋め込む例をいくつか考えた。" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://www.330k.info/bicycle/touring/20211016-brm1009-kinki-300km/" /><meta property="og:image" content="https://www.330k.info/bicycle/touring/20211016-brm1009-kinki-300km/20211016-080434.jpg" /><meta property="article:section" content="bicycle" />
-<meta property="article:published_time" content="2021-10-17T22:32:25+09:00" />
-<meta property="article:modified_time" content="2021-11-06T22:46:30+09:00" />
+<meta property="og:url" content="https://www.330k.info/essay/obfuscate-mathematica-program/" /><meta property="og:image" content="https://www.ipros.jp/public/product/image/f59/396065002/IPROS3632825140790521490.png?h=220&w=220" /><meta property="article:section" content="essay" />
+<meta property="article:published_time" content="2021-11-29T20:39:12+09:00" />
+<meta property="article:modified_time" content="2021-11-29T22:24:38+09:00" />
 
 
 	<meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:image" content="https://www.330k.info/bicycle/touring/20211016-brm1009-kinki-300km/20211016-080434.jpg"/>
+<meta name="twitter:image" content="https://www.ipros.jp/public/product/image/f59/396065002/IPROS3632825140790521490.png?h=220&w=220"/>
 
-<meta name="twitter:title" content="2021年10月16日 BRM1009 近畿300 神戸VT 淡路監獄"/>
-<meta name="twitter:description" content="本来は1月に開催予定だった神戸300VALE TUDE淡路山脈(別名:淡路監獄)。
-延期により秋開催に変更され、N2BRMになったので出走日を選択可能になったのだが、都合により最終日に出走。
-SR600を2本走っていたため調子が上がっており、時間は19時間32分とギリギリになったものの、余裕は残して無事完走。"/>
+<meta name="twitter:title" content="Mathematicaプログラムの難読化・隠しメッセージ埋め込み手法の検討"/>
+<meta name="twitter:description" content="Mathematicaのプログラムを難読化し、またそこに隠しメッセージを埋め込む手法をいくつか検討してみた。
+円周率をモンテカルロ法で求めるプログラムを難読化し、隠しメッセージを埋め込む例をいくつか考えた。"/>
 
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -62,10 +60,10 @@ if (!doNotTrack) {
 		<span class="menu__btn-title" tabindex="-1">Menu</span>
 	</button>
 	<ul class="menu__list">
-		<li class="menu__item menu__item--active">
+		<li class="menu__item">
 			<a class="menu__link" href="/bicycle/">Bicycles</a>
 		</li>
-		<li class="menu__item">
+		<li class="menu__item menu__item--active">
 			<a class="menu__link" href="/essay/">Essays</a>
 		</li>
 		<li class="menu__item">
@@ -82,300 +80,135 @@ if (!doNotTrack) {
 <main class="main" role="main">
 	<article class="post">
 		<header class="post__header">
-			<h1 class="post__title">2021年10月16日 BRM1009 近畿300 神戸VT 淡路監獄</h1>
+			<h1 class="post__title">Mathematicaプログラムの難読化・隠しメッセージ埋め込み手法の検討</h1>
 			<div class="post__meta meta">
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
-	<time class="meta__text" datetime="2021-10-17T22:32:25">October 17, 2021</time>
-	<time class="meta__text" datetime="2021-11-06T22:46:30"> (Last Modified: November 06, 2021)</time>
+	<time class="meta__text" datetime="2021-11-29T20:39:12">November 29, 2021</time>
+	<time class="meta__text" datetime="2021-11-29T22:24:38"> (Last Modified: November 29, 2021)</time>
 </div>
 
 <div class="meta__item-categories meta__item">
 	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
-	<span class="meta__text"><a class="meta__link" href="/categories/%e8%87%aa%e8%bb%a2%e8%bb%8a" rel="category">自転車</a></span>
+	<span class="meta__text"><a class="meta__link" href="/categories/%e9%9b%91%e8%a8%98%e5%b8%b3" rel="category">雑記帳</a></span>
 </div>
 </div>
 		</header><div class="content post__content clearfix">
-			<p>本来は1月に開催予定だった神戸300VALE TUDE淡路山脈(別名:淡路監獄)。</p>
-<p>延期により秋開催に変更され、N2BRMになったので出走日を選択可能になったのだが、都合により最終日に出走。</p>
-<p>SR600を2本走っていたため調子が上がっており、時間は19時間32分とギリギリになったものの、余裕は残して無事完走。</p>
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCir56M7J9LT4-3wDVgG8etGo_HPSMWVBk&callback=initMap" defer></script>
+			<p>Mathematicaのプログラムを難読化し、またそこに隠しメッセージを埋め込む手法をいくつか検討してみた。</p>
+<p>円周率をモンテカルロ法で求めるプログラムを難読化し、隠しメッセージを埋め込む例をいくつか考えた。</p>
+<h2 id="compress--unevaluated">Compress + Unevaluated</h2>
+<h3 id="難読化">難読化</h3>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-mathematica" data-lang="mathematica">Compress[Unevaluated[<span style="color:#a31515">&#34;隠しMessage&#34;</span>; 4.*^-6 Count[RandomReal[1, {1*^6, 2}], a_ /; a<span style="">.</span>a &lt; 1]]]
+</code></pre></div><p>これを実行して得られる文字列は以下となる。</p>
+<p><code>&quot;1:eJxTTMoPSmNiYGAoFgISzvm5BfmleSmuFQVFqcXFmfl5wcJA4RgrSzNHgxgrYwNTc1+geGJ6KkQPK5AIycxNLS7qfbt1wfdjF+wQ4s5Ag0ogXC4gEZSYl5KfG5SamJPJCORCJFiAhE9mcUmmgxM/QyYTXJwTrD8vJbME6ASIEDuQCEgsKUktyisGGZCYxgCzySknMS8byUCgCyE8ZiDhkl8CUQ8hwZYDAIRsNw0=&quot;</code></p>
+<h3 id="実行">実行</h3>
+<p>得られた文字列を使って実際に円周率をモンテカルロ法で求めるには以下を実行する。</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-mathematica" data-lang="mathematica">Uncompress[<span style="">&#34;</span>1<span style="">:</span>eJxTTMoPSmNiYGAoFgISzvm5BfmleSmuFQVFqcXFmfl5wcJA4RgrSzNHgxgrYwNTc1+geGJ6KkQPK5AIycxNLS7qfbt1wfdjF+<span style="">\</span>
+wQ4s5Ag0ogXC4gEZSYl5KfG5SamJPJCORCJFiAhE9mcUmmgxM/QyYTXJwTrD8vJbME6ASIEDuQCEgsKUktyisGGZCYxgCzySknMS8byUCgCyE8ZiDhkl8CUQ8hwZYDAIRsNw0=<span style="">&#34;</span>]
+</code></pre></div><h3 id="復元">復元</h3>
+<p>元のソースコードは<code>Uncompress</code>の第2引数に<code>Hold</code>や<code>Unevaluated</code>を追加することで復元できる。</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-mathematica" data-lang="mathematica">Uncompress[<span style="">&#34;</span>1<span style="">:</span>eJxTTMoPSmNiYGAoFgISzvm5BfmleSmuFQVFqcXFmfl5wcJA4RgrSzNHgxgrYwNTc1+geGJ6KkQPK5AIycxNLS7qfbt1wfdjF+<span style="">\</span>
+wQ4s5Ag0ogXC4gEZSYl5KfG5SamJPJCORCJFiAhE9mcUmmgxM/QyYTXJwTrD8vJbME6ASIEDuQCEgsKUktyisGGZCYxgCzySknMS8byUCgCyE8ZiDhkl8CUQ8hwZYDAIRsNw0=<span style="">&#34;</span>, <span style="">\</span>
+Hold]
+</code></pre></div><p>これにより<code>Hold[&quot;隠しMessage&quot;; 4.*10^-6 Count[RandomReal[1, {1000000, 2}], a_ /; a.a &lt; 1]]</code>が得られる。</p>
+<h2 id="compress--文字列化">Compress + 文字列化</h2>
+<h3 id="難読化-1">難読化</h3>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-mathematica" data-lang="mathematica">Compress[<span style="color:#a31515">&#34;(*隠しMessage*)4.*^-6 Count[RandomReal[1,{1*^6,2}],a_/;a.a&lt;1]&#34;</span>]
 
+<span style="color:#a31515">&#34;1:eJxTTMoPCnZlYGDQ0IqxsjRzNIixMjYwNfdNLS5OTE/V0jTR04rTNVNwzi/NK4kOSsxLyc8NSk3MiTbUqTbUijPTMaqN1UmM17dO1Eu0MYwFAEGrFkI=&#34;</span>
+</code></pre></div><h3 id="実行-1">実行</h3>
+<p><code>Uncompress</code>の第2引数に<code>ToExpression</code>を付けて文字列を評価することで実行できる。</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-mathematica" data-lang="mathematica">Uncompress[<span style="color:#a31515">&#34;1:eJxTTMoPCnZlYGDQ0IqxsjRzNIixMjYwNfdNLS5OTE/V0jTR04rTNVNwzi/NK4kOSsxLyc8NSk3MiTbUqTbUijPTMaqN1UmM17dO1Eu0MYwFAEGrFkI=&#34;</span>, <span style="">\</span>
+ToExpression]
+</code></pre></div><h3 id="復元-1">復元</h3>
+<p>復元するには<code>Uncompress</code>の第2引数をなくせばよいので、隠しメッセージの存在に気づくのは比較的容易。</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-mathematica" data-lang="mathematica">Uncompress[<span style="color:#a31515">&#34;1:eJxTTMoPCnZlYGDQ0IqxsjRzNIixMjYwNfdNLS5OTE/V0jTR04rTNVNwzi/NK4kOSsxLyc8NSk3MiTbUqTbUijPTMaqN1UmM17dO1Eu0MYwFAEGrFkI=&#34;</span>]
 
+<span style="color:#a31515">&#34;(*隠しMessage*)4.*^-6 Count[RandomReal[1,{1*^6,2}],a_/;a.a&lt;1]&#34;</span>
+</code></pre></div><h2 id="exportstring--base64">ExportString + Base64</h2>
+<h3 id="難読化-2">難読化</h3>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-mathematica" data-lang="mathematica">ExportString[<span style="color:#a31515">&#34;(*隠しMessage*)4.*^-6 Count[RandomReal[1,{1*^6,2}],a_/;a.a&lt;1]&#34;</span>, <span style="color:#a31515">&#34;Base64&#34;</span>]
 
-<div id="mapcanvas-1" style="width: 100%; height:500px; margin:0; padding: 0"></div>
-<script>
+<span style="color:#a31515">&#34;KCpcOjk2YTBcOjMwNTdNZXNzYWdlKik0LipeLTYgQ291bnRbUmFuZG9tUmVhbFsxLHsxKl42LDJ9XSxhXy87YS5hPDFd&#34;</span>
+</code></pre></div><h3 id="実行-2">実行</h3>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-mathematica" data-lang="mathematica">ImportString[<span style="color:#a31515">&#34;KCpcOjk2YTBcOjMwNTdNZXNzYWdlKik0LipeLTYgQ291bnRbUmFuZG9tUmVhbFsxLHsxKl42LDJ9XSxhXy87YS5hPDFd&#34;</span>, <span style="color:#a31515">&#34;Base64&#34;</span>]
+</code></pre></div><h3 id="復元-2">復元</h3>
+<p><code>ImportString</code>の第2引数を<code>{&quot;Base64&quot;, &quot;Text&quot;}</code>や<code>{&quot;Base64&quot;, &quot;String&quot;}</code>にすることで復元できる。</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-mathematica" data-lang="mathematica">ImportString[<span style="color:#a31515">&#34;KCpcOjk2YTBcOjMwNTdNZXNzYWdlKik0LipeLTYgQ291bnRbUmFuZG9tUmVhbFsxLHsxKl42LDJ9XSxhXy87YS5hPDFd&#34;</span>, {<span style="color:#a31515">&#34;Base64&#34;</span>, <span style="color:#a31515">&#34;Text&#34;</span>}]
 
-const initfuncs = [];
-function initMap(){
-  for(let i = 0; i < initfuncs.length; i++){
-    initfuncs[i]();
-  }
-}
+<span style="color:#a31515">&#34;(*\\:96a0\\:3057Message*)4.*^-6 Count[RandomReal[1,{1*^6,2}],a_/;a.a&lt;1]&#34;</span>
+</code></pre></div><p>ImportStringを使う場合、マルチバイト文字は復元できなかった。</p>
+<h2 id="exportstring--uueuuencode">ExportString + UUE(uuencode)</h2>
+<h3 id="難読化-3">難読化</h3>
+<p>base64の場合とほぼ同じだが、uuencode形式にすることも可能。</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-mathematica" data-lang="mathematica">ExportString[<span style="color:#a31515">&#34;(*隠しMessage*)4.*^-6 Count[RandomReal[1,{1*^6,2}],a_/;a.a&lt;1]&#34;</span>, <span style="color:#a31515">&#34;UUE&#34;</span>]
 
-initfuncs.push(function(){
-  var map,
-    ctaLayer;
-  map = new google.maps.Map(document.getElementById("mapcanvas-1"), {
-    center: {lat: 35.6832581, lng: 139.7555827},
-    zoom: 8
-  });
-  ctaLayer = new google.maps.KmlLayer({
-    url: 'https:\/\/www.330k.info\/\/bicycle\/touring\/20211016-brm1009-kinki-300km\/20211016_01.kml'
-  });
-  ctaLayer.setMap(map);
-});
-</script>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">区間</th>
-<th style="text-align:center">地点</th>
-<th style="text-align:right">距離(km)</th>
-<th style="text-align:center">クローズ時刻</th>
-<th style="text-align:center">到着時刻</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">スタート</td>
-<td style="text-align:center">兵庫県神戸市 ローソン 磯上通二丁目店</td>
-<td style="text-align:right">0.0</td>
-<td style="text-align:center">-</td>
-<td style="text-align:center">10/16 05:30</td>
-</tr>
-<tr>
-<td style="text-align:center">通過チェック1</td>
-<td style="text-align:center">三木防災公園</td>
-<td style="text-align:right">31.5</td>
-<td style="text-align:center">-</td>
-<td style="text-align:center">10/16 07:07</td>
-</tr>
-<tr>
-<td style="text-align:center">PC1</td>
-<td style="text-align:center">淡路ジェノバライン(明石港)</td>
-<td style="text-align:right">52.5</td>
-<td style="text-align:center">10/16 09:39</td>
-<td style="text-align:center">10/16 08:04</td>
-</tr>
-<tr>
-<td style="text-align:center">通過チェック2</td>
-<td style="text-align:center">常隆寺</td>
-<td style="text-align:right">73.9</td>
-<td style="text-align:center">-</td>
-<td style="text-align:center">10/16 10:03</td>
-</tr>
-<tr>
-<td style="text-align:center">通過チェック3</td>
-<td style="text-align:center">鷲峰寺</td>
-<td style="text-align:right">88.0</td>
-<td style="text-align:center">-</td>
-<td style="text-align:center">10/16 11:13</td>
-</tr>
-<tr>
-<td style="text-align:center">通過チェック4</td>
-<td style="text-align:center">松尾山 感応寺</td>
-<td style="text-align:right">121.1</td>
-<td style="text-align:center">-</td>
-<td style="text-align:center">10/16 13:23</td>
-</tr>
-<tr>
-<td style="text-align:center">通過チェック5</td>
-<td style="text-align:center">道の駅 うずしお</td>
-<td style="text-align:right">151.3</td>
-<td style="text-align:center">-</td>
-<td style="text-align:center">10/16 14:55</td>
-</tr>
-<tr>
-<td style="text-align:center">通過チェック6</td>
-<td style="text-align:center">柏原山北展望台</td>
-<td style="text-align:right">200.6</td>
-<td style="text-align:center">-</td>
-<td style="text-align:center">10/16 18:21</td>
-</tr>
-<tr>
-<td style="text-align:center">通過チェック7</td>
-<td style="text-align:center">原健三郎　銅像</td>
-<td style="text-align:right">241.1</td>
-<td style="text-align:center">-</td>
-<td style="text-align:center">10/16 20:42</td>
-</tr>
-<tr>
-<td style="text-align:center">PC2</td>
-<td style="text-align:center">淡路ジェノバライン乗り場(岩屋港)</td>
-<td style="text-align:right">249.5</td>
-<td style="text-align:center">10/16 22:10</td>
-<td style="text-align:center">10/16 21:07</td>
-</tr>
-<tr>
-<td style="text-align:center">通過チェック8</td>
-<td style="text-align:center">三木防災公園</td>
-<td style="text-align:right">270.4</td>
-<td style="text-align:center">-</td>
-<td style="text-align:center">10/16 22:56</td>
-</tr>
-<tr>
-<td style="text-align:center">フィニッシュ</td>
-<td style="text-align:center">兵庫県神戸市 ファミリーマート　神戸トアロード店</td>
-<td style="text-align:right">300.1</td>
-<td style="text-align:center">10/27 02:00</td>
-<td style="text-align:center">10/17 01:32</td>
-</tr>
-</tbody>
-</table>
-<h2 id="スタート---pc1">スタート - PC1</h2>
-<p>前日は新幹線で輪行し、新神戸駅前のANAクラウンプラザホテルに宿泊。</p>
-<p>ホテルに着いたら出走手続きとして参加同意書を提出して、スタート時刻を選択。</p>
-<p>コロナで減便されているためフェリーの時刻は7時30分の次は8時30分で、スタート時刻は5時から6時30分まで30分刻みで選択可能。</p>
-<p>5時スタートで頑張れば7時30分の便に間に合うかもしれないが、間に合わなかったら1時間待つ羽目になる。</p>
-<p>それくらいなら5時30分スタートで余裕をもって8時30分の便に乗る計画とした。</p>
-<figure><img src="20211016-050309.jpg"/>
-</figure>
+<span style="">&#34;</span>begin 666 filename<span style="">.</span>ext
+M*<span style="">\&#34;</span>I&lt;<span style="">.</span>CDV83!&lt;<span style="">.</span>C,P-3=-97-S86=E*BDT+BI&gt;+38@0V]U;G1;4F<span style="">%</span>N9&amp;]M4F5A
+8;<span style="">%</span>LQ+<span style="">&#39;</span>LQ*EXV+#)]72QA7R<span style="">\\</span>[82YA/#<span style="">%</span>=
+<span style="">`</span>
+end
+<span style="">&#34;</span>
+</code></pre></div><h3 id="実行-3">実行</h3>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-mathematica" data-lang="mathematica">ImportString[<span style="">&#34;</span>begin 666 filename<span style="">.</span>ext<span style="">\</span>n<span style="">\</span>
+M*<span style="">\&#34;</span>I&lt;<span style="">.</span>CDV83!&lt;<span style="">.</span>C,P-3=-97-S86=E*BDT+BI&gt;+38@0V]U;G1;4F<span style="">%</span>N9&amp;]M4F5A<span style="">\</span>n<span style="">\</span>
+8;<span style="">%</span>LQ+<span style="">&#39;</span>LQ*EXV+#)]72QA7R<span style="">\\</span>[82YA/#<span style="">%</span>=<span style="">\</span>n`<span style="">\</span>nend<span style="">\</span>n<span style="color:#a31515">&#34;, &#34;</span>UUE<span style="">&#34;</span>]
+</code></pre></div><h3 id="復元-3">復元</h3>
+<p><code>ImportString</code>の第2引数を<code>{&quot;UUE&quot;, &quot;Text&quot;}</code>や<code>{&quot;UUE&quot;, &quot;String&quot;}</code>にすることで復元できる。</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-mathematica" data-lang="mathematica">ImportString[<span style="">&#34;</span>begin 666 filename<span style="">.</span>ext<span style="">\</span>n<span style="">\</span>
+M*<span style="">\&#34;</span>I&lt;<span style="">.</span>CDV83!&lt;<span style="">.</span>C,P-3=-97-S86=E*BDT+BI&gt;+38@0V]U;G1;4F<span style="">%</span>N9&amp;]M4F5A<span style="">\</span>n<span style="">\</span>
+8;<span style="">%</span>LQ+<span style="">&#39;</span>LQ*EXV+#)]72QA7R<span style="">\\</span>[82YA/#<span style="">%</span>=<span style="">\</span>n`<span style="">\</span>nend<span style="">\</span>n<span style="color:#a31515">&#34;, {&#34;</span>UUE<span style="color:#a31515">&#34;, &#34;</span>Text<span style="">&#34;</span>}]
 
-<p>5時にホテルをスタートし、本来のスタート地点だったHATなぎさ公園で記念撮影。</p>
-<figure><img src="20211016-051529.jpg"/>
-</figure>
+<span style="color:#a31515">&#34;(*\\:96a0\\:3057Message*)4.*^-6 Count[RandomReal[1,{1*^6,2}],a_/;a.a&lt;1]&#34;</span>
+</code></pre></div><h2 id="数値化">数値化</h2>
+<p>Mathematicaは任意精度の数値を扱えるので、文字列を巨大な整数にしてしまう。</p>
+<h3 id="難読化-4">難読化</h3>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-mathematica" data-lang="mathematica">FromDigits[ToCharacterCode[<span style="color:#a31515">&#34;(*Hidden Message*)4.*^-6 Count[RandomReal[1,{1*^6,2}],a_/;a.a&lt;1]&#34;</span>], 128]
 
-<p>N2BRMになってスタート地点が付近の3軒のコンビニから選べるようになったので、一番走行距離が短くなるローソンから5:30にスタート。</p>
-<figure><img src="20211016-053357.jpg"/>
-</figure>
+229025575843061500623667720149804056387348841423920634106087079222372159235189920877325936071698569549777922771072905304603495249156317
+</code></pre></div><h3 id="実行-4">実行</h3>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-mathematica" data-lang="mathematica">ToExpression@
+ FromCharacterCode@
+  IntegerDigits[
+   229025575843061500623667720149804056387348841423920634106087079222372159235189920877325936071698569549777922771072905304603495249156317, 
+   128]
+</code></pre></div><h3 id="復元-4">復元</h3>
+<p><code>ToExpression</code>を取ることで元のコードを復元可能なので、難易度としては一番容易。</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-mathematica" data-lang="mathematica">FromCharacterCode@
+ IntegerDigits[
+  229025575843061500623667720149804056387348841423920634106087079222372159235189920877325936071698569549777922771072905304603495249156317, 
+  128]
 
-<p>スタート直後に再度山への急登。</p>
-<figure><img src="20211016-061551.jpg"/>
-</figure>
+<span style="color:#a31515">&#34;(*Hidden Message*)4.*^-6 Count[RandomReal[1,{1*^6,2}],a_/;a.a&lt;1]&#34;</span>
+</code></pre></div><p>マルチバイト文字のコメントや文字列埋め込みはエラーが発生する。</p>
+<p>ASCIIの範囲に入る文字だけから元のソースコードを構成しておけば大丈夫。</p>
+<h2 id="encode-おまけ">Encode (おまけ)</h2>
+<h3 id="難読化-5">難読化</h3>
+<p><code>Encode</code>は一時ファイルを作成する必要あり。</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-mathematica" data-lang="mathematica">tmp1 = FileNameJoin[{<span style="">$</span>TemporaryDirectory, <span style="color:#a31515">&#34;temp.txt&#34;</span>}];
+tmp2 = FileNameJoin[{<span style="">$</span>TemporaryDirectory, <span style="color:#a31515">&#34;temp_enc.txt&#34;</span>}];
+Export[tmp1, <span style="color:#a31515">&#34;(*Hidden Message*)4.*^-6 Count[RandomReal[1,{1*^6,2}],a_/;a.a&lt;1]&#34;</span>, <span style="color:#a31515">&#34;Text&#34;</span>];
+Encode[tmp1, tmp2];
+Import[tmp2]
 
-<p>登り終えて走っていくと、別のコンビニから同時刻にスタートした元気いっぱいの2人に抜かれる。</p>
-<figure><img src="20211016-065927.jpg"/>
-</figure>
+<span style="">&#34;</span><span style="color:#008000">(*!1N!*)</span>mcm
+j&lt;]ahZS&gt;kA6&gt;<span style="">`</span>B)A&gt;gkBmqf3<span style="">\\</span>@&lt;,rR9d&gt;-J[i!5&amp;u|2Y YC@hh_Hk/HgDS50`La<span style="">&#39;</span>  <span style="">&#34;</span>
+</code></pre></div><h3 id="実行-5">実行</h3>
+<p><code>Get</code>でファイルを読み込むことで実行できる。</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-mathematica" data-lang="mathematica">tmp3 = FileNameJoin[{<span style="">$</span>TemporaryDirectory, <span style="color:#a31515">&#34;enc.txt&#34;</span>}];
+Export[tmp3, <span style="color:#a31515">&#34;(*!1N!*)mcm\nj&lt;]ahZS&gt;kA6&gt;`B)A&gt;gkBmqf3\\@&lt;,rR9d&gt;-J[i!5&amp;u|2Y YC@hh_Hk/HgDS50`La&#39;  &#34;</span>, <span style="color:#a31515">&#34;Text&#34;</span>];
+Get[tmp3]
 
-<p>信号で追いついたので同行させていただき、最初の通過チェックで撮影。</p>
-<figure><img src="20211016-070757.jpg"/>
-</figure>
-
-<p>快調に走って8時4分にフェリー乗り場に到着。</p>
-<p>確かに頑張れば5時スタートで7時30分の便に間に合ったとは思うが、時間に追われて精神的余裕がなくなるのは安全運転の面でも非常に良くないので、5時30分スタートで正解だった。</p>
-<figure><img src="20211016-080434.jpg"/>
-</figure>
-
-<p>帰りにきっぷ購入の余裕がない事態に備えて、Twitterでのひであさんのアドバイスに従い、往復分を予め購入しておいた。</p>
-<figure><img src="20211016-080812.jpg"/>
-</figure>
-
-<p>待っているとフェリーが到着し、乗船開始。</p>
-<p>いざ、初めての淡路島へ。</p>
-<figure><img src="20211016-082212.jpg"/>
-</figure>
-
-<h2 id="pc1---pc2-淡路島">PC1 - PC2 (淡路島)</h2>
-<p>フェリーでは5時スタートの生郎さんとMetal-Kingさんと同乗したので、同行させていただくことに。</p>
-<p>到着してからは西海岸を少しだけ走行。</p>
-<p>夕方から雨の予報なので、天気が良いうちにたくさん写真を撮影しておく。</p>
-<p><figure><img src="20211016-085340.jpg"/>
-</figure>
-
-<figure><img src="20211016-090823.jpg"/>
-</figure>
-</p>
-<p>平坦で快適な海岸沿いもすぐに終わり、内陸部に入って登り始める。</p>
-<p>一部界隈で有名らしいかかし。</p>
-<figure><img src="20211016-093719.jpg"/>
-</figure>
-
-<p>淡路島最初の通過チェック、常隆寺。</p>
-<p>寺の手前は激坂。</p>
-<figure><img src="20211016-100318.jpg"/>
-</figure>
-
-<p>少し戻って次の通過チェック、鷲峰寺へ。ここの手前の坂は、他と比較すればマシだった。</p>
-<figure><img src="20211016-111312.jpg"/>
-</figure>
-
-<p>淡路島に特有の景色らしい、荒廃した竹林で記念撮影。</p>
-<figure><img src="20211016-112528.jpg"/>
-</figure>
-
-<p>この後、コンビニで1回休憩を挟んだのち、相変わらず淡路島の中央部の細い道と集落を通って、やはり最後に激坂が待っている松尾山感応寺に。</p>
-<p>ここの最後の激坂はどう考えてもロードのギア比ではバランスが取れないので押し歩いた。</p>
-<figure><img src="20211016-132309.jpg"/>
-</figure>
-
-<p>その代わり景色はとても良かった。</p>
-<figure><img src="20211016-132356.jpg"/>
-</figure>
-
-<p>この後は比較的平坦な市街地を通って西海岸沿いの道から西端の道の駅うずしおへ。</p>
-<figure><img src="20211016-145523.jpg"/>
-</figure>
-
-<p>うずしおがほぼ半分の150km地点なので、貯金を計算すると、私は30分で生郎さんとMetal-Kingさんは0分。</p>
-<p>ただし、ここから柏原山までの南岸平坦部では今回唯一の追い風のため30分程度回復。</p>
-<figure><img src="20211016-161417.jpg"/>
-</figure>
-
-<p>前日の予報では最悪雨が降り始めてもおかしくなかったが、幸い登りの時点では雨に降られることなく柏原山入り口に到着。</p>
-<figure><img src="20211016-170822.jpg"/>
-</figure>
-
-<p>途中展望台からの景色は良かった。</p>
-<figure><img src="20211016-172150.jpg"/>
-</figure>
-
-<p>登っている間に日が暮れて真っ暗に。</p>
-<p>石や枝、落ち葉がゴロゴロ落ちている悪路面を生郎さんとMetal-Kingを待ちながら、最後は押し歩きで登る。</p>
-<p><figure><img src="20211016-173755.jpg"/>
-</figure>
-
-<figure><img src="20211016-181904.jpg"/>
-</figure>
-</p>
-<p>なんとか柏原山の山頂展望台に18時20分に到着。</p>
-<p>キューシートに「満面の笑みで」と書かれていたので、リザルト申請フォームには色んな感情を混ぜた笑みの写真を送った。</p>
-<figure><img src="20211016-182121.jpg"/>
-</figure>
-
-<p>私はともかく、5時スタートの2人は帰りのフェリーは21時20分に乗らないとかなりまずい。</p>
-<p>下りの路面は悪くなかったので、登りで失った少し貯金を戻しつつ洲本市街地まで下り、最初のコンビニで島内最後の休憩に。</p>
-<p>休憩していたら予報より遅くなったものの本降りの雨が降り始めた。</p>
-<p>雨雲レーダーによると弱まる予報だったので3人共雨具は着ずに再スタート。</p>
-<p>予報では強い北風になる予報だったが、幸いほぼ無風だったので少しずつ余裕時間を増やしながら北上。</p>
-<p>島内最後の通過チェックへの登りを登りきったあたりで、いきなり雨と風が強くなって襲ってきた。</p>
-<figure><img src="20211016-204221.jpg"/>
-</figure>
-
-<p>写真を撮影したら雨具を着てからフェリー乗り場へ。</p>
-<p>21時07分に到着。</p>
-<figure><img src="20211016-210701.jpg"/>
-</figure>
-
-<p>予定通り21時20分の便に乗り込んで本州へ。</p>
-<p>無事お勤めを終えて監獄から出所。</p>
-<figure><img src="20211016-211831.jpg"/>
-</figure>
-
-<h2 id="pc2---ゴール">PC2 - ゴール</h2>
-<p>雨と前線通過に伴って気温が急低下したため、防寒具としてレインウェアを引き続き着て、下船後に明石から再スタート。</p>
-<p>貯金がほとんどないためペースを上げたいMetal-Kingさんと、ペースが上がらず苦労している生郎さんの間を調整しつつ、緩い登りを走って最後の通過チェック。</p>
-<figure><img src="20211016-225627.jpg"/>
-</figure>
-
-<p>途中、道路脇から「そこの自転車3人組、止まりなさい」と言われ、何だ？と思ったら、コース製作者のかたやまさんが登場。</p>
-<p>カメラを構えられたので、苦手だけど思いっきりポーズを決めた。いろんな感情を込めて。</p>
-<p>最後、ゴールまで3kmの地点、再度山からの濡れた落ち葉ばかりのダウンヒルを慎重に下っていたら、Metal-Kingさんが私の目の前でフロントを滑らせ落車。</p>
-<p>幸い擦り傷だけですんだものの、引き続き慎重に下る。</p>
-<p>生郎さんとMetal-Kingさんはゴールのコンビニでレジへ駆け込み、1:00のレシートを取得。ちょうど20時間。</p>
-<p>私はそれを見届けてから1:02にレシートを取得したので19時間32分となった。</p>
-<figure><img src="20211017-010240.jpg"/>
-</figure>
-
-<p>過去の300km最長記録(16:11)を大幅に更新したものの、3人で喋りながら走れてとても楽しかった。</p>
+Out[36]= 3.14016
+</code></pre></div><h3 id="復元-5">復元</h3>
+<p>復元方法はないため、埋め込んだ隠しメッセージを表示する方法もない。</p>
 		</div>
 		<footer class="post__footer">
 			
 <div class="post__tags tags clearfix">
 	<svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
 	<ul class="tags__list">
-		<li class="tags__item"><a class="tags__link btn" href="/tags/%E3%83%96%E3%83%AB%E3%83%99/" rel="tag">ブルベ</a></li>
-		<li class="tags__item"><a class="tags__link btn" href="/tags/brm300km/" rel="tag">BRM300km</a></li>
+		<li class="tags__item"><a class="tags__link btn" href="/tags/mathematica/" rel="tag">Mathematica</a></li>
 	</ul>
 </div>
 		</footer>
@@ -385,10 +218,7 @@ initfuncs.push(function(){
 
 <nav class="post-nav flex">
 	<div class="post-nav__item post-nav__item--prev">
-		<a class="post-nav__link" href="/bicycle/touring/20211002-sr-600-joumou-sanzan/" rel="prev"><span class="post-nav__caption">«&thinsp;Previous</span><p class="post-nav__post-title">2021年10月02日 SR600 上毛三山</p></a>
-	</div>
-	<div class="post-nav__item post-nav__item--next">
-		<a class="post-nav__link" href="/bicycle/touring/20211030-brm1030-kanagawa-400km/" rel="next"><span class="post-nav__caption">Next&thinsp;»</span><p class="post-nav__post-title">2021年10月30日 BRM1030 神奈川400 追い風</p></a>
+		<a class="post-nav__link" href="/essay/precise_comparison_of_gudermannian_function/" rel="prev"><span class="post-nav__caption">«&thinsp;Previous</span><p class="post-nav__post-title">逆グーデルマン関数の計算式のJavaScriptにおける精度</p></a>
 	</div>
 </nav>
 

@@ -6,7 +6,17 @@
     <description>Recent content on 330k info</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Sun, 31 Oct 2021 22:28:34 +0900</lastBuildDate><atom:link href="https://www.330k.info/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 29 Nov 2021 20:39:12 +0900</lastBuildDate><atom:link href="https://www.330k.info/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Mathematicaプログラムの難読化・隠しメッセージ埋め込み手法の検討</title>
+      <link>https://www.330k.info/essay/obfuscate-mathematica-program/</link>
+      <pubDate>Mon, 29 Nov 2021 20:39:12 +0900</pubDate>
+      
+      <guid>https://www.330k.info/essay/obfuscate-mathematica-program/</guid>
+      <description>&lt;p&gt;Mathematicaのプログラムを難読化し、またそこに隠しメッセージを埋め込む手法をいくつか検討してみた。&lt;/p&gt;
+&lt;p&gt;円周率をモンテカルロ法で求めるプログラムを難読化し、隠しメッセージを埋め込む例をいくつか考えた。&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>2021年10月30日 BRM1030 神奈川400 追い風</title>
       <link>https://www.330k.info/bicycle/touring/20211030-brm1030-kanagawa-400km/</link>
