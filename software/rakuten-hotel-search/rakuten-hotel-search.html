@@ -15,6 +15,7 @@
 const googlemap = {
   map: null,
   markers: [],
+  lines: [],
   circle: null
 };
 
@@ -29,6 +30,113 @@ jQuery(function(){
   $("#hotel_list").resize(resize);
   $(window).resize(resize);
 });
+
+window.addEventListener("DOMContentLoaded", function(){
+  /**
+   * GPXファイルを読み込むPromiseを返す
+   * @param {string} file 読み込むファイル
+   * @return {XMLDocument} 読み込んだ結果をXMLObjectを返すPromise
+   */
+  const readGPX = function(file){
+    return new Promise(function(resolve, reject){
+      try{
+        const reader = new FileReader();
+        const parser = new DOMParser();
+
+        reader.onload = function(){
+          resolve(parser.parseFromString(reader.result, "text/xml"));
+        };
+        reader.readAsText(file, "utf-8");
+        
+      }catch(e){
+        reject(e);
+      }
+    });
+  }
+
+  /**
+   * GPXデータのルートをGoogle Mapsに表示
+   * @param {Object} map
+   * @param {XMLDocument} gpx
+   * @param {string} color
+   * @return {void}
+   */
+  function showGPXRoute(map, gpx, color){
+    const trkpts = gpx.querySelectorAll("trkpt");
+    const coords = [];
+
+    for(let i = 1; i < trkpts.length; i++){
+      coords.push({
+        lat: trkpts[i].getAttribute("lat") - 0,
+        lng: trkpts[i].getAttribute("lon") - 0
+      });
+    }
+    
+    const line = new google.maps.Polyline({
+      path: coords,
+      geodesic: true,
+      strokeColor: color,
+      strokeOpacity: 1.0,
+      strokeWeight: 2,
+    });
+
+    googlemap.lines.push(line);
+    line.setMap(map);
+  }
+
+  document.getElementById("gpx_file").addEventListener("change", async function(evt){
+    // GPXファイルの読み込み
+    try{
+      showLoader();
+
+      googlemap.lines.map((e) => {
+        e.setMap(null);
+      });
+
+      const colors = ["#3f3d99", "#993d71", "#998c3d", "#3d9956", "#3d5a99", "#993d90", "#996d3d", "#43993d"];
+      for(let i = 0; i < evt.target.files.length; i++){
+        console.log(evt.target.files[i]);
+        const gpx = await readGPX(evt.target.files[i]);
+        showGPXRoute(googlemap.map, gpx, colors[i % colors.length]);
+      }
+
+    }catch(err){
+      console.error(err);
+
+    }finally{
+      hideLoader();
+      
+    }
+  });
+
+  // ドラッグドロップ対応
+  {
+    const droparea = document.body;
+    const overlay = document.getElementById("overlay");
+    droparea.addEventListener("dragover", function(e){
+      e.stopPropagation();
+      e.preventDefault();
+      overlay.style.display = "block";
+    }, false);
+    overlay.addEventListener("dragleave", function(e){
+      e.stopPropagation();
+      e.preventDefault();
+      overlay.style.display = "none";
+    }, false);
+    overlay.addEventListener("drop", function(e){
+      e.stopPropagation();
+      e.preventDefault();
+      overlay.style.display = "none";
+      
+      const files = e.dataTransfer.files;
+      document.getElementById("gpx_file").files = files;
+
+      const evt = new Event("change");
+      document.getElementById("gpx_file").dispatchEvent(evt);
+    }, false)
+  };
+});
+
 /**
  * Google Maps JavaScript API Initialize Callback
  */
@@ -322,6 +430,27 @@ if (!doNotTrack) {
 .hotel_selected {
   background: #ccc;
 }
+
+#gpx_file { 
+  display: none;
+}
+
+#overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+  background-color: #ddd;
+  opacity: 0.5;
+  display: none;
+}
+
+.dropover {
+  background-color: rgba(240, 240, 240, 0.5);
+  display: block;
+}
 </style>
 </head>
 <body>
@@ -338,11 +467,13 @@ if (!doNotTrack) {
 </div>
 <div id="map_canvas"></div>
 </div>
+</div>
 <div id="loader_bg">
 <div id="loader">
 <img src="data:image/svg+xml,%3Csvg width='32' height='32' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' preserveAspectRatio='xMidYMid' class='uil-spin'%3E%3Cpath fill='none' class='bk' d='M0 0h100v100H0z'/%3E%3Cg transform='translate(84 50)'%3E%3Ccircle r='8'%3E%3Canimate attributeName='opacity' from='1' to='.1' begin='0s' dur='1s' repeatCount='indefinite'/%3E%3CanimateTransform attributeName='transform' type='scale' from='1.5' to='1' begin='0s' dur='1s' repeatCount='indefinite'/%3E%3C/circle%3E%3C/g%3E%3Cg transform='rotate(45 -52.355 126.397)'%3E%3Ccircle r='8'%3E%3Canimate attributeName='opacity' from='1' to='.1' begin='0.12s' dur='1s' repeatCount='indefinite'/%3E%3CanimateTransform attributeName='transform' type='scale' from='1.5' to='1' begin='0.12s' dur='1s' repeatCount='indefinite'/%3E%3C/circle%3E%3C/g%3E%3Cg transform='rotate(90 -17 67)'%3E%3Ccircle r='8'%3E%3Canimate attributeName='opacity' from='1' to='.1' begin='0.25s' dur='1s' repeatCount='indefinite'/%3E%3CanimateTransform attributeName='transform' type='scale' from='1.5' to='1' begin='0.25s' dur='1s' repeatCount='indefinite'/%3E%3C/circle%3E%3C/g%3E%3Cg transform='rotate(135 -2.355 42.397)'%3E%3Ccircle r='8'%3E%3Canimate attributeName='opacity' from='1' to='.1' begin='0.37s' dur='1s' repeatCount='indefinite'/%3E%3CanimateTransform attributeName='transform' type='scale' from='1.5' to='1' begin='0.37s' dur='1s' repeatCount='indefinite'/%3E%3C/circle%3E%3C/g%3E%3Cg transform='rotate(180 8 25)'%3E%3Ccircle r='8'%3E%3Canimate attributeName='opacity' from='1' to='.1' begin='0.5s' dur='1s' repeatCount='indefinite'/%3E%3CanimateTransform attributeName='transform' type='scale' from='1.5' to='1' begin='0.5s' dur='1s' repeatCount='indefinite'/%3E%3C/circle%3E%3C/g%3E%3Cg transform='rotate(-135 18.355 7.603)'%3E%3Ccircle r='8'%3E%3Canimate attributeName='opacity' from='1' to='.1' begin='0.62s' dur='1s' repeatCount='indefinite'/%3E%3CanimateTransform attributeName='transform' type='scale' from='1.5' to='1' begin='0.62s' dur='1s' repeatCount='indefinite'/%3E%3C/circle%3E%3C/g%3E%3Cg transform='rotate(-90 33 -17)'%3E%3Ccircle r='8'%3E%3Canimate attributeName='opacity' from='1' to='.1' begin='0.75s' dur='1s' repeatCount='indefinite'/%3E%3CanimateTransform attributeName='transform' type='scale' from='1.5' to='1' begin='0.75s' dur='1s' repeatCount='indefinite'/%3E%3C/circle%3E%3C/g%3E%3Cg transform='rotate(-45 68.355 -76.397)'%3E%3Ccircle r='8'%3E%3Canimate attributeName='opacity' from='1' to='.1' begin='0.87s' dur='1s' repeatCount='indefinite'/%3E%3CanimateTransform attributeName='transform' type='scale' from='1.5' to='1' begin='0.87s' dur='1s' repeatCount='indefinite'/%3E%3C/circle%3E%3C/g%3E%3C/svg%3E" width="128" height="128">
 </div>
 </div>
-</div>
+<input type="file" id="gpx_file" accept=".gpx" />
+<div id="overlay"></div>
 </body>
 </html>
