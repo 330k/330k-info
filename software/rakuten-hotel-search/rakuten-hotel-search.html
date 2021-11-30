@@ -25,9 +25,9 @@ jQuery(function(){
   });
   
   const resize = function(e){
-    $("#hotel_list").width($(document).width() - $("#map_canvas").width());
+    $("#hotel_list").width($(window).width() - $("#map_canvas").width());
   };
-  //$("#hotel_list").resize(resize);
+  $("#map_canvas").resize(resize);
   $(window).resize(resize);
 });
 
