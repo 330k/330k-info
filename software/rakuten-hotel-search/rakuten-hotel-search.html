@@ -20,14 +20,14 @@ const googlemap = {
 };
 
 jQuery(function(){
-  $("#hotel_list").resizable({
-    handles: 'e'
+  $("#map_canvas").resizable({
+    handles: "w",
   });
   
   const resize = function(e){
-    $("#map_canvas").width($(document).width() - $("#hotel_list").width() - 15);
+    $("#hotel_list").width($(document).width() - $("#map_canvas").width());
   };
-  $("#hotel_list").resize(resize);
+  //$("#hotel_list").resize(resize);
   $(window).resize(resize);
 });
 
@@ -79,6 +79,9 @@ window.addEventListener("DOMContentLoaded", function(){
       strokeOpacity: 1.0,
       strokeWeight: 2,
     });
+    line.addListener("mouseover", function(evt){
+      console.log([evt.latLng.lat(), evt.latLng.lng()]);
+    })
 
     googlemap.lines.push(line);
     line.setMap(map);
