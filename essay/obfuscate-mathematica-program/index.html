@@ -13,7 +13,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.330k.info/essay/obfuscate-mathematica-program/" /><meta property="og:image" content="https://www.ipros.jp/public/product/image/f59/396065002/IPROS3632825140790521490.png?h=220&w=220" /><meta property="article:section" content="essay" />
 <meta property="article:published_time" content="2021-11-29T20:39:12+09:00" />
-<meta property="article:modified_time" content="2021-11-30T04:04:57+09:00" />
+<meta property="article:modified_time" content="2021-11-30T09:48:49+09:00" />
 
 
 	<meta name="twitter:card" content="summary_large_image"/>
@@ -85,7 +85,7 @@ if (!doNotTrack) {
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
 	<time class="meta__text" datetime="2021-11-29T20:39:12">November 29, 2021</time>
-	<time class="meta__text" datetime="2021-11-30T04:04:57"> (Last Modified: November 30, 2021)</time>
+	<time class="meta__text" datetime="2021-11-30T09:48:49"> (Last Modified: November 30, 2021)</time>
 </div>
 
 <div class="meta__item-categories meta__item">
@@ -109,10 +109,11 @@ wQ4s5Ag0ogXC4gEZSYl5KfG5SamJPJCORCJFiAhE9mcUmmgxM/QyYTXJwTrD8vJbME6ASIEDuQCEgsKU
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-mathematica" data-lang="mathematica">Uncompress[<span style="">&#34;</span>1<span style="">:</span>eJxTTMoPSmNiYGAoFgISzvm5BfmleSmuFQVFqcXFmfl5wcJA4RgrSzNHgxgrYwNTc1+geGJ6KkQPK5AIycxNLS7qfbt1wfdjF+<span style="">\</span>
 wQ4s5Ag0ogXC4gEZSYl5KfG5SamJPJCORCJFiAhE9mcUmmgxM/QyYTXJwTrD8vJbME6ASIEDuQCEgsKUktyisGGZCYxgCzySknMS8byUCgCyE8ZiDhkl8CUQ8hwZYDAIRsNw0=<span style="">&#34;</span>]
 </code></pre></div><h3 id="復元">復元</h3>
-<p>元のソースコードは<code>Uncompress</code>の第2引数に<code>Hold</code>や<code>Unevaluated</code>を追加することで復元できる。<code>Uncompress</code>の仕様を知っている必要があるので少し復元難易度は高め。</p>
+<p>元のソースコードは<code>Uncompress</code>の第2引数に<code>Hold</code>や<code>Unevaluated</code>、<code>HoldForm</code>を追加することで復元できる。
+<code>Uncompress</code>の仕様を知っている必要があるので少し復元難易度は高め。</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-mathematica" data-lang="mathematica">Uncompress[<span style="">&#34;</span>1<span style="">:</span>eJxTTMoPSmNiYGAoFgISzvm5BfmleSmuFQVFqcXFmfl5wcJA4RgrSzNHgxgrYwNTc1+geGJ6KkQPK5AIycxNLS7qfbt1wfdjF+<span style="">\</span>
 wQ4s5Ag0ogXC4gEZSYl5KfG5SamJPJCORCJFiAhE9mcUmmgxM/QyYTXJwTrD8vJbME6ASIEDuQCEgsKUktyisGGZCYxgCzySknMS8byUCgCyE8ZiDhkl8CUQ8hwZYDAIRsNw0=<span style="">&#34;</span>, <span style="">\</span>
-Hold]
+HoldForm]
 </code></pre></div><p>これを実行すると、隠しメッセージを含む以下の文字列が得られる。</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-mathematica" data-lang="mathematica">Hold[<span style="color:#a31515">&#34;隠しMessage&#34;</span>; 4.*10^-6 Count[RandomReal[1, {1000000, 2}], a_ /; a<span style="">.</span>a &lt; 1]]
 </code></pre></div><h2 id="文字列化--compress">文字列化 + Compress</h2>
@@ -170,8 +171,8 @@ Mathematicaの知識が必要なので復元難易度は高め。</p>
 <h2 id="文字列化--base64--数値化">文字列化 + Base64 + 数値化</h2>
 <p>上記2つの組み合わせで、復元の難易度を上げる。</p>
 <h3 id="難読化-4">難読化</h3>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-mathematica" data-lang="mathematica">FromDigits[ToCharacterCode[ExportString[
- <span style="color:#a31515">&#34;(*Hidden Message*)4.*^-6 Count[RandomReal[1,{1*^6,2}],a_/;a.a&lt;1]&#34;</span>,<span style="color:#a31515">&#34;Base64&#34;</span>]], 128]
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-mathematica" data-lang="mathematica">FromDigits[ToCharacterCode@ExportString[
+ <span style="color:#a31515">&#34;(*Hidden Message*)4.*^-6 Count[RandomReal[1,{1*^6,2}],a_/;a.a&lt;1]&#34;</span>,<span style="color:#a31515">&#34;Base64&#34;</span>], 128]
 </code></pre></div><div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-mathematica" data-lang="mathematica">2629108794144899453206565807086524923112452908759067533058518<span style="">\</span>
 6181764566380851641685704793089640780996201346372998332701326457951078<span style="">\</span>
 92857724507826978543035873377491375992673611568234835697290
@@ -192,8 +193,31 @@ Mathematicaの知識が必要なので復元難易度は高め。</p>
 4566380851641685704793089640780996201346372998332701326457951078928577<span style="">\</span>
 24507826978543035873377491375992673611568234835697290, 128], {<span style="color:#a31515">&#34;Base64&#34;</span>, <span style="color:#a31515">&#34;Text&#34;</span>}]
 </code></pre></div><div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-mathematica" data-lang="mathematica"><span style="color:#a31515">&#34;(*Hidden Message*)4.*^-6 Count[RandomReal[1,{1*^6,2}],a_/;a.a&lt;1]&#34;</span>
-</code></pre></div><h2 id="encode-おまけ">Encode (おまけ)</h2>
+</code></pre></div><h2 id="compress--unevaluated--base64--数値化">Compress + Unevaluated + Base64 + 数値化</h2>
+<p>Compress + Unevaluatedとの組み合わせも可能。</p>
 <h3 id="難読化-5">難読化</h3>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-mathematica" data-lang="mathematica">FromDigits[ToCharacterCode@Compress@Unevaluated[<span style="color:#a31515">&#34;隠しMessage&#34;</span>; 4.*^-6 Count[RandomReal[1, {1*^6, 2}], a_ /; a<span style="">.</span>a &lt; 1]], 128]
+</code></pre></div><div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-mathematica" data-lang="mathematica">47224907448643461475265088304432125824433960941734592263479665963636068878549156319601496150674939543046241216351891323501758922386376405555<span style="">\</span>
+39419466703945617677752873083017382003874101197375102487690082325907181737700875326800175602588529877917615505274828352328524963877963948153<span style="">\</span>
+70007822692008952608741014933162209546168886313396376869558127053938117595375491826819346105617431232359869428669660450805679620041160759413<span style="">\</span>
+4115154251728302145825976783417854583251715238155343820178593703129897021
+</code></pre></div><h3 id="実行-5">実行</h3>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-mathematica" data-lang="mathematica">Uncompress@FromCharacterCode@IntegerDigits[
+ 47224907448643461475265088304432125824433960941734592263479665963636068878549156319601496150674939543046241216351891323501758922386376405<span style="">\</span>
+55539419466703945617677752873083017382003874101197375102487690082325907181737700875326800175602588529877917615505274828352328524963877963948<span style="">\</span>
+15370007822692008952608741014933162209546168886313396376869558127053938117595375491826819346105617431232359869428669660450805679620041160759<span style="">\</span>
+4134115154251728302145825976783417854583251715238155343820178593703129897021, 128]
+</code></pre></div><h3 id="復元-5">復元</h3>
+<p><code>Uncompress</code>の第2引数に<code>Hold</code>、<code>Unevaluated</code>、<code>HoldForm</code>などを加えることで復元できる。</p>
+<p>日本語などマルチバイト文字も問題ない。</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-mathematica" data-lang="mathematica">Uncompress[FromCharacterCode@IntegerDigits[
+ 47224907448643461475265088304432125824433960941734592263479665963636068878549156319601496150674939543046241216351891323501758922386376405<span style="">\</span>
+55539419466703945617677752873083017382003874101197375102487690082325907181737700875326800175602588529877917615505274828352328524963877963948<span style="">\</span>
+15370007822692008952608741014933162209546168886313396376869558127053938117595375491826819346105617431232359869428669660450805679620041160759<span style="">\</span>
+4134115154251728302145825976783417854583251715238155343820178593703129897021, 128], Hold]
+</code></pre></div><div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-mathematica" data-lang="mathematica">Hold[<span style="color:#a31515">&#34;隠しMessage&#34;</span>; 4.*10^-6 Count[RandomReal[1, {1000000, 2}], a_ /; a<span style="">.</span>a &lt; 1]]
+</code></pre></div><h2 id="encode-おまけ">Encode (おまけ)</h2>
+<h3 id="難読化-6">難読化</h3>
 <p><code>Encode</code>は一時ファイルを作成する必要あり。</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-mathematica" data-lang="mathematica">tmp1 = FileNameJoin[{<span style="">$</span>TemporaryDirectory, <span style="color:#a31515">&#34;temp.txt&#34;</span>}];
 tmp2 = FileNameJoin[{<span style="">$</span>TemporaryDirectory, <span style="color:#a31515">&#34;temp_enc.txt&#34;</span>}];
@@ -202,12 +226,12 @@ Encode[tmp1, tmp2];
 Import[tmp2]
 </code></pre></div><div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-mathematica" data-lang="mathematica"><span style="">&#34;</span><span style="color:#008000">(*!1N!*)</span>mcm
 j&lt;]ahZS&gt;kA6&gt;<span style="">`</span>B)A&gt;gkBmqf3<span style="">\\</span>@&lt;,rR9d&gt;-J[i!5&amp;u|2Y YC@hh_Hk/HgDS50`La<span style="">&#39;</span>  <span style="">&#34;</span>
-</code></pre></div><h3 id="実行-5">実行</h3>
+</code></pre></div><h3 id="実行-6">実行</h3>
 <p><code>Get</code>でファイルを読み込むことで実行できる。</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-mathematica" data-lang="mathematica">tmp3 = FileNameJoin[{<span style="">$</span>TemporaryDirectory, <span style="color:#a31515">&#34;enc.txt&#34;</span>}];
 Export[tmp3, <span style="color:#a31515">&#34;(*!1N!*)mcm\nj&lt;]ahZS&gt;kA6&gt;`B)A&gt;gkBmqf3\\@&lt;,rR9d&gt;-J[i!5&amp;u|2Y YC@hh_Hk/HgDS50`La&#39;  &#34;</span>, <span style="color:#a31515">&#34;Text&#34;</span>];
 Get[tmp3]
-</code></pre></div><h3 id="復元-5">復元</h3>
+</code></pre></div><h3 id="復元-6">復元</h3>
 <p><a href="https://reference.wolfram.com/language/ref/Encode.html.ja">ドキュメント</a>に「Mathematica には，エンコードされたファイルをもとの形式に変換するための機能は組み込まれていない．」と記載があり、復元方法はない。</p>
 <p>そのため埋め込んだ隠しメッセージを表示することはできない。</p>
 		</div>
