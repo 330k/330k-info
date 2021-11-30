@@ -162,8 +162,10 @@ function initMap(){
       center: new google.maps.LatLng(e.latLng.lat(), e.latLng.lng()),
       radius: radius * 1000,
       strokeColor: '#ff0000',
+      strokeOpacity: 0.7,
       fillColor: '#ff0000',
-      fillOpacity: 0.3
+      fillOpacity: 0.2,
+      clickable: false
     });
     
     const searchresult = await getHotelList(e.latLng.lat(), e.latLng.lng(), radius);
