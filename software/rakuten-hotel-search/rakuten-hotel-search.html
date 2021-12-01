@@ -377,9 +377,15 @@ function showHotelList(searchresult){
     });
     marker.addListener("mouseover", () => {
       ele_tr.classList.add("hotel_selected");
+      infowindow.open({
+        anchor: marker,
+        map: googlemap.map,
+        shouldFocus: false,
+      });
     });
     marker.addListener("mouseout", () => {
       ele_tr.classList.remove("hotel_selected");
+      infowindow.close();
     });
     
     ele_tr.addEventListener("mouseover", () => {
