@@ -384,10 +384,16 @@ function showHotelList(searchresult){
     const color = (hotel.hotelDetailInfo.lastCheckinTime ? ((hour) => {
       if(hour <= 18){
         return "ff0000";
-      }else if(hour <= 21){
+      }else if(hour <= 20){
+        return "ff8800";
+      }else if(hour <= 22){
         return "ffff00";
       }else if(hour <= 24){
+        return "88ff00";
+      }else if(hour <= 26){
         return "00ff00";
+      }else if(hour <= 28){
+        return "00ff88";
       }else{
         return "00ffff";
       }
