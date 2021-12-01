@@ -258,8 +258,9 @@ function initMap(){
       radius: radius * 1000,
       strokeColor: '#ff0000',
       strokeOpacity: 0.7,
+      strokeWeight: 2,
       fillColor: '#ff0000',
-      fillOpacity: 0.2,
+      fillOpacity: 0.1,
       clickable: false
     });
     
@@ -380,10 +381,34 @@ function showHotelList(searchresult){
         + "<br><br><img src='" + hotel.hotelBasicInfo.hotelThumbnailUrl + "'/>"
         + (hotel.hotelBasicInfo.roomThumbnailUrl ? "<img src='" + hotel.hotelBasicInfo.roomThumbnailUrl + "'/>" : "")
     });
+    const color = (hotel.hotelDetailInfo.lastCheckinTime ? ((hour) => {
+      if(hour <= 18){
+        return "ff0000";
+      }else if(hour <= 21){
+        return "ffff00";
+      }else if(hour <= 24){
+        return "00ff00";
+      }else{
+        return "00ffff";
+      }
+    })(hotel.hotelDetailInfo.lastCheckinTime.trim().slice(0, 2) - 0) : "ffffff");
     const marker = new google.maps.Marker({
       position: {lat: hotel.hotelBasicInfo.latitude, lng: hotel.hotelBasicInfo.longitude},
       title: hotel.hotelBasicInfo.hotelName,
-      label: `${i + 1}`,
+      icon: {
+        path: "M41.01.397c22.43 0 40.614 18.021 40.614 40.25 0 22.233-40.614 95.132-40.614 95.132S.397 62.879.397 40.648C.397 18.418 18.58.397 41.01.397z",
+        fillColor: '#' + color,
+        fillOpacity: 1,
+        labelOrigin: { x: 41.0105, y: 41.0105 },
+        anchor: new google.maps.Point(41.0105, 136.594),
+        strokeWeight: 1.5,
+        strokeColor: (hasCoinLaundry(hotel) ? "#000" : "#fff"),
+        scale: .3
+      },
+      label: {
+        text: `${i + 1}`,
+        fontWeight: (hasCoinLaundry(hotel) ? "bold" : "normal")
+      },
       zIndex: 2000 - i,
       map: googlemap.map
     });
