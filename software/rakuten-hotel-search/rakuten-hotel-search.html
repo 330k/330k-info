@@ -129,6 +129,7 @@ function showGPXRoute(map, gpx, color, filename){
   });
 
   const dist_info = document.getElementById("dist_info");
+  let marker = null;
 
   line.addListener("mouseover", function(evt){
     // GPXトラック上にマウスが来たときは距離を表示する
@@ -148,14 +149,32 @@ function showGPXRoute(map, gpx, color, filename){
     //console.log(coords[index_min]);
     //console.log(evt);
 
+    marker = new google.maps.Marker({
+      position: coords[index_min],
+      icon: {
+          path: google.maps.SymbolPath.CIRCLE,
+          scale: 5,
+          fillColor: "#00f",
+          fillOpacity: 0.5,
+          strokeColor: "#00f",
+          strokeOpacity: 1,
+          strokeWeight: 1
+      },
+      map: googlemap.map
+    });
+
     dist_info.innerHTML = filename + ": " + (0.001 * coords[index_min].dist).toFixed(1) + " km";
     dist_info.style.display = "block";
     dist_info.style.left = evt.domEvent.pageX - dist_info.clientWidth * 0.5;
-    dist_info.style.top = evt.domEvent.pageY - dist_info.clientHeight - 5;
+    dist_info.style.top = evt.domEvent.pageY - dist_info.clientHeight - 10;
 
   });
   line.addListener("mouseout", function(evt){
     dist_info.style.display = "none";
+    if(marker){
+      marker.setMap(null);
+      marker = null;
+    }
   });
 
   googlemap.gpxtracks.push(line);
@@ -365,6 +384,7 @@ function showHotelList(searchresult){
       position: {lat: hotel.hotelBasicInfo.latitude, lng: hotel.hotelBasicInfo.longitude},
       title: hotel.hotelBasicInfo.hotelName,
       label: `${i + 1}`,
+      zIndex: 2000 - i,
       map: googlemap.map
     });
     marker.addListener("click", (evt) => {
