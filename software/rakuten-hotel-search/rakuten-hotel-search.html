@@ -324,10 +324,12 @@ function showHotelList(searchresult){
 
   if(searchresult.status === "SUCCESS"){
     document.getElementById("message").innerHTML = "検索結果: " + searchresult.hotels.length + "件</p>";
-  }else if(searchresult.status === "not_found"){
-    document.getElementById("message").innerHTML = "見つかりませんでした";
-  }else if(searchresult.status === "ERROR"){
-    document.getElementById("message").innerHTML = "API呼び出しエラー";
+  }else if(searchresult.status !== ""){
+    if(searchresult.status === "not_found"){
+      document.getElementById("message").innerHTML = "見つかりませんでした";
+    }else{
+      document.getElementById("message").innerHTML = "不明なAPI呼び出しエラー: " + searchresult.status;
+    }
   }else{
     document.getElementById("message").innerHTML = "";
   }
