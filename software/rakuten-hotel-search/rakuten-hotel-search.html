@@ -15,7 +15,7 @@
 const googlemap = {
   map: null,
   hotelmarkers: [],
-  circle: null,
+  searchareacircle: null,
   gpxtracks: []
 };
 
@@ -94,7 +94,7 @@ function readGPX(file){
  * @param {string} color
  * @return {void}
  */
-function showGPXRoute(map, gpx, color){
+function showGPXRoute(map, gpx, color, filename){
   const trkpts = gpx.querySelectorAll("trkpt");
   if(trkpts.length === 0){
     return;
@@ -128,7 +128,8 @@ function showGPXRoute(map, gpx, color){
     title: "TEST"
   });
 
-  let infowindow = null;
+  const dist_info = document.getElementById("dist_info");
+
   line.addListener("mouseover", function(evt){
     // GPXトラック上にマウスが来たときは距離を表示する
     const lat = evt.latLng.lat();
@@ -144,19 +145,17 @@ function showGPXRoute(map, gpx, color){
       };
     }
 
-    console.log(coords[index_min]);
-    infowindow = new google.maps.InfoWindow({
-      content: (0.001 * coords[index_min].dist).toFixed(1) + " km",
-      position: coords[index_min]
-    });
-    infowindow.open({
-      map: googlemap.map
-    });
+    //console.log(coords[index_min]);
+    //console.log(evt);
+
+    dist_info.innerHTML = filename + ": " + (0.001 * coords[index_min].dist).toFixed(1) + " km";
+    dist_info.style.display = "block";
+    dist_info.style.left = evt.domEvent.pageX - dist_info.clientWidth * 0.5;
+    dist_info.style.top = evt.domEvent.pageY - dist_info.clientHeight - 5;
+
   });
   line.addListener("mouseout", function(evt){
-    if(infowindow){
-      infowindow.setMap(null);
-    }
+    dist_info.style.display = "none";
   });
 
   googlemap.gpxtracks.push(line);
@@ -177,7 +176,7 @@ window.addEventListener("DOMContentLoaded", function(){
       for(let i = 0; i < evt.target.files.length; i++){
         console.log(evt.target.files[i]);
         const gpx = await readGPX(evt.target.files[i]);
-        showGPXRoute(googlemap.map, gpx, colors[i % colors.length]);
+        showGPXRoute(googlemap.map, gpx, colors[i % colors.length], evt.target.files[i].name);
       }
 
     }catch(err){
@@ -228,15 +227,15 @@ function initMap(){
     fullscreenControl: false
   });
   
-  googlemap.map.addListener("click", async function(e){
+  googlemap.map.addListener("click", async function(evt){
     const radius = 3;
   
     clearResult();
     showLoader();
     
-    googlemap.circle = new google.maps.Circle({
+    googlemap.searchareacircle = new google.maps.Circle({
       map: googlemap.map,
-      center: new google.maps.LatLng(e.latLng.lat(), e.latLng.lng()),
+      center: new google.maps.LatLng(evt.latLng.lat(), evt.latLng.lng()),
       radius: radius * 1000,
       strokeColor: '#ff0000',
       strokeOpacity: 0.7,
@@ -245,13 +244,13 @@ function initMap(){
       clickable: false
     });
     
-    const searchresult = await getHotelList(e.latLng.lat(), e.latLng.lng(), radius);
+    const searchresult = await getHotelList(evt.latLng.lat(), evt.latLng.lng(), radius);
     showHotelList(searchresult);
     hideLoader();
 
   });
   
-  googlemap.map.addListener("rightclick", function(e){
+  googlemap.map.addListener("rightclick", function(evt){
     clearResult();
   });
   
@@ -368,14 +367,14 @@ function showHotelList(searchresult){
       label: `${i + 1}`,
       map: googlemap.map
     });
-    marker.addListener("click", () => {
+    marker.addListener("click", (evt) => {
       infowindow.open({
         anchor: marker,
         map: googlemap.map,
         shouldFocus: false
       });
     });
-    marker.addListener("mouseover", () => {
+    marker.addListener("mouseover", (evt) => {
       ele_tr.classList.add("hotel_selected");
       infowindow.open({
         anchor: marker,
@@ -383,12 +382,12 @@ function showHotelList(searchresult){
         shouldFocus: false,
       });
     });
-    marker.addListener("mouseout", () => {
+    marker.addListener("mouseout", (evt) => {
       ele_tr.classList.remove("hotel_selected");
       infowindow.close();
     });
     
-    ele_tr.addEventListener("mouseover", () => {
+    ele_tr.addEventListener("mouseover", (evt) => {
       ele_tr.classList.add("hotel_selected");
       infowindow.open({
         anchor: marker,
@@ -396,7 +395,7 @@ function showHotelList(searchresult){
         shouldFocus: false,
       });
     });
-    ele_tr.addEventListener("mouseout", () => {
+    ele_tr.addEventListener("mouseout", (evt) => {
       ele_tr.classList.remove("hotel_selected");
       infowindow.close();
     });
@@ -422,10 +421,10 @@ function showHotelList(searchresult){
  * 結果を初期化
  */
 function clearResult(){
-  if(googlemap.circle){
-    googlemap.circle.setMap(null);
+  if(googlemap.searchareacircle){
+    googlemap.searchareacircle.setMap(null);
   }
-  googlemap.circle = null;
+  googlemap.searchareacircle = null;
 
   googlemap.hotelmarkers.map((e) => {
     e.setMap(null);
@@ -517,6 +516,20 @@ if (!doNotTrack) {
   background: #ddd;
 }
 
+#dist_info {
+  position: absolute;
+  display: none;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  padding: 3px;
+  background-color: #eee;
+  border-radius: 3px;
+  border-width: 1px;
+  border-color: #000;
+  border-style: solid;
+}
+
 .hotel_selected {
   background: #ccc;
 }
@@ -565,5 +578,6 @@ if (!doNotTrack) {
 </div>
 <input type="file" id="gpx_file" accept=".gpx" />
 <div id="overlay"></div>
+<div id="dist_info"></div>
 </body>
 </html>
