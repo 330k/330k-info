@@ -14,9 +14,9 @@
 <script>
 const googlemap = {
   map: null,
-  markers: [],
-  lines: [],
-  circle: null
+  hotelmarkers: [],
+  circle: null,
+  gpxtracks: []
 };
 
 jQuery(function(){
@@ -31,68 +31,145 @@ jQuery(function(){
   $(window).resize(resize);
 });
 
-window.addEventListener("DOMContentLoaded", function(){
-  /**
-   * GPXファイルを読み込むPromiseを返す
-   * @param {string} file 読み込むファイル
-   * @return {XMLDocument} 読み込んだ結果をXMLObjectを返すPromise
-   */
-  const readGPX = function(file){
-    return new Promise(function(resolve, reject){
-      try{
-        const reader = new FileReader();
-        const parser = new DOMParser();
+/**
+ * Hubeny測地線距離計算式
+ * @param {number} lat1
+ * @param {number} lon1
+ * @param {number} lat2
+ * @param {number} lon2
+ * @return {number} distance [m]
+ */
+ const hubeny = (function(){
+  const a = 6378137.0;
+  const f = 1 / 298.257223563;
+  const e2 = f * (2 - f);
+  const degree = Math.PI / 180.0;
+  const sin = Math.sin;
+  const cos = Math.cos;
+  const sqrt = Math.sqrt;
+  return function (lat1, lon1, lat2, lon2){
+    const latdiff = (lat1 - lat2) * degree;
+    const londiff = (lon1 - lon2) * degree;
+    const latave = 0.5 * (lat1 + lat2) * degree;
+    const sinlatave = sin(latave);
+    const coslatave = cos(latave);
+    const w2 = 1.0 - sinlatave * sinlatave * e2;
+    const w = sqrt(w2);
+    const meridian = a * (1 - e2) / (w2 * w);
+    const n = a / w;
 
-        reader.onload = function(){
-          resolve(parser.parseFromString(reader.result, "text/xml"));
-        };
-        reader.readAsText(file, "utf-8");
-        
-      }catch(e){
-        reject(e);
-      }
-    });
-  }
+    return sqrt(
+      latdiff * latdiff * meridian * meridian +
+      londiff * londiff * n * n * coslatave * coslatave
+    );
+  };
+})();
 
-  /**
-   * GPXデータのルートをGoogle Mapsに表示
-   * @param {Object} map
-   * @param {XMLDocument} gpx
-   * @param {string} color
-   * @return {void}
-   */
-  function showGPXRoute(map, gpx, color){
-    const trkpts = gpx.querySelectorAll("trkpt");
-    const coords = [];
+/**
+ * GPXファイルを読み込むPromiseを返す
+ * @param {string} file 読み込むファイル
+ * @return {XMLDocument} 読み込んだ結果をXMLObjectを返すPromise
+ */
+function readGPX(file){
+  return new Promise(function(resolve, reject){
+    try{
+      const reader = new FileReader();
+      const parser = new DOMParser();
 
-    for(let i = 1; i < trkpts.length; i++){
-      coords.push({
-        lat: trkpts[i].getAttribute("lat") - 0,
-        lng: trkpts[i].getAttribute("lon") - 0
-      });
+      reader.onload = function(){
+        resolve(parser.parseFromString(reader.result, "text/xml"));
+      };
+      reader.readAsText(file, "utf-8");
+      
+    }catch(e){
+      reject(e);
     }
-    
-    const line = new google.maps.Polyline({
-      path: coords,
-      geodesic: true,
-      strokeColor: color,
-      strokeOpacity: 1.0,
-      strokeWeight: 2,
-    });
-    line.addListener("mouseover", function(evt){
-      console.log([evt.latLng.lat(), evt.latLng.lng()]);
-    })
+  });
+}
 
-    googlemap.lines.push(line);
-    line.setMap(map);
+/**
+ * GPXデータのルートをGoogle Mapsに表示
+ * @param {Object} map
+ * @param {XMLDocument} gpx
+ * @param {string} color
+ * @return {void}
+ */
+function showGPXRoute(map, gpx, color){
+  const trkpts = gpx.querySelectorAll("trkpt");
+  if(trkpts.length === 0){
+    return;
   }
 
+  const coords = [{
+    lat: trkpts[0].getAttribute("lat") - 0,
+    lng: trkpts[0].getAttribute("lon") - 0,
+    dist: 0.0
+  }];
+
+  let d = 0.0;
+  for(let i = 1; i < trkpts.length; i++){
+    let lat = trkpts[i].getAttribute("lat") - 0;
+    let lng = trkpts[i].getAttribute("lon") - 0;
+
+    d += hubeny(coords[coords.length - 1].lat, coords[coords.length - 1].lng, lat, lng);
+    coords.push({
+      lat: lat,
+      lng: lng,
+      dist: d
+    });
+  }
+  
+  const line = new google.maps.Polyline({
+    path: coords,
+    geodesic: true,
+    strokeColor: color,
+    strokeOpacity: 0.5,
+    strokeWeight: 5,
+    title: "TEST"
+  });
+
+  let infowindow = null;
+  line.addListener("mouseover", function(evt){
+    // GPXトラック上にマウスが来たときは距離を表示する
+    const lat = evt.latLng.lat();
+    const lng = evt.latLng.lng();
+    let dist_min = Number.MAX_VALUE;
+    let index_min = -1;
+
+    for(let i = 0; i < coords.length; i++){
+      let d = hubeny(coords[i].lat, coords[i].lng, lat, lng);
+      if(d < dist_min){
+        index_min = i;
+        dist_min = d;
+      };
+    }
+
+    console.log(coords[index_min]);
+    infowindow = new google.maps.InfoWindow({
+      content: (0.001 * coords[index_min].dist).toFixed(1) + " km",
+      position: coords[index_min]
+    });
+    infowindow.open({
+      map: googlemap.map
+    });
+  });
+  line.addListener("mouseout", function(evt){
+    if(infowindow){
+      infowindow.setMap(null);
+    }
+  });
+
+  googlemap.gpxtracks.push(line);
+  line.setMap(map);
+}
+
+window.addEventListener("DOMContentLoaded", function(){
   document.getElementById("gpx_file").addEventListener("change", async function(evt){
     // GPXファイルの読み込み
     try{
       showLoader();
 
-      googlemap.lines.map((e) => {
+      googlemap.gpxtracks.map((e) => {
         e.setMap(null);
       });
 
@@ -240,7 +317,7 @@ async function getHotelList(latitude, longitude, radius){
  * 検索結果を表示
  */
 function showHotelList(searchresult){
-  googlemap.markers = [];
+  googlemap.hotelmarkers = [];
   const ele_tbody = document.getElementById("tbody_hotel");
   ele_tbody.innerHTML = "";
 
@@ -319,7 +396,7 @@ function showHotelList(searchresult){
     });
     
     ele_tbody.appendChild(ele_tr);
-    googlemap.markers.push(marker);
+    googlemap.hotelmarkers.push(marker);
   }
 
   if(searchresult.status === "SUCCESS"){
@@ -344,10 +421,10 @@ function clearResult(){
   }
   googlemap.circle = null;
 
-  googlemap.markers.map((e) => {
+  googlemap.hotelmarkers.map((e) => {
     e.setMap(null);
   });
-  googlemap.markers = null;
+  googlemap.hotelmarkers = [];
   
   showHotelList({
     status: "",
