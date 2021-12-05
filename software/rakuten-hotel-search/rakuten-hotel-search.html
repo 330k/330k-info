@@ -16,7 +16,8 @@ const googlemap = {
   map: null,
   hotelmarkers: [],
   searchareacircle: null,
-  gpxtracks: []
+  gpxtracks: [],
+  dist_marker: null
 };
 
 jQuery(function(){
@@ -123,15 +124,24 @@ function showGPXRoute(map, gpx, color, filename){
     path: coords,
     geodesic: true,
     strokeColor: color,
-    strokeOpacity: 0.5,
-    strokeWeight: 5,
+    strokeOpacity: 1,
+    strokeWeight: 2,
+    title: "TEST"
+  });
+  // マイスイベントを拾うための透明なライン
+  const line_transparent = new google.maps.Polyline({
+    path: coords,
+    geodesic: true,
+    strokeColor: color,
+    strokeOpacity: 0,
+    strokeWeight: 30,
     title: "TEST"
   });
 
   const dist_info = document.getElementById("dist_info");
   let marker = null;
 
-  line.addListener("mouseover", function(evt){
+  line_transparent.addListener("mousemove", function(evt){
     // GPXトラック上にマウスが来たときは距離を表示する
     const lat = evt.latLng.lat();
     const lng = evt.latLng.lng();
@@ -148,37 +158,44 @@ function showGPXRoute(map, gpx, color, filename){
 
     //console.log(coords[index_min]);
     //console.log(evt);
+    if(googlemap.dist_marker){
+      googlemap.dist_marker.setPosition(coords[index_min]);
 
-    marker = new google.maps.Marker({
-      position: coords[index_min],
-      icon: {
-          path: google.maps.SymbolPath.CIRCLE,
-          scale: 5,
-          fillColor: "#00f",
-          fillOpacity: 0.5,
-          strokeColor: "#00f",
-          strokeOpacity: 1,
-          strokeWeight: 1
-      },
-      map: googlemap.map
-    });
+    }else{
+      googlemap.dist_marker = new google.maps.Marker({
+        position: coords[index_min],
+        icon: {
+            path: google.maps.SymbolPath.CIRCLE,
+            scale: 5,
+            fillColor: "#00f",
+            fillOpacity: 0.5,
+            strokeColor: "#00f",
+            strokeOpacity: 1,
+            strokeWeight: 1
+        },
+        map: googlemap.map
+      });
+      
+    }
 
     dist_info.innerHTML = filename + ": " + (0.001 * coords[index_min].dist).toFixed(1) + " km";
     dist_info.style.display = "block";
     dist_info.style.left = evt.domEvent.pageX - dist_info.clientWidth * 0.5;
-    dist_info.style.top = evt.domEvent.pageY - dist_info.clientHeight - 10;
+    dist_info.style.top = evt.domEvent.pageY - dist_info.clientHeight - 20;
 
   });
-  line.addListener("mouseout", function(evt){
+  line_transparent.addListener("mouseout", function(evt){
     dist_info.style.display = "none";
-    if(marker){
-      marker.setMap(null);
-      marker = null;
+    if(googlemap.dist_marker){
+      googlemap.dist_marker.setMap(null);
+      googlemap.dist_marker = null;
     }
   });
 
   googlemap.gpxtracks.push(line);
   line.setMap(map);
+  googlemap.gpxtracks.push(line_transparent);
+  line_transparent.setMap(map);
 }
 
 window.addEventListener("DOMContentLoaded", function(){
