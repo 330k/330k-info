@@ -120,22 +120,21 @@ function showGPXRoute(map, gpx, color, filename){
     });
   }
   
-  const line = new google.maps.Polyline({
+  // 表示用のPolyline
+  const line_display = new google.maps.Polyline({
     path: coords,
     geodesic: true,
     strokeColor: color,
     strokeOpacity: 1,
-    strokeWeight: 2,
-    title: "TEST"
+    strokeWeight: 2
   });
-  // マイスイベントを拾うための透明なライン
+  // マイスイベントを拾うための透明なPolyline
   const line_transparent = new google.maps.Polyline({
     path: coords,
     geodesic: true,
     strokeColor: color,
     strokeOpacity: 0,
-    strokeWeight: 30,
-    title: "TEST"
+    strokeWeight: 30
   });
 
   const dist_info = document.getElementById("dist_info");
@@ -175,7 +174,8 @@ function showGPXRoute(map, gpx, color, filename){
         },
         map: googlemap.map
       });
-      
+
+      googlemap.dist_marker.addListener("click", searchHotels);
     }
 
     dist_info.innerHTML = filename + ": " + (0.001 * coords[index_min].dist).toFixed(1) + " km";
@@ -191,9 +191,12 @@ function showGPXRoute(map, gpx, color, filename){
       googlemap.dist_marker = null;
     }
   });
+  // クリックイベントをmapからぶんどってしまうので、ホテル検索を行う
+  line_display.addListener("click", searchHotels);
+  line_transparent.addListener("click", searchHotels);
 
-  googlemap.gpxtracks.push(line);
-  line.setMap(map);
+  googlemap.gpxtracks.push(line_display);
+  line_display.setMap(map);
   googlemap.gpxtracks.push(line_transparent);
   line_transparent.setMap(map);
 }
@@ -263,36 +266,42 @@ function initMap(){
     fullscreenControl: false
   });
   
-  googlemap.map.addListener("click", async function(evt){
-    const radius = 3;
+  googlemap.map.addListener("click", searchHotels);
   
-    clearResult();
-    showLoader();
-    
-    googlemap.searchareacircle = new google.maps.Circle({
-      map: googlemap.map,
-      center: new google.maps.LatLng(evt.latLng.lat(), evt.latLng.lng()),
-      radius: radius * 1000,
-      strokeColor: '#ff0000',
-      strokeOpacity: 0.7,
-      strokeWeight: 2,
-      fillColor: '#ff0000',
-      fillOpacity: 0.1,
-      clickable: false
-    });
-    
-    const searchresult = await getHotelList(evt.latLng.lat(), evt.latLng.lng(), radius);
-    showHotelList(searchresult);
-    hideLoader();
-
-  });
-  
-  googlemap.map.addListener("rightclick", function(evt){
+  googlemap.map.addListener("contextmenu", function(evt){
     clearResult();
   });
   
   clearResult();
   hideLoader();
+}
+
+/**
+ * ホテル検索するイベントハンドラ
+ * @param {google.maps.MapMouseEvent} evt
+ * */
+async function searchHotels(evt){
+  const radius = 3;
+
+  clearResult();
+  showLoader();
+  
+  googlemap.searchareacircle = new google.maps.Circle({
+    map: googlemap.map,
+    center: new google.maps.LatLng(evt.latLng.lat(), evt.latLng.lng()),
+    radius: radius * 1000,
+    strokeColor: '#ff0000',
+    strokeOpacity: 0.7,
+    strokeWeight: 2,
+    fillColor: '#ff0000',
+    fillOpacity: 0.1,
+    clickable: false
+  });
+  
+  const searchresult = await getHotelList(evt.latLng.lat(), evt.latLng.lng(), radius);
+  showHotelList(searchresult);
+  hideLoader();
+
 }
 
 /**
