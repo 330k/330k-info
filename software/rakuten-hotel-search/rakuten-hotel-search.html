@@ -138,7 +138,6 @@ function showGPXRoute(map, gpx, color, filename){
   });
 
   const dist_info = document.getElementById("dist_info");
-  let marker = null;
 
   line_transparent.addListener("mousemove", function(evt){
     // GPXトラック上にマウスが来たときは距離を表示する
@@ -277,7 +276,7 @@ function initMap(){
 }
 
 /**
- * ホテル検索するイベントハンドラ
+ * ホテル検索するGoogle Mapsイベントハンドラ
  * @param {google.maps.MapMouseEvent} evt
  * */
 async function searchHotels(evt){
