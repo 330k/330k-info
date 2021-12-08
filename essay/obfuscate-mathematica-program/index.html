@@ -13,7 +13,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.330k.info/essay/obfuscate-mathematica-program/" /><meta property="og:image" content="https://www.ipros.jp/public/product/image/f59/396065002/IPROS3632825140790521490.png?h=220&w=220" /><meta property="article:section" content="essay" />
 <meta property="article:published_time" content="2021-11-29T20:39:12+09:00" />
-<meta property="article:modified_time" content="2021-12-03T11:00:59+09:00" />
+<meta property="article:modified_time" content="2021-12-09T03:06:32+09:00" />
 
 
 	<meta name="twitter:card" content="summary_large_image"/>
@@ -85,7 +85,7 @@ if (!doNotTrack) {
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
 	<time class="meta__text" datetime="2021-11-29T20:39:12">November 29, 2021</time>
-	<time class="meta__text" datetime="2021-12-03T11:00:59"> (Last Modified: December 03, 2021)</time>
+	<time class="meta__text" datetime="2021-12-09T03:06:32"> (Last Modified: December 09, 2021)</time>
 </div>
 
 <div class="meta__item-categories meta__item">
@@ -96,7 +96,7 @@ if (!doNotTrack) {
 		</header><div class="content post__content clearfix">
 			<p>Mathematicaのプログラムを難読化し、またそこに隠しメッセージを埋め込む手法をいくつか検討してみた。</p>
 <p>円周率をモンテカルロ法で求めるプログラムを難読化し、隠しメッセージを埋め込む例をいくつか考えた。</p>
-<h2 id="compress--unevaluated">Compress + Unevaluated</h2>
+<h2 id="そのままcompress">そのままCompress</h2>
 <p><code>Compress</code>に元のソースコードを式の形のまま渡す方法。</p>
 <p>コメント(<code>(* ... *)</code>は消えてしまうので、隠しメッセージは出力に影響しない文字列リテラルとして埋め込む。</p>
 <h3 id="難読化">難読化</h3>
@@ -116,7 +116,7 @@ wQ4s5Ag0ogXC4gEZSYl5KfG5SamJPJCORCJFiAhE9mcUmmgxM/QyYTXJwTrD8vJbME6ASIEDuQCEgsKU
 Hold]
 </code></pre></div><p>これを実行すると、隠しメッセージを含む以下の文字列が得られる。</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-mathematica" data-lang="mathematica">Hold[<span style="color:#a31515">&#34;隠しMessage&#34;</span>; 4.*10^-6 Count[RandomReal[1, {1000000, 2}], a_ /; a<span style="">.</span>a &lt; 1]]
-</code></pre></div><h2 id="文字列化--compress">文字列化 + Compress</h2>
+</code></pre></div><h2 id="文字列をcompress">文字列をCompress</h2>
 <p>ソースコードを文字列として表記したものに対して<code>Compress</code>を行う。</p>
 <p>文字列なのでコメント<code>(* ... *)</code>として隠しメッセージを埋め込み可能。
 一方で文字列リテラルの表記時にはエスケープが必要。</p>
@@ -131,7 +131,7 @@ ToExpression]
 <p>復元するには<code>Uncompress</code>の第2引数をなくせばよいので、隠しメッセージの存在に気づくのは比較的容易。</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-mathematica" data-lang="mathematica">Uncompress[<span style="color:#a31515">&#34;1:eJxTTMoPCnZlYGDQ0IqxsjRzNIixMjYwNfdNLS5OTE/V0jTR04rTNVNwzi/NK4kOSsxLyc8NSk3MiTbUqTbUijPTMaqN1UmM17dO1Eu0MYwFAEGrFkI=&#34;</span>]
 </code></pre></div><div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-mathematica" data-lang="mathematica"><span style="color:#a31515">&#34;(*隠しMessage*)4.*^-6 Count[RandomReal[1,{1*^6,2}],a_/;a.a&lt;1]&#34;</span>
-</code></pre></div><h2 id="文字列化--exportstring--base64">文字列化 + ExportString + Base64</h2>
+</code></pre></div><h2 id="文字列をbase64エンコード">文字列をBase64エンコード</h2>
 <p>元のコードを文字列にした後、<code>ExportString</code>を使ってbase64エンコーディングする。</p>
 <p>base64以外に、<code>&quot;UUE&quot;</code>(uuencode)を使うことや、base64エンコーディング前にgzipやbzip2で圧縮することも可能。</p>
 <h3 id="難読化-2">難読化</h3>
@@ -154,7 +154,7 @@ Mathematicaの知識が必要なので復元難易度は高め。</p>
 </code></pre></div><p>その他、シェルから<code>base64 -d</code>を使っての復元も可能。</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ echo <span style="color:#a31515">&#39;KCpcOjk2YTBcOjMwNTdNZXNzYWdlKik0LipeLTYgQ291bnRbUmFuZG9tUmVhbFsxLHsxKl42LDJ9XSxhXy87YS5hPDFd&#39;</span> | base64 -d
 (*<span style="color:#a31515">\:</span>96a0<span style="color:#a31515">\:</span>3057Message*)4.*^-6 Count[RandomReal[1,{1*^6,2}],a_/;a.a&lt;1]
-</code></pre></div><h2 id="文字列化--数値化">文字列化 + 数値化</h2>
+</code></pre></div><h2 id="文字列を数値化">文字列を数値化</h2>
 <p>Mathematicaは任意精度の数値を扱えるので、ソースコードの文字列を巨大な整数にしてしまう。</p>
 <h3 id="難読化-3">難読化</h3>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-mathematica" data-lang="mathematica">FromDigits[ToCharacterCode[<span style="color:#a31515">&#34;(*Hidden Message*)4.*^-6 Count[RandomReal[1,{1*^6,2}],a_/;a.a&lt;1]&#34;</span>], 128]
@@ -171,7 +171,7 @@ Mathematicaの知識が必要なので復元難易度は高め。</p>
 </code></pre></div><div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-mathematica" data-lang="mathematica"><span style="color:#a31515">&#34;(*Hidden Message*)4.*^-6 Count[RandomReal[1,{1*^6,2}],a_/;a.a&lt;1]&#34;</span>
 </code></pre></div><p>マルチバイト文字のコメントや文字列埋め込みはエラーが発生する。</p>
 <p>コード中の<code>128</code>を<code>65536</code>に変えればマルチバイト文字も扱えるが、難読化後の文字数が大きく増えてしまう。</p>
-<h2 id="文字列化--base64--数値化">文字列化 + Base64 + 数値化</h2>
+<h2 id="文字列をbase64エンコードした後に数値化">文字列をBase64エンコードした後に数値化</h2>
 <p>上記2つの組み合わせで、復元の難易度を上げる。</p>
 <h3 id="難読化-4">難読化</h3>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-mathematica" data-lang="mathematica">FromDigits[ToCharacterCode@ExportString[
@@ -196,8 +196,8 @@ Mathematicaの知識が必要なので復元難易度は高め。</p>
 4566380851641685704793089640780996201346372998332701326457951078928577<span style="">\</span>
 24507826978543035873377491375992673611568234835697290, 128], {<span style="color:#a31515">&#34;Base64&#34;</span>, <span style="color:#a31515">&#34;Text&#34;</span>}]
 </code></pre></div><div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-mathematica" data-lang="mathematica"><span style="color:#a31515">&#34;(*Hidden Message*)4.*^-6 Count[RandomReal[1,{1*^6,2}],a_/;a.a&lt;1]&#34;</span>
-</code></pre></div><h2 id="compress--unevaluated--base64--数値化">Compress + Unevaluated + Base64 + 数値化</h2>
-<p>Compress + Unevaluatedとの組み合わせも可能。</p>
+</code></pre></div><h2 id="compressして得た文字列を数値化">Compressして得た文字列を数値化</h2>
+<p>Compressとの組み合わせも可能。</p>
 <h3 id="難読化-5">難読化</h3>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-mathematica" data-lang="mathematica">FromDigits[ToCharacterCode@Compress@Unevaluated[<span style="color:#a31515">&#34;隠しMessage&#34;</span>; 4.*^-6 Count[RandomReal[1, {1*^6, 2}], a_ /; a<span style="">.</span>a &lt; 1]], 128]
 </code></pre></div><div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-mathematica" data-lang="mathematica">47224907448643461475265088304432125824433960941734592263479665963636068878549156319601496150674939543046241216351891323501758922386376405555<span style="">\</span>
@@ -219,6 +219,17 @@ Mathematicaの知識が必要なので復元難易度は高め。</p>
 15370007822692008952608741014933162209546168886313396376869558127053938117595375491826819346105617431232359869428669660450805679620041160759<span style="">\</span>
 4134115154251728302145825976783417854583251715238155343820178593703129897021, 128], Hold]
 </code></pre></div><div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-mathematica" data-lang="mathematica">Hold[<span style="color:#a31515">&#34;隠しMessage&#34;</span>; 4.*10^-6 Count[RandomReal[1, {1000000, 2}], a_ /; a<span style="">.</span>a &lt; 1]]
+</code></pre></div><h2 id="関数化">関数化</h2>
+<p>「Compressして得た文字列を数値化」の処理を関数化する。</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-mathematica" data-lang="mathematica">Attributes[Obfuscate] = {HoldFirst};
+Obfuscate[exp_] := <span style="color:#a31515">&#34;Uncompress[FromCharacterCode[IntegerDigits[\n&#34;</span> &lt;&gt; 
+  ToString[FromDigits[ToCharacterCode@Compress@Unevaluated[exp], 128]] &lt;&gt; <span style="color:#a31515">&#34;,\n128]]]&#34;</span>
+</code></pre></div><div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-mathematica" data-lang="mathematica">Obfuscate[<span style="color:#a31515">&#34;隠しMessage&#34;</span>; 4.*^-6 Count[RandomReal[1, {1*^6, 2}], a_ /; a<span style="">.</span>a &lt; 1]]
+</code></pre></div><div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-mathematica" data-lang="mathematica"><span style="">&#34;</span>Uncompress[FromCharacterCode[IntegerDigits[
+47224907448643461475265088304432125824433960941734592263479665963636068878549156319601496150674939543046241216351891323501758922386376405555<span style="">\</span>
+39419466703945617677752873083017382003874101197375102487690082325907181737700875326800175602588529877917615505274828352328524963877963948153<span style="">\</span>
+70007822692008952608741014933162209546168886313396376869558127053938117595375491826819346105617431232359869428669660450805679620041160759413<span style="">\</span>
+4115154251728302145825976783417854583251715238155343820178593703129897021, 128]]]<span style="">&#34;</span>
 </code></pre></div><h2 id="encode-おまけ">Encode (おまけ)</h2>
 <h3 id="難読化-6">難読化</h3>
 <p><code>Encode</code>は一時ファイルを作成する必要あり。</p>
