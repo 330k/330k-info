@@ -13,7 +13,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.330k.info/essay/obfuscate-mathematica-program/" /><meta property="og:image" content="https://www.ipros.jp/public/product/image/f59/396065002/IPROS3632825140790521490.png?h=220&w=220" /><meta property="article:section" content="essay" />
 <meta property="article:published_time" content="2021-11-29T20:39:12+09:00" />
-<meta property="article:modified_time" content="2021-12-09T03:06:32+09:00" />
+<meta property="article:modified_time" content="2021-12-09T03:11:05+09:00" />
 
 
 	<meta name="twitter:card" content="summary_large_image"/>
@@ -85,7 +85,7 @@ if (!doNotTrack) {
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
 	<time class="meta__text" datetime="2021-11-29T20:39:12">November 29, 2021</time>
-	<time class="meta__text" datetime="2021-12-09T03:06:32"> (Last Modified: December 09, 2021)</time>
+	<time class="meta__text" datetime="2021-12-09T03:11:05"> (Last Modified: December 09, 2021)</time>
 </div>
 
 <div class="meta__item-categories meta__item">
@@ -98,7 +98,8 @@ if (!doNotTrack) {
 <p>円周率をモンテカルロ法で求めるプログラムを難読化し、隠しメッセージを埋め込む例をいくつか考えた。</p>
 <h2 id="そのままcompress">そのままCompress</h2>
 <p><code>Compress</code>に元のソースコードを式の形のまま渡す方法。</p>
-<p>コメント(<code>(* ... *)</code>は消えてしまうので、隠しメッセージは出力に影響しない文字列リテラルとして埋め込む。</p>
+<p><code>Compress</code>に渡す前に評価されることを防ぐため、<code>Unevaluated</code>で包んで渡す。</p>
+<p>また、コメント(<code>(* ... *)</code>は消えてしまうので、隠しメッセージは出力に影響しない文字列リテラルとして埋め込む。</p>
 <h3 id="難読化">難読化</h3>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-mathematica" data-lang="mathematica">Compress[Unevaluated[<span style="color:#a31515">&#34;隠しMessage&#34;</span>; 4.*^-6 Count[RandomReal[1, {1*^6, 2}], a_ /; a<span style="">.</span>a &lt; 1]]]
 </code></pre></div><p>これを実行して以下の文字列を得る。</p>
