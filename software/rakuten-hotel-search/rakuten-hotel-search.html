@@ -485,6 +485,9 @@ function showHotelList(searchresult){
         infowindow.close();
       }
     });
+    infowindow.addListener( "closeclick", function(evt){
+      infowindow.clicked = false;
+    });
     
     ele_tbody.appendChild(ele_tr);
     googlemap.hotelmarkers.push(marker);
