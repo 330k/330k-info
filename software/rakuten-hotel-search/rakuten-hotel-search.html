@@ -444,11 +444,17 @@ function showHotelList(searchresult){
       map: googlemap.map
     });
     marker.addListener("click", (evt) => {
-      infowindow.open({
-        anchor: marker,
-        map: googlemap.map,
-        shouldFocus: false
-      });
+      if(!infowindow.clicked){
+        infowindow.open({
+          anchor: marker,
+          map: googlemap.map,
+          shouldFocus: false
+        });
+        infowindow.clicked = true;
+      }else{
+        infowindow.close();
+        infowindow.clicked = false;
+      }
     });
     marker.addListener("mouseover", (evt) => {
       ele_tr.classList.add("hotel_selected");
@@ -460,7 +466,9 @@ function showHotelList(searchresult){
     });
     marker.addListener("mouseout", (evt) => {
       ele_tr.classList.remove("hotel_selected");
-      infowindow.close();
+      if(!infowindow.clicked){
+        infowindow.close();
+      }
     });
     
     ele_tr.addEventListener("mouseover", (evt) => {
@@ -473,7 +481,9 @@ function showHotelList(searchresult){
     });
     ele_tr.addEventListener("mouseout", (evt) => {
       ele_tr.classList.remove("hotel_selected");
-      infowindow.close();
+      if(!infowindow.clicked){
+        infowindow.close();
+      }
     });
     
     ele_tbody.appendChild(ele_tr);
