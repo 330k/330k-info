@@ -19,6 +19,9 @@ const googlemap = {
   gpxtracks: [],
   dist_marker: null
 };
+const searchresult = {
+  api_result: []
+};
 
 jQuery(function(){
   $("#map_canvas").resizable({
@@ -26,7 +29,7 @@ jQuery(function(){
   });
   
   const resize = function(e){
-    $("#hotel_list").width($(window).width() - $("#map_canvas").width());
+    $("#left_panel").width($(window).width() - $("#map_canvas").width());
   };
   $("#map_canvas").resize(resize);
   $(window).resize(resize);
@@ -201,6 +204,18 @@ function showGPXRoute(map, gpx, color, filename){
 }
 
 window.addEventListener("DOMContentLoaded", function(){
+  // 検索条件
+  document.querySelectorAll("#search_conditions input,select").forEach((ele) => {
+    ele.addEventListener("change", () => {
+      googlemap.hotelmarkers.map((e) => {
+        e.setMap(null);
+      });
+      googlemap.hotelmarkers = [];
+      showHotelList();
+    });
+  });
+  
+  // GPX読み込み対応
   document.getElementById("gpx_file").addEventListener("change", async function(evt){
     // GPXファイルの読み込み
     try{
@@ -297,8 +312,9 @@ async function searchHotels(evt){
     clickable: false
   });
   
-  const searchresult = await getHotelList(evt.latLng.lat(), evt.latLng.lng(), radius);
-  showHotelList(searchresult);
+  searchresult.api_result = await getHotelList(evt.latLng.lat(), evt.latLng.lng(), radius);
+  showHotelList();
+  
   hideLoader();
 
 }
@@ -360,7 +376,7 @@ async function getHotelList(latitude, longitude, radius){
 /**
  * 検索結果を表示
  */
-function showHotelList(searchresult){
+function showHotelList(){
   googlemap.hotelmarkers = [];
   const ele_tbody = document.getElementById("tbody_hotel");
   ele_tbody.innerHTML = "";
@@ -368,7 +384,7 @@ function showHotelList(searchresult){
   const hasCoinLaundry = (hotel) => hotel.hotelFacilitiesInfo.hotelFacilities.some((e) => /コインランドリー/.test(e.item));
   
   // 最終チェックイン時刻が遅い、洗濯機がある順にソート
-  const hotels2 = searchresult.hotels.sort((a,b) => {
+  let hotels_displayed = searchresult.api_result.hotels.sort((a,b) => {
     const c1 = a.hotelDetailInfo.lastCheckinTime ? a.hotelDetailInfo.lastCheckinTime : "";
     const c2 = b.hotelDetailInfo.lastCheckinTime ? b.hotelDetailInfo.lastCheckinTime : "";
     
@@ -383,10 +399,32 @@ function showHotelList(searchresult){
       return h2 - h1;
     }
   });
-  console.log(hotels2);
 
-  for(i = 0; i < hotels2.length; i++){
-    const hotel = hotels2[i];
+  // 表示を絞り込み(最終チェックイン時刻)
+  hotels_displayed = hotels_displayed.filter((hotel) => {
+    const checkintime = hotel.hotelDetailInfo.lastCheckinTime ? hotel.hotelDetailInfo.lastCheckinTime : null;
+
+    if(checkintime){
+      return (checkintime >= document.getElementById("last_checkin_min").value) && (checkintime <= document.getElementById("last_checkin_max").value);
+    }else{
+      return !!document.getElementById("show_hotels_without_last_checkin").checked;
+    }
+  });
+  // 表示を絞り込み(洗濯機)
+  if(document.getElementById("laundry_exists").checked){
+    hotels_displayed = hotels_displayed.filter((hotel) => {
+      return hasCoinLaundry(hotel);
+    });
+  }
+  // 絞り込み(価格情報)
+  if(document.getElementById("price_info_exists").checked){
+    hotels_displayed = hotels_displayed.filter((hotel) => {
+      return !!hotel.hotelBasicInfo.hotelMinCharge;
+    });
+  }
+
+  for(i = 0; i < hotels_displayed.length; i++){
+    const hotel = hotels_displayed[i];
     const hotel_no = hotel.hotelBasicInfo.hotelNo;
     const hotel_row_id = "hotel_" + hotel_no;
     const ele_tr = document.createElement("tr");
@@ -493,13 +531,13 @@ function showHotelList(searchresult){
     googlemap.hotelmarkers.push(marker);
   }
 
-  if(searchresult.status === "SUCCESS"){
-    document.getElementById("message").innerHTML = "検索結果: " + searchresult.hotels.length + "件</p>";
-  }else if(searchresult.status !== ""){
-    if(searchresult.status === "not_found"){
+  if(searchresult.api_result.status === "SUCCESS"){
+    document.getElementById("message").innerHTML = "検索結果: " + hotels_displayed.length + "件</p>";
+  }else if(searchresult.api_result.status !== ""){
+    if(searchresult.api_result.status === "not_found"){
       document.getElementById("message").innerHTML = "見つかりませんでした";
     }else{
-      document.getElementById("message").innerHTML = "不明なAPI呼び出しエラー: " + searchresult.status;
+      document.getElementById("message").innerHTML = "不明なAPI呼び出しエラー: " + searchresult.api_result.status;
     }
   }else{
     document.getElementById("message").innerHTML = "";
@@ -520,10 +558,11 @@ function clearResult(){
   });
   googlemap.hotelmarkers = [];
   
-  showHotelList({
+  searchresult.api_result = {
     status: "",
     hotels: []
-  });
+  };
+  showHotelList();
 }
 
 function hideLoader(){
@@ -559,7 +598,7 @@ if (!doNotTrack) {
   width: 75%;
   height: 100%;
 }
-#hotel_list {
+#left_panel {
   position: absolute;
   top: 0;
   left: 0;
@@ -569,17 +608,21 @@ if (!doNotTrack) {
   overflow-y: scroll;
   background-color: #fff;
 }
-#hotel_list table {
+#left_panel fieldset {
+  margin: 5px;
+  padding: 5px;
+}
+#left_panel table {
   border-collapse: collapse;
   width: 100%;
 }
-#hotel_list table thead {
+#left_panel table thead {
   background-color: #eee;
 }
-#hotel_list table tbody {
+#left_panel table tbody {
   
 }
-#hotel_list table td {
+#left_panel table td {
   border-width: 1px 0;
   border-color: gray;
   border-style: solid;
@@ -647,7 +690,40 @@ if (!doNotTrack) {
 </head>
 <body>
 <div id="wrapper">
-<div id="hotel_list">
+<div id="left_panel">
+<fieldset id="search_conditions">
+  <legend>検索条件</legend>
+  <div>最終チェックイン時刻: <select id="last_checkin_min">
+    <option value="00:00" selected>すべて</option>
+    <option value="15:00">15:00</option>
+    <option value="16:00">16:00</option>
+    <option value="17:00">17:00</option>
+    <option value="18:00">18:00</option>
+    <option value="19:00">19:00</option>
+    <option value="20:00">20:00</option>
+    <option value="21:00">21:00</option>
+    <option value="22:00">22:00</option>
+    <option value="23:00">23:00</option>
+    <option value="24:00">24:00</option>
+  </select>〜<select id="last_checkin_max">
+  <option value="18:00">18:00</option>
+  <option value="19:00">19:00</option>
+  <option value="20:00">20:00</option>
+  <option value="21:00">21:00</option>
+  <option value="22:00">22:00</option>
+  <option value="23:00">23:00</option>
+  <option value="24:00">24:00</option>
+  <option value="25:00">25:00</option>
+  <option value="26:00">26:00</option>
+  <option value="27:00">27:00</option>
+  <option value="99:99" selected>すべて</option>
+</select>
+  </div>
+  <div><label><input type="checkbox" id="show_hotels_without_last_checkin" checked>最終チェックイン時刻の情報がない宿も表示<label></div>
+  <div><label><input type="checkbox" id="laundry_exists">洗濯機が有る宿のみ表示<label></div>
+  <div><label title="価格情報がない宿は営業していない可能性があります"><input type="checkbox" id="price_info_exists">最低価格情報が有ある宿のみ表示<label></div>
+  <!--<div><label><input type="checkbox" id="preserve_results">クリック時に以前検索した結果に追記する<label></div>-->
+</fieldset>
 <table id="table_hotels">
 <thead>
 <tr><th style="width: 2em;">No</th><th>ホテル名</th><th style="width: 11em;">チェックイン</th><th style="width: 4em;">洗濯機</th></tr>
