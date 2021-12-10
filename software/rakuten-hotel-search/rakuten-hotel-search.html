@@ -457,23 +457,23 @@ function showHotelList(){
         + "<br><br><img src='" + hotel.hotelBasicInfo.hotelThumbnailUrl + "'/>"
         + (hotel.hotelBasicInfo.roomThumbnailUrl ? "<img src='" + hotel.hotelBasicInfo.roomThumbnailUrl + "'/>" : "")
     });
-    const color = (hotel.hotelDetailInfo.lastCheckinTime ? ((hour) => {
-      if(hour <= 18){
-        return "ff0000";
-      }else if(hour <= 20){
-        return "ff8800";
-      }else if(hour <= 22){
-        return "ffff00";
-      }else if(hour <= 24){
-        return "88ff00";
-      }else if(hour <= 26){
-        return "00ff00";
-      }else if(hour <= 28){
-        return "00ff88";
+    const color = (hotel.hotelDetailInfo.lastCheckinTime ? ((hhmm) => {
+      if(hhmm <= "18:00"){
+        return "f00";
+      }else if(hhmm <= "20:00"){
+        return "f70";
+      }else if(hhmm <= "22:00"){
+        return "fb0";
+      }else if(hhmm <= "24:00"){
+        return "9f0";
+      }else if(hhmm <= "26:00"){
+        return "0f9";
+      }else if(hhmm <= "28:00"){
+        return "0f9";
       }else{
-        return "00ffff";
+        return "0ff";
       }
-    })(hotel.hotelDetailInfo.lastCheckinTime.trim().slice(0, 2) - 0) : "ffffff");
+    })(hotel.hotelDetailInfo.lastCheckinTime) : "ffffff");
     const marker = new google.maps.Marker({
       position: {lat: hotel.hotelBasicInfo.latitude, lng: hotel.hotelBasicInfo.longitude},
       title: hotel.hotelBasicInfo.hotelName,
@@ -734,7 +734,7 @@ if (!doNotTrack) {
   </div>
   <div><label><input type="checkbox" id="show_hotels_without_last_checkin" checked>最終チェックイン時刻の情報がない宿も表示<label></div>
   <div><label><input type="checkbox" id="laundry_exists">洗濯機が有る宿のみ表示<label></div>
-  <div><label title="価格情報がない宿は営業していない可能性があります"><input type="checkbox" id="price_info_exists">最低価格情報が有ある宿のみ表示<label></div>
+  <div><label title="価格情報がない宿は営業していない可能性があります"><input type="checkbox" id="price_info_exists">最低価格情報が有る宿のみ表示<label></div>
   <!--<div><label><input type="checkbox" id="preserve_results">クリック時に以前検索した結果に追記する<label></div>-->
 </fieldset>
 <table id="table_hotels">
