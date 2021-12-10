@@ -352,7 +352,7 @@ async function getHotelList(latitude, longitude){
       response = await fetch(url);
       json = await response.json();
 
-      if(json.hotels){
+      if(json.hotels || (json.error === "not_found")){
         break;
       }
     }
