@@ -295,24 +295,10 @@ function initMap(){
  * @param {google.maps.MapMouseEvent} evt
  * */
 async function searchHotels(evt){
-  const radius = 3;
-
   clearResult();
   showLoader();
   
-  googlemap.searchareacircle = new google.maps.Circle({
-    map: googlemap.map,
-    center: new google.maps.LatLng(evt.latLng.lat(), evt.latLng.lng()),
-    radius: radius * 1000,
-    strokeColor: '#ff0000',
-    strokeOpacity: 0.7,
-    strokeWeight: 2,
-    fillColor: '#ff0000',
-    fillOpacity: 0.1,
-    clickable: false
-  });
-  
-  searchresult.api_result = await getHotelList(evt.latLng.lat(), evt.latLng.lng(), radius);
+  searchresult.api_result = await getHotelList(evt.latLng.lat(), evt.latLng.lng());
   showHotelList();
   
   hideLoader();
@@ -323,13 +309,11 @@ async function searchHotels(evt){
  * 楽天トラベルAPIでホテルを検索
  * @param {number} latitude 緯度
  * @param {number} longitude 経度
- * @param {number} radius 半径(km)
  * @return {{status:string,hotels:Array}}
  */
-async function getHotelList(latitude, longitude, radius){
+async function getHotelList(latitude, longitude){
   const lat = latitude.toFixed(6);
   const lon = longitude.toFixed(6);
-  const r = radius.toFixed(1);
   const appid = "1008123474471814322";
   const affid = "219cb501.2d23fbc2.219cb502.49f3944c";
 
@@ -338,11 +322,40 @@ async function getHotelList(latitude, longitude, radius){
     hotels: []
   };
   
-  const url = `https://app.rakuten.co.jp/services/api/Travel/SimpleHotelSearch/20170426?applicationId=${appid}&affiliateId=${affid}&format=json&datumType=1&latitude=${lat}&longitude=${lon}&searchRadius=${r}&responseType=large&allReturnFlag=1`;
-  
+  const drawcircle = function(lat, lon, radius){
+    if(googlemap.searchareacircle){
+      googlemap.searchareacircle.setMap(null);
+    }
+    googlemap.searchareacircle = new google.maps.Circle({
+      map: googlemap.map,
+      center: new google.maps.LatLng(lat, lon),
+      radius: radius * 1000,
+      strokeColor: '#ff0000',
+      strokeOpacity: 0.7,
+      strokeWeight: 2,
+      fillColor: '#ff0000',
+      fillOpacity: 0.1,
+      clickable: false
+    });
+  };
+
   try{
-    const response = await fetch(url);
-    const json = await response.json();
+
+    // 件数が多すぎて楽天トラベルAPIが落ちるときは検索半径をだんだんと小さくしていく
+    let response;
+    let json;
+    let r;
+    for(const r of [3,1,0.5]){
+      url = `https://app.rakuten.co.jp/services/api/Travel/SimpleHotelSearch/20170426?applicationId=${appid}&affiliateId=${affid}&format=json&datumType=1&latitude=${lat}&longitude=${lon}&searchRadius=${r}&responseType=large&allReturnFlag=1`;
+      drawcircle(latitude, longitude, r);
+
+      response = await fetch(url);
+      json = await response.json();
+
+      if(json.hotels){
+        break;
+      }
+    }
     
     result.status = "SUCCESS";
 
@@ -721,7 +734,7 @@ if (!doNotTrack) {
   </div>
   <div><label><input type="checkbox" id="show_hotels_without_last_checkin" checked>最終チェックイン時刻の情報がない宿も表示<label></div>
   <div><label><input type="checkbox" id="laundry_exists">洗濯機が有る宿のみ表示<label></div>
-  <div><label title="価格情報がない宿は営業していない可能性があります"><input type="checkbox" id="price_info_exists">最低価格情報が有る宿のみ表示<label></div>
+  <div><label title="価格情報がない宿は営業していない可能性があります"><input type="checkbox" id="price_info_exists">最低価格情報が有ある宿のみ表示<label></div>
   <!--<div><label><input type="checkbox" id="preserve_results">クリック時に以前検索した結果に追記する<label></div>-->
 </fieldset>
 <table id="table_hotels">
