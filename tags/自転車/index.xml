@@ -6,7 +6,17 @@
     <description>Recent content in 自転車 on 330k info</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Fri, 10 Sep 2021 23:56:36 +0900</lastBuildDate><atom:link href="https://www.330k.info/tags/%E8%87%AA%E8%BB%A2%E8%BB%8A/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 15 Dec 2021 00:56:02 +0900</lastBuildDate><atom:link href="https://www.330k.info/tags/%E8%87%AA%E8%BB%A2%E8%BB%8A/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Edge 830にGPXやTCXファイルを入れたときの挙動</title>
+      <link>https://www.330k.info/essay/edge_830_newfile_import_behavior/</link>
+      <pubDate>Wed, 15 Dec 2021 00:56:02 +0900</pubDate>
+      
+      <guid>https://www.330k.info/essay/edge_830_newfile_import_behavior/</guid>
+      <description>&lt;p&gt;Garmin Edge 830(や530などの兄弟機)は、PCとUSB接続したときに本体の&lt;code&gt;Garmin/NewFiles&lt;/code&gt;フォルダにFITファイルのほか、GPXファイルやTCXファイルを入れることでルートなどを登録できる。&lt;/p&gt;
+&lt;p&gt;どのようなファイルを入れたときに、どのような挙動をするのか調査した。&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>GPXルート沿いコンビニ・道の駅検索</title>
       <link>https://www.330k.info/software/gpx-nearby-search/</link>
