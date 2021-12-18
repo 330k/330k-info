@@ -131,7 +131,7 @@ function showGPXRoute(map, gpx, color, filename){
     strokeOpacity: 1,
     strokeWeight: 2
   });
-  // マイスイベントを拾うための透明なPolyline
+  // マウスイベントを拾うための透明なPolyline
   const line_transparent = new google.maps.Polyline({
     path: coords,
     geodesic: true,
@@ -168,9 +168,9 @@ function showGPXRoute(map, gpx, color, filename){
         icon: {
             path: google.maps.SymbolPath.CIRCLE,
             scale: 5,
-            fillColor: "#00f",
+            fillColor: color,
             fillOpacity: 0.5,
-            strokeColor: "#00f",
+            strokeColor: color,
             strokeOpacity: 1,
             strokeWeight: 1
         },
@@ -225,7 +225,7 @@ window.addEventListener("DOMContentLoaded", function(){
         e.setMap(null);
       });
 
-      const colors = ["#3f3d99", "#993d71", "#998c3d", "#3d9956", "#3d5a99", "#993d90", "#996d3d", "#43993d"];
+      const colors = ["#3f3d9a", "#9a3d71", "#9a8c3d", "#3d9a56", "#3d5a9a", "#9a3d90", "#9a6d3d", "#439a3d", "#3d799a", "#843d9a", "#9a4e3d", "#629a3d"];
       for(let i = 0; i < evt.target.files.length; i++){
         console.log(evt.target.files[i]);
         const gpx = await readGPX(evt.target.files[i]);

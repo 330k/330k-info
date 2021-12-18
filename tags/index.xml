@@ -6,22 +6,31 @@
     <description>Recent content in Tags on 330k info</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Wed, 15 Dec 2021 00:56:02 +0900</lastBuildDate><atom:link href="https://www.330k.info/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 18 Dec 2021 20:00:29 +0900</lastBuildDate><atom:link href="https://www.330k.info/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Garmin</title>
-      <link>https://www.330k.info/tags/garmin/</link>
-      <pubDate>Wed, 15 Dec 2021 00:56:02 +0900</pubDate>
+      <title>ライト</title>
+      <link>https://www.330k.info/tags/%E3%83%A9%E3%82%A4%E3%83%88/</link>
+      <pubDate>Sat, 18 Dec 2021 20:00:29 +0900</pubDate>
       
-      <guid>https://www.330k.info/tags/garmin/</guid>
+      <guid>https://www.330k.info/tags/%E3%83%A9%E3%82%A4%E3%83%88/</guid>
       <description></description>
     </item>
     
     <item>
       <title>自転車</title>
       <link>https://www.330k.info/tags/%E8%87%AA%E8%BB%A2%E8%BB%8A/</link>
-      <pubDate>Wed, 15 Dec 2021 00:56:02 +0900</pubDate>
+      <pubDate>Sat, 18 Dec 2021 20:00:29 +0900</pubDate>
       
       <guid>https://www.330k.info/tags/%E8%87%AA%E8%BB%A2%E8%BB%8A/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Garmin</title>
+      <link>https://www.330k.info/tags/garmin/</link>
+      <pubDate>Wed, 15 Dec 2021 00:56:02 +0900</pubDate>
+      
+      <guid>https://www.330k.info/tags/garmin/</guid>
       <description></description>
     </item>
     

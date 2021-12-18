@@ -6,7 +6,17 @@
     <description>Recent content in Essays on 330k info</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Wed, 15 Dec 2021 00:56:02 +0900</lastBuildDate><atom:link href="https://www.330k.info/essay/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 18 Dec 2021 20:00:29 +0900</lastBuildDate><atom:link href="https://www.330k.info/essay/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>RN1500の実際の明るさをスペックシートから見積もる</title>
+      <link>https://www.330k.info/essay/actual_lumen_estimation_of_rn1500/</link>
+      <pubDate>Sat, 18 Dec 2021 20:00:29 +0900</pubDate>
+      
+      <guid>https://www.330k.info/essay/actual_lumen_estimation_of_rn1500/</guid>
+      <description>&lt;p&gt;自転車用ライトとして一斉を風靡したRN1500。&lt;/p&gt;
+&lt;p&gt;スペック上lowモード(300lm)で12.5時間のランタイムがウリなのだが、実際に300lmも出ていないのではないか、という話もあるため、電池とLEDのスペックシートから、明るさを見積もってみた。&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>Edge 830にGPXやTCXファイルを入れたときの挙動</title>
       <link>https://www.330k.info/essay/edge_830_newfile_import_behavior/</link>
