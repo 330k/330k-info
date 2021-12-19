@@ -13,7 +13,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.330k.info/essay/actual_lumen_estimation_of_rn1500/" /><meta property="og:image" content="https://www.330k.info/essay/actual_lumen_estimation_of_rn1500/rn1500_002.png" /><meta property="article:section" content="essay" />
 <meta property="article:published_time" content="2021-12-18T20:00:29+09:00" />
-<meta property="article:modified_time" content="2021-12-19T23:44:30+09:00" />
+<meta property="article:modified_time" content="2021-12-19T23:47:01+09:00" />
 
 
 	<meta name="twitter:card" content="summary_large_image"/>
@@ -85,7 +85,7 @@ if (!doNotTrack) {
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
 	<time class="meta__text" datetime="2021-12-18T20:00:29">December 18, 2021</time>
-	<time class="meta__text" datetime="2021-12-19T23:44:30"> (Last Modified: December 19, 2021)</time>
+	<time class="meta__text" datetime="2021-12-19T23:47:01"> (Last Modified: December 19, 2021)</time>
 </div>
 
 <div class="meta__item-categories meta__item">
@@ -106,7 +106,7 @@ if (!doNotTrack) {
 <h2 id="実際のルーメン数の見積り">実際のルーメン数の見積り</h2>
 <p>RN1500のlowモードの実ランタイムは13時間程度。
 また、lowモードでは点灯後30分程度で照度が初期の57%まで低下する、という報告がある(<a href="https://twitter.com/dea_tea_1/status/1450104977033101314">参考1</a>、<a href="https://twitter.com/barubaru24/status/1472397438166380547">参考2</a>)。</p>
-<p>従って、最初から照度半減後の明るさならば13.5時間のランタイムになる、と仮定して、半減後の電池の平均消費電力は</p>
+<p>従って、最初から照度減少後の明るさならば13.5時間のランタイムになる、と仮定して、電池の平均消費電力は</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">3.6 [V] * 5000 [mAh] / 13.5 [h] = 1.33 [W]
 </code></pre></div><p>DC/DCコンバータの変換効率を85%と仮定すると、LEDの平均消費電力は</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">1.33 [W] * 0.85 = 1.13 [W]
@@ -134,7 +134,7 @@ p.8にある<code>Ordering Part Numbers</code>にあるのは<code>N3</code>と<
 <p>点灯中のRN1500に触れてもあまり暑く感じないので、LED基盤の温度を40℃程度まで冷却できていると仮定すると、明るさは+10%程度になる。</p>
 <p>よって<strong>204〜217lm</strong>程度の明るさとなる。</p>
 <h2 id="結論">結論</h2>
-<p>以上から、<strong>RN1500のlowモード(300lm)の実際の明るさは、変換効率85%、温度40℃を仮定した場合約210lm</strong>と見積もることができる。</p>
+<p>以上から、<strong>明るさ減少後のRN1500のlowモード(300lm)の実際の明るさは、変換効率85%、温度40℃を仮定した場合約210lm</strong>と見積もることができる。</p>
 <p>また、以上の見積りは、LEDのを電流制御している場合の数値であり、パルス幅制御(PWM)している場合は異なる結果になる(とはいえ、今回の使用範囲で電流-電圧や電流-光束の関係が概ね線形なので、だいたい同じになると予想される。また大電流になるほど発光効率が落ちるため、PWMの場合はもう少し小さい数値になる)。</p>
 		</div>
 		<footer class="post__footer">
