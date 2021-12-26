@@ -13,7 +13,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.330k.info/essay/actual_lumen_estimation_of_rn1500/" /><meta property="og:image" content="https://www.330k.info/essay/actual_lumen_estimation_of_rn1500/rn1500_002.png" /><meta property="article:section" content="essay" />
 <meta property="article:published_time" content="2021-12-18T20:00:29+09:00" />
-<meta property="article:modified_time" content="2021-12-21T19:54:54+09:00" />
+<meta property="article:modified_time" content="2021-12-26T23:05:43+09:00" />
 
 
 	<meta name="twitter:card" content="summary_large_image"/>
@@ -85,7 +85,7 @@ if (!doNotTrack) {
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
 	<time class="meta__text" datetime="2021-12-18T20:00:29">December 18, 2021</time>
-	<time class="meta__text" datetime="2021-12-21T19:54:54"> (Last Modified: December 21, 2021)</time>
+	<time class="meta__text" datetime="2021-12-26T23:05:43"> (Last Modified: December 26, 2021)</time>
 </div>
 
 <div class="meta__item-categories meta__item">
@@ -103,6 +103,16 @@ if (!doNotTrack) {
 <li>電池: 21700 5000mAh</li>
 </ul>
 <p>の2項目は信用して使用する。</p>
+<h2 id="300lm出ている可能性があるかどうか">300lm出ている可能性があるかどうか</h2>
+<p>まずはRN1500のスペック通りの300lmが出ている可能性があるかどうかを確かめる。</p>
+<p>SST-40-Wのスペックシートに<code>Typical efficacy 170 lm/W at 700 mA</code>とあるので、RN1500のスペック通り、300lmを12.5h維持するためには</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">(300 [lm] / 170 [lm/W]) * 12.5 [h] = 22.1 [Wh]
+</code></pre></div><p>の電力量が必要となる。</p>
+<p>一方、RN1500のバッテリ容量は5000mAhで、定格電圧は3.6Vであるため、</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">5000 [mAh] * 3.6[V] = 18 [Wh]
+</code></pre></div><p>である。</p>
+<p>後述のようにLEDは低温であるほど効率が良いので、10%ほど発光効率が良いとしても、それでもバッテリの容量が不足している。</p>
+<p>従ってRN1500のスペック通りに300lmが出ていることは考えにくい。</p>
 <h2 id="実際のルーメン数の見積り">実際のルーメン数の見積り</h2>
 <p>RN1500のlowモードの実ランタイムは13時間程度。
 また、lowモードでは点灯後30分程度で照度が初期の57%まで低下する、という報告がある(<a href="https://twitter.com/dea_tea_1/status/1450104977033101314">参考1</a>、<a href="https://twitter.com/barubaru24/status/1472397438166380547">参考2</a>)。</p>
@@ -136,6 +146,10 @@ p.8にある<code>Ordering Part Numbers</code>にあるのは<code>N3</code>と<
 <h2 id="結論">結論</h2>
 <p>以上から、<strong>明るさ減少後のRN1500のlowモード(300lm)の実際の明るさは、変換効率85%、温度40℃を仮定した場合約210lm</strong>と見積もることができる。</p>
 <p>また、以上の見積りはLEDを電流制御している場合の数値であり、パルス幅制御(PWM)している場合は異なる結果になる(とはいえ、今回の使用範囲で電流-電圧や電流-光束の関係が概ね線形なので、だいたい同じになると予想される。また大電流になるほど発光効率が落ちるため、PWMの場合はもう少し小さい数値になる)。</p>
+<hr>
+<p>Dec. 26 2021 追記:</p>
+<p>上記はLED単体のルーメン数であり、ミラーやレンズの損失があるため、ライトとしての全光束はこれより低くなる。
+どの程度減少するのか見積もる資料が見当たらなかったので、今回の見積りでは考慮していない。</p>
 		</div>
 		<footer class="post__footer">
 			
