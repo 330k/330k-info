@@ -13,7 +13,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.330k.info/essay/edit-garmin-fit-mannually/" /><meta property="og:image" content="https://www.330k.info/essay/edit-garmin-fit-mannually/fit-sdk-logo-001.svg" /><meta property="article:section" content="essay" />
 <meta property="article:published_time" content="2022-01-03T01:06:28+09:00" />
-<meta property="article:modified_time" content="2022-01-03T01:10:14+09:00" />
+<meta property="article:modified_time" content="2022-01-03T01:12:29+09:00" />
 
 
 	<meta name="twitter:card" content="summary_large_image"/>
@@ -85,7 +85,7 @@ if (!doNotTrack) {
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
 	<time class="meta__text" datetime="2022-01-03T01:06:28">January 03, 2022</time>
-	<time class="meta__text" datetime="2022-01-03T01:10:14"> (Last Modified: January 03, 2022)</time>
+	<time class="meta__text" datetime="2022-01-03T01:12:29"> (Last Modified: January 03, 2022)</time>
 </div>
 
 <div class="meta__item-categories meta__item">
@@ -115,8 +115,8 @@ if (!doNotTrack) {
 
 <p>その後、行を追加・削除したりして欲しいデータに加工する。</p>
 <p>基本的に、同じフィールドが並んでいる部分であれば追加・変更・削除しても大丈夫。</p>
-<p>そうでない場合はFITファイルの構造の知識が必要(参考: <a href="https://developer.garmin.com/fit/protocol/">FIT Protocol | FIT SDK | Garmin Developers</a>)になるので、
-元のFITファイルに含まれないフィールドやデータタイプを追加するのは少し大変。</p>
+<p>そうでない場合はFITファイルの構造の知識が必要(参考: <a href="https://developer.garmin.com/fit/protocol/">FIT Protocol | FIT SDK | Garmin Developers</a>)になる。</p>
+<p>したがって元のFITファイルに含まれないフィールドやデータタイプを追加するのは少し大変なので、元のデータを作成するときに手作業で編集したいデータを入れておく(例えば、コースデータでコースポイントを編集したい場合は、ダミーでも良いのでコースポイントを入れたFITファイルを作成しておく)のが良い。</p>
 <h2 id="fit-csv-toolでcsvをfitに再変換">FIT CSV ToolでCSVをFITに再変換</h2>
 <p>ターミナル(コマンドプロンプト)で、以下を実行してFITファイルを作成する。</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">java -jar FitCSVTool.jar -c (変換元CSVファイル名) (変換先FITファイル名)
