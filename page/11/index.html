@@ -77,6 +77,29 @@ if (!doNotTrack) {
 			
 <main class="main list" role="main">
 	<article class="list__item post">
+	<header class="list__header">
+		<h3 class="list__title post__title ">
+			<a href="/essay/performance_degration_of_kanjo_bugyo/" rel="bookmark">
+			勘定奉行の性能劣化に対処
+			</a>
+		</h3>
+		<div class="list__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
+	<time class="meta__text" datetime="2016-11-06T17:22:00">November 06, 2016</time>
+	<time class="meta__text" datetime="2019-09-09T23:18:25"> (Last Modified: September 09, 2019)</time>
+</div>
+
+<div class="meta__item-categories meta__item">
+	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+	<span class="meta__text"><a class="meta__link" href="/categories/%e9%9b%91%e8%a8%98%e5%b8%b3" rel="category">雑記帳</a></span>
+</div>
+</div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		社内では会計システムに勘定奉行(ネットワーク版)を使っているが、 担当者から「勘定奉行で仕訳帳の表示に20秒くらいかかる」と言われたので調査してみた。 その担当者のPC固有の問題かどうかを切り分けるため別のPCから同様の操作を行ってみたところ、同じ症状が発生した。 ということは、サーバ側に問題がありそう。 勘定奉行のクライアントは生のSQL文をサーバに発行する仕組みなので、 Wiresharkでパケットをキ
+	</div>
+</article><article class="list__item post">
 	<figure class="list__thumbnail">
 		<a href="https://www.330k.info/essay/rescue_gps_log_from_binary_data_of_holux_m241/">
 			<img src="/essay/rescue_gps_log_from_binary_data_of_holux_m241/20160703_rescue_map.png" alt="m-241のバイナリデータからトラックログを吸い出す" />
@@ -327,34 +350,6 @@ if (!doNotTrack) {
 	<div class="content list__excerpt post__content clearfix">
 		例によってパワハラを受けた研修先で最初に受けたパワハラが、 リモートアクセスのSSL-VPNに関する技術的な質問をした時のことだった。 研修先の会社ではJuniper社(現PulseSecure社)のSSL-VPN製品を導入しており、 クライアントPC側にはNetwork Connectというソフトウェアをインストールしていた。 これはL2フォワーディング方式のSSL-VPNで、起動するとネットワークアダプ
 	</div>
-</article><article class="list__item post">
-	<figure class="list__thumbnail">
-		<a href="https://www.330k.info/essay/exchange-st-5703-to-sl-r400/">
-			<img src="/essay/exchange-st-5703-to-sl-r400/002.jpg" alt="ST-5703の変速機構が破損したのでWレバーに交換" />
-		</a>
-	</figure>
-	<header class="list__header">
-		<h3 class="list__title post__title ">
-			<a href="/essay/exchange-st-5703-to-sl-r400/" rel="bookmark">
-			ST-5703の変速機構が破損したのでWレバーに交換
-			</a>
-		</h3>
-		<div class="list__meta meta">
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
-	<time class="meta__text" datetime="2015-11-08T02:43:00">November 08, 2015</time>
-	<time class="meta__text" datetime="2020-05-18T11:51:16"> (Last Modified: May 18, 2020)</time>
-</div>
-
-<div class="meta__item-categories meta__item">
-	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
-	<span class="meta__text"><a class="meta__link" href="/categories/%e9%9b%91%e8%a8%98%e5%b8%b3" rel="category">雑記帳</a></span>
-</div>
-</div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		先月の軽井沢〜直江津のあと、2年ぶりに自転車をオーバーホールした。 その一環でシフトワイヤーケーブルの交換を行ったところ、フロントディレイラーの調子がおかしい。 フロントトリプルなので、インナー⇛センター⇛アウターは問題なく変速できるのだが、 アウター⇛センターに変速しようとすると、「バキッ、ガッチャン」と音がして、一気にインナーまで落ちてしまうか、 まったく変速操作を受け付けなくなるか、のどちらかの症状
-	</div>
 </article>
 </main>
 
@@ -386,6 +381,7 @@ if (!doNotTrack) {
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/essay/edit-garmin-fit-mannually/">Garmin FITファイルをカンタンに編集する方法</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/actual_lumen_estimation_of_rn1500/">RN1500の実際の明るさをスペックシートから見積もる</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/edge_830_newfile_import_behavior/">Edge 830にGPXやTCXファイルを入れたときの挙動</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/obfuscate-mathematica-program/">Mathematicaプログラムの難読化・隠しメッセージ埋め込み手法の検討</a></li>
@@ -405,7 +401,6 @@ if (!doNotTrack) {
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20210410-brm410-utsunomiya-400km/">2021年04月10日 BRM410 宇都宮400 ランドネきたかん(西回り)</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20210327-sr600-aso-geotourism/">2021年03月27日 SR600 阿蘇ジオツーリズム</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/promise_wait_for_jsonpcallback_initialize/">JavaScriptライブラリの初期化完了やJSONPのコールバック関数をPromise化する</a></li>
-			<li class="widget__item"><a class="widget__link" href="/essay/multiple-argo-tunnel/">Argo Tunnelで複数のトンネルをサービスとして起動</a></li>
 		</ul>
 	</div>
 </div>
@@ -436,7 +431,7 @@ if (!doNotTrack) {
 		<a class="widget-taglist__link widget__link btn" href="/tags/cybozu" title="Cybozu">Cybozu (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/dotnet" title="Dotnet">Dotnet (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/ffmpeg" title="Ffmpeg">Ffmpeg (2)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/garmin" title="Garmin">Garmin (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/garmin" title="Garmin">Garmin (3)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/garoon" title="Garoon">Garoon (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/gas" title="Gas">Gas (2)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/github" title="Github">Github (7)</a>

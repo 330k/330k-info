@@ -6,7 +6,17 @@
     <description>Recent content in Garmin on 330k info</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Wed, 15 Dec 2021 00:56:02 +0900</lastBuildDate><atom:link href="https://www.330k.info/tags/garmin/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 03 Jan 2022 01:06:28 +0900</lastBuildDate><atom:link href="https://www.330k.info/tags/garmin/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Garmin FITファイルをカンタンに編集する方法</title>
+      <link>https://www.330k.info/essay/edit-garmin-fit-mannually/</link>
+      <pubDate>Mon, 03 Jan 2022 01:06:28 +0900</pubDate>
+      
+      <guid>https://www.330k.info/essay/edit-garmin-fit-mannually/</guid>
+      <description>&lt;p&gt;Garminのデバイスで使用されるFITファイルはバイナリなので、直接編集するのは骨が折れる。&lt;/p&gt;
+&lt;p&gt;ここではGarmin FIT SDKに含まれる&lt;a href=&#34;https://developer.garmin.com/fit/fitcsvtool/&#34;&gt;FIT CSV Tool&lt;/a&gt;を使って簡易的に編集する方法を説明する。&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>Edge 830にGPXやTCXファイルを入れたときの挙動</title>
       <link>https://www.330k.info/essay/edge_830_newfile_import_behavior/</link>

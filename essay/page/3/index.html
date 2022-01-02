@@ -79,6 +79,36 @@ if (!doNotTrack) {
 		<h1 class="main__title">Essays</h1>
 	</header><article class="list__item post">
 	<figure class="list__thumbnail">
+		<a href="https://www.330k.info/essay/webchecker_shell_script/">
+			<img src="/essay/webchecker_shell_script/bash_36261.png" alt="ウェブサイトの差分を検知してメール通知するシェルスクリプト" />
+		</a>
+	</figure>
+	<header class="list__header">
+		<h3 class="list__title post__title ">
+			<a href="/essay/webchecker_shell_script/" rel="bookmark">
+			ウェブサイトの差分を検知してメール通知するシェルスクリプト
+			</a>
+		</h3>
+		<div class="list__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
+	<time class="meta__text" datetime="2020-02-28T20:55:25">February 28, 2020</time>
+	<time class="meta__text" datetime="2021-08-10T22:23:20"> (Last Modified: August 10, 2021)</time>
+</div>
+
+<div class="meta__item-categories meta__item">
+	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+	<span class="meta__text"><a class="meta__link" href="/categories/%e9%9b%91%e8%a8%98%e5%b8%b3" rel="category">雑記帳</a></span>
+</div>
+</div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		<p>2020年は数多くのブルベに参加することになったが、各BRMでウェブサイトの更新を監視するのは辛い。</p>
+<p>無料のウェブサービスもあるが、登録件数が不足したり、どこが変更されたのか分からなかったりしたので、
+変更を検知したら差分箇所をメールで送信するシェルスクリプトを書いてみた。</p>
+	</div>
+</article><article class="list__item post">
+	<figure class="list__thumbnail">
 		<a href="https://www.330k.info/essay/shogi24-on-ubuntu-docker/">
 			<img src="/essay/shogi24-on-ubuntu-docker/2020-02-03%2001-52-17.png" alt="将棋倶楽部24をUbuntu &#43; dockerで動かす" />
 		</a>
@@ -340,34 +370,6 @@ if (!doNotTrack) {
 	<div class="content list__excerpt post__content clearfix">
 		ある書物で、地球の半径を東大生の何割かがオーダーが違うレベルで間違う、ということが書いてあった(誰の著作だったか忘れてしまった・・・)。 ただ、地球の周長や半径の概数は、暗記する必要はまったくない。 なぜなら、 「1キロメートルの基準が、赤道から北極までの長さの1万分の1」 としてメートル法が決められたから。 覚えるのはこれだけで良い。 だから、地球一周は4倍の約40,000 km。半径は円周率の2倍で割って約
 	</div>
-</article><article class="list__item post">
-	<figure class="list__thumbnail">
-		<a href="https://www.330k.info/essay/mathematica-special-notation/">
-			<img src="https://www.ipros.jp/public/product/image/f59/396065002/IPROS3632825140790521490.png?h=220&amp;w=220" alt="Mathematicaの特殊・省略記法一覧" />
-		</a>
-	</figure>
-	<header class="list__header">
-		<h3 class="list__title post__title ">
-			<a href="/essay/mathematica-special-notation/" rel="bookmark">
-			Mathematicaの特殊・省略記法一覧
-			</a>
-		</h3>
-		<div class="list__meta meta">
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
-	<time class="meta__text" datetime="2018-05-22T04:34:15">May 22, 2018</time>
-	<time class="meta__text" datetime="2020-05-18T11:51:16"> (Last Modified: May 18, 2020)</time>
-</div>
-
-<div class="meta__item-categories meta__item">
-	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
-	<span class="meta__text"><a class="meta__link" href="/categories/%e9%9b%91%e8%a8%98%e5%b8%b3" rel="category">雑記帳</a></span>
-</div>
-</div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		Mathematicaの省略記法はドキュメントやヘルプで調べにくいのでまとめてみる。 関数適用 @ (前置記法) f@aはf[a]と等価。 後ろのカッコ(])を入力しなくてもすむ。 Plot[Evaluate@Integrate[x^2, x], {x, -3, 3}] // (後置記法) a // fはf[a]と等価。 数値にする(N)や簡約化(Simplify、FullSimplify)でよく使う。 In[1]:= Sin[2] // N Out[1]= 0.909297 ~ ~ (中置記法) a~f~bとすると、f[a, b]と等価になる。 In[1]:= {1, 2}~Join~{3, 4} Out[1]= {1, 2, 3, 4} 関数適用
-	</div>
 </article>
 </main>
 
@@ -400,6 +402,7 @@ if (!doNotTrack) {
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/essay/edit-garmin-fit-mannually/">Garmin FITファイルをカンタンに編集する方法</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/actual_lumen_estimation_of_rn1500/">RN1500の実際の明るさをスペックシートから見積もる</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/edge_830_newfile_import_behavior/">Edge 830にGPXやTCXファイルを入れたときの挙動</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/obfuscate-mathematica-program/">Mathematicaプログラムの難読化・隠しメッセージ埋め込み手法の検討</a></li>
@@ -419,7 +422,6 @@ if (!doNotTrack) {
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20210410-brm410-utsunomiya-400km/">2021年04月10日 BRM410 宇都宮400 ランドネきたかん(西回り)</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20210327-sr600-aso-geotourism/">2021年03月27日 SR600 阿蘇ジオツーリズム</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/promise_wait_for_jsonpcallback_initialize/">JavaScriptライブラリの初期化完了やJSONPのコールバック関数をPromise化する</a></li>
-			<li class="widget__item"><a class="widget__link" href="/essay/multiple-argo-tunnel/">Argo Tunnelで複数のトンネルをサービスとして起動</a></li>
 		</ul>
 	</div>
 </div>
@@ -450,7 +452,7 @@ if (!doNotTrack) {
 		<a class="widget-taglist__link widget__link btn" href="/tags/cybozu" title="Cybozu">Cybozu (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/dotnet" title="Dotnet">Dotnet (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/ffmpeg" title="Ffmpeg">Ffmpeg (2)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/garmin" title="Garmin">Garmin (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/garmin" title="Garmin">Garmin (3)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/garoon" title="Garoon">Garoon (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/gas" title="Gas">Gas (2)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/github" title="Github">Github (7)</a>
