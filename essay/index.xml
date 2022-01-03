@@ -6,7 +6,18 @@
     <description>Recent content in Essays on 330k info</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Mon, 03 Jan 2022 01:06:28 +0900</lastBuildDate><atom:link href="https://www.330k.info/essay/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 03 Jan 2022 19:55:58 +0900</lastBuildDate><atom:link href="https://www.330k.info/essay/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Snap版NextCloudのプレビュー生成を無効化する</title>
+      <link>https://www.330k.info/essay/disable-nextcloud-preview-image-generation/</link>
+      <pubDate>Mon, 03 Jan 2022 19:55:58 +0900</pubDate>
+      
+      <guid>https://www.330k.info/essay/disable-nextcloud-preview-image-generation/</guid>
+      <description>&lt;p&gt;Oracle CloudのAlways Freeを使ったインスタンス上にSnap版NextCloudを立ち上げ、iPhoneやAndroidで撮影した写真の自動アップロードを行っていたのだが、
+容量には余裕をもっているつもりが、予想より早く食いつぶしてしまった。&lt;/p&gt;
+&lt;p&gt;プレビュー画像の生成により数GB消費していたことが原因だったので、無効化したときの手順をメモ。&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>Garmin FITファイルをカンタンに編集する方法</title>
       <link>https://www.330k.info/essay/edit-garmin-fit-mannually/</link>
