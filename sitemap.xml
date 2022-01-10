@@ -2,11 +2,29 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://www.330k.info/bicycle/touring/20220108-brm108-kinki-600km/</loc>
+    <lastmod>2022-01-10T21:26:50+09:00</lastmod>
+  </url><url>
     <loc>https://www.330k.info/</loc>
-    <lastmod>2022-01-06T22:23:51+09:00</lastmod>
+    <lastmod>2022-01-10T21:27:22+09:00</lastmod>
+  </url><url>
+    <loc>https://www.330k.info/bicycle/</loc>
+    <lastmod>2022-01-10T21:27:22+09:00</lastmod>
+  </url><url>
+    <loc>https://www.330k.info/tags/brm600km/</loc>
+    <lastmod>2022-01-10T21:26:50+09:00</lastmod>
   </url><url>
     <loc>https://www.330k.info/categories/</loc>
-    <lastmod>2022-01-06T22:23:51+09:00</lastmod>
+    <lastmod>2022-01-10T21:27:22+09:00</lastmod>
+  </url><url>
+    <loc>https://www.330k.info/tags/</loc>
+    <lastmod>2022-01-10T21:27:22+09:00</lastmod>
+  </url><url>
+    <loc>https://www.330k.info/tags/%E3%83%96%E3%83%AB%E3%83%99/</loc>
+    <lastmod>2022-01-10T21:27:22+09:00</lastmod>
+  </url><url>
+    <loc>https://www.330k.info/categories/%E8%87%AA%E8%BB%A2%E8%BB%8A/</loc>
+    <lastmod>2022-01-10T21:27:22+09:00</lastmod>
   </url><url>
     <loc>https://www.330k.info/essay/</loc>
     <lastmod>2022-01-06T22:23:51+09:00</lastmod>
@@ -15,9 +33,6 @@
     <lastmod>2022-01-06T22:23:51+09:00</lastmod>
   </url><url>
     <loc>https://www.330k.info/essay/disable-nextcloud-preview-image-generation/</loc>
-    <lastmod>2022-01-06T22:23:51+09:00</lastmod>
-  </url><url>
-    <loc>https://www.330k.info/tags/</loc>
     <lastmod>2022-01-06T22:23:51+09:00</lastmod>
   </url><url>
     <loc>https://www.330k.info/tags/ubuntu/</loc>
@@ -60,25 +75,16 @@
     <lastmod>2021-12-08T03:35:28+09:00</lastmod>
   </url><url>
     <loc>https://www.330k.info/bicycle/touring/20211030-brm1030-kanagawa-400km/</loc>
-    <lastmod>2021-11-01T06:22:36+09:00</lastmod>
+    <lastmod>2022-01-10T21:27:22+09:00</lastmod>
   </url><url>
-    <loc>https://www.330k.info/bicycle/</loc>
-    <lastmod>2021-12-26T23:04:21+09:00</lastmod>
-  </url><url>
-    <loc>https://www.330k.info/tags/%E3%83%84%E3%83%BC%E3%83%AA%E3%83%B3%E3%82%B0/</loc>
-    <lastmod>2021-12-26T23:01:10+09:00</lastmod>
-  </url><url>
-    <loc>https://www.330k.info/categories/%E8%87%AA%E8%BB%A2%E8%BB%8A/</loc>
-    <lastmod>2021-12-26T23:04:21+09:00</lastmod>
+    <loc>https://www.330k.info/tags/brm400km/</loc>
+    <lastmod>2022-01-10T21:27:22+09:00</lastmod>
   </url><url>
     <loc>https://www.330k.info/bicycle/touring/20211016-brm1009-kinki-300km/</loc>
     <lastmod>2021-11-06T22:46:30+09:00</lastmod>
   </url><url>
     <loc>https://www.330k.info/tags/brm300km/</loc>
     <lastmod>2021-11-06T22:46:30+09:00</lastmod>
-  </url><url>
-    <loc>https://www.330k.info/tags/%E3%83%96%E3%83%AB%E3%83%99/</loc>
-    <lastmod>2021-12-26T23:04:21+09:00</lastmod>
   </url><url>
     <loc>https://www.330k.info/bicycle/touring/20211002-sr-600-joumou-sanzan/</loc>
     <lastmod>2021-10-06T18:01:36+09:00</lastmod>
@@ -112,6 +118,9 @@
   </url><url>
     <loc>https://www.330k.info/bicycle/touring/20210718-shibu-toge/</loc>
     <lastmod>2021-07-20T01:29:40+09:00</lastmod>
+  </url><url>
+    <loc>https://www.330k.info/tags/%E3%83%84%E3%83%BC%E3%83%AA%E3%83%B3%E3%82%B0/</loc>
+    <lastmod>2021-12-26T23:01:10+09:00</lastmod>
   </url><url>
     <loc>https://www.330k.info/tags/vba/</loc>
     <lastmod>2021-07-13T02:20:04+09:00</lastmod>
@@ -147,9 +156,6 @@
     <lastmod>2021-05-07T21:13:41+09:00</lastmod>
   </url><url>
     <loc>https://www.330k.info/bicycle/touring/20210410-brm410-utsunomiya-400km/</loc>
-    <lastmod>2021-04-13T21:15:24+09:00</lastmod>
-  </url><url>
-    <loc>https://www.330k.info/tags/brm400km/</loc>
     <lastmod>2021-04-13T21:15:24+09:00</lastmod>
   </url><url>
     <loc>https://www.330k.info/bicycle/touring/20210327-sr600-aso-geotourism/</loc>
@@ -199,9 +205,6 @@
   </url><url>
     <loc>https://www.330k.info/bicycle/touring/20201024-brm1024-saitama-attack-nihonkai-600km/</loc>
     <lastmod>2021-04-01T20:35:30+09:00</lastmod>
-  </url><url>
-    <loc>https://www.330k.info/tags/brm600km/</loc>
-    <lastmod>2021-04-01T20:36:29+09:00</lastmod>
   </url><url>
     <loc>https://www.330k.info/bicycle/touring/20201017-brm1017-yokohama-aoba-izu-300km/</loc>
     <lastmod>2021-04-01T20:35:23+09:00</lastmod>
