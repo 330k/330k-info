@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Chrome拡張機能 on 330k info</title>
+    <link>https://www.330k.info/tags/chrome%E6%8B%A1%E5%BC%B5%E6%A9%9F%E8%83%BD/</link>
+    <description>Recent content in Chrome拡張機能 on 330k info</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja-jp</language>
+    <lastBuildDate>Tue, 25 Jan 2022 20:58:59 +0900</lastBuildDate><atom:link href="https://www.330k.info/tags/chrome%E6%8B%A1%E5%BC%B5%E6%A9%9F%E8%83%BD/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>RWGPS地理院標高 - Chrome拡張機能</title>
+      <link>https://www.330k.info/software/chrome_rwgps_ele_gsi/</link>
+      <pubDate>Tue, 25 Jan 2022 20:58:59 +0900</pubDate>
+      
+      <guid>https://www.330k.info/software/chrome_rwgps_ele_gsi/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;https://ridewithgps.com/&#34;&gt;Ride with GPS(RWGPS)&lt;/a&gt;のルート作成時、標高を国土地理院が提供する標高タイルから取得するように切り替えるChrome拡張機能です。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Gmailをeml形式で保存するChrome拡張機能</title>
+      <link>https://www.330k.info/software/save-as-eml-for-gmail-chrome-extension/</link>
+      <pubDate>Sun, 06 Nov 2016 22:34:45 +0900</pubDate>
+      
+      <guid>https://www.330k.info/software/save-as-eml-for-gmail-chrome-extension/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;Gmailの機能拡充により標準で可能になったため、拡張機能の配布を終了しました&lt;/strong&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>
