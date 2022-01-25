@@ -12,7 +12,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.330k.info/software/chrome_rwgps_ele_gsi/" /><meta property="og:image" content="https://www.330k.info/software/chrome_rwgps_ele_gsi/icon_02_128.png" /><meta property="article:section" content="software" />
 <meta property="article:published_time" content="2022-01-25T20:58:59+09:00" />
-<meta property="article:modified_time" content="2022-01-25T21:43:13+09:00" />
+<meta property="article:modified_time" content="2022-01-25T23:02:07+09:00" />
 
 
 	<meta name="twitter:card" content="summary_large_image"/>
@@ -83,7 +83,7 @@ if (!doNotTrack) {
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
 	<time class="meta__text" datetime="2022-01-25T20:58:59">January 25, 2022</time>
-	<time class="meta__text" datetime="2022-01-25T21:43:13"> (Last Modified: January 25, 2022)</time>
+	<time class="meta__text" datetime="2022-01-25T23:02:07"> (Last Modified: January 25, 2022)</time>
 </div>
 
 <div class="meta__item-categories meta__item">
@@ -111,7 +111,9 @@ if (!doNotTrack) {
 <h2 id="注意事項">注意事項</h2>
 <ul>
 <li>国土地理院のサーバに負荷をかけないようにしていることもあり、RWGPS標準に比べて標高の取得に時間がかかります。取得中はルートを追加・変更する操作を控えてください。(操作してもエラーにはならないように工夫していますが、グラフの表示がおかしくなったりします)</li>
-<li>当然ですが日本以外では動作しません。すべて標高が0になります。</li>
+<li>同様にネットワーク負荷をかけないよう、キャッシュをメモリ上に保持します。Chromeがメモリを大量に使用してしまった場合は、一度ルートを保存してタブを閉じてから、ルートの編集から続きの作業を行ってください。</li>
+<li>できる限り精度の高いメッシュデータから標高値を取ってこようとしますので、5mメッシュが整備されている都市部を通すルートのほうが若干時間がかかります。</li>
+<li>当然なのですが日本以外では動作しません。すべて標高が0になります。</li>
 <li>RWGPSの仕様変更によって突然動作しなくなる場合がありますが、ご容赦ください。</li>
 </ul>
 <h2 id="出典">出典</h2>
