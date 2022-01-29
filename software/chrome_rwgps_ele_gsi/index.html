@@ -106,8 +106,9 @@ if (!doNotTrack) {
 <li>ボタンに枠が付いた状態でこれまで通りルートを引くと、地理院タイルから取得した標高が使われます。</li>
 <li>標高データの取得中は、右下のボタンに進捗状況を示すバーが表示されます。</li>
 </ul>
-<video src="record003.mp4" width="900" height="720" controls ></video>
-
+<div style="position:relative;padding-top:calc(100% * 720 / 900);">
+<video src="record003.mp4" width="900" height="720" controls style="position:absolute;top:0;left:0;width:100%;height:100%;"></video>
+</div>
 <h2 id="注意事項">注意事項</h2>
 <ul>
 <li>国土地理院のサーバに負荷をかけないようにしていることもあり、RWGPS標準に比べて標高の取得に時間がかかります。取得中はルートを追加・変更する操作を控えてください。(操作してもエラーにはならないように工夫していますが、グラフの表示がおかしくなったりします)</li>
