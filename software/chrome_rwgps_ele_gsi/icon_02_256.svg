@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="256"
+   height="256"
+   viewBox="0 0 67.733332 67.733336"
+   version="1.1"
+   id="svg8"
+   inkscape:version="0.92.5 (2060ec1f9f, 2020-04-08)"
+   sodipodi:docname="icon_02_256.svg"
+   inkscape:export-filename="/home/kei/Documents/GitHub/330k-hugo/static/software/chrome_rwgps_ele_gsi/icon_02_256.png"
+   inkscape:export-xdpi="96"
+   inkscape:export-ydpi="96">
+  <defs
+     id="defs2" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="1.4142136"
+     inkscape:cx="135.68451"
+     inkscape:cy="81.742579"
+     inkscape:document-units="mm"
+     inkscape:current-layer="g822"
+     showgrid="false"
+     units="px"
+     inkscape:window-width="1848"
+     inkscape:window-height="1016"
+     inkscape:window-x="72"
+     inkscape:window-y="27"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="レイヤー 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,-229.26665)">
+    <g
+       id="g822"
+       transform="matrix(2,0,0,2,1.780192e-6,-297.00001)">
+      <rect
+         ry="8.4666662"
+         rx="8.4666662"
+         y="263.13333"
+         x="0"
+         height="33.866665"
+         width="33.866665"
+         id="rect823"
+         style="fill:#ff8600;fill-opacity:1;stroke:none;stroke-width:0.26458332;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1" />
+      <g
+         aria-label="地"
+         transform="matrix(0.26458333,0,0,0.26458333,3.7599774,265.23965)"
+         style="font-style:normal;font-weight:normal;font-size:40px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
+         id="flowRoot815">
+        <path
+           d="M 50.796875,50.296875 V 86.203125 Q 50.796875,89.0625 52.53125,89.671875 54.828125,90.421875 67.53125,90.421875 82.390625,90.421875 84.3125,87.9375 85.765625,85.78125 86.046875,76.03125 L 92.84375,78.234375 Q 91.53125,92.484375 88.71875,94.640625 85.109375,97.21875 65.09375,97.21875 49.484375,97.21875 46.390625,95.296875 44,93.890625 44,88.6875 V 52.5 L 35.234375,55.265625 33.40625,48.9375 44,45.703125 V 20.625 H 50.796875 V 43.546875 L 61.109375,40.40625 V 14.859375 H 67.90625 V 38.296875 L 84.03125,33.28125 87.96875,36.09375 V 65.4375 Q 87.96875,70.03125 86.234375,71.578125 84.640625,73.03125 80.375,73.03125 77.234375,73.03125 72.6875,72.75 L 71.5625,66.234375 Q 75.875,66.890625 78.734375,66.890625 81.359375,66.890625 81.359375,63.84375 V 40.5 L 67.90625,44.8125 V 78.609375 H 61.109375 V 47.015625 Z M 20.09375,38.34375 V 16.265625 H 26.890625 V 38.34375 H 39.171875 V 44.765625 H 26.890625 V 78.984375 Q 27.875,78.609375 28.109375,78.5625 33.96875,76.5 40.109375,74.15625 L 40.765625,80.390625 Q 26.1875,86.53125 9.6875,91.828125 L 6.734375,85.03125 Q 14.9375,82.875 20.09375,81.1875 V 44.765625 H 8.1875 V 38.34375 Z"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:96px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start"
+           id="path818"
+           inkscape:connector-curvature="0" />
+      </g>
+    </g>
+  </g>
+</svg>
