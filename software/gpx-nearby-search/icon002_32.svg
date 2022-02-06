@@ -20,7 +20,21 @@
    inkscape:export-xdpi="96"
    inkscape:export-ydpi="96">
   <defs
-     id="defs2" />
+     id="defs2">
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath2057">
+      <rect
+         style="fill:#86521f;fill-opacity:1;stroke:none;stroke-width:8.81944466;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         id="rect2059"
+         width="56.444443"
+         height="56.444443"
+         x="12.360544"
+         y="141.14656"
+         rx="5.2916665"
+         ry="5.2916665" />
+    </clipPath>
+  </defs>
   <sodipodi:namedview
      id="base"
      pagecolor="#ffffff"
@@ -28,9 +42,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="9.2586794"
-     inkscape:cx="37.896202"
-     inkscape:cy="41.521782"
+     inkscape:zoom="11.313708"
+     inkscape:cx="16.575404"
+     inkscape:cy="18.192021"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -52,7 +66,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -63,7 +77,8 @@
      transform="translate(-12.09524,-195.92916)">
     <g
        id="g879"
-       transform="matrix(0.15,0,0,0.15,10.241158,174.75717)">
+       transform="matrix(0.15,0,0,0.15,10.241158,174.75717)"
+       clip-path="url(#clipPath2057)">
       <rect
          y="140.89583"
          x="12.09524"
