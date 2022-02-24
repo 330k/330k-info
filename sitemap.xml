@@ -2,17 +2,50 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://www.330k.info/bicycle/touring/20220221-brm224-tokyo-600km/</loc>
+    <lastmod>2022-02-24T23:47:06+09:00</lastmod>
+  </url><url>
     <loc>https://www.330k.info/</loc>
-    <lastmod>2022-02-07T23:06:41+09:00</lastmod>
+    <lastmod>2022-02-24T23:47:06+09:00</lastmod>
+  </url><url>
+    <loc>https://www.330k.info/bicycle/</loc>
+    <lastmod>2022-02-24T23:47:06+09:00</lastmod>
+  </url><url>
+    <loc>https://www.330k.info/tags/brm600km/</loc>
+    <lastmod>2022-02-24T23:47:06+09:00</lastmod>
   </url><url>
     <loc>https://www.330k.info/categories/</loc>
-    <lastmod>2022-02-07T23:06:41+09:00</lastmod>
+    <lastmod>2022-02-24T23:47:06+09:00</lastmod>
+  </url><url>
+    <loc>https://www.330k.info/tags/</loc>
+    <lastmod>2022-02-24T23:47:06+09:00</lastmod>
+  </url><url>
+    <loc>https://www.330k.info/tags/%E3%83%96%E3%83%AB%E3%83%99/</loc>
+    <lastmod>2022-02-24T23:47:06+09:00</lastmod>
+  </url><url>
+    <loc>https://www.330k.info/categories/%E8%87%AA%E8%BB%A2%E8%BB%8A/</loc>
+    <lastmod>2022-02-24T23:47:06+09:00</lastmod>
+  </url><url>
+    <loc>https://www.330k.info/essay/</loc>
+    <lastmod>2022-02-16T00:09:08+09:00</lastmod>
+  </url><url>
+    <loc>https://www.330k.info/tags/javascript/</loc>
+    <lastmod>2022-02-16T00:09:08+09:00</lastmod>
+  </url><url>
+    <loc>https://www.330k.info/essay/javascript-layered-cache-api-with-expiration/</loc>
+    <lastmod>2022-02-16T00:09:08+09:00</lastmod>
+  </url><url>
+    <loc>https://www.330k.info/categories/%E9%9B%91%E8%A8%98%E5%B8%B3/</loc>
+    <lastmod>2022-02-16T00:09:08+09:00</lastmod>
+  </url><url>
+    <loc>https://www.330k.info/tags/gpx/</loc>
+    <lastmod>2022-02-15T20:50:56+09:00</lastmod>
+  </url><url>
+    <loc>https://www.330k.info/essay/rwgps-modify-all-elevations/</loc>
+    <lastmod>2022-02-15T20:50:56+09:00</lastmod>
   </url><url>
     <loc>https://www.330k.info/tags/chrome%E6%8B%A1%E5%BC%B5%E6%A9%9F%E8%83%BD/</loc>
     <lastmod>2022-02-07T23:06:41+09:00</lastmod>
-  </url><url>
-    <loc>https://www.330k.info/tags/gpx/</loc>
-    <lastmod>2022-02-06T22:22:38+09:00</lastmod>
   </url><url>
     <loc>https://www.330k.info/tags/rwgps/</loc>
     <lastmod>2022-02-06T22:22:38+09:00</lastmod>
@@ -21,37 +54,19 @@
     <lastmod>2022-02-06T22:22:38+09:00</lastmod>
   </url><url>
     <loc>https://www.330k.info/software/</loc>
-    <lastmod>2022-02-07T23:06:41+09:00</lastmod>
-  </url><url>
-    <loc>https://www.330k.info/tags/</loc>
-    <lastmod>2022-02-07T23:06:41+09:00</lastmod>
+    <lastmod>2022-02-12T22:27:57+09:00</lastmod>
   </url><url>
     <loc>https://www.330k.info/categories/%E3%82%BD%E3%83%95%E3%83%88%E3%82%A6%E3%82%A7%E3%82%A2/</loc>
-    <lastmod>2022-02-07T23:06:41+09:00</lastmod>
+    <lastmod>2022-02-12T22:27:57+09:00</lastmod>
   </url><url>
     <loc>https://www.330k.info/bicycle/touring/20220122-brm122-nihonbash-200km/</loc>
-    <lastmod>2022-01-23T23:46:01+09:00</lastmod>
-  </url><url>
-    <loc>https://www.330k.info/bicycle/</loc>
     <lastmod>2022-01-23T23:46:01+09:00</lastmod>
   </url><url>
     <loc>https://www.330k.info/tags/brm200km/</loc>
     <lastmod>2022-01-23T23:46:01+09:00</lastmod>
   </url><url>
-    <loc>https://www.330k.info/tags/%E3%83%96%E3%83%AB%E3%83%99/</loc>
-    <lastmod>2022-01-23T23:46:01+09:00</lastmod>
-  </url><url>
-    <loc>https://www.330k.info/categories/%E8%87%AA%E8%BB%A2%E8%BB%8A/</loc>
-    <lastmod>2022-01-23T23:46:01+09:00</lastmod>
-  </url><url>
     <loc>https://www.330k.info/bicycle/touring/20220108-brm108-kinki-600km/</loc>
     <lastmod>2022-01-14T23:30:41+09:00</lastmod>
-  </url><url>
-    <loc>https://www.330k.info/tags/brm600km/</loc>
-    <lastmod>2022-01-14T23:30:41+09:00</lastmod>
-  </url><url>
-    <loc>https://www.330k.info/essay/</loc>
-    <lastmod>2022-01-06T22:23:51+09:00</lastmod>
   </url><url>
     <loc>https://www.330k.info/tags/nextcloud/</loc>
     <lastmod>2022-01-06T22:23:51+09:00</lastmod>
@@ -60,10 +75,7 @@
     <lastmod>2022-01-06T22:23:51+09:00</lastmod>
   </url><url>
     <loc>https://www.330k.info/tags/ubuntu/</loc>
-    <lastmod>2022-01-06T22:23:51+09:00</lastmod>
-  </url><url>
-    <loc>https://www.330k.info/categories/%E9%9B%91%E8%A8%98%E5%B8%B3/</loc>
-    <lastmod>2022-01-06T22:23:51+09:00</lastmod>
+    <lastmod>2022-02-10T22:11:34+09:00</lastmod>
   </url><url>
     <loc>https://www.330k.info/tags/garmin/</loc>
     <lastmod>2022-01-03T01:12:29+09:00</lastmod>
@@ -78,7 +90,7 @@
     <lastmod>2021-12-26T23:24:48+09:00</lastmod>
   </url><url>
     <loc>https://www.330k.info/tags/%E8%87%AA%E8%BB%A2%E8%BB%8A/</loc>
-    <lastmod>2022-02-06T14:17:53+09:00</lastmod>
+    <lastmod>2022-02-12T22:27:57+09:00</lastmod>
   </url><url>
     <loc>https://www.330k.info/essay/edge_830_newfile_import_behavior/</loc>
     <lastmod>2021-12-16T01:05:57+09:00</lastmod>
@@ -113,9 +125,6 @@
     <loc>https://www.330k.info/bicycle/touring/20210924-sr600-kii-reverse/</loc>
     <lastmod>2021-09-27T23:17:50+09:00</lastmod>
   </url><url>
-    <loc>https://www.330k.info/tags/javascript/</loc>
-    <lastmod>2021-12-31T22:58:16+09:00</lastmod>
-  </url><url>
     <loc>https://www.330k.info/tags/%E6%95%B0%E5%AD%A6/</loc>
     <lastmod>2021-09-19T08:11:48+09:00</lastmod>
   </url><url>
@@ -123,10 +132,10 @@
     <lastmod>2021-09-19T08:11:48+09:00</lastmod>
   </url><url>
     <loc>https://www.330k.info/tags/github/</loc>
-    <lastmod>2022-02-06T14:17:53+09:00</lastmod>
+    <lastmod>2022-02-12T22:27:57+09:00</lastmod>
   </url><url>
     <loc>https://www.330k.info/software/gpx-nearby-search/</loc>
-    <lastmod>2022-02-06T14:17:53+09:00</lastmod>
+    <lastmod>2022-02-10T17:00:28+09:00</lastmod>
   </url><url>
     <loc>https://www.330k.info/bicycle/touring/20210722-sr600-oirase/</loc>
     <lastmod>2021-08-11T20:46:06+09:00</lastmod>
@@ -195,7 +204,7 @@
     <lastmod>2021-02-21T19:28:37+09:00</lastmod>
   </url><url>
     <loc>https://www.330k.info/tags/google/</loc>
-    <lastmod>2022-02-06T01:04:56+09:00</lastmod>
+    <lastmod>2022-02-10T22:10:25+09:00</lastmod>
   </url><url>
     <loc>https://www.330k.info/essay/sync-garoon-google-calendar/</loc>
     <lastmod>2021-02-21T19:28:37+09:00</lastmod>
@@ -225,7 +234,7 @@
     <lastmod>2021-12-26T23:01:10+09:00</lastmod>
   </url><url>
     <loc>https://www.330k.info/tags/%E3%82%AD%E3%83%A3%E3%83%8E%E3%83%B3%E3%83%9C%E3%83%BC%E3%83%AB/</loc>
-    <lastmod>2022-02-06T01:04:56+09:00</lastmod>
+    <lastmod>2022-02-10T22:10:25+09:00</lastmod>
   </url><url>
     <loc>https://www.330k.info/bicycle/touring/20200919-brm919-fukuoka-1000km/</loc>
     <lastmod>2021-04-01T20:35:17+09:00</lastmod>
@@ -249,7 +258,7 @@
     <lastmod>2020-07-30T19:07:32+09:00</lastmod>
   </url><url>
     <loc>https://www.330k.info/software/cannonball-wind-map/</loc>
-    <lastmod>2022-02-06T01:04:56+09:00</lastmod>
+    <lastmod>2022-02-10T22:10:25+09:00</lastmod>
   </url><url>
     <loc>https://www.330k.info/tags/wsh/</loc>
     <lastmod>2020-07-06T17:05:03+09:00</lastmod>
@@ -309,10 +318,10 @@
     <lastmod>2020-05-18T11:51:16+09:00</lastmod>
   </url><url>
     <loc>https://www.330k.info/essay/install-google-backup-sync-on-wine/</loc>
-    <lastmod>2020-05-18T11:51:16+09:00</lastmod>
+    <lastmod>2022-02-10T22:11:34+09:00</lastmod>
   </url><url>
     <loc>https://www.330k.info/tags/wine/</loc>
-    <lastmod>2020-05-18T11:51:16+09:00</lastmod>
+    <lastmod>2022-02-10T22:11:34+09:00</lastmod>
   </url><url>
     <loc>https://www.330k.info/essay/install-wine5-to-ubuntu-18.04/</loc>
     <lastmod>2020-05-18T11:51:16+09:00</lastmod>
@@ -507,7 +516,7 @@
     <lastmod>2019-09-09T23:18:25+09:00</lastmod>
   </url><url>
     <loc>https://www.330k.info/software/simplify_gpx/</loc>
-    <lastmod>2022-02-05T22:57:15+09:00</lastmod>
+    <lastmod>2022-02-12T22:27:57+09:00</lastmod>
   </url><url>
     <loc>https://www.330k.info/essay/rescue_gps_log_from_binary_data_of_holux_m241/</loc>
     <lastmod>2020-11-12T00:11:05+09:00</lastmod>

@@ -6,7 +6,17 @@
     <description>Recent content in JavaScript on 330k info</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Tue, 14 Sep 2021 22:48:02 +0900</lastBuildDate><atom:link href="https://www.330k.info/tags/javascript/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 13 Feb 2022 00:02:11 +0900</lastBuildDate><atom:link href="https://www.330k.info/tags/javascript/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>JavaScriptのCache APIで有効期限付きの階層キャッシュを実装する</title>
+      <link>https://www.330k.info/essay/javascript-layered-cache-api-with-expiration/</link>
+      <pubDate>Sun, 13 Feb 2022 00:02:11 +0900</pubDate>
+      
+      <guid>https://www.330k.info/essay/javascript-layered-cache-api-with-expiration/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;https://www.330k.info/software/simplify_gpx/&#34;&gt;GPXトラックログを間引く・簡略化&lt;/a&gt;で国土地理院の標高タイルを利用する機能を付ける際、国土地理院の標高タイルをキャッシュする機能を実装したかった。&lt;/p&gt;
+&lt;p&gt;そこで有効期限を付けて、かつメモリとディスクの2階層構造を持つキャッシュを実装してみた。&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>逆グーデルマン関数の計算式のJavaScriptにおける精度</title>
       <link>https://www.330k.info/essay/precise_comparison_of_gudermannian_function/</link>

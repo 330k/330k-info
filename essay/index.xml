@@ -6,7 +6,26 @@
     <description>Recent content in Essays on 330k info</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Mon, 03 Jan 2022 19:55:58 +0900</lastBuildDate><atom:link href="https://www.330k.info/essay/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 13 Feb 2022 00:02:11 +0900</lastBuildDate><atom:link href="https://www.330k.info/essay/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>JavaScriptのCache APIで有効期限付きの階層キャッシュを実装する</title>
+      <link>https://www.330k.info/essay/javascript-layered-cache-api-with-expiration/</link>
+      <pubDate>Sun, 13 Feb 2022 00:02:11 +0900</pubDate>
+      
+      <guid>https://www.330k.info/essay/javascript-layered-cache-api-with-expiration/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;https://www.330k.info/software/simplify_gpx/&#34;&gt;GPXトラックログを間引く・簡略化&lt;/a&gt;で国土地理院の標高タイルを利用する機能を付ける際、国土地理院の標高タイルをキャッシュする機能を実装したかった。&lt;/p&gt;
+&lt;p&gt;そこで有効期限を付けて、かつメモリとディスクの2階層構造を持つキャッシュを実装してみた。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>RWGPSでルートの標高データを一括で修正する</title>
+      <link>https://www.330k.info/essay/rwgps-modify-all-elevations/</link>
+      <pubDate>Sun, 06 Feb 2022 00:29:43 +0900</pubDate>
+      
+      <guid>https://www.330k.info/essay/rwgps-modify-all-elevations/</guid>
+      <description>&lt;p&gt;RWGPSで標高の橋トンネル補正機能が実装される以前に作成したルートや、橋トンネル補正機能のバグによって平坦化されてしまった場合にすべての標高データを修正する方法を説明。&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>Snap版NextCloudのプレビュー生成を無効化する</title>
       <link>https://www.330k.info/essay/disable-nextcloud-preview-image-generation/</link>

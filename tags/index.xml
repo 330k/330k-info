@@ -6,22 +6,49 @@
     <description>Recent content in Tags on 330k info</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Tue, 25 Jan 2022 20:58:59 +0900</lastBuildDate><atom:link href="https://www.330k.info/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 24 Feb 2022 22:36:40 +0900</lastBuildDate><atom:link href="https://www.330k.info/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Chrome拡張機能</title>
-      <link>https://www.330k.info/tags/chrome%E6%8B%A1%E5%BC%B5%E6%A9%9F%E8%83%BD/</link>
-      <pubDate>Tue, 25 Jan 2022 20:58:59 +0900</pubDate>
+      <title>BRM600km</title>
+      <link>https://www.330k.info/tags/brm600km/</link>
+      <pubDate>Thu, 24 Feb 2022 22:36:40 +0900</pubDate>
       
-      <guid>https://www.330k.info/tags/chrome%E6%8B%A1%E5%BC%B5%E6%A9%9F%E8%83%BD/</guid>
+      <guid>https://www.330k.info/tags/brm600km/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ブルベ</title>
+      <link>https://www.330k.info/tags/%E3%83%96%E3%83%AB%E3%83%99/</link>
+      <pubDate>Thu, 24 Feb 2022 22:36:40 +0900</pubDate>
+      
+      <guid>https://www.330k.info/tags/%E3%83%96%E3%83%AB%E3%83%99/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>JavaScript</title>
+      <link>https://www.330k.info/tags/javascript/</link>
+      <pubDate>Sun, 13 Feb 2022 00:02:11 +0900</pubDate>
+      
+      <guid>https://www.330k.info/tags/javascript/</guid>
       <description></description>
     </item>
     
     <item>
       <title>GPX</title>
       <link>https://www.330k.info/tags/gpx/</link>
-      <pubDate>Tue, 25 Jan 2022 20:58:59 +0900</pubDate>
+      <pubDate>Sun, 06 Feb 2022 00:29:43 +0900</pubDate>
       
       <guid>https://www.330k.info/tags/gpx/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Chrome拡張機能</title>
+      <link>https://www.330k.info/tags/chrome%E6%8B%A1%E5%BC%B5%E6%A9%9F%E8%83%BD/</link>
+      <pubDate>Tue, 25 Jan 2022 20:58:59 +0900</pubDate>
+      
+      <guid>https://www.330k.info/tags/chrome%E6%8B%A1%E5%BC%B5%E6%A9%9F%E8%83%BD/</guid>
       <description></description>
     </item>
     
@@ -40,24 +67,6 @@
       <pubDate>Sun, 23 Jan 2022 01:04:26 +0900</pubDate>
       
       <guid>https://www.330k.info/tags/brm200km/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>ブルベ</title>
-      <link>https://www.330k.info/tags/%E3%83%96%E3%83%AB%E3%83%99/</link>
-      <pubDate>Sun, 23 Jan 2022 01:04:26 +0900</pubDate>
-      
-      <guid>https://www.330k.info/tags/%E3%83%96%E3%83%AB%E3%83%99/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>BRM600km</title>
-      <link>https://www.330k.info/tags/brm600km/</link>
-      <pubDate>Mon, 10 Jan 2022 19:09:07 +0900</pubDate>
-      
-      <guid>https://www.330k.info/tags/brm600km/</guid>
       <description></description>
     </item>
     
@@ -139,15 +148,6 @@
       <pubDate>Tue, 05 Oct 2021 18:55:04 +0900</pubDate>
       
       <guid>https://www.330k.info/tags/sr600/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>JavaScript</title>
-      <link>https://www.330k.info/tags/javascript/</link>
-      <pubDate>Tue, 14 Sep 2021 22:48:02 +0900</pubDate>
-      
-      <guid>https://www.330k.info/tags/javascript/</guid>
       <description></description>
     </item>
     
