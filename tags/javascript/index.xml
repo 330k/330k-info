@@ -13,7 +13,8 @@
       <pubDate>Sun, 13 Feb 2022 00:02:11 +0900</pubDate>
       
       <guid>https://www.330k.info/essay/javascript-layered-cache-api-with-expiration/</guid>
-      <description>&lt;p&gt;&lt;a href=&#34;https://www.330k.info/software/simplify_gpx/&#34;&gt;GPXトラックログを間引く・簡略化&lt;/a&gt;で国土地理院の標高タイルを利用する機能を付ける際、国土地理院の標高タイルをキャッシュする機能を実装したかった。&lt;/p&gt;
+      <description>&lt;p&gt;&lt;a href=&#34;https://www.330k.info/software/simplify_gpx/&#34;&gt;GPXトラックログを間引く・簡略化&lt;/a&gt;や&lt;a href=&#34;https://www.330k.info/software/chrome_rwgps_ele_gsi/&#34;&gt;RWGPS地理院標高 - Chrome拡張機能
+&lt;/a&gt;で国土地理院の標高タイルを利用する機能を付ける際、国土地理院の標高タイルをキャッシュする機能を実装したかった。&lt;/p&gt;
 &lt;p&gt;そこで有効期限を付けて、かつメモリとディスクの2階層構造を持つキャッシュを実装してみた。&lt;/p&gt;</description>
     </item>
     
