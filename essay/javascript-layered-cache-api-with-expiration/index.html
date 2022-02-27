@@ -14,7 +14,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.330k.info/essay/javascript-layered-cache-api-with-expiration/" /><meta property="og:image" content="https://www.330k.info/images/240px-Unofficial_JavaScript_logo.png" /><meta property="article:section" content="essay" />
 <meta property="article:published_time" content="2022-02-13T00:02:11+09:00" />
-<meta property="article:modified_time" content="2022-02-26T23:28:22+09:00" />
+<meta property="article:modified_time" content="2022-02-27T23:53:09+09:00" />
 
 
 	<meta name="twitter:card" content="summary_large_image"/>
@@ -87,7 +87,7 @@ if (!doNotTrack) {
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
 	<time class="meta__text" datetime="2022-02-13T00:02:11">February 13, 2022</time>
-	<time class="meta__text" datetime="2022-02-26T23:28:22"> (Last Modified: February 26, 2022)</time>
+	<time class="meta__text" datetime="2022-02-27T23:53:09"> (Last Modified: February 27, 2022)</time>
 </div>
 
 <div class="meta__item-categories meta__item">
@@ -240,7 +240,7 @@ if (!doNotTrack) {
 <span style="color:#008000">// 2回目以降はL1キャッシュから取得
 </span><span style="color:#008000"></span><span style="color:#00f">await</span> lcache.fetch(<span style="color:#a31515">&#34;https://cyberjapandata.gsi.go.jp/xyz/dem/14/14547/6461.txt&#34;</span>);
 
-<span style="color:#008000">// 新たに3件取得すると、最初のURLはL1キャッシュから外れる
+<span style="color:#008000">// 新たに3件取得すると、最初のURLはL1キャッシュから外れ、L2キャッシュから取得する
 </span><span style="color:#008000"></span><span style="color:#00f">await</span> lcache.fetch(<span style="color:#a31515">&#34;https://cyberjapandata.gsi.go.jp/xyz/dem/14/14547/6462.txt&#34;</span>);
 <span style="color:#00f">await</span> lcache.fetch(<span style="color:#a31515">&#34;https://cyberjapandata.gsi.go.jp/xyz/dem/14/14547/6463.txt&#34;</span>);
 <span style="color:#00f">await</span> lcache.fetch(<span style="color:#a31515">&#34;https://cyberjapandata.gsi.go.jp/xyz/dem/14/14547/6464.txt&#34;</span>);
