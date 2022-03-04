@@ -114,141 +114,141 @@ if (!doNotTrack) {
 <p>という2層構造のキャッシュを実装した。</p>
 <h2 id="実装したもの">実装したもの</h2>
 <p>作成したものは以下の<code>LayeredCache</code>。</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#008000">/**
-</span><span style="color:#008000"> * L1, L2の2層のキャッシュ
-</span><span style="color:#008000"> * @param {string} cache_name          Cache APIで使用する名前(cacheName)
-</span><span style="color:#008000"> * @param {function} parser            responseを受け取ってキャッシュに保存する内容を返すPromiseを返すコールバック関数
-</span><span style="color:#008000"> * @param {number} l1_cache_size       L1キャッシュに保持するURL件数
-</span><span style="color:#008000"> * @param {number} l2_cache_expiration L2キャッシュの有効期限(ミリ秒)
-</span><span style="color:#008000"> */</span>
-<span style="color:#00f">function</span> LayeredCache(cache_name, parser, l1_cache_size = 1000, cache_expiration = 30 * 86400 * 1000){
-  <span style="color:#00f">const</span> HEADER_EXPIRATION = <span style="color:#a31515">&#34;_expire_on&#34;</span>;
-  <span style="color:#00f">const</span> l1_cache = <span style="color:#00f">new</span> Map();
-  <span style="color:#00f">let</span> l2_cache = <span style="color:#00f">null</span>;
-  <span style="color:#00f">let</span> prepared = <span style="color:#00f">false</span>;
-  
-  caches.open(cache_name).then((cs) =&gt; {
-    l2_cache = cs;
-    prepared = <span style="color:#00f">true</span>;
-  });
-  
-  <span style="color:#008000">/**
-</span><span style="color:#008000">   * 指定したURLのデータをparser関数で処理した結果を返す。
-</span><span style="color:#008000">   * L1にあればL1キャッシュからparserで処理済みの結果を返し、
-</span><span style="color:#008000">   * 有効期限内のL2キャッシュ(Cache API)があれば、再度parser関数で処理して返す。
-</span><span style="color:#008000">   * @param {string} url
-</span><span style="color:#008000">   * @return {Promise}
-</span><span style="color:#008000">   */</span>
-  <span style="color:#00f">this</span>.fetch = <span style="color:#00f">async</span> <span style="color:#00f">function</span>(url){
-    <span style="color:#00f">let</span> data = <span style="color:#00f">null</span>;
-    <span style="color:#00f">let</span> fetch_flag = <span style="color:#00f">false</span>;
-    <span style="color:#00f">let</span> l1_update_flag = <span style="color:#00f">false</span>;
-    <span style="color:#00f">const</span> now = Date.now();
-    <span style="color:#00f">let</span> expiration = now + cache_expiration;
-
-    <span style="color:#00f">if</span>(!prepared){
-      <span style="color:#008000">// Cache APIの準備ができていなければ例外を投げる
-</span><span style="color:#008000"></span>      <span style="color:#00f">throw</span> <span style="color:#00f">new</span> Exception(<span style="color:#a31515">&#34;Cache API not ready&#34;</span>);
-    }
-    
-    <span style="color:#00f">if</span>(l1_cache.has(url)){
-      <span style="color:#008000">// L1キャッシュにヒット
-</span><span style="color:#008000"></span>      <span style="color:#00f">const</span> v = l1_cache.get(url);
-
-      <span style="color:#00f">if</span>(now &gt; v.expire_on){
-        <span style="color:#008000">// L1キャッシュで期限切れ
-</span><span style="color:#008000"></span>        fetch_flag = <span style="color:#00f">true</span>;
-      }<span style="color:#00f">else</span>{
-        <span style="color:#008000">// L1キャッシュの末尾に移動(LRU)
-</span><span style="color:#008000"></span>        l1_cache.<span style="color:#00f">delete</span>(url);
-        l1_cache.set(url, v);
-        data = v.data;
-      }
-
-    }<span style="color:#00f">else</span>{
-      <span style="color:#00f">const</span> response = <span style="color:#00f">await</span> l2_cache.match(url);
-      
-      <span style="color:#00f">if</span>((response === <span style="color:#00f">undefined</span>)
-        || response.headers.get(HEADER_EXPIRATION) === <span style="color:#00f">null</span>
-        || (now &gt; Number.parseInt(response.headers.get(HEADER_EXPIRATION)))){
-        <span style="color:#008000">// L2キャッシュにない場合、またはL2キャッシュが期限切れの場合
-</span><span style="color:#008000"></span>        fetch_flag = <span style="color:#00f">true</span>;
-      }<span style="color:#00f">else</span>{
-        data = <span style="color:#00f">await</span> parser(response);
-        expiration = Number.parseInt(response.headers.get(HEADER_EXPIRATION));
-        
-        l1_update_flag = <span style="color:#00f">true</span>;
-      }
-    }
-    
-    <span style="color:#00f">if</span>(fetch_flag){
-      <span style="color:#008000">// 通信して取得する
-</span><span style="color:#008000"></span>      <span style="color:#00f">const</span> response = <span style="color:#00f">await</span> fetch(url);
-      
-      <span style="color:#00f">const</span> copy = response.clone();
-      <span style="color:#00f">const</span> headers = <span style="color:#00f">new</span> Headers(copy.headers);
-      headers.append(HEADER_EXPIRATION, expiration);
-      
-      <span style="color:#00f">const</span> body = <span style="color:#00f">await</span> copy.blob();
-      
-      <span style="color:#00f">await</span> l2_cache.put(url, <span style="color:#00f">new</span> Response(body, {
-        status: copy.status,
-        statusText: copy.statusText,
-        headers: headers
-      }));
-      
-      data = <span style="color:#00f">await</span> parser(response);
-      l1_update_flag = <span style="color:#00f">true</span>;
-    }
-    
-    <span style="color:#00f">if</span>(l1_update_flag){
-      <span style="color:#008000">// L1キャッシュの末尾に保存
-</span><span style="color:#008000"></span>      l1_cache.set(url, {
-        data: data,
-        expire_on: expiration
-      });
-      <span style="color:#00f">if</span>(l1_cache.length &gt; l1_cache_size){
-        l1_cache.<span style="color:#00f">delete</span>(l1_cache.keys().next().value);
-      }
-    }
-    
-    <span style="color:#00f">return</span> data;
-  };
-  
-  <span style="color:#00f">return</span> <span style="color:#00f">this</span>;
-}
-</code></pre></div><p>Cache APIで有効期限を設定するには、<code>cache.put</code>に渡すときに独自のヘッダを付けて保存し、キャッシュから読み出すときにそのヘッダを確認することで実現できる。</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#008000">/**
+</span></span></span><span style="display:flex;"><span><span style="color:#008000"> * L1, L2の2層のキャッシュ
+</span></span></span><span style="display:flex;"><span><span style="color:#008000"> * @param {string} cache_name          Cache APIで使用する名前(cacheName)
+</span></span></span><span style="display:flex;"><span><span style="color:#008000"> * @param {function} parser            responseを受け取ってキャッシュに保存する内容を返すPromiseを返すコールバック関数
+</span></span></span><span style="display:flex;"><span><span style="color:#008000"> * @param {number} l1_cache_size       L1キャッシュに保持するURL件数
+</span></span></span><span style="display:flex;"><span><span style="color:#008000"> * @param {number} l2_cache_expiration L2キャッシュの有効期限(ミリ秒)
+</span></span></span><span style="display:flex;"><span><span style="color:#008000"> */</span>
+</span></span><span style="display:flex;"><span><span style="color:#00f">function</span> LayeredCache(cache_name, parser, l1_cache_size = 1000, cache_expiration = 30 * 86400 * 1000){
+</span></span><span style="display:flex;"><span>  <span style="color:#00f">const</span> HEADER_EXPIRATION = <span style="color:#a31515">&#34;_expire_on&#34;</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#00f">const</span> l1_cache = <span style="color:#00f">new</span> Map();
+</span></span><span style="display:flex;"><span>  <span style="color:#00f">let</span> l2_cache = <span style="color:#00f">null</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#00f">let</span> prepared = <span style="color:#00f">false</span>;
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>  caches.open(cache_name).then((cs) =&gt; {
+</span></span><span style="display:flex;"><span>    l2_cache = cs;
+</span></span><span style="display:flex;"><span>    prepared = <span style="color:#00f">true</span>;
+</span></span><span style="display:flex;"><span>  });
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>  <span style="color:#008000">/**
+</span></span></span><span style="display:flex;"><span><span style="color:#008000">   * 指定したURLのデータをparser関数で処理した結果を返す。
+</span></span></span><span style="display:flex;"><span><span style="color:#008000">   * L1にあればL1キャッシュからparserで処理済みの結果を返し、
+</span></span></span><span style="display:flex;"><span><span style="color:#008000">   * 有効期限内のL2キャッシュ(Cache API)があれば、再度parser関数で処理して返す。
+</span></span></span><span style="display:flex;"><span><span style="color:#008000">   * @param {string} url
+</span></span></span><span style="display:flex;"><span><span style="color:#008000">   * @return {Promise}
+</span></span></span><span style="display:flex;"><span><span style="color:#008000">   */</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#00f">this</span>.fetch = <span style="color:#00f">async</span> <span style="color:#00f">function</span>(url){
+</span></span><span style="display:flex;"><span>    <span style="color:#00f">let</span> data = <span style="color:#00f">null</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#00f">let</span> fetch_flag = <span style="color:#00f">false</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#00f">let</span> l1_update_flag = <span style="color:#00f">false</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#00f">const</span> now = Date.now();
+</span></span><span style="display:flex;"><span>    <span style="color:#00f">let</span> expiration = now + cache_expiration;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#00f">if</span>(!prepared){
+</span></span><span style="display:flex;"><span>      <span style="color:#008000">// Cache APIの準備ができていなければ例外を投げる
+</span></span></span><span style="display:flex;"><span><span style="color:#008000"></span>      <span style="color:#00f">throw</span> <span style="color:#00f">new</span> Exception(<span style="color:#a31515">&#34;Cache API not ready&#34;</span>);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#00f">if</span>(l1_cache.has(url)){
+</span></span><span style="display:flex;"><span>      <span style="color:#008000">// L1キャッシュにヒット
+</span></span></span><span style="display:flex;"><span><span style="color:#008000"></span>      <span style="color:#00f">const</span> v = l1_cache.get(url);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      <span style="color:#00f">if</span>(now &gt; v.expire_on){
+</span></span><span style="display:flex;"><span>        <span style="color:#008000">// L1キャッシュで期限切れ
+</span></span></span><span style="display:flex;"><span><span style="color:#008000"></span>        fetch_flag = <span style="color:#00f">true</span>;
+</span></span><span style="display:flex;"><span>      }<span style="color:#00f">else</span>{
+</span></span><span style="display:flex;"><span>        <span style="color:#008000">// L1キャッシュの末尾に移動(LRU)
+</span></span></span><span style="display:flex;"><span><span style="color:#008000"></span>        l1_cache.<span style="color:#00f">delete</span>(url);
+</span></span><span style="display:flex;"><span>        l1_cache.set(url, v);
+</span></span><span style="display:flex;"><span>        data = v.data;
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    }<span style="color:#00f">else</span>{
+</span></span><span style="display:flex;"><span>      <span style="color:#00f">const</span> response = <span style="color:#00f">await</span> l2_cache.match(url);
+</span></span><span style="display:flex;"><span>      
+</span></span><span style="display:flex;"><span>      <span style="color:#00f">if</span>((response === <span style="color:#00f">undefined</span>)
+</span></span><span style="display:flex;"><span>        || response.headers.get(HEADER_EXPIRATION) === <span style="color:#00f">null</span>
+</span></span><span style="display:flex;"><span>        || (now &gt; Number.parseInt(response.headers.get(HEADER_EXPIRATION)))){
+</span></span><span style="display:flex;"><span>        <span style="color:#008000">// L2キャッシュにない場合、またはL2キャッシュが期限切れの場合
+</span></span></span><span style="display:flex;"><span><span style="color:#008000"></span>        fetch_flag = <span style="color:#00f">true</span>;
+</span></span><span style="display:flex;"><span>      }<span style="color:#00f">else</span>{
+</span></span><span style="display:flex;"><span>        data = <span style="color:#00f">await</span> parser(response);
+</span></span><span style="display:flex;"><span>        expiration = Number.parseInt(response.headers.get(HEADER_EXPIRATION));
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        l1_update_flag = <span style="color:#00f">true</span>;
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#00f">if</span>(fetch_flag){
+</span></span><span style="display:flex;"><span>      <span style="color:#008000">// 通信して取得する
+</span></span></span><span style="display:flex;"><span><span style="color:#008000"></span>      <span style="color:#00f">const</span> response = <span style="color:#00f">await</span> fetch(url);
+</span></span><span style="display:flex;"><span>      
+</span></span><span style="display:flex;"><span>      <span style="color:#00f">const</span> copy = response.clone();
+</span></span><span style="display:flex;"><span>      <span style="color:#00f">const</span> headers = <span style="color:#00f">new</span> Headers(copy.headers);
+</span></span><span style="display:flex;"><span>      headers.append(HEADER_EXPIRATION, expiration);
+</span></span><span style="display:flex;"><span>      
+</span></span><span style="display:flex;"><span>      <span style="color:#00f">const</span> body = <span style="color:#00f">await</span> copy.blob();
+</span></span><span style="display:flex;"><span>      
+</span></span><span style="display:flex;"><span>      <span style="color:#00f">await</span> l2_cache.put(url, <span style="color:#00f">new</span> Response(body, {
+</span></span><span style="display:flex;"><span>        status: copy.status,
+</span></span><span style="display:flex;"><span>        statusText: copy.statusText,
+</span></span><span style="display:flex;"><span>        headers: headers
+</span></span><span style="display:flex;"><span>      }));
+</span></span><span style="display:flex;"><span>      
+</span></span><span style="display:flex;"><span>      data = <span style="color:#00f">await</span> parser(response);
+</span></span><span style="display:flex;"><span>      l1_update_flag = <span style="color:#00f">true</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#00f">if</span>(l1_update_flag){
+</span></span><span style="display:flex;"><span>      <span style="color:#008000">// L1キャッシュの末尾に保存
+</span></span></span><span style="display:flex;"><span><span style="color:#008000"></span>      l1_cache.set(url, {
+</span></span><span style="display:flex;"><span>        data: data,
+</span></span><span style="display:flex;"><span>        expire_on: expiration
+</span></span><span style="display:flex;"><span>      });
+</span></span><span style="display:flex;"><span>      <span style="color:#00f">if</span>(l1_cache.length &gt; l1_cache_size){
+</span></span><span style="display:flex;"><span>        l1_cache.<span style="color:#00f">delete</span>(l1_cache.keys().next().value);
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#00f">return</span> data;
+</span></span><span style="display:flex;"><span>  };
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>  <span style="color:#00f">return</span> <span style="color:#00f">this</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Cache APIで有効期限を設定するには、<code>cache.put</code>に渡すときに独自のヘッダを付けて保存し、キャッシュから読み出すときにそのヘッダを確認することで実現できる。</p>
 <p><code>LayeredCache</code>では<code>&quot;_expire_on&quot;</code>というヘッダに1970年1月1日0時0分0秒から有効期限までの経過時間をミリ秒で記録している。</p>
 <h2 id="使い方">使い方</h2>
 <p>まずは<code>response</code>を欲しい形にするコールバック関数を定義する。</p>
 <p>一番簡単な例として<code>response.text()</code>を返すものの場合は以下となる。</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#00f">const</span> parser = <span style="color:#00f">function</span>(response){
-  <span style="color:#00f">if</span>(response.ok){
-    <span style="color:#00f">return</span> response.text();
-  }<span style="color:#00f">else</span>{
-    <span style="color:#00f">return</span> <span style="color:#a31515">&#34;&#34;</span>;
-  }
-}
-</code></pre></div><p><code>parser</code>は<code>Promise</code>を返す<code>function</code>か、<code>async function</code>とする。</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#00f">const</span> parser = <span style="color:#00f">function</span>(response){
+</span></span><span style="display:flex;"><span>  <span style="color:#00f">if</span>(response.ok){
+</span></span><span style="display:flex;"><span>    <span style="color:#00f">return</span> response.text();
+</span></span><span style="display:flex;"><span>  }<span style="color:#00f">else</span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#00f">return</span> <span style="color:#a31515">&#34;&#34;</span>;
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p><code>parser</code>は<code>Promise</code>を返す<code>function</code>か、<code>async function</code>とする。</p>
 <p>そしてCache APIで使用するcacheNameと、L1キャッシュに保存するURL件数(デフォルト: 1000)、有効期限をミリ秒で指定(デフォルト: 30日)してインスタンスを生成する。</p>
 <p>ここでは分かりやすくL1キャッシュは3件、L2キャッシュ有効期限は1分にする。</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#00f">const</span> lcache = <span style="color:#00f">new</span> LayeredCache(<span style="color:#a31515">&#34;cache_test&#34;</span>, parser, 3, 60000);
-</code></pre></div><p>あとは<code>fetch</code>にURLを指定すれば、L1→L2と検索してヒットすればキャッシュから読み出し、ヒットしなければ<code>fetch</code>したものをコールバック関数<code>parser</code>で処理した結果が返ってくる。</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#008000">// 1回目はサーバに通信して取得
-</span><span style="color:#008000"></span><span style="color:#00f">await</span> lcache.fetch(<span style="color:#a31515">&#34;https://cyberjapandata.gsi.go.jp/xyz/dem/14/14547/6461.txt&#34;</span>);
-
-<span style="color:#008000">// 2回目以降はL1キャッシュから取得
-</span><span style="color:#008000"></span><span style="color:#00f">await</span> lcache.fetch(<span style="color:#a31515">&#34;https://cyberjapandata.gsi.go.jp/xyz/dem/14/14547/6461.txt&#34;</span>);
-
-<span style="color:#008000">// 新たに3件取得すると、最初のURLはL1キャッシュから外れ、L2キャッシュから取得する
-</span><span style="color:#008000"></span><span style="color:#00f">await</span> lcache.fetch(<span style="color:#a31515">&#34;https://cyberjapandata.gsi.go.jp/xyz/dem/14/14547/6462.txt&#34;</span>);
-<span style="color:#00f">await</span> lcache.fetch(<span style="color:#a31515">&#34;https://cyberjapandata.gsi.go.jp/xyz/dem/14/14547/6463.txt&#34;</span>);
-<span style="color:#00f">await</span> lcache.fetch(<span style="color:#a31515">&#34;https://cyberjapandata.gsi.go.jp/xyz/dem/14/14547/6464.txt&#34;</span>);
-<span style="color:#00f">await</span> lcache.fetch(<span style="color:#a31515">&#34;https://cyberjapandata.gsi.go.jp/xyz/dem/14/14547/6461.txt&#34;</span>);
-
-<span style="color:#008000">// 1分以上経過していたときは再度サーバから取得する
-</span><span style="color:#008000"></span><span style="color:#00f">await</span> lcache.fetch(<span style="color:#a31515">&#34;https://cyberjapandata.gsi.go.jp/xyz/dem/14/14547/6461.txt&#34;</span>);
-</code></pre></div><h2 id="注意点補足">注意点・補足</h2>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#00f">const</span> lcache = <span style="color:#00f">new</span> LayeredCache(<span style="color:#a31515">&#34;cache_test&#34;</span>, parser, 3, 60000);
+</span></span></code></pre></div><p>あとは<code>fetch</code>にURLを指定すれば、L1→L2と検索してヒットすればキャッシュから読み出し、ヒットしなければ<code>fetch</code>したものをコールバック関数<code>parser</code>で処理した結果が返ってくる。</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#008000">// 1回目はサーバに通信して取得
+</span></span></span><span style="display:flex;"><span><span style="color:#008000"></span><span style="color:#00f">await</span> lcache.fetch(<span style="color:#a31515">&#34;https://cyberjapandata.gsi.go.jp/xyz/dem/14/14547/6461.txt&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#008000">// 2回目以降はL1キャッシュから取得
+</span></span></span><span style="display:flex;"><span><span style="color:#008000"></span><span style="color:#00f">await</span> lcache.fetch(<span style="color:#a31515">&#34;https://cyberjapandata.gsi.go.jp/xyz/dem/14/14547/6461.txt&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#008000">// 新たに3件取得すると、最初のURLはL1キャッシュから外れ、L2キャッシュから取得する
+</span></span></span><span style="display:flex;"><span><span style="color:#008000"></span><span style="color:#00f">await</span> lcache.fetch(<span style="color:#a31515">&#34;https://cyberjapandata.gsi.go.jp/xyz/dem/14/14547/6462.txt&#34;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#00f">await</span> lcache.fetch(<span style="color:#a31515">&#34;https://cyberjapandata.gsi.go.jp/xyz/dem/14/14547/6463.txt&#34;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#00f">await</span> lcache.fetch(<span style="color:#a31515">&#34;https://cyberjapandata.gsi.go.jp/xyz/dem/14/14547/6464.txt&#34;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#00f">await</span> lcache.fetch(<span style="color:#a31515">&#34;https://cyberjapandata.gsi.go.jp/xyz/dem/14/14547/6461.txt&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#008000">// 1分以上経過していたときは再度サーバから取得する
+</span></span></span><span style="display:flex;"><span><span style="color:#008000"></span><span style="color:#00f">await</span> lcache.fetch(<span style="color:#a31515">&#34;https://cyberjapandata.gsi.go.jp/xyz/dem/14/14547/6461.txt&#34;</span>);
+</span></span></code></pre></div><h2 id="注意点補足">注意点・補足</h2>
 <ul>
 <li>今の所GET専用で、<code>fetch</code>に細かいオプションは渡せず、<code>cache.match</code>でも細かく照合条件を指定できない。</li>
 </ul>

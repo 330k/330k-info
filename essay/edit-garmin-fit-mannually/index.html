@@ -105,8 +105,8 @@ if (!doNotTrack) {
 <h2 id="fit-csv-toolでfitファイルをcsvに変換">FIT CSV ToolでFITファイルをCSVに変換</h2>
 <p>展開後の<code>java/</code>に移動し、変換元のFITファイルもそのフォルダに移動する。</p>
 <p>ターミナル(Windowsの場合はコマンドプロンプト)を開き、以下を実行する。</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">java -jar FitCSVTool.jar -b (変換元FITファイル名) (変換先CSVファイル名)
-</code></pre></div><p>なお、Windowsなら同じフォルダにある<code>FitToCSV.bat</code>にFITファイルをドラッグアンドドロップしてもOK。</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>java -jar FitCSVTool.jar -b (変換元FITファイル名) (変換先CSVファイル名)
+</span></span></code></pre></div><p>なお、Windowsなら同じフォルダにある<code>FitToCSV.bat</code>にFITファイルをドラッグアンドドロップしてもOK。</p>
 <h2 id="csvファイルを編集">CSVファイルを編集</h2>
 <p>Excelなどで作成したCSVファイルを編集する。</p>
 <p><strong>このとき、<code>unknown</code>という文字列を検索し、存在した場合は3列単位で削除(左詰め)する。</strong></p>
@@ -119,8 +119,8 @@ if (!doNotTrack) {
 <p>したがって元のFITファイルに含まれないフィールドやデータタイプを追加するのは少し大変なので、元のデータを作成するときに手作業で編集したいデータを入れておく(例えば、コースデータでコースポイントを編集したい場合は、ダミーでも良いのでコースポイントを入れたFITファイルを作成しておく)のが良い。</p>
 <h2 id="fit-csv-toolでcsvをfitに再変換">FIT CSV ToolでCSVをFITに再変換</h2>
 <p>ターミナル(コマンドプロンプト)で、以下を実行してFITファイルを作成する。</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">java -jar FitCSVTool.jar -c (変換元CSVファイル名) (変換先FITファイル名)
-</code></pre></div><h2 id="garminデバイスのgarminnewfilesフォルダに設置">Garminデバイスの<code>Garmin/NewFiles</code>フォルダに設置</h2>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>java -jar FitCSVTool.jar -c (変換元CSVファイル名) (変換先FITファイル名)
+</span></span></code></pre></div><h2 id="garminデバイスのgarminnewfilesフォルダに設置">Garminデバイスの<code>Garmin/NewFiles</code>フォルダに設置</h2>
 <p>GarminデバイスとUSBで接続し、<code>Garmin/NewFiles</code>フォルダに作成したFITファイルをコピーした後、Garminデバイスの電源を入れると、FITファイルを認識するはず。</p>
 <h2 id="参考">参考</h2>
 <p>公式の編集方法の記述はこちら(unknownを削除する必要があることは記述されていないことに注意) <a href="https://developer.garmin.com/fit/fitcsvtool/editing-files/">FIT CSV Tool | FIT SDK | Garmin Developers</a>。</p>

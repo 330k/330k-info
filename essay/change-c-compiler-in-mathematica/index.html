@@ -94,14 +94,14 @@ if (!doNotTrack) {
 		</header><div class="content post__content clearfix">
 			<p>Mathematica 8から、<code>Compile</code>でCコンパイラを使って直接ネイティブコードにコンパイルできるようになった。</p>
 <p>使用するCコンパイラは、</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Mathematica" data-lang="Mathematica">Needs[<span style="color:#a31515">&#34;CCompilerDriver`&#34;</span>];
-CCompilerDriver`<span style="">$</span>CCompiler = {
-   <span style="color:#a31515">&#34;Name&#34;</span> -&gt; <span style="color:#a31515">&#34;GCC&#34;</span>, 
-   <span style="color:#a31515">&#34;Compiler&#34;</span> -&gt; CCompilerDriver`GCCCompiler`GCCCompiler, 
-   <span style="color:#a31515">&#34;CompilerInstallation&#34;</span> -&gt; <span style="color:#a31515">&#34;/usr/bin&#34;</span>,
-   <span style="color:#a31515">&#34;CompilerName&#34;</span> -&gt; Automatic
-};
-</code></pre></div><p>というように、<code>CCompilerDriver`$CCompiler</code>を変更して指定する。</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Mathematica" data-lang="Mathematica"><span style="display:flex;"><span>Needs[<span style="color:#a31515">&#34;CCompilerDriver`&#34;</span>];
+</span></span><span style="display:flex;"><span>CCompilerDriver`<span style="">$</span>CCompiler = {
+</span></span><span style="display:flex;"><span>   <span style="color:#a31515">&#34;Name&#34;</span> -&gt; <span style="color:#a31515">&#34;GCC&#34;</span>, 
+</span></span><span style="display:flex;"><span>   <span style="color:#a31515">&#34;Compiler&#34;</span> -&gt; CCompilerDriver`GCCCompiler`GCCCompiler, 
+</span></span><span style="display:flex;"><span>   <span style="color:#a31515">&#34;CompilerInstallation&#34;</span> -&gt; <span style="color:#a31515">&#34;/usr/bin&#34;</span>,
+</span></span><span style="display:flex;"><span>   <span style="color:#a31515">&#34;CompilerName&#34;</span> -&gt; Automatic
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><p>というように、<code>CCompilerDriver`$CCompiler</code>を変更して指定する。</p>
 <p>以前からの<code>Compile</code>(&ldquo;WVM&rdquo;)と、各コンパイラの比較のため、ベンチマークを行ってみた。
 検証環境は以下の通り。</p>
 <ul>
@@ -117,41 +117,41 @@ CCompilerDriver`<span style="">$</span>CCompiler = {
 </ul>
 <p>Mathematicaコードは以下。1/i^2を総和してπ^2/6を求める単純な計算を行った。
 ※私の環境ではICCは/media/storage/intel/compserxe/binにインストールしているので下記コードを使用する場合は注意。</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Mathematica" data-lang="Mathematica"><span style="color:#008000">(* 従来のCompile *)</span>
-f1 = Compile[{{n, _Real}}, 
-   Module[{a = 0.}, Do[a += 1./(i*i), {i, 1., n}]; Sqrt[6.*a]], 
-   CompilationTarget -&gt; <span style="color:#a31515">&#34;WVM&#34;</span>, Parallelization -&gt; True];
-
-<span style="color:#008000">(* GCC *)</span>
-CCompilerDriver`<span style="">$</span>CCompiler =
-   {<span style="color:#a31515">&#34;Name&#34;</span> -&gt; <span style="color:#a31515">&#34;GCC&#34;</span>, 
-   <span style="color:#a31515">&#34;Compiler&#34;</span> -&gt; CCompilerDriver`GCCCompiler`GCCCompiler, 
-   <span style="color:#a31515">&#34;CompilerInstallation&#34;</span> -&gt; <span style="color:#a31515">&#34;/usr/bin&#34;</span>, 
-   <span style="color:#a31515">&#34;CompilerName&#34;</span> -&gt; Automatic};
-f2 = Compile[{{n, _Real}}, 
-   Module[{a = 0.}, Do[a += 1./(i*i), {i, 1., n}]; Sqrt[6.*a]], 
-   CompilationTarget -&gt; <span style="color:#a31515">&#34;C&#34;</span>, Parallelization -&gt; True];
-
-<span style="color:#008000">(* ICC *)</span>
-CCompilerDriver`<span style="">$</span>CCompiler =
-   {<span style="color:#a31515">&#34;Compiler&#34;</span> -&gt; CCompilerDriver`IntelCompiler`IntelCompiler,
-   <span style="color:#a31515">&#34;CompilerInstallation&#34;</span> -&gt; 
-   <span style="color:#a31515">&#34;/media/storage/intel/composerxe/bin&#34;</span>};
-f3 = Compile[{{n, _Real}}, 
-   Module[{a = 0.}, Do[a += 1./(i*i), {i, 1., n}]; Sqrt[6.*a]], 
-   CompilationTarget -&gt; <span style="color:#a31515">&#34;C&#34;</span>, Parallelization -&gt; True];
-
-<span style="color:#008000">(* Clang *)</span>
-CCompilerDriver`<span style="">$</span>CCompiler =
-   {<span style="color:#a31515">&#34;Name&#34;</span> -&gt; <span style="color:#a31515">&#34;GCC&#34;</span>, 
-   <span style="color:#a31515">&#34;Compiler&#34;</span> -&gt; CCompilerDriver`GCCCompiler`GCCCompiler, 
-   <span style="color:#a31515">&#34;CompilerInstallation&#34;</span> -&gt; <span style="color:#a31515">&#34;/usr/bin&#34;</span>, <span style="color:#a31515">&#34;CompilerName&#34;</span> -&gt; <span style="color:#a31515">&#34;clang&#34;</span>};
-f4 = Compile[{{n, _Real}}, 
-   Module[{a = 0.}, Do[a += 1./(i*i), {i, 1., n}]; Sqrt[6.*a]], 
-   CompilationTarget -&gt; <span style="color:#a31515">&#34;C&#34;</span>, Parallelization -&gt; True];
-
-Timing[#[100000000.]] &amp; /@ {f1, f2, f3, f4}
-</code></pre></div><h3 id="結果">結果</h3>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Mathematica" data-lang="Mathematica"><span style="display:flex;"><span><span style="color:#008000">(* 従来のCompile *)</span>
+</span></span><span style="display:flex;"><span>f1 = Compile[{{n, _Real}}, 
+</span></span><span style="display:flex;"><span>   Module[{a = 0.}, Do[a += 1./(i*i), {i, 1., n}]; Sqrt[6.*a]], 
+</span></span><span style="display:flex;"><span>   CompilationTarget -&gt; <span style="color:#a31515">&#34;WVM&#34;</span>, Parallelization -&gt; True];
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#008000">(* GCC *)</span>
+</span></span><span style="display:flex;"><span>CCompilerDriver`<span style="">$</span>CCompiler =
+</span></span><span style="display:flex;"><span>   {<span style="color:#a31515">&#34;Name&#34;</span> -&gt; <span style="color:#a31515">&#34;GCC&#34;</span>, 
+</span></span><span style="display:flex;"><span>   <span style="color:#a31515">&#34;Compiler&#34;</span> -&gt; CCompilerDriver`GCCCompiler`GCCCompiler, 
+</span></span><span style="display:flex;"><span>   <span style="color:#a31515">&#34;CompilerInstallation&#34;</span> -&gt; <span style="color:#a31515">&#34;/usr/bin&#34;</span>, 
+</span></span><span style="display:flex;"><span>   <span style="color:#a31515">&#34;CompilerName&#34;</span> -&gt; Automatic};
+</span></span><span style="display:flex;"><span>f2 = Compile[{{n, _Real}}, 
+</span></span><span style="display:flex;"><span>   Module[{a = 0.}, Do[a += 1./(i*i), {i, 1., n}]; Sqrt[6.*a]], 
+</span></span><span style="display:flex;"><span>   CompilationTarget -&gt; <span style="color:#a31515">&#34;C&#34;</span>, Parallelization -&gt; True];
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#008000">(* ICC *)</span>
+</span></span><span style="display:flex;"><span>CCompilerDriver`<span style="">$</span>CCompiler =
+</span></span><span style="display:flex;"><span>   {<span style="color:#a31515">&#34;Compiler&#34;</span> -&gt; CCompilerDriver`IntelCompiler`IntelCompiler,
+</span></span><span style="display:flex;"><span>   <span style="color:#a31515">&#34;CompilerInstallation&#34;</span> -&gt; 
+</span></span><span style="display:flex;"><span>   <span style="color:#a31515">&#34;/media/storage/intel/composerxe/bin&#34;</span>};
+</span></span><span style="display:flex;"><span>f3 = Compile[{{n, _Real}}, 
+</span></span><span style="display:flex;"><span>   Module[{a = 0.}, Do[a += 1./(i*i), {i, 1., n}]; Sqrt[6.*a]], 
+</span></span><span style="display:flex;"><span>   CompilationTarget -&gt; <span style="color:#a31515">&#34;C&#34;</span>, Parallelization -&gt; True];
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#008000">(* Clang *)</span>
+</span></span><span style="display:flex;"><span>CCompilerDriver`<span style="">$</span>CCompiler =
+</span></span><span style="display:flex;"><span>   {<span style="color:#a31515">&#34;Name&#34;</span> -&gt; <span style="color:#a31515">&#34;GCC&#34;</span>, 
+</span></span><span style="display:flex;"><span>   <span style="color:#a31515">&#34;Compiler&#34;</span> -&gt; CCompilerDriver`GCCCompiler`GCCCompiler, 
+</span></span><span style="display:flex;"><span>   <span style="color:#a31515">&#34;CompilerInstallation&#34;</span> -&gt; <span style="color:#a31515">&#34;/usr/bin&#34;</span>, <span style="color:#a31515">&#34;CompilerName&#34;</span> -&gt; <span style="color:#a31515">&#34;clang&#34;</span>};
+</span></span><span style="display:flex;"><span>f4 = Compile[{{n, _Real}}, 
+</span></span><span style="display:flex;"><span>   Module[{a = 0.}, Do[a += 1./(i*i), {i, 1., n}]; Sqrt[6.*a]], 
+</span></span><span style="display:flex;"><span>   CompilationTarget -&gt; <span style="color:#a31515">&#34;C&#34;</span>, Parallelization -&gt; True];
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Timing[#[100000000.]] &amp; /@ {f1, f2, f3, f4}
+</span></span></code></pre></div><h3 id="結果">結果</h3>
 <table>
 <thead>
 <tr>

@@ -97,68 +97,68 @@ if (!doNotTrack) {
 <h3 id="-前置記法">@ (前置記法)</h3>
 <p><code>f@a</code>は<code>f[a]</code>と等価。
 後ろのカッコ(<code>]</code>)を入力しなくてもすむ。</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Mathematica" data-lang="Mathematica">Plot[Evaluate@Integrate[x^2, x], {x, -3, 3}]
-</code></pre></div><h3 id="-後置記法">// (後置記法)</h3>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Mathematica" data-lang="Mathematica"><span style="display:flex;"><span>Plot[Evaluate@Integrate[x^2, x], {x, -3, 3}]
+</span></span></code></pre></div><h3 id="-後置記法">// (後置記法)</h3>
 <p><code>a // f</code>は<code>f[a]</code>と等価。
 数値にする(<code>N</code>)や簡約化(<code>Simplify</code>、<code>FullSimplify</code>)でよく使う。</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Mathematica" data-lang="Mathematica">In[1]:= Sin[2] // N
-
-Out[1]= 0.909297
-</code></pre></div><h3 id="--中置記法">~ ~ (中置記法)</h3>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Mathematica" data-lang="Mathematica"><span style="display:flex;"><span>In[1]:= Sin[2] // N
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Out[1]= 0.909297
+</span></span></code></pre></div><h3 id="--中置記法">~ ~ (中置記法)</h3>
 <p><code>a~f~b</code>とすると、<code>f[a, b]</code>と等価になる。</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Mathematica" data-lang="Mathematica">In[1]:= {1, 2}<span style="">~</span>Join<span style="">~</span>{3, 4}
-
-Out[1]= {1, 2, 3, 4}
-</code></pre></div><h2 id="関数適用-1">関数適用</h2>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Mathematica" data-lang="Mathematica"><span style="display:flex;"><span>In[1]:= {1, 2}<span style="">~</span>Join<span style="">~</span>{3, 4}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Out[1]= {1, 2, 3, 4}
+</span></span></code></pre></div><h2 id="関数適用-1">関数適用</h2>
 <h3 id="---function">&amp;, #, ### (Function)</h3>
 <p>純関数。<code>#1</code>、<code>#2</code>・・・が引数を表す。<code>#</code>は<code>#1</code>と同じ。
 <code>#0</code>は関数自体表す。<code>##</code>は引数全体。</p>
 <p>関数型プログラミングの基本。</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Mathematica" data-lang="Mathematica">In[1]:= If[#1 == 1, 1, #1 #0[#1 - 1]] &amp;[10]
-
-Out[1]= 3628800
-</code></pre></div><h3 id="-map">/@ (Map)</h3>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Mathematica" data-lang="Mathematica"><span style="display:flex;"><span>In[1]:= If[#1 == 1, 1, #1 #0[#1 - 1]] &amp;[10]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Out[1]= 3628800
+</span></span></code></pre></div><h3 id="-map">/@ (Map)</h3>
 <p><code>f /@ {1, 2, 3, 4}</code>は<code>Map[f, {1, 2, 3, 4}]</code>と等価。
 関数型プログラミングの基本。</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Mathematica" data-lang="Mathematica">In[1]:= f /@ {a, b, c, d}
-
-Out[1]= {f[a], f[b], f[c], f[d]}
-</code></pre></div><h3 id="-mapall">//@ (MapAll)</h3>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Mathematica" data-lang="Mathematica"><span style="display:flex;"><span>In[1]:= f /@ {a, b, c, d}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Out[1]= {f[a], f[b], f[c], f[d]}
+</span></span></code></pre></div><h3 id="-mapall">//@ (MapAll)</h3>
 <p><code>f /@@ {1, 2, 3, 4}</code>とすると、<code>MapAll[f, {1, 2, 3, 4}]</code>と等価。
 あまり使わない。</p>
 <h3 id="-apply">@@ (Apply)</h3>
 <p><code>f @@ g[a]</code>とすると、<code>g[a]</code>の頭部<code>g</code>を<code>f</code>に置き換えて<code>f[a]</code>となる。
 <code>g</code>が<code>List</code>に対して、いろいろ使うことが多い。</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Mathematica" data-lang="Mathematica">In[1]:= Or @@ {False, False, True}
-
-Out[1]= True
-</code></pre></div><h3 id="-apply-1">@@@ (Apply)</h3>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Mathematica" data-lang="Mathematica"><span style="display:flex;"><span>In[1]:= Or @@ {False, False, True}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Out[1]= True
+</span></span></code></pre></div><h3 id="-apply-1">@@@ (Apply)</h3>
 <p>レベル1の部分に<code>Apply</code>され、<code>Apply[f, exp, {1}]</code>と等価。
 これもよく使う。</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Mathematica" data-lang="Mathematica">In[1]:= f @@@ {{a, b}, {c, d}}
-
-Out[1]= {f[a, b], f[c, d]}
-</code></pre></div><h3 id="-replaceall">/. (ReplaceAll)</h3>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Mathematica" data-lang="Mathematica"><span style="display:flex;"><span>In[1]:= f @@@ {{a, b}, {c, d}}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Out[1]= {f[a, b], f[c, d]}
+</span></span></code></pre></div><h3 id="-replaceall">/. (ReplaceAll)</h3>
 <p><code>exp /. a -&gt; b</code>で<code>exp</code>中の<code>a</code>を<code>b</code>に置換する。
 Solveなどで得られた解を利用するときによく使う。</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Mathematica" data-lang="Mathematica">In[1]:= ans = Solve[a x^2 + b x + c == 0, x];
-x /. ans
-
-Out[1]= {(-b - Sqrt[b^2 - 4 a c])/(2 a), (-b + Sqrt[b^2 - 4 a c])/(2 a)}
-</code></pre></div><h3 id="-replacerepeated">//. (ReplaceRepeated)</h3>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Mathematica" data-lang="Mathematica"><span style="display:flex;"><span>In[1]:= ans = Solve[a x^2 + b x + c == 0, x];
+</span></span><span style="display:flex;"><span>x /. ans
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Out[1]= {(-b - Sqrt[b^2 - 4 a c])/(2 a), (-b + Sqrt[b^2 - 4 a c])/(2 a)}
+</span></span></code></pre></div><h3 id="-replacerepeated">//. (ReplaceRepeated)</h3>
 <p><code>exp //. a -&gt; b</code>は<code>exp /. a -&gt; b</code>が変わらなくなるまで繰り返す。</p>
 <h2 id="数値表記">数値表記</h2>
 <h3 id="-指数表記">*^ (指数表記)</h3>
 <p><code>a*^xxx</code>で<code>a * 10^xxx</code>と等価。</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Mathematica" data-lang="Mathematica">In[1]:= 2*^10
-
-Out[1]= 20000000000
-</code></pre></div><h3 id="-baseform">^^ (BaseForm)</h3>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Mathematica" data-lang="Mathematica"><span style="display:flex;"><span>In[1]:= 2*^10
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Out[1]= 20000000000
+</span></span></code></pre></div><h3 id="-baseform">^^ (BaseForm)</h3>
 <p><code>a^^xxxx</code>でa進数表記。</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Mathematica" data-lang="Mathematica">In[1]:= 16^^faceb00c
-
-Out[1]= 4207849484
-</code></pre></div><h2 id="その他">その他</h2>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Mathematica" data-lang="Mathematica"><span style="display:flex;"><span>In[1]:= 16^^faceb00c
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Out[1]= 4207849484
+</span></span></code></pre></div><h2 id="その他">その他</h2>
 <p>ここに紹介したもの以外にパターンの表記などがあるが、
 パターンの表記はほとんど省略記法しか使わない。</p>
 

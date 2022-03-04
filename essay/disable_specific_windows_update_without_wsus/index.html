@@ -104,108 +104,108 @@ if (!doNotTrack) {
 → <a href="http://mayokecya.hateblo.jp/entry/2015/06/04/224123">参考サイト: 「Windows10を入手する」の通知が消えない＼(^o^)／</a></p>
 <p>さて、1人社内SEとしては以上の手順をユーザの全PCに行うのは無理なので、なんとか自動化したい。
 1と2についてはコマンドプロンプトで可能なので、あっさり情報が見つかり、</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bat" data-lang="bat">Taskkill /IM GWX.exe /F
-Taskkill /IM GWXUX.exe /F
-wusa.exe /uninstall /kb:3035583 /quiet /norestart
-</code></pre></div><p>と書いたバッチファイルをログオンスクリプトに仕込むことで可能だった。</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bat" data-lang="bat"><span style="display:flex;"><span>Taskkill /IM GWX.exe /F
+</span></span><span style="display:flex;"><span>Taskkill /IM GWXUX.exe /F
+</span></span><span style="display:flex;"><span>wusa.exe /uninstall /kb:3035583 /quiet /norestart
+</span></span></code></pre></div><p>と書いたバッチファイルをログオンスクリプトに仕込むことで可能だった。</p>
 <p>問題は3の何度アンインストールしても再インストールさせようとしてくる点。
 根本的な解決策はもちろんWSUSサーバを立てて、KB3035583を承認しなければ良い。</p>
 <p>だが、私の会社にはWSUSサーバはない。
 レジストリをいじったりして特定のWindows Updateを非表示にする方法がないか、と調べてみたら、
 <a href="http://msdn.microsoft.com/en-us/library/aa387099(v=VS.85).aspx">Windows Update Agent API</a>というのがあることを発見。</p>
 <p>英語の情報しかなかったが、サンプルを参考に目的の「KB3035583」を非表示にするスクリプト(今回はJavaScript)を書いてみた。</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#008000">/**********************************************************************
-</span><span style="color:#008000"> WSUSを使用せずに不必要なWindowsUpdateを非表示
-</span><span style="color:#008000"> 
-</span><span style="color:#008000"> Copyright 2015-2016 330k
-</span><span style="color:#008000"> 使用は自己責任でお願いします
-</span><span style="color:#008000">**********************************************************************/</span>
-<span style="color:#00f">try</span>{
-  <span style="color:#008000">// インストールしないWindowsUpdateのKB番号
-</span><span style="color:#008000"></span>  <span style="color:#00f">var</span> disabledKBs = [
-    2876229,
-    2952664,
-    2976978,
-    2977759,
-    3021917,
-    3022345,
-    3035583,
-    3068708,
-    3075249,
-    3080149,
-    3123862,
-    3150513,
-    2990214,<span style="color:#008000">// Win 7
-</span><span style="color:#008000"></span>    3050265,
-    3065987,
-    3075851,
-    3083324,
-    3083710,
-    3102810,
-    3112343,
-    3135445,
-    3138612,
-    3161608,
-    3044374,<span style="color:#008000">// Win 8.1
-</span><span style="color:#008000"></span>    3050267,
-    3065988,
-    3075853,
-    3083325,
-    3083711,
-    3102812,
-    3112336,
-    3135449,
-    3138615,
-    3161606
-  ].sort().reverse();
-  
-  <span style="color:#00f">var</span> disabledKBregexp = <span style="color:#00f">new</span> RegExp(<span style="color:#a31515">&#39;(&#39;</span> + disabledKBs.join(<span style="color:#a31515">&#39;)|(&#39;</span>) + <span style="color:#a31515">&#39;)&#39;</span>);
-  <span style="color:#00f">var</span> updateSession, updateSearcher, searchResult, update;
-  <span style="color:#00f">var</span> objShell = WScript.CreateObject(<span style="color:#a31515">&#34;WScript.Shell&#34;</span>);
-  <span style="color:#008000">//var fso = new ActiveXObject(&#34;Scripting.FileSystemObject&#34;);
-</span><span style="color:#008000"></span>  <span style="color:#00f">var</span> i, j;
-  
-  <span style="color:#008000">// WUA生成
-</span><span style="color:#008000"></span>  updateSession = WScript.CreateObject(<span style="color:#a31515">&#34;Microsoft.Update.Session&#34;</span>);
-  updateSession.ClientApplicationID = <span style="color:#a31515">&#34;info.330k.disable_wupdate.20160626&#34;</span>;
-  
-  <span style="color:#008000">// 既にインストールされているかもしれないので、まずアンインストールする
-</span><span style="color:#008000"></span>  <span style="color:#00f">for</span>(i = 0; i &lt; disabledKBs.length; i++){
-    log(<span style="color:#a31515">&#34;uninstall: &#34;</span> + disabledKBs[i]);
-    objShell.Run(<span style="color:#a31515">&#34;wusa.exe /uninstall /kb:&#34;</span> + disabledKBs[i] + <span style="color:#a31515">&#34; /quiet /norestart&#34;</span>, 0, <span style="color:#00f">true</span>);
-  }
-  
-  <span style="color:#008000">// 未インストールの場合は非表示にする
-</span><span style="color:#008000"></span>  log(<span style="color:#a31515">&#34;search updates which are not installed yet&#34;</span>);
-  updateSearcher = updateSession.CreateUpdateSearcher();
-  searchResult = updateSearcher.Search(<span style="color:#a31515">&#34;IsInstalled=0 and IsHidden=0&#34;</span>);
-  log(<span style="color:#a31515">&#34;updates found: &#34;</span> + searchResult.Updates.Count);
-  <span style="color:#00f">for</span>(i = 0; i &lt; searchResult.Updates.Count; i++){
-    update = searchResult.Updates.Item(i);
-    <span style="color:#00f">for</span>(j = 0; j &lt; update.KBArticleIDs.Count; j++){
-      log(<span style="color:#a31515">&#34;found:\t&#34;</span> + update.KBArticleIDs.Item(j));
-      <span style="color:#00f">if</span>(disabledKBregexp.test(update.KBArticleIDs.Item(j))){
-        log(<span style="color:#a31515">&#34;hide:\t&#34;</span> + update.KBArticleIDs.Item(j));
-        update.IsHidden = <span style="color:#00f">true</span>;
-        <span style="color:#00f">break</span>;
-      }
-    }
-  }
-  log(<span style="color:#a31515">&#34;finish&#34;</span>);
-  WScript.Quit(0);
-  
-}<span style="color:#00f">catch</span>(e){
-  log(e.message);
-  WScript.Quit(1);
-}
-
-<span style="color:#008000">// CScriptで実行された場合のみログを表示する
-</span><span style="color:#008000"></span><span style="color:#00f">function</span> log(message){
-  <span style="color:#00f">if</span>(<span style="color:#a31515">/cscript\.exe$/i</span>.test(WScript.FullName)){
-    WScript.Echo((<span style="color:#00f">new</span> Date()).toLocaleString() + <span style="color:#a31515">&#34;\t&#34;</span> + message);
-  }
-}
-</code></pre></div><p>今後KB3035583以外にも非表示にしたいアップデートが出るかもしれない(多分出る)ので、
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#008000">/**********************************************************************
+</span></span></span><span style="display:flex;"><span><span style="color:#008000"> WSUSを使用せずに不必要なWindowsUpdateを非表示
+</span></span></span><span style="display:flex;"><span><span style="color:#008000"> 
+</span></span></span><span style="display:flex;"><span><span style="color:#008000"> Copyright 2015-2016 330k
+</span></span></span><span style="display:flex;"><span><span style="color:#008000"> 使用は自己責任でお願いします
+</span></span></span><span style="display:flex;"><span><span style="color:#008000">**********************************************************************/</span>
+</span></span><span style="display:flex;"><span><span style="color:#00f">try</span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#008000">// インストールしないWindowsUpdateのKB番号
+</span></span></span><span style="display:flex;"><span><span style="color:#008000"></span>  <span style="color:#00f">var</span> disabledKBs = [
+</span></span><span style="display:flex;"><span>    2876229,
+</span></span><span style="display:flex;"><span>    2952664,
+</span></span><span style="display:flex;"><span>    2976978,
+</span></span><span style="display:flex;"><span>    2977759,
+</span></span><span style="display:flex;"><span>    3021917,
+</span></span><span style="display:flex;"><span>    3022345,
+</span></span><span style="display:flex;"><span>    3035583,
+</span></span><span style="display:flex;"><span>    3068708,
+</span></span><span style="display:flex;"><span>    3075249,
+</span></span><span style="display:flex;"><span>    3080149,
+</span></span><span style="display:flex;"><span>    3123862,
+</span></span><span style="display:flex;"><span>    3150513,
+</span></span><span style="display:flex;"><span>    2990214,<span style="color:#008000">// Win 7
+</span></span></span><span style="display:flex;"><span><span style="color:#008000"></span>    3050265,
+</span></span><span style="display:flex;"><span>    3065987,
+</span></span><span style="display:flex;"><span>    3075851,
+</span></span><span style="display:flex;"><span>    3083324,
+</span></span><span style="display:flex;"><span>    3083710,
+</span></span><span style="display:flex;"><span>    3102810,
+</span></span><span style="display:flex;"><span>    3112343,
+</span></span><span style="display:flex;"><span>    3135445,
+</span></span><span style="display:flex;"><span>    3138612,
+</span></span><span style="display:flex;"><span>    3161608,
+</span></span><span style="display:flex;"><span>    3044374,<span style="color:#008000">// Win 8.1
+</span></span></span><span style="display:flex;"><span><span style="color:#008000"></span>    3050267,
+</span></span><span style="display:flex;"><span>    3065988,
+</span></span><span style="display:flex;"><span>    3075853,
+</span></span><span style="display:flex;"><span>    3083325,
+</span></span><span style="display:flex;"><span>    3083711,
+</span></span><span style="display:flex;"><span>    3102812,
+</span></span><span style="display:flex;"><span>    3112336,
+</span></span><span style="display:flex;"><span>    3135449,
+</span></span><span style="display:flex;"><span>    3138615,
+</span></span><span style="display:flex;"><span>    3161606
+</span></span><span style="display:flex;"><span>  ].sort().reverse();
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>  <span style="color:#00f">var</span> disabledKBregexp = <span style="color:#00f">new</span> RegExp(<span style="color:#a31515">&#39;(&#39;</span> + disabledKBs.join(<span style="color:#a31515">&#39;)|(&#39;</span>) + <span style="color:#a31515">&#39;)&#39;</span>);
+</span></span><span style="display:flex;"><span>  <span style="color:#00f">var</span> updateSession, updateSearcher, searchResult, update;
+</span></span><span style="display:flex;"><span>  <span style="color:#00f">var</span> objShell = WScript.CreateObject(<span style="color:#a31515">&#34;WScript.Shell&#34;</span>);
+</span></span><span style="display:flex;"><span>  <span style="color:#008000">//var fso = new ActiveXObject(&#34;Scripting.FileSystemObject&#34;);
+</span></span></span><span style="display:flex;"><span><span style="color:#008000"></span>  <span style="color:#00f">var</span> i, j;
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>  <span style="color:#008000">// WUA生成
+</span></span></span><span style="display:flex;"><span><span style="color:#008000"></span>  updateSession = WScript.CreateObject(<span style="color:#a31515">&#34;Microsoft.Update.Session&#34;</span>);
+</span></span><span style="display:flex;"><span>  updateSession.ClientApplicationID = <span style="color:#a31515">&#34;info.330k.disable_wupdate.20160626&#34;</span>;
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>  <span style="color:#008000">// 既にインストールされているかもしれないので、まずアンインストールする
+</span></span></span><span style="display:flex;"><span><span style="color:#008000"></span>  <span style="color:#00f">for</span>(i = 0; i &lt; disabledKBs.length; i++){
+</span></span><span style="display:flex;"><span>    log(<span style="color:#a31515">&#34;uninstall: &#34;</span> + disabledKBs[i]);
+</span></span><span style="display:flex;"><span>    objShell.Run(<span style="color:#a31515">&#34;wusa.exe /uninstall /kb:&#34;</span> + disabledKBs[i] + <span style="color:#a31515">&#34; /quiet /norestart&#34;</span>, 0, <span style="color:#00f">true</span>);
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>  <span style="color:#008000">// 未インストールの場合は非表示にする
+</span></span></span><span style="display:flex;"><span><span style="color:#008000"></span>  log(<span style="color:#a31515">&#34;search updates which are not installed yet&#34;</span>);
+</span></span><span style="display:flex;"><span>  updateSearcher = updateSession.CreateUpdateSearcher();
+</span></span><span style="display:flex;"><span>  searchResult = updateSearcher.Search(<span style="color:#a31515">&#34;IsInstalled=0 and IsHidden=0&#34;</span>);
+</span></span><span style="display:flex;"><span>  log(<span style="color:#a31515">&#34;updates found: &#34;</span> + searchResult.Updates.Count);
+</span></span><span style="display:flex;"><span>  <span style="color:#00f">for</span>(i = 0; i &lt; searchResult.Updates.Count; i++){
+</span></span><span style="display:flex;"><span>    update = searchResult.Updates.Item(i);
+</span></span><span style="display:flex;"><span>    <span style="color:#00f">for</span>(j = 0; j &lt; update.KBArticleIDs.Count; j++){
+</span></span><span style="display:flex;"><span>      log(<span style="color:#a31515">&#34;found:\t&#34;</span> + update.KBArticleIDs.Item(j));
+</span></span><span style="display:flex;"><span>      <span style="color:#00f">if</span>(disabledKBregexp.test(update.KBArticleIDs.Item(j))){
+</span></span><span style="display:flex;"><span>        log(<span style="color:#a31515">&#34;hide:\t&#34;</span> + update.KBArticleIDs.Item(j));
+</span></span><span style="display:flex;"><span>        update.IsHidden = <span style="color:#00f">true</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#00f">break</span>;
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  log(<span style="color:#a31515">&#34;finish&#34;</span>);
+</span></span><span style="display:flex;"><span>  WScript.Quit(0);
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>}<span style="color:#00f">catch</span>(e){
+</span></span><span style="display:flex;"><span>  log(e.message);
+</span></span><span style="display:flex;"><span>  WScript.Quit(1);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#008000">// CScriptで実行された場合のみログを表示する
+</span></span></span><span style="display:flex;"><span><span style="color:#008000"></span><span style="color:#00f">function</span> log(message){
+</span></span><span style="display:flex;"><span>  <span style="color:#00f">if</span>(<span style="color:#a31515">/cscript\.exe$/i</span>.test(WScript.FullName)){
+</span></span><span style="display:flex;"><span>    WScript.Echo((<span style="color:#00f">new</span> Date()).toLocaleString() + <span style="color:#a31515">&#34;\t&#34;</span> + message);
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>今後KB3035583以外にも非表示にしたいアップデートが出るかもしれない(多分出る)ので、
 追加しやすいよう工夫してみた。</p>
 <p>これも同様にログオンスクリプトに仕込んでおけば、ユーザがまだインストールしていなければ非表示にすることができる。</p>
 <p>自己責任の下で良ければ使ってください。

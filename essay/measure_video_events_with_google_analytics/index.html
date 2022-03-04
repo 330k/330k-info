@@ -104,44 +104,44 @@ Google Analyticsのイベントで計測するためのコードを作ってみ�
 <li>どこまで再生したか(動画時間の10%, 25%, 50%, 75%, 90%)</li>
 </ul>
 <h2 id="html側">HTML側</h2>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;video id=<span style="color:#a31515">&#34;movie001&#34;</span> width=<span style="color:#a31515">&#34;(動画幅)&#34;</span> height=<span style="color:#a31515">&#34;(動画高さ)&#34;</span> title=<span style="color:#a31515">&#34;Movie Title&#34;</span>&gt;
-  &lt;source src=<span style="color:#a31515">&#34;(動画ファイルのパス)&#34;</span> type=<span style="color:#a31515">&#34;video/mp4&#34;</span> /&gt;
-<span style="">&lt;</span>/video
-</code></pre></div><h2 id="javascript側jquery使用">JavaScript側(jQuery使用)</h2>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;video id=<span style="color:#a31515">&#34;movie001&#34;</span> width=<span style="color:#a31515">&#34;(動画幅)&#34;</span> height=<span style="color:#a31515">&#34;(動画高さ)&#34;</span> title=<span style="color:#a31515">&#34;Movie Title&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;source src=<span style="color:#a31515">&#34;(動画ファイルのパス)&#34;</span> type=<span style="color:#a31515">&#34;video/mp4&#34;</span> /&gt;
+</span></span><span style="display:flex;"><span><span style="">&lt;</span>/video
+</span></span></code></pre></div><h2 id="javascript側jquery使用">JavaScript側(jQuery使用)</h2>
 <p>イベントカテゴリに「video」、イベントアクションに<code>play</code>、<code>play_end</code>など。
 イベントラベルには動画の<code>title</code>属性をセット。</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js">$(<span style="color:#00f">function</span>(){
-  <span style="color:#00f">var</span> oldratio = 0.0;
-  $(<span style="color:#a31515">&#39;video&#39;</span>).on(<span style="color:#a31515">&#39;play&#39;</span>, <span style="color:#00f">function</span>(e) {
-    on(<span style="color:#a31515">&#39;play&#39;</span>, <span style="color:#00f">function</span>(e) {
-    <span style="color:#00f">if</span>(e.target.currentTime &gt; 0){
-      ga(<span style="color:#a31515">&#39;send&#39;</span>,<span style="color:#a31515">&#39;event&#39;</span>,<span style="color:#a31515">&#39;video&#39;</span>,<span style="color:#a31515">&#39;resume&#39;</span>,e.target.getAttribute(<span style="color:#a31515">&#39;title&#39;</span>));
-    }<span style="color:#00f">else</span>{
-      ga(<span style="color:#a31515">&#39;send&#39;</span>,<span style="color:#a31515">&#39;event&#39;</span>,<span style="color:#a31515">&#39;video&#39;</span>,<span style="color:#a31515">&#39;play&#39;</span>,e.target.getAttribute(<span style="color:#a31515">&#39;title&#39;</span>));
-    }
-  }).on(<span style="color:#a31515">&#39;ended&#39;</span>, <span style="color:#00f">function</span>(e) {
-    ga(<span style="color:#a31515">&#39;send&#39;</span>,<span style="color:#a31515">&#39;event&#39;</span>,<span style="color:#a31515">&#39;video&#39;</span>,<span style="color:#a31515">&#39;play_end&#39;</span>,e.target.getAttribute(<span style="color:#a31515">&#39;title&#39;</span>));
-  }).on(<span style="color:#a31515">&#39;pause&#39;</span>, <span style="color:#00f">function</span>(e) {
-    ga(<span style="color:#a31515">&#39;send&#39;</span>,<span style="color:#a31515">&#39;event&#39;</span>,<span style="color:#a31515">&#39;video&#39;</span>,<span style="color:#a31515">&#39;pause&#39;</span>,e.target.getAttribute(<span style="color:#a31515">&#39;title&#39;</span>));
-  }).on(<span style="color:#a31515">&#39;seeked&#39;</span>, <span style="color:#00f">function</span>(e) {
-    ga(<span style="color:#a31515">&#39;send&#39;</span>,<span style="color:#a31515">&#39;event&#39;</span>,<span style="color:#a31515">&#39;video&#39;</span>,<span style="color:#a31515">&#39;seeked&#39;</span>,e.target.getAttribute(<span style="color:#a31515">&#39;title&#39;</span>));
-  }).on(<span style="color:#a31515">&#39;timeupdate&#39;</span>, <span style="color:#00f">function</span>(e) {
-    <span style="color:#00f">var</span> ratio = e.target.currentTime / e.target.duration;
-    <span style="color:#00f">if</span>((0.9 &lt;= ratio) &amp;&amp; (oldratio &lt; 0.9)){
-      ga(<span style="color:#a31515">&#39;send&#39;</span>,<span style="color:#a31515">&#39;event&#39;</span>,<span style="color:#a31515">&#39;video&#39;</span>,<span style="color:#a31515">&#39;play_90percent&#39;</span>,e.target.getAttribute(<span style="color:#a31515">&#39;title&#39;</span>));
-    }<span style="color:#00f">else</span> <span style="color:#00f">if</span>((0.75 &lt;= ratio) &amp;&amp; (oldratio &lt; 0.75)){
-      ga(<span style="color:#a31515">&#39;send&#39;</span>,<span style="color:#a31515">&#39;event&#39;</span>,<span style="color:#a31515">&#39;video&#39;</span>,<span style="color:#a31515">&#39;play_75percent&#39;</span>,e.target.getAttribute(<span style="color:#a31515">&#39;title&#39;</span>));
-    }<span style="color:#00f">else</span> <span style="color:#00f">if</span>((0.5 &lt;= ratio) &amp;&amp; (oldratio &lt; 0.5)){
-      ga(<span style="color:#a31515">&#39;send&#39;</span>,<span style="color:#a31515">&#39;event&#39;</span>,<span style="color:#a31515">&#39;video&#39;</span>,<span style="color:#a31515">&#39;play_50percent&#39;</span>,e.target.getAttribute(<span style="color:#a31515">&#39;title&#39;</span>));
-    }<span style="color:#00f">else</span> <span style="color:#00f">if</span>((0.25 &lt;= ratio) &amp;&amp; (oldratio &lt; 0.25)){
-      ga(<span style="color:#a31515">&#39;send&#39;</span>,<span style="color:#a31515">&#39;event&#39;</span>,<span style="color:#a31515">&#39;video&#39;</span>,<span style="color:#a31515">&#39;play_25percent&#39;</span>,e.target.getAttribute(<span style="color:#a31515">&#39;title&#39;</span>));
-    }<span style="color:#00f">else</span> <span style="color:#00f">if</span>((0.1 &lt;= ratio) &amp;&amp; (oldratio &lt; 0.1)){
-      ga(<span style="color:#a31515">&#39;send&#39;</span>,<span style="color:#a31515">&#39;event&#39;</span>,<span style="color:#a31515">&#39;video&#39;</span>,<span style="color:#a31515">&#39;play_10percent&#39;</span>,e.target.getAttribute(<span style="color:#a31515">&#39;title&#39;</span>));
-    }
-    oldratio = ratio;
-  });
-});
-</code></pre></div><h2 id="google-analyticsでの表示例">Google Analyticsでの表示例</h2>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span>$(<span style="color:#00f">function</span>(){
+</span></span><span style="display:flex;"><span>  <span style="color:#00f">var</span> oldratio = 0.0;
+</span></span><span style="display:flex;"><span>  $(<span style="color:#a31515">&#39;video&#39;</span>).on(<span style="color:#a31515">&#39;play&#39;</span>, <span style="color:#00f">function</span>(e) {
+</span></span><span style="display:flex;"><span>    on(<span style="color:#a31515">&#39;play&#39;</span>, <span style="color:#00f">function</span>(e) {
+</span></span><span style="display:flex;"><span>    <span style="color:#00f">if</span>(e.target.currentTime &gt; 0){
+</span></span><span style="display:flex;"><span>      ga(<span style="color:#a31515">&#39;send&#39;</span>,<span style="color:#a31515">&#39;event&#39;</span>,<span style="color:#a31515">&#39;video&#39;</span>,<span style="color:#a31515">&#39;resume&#39;</span>,e.target.getAttribute(<span style="color:#a31515">&#39;title&#39;</span>));
+</span></span><span style="display:flex;"><span>    }<span style="color:#00f">else</span>{
+</span></span><span style="display:flex;"><span>      ga(<span style="color:#a31515">&#39;send&#39;</span>,<span style="color:#a31515">&#39;event&#39;</span>,<span style="color:#a31515">&#39;video&#39;</span>,<span style="color:#a31515">&#39;play&#39;</span>,e.target.getAttribute(<span style="color:#a31515">&#39;title&#39;</span>));
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  }).on(<span style="color:#a31515">&#39;ended&#39;</span>, <span style="color:#00f">function</span>(e) {
+</span></span><span style="display:flex;"><span>    ga(<span style="color:#a31515">&#39;send&#39;</span>,<span style="color:#a31515">&#39;event&#39;</span>,<span style="color:#a31515">&#39;video&#39;</span>,<span style="color:#a31515">&#39;play_end&#39;</span>,e.target.getAttribute(<span style="color:#a31515">&#39;title&#39;</span>));
+</span></span><span style="display:flex;"><span>  }).on(<span style="color:#a31515">&#39;pause&#39;</span>, <span style="color:#00f">function</span>(e) {
+</span></span><span style="display:flex;"><span>    ga(<span style="color:#a31515">&#39;send&#39;</span>,<span style="color:#a31515">&#39;event&#39;</span>,<span style="color:#a31515">&#39;video&#39;</span>,<span style="color:#a31515">&#39;pause&#39;</span>,e.target.getAttribute(<span style="color:#a31515">&#39;title&#39;</span>));
+</span></span><span style="display:flex;"><span>  }).on(<span style="color:#a31515">&#39;seeked&#39;</span>, <span style="color:#00f">function</span>(e) {
+</span></span><span style="display:flex;"><span>    ga(<span style="color:#a31515">&#39;send&#39;</span>,<span style="color:#a31515">&#39;event&#39;</span>,<span style="color:#a31515">&#39;video&#39;</span>,<span style="color:#a31515">&#39;seeked&#39;</span>,e.target.getAttribute(<span style="color:#a31515">&#39;title&#39;</span>));
+</span></span><span style="display:flex;"><span>  }).on(<span style="color:#a31515">&#39;timeupdate&#39;</span>, <span style="color:#00f">function</span>(e) {
+</span></span><span style="display:flex;"><span>    <span style="color:#00f">var</span> ratio = e.target.currentTime / e.target.duration;
+</span></span><span style="display:flex;"><span>    <span style="color:#00f">if</span>((0.9 &lt;= ratio) &amp;&amp; (oldratio &lt; 0.9)){
+</span></span><span style="display:flex;"><span>      ga(<span style="color:#a31515">&#39;send&#39;</span>,<span style="color:#a31515">&#39;event&#39;</span>,<span style="color:#a31515">&#39;video&#39;</span>,<span style="color:#a31515">&#39;play_90percent&#39;</span>,e.target.getAttribute(<span style="color:#a31515">&#39;title&#39;</span>));
+</span></span><span style="display:flex;"><span>    }<span style="color:#00f">else</span> <span style="color:#00f">if</span>((0.75 &lt;= ratio) &amp;&amp; (oldratio &lt; 0.75)){
+</span></span><span style="display:flex;"><span>      ga(<span style="color:#a31515">&#39;send&#39;</span>,<span style="color:#a31515">&#39;event&#39;</span>,<span style="color:#a31515">&#39;video&#39;</span>,<span style="color:#a31515">&#39;play_75percent&#39;</span>,e.target.getAttribute(<span style="color:#a31515">&#39;title&#39;</span>));
+</span></span><span style="display:flex;"><span>    }<span style="color:#00f">else</span> <span style="color:#00f">if</span>((0.5 &lt;= ratio) &amp;&amp; (oldratio &lt; 0.5)){
+</span></span><span style="display:flex;"><span>      ga(<span style="color:#a31515">&#39;send&#39;</span>,<span style="color:#a31515">&#39;event&#39;</span>,<span style="color:#a31515">&#39;video&#39;</span>,<span style="color:#a31515">&#39;play_50percent&#39;</span>,e.target.getAttribute(<span style="color:#a31515">&#39;title&#39;</span>));
+</span></span><span style="display:flex;"><span>    }<span style="color:#00f">else</span> <span style="color:#00f">if</span>((0.25 &lt;= ratio) &amp;&amp; (oldratio &lt; 0.25)){
+</span></span><span style="display:flex;"><span>      ga(<span style="color:#a31515">&#39;send&#39;</span>,<span style="color:#a31515">&#39;event&#39;</span>,<span style="color:#a31515">&#39;video&#39;</span>,<span style="color:#a31515">&#39;play_25percent&#39;</span>,e.target.getAttribute(<span style="color:#a31515">&#39;title&#39;</span>));
+</span></span><span style="display:flex;"><span>    }<span style="color:#00f">else</span> <span style="color:#00f">if</span>((0.1 &lt;= ratio) &amp;&amp; (oldratio &lt; 0.1)){
+</span></span><span style="display:flex;"><span>      ga(<span style="color:#a31515">&#39;send&#39;</span>,<span style="color:#a31515">&#39;event&#39;</span>,<span style="color:#a31515">&#39;video&#39;</span>,<span style="color:#a31515">&#39;play_10percent&#39;</span>,e.target.getAttribute(<span style="color:#a31515">&#39;title&#39;</span>));
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    oldratio = ratio;
+</span></span><span style="display:flex;"><span>  });
+</span></span><span style="display:flex;"><span>});
+</span></span></code></pre></div><h2 id="google-analyticsでの表示例">Google Analyticsでの表示例</h2>
 <p>イベントカテゴリ画面。</p>
 <figure><img src="category.png"/>
 </figure>

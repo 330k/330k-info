@@ -104,8 +104,8 @@ if (!doNotTrack) {
 <li>背景は透過させる(きれいに透過させたい)</li>
 </ul>
 <h2 id="コマンド">コマンド</h2>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">convert -colorspace sRGB -density 576 -filter Point <span style="color:#a31515">&#34;元ファイル.ai&#34;</span> -trim -alpha set -fill <span style="color:#a31515">&#39;#000000ff&#39;</span> -opaque <span style="color:#a31515">&#39;#ffffff&#39;</span> -background transparent +filter -resize 220x110 -gravity center -extent 230x180 出力ファイル.png
-</code></pre></div><h3 id="説明">説明</h3>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>convert -colorspace sRGB -density 576 -filter Point <span style="color:#a31515">&#34;元ファイル.ai&#34;</span> -trim -alpha set -fill <span style="color:#a31515">&#39;#000000ff&#39;</span> -opaque <span style="color:#a31515">&#39;#ffffff&#39;</span> -background transparent +filter -resize 220x110 -gravity center -extent 230x180 出力ファイル.png
+</span></span></code></pre></div><h3 id="説明">説明</h3>
 <p>アンチエイリアスを切った状態で透過色を設定し、その後アンチエイリアスをONにして縮小するところがミソ。
 これで中間色の部分をきれいに半透過にできる。</p>
 <table>

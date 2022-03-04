@@ -94,16 +94,16 @@ if (!doNotTrack) {
 		</header><div class="content post__content clearfix">
 			<p>自炊した書籍をzipで作成する際、普通に圧縮すると変な順番で格納されてしまう。
 実用上ほとんど問題はないのだが、なんとなくファイル名順に格納したかったので、そのやり方をメモ。</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Bash" data-lang="Bash">ls -1 ディレクトリ名 | zip -@rjDo0 圧縮ファイル名.zip
-</code></pre></div><p>やっていることは</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Bash" data-lang="Bash"><span style="display:flex;"><span>ls -1 ディレクトリ名 | zip -@rjDo0 圧縮ファイル名.zip
+</span></span></code></pre></div><p>やっていることは</p>
 <ol>
 <li>lsに<code>-1</code>オプションをつけてファイル1行ずつでファイル名を出力(デフォルトでは文字コード順)</li>
 <li>zipに<code>-@</code>オプションをつけ、標準入力にファイル名を渡して圧縮(残りのオプションはお好みで)</li>
 </ol>
 <p>findを使って行うときは、もう少し工夫が必要で、以下のように
 findの<code>-print0</code>オプションとsortの<code>-z</code>オプション、xargsの<code>-0</code>オプションでNull文字区切りでファイル名を出力→ソート→圧縮とする。</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">find ./ -type f -print0 | sort -z | xargs -0 zip -@rjDo0 圧縮ファイル名.zip
-</code></pre></div><p>なんとなくAndroidのPerfectViewerで見るときに表示が早くなったような気がする。たぶんプラシーボだけれど。</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>find ./ -type f -print0 | sort -z | xargs -0 zip -@rjDo0 圧縮ファイル名.zip
+</span></span></code></pre></div><p>なんとなくAndroidのPerfectViewerで見るときに表示が早くなったような気がする。たぶんプラシーボだけれど。</p>
 
 		</div>
 		<footer class="post__footer">

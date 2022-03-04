@@ -103,61 +103,61 @@ if (!doNotTrack) {
 <h3 id="softether-vpn-server">SoftEther VPN Server</h3>
 <p><a href="https://www.softether-download.com/ja.aspx?product=softether">SoftEther ダウンロードセンター</a>から、「SoftEther VPN Server」「Linux」「Intel x64/AMD64 (64bit)」を選択してダウンロード。
 また、ビルドに必要なパッケージもインストールして、ビルドを実行する。</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sudo apt update
-sudo apt install make gcc
-
-wget https://github.com/SoftEtherVPN/SoftEtherVPN_Stable/releases/download/v4.32-9731-beta/softether-vpnserver-v4.32-9731-beta-2020.01.01-linux-x64-64bit.tar.gz
-tar xvf softether-vpnserver-v4.32-9731-beta-2020.01.01-linux-x64-64bit.tar.gz
-
-cd vpnserver
-sudo make
-
-sudo mv vpnserver/ /usr/local/
-cd /usr/local/vpnserver
-
-sudo chmod 600 *
-sudo chmod 700 vpn*
-</code></pre></div><p>次にシステム起動時に自動でSoftEtherも起動してほしいので、systemd用のUnitファイルも作成する。</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sudo nano /etc/systemd/system/vpnserver.service
-</code></pre></div><div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">[Unit]
-Description=SoftEther VPN Server
-After=network.target network-online.target
-
-[Service]
-ExecStart=/usr/local/vpnserver/vpnserver start
-ExecStop=/usr/local/vpnserver/vpnserver stop
-Type=forking
-RestartSec=3s
-
-[Install]
-WantedBy=multi-user.target
-</code></pre></div><p>Unitファイルを作成したら、有効化する。</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sudo systemctl daemon-reload
-sudo systemctl enable vpnserver
-sudo systemctl start vpnserver
-</code></pre></div><h3 id="adguard-home">AdGuard Home</h3>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>sudo apt update
+</span></span><span style="display:flex;"><span>sudo apt install make gcc
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>wget https://github.com/SoftEtherVPN/SoftEtherVPN_Stable/releases/download/v4.32-9731-beta/softether-vpnserver-v4.32-9731-beta-2020.01.01-linux-x64-64bit.tar.gz
+</span></span><span style="display:flex;"><span>tar xvf softether-vpnserver-v4.32-9731-beta-2020.01.01-linux-x64-64bit.tar.gz
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>cd vpnserver
+</span></span><span style="display:flex;"><span>sudo make
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>sudo mv vpnserver/ /usr/local/
+</span></span><span style="display:flex;"><span>cd /usr/local/vpnserver
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>sudo chmod 600 *
+</span></span><span style="display:flex;"><span>sudo chmod 700 vpn*
+</span></span></code></pre></div><p>次にシステム起動時に自動でSoftEtherも起動してほしいので、systemd用のUnitファイルも作成する。</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>sudo nano /etc/systemd/system/vpnserver.service
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>[Unit]
+</span></span><span style="display:flex;"><span>Description=SoftEther VPN Server
+</span></span><span style="display:flex;"><span>After=network.target network-online.target
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>[Service]
+</span></span><span style="display:flex;"><span>ExecStart=/usr/local/vpnserver/vpnserver start
+</span></span><span style="display:flex;"><span>ExecStop=/usr/local/vpnserver/vpnserver stop
+</span></span><span style="display:flex;"><span>Type=forking
+</span></span><span style="display:flex;"><span>RestartSec=3s
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>[Install]
+</span></span><span style="display:flex;"><span>WantedBy=multi-user.target
+</span></span></code></pre></div><p>Unitファイルを作成したら、有効化する。</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>sudo systemctl daemon-reload
+</span></span><span style="display:flex;"><span>sudo systemctl enable vpnserver
+</span></span><span style="display:flex;"><span>sudo systemctl start vpnserver
+</span></span></code></pre></div><h3 id="adguard-home">AdGuard Home</h3>
 <p>GitHubの<a href="https://github.com/AdguardTeam/AdGuardHome/releases">Release</a>から最新版をダウンロードして、インストール。</p>
 <p>ここでは<code>/usr/local/adguard</code>にインストールした。</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">wget https://github.com/AdguardTeam/AdGuardHome/releases/download/v0.100.9/AdGuardHome_linux_amd64.tar.gz
-tar xvf AdGuardHome_linux_amd64.tar.gz
-
-sudo mkdir /usr/local/adguard
-sudo mv ./AdGuardHome/* /usr/local/adguard
-</code></pre></div><p>これでAdGuard Home自体はインストールできたが、このままではsystemd-resolvedが起動したままなので、
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>wget https://github.com/AdguardTeam/AdGuardHome/releases/download/v0.100.9/AdGuardHome_linux_amd64.tar.gz
+</span></span><span style="display:flex;"><span>tar xvf AdGuardHome_linux_amd64.tar.gz
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>sudo mkdir /usr/local/adguard
+</span></span><span style="display:flex;"><span>sudo mv ./AdGuardHome/* /usr/local/adguard
+</span></span></code></pre></div><p>これでAdGuard Home自体はインストールできたが、このままではsystemd-resolvedが起動したままなので、
 53/udpをListenしていてAdGuard Homeが起動できない。</p>
 <p>なので<a href="https://qiita.com/shora_kujira16/items/31d09b373809a5a44ae5">Ubuntu 18.04 の systemd-resolved で local DNS stub listener の利用をやめる</a>に記述された無効化が必要。</p>
 <p>まずは<code>/etc/systemd/resolved.conf</code>を次のように編集。</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">[Resolve]
-DNSStubListener=no
-</code></pre></div><p>次に<code>/etc/resolv.conf</code>を<code>/run/systemd/resolve/resolv.conf</code>にリンク。</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sudo rm /etc/resolv.conf
-sudo ln -s /run/systemd/resolve/resolv.conf /etc/resolv.conf
-</code></pre></div><p>systemd-resolvedを再起動。</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sudo systemctl restart systemd-resolved
-</code></pre></div><p>これで53/udpが解放されたので、AdGuard Homeが起動できるはず。</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">cd /usr/local/adguard
-sudo ./AdGuardHome -s install
-</code></pre></div><p>ここでシステムを再起動しても自動でnetplanの設定内容が<code>/etc/resolv.conf</code>に反映される。</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>[Resolve]
+</span></span><span style="display:flex;"><span>DNSStubListener=no
+</span></span></code></pre></div><p>次に<code>/etc/resolv.conf</code>を<code>/run/systemd/resolve/resolv.conf</code>にリンク。</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>sudo rm /etc/resolv.conf
+</span></span><span style="display:flex;"><span>sudo ln -s /run/systemd/resolve/resolv.conf /etc/resolv.conf
+</span></span></code></pre></div><p>systemd-resolvedを再起動。</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>sudo systemctl restart systemd-resolved
+</span></span></code></pre></div><p>これで53/udpが解放されたので、AdGuard Homeが起動できるはず。</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>cd /usr/local/adguard
+</span></span><span style="display:flex;"><span>sudo ./AdGuardHome -s install
+</span></span></code></pre></div><p>ここでシステムを再起動しても自動でnetplanの設定内容が<code>/etc/resolv.conf</code>に反映される。</p>
 <h3 id="ネットワーク設定と初期設定">ネットワーク設定と初期設定</h3>
 <p>AWSやGCPなどを利用している場合、ネットワーク・セキュリティの設定で、外部に開放するポートを設定する必要がある(私はAWS Lightsailで行った)。</p>
 <p>SoftEther VPNで使うポートと、AdGuard Homeの管理ページのポートを開放しておく。</p>
@@ -173,25 +173,25 @@ SoftEtherでSecure NATで自分(デフォルトでは<code>192.168.30.1</code>)�
 <h3 id="解決先1-netplan経由でetcresolvconfに自サーバを追加">解決先1: netplan経由で/etc/resolv.confに自サーバを追加</h3>
 <p>上記のsystemd-resolvedのStub Serverを無効化した場合は、netplanの設定内容が<code>/etc/resolv.conf</code>に(間接的に)反映される。</p>
 <p>netplanではDHCPでアドレスを受け取る場合も、DNSサーバの情報を追加できるので、追加して設定する。</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sudo nano /etc/netplan/50-cloud-init.yaml
-</code></pre></div><div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">network:
-    version: 2
-    ethernets:
-        eth0:
-            dhcp4: <span style="color:#00f">true</span>
-            match:
-                macaddress: 06:15:3e:a7:4c:30
-            set-name: eth0
-            nameservers:
-                addresses: [ 127.0.0.1 ]
-</code></pre></div><p>下の2行が追加部分。</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>sudo nano /etc/netplan/50-cloud-init.yaml
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span>network:
+</span></span><span style="display:flex;"><span>    version: 2
+</span></span><span style="display:flex;"><span>    ethernets:
+</span></span><span style="display:flex;"><span>        eth0:
+</span></span><span style="display:flex;"><span>            dhcp4: <span style="color:#00f">true</span>
+</span></span><span style="display:flex;"><span>            match:
+</span></span><span style="display:flex;"><span>                macaddress: 06:15:3e:a7:4c:30
+</span></span><span style="display:flex;"><span>            set-name: eth0
+</span></span><span style="display:flex;"><span>            nameservers:
+</span></span><span style="display:flex;"><span>                addresses: [ 127.0.0.1 ]
+</span></span></code></pre></div><p>下の2行が追加部分。</p>
 <p>AWS Lightsailの場合、DHCPでAWS内のDNSサーバ(<code>172.26.0.2</code>など)が指定されるのだが、上記により<code>127.0.0.1</code>が優先DNSサーバに指定される。</p>
 <p>確認するには、下記のコマンドを実行。</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">systemd-resolve --status
-</code></pre></div><div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">(中略)
-         DNS Servers: 127.0.0.1
-                      172.26.0.2
-</code></pre></div><p>これでVPNクライアントからのDNSリクエストに対して、<code>127.0.0.1</code>が応答するようになる。</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>systemd-resolve --status
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>(中略)
+</span></span><span style="display:flex;"><span>         DNS Servers: 127.0.0.1
+</span></span><span style="display:flex;"><span>                      172.26.0.2
+</span></span></code></pre></div><p>これでVPNクライアントからのDNSリクエストに対して、<code>127.0.0.1</code>が応答するようになる。</p>
 <p>ちなみに、この設定を行うと、VPNクライアント以外のDNSリクエストもすべて<code>127.0.0.1</code>(AdGuard Home)に向くので、AdGuard Homeの管理画面でログを見ることができる。</p>
 <h3 id="解決先2-securenatで配布するdnsに内部アドレスを指定する">解決先2: SecureNATで配布するDNSに、内部アドレスを指定する</h3>
 <p>AWSやGCPのように、サーバが直接グローバルIPアドレスを持っておらず、プライベートIPアドレスを持っている場合のみ使用可能な方法。</p>

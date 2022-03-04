@@ -125,14 +125,14 @@ REM 動画ファイルからDVDのISOファイルを作成
 
 SET VIDEO_FORMAT=NTSC
 
-ffmpeg -i &quot;%1&quot; -threads 4 -vf yadif=1,scale=720:480,tinterlace=4 -target ntsc-dvd -flags +ilme+ildct &quot;%~dpn1_dvd.mpeg&quot;
-dvdauthor -o &quot;%~dpn1_dvd&quot; -t &quot;%~dpn1_dvd.mpeg&quot;
-dvdauthor -o &quot;%~dpn1_dvd&quot; -T
+ffmpeg -i &#34;%1&#34; -threads 4 -vf yadif=1,scale=720:480,tinterlace=4 -target ntsc-dvd -flags +ilme+ildct &#34;%~dpn1_dvd.mpeg&#34;
+dvdauthor -o &#34;%~dpn1_dvd&#34; -t &#34;%~dpn1_dvd.mpeg&#34;
+dvdauthor -o &#34;%~dpn1_dvd&#34; -T
 
-mkisofs -dvd-video -o &quot;%~dpn1_dvd.iso&quot; &quot;%~dpn1_dvd&quot;
+mkisofs -dvd-video -o &#34;%~dpn1_dvd.iso&#34; &#34;%~dpn1_dvd&#34;
 
-RMDIR /Q /S &quot;%~dpn1_dvd&quot;
-DEL &quot;%~dpn1_dvd.mpeg&quot;
+RMDIR /Q /S &#34;%~dpn1_dvd&#34;
+DEL &#34;%~dpn1_dvd.mpeg&#34;
 
 PAUSE
 </code></pre>

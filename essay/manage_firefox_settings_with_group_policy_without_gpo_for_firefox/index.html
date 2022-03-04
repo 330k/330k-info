@@ -118,22 +118,22 @@ if (!doNotTrack) {
 <li>「autoconfig.js」と「autoconfig.cfg」を公式サイトの例にしたがって記述</li>
 </ul>
 <p>autoconfig.js</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js">pref(<span style="color:#a31515">&#34;general.config.filename&#34;</span>, <span style="color:#a31515">&#34;autoconfig.cfg&#34;</span>);
-pref(<span style="color:#a31515">&#34;general.config.vendor&#34;</span>, <span style="color:#a31515">&#34;autoconfig&#34;</span>);
-pref(<span style="color:#a31515">&#34;general.config.obscure_value&#34;</span>, 0);
-</code></pre></div><p>autoconfig.cfg (ここではFirefoxアカウントによる同期の不許可と、自動アップデートの有効化を設定)</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js">lockPref(<span style="color:#a31515">&#34;loop.enabled&#34;</span>, <span style="color:#00f">false</span>);
-lockPref(<span style="color:#a31515">&#34;services.sync.enabled&#34;</span>, <span style="color:#00f">false</span>);
-lockPref(<span style="color:#a31515">&#34;services.sync.engine.addons&#34;</span>, <span style="color:#00f">false</span>);
-lockPref(<span style="color:#a31515">&#34;services.sync.engine.bookmarks&#34;</span>, <span style="color:#00f">false</span>);
-lockPref(<span style="color:#a31515">&#34;services.sync.engine.history&#34;</span>, <span style="color:#00f">false</span>);
-lockPref(<span style="color:#a31515">&#34;services.sync.engine.passwords&#34;</span>, <span style="color:#00f">false</span>);
-lockPref(<span style="color:#a31515">&#34;services.sync.engine.prefs&#34;</span>, <span style="color:#00f">false</span>);
-lockPref(<span style="color:#a31515">&#34;services.sync.engine.tabs&#34;</span>, <span style="color:#00f">false</span>);
-lockPref(<span style="color:#a31515">&#34;app.update.enabled&#34;</span>, <span style="color:#00f">true</span>);
-lockPref(<span style="color:#a31515">&#34;app.update.auto&#34;</span>, <span style="color:#00f">true</span>);
-lockPref(<span style="color:#a31515">&#34;browser.search.update&#34;</span>, <span style="color:#00f">true</span>);
-</code></pre></div><ul>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span>pref(<span style="color:#a31515">&#34;general.config.filename&#34;</span>, <span style="color:#a31515">&#34;autoconfig.cfg&#34;</span>);
+</span></span><span style="display:flex;"><span>pref(<span style="color:#a31515">&#34;general.config.vendor&#34;</span>, <span style="color:#a31515">&#34;autoconfig&#34;</span>);
+</span></span><span style="display:flex;"><span>pref(<span style="color:#a31515">&#34;general.config.obscure_value&#34;</span>, 0);
+</span></span></code></pre></div><p>autoconfig.cfg (ここではFirefoxアカウントによる同期の不許可と、自動アップデートの有効化を設定)</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span>lockPref(<span style="color:#a31515">&#34;loop.enabled&#34;</span>, <span style="color:#00f">false</span>);
+</span></span><span style="display:flex;"><span>lockPref(<span style="color:#a31515">&#34;services.sync.enabled&#34;</span>, <span style="color:#00f">false</span>);
+</span></span><span style="display:flex;"><span>lockPref(<span style="color:#a31515">&#34;services.sync.engine.addons&#34;</span>, <span style="color:#00f">false</span>);
+</span></span><span style="display:flex;"><span>lockPref(<span style="color:#a31515">&#34;services.sync.engine.bookmarks&#34;</span>, <span style="color:#00f">false</span>);
+</span></span><span style="display:flex;"><span>lockPref(<span style="color:#a31515">&#34;services.sync.engine.history&#34;</span>, <span style="color:#00f">false</span>);
+</span></span><span style="display:flex;"><span>lockPref(<span style="color:#a31515">&#34;services.sync.engine.passwords&#34;</span>, <span style="color:#00f">false</span>);
+</span></span><span style="display:flex;"><span>lockPref(<span style="color:#a31515">&#34;services.sync.engine.prefs&#34;</span>, <span style="color:#00f">false</span>);
+</span></span><span style="display:flex;"><span>lockPref(<span style="color:#a31515">&#34;services.sync.engine.tabs&#34;</span>, <span style="color:#00f">false</span>);
+</span></span><span style="display:flex;"><span>lockPref(<span style="color:#a31515">&#34;app.update.enabled&#34;</span>, <span style="color:#00f">true</span>);
+</span></span><span style="display:flex;"><span>lockPref(<span style="color:#a31515">&#34;app.update.auto&#34;</span>, <span style="color:#00f">true</span>);
+</span></span><span style="display:flex;"><span>lockPref(<span style="color:#a31515">&#34;browser.search.update&#34;</span>, <span style="color:#00f">true</span>);
+</span></span></code></pre></div><ul>
 <li>「autoconfig.js」と「autoconfig.cfg」を一般ユーザが読み取り可能なフォルダに配置
 (例えば「\ドメインコントローラ\SYSVOL\ドメイン名\Deployment」など)</li>
 <li>グループポリシーの「コンピュータの構成」「基本設定」「Windowsの設定」「ファイル」を使い、

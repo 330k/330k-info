@@ -102,18 +102,18 @@ if (!doNotTrack) {
 <h2 id="プレビュー生成の無効化">プレビュー生成の無効化</h2>
 <p>Snap版の場合、NextCloudのCLIコマンドである<code>occ</code>は<code>nextcloud.occ</code>で実行できる。</p>
 <p>なので、プレビュー生成を無効化するには、以下を実行する(要root)。</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">nextcloud.occ config:system:set enable_previews --value false --type=boolean
-</code></pre></div><p>設定が変更されたことを確認。</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">nextcloud.occ config:system:get enable_previews
-</code></pre></div><p>ちなみに、設定情報全体を確認するコマンドは以下。</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">nextcloud.occ config:list
-</code></pre></div><p><code>&quot;enable_previews&quot;: false</code>となっていればOK。</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>nextcloud.occ config:system:set enable_previews --value false --type=boolean
+</span></span></code></pre></div><p>設定が変更されたことを確認。</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>nextcloud.occ config:system:get enable_previews
+</span></span></code></pre></div><p>ちなみに、設定情報全体を確認するコマンドは以下。</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>nextcloud.occ config:list
+</span></span></code></pre></div><p><code>&quot;enable_previews&quot;: false</code>となっていればOK。</p>
 <h2 id="既に生成されたプレビュー画像の削除">既に生成されたプレビュー画像の削除</h2>
 <p>rootで以下を実行。</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">rm -rf /var/snap/nextcloud/common/nextcloud/data/appdata_(インスタンスID)/preview/*
-</code></pre></div><p>念の為、以下のコマンドでプレビュー画像を再生成(上記でプレビュー画像を生成しない設定にしているなら何もしないはず)。</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">nextcloud.occ preview:repair
-</code></pre></div>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>rm -rf /var/snap/nextcloud/common/nextcloud/data/appdata_(インスタンスID)/preview/*
+</span></span></code></pre></div><p>念の為、以下のコマンドでプレビュー画像を再生成(上記でプレビュー画像を生成しない設定にしているなら何もしないはず)。</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>nextcloud.occ preview:repair
+</span></span></code></pre></div>
 		</div>
 		<footer class="post__footer">
 			

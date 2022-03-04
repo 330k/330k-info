@@ -113,147 +113,147 @@ if (!doNotTrack) {
 <p>sendmailのために、今回はssmtpを使って設定してみる。</p>
 <p>postfixのほうが好きな方はそちらで。</p>
 <p>まずはssmtpをインストール。</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo apt install ssmtp
-</code></pre></div><p>設定ファイル(<code>/etc/ssmtp/ssmtp.conf</code>)を編集し、使うメールアカウントに沿って設定箇所を記入。</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">#
-# Config file for sSMTP sendmail
-#
-# The person who gets all mail for userids &lt; 1000
-# Make this empty to disable rewriting.
-root=***@gmail.com
-
-# The place where the mail goes. The actual machine name is required no 
-# MX records are consulted. Commonly mailhosts are named mail.domain.com
-mailhub=smtp.gmail.com:587
-
-# Where will the mail seem to come from?
-rewriteDomain=gmail.com
-
-# The full hostname
-hostname=gmail.com
-
-UseTLS=Yes
-UseSTARTTLS=Yes
-AuthUser=***@gmail.com
-AuthPass=********(生成したアプリパスワード)********
-AuthMethod=LOGIN
-
-# Are users allowed to set their own From: address?
-# YES - Allow the user to specify their own From: address
-# NO - Use the system generated From: address
-FromLineOverride=YES
-</code></pre></div><h2 id="スクリプト本体">スクリプト本体</h2>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo apt install ssmtp
+</span></span></code></pre></div><p>設定ファイル(<code>/etc/ssmtp/ssmtp.conf</code>)を編集し、使うメールアカウントに沿って設定箇所を記入。</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>#
+</span></span><span style="display:flex;"><span># Config file for sSMTP sendmail
+</span></span><span style="display:flex;"><span>#
+</span></span><span style="display:flex;"><span># The person who gets all mail for userids &lt; 1000
+</span></span><span style="display:flex;"><span># Make this empty to disable rewriting.
+</span></span><span style="display:flex;"><span>root=***@gmail.com
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span># The place where the mail goes. The actual machine name is required no 
+</span></span><span style="display:flex;"><span># MX records are consulted. Commonly mailhosts are named mail.domain.com
+</span></span><span style="display:flex;"><span>mailhub=smtp.gmail.com:587
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span># Where will the mail seem to come from?
+</span></span><span style="display:flex;"><span>rewriteDomain=gmail.com
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span># The full hostname
+</span></span><span style="display:flex;"><span>hostname=gmail.com
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>UseTLS=Yes
+</span></span><span style="display:flex;"><span>UseSTARTTLS=Yes
+</span></span><span style="display:flex;"><span>AuthUser=***@gmail.com
+</span></span><span style="display:flex;"><span>AuthPass=********(生成したアプリパスワード)********
+</span></span><span style="display:flex;"><span>AuthMethod=LOGIN
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span># Are users allowed to set their own From: address?
+</span></span><span style="display:flex;"><span># YES - Allow the user to specify their own From: address
+</span></span><span style="display:flex;"><span># NO - Use the system generated From: address
+</span></span><span style="display:flex;"><span>FromLineOverride=YES
+</span></span></code></pre></div><h2 id="スクリプト本体">スクリプト本体</h2>
 <p><code>webchecker.sh</code>という名前で下記の内容を書き込む。</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#00f">#!/bin/bash
-</span><span style="color:#00f"></span>
-SCRIPT_DIR=<span style="color:#00f">$(</span>cd <span style="color:#00f">$(</span>dirname $0<span style="color:#00f">)</span>;pwd<span style="color:#00f">)</span>
-LISTFILE=<span style="color:#a31515">${</span>SCRIPT_DIR<span style="color:#a31515">}</span>/checklist.txt
-DATETIME=<span style="color:#00f">$(</span>date <span style="color:#a31515">&#39;+%Y%M%d_%h%m%s&#39;</span><span style="color:#00f">)</span>
-
-MAILTO=<span style="color:#a31515">&#34;***@gmail.com&#34;</span>
-MAILFROM=<span style="color:#a31515">&#34;***@gmail.com&#34;</span>
-
-curl=/usr/bin/curl
-diff=/usr/bin/diff
-sendmail=/usr/sbin/sendmail
-cut=/usr/bin/cut
-awk=/usr/bin/awk
-
-<span style="color:#008000">#for s in $SITES; do</span>
-cat <span style="color:#a31515">${</span>LISTFILE<span style="color:#a31515">}</span> | <span style="color:#00f">while</span> read s
-<span style="color:#00f">do</span>
-  name=<span style="color:#00f">$(</span>echo $s | $cut -d<span style="color:#a31515">&#39;|&#39;</span> -f 1<span style="color:#00f">)</span>
-  url=<span style="color:#00f">$(</span>echo $s | $cut -d<span style="color:#a31515">&#39;|&#39;</span> -f 2<span style="color:#00f">)</span>
-  begin=<span style="color:#00f">$(</span>echo $s | $cut -d<span style="color:#a31515">&#39;|&#39;</span> -f 3 | sed <span style="color:#a31515">&#39;s|/|\\/|g&#39;</span><span style="color:#00f">)</span>
-  end=<span style="color:#00f">$(</span>echo $s | $cut -d<span style="color:#a31515">&#39;|&#39;</span> -f 4 | sed <span style="color:#a31515">&#39;s|/|\\/|g&#39;</span><span style="color:#00f">)</span>
-  newfile=<span style="color:#a31515">&#34;</span><span style="color:#a31515">${</span>SCRIPT_DIR<span style="color:#a31515">}</span><span style="color:#a31515">/result/</span>$name<span style="color:#a31515">/new.html&#34;</span>
-  oldfile=<span style="color:#a31515">&#34;</span><span style="color:#a31515">${</span>SCRIPT_DIR<span style="color:#a31515">}</span><span style="color:#a31515">/result/</span>$name<span style="color:#a31515">/old.html&#34;</span>
-  newrange=<span style="color:#a31515">&#34;</span><span style="color:#a31515">${</span>SCRIPT_DIR<span style="color:#a31515">}</span><span style="color:#a31515">/result/</span>$name<span style="color:#a31515">/new_range.html&#34;</span>
-  oldrange=<span style="color:#a31515">&#34;</span><span style="color:#a31515">${</span>SCRIPT_DIR<span style="color:#a31515">}</span><span style="color:#a31515">/result/</span>$name<span style="color:#a31515">/old_range.html&#34;</span>
-  errorcount=<span style="color:#a31515">&#34;</span><span style="color:#a31515">${</span>SCRIPT_DIR<span style="color:#a31515">}</span><span style="color:#a31515">/result/</span>$name<span style="color:#a31515">/count.txt&#34;</span>
-
-  <span style="color:#00f">if</span> [[ <span style="color:#a31515">&#34;</span>$name<span style="color:#a31515">&#34;</span> == <span style="color:#a31515">&#34;&#34;</span> ]]; <span style="color:#00f">then</span>
-    <span style="color:#00f">continue</span>
-  <span style="color:#00f">fi</span>
-
-  <span style="color:#008000"># 先頭が&#34;#&#34;の場合はスキップ</span>
-  <span style="color:#00f">if</span> [[ <span style="color:#a31515">&#34;</span><span style="color:#a31515">${</span>name:0:1<span style="color:#a31515">}</span><span style="color:#a31515">&#34;</span> == <span style="color:#a31515">&#34;#&#34;</span> ]]; <span style="color:#00f">then</span>
-    <span style="color:#00f">continue</span>
-  <span style="color:#00f">fi</span>
-
-  echo <span style="color:#a31515">&#34;NAME:    &#34;</span>$name
-  echo <span style="color:#a31515">&#34;  URL:   &#34;</span>$url
-  echo <span style="color:#a31515">&#34;  BEGIN: &#34;</span>$begin
-  echo <span style="color:#a31515">&#34;  END:   &#34;</span>$end
-  echo <span style="color:#a31515">&#34;&#34;</span>
-
-  mkdir -p <span style="color:#a31515">&#34;</span><span style="color:#a31515">${</span>SCRIPT_DIR<span style="color:#a31515">}</span><span style="color:#a31515">/result/</span>$name<span style="color:#a31515">/&#34;</span>
-
-  statuscode=<span style="color:#00f">$(</span>$curl <span style="color:#a31515">&#34;</span>$url<span style="color:#a31515">&#34;</span> -o <span style="color:#a31515">&#34;</span><span style="color:#a31515">${</span>newfile<span style="color:#a31515">}</span><span style="color:#a31515">&#34;</span> -w <span style="color:#a31515">&#39;%{http_code}\n&#39;</span> -s<span style="color:#00f">)</span>
-
-  <span style="color:#00f">if</span> [[ <span style="color:#a31515">&#34;</span><span style="color:#a31515">${</span>statuscode<span style="color:#a31515">}</span><span style="color:#a31515">&#34;</span> != <span style="color:#a31515">&#34;200&#34;</span> ]]; <span style="color:#00f">then</span>
-    echo <span style="color:#a31515">&#34;Status Code Error&#34;</span>
-    count=<span style="color:#00f">$(</span>cat <span style="color:#a31515">&#34;</span><span style="color:#a31515">${</span>errorcount<span style="color:#a31515">}</span><span style="color:#a31515">&#34;</span><span style="color:#00f">)</span>
-    echo <span style="color:#00f">$((</span>++count<span style="color:#00f">))</span> &gt; <span style="color:#a31515">&#34;</span><span style="color:#a31515">${</span>errorcount<span style="color:#a31515">}</span><span style="color:#a31515">&#34;</span>
-
-    <span style="color:#00f">if</span> [[ <span style="color:#a31515">${</span>count<span style="color:#a31515">}</span> -eq 3 ]]; <span style="color:#00f">then</span>
-      tmp=<span style="color:#00f">$(</span>mktemp<span style="color:#00f">)</span>
-      echo <span style="color:#a31515">&#34;To: </span><span style="color:#a31515">${</span>MAILTO<span style="color:#a31515">}</span><span style="color:#a31515">&#34;</span> &gt; $tmp
-      echo <span style="color:#a31515">&#34;From: </span><span style="color:#a31515">${</span>MAILFROM<span style="color:#a31515">}</span><span style="color:#a31515">&#34;</span> &gt;&gt; $tmp
-      echo <span style="color:#a31515">&#34;Subject: </span><span style="color:#a31515">${</span>name<span style="color:#a31515">}</span><span style="color:#a31515"> Error&#34;</span> &gt;&gt; $tmp
-      echo <span style="color:#a31515">&#34;&#34;</span> &gt;&gt; $tmp
-      echo <span style="color:#a31515">&#34;</span><span style="color:#a31515">${</span>url<span style="color:#a31515">}</span><span style="color:#a31515">&#34;</span> &gt;&gt; $tmp
-
-      $sendmail -t &lt; $tmp
-      echo -n <span style="color:#a31515">&#34;MAIL Sent&#34;</span>
-      rm $tmp
-    <span style="color:#00f">fi</span>
-
-  <span style="color:#00f">elif</span> [[ -f <span style="color:#a31515">&#34;</span>$oldfile<span style="color:#a31515">&#34;</span> ]]; <span style="color:#00f">then</span>
-    cat <span style="color:#a31515">&#34;</span>$oldfile<span style="color:#a31515">&#34;</span> | $awk <span style="color:#a31515">&#34;/</span><span style="color:#a31515">${</span>begin<span style="color:#a31515">}</span><span style="color:#a31515">/,/</span><span style="color:#a31515">${</span>end<span style="color:#a31515">}</span><span style="color:#a31515">/&#34;</span> &gt; <span style="color:#a31515">&#34;</span><span style="color:#a31515">${</span>oldrange<span style="color:#a31515">}</span><span style="color:#a31515">&#34;</span>
-    cat <span style="color:#a31515">&#34;</span>$newfile<span style="color:#a31515">&#34;</span> | $awk <span style="color:#a31515">&#34;/</span><span style="color:#a31515">${</span>begin<span style="color:#a31515">}</span><span style="color:#a31515">/,/</span><span style="color:#a31515">${</span>end<span style="color:#a31515">}</span><span style="color:#a31515">/&#34;</span> &gt; <span style="color:#a31515">&#34;</span><span style="color:#a31515">${</span>newrange<span style="color:#a31515">}</span><span style="color:#a31515">&#34;</span>
-    echo <span style="color:#a31515">&#39;0&#39;</span> &gt; <span style="color:#a31515">&#34;</span><span style="color:#a31515">${</span>errorcount<span style="color:#a31515">}</span><span style="color:#a31515">&#34;</span>
-
-    <span style="color:#00f">if</span> [[ ! -s <span style="color:#a31515">&#34;</span><span style="color:#a31515">${</span>newrange<span style="color:#a31515">}</span><span style="color:#a31515">&#34;</span> ]];<span style="color:#00f">then</span>
-      cp <span style="color:#a31515">&#34;</span><span style="color:#a31515">${</span>newfile<span style="color:#a31515">}</span><span style="color:#a31515">&#34;</span> <span style="color:#a31515">&#34;</span><span style="color:#a31515">${</span>newfile<span style="color:#a31515">}</span><span style="color:#a31515">&#34;</span>.<span style="color:#00f">$(</span>date <span style="color:#a31515">&#39;+%Y%m%d%H%M&#39;</span><span style="color:#00f">)</span>
-    <span style="color:#00f">fi</span>
-    <span style="color:#00f">if</span> ! $diff <span style="color:#a31515">&#34;</span><span style="color:#a31515">${</span>oldrange<span style="color:#a31515">}</span><span style="color:#a31515">&#34;</span> <span style="color:#a31515">&#34;</span><span style="color:#a31515">${</span>newrange<span style="color:#a31515">}</span><span style="color:#a31515">&#34;</span> &gt;/dev/null 2&gt;&amp;1; <span style="color:#00f">then</span>
-      echo -n <span style="color:#a31515">&#34;CHANGED &#34;</span>
-      tmp=<span style="color:#00f">$(</span>mktemp<span style="color:#00f">)</span>
-      echo <span style="color:#a31515">&#34;To: </span><span style="color:#a31515">${</span>MAILTO<span style="color:#a31515">}</span><span style="color:#a31515">&#34;</span> &gt; $tmp
-      echo <span style="color:#a31515">&#34;From: </span><span style="color:#a31515">${</span>MAILFROM<span style="color:#a31515">}</span><span style="color:#a31515">&#34;</span> &gt;&gt; $tmp
-      echo <span style="color:#a31515">&#34;Subject: </span><span style="color:#a31515">${</span>name<span style="color:#a31515">}</span><span style="color:#a31515"> Changed&#34;</span> &gt;&gt; $tmp
-      echo <span style="color:#a31515">&#34;&#34;</span> &gt;&gt; $tmp
-      echo <span style="color:#a31515">&#34;</span><span style="color:#a31515">${</span>url<span style="color:#a31515">}</span><span style="color:#a31515">&#34;</span> &gt;&gt; $tmp
-      echo <span style="color:#a31515">&#34;&#34;</span> &gt;&gt; $tmp
-      $diff <span style="color:#a31515">&#34;</span><span style="color:#a31515">${</span>oldrange<span style="color:#a31515">}</span><span style="color:#a31515">&#34;</span> <span style="color:#a31515">&#34;</span><span style="color:#a31515">${</span>newrange<span style="color:#a31515">}</span><span style="color:#a31515">&#34;</span> -u &gt;&gt; $tmp
-
-      $sendmail -t &lt; $tmp
-      echo -n <span style="color:#a31515">&#34;MAIL Sent&#34;</span>
-      rm $tmp
-
-      cp <span style="color:#a31515">&#34;</span><span style="color:#a31515">${</span>newfile<span style="color:#a31515">}</span><span style="color:#a31515">&#34;</span> <span style="color:#a31515">&#34;</span><span style="color:#a31515">${</span>oldfile<span style="color:#a31515">}</span><span style="color:#a31515">&#34;</span>
-    <span style="color:#00f">else</span>
-      echo -n <span style="color:#a31515">&#34;NO CHANGED &#34;</span>
-    <span style="color:#00f">fi</span>
-  <span style="color:#00f">else</span>
-    echo -n <span style="color:#a31515">&#34;NEW &#34;</span>
-    mv <span style="color:#a31515">&#34;</span><span style="color:#a31515">${</span>newfile<span style="color:#a31515">}</span><span style="color:#a31515">&#34;</span> <span style="color:#a31515">&#34;</span><span style="color:#a31515">${</span>oldfile<span style="color:#a31515">}</span><span style="color:#a31515">&#34;</span>
-  <span style="color:#00f">fi</span>
-  echo <span style="color:#a31515">&#34;&#34;</span>
-<span style="color:#00f">done</span>
-</code></pre></div><p>実行権限を付与。</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">chmod +x webchecker.sh
-</code></pre></div><h2 id="設定ファイル">設定ファイル</h2>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#00f">#!/bin/bash
+</span></span></span><span style="display:flex;"><span><span style="color:#00f"></span>
+</span></span><span style="display:flex;"><span>SCRIPT_DIR=<span style="color:#00f">$(</span>cd <span style="color:#00f">$(</span>dirname $0<span style="color:#00f">)</span>;pwd<span style="color:#00f">)</span>
+</span></span><span style="display:flex;"><span>LISTFILE=<span style="color:#a31515">${</span>SCRIPT_DIR<span style="color:#a31515">}</span>/checklist.txt
+</span></span><span style="display:flex;"><span>DATETIME=<span style="color:#00f">$(</span>date <span style="color:#a31515">&#39;+%Y%M%d_%h%m%s&#39;</span><span style="color:#00f">)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>MAILTO=<span style="color:#a31515">&#34;***@gmail.com&#34;</span>
+</span></span><span style="display:flex;"><span>MAILFROM=<span style="color:#a31515">&#34;***@gmail.com&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>curl=/usr/bin/curl
+</span></span><span style="display:flex;"><span>diff=/usr/bin/diff
+</span></span><span style="display:flex;"><span>sendmail=/usr/sbin/sendmail
+</span></span><span style="display:flex;"><span>cut=/usr/bin/cut
+</span></span><span style="display:flex;"><span>awk=/usr/bin/awk
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#008000">#for s in $SITES; do</span>
+</span></span><span style="display:flex;"><span>cat <span style="color:#a31515">${</span>LISTFILE<span style="color:#a31515">}</span> | <span style="color:#00f">while</span> read s
+</span></span><span style="display:flex;"><span><span style="color:#00f">do</span>
+</span></span><span style="display:flex;"><span>  name=<span style="color:#00f">$(</span>echo $s | $cut -d<span style="color:#a31515">&#39;|&#39;</span> -f 1<span style="color:#00f">)</span>
+</span></span><span style="display:flex;"><span>  url=<span style="color:#00f">$(</span>echo $s | $cut -d<span style="color:#a31515">&#39;|&#39;</span> -f 2<span style="color:#00f">)</span>
+</span></span><span style="display:flex;"><span>  begin=<span style="color:#00f">$(</span>echo $s | $cut -d<span style="color:#a31515">&#39;|&#39;</span> -f 3 | sed <span style="color:#a31515">&#39;s|/|\\/|g&#39;</span><span style="color:#00f">)</span>
+</span></span><span style="display:flex;"><span>  end=<span style="color:#00f">$(</span>echo $s | $cut -d<span style="color:#a31515">&#39;|&#39;</span> -f 4 | sed <span style="color:#a31515">&#39;s|/|\\/|g&#39;</span><span style="color:#00f">)</span>
+</span></span><span style="display:flex;"><span>  newfile=<span style="color:#a31515">&#34;</span><span style="color:#a31515">${</span>SCRIPT_DIR<span style="color:#a31515">}</span><span style="color:#a31515">/result/</span>$name<span style="color:#a31515">/new.html&#34;</span>
+</span></span><span style="display:flex;"><span>  oldfile=<span style="color:#a31515">&#34;</span><span style="color:#a31515">${</span>SCRIPT_DIR<span style="color:#a31515">}</span><span style="color:#a31515">/result/</span>$name<span style="color:#a31515">/old.html&#34;</span>
+</span></span><span style="display:flex;"><span>  newrange=<span style="color:#a31515">&#34;</span><span style="color:#a31515">${</span>SCRIPT_DIR<span style="color:#a31515">}</span><span style="color:#a31515">/result/</span>$name<span style="color:#a31515">/new_range.html&#34;</span>
+</span></span><span style="display:flex;"><span>  oldrange=<span style="color:#a31515">&#34;</span><span style="color:#a31515">${</span>SCRIPT_DIR<span style="color:#a31515">}</span><span style="color:#a31515">/result/</span>$name<span style="color:#a31515">/old_range.html&#34;</span>
+</span></span><span style="display:flex;"><span>  errorcount=<span style="color:#a31515">&#34;</span><span style="color:#a31515">${</span>SCRIPT_DIR<span style="color:#a31515">}</span><span style="color:#a31515">/result/</span>$name<span style="color:#a31515">/count.txt&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#00f">if</span> [[ <span style="color:#a31515">&#34;</span>$name<span style="color:#a31515">&#34;</span> == <span style="color:#a31515">&#34;&#34;</span> ]]; <span style="color:#00f">then</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#00f">continue</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#00f">fi</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#008000"># 先頭が&#34;#&#34;の場合はスキップ</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#00f">if</span> [[ <span style="color:#a31515">&#34;</span><span style="color:#a31515">${</span>name:0:1<span style="color:#a31515">}</span><span style="color:#a31515">&#34;</span> == <span style="color:#a31515">&#34;#&#34;</span> ]]; <span style="color:#00f">then</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#00f">continue</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#00f">fi</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  echo <span style="color:#a31515">&#34;NAME:    &#34;</span>$name
+</span></span><span style="display:flex;"><span>  echo <span style="color:#a31515">&#34;  URL:   &#34;</span>$url
+</span></span><span style="display:flex;"><span>  echo <span style="color:#a31515">&#34;  BEGIN: &#34;</span>$begin
+</span></span><span style="display:flex;"><span>  echo <span style="color:#a31515">&#34;  END:   &#34;</span>$end
+</span></span><span style="display:flex;"><span>  echo <span style="color:#a31515">&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  mkdir -p <span style="color:#a31515">&#34;</span><span style="color:#a31515">${</span>SCRIPT_DIR<span style="color:#a31515">}</span><span style="color:#a31515">/result/</span>$name<span style="color:#a31515">/&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  statuscode=<span style="color:#00f">$(</span>$curl <span style="color:#a31515">&#34;</span>$url<span style="color:#a31515">&#34;</span> -o <span style="color:#a31515">&#34;</span><span style="color:#a31515">${</span>newfile<span style="color:#a31515">}</span><span style="color:#a31515">&#34;</span> -w <span style="color:#a31515">&#39;%{http_code}\n&#39;</span> -s<span style="color:#00f">)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#00f">if</span> [[ <span style="color:#a31515">&#34;</span><span style="color:#a31515">${</span>statuscode<span style="color:#a31515">}</span><span style="color:#a31515">&#34;</span> != <span style="color:#a31515">&#34;200&#34;</span> ]]; <span style="color:#00f">then</span>
+</span></span><span style="display:flex;"><span>    echo <span style="color:#a31515">&#34;Status Code Error&#34;</span>
+</span></span><span style="display:flex;"><span>    count=<span style="color:#00f">$(</span>cat <span style="color:#a31515">&#34;</span><span style="color:#a31515">${</span>errorcount<span style="color:#a31515">}</span><span style="color:#a31515">&#34;</span><span style="color:#00f">)</span>
+</span></span><span style="display:flex;"><span>    echo <span style="color:#00f">$((</span>++count<span style="color:#00f">))</span> &gt; <span style="color:#a31515">&#34;</span><span style="color:#a31515">${</span>errorcount<span style="color:#a31515">}</span><span style="color:#a31515">&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#00f">if</span> [[ <span style="color:#a31515">${</span>count<span style="color:#a31515">}</span> -eq 3 ]]; <span style="color:#00f">then</span>
+</span></span><span style="display:flex;"><span>      tmp=<span style="color:#00f">$(</span>mktemp<span style="color:#00f">)</span>
+</span></span><span style="display:flex;"><span>      echo <span style="color:#a31515">&#34;To: </span><span style="color:#a31515">${</span>MAILTO<span style="color:#a31515">}</span><span style="color:#a31515">&#34;</span> &gt; $tmp
+</span></span><span style="display:flex;"><span>      echo <span style="color:#a31515">&#34;From: </span><span style="color:#a31515">${</span>MAILFROM<span style="color:#a31515">}</span><span style="color:#a31515">&#34;</span> &gt;&gt; $tmp
+</span></span><span style="display:flex;"><span>      echo <span style="color:#a31515">&#34;Subject: </span><span style="color:#a31515">${</span>name<span style="color:#a31515">}</span><span style="color:#a31515"> Error&#34;</span> &gt;&gt; $tmp
+</span></span><span style="display:flex;"><span>      echo <span style="color:#a31515">&#34;&#34;</span> &gt;&gt; $tmp
+</span></span><span style="display:flex;"><span>      echo <span style="color:#a31515">&#34;</span><span style="color:#a31515">${</span>url<span style="color:#a31515">}</span><span style="color:#a31515">&#34;</span> &gt;&gt; $tmp
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      $sendmail -t &lt; $tmp
+</span></span><span style="display:flex;"><span>      echo -n <span style="color:#a31515">&#34;MAIL Sent&#34;</span>
+</span></span><span style="display:flex;"><span>      rm $tmp
+</span></span><span style="display:flex;"><span>    <span style="color:#00f">fi</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#00f">elif</span> [[ -f <span style="color:#a31515">&#34;</span>$oldfile<span style="color:#a31515">&#34;</span> ]]; <span style="color:#00f">then</span>
+</span></span><span style="display:flex;"><span>    cat <span style="color:#a31515">&#34;</span>$oldfile<span style="color:#a31515">&#34;</span> | $awk <span style="color:#a31515">&#34;/</span><span style="color:#a31515">${</span>begin<span style="color:#a31515">}</span><span style="color:#a31515">/,/</span><span style="color:#a31515">${</span>end<span style="color:#a31515">}</span><span style="color:#a31515">/&#34;</span> &gt; <span style="color:#a31515">&#34;</span><span style="color:#a31515">${</span>oldrange<span style="color:#a31515">}</span><span style="color:#a31515">&#34;</span>
+</span></span><span style="display:flex;"><span>    cat <span style="color:#a31515">&#34;</span>$newfile<span style="color:#a31515">&#34;</span> | $awk <span style="color:#a31515">&#34;/</span><span style="color:#a31515">${</span>begin<span style="color:#a31515">}</span><span style="color:#a31515">/,/</span><span style="color:#a31515">${</span>end<span style="color:#a31515">}</span><span style="color:#a31515">/&#34;</span> &gt; <span style="color:#a31515">&#34;</span><span style="color:#a31515">${</span>newrange<span style="color:#a31515">}</span><span style="color:#a31515">&#34;</span>
+</span></span><span style="display:flex;"><span>    echo <span style="color:#a31515">&#39;0&#39;</span> &gt; <span style="color:#a31515">&#34;</span><span style="color:#a31515">${</span>errorcount<span style="color:#a31515">}</span><span style="color:#a31515">&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#00f">if</span> [[ ! -s <span style="color:#a31515">&#34;</span><span style="color:#a31515">${</span>newrange<span style="color:#a31515">}</span><span style="color:#a31515">&#34;</span> ]];<span style="color:#00f">then</span>
+</span></span><span style="display:flex;"><span>      cp <span style="color:#a31515">&#34;</span><span style="color:#a31515">${</span>newfile<span style="color:#a31515">}</span><span style="color:#a31515">&#34;</span> <span style="color:#a31515">&#34;</span><span style="color:#a31515">${</span>newfile<span style="color:#a31515">}</span><span style="color:#a31515">&#34;</span>.<span style="color:#00f">$(</span>date <span style="color:#a31515">&#39;+%Y%m%d%H%M&#39;</span><span style="color:#00f">)</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#00f">fi</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#00f">if</span> ! $diff <span style="color:#a31515">&#34;</span><span style="color:#a31515">${</span>oldrange<span style="color:#a31515">}</span><span style="color:#a31515">&#34;</span> <span style="color:#a31515">&#34;</span><span style="color:#a31515">${</span>newrange<span style="color:#a31515">}</span><span style="color:#a31515">&#34;</span> &gt;/dev/null 2&gt;&amp;1; <span style="color:#00f">then</span>
+</span></span><span style="display:flex;"><span>      echo -n <span style="color:#a31515">&#34;CHANGED &#34;</span>
+</span></span><span style="display:flex;"><span>      tmp=<span style="color:#00f">$(</span>mktemp<span style="color:#00f">)</span>
+</span></span><span style="display:flex;"><span>      echo <span style="color:#a31515">&#34;To: </span><span style="color:#a31515">${</span>MAILTO<span style="color:#a31515">}</span><span style="color:#a31515">&#34;</span> &gt; $tmp
+</span></span><span style="display:flex;"><span>      echo <span style="color:#a31515">&#34;From: </span><span style="color:#a31515">${</span>MAILFROM<span style="color:#a31515">}</span><span style="color:#a31515">&#34;</span> &gt;&gt; $tmp
+</span></span><span style="display:flex;"><span>      echo <span style="color:#a31515">&#34;Subject: </span><span style="color:#a31515">${</span>name<span style="color:#a31515">}</span><span style="color:#a31515"> Changed&#34;</span> &gt;&gt; $tmp
+</span></span><span style="display:flex;"><span>      echo <span style="color:#a31515">&#34;&#34;</span> &gt;&gt; $tmp
+</span></span><span style="display:flex;"><span>      echo <span style="color:#a31515">&#34;</span><span style="color:#a31515">${</span>url<span style="color:#a31515">}</span><span style="color:#a31515">&#34;</span> &gt;&gt; $tmp
+</span></span><span style="display:flex;"><span>      echo <span style="color:#a31515">&#34;&#34;</span> &gt;&gt; $tmp
+</span></span><span style="display:flex;"><span>      $diff <span style="color:#a31515">&#34;</span><span style="color:#a31515">${</span>oldrange<span style="color:#a31515">}</span><span style="color:#a31515">&#34;</span> <span style="color:#a31515">&#34;</span><span style="color:#a31515">${</span>newrange<span style="color:#a31515">}</span><span style="color:#a31515">&#34;</span> -u &gt;&gt; $tmp
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      $sendmail -t &lt; $tmp
+</span></span><span style="display:flex;"><span>      echo -n <span style="color:#a31515">&#34;MAIL Sent&#34;</span>
+</span></span><span style="display:flex;"><span>      rm $tmp
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      cp <span style="color:#a31515">&#34;</span><span style="color:#a31515">${</span>newfile<span style="color:#a31515">}</span><span style="color:#a31515">&#34;</span> <span style="color:#a31515">&#34;</span><span style="color:#a31515">${</span>oldfile<span style="color:#a31515">}</span><span style="color:#a31515">&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#00f">else</span>
+</span></span><span style="display:flex;"><span>      echo -n <span style="color:#a31515">&#34;NO CHANGED &#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#00f">fi</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#00f">else</span>
+</span></span><span style="display:flex;"><span>    echo -n <span style="color:#a31515">&#34;NEW &#34;</span>
+</span></span><span style="display:flex;"><span>    mv <span style="color:#a31515">&#34;</span><span style="color:#a31515">${</span>newfile<span style="color:#a31515">}</span><span style="color:#a31515">&#34;</span> <span style="color:#a31515">&#34;</span><span style="color:#a31515">${</span>oldfile<span style="color:#a31515">}</span><span style="color:#a31515">&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#00f">fi</span>
+</span></span><span style="display:flex;"><span>  echo <span style="color:#a31515">&#34;&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#00f">done</span>
+</span></span></code></pre></div><p>実行権限を付与。</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>chmod +x webchecker.sh
+</span></span></code></pre></div><h2 id="設定ファイル">設定ファイル</h2>
 <p><code>checklist.txt</code>という名前で監視対象のURLと範囲を設定するファイルを<code>webchecker.sh</code>と同じディレクトリに作成。</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">BRM229|https://randonneurs.tokyo/?p=9950|&lt;header&gt;|&lt;footer&gt;
-BRM320|https://audax-kinki.com/20brm0320_600/|&lt;section&gt;|&lt;footer&gt;
-BRM328|https://randonneurs.tokyo/?p=9960|&lt;header&gt;|&lt;footer&gt;
-BRM411|http://www.aj-kanagawa.org/brmkako-no-kaisai/brm2020/brm411-300|&lt;td id=&#34;sites-canvas-wrapper&#34;&gt;|DNS連絡フォーム&lt;/h2&gt;
-BRM418|http://www.vcraoba.yokohama/2020/2020brm418.html|&lt;section&gt;|&lt;/section&gt;
-RM430|https://randonneurs.tokyo/?p=9599|&lt;header&gt;|&lt;footer&gt;
-RM430-Cue|https://randonneurs.tokyo/?p=11738|&lt;header&gt;|&lt;footer&gt;
-</code></pre></div><p>次の書式で入力。</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>BRM229|https://randonneurs.tokyo/?p=9950|&lt;header&gt;|&lt;footer&gt;
+</span></span><span style="display:flex;"><span>BRM320|https://audax-kinki.com/20brm0320_600/|&lt;section&gt;|&lt;footer&gt;
+</span></span><span style="display:flex;"><span>BRM328|https://randonneurs.tokyo/?p=9960|&lt;header&gt;|&lt;footer&gt;
+</span></span><span style="display:flex;"><span>BRM411|http://www.aj-kanagawa.org/brmkako-no-kaisai/brm2020/brm411-300|&lt;td id=&#34;sites-canvas-wrapper&#34;&gt;|DNS連絡フォーム&lt;/h2&gt;
+</span></span><span style="display:flex;"><span>BRM418|http://www.vcraoba.yokohama/2020/2020brm418.html|&lt;section&gt;|&lt;/section&gt;
+</span></span><span style="display:flex;"><span>RM430|https://randonneurs.tokyo/?p=9599|&lt;header&gt;|&lt;footer&gt;
+</span></span><span style="display:flex;"><span>RM430-Cue|https://randonneurs.tokyo/?p=11738|&lt;header&gt;|&lt;footer&gt;
+</span></span></code></pre></div><p>次の書式で入力。</p>
 <ul>
 <li>1行につき1つの監視対象を記入</li>
 <li>区切り文字は「|」(パイプ記号) ※URLに使われそうにない文字を適当に選定した</li>
@@ -268,32 +268,32 @@ RM430-Cue|https://randonneurs.tokyo/?p=11738|&lt;header&gt;|&lt;footer&gt;
 </ul>
 <h2 id="動作確認">動作確認</h2>
 <p>bash上で</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">./webchecker.sh
-</code></pre></div><p>とすると、初回は「NEW」、2回目以降で変更がなければ「NO CHANGED」と表示される。</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>./webchecker.sh
+</span></span></code></pre></div><p>とすると、初回は「NEW」、2回目以降で変更がなければ「NO CHANGED」と表示される。</p>
 <p>2回目以降で前回取得時から変更があれば「CHANGED」と表示され、メールが届くはず。</p>
 <p>なお、正常に取得できなかった時は3回目にメールするようにした(1回だと結構誤検知が発生した)。</p>
 <h2 id="cronの設定">cronの設定</h2>
 <p>あとは<code>cron</code>で定期的に実行されるようにする。</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">crontab -e
-</code></pre></div><p>5分おきに実行するなら下記のようにする。</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">*/5 * * * * /home/ubuntu/webchecker/webchecker.sh &gt; /dev/null 2&gt;&amp;1
-</code></pre></div><h2 id="実行例">実行例</h2>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>crontab -e
+</span></span></code></pre></div><p>5分おきに実行するなら下記のようにする。</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>*/5 * * * * /home/ubuntu/webchecker/webchecker.sh &gt; /dev/null 2&gt;&amp;1
+</span></span></code></pre></div><h2 id="実行例">実行例</h2>
 <p>あとは設定がうまくできていれば、次のようなメールが届く。</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">https://randonneurs.tokyo/?p=9950
-
---- /home/ubuntu/webchecker/result/BRM229/old_range.html        2020-02-28 09:55:01.681675366 +0000
-+++ /home/ubuntu/webchecker/result/BRM229/new_range.html        2020-02-28 09:55:01.685675416 +0000
-@@ -20,7 +20,8 @@
-
-
-   &lt;div id=&#34;the-content&#34; class=&#34;entry-content&#34;&gt;
--  &lt;p&gt;&lt;span style=&#34;color: #ff0000;&#34;&gt;&lt;span class=&#34;red&#34;&gt;【お知らせ/2月24日追記】&lt;/span&gt;&lt;br /&gt;
-+  &lt;p&gt;&lt;span style=&#34;color: #ff0000;&#34;&gt;&lt;strong&gt;※BRM229東京300ウルトラオレンヂの開催は延期いたしました。&lt;/strong&gt;&lt;/span&gt;&lt;/p&gt;
-+&lt;p&gt;&lt;span style=&#34;color: #ff0000;&#34;&gt;&lt;span class=&#34;red&#34;&gt;【お知らせ/2月24日追記】&lt;/span&gt;&lt;br /&gt;
- 試走の結果、国135号の渋滞が想定以上であったためPC3　LAWSON伊東渚町店を通過チェックに変更します。最新のキューシート(V1.1)にも反映しましたのでご確認ください。&lt;br /&gt;
- 特に復路の熱川温泉以降は側溝に蓋のない状態となりますので十分に注意してください。&lt;/span&gt;&lt;/p&gt;
- &lt;p&gt;&lt;span style=&#34;color: #000000;&#34;&gt;ゴール受付場所が変更になります。概要欄の変更点を確認の上でご参加ください。&lt;/span&gt;&lt;/p&gt;
-</code></pre></div><p><code>diff</code>の内容も本文に入れることで、どこが更新されたのかを分かりやすくした。</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>https://randonneurs.tokyo/?p=9950
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>--- /home/ubuntu/webchecker/result/BRM229/old_range.html        2020-02-28 09:55:01.681675366 +0000
+</span></span><span style="display:flex;"><span>+++ /home/ubuntu/webchecker/result/BRM229/new_range.html        2020-02-28 09:55:01.685675416 +0000
+</span></span><span style="display:flex;"><span>@@ -20,7 +20,8 @@
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>   &lt;div id=&#34;the-content&#34; class=&#34;entry-content&#34;&gt;
+</span></span><span style="display:flex;"><span>-  &lt;p&gt;&lt;span style=&#34;color: #ff0000;&#34;&gt;&lt;span class=&#34;red&#34;&gt;【お知らせ/2月24日追記】&lt;/span&gt;&lt;br /&gt;
+</span></span><span style="display:flex;"><span>+  &lt;p&gt;&lt;span style=&#34;color: #ff0000;&#34;&gt;&lt;strong&gt;※BRM229東京300ウルトラオレンヂの開催は延期いたしました。&lt;/strong&gt;&lt;/span&gt;&lt;/p&gt;
+</span></span><span style="display:flex;"><span>+&lt;p&gt;&lt;span style=&#34;color: #ff0000;&#34;&gt;&lt;span class=&#34;red&#34;&gt;【お知らせ/2月24日追記】&lt;/span&gt;&lt;br /&gt;
+</span></span><span style="display:flex;"><span> 試走の結果、国135号の渋滞が想定以上であったためPC3　LAWSON伊東渚町店を通過チェックに変更します。最新のキューシート(V1.1)にも反映しましたのでご確認ください。&lt;br /&gt;
+</span></span><span style="display:flex;"><span> 特に復路の熱川温泉以降は側溝に蓋のない状態となりますので十分に注意してください。&lt;/span&gt;&lt;/p&gt;
+</span></span><span style="display:flex;"><span> &lt;p&gt;&lt;span style=&#34;color: #000000;&#34;&gt;ゴール受付場所が変更になります。概要欄の変更点を確認の上でご参加ください。&lt;/span&gt;&lt;/p&gt;
+</span></span></code></pre></div><p><code>diff</code>の内容も本文に入れることで、どこが更新されたのかを分かりやすくした。</p>
 		</div>
 		<footer class="post__footer">
 			

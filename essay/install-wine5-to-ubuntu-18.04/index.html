@@ -94,64 +94,64 @@ if (!doNotTrack) {
 		</header><div class="content post__content clearfix">
 			<p>WINE 5.0.0がリリースされたというので、Ubuntu 18.04.3 LTSにインストールしようとしたら、ちょっとハマったので備忘録。</p>
 <p>もとはUbuntu標準リポジトリからインストールしていたバージョンがインストールされていた。</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ wine --version
-wine-3.0 (Ubuntu 3.0-1ubuntu1)
-</code></pre></div><p>まずは<a href="https://wiki.winehq.org/Ubuntu">WineHQ</a>にある手順通りに</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo dpkg --add-architecture i386 
-wget -nc https://dl.winehq.org/wine-builds/winehq.key
-sudo apt-key add winehq.key
-sudo apt-add-repository <span style="color:#a31515">&#39;deb https://dl.winehq.org/wine-builds/ubuntu/ bionic main&#39;</span>
-rm winehq.key
-
-sudo apt update
-sudo apt install --install-recommends winehq-stable
-</code></pre></div><p>としたところ、</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">パッケージリストを読み込んでいます... 完了
-依存関係ツリーを作成しています                
-状態情報を読み取っています... 完了
-インストールすることができないパッケージがありました。おそらく、あり得
-ない状況を要求したか、(不安定版ディストリビューションを使用しているの
-であれば) 必要なパッケージがまだ作成されていなかったり Incoming から移
-動されていないことが考えられます。
-以下の情報がこの問題を解決するために役立つかもしれません:
-
-以下のパッケージには満たせない依存関係があります:
- winehq-stable : 依存: wine-stable (= 5.0.0~bionic)
-E: 問題を解決することができません。壊れた変更禁止パッケージがあります。
-</code></pre></div><p>というエラーが発生し、インストールできなかった。</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ wine --version
+</span></span><span style="display:flex;"><span>wine-3.0 (Ubuntu 3.0-1ubuntu1)
+</span></span></code></pre></div><p>まずは<a href="https://wiki.winehq.org/Ubuntu">WineHQ</a>にある手順通りに</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo dpkg --add-architecture i386 
+</span></span><span style="display:flex;"><span>wget -nc https://dl.winehq.org/wine-builds/winehq.key
+</span></span><span style="display:flex;"><span>sudo apt-key add winehq.key
+</span></span><span style="display:flex;"><span>sudo apt-add-repository <span style="color:#a31515">&#39;deb https://dl.winehq.org/wine-builds/ubuntu/ bionic main&#39;</span>
+</span></span><span style="display:flex;"><span>rm winehq.key
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>sudo apt update
+</span></span><span style="display:flex;"><span>sudo apt install --install-recommends winehq-stable
+</span></span></code></pre></div><p>としたところ、</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>パッケージリストを読み込んでいます... 完了
+</span></span><span style="display:flex;"><span>依存関係ツリーを作成しています                
+</span></span><span style="display:flex;"><span>状態情報を読み取っています... 完了
+</span></span><span style="display:flex;"><span>インストールすることができないパッケージがありました。おそらく、あり得
+</span></span><span style="display:flex;"><span>ない状況を要求したか、(不安定版ディストリビューションを使用しているの
+</span></span><span style="display:flex;"><span>であれば) 必要なパッケージがまだ作成されていなかったり Incoming から移
+</span></span><span style="display:flex;"><span>動されていないことが考えられます。
+</span></span><span style="display:flex;"><span>以下の情報がこの問題を解決するために役立つかもしれません:
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>以下のパッケージには満たせない依存関係があります:
+</span></span><span style="display:flex;"><span> winehq-stable : 依存: wine-stable (= 5.0.0~bionic)
+</span></span><span style="display:flex;"><span>E: 問題を解決することができません。壊れた変更禁止パッケージがあります。
+</span></span></code></pre></div><p>というエラーが発生し、インストールできなかった。</p>
 <p>しかし、WineHQの上の方に</p>
 <p>「Beginning with Wine 4.5, the wine-devel and wine-staging packages require libfaudio0 as a dependency. Beginning with Wine 5.0.0, the wine-stable packages will also require it. FAudio packages can be downloaded from the OBS for Ubuntu 18.04. See <a href="https://forum.winehq.org/viewtopic.php?f=8&amp;t=32192">https://forum.winehq.org/viewtopic.php?f=8&amp;t=32192</a> for details. (FAudio packages for Ubuntu 19.10 and later are in the distro&rsquo;s universe repository.)」</p>
 <p>という記述を発見(結構目立つように書かれているのに見落としていた)。</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">wget https://download.opensuse.org/repositories/Emulators:/Wine:/Debian/xUbuntu_19.04/Release.key
-sudo apt-key add Release.key
-sudo apt-add-repository <span style="color:#a31515">&#39;deb https://download.opensuse.org/repositories/Emulators:/Wine:/Debian/xUbuntu_18.04/ ./&#39;</span>
-
-sudo apt update
-
-sudo apt install --install-recommends winehq-stable
-</code></pre></div><p>その結果・・・</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">パッケージリストを読み込んでいます... 完了
-依存関係ツリーを作成しています                
-状態情報を読み取っています... 完了
-以下のパッケージが自動でインストールされましたが、もう必要とされていません:
-  cabextract fonts-wine libllvm8 libllvm8:i386 libmspack0 libwine libwine:i386 p7zip wine32:i386 wine64
-これを削除するには <span style="color:#a31515">&#39;sudo apt autoremove&#39;</span> を利用してください。
-以下の追加パッケージがインストールされます:
-  libegl-mesa0:i386 libegl1:i386 libfaudio0 libfaudio0:i386 libgbm1:i386 libsdl2-2.0-0:i386 libwayland-client0:i386
-  libwayland-cursor0:i386 libwayland-egl1:i386 libwayland-egl1-mesa:i386 libwayland-server0:i386 libxcb-xfixes0:i386
-  libxkbcommon0:i386 libxss1:i386 wine-stable wine-stable-amd64 wine-stable-i386:i386
-以下のパッケージが新たにインストールされます:
-  libegl-mesa0:i386 libegl1:i386 libfaudio0 libfaudio0:i386 libgbm1:i386 libsdl2-2.0-0:i386 libwayland-client0:i386
-  libwayland-cursor0:i386 libwayland-egl1:i386 libwayland-egl1-mesa:i386 libwayland-server0:i386 libxcb-xfixes0:i386
-  libxkbcommon0:i386 libxss1:i386 wine-stable wine-stable-amd64 wine-stable-i386:i386 winehq-stable
-アップグレード: 0 個、新規インストール: 18 個、削除: 0 個、保留: 0 個。
-124 MB のアーカイブを取得する必要があります。
-この操作後に追加で 879 MB のディスク容量が消費されます。
-続行しますか? [Y/n]
-</code></pre></div><p>として、めでたくインストールできた。</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ wine --version
-wine-5.0
-</code></pre></div><p>ついでに<code>winetricks</code>もインストールして起動したところ、いろいろ初期設定が走ったので、アップデートには<code>winetricks</code>も必須かも。</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>wget https://download.opensuse.org/repositories/Emulators:/Wine:/Debian/xUbuntu_19.04/Release.key
+</span></span><span style="display:flex;"><span>sudo apt-key add Release.key
+</span></span><span style="display:flex;"><span>sudo apt-add-repository <span style="color:#a31515">&#39;deb https://download.opensuse.org/repositories/Emulators:/Wine:/Debian/xUbuntu_18.04/ ./&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>sudo apt update
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>sudo apt install --install-recommends winehq-stable
+</span></span></code></pre></div><p>その結果・・・</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>パッケージリストを読み込んでいます... 完了
+</span></span><span style="display:flex;"><span>依存関係ツリーを作成しています                
+</span></span><span style="display:flex;"><span>状態情報を読み取っています... 完了
+</span></span><span style="display:flex;"><span>以下のパッケージが自動でインストールされましたが、もう必要とされていません:
+</span></span><span style="display:flex;"><span>  cabextract fonts-wine libllvm8 libllvm8:i386 libmspack0 libwine libwine:i386 p7zip wine32:i386 wine64
+</span></span><span style="display:flex;"><span>これを削除するには <span style="color:#a31515">&#39;sudo apt autoremove&#39;</span> を利用してください。
+</span></span><span style="display:flex;"><span>以下の追加パッケージがインストールされます:
+</span></span><span style="display:flex;"><span>  libegl-mesa0:i386 libegl1:i386 libfaudio0 libfaudio0:i386 libgbm1:i386 libsdl2-2.0-0:i386 libwayland-client0:i386
+</span></span><span style="display:flex;"><span>  libwayland-cursor0:i386 libwayland-egl1:i386 libwayland-egl1-mesa:i386 libwayland-server0:i386 libxcb-xfixes0:i386
+</span></span><span style="display:flex;"><span>  libxkbcommon0:i386 libxss1:i386 wine-stable wine-stable-amd64 wine-stable-i386:i386
+</span></span><span style="display:flex;"><span>以下のパッケージが新たにインストールされます:
+</span></span><span style="display:flex;"><span>  libegl-mesa0:i386 libegl1:i386 libfaudio0 libfaudio0:i386 libgbm1:i386 libsdl2-2.0-0:i386 libwayland-client0:i386
+</span></span><span style="display:flex;"><span>  libwayland-cursor0:i386 libwayland-egl1:i386 libwayland-egl1-mesa:i386 libwayland-server0:i386 libxcb-xfixes0:i386
+</span></span><span style="display:flex;"><span>  libxkbcommon0:i386 libxss1:i386 wine-stable wine-stable-amd64 wine-stable-i386:i386 winehq-stable
+</span></span><span style="display:flex;"><span>アップグレード: 0 個、新規インストール: 18 個、削除: 0 個、保留: 0 個。
+</span></span><span style="display:flex;"><span>124 MB のアーカイブを取得する必要があります。
+</span></span><span style="display:flex;"><span>この操作後に追加で 879 MB のディスク容量が消費されます。
+</span></span><span style="display:flex;"><span>続行しますか? [Y/n]
+</span></span></code></pre></div><p>として、めでたくインストールできた。</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ wine --version
+</span></span><span style="display:flex;"><span>wine-5.0
+</span></span></code></pre></div><p>ついでに<code>winetricks</code>もインストールして起動したところ、いろいろ初期設定が走ったので、アップデートには<code>winetricks</code>も必須かも。</p>
 		</div>
 		<footer class="post__footer">
 			

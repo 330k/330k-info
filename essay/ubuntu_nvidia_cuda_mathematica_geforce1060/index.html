@@ -129,14 +129,14 @@ ddでUSBメモリに書き込む。</p>
 sudo apt install nvidia-387
 </code></pre><h2 id="cuda-91">CUDA 9.1</h2>
 <p><a href="https://developer.nvidia.com/cuda-downloads">CUDA Toolkit 9.1 Download</a>からUbuntu 17.04用の「deb (network)」をダウンロード。</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo dpkg -i cuda-repo-ubuntu1704_9.1.85-1_amd64.deb
-sudo apt-key adv --fetch-keys https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1704/x86_64/7fa2af80.pub
-sudo apt update
-sudo apt install cuda
-</code></pre></div><p>環境変数を設定する。</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">export PATH=/usr/local/cuda/bin:$PATH
-export LD_LIBRARY_PATH=/usr/local/cuda:$LD_LIBRARY_PATH
-</code></pre></div><h2 id="mathematica-804-home-edition">Mathematica 8.0.4 Home Edition</h2>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo dpkg -i cuda-repo-ubuntu1704_9.1.85-1_amd64.deb
+</span></span><span style="display:flex;"><span>sudo apt-key adv --fetch-keys https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1704/x86_64/7fa2af80.pub
+</span></span><span style="display:flex;"><span>sudo apt update
+</span></span><span style="display:flex;"><span>sudo apt install cuda
+</span></span></code></pre></div><p>環境変数を設定する。</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>export PATH=/usr/local/cuda/bin:$PATH
+</span></span><span style="display:flex;"><span>export LD_LIBRARY_PATH=/usr/local/cuda:$LD_LIBRARY_PATH
+</span></span></code></pre></div><h2 id="mathematica-804-home-edition">Mathematica 8.0.4 Home Edition</h2>
 <p><a href="https://www.hulinks.co.jp/support/mathematica/reissue.html">代理店の手順</a>に従い、
 Wolframシステム移行フォームで、新しいアクティベーションキーを取得する。</p>
 <p>アクティベーションキーが記載されたメールが届いたら、インストールスクリプトを起動する。
@@ -155,35 +155,35 @@ LANG=ja_JP.UTF-8
 sudo ln -s /usr/lib/nvidia-387/tls/libnvidia-tls.so.387.26 /usr/lib64/libnvidia-tls.so.387.26
 sudo ln -s /usr/lib/x86_64-linux-gnu/libcuda.so /usr/lib64/libcuda.so
 </code></pre><p>Mathematicaを起動して確認する。</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Mathematica" data-lang="Mathematica">In[7]:= Needs[<span style="color:#a31515">&#34;CUDALink`&#34;</span>]
-
-In[8]:= CUDAQ[]
-
-Out[8]= True
-
-In[9]:= CUDAInformation[]
-
-Out[9]= {1 -&gt; {<span style="color:#a31515">&#34;Name&#34;</span> -&gt; <span style="color:#a31515">&#34;GeForce GTX 1060&#34;</span>, <span style="color:#a31515">&#34;Clock Rate&#34;</span> -&gt; 1733000, 
-   <span style="color:#a31515">&#34;Compute Capabilities&#34;</span> -&gt; 6.1, <span style="color:#a31515">&#34;GPU Overlap&#34;</span> -&gt; 1, 
-   <span style="color:#a31515">&#34;Maximum Block Dimensions&#34;</span> -&gt; {1024, 1024, 64}, 
-   <span style="color:#a31515">&#34;Maximum Grid Dimensions&#34;</span> -&gt; {2147483647, 65535, 65535}, 
-   <span style="color:#a31515">&#34;Maximum Threads Per Block&#34;</span> -&gt; 1024, 
-   <span style="color:#a31515">&#34;Maximum Shared Memory Per Block&#34;</span> -&gt; 49152, 
-   <span style="color:#a31515">&#34;Total Constant Memory&#34;</span> -&gt; 65536, <span style="color:#a31515">&#34;Warp Size&#34;</span> -&gt; 32, 
-   <span style="color:#a31515">&#34;Maximum Pitch&#34;</span> -&gt; 2147483647, 
-   <span style="color:#a31515">&#34;Maximum Registers Per Block&#34;</span> -&gt; 65536, <span style="color:#a31515">&#34;Texture Alignment&#34;</span> -&gt; 512,
-    <span style="color:#a31515">&#34;Multiprocessor Count&#34;</span> -&gt; 10, <span style="color:#a31515">&#34;Core Count&#34;</span> -&gt; 320, 
-   <span style="color:#a31515">&#34;Execution Timeout&#34;</span> -&gt; 1, <span style="color:#a31515">&#34;Integrated&#34;</span> -&gt; False, 
-   <span style="color:#a31515">&#34;Can Map Host Memory&#34;</span> -&gt; True, <span style="color:#a31515">&#34;Compute Mode&#34;</span> -&gt; <span style="color:#a31515">&#34;Default&#34;</span>, 
-   <span style="color:#a31515">&#34;Texture1D Width&#34;</span> -&gt; 131072, <span style="color:#a31515">&#34;Texture2D Width&#34;</span> -&gt; 131072, 
-   <span style="color:#a31515">&#34;Texture2D Height&#34;</span> -&gt; 65536, <span style="color:#a31515">&#34;Texture3D Width&#34;</span> -&gt; 16384, 
-   <span style="color:#a31515">&#34;Texture3D Height&#34;</span> -&gt; 16384, <span style="color:#a31515">&#34;Texture3D Depth&#34;</span> -&gt; 16384, 
-   <span style="color:#a31515">&#34;Texture2D Array Width&#34;</span> -&gt; 32768, 
-   <span style="color:#a31515">&#34;Texture2D Array Height&#34;</span> -&gt; 32768, 
-   <span style="color:#a31515">&#34;Texture2D Array Slices&#34;</span> -&gt; 2048, <span style="color:#a31515">&#34;Surface Alignment&#34;</span> -&gt; 512, 
-   <span style="color:#a31515">&#34;Concurrent Kernels&#34;</span> -&gt; True, <span style="color:#a31515">&#34;ECC Enabled&#34;</span> -&gt; False, 
-   <span style="color:#a31515">&#34;TCC Enabled&#34;</span> -&gt; False, <span style="color:#a31515">&#34;Total Memory&#34;</span> -&gt; 6367739902}}
-</code></pre></div>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Mathematica" data-lang="Mathematica"><span style="display:flex;"><span>In[7]:= Needs[<span style="color:#a31515">&#34;CUDALink`&#34;</span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>In[8]:= CUDAQ[]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Out[8]= True
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>In[9]:= CUDAInformation[]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Out[9]= {1 -&gt; {<span style="color:#a31515">&#34;Name&#34;</span> -&gt; <span style="color:#a31515">&#34;GeForce GTX 1060&#34;</span>, <span style="color:#a31515">&#34;Clock Rate&#34;</span> -&gt; 1733000, 
+</span></span><span style="display:flex;"><span>   <span style="color:#a31515">&#34;Compute Capabilities&#34;</span> -&gt; 6.1, <span style="color:#a31515">&#34;GPU Overlap&#34;</span> -&gt; 1, 
+</span></span><span style="display:flex;"><span>   <span style="color:#a31515">&#34;Maximum Block Dimensions&#34;</span> -&gt; {1024, 1024, 64}, 
+</span></span><span style="display:flex;"><span>   <span style="color:#a31515">&#34;Maximum Grid Dimensions&#34;</span> -&gt; {2147483647, 65535, 65535}, 
+</span></span><span style="display:flex;"><span>   <span style="color:#a31515">&#34;Maximum Threads Per Block&#34;</span> -&gt; 1024, 
+</span></span><span style="display:flex;"><span>   <span style="color:#a31515">&#34;Maximum Shared Memory Per Block&#34;</span> -&gt; 49152, 
+</span></span><span style="display:flex;"><span>   <span style="color:#a31515">&#34;Total Constant Memory&#34;</span> -&gt; 65536, <span style="color:#a31515">&#34;Warp Size&#34;</span> -&gt; 32, 
+</span></span><span style="display:flex;"><span>   <span style="color:#a31515">&#34;Maximum Pitch&#34;</span> -&gt; 2147483647, 
+</span></span><span style="display:flex;"><span>   <span style="color:#a31515">&#34;Maximum Registers Per Block&#34;</span> -&gt; 65536, <span style="color:#a31515">&#34;Texture Alignment&#34;</span> -&gt; 512,
+</span></span><span style="display:flex;"><span>    <span style="color:#a31515">&#34;Multiprocessor Count&#34;</span> -&gt; 10, <span style="color:#a31515">&#34;Core Count&#34;</span> -&gt; 320, 
+</span></span><span style="display:flex;"><span>   <span style="color:#a31515">&#34;Execution Timeout&#34;</span> -&gt; 1, <span style="color:#a31515">&#34;Integrated&#34;</span> -&gt; False, 
+</span></span><span style="display:flex;"><span>   <span style="color:#a31515">&#34;Can Map Host Memory&#34;</span> -&gt; True, <span style="color:#a31515">&#34;Compute Mode&#34;</span> -&gt; <span style="color:#a31515">&#34;Default&#34;</span>, 
+</span></span><span style="display:flex;"><span>   <span style="color:#a31515">&#34;Texture1D Width&#34;</span> -&gt; 131072, <span style="color:#a31515">&#34;Texture2D Width&#34;</span> -&gt; 131072, 
+</span></span><span style="display:flex;"><span>   <span style="color:#a31515">&#34;Texture2D Height&#34;</span> -&gt; 65536, <span style="color:#a31515">&#34;Texture3D Width&#34;</span> -&gt; 16384, 
+</span></span><span style="display:flex;"><span>   <span style="color:#a31515">&#34;Texture3D Height&#34;</span> -&gt; 16384, <span style="color:#a31515">&#34;Texture3D Depth&#34;</span> -&gt; 16384, 
+</span></span><span style="display:flex;"><span>   <span style="color:#a31515">&#34;Texture2D Array Width&#34;</span> -&gt; 32768, 
+</span></span><span style="display:flex;"><span>   <span style="color:#a31515">&#34;Texture2D Array Height&#34;</span> -&gt; 32768, 
+</span></span><span style="display:flex;"><span>   <span style="color:#a31515">&#34;Texture2D Array Slices&#34;</span> -&gt; 2048, <span style="color:#a31515">&#34;Surface Alignment&#34;</span> -&gt; 512, 
+</span></span><span style="display:flex;"><span>   <span style="color:#a31515">&#34;Concurrent Kernels&#34;</span> -&gt; True, <span style="color:#a31515">&#34;ECC Enabled&#34;</span> -&gt; False, 
+</span></span><span style="display:flex;"><span>   <span style="color:#a31515">&#34;TCC Enabled&#34;</span> -&gt; False, <span style="color:#a31515">&#34;Total Memory&#34;</span> -&gt; 6367739902}}
+</span></span></code></pre></div>
 		</div>
 		<footer class="post__footer">
 			

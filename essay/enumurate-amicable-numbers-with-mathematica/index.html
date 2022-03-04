@@ -93,15 +93,15 @@ if (!doNotTrack) {
 </div>
 		</header><div class="content post__content clearfix">
 			<p>Mathematicaで友愛数を列挙するプログラム例として以下のようなものが見受けられる。</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Mathematica" data-lang="Mathematica">yakuwa[n_] := DivisorSigma[1, n] - n;
-Do[If[(yakuwa[yakuwa[k]] == k) &amp;&amp; (yakuwa[k] != k), Print[{k, yakuwa[k]}]], {k, 1, 1000}];
-</code></pre></div><p>しかし、<code>Do</code>でループを回して<code>Print</code>で書き出していくのはMathematica的に美しくないと思う。</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Mathematica" data-lang="Mathematica"><span style="display:flex;"><span>yakuwa[n_] := DivisorSigma[1, n] - n;
+</span></span><span style="display:flex;"><span>Do[If[(yakuwa[yakuwa[k]] == k) &amp;&amp; (yakuwa[k] != k), Print[{k, yakuwa[k]}]], {k, 1, 1000}];
+</span></span></code></pre></div><p>しかし、<code>Do</code>でループを回して<code>Print</code>で書き出していくのはMathematica的に美しくないと思う。</p>
 <p>Mathematicaなら関数型プログラミングとパターンマッチを用いるのが良いと思うので、私なら以下のように書く。</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Mathematica" data-lang="Mathematica">Cases[NestList[DivisorSigma[1, #] - # &amp;, #, 2] &amp; /@ Range[100000], {a_, b_, a_} /; a &lt; b -&gt; {a, b}]
-</code></pre></div><p>実行速度もこちらのほうが1割程度速い。</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Mathematica" data-lang="Mathematica"><span style="display:flex;"><span>Cases[NestList[DivisorSigma[1, #] - # &amp;, #, 2] &amp; /@ Range[100000], {a_, b_, a_} /; a &lt; b -&gt; {a, b}]
+</span></span></code></pre></div><p>実行速度もこちらのほうが1割程度速い。</p>
 <p>この書き方から一般の社交数を求めるプログラムに拡張するのは簡単で、例えば5個組の社交数を探す場合は以下のようになる。</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Mathematica" data-lang="Mathematica">Cases[NestList[DivisorSigma[1, #] - # &amp;, #, 5] &amp; /@ Range[100000], {a_, b__, a_} /; a &lt; Min[b] -&gt; {a, b}]
-</code></pre></div><p>ただし、私の方法はメモリを大量に使う。</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Mathematica" data-lang="Mathematica"><span style="display:flex;"><span>Cases[NestList[DivisorSigma[1, #] - # &amp;, #, 5] &amp; /@ Range[100000], {a_, b__, a_} /; a &lt; Min[b] -&gt; {a, b}]
+</span></span></code></pre></div><p>ただし、私の方法はメモリを大量に使う。</p>
 
 		</div>
 		<footer class="post__footer">

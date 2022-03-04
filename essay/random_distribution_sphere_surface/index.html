@@ -94,28 +94,28 @@ if (!doNotTrack) {
 		</header><div class="content post__content clearfix">
 			<p>球面上に一様分布するランダムな点を生成したい時、
 単純に極座標表示でθとφを一様分布させると、極付近に点が集まってしまう。</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-mathematica" data-lang="mathematica">data1 = Transpose[{Sin[t] Cos[f], Sin[t] Sin[f], Cos[t]} /. {
-     f -&gt; RandomReal[{0, 2 Pi}, 2000],
-     t -&gt; RandomReal[{0, Pi}, 2000]}];
-g1 = ListPointPlot3D[data1, BoxRatios -&gt; {1, 1, 1}]
-</code></pre></div><figure><img src="001.png"/>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-mathematica" data-lang="mathematica"><span style="display:flex;"><span>data1 = Transpose[{Sin[t] Cos[f], Sin[t] Sin[f], Cos[t]} /. {
+</span></span><span style="display:flex;"><span>     f -&gt; RandomReal[{0, 2 Pi}, 2000],
+</span></span><span style="display:flex;"><span>     t -&gt; RandomReal[{0, Pi}, 2000]}];
+</span></span><span style="display:flex;"><span>g1 = ListPointPlot3D[data1, BoxRatios -&gt; {1, 1, 1}]
+</span></span></code></pre></div><figure><img src="001.png"/>
 </figure>
 
 <p>球面上で一様分布させるには、下記のようにθに<code>ArcCos</code>を使う
 (θの位置の確率をSinθに比例させたい→累積確率分布関数は<code>Cos</code>→逆関数は<code>ArcCos</code>)。</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Mathematica" data-lang="Mathematica">data2 = Transpose[{Sin[t] Cos[f], Sin[t] Sin[f], Cos[t]} /. {
-     f -&gt; RandomReal[{0, 2 Pi}, 2000],
-     t -&gt; ArcCos[RandomReal[{-1, 1}, 2000]]}];
-g2 = ListPointPlot3D[data2, BoxRatios -&gt; {1, 1, 1}]
-</code></pre></div><figure><img src="002.png"/>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Mathematica" data-lang="Mathematica"><span style="display:flex;"><span>data2 = Transpose[{Sin[t] Cos[f], Sin[t] Sin[f], Cos[t]} /. {
+</span></span><span style="display:flex;"><span>     f -&gt; RandomReal[{0, 2 Pi}, 2000],
+</span></span><span style="display:flex;"><span>     t -&gt; ArcCos[RandomReal[{-1, 1}, 2000]]}];
+</span></span><span style="display:flex;"><span>g2 = ListPointPlot3D[data2, BoxRatios -&gt; {1, 1, 1}]
+</span></span></code></pre></div><figure><img src="002.png"/>
 </figure>
 
 <p>なお、多次元球面上の一様分布は<a href="http://qiita.com/mh-northlander/items/a2e643cf62317f129541">球面上に一様分布する乱数の生成</a>にあるように、
 多次元ガウス分布を正規化すると得られる。</p>
 <p>下記は3次元の場合。</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Mathematica" data-lang="Mathematica">data3 = Normalize /@ RandomReal[NormalDistribution[], {2000, 3}];
-g3 = ListPointPlot3D[data3, BoxRatios -&gt; {1, 1, 1}]
-</code></pre></div><figure><img src="003.png"/>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Mathematica" data-lang="Mathematica"><span style="display:flex;"><span>data3 = Normalize /@ RandomReal[NormalDistribution[], {2000, 3}];
+</span></span><span style="display:flex;"><span>g3 = ListPointPlot3D[data3, BoxRatios -&gt; {1, 1, 1}]
+</span></span></code></pre></div><figure><img src="003.png"/>
 </figure>
 
 

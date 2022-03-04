@@ -103,251 +103,251 @@ VBAの機能のみで実装しており、外部のライブラリには依存�
 <li>WriteBitmap24(&ldquo;C:***.bmp&rdquo;)で24ビットのビットマップファイルを書き込む。</li>
 <li>おまけ機能として、ReadGIFJPEGでGIFとJPEGファイルも読み込みにも対応。</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-VB.NET" data-lang="VB.NET"><span style="color:#008000">&#39; Bitmap module by 330k
-</span><span style="color:#008000">&#39; Copyright (C) 2010 330k, All rights reserved.
-</span><span style="color:#008000"></span><span style="color:#00f">Option</span> Explicit
-
-<span style="color:#00f">Public</span> Type RGBTRIPLE
-    rgbBlue <span style="color:#00f">As</span> <span style="color:#2b91af">Byte</span>
-    rgbGreen <span style="color:#00f">As</span> <span style="color:#2b91af">Byte</span>
-    rgbRed <span style="color:#00f">As</span> <span style="color:#2b91af">Byte</span>
-<span style="color:#00f">End</span> Type
-
-<span style="color:#00f">Private</span> Type RGBQUAD
-    rgbBlue <span style="color:#00f">As</span> <span style="color:#2b91af">Byte</span>
-    rgbGreen <span style="color:#00f">As</span> <span style="color:#2b91af">Byte</span>
-    rgbRed <span style="color:#00f">As</span> <span style="color:#2b91af">Byte</span>
-    rgbReserved <span style="color:#00f">As</span> <span style="color:#2b91af">Byte</span>
-<span style="color:#00f">End</span> Type
-<span style="color:#00f">Private</span> Type BITMAPFILEHEADER
-    bfType <span style="color:#00f">As</span> <span style="color:#2b91af">String</span> * 2
-    bfSize <span style="color:#00f">As</span> <span style="color:#2b91af">Long</span>
-    bfReserved1 <span style="color:#00f">As</span> <span style="color:#2b91af">Integer</span>
-    bfReserved2 <span style="color:#00f">As</span> <span style="color:#2b91af">Integer</span>
-    bjOffBits <span style="color:#00f">As</span> <span style="color:#2b91af">Long</span>
-<span style="color:#00f">End</span> Type
-<span style="color:#00f">Private</span> Type BitmapInfoHeader
-    biSize <span style="color:#00f">As</span> <span style="color:#2b91af">Long</span>
-    biWidth <span style="color:#00f">As</span> <span style="color:#2b91af">Long</span>
-    biHeight <span style="color:#00f">As</span> <span style="color:#2b91af">Long</span>
-    biPlanes <span style="color:#00f">As</span> <span style="color:#2b91af">Integer</span>
-    biBitCount <span style="color:#00f">As</span> <span style="color:#2b91af">Integer</span>
-    biCompression <span style="color:#00f">As</span> <span style="color:#2b91af">Long</span>
-    biSizeImaze <span style="color:#00f">As</span> <span style="color:#2b91af">Long</span>
-    biXPixPerMeter <span style="color:#00f">As</span> <span style="color:#2b91af">Long</span>
-    biYPixPerMeter <span style="color:#00f">As</span> <span style="color:#2b91af">Long</span>
-    biClrUsed <span style="color:#00f">As</span> <span style="color:#2b91af">Long</span>
-    biClrImporant <span style="color:#00f">As</span> <span style="color:#2b91af">Long</span>
-<span style="color:#00f">End</span> Type
-
-<span style="color:#008000">&#39; Read a bitmap file (1, 4, 8, 24 and 32 bit) and return image as 2-dimension array of RGBTriple
-</span><span style="color:#008000"></span><span style="color:#00f">Public</span> <span style="color:#00f">Function</span> ReadBitmap(strFileName <span style="color:#00f">As</span> <span style="color:#2b91af">String</span>) <span style="color:#00f">As</span> RGBTRIPLE()
-    <span style="color:#00f">Dim</span> i <span style="color:#00f">As</span> <span style="color:#2b91af">Long</span>
-    <span style="color:#00f">Dim</span> j <span style="color:#00f">As</span> <span style="color:#2b91af">Long</span>
-    <span style="color:#00f">Dim</span> n <span style="color:#00f">As</span> <span style="color:#2b91af">Long</span>
-    <span style="color:#00f">Dim</span> intFileNumber <span style="color:#00f">As</span> <span style="color:#2b91af">Integer</span>
-    <span style="color:#00f">Dim</span> bjHeader <span style="color:#00f">As</span> BITMAPFILEHEADER
-    <span style="color:#00f">Dim</span> biHeader <span style="color:#00f">As</span> BitmapInfoHeader
-    <span style="color:#00f">Dim</span> lngColors <span style="color:#00f">As</span> <span style="color:#2b91af">Long</span>
-    <span style="color:#00f">Dim</span> rgbData() <span style="color:#00f">As</span> RGBTRIPLE
-    <span style="color:#00f">Dim</span> rgbTemp <span style="color:#00f">As</span> RGBTRIPLE
-    <span style="color:#00f">Dim</span> rgbTable3() <span style="color:#00f">As</span> RGBTRIPLE
-    <span style="color:#00f">Dim</span> rgbTable4() <span style="color:#00f">As</span> RGBQUAD
-    <span style="color:#00f">Dim</span> bytTemp <span style="color:#00f">As</span> <span style="color:#2b91af">Byte</span>
-    
-    intFileNumber = FreeFile()
-    Open strFileName <span style="color:#00f">For</span> Binary <span style="color:#00f">As</span> intFileNumber
-        <span style="color:#00f">Get</span> intFileNumber, , bjHeader
-        <span style="color:#00f">Get</span> intFileNumber, , biHeader
-        
-        <span style="color:#00f">ReDim</span> rgbData(0 <span style="color:#00f">To</span> biHeader.biHeight - 1, 0 <span style="color:#00f">To</span> biHeader.biWidth - 1) <span style="color:#00f">As</span> RGBTRIPLE
-        n = (4 - (-(Int(-biHeader.biWidth * (biHeader.biBitCount / 8))) <span style="color:#00f">Mod</span> 4)) <span style="color:#00f">Mod</span> 4
-        lngColors = IIf(biHeader.biClrUsed = 0, 2 ^ biHeader.biBitCount, biHeader.biClrUsed)
-        
-        <span style="color:#00f">Select</span> <span style="color:#00f">Case</span> biHeader.biBitCount
-        <span style="color:#00f">Case</span> 1
-            <span style="color:#00f">ReDim</span> rgbTable4(0 <span style="color:#00f">To</span> lngColors - 1) <span style="color:#00f">As</span> RGBQUAD
-            <span style="color:#00f">Get</span> intFileNumber, , rgbTable4
-            rgbTable3 = ConvertRGBQuadToRGBTriple(rgbTable4)
-            
-            <span style="color:#00f">For</span> i = UBound(rgbData, 1) <span style="color:#00f">To</span> 0 <span style="color:#00f">Step</span> -1
-                <span style="color:#00f">For</span> j = 0 <span style="color:#00f">To</span> UBound(rgbData, 2) <span style="color:#00f">Step</span> 8
-                    <span style="color:#00f">Get</span> intFileNumber, , bytTemp
-                    
-                    rgbData(i, j) = rgbTable3(bytTemp \ 128)
-                    <span style="color:#00f">If</span> j + 1 &lt;= UBound(rgbData, 2) <span style="color:#00f">Then</span> rgbData(i, j + 1) = rgbTable3(bytTemp \ 64 <span style="color:#00f">And</span> 1)
-                    <span style="color:#00f">If</span> j + 2 &lt;= UBound(rgbData, 2) <span style="color:#00f">Then</span> rgbData(i, j + 2) = rgbTable3(bytTemp \ 32 <span style="color:#00f">And</span> 1)
-                    <span style="color:#00f">If</span> j + 3 &lt;= UBound(rgbData, 2) <span style="color:#00f">Then</span> rgbData(i, j + 3) = rgbTable3(bytTemp \ 16 <span style="color:#00f">And</span> 1)
-                    <span style="color:#00f">If</span> j + 4 &lt;= UBound(rgbData, 2) <span style="color:#00f">Then</span> rgbData(i, j + 4) = rgbTable3(bytTemp \ 8 <span style="color:#00f">And</span> 1)
-                    <span style="color:#00f">If</span> j + 5 &lt;= UBound(rgbData, 2) <span style="color:#00f">Then</span> rgbData(i, j + 5) = rgbTable3(bytTemp \ 4 <span style="color:#00f">And</span> 1)
-                    <span style="color:#00f">If</span> j + 6 &lt;= UBound(rgbData, 2) <span style="color:#00f">Then</span> rgbData(i, j + 6) = rgbTable3(bytTemp \ 2 <span style="color:#00f">And</span> 1)
-                    <span style="color:#00f">If</span> j + 7 &lt;= UBound(rgbData, 2) <span style="color:#00f">Then</span> rgbData(i, j + 7) = rgbTable3(bytTemp <span style="color:#00f">And</span> 1)
-                    
-                <span style="color:#00f">Next</span>
-                <span style="color:#00f">For</span> j = 1 <span style="color:#00f">To</span> n
-                    <span style="color:#00f">Get</span> intFileNumber, , bytTemp
-                <span style="color:#00f">Next</span>
-            <span style="color:#00f">Next</span>
-            
-        <span style="color:#00f">Case</span> 4
-            <span style="color:#00f">ReDim</span> rgbTable4(0 <span style="color:#00f">To</span> lngColors - 1) <span style="color:#00f">As</span> RGBQUAD
-            <span style="color:#00f">Get</span> intFileNumber, , rgbTable4
-            rgbTable3 = ConvertRGBQuadToRGBTriple(rgbTable4)
-            
-            <span style="color:#00f">For</span> i = UBound(rgbData, 1) <span style="color:#00f">To</span> 0 <span style="color:#00f">Step</span> -1
-                <span style="color:#00f">For</span> j = 0 <span style="color:#00f">To</span> UBound(rgbData, 2) <span style="color:#00f">Step</span> 2
-                    <span style="color:#00f">Get</span> intFileNumber, , bytTemp
-                    
-                    rgbData(i, j) = rgbTable3(bytTemp \ 16)
-                    <span style="color:#00f">If</span> j + 1 &lt;= UBound(rgbData, 2) <span style="color:#00f">Then</span> rgbData(i, j + 1) = rgbTable3(bytTemp <span style="color:#00f">And</span> 15)
-                <span style="color:#00f">Next</span>
-                <span style="color:#00f">For</span> j = 1 <span style="color:#00f">To</span> n
-                    <span style="color:#00f">Get</span> intFileNumber, , bytTemp
-                <span style="color:#00f">Next</span>
-            <span style="color:#00f">Next</span>
-            
-        <span style="color:#00f">Case</span> 8
-            <span style="color:#00f">ReDim</span> rgbTable4(0 <span style="color:#00f">To</span> lngColors - 1) <span style="color:#00f">As</span> RGBQUAD
-            <span style="color:#00f">Get</span> intFileNumber, , rgbTable4
-            rgbTable3 = ConvertRGBQuadToRGBTriple(rgbTable4)
-            
-            <span style="color:#00f">For</span> i = UBound(rgbData, 1) <span style="color:#00f">To</span> 0 <span style="color:#00f">Step</span> -1
-                <span style="color:#00f">For</span> j = 0 <span style="color:#00f">To</span> UBound(rgbData, 2)
-                    <span style="color:#00f">Get</span> intFileNumber, , bytTemp
-                    rgbData(i, j) = rgbTable3(bytTemp)
-                <span style="color:#00f">Next</span>
-                <span style="color:#00f">For</span> j = 1 <span style="color:#00f">To</span> n
-                    <span style="color:#00f">Get</span> intFileNumber, , bytTemp
-                <span style="color:#00f">Next</span>
-            <span style="color:#00f">Next</span>
-            
-        <span style="color:#00f">Case</span> 24
-            <span style="color:#00f">For</span> i = UBound(rgbData, 1) <span style="color:#00f">To</span> 0 <span style="color:#00f">Step</span> -1
-                <span style="color:#00f">For</span> j = 0 <span style="color:#00f">To</span> UBound(rgbData, 2)
-                    <span style="color:#00f">Get</span> intFileNumber, , rgbData(i, j)
-                <span style="color:#00f">Next</span>
-                <span style="color:#00f">For</span> j = 1 <span style="color:#00f">To</span> n
-                    <span style="color:#00f">Get</span> intFileNumber, , bytTemp
-                <span style="color:#00f">Next</span>
-            <span style="color:#00f">Next</span>
-            
-        <span style="color:#00f">Case</span> 32
-            <span style="color:#00f">ReDim</span> rgbTable4(0 <span style="color:#00f">To</span> biHeader.biHeight - 1, 0 <span style="color:#00f">To</span> biHeader.biWidth - 1) <span style="color:#00f">As</span> RGBQUAD
-            
-            <span style="color:#00f">Get</span> intFileNumber, , rgbTable4
-            rgbData = ConvertRGBQuadToRGBTriple2(rgbTable4)
-            
-        <span style="color:#00f">End</span> <span style="color:#00f">Select</span>
-    Close
-    
-    ReadBitmap = rgbData
-<span style="color:#00f">End</span> <span style="color:#00f">Function</span>
-
-<span style="color:#008000">&#39; Write a bitmap file (24-bit only) from 2-dimension array of RGBTriple
-</span><span style="color:#008000"></span><span style="color:#00f">Public</span> <span style="color:#00f">Sub</span> WriteBitmap24(strFileName <span style="color:#00f">As</span> <span style="color:#2b91af">String</span>, rgbData() <span style="color:#00f">As</span> RGBTRIPLE)
-    <span style="color:#00f">Dim</span> i <span style="color:#00f">As</span> <span style="color:#2b91af">Long</span>
-    <span style="color:#00f">Dim</span> j <span style="color:#00f">As</span> <span style="color:#2b91af">Long</span>
-    <span style="color:#00f">Dim</span> n <span style="color:#00f">As</span> <span style="color:#2b91af">Long</span>
-    <span style="color:#00f">Dim</span> lngWidth <span style="color:#00f">As</span> <span style="color:#2b91af">Long</span>
-    <span style="color:#00f">Dim</span> lngHeight <span style="color:#00f">As</span> <span style="color:#2b91af">Long</span>
-    <span style="color:#00f">Dim</span> intFileNumber <span style="color:#00f">As</span> <span style="color:#2b91af">Integer</span>
-    <span style="color:#00f">Dim</span> bjHeader <span style="color:#00f">As</span> BITMAPFILEHEADER
-    <span style="color:#00f">Dim</span> biHeader <span style="color:#00f">As</span> BitmapInfoHeader
-    <span style="color:#00f">Dim</span> bytTemp <span style="color:#00f">As</span> <span style="color:#2b91af">Byte</span>
-    
-    lngHeight = UBound(rgbData, 1) + 1
-    lngWidth = UBound(rgbData, 2) + 1
-    n = (4 - (lngWidth * 3 <span style="color:#00f">Mod</span> 4)) <span style="color:#00f">Mod</span> 4
-    
-    <span style="color:#00f">With</span> bjHeader
-        .bfType = <span style="color:#a31515">&#34;BM&#34;</span>
-        .bfSize = Len(bjHeader) + Len(biHeader) + 3 * lngHeight * lngWidth
-        .bjOffBits = Len(bjHeader) + Len(biHeader)
-    <span style="color:#00f">End</span> <span style="color:#00f">With</span>
-    <span style="color:#00f">With</span> biHeader
-        .biSize = 40
-        .biWidth = lngWidth
-        .biHeight = lngHeight
-        .biPlanes = 1
-        .biBitCount = 24
-        .biCompression = 0
-        .biSizeImaze = 3 * lngHeight * lngWidth
-        .biXPixPerMeter = 3780
-        .biYPixPerMeter = 3780
-        .biClrUsed = 0
-        .biClrImporant = 0
-    <span style="color:#00f">End</span> <span style="color:#00f">With</span>
-    
-    <span style="color:#00f">If</span> Len(Dir(strFileName)) <span style="color:#00f">Then</span>
-        Kill strFileName
-    <span style="color:#00f">End</span> <span style="color:#00f">If</span>
-    
-    intFileNumber = FreeFile()
-    Open strFileName <span style="color:#00f">For</span> Binary <span style="color:#00f">As</span> intFileNumber
-        Put intFileNumber, , bjHeader
-        Put intFileNumber, , biHeader
-        
-        <span style="color:#00f">For</span> i = lngHeight - 1 <span style="color:#00f">To</span> 0 <span style="color:#00f">Step</span> -1
-            <span style="color:#00f">For</span> j = 0 <span style="color:#00f">To</span> lngWidth - 1
-                Put intFileNumber, , rgbData(i, j)
-            <span style="color:#00f">Next</span>
-            <span style="color:#00f">For</span> j = 1 <span style="color:#00f">To</span> n
-                Put intFileNumber, , bytTemp
-            <span style="color:#00f">Next</span>
-        <span style="color:#00f">Next</span>
-    Close
-<span style="color:#00f">End</span> <span style="color:#00f">Sub</span>
-
-<span style="color:#008000">&#39; Read GIF or JPEG files as RGBTRIPLE()
-</span><span style="color:#008000"></span><span style="color:#00f">Public</span> <span style="color:#00f">Function</span> ReadGIFJPEG(strFileName <span style="color:#00f">As</span> <span style="color:#2b91af">String</span>) <span style="color:#00f">As</span> RGBTRIPLE()
-    <span style="color:#00f">Dim</span> objPicture <span style="color:#00f">As</span> IPictureDisp
-    <span style="color:#00f">Dim</span> strTempFile <span style="color:#00f">As</span> <span style="color:#2b91af">String</span>
-    
-    <span style="color:#00f">Set</span> objPicture = LoadPicture(strFileName)
-    strTempFile = GetTempName()
-    
-    SavePicture objPicture, strTempFile
-    
-    ReadGIFJPEG = ReadBitmap(strTempFile)
-    
-    Kill strTempFile
-<span style="color:#00f">End</span> <span style="color:#00f">Function</span>
-
-<span style="color:#008000">&#39; Private Functions
-</span><span style="color:#008000"></span><span style="color:#00f">Private</span> <span style="color:#00f">Function</span> ConvertRGBQuadToRGBTriple(rgbSource() <span style="color:#00f">As</span> RGBQUAD) <span style="color:#00f">As</span> RGBTRIPLE()
-    <span style="color:#00f">Dim</span> i <span style="color:#00f">As</span> <span style="color:#2b91af">Long</span>
-    <span style="color:#00f">Dim</span> j <span style="color:#00f">As</span> <span style="color:#2b91af">Long</span>
-    <span style="color:#00f">Dim</span> rgbResult() <span style="color:#00f">As</span> RGBTRIPLE
-    
-    <span style="color:#00f">ReDim</span> rgbResult(0 <span style="color:#00f">To</span> UBound(rgbSource, 1)) <span style="color:#00f">As</span> RGBTRIPLE
-    
-    <span style="color:#00f">For</span> i = 0 <span style="color:#00f">To</span> UBound(rgbSource, 1)
-        rgbResult(i).rgbBlue = rgbSource(i).rgbBlue
-        rgbResult(i).rgbGreen = rgbSource(i).rgbGreen
-        rgbResult(i).rgbRed = rgbSource(i).rgbRed
-    <span style="color:#00f">Next</span>
-    
-    ConvertRGBQuadToRGBTriple = rgbResult
-<span style="color:#00f">End</span> <span style="color:#00f">Function</span>
-
-<span style="color:#00f">Private</span> <span style="color:#00f">Function</span> ConvertRGBQuadToRGBTriple2(rgbSource() <span style="color:#00f">As</span> RGBQUAD) <span style="color:#00f">As</span> RGBTRIPLE()
-    <span style="color:#00f">Dim</span> i <span style="color:#00f">As</span> <span style="color:#2b91af">Long</span>
-    <span style="color:#00f">Dim</span> j <span style="color:#00f">As</span> <span style="color:#2b91af">Long</span>
-    <span style="color:#00f">Dim</span> rgbResult() <span style="color:#00f">As</span> RGBTRIPLE
-    
-    <span style="color:#00f">ReDim</span> rgbResult(0 <span style="color:#00f">To</span> UBound(rgbSource, 1), 0 <span style="color:#00f">To</span> UBound(rgbSource, 2)) <span style="color:#00f">As</span> RGBTRIPLE
-    
-    <span style="color:#00f">For</span> i = 0 <span style="color:#00f">To</span> UBound(rgbSource, 1)
-        <span style="color:#00f">For</span> j = 0 <span style="color:#00f">To</span> UBound(rgbSource, 2)
-            rgbResult(i, j).rgbBlue = rgbSource(i, j).rgbBlue
-            rgbResult(i, j).rgbGreen = rgbSource(i, j).rgbGreen
-            rgbResult(i, j).rgbRed = rgbSource(i, j).rgbRed
-        <span style="color:#00f">Next</span>
-    <span style="color:#00f">Next</span>
-    
-    ConvertRGBQuadToRGBTriple2 = rgbResult
-<span style="color:#00f">End</span> <span style="color:#00f">Function</span>
-</code></pre></div>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-VB.NET" data-lang="VB.NET"><span style="display:flex;"><span><span style="color:#008000">&#39; Bitmap module by 330k
+</span></span></span><span style="display:flex;"><span><span style="color:#008000">&#39; Copyright (C) 2010 330k, All rights reserved.
+</span></span></span><span style="display:flex;"><span><span style="color:#008000"></span><span style="color:#00f">Option</span> Explicit
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#00f">Public</span> Type RGBTRIPLE
+</span></span><span style="display:flex;"><span>    rgbBlue <span style="color:#00f">As</span> <span style="color:#2b91af">Byte</span>
+</span></span><span style="display:flex;"><span>    rgbGreen <span style="color:#00f">As</span> <span style="color:#2b91af">Byte</span>
+</span></span><span style="display:flex;"><span>    rgbRed <span style="color:#00f">As</span> <span style="color:#2b91af">Byte</span>
+</span></span><span style="display:flex;"><span><span style="color:#00f">End</span> Type
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#00f">Private</span> Type RGBQUAD
+</span></span><span style="display:flex;"><span>    rgbBlue <span style="color:#00f">As</span> <span style="color:#2b91af">Byte</span>
+</span></span><span style="display:flex;"><span>    rgbGreen <span style="color:#00f">As</span> <span style="color:#2b91af">Byte</span>
+</span></span><span style="display:flex;"><span>    rgbRed <span style="color:#00f">As</span> <span style="color:#2b91af">Byte</span>
+</span></span><span style="display:flex;"><span>    rgbReserved <span style="color:#00f">As</span> <span style="color:#2b91af">Byte</span>
+</span></span><span style="display:flex;"><span><span style="color:#00f">End</span> Type
+</span></span><span style="display:flex;"><span><span style="color:#00f">Private</span> Type BITMAPFILEHEADER
+</span></span><span style="display:flex;"><span>    bfType <span style="color:#00f">As</span> <span style="color:#2b91af">String</span> * 2
+</span></span><span style="display:flex;"><span>    bfSize <span style="color:#00f">As</span> <span style="color:#2b91af">Long</span>
+</span></span><span style="display:flex;"><span>    bfReserved1 <span style="color:#00f">As</span> <span style="color:#2b91af">Integer</span>
+</span></span><span style="display:flex;"><span>    bfReserved2 <span style="color:#00f">As</span> <span style="color:#2b91af">Integer</span>
+</span></span><span style="display:flex;"><span>    bjOffBits <span style="color:#00f">As</span> <span style="color:#2b91af">Long</span>
+</span></span><span style="display:flex;"><span><span style="color:#00f">End</span> Type
+</span></span><span style="display:flex;"><span><span style="color:#00f">Private</span> Type BitmapInfoHeader
+</span></span><span style="display:flex;"><span>    biSize <span style="color:#00f">As</span> <span style="color:#2b91af">Long</span>
+</span></span><span style="display:flex;"><span>    biWidth <span style="color:#00f">As</span> <span style="color:#2b91af">Long</span>
+</span></span><span style="display:flex;"><span>    biHeight <span style="color:#00f">As</span> <span style="color:#2b91af">Long</span>
+</span></span><span style="display:flex;"><span>    biPlanes <span style="color:#00f">As</span> <span style="color:#2b91af">Integer</span>
+</span></span><span style="display:flex;"><span>    biBitCount <span style="color:#00f">As</span> <span style="color:#2b91af">Integer</span>
+</span></span><span style="display:flex;"><span>    biCompression <span style="color:#00f">As</span> <span style="color:#2b91af">Long</span>
+</span></span><span style="display:flex;"><span>    biSizeImaze <span style="color:#00f">As</span> <span style="color:#2b91af">Long</span>
+</span></span><span style="display:flex;"><span>    biXPixPerMeter <span style="color:#00f">As</span> <span style="color:#2b91af">Long</span>
+</span></span><span style="display:flex;"><span>    biYPixPerMeter <span style="color:#00f">As</span> <span style="color:#2b91af">Long</span>
+</span></span><span style="display:flex;"><span>    biClrUsed <span style="color:#00f">As</span> <span style="color:#2b91af">Long</span>
+</span></span><span style="display:flex;"><span>    biClrImporant <span style="color:#00f">As</span> <span style="color:#2b91af">Long</span>
+</span></span><span style="display:flex;"><span><span style="color:#00f">End</span> Type
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#008000">&#39; Read a bitmap file (1, 4, 8, 24 and 32 bit) and return image as 2-dimension array of RGBTriple
+</span></span></span><span style="display:flex;"><span><span style="color:#008000"></span><span style="color:#00f">Public</span> <span style="color:#00f">Function</span> ReadBitmap(strFileName <span style="color:#00f">As</span> <span style="color:#2b91af">String</span>) <span style="color:#00f">As</span> RGBTRIPLE()
+</span></span><span style="display:flex;"><span>    <span style="color:#00f">Dim</span> i <span style="color:#00f">As</span> <span style="color:#2b91af">Long</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#00f">Dim</span> j <span style="color:#00f">As</span> <span style="color:#2b91af">Long</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#00f">Dim</span> n <span style="color:#00f">As</span> <span style="color:#2b91af">Long</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#00f">Dim</span> intFileNumber <span style="color:#00f">As</span> <span style="color:#2b91af">Integer</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#00f">Dim</span> bjHeader <span style="color:#00f">As</span> BITMAPFILEHEADER
+</span></span><span style="display:flex;"><span>    <span style="color:#00f">Dim</span> biHeader <span style="color:#00f">As</span> BitmapInfoHeader
+</span></span><span style="display:flex;"><span>    <span style="color:#00f">Dim</span> lngColors <span style="color:#00f">As</span> <span style="color:#2b91af">Long</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#00f">Dim</span> rgbData() <span style="color:#00f">As</span> RGBTRIPLE
+</span></span><span style="display:flex;"><span>    <span style="color:#00f">Dim</span> rgbTemp <span style="color:#00f">As</span> RGBTRIPLE
+</span></span><span style="display:flex;"><span>    <span style="color:#00f">Dim</span> rgbTable3() <span style="color:#00f">As</span> RGBTRIPLE
+</span></span><span style="display:flex;"><span>    <span style="color:#00f">Dim</span> rgbTable4() <span style="color:#00f">As</span> RGBQUAD
+</span></span><span style="display:flex;"><span>    <span style="color:#00f">Dim</span> bytTemp <span style="color:#00f">As</span> <span style="color:#2b91af">Byte</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    intFileNumber = FreeFile()
+</span></span><span style="display:flex;"><span>    Open strFileName <span style="color:#00f">For</span> Binary <span style="color:#00f">As</span> intFileNumber
+</span></span><span style="display:flex;"><span>        <span style="color:#00f">Get</span> intFileNumber, , bjHeader
+</span></span><span style="display:flex;"><span>        <span style="color:#00f">Get</span> intFileNumber, , biHeader
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#00f">ReDim</span> rgbData(0 <span style="color:#00f">To</span> biHeader.biHeight - 1, 0 <span style="color:#00f">To</span> biHeader.biWidth - 1) <span style="color:#00f">As</span> RGBTRIPLE
+</span></span><span style="display:flex;"><span>        n = (4 - (-(Int(-biHeader.biWidth * (biHeader.biBitCount / 8))) <span style="color:#00f">Mod</span> 4)) <span style="color:#00f">Mod</span> 4
+</span></span><span style="display:flex;"><span>        lngColors = IIf(biHeader.biClrUsed = 0, 2 ^ biHeader.biBitCount, biHeader.biClrUsed)
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#00f">Select</span> <span style="color:#00f">Case</span> biHeader.biBitCount
+</span></span><span style="display:flex;"><span>        <span style="color:#00f">Case</span> 1
+</span></span><span style="display:flex;"><span>            <span style="color:#00f">ReDim</span> rgbTable4(0 <span style="color:#00f">To</span> lngColors - 1) <span style="color:#00f">As</span> RGBQUAD
+</span></span><span style="display:flex;"><span>            <span style="color:#00f">Get</span> intFileNumber, , rgbTable4
+</span></span><span style="display:flex;"><span>            rgbTable3 = ConvertRGBQuadToRGBTriple(rgbTable4)
+</span></span><span style="display:flex;"><span>            
+</span></span><span style="display:flex;"><span>            <span style="color:#00f">For</span> i = UBound(rgbData, 1) <span style="color:#00f">To</span> 0 <span style="color:#00f">Step</span> -1
+</span></span><span style="display:flex;"><span>                <span style="color:#00f">For</span> j = 0 <span style="color:#00f">To</span> UBound(rgbData, 2) <span style="color:#00f">Step</span> 8
+</span></span><span style="display:flex;"><span>                    <span style="color:#00f">Get</span> intFileNumber, , bytTemp
+</span></span><span style="display:flex;"><span>                    
+</span></span><span style="display:flex;"><span>                    rgbData(i, j) = rgbTable3(bytTemp \ 128)
+</span></span><span style="display:flex;"><span>                    <span style="color:#00f">If</span> j + 1 &lt;= UBound(rgbData, 2) <span style="color:#00f">Then</span> rgbData(i, j + 1) = rgbTable3(bytTemp \ 64 <span style="color:#00f">And</span> 1)
+</span></span><span style="display:flex;"><span>                    <span style="color:#00f">If</span> j + 2 &lt;= UBound(rgbData, 2) <span style="color:#00f">Then</span> rgbData(i, j + 2) = rgbTable3(bytTemp \ 32 <span style="color:#00f">And</span> 1)
+</span></span><span style="display:flex;"><span>                    <span style="color:#00f">If</span> j + 3 &lt;= UBound(rgbData, 2) <span style="color:#00f">Then</span> rgbData(i, j + 3) = rgbTable3(bytTemp \ 16 <span style="color:#00f">And</span> 1)
+</span></span><span style="display:flex;"><span>                    <span style="color:#00f">If</span> j + 4 &lt;= UBound(rgbData, 2) <span style="color:#00f">Then</span> rgbData(i, j + 4) = rgbTable3(bytTemp \ 8 <span style="color:#00f">And</span> 1)
+</span></span><span style="display:flex;"><span>                    <span style="color:#00f">If</span> j + 5 &lt;= UBound(rgbData, 2) <span style="color:#00f">Then</span> rgbData(i, j + 5) = rgbTable3(bytTemp \ 4 <span style="color:#00f">And</span> 1)
+</span></span><span style="display:flex;"><span>                    <span style="color:#00f">If</span> j + 6 &lt;= UBound(rgbData, 2) <span style="color:#00f">Then</span> rgbData(i, j + 6) = rgbTable3(bytTemp \ 2 <span style="color:#00f">And</span> 1)
+</span></span><span style="display:flex;"><span>                    <span style="color:#00f">If</span> j + 7 &lt;= UBound(rgbData, 2) <span style="color:#00f">Then</span> rgbData(i, j + 7) = rgbTable3(bytTemp <span style="color:#00f">And</span> 1)
+</span></span><span style="display:flex;"><span>                    
+</span></span><span style="display:flex;"><span>                <span style="color:#00f">Next</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#00f">For</span> j = 1 <span style="color:#00f">To</span> n
+</span></span><span style="display:flex;"><span>                    <span style="color:#00f">Get</span> intFileNumber, , bytTemp
+</span></span><span style="display:flex;"><span>                <span style="color:#00f">Next</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#00f">Next</span>
+</span></span><span style="display:flex;"><span>            
+</span></span><span style="display:flex;"><span>        <span style="color:#00f">Case</span> 4
+</span></span><span style="display:flex;"><span>            <span style="color:#00f">ReDim</span> rgbTable4(0 <span style="color:#00f">To</span> lngColors - 1) <span style="color:#00f">As</span> RGBQUAD
+</span></span><span style="display:flex;"><span>            <span style="color:#00f">Get</span> intFileNumber, , rgbTable4
+</span></span><span style="display:flex;"><span>            rgbTable3 = ConvertRGBQuadToRGBTriple(rgbTable4)
+</span></span><span style="display:flex;"><span>            
+</span></span><span style="display:flex;"><span>            <span style="color:#00f">For</span> i = UBound(rgbData, 1) <span style="color:#00f">To</span> 0 <span style="color:#00f">Step</span> -1
+</span></span><span style="display:flex;"><span>                <span style="color:#00f">For</span> j = 0 <span style="color:#00f">To</span> UBound(rgbData, 2) <span style="color:#00f">Step</span> 2
+</span></span><span style="display:flex;"><span>                    <span style="color:#00f">Get</span> intFileNumber, , bytTemp
+</span></span><span style="display:flex;"><span>                    
+</span></span><span style="display:flex;"><span>                    rgbData(i, j) = rgbTable3(bytTemp \ 16)
+</span></span><span style="display:flex;"><span>                    <span style="color:#00f">If</span> j + 1 &lt;= UBound(rgbData, 2) <span style="color:#00f">Then</span> rgbData(i, j + 1) = rgbTable3(bytTemp <span style="color:#00f">And</span> 15)
+</span></span><span style="display:flex;"><span>                <span style="color:#00f">Next</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#00f">For</span> j = 1 <span style="color:#00f">To</span> n
+</span></span><span style="display:flex;"><span>                    <span style="color:#00f">Get</span> intFileNumber, , bytTemp
+</span></span><span style="display:flex;"><span>                <span style="color:#00f">Next</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#00f">Next</span>
+</span></span><span style="display:flex;"><span>            
+</span></span><span style="display:flex;"><span>        <span style="color:#00f">Case</span> 8
+</span></span><span style="display:flex;"><span>            <span style="color:#00f">ReDim</span> rgbTable4(0 <span style="color:#00f">To</span> lngColors - 1) <span style="color:#00f">As</span> RGBQUAD
+</span></span><span style="display:flex;"><span>            <span style="color:#00f">Get</span> intFileNumber, , rgbTable4
+</span></span><span style="display:flex;"><span>            rgbTable3 = ConvertRGBQuadToRGBTriple(rgbTable4)
+</span></span><span style="display:flex;"><span>            
+</span></span><span style="display:flex;"><span>            <span style="color:#00f">For</span> i = UBound(rgbData, 1) <span style="color:#00f">To</span> 0 <span style="color:#00f">Step</span> -1
+</span></span><span style="display:flex;"><span>                <span style="color:#00f">For</span> j = 0 <span style="color:#00f">To</span> UBound(rgbData, 2)
+</span></span><span style="display:flex;"><span>                    <span style="color:#00f">Get</span> intFileNumber, , bytTemp
+</span></span><span style="display:flex;"><span>                    rgbData(i, j) = rgbTable3(bytTemp)
+</span></span><span style="display:flex;"><span>                <span style="color:#00f">Next</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#00f">For</span> j = 1 <span style="color:#00f">To</span> n
+</span></span><span style="display:flex;"><span>                    <span style="color:#00f">Get</span> intFileNumber, , bytTemp
+</span></span><span style="display:flex;"><span>                <span style="color:#00f">Next</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#00f">Next</span>
+</span></span><span style="display:flex;"><span>            
+</span></span><span style="display:flex;"><span>        <span style="color:#00f">Case</span> 24
+</span></span><span style="display:flex;"><span>            <span style="color:#00f">For</span> i = UBound(rgbData, 1) <span style="color:#00f">To</span> 0 <span style="color:#00f">Step</span> -1
+</span></span><span style="display:flex;"><span>                <span style="color:#00f">For</span> j = 0 <span style="color:#00f">To</span> UBound(rgbData, 2)
+</span></span><span style="display:flex;"><span>                    <span style="color:#00f">Get</span> intFileNumber, , rgbData(i, j)
+</span></span><span style="display:flex;"><span>                <span style="color:#00f">Next</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#00f">For</span> j = 1 <span style="color:#00f">To</span> n
+</span></span><span style="display:flex;"><span>                    <span style="color:#00f">Get</span> intFileNumber, , bytTemp
+</span></span><span style="display:flex;"><span>                <span style="color:#00f">Next</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#00f">Next</span>
+</span></span><span style="display:flex;"><span>            
+</span></span><span style="display:flex;"><span>        <span style="color:#00f">Case</span> 32
+</span></span><span style="display:flex;"><span>            <span style="color:#00f">ReDim</span> rgbTable4(0 <span style="color:#00f">To</span> biHeader.biHeight - 1, 0 <span style="color:#00f">To</span> biHeader.biWidth - 1) <span style="color:#00f">As</span> RGBQUAD
+</span></span><span style="display:flex;"><span>            
+</span></span><span style="display:flex;"><span>            <span style="color:#00f">Get</span> intFileNumber, , rgbTable4
+</span></span><span style="display:flex;"><span>            rgbData = ConvertRGBQuadToRGBTriple2(rgbTable4)
+</span></span><span style="display:flex;"><span>            
+</span></span><span style="display:flex;"><span>        <span style="color:#00f">End</span> <span style="color:#00f">Select</span>
+</span></span><span style="display:flex;"><span>    Close
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    ReadBitmap = rgbData
+</span></span><span style="display:flex;"><span><span style="color:#00f">End</span> <span style="color:#00f">Function</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#008000">&#39; Write a bitmap file (24-bit only) from 2-dimension array of RGBTriple
+</span></span></span><span style="display:flex;"><span><span style="color:#008000"></span><span style="color:#00f">Public</span> <span style="color:#00f">Sub</span> WriteBitmap24(strFileName <span style="color:#00f">As</span> <span style="color:#2b91af">String</span>, rgbData() <span style="color:#00f">As</span> RGBTRIPLE)
+</span></span><span style="display:flex;"><span>    <span style="color:#00f">Dim</span> i <span style="color:#00f">As</span> <span style="color:#2b91af">Long</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#00f">Dim</span> j <span style="color:#00f">As</span> <span style="color:#2b91af">Long</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#00f">Dim</span> n <span style="color:#00f">As</span> <span style="color:#2b91af">Long</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#00f">Dim</span> lngWidth <span style="color:#00f">As</span> <span style="color:#2b91af">Long</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#00f">Dim</span> lngHeight <span style="color:#00f">As</span> <span style="color:#2b91af">Long</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#00f">Dim</span> intFileNumber <span style="color:#00f">As</span> <span style="color:#2b91af">Integer</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#00f">Dim</span> bjHeader <span style="color:#00f">As</span> BITMAPFILEHEADER
+</span></span><span style="display:flex;"><span>    <span style="color:#00f">Dim</span> biHeader <span style="color:#00f">As</span> BitmapInfoHeader
+</span></span><span style="display:flex;"><span>    <span style="color:#00f">Dim</span> bytTemp <span style="color:#00f">As</span> <span style="color:#2b91af">Byte</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    lngHeight = UBound(rgbData, 1) + 1
+</span></span><span style="display:flex;"><span>    lngWidth = UBound(rgbData, 2) + 1
+</span></span><span style="display:flex;"><span>    n = (4 - (lngWidth * 3 <span style="color:#00f">Mod</span> 4)) <span style="color:#00f">Mod</span> 4
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#00f">With</span> bjHeader
+</span></span><span style="display:flex;"><span>        .bfType = <span style="color:#a31515">&#34;BM&#34;</span>
+</span></span><span style="display:flex;"><span>        .bfSize = Len(bjHeader) + Len(biHeader) + 3 * lngHeight * lngWidth
+</span></span><span style="display:flex;"><span>        .bjOffBits = Len(bjHeader) + Len(biHeader)
+</span></span><span style="display:flex;"><span>    <span style="color:#00f">End</span> <span style="color:#00f">With</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#00f">With</span> biHeader
+</span></span><span style="display:flex;"><span>        .biSize = 40
+</span></span><span style="display:flex;"><span>        .biWidth = lngWidth
+</span></span><span style="display:flex;"><span>        .biHeight = lngHeight
+</span></span><span style="display:flex;"><span>        .biPlanes = 1
+</span></span><span style="display:flex;"><span>        .biBitCount = 24
+</span></span><span style="display:flex;"><span>        .biCompression = 0
+</span></span><span style="display:flex;"><span>        .biSizeImaze = 3 * lngHeight * lngWidth
+</span></span><span style="display:flex;"><span>        .biXPixPerMeter = 3780
+</span></span><span style="display:flex;"><span>        .biYPixPerMeter = 3780
+</span></span><span style="display:flex;"><span>        .biClrUsed = 0
+</span></span><span style="display:flex;"><span>        .biClrImporant = 0
+</span></span><span style="display:flex;"><span>    <span style="color:#00f">End</span> <span style="color:#00f">With</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#00f">If</span> Len(Dir(strFileName)) <span style="color:#00f">Then</span>
+</span></span><span style="display:flex;"><span>        Kill strFileName
+</span></span><span style="display:flex;"><span>    <span style="color:#00f">End</span> <span style="color:#00f">If</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    intFileNumber = FreeFile()
+</span></span><span style="display:flex;"><span>    Open strFileName <span style="color:#00f">For</span> Binary <span style="color:#00f">As</span> intFileNumber
+</span></span><span style="display:flex;"><span>        Put intFileNumber, , bjHeader
+</span></span><span style="display:flex;"><span>        Put intFileNumber, , biHeader
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#00f">For</span> i = lngHeight - 1 <span style="color:#00f">To</span> 0 <span style="color:#00f">Step</span> -1
+</span></span><span style="display:flex;"><span>            <span style="color:#00f">For</span> j = 0 <span style="color:#00f">To</span> lngWidth - 1
+</span></span><span style="display:flex;"><span>                Put intFileNumber, , rgbData(i, j)
+</span></span><span style="display:flex;"><span>            <span style="color:#00f">Next</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#00f">For</span> j = 1 <span style="color:#00f">To</span> n
+</span></span><span style="display:flex;"><span>                Put intFileNumber, , bytTemp
+</span></span><span style="display:flex;"><span>            <span style="color:#00f">Next</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#00f">Next</span>
+</span></span><span style="display:flex;"><span>    Close
+</span></span><span style="display:flex;"><span><span style="color:#00f">End</span> <span style="color:#00f">Sub</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#008000">&#39; Read GIF or JPEG files as RGBTRIPLE()
+</span></span></span><span style="display:flex;"><span><span style="color:#008000"></span><span style="color:#00f">Public</span> <span style="color:#00f">Function</span> ReadGIFJPEG(strFileName <span style="color:#00f">As</span> <span style="color:#2b91af">String</span>) <span style="color:#00f">As</span> RGBTRIPLE()
+</span></span><span style="display:flex;"><span>    <span style="color:#00f">Dim</span> objPicture <span style="color:#00f">As</span> IPictureDisp
+</span></span><span style="display:flex;"><span>    <span style="color:#00f">Dim</span> strTempFile <span style="color:#00f">As</span> <span style="color:#2b91af">String</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#00f">Set</span> objPicture = LoadPicture(strFileName)
+</span></span><span style="display:flex;"><span>    strTempFile = GetTempName()
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    SavePicture objPicture, strTempFile
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    ReadGIFJPEG = ReadBitmap(strTempFile)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    Kill strTempFile
+</span></span><span style="display:flex;"><span><span style="color:#00f">End</span> <span style="color:#00f">Function</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#008000">&#39; Private Functions
+</span></span></span><span style="display:flex;"><span><span style="color:#008000"></span><span style="color:#00f">Private</span> <span style="color:#00f">Function</span> ConvertRGBQuadToRGBTriple(rgbSource() <span style="color:#00f">As</span> RGBQUAD) <span style="color:#00f">As</span> RGBTRIPLE()
+</span></span><span style="display:flex;"><span>    <span style="color:#00f">Dim</span> i <span style="color:#00f">As</span> <span style="color:#2b91af">Long</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#00f">Dim</span> j <span style="color:#00f">As</span> <span style="color:#2b91af">Long</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#00f">Dim</span> rgbResult() <span style="color:#00f">As</span> RGBTRIPLE
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#00f">ReDim</span> rgbResult(0 <span style="color:#00f">To</span> UBound(rgbSource, 1)) <span style="color:#00f">As</span> RGBTRIPLE
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#00f">For</span> i = 0 <span style="color:#00f">To</span> UBound(rgbSource, 1)
+</span></span><span style="display:flex;"><span>        rgbResult(i).rgbBlue = rgbSource(i).rgbBlue
+</span></span><span style="display:flex;"><span>        rgbResult(i).rgbGreen = rgbSource(i).rgbGreen
+</span></span><span style="display:flex;"><span>        rgbResult(i).rgbRed = rgbSource(i).rgbRed
+</span></span><span style="display:flex;"><span>    <span style="color:#00f">Next</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    ConvertRGBQuadToRGBTriple = rgbResult
+</span></span><span style="display:flex;"><span><span style="color:#00f">End</span> <span style="color:#00f">Function</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#00f">Private</span> <span style="color:#00f">Function</span> ConvertRGBQuadToRGBTriple2(rgbSource() <span style="color:#00f">As</span> RGBQUAD) <span style="color:#00f">As</span> RGBTRIPLE()
+</span></span><span style="display:flex;"><span>    <span style="color:#00f">Dim</span> i <span style="color:#00f">As</span> <span style="color:#2b91af">Long</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#00f">Dim</span> j <span style="color:#00f">As</span> <span style="color:#2b91af">Long</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#00f">Dim</span> rgbResult() <span style="color:#00f">As</span> RGBTRIPLE
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#00f">ReDim</span> rgbResult(0 <span style="color:#00f">To</span> UBound(rgbSource, 1), 0 <span style="color:#00f">To</span> UBound(rgbSource, 2)) <span style="color:#00f">As</span> RGBTRIPLE
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#00f">For</span> i = 0 <span style="color:#00f">To</span> UBound(rgbSource, 1)
+</span></span><span style="display:flex;"><span>        <span style="color:#00f">For</span> j = 0 <span style="color:#00f">To</span> UBound(rgbSource, 2)
+</span></span><span style="display:flex;"><span>            rgbResult(i, j).rgbBlue = rgbSource(i, j).rgbBlue
+</span></span><span style="display:flex;"><span>            rgbResult(i, j).rgbGreen = rgbSource(i, j).rgbGreen
+</span></span><span style="display:flex;"><span>            rgbResult(i, j).rgbRed = rgbSource(i, j).rgbRed
+</span></span><span style="display:flex;"><span>        <span style="color:#00f">Next</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#00f">Next</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    ConvertRGBQuadToRGBTriple2 = rgbResult
+</span></span><span style="display:flex;"><span><span style="color:#00f">End</span> <span style="color:#00f">Function</span>
+</span></span></code></pre></div>
 		</div>
 		<footer class="post__footer">
 			

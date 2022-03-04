@@ -105,100 +105,100 @@ if (!doNotTrack) {
 <h2 id="実際の挙動">実際の挙動</h2>
 <p>環境はWindows 10でPowerShellのバージョンは5.1。</p>
 <p>まずは差異の個数が0、1、2となるよう、<code>Compare-Object</code>で比較する。</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell">PS T:\&gt; $diff0 = Compare-Object @(1,2,3) @(1,2,3)
-PS T:\&gt; $diff1 = Compare-Object @(1,2,3) @(1,2)
-PS T:\&gt; $diff2 = Compare-Object @(1,2,3) @(1)
-</code></pre></div><p>上で説明したように、<code>$diff0</code>は<code>$null</code>が、<code>$diff1</code>は<code>PSCustomObject</code>が、<code>$diff2</code>は配列が返ってくる。</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell">PS T:\&gt; $diff0
-PS T:\&gt; $diff1
-
-InputObject SideIndicator
------------ -------------
-          3 &lt;=
-
-PS T:\&gt; $diff2
-
-InputObject SideIndicator
------------ -------------
-          2 &lt;=
-          3 &lt;=
-</code></pre></div><p><code>$diff1</code>と<code>$diff2</code>の違いはコンソールに出力するとわかりにくいので、<code>getType()</code>を使って確認。</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell">PS T:\&gt; $diff0.getType()
-null 値の式ではメソッドを呼び出せません<span style="">。</span>
-発生場所 行<span style="">:</span>1 文字<span style="">:</span>1
-+ $diff0.getType()
-+ ~~~~~~~~~~~~~~~~
-    + CategoryInfo          <span style="">:</span> InvalidOperation<span style="">:</span> (<span style="">:</span>) []<span style="">、</span>RuntimeException
-    + FullyQualifiedErrorId <span style="">:</span> InvokeMethodOnNull
-
-PS T:\&gt; $diff1.getType()
-
-IsPublic IsSerial Name                                     BaseType
--------- -------- ----                                     --------
-True     False    PSCustomObject                           System.Object
-
-PS T:\&gt; $diff2.getType()
-
-IsPublic IsSerial Name                                     BaseType
--------- -------- ----                                     --------
-True     True     Object[]                                 System.Array
-</code></pre></div><p>このため、<code>Length</code>プロパティを使って差異があるかどうかを判定するのは上手くいかない(もちろん、<code>Length</code>プロパティを使わず、<code>$diff0 -neq $null</code>のようにすれば、差分があるかどうか自体は判定可能)。</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell"><span style="color:#008000"># 差分が1個のときだけLengthプロパティが無い(なぜか$nullにはLengthプロパティがある)</span>
-PS T:\&gt; $diff0.Length
-0
-PS T:\&gt; $diff1.Length
-PS T:\&gt; $diff2.Length
-2
-
-<span style="color:#008000"># 差分があるかどうかを調べたいときは-ne 0を使えば一応正しく判定可能</span>
-PS T:\&gt; $diff0.Length -ne 0
-False
-PS T:\&gt; $diff1.Length -ne 0
-True
-PS T:\&gt; $diff2.Length -ne 0
-True
-
-<span style="color:#008000"># 同じように見えて-gt 0は使えない</span>
-PS T:\&gt; $diff0.Length -gt 0
-False
-PS T:\&gt; $diff1.Length -gt 0
-False
-PS T:\&gt; $diff2.Length -gt 0
-True
-</code></pre></div><p>対処法としては、<strong><code>Compare-Object</code>の結果を<code>@()</code>で囲んで、必ず配列が返ってくるようにするのが安全。</strong></p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell">PS T:\&gt; $diff0_2 = @(Compare-Object @(1,2,3) @(1,2,3))
-PS T:\&gt; $diff1_2 = @(Compare-Object @(1,2,3) @(1,2))
-PS T:\&gt; $diff2_2 = @(Compare-Object @(1,2,3) @(1))
-
-<span style="color:#008000"># GetType()で必ず配列が返る</span>
-PS T:\&gt; $diff0_2.GetType()
-
-IsPublic IsSerial Name                                     BaseType
--------- -------- ----                                     --------
-True     True     Object[]                                 System.Array
-
-
-PS T:\&gt; $diff1_2.GetType()
-
-IsPublic IsSerial Name                                     BaseType
--------- -------- ----                                     --------
-True     True     Object[]                                 System.Array
-
-
-PS T:\&gt; $diff2_2.GetType()
-
-IsPublic IsSerial Name                                     BaseType
--------- -------- ----                                     --------
-True     True     Object[]                                 System.Array
-
-<span style="color:#008000"># Lengthプロパティも必ず存在する</span>
-PS T:\&gt; $diff0_2.Length
-0
-PS T:\&gt; $diff1_2.Length
-1
-PS T:\&gt; $diff2_2.Length
-2
-</code></pre></div><h2 id="参考">参考</h2>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>PS T:\&gt; $diff0 = Compare-Object @(1,2,3) @(1,2,3)
+</span></span><span style="display:flex;"><span>PS T:\&gt; $diff1 = Compare-Object @(1,2,3) @(1,2)
+</span></span><span style="display:flex;"><span>PS T:\&gt; $diff2 = Compare-Object @(1,2,3) @(1)
+</span></span></code></pre></div><p>上で説明したように、<code>$diff0</code>は<code>$null</code>が、<code>$diff1</code>は<code>PSCustomObject</code>が、<code>$diff2</code>は配列が返ってくる。</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>PS T:\&gt; $diff0
+</span></span><span style="display:flex;"><span>PS T:\&gt; $diff1
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>InputObject SideIndicator
+</span></span><span style="display:flex;"><span>----------- -------------
+</span></span><span style="display:flex;"><span>          3 &lt;=
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>PS T:\&gt; $diff2
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>InputObject SideIndicator
+</span></span><span style="display:flex;"><span>----------- -------------
+</span></span><span style="display:flex;"><span>          2 &lt;=
+</span></span><span style="display:flex;"><span>          3 &lt;=
+</span></span></code></pre></div><p><code>$diff1</code>と<code>$diff2</code>の違いはコンソールに出力するとわかりにくいので、<code>getType()</code>を使って確認。</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>PS T:\&gt; $diff0.getType()
+</span></span><span style="display:flex;"><span>null 値の式ではメソッドを呼び出せません<span style="">。</span>
+</span></span><span style="display:flex;"><span>発生場所 行<span style="">:</span>1 文字<span style="">:</span>1
+</span></span><span style="display:flex;"><span>+ $diff0.getType()
+</span></span><span style="display:flex;"><span>+ ~~~~~~~~~~~~~~~~
+</span></span><span style="display:flex;"><span>    + CategoryInfo          <span style="">:</span> InvalidOperation<span style="">:</span> (<span style="">:</span>) []<span style="">、</span>RuntimeException
+</span></span><span style="display:flex;"><span>    + FullyQualifiedErrorId <span style="">:</span> InvokeMethodOnNull
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>PS T:\&gt; $diff1.getType()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>IsPublic IsSerial Name                                     BaseType
+</span></span><span style="display:flex;"><span>-------- -------- ----                                     --------
+</span></span><span style="display:flex;"><span>True     False    PSCustomObject                           System.Object
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>PS T:\&gt; $diff2.getType()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>IsPublic IsSerial Name                                     BaseType
+</span></span><span style="display:flex;"><span>-------- -------- ----                                     --------
+</span></span><span style="display:flex;"><span>True     True     Object[]                                 System.Array
+</span></span></code></pre></div><p>このため、<code>Length</code>プロパティを使って差異があるかどうかを判定するのは上手くいかない(もちろん、<code>Length</code>プロパティを使わず、<code>$diff0 -neq $null</code>のようにすれば、差分があるかどうか自体は判定可能)。</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span><span style="color:#008000"># 差分が1個のときだけLengthプロパティが無い(なぜか$nullにはLengthプロパティがある)</span>
+</span></span><span style="display:flex;"><span>PS T:\&gt; $diff0.Length
+</span></span><span style="display:flex;"><span>0
+</span></span><span style="display:flex;"><span>PS T:\&gt; $diff1.Length
+</span></span><span style="display:flex;"><span>PS T:\&gt; $diff2.Length
+</span></span><span style="display:flex;"><span>2
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#008000"># 差分があるかどうかを調べたいときは-ne 0を使えば一応正しく判定可能</span>
+</span></span><span style="display:flex;"><span>PS T:\&gt; $diff0.Length -ne 0
+</span></span><span style="display:flex;"><span>False
+</span></span><span style="display:flex;"><span>PS T:\&gt; $diff1.Length -ne 0
+</span></span><span style="display:flex;"><span>True
+</span></span><span style="display:flex;"><span>PS T:\&gt; $diff2.Length -ne 0
+</span></span><span style="display:flex;"><span>True
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#008000"># 同じように見えて-gt 0は使えない</span>
+</span></span><span style="display:flex;"><span>PS T:\&gt; $diff0.Length -gt 0
+</span></span><span style="display:flex;"><span>False
+</span></span><span style="display:flex;"><span>PS T:\&gt; $diff1.Length -gt 0
+</span></span><span style="display:flex;"><span>False
+</span></span><span style="display:flex;"><span>PS T:\&gt; $diff2.Length -gt 0
+</span></span><span style="display:flex;"><span>True
+</span></span></code></pre></div><p>対処法としては、<strong><code>Compare-Object</code>の結果を<code>@()</code>で囲んで、必ず配列が返ってくるようにするのが安全。</strong></p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>PS T:\&gt; $diff0_2 = @(Compare-Object @(1,2,3) @(1,2,3))
+</span></span><span style="display:flex;"><span>PS T:\&gt; $diff1_2 = @(Compare-Object @(1,2,3) @(1,2))
+</span></span><span style="display:flex;"><span>PS T:\&gt; $diff2_2 = @(Compare-Object @(1,2,3) @(1))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#008000"># GetType()で必ず配列が返る</span>
+</span></span><span style="display:flex;"><span>PS T:\&gt; $diff0_2.GetType()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>IsPublic IsSerial Name                                     BaseType
+</span></span><span style="display:flex;"><span>-------- -------- ----                                     --------
+</span></span><span style="display:flex;"><span>True     True     Object[]                                 System.Array
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>PS T:\&gt; $diff1_2.GetType()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>IsPublic IsSerial Name                                     BaseType
+</span></span><span style="display:flex;"><span>-------- -------- ----                                     --------
+</span></span><span style="display:flex;"><span>True     True     Object[]                                 System.Array
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>PS T:\&gt; $diff2_2.GetType()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>IsPublic IsSerial Name                                     BaseType
+</span></span><span style="display:flex;"><span>-------- -------- ----                                     --------
+</span></span><span style="display:flex;"><span>True     True     Object[]                                 System.Array
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#008000"># Lengthプロパティも必ず存在する</span>
+</span></span><span style="display:flex;"><span>PS T:\&gt; $diff0_2.Length
+</span></span><span style="display:flex;"><span>0
+</span></span><span style="display:flex;"><span>PS T:\&gt; $diff1_2.Length
+</span></span><span style="display:flex;"><span>1
+</span></span><span style="display:flex;"><span>PS T:\&gt; $diff2_2.Length
+</span></span><span style="display:flex;"><span>2
+</span></span></code></pre></div><h2 id="参考">参考</h2>
 <ul>
 <li><a href="https://blog.shibata.tech/entry/2018/05/31/214439">PowerShellの&quot;罠&quot;と呼ばれるモノについて - しばたテックブログ</a></li>
 <li><a href="https://operationslab.wordpress.com/2013/03/11/powershell-%E3%81%A7%E3%81%AF%E5%AD%98%E5%9C%A8%E3%81%97%E3%81%AA%E3%81%84%E3%83%97%E3%83%AD%E3%83%91%E3%83%86%E3%82%A3%E3%81%B8%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9%E3%81%99%E3%82%8B%E3%81%A8-null/">PowerShell では存在しないプロパティへアクセスすると $null が返る | Operations Lab.</a></li>

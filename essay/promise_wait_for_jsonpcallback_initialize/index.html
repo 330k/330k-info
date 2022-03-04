@@ -98,16 +98,16 @@ if (!doNotTrack) {
 <p>グローバル環境が少し汚れるが、一般にJSONPのコールバックをPromise化できる。</p>
 <h2 id="やり方">やり方</h2>
 <p>以下のやり方で、<code>callback</code>の実行時にコンソールに<code>&quot;SOLVED&quot;</code>と表示できる。</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#00f">let</span> globalresolve;
-<span style="color:#00f">function</span> callback(){
-  globalresolve();
-}
-<span style="color:#00f">const</span> p1 = <span style="color:#00f">new</span> Promise((resolve) =&gt; {globalresolve = resolve;});
-
-p1.then(() =&gt; {
-  console.log(<span style="color:#a31515">&#34;SOLVED&#34;</span>);
-});
-</code></pre></div><ol>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#00f">let</span> globalresolve;
+</span></span><span style="display:flex;"><span><span style="color:#00f">function</span> callback(){
+</span></span><span style="display:flex;"><span>  globalresolve();
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#00f">const</span> p1 = <span style="color:#00f">new</span> Promise((resolve) =&gt; {globalresolve = resolve;});
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>p1.then(() =&gt; {
+</span></span><span style="display:flex;"><span>  console.log(<span style="color:#a31515">&#34;SOLVED&#34;</span>);
+</span></span><span style="display:flex;"><span>});
+</span></span></code></pre></div><ol>
 <li>グローバルに<code>resolve</code>保存用の変数(例:<code>globalresolve</code>)を作っておく</li>
 <li>Promise生成時に引数の<code>resolve</code>を<code>globalresolve</code>に代入する</li>
 <li>コールバック関数で<code>globalresolve</code>を呼び出す</li>
@@ -115,44 +115,44 @@ p1.then(() =&gt; {
 <p>という流れでPromise化できる。</p>
 <h2 id="使用例1">使用例1</h2>
 <p>Google Maps JavaScript APIの読み込み完了時に関数<code>initMap</code>を呼ぶようにする場合。</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#00f">let</span> mapresolve;
-<span style="color:#00f">function</span> initMap() {
-  mapresolve();
-}
-
-(<span style="color:#00f">new</span> Promise((resolve) =&gt; {mapresolve = resolve;})).then(() =&gt; {
-  console.log(<span style="color:#a31515">&#34;SOLVED&#34;</span>)}
-);
-</code></pre></div><div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;script async src=<span style="color:#a31515">&#34;https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&amp;callback=initMap&#34;</span>&gt;&lt;/script&gt;
-</code></pre></div><h2 id="使用例2">使用例2</h2>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#00f">let</span> mapresolve;
+</span></span><span style="display:flex;"><span><span style="color:#00f">function</span> initMap() {
+</span></span><span style="display:flex;"><span>  mapresolve();
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>(<span style="color:#00f">new</span> Promise((resolve) =&gt; {mapresolve = resolve;})).then(() =&gt; {
+</span></span><span style="display:flex;"><span>  console.log(<span style="color:#a31515">&#34;SOLVED&#34;</span>)}
+</span></span><span style="display:flex;"><span>);
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;script async src=<span style="color:#a31515">&#34;https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&amp;callback=initMap&#34;</span>&gt;&lt;/script&gt;
+</span></span></code></pre></div><h2 id="使用例2">使用例2</h2>
 <p>単体でPromise化してもあまり恩恵は大きくないのだが、複数のライブラリを使用していてすべてのライブラリの読み込み完了後に何かしら処理をしたい、
 といった場合に<code>Promise.all</code>を使って並列して読み込みつつ、すべてが完了するのを待機してから次の処理に移る、といったことが可能。</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#00f">let</span> gr1, gr2;
-<span style="color:#00f">function</span> callback1(){
-  gr1();
-}
-<span style="color:#00f">function</span> callback2(){
-  gr2();
-}
-
-<span style="color:#00f">const</span> p1 = <span style="color:#00f">new</span> Promise((r) =&gt; {gr1 = r;});
-<span style="color:#00f">const</span> p2 = <span style="color:#00f">new</span> Promise((r) =&gt; {gr2 = r;});
-
-Promise.all([p1, p2]).then(() =&gt; {
-  console.log(<span style="color:#a31515">&#34;ALL DONE&#34;</span>);
-});
-</code></pre></div><h2 id="できる限りグローバルを汚したくない場合">できる限りグローバルを汚したくない場合</h2>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#00f">let</span> gr1, gr2;
+</span></span><span style="display:flex;"><span><span style="color:#00f">function</span> callback1(){
+</span></span><span style="display:flex;"><span>  gr1();
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#00f">function</span> callback2(){
+</span></span><span style="display:flex;"><span>  gr2();
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#00f">const</span> p1 = <span style="color:#00f">new</span> Promise((r) =&gt; {gr1 = r;});
+</span></span><span style="display:flex;"><span><span style="color:#00f">const</span> p2 = <span style="color:#00f">new</span> Promise((r) =&gt; {gr2 = r;});
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Promise.all([p1, p2]).then(() =&gt; {
+</span></span><span style="display:flex;"><span>  console.log(<span style="color:#a31515">&#34;ALL DONE&#34;</span>);
+</span></span><span style="display:flex;"><span>});
+</span></span></code></pre></div><h2 id="できる限りグローバルを汚したくない場合">できる限りグローバルを汚したくない場合</h2>
 <p>一応、細かくスコープを区切ればグローバルに保管用変数を追加しなくてもPromise化可能(<code>callback</code>の巻き上げが起こらないので、<code>callback = () =&gt; outerresolve();</code>が実行される前にコールバック関数が呼び出されてしまうとNGな点は注意)。</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#00f">let</span> callback;
-{
-  <span style="color:#00f">let</span> outerresolve;
-  callback = () =&gt; outerresolve();
-
-  (<span style="color:#00f">new</span> Promise((resolve) =&gt; {outerresolve = resolve;})).then(() =&gt; {
-    console.log(<span style="color:#a31515">&#34;SOLVED&#34;</span>)}
-  );
-}
-</code></pre></div><h2 id="参考">参考</h2>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#00f">let</span> callback;
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#00f">let</span> outerresolve;
+</span></span><span style="display:flex;"><span>  callback = () =&gt; outerresolve();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  (<span style="color:#00f">new</span> Promise((resolve) =&gt; {outerresolve = resolve;})).then(() =&gt; {
+</span></span><span style="display:flex;"><span>    console.log(<span style="color:#a31515">&#34;SOLVED&#34;</span>)}
+</span></span><span style="display:flex;"><span>  );
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="参考">参考</h2>
 <ul>
 <li>より一般にJSONPをPromiseにする場合: <a href="https://qiita.com/mpyw/items/21509fc79dc60a1122be">【Promise】JSONPの読み込みをThenableにする - Qiita</a></li>
 </ul>

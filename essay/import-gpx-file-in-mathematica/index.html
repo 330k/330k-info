@@ -94,12 +94,12 @@ if (!doNotTrack) {
 		</header><div class="content post__content clearfix">
 			<p>MathematicaでGPXファイルを読み込んで解釈する方法のメモ。</p>
 <p>対象となるGPXファイルを</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Mathematica" data-lang="Mathematica">xml = Import[filepath, <span style="color:#a31515">&#34;XML&#34;</span>];
-</code></pre></div><p>でまずXMLとして読み込んでおいて、</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Mathematica" data-lang="Mathematica">trk = Cases[xml, XMLElement[<span style="color:#a31515">&#34;trk&#34;</span>, _, _], Infinity];
-</code></pre></div><p>でtrk要素を抜き出し、</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Mathematica" data-lang="Mathematica">trkpt = (ToExpression[{<span style="color:#a31515">&#34;lat&#34;</span>, <span style="color:#a31515">&#34;lon&#34;</span>} /. Cases[#1, XMLElement[<span style="color:#a31515">&#34;trkpt&#34;</span>, attr_, _] :&gt; attr, Infinity]] &amp; ) /@ trk;
-</code></pre></div><p>でそれぞれのtrk要素からtrkpt要素を抜き出して緯度と経度を得る。</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Mathematica" data-lang="Mathematica"><span style="display:flex;"><span>xml = Import[filepath, <span style="color:#a31515">&#34;XML&#34;</span>];
+</span></span></code></pre></div><p>でまずXMLとして読み込んでおいて、</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Mathematica" data-lang="Mathematica"><span style="display:flex;"><span>trk = Cases[xml, XMLElement[<span style="color:#a31515">&#34;trk&#34;</span>, _, _], Infinity];
+</span></span></code></pre></div><p>でtrk要素を抜き出し、</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Mathematica" data-lang="Mathematica"><span style="display:flex;"><span>trkpt = (ToExpression[{<span style="color:#a31515">&#34;lat&#34;</span>, <span style="color:#a31515">&#34;lon&#34;</span>} /. Cases[#1, XMLElement[<span style="color:#a31515">&#34;trkpt&#34;</span>, attr_, _] :&gt; attr, Infinity]] &amp; ) /@ trk;
+</span></span></code></pre></div><p>でそれぞれのtrk要素からtrkpt要素を抜き出して緯度と経度を得る。</p>
 <hr>
 <p>Sep. 28 2013追記</p>
 <p>Mathematica 8からは標準でGPXをImport可能になった。</p>

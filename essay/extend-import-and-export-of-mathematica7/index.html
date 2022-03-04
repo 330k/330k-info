@@ -97,8 +97,8 @@ if (!doNotTrack) {
 それを<code>Import</code>や<code>Export</code>に対応させる方法がExtending Import &amp; Export (Wolfram Library Archive)において解説されている。</p>
 <p>しかしこの文書は2003年のもので以前は<code>Experimental`RegisterConverter</code>という関数で登録すればよかったのだが、
 この関数はMathematica 7にはない。</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Mathematica" data-lang="Mathematica">Names[<span style="color:#a31515">&#34;*`*Register*&#34;</span>]
-</code></pre></div><p>などとして探し回ったところ、</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Mathematica" data-lang="Mathematica"><span style="display:flex;"><span>Names[<span style="color:#a31515">&#34;*`*Register*&#34;</span>]
+</span></span></code></pre></div><p>などとして探し回ったところ、</p>
 <ul>
 <li><code>ImportExport`RegisterFormat</code></li>
 <li><code>ImportExport`RegisterExport</code></li>
@@ -106,8 +106,8 @@ if (!doNotTrack) {
 </ul>
 <p>というそれらしいものを見つけた。</p>
 <p>早速</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Mathematica" data-lang="Mathematica">ClearAttributes[ImportExport`RegisterFormat, ReadProtected]
-</code></pre></div><p>として読込みプロテクトを解除してどういう動作をするのか調べたところ、</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Mathematica" data-lang="Mathematica"><span style="display:flex;"><span>ClearAttributes[ImportExport`RegisterFormat, ReadProtected]
+</span></span></code></pre></div><p>として読込みプロテクトを解除してどういう動作をするのか調べたところ、</p>
 <ul>
 <li><code>ImportExport`RegisterFormat[&quot;ファイルフォーマット名&quot;]</code>としてファイルフォーマットを登録</li>
 <li><code>ImportExport`RegisterImport[&quot;ファイルフォーマット名&quot;, myImport]</code>で自前のローダ<code>myImport</code>を<code>Import</code>に登録</li>
@@ -115,9 +115,9 @@ if (!doNotTrack) {
 </ul>
 <p>という使い方をするようだ。ファイルフォーマット名は&quot;GPX&quot;でも&quot;KML&quot;でも&quot;JSON&quot;でも好きな名前を付けていい。</p>
 <p>myImportやmyExportの書式は以前と変わっていないようで、</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Mathematica" data-lang="Mathematica">myImport[filename_String, options___?OptionQ] := Module[{<span style="">...</span>},<span style="">...</span>]
-myExport[filename_String, expression_, options___?OptionQ] := Module[{<span style="">...</span>},<span style="">...</span>]
-</code></pre></div><p>でいい模様。</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Mathematica" data-lang="Mathematica"><span style="display:flex;"><span>myImport[filename_String, options___?OptionQ] := Module[{<span style="">...</span>},<span style="">...</span>]
+</span></span><span style="display:flex;"><span>myExport[filename_String, expression_, options___?OptionQ] := Module[{<span style="">...</span>},<span style="">...</span>]
+</span></span></code></pre></div><p>でいい模様。</p>
 <p><code>ImportExport`RegisterFormat</code>には以下のオプションがある。</p>
 <ul>
 <li><code>BinaryFormat</code> : バイナリファイルなら<code>True</code>、そうでなければ<code>False</code>。</li>
@@ -131,15 +131,15 @@ myExport[filename_String, expression_, options___?OptionQ] := Module[{<span styl
 <hr>
 <p>Feb. 20 2010追記</p>
 <p>Importで自動判別させる方法が判明。</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Mathematica" data-lang="Mathematica">FileFormatDump`AddFormat[<span style="color:#a31515">&#34;ファイルフォーマット名&#34;</span>, bin, bundle, archive, encoding, magic, ext, mime, test, bundletestfunc]
-</code></pre></div><p>として、判別するときに用いられる関数のほか、MIMEタイプも登録できる模様。</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Mathematica" data-lang="Mathematica"><span style="display:flex;"><span>FileFormatDump`AddFormat[<span style="color:#a31515">&#34;ファイルフォーマット名&#34;</span>, bin, bundle, archive, encoding, magic, ext, mime, test, bundletestfunc]
+</span></span></code></pre></div><p>として、判別するときに用いられる関数のほか、MIMEタイプも登録できる模様。</p>
 <p><code>bin</code>(バイナリ形式か否か), <code>bundle</code>, <code>archive</code>, <code>encoding</code>, <code>magic</code>は<code>True</code>または<code>False</code>で指定するが<code>bin</code>以外の意味はよく分らない。
 <code>ex</code>tは上の<code>Extensions</code>と同様に<code>{&quot;*.nb&quot;,&quot;*.html&quot;}</code>などの様式で指定し、<code>mime</code>にはMIMEタイプのリストを<code>{&quot;APPLICATION/XHTML+XML&quot;,&quot;TEXT/XML&quot;}</code>のように指定する。
 <code>test</code>にはファイル形式を判別する関数または<code>None</code>を指定する。たとえばXHTMLでは</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Mathematica" data-lang="Mathematica">StringMatchQ[#1, ___ ~~ 
-   <span style="color:#a31515">&#34;&lt;!DOCTYPE html PUBLIC \&#34;</span>-//W3C//DTD XHTML<span style="">&#34;</span> ~~ __, 
-  IgnoreCase -&gt; False] &amp;
-</code></pre></div><p>となっている。</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Mathematica" data-lang="Mathematica"><span style="display:flex;"><span>StringMatchQ[#1, ___ ~~ 
+</span></span><span style="display:flex;"><span>   <span style="color:#a31515">&#34;&lt;!DOCTYPE html PUBLIC \&#34;</span>-//W3C//DTD XHTML<span style="">&#34;</span> ~~ __, 
+</span></span><span style="display:flex;"><span>  IgnoreCase -&gt; False] &amp;
+</span></span></code></pre></div><p>となっている。</p>
 <p><code>bundletestfunc</code>は地理データ系の形式で拡張子が指定されているが、意味不明。
 とりあえずは空のリスト(<code>{}</code>)でいいと思われる。</p>
 <hr>

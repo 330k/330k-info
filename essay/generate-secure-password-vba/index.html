@@ -101,60 +101,60 @@ if (!doNotTrack) {
 1回の処理で必ずポリシーに沿った文字列を生成する関数を作成した。</p>
 <h2 id="実装">実装</h2>
 <p>とりあえず作ったものはこちら。</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-VB.NET" data-lang="VB.NET"><span style="color:#008000">&#39; パスワード用のランダム文字列を生成する
-</span><span style="color:#008000"></span><span style="color:#00f">Public</span> <span style="color:#00f">Function</span> GeneratePassword(iLength <span style="color:#00f">As</span> <span style="color:#2b91af">Integer</span>, <span style="color:#00f">Optional</span> bAllowLower <span style="color:#00f">As</span> <span style="color:#2b91af">Boolean</span> = <span style="color:#00f">True</span>, <span style="color:#00f">Optional</span> bAllowUpper <span style="color:#00f">As</span> <span style="color:#2b91af">Boolean</span> = <span style="color:#00f">True</span>, _
-  <span style="color:#00f">Optional</span> bAllowNumber <span style="color:#00f">As</span> <span style="color:#2b91af">Boolean</span> = <span style="color:#00f">True</span>, <span style="color:#00f">Optional</span> bAllowSymbol <span style="color:#00f">As</span> <span style="color:#2b91af">Boolean</span> = <span style="color:#00f">False</span>, <span style="color:#00f">Optional</span> bRequireLower <span style="color:#00f">As</span> <span style="color:#2b91af">Boolean</span> = <span style="color:#00f">True</span>, _
-  <span style="color:#00f">Optional</span> bRequireUpper <span style="color:#00f">As</span> <span style="color:#2b91af">Boolean</span> = <span style="color:#00f">True</span>, <span style="color:#00f">Optional</span> bRequireNumber <span style="color:#00f">As</span> <span style="color:#2b91af">Boolean</span> = <span style="color:#00f">True</span>, <span style="color:#00f">Optional</span> bRequireSymbol <span style="color:#00f">As</span> <span style="color:#2b91af">Boolean</span> = <span style="color:#00f">False</span>, _
-  <span style="color:#00f">Optional</span> sSymbols <span style="color:#00f">As</span> <span style="color:#2b91af">String</span> = <span style="color:#a31515">&#34;!#$%&amp;()=^-|@[]{}:;,.&#34;</span>) <span style="color:#00f">As</span> <span style="color:#2b91af">String</span>
-    <span style="color:#00f">Dim</span> sPassword <span style="color:#00f">As</span> <span style="color:#2b91af">String</span>
-    <span style="color:#00f">Dim</span> i <span style="color:#00f">As</span> <span style="color:#2b91af">Long</span>
-    <span style="color:#00f">Dim</span> sTotalChars <span style="color:#00f">As</span> <span style="color:#2b91af">String</span>
-   
-    <span style="color:#00f">Const</span> S_LOWER <span style="color:#00f">As</span> <span style="color:#2b91af">String</span> = <span style="color:#a31515">&#34;abcdefghijklmnopqrstuvwxyz&#34;</span>
-    <span style="color:#00f">Const</span> S_UPPER <span style="color:#00f">As</span> <span style="color:#2b91af">String</span> = <span style="color:#a31515">&#34;ABCDEFGHIJKLMNOPQRSTUVWXYZ&#34;</span>
-    <span style="color:#00f">Const</span> S_NUMBER <span style="color:#00f">As</span> <span style="color:#2b91af">String</span> = <span style="color:#a31515">&#34;0123456789&#34;</span>
-   
-    <span style="color:#008000">&#39; 使用可能文字種
-</span><span style="color:#008000"></span>    <span style="color:#00f">If</span> bAllowLower <span style="color:#00f">Then</span>
-        sTotalChars = sTotalChars &amp; S_LOWER
-    <span style="color:#00f">End</span> <span style="color:#00f">If</span>
-    <span style="color:#00f">If</span> bAllowUpper <span style="color:#00f">Then</span>
-        sTotalChars = sTotalChars &amp; S_UPPER
-    <span style="color:#00f">End</span> <span style="color:#00f">If</span>
-    <span style="color:#00f">If</span> bAllowNumber <span style="color:#00f">Then</span>
-        sTotalChars = sTotalChars &amp; S_NUMBER
-    <span style="color:#00f">End</span> <span style="color:#00f">If</span>
-    <span style="color:#00f">If</span> bAllowSymbol <span style="color:#00f">Then</span>
-        sTotalChars = sTotalChars &amp; sSymbols
-    <span style="color:#00f">End</span> <span style="color:#00f">If</span>
-   
-    <span style="color:#008000">&#39; 任意の文字種が可能な部分を生成
-</span><span style="color:#008000"></span>    <span style="color:#00f">For</span> i = 1 <span style="color:#00f">To</span> iLength - Abs(bRequireLower + bRequireUpper + bRequireNumber + bRequireSymbol)
-        sPassword = sPassword &amp; Mid(sTotalChars, Int(Len(sTotalChars) * Rnd + 1), 1)
-    <span style="color:#00f">Next</span> i
-   
-    <span style="color:#008000">&#39; 必須とされる文字種の文字を1文字ずつ挿入
-</span><span style="color:#008000"></span>    <span style="color:#00f">If</span> bRequireLower <span style="color:#00f">Then</span>
-        i = Int((Len(sPassword) + 1) * Rnd + 1)
-        sPassword = Mid<span style="">$</span>(sPassword, 1, i - 1) &amp; Mid(S_LOWER, Int(Len(S_LOWER) * Rnd + 1), 1) &amp; Mid<span style="">$</span>(sPassword, i)
-    <span style="color:#00f">End</span> <span style="color:#00f">If</span>
-    <span style="color:#00f">If</span> bRequireUpper <span style="color:#00f">Then</span>
-        i = Int((Len(sPassword) + 1) * Rnd + 1)
-        sPassword = Mid<span style="">$</span>(sPassword, 1, i - 1) &amp; Mid(S_UPPER, Int(Len(S_UPPER) * Rnd + 1), 1) &amp; Mid<span style="">$</span>(sPassword, i)
-    <span style="color:#00f">End</span> <span style="color:#00f">If</span>
-    <span style="color:#00f">If</span> bRequireNumber <span style="color:#00f">Then</span>
-        i = Int((Len(sPassword) + 1) * Rnd + 1)
-        sPassword = Mid<span style="">$</span>(sPassword, 1, i - 1) &amp; Mid(S_NUMBER, Int(Len(S_NUMBER) * Rnd + 1), 1) &amp; Mid<span style="">$</span>(sPassword, i)
-    <span style="color:#00f">End</span> <span style="color:#00f">If</span>
-    <span style="color:#00f">If</span> bRequireSymbol <span style="color:#00f">Then</span>
-        i = Int((Len(sPassword) + 1) * Rnd + 1)
-        sPassword = Mid<span style="">$</span>(sPassword, 1, i - 1) &amp; Mid(sSymbols, Int(Len(sSymbols) * Rnd + 1), 1) &amp; Mid<span style="">$</span>(sPassword, i)
-    <span style="color:#00f">End</span> <span style="color:#00f">If</span>
-   
-    GeneratePassword = sPassword
-
-<span style="color:#00f">End</span> <span style="color:#00f">Function</span>
-</code></pre></div><h2 id="説明">説明</h2>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-VB.NET" data-lang="VB.NET"><span style="display:flex;"><span><span style="color:#008000">&#39; パスワード用のランダム文字列を生成する
+</span></span></span><span style="display:flex;"><span><span style="color:#008000"></span><span style="color:#00f">Public</span> <span style="color:#00f">Function</span> GeneratePassword(iLength <span style="color:#00f">As</span> <span style="color:#2b91af">Integer</span>, <span style="color:#00f">Optional</span> bAllowLower <span style="color:#00f">As</span> <span style="color:#2b91af">Boolean</span> = <span style="color:#00f">True</span>, <span style="color:#00f">Optional</span> bAllowUpper <span style="color:#00f">As</span> <span style="color:#2b91af">Boolean</span> = <span style="color:#00f">True</span>, _
+</span></span><span style="display:flex;"><span>  <span style="color:#00f">Optional</span> bAllowNumber <span style="color:#00f">As</span> <span style="color:#2b91af">Boolean</span> = <span style="color:#00f">True</span>, <span style="color:#00f">Optional</span> bAllowSymbol <span style="color:#00f">As</span> <span style="color:#2b91af">Boolean</span> = <span style="color:#00f">False</span>, <span style="color:#00f">Optional</span> bRequireLower <span style="color:#00f">As</span> <span style="color:#2b91af">Boolean</span> = <span style="color:#00f">True</span>, _
+</span></span><span style="display:flex;"><span>  <span style="color:#00f">Optional</span> bRequireUpper <span style="color:#00f">As</span> <span style="color:#2b91af">Boolean</span> = <span style="color:#00f">True</span>, <span style="color:#00f">Optional</span> bRequireNumber <span style="color:#00f">As</span> <span style="color:#2b91af">Boolean</span> = <span style="color:#00f">True</span>, <span style="color:#00f">Optional</span> bRequireSymbol <span style="color:#00f">As</span> <span style="color:#2b91af">Boolean</span> = <span style="color:#00f">False</span>, _
+</span></span><span style="display:flex;"><span>  <span style="color:#00f">Optional</span> sSymbols <span style="color:#00f">As</span> <span style="color:#2b91af">String</span> = <span style="color:#a31515">&#34;!#$%&amp;()=^-|@[]{}:;,.&#34;</span>) <span style="color:#00f">As</span> <span style="color:#2b91af">String</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#00f">Dim</span> sPassword <span style="color:#00f">As</span> <span style="color:#2b91af">String</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#00f">Dim</span> i <span style="color:#00f">As</span> <span style="color:#2b91af">Long</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#00f">Dim</span> sTotalChars <span style="color:#00f">As</span> <span style="color:#2b91af">String</span>
+</span></span><span style="display:flex;"><span>   
+</span></span><span style="display:flex;"><span>    <span style="color:#00f">Const</span> S_LOWER <span style="color:#00f">As</span> <span style="color:#2b91af">String</span> = <span style="color:#a31515">&#34;abcdefghijklmnopqrstuvwxyz&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#00f">Const</span> S_UPPER <span style="color:#00f">As</span> <span style="color:#2b91af">String</span> = <span style="color:#a31515">&#34;ABCDEFGHIJKLMNOPQRSTUVWXYZ&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#00f">Const</span> S_NUMBER <span style="color:#00f">As</span> <span style="color:#2b91af">String</span> = <span style="color:#a31515">&#34;0123456789&#34;</span>
+</span></span><span style="display:flex;"><span>   
+</span></span><span style="display:flex;"><span>    <span style="color:#008000">&#39; 使用可能文字種
+</span></span></span><span style="display:flex;"><span><span style="color:#008000"></span>    <span style="color:#00f">If</span> bAllowLower <span style="color:#00f">Then</span>
+</span></span><span style="display:flex;"><span>        sTotalChars = sTotalChars &amp; S_LOWER
+</span></span><span style="display:flex;"><span>    <span style="color:#00f">End</span> <span style="color:#00f">If</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#00f">If</span> bAllowUpper <span style="color:#00f">Then</span>
+</span></span><span style="display:flex;"><span>        sTotalChars = sTotalChars &amp; S_UPPER
+</span></span><span style="display:flex;"><span>    <span style="color:#00f">End</span> <span style="color:#00f">If</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#00f">If</span> bAllowNumber <span style="color:#00f">Then</span>
+</span></span><span style="display:flex;"><span>        sTotalChars = sTotalChars &amp; S_NUMBER
+</span></span><span style="display:flex;"><span>    <span style="color:#00f">End</span> <span style="color:#00f">If</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#00f">If</span> bAllowSymbol <span style="color:#00f">Then</span>
+</span></span><span style="display:flex;"><span>        sTotalChars = sTotalChars &amp; sSymbols
+</span></span><span style="display:flex;"><span>    <span style="color:#00f">End</span> <span style="color:#00f">If</span>
+</span></span><span style="display:flex;"><span>   
+</span></span><span style="display:flex;"><span>    <span style="color:#008000">&#39; 任意の文字種が可能な部分を生成
+</span></span></span><span style="display:flex;"><span><span style="color:#008000"></span>    <span style="color:#00f">For</span> i = 1 <span style="color:#00f">To</span> iLength - Abs(bRequireLower + bRequireUpper + bRequireNumber + bRequireSymbol)
+</span></span><span style="display:flex;"><span>        sPassword = sPassword &amp; Mid(sTotalChars, Int(Len(sTotalChars) * Rnd + 1), 1)
+</span></span><span style="display:flex;"><span>    <span style="color:#00f">Next</span> i
+</span></span><span style="display:flex;"><span>   
+</span></span><span style="display:flex;"><span>    <span style="color:#008000">&#39; 必須とされる文字種の文字を1文字ずつ挿入
+</span></span></span><span style="display:flex;"><span><span style="color:#008000"></span>    <span style="color:#00f">If</span> bRequireLower <span style="color:#00f">Then</span>
+</span></span><span style="display:flex;"><span>        i = Int((Len(sPassword) + 1) * Rnd + 1)
+</span></span><span style="display:flex;"><span>        sPassword = Mid<span style="">$</span>(sPassword, 1, i - 1) &amp; Mid(S_LOWER, Int(Len(S_LOWER) * Rnd + 1), 1) &amp; Mid<span style="">$</span>(sPassword, i)
+</span></span><span style="display:flex;"><span>    <span style="color:#00f">End</span> <span style="color:#00f">If</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#00f">If</span> bRequireUpper <span style="color:#00f">Then</span>
+</span></span><span style="display:flex;"><span>        i = Int((Len(sPassword) + 1) * Rnd + 1)
+</span></span><span style="display:flex;"><span>        sPassword = Mid<span style="">$</span>(sPassword, 1, i - 1) &amp; Mid(S_UPPER, Int(Len(S_UPPER) * Rnd + 1), 1) &amp; Mid<span style="">$</span>(sPassword, i)
+</span></span><span style="display:flex;"><span>    <span style="color:#00f">End</span> <span style="color:#00f">If</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#00f">If</span> bRequireNumber <span style="color:#00f">Then</span>
+</span></span><span style="display:flex;"><span>        i = Int((Len(sPassword) + 1) * Rnd + 1)
+</span></span><span style="display:flex;"><span>        sPassword = Mid<span style="">$</span>(sPassword, 1, i - 1) &amp; Mid(S_NUMBER, Int(Len(S_NUMBER) * Rnd + 1), 1) &amp; Mid<span style="">$</span>(sPassword, i)
+</span></span><span style="display:flex;"><span>    <span style="color:#00f">End</span> <span style="color:#00f">If</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#00f">If</span> bRequireSymbol <span style="color:#00f">Then</span>
+</span></span><span style="display:flex;"><span>        i = Int((Len(sPassword) + 1) * Rnd + 1)
+</span></span><span style="display:flex;"><span>        sPassword = Mid<span style="">$</span>(sPassword, 1, i - 1) &amp; Mid(sSymbols, Int(Len(sSymbols) * Rnd + 1), 1) &amp; Mid<span style="">$</span>(sPassword, i)
+</span></span><span style="display:flex;"><span>    <span style="color:#00f">End</span> <span style="color:#00f">If</span>
+</span></span><span style="display:flex;"><span>   
+</span></span><span style="display:flex;"><span>    GeneratePassword = sPassword
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#00f">End</span> <span style="color:#00f">Function</span>
+</span></span></code></pre></div><h2 id="説明">説明</h2>
 <p>各引数の説明は以下。</p>
 <ul>
 <li><code>iLength</code>: 生成するパスワードの長さ</li>
@@ -186,28 +186,28 @@ if (!doNotTrack) {
 <p>という順序で生成すれば、必ず要件に沿ったパスワードを1回の処理で生成できる。</p>
 <h2 id="実行例">実行例</h2>
 <p><code>GeneratePassword(10)</code>: 英小文字、英大文字、数字を1文字以上含む、10文字。</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">B9ZJQVrseM
-wYkkAE9cU0
-feWc79QQ1S
-jq1bu3ocVR
-9MeCMCg6ls
-7TAFCkC1zR
-ZudA9RE6ZN
-xv7xsXn3V3
-vHZjXA9HeA
-hbxE3k0ZOM
-</code></pre></div><p><code>GeneratePassword(10, True, True, True, True, True, True, True, True)</code>: 英小文字、英大文字、数字に加えて記号を1文字以上含む、10文字。</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">b:t8r@KG^n
-&amp;Wp}vjT1bA
-q(5u,o1[Kw
-7W,^y2MUtb
-eXO-NKb4)$
-[3rW48O3.=
-i73zhvZS)F
-=#%8FpVEIQ
-nS0troQ:G(
-31.w.FDLM6
-</code></pre></div><p>なお、引数の<code>True</code>、<code>False</code>の組み合わせチェックはしていないので悪しからず。</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>B9ZJQVrseM
+</span></span><span style="display:flex;"><span>wYkkAE9cU0
+</span></span><span style="display:flex;"><span>feWc79QQ1S
+</span></span><span style="display:flex;"><span>jq1bu3ocVR
+</span></span><span style="display:flex;"><span>9MeCMCg6ls
+</span></span><span style="display:flex;"><span>7TAFCkC1zR
+</span></span><span style="display:flex;"><span>ZudA9RE6ZN
+</span></span><span style="display:flex;"><span>xv7xsXn3V3
+</span></span><span style="display:flex;"><span>vHZjXA9HeA
+</span></span><span style="display:flex;"><span>hbxE3k0ZOM
+</span></span></code></pre></div><p><code>GeneratePassword(10, True, True, True, True, True, True, True, True)</code>: 英小文字、英大文字、数字に加えて記号を1文字以上含む、10文字。</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>b:t8r@KG^n
+</span></span><span style="display:flex;"><span>&amp;Wp}vjT1bA
+</span></span><span style="display:flex;"><span>q(5u,o1[Kw
+</span></span><span style="display:flex;"><span>7W,^y2MUtb
+</span></span><span style="display:flex;"><span>eXO-NKb4)$
+</span></span><span style="display:flex;"><span>[3rW48O3.=
+</span></span><span style="display:flex;"><span>i73zhvZS)F
+</span></span><span style="display:flex;"><span>=#%8FpVEIQ
+</span></span><span style="display:flex;"><span>nS0troQ:G(
+</span></span><span style="display:flex;"><span>31.w.FDLM6
+</span></span></code></pre></div><p>なお、引数の<code>True</code>、<code>False</code>の組み合わせチェックはしていないので悪しからず。</p>
 <p>例えば<code>bAllowSymbol</code>に<code>False</code>、<code>bRequireSymbol</code>に<code>True</code>を指定した場合、必ず記号が1文字だけ含まれた文字列が生成される。</p>
 		</div>
 		<footer class="post__footer">

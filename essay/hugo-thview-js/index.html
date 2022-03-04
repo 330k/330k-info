@@ -100,58 +100,58 @@ if (!doNotTrack) {
 </ul>
 <h2 id="準備">準備</h2>
 <p>以下の内容のテキストファイルを<code>thview.html</code>というファイル名で<code>layouts/shortcodes</code>ディレクトリの下に保存する。</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">{{ if .Page.Scratch.Get &#34;thviewer-count&#34; }}
-{{ .Page.Scratch.Add &#34;thviewer-count&#34; 1 }}
-{{ else }}
-&lt;script src=<span style="color:#a31515">&#39;https://cdnjs.cloudflare.com/ajax/libs/three.js/r76/three.js&#39;</span> defer&gt;&lt;/script&gt;
-&lt;script src=<span style="color:#a31515">&#39;https://cdn.rawgit.com/aike/thview.js/master/thview.js&#39;</span> defer&gt;&lt;/script&gt;
-{{ .Page.Scratch.Add &#34;thviewer-count&#34; 1 }}
-{{ end }}
-{{ $id := printf &#34;%s%d&#34; &#34;thview-&#34; (.Page.Scratch.Get &#34;thviewer-count&#34;) }}
-{{ $width := int (default 640 (.Get &#34;width&#34;)) }}
-{{ $height := int (default 0 (.Get &#34;height&#34;)) }}
-{{ $rotation := default &#34;true&#34; (string (.Get &#34;rotation&#34;)) }}
-{{ $firstview := int (default 270 (.Get &#34;firstview&#34;)) }}
-{{ $zoom := int (default 70 (.Get &#34;zoom&#34;)) }}
-{{ $degree := default &#34;[0, 0, 0]&#34; (.Get &#34;degree&#34;) }}
-{{ $speed := int (default 20 (.Get &#34;speed&#34;)) }}
-&lt;div id=<span style="color:#a31515">&#39;wrapper-{{$id}}&#39;</span> style=<span style="color:#a31515">&#34;position:relative;width:100%;max-width:{{$width}}px;&#34;</span>&gt;
- &lt;div id=<span style="color:#a31515">&#39;{{$id}}&#39;</span>&gt;&lt;/div&gt;
- &lt;img src=<span style="color:#a31515">&#34;/images/23591.svg&#34;</span> style=<span style="color:#a31515">&#34;width:64px; position:absolute; top:0px; right: 0px;&#34;</span>/&gt;
-&lt;/div&gt;
-&lt;script defer&gt;
-window.addEventListener(<span style="color:#a31515">&#34;DOMContentLoaded&#34;</span>, <span style="color:#00f">function</span>(){
-  <span style="color:#00f">const</span> path = <span style="color:#a31515">&#39;{{ .Get &#34;src&#34; }}&#39;</span>;
-  THREE.ImageUtils.crossOrigin = <span style="color:#a31515">&#34;*&#34;</span>;
-  <span style="color:#00f">const</span> width = document.getElementById(<span style="color:#a31515">&#39;wrapper-{{$id}}&#39;</span>).offsetWidth;
-  <span style="color:#00f">const</span> orgwidth = {{ $width }};
-  <span style="color:#00f">let</span> height = {{ $height }};
-  <span style="color:#00f">const</span> ratio = width / orgwidth;
-  
-  <span style="color:#00f">if</span>(height === 0){
-    height = width * 0.75;
-  }<span style="color:#00f">else</span>{
-    height = height * ratio;
-  }
-
-  <span style="color:#00f">const</span> img1 = <span style="color:#00f">new</span> ThView({
-    id:<span style="color:#a31515">&#39;{{$id}}&#39;</span>,
-    file: path,
-    width: width,
-    height: height,
-    rotation: {{ $rotation }}.toLowerCase() === <span style="color:#a31515">&#39;true&#39;</span>,
-    firstview: {{ $firstview }},
-    zoom: {{ $zoom }},
-    degree: JSON.parse({{ $degree }}),
-    speed: {{ $speed }}
-  });
-}, <span style="color:#00f">false</span>);
-&lt;/script&gt;
-</code></pre></div><p>右上に表示するアイコン(上記の例では<code>23591.svg</code>の部分)はお好みで変更し、<code>static</code>以下のお好みのディレクトリに設置(上記の例では<code>static/images/23591.svg</code>)しておく。</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>{{ if .Page.Scratch.Get &#34;thviewer-count&#34; }}
+</span></span><span style="display:flex;"><span>{{ .Page.Scratch.Add &#34;thviewer-count&#34; 1 }}
+</span></span><span style="display:flex;"><span>{{ else }}
+</span></span><span style="display:flex;"><span>&lt;script src=<span style="color:#a31515">&#39;https://cdnjs.cloudflare.com/ajax/libs/three.js/r76/three.js&#39;</span> defer&gt;&lt;/script&gt;
+</span></span><span style="display:flex;"><span>&lt;script src=<span style="color:#a31515">&#39;https://cdn.rawgit.com/aike/thview.js/master/thview.js&#39;</span> defer&gt;&lt;/script&gt;
+</span></span><span style="display:flex;"><span>{{ .Page.Scratch.Add &#34;thviewer-count&#34; 1 }}
+</span></span><span style="display:flex;"><span>{{ end }}
+</span></span><span style="display:flex;"><span>{{ $id := printf &#34;%s%d&#34; &#34;thview-&#34; (.Page.Scratch.Get &#34;thviewer-count&#34;) }}
+</span></span><span style="display:flex;"><span>{{ $width := int (default 640 (.Get &#34;width&#34;)) }}
+</span></span><span style="display:flex;"><span>{{ $height := int (default 0 (.Get &#34;height&#34;)) }}
+</span></span><span style="display:flex;"><span>{{ $rotation := default &#34;true&#34; (string (.Get &#34;rotation&#34;)) }}
+</span></span><span style="display:flex;"><span>{{ $firstview := int (default 270 (.Get &#34;firstview&#34;)) }}
+</span></span><span style="display:flex;"><span>{{ $zoom := int (default 70 (.Get &#34;zoom&#34;)) }}
+</span></span><span style="display:flex;"><span>{{ $degree := default &#34;[0, 0, 0]&#34; (.Get &#34;degree&#34;) }}
+</span></span><span style="display:flex;"><span>{{ $speed := int (default 20 (.Get &#34;speed&#34;)) }}
+</span></span><span style="display:flex;"><span>&lt;div id=<span style="color:#a31515">&#39;wrapper-{{$id}}&#39;</span> style=<span style="color:#a31515">&#34;position:relative;width:100%;max-width:{{$width}}px;&#34;</span>&gt;
+</span></span><span style="display:flex;"><span> &lt;div id=<span style="color:#a31515">&#39;{{$id}}&#39;</span>&gt;&lt;/div&gt;
+</span></span><span style="display:flex;"><span> &lt;img src=<span style="color:#a31515">&#34;/images/23591.svg&#34;</span> style=<span style="color:#a31515">&#34;width:64px; position:absolute; top:0px; right: 0px;&#34;</span>/&gt;
+</span></span><span style="display:flex;"><span>&lt;/div&gt;
+</span></span><span style="display:flex;"><span>&lt;script defer&gt;
+</span></span><span style="display:flex;"><span>window.addEventListener(<span style="color:#a31515">&#34;DOMContentLoaded&#34;</span>, <span style="color:#00f">function</span>(){
+</span></span><span style="display:flex;"><span>  <span style="color:#00f">const</span> path = <span style="color:#a31515">&#39;{{ .Get &#34;src&#34; }}&#39;</span>;
+</span></span><span style="display:flex;"><span>  THREE.ImageUtils.crossOrigin = <span style="color:#a31515">&#34;*&#34;</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#00f">const</span> width = document.getElementById(<span style="color:#a31515">&#39;wrapper-{{$id}}&#39;</span>).offsetWidth;
+</span></span><span style="display:flex;"><span>  <span style="color:#00f">const</span> orgwidth = {{ $width }};
+</span></span><span style="display:flex;"><span>  <span style="color:#00f">let</span> height = {{ $height }};
+</span></span><span style="display:flex;"><span>  <span style="color:#00f">const</span> ratio = width / orgwidth;
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>  <span style="color:#00f">if</span>(height === 0){
+</span></span><span style="display:flex;"><span>    height = width * 0.75;
+</span></span><span style="display:flex;"><span>  }<span style="color:#00f">else</span>{
+</span></span><span style="display:flex;"><span>    height = height * ratio;
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#00f">const</span> img1 = <span style="color:#00f">new</span> ThView({
+</span></span><span style="display:flex;"><span>    id:<span style="color:#a31515">&#39;{{$id}}&#39;</span>,
+</span></span><span style="display:flex;"><span>    file: path,
+</span></span><span style="display:flex;"><span>    width: width,
+</span></span><span style="display:flex;"><span>    height: height,
+</span></span><span style="display:flex;"><span>    rotation: {{ $rotation }}.toLowerCase() === <span style="color:#a31515">&#39;true&#39;</span>,
+</span></span><span style="display:flex;"><span>    firstview: {{ $firstview }},
+</span></span><span style="display:flex;"><span>    zoom: {{ $zoom }},
+</span></span><span style="display:flex;"><span>    degree: JSON.parse({{ $degree }}),
+</span></span><span style="display:flex;"><span>    speed: {{ $speed }}
+</span></span><span style="display:flex;"><span>  });
+</span></span><span style="display:flex;"><span>}, <span style="color:#00f">false</span>);
+</span></span><span style="display:flex;"><span>&lt;/script&gt;
+</span></span></code></pre></div><p>右上に表示するアイコン(上記の例では<code>23591.svg</code>の部分)はお好みで変更し、<code>static</code>以下のお好みのディレクトリに設置(上記の例では<code>static/images/23591.svg</code>)しておく。</p>
 <h2 id="使い方">使い方</h2>
 <p>HugoのMarkdown中に以下のように記述する。</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-markdown" data-lang="markdown">{{&lt; thview src=<span style="color:#a31515">&#34;R0010322_20190810155931.JPG&#34;</span> degree=<span style="color:#a31515">&#34;[0, 0, -10]&#34;</span> speed=<span style="color:#a31515">&#34;10&#34;</span> firstview=<span style="color:#a31515">&#34;270&#34;</span> &gt;}}
-</code></pre></div><p>実際の表示例は以下。</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span>{{&lt; thview src=<span style="color:#a31515">&#34;R0010322_20190810155931.JPG&#34;</span> degree=<span style="color:#a31515">&#34;[0, 0, -10]&#34;</span> speed=<span style="color:#a31515">&#34;10&#34;</span> firstview=<span style="color:#a31515">&#34;270&#34;</span> &gt;}}
+</span></span></code></pre></div><p>実際の表示例は以下。</p>
 
 <script src='https://cdnjs.cloudflare.com/ajax/libs/three.js/r76/three.js' defer></script>
 <script src='https://cdn.rawgit.com/aike/thview.js/master/thview.js' defer></script>

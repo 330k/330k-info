@@ -98,20 +98,20 @@ if (!doNotTrack) {
 <p>そこで<code>wscript</code>で起動した場合に、引数を含めて<code>cscript</code>で起動し直すスニペットを作成した。</p>
 <p>以下のコードを<code>.js</code>ファイルの先頭部分に配置すればOK。
 即時関数で括ってあるのでグローバルな環境を汚染せず、他の箇所に影響しないようにしている。</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JavaScript" data-lang="JavaScript"><span style="color:#008000">// WScriptで起動時にCScriptに変更
-</span><span style="color:#008000"></span>(<span style="color:#00f">function</span>(){
-  <span style="color:#00f">if</span>(WScript.FullName.match(<span style="color:#a31515">/WScript\.exe$/i</span>)){
-    <span style="color:#00f">var</span> wshell = <span style="color:#00f">new</span> ActiveXObject(<span style="color:#a31515">&#34;WScript.Shell&#34;</span>);
-    <span style="color:#00f">var</span> cmd = [<span style="color:#a31515">&#34;cscript&#34;</span>, <span style="color:#a31515">&#34;\&#34;&#34;</span> + WScript.ScriptFullName + <span style="color:#a31515">&#34;\&#34;&#34;</span>];
-   
-    <span style="color:#00f">for</span>(<span style="color:#00f">var</span> i = 0; i &lt; WScript.Arguments.Count(); i++){
-      cmd.push(<span style="color:#a31515">&#34;\&#34;&#34;</span> + WScript.Arguments.Item(i) + <span style="color:#a31515">&#34;\&#34;&#34;</span>);
-    }
-    wshell.Run(cmd.join(<span style="color:#a31515">&#34; &#34;</span>), 1, <span style="color:#00f">false</span>);
-    WScript.Quit();
-  }
-})();
-</code></pre></div>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-JavaScript" data-lang="JavaScript"><span style="display:flex;"><span><span style="color:#008000">// WScriptで起動時にCScriptに変更
+</span></span></span><span style="display:flex;"><span><span style="color:#008000"></span>(<span style="color:#00f">function</span>(){
+</span></span><span style="display:flex;"><span>  <span style="color:#00f">if</span>(WScript.FullName.match(<span style="color:#a31515">/WScript\.exe$/i</span>)){
+</span></span><span style="display:flex;"><span>    <span style="color:#00f">var</span> wshell = <span style="color:#00f">new</span> ActiveXObject(<span style="color:#a31515">&#34;WScript.Shell&#34;</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#00f">var</span> cmd = [<span style="color:#a31515">&#34;cscript&#34;</span>, <span style="color:#a31515">&#34;\&#34;&#34;</span> + WScript.ScriptFullName + <span style="color:#a31515">&#34;\&#34;&#34;</span>];
+</span></span><span style="display:flex;"><span>   
+</span></span><span style="display:flex;"><span>    <span style="color:#00f">for</span>(<span style="color:#00f">var</span> i = 0; i &lt; WScript.Arguments.Count(); i++){
+</span></span><span style="display:flex;"><span>      cmd.push(<span style="color:#a31515">&#34;\&#34;&#34;</span> + WScript.Arguments.Item(i) + <span style="color:#a31515">&#34;\&#34;&#34;</span>);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    wshell.Run(cmd.join(<span style="color:#a31515">&#34; &#34;</span>), 1, <span style="color:#00f">false</span>);
+</span></span><span style="display:flex;"><span>    WScript.Quit();
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>})();
+</span></span></code></pre></div>
 		</div>
 		<footer class="post__footer">
 			

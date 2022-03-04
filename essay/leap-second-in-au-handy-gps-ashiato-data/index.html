@@ -106,10 +106,10 @@ if (!doNotTrack) {
 <p>3行目の出力日時は簡易ハンディGPSからあしあとデータの保存をした時の時刻となる。
 上のデータは1回目の測位終了後直ちに保存したものであるので、出力日時の「2009/10/27 08:56:46」というのは「940669002」の表す時刻の数秒後であるはず。</p>
 <p>ところが、閏秒を考慮せずにMathematicaで</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Mathematica" data-lang="Mathematica">DatePlus[DateList[{1980, 1, 6, 0, 0, 0}], {940669002, <span style="color:#a31515">&#34;Second&#34;</span>}]
-</code></pre></div><p>とすると、</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Mathematica" data-lang="Mathematica">{2009, 10, 27, 8, 56, 42.}
-</code></pre></div><p>と返ってくる。</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Mathematica" data-lang="Mathematica"><span style="display:flex;"><span>DatePlus[DateList[{1980, 1, 6, 0, 0, 0}], {940669002, <span style="color:#a31515">&#34;Second&#34;</span>}]
+</span></span></code></pre></div><p>とすると、</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Mathematica" data-lang="Mathematica"><span style="display:flex;"><span>{2009, 10, 27, 8, 56, 42.}
+</span></span></code></pre></div><p>と返ってくる。</p>
 <p>電波時計と携帯電話を同時に見ていたのだが、8時56分42秒というのは測位した瞬間に電波時計が指していた時刻と一致している。
 15秒前の8時56分27秒の時点ではまだ測位を開始していない。</p>
 <p>以上より、auの携帯電話(少なくとも私が持っているW61CA)の簡易ハンディGPSによるあしあとデータの時刻情報は閏秒について修正する必要がない(携帯電話側で修正している)と言える。</p>

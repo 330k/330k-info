@@ -100,15 +100,15 @@ if (!doNotTrack) {
 UUID v4を生成する関数を作った。</p>
 <p>VBの乱数の精度としては24ビットらしいので、1回の乱数生成では最大16ビット使用するようにはしている。
 とはいえ乱数の品質としてはあまり高くないのでご注意を。</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-VB.NET" data-lang="VB.NET"><span style="color:#00f">Public</span> <span style="color:#00f">Function</span> GetUUID() <span style="color:#00f">As</span> <span style="color:#2b91af">String</span>
-    <span style="color:#008000">&#39;GetUUID = Mid$(CreateObject(&#34;Scriptlet.TypeLib&#34;).GUID, 2, 36)
-</span><span style="color:#008000"></span>    GetUUID = Right<span style="">$</span>(<span style="color:#a31515">&#34;0000&#34;</span> &amp; Hex(Rnd() * 65536), 4) &amp; Right<span style="">$</span>(<span style="color:#a31515">&#34;0000&#34;</span> &amp; Hex(Rnd() * 65536), 4)
-    GetUUID = GetUUID &amp; <span style="color:#a31515">&#34;-&#34;</span> &amp; Right<span style="">$</span>(<span style="color:#a31515">&#34;0000&#34;</span> &amp; Hex(Rnd() * 65536), 4)
-    GetUUID = GetUUID &amp; <span style="color:#a31515">&#34;-4&#34;</span> &amp; Right<span style="">$</span>(<span style="color:#a31515">&#34;0000&#34;</span> &amp; Hex(Rnd() * 65536), 3)
-    GetUUID = GetUUID &amp; <span style="color:#a31515">&#34;-&#34;</span> &amp; Right<span style="">$</span>(<span style="color:#a31515">&#34;0000&#34;</span> &amp; Hex(32768 + Rnd() * 16384), 4)
-    GetUUID = GetUUID &amp; <span style="color:#a31515">&#34;-&#34;</span> &amp; Right<span style="">$</span>(<span style="color:#a31515">&#34;0000&#34;</span> &amp; Hex(Rnd() * 65536), 4) &amp; Right<span style="">$</span>(<span style="color:#a31515">&#34;0000&#34;</span> &amp; Hex(Rnd() * 65536), 4) &amp; Right<span style="">$</span>(<span style="color:#a31515">&#34;0000&#34;</span> &amp; Hex(Rnd() * 65536), 4)
-<span style="color:#00f">End</span> <span style="color:#00f">Function</span>
-</code></pre></div>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-VB.NET" data-lang="VB.NET"><span style="display:flex;"><span><span style="color:#00f">Public</span> <span style="color:#00f">Function</span> GetUUID() <span style="color:#00f">As</span> <span style="color:#2b91af">String</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#008000">&#39;GetUUID = Mid$(CreateObject(&#34;Scriptlet.TypeLib&#34;).GUID, 2, 36)
+</span></span></span><span style="display:flex;"><span><span style="color:#008000"></span>    GetUUID = Right<span style="">$</span>(<span style="color:#a31515">&#34;0000&#34;</span> &amp; Hex(Rnd() * 65536), 4) &amp; Right<span style="">$</span>(<span style="color:#a31515">&#34;0000&#34;</span> &amp; Hex(Rnd() * 65536), 4)
+</span></span><span style="display:flex;"><span>    GetUUID = GetUUID &amp; <span style="color:#a31515">&#34;-&#34;</span> &amp; Right<span style="">$</span>(<span style="color:#a31515">&#34;0000&#34;</span> &amp; Hex(Rnd() * 65536), 4)
+</span></span><span style="display:flex;"><span>    GetUUID = GetUUID &amp; <span style="color:#a31515">&#34;-4&#34;</span> &amp; Right<span style="">$</span>(<span style="color:#a31515">&#34;0000&#34;</span> &amp; Hex(Rnd() * 65536), 3)
+</span></span><span style="display:flex;"><span>    GetUUID = GetUUID &amp; <span style="color:#a31515">&#34;-&#34;</span> &amp; Right<span style="">$</span>(<span style="color:#a31515">&#34;0000&#34;</span> &amp; Hex(32768 + Rnd() * 16384), 4)
+</span></span><span style="display:flex;"><span>    GetUUID = GetUUID &amp; <span style="color:#a31515">&#34;-&#34;</span> &amp; Right<span style="">$</span>(<span style="color:#a31515">&#34;0000&#34;</span> &amp; Hex(Rnd() * 65536), 4) &amp; Right<span style="">$</span>(<span style="color:#a31515">&#34;0000&#34;</span> &amp; Hex(Rnd() * 65536), 4) &amp; Right<span style="">$</span>(<span style="color:#a31515">&#34;0000&#34;</span> &amp; Hex(Rnd() * 65536), 4)
+</span></span><span style="display:flex;"><span><span style="color:#00f">End</span> <span style="color:#00f">Function</span>
+</span></span></code></pre></div>
 		</div>
 		<footer class="post__footer">
 			

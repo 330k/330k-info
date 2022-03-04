@@ -104,12 +104,12 @@ HDDの空き容量が減ってきたらオリジナルの録音ファイルを�
 <li>結合した動画ファイルをYoutubeにアップロード</li>
 </ol>
 <p>具体的には、適当にblank.pngという名前で640x480とか好みのサイズで画像を作成し、以下のコマンドで24時間の無音声動画ファイル(blank24.mov)を作成。</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ffmpeg -y -loop 1 -r 1 -i blank.png -t 86400 blank24.mov
-</code></pre></div><p>これでフレームレート1 fps、動画時間が24時間(86400秒)の無音声動画ファイルblank24.movができる。
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ffmpeg -y -loop 1 -r 1 -i blank.png -t 86400 blank24.mov
+</span></span></code></pre></div><p>これでフレームレート1 fps、動画時間が24時間(86400秒)の無音声動画ファイルblank24.movができる。
 私の環境では5分程度かかったが、このファイルは1度作っておけば何度でも使えるので、最初の1回だけ待てば良い。</p>
 <p>次に、この無音声の動画ファイル(blank24.mov)と、録音した音声ファイル(input.mp3)を結合する。</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ffmpeg -y -i blank24.mov -i input.mp3 -vcodec copy -acodec copy -shortest output.mov
-</code></pre></div><p><code>-shortest</code>オプションを加えているので、24時間のblank24.movと音声ファイルの時間のうち、短い方の時間でoutput.movが作成される。</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ffmpeg -y -i blank24.mov -i input.mp3 -vcodec copy -acodec copy -shortest output.mov
+</span></span></code></pre></div><p><code>-shortest</code>オプションを加えているので、24時間のblank24.movと音声ファイルの時間のうち、短い方の時間でoutput.movが作成される。</p>
 <p>動画になったことにより、元のMP3ファイルよりもファイルサイズが1割ほど増える。
 私の環境では12時間程度録音したものからでも1分程度のエンコード時間で動画ファイルを作成できた。</p>
 <p>ちなみに出来上がりの動画ファイルのコンテナがMOVなのは、録音した音声ファイルの拡張子が、
@@ -121,30 +121,30 @@ ICレコーダーで録音したMP3、Androidの録音アプリのmp4、iPhone�
 <code>-vcodec copy</code>とすることで再エンコードを省略すれば、毎日の処理が高速化できる。</p>
 <p>ただし、Youtubeの制限により、15分の制限を解除したアカウントでも、動画の最長時間は12時間に制限される。
 したがって、私は以下のようなシェルスクリプトを書いて実行している。</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#00f">#!/bin/bash
-</span><span style="color:#00f"></span>
-find ./ -iname <span style="color:#a31515">&#34;*.mp3&#34;</span> -o -iname <span style="color:#a31515">&#34;*.mp4&#34;</span> -o -iname <span style="color:#a31515">&#34;*.m4a&#34;</span> | <span style="color:#00f">while</span> read i
-<span style="color:#00f">do</span>
-  hour=<span style="color:#a31515">`</span>ffmpeg -i <span style="color:#a31515">&#34;</span>$i<span style="color:#a31515">&#34;</span> 2&gt;&amp;1 &lt; /dev/null | grep Duration | sed -E <span style="color:#a31515">&#34;s/.*Duration: (.*):.*:.*, start:.*/\\1/&#34;</span><span style="color:#a31515">`</span>
-  <span style="color:#00f">if</span> [ $hour -lt 12 ]; <span style="color:#00f">then</span>
-     <span style="color:#008000"># 12時間以下</span>
-      output=<span style="color:#a31515">${</span>i%.*<span style="color:#a31515">}</span>.mov
-     <span style="color:#00f">if</span> [ ! -f <span style="color:#a31515">&#34;</span>$output<span style="color:#a31515">&#34;</span> ]; <span style="color:#00f">then</span>
-        ffmpeg -y -i ./blank24.mov -i <span style="color:#a31515">&#34;</span>$i<span style="color:#a31515">&#34;</span> -vcodec copy -acodec copy -shortest <span style="color:#a31515">&#34;</span>$output<span style="color:#a31515">&#34;</span> &lt; /dev/null
-     <span style="color:#00f">fi</span>
-     <span style="color:#00f">else</span>
-     <span style="color:#008000"># 12時間以上の場合は11時間で分割</span>
-     output1=<span style="color:#a31515">${</span>i%.*<span style="color:#a31515">}</span>_001.mov
-     output2=<span style="color:#a31515">${</span>i%.*<span style="color:#a31515">}</span>_002.mov
-     <span style="color:#00f">if</span> [ ! -f <span style="color:#a31515">&#34;</span>$output1<span style="color:#a31515">&#34;</span> ]; <span style="color:#00f">then</span>
-        ffmpeg -y -i ./blank24.mov -i <span style="color:#a31515">&#34;</span>$i<span style="color:#a31515">&#34;</span> -vcodec copy -acodec copy -shortest -t 11:00:00 <span style="color:#a31515">&#34;</span>$output1<span style="color:#a31515">&#34;</span> &lt; /dev/null
-     <span style="color:#00f">fi</span>
-     <span style="color:#00f">if</span> [ ! -f <span style="color:#a31515">&#34;</span>$output2<span style="color:#a31515">&#34;</span> ]; <span style="color:#00f">then</span>
-        ffmpeg -y -i ./blank24.mov -ss 11:00:00 -i <span style="color:#a31515">&#34;</span>$i<span style="color:#a31515">&#34;</span> -vcodec copy -acodec copy -shortest <span style="color:#a31515">&#34;</span>$output2<span style="color:#a31515">&#34;</span> &lt; /dev/null
-     <span style="color:#00f">fi</span>
-  <span style="color:#00f">fi</span>
-<span style="color:#00f">done</span>
-</code></pre></div><p>事前に音声ファイルのDurationを調べておき、12時間以上ならば最初の11時間とその後の部分に分割するようにした。</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#00f">#!/bin/bash
+</span></span></span><span style="display:flex;"><span><span style="color:#00f"></span>
+</span></span><span style="display:flex;"><span>find ./ -iname <span style="color:#a31515">&#34;*.mp3&#34;</span> -o -iname <span style="color:#a31515">&#34;*.mp4&#34;</span> -o -iname <span style="color:#a31515">&#34;*.m4a&#34;</span> | <span style="color:#00f">while</span> read i
+</span></span><span style="display:flex;"><span><span style="color:#00f">do</span>
+</span></span><span style="display:flex;"><span>  hour=<span style="color:#a31515">`</span>ffmpeg -i <span style="color:#a31515">&#34;</span>$i<span style="color:#a31515">&#34;</span> 2&gt;&amp;1 &lt; /dev/null | grep Duration | sed -E <span style="color:#a31515">&#34;s/.*Duration: (.*):.*:.*, start:.*/\\1/&#34;</span><span style="color:#a31515">`</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#00f">if</span> [ $hour -lt 12 ]; <span style="color:#00f">then</span>
+</span></span><span style="display:flex;"><span>     <span style="color:#008000"># 12時間以下</span>
+</span></span><span style="display:flex;"><span>      output=<span style="color:#a31515">${</span>i%.*<span style="color:#a31515">}</span>.mov
+</span></span><span style="display:flex;"><span>     <span style="color:#00f">if</span> [ ! -f <span style="color:#a31515">&#34;</span>$output<span style="color:#a31515">&#34;</span> ]; <span style="color:#00f">then</span>
+</span></span><span style="display:flex;"><span>        ffmpeg -y -i ./blank24.mov -i <span style="color:#a31515">&#34;</span>$i<span style="color:#a31515">&#34;</span> -vcodec copy -acodec copy -shortest <span style="color:#a31515">&#34;</span>$output<span style="color:#a31515">&#34;</span> &lt; /dev/null
+</span></span><span style="display:flex;"><span>     <span style="color:#00f">fi</span>
+</span></span><span style="display:flex;"><span>     <span style="color:#00f">else</span>
+</span></span><span style="display:flex;"><span>     <span style="color:#008000"># 12時間以上の場合は11時間で分割</span>
+</span></span><span style="display:flex;"><span>     output1=<span style="color:#a31515">${</span>i%.*<span style="color:#a31515">}</span>_001.mov
+</span></span><span style="display:flex;"><span>     output2=<span style="color:#a31515">${</span>i%.*<span style="color:#a31515">}</span>_002.mov
+</span></span><span style="display:flex;"><span>     <span style="color:#00f">if</span> [ ! -f <span style="color:#a31515">&#34;</span>$output1<span style="color:#a31515">&#34;</span> ]; <span style="color:#00f">then</span>
+</span></span><span style="display:flex;"><span>        ffmpeg -y -i ./blank24.mov -i <span style="color:#a31515">&#34;</span>$i<span style="color:#a31515">&#34;</span> -vcodec copy -acodec copy -shortest -t 11:00:00 <span style="color:#a31515">&#34;</span>$output1<span style="color:#a31515">&#34;</span> &lt; /dev/null
+</span></span><span style="display:flex;"><span>     <span style="color:#00f">fi</span>
+</span></span><span style="display:flex;"><span>     <span style="color:#00f">if</span> [ ! -f <span style="color:#a31515">&#34;</span>$output2<span style="color:#a31515">&#34;</span> ]; <span style="color:#00f">then</span>
+</span></span><span style="display:flex;"><span>        ffmpeg -y -i ./blank24.mov -ss 11:00:00 -i <span style="color:#a31515">&#34;</span>$i<span style="color:#a31515">&#34;</span> -vcodec copy -acodec copy -shortest <span style="color:#a31515">&#34;</span>$output2<span style="color:#a31515">&#34;</span> &lt; /dev/null
+</span></span><span style="display:flex;"><span>     <span style="color:#00f">fi</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#00f">fi</span>
+</span></span><span style="display:flex;"><span><span style="color:#00f">done</span>
+</span></span></code></pre></div><p>事前に音声ファイルのDurationを調べておき、12時間以上ならば最初の11時間とその後の部分に分割するようにした。</p>
 <p>このシェルスクリプトとblank24.movを同じディレクトリに置いて実行すると、
 カレントディレクトリ以下の*.mp3、<em>.mp4、</em>.m4aファイルが、動画として*.movファイルに保存される。</p>
 <p>あとは出来あがった*.movファイルをYoutubeにアップロードして待つだけ。</p>

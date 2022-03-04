@@ -97,19 +97,19 @@ if (!doNotTrack) {
 <p><code>Thumbs.db</code>はグループポリシーでネットワークドライブ上では生成しないようにしているはずだが、
 ローカルのフォルダをファイルサーバにコピーすると、一緒にくっついてくるらしい。</p>
 <p>以下のPowerShellスクリプトをタスクスケジューラに登録して、定期的(1日1回)にゴミ掃除。</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-PowerShell" data-lang="PowerShell">$a = @()
-$a += Get-ChildItem <span style="color:#a31515">&#34;(掃除対象フォルダのパス1)&#34;</span> -Force -Recurse
-$a += Get-ChildItem <span style="color:#a31515">&#34;(掃除対象フォルダのパス2)&#34;</span> -Force -Recurse
-$a += Get-ChildItem <span style="color:#a31515">&#34;(掃除対象フォルダのパス3)&#34;</span> -Force -Recurse
-
-$a | Where-Object { `
-  $_.Name -like <span style="color:#a31515">&#34;~*&#34;</span> -and $_.LastWriteTime -lt (Get-Date).AddDays(-1) `
-  -or $_.Name -like <span style="color:#a31515">&#34;*.tmp&#34;</span> `
-  -or $_.Name -eq <span style="color:#a31515">&#34;Thumbs.db&#34;</span> `
-  -or $_.Name -eq <span style="color:#a31515">&#34;.DS_Store&#34;</span> `
-  -or $_.Name -like <span style="color:#a31515">&#34;._*&#34;</span> `
-  } | Remove-Item -Force
-</code></pre></div><p>削除対象は以下の通り。</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-PowerShell" data-lang="PowerShell"><span style="display:flex;"><span>$a = @()
+</span></span><span style="display:flex;"><span>$a += Get-ChildItem <span style="color:#a31515">&#34;(掃除対象フォルダのパス1)&#34;</span> -Force -Recurse
+</span></span><span style="display:flex;"><span>$a += Get-ChildItem <span style="color:#a31515">&#34;(掃除対象フォルダのパス2)&#34;</span> -Force -Recurse
+</span></span><span style="display:flex;"><span>$a += Get-ChildItem <span style="color:#a31515">&#34;(掃除対象フォルダのパス3)&#34;</span> -Force -Recurse
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$a | Where-Object { `
+</span></span><span style="display:flex;"><span>  $_.Name -like <span style="color:#a31515">&#34;~*&#34;</span> -and $_.LastWriteTime -lt (Get-Date).AddDays(-1) `
+</span></span><span style="display:flex;"><span>  -or $_.Name -like <span style="color:#a31515">&#34;*.tmp&#34;</span> `
+</span></span><span style="display:flex;"><span>  -or $_.Name -eq <span style="color:#a31515">&#34;Thumbs.db&#34;</span> `
+</span></span><span style="display:flex;"><span>  -or $_.Name -eq <span style="color:#a31515">&#34;.DS_Store&#34;</span> `
+</span></span><span style="display:flex;"><span>  -or $_.Name -like <span style="color:#a31515">&#34;._*&#34;</span> `
+</span></span><span style="display:flex;"><span>  } | Remove-Item -Force
+</span></span></code></pre></div><p>削除対象は以下の通り。</p>
 <ul>
 <li>更新日時が1日以上前のOffice一時ファイル(<code>&quot;~*&quot;</code>)</li>
 <li>拡張子が<code>&quot;tmp&quot;</code>のファイル</li>

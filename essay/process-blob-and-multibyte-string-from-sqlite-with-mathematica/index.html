@@ -97,36 +97,36 @@ if (!doNotTrack) {
 <h2 id="blob型">BLOB型</h2>
 <h3 id="select">select</h3>
 <p>直接BLOB型を<code>select</code>すると<code>$Failed</code>が返ってくるので、<code>hex</code>関数で16進文字列として返す。</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Mathematica" data-lang="Mathematica">db = Database`OpenDatabase[sqlitefilepath];
-rs = Database`QueryDatabase[db, <span style="color:#a31515">&#34;select hex(column_name) from table_name&#34;</span>];
-</code></pre></div><p>これを16進文字列→数値→バイト列→文字列と変換して、最後に<code>ImportString</code>で読み込むと、Mathematicaで読み込める。</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Mathematica" data-lang="Mathematica">ImportSQLiteBLOB[hex_, format_] :=
- ImportString[
-  FromCharacterCode[IntegerDigits[FromDigits[hex, 16], 256]], format];
-ImportSQLiteBLOB[rs[[1, 1]], <span style="color:#a31515">&#34;PNG&#34;</span>]
-</code></pre></div><h3 id="insert">insert</h3>
-<p><code>insert</code>する場合には逆に、データを<code>ExportString</code>で文字列に変換→バイト列→16進文字列と変換し&quot;x'&ldquo;と&rdquo;'&ldquo;で囲う。</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Mathematica" data-lang="Mathematica">ExportSQLiteBLOB[expr_, format_] := 
-  StringJoin[<span style="color:#a31515">&#34;x&#39;&#34;</span>, IntegerString[ToCharacterCode[ExportString[expr, format]], 16, 2], <span style="color:#a31515">&#34;&#39;&#34;</span>];
-Database`QueryDatabase[db, <span style="color:#a31515">&#34;insert into table_name values (&#34;</span>
-&lt;&gt; ExportSQLiteBLOB[Plot[Sin[x], {x, 0, Pi}], <span style="color:#a31515">&#34;PNG&#34;</span>]
-&lt;&gt; <span style="color:#a31515">&#34;)&#34;</span>];
-</code></pre></div><h2 id="マルチバイト文字列">マルチバイト文字列</h2>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Mathematica" data-lang="Mathematica"><span style="display:flex;"><span>db = Database`OpenDatabase[sqlitefilepath];
+</span></span><span style="display:flex;"><span>rs = Database`QueryDatabase[db, <span style="color:#a31515">&#34;select hex(column_name) from table_name&#34;</span>];
+</span></span></code></pre></div><p>これを16進文字列→数値→バイト列→文字列と変換して、最後に<code>ImportString</code>で読み込むと、Mathematicaで読み込める。</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Mathematica" data-lang="Mathematica"><span style="display:flex;"><span>ImportSQLiteBLOB[hex_, format_] :=
+</span></span><span style="display:flex;"><span> ImportString[
+</span></span><span style="display:flex;"><span>  FromCharacterCode[IntegerDigits[FromDigits[hex, 16], 256]], format];
+</span></span><span style="display:flex;"><span>ImportSQLiteBLOB[rs[[1, 1]], <span style="color:#a31515">&#34;PNG&#34;</span>]
+</span></span></code></pre></div><h3 id="insert">insert</h3>
+<p><code>insert</code>する場合には逆に、データを<code>ExportString</code>で文字列に変換→バイト列→16進文字列と変換し&quot;x&rsquo;&ldquo;と&rdquo;&rsquo;&ldquo;で囲う。</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Mathematica" data-lang="Mathematica"><span style="display:flex;"><span>ExportSQLiteBLOB[expr_, format_] := 
+</span></span><span style="display:flex;"><span>  StringJoin[<span style="color:#a31515">&#34;x&#39;&#34;</span>, IntegerString[ToCharacterCode[ExportString[expr, format]], 16, 2], <span style="color:#a31515">&#34;&#39;&#34;</span>];
+</span></span><span style="display:flex;"><span>Database`QueryDatabase[db, <span style="color:#a31515">&#34;insert into table_name values (&#34;</span>
+</span></span><span style="display:flex;"><span>&lt;&gt; ExportSQLiteBLOB[Plot[Sin[x], {x, 0, Pi}], <span style="color:#a31515">&#34;PNG&#34;</span>]
+</span></span><span style="display:flex;"><span>&lt;&gt; <span style="color:#a31515">&#34;)&#34;</span>];
+</span></span></code></pre></div><h2 id="マルチバイト文字列">マルチバイト文字列</h2>
 <h3 id="select-1">select</h3>
 <p>日本語などマルチバイト文字列が入っていても適切に変換してくれないので、自前で変換する。</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Mathematica" data-lang="Mathematica">ImportSQLiteString[str_] :=  
-  FromCharacterCode[ToCharacterCode[str], <span style="color:#a31515">&#34;UTF8&#34;</span>];
-rs = Database`QueryDatabase[db, <span style="color:#a31515">&#34;select column_name from table_name&#34;</span>];
-ImportSQLiteString[rs[[1, 1]]]
-</code></pre></div><h3 id="insert-1">insert</h3>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Mathematica" data-lang="Mathematica"><span style="display:flex;"><span>ImportSQLiteString[str_] :=  
+</span></span><span style="display:flex;"><span>  FromCharacterCode[ToCharacterCode[str], <span style="color:#a31515">&#34;UTF8&#34;</span>];
+</span></span><span style="display:flex;"><span>rs = Database`QueryDatabase[db, <span style="color:#a31515">&#34;select column_name from table_name&#34;</span>];
+</span></span><span style="display:flex;"><span>ImportSQLiteString[rs[[1, 1]]]
+</span></span></code></pre></div><h3 id="insert-1">insert</h3>
 <p>そのまま突っ込むとエラーが出るので、変換してから突っ込む。ついでにシングルクォーテーションをエスケープしておく。</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Mathematica" data-lang="Mathematica">ExportSQLiteString[str_] := 
-  <span style="color:#a31515">&#34;&#39;&#34;</span> &lt;&gt; ExportString[StringReplace[str, <span style="color:#a31515">&#34;&#39;&#34;</span> -&gt; <span style="color:#a31515">&#34;&#39;&#39;&#34;</span>], <span style="color:#a31515">&#34;TEXT&#34;</span>, 
-    CharacterEncoding -&gt; <span style="color:#a31515">&#34;UTF8&#34;</span>] &lt;&gt; <span style="color:#a31515">&#34;&#39;&#34;</span>;
-Database`QueryDatabase[db, <span style="color:#a31515">&#34;insert into table_name values (&#34;</span>
-  &lt;&gt; ExportSQLiteString[<span style="color:#a31515">&#34;あいうえお&#34;</span>]
-  &lt;&gt; <span style="color:#a31515">&#34;)&#34;</span>];
-</code></pre></div>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Mathematica" data-lang="Mathematica"><span style="display:flex;"><span>ExportSQLiteString[str_] := 
+</span></span><span style="display:flex;"><span>  <span style="color:#a31515">&#34;&#39;&#34;</span> &lt;&gt; ExportString[StringReplace[str, <span style="color:#a31515">&#34;&#39;&#34;</span> -&gt; <span style="color:#a31515">&#34;&#39;&#39;&#34;</span>], <span style="color:#a31515">&#34;TEXT&#34;</span>, 
+</span></span><span style="display:flex;"><span>    CharacterEncoding -&gt; <span style="color:#a31515">&#34;UTF8&#34;</span>] &lt;&gt; <span style="color:#a31515">&#34;&#39;&#34;</span>;
+</span></span><span style="display:flex;"><span>Database`QueryDatabase[db, <span style="color:#a31515">&#34;insert into table_name values (&#34;</span>
+</span></span><span style="display:flex;"><span>  &lt;&gt; ExportSQLiteString[<span style="color:#a31515">&#34;あいうえお&#34;</span>]
+</span></span><span style="display:flex;"><span>  &lt;&gt; <span style="color:#a31515">&#34;)&#34;</span>];
+</span></span></code></pre></div>
 		</div>
 		<footer class="post__footer">
 			

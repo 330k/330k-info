@@ -106,21 +106,21 @@ if (!doNotTrack) {
 <h2 id="300lm出ている可能性があるかどうか">300lm出ている可能性があるかどうか</h2>
 <p>まずはRN1500のスペック通りの300lmが出ている可能性があるかどうかを確かめる。</p>
 <p>SST-40-Wのスペックシートに<code>Typical efficacy 170 lm/W at 700 mA</code>とあるので、RN1500のスペック通り、300lmを12.5h維持するためには</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">(300 [lm] / 170 [lm/W]) * 12.5 [h] = 22.1 [Wh]
-</code></pre></div><p>の電力量が必要となる。</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>(300 [lm] / 170 [lm/W]) * 12.5 [h] = 22.1 [Wh]
+</span></span></code></pre></div><p>の電力量が必要となる。</p>
 <p>一方、RN1500のバッテリ容量は5000mAhで、定格電圧は3.6Vであるため、電力量としては</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">5000 [mAh] * 3.6[V] = 18 [Wh]
-</code></pre></div><p>である。</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>5000 [mAh] * 3.6[V] = 18 [Wh]
+</span></span></code></pre></div><p>である。</p>
 <p>後述のようにLEDは低温であるほど効率が良いので、10%ほど発光効率が良いとしても、それでもバッテリの容量が不足している。</p>
 <p>従ってRN1500のスペック通りに300lmが出ていることは考えにくい。</p>
 <h2 id="実際のルーメン数の見積り">実際のルーメン数の見積り</h2>
 <p>RN1500のlowモードの実ランタイムは13時間程度。
 また、lowモードでは点灯後30分程度で照度が初期の57%まで低下する、という報告がある(<a href="https://twitter.com/dea_tea_1/status/1450104977033101314">参考1</a>、<a href="https://twitter.com/barubaru24/status/1472397438166380547">参考2</a>)。</p>
 <p>従って、最初から照度減少後の明るさならば13.5時間のランタイムになる、と仮定して、電池の平均消費電力は</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">3.6 [V] * 5000 [mAh] / 13.5 [h] = 1.33 [W]
-</code></pre></div><p>DC/DCコンバータの変換ロスや制御用IC・電源ボタンのLEDへの電力供給などを除いて、バッテリ電力の85%をLEDに供給していると仮定すると、LEDの平均消費電力は</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">1.33 [W] * 0.85 = 1.13 [W]
-</code></pre></div><p>SST-40-Wのスペックシートにある、電流-電圧図から、消費電力が1.13Wになる場所を探すと、電流が0.43A、電圧が2.63V(下図)。</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>3.6 [V] * 5000 [mAh] / 13.5 [h] = 1.33 [W]
+</span></span></code></pre></div><p>DC/DCコンバータの変換ロスや制御用IC・電源ボタンのLEDへの電力供給などを除いて、バッテリ電力の85%をLEDに供給していると仮定すると、LEDの平均消費電力は</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>1.33 [W] * 0.85 = 1.13 [W]
+</span></span></code></pre></div><p>SST-40-Wのスペックシートにある、電流-電圧図から、消費電力が1.13Wになる場所を探すと、電流が0.43A、電圧が2.63V(下図)。</p>
 <figure><img src="rn1500_001.png"/>
 </figure>
 
@@ -134,9 +134,9 @@ p.8にある<code>Ordering Part Numbers</code>にあるのは<code>N3</code>と<
 <figure><img src="rn1500_003.png"/>
 </figure>
 
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">594 [lm] * 0.31 = 185 [lm]
-634 [lm] * 0.31 = 198 [lm]
-</code></pre></div><p>であるから、<strong>30分経過後の明るさは185〜198lm</strong>となる。</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>594 [lm] * 0.31 = 185 [lm]
+</span></span><span style="display:flex;"><span>634 [lm] * 0.31 = 198 [lm]
+</span></span></code></pre></div><p>であるから、<strong>30分経過後の明るさは185〜198lm</strong>となる。</p>
 <p>ここまではLEDのスペックシートでの基準とされる環境温度が85℃のときの値で、周囲温度が低ければ明るくなる(下図)。</p>
 <figure><img src="rn1500_004.png"/>
 </figure>

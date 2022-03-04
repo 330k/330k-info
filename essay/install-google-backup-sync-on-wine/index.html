@@ -109,10 +109,10 @@ if (!doNotTrack) {
 <li><a href="https://appdb.winehq.org/objectManager.php?sClass=version&amp;iId=38353">https://appdb.winehq.org/objectManager.php?sClass=version&amp;iId=38353</a></li>
 </ul>
 <p>まずは、新しく32ビット用のWine環境を作成。</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">WINEARCH=win32 WINEPREFIX=~/.wine32 wineboot
-</code></pre></div><p>次にwinetricksでIE8、VCランタイム、日本語フォントをインストール。</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">WINEARCH=win32 WINEPREFIX=~/.wine32 winetricks ie8 vcrun2008 cjkfonts winhttp
-</code></pre></div><p>IE8のインストール画面では適当にクリックして進む。</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>WINEARCH=win32 WINEPREFIX=~/.wine32 wineboot
+</span></span></code></pre></div><p>次にwinetricksでIE8、VCランタイム、日本語フォントをインストール。</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>WINEARCH=win32 WINEPREFIX=~/.wine32 winetricks ie8 vcrun2008 cjkfonts winhttp
+</span></span></code></pre></div><p>IE8のインストール画面では適当にクリックして進む。</p>
 <p><figure><img src="21-49-32.png"/>
 </figure>
 
@@ -134,18 +134,18 @@ if (!doNotTrack) {
 Running /usr/bin/wineserver -w. This will hang until all wine processes in prefix=~/.wine32 terminate
 ------------------------------------------------------
 </code></pre><p>という表示が出て止まってしまった場合は、別のターミナルを開いて、下記を実行すると進む。</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">WINEARCH=win32 WINEPREFIX=~/.wine32 wineserver -k
-</code></pre></div><p>次にwincfgでライブラリの設定で、wininetとwinhttpを「内蔵版、ネイティブ版」に設定。</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">WINEARCH=win32 WINEPREFIX=~/.wine32 winecfg
-</code></pre></div><figure><img src="08-55-10.png"/>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>WINEARCH=win32 WINEPREFIX=~/.wine32 wineserver -k
+</span></span></code></pre></div><p>次にwincfgでライブラリの設定で、wininetとwinhttpを「内蔵版、ネイティブ版」に設定。</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>WINEARCH=win32 WINEPREFIX=~/.wine32 winecfg
+</span></span></code></pre></div><figure><img src="08-55-10.png"/>
 </figure>
 
 <p>Googleバックアップと同期のインストーラをダウンロードしてインストールする。</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">wget https://dl.google.com/drive/gsync_enterprise.msi
-WINEARCH=win32 WINEPREFIX=~/.wine32 wine start gsync_enterprise.msi
-</code></pre></div><p>インストーラが終了したら、いよいよ起動(最後の引数は絶対パス)。</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">WINEARCH=win32 WINEPREFIX=~/.wine32 wine <span style="color:#a31515">&#34;/home/***/.wine32/drive_c/Program Files/Google/Drive/googledrivesync.exe&#34;</span>
-</code></pre></div><figure><img src="22-02-41.png"/>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>wget https://dl.google.com/drive/gsync_enterprise.msi
+</span></span><span style="display:flex;"><span>WINEARCH=win32 WINEPREFIX=~/.wine32 wine start gsync_enterprise.msi
+</span></span></code></pre></div><p>インストーラが終了したら、いよいよ起動(最後の引数は絶対パス)。</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>WINEARCH=win32 WINEPREFIX=~/.wine32 wine <span style="color:#a31515">&#34;/home/***/.wine32/drive_c/Program Files/Google/Drive/googledrivesync.exe&#34;</span>
+</span></span></code></pre></div><figure><img src="22-02-41.png"/>
 </figure>
 
 <p>下の画面では、「お困りの場合 代わりにブラウザでログイン」をクリックする(画面内にログイン情報を入れても進めない)。</p>
