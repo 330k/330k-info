@@ -6,7 +6,40 @@
     <description>Recent content in 社内SE on 330k info</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Sat, 01 Feb 2020 18:10:03 +0900</lastBuildDate><atom:link href="https://www.330k.info/tags/%E7%A4%BE%E5%86%85se/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 06 Mar 2022 22:29:32 +0900</lastBuildDate><atom:link href="https://www.330k.info/tags/%E7%A4%BE%E5%86%85se/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>無線LANのEAP-PEAP認証で、ユーザ毎のMACアドレス制限も行う</title>
+      <link>https://www.330k.info/essay/freeradius-password-and-mac-address-authentication/</link>
+      <pubDate>Sun, 06 Mar 2022 22:29:32 +0900</pubDate>
+      
+      <guid>https://www.330k.info/essay/freeradius-password-and-mac-address-authentication/</guid>
+      <description>&lt;p&gt;会社で来客用および従業員の私物用に無線LANを開放(もちろん業務用のネットワークとは完全に分離している)していたら、監査から「悪用されたときに追跡調査ができるようにせよ」と指摘があった。&lt;/p&gt;
+&lt;p&gt;共有パスワード(PSK)からユーザ毎の個別パスワード(WPA2 Enterprise + EAP-PEAPなど)に変えるだけでは、ユーザが複数機器で同じパスワードを使いまわしたり、個別パスワードであることを理解せず他の人に教えてしまいかねない。&lt;/p&gt;
+&lt;p&gt;よってユーザ毎に個別のMACアドレスに限定するような認証システムをFreeRADIUSを用いて構築した。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>VBAで要件(ポリシー)に沿ったランダムパスワードを生成</title>
+      <link>https://www.330k.info/essay/generate-secure-password-vba/</link>
+      <pubDate>Mon, 12 Jul 2021 19:04:37 +0900</pubDate>
+      
+      <guid>https://www.330k.info/essay/generate-secure-password-vba/</guid>
+      <description>&lt;p&gt;VBAでのランダムパスワード生成なんて出尽くされていると思ったけれど、意外とスマートな実装がなかったので自分で書いてみた。&lt;/p&gt;
+&lt;p&gt;単純に使用可能な文字種全体からランダムに1文字ずつ選択して連結するだけでは、「英小文字、英大文字、数字を必ず1文字以上含む」などのポリシーに沿っていない文字列が生成されてしまう可能性があるが、
+1回の処理で必ずポリシーに沿った文字列を生成する関数を作成した。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Windows 10の自動音量調整(フェードイン)を無効化する</title>
+      <link>https://www.330k.info/essay/disable-volume-auto-adjust-windows-10/</link>
+      <pubDate>Mon, 17 May 2021 23:47:45 +0900</pubDate>
+      
+      <guid>https://www.330k.info/essay/disable-volume-auto-adjust-windows-10/</guid>
+      <description>&lt;p&gt;会社のノートPCをHDMIで外部モニタに映像と音声を出力していると、動画を再生開始しても最初の数秒が無音になってしまった。&lt;/p&gt;
+&lt;p&gt;動画ファイルや動画プレイヤー、モニタ、PCを変えて試したが、いずれも同じ現象が発生したため、Windowsに原因があると推定し、調べてみるとビンゴ。&lt;/p&gt;
+&lt;p&gt;しかし見つかった対処法では解決せず、ステレオミキサーを使う方法で解決した。&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>Ubuntu 18.04でActive DirectoryへのOpenLDAPプロキシを構築</title>
       <link>https://www.330k.info/essay/openldap-proxy-to-active-directory-ubuntu/</link>
@@ -15,6 +48,15 @@
       <guid>https://www.330k.info/essay/openldap-proxy-to-active-directory-ubuntu/</guid>
       <description>&lt;p&gt;Active Directoryのあるネットワークとは別のネットワークにある機器(具体的には電子黒板)から、LDAPでADユーザ情報を検索したいという要件が。&lt;/p&gt;
 &lt;p&gt;VPNなどの設定もできないので、DMZにOpenLDAPによるLDAP用のプロキシサーバを立ててみた。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>bxSliderで2番目以降の画像が一瞬表示されるのを防止する</title>
+      <link>https://www.330k.info/essay/show-only-first-images/</link>
+      <pubDate>Fri, 01 Mar 2019 07:01:13 +0900</pubDate>
+      
+      <guid>https://www.330k.info/essay/show-only-first-images/</guid>
+      <description>もうjQueryも古いと言われているが、会社のウェブサイトでjQueryプラグインのbxSliderが使われている。 Google先生のPageSpeed Insightに注意されたとおり、レンダリングブロックするJavaScriptを後ろ(&amp;lt;/body&amp;gt;直上)に配置したところ、 2枚目以降の画像が一瞬表示されてしまう現象が発生。 これはJSをレンダリングブロックしないように後ろに配置したり、</description>
     </item>
     
     <item>
