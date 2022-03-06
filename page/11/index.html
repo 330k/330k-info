@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="no-js" lang="ja-jp">
 <head>
-	<meta name="generator" content="Hugo 0.93.1" />
+	<meta name="generator" content="Hugo 0.93.2" />
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -77,6 +77,34 @@ if (!doNotTrack) {
 			
 <main class="main list" role="main">
 	<article class="list__item post">
+	<figure class="list__thumbnail">
+		<a href="https://www.330k.info/essay/create_zip_file_with_wsh_jscript/">
+			<img src="/images/5314-windows_102509.png" alt="Windows標準機能でZIPファイルの作成" />
+		</a>
+	</figure>
+	<header class="list__header">
+		<h3 class="list__title post__title ">
+			<a href="/essay/create_zip_file_with_wsh_jscript/" rel="bookmark">
+			Windows標準機能でZIPファイルの作成
+			</a>
+		</h3>
+		<div class="list__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
+	<time class="meta__text" datetime="2017-05-08T22:37:00">May 08, 2017</time>
+	<time class="meta__text" datetime="2020-07-06T16:58:54"> (Last Modified: July 06, 2020)</time>
+</div>
+
+<div class="meta__item-categories meta__item">
+	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+	<span class="meta__text"><a class="meta__link" href="/categories/%e9%9b%91%e8%a8%98%e5%b8%b3" rel="category">雑記帳</a></span>
+</div>
+</div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		JScriptで複数のテキストファイルを書き出し、それをZIPでまとめたかったので作成。 VBAやVBScript版を参考に作ってみた。 参考サイト : http://kiq-creator.com/blog/?eid=33 複数のファイルをZIP圧縮する際のコツとしては、CopyHereをするたびに待機すること。 CopyHereは非同期なので、すぐにJS側に制御が返ってくるが、 複数のファイルを一気にCopyHereしようとすると、「読み取りできません」とエラーが出る。 使い
+	</div>
+</article><article class="list__item post">
 	<figure class="list__thumbnail">
 		<a href="https://www.330k.info/bicycle/touring/20170429-0505_nagoya_shirakawago_noto_peninshula_kanazawa/">
 			<img src="/bicycle/touring/20170429-0505_nagoya_shirakawago_noto_peninshula_kanazawa/IMG_20170504_084633846.jpg" alt="2017年04月29日〜05月05日 東京→名古屋→岐阜→能登半島→金沢→米原" />
@@ -327,29 +355,6 @@ if (!doNotTrack) {
 <p>本当は1週間の休みで北海道の道東地方を走り、22日からの4連休で九州を走る予定だったのだが、大雨と台風のため北海道のJR線が止まってしまった。</p>
 <p>とはいえ、9月4日と5日は九州地方に別の台風が直撃していたため、5日の午後に新幹線で小倉駅まで輪行し、6日の朝から走行開始。</p>
 	</div>
-</article><article class="list__item post">
-	<header class="list__header">
-		<h3 class="list__title post__title ">
-			<a href="/essay/manage_firefox_settings_with_group_policy_without_gpo_for_firefox/" rel="bookmark">
-			Firefoxをグループポリシーで管理する
-			</a>
-		</h3>
-		<div class="list__meta meta">
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
-	<time class="meta__text" datetime="2016-07-12T22:07:00">July 12, 2016</time>
-	<time class="meta__text" datetime="2017-09-11T19:59:45"> (Last Modified: September 11, 2017)</time>
-</div>
-
-<div class="meta__item-categories meta__item">
-	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
-	<span class="meta__text"><a class="meta__link" href="/categories/%e9%9b%91%e8%a8%98%e5%b8%b3" rel="category">雑記帳</a></span>
-</div>
-</div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		公式の情報はこちら : https://www.mozilla.jp/business/faq/tech/setting-management/ 上記公式サイトにあるように、ActiveDirectory環境にあるFirefoxの設定を管理する場合、 クライアント側にアドオン(GPO for Firefox)をインストール サーバ側に管理用テンプレート(ADMファイル)を配置 グループポリシーエディタで設定を編集 という手順が推奨されている。ただ、この方法だと 既存ユーザへの自動設定は不可(ユーザにアドオンをインストールしてもらう必要が
-	</div>
 </article>
 </main>
 
@@ -382,6 +387,7 @@ if (!doNotTrack) {
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/essay/freeradius-password-and-mac-address-authentication/">無線LANでEAP-PEAP認証で、ユーザ毎のMACアドレス制限も行う</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20220221-brm224-tokyo-600km/">2022年02月21日 BRM224 東京600 とことん沖縄</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/javascript-layered-cache-api-with-expiration/">JavaScriptのCache APIで有効期限付きの階層キャッシュを実装する</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/rwgps-modify-all-elevations/">RWGPSでルートの標高データを一括で修正する</a></li>
@@ -401,7 +407,6 @@ if (!doNotTrack) {
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20210718-shibu-toge/">2021年07月18日 渋峠(自走)</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/generate-secure-password-vba/">VBAで要件(ポリシー)に沿ったランダムパスワードを生成</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/openvpn-client-split-tunnel/">LinuxのOpenVPNクライアントでスプリットトンネリング</a></li>
-			<li class="widget__item"><a class="widget__link" href="/essay/change-lxd-host-ip-address/">LXDホストのIPアドレスを変更する</a></li>
 		</ul>
 	</div>
 </div>
@@ -432,6 +437,7 @@ if (!doNotTrack) {
 		<a class="widget-taglist__link widget__link btn" href="/tags/cybozu" title="Cybozu">Cybozu (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/dotnet" title="Dotnet">Dotnet (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/ffmpeg" title="Ffmpeg">Ffmpeg (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/freeradius" title="Freeradius">Freeradius (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/garmin" title="Garmin">Garmin (3)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/garoon" title="Garoon">Garoon (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/gas" title="Gas">Gas (2)</a>

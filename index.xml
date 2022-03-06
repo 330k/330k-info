@@ -6,7 +6,18 @@
     <description>Recent content on 330k info</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Thu, 24 Feb 2022 22:36:40 +0900</lastBuildDate><atom:link href="https://www.330k.info/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 06 Mar 2022 22:29:32 +0900</lastBuildDate><atom:link href="https://www.330k.info/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>無線LANでEAP-PEAP認証で、ユーザ毎のMACアドレス制限も行う</title>
+      <link>https://www.330k.info/essay/freeradius-password-and-mac-address-authentication/</link>
+      <pubDate>Sun, 06 Mar 2022 22:29:32 +0900</pubDate>
+      
+      <guid>https://www.330k.info/essay/freeradius-password-and-mac-address-authentication/</guid>
+      <description>&lt;p&gt;会社で来客用および従業員の私物用に無線LANを開放(もちろん業務用のネットワークとは完全に分離している)していたら、監査から「悪用されたときに追跡調査ができるようにせよ」と指摘があった。&lt;/p&gt;
+&lt;p&gt;共有パスワード(PSK)からユーザ毎の個別パスワード(WPA2 Enterprise + EAP-PEAPなど)に変えるだけでは、ユーザが複数機器で同じパスワードを使いまわしたり、個別パスワードであることを理解せず他の人に教えてしまいかねない。&lt;/p&gt;
+&lt;p&gt;よってユーザ毎に個別のMACアドレスに限定するような認証システムをFreeRADIUSを用いて構築した。&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>2022年02月21日 BRM224 東京600 とことん沖縄</title>
       <link>https://www.330k.info/bicycle/touring/20220221-brm224-tokyo-600km/</link>
