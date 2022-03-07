@@ -14,7 +14,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.330k.info/essay/freeradius-password-and-mac-address-authentication/" /><meta property="og:image" content="https://www.330k.info/essay/freeradius-password-and-mac-address-authentication/freeradius_logo.svg" /><meta property="article:section" content="essay" />
 <meta property="article:published_time" content="2022-03-06T22:29:32+09:00" />
-<meta property="article:modified_time" content="2022-03-07T21:45:45+09:00" />
+<meta property="article:modified_time" content="2022-03-08T00:31:48+09:00" />
 
 
 	<meta name="twitter:card" content="summary_large_image"/>
@@ -87,7 +87,7 @@ if (!doNotTrack) {
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
 	<time class="meta__text" datetime="2022-03-06T22:29:32">March 06, 2022</time>
-	<time class="meta__text" datetime="2022-03-07T21:45:45"> (Last Modified: March 07, 2022)</time>
+	<time class="meta__text" datetime="2022-03-08T00:31:48"> (Last Modified: March 08, 2022)</time>
 </div>
 
 <div class="meta__item-categories meta__item">
@@ -115,7 +115,10 @@ if (!doNotTrack) {
 <p><code>users</code>ファイルには以下のようにコンマに続けて<code>Calling-Station-Id ==</code>でMACアドレスのフィルタリング条件を追加することで、
 パスワードが一致し、かつ、MADアドレスが一致した場合に認証成功するように設定する。</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>username Cleartext-Password := &#34;password&#34;, Calling-Station-Id == &#34;1a-2b-3c-4d-5e-6f&#34;
-</span></span></code></pre></div><h2 id="参考">参考</h2>
+</span></span></code></pre></div><p>なお、MACアドレスのフォーマットを統一するために、<code>authorize</code>セクションに<code>rewrite_calling_station_id</code>を追加するよう参考サイトには書いてあるのだが、
+実際に入れたところエラーが発生して認証できなくなったため、そのままにしている。</p>
+<p><code>Calling-Station-Id</code>のMACアドレスのフォーマットはクライアント(スイッチ)によって異なるため、<code>freeradius -X</code>で実際のリクエストを確認する。</p>
+<h2 id="参考">参考</h2>
 <ul>
 <li><a href="https://wiki.freeradius.org/guide/mac-auth">guide/Mac Auth</a></li>
 <li><a href="https://sysadminmosaic.ru/freeradius/freeradius_wifi">Делаем закрытую сеть Wi-Fi с авторизацией по МАС-адресу на основе двух точек TP-Link TL-WR842ND. [Мозаика системного администрирования]</a></li>
