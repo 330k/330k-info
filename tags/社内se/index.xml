@@ -13,7 +13,7 @@
       <pubDate>Wed, 16 Mar 2022 20:28:41 +0900</pubDate>
       
       <guid>https://www.330k.info/essay/snap-with-self-signed-certificate-authority/</guid>
-      <description>&lt;p&gt;SSL/TLS通信に介入して、証明書を書き換えるタイプのセキュリティ製品が導入されているネットワークで、
+      <description>&lt;p&gt;SSL/TLS通信に介入して、証明書を書き換えるタイプのセキュリティ製品が導入されているネットワーク下で、
 Snappy(Snap)を使おうとすると、snapデーモンはホストのCA認証局を利用しないため、
 &lt;code&gt;error: cannot refresh: Post https://api.snapcraft.io/v2/snaps/refresh: x509: certificate signed by unknown authority&lt;/code&gt;というエラーを出してしまう。&lt;/p&gt;</description>
     </item>
