@@ -6,7 +6,19 @@
     <description>Recent content in 数学 on 330k info</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Tue, 14 Sep 2021 22:48:02 +0900</lastBuildDate><atom:link href="https://www.330k.info/tags/%E6%95%B0%E5%AD%A6/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 17 Mar 2022 01:13:49 +0900</lastBuildDate><atom:link href="https://www.330k.info/tags/%E6%95%B0%E5%AD%A6/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>測地線距離計算式・計算ライブラリの精度評価 </title>
+      <link>https://www.330k.info/essay/geodesic_distance_formula_comparison_2/</link>
+      <pubDate>Thu, 17 Mar 2022 01:13:49 +0900</pubDate>
+      
+      <guid>https://www.330k.info/essay/geodesic_distance_formula_comparison_2/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;https://www.330k.info/essay/precision-of-mathematica-geodistance-and-geographical-distance-formula/&#34;&gt;GeoDistanceとその他の測地線距離算出式の精度&lt;/a&gt;
+ではランダムな2点間の距離や、日本での運転経路を用いて各種計算式の精度を評価したが、
+短い距離の計算精度の評価と、対蹠点付近の計算精度の評価が不十分であった。&lt;/p&gt;
+&lt;p&gt;そこで、GeographicLibのテストデータを用いて計算精度の再評価を行い、また比較する計算式の追加を行った。&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>逆グーデルマン関数の計算式のJavaScriptにおける精度</title>
       <link>https://www.330k.info/essay/precise_comparison_of_gudermannian_function/</link>
@@ -15,6 +27,36 @@
       <guid>https://www.330k.info/essay/precise_comparison_of_gudermannian_function/</guid>
       <description>&lt;p&gt;メルカトル図法の投影座標の計算に逆グーデルマン関数を用いる(&lt;a href=&#34;https://ja.wikipedia.org/wiki/%E3%83%A1%E3%83%AB%E3%82%AB%E3%83%88%E3%83%AB%E5%9B%B3%E6%B3%95&#34;&gt;メルカトル図法 - Wikipedia&lt;/a&gt;)が、等価な計算式が複数ある。&lt;/p&gt;
 &lt;p&gt;JavaScriptで計算する際に、どの計算式を用いるのが誤差が少なくなるのか調査した。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>球面上の一様分布</title>
+      <link>https://www.330k.info/essay/random_distribution_sphere_surface/</link>
+      <pubDate>Sat, 22 Jul 2017 19:32:46 +0900</pubDate>
+      
+      <guid>https://www.330k.info/essay/random_distribution_sphere_surface/</guid>
+      <description>球面上に一様分布するランダムな点を生成したい時、 単純に極座標表示でθとφを一様分布させると、極付近に点が集まってしまう。 data1 = Transpose[{Sin[t] Cos[f], Sin[t] Sin[f], Cos[t]} /. { f -&amp;gt; RandomReal[{0, 2 Pi}, 2000], t -&amp;gt; RandomReal[{0, Pi}, 2000]}]; g1 = ListPointPlot3D[data1, BoxRatios -&amp;gt; {1, 1, 1}] 球面上で一様分布させるには、下記のようにθにArcCosを使う (θの位置の確率をSinθに比例させたい→累積確率分布関数はCos→逆関数はArcCos)。 data2 = Transpose[{Sin[t] Cos[f], Sin[t] Sin[f], Cos[t]} /. { f -&amp;gt; RandomReal[{0, 2 Pi}, 2000], t -&amp;gt; ArcCos[RandomReal[{-1, 1}, 2000]]}]; g2 = ListPointPlot3D[data2, BoxRatios -&amp;gt; {1, 1, 1}] なお、多次元球</description>
+    </item>
+    
+    <item>
+      <title>GeoDistanceとその他の測地線距離算出式の精度</title>
+      <link>https://www.330k.info/essay/precision-of-mathematica-geodistance-and-geographical-distance-formula/</link>
+      <pubDate>Sat, 07 Jun 2014 00:00:00 +0900</pubDate>
+      
+      <guid>https://www.330k.info/essay/precision-of-mathematica-geodistance-and-geographical-distance-formula/</guid>
+      <description>&lt;p&gt;Mathematicaには2点の緯度と経度を与えて、その間の測地線距離を返す関数としてGeoDistanceがある。
+しかしながら、&lt;a href=&#34;http://mathematica.stackexchange.com/questions/26526/how-accurate-is-geodistance&#34;&gt;ここ&lt;/a&gt;で書かれているように、その精度には疑問が呈されているようだ。&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;&lt;a href=&#34;https://www.330k.info/essay/geodesic_distance_formula_comparison_2/&#34;&gt;続編記事&lt;/a&gt;を投稿しました&lt;/strong&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>友愛数を列挙する</title>
+      <link>https://www.330k.info/essay/enumurate-amicable-numbers-with-mathematica/</link>
+      <pubDate>Sun, 25 Oct 2009 00:00:00 +0900</pubDate>
+      
+      <guid>https://www.330k.info/essay/enumurate-amicable-numbers-with-mathematica/</guid>
+      <description>Mathematicaで友愛数を列挙するプログラム例として以下のようなものが見受けられる。 yakuwa[n_] := DivisorSigma[1, n] - n; Do[If[(yakuwa[yakuwa[k]] == k) &amp;amp;&amp;amp; (yakuwa[k] != k), Print[{k, yakuwa[k]}]], {k, 1, 1000}]; しかし、Doでループを回してPrintで書き出していくのはMathematica的に美しくないと思う。 Mathematicaなら関数型プログラミングとパターンマッチを用いるのが良いと思うので、私なら以下のように書く。 Cases[NestList[DivisorSigma[1, #] - # &amp;amp;, #, 2] &amp;amp; /@ Range[100000], {a_, b_, a_} /; a &amp;lt; b -&amp;gt; {a, b}] 実行速度もこちらの</description>
     </item>
     
   </channel>

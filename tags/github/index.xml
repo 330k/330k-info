@@ -59,7 +59,10 @@
       <pubDate>Sat, 07 Jun 2014 00:00:00 +0900</pubDate>
       
       <guid>https://www.330k.info/essay/precision-of-mathematica-geodistance-and-geographical-distance-formula/</guid>
-      <description>Mathematicaには2点の緯度と経度を与えて、その間の測地線距離を返す関数としてGeoDistanceがある。 しかしながら、ここで書かれているように、その精度には疑問が呈されているようだ。 他の有名な測地線距離の計算方法として、 ヒュベニの式(カシミール3Dが採用しているが、英語圏では情報が見つからない) 国土地理院の測量計算サイトの計算式のついてのドキュメントを実装したもの 完全な球体とみなして計</description>
+      <description>&lt;p&gt;Mathematicaには2点の緯度と経度を与えて、その間の測地線距離を返す関数としてGeoDistanceがある。
+しかしながら、&lt;a href=&#34;http://mathematica.stackexchange.com/questions/26526/how-accurate-is-geodistance&#34;&gt;ここ&lt;/a&gt;で書かれているように、その精度には疑問が呈されているようだ。&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;&lt;a href=&#34;https://www.330k.info/essay/geodesic_distance_formula_comparison_2/&#34;&gt;続編記事&lt;/a&gt;を投稿しました&lt;/strong&gt;&lt;/p&gt;</description>
     </item>
     
     <item>

@@ -78,6 +78,32 @@ if (!doNotTrack) {
 	<header class="main__header">
 		<h1 class="main__title">数学</h1>
 	</header><article class="list__item post">
+	<header class="list__header">
+		<h3 class="list__title post__title ">
+			<a href="/essay/geodesic_distance_formula_comparison_2/" rel="bookmark">
+			測地線距離計算式・計算ライブラリの精度評価 
+			</a>
+		</h3>
+		<div class="list__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
+	<time class="meta__text" datetime="2022-03-17T01:13:49">March 17, 2022</time>
+	<time class="meta__text" datetime="2022-03-17T12:07:38"> (Last Modified: March 17, 2022)</time>
+</div>
+
+<div class="meta__item-categories meta__item">
+	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+	<span class="meta__text"><a class="meta__link" href="/categories/%e9%9b%91%e8%a8%98%e5%b8%b3" rel="category">雑記帳</a></span>
+</div>
+</div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		<p><a href="/essay/precision-of-mathematica-geodistance-and-geographical-distance-formula/">GeoDistanceとその他の測地線距離算出式の精度</a>
+ではランダムな2点間の距離や、日本での運転経路を用いて各種計算式の精度を評価したが、
+短い距離の計算精度の評価と、対蹠点付近の計算精度の評価が不十分であった。</p>
+<p>そこで、GeographicLibのテストデータを用いて計算精度の再評価を行い、また比較する計算式の追加を行った。</p>
+	</div>
+</article><article class="list__item post">
 	<figure class="list__thumbnail">
 		<a href="https://www.330k.info/essay/precise_comparison_of_gudermannian_function/">
 			<img src="/images/geometry-1044090.jpg" alt="逆グーデルマン関数の計算式のJavaScriptにおける精度" />
@@ -106,6 +132,93 @@ if (!doNotTrack) {
 		<p>メルカトル図法の投影座標の計算に逆グーデルマン関数を用いる(<a href="https://ja.wikipedia.org/wiki/%E3%83%A1%E3%83%AB%E3%82%AB%E3%83%88%E3%83%AB%E5%9B%B3%E6%B3%95">メルカトル図法 - Wikipedia</a>)が、等価な計算式が複数ある。</p>
 <p>JavaScriptで計算する際に、どの計算式を用いるのが誤差が少なくなるのか調査した。</p>
 	</div>
+</article><article class="list__item post">
+	<figure class="list__thumbnail">
+		<a href="https://www.330k.info/essay/random_distribution_sphere_surface/">
+			<img src="/essay/random_distribution_sphere_surface/002.png" alt="球面上の一様分布" />
+		</a>
+	</figure>
+	<header class="list__header">
+		<h3 class="list__title post__title ">
+			<a href="/essay/random_distribution_sphere_surface/" rel="bookmark">
+			球面上の一様分布
+			</a>
+		</h3>
+		<div class="list__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
+	<time class="meta__text" datetime="2017-07-22T19:32:46">July 22, 2017</time>
+	<time class="meta__text" datetime="2022-03-17T09:19:33"> (Last Modified: March 17, 2022)</time>
+</div>
+
+<div class="meta__item-categories meta__item">
+	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+	<span class="meta__text"><a class="meta__link" href="/categories/%e9%9b%91%e8%a8%98%e5%b8%b3" rel="category">雑記帳</a></span>
+</div>
+</div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		球面上に一様分布するランダムな点を生成したい時、 単純に極座標表示でθとφを一様分布させると、極付近に点が集まってしまう。 data1 = Transpose[{Sin[t] Cos[f], Sin[t] Sin[f], Cos[t]} /. { f -&gt; RandomReal[{0, 2 Pi}, 2000], t -&gt; RandomReal[{0, Pi}, 2000]}]; g1 = ListPointPlot3D[data1, BoxRatios -&gt; {1, 1, 1}] 球面上で一様分布させるには、下記のようにθにArcCosを使う (θの位置の確率をSinθに比例させたい→累積確率分布関数はCos→逆関数はArcCos)。 data2 = Transpose[{Sin[t] Cos[f], Sin[t] Sin[f], Cos[t]} /. { f -&gt; RandomReal[{0, 2 Pi}, 2000], t -&gt; ArcCos[RandomReal[{-1, 1}, 2000]]}]; g2 = ListPointPlot3D[data2, BoxRatios -&gt; {1, 1, 1}] なお、多次元球
+	</div>
+</article><article class="list__item post">
+	<figure class="list__thumbnail">
+		<a href="https://www.330k.info/essay/precision-of-mathematica-geodistance-and-geographical-distance-formula/">
+			<img src="/essay/precision-of-mathematica-geodistance-and-geographical-distance-formula/hubeny_graph002.png" alt="GeoDistanceとその他の測地線距離算出式の精度" />
+		</a>
+	</figure>
+	<header class="list__header">
+		<h3 class="list__title post__title ">
+			<a href="/essay/precision-of-mathematica-geodistance-and-geographical-distance-formula/" rel="bookmark">
+			GeoDistanceとその他の測地線距離算出式の精度
+			</a>
+		</h3>
+		<div class="list__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
+	<time class="meta__text" datetime="2014-06-07T00:00:00">June 07, 2014</time>
+	<time class="meta__text" datetime="2022-03-17T11:57:54"> (Last Modified: March 17, 2022)</time>
+</div>
+
+<div class="meta__item-categories meta__item">
+	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+	<span class="meta__text"><a class="meta__link" href="/categories/%e9%9b%91%e8%a8%98%e5%b8%b3" rel="category">雑記帳</a></span>
+</div>
+</div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		<p>Mathematicaには2点の緯度と経度を与えて、その間の測地線距離を返す関数としてGeoDistanceがある。
+しかしながら、<a href="http://mathematica.stackexchange.com/questions/26526/how-accurate-is-geodistance">ここ</a>で書かれているように、その精度には疑問が呈されているようだ。</p>
+<hr>
+<p><strong><a href="/essay/geodesic_distance_formula_comparison_2/">続編記事</a>を投稿しました</strong></p>
+	</div>
+</article><article class="list__item post">
+	<figure class="list__thumbnail">
+		<a href="https://www.330k.info/essay/enumurate-amicable-numbers-with-mathematica/">
+			<img src="https://www.ipros.jp/public/product/image/f59/396065002/IPROS3632825140790521490.png?h=220&amp;w=220" alt="友愛数を列挙する" />
+		</a>
+	</figure>
+	<header class="list__header">
+		<h3 class="list__title post__title ">
+			<a href="/essay/enumurate-amicable-numbers-with-mathematica/" rel="bookmark">
+			友愛数を列挙する
+			</a>
+		</h3>
+		<div class="list__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
+	<time class="meta__text" datetime="2009-10-25T00:00:00">October 25, 2009</time>
+	<time class="meta__text" datetime="2022-03-17T09:20:12"> (Last Modified: March 17, 2022)</time>
+</div>
+
+<div class="meta__item-categories meta__item">
+	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+	<span class="meta__text"><a class="meta__link" href="/categories/%e9%9b%91%e8%a8%98%e5%b8%b3" rel="category">雑記帳</a></span>
+</div>
+</div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		Mathematicaで友愛数を列挙するプログラム例として以下のようなものが見受けられる。 yakuwa[n_] := DivisorSigma[1, n] - n; Do[If[(yakuwa[yakuwa[k]] == k) &amp;&amp; (yakuwa[k] != k), Print[{k, yakuwa[k]}]], {k, 1, 1000}]; しかし、Doでループを回してPrintで書き出していくのはMathematica的に美しくないと思う。 Mathematicaなら関数型プログラミングとパターンマッチを用いるのが良いと思うので、私なら以下のように書く。 Cases[NestList[DivisorSigma[1, #] - # &amp;, #, 2] &amp; /@ Range[100000], {a_, b_, a_} /; a &lt; b -&gt; {a, b}] 実行速度もこちらの
+	</div>
 </article>
 </main>
 
@@ -133,6 +246,7 @@ if (!doNotTrack) {
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/essay/geodesic_distance_formula_comparison_2/">測地線距離計算式・計算ライブラリの精度評価 </a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/snap-with-self-signed-certificate-authority/">自己署名証明書を使う環境下でSnappy(Snap)を使う</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/freeradius-password-and-mac-address-authentication/">無線LANのEAP-PEAP認証で、ユーザ毎のMACアドレス制限も行う</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20220221-brm224-tokyo-600km/">2022年02月21日 BRM224 東京600 とことん沖縄</a></li>
@@ -152,7 +266,6 @@ if (!doNotTrack) {
 			<li class="widget__item"><a class="widget__link" href="/essay/precise_comparison_of_gudermannian_function/">逆グーデルマン関数の計算式のJavaScriptにおける精度</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20210722-sr600-oirase/">2021年07月22日 SR600 奥入瀬</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20210718-shibu-toge/">2021年07月18日 渋峠(自走)</a></li>
-			<li class="widget__item"><a class="widget__link" href="/essay/generate-secure-password-vba/">VBAで要件(ポリシー)に沿ったランダムパスワードを生成</a></li>
 		</ul>
 	</div>
 </div>
@@ -198,7 +311,7 @@ if (!doNotTrack) {
 		<a class="widget-taglist__link widget__link btn" href="/tags/java" title="Java">Java (3)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/javascript" title="Javascript">Javascript (13)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/lxd" title="Lxd">Lxd (1)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/mathematica" title="Mathematica">Mathematica (22)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/mathematica" title="Mathematica">Mathematica (23)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/nextcloud" title="Nextcloud">Nextcloud (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/openvpn" title="Openvpn">Openvpn (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/powerpoint" title="Powerpoint">Powerpoint (1)</a>
@@ -221,7 +334,7 @@ if (!doNotTrack) {
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%83%96%e3%83%ab%e3%83%99" title="ブルベ">ブルベ (37)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%83%a9%e3%82%a4%e3%83%88" title="ライト">ライト (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%83%ac%e3%83%93%e3%83%a5%e3%83%bc" title="レビュー">レビュー (2)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%e6%95%b0%e5%ad%a6" title="数学">数学 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%e6%95%b0%e5%ad%a6" title="数学">数学 (5)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e7%94%9f%e6%b4%bb" title="生活">生活 (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e7%a4%be%e5%86%85se" title="社内se">社内se (21)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e8%87%aa%e8%bb%a2%e8%bb%8a" title="自転車">自転車 (14)</a>

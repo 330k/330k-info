@@ -8,18 +8,24 @@
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
 	<meta property="og:title" content="GeoDistanceとその他の測地線距離算出式の精度" />
-<meta property="og:description" content="Mathematicaには2点の緯度と経度を与えて、その間の測地線距離を返す関数としてGeoDistanceがある。 しかしながら、ここで書かれているように、その精度には疑問が呈されているようだ。 他の有名な測地線距離の計算方法として、 ヒュベニの式(カシミール3Dが採用しているが、英語圏では情報が見つからない) 国土地理院の測量計算サイトの計算式のついてのドキュメントを実装したもの 完全な球体とみなして計" />
+<meta property="og:description" content="Mathematicaには2点の緯度と経度を与えて、その間の測地線距離を返す関数としてGeoDistanceがある。
+しかしながら、ここで書かれているように、その精度には疑問が呈されているようだ。
+
+続編記事を投稿しました" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.330k.info/essay/precision-of-mathematica-geodistance-and-geographical-distance-formula/" /><meta property="og:image" content="https://www.330k.info/essay/precision-of-mathematica-geodistance-and-geographical-distance-formula/hubeny_graph002.png" /><meta property="article:section" content="essay" />
 <meta property="article:published_time" content="2014-06-07T00:00:00+09:00" />
-<meta property="article:modified_time" content="2021-05-01T11:19:19+09:00" />
+<meta property="article:modified_time" content="2022-03-17T11:57:54+09:00" />
 
 
 	<meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://www.330k.info/essay/precision-of-mathematica-geodistance-and-geographical-distance-formula/hubeny_graph002.png"/>
 
 <meta name="twitter:title" content="GeoDistanceとその他の測地線距離算出式の精度"/>
-<meta name="twitter:description" content="Mathematicaには2点の緯度と経度を与えて、その間の測地線距離を返す関数としてGeoDistanceがある。 しかしながら、ここで書かれているように、その精度には疑問が呈されているようだ。 他の有名な測地線距離の計算方法として、 ヒュベニの式(カシミール3Dが採用しているが、英語圏では情報が見つからない) 国土地理院の測量計算サイトの計算式のついてのドキュメントを実装したもの 完全な球体とみなして計"/>
+<meta name="twitter:description" content="Mathematicaには2点の緯度と経度を与えて、その間の測地線距離を返す関数としてGeoDistanceがある。
+しかしながら、ここで書かれているように、その精度には疑問が呈されているようだ。
+
+続編記事を投稿しました"/>
 
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -83,7 +89,7 @@ if (!doNotTrack) {
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
 	<time class="meta__text" datetime="2014-06-07T00:00:00">June 07, 2014</time>
-	<time class="meta__text" datetime="2021-05-01T11:19:19"> (Last Modified: May 01, 2021)</time>
+	<time class="meta__text" datetime="2022-03-17T11:57:54"> (Last Modified: March 17, 2022)</time>
 </div>
 
 <div class="meta__item-categories meta__item">
@@ -94,6 +100,8 @@ if (!doNotTrack) {
 		</header><div class="content post__content clearfix">
 			<p>Mathematicaには2点の緯度と経度を与えて、その間の測地線距離を返す関数としてGeoDistanceがある。
 しかしながら、<a href="http://mathematica.stackexchange.com/questions/26526/how-accurate-is-geodistance">ここ</a>で書かれているように、その精度には疑問が呈されているようだ。</p>
+<hr>
+<p><strong><a href="/essay/geodesic_distance_formula_comparison_2/">続編記事</a>を投稿しました</strong></p>
 <p>他の有名な測地線距離の計算方法として、</p>
 <ul>
 <li>ヒュベニの式(カシミール3Dが採用しているが、英語圏では情報が見つからない)</li>
@@ -292,7 +300,7 @@ if (!doNotTrack) {
 <li>Mathematicaの<code>GeoDistance</code>ではデフォルトの<code>Vencenty75</code>が11桁程度の精度が出て、最も良い。</li>
 <li>ヒュベニの式は日本付近の緯度で、パスの長さの計算など2地点間が近い場合であれば7桁程度の精度が出るが、極付近を含む場合や2地点が離れた場合は精度が悪化する。</li>
 <li>完全球体として計算するGoogle EarthやGoogle Mapsは2桁程度の精度(誤差0.6%程度)。</li>
-<li>測量計算サイトはドキュメントと異なる計算が行われていると考えられる。</li>
+<li>測量計算サイトはドキュメントと異なる計算が行われていると考えられる。 -&gt; <a href="/essay/geodesic_distance_formula_comparison_2/">続編記事</a>にて修正</li>
 </ul>
 <h2 id="追記">追記</h2>
 <ul>
@@ -300,8 +308,8 @@ if (!doNotTrack) {
 <li>Google Codeが終了するのでGitHubに移転→<a href="https://github.com/330k/mathematica-geodesic">mathematica-geodesic</a> (Mar. 13 2015)</li>
 <li>いつのまにか本家<a href="https://geographiclib.sourceforge.io/">GeographicLib</a>にMathematicaでの実装としてリンクされている(!)</li>
 <li>国土地理院のサイトのURLが変更されたので、リンク先を変更 (Jan. 17 2016)</li>
+<li><a href="/essay/geodesic_distance_formula_comparison_2/">続編記事</a>を投稿。一部の結論が変更。 (Mar. 17 2022)</li>
 </ul>
-
 		</div>
 		<footer class="post__footer">
 			
@@ -310,6 +318,7 @@ if (!doNotTrack) {
 	<ul class="tags__list">
 		<li class="tags__item"><a class="tags__link btn" href="/tags/mathematica/" rel="tag">Mathematica</a></li>
 		<li class="tags__item"><a class="tags__link btn" href="/tags/github/" rel="tag">GitHub</a></li>
+		<li class="tags__item"><a class="tags__link btn" href="/tags/%E6%95%B0%E5%AD%A6/" rel="tag">数学</a></li>
 	</ul>
 </div>
 		</footer>
@@ -349,6 +358,7 @@ if (!doNotTrack) {
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/essay/geodesic_distance_formula_comparison_2/">測地線距離計算式・計算ライブラリの精度評価 </a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/snap-with-self-signed-certificate-authority/">自己署名証明書を使う環境下でSnappy(Snap)を使う</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/freeradius-password-and-mac-address-authentication/">無線LANのEAP-PEAP認証で、ユーザ毎のMACアドレス制限も行う</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20220221-brm224-tokyo-600km/">2022年02月21日 BRM224 東京600 とことん沖縄</a></li>
@@ -368,7 +378,6 @@ if (!doNotTrack) {
 			<li class="widget__item"><a class="widget__link" href="/essay/precise_comparison_of_gudermannian_function/">逆グーデルマン関数の計算式のJavaScriptにおける精度</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20210722-sr600-oirase/">2021年07月22日 SR600 奥入瀬</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20210718-shibu-toge/">2021年07月18日 渋峠(自走)</a></li>
-			<li class="widget__item"><a class="widget__link" href="/essay/generate-secure-password-vba/">VBAで要件(ポリシー)に沿ったランダムパスワードを生成</a></li>
 		</ul>
 	</div>
 </div>
@@ -414,7 +423,7 @@ if (!doNotTrack) {
 		<a class="widget-taglist__link widget__link btn" href="/tags/java" title="Java">Java (3)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/javascript" title="Javascript">Javascript (13)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/lxd" title="Lxd">Lxd (1)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/mathematica" title="Mathematica">Mathematica (22)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/mathematica" title="Mathematica">Mathematica (23)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/nextcloud" title="Nextcloud">Nextcloud (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/openvpn" title="Openvpn">Openvpn (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/powerpoint" title="Powerpoint">Powerpoint (1)</a>
@@ -437,7 +446,7 @@ if (!doNotTrack) {
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%83%96%e3%83%ab%e3%83%99" title="ブルベ">ブルベ (37)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%83%a9%e3%82%a4%e3%83%88" title="ライト">ライト (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%83%ac%e3%83%93%e3%83%a5%e3%83%bc" title="レビュー">レビュー (2)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%e6%95%b0%e5%ad%a6" title="数学">数学 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%e6%95%b0%e5%ad%a6" title="数学">数学 (5)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e7%94%9f%e6%b4%bb" title="生活">生活 (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e7%a4%be%e5%86%85se" title="社内se">社内se (21)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e8%87%aa%e8%bb%a2%e8%bb%8a" title="自転車">自転車 (14)</a>
