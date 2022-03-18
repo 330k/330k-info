@@ -16,7 +16,7 @@ GeoDistanceとその他の測地線距離算出式の精度
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.330k.info/essay/geodesic_distance_formula_comparison_2/" /><meta property="og:image" content="https://www.330k.info/essay/geodesic_distance_formula_comparison_2/20220317_graph_001_abs.png" /><meta property="article:section" content="essay" />
 <meta property="article:published_time" content="2022-03-17T01:13:49+09:00" />
-<meta property="article:modified_time" content="2022-03-18T02:56:53+09:00" />
+<meta property="article:modified_time" content="2022-03-18T12:43:54+09:00" />
 
 
 	<meta name="twitter:card" content="summary_large_image"/>
@@ -91,7 +91,7 @@ if (!doNotTrack) {
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
 	<time class="meta__text" datetime="2022-03-17T01:13:49">March 17, 2022</time>
-	<time class="meta__text" datetime="2022-03-18T02:56:53"> (Last Modified: March 18, 2022)</time>
+	<time class="meta__text" datetime="2022-03-18T12:43:54"> (Last Modified: March 18, 2022)</time>
 </div>
 
 <div class="meta__item-categories meta__item">
@@ -296,7 +296,7 @@ if (!doNotTrack) {
 <li>Hubeny(Full)
 <ul>
 <li>簡易版ヒュベニの式と同様、短距離に強く、長距離になると精度が悪化する傾向は変わらないが、10km程度まで12桁の精度が出て、長距離になっても精度悪化が遅い。</li>
-<li>Mathematicaで<code>Compile</code>した場合、簡易式と計算速度がほとんど変わらなかった。試しにJavaScriptで実装して比較した所、Chromeでは簡易式に比べて10倍以上計算時間がかかった一方、Firefoxではほぼ同じ速度となった。</li>
+<li>Mathematicaで<code>Compile</code>した場合、簡易式と計算速度がほとんど変わらなかったが、JavaScriptで実装して比較した所、Chrome・Firefoxともに簡易式に比べて計算時間は2倍程度であった。これも速度と精度のバランスは良いと言える。</li>
 </ul>
 </li>
 <li>Vincenty
@@ -341,7 +341,7 @@ if (!doNotTrack) {
 <h2 id="結論">結論</h2>
 <ul>
 <li>汎用的に精度を求めるならGeographicLibを使うのが一番良い(各言語に移植されている)</li>
-<li>ルートデータなど短距離の計算に限るなら、ヒュベニの簡易式は精度と速度のバランスが良い</li>
+<li>ルートデータなど短距離の計算に限るなら、ヒュベニの式(オリジナル版、簡易版)はともに精度と速度のバランスが良い</li>
 <li>速度よりも精度を優先し、また外部ライブラリを使わない場合は、国土地理院の計算式を使う(ただ文書を見ても非常に実装しにくいのが難点)</li>
 <li>Mathematicaなら<code>Method</code>オプションはデフォルトのままが一番で、対蹠点以外では問題ない。もし対蹠点付近を含む計算をするならGeographicLibをJ/Linkで呼び出して使う(<a href="https://github.com/330k/mathematica-geodesic">mathematica-geodesic</a>)。</li>
 </ul>
