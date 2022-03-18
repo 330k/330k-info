@@ -16,7 +16,7 @@ GeoDistanceとその他の測地線距離算出式の精度
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.330k.info/essay/geodesic_distance_formula_comparison_2/" /><meta property="og:image" content="https://www.330k.info/essay/geodesic_distance_formula_comparison_2/20220317_graph_001_abs.png" /><meta property="article:section" content="essay" />
 <meta property="article:published_time" content="2022-03-17T01:13:49+09:00" />
-<meta property="article:modified_time" content="2022-03-18T20:47:58+09:00" />
+<meta property="article:modified_time" content="2022-03-19T01:56:52+09:00" />
 
 
 	<meta name="twitter:card" content="summary_large_image"/>
@@ -91,7 +91,7 @@ if (!doNotTrack) {
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
 	<time class="meta__text" datetime="2022-03-17T01:13:49">March 17, 2022</time>
-	<time class="meta__text" datetime="2022-03-18T20:47:58"> (Last Modified: March 18, 2022)</time>
+	<time class="meta__text" datetime="2022-03-19T01:56:52"> (Last Modified: March 19, 2022)</time>
 </div>
 
 <div class="meta__item-categories meta__item">
@@ -109,23 +109,25 @@ if (!doNotTrack) {
 <p>今回比較する計算式と計算ライブラリ、および出典を以下に示す。</p>
 <ul>
 <li><strong>GeographicLib</strong>: 比較用。最も計算精度が高い計算ライブラリ。<a href="https://geographiclib.sourceforge.io/">GeographicLib</a></li>
-<li><strong>Haversine</strong>: 完全球体とみなした計算(半径には平均半径(6371000.790009154 m)を使用)</li>
+<li><strong>Haversine</strong>: 完全球体とみなした計算。<a href="https://en.wikipedia.org/wiki/Great-circle_distance">Great-circle distance - Wikipedia</a></li>
 <li><strong>GSI</strong>: 国土地理院計算式。<a href="https://vldb.gsi.go.jp/sokuchi/surveycalc/surveycalc/algorithm/bl2st/bl2st.htm">距離と方位角の計算　計算式</a></li>
 <li><strong>Hubeny (Simple)</strong>: カシミール3Dで採用されている、ヒュベニの式の簡易版。<a href="https://www.kashmir3d.com/kash/manual/std_siki.htm">カシミール / 計算式</a> <a href="https://www.koeki-prj.org/~yuuji/2017/gd2/06/distances.html">Calculating Distance between Two Points - #7 Game Design 2017</a></li>
 <li><strong>Hubeny (Full)</strong>: ヒュベニの式のオリジナル版。<a href="https://www.ovg.at/de/vgi/ausgabe/1010/">VGI - Die Zeitschrift</a> <a href="https://amano-tec.com/apps/paceruler.html">歩測計 Pace Ruler - ASTI アマノ技研</a></li>
 <li><strong>Vincenty</strong>: Vincentyによる式。<a href="https://dl.ndl.go.jp/info:ndljp/pid/11000306">回転楕円体上の測地線及び航程線の算出について - 国立国会図書館デジタルコレクション</a></li>
 <li><strong>Lambert</strong>: Lambertによる式。<a href="https://en.wikipedia.org/wiki/Geographical_distance#Lambert's_formula_for_long_lines">Geographical distance - Wikipedia</a></li>
 <li><strong>Andoyer-Lambert</strong>: Andoyerが補正を加えたもの。<a href="https://web.archive.org/web/20160411010136/http://www2.nc-toyama.ac.jp/~mkawai/lecture/sailing/geodetic/geosail.html">測地線航海算法(Geodesic Sailing)</a></li>
-<li><strong>Andoyer-Lambert-Thomas</strong>: さらにThomasが補正を加えたもの。<a href="https://metacpan.org/pod/GIS::Distance::ALT">GIS::Distance::ALT</a>より移植</li>
+<li><strong>Andoyer-Lambert-Thomas</strong>: さらにThomasが補正を加えたもの。<a href="https://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.997.5818&amp;rep=rep1&amp;type=pdf">MATHEMATICAL MODELS FOR NAVIGATION SYSTEMS</a> 計算式は<a href="https://metacpan.org/pod/GIS::Distance::ALT">GIS::Distance::ALT</a>より移植</li>
 <li><strong>GeoDistance (Vincenty75)</strong>: Mathematica 8の組み込み関数<code>GeoDistance</code>のデフォルト(<code>Method-&gt;&quot;Vincenty75&quot;</code>)</li>
 <li><strong>GeoDistance (Robbin61)</strong>: <code>GeoDistance</code>で<code>Method-&gt;&quot;Robbin61&quot;</code>オプションを指定したもの</li>
 <li><strong>GeoDistance (ExtendedNewtonRaphson)</strong>: <code>GeoDistance</code>で<code>Method-&gt;&quot;ExtendedNewtonRaphson&quot;</code>オプションを指定したもの</li>
 </ul>
-<p>Haversine以外はいずれもWGS84の値(a = 6378137m, f = 1 / 298.257223563)を使用した。</p>
+<p>計算に使用する回転楕円体のパラメータとしては、Haversine以外はいずれもWGS84の値(a = 6378137m, f = 1 / 298.257223563)を使用し、Haversineでは平均半径(6371000.790009154 m)を使用した。</p>
 <p>国土地理院計算式については再実装を行い、前回ゾーン2の計算で間違えていたのを修正した。</p>
 <p>またGeoDistance(ExtendedNewtonRaphson)は計算が収束しないことがあるため、<code>TimeConstrained</code>を使って0.1秒以内に計算が終了しない場合は強制終了して<code>0.0</code>とした。</p>
 <p>GeographicLibは一括計算するプログラムをJavaで書き、それをMathematicaからJ/Link経由で呼び出した。
 その他の計算式はMathematicaで<code>Compile</code>し、オプションとして<code>CompilationTarget -&gt; &quot;C&quot;, RuntimeAttributes -&gt; {Listable}, Parallelization -&gt; True]</code>を指定したもので計算した。</p>
+<p>その他、<a href="https://web.archive.org/web/20160411010136/http://www2.nc-toyama.ac.jp/~mkawai/lecture/sailing/geodetic/geosail.html">測地線航海算法(Geodesic Sailing)</a>、
+には「小野の公式」というものが見つかるが、2点が極めて近い or 対蹠点付近となる場合に0での除算が発生するものの、回避方法がなかったため今回の比較から除外した。</p>
 <h2 id="使用するテストデータ">使用するテストデータ</h2>
 <p>精度検証に使用するデータはGeographicLibによって提供されているテストデータを使用した。</p>
 <p>テストデータの仕様については<a href="https://geographiclib.sourceforge.io/C++/doc/geodesic.html#testgeod">GeographicLib: Geodesics on an ellipsoid of revolution</a>に記載されており、
