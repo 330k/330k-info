@@ -9,12 +9,12 @@
 	<meta name="description" content="">
 	<meta property="og:title" content="自己署名証明書を使う環境下でSnappy(Snap)を使う" />
 <meta property="og:description" content="SSL/TLS通信に介入して、証明書を書き換えるタイプのセキュリティ製品が導入されているネットワーク下で、
-Snappy(Snap)を使おうとすると、snapデーモンはホストのCA認証局を利用しないため、
+Snappy(Snap)を使おうとすると、snapデーモンはホストのルートCA認証局を利用しないため、
 error: cannot refresh: Post https://api.snapcraft.io/v2/snaps/refresh: x509: certificate signed by unknown authorityというエラーを出してしまう。" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.330k.info/essay/snap-with-self-signed-certificate-authority/" /><meta property="og:image" content="https://www.330k.info/essay/snap-with-self-signed-certificate-authority/snappy_icon.png" /><meta property="article:section" content="essay" />
 <meta property="article:published_time" content="2022-03-16T20:28:41+09:00" />
-<meta property="article:modified_time" content="2022-03-17T12:16:48+09:00" />
+<meta property="article:modified_time" content="2022-03-19T03:42:52+09:00" />
 
 
 	<meta name="twitter:card" content="summary_large_image"/>
@@ -22,7 +22,7 @@ error: cannot refresh: Post https://api.snapcraft.io/v2/snaps/refresh: x509: cer
 
 <meta name="twitter:title" content="自己署名証明書を使う環境下でSnappy(Snap)を使う"/>
 <meta name="twitter:description" content="SSL/TLS通信に介入して、証明書を書き換えるタイプのセキュリティ製品が導入されているネットワーク下で、
-Snappy(Snap)を使おうとすると、snapデーモンはホストのCA認証局を利用しないため、
+Snappy(Snap)を使おうとすると、snapデーモンはホストのルートCA認証局を利用しないため、
 error: cannot refresh: Post https://api.snapcraft.io/v2/snaps/refresh: x509: certificate signed by unknown authorityというエラーを出してしまう。"/>
 
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
@@ -87,7 +87,7 @@ if (!doNotTrack) {
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
 	<time class="meta__text" datetime="2022-03-16T20:28:41">March 16, 2022</time>
-	<time class="meta__text" datetime="2022-03-17T12:16:48"> (Last Modified: March 17, 2022)</time>
+	<time class="meta__text" datetime="2022-03-19T03:42:52"> (Last Modified: March 19, 2022)</time>
 </div>
 
 <div class="meta__item-categories meta__item">
@@ -97,7 +97,7 @@ if (!doNotTrack) {
 </div>
 		</header><div class="content post__content clearfix">
 			<p>SSL/TLS通信に介入して、証明書を書き換えるタイプのセキュリティ製品が導入されているネットワーク下で、
-Snappy(Snap)を使おうとすると、snapデーモンはホストのCA認証局を利用しないため、
+Snappy(Snap)を使おうとすると、snapデーモンはホストのルートCA認証局を利用しないため、
 <code>error: cannot refresh: Post https://api.snapcraft.io/v2/snaps/refresh: x509: certificate signed by unknown authority</code>というエラーを出してしまう。</p>
 <h2 id="対処方法">対処方法</h2>
 <p>なかなか対処法を見つけられずに諦めていたが、別の調査をしているときに偶然snap daemonが利用する証明書ストアへの証明書追加方法を見つけた。</p>
@@ -106,7 +106,7 @@ Snappy(Snap)を使おうとすると、snapデーモンはホストのCA認証�
 </span></span></code></pre></div><p><code>yourca.crt</code>には使うCA証明書のパスを入れる。</p>
 <p>これにより、<code>snap refresh</code>などが正常に動作するようになる。</p>
 <h2 id="補足">補足</h2>
-<p>Ubuntuの場合、CA証明書を追加する場所は<code>/usr/local/share/ca-certificates/</code>なので、だいたい</p>
+<p>Ubuntuの場合、CA証明書を追加する場所は<code>/usr/local/share/ca-certificates/</code>なので、以下をすぐコピペできるようにしている。</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>echo <span style="color:#a31515">&#39;-----BEGIN CERTIFICATE-----
 </span></span></span><span style="display:flex;"><span><span style="color:#a31515">MIICxT********************************************************
 </span></span></span><span style="display:flex;"><span><span style="color:#a31515">**************************************************************
@@ -114,7 +114,7 @@ Snappy(Snap)を使おうとすると、snapデーモンはホストのCA認証�
 </span></span></span><span style="display:flex;"><span><span style="color:#a31515">-----END CERTIFICATE-----&#39;</span> | sudo tee /usr/local/share/ca-certificates/yourca.crt
 </span></span><span style="display:flex;"><span>sudo snap set system store-certs.cert1=<span style="color:#a31515">&#34;</span><span style="color:#00f">$(</span>cat /usr/local/share/ca-certificates/yourca.crt<span style="color:#00f">)</span><span style="color:#a31515">&#34;</span>
 </span></span><span style="display:flex;"><span>sudo update-ca-certificates
-</span></span></code></pre></div><p>とやることになるので、これをすぐコピペできるようにしている。</p>
+</span></span></code></pre></div>
 		</div>
 		<footer class="post__footer">
 			
