@@ -13,7 +13,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.330k.info/essay/edge_830_newfile_import_behavior/" /><meta property="og:image" content="https://www.330k.info/essay/download-all-activities-from-garmin-connect/garminconnect.png" /><meta property="article:section" content="essay" />
 <meta property="article:published_time" content="2021-12-15T00:56:02+09:00" />
-<meta property="article:modified_time" content="2021-12-16T01:05:57+09:00" />
+<meta property="article:modified_time" content="2022-04-20T23:13:51+09:00" />
 
 
 	<meta name="twitter:card" content="summary_large_image"/>
@@ -85,7 +85,7 @@ if (!doNotTrack) {
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
 	<time class="meta__text" datetime="2021-12-15T00:56:02">December 15, 2021</time>
-	<time class="meta__text" datetime="2021-12-16T01:05:57"> (Last Modified: December 16, 2021)</time>
+	<time class="meta__text" datetime="2022-04-20T23:13:51"> (Last Modified: April 20, 2022)</time>
 </div>
 
 <div class="meta__item-categories meta__item">
@@ -105,7 +105,7 @@ if (!doNotTrack) {
 <ul>
 <li><code>trk</code>要素または<code>rte</code>要素はコースとしてインポートされる。
 <ul>
-<li>コース名は<code>gpx/trk/name</code>や<code>gpx/rte/name</code>が使われる。</li>
+<li>コース名は<code>/gpx/trk/name</code>や<code>/gpx/rte/name</code>が使われる。</li>
 <li>コースポイントの設定は不可。</li>
 <li><code>trkpt</code>要素に<code>time</code>要素や<code>ele</code>要素はなくてもインポート可能。その場合、速度として20km/h、高度にはEdge内蔵地図の高度情報が使われる。</li>
 </ul>
@@ -120,8 +120,14 @@ if (!doNotTrack) {
 <li><code>CoursePoint</code>要素はコースポイントとして登録される。</li>
 <li>FITファイルの<code>course_point</code>はルート上の距離情報を含むが、TCXの<code>CoursePoint</code>には距離情報がない。そのため、<code>CoursePoint</code>の<code>Time</code>要素の時刻情報からルート上の距離が計算される。</li>
 <li><code>CoursePoint</code>はコースから外れた地点にも設置可能。</li>
-<li>コース名は<code>TrainingCenterDatabase/Courses/Course/Name</code>が使用される。</li>
+<li>コース名は<code>/TrainingCenterDatabase/Courses/Course/Name</code>が使用される。</li>
+<li>コース所要時間は<code>/TrainingCenterDatabase/Courses/Course/Lap/TotalTimeSeconds</code>が使用される。</li>
 <li>コース名、コースポイント名は少なくともUTF8を使っておけば日本語も可能。</li>
+</ul>
+<h2 id="たぶん共通">たぶん共通</h2>
+<ul>
+<li>距離の精度は0.01m</li>
+<li>高度の精度は0.2m</li>
 </ul>
 		</div>
 		<footer class="post__footer">
