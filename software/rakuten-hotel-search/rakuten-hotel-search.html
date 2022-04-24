@@ -277,7 +277,10 @@ function initMap(){
     zoom: 6,
     mapTypeId: google.maps.MapTypeId.ROADMAP,
     center: new google.maps.LatLng(35.681382, 139.766084),
-    fullscreenControl: false
+    fullscreenControl: false,
+    options: {
+      gestureHandling: "greedy"
+    }
   });
   
   googlemap.map.addListener("click", searchHotels);
