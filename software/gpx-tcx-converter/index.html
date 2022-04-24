@@ -13,7 +13,7 @@ Garmin Edgeシリーズのデバイスにインポートすると、コースポ
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.330k.info/software/gpx-tcx-converter/" /><meta property="og:image" content="https://www.330k.info/software/gpx-tcx-converter/icon256.png" /><meta property="article:section" content="software" />
 <meta property="article:published_time" content="2022-04-24T21:22:33+09:00" />
-<meta property="article:modified_time" content="2022-04-24T21:27:43+09:00" />
+<meta property="article:modified_time" content="2022-04-24T22:05:06+09:00" />
 
 
 	<meta name="twitter:card" content="summary_large_image"/>
@@ -85,7 +85,7 @@ if (!doNotTrack) {
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
 	<time class="meta__text" datetime="2022-04-24T21:22:33">April 24, 2022</time>
-	<time class="meta__text" datetime="2022-04-24T21:27:43"> (Last Modified: April 24, 2022)</time>
+	<time class="meta__text" datetime="2022-04-24T22:05:06"> (Last Modified: April 24, 2022)</time>
 </div>
 
 <div class="meta__item-categories meta__item">
@@ -152,7 +152,7 @@ if (!doNotTrack) {
 <ul>
 <li>複数の<code>trk</code>を持つGPXファイルには対応していません。すべての<code>trk</code>を結合して単一のコースにします。</li>
 <li>GPXファイルの<code>wpt</code>要素は、コースに最も接近する点までの距離がEdgeに表示されます(逆に、Garmin Connectと違ってコース外にコースポイントを設置することが可能です)。</li>
-<li>TCXファイルはコースポイントに距離情報を持たず、時刻情報だけを持ちます。Edgeがインポート時にコースポイントの距離を計算するのですが、時刻計算の精度が1秒なので、TCXファイル変換時の速度を速くしすぎるとコースポイントの距離がずれる可能性があります。</li>
+<li>TCXファイルはコースポイントに距離情報を持たず、時刻情報だけを持ちます。Edgeがインポート時にコースポイントの距離を計算するのですが、時刻計算の精度が1秒なので、TCXファイル変換時の設定で&quot;移動速度&quot;を速くしすぎるとコースポイントの距離がずれる可能性があります。</li>
 <li>Garmin Connectでコースを作成するとポイントが最大で約4000点程度になるように間引かれますが、RWGPSからエクスポートしたGPXファイルはポイント数がもっと多くなることがあります。ポイント数が多すぎてGarmin Edgeの処理が遅くなる可能性がありますので、その場合は<a href="/software/simplify_gpx/">GPXトラックを間引く・簡略化</a>などで間引いてください。</li>
 </ul>
 <h2 id="edge表示例">Edge表示例</h2>
