@@ -2,23 +2,41 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://www.330k.info/</loc>
+    <lastmod>2022-04-24T21:22:36+09:00</lastmod>
+  </url><url>
+    <loc>https://www.330k.info/categories/</loc>
+    <lastmod>2022-04-24T21:22:36+09:00</lastmod>
+  </url><url>
+    <loc>https://www.330k.info/tags/github/</loc>
+    <lastmod>2022-04-24T21:22:36+09:00</lastmod>
+  </url><url>
+    <loc>https://www.330k.info/tags/gpx/</loc>
+    <lastmod>2022-04-24T21:22:36+09:00</lastmod>
+  </url><url>
+    <loc>https://www.330k.info/software/gpx-tcx-converter/</loc>
+    <lastmod>2022-04-24T21:22:36+09:00</lastmod>
+  </url><url>
+    <loc>https://www.330k.info/software/</loc>
+    <lastmod>2022-04-24T21:22:36+09:00</lastmod>
+  </url><url>
+    <loc>https://www.330k.info/tags/</loc>
+    <lastmod>2022-04-24T21:22:36+09:00</lastmod>
+  </url><url>
+    <loc>https://www.330k.info/categories/%E3%82%BD%E3%83%95%E3%83%88%E3%82%A6%E3%82%A7%E3%82%A2/</loc>
+    <lastmod>2022-04-24T21:22:36+09:00</lastmod>
+  </url><url>
+    <loc>https://www.330k.info/tags/%E8%87%AA%E8%BB%A2%E8%BB%8A/</loc>
+    <lastmod>2022-04-24T21:22:36+09:00</lastmod>
+  </url><url>
     <loc>https://www.330k.info/bicycle/touring/20220409-brm409-chiba-400km/</loc>
     <lastmod>2022-04-11T09:54:45+09:00</lastmod>
-  </url><url>
-    <loc>https://www.330k.info/</loc>
-    <lastmod>2022-04-24T11:30:56+09:00</lastmod>
   </url><url>
     <loc>https://www.330k.info/bicycle/</loc>
     <lastmod>2022-04-11T09:54:45+09:00</lastmod>
   </url><url>
     <loc>https://www.330k.info/tags/brm400km/</loc>
     <lastmod>2022-04-11T09:54:45+09:00</lastmod>
-  </url><url>
-    <loc>https://www.330k.info/categories/</loc>
-    <lastmod>2022-04-24T11:30:56+09:00</lastmod>
-  </url><url>
-    <loc>https://www.330k.info/tags/</loc>
-    <lastmod>2022-04-24T11:30:56+09:00</lastmod>
   </url><url>
     <loc>https://www.330k.info/tags/%E3%83%96%E3%83%AB%E3%83%99/</loc>
     <lastmod>2022-04-11T09:54:45+09:00</lastmod>
@@ -77,9 +95,6 @@
     <loc>https://www.330k.info/essay/javascript-layered-cache-api-with-expiration/</loc>
     <lastmod>2022-02-27T23:53:09+09:00</lastmod>
   </url><url>
-    <loc>https://www.330k.info/tags/gpx/</loc>
-    <lastmod>2022-02-26T11:07:52+09:00</lastmod>
-  </url><url>
     <loc>https://www.330k.info/essay/rwgps-modify-all-elevations/</loc>
     <lastmod>2022-02-25T12:16:39+09:00</lastmod>
   </url><url>
@@ -90,12 +105,6 @@
     <lastmod>2022-02-26T11:07:52+09:00</lastmod>
   </url><url>
     <loc>https://www.330k.info/software/chrome_rwgps_ele_gsi/</loc>
-    <lastmod>2022-02-26T11:07:52+09:00</lastmod>
-  </url><url>
-    <loc>https://www.330k.info/software/</loc>
-    <lastmod>2022-02-26T11:07:52+09:00</lastmod>
-  </url><url>
-    <loc>https://www.330k.info/categories/%E3%82%BD%E3%83%95%E3%83%88%E3%82%A6%E3%82%A7%E3%82%A2/</loc>
     <lastmod>2022-02-26T11:07:52+09:00</lastmod>
   </url><url>
     <loc>https://www.330k.info/bicycle/touring/20220122-brm122-nihonbash-200km/</loc>
@@ -121,9 +130,6 @@
   </url><url>
     <loc>https://www.330k.info/tags/%E3%83%A9%E3%82%A4%E3%83%88/</loc>
     <lastmod>2022-03-26T01:32:33+09:00</lastmod>
-  </url><url>
-    <loc>https://www.330k.info/tags/%E8%87%AA%E8%BB%A2%E8%BB%8A/</loc>
-    <lastmod>2022-04-24T11:30:56+09:00</lastmod>
   </url><url>
     <loc>https://www.330k.info/essay/edge_830_newfile_import_behavior/</loc>
     <lastmod>2022-04-24T11:30:56+09:00</lastmod>
@@ -154,9 +160,6 @@
   </url><url>
     <loc>https://www.330k.info/essay/precise_comparison_of_gudermannian_function/</loc>
     <lastmod>2021-09-19T08:11:48+09:00</lastmod>
-  </url><url>
-    <loc>https://www.330k.info/tags/github/</loc>
-    <lastmod>2022-03-20T13:48:17+09:00</lastmod>
   </url><url>
     <loc>https://www.330k.info/software/gpx-nearby-search/</loc>
     <lastmod>2022-02-10T17:00:28+09:00</lastmod>
