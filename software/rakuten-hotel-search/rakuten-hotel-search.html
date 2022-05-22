@@ -70,11 +70,11 @@ jQuery(function(){
 })();
 
 /**
- * GPXファイルを読み込むPromiseを返す
+ * XMLファイルを読み込むPromiseを返す
  * @param {string} file 読み込むファイル
  * @return {XMLDocument} 読み込んだ結果をXMLObjectを返すPromise
  */
-function readGPX(file){
+function readXML(file){
   return new Promise(function(resolve, reject){
     try{
       const reader = new FileReader();
@@ -92,13 +92,11 @@ function readGPX(file){
 }
 
 /**
- * GPXデータのルートをGoogle Mapsに表示
- * @param {Object} map
- * @param {XMLDocument} gpx
- * @param {string} color
- * @return {void}
+ * GPXファイルを読み込んで座標データを返す
+ * @param {XMLDocument} gpx GPXファイル
+ * @return {[{lat:number,lng:number,dist:number}]}
  */
-function showGPXRoute(map, gpx, color, filename){
+function parseGPX(gpx){
   const trkpts = gpx.querySelectorAll("trkpt");
   if(trkpts.length === 0){
     return;
@@ -122,7 +120,51 @@ function showGPXRoute(map, gpx, color, filename){
       dist: d
     });
   }
-  
+
+  return coords;
+}
+
+/**
+ * TCXファイルを読み込んで座標データを返す
+ * @param {XMLDocument} gpx GPXファイル
+ * @return {[{lat:number,lng:number,dist:number}]}
+ */
+function parseTCX(tcx){
+  const trkpts = tcx.querySelectorAll("Trackpoint");
+  if(trkpts.length === 0){
+    return;
+  }
+
+  const coords = [{
+    lat: trkpts[0].querySelector("LatitudeDegrees").textContent - 0,
+    lng: trkpts[0].querySelector("LongitudeDegrees").textContent - 0,
+    dist: 0.0
+  }];
+
+  let d = 0.0;
+  for(let i = 1; i < trkpts.length; i++){
+    let lat = trkpts[i].querySelector("LatitudeDegrees").textContent - 0;
+    let lng = trkpts[i].querySelector("LongitudeDegrees").textContent - 0;
+
+    d += hubeny(coords[coords.length - 1].lat, coords[coords.length - 1].lng, lat, lng);
+    coords.push({
+      lat: lat,
+      lng: lng,
+      dist: d
+    });
+  }
+
+  return coords;
+}
+
+/**
+ * ルートをGoogle Mapsに表示
+ * @param {Object} map
+ * @param {XMLDocument} coords
+ * @param {string} color
+ * @return {void}
+ */
+function showGPXRoute(map, coords, color, filename){
   // 表示用のPolyline
   const line_display = new google.maps.Polyline({
     path: coords,
@@ -228,8 +270,18 @@ window.addEventListener("DOMContentLoaded", function(){
       const colors = ["#3f3d9a", "#9a3d71", "#9a8c3d", "#3d9a56", "#3d5a9a", "#9a3d90", "#9a6d3d", "#439a3d", "#3d799a", "#843d9a", "#9a4e3d", "#629a3d"];
       for(let i = 0; i < evt.target.files.length; i++){
         console.log(evt.target.files[i]);
-        const gpx = await readGPX(evt.target.files[i]);
-        showGPXRoute(googlemap.map, gpx, colors[i % colors.length], evt.target.files[i].name);
+        const xml = await readXML(evt.target.files[i]);
+        let coords = null;
+        if(evt.target.files[i].name.match(/\.gpx$/i)){
+          coords = parseGPX(xml);
+        }
+        if(evt.target.files[i].name.match(/\.tcx$/i)){
+          coords = parseTCX(xml);
+        }
+        
+        if(coords){
+          showGPXRoute(googlemap.map, coords, colors[i % colors.length], evt.target.files[i].name);
+        }
       }
 
     }catch(err){
