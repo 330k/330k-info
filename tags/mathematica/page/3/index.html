@@ -136,20 +136,20 @@ if (!doNotTrack) {
 </article><article class="list__item post">
 	<figure class="list__thumbnail">
 		<a href="https://www.330k.info/essay/oresenwomabiku/">
-			<img src="/essay/oresenwomabiku/douglas-peucker-n-001.png" alt="折れ線を間引く" />
+			<img src="/essay/oresenwomabiku/douglas-peucker-n-001.png" alt="折れ線を間引く(Ramer-Douglas-Peuckerアルゴリズム)" />
 		</a>
 	</figure>
 	<header class="list__header">
 		<h3 class="list__title post__title ">
 			<a href="/essay/oresenwomabiku/" rel="bookmark">
-			折れ線を間引く
+			折れ線を間引く(Ramer-Douglas-Peuckerアルゴリズム)
 			</a>
 		</h3>
 		<div class="list__meta meta">
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
 	<time class="meta__text" datetime="2009-10-24T00:00:00">October 24, 2009</time>
-	<time class="meta__text" datetime="2020-05-18T11:51:16"> (Last Modified: May 18, 2020)</time>
+	<time class="meta__text" datetime="2022-05-27T19:06:11"> (Last Modified: May 27, 2022)</time>
 </div>
 
 <div class="meta__item-categories meta__item">
@@ -159,7 +159,17 @@ if (!doNotTrack) {
 </div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		読み込んだGPSログのデータを間引きたい、と思って調べたところ、 (Ramer-)Douglas-Peuckerのアルゴリズムというものがあることが分かった。 基本的な考え方は、 折れ線の始点と終点を結ぶ線分と各点の距離を求める。 すべての点との距離が許容誤差ε以内に入っていれば始点と終点だけを返して終了。 そうでなければ距離が最大の点Pを1つ選択。 始点から点Pまでの折れ線と、点Pから終点までの折れ線のそれ
+		<p>読み込んだGPSログのデータを間引きたい、と思って調べたところ、
+(Ramer-)Douglas-Peuckerのアルゴリズムというものがあることが分かった。</p>
+<p>基本的な考え方は、</p>
+<ol>
+<li>折れ線の始点と終点を結ぶ線分と各点の距離を求める。</li>
+<li>すべての点との距離が許容誤差ε以内に入っていれば始点と終点だけを返して終了。</li>
+<li>そうでなければ距離が最大の点Pを1つ選択。</li>
+<li>始点から点Pまでの折れ線と、点Pから終点までの折れ線のそれぞれについてまた1から処理する。</li>
+</ol>
+<p>という再帰的なもの。</p>
+<p>再帰的なものはMathematicaの得意分野なので、MathematicaでRamer-Douglas-Peuckerのアルゴリズムを実装してみた。</p>
 	</div>
 </article>
 </main>
