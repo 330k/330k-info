@@ -665,10 +665,10 @@ if (!doNotTrack) {
   padding: 3px;
   box-sizing: border-box;
 }
-#droparea_base label, #droparea_target label {
-  display: inline-block;
-  width: 100%;
+#droparea_base label, #droparea_target label, #flexbox_threshold label {
+  display: inline;
   white-space: nowrap;
+  vertical-align: middle;
 }
 input[type=file] {
   /*background: #fff;*/
@@ -773,7 +773,7 @@ input[type=file] {
  <div id="top_panel">
   <div id="droparea_base"><label>比較基準<span class="omittable">ルートGPXファイル(複数選択可):</span><br><input type="file" id="file_base" accept=".gpx"></label></div>
   <div id="droparea_target"><label>比較対象<span class="omittable">ルートGPXファイル(複数選択可):</span><br><input type="file" id="file_target" accept=".gpx"></label></div>
-  <div id="flexbox_threshold"><label>閾値: <br><input type="number" id="input_threshold" value="15" min="5" max="1000"> m</label></div>
+  <div id="flexbox_threshold"><label>閾値(m)<br><input type="number" id="input_threshold" value="15" min="5" max="1000"></label></div>
   <div id="flexbox_reset">Clear</div>
   <div id="flexbox_fullscreen"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 513.32 513.32' xml:space='preserve'%3E%3Cpath d='M177.523 305.853 42.777 440.6v-98.387H0V513.32h171.107v-42.777H74.859l134.746-134.746z'/%3E%3Cpath d='M470.543 440.6 72.72 42.777h98.387V0H0v171.107h42.777V72.72L440.6 470.543h-98.387v42.777H513.32V342.213h-42.777z'/%3E%3Cpath d='M342.213 0v42.777h100.526L307.992 177.523l29.943 29.944L470.543 74.859v96.248h42.777V0z'/%3E%3C/svg%3E" width="24" height="24" title="フルスクリーン"></div>
   <div id="flexbox_link"><a href="https://www.330k.info/software/gpx-compare/" target="_blank" title="説明ページを開きます"><img src="data:image/svg+xml,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cg data-name='Layer 2'%3E%3Cpath d='M16 12a2 2 0 1 1 2-2 2 2 0 0 1-2 2Zm0-2Z'/%3E%3Cpath d='M16 29a13 13 0 1 1 13-13 13 13 0 0 1-13 13Zm0-24a11 11 0 1 0 11 11A11 11 0 0 0 16 5Z'/%3E%3Cpath d='M16 24a2 2 0 0 1-2-2v-6a2 2 0 0 1 4 0v6a2 2 0 0 1-2 2Zm0-8Z'/%3E%3C/g%3E%3Cpath fill='none' d='M0 0h32v32H0z'/%3E%3C/svg%3E" width="32" height="32"></a></div>
