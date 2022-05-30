@@ -666,9 +666,12 @@ if (!doNotTrack) {
   box-sizing: border-box;
 }
 #droparea_base label, #droparea_target label, #flexbox_threshold label {
-  display: inline;
+  display: block;
   white-space: nowrap;
-  vertical-align: middle;
+  width: 100%;
+  height: 100%;
+  line-height: 16px;
+  padding: auto 0;
 }
 input[type=file] {
   /*background: #fff;*/
