@@ -6,7 +6,19 @@
     <description>Recent content in ソフトウェア on 330k info</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Sun, 24 Apr 2022 21:22:33 +0900</lastBuildDate><atom:link href="https://www.330k.info/categories/%E3%82%BD%E3%83%95%E3%83%88%E3%82%A6%E3%82%A7%E3%82%A2/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 31 May 2022 20:20:33 +0900</lastBuildDate><atom:link href="https://www.330k.info/categories/%E3%82%BD%E3%83%95%E3%83%88%E3%82%A6%E3%82%A7%E3%82%A2/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>GPXルート比較(差分表示)ツール</title>
+      <link>https://www.330k.info/software/gpx-compare/</link>
+      <pubDate>Tue, 31 May 2022 20:20:33 +0900</pubDate>
+      
+      <guid>https://www.330k.info/software/gpx-compare/</guid>
+      <description>&lt;p&gt;複数のGPXファイルの比較をするためのツールです。&lt;/p&gt;
+&lt;p&gt;主に「自分がキューシートを読んで引いたルートを、主催者が参考として提供しているルートを比較して確認したい」
+「参考ルートの更新された場合、更新された部分を確認したい」という要件を想定して作成しました。&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;./gpx_compare.html&#34;&gt;フルスクリーン版はこちら&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>GPX to TCX Converter</title>
       <link>https://www.330k.info/software/gpx-tcx-converter/</link>

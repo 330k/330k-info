@@ -2,23 +2,38 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://www.330k.info/</loc>
+    <lastmod>2022-05-31T20:22:12+09:00</lastmod>
+  </url><url>
+    <loc>https://www.330k.info/categories/</loc>
+    <lastmod>2022-05-31T20:22:12+09:00</lastmod>
+  </url><url>
+    <loc>https://www.330k.info/tags/github/</loc>
+    <lastmod>2022-05-31T20:22:12+09:00</lastmod>
+  </url><url>
+    <loc>https://www.330k.info/tags/gpx/</loc>
+    <lastmod>2022-05-31T20:22:12+09:00</lastmod>
+  </url><url>
+    <loc>https://www.330k.info/software/gpx-compare/</loc>
+    <lastmod>2022-05-31T20:22:12+09:00</lastmod>
+  </url><url>
+    <loc>https://www.330k.info/software/</loc>
+    <lastmod>2022-05-31T20:22:12+09:00</lastmod>
+  </url><url>
+    <loc>https://www.330k.info/tags/</loc>
+    <lastmod>2022-05-31T20:22:12+09:00</lastmod>
+  </url><url>
+    <loc>https://www.330k.info/categories/%E3%82%BD%E3%83%95%E3%83%88%E3%82%A6%E3%82%A7%E3%82%A2/</loc>
+    <lastmod>2022-05-31T20:22:12+09:00</lastmod>
+  </url><url>
     <loc>https://www.330k.info/bicycle/touring/20220430-rm429-tokyo-2700km-ride-across-japan/</loc>
     <lastmod>2022-05-15T00:03:22+09:00</lastmod>
-  </url><url>
-    <loc>https://www.330k.info/</loc>
-    <lastmod>2022-05-27T19:06:11+09:00</lastmod>
   </url><url>
     <loc>https://www.330k.info/bicycle/</loc>
     <lastmod>2022-05-15T00:03:22+09:00</lastmod>
   </url><url>
-    <loc>https://www.330k.info/categories/</loc>
-    <lastmod>2022-05-27T19:06:11+09:00</lastmod>
-  </url><url>
     <loc>https://www.330k.info/tags/rm2700km/</loc>
     <lastmod>2022-05-15T00:03:22+09:00</lastmod>
-  </url><url>
-    <loc>https://www.330k.info/tags/</loc>
-    <lastmod>2022-05-27T19:06:11+09:00</lastmod>
   </url><url>
     <loc>https://www.330k.info/tags/%E3%83%96%E3%83%AB%E3%83%99/</loc>
     <lastmod>2022-05-15T00:03:22+09:00</lastmod>
@@ -26,19 +41,7 @@
     <loc>https://www.330k.info/categories/%E8%87%AA%E8%BB%A2%E8%BB%8A/</loc>
     <lastmod>2022-05-15T00:03:22+09:00</lastmod>
   </url><url>
-    <loc>https://www.330k.info/tags/github/</loc>
-    <lastmod>2022-05-22T17:04:06+09:00</lastmod>
-  </url><url>
-    <loc>https://www.330k.info/tags/gpx/</loc>
-    <lastmod>2022-05-22T17:04:06+09:00</lastmod>
-  </url><url>
     <loc>https://www.330k.info/software/gpx-tcx-converter/</loc>
-    <lastmod>2022-05-22T17:04:06+09:00</lastmod>
-  </url><url>
-    <loc>https://www.330k.info/software/</loc>
-    <lastmod>2022-05-22T17:04:06+09:00</lastmod>
-  </url><url>
-    <loc>https://www.330k.info/categories/%E3%82%BD%E3%83%95%E3%83%88%E3%82%A6%E3%82%A7%E3%82%A2/</loc>
     <lastmod>2022-05-22T17:04:06+09:00</lastmod>
   </url><url>
     <loc>https://www.330k.info/tags/%E8%87%AA%E8%BB%A2%E8%BB%8A/</loc>
