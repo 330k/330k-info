@@ -226,7 +226,7 @@ function drawPolyline(coords, name = "", options = {strokeColor: "#f00", strokeO
       const bx = b.X, by = b.Y;
       const px = p.X, py = p.Y;
       
-      let t = (ax * ax + ay * ay + bx * px - ax * (bx + px) + by * py - ay * (by + py))/(ax * ax + ay * ay - 2 * ax * bx + bx * bx - 2 * ay * by + by * by);
+      let t = ((ax - bx) * (ax - px) + (ay - by) * (ay - py)) / ((ax - bx) * (ax - bx) + (ay - by) * (ay - by));
       
       if(t > 1){
         t = 1;
