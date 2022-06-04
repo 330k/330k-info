@@ -640,6 +640,15 @@ function hideLoader(){
 function showLoader(){
   document.getElementById("loader_bg").style.display = "block";
 }
+// ドラッグドロップ失敗時にファイルがダウンロードされるのを防止
+window.addEventListener("dragover", function(e){
+  e = e || event;
+  e.preventDefault();
+}, false);
+window.addEventListener("drop", function(e){
+  e = e || event;
+  e.preventDefault();
+}, false);
 </script>
 <script type="application/javascript">
 var doNotTrack = false;
