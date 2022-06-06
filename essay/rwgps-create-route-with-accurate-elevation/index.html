@@ -12,7 +12,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.330k.info/essay/rwgps-create-route-with-accurate-elevation/" /><meta property="og:image" content="https://www.330k.info/essay/rwgps-modify-all-elevations/rwgps_230x0w.png" /><meta property="article:section" content="essay" />
 <meta property="article:published_time" content="2022-06-06T01:13:18+09:00" />
-<meta property="article:modified_time" content="2022-06-06T22:11:55+09:00" />
+<meta property="article:modified_time" content="2022-06-06T22:56:18+09:00" />
 
 
 	<meta name="twitter:card" content="summary_large_image"/>
@@ -83,7 +83,7 @@ if (!doNotTrack) {
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
 	<time class="meta__text" datetime="2022-06-06T01:13:18">June 06, 2022</time>
-	<time class="meta__text" datetime="2022-06-06T22:11:55"> (Last Modified: June 06, 2022)</time>
+	<time class="meta__text" datetime="2022-06-06T22:56:18"> (Last Modified: June 06, 2022)</time>
 </div>
 
 <div class="meta__item-categories meta__item">
@@ -103,7 +103,7 @@ if (!doNotTrack) {
 <li>OSM系の地図(RWGPS、OSM、OSM Cycleなど)の場合:
 <ul>
 <li>経路探索は自前(RWGPS)のサーバを呼び出して行い、RWGPSサーバはOSMデータを利用した経路探索を行う。</li>
-<li>OSMでは、道路に付随するデータとして「橋やトンネルかどうか」「舗装されているかどうか」などの情報を持っており(道路の縁が黒実線になっている所が橋)、経路情報として緯度経度情報の他、「橋またはトンネルか」という情報も一緒にサーバから返される。</li>
+<li>OSMでは、道路に付随するデータとして「橋やトンネルかどうか」「舗装されているかどうか」などの情報を持っており(道路の縁が黒実線になっている所が橋)、経路情報として緯度経度の他、「橋またはトンネルか」という情報も一緒にサーバから返される。</li>
 <li>そのため<strong>道路が重なっていても橋・トンネルかどうかは正しく判定される</strong>。</li>
 </ul>
 </li>
@@ -130,8 +130,8 @@ if (!doNotTrack) {
 <ul>
 <li>OSM系の地図:
 <ul>
-<li>航空写真やGPSログから人の手で入力されたデータであるため、道路の位置(緯度経度)の精度が良くない地域がある(特に精度の良い航空写真を得られず、GPSの精度も落ちる山間部)。</li>
-<li>「RWGPS」はOSMとは表示方法が違うだけの地図である(<a href="https://ridewithgps.com/help/switching-map-styles">参考</a>)が、データの更新に最大3ヶ月程度のラグがあるもよう。</li>
+<li>航空写真やGPSログから有志の人の手で入力されたデータであるため、道路の位置(緯度経度)の精度が良くない地域がある(特に精度の良い航空写真を得られず、GPSの精度も落ちる山間部)。</li>
+<li>「RWGPS」はOSMとは表示方法が違うだけである(<a href="https://ridewithgps.com/help/switching-map-styles">参考</a>)が、データの更新に最大3ヶ月程度のラグがあるもよう。</li>
 </ul>
 </li>
 <li>Googleの地図:
@@ -154,11 +154,7 @@ if (!doNotTrack) {
 <ul>
 <li>日本国内であれば、拙作の「<a href="/software/chrome_rwgps_ele_gsi/">RWGPS地理院標高</a>」を使用して、国土地理院の5m/10mメッシュデータを使用する。</li>
 <li>市街地ではGoogle系、OSM系どちらの地図を利用しても大差なし。</li>
-<li><strong>山間部(つづら折り区間)では航空写真を表示し、Google系とOSM系でより航空写真に合う方の地図を使用する</strong>。
-<ul>
-<li>概ねGoogle系の地図のほうが精度が良いことが多いが、たまにずれているので注意。</li>
-</ul>
-</li>
+<li><strong>山間部(つづら折り区間)では航空写真を表示し、Google系とOSM系でより航空写真に合う方の地図を使用する</strong>。概ねGoogle系の地図のほうが精度が良いことが多いが、たまにずれているので注意。</li>
 <li>Google系の地図を使って橋・トンネルの補正が正しく行われない区間では、<strong>トンネル出口の少し外側にコントロールポイントを追加し、トンネル区間部だけOSM系の地図に切り替える</strong>。</li>
 </ul>
 <h2 id="実例">実例</h2>
