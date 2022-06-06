@@ -3,10 +3,25 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://www.330k.info/</loc>
-    <lastmod>2022-05-31T20:22:12+09:00</lastmod>
+    <lastmod>2022-06-06T09:51:30+09:00</lastmod>
   </url><url>
     <loc>https://www.330k.info/categories/</loc>
-    <lastmod>2022-05-31T20:22:12+09:00</lastmod>
+    <lastmod>2022-06-06T09:51:30+09:00</lastmod>
+  </url><url>
+    <loc>https://www.330k.info/essay/</loc>
+    <lastmod>2022-06-06T09:51:30+09:00</lastmod>
+  </url><url>
+    <loc>https://www.330k.info/tags/rwgps/</loc>
+    <lastmod>2022-06-06T09:51:30+09:00</lastmod>
+  </url><url>
+    <loc>https://www.330k.info/essay/rwgps-create-route-with-accurate-elevation/</loc>
+    <lastmod>2022-06-06T09:51:30+09:00</lastmod>
+  </url><url>
+    <loc>https://www.330k.info/tags/</loc>
+    <lastmod>2022-06-06T09:51:30+09:00</lastmod>
+  </url><url>
+    <loc>https://www.330k.info/categories/%E9%9B%91%E8%A8%98%E5%B8%B3/</loc>
+    <lastmod>2022-06-06T09:51:30+09:00</lastmod>
   </url><url>
     <loc>https://www.330k.info/tags/github/</loc>
     <lastmod>2022-05-31T20:22:12+09:00</lastmod>
@@ -18,9 +33,6 @@
     <lastmod>2022-05-31T20:22:12+09:00</lastmod>
   </url><url>
     <loc>https://www.330k.info/software/</loc>
-    <lastmod>2022-05-31T20:22:12+09:00</lastmod>
-  </url><url>
-    <loc>https://www.330k.info/tags/</loc>
     <lastmod>2022-05-31T20:22:12+09:00</lastmod>
   </url><url>
     <loc>https://www.330k.info/categories/%E3%82%BD%E3%83%95%E3%83%88%E3%82%A6%E3%82%A7%E3%82%A2/</loc>
@@ -65,9 +77,6 @@
     <loc>https://www.330k.info/tags/brm600km/</loc>
     <lastmod>2022-04-11T08:46:18+09:00</lastmod>
   </url><url>
-    <loc>https://www.330k.info/essay/</loc>
-    <lastmod>2022-05-27T19:06:11+09:00</lastmod>
-  </url><url>
     <loc>https://www.330k.info/tags/javascript/</loc>
     <lastmod>2022-03-23T21:07:36+09:00</lastmod>
   </url><url>
@@ -79,9 +88,6 @@
   </url><url>
     <loc>https://www.330k.info/essay/geodesic_distance_formula_comparison_2/</loc>
     <lastmod>2022-03-23T21:07:36+09:00</lastmod>
-  </url><url>
-    <loc>https://www.330k.info/categories/%E9%9B%91%E8%A8%98%E5%B8%B3/</loc>
-    <lastmod>2022-05-27T19:06:11+09:00</lastmod>
   </url><url>
     <loc>https://www.330k.info/tags/ubuntu/</loc>
     <lastmod>2022-03-24T19:38:22+09:00</lastmod>
@@ -105,12 +111,9 @@
     <lastmod>2022-02-27T23:53:09+09:00</lastmod>
   </url><url>
     <loc>https://www.330k.info/essay/rwgps-modify-all-elevations/</loc>
-    <lastmod>2022-02-25T12:16:39+09:00</lastmod>
+    <lastmod>2022-06-06T03:12:11+09:00</lastmod>
   </url><url>
     <loc>https://www.330k.info/tags/chrome%E6%8B%A1%E5%BC%B5%E6%A9%9F%E8%83%BD/</loc>
-    <lastmod>2022-02-26T11:07:52+09:00</lastmod>
-  </url><url>
-    <loc>https://www.330k.info/tags/rwgps/</loc>
     <lastmod>2022-02-26T11:07:52+09:00</lastmod>
   </url><url>
     <loc>https://www.330k.info/software/chrome_rwgps_ele_gsi/</loc>

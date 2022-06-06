@@ -79,6 +79,35 @@ if (!doNotTrack) {
 		<h1 class="main__title">Essays</h1>
 	</header><article class="list__item post">
 	<figure class="list__thumbnail">
+		<a href="https://www.330k.info/essay/obfuscate-mathematica-program/">
+			<img src="https://www.ipros.jp/public/product/image/f59/396065002/IPROS3632825140790521490.png?h=220&amp;w=220" alt="Mathematicaプログラムの難読化・隠しメッセージ埋め込み手法の検討" />
+		</a>
+	</figure>
+	<header class="list__header">
+		<h3 class="list__title post__title ">
+			<a href="/essay/obfuscate-mathematica-program/" rel="bookmark">
+			Mathematicaプログラムの難読化・隠しメッセージ埋め込み手法の検討
+			</a>
+		</h3>
+		<div class="list__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
+	<time class="meta__text" datetime="2021-11-29T20:39:12">November 29, 2021</time>
+	<time class="meta__text" datetime="2021-12-12T21:14:15"> (Last Modified: December 12, 2021)</time>
+</div>
+
+<div class="meta__item-categories meta__item">
+	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+	<span class="meta__text"><a class="meta__link" href="/categories/%e9%9b%91%e8%a8%98%e5%b8%b3" rel="category">雑記帳</a></span>
+</div>
+</div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		<p>Mathematicaのプログラムを難読化し、またそこに隠しメッセージを埋め込む手法をいくつか検討してみた。</p>
+<p>円周率をモンテカルロ法で求めるプログラムを難読化し、隠しメッセージを埋め込む例をいくつか考えた。</p>
+	</div>
+</article><article class="list__item post">
+	<figure class="list__thumbnail">
 		<a href="https://www.330k.info/essay/precise_comparison_of_gudermannian_function/">
 			<img src="/images/geometry-1044090.jpg" alt="逆グーデルマン関数の計算式のJavaScriptにおける精度" />
 		</a>
@@ -338,36 +367,6 @@ if (!doNotTrack) {
 		<p>CloudflareのArgo Tunnelはサービスとして起動することができるが、現時点では設定ファイルが決め打ちになっているため、そのままでは1本のトンネルしか起動できない。</p>
 <p>そこで、ユニットファイルを少し変更して1台のマシン上で複数のトンネルを起動できるようにした。</p>
 	</div>
-</article><article class="list__item post">
-	<figure class="list__thumbnail">
-		<a href="https://www.330k.info/essay/sync-garoon-google-calendar/">
-			<img src="/essay/sync-garoon-google-calendar/thumb.jpg" alt="ガルーンからGoogleカレンダーに同期する(GAS使用)" />
-		</a>
-	</figure>
-	<header class="list__header">
-		<h3 class="list__title post__title ">
-			<a href="/essay/sync-garoon-google-calendar/" rel="bookmark">
-			ガルーンからGoogleカレンダーに同期する(GAS使用)
-			</a>
-		</h3>
-		<div class="list__meta meta">
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
-	<time class="meta__text" datetime="2021-02-12T13:15:47">February 12, 2021</time>
-	<time class="meta__text" datetime="2021-02-21T19:28:37"> (Last Modified: February 21, 2021)</time>
-</div>
-
-<div class="meta__item-categories meta__item">
-	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
-	<span class="meta__text"><a class="meta__link" href="/categories/%e9%9b%91%e8%a8%98%e5%b8%b3" rel="category">雑記帳</a></span>
-</div>
-</div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		<p>Cybozuのガルーン(Garoon)はよくできたソフトウェアなのだが、他のサービスとの連携、という点では使いにくかった。</p>
-<p>以前からSOAP APIはあったものの、繰り返し予定が難関で、実際の日にちを都度計算しなければならず、同期ツールの作成を断念していた。</p>
-<p>だがREST APIが登場し、繰り返し予定が1件ずつ返されるようになってとても処理しやすくなったので、GASで動作するガルーンからGoogleカレンダーへの一方向同期スクリプトを作成した。</p>
-	</div>
 </article>
 </main>
 
@@ -403,6 +402,7 @@ if (!doNotTrack) {
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/essay/rwgps-create-route-with-accurate-elevation/">RWGPSの仕様と、標高の精度が良いルートを作成する方法</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20220430-rm429-tokyo-2700km-ride-across-japan/">2022年04月30日 RM429 東京2700 日本縦断(Ride Across Japan)</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20220409-brm409-chiba-400km/">2022年04月09日 BRM409 千葉400 ぐるっと房総</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20220402-brm402-chubu-200km/">2022年04月02日 BRM402 中部200</a></li>
@@ -422,7 +422,6 @@ if (!doNotTrack) {
 			<li class="widget__item"><a class="widget__link" href="/essay/obfuscate-mathematica-program/">Mathematicaプログラムの難読化・隠しメッセージ埋め込み手法の検討</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20211030-brm1030-kanagawa-400km/">2021年10月30日 BRM1030 神奈川400 追い風</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20211016-brm1009-kinki-300km/">2021年10月16日 BRM1009 近畿300 神戸VT 淡路監獄</a></li>
-			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20211002-sr-600-joumou-sanzan/">2021年10月02日 SR600 上毛三山</a></li>
 		</ul>
 	</div>
 </div>
@@ -461,7 +460,7 @@ if (!doNotTrack) {
 		<a class="widget-taglist__link widget__link btn" href="/tags/gmail" title="Gmail">Gmail (2)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/google" title="Google">Google (5)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/gps" title="Gps">Gps (1)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/gpx" title="Gpx">Gpx (10)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/gpx" title="Gpx">Gpx (9)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/hta" title="Hta">Hta (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/hugo" title="Hugo">Hugo (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/imagemagick" title="Imagemagick">Imagemagick (1)</a>
@@ -474,7 +473,7 @@ if (!doNotTrack) {
 		<a class="widget-taglist__link widget__link btn" href="/tags/powerpoint" title="Powerpoint">Powerpoint (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/powershell" title="Powershell">Powershell (2)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/rm2700km" title="Rm2700km">Rm2700km (1)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/rwgps" title="Rwgps">Rwgps (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/rwgps" title="Rwgps">Rwgps (3)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/sql" title="SQL">SQL (3)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/sqlserver" title="Sqlserver">Sqlserver (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/sr600" title="Sr600">Sr600 (6)</a>

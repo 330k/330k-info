@@ -30,15 +30,6 @@
     </item>
     
     <item>
-      <title>RWGPSでルートの標高データを一括で修正する</title>
-      <link>https://www.330k.info/essay/rwgps-modify-all-elevations/</link>
-      <pubDate>Sun, 06 Feb 2022 00:29:43 +0900</pubDate>
-      
-      <guid>https://www.330k.info/essay/rwgps-modify-all-elevations/</guid>
-      <description>&lt;p&gt;RWGPSで標高の橋トンネル補正機能が実装される以前に作成したルートや、橋トンネル補正機能のバグによって平坦化されてしまった場合にすべての標高データを修正する方法を説明。&lt;/p&gt;</description>
-    </item>
-    
-    <item>
       <title>RWGPS地理院標高 - Chrome拡張機能</title>
       <link>https://www.330k.info/software/chrome_rwgps_ele_gsi/</link>
       <pubDate>Tue, 25 Jan 2022 20:58:59 +0900</pubDate>

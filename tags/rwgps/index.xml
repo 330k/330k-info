@@ -6,7 +6,25 @@
     <description>Recent content in RWGPS on 330k info</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Tue, 25 Jan 2022 20:58:59 +0900</lastBuildDate><atom:link href="https://www.330k.info/tags/rwgps/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 06 Jun 2022 01:13:18 +0900</lastBuildDate><atom:link href="https://www.330k.info/tags/rwgps/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>RWGPSの仕様と、標高の精度が良いルートを作成する方法</title>
+      <link>https://www.330k.info/essay/rwgps-create-route-with-accurate-elevation/</link>
+      <pubDate>Mon, 06 Jun 2022 01:13:18 +0900</pubDate>
+      
+      <guid>https://www.330k.info/essay/rwgps-create-route-with-accurate-elevation/</guid>
+      <description>&lt;p&gt;RWGPS(Ride with GPS)の仕様をソースコードとネットワークを流れるデータから解析し、その結果から現状で最も標高を精度良くルートを作成できるであろう方法を記した。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>RWGPSでルートの標高データを一括で修正する</title>
+      <link>https://www.330k.info/essay/rwgps-modify-all-elevations/</link>
+      <pubDate>Sun, 06 Feb 2022 00:29:43 +0900</pubDate>
+      
+      <guid>https://www.330k.info/essay/rwgps-modify-all-elevations/</guid>
+      <description>&lt;p&gt;RWGPSで標高の橋トンネル補正機能が実装される以前に作成したルートや、橋トンネル補正機能のバグによって平坦化されてしまった場合にすべての標高データを修正する方法を説明。&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>RWGPS地理院標高 - Chrome拡張機能</title>
       <link>https://www.330k.info/software/chrome_rwgps_ele_gsi/</link>
