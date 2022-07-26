@@ -13,7 +13,7 @@ Garminのサイコンおよびスマートウォッチ(Edge 830、Fenix 7Sで動
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.330k.info/software/gpx-tcx-converter/" /><meta property="og:image" content="https://www.330k.info/software/gpx-tcx-converter/icon256.png" /><meta property="article:section" content="software" />
 <meta property="article:published_time" content="2022-04-24T21:22:33+09:00" />
-<meta property="article:modified_time" content="2022-07-25T20:51:56+09:00" />
+<meta property="article:modified_time" content="2022-07-26T11:10:10+09:00" />
 
 
 	<meta name="twitter:card" content="summary_large_image"/>
@@ -85,7 +85,7 @@ if (!doNotTrack) {
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
 	<time class="meta__text" datetime="2022-04-24T21:22:33">April 24, 2022</time>
-	<time class="meta__text" datetime="2022-07-25T20:51:56"> (Last Modified: July 25, 2022)</time>
+	<time class="meta__text" datetime="2022-07-26T11:10:10"> (Last Modified: July 26, 2022)</time>
 </div>
 
 <div class="meta__item-categories meta__item">
@@ -144,28 +144,28 @@ if (!doNotTrack) {
 </figure>
 </li>
 <li>このツールでGPXファイルをFIT/TCXファイルに変換</li>
-<li>GarminデバイスをPCとUSBで接続し、<code>Garmin/NewFiles</code>フォルダにTCXファイルをコピー</li>
+<li>GarminデバイスをPCとUSBで接続し、<code>Garmin/NewFiles</code>フォルダにFIT/TCXファイルをコピー</li>
 </ul>
 <p>これにより、Garmin Connectでコースを作成した場合と同様に、ブルベのPCをコースポイントとして登録したコースをEdgeに入れることができます。</p>
 <p>また、<strong>Garmin ConnectにGPXファイルをインポートすると標高値が書き換えられてしまう</strong>ため、RWGPSの橋トンネル補正機能や、<a href="/software/chrome_rwgps_ele_gsi/">RWGPS地理院標高</a>で取得した標高値を使用できませんでしたが、このツールを使って変換すると標高値をそのままEdgeにインポートできます。</p>
 <h2 id="ルート分割機能">ルート分割機能</h2>
 <p>POIの名前が特定のルールを満たす場合に、ルートを自動で分割します。</p>
-<p>例えば、キューシートを読みながらRWGPSでルートを作成する時、最初から分割して作ろうとすると距離のオフセットを計算しながら作成することになり面倒です。</p>
+<p>例えば、キューシートを読みながらRWGPSでルートを作成する時、最初から分割して作ろうとすると距離のオフセットを考慮しながら作成することになり面倒です。</p>
 <p>また、あとから宿泊場所を決めたり変更することもあり、その際に分割してルートを作成していると、前後両方のルートを修正する必要があります。</p>
-<p>このような場合、ルート自体はRWGPSで1つだけ作成しておき、POIとして分割点を設置することで、コースを分割して登録することができます。</p>
+<p>このような場合、<strong>POIとして分割点を設置することで、ルート自体はRWGPSで1つだけ作成しておきつつ、デバイスではコースを分割して登録</strong>することができます。</p>
 <ul>
 <li>POIの名前として「||」(パイプ記号2つ)を設定すると、そのポイントでルートを分割します。</li>
 <li>名前を「POI名||」(最後はパイプ記号2つ)とすると、「POI名」というコースポイントを作成した上で分割します。コースポイントはその1つ前のルートに含まれます。</li>
-<li>分割されたルートは末尾に「_01」「_02」「_03」という連番が付加されます。分割後のコース名の文字数がデバイスの表示可能文字数を超えないよう注意してください。</li>
+<li>分割されたルートは末尾に「_01」「_02」「_03」という連番が付加されます。<strong>分割後のコース名の文字数がデバイスの表示可能文字数を超えないよう注意してください</strong>。</li>
 </ul>
 <h2 id="注意点">注意点</h2>
 <ul>
 <li>複数の<code>trk</code>を持つGPXファイルには対応していません。すべての<code>trk</code>を結合して単一のコースにします。</li>
-<li>GPXファイルの<code>wpt</code>要素は、コースに最も接近する点までの距離がEdgeに表示されます(逆に、Garmin Connectと違ってコース外にコースポイントを設置することが可能です)。</li>
+<li>GPXファイルの<code>wpt</code>要素は、コースに最も接近する点までの距離がEdgeに表示されます(逆に、Garmin Connectと違って<strong>コース外にコースポイントを設置することが可能</strong>です)。</li>
 <li>折返しや周回コース上に<code>wpt</code>要素がある場合は思った距離にならない可能性があります。</li>
 <li>Fenix 7SではTCXファイルをインポートできませんでした。FITファイルをインポートしてください。</li>
 <li>TCXファイルはコースポイントに距離情報を持たず、時刻情報だけを持ちます。Edgeがインポート時にコースポイントの距離を計算するのですが、時刻計算の精度が1秒なので、TCXファイル変換時の設定で&quot;移動速度&quot;を速くしすぎるとコースポイントの距離がずれる可能性があります。</li>
-<li>RWGPSからエクスポートしたGPXファイルはポイント数が多くなりがちです。<strong>間引き機能をOFFにするとポイント数が多すぎてGarmin Edgeの処理が遅くなる or 固まる可能性があります。</strong></li>
+<li>RWGPSからエクスポートしたGPXファイルはポイント数が多くなりがちです。<strong>ポイント数が多いとGarmin Edgeの処理が遅くなる or 固まる可能性があります。</strong></li>
 <li>間引き機能では元のルートから誤差が標高を考慮して閾値以内になるように間引きます。</li>
 </ul>
 <h2 id="edge表示例">Edge表示例</h2>
@@ -179,7 +179,7 @@ if (!doNotTrack) {
 <li>BRM409千葉400のコース<figure><img src="94.png"/>
 </figure>
 </li>
-<li>ルート分割機能のデモ(SR600白山のコースで、金沢と郡上八幡で分割)<figure><img src="sr600_hakusan_001.png"
+<li>ルート分割機能のデモ(SR600白山のコースで、金沢と郡上八幡に分割点を設置)<figure><img src="sr600_hakusan_001.png"
          alt="RWGPSでPOIを設定"/><figcaption>
             <p>RWGPSでPOIを設定</p>
         </figcaption>
@@ -198,6 +198,7 @@ if (!doNotTrack) {
 </ul>
 <h2 id="更新履歴">更新履歴</h2>
 <ul>
+<li>Apr. 24 2022: 公開。</li>
 <li>Aug. 1 2022: FITファイル生成機能を追加。間引きレベルを設定可能に。</li>
 </ul>
 		</div>
