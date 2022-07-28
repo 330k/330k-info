@@ -12,7 +12,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.330k.info/essay/rwgps-create-route-with-accurate-elevation/" /><meta property="og:image" content="https://www.330k.info/essay/rwgps-modify-all-elevations/rwgps_230x0w.png" /><meta property="article:section" content="essay" />
 <meta property="article:published_time" content="2022-06-06T01:13:18+09:00" />
-<meta property="article:modified_time" content="2022-06-08T01:43:59+09:00" />
+<meta property="article:modified_time" content="2022-07-28T12:51:02+09:00" />
 
 
 	<meta name="twitter:card" content="summary_large_image"/>
@@ -83,7 +83,7 @@ if (!doNotTrack) {
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
 	<time class="meta__text" datetime="2022-06-06T01:13:18">June 06, 2022</time>
-	<time class="meta__text" datetime="2022-06-08T01:43:59"> (Last Modified: June 08, 2022)</time>
+	<time class="meta__text" datetime="2022-07-28T12:51:02"> (Last Modified: July 28, 2022)</time>
 </div>
 
 <div class="meta__item-categories meta__item">
@@ -112,13 +112,13 @@ if (!doNotTrack) {
 <li>経路探索にはGoogleのDirections APIを利用する。</li>
 <li>GoogleのDirections APIは緯度経度しか返さないため、改めてRWGPSサーバに「この緯度経度の位置は橋またはトンネルか」を尋ねる。</li>
 <li>このRWGPSサーバはOSMのデータを使って、「入力として与えられた緯度経度に最も近い位置にある道路は橋またはトンネルか」で判定している。</li>
-<li>したがって、<strong>「トンネルの上に登山道がある場合」「橋の下に別の道路が通っている場合」などは「トンネルではない」と判定されてしまう</strong>。その他、OSMで道路の位置がGoogleとずれている場合も正しく判定できない場合がある。</li>
+<li>したがって、<strong>「トンネルの上に登山道がある場合」「橋の下に別の道路が通っている場合」などは「トンネルではない」と判定されてしまう</strong>。その他、OSMで道路の位置がGoogleとずれている場合も正しく判定できない場合がある(これは舗装路・未舗装路の判定も同じ)。</li>
 </ul>
 </li>
 </ul>
 </li>
 <li>橋トンネル補正機能では「橋またはトンネルの開始地点から20m手前の地点(20m手前までに別の橋トンネルがある場合はその地点まで)」から「橋またはトンネルの開始地点から20m先の地点(20m先までに別の橋トンネルがある場合はその地点まで)」までの標高を、勾配が一定(直線)になるように補正する。</li>
-<li><strong>RWGPSが表示する獲得標高の数値は、独自の平滑化処理を行われた後の数値</strong>である。そのため、同じデータをカシミール3Dに読み込ませても、表示される数値は一致しない。
+<li><strong>RWGPSが表示する獲得標高の数値は、独自の平滑化処理を行われた後の数値</strong>である。そのため、同じデータをカシミール3Dに読み込ませても、獲得標高の数値は一致しない。
 <ul>
 <li>平滑化後の値は斜度の計算にも用いられている。</li>
 <li>平滑化処理は<code>DJFilter</code>という名前の関数で行われているが、出典・詳細は不明。距離当たりの獲得標高(+/-)が多いほど強く平滑化処理が効くようになっている。</li>
@@ -136,7 +136,7 @@ if (!doNotTrack) {
 </li>
 <li>Googleの地図:
 <ul>
-<li>2019年まではゼンリンの地図を使用していたが、航空写真やユーザの移動履歴などから自動生成する地図に切り替えている。</li>
+<li>以前はゼンリンの地図を使用していたが、2019年に航空写真やユーザの移動履歴などから自動生成する地図に切り替えている。</li>
 <li>航空写真の切れ目でずれている箇所がある。<figure><img src="003.png"
          alt="航空写真がずれているためルートもずれている例" width="320" height="320"/><figcaption>
             <p>航空写真がずれているためルートもずれている例</p>
@@ -145,7 +145,7 @@ if (!doNotTrack) {
 </li>
 <li>航空写真の撮影や、地図生成アルゴリズムの改良は頻繁に行われているようで、数ヶ月経過すると同じ道路を通るルートでも微妙に緯度経度が異なることがある。</li>
 <li>作成したルートのポイント数はOSM系に比べて増える傾向にある。</li>
-<li>Direction APIはGoogleが把握している通行止め情報をリアルタイムに反映する。<strong>冬期通行止めの道路を通るルートを冬のうちに引こうと思っても引けない</strong>。</li>
+<li>Directions APIはGoogleが把握している通行止め情報をリアルタイムに反映する。<strong>冬期通行止めの道路を通るルートを冬のうちに引こうと思っても引けない</strong>。</li>
 </ul>
 </li>
 </ul>
@@ -156,6 +156,7 @@ if (!doNotTrack) {
 <li>市街地ではGoogle系、OSM系どちらの地図を利用しても大差なし。</li>
 <li><strong>山間部(つづら折り区間)では航空写真を表示し、Google系とOSM系でより航空写真に合う方の地図を使用する</strong>。概ねGoogle系の地図のほうが精度が良いことが多いが、たまにずれているので注意。</li>
 <li>Google系の地図を使って橋・トンネルの補正が正しく行われない区間では、<strong>トンネル出口の少し外側にコントロールポイントを追加し、トンネル区間部だけOSM系の地図に切り替える</strong>。</li>
+<li>長期的には、OSMのマッパーになって自分で地図を作成するのが精度向上につながる(参考: <a href="https://openstreetmap.jp/">OpenStreetMap Japan | 自由な地図をみんなの手で/The Free Wiki World Map</a>)。</li>
 </ul>
 <h2 id="実例">実例</h2>
 <p>笹子峠の前後でトンネル補正をより正しく行わせる例。</p>
