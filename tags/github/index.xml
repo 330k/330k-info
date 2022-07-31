@@ -6,7 +6,16 @@
     <description>Recent content in GitHub on 330k info</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Tue, 31 May 2022 20:20:33 +0900</lastBuildDate><atom:link href="https://www.330k.info/tags/github/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 31 Jul 2022 16:13:15 +0900</lastBuildDate><atom:link href="https://www.330k.info/tags/github/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>GPXヒゲ検出ツール(α)</title>
+      <link>https://www.330k.info/software/gpx-spike-detector/</link>
+      <pubDate>Sun, 31 Jul 2022 16:13:15 +0900</pubDate>
+      
+      <guid>https://www.330k.info/software/gpx-spike-detector/</guid>
+      <description>&lt;p&gt;GPXファイルのルートで「ヒゲ」(意図せず細い路地に入ってしまった部分)を検出するツールです。&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>GPXルート比較(差分表示)ツール</title>
       <link>https://www.330k.info/software/gpx-compare/</link>
