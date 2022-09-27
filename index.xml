@@ -6,7 +6,16 @@
     <description>Recent content on 330k info</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Tue, 13 Sep 2022 21:14:02 +0900</lastBuildDate><atom:link href="https://www.330k.info/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 27 Sep 2022 20:00:00 +0900</lastBuildDate><atom:link href="https://www.330k.info/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>通れた道マップ GPX表示 - Chrome拡張機能</title>
+      <link>https://www.330k.info/software/chrome_passable_route_gpx_loader/</link>
+      <pubDate>Tue, 27 Sep 2022 20:00:00 +0900</pubDate>
+      
+      <guid>https://www.330k.info/software/chrome_passable_route_gpx_loader/</guid>
+      <description>&lt;p&gt;TOYOTAの&lt;a href=&#34;https://www.toyota.co.jp/jpn/auto/passable_route/map/&#34;&gt;通れた道マップ&lt;/a&gt;にGPXファイルの読み込み・表示機能を追加するChrome拡張機能。&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>2022年09月10日 SR600 京都</title>
       <link>https://www.330k.info/bicycle/touring/20220910-sr600-kyoto/</link>
