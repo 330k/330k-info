@@ -6,7 +6,17 @@
     <description>Recent content on 330k info</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Tue, 27 Sep 2022 20:00:00 +0900</lastBuildDate><atom:link href="https://www.330k.info/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 20 Oct 2022 22:54:45 +0900</lastBuildDate><atom:link href="https://www.330k.info/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>2022年10月08日 SR600 カルスト DNF</title>
+      <link>https://www.330k.info/bicycle/touring/20221008-sr600-karst/</link>
+      <pubDate>Thu, 20 Oct 2022 22:54:45 +0900</pubDate>
+      
+      <guid>https://www.330k.info/bicycle/touring/20221008-sr600-karst/</guid>
+      <description>&lt;p&gt;SR600カルストに挑戦したが、44回目のブルベ出走で初めてのDNF。&lt;/p&gt;
+&lt;p&gt;しかもDNFを決断した後に怪我をしてしまうという情けない結果に。&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>通れた道マップ GPX表示拡張 - Chrome拡張機能</title>
       <link>https://www.330k.info/software/chrome_passable_route_gpx_loader/</link>
@@ -1105,7 +1115,7 @@ Snappy(Snap)を使おうとすると、snapデーモンはホストのルートC
       <pubDate>Mon, 21 Aug 2017 22:38:20 +0900</pubDate>
       
       <guid>https://www.330k.info/essay/scramble_unicode_lro_rlo/</guid>
-      <description>Unicode制御文字のうち、LRO(Left-to-right override, U+202D)とRLO(Right-to-left override, U+202E)は行中でも文字列の方向を変更する。 1行の中に何度もLROとRLOが入ると、カーソルキーが踊って楽しいことになる。 例えば、下のテキストの中でカーソルを動かしたり、文字列を選択しようとしても上手くできないはず。 ‮‭い‮を‭ろ‮る‭は‮ぬ‭に‮り‭ほ‮ち‭へ ‮‭わ‮む‭か‮</description>
+      <description>Unicode制御文字のうち、LRO(Left-to-right override, U+202D)とRLO(Right-to-left override, U+202E)は行中でも文字列の方向を変更する。 1行の中に何度もLROとRLOが入ると、カーソルキーが踊って楽しいことになる。 例えば、下のテキストの中でカーソルを動かしたり、文字列を選択しようとしても上手くできないはず。 ‮‭い‮を‭ろ‮る‭は‮ぬ‭に‮り‭ほ‮ち‭へ‮と ‮‭わ‮む‭</description>
     </item>
     
     <item>

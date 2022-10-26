@@ -55,5 +55,14 @@
       <description>&lt;p&gt;Google Maps API v3を利用してGPXファイルを作成するオンラインツール。&lt;/p&gt;</description>
     </item>
     
+    <item>
+      <title>Google Sites &#43; Google Analyticsで「サイト上のデータ表示」は要注意</title>
+      <link>https://www.330k.info/essay/attention-to-show-data-in-combination-of-google-sites-and-google-analytics/</link>
+      <pubDate>Sun, 15 Nov 2009 00:00:00 +0900</pubDate>
+      
+      <guid>https://www.330k.info/essay/attention-to-show-data-in-combination-of-google-sites-and-google-analytics/</guid>
+      <description>Google SitesではGoogle Analyticsを用いる設定が簡単にできるが、Google Analyticsの「サイト上のデータ表示」を行うと「閉じる」をクリックしても何の反応がない。 画面にレイヤーが重なっていろいろなデータが表示されてしまう状態から抜けられない。 ネットを調べたところ、「閉じる」が見つからないために同じような現象に遭遇している事例は見つかったが、 「閉じる」をクリックしても、 _siteOverlay._close() をアドレ</description>
+    </item>
+    
   </channel>
 </rss>

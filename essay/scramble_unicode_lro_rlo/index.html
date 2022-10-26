@@ -8,18 +8,18 @@
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
 	<meta property="og:title" content="Unicode制御文字(LRO, RLO)でコピー・改変を防止 (構想)" />
-<meta property="og:description" content="Unicode制御文字のうち、LRO(Left-to-right override, U&#43;202D)とRLO(Right-to-left override, U&#43;202E)は行中でも文字列の方向を変更する。 1行の中に何度もLROとRLOが入ると、カーソルキーが踊って楽しいことになる。 例えば、下のテキストの中でカーソルを動かしたり、文字列を選択しようとしても上手くできないはず。 ‮‭い‮を‭ろ‮る‭は‮ぬ‭に‮り‭ほ‮ち‭へ ‮‭わ‮む‭か‮" />
+<meta property="og:description" content="Unicode制御文字のうち、LRO(Left-to-right override, U&#43;202D)とRLO(Right-to-left override, U&#43;202E)は行中でも文字列の方向を変更する。 1行の中に何度もLROとRLOが入ると、カーソルキーが踊って楽しいことになる。 例えば、下のテキストの中でカーソルを動かしたり、文字列を選択しようとしても上手くできないはず。 ‮‭い‮を‭ろ‮る‭は‮ぬ‭に‮り‭ほ‮ち‭へ‮と ‮‭わ‮む‭" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.330k.info/essay/scramble_unicode_lro_rlo/" /><meta property="og:image" content="https://www.330k.info/images/240px-Unofficial_JavaScript_logo.png" /><meta property="article:section" content="essay" />
 <meta property="article:published_time" content="2017-08-21T22:38:20+09:00" />
-<meta property="article:modified_time" content="2021-12-31T22:58:16+09:00" />
+<meta property="article:modified_time" content="2022-10-27T02:11:30+09:00" />
 
 
 	<meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://www.330k.info/images/240px-Unofficial_JavaScript_logo.png"/>
 
 <meta name="twitter:title" content="Unicode制御文字(LRO, RLO)でコピー・改変を防止 (構想)"/>
-<meta name="twitter:description" content="Unicode制御文字のうち、LRO(Left-to-right override, U&#43;202D)とRLO(Right-to-left override, U&#43;202E)は行中でも文字列の方向を変更する。 1行の中に何度もLROとRLOが入ると、カーソルキーが踊って楽しいことになる。 例えば、下のテキストの中でカーソルを動かしたり、文字列を選択しようとしても上手くできないはず。 ‮‭い‮を‭ろ‮る‭は‮ぬ‭に‮り‭ほ‮ち‭へ ‮‭わ‮む‭か‮"/>
+<meta name="twitter:description" content="Unicode制御文字のうち、LRO(Left-to-right override, U&#43;202D)とRLO(Right-to-left override, U&#43;202E)は行中でも文字列の方向を変更する。 1行の中に何度もLROとRLOが入ると、カーソルキーが踊って楽しいことになる。 例えば、下のテキストの中でカーソルを動かしたり、文字列を選択しようとしても上手くできないはず。 ‮‭い‮を‭ろ‮る‭は‮ぬ‭に‮り‭ほ‮ち‭へ‮と ‮‭わ‮む‭"/>
 
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -83,7 +83,7 @@ if (!doNotTrack) {
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
 	<time class="meta__text" datetime="2017-08-21T22:38:20">August 21, 2017</time>
-	<time class="meta__text" datetime="2021-12-31T22:58:16"> (Last Modified: December 31, 2021)</time>
+	<time class="meta__text" datetime="2022-10-27T02:11:30"> (Last Modified: October 27, 2022)</time>
 </div>
 
 <div class="meta__item-categories meta__item">
@@ -96,10 +96,10 @@ if (!doNotTrack) {
 <p>1行の中に何度もLROとRLOが入ると、カーソルキーが踊って楽しいことになる。</p>
 <p>例えば、下のテキストの中でカーソルを動かしたり、文字列を選択しようとしても上手くできないはず。</p>
 <textarea cols="50" rows="5">
-‮‭い‮を‭ろ‮る‭は‮ぬ‭に‮り‭ほ‮ち‭へ
-‮‭わ‮む‭か‮ら‭よ‮な‭た‮ね‭れ‮つ
-‮‭う‮て‭ゐ‮え‭の‮こ‭お‮ふ‭く‮け‭や
-‮‭あ‮す‭さ‮せ‭き‮も‭ゆ‮ひ‭め‮ゑ‭み
+‮‭い‮を‭ろ‮る‭は‮ぬ‭に‮り‭ほ‮ち‭へ‮と
+‮‭わ‮む‭か‮ら‭よ‮な‭た‮ね‭れ‮つ‭そ
+‮‭う‮て‭ゐ‮え‭の‮こ‭お‮ふ‭く‮け‭や‮ま
+‮‭あ‮す‭さ‮せ‭き‮も‭ゆ‮ひ‭め‮ゑ‭み‮し
 </textarea>
 <p>※ Edgeは表示が崩れるので、<code>Ctrl + A</code>→<code>Ctrl + C</code>でメモ帳にコピペで確認可能。</p>
 <p>表示上は普通のいろは順にひらがなが並んでいるように見えるが、
@@ -117,7 +117,7 @@ if (!doNotTrack) {
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Mathematica" data-lang="Mathematica"><span style="display:flex;"><span>StringScrumble[str_String] := Module[{chars, chars2},
 </span></span><span style="display:flex;"><span>  StringJoin[Riffle[(
 </span></span><span style="display:flex;"><span>    chars = ToCharacterCode[#];
-</span></span><span style="display:flex;"><span>    chars2 = Join[{16^^202e}, Riffle[chars, Reverse[chars]]][[1 ;; Length[chars]]];
+</span></span><span style="display:flex;"><span>    chars2 = Join[{16^^202e}, Riffle[chars, Reverse[chars]][[1 ;; Length[chars]]]];
 </span></span><span style="display:flex;"><span>    FromCharacterCode[Riffle[chars2, {16^^202d, 16^^202e}]]) &amp;
 </span></span><span style="display:flex;"><span>   /@ StringSplit[str, <span style="color:#a31515">&#34;\n&#34;</span>]
 </span></span><span style="display:flex;"><span>  , StringCases[str, <span style="color:#a31515">&#34;\n&#34;</span>]]]]
@@ -182,6 +182,20 @@ geditは行頭にRLOがあると右寄せで表示してしまう(こういう�
 メールや文章の無断引用や改ざんをされにくくできるのでは？
 (検索には引っかからなくなるが)</p>
 <p>うまくできそうであればアプリとして公開したい。</p>
+<h2 id="oct-27-2022-追記">Oct. 27 2022 追記</h2>
+<p>Unicode 6.5で追加されたRLI、LRI、PDIを使って空白などの中立文字を含む場合もシャッフルできることが判明。</p>
+<p>ただし、長い行が折り返された場合はうまく表示できない。</p>
+<textarea cols="50" rows="10">
+‭L⁧.⁦o⁧y⁦r⁧r⁦e⁧t⁦m⁧s⁦ ⁧u⁦I⁧d⁦p⁧n⁦s⁧i⁦u⁧ ⁦m⁧g⁦ ⁧n⁦i⁧i⁦s⁧t⁦ ⁧t⁦s⁧e⁦i⁧s⁦m⁧e⁦p⁧p⁦l⁧y⁦y⁧t⁦ ⁧ ⁦d⁧d⁦u⁧n⁦m⁧a⁦m⁧ ⁦y⁧g⁦ ⁧n⁦t⁧i⁦e⁧t⁦x⁧n⁦t⁧i⁦ ⁧r⁦o⁧p⁦f⁧ ⁦ ⁧e⁦t⁧h⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩‭
+⁩⁩‭L⁧,⁦o⁧s⁦r⁧0⁦e⁧0⁦m⁧5⁦ ⁧1⁦I⁧ ⁦p⁧e⁦s⁧h⁦u⁧t⁦m⁧ ⁦ ⁧e⁦h⁧c⁦a⁧n⁦s⁧i⁦ ⁧s⁦b⁧ ⁦e⁧r⁦e⁧e⁦n⁧v⁦ ⁧e⁦t⁧ ⁦h⁧t⁦e⁧x⁦ ⁧e⁦i⁧t⁦n⁧ ⁦d⁧y⁦u⁧m⁦s⁧m⁦t⁧u⁦r⁧d⁦y⁧ ⁦&#39;⁧d⁦s⁧r⁦ ⁧a⁦s⁧d⁦t⁧n⁦a⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩‭
+⁩⁩‭w⁧.⁦h⁧k⁦e⁧o⁦n⁧o⁦ ⁧b⁦a⁧ ⁦n⁧n⁦ ⁧e⁦u⁧m⁦n⁧i⁦k⁧c⁦n⁧e⁦o⁧p⁦w⁧s⁦n⁧ ⁦ ⁧e⁦p⁧p⁦r⁧y⁦i⁧t⁦n⁧ ⁦t⁧a⁦e⁧ ⁦r⁧e⁦ ⁧k⁦t⁧a⁦o⁧m⁦o⁧ ⁦k⁧o⁦ ⁧t⁦a⁧ ⁦ ⁧t⁦g⁧i⁦a⁧ ⁦l⁧d⁦l⁧e⁦e⁧l⁦y⁧b⁦ ⁧m⁦o⁧a⁦f⁧r⁦ ⁧c⁦t⁧s⁦y⁧ ⁦p⁧d⁦e⁧n⁦ ⁧a⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩‭
+⁩⁩‭I⁧,⁦t⁧s⁦ ⁧e⁦h⁧i⁦a⁧r⁦s⁧u⁦ ⁧t⁦s⁧n⁦u⁧e⁦r⁧c⁦v⁧ ⁦i⁧e⁦v⁧v⁦e⁧i⁦d⁧f⁦ ⁧ ⁦n⁧y⁦o⁧l⁦t⁧n⁦ ⁧o⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩‭
+⁩⁩‭b⁧,⁦u⁧g⁦t⁧n⁦ ⁧i⁦a⁧t⁦l⁧t⁦s⁧e⁦o⁧s⁦ ⁧e⁦t⁧p⁦h⁧y⁦e⁧t⁦ ⁧ ⁦l⁧c⁦e⁧i⁦a⁧n⁦p⁧o⁦ ⁧r⁦i⁧t⁦n⁧c⁦t⁧e⁦o⁧l⁦ ⁧e⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩‭
+⁩⁩‭r⁧.⁦e⁧d⁦m⁧e⁦a⁧g⁦i⁧n⁦n⁧a⁦i⁧h⁦n⁧c⁦g⁧n⁦ ⁧u⁦e⁧ ⁦s⁧y⁦s⁧l⁦e⁧l⁦n⁧a⁦t⁧i⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩‭
+⁩⁩‭I⁧,⁦t⁧s⁦ ⁧e⁦w⁧g⁦a⁧a⁦s⁧s⁦ ⁧s⁦p⁧a⁦o⁧p⁦p⁧ ⁦u⁧m⁦l⁧u⁦a⁧s⁦r⁧p⁦i⁧I⁦s⁧ ⁦e⁧m⁦d⁧e⁦ ⁧r⁦i⁧o⁦n⁧L⁦ ⁧ ⁦t⁧g⁦h⁧n⁦e⁧i⁦ ⁧n⁦1⁧i⁦9⁧a⁦6⁧t⁦0⁧n⁦s⁧o⁦ ⁧c⁦w⁧ ⁦i⁧s⁦t⁧t⁦h⁧e⁦ ⁧e⁦t⁧h⁦h⁧s⁦e⁧ ⁦ ⁧t⁦r⁧e⁦e⁧s⁦l⁧a⁦e⁧r⁦a⁧t⁦s⁧e⁦e⁧L⁦ ⁧ ⁦o⁧f⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩‭
+⁩⁩‭a⁧.⁦n⁧m⁦d⁧u⁦ ⁧s⁦m⁧p⁦o⁧I⁦r⁧ ⁦e⁧m⁦ ⁧e⁦r⁧r⁦e⁧o⁦c⁧L⁦e⁧ ⁦n⁧f⁦t⁧o⁦l⁧ ⁦y⁧s⁦ ⁧n⁦w⁧o⁦i⁧i⁦t⁧s⁦h⁧r⁦ ⁧e⁦d⁧v⁦e⁧ ⁦s⁧g⁦k⁧n⁦t⁧i⁦o⁧d⁦p⁧u⁦ ⁧l⁦p⁧c⁦u⁧n⁦b⁧i⁦l⁧ ⁦i⁧r⁦s⁧e⁦h⁧k⁦i⁧a⁦n⁧M⁦g⁧e⁦ ⁧g⁦s⁧a⁦o⁧P⁦f⁧ ⁦t⁧s⁦w⁧u⁦a⁧d⁦r⁧l⁦e⁧A⁦ ⁧ ⁦l⁧e⁦i⁧k⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩⁩‭
+⁩⁩
+</textarea>
 
 		</div>
 		<footer class="post__footer">
@@ -190,6 +204,7 @@ geditは行頭にRLOがあると右寄せで表示してしまう(こういう�
 	<svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
 	<ul class="tags__list">
 		<li class="tags__item"><a class="tags__link btn" href="/tags/javascript/" rel="tag">JavaScript</a></li>
+		<li class="tags__item"><a class="tags__link btn" href="/tags/mathematica/" rel="tag">Mathematica</a></li>
 	</ul>
 </div>
 		</footer>
@@ -233,6 +248,7 @@ geditは行頭にRLOがあると右寄せで表示してしまう(こういう�
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20221008-sr600-karst/">2022年10月08日 SR600 カルスト DNF</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20220910-sr600-kyoto/">2022年09月10日 SR600 京都</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20220818-rm812-okhotsk-1300km/">2022年08月18日 RM812 北海道1300 オホーツク</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20220806-sr600-shikotsu-toya/">2022年08月06日 SR600 支笏洞爺</a></li>
@@ -252,7 +268,6 @@ geditは行頭にRLOがあると右寄せで表示してしまう(こういう�
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20220108-brm108-kinki-600km/">2022年01月08日 BRM108 近畿600 姫路 しまなみ新春ライド</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/disable-nextcloud-preview-image-generation/">Snap版NextCloudのプレビュー生成を無効化する</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/edit-garmin-fit-mannually/">Garmin FITファイルをカンタンに編集する方法</a></li>
-			<li class="widget__item"><a class="widget__link" href="/essay/actual_lumen_estimation_of_rn1500/">RN1500の実際の明るさをスペックシートから見積もる</a></li>
 		</ul>
 	</div>
 </div>
@@ -289,7 +304,7 @@ geditは行頭にRLOがあると右寄せで表示してしまう(こういう�
 		<a class="widget-taglist__link widget__link btn" href="/tags/gas" title="Gas">Gas (2)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/github" title="Github">Github (10)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/gmail" title="Gmail">Gmail (2)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/google" title="Google">Google (5)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/google" title="Google">Google (6)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/gps" title="Gps">Gps (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/gpx" title="Gpx">Gpx (11)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/hta" title="Hta">Hta (1)</a>
@@ -298,7 +313,7 @@ geditは行頭にRLOがあると右寄せで表示してしまう(こういう�
 		<a class="widget-taglist__link widget__link btn" href="/tags/java" title="Java">Java (3)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/javascript" title="Javascript">Javascript (14)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/lxd" title="Lxd">Lxd (1)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/mathematica" title="Mathematica">Mathematica (23)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/mathematica" title="Mathematica">Mathematica (24)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/nextcloud" title="Nextcloud">Nextcloud (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/openvpn" title="Openvpn">Openvpn (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/powerpoint" title="Powerpoint">Powerpoint (1)</a>
@@ -308,7 +323,7 @@ geditは行頭にRLOがあると右寄せで表示してしまう(こういう�
 		<a class="widget-taglist__link widget__link btn" href="/tags/rwgps" title="Rwgps">Rwgps (3)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/sql" title="SQL">SQL (3)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/sqlserver" title="Sqlserver">Sqlserver (1)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/sr600" title="Sr600">Sr600 (9)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/sr600" title="Sr600">Sr600 (10)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/ubuntu" title="Ubuntu">Ubuntu (20)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/vba" title="Vba">Vba (4)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/vpn" title="VPN">VPN (1)</a>
@@ -320,7 +335,7 @@ geditは行頭にRLOがあると右寄せで表示してしまう(こういう�
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%82%ad%e3%83%a3%e3%83%8e%e3%83%b3%e3%83%9c%e3%83%bc%e3%83%ab" title="キャノンボール">キャノンボール (2)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%83%84%e3%83%bc%e3%83%aa%e3%83%b3%e3%82%b0" title="ツーリング">ツーリング (51)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%83%91%e3%83%af%e3%83%8f%e3%83%a9" title="パワハラ">パワハラ (5)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%83%96%e3%83%ab%e3%83%99" title="ブルベ">ブルベ (45)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%83%96%e3%83%ab%e3%83%99" title="ブルベ">ブルベ (46)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%83%a9%e3%82%a4%e3%83%88" title="ライト">ライト (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%83%ac%e3%83%93%e3%83%a5%e3%83%bc" title="レビュー">レビュー (2)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e6%95%b0%e5%ad%a6" title="数学">数学 (5)</a>

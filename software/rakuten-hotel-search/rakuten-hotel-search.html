@@ -157,6 +157,8 @@ function parseTCX(tcx){
   return coords;
 }
 
+class RDPTree{constructor(t,e,s=!1){this.coords=t,this.dist_func=e,this.balanced=s,this.rdptree=this._createRDPTree(0,t.length-1)}searchNearest(t,e=Number.MAX_VALUE){return this._searchNearest(this.rdptree,t,e)}_createRDPTree(t,e){let s=-Number.MAX_VALUE,r=-1;for(let i=t+1;i<=e-1;i++){const a=this.dist_func(this.coords[t],this.coords[e],this.coords[i]).distance;a>s&&(s=a,r=i)}return this.balanced&&(r=Math.floor(.5*(t+e))),s>0?{start:t,end:e,max_distance:s,max_index:r,left:this._createRDPTree(t,r),right:this._createRDPTree(r,e)}:{start:t,end:e,max_distance:0,max_index:-1,left:null,right:null}}_searchNearest(t,e,s){if(0===t.max_distance)return{start:t.start,end:t.end,...this.dist_func(this.coords[t.start],this.coords[t.end],e)};const r=this.dist_func(this.coords[t.start],this.coords[t.max_index],e).distance,i=this.dist_func(this.coords[t.max_index],this.coords[t.end],e).distance,a=r-t.left.max_distance>s,n=i-t.right.max_distance>s;if(a&&n)return{start:null,end:null,distance:Number.MAX_VALUE};if(a)return this._searchNearest(t.right,e,s);if(n)return this._searchNearest(t.left,e,s);let c,d,h,o;r<i?(h=t.left,c=r,o=t.right,d=i):(h=t.right,c=i,o=t.left,d=r);const _=this._searchNearest(h,e,s);if(0===_.distance)return _;const l=Math.min(s,_.distance);if(d-o.max_distance>l)return _;const u=this._searchNearest(o,e,l);return _.distance<u.distance?_:u}}
+
 /**
  * ルートをGoogle Mapsに表示
  * @param {Object} map
