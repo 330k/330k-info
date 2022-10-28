@@ -1,28 +1,32 @@
 <!DOCTYPE html>
 <html class="no-js" lang="ja-jp">
 <head>
-	<meta name="generator" content="Hugo 0.104.3" />
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>330k info</title>
+	<title>Mathematicaで内部処理を隠蔽する - 330k info</title>
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
-	<meta name="description" content="自転車ツーリングの記録やソフトウェアの配布、Mathematicaをメインにしたプログラミングの覚書や日ごろの雑感など。">
-	<meta property="og:title" content="330k info" />
-<meta property="og:description" content="自転車ツーリングの記録やソフトウェアの配布、Mathematicaをメインにしたプログラミングの覚書や日ごろの雑感など。" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://www.330k.info/" /><meta property="og:image" content="https://www.330k.info/apple-touch-icon.png"/>
+	<meta name="description" content="">
+	<meta property="og:title" content="Mathematicaで内部処理を隠蔽する" />
+<meta property="og:description" content="Mathematicaのシンボルにはいくつかの属性を設定でき、ReadProtected属性を付与することで定義を隠蔽することができるが、
+DownValuesやUpValuesを使うことで定義を表示することができる他、TraceやTracePrintを使うことで内部処理を追跡することが可能である。
+そこで、ReadProtected属性に加えてLocked属性を付与することで内部処理を隠蔽することができる。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.330k.info/essay/hide-internal-procedure-in-mathematica/" /><meta property="og:image" content="https://www.330k.info/images/Mathematica_Logo.png" /><meta property="article:section" content="essay" />
+<meta property="article:published_time" content="2022-10-28T15:20:32+09:00" />
+<meta property="article:modified_time" content="2022-10-28T16:16:26+09:00" />
 
 
 	<meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:image" content="https://www.330k.info/apple-touch-icon.png"/>
+<meta name="twitter:image" content="https://www.330k.info/images/Mathematica_Logo.png"/>
 
-<meta name="twitter:title" content="330k info"/>
-<meta name="twitter:description" content="自転車ツーリングの記録やソフトウェアの配布、Mathematicaをメインにしたプログラミングの覚書や日ごろの雑感など。"/>
+<meta name="twitter:title" content="Mathematicaで内部処理を隠蔽する"/>
+<meta name="twitter:description" content="Mathematicaのシンボルにはいくつかの属性を設定でき、ReadProtected属性を付与することで定義を隠蔽することができるが、
+DownValuesやUpValuesを使うことで定義を表示することができる他、TraceやTracePrintを使うことで内部処理を追跡することが可能である。
+そこで、ReadProtected属性に加えてLocked属性を付与することで内部処理を隠蔽することができる。"/>
 
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
-	<link rel="alternate" type="application/rss+xml" href="/index.xml" title="330k info">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
 	<link rel="stylesheet" href="/css/style.css">
 	<link rel="stylesheet" href="/css/330k.css">
@@ -61,7 +65,7 @@ if (!doNotTrack) {
 		<li class="menu__item">
 			<a class="menu__link" href="/bicycle/">Bicycles</a>
 		</li>
-		<li class="menu__item">
+		<li class="menu__item menu__item--active">
 			<a class="menu__link" href="/essay/">Essays</a>
 		</li>
 		<li class="menu__item">
@@ -75,20 +79,11 @@ if (!doNotTrack) {
 		<div class="wrapper flex">
 			<div class="primary">
 			
-<main class="main list" role="main">
-	<article class="list__item post">
-	<figure class="list__thumbnail">
-		<a href="https://www.330k.info/essay/hide-internal-procedure-in-mathematica/">
-			<img src="/images/Mathematica_Logo.png" alt="Mathematicaで内部処理を隠蔽する" />
-		</a>
-	</figure>
-	<header class="list__header">
-		<h3 class="list__title post__title ">
-			<a href="/essay/hide-internal-procedure-in-mathematica/" rel="bookmark">
-			Mathematicaで内部処理を隠蔽する
-			</a>
-		</h3>
-		<div class="list__meta meta">
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">Mathematicaで内部処理を隠蔽する</h1>
+			<div class="post__meta meta">
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
 	<time class="meta__text" datetime="2022-10-28T15:20:32">October 28, 2022</time>
@@ -100,281 +95,108 @@ if (!doNotTrack) {
 	<span class="meta__text"><a class="meta__link" href="/categories/%e9%9b%91%e8%a8%98%e5%b8%b3" rel="category">雑記帳</a></span>
 </div>
 </div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		<p>Mathematicaのシンボルにはいくつかの属性を設定でき、<code>ReadProtected</code>属性を付与することで定義を隠蔽することができるが、
+		</header><div class="content post__content clearfix">
+			<p>Mathematicaのシンボルにはいくつかの属性を設定でき、<code>ReadProtected</code>属性を付与することで定義を隠蔽することができるが、
 <code>DownValues</code>や<code>UpValues</code>を使うことで定義を表示することができる他、<code>Trace</code>や<code>TracePrint</code>を使うことで内部処理を追跡することが可能である。</p>
 <p>そこで、<code>ReadProtected</code>属性に加えて<code>Locked</code>属性を付与することで内部処理を隠蔽することができる。</p>
-	</div>
-</article><article class="list__item post">
-	<figure class="list__thumbnail">
-		<a href="https://www.330k.info/bicycle/touring/20221008-sr600-karst/">
-			<img src="/bicycle/touring/20221008-sr600-karst/20221008-102928-1747.jpg" alt="2022年10月08日 SR600 カルスト DNF" />
-		</a>
-	</figure>
-	<header class="list__header">
-		<h3 class="list__title post__title ">
-			<a href="/bicycle/touring/20221008-sr600-karst/" rel="bookmark">
-			2022年10月08日 SR600 カルスト DNF
-			</a>
-		</h3>
-		<div class="list__meta meta">
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
-	<time class="meta__text" datetime="2022-10-20T22:54:45">October 20, 2022</time>
-	<time class="meta__text" datetime="2022-10-27T03:12:49"> (Last Modified: October 27, 2022)</time>
+<h2 id="通常">通常</h2>
+<p>何も属性を付与しない場合、<code>??</code>や<code>Definition</code>、<code>DownValues</code>、<code>UpValues</code>を使うことで定義を確認できる。</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Mathematica" data-lang="Mathematica"><span style="display:flex;"><span>In[1]:= f[m_] := Sin[m] + 1;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>In[2]:= Definition[f] // OutputForm
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Out[2]//OutputForm= f[m_] := Sin[m] + 1
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>In[3]:= DownValues[f]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Out[3]= {HoldPattern[f[m_]] :&gt; Sin[m] + 1}
+</span></span></code></pre></div><p>もちろん、<code>Trace</code>で処理を追うことも可能である。</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Mathematica" data-lang="Mathematica"><span style="display:flex;"><span>In[4]:= Trace[f[2]] // OutputForm
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Out[4]//OutputForm= {f[2], Sin[2] + 1, 1 + Sin[2]}
+</span></span></code></pre></div><h2 id="readprotectedのみ"><code>ReadProtected</code>のみ</h2>
+<p>属性<code>ReadProtected</code>を付与すると、<code>??</code>や<code>Definition</code>では定義が表示されなくなる。</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Mathematica" data-lang="Mathematica"><span style="display:flex;"><span>In[5]:= g[m_] := Sin[m] + 1;
+</span></span><span style="display:flex;"><span>SetAttributes[g, {ReadProtected}];
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>In[7]:= Definition[g] // OutputForm
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Out[7]//OutputForm= Attributes[g] = {ReadProtected}
+</span></span></code></pre></div><p>ただし、依然として<code>DownValues</code>では定義を表示可能で、<code>Trace</code>で処理を追跡することも可能である。</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Mathematica" data-lang="Mathematica"><span style="display:flex;"><span>In[8]:= DownValues[g]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Out[8]= {HoldPattern[g[m_]] :&gt; Sin[m] + 1}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>In[9]:= Trace[g[2]] // OutputForm
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Out[9]//OutputForm= {g[2], Sin[2] + 1, 1 + Sin[2]}
+</span></span></code></pre></div><h2 id="lockedのみ"><code>Locked</code>のみ</h2>
+<p>属性<code>Locked</code>をだけを付与しても、これ以上のシンボルの変更ができなくなるだけで、定義を参照することは通常と変わらない。</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Mathematica" data-lang="Mathematica"><span style="display:flex;"><span>In[10]:= h[m_] := Sin[m] + x;
+</span></span><span style="display:flex;"><span>SetAttributes[h, {Locked}];
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>In[12]:= Definition[h] // OutputForm
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Out[12]//OutputForm= Attributes[h] = {Locked}
+</span></span><span style="display:flex;"><span> 
+</span></span><span style="display:flex;"><span>h[m_] := Sin[m] + x
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>In[13]:= DownValues[h]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Out[13]= {HoldPattern[h[m_]] :&gt; Sin[m] + x}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>In[14]:= Trace[h[2]] // OutputForm
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Out[14]//OutputForm= {h[2], Sin[2] + x, x + Sin[2]}
+</span></span></code></pre></div><h2 id="readprotected--locked"><code>ReadProtected</code> + <code>Locked</code></h2>
+<p><code>ReadProtected</code>と<code>Locked</code>の両方を付与した場合に、<code>DownValues</code>や<code>Trace</code>を使っても定義を隠蔽することが可能になる。</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Mathematica" data-lang="Mathematica"><span style="display:flex;"><span>In[15]:= i[m_] := Sin[m] + 1;
+</span></span><span style="display:flex;"><span>SetAttributes[i, {ReadProtected, Locked}];
+</span></span></code></pre></div><p><code>Definition</code>を使っても属性以外は表示されない。</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Mathematica" data-lang="Mathematica"><span style="display:flex;"><span>In[17]:= Definition[i] // OutputForm
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Out[17]//OutputForm= Attributes[i] = {Locked, ReadProtected}
+</span></span></code></pre></div><p><code>DownValues</code>では「シンボルの読出しはできません」とメッセージが表示されて失敗する。</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Mathematica" data-lang="Mathematica"><span style="display:flex;"><span>In[18]:= DownValues[i]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>In[18]:= General<span style="">::</span>readp<span style="">:</span> <span style="">シンボル</span>i<span style="">の読出しはできません．</span> &gt;&gt;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Out[18]= <span style="">$</span>Failed
+</span></span></code></pre></div><p><code>Trace</code>を使っても、内部処理部分は表示されず、一気に表示される(<code>TracePrint</code>も同様)。</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Mathematica" data-lang="Mathematica"><span style="display:flex;"><span>In[19]:= Trace[i[2]] // OutputForm
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Out[19]//OutputForm= {i[2], 1 + Sin[2]}
+</span></span></code></pre></div><h2 id="回避方法">回避方法</h2>
+<p>定義を行う前に大域変数<code>$Pre</code>を設定することで、定義される瞬間にどのような式が評価されようとしているのかを見ることができ、これは回避はできない。</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Mathematica" data-lang="Mathematica"><span style="display:flex;"><span>In[20]:= <span style="">$</span>Pre = Function[a, Print[Hold[a]]; a, {HoldAll}]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>In[21]:= j[m_] := Cos[m] + 1
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Hold[j[m_]:=Cos[m]+1]
+</span></span></code></pre></div><h2 id="結論">結論</h2>
+<ul>
+<li>シンボルに属性<code>ReadProtected</code>と<code>Locked</code>の両方を設定することで、大体の場合の内部処理を隠蔽することが可能。</li>
+<li>ただし、定義前に<code>$Pre</code>を使うことで評価前の式を見ることは可能で、これは回避不可能である。</li>
+</ul>
+		</div>
+		<footer class="post__footer">
+			
+<div class="post__tags tags clearfix">
+	<svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item"><a class="tags__link btn" href="/tags/mathematica/" rel="tag">Mathematica</a></li>
+	</ul>
 </div>
-
-<div class="meta__item-categories meta__item">
-	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
-	<span class="meta__text"><a class="meta__link" href="/categories/%e8%87%aa%e8%bb%a2%e8%bb%8a" rel="category">自転車</a></span>
-</div>
-</div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		<p>SR600カルストに挑戦したが、44回目のブルベ出走で初めてのDNF。</p>
-<p>しかもDNFを決断した後に怪我をしてしまうという情けない結果に。</p>
-	</div>
-</article><article class="list__item post">
-	<figure class="list__thumbnail">
-		<a href="https://www.330k.info/bicycle/touring/20220910-sr600-kyoto/">
-			<img src="/bicycle/touring/20220910-sr600-kyoto/20220911-112246-1540.jpg" alt="2022年09月10日 SR600 京都" />
-		</a>
-	</figure>
-	<header class="list__header">
-		<h3 class="list__title post__title ">
-			<a href="/bicycle/touring/20220910-sr600-kyoto/" rel="bookmark">
-			2022年09月10日 SR600 京都
-			</a>
-		</h3>
-		<div class="list__meta meta">
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
-	<time class="meta__text" datetime="2022-09-13T21:14:02">September 13, 2022</time>
-	<time class="meta__text" datetime="2022-09-17T21:31:44"> (Last Modified: September 17, 2022)</time>
-</div>
-
-<div class="meta__item-categories meta__item">
-	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
-	<span class="meta__text"><a class="meta__link" href="/categories/%e8%87%aa%e8%bb%a2%e8%bb%8a" rel="category">自転車</a></span>
-</div>
-</div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		<p>9本目のSR600は京都。</p>
-<p>事前の天気予報では3日間とも雨がぱらつく予報だったが、いざ出走してみると1日目は曇りで2日目以降は晴れ、と去年の上毛三山以来のレインウェアを着ないで終わった。</p>
-<p>暑さに加えて長袖インナーウェアを忘れてしまったせいで日焼けでダメージを負ってしまったが、景色を楽しみながら54時間52分で完走。</p>
-	</div>
-</article><article class="list__item post">
-	<figure class="list__thumbnail">
-		<a href="https://www.330k.info/bicycle/touring/20220818-rm812-okhotsk-1300km/">
-			<img src="/bicycle/touring/20220818-rm812-okhotsk-1300km/20220820-085301-1066.jpg" alt="2022年08月18日 RM812 北海道1300 オホーツク" />
-		</a>
-	</figure>
-	<header class="list__header">
-		<h3 class="list__title post__title ">
-			<a href="/bicycle/touring/20220818-rm812-okhotsk-1300km/" rel="bookmark">
-			2022年08月18日 RM812 北海道1300 オホーツク
-			</a>
-		</h3>
-		<div class="list__meta meta">
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
-	<time class="meta__text" datetime="2022-08-26T20:44:39">August 26, 2022</time>
-	<time class="meta__text" datetime="2022-09-08T01:21:50"> (Last Modified: September 08, 2022)</time>
-</div>
-
-<div class="meta__item-categories meta__item">
-	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
-	<span class="meta__text"><a class="meta__link" href="/categories/%e8%87%aa%e8%bb%a2%e8%bb%8a" rel="category">自転車</a></span>
-</div>
-</div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		<p>N2なので天候の良い日を選んで出走できるようになったオホーツク1300。</p>
-<p>天気予報を見つつ、しばらく雨があまり降らなさそうな予報だったため18日に出走した。</p>
-<p>制限時間は109時間5分あるので4泊してもよいのだが、翌月のパワスポ1000やPBPを見据えると少し脚力的にチャレンジングなライドを経験したかったので3泊で計画し、89時間12分で完走。</p>
-	</div>
-</article><article class="list__item post">
-	<figure class="list__thumbnail">
-		<a href="https://www.330k.info/bicycle/touring/20220806-sr600-shikotsu-toya/">
-			<img src="/bicycle/touring/20220806-sr600-shikotsu-toya/20220807-115902-0494.jpg" alt="2022年08月06日 SR600 支笏洞爺" />
-		</a>
-	</figure>
-	<header class="list__header">
-		<h3 class="list__title post__title ">
-			<a href="/bicycle/touring/20220806-sr600-shikotsu-toya/" rel="bookmark">
-			2022年08月06日 SR600 支笏洞爺
-			</a>
-		</h3>
-		<div class="list__meta meta">
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
-	<time class="meta__text" datetime="2022-08-25T20:44:22">August 25, 2022</time>
-	<time class="meta__text" datetime="2022-09-08T00:54:25"> (Last Modified: September 08, 2022)</time>
-</div>
-
-<div class="meta__item-categories meta__item">
-	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
-	<span class="meta__text"><a class="meta__link" href="/categories/%e8%87%aa%e8%bb%a2%e8%bb%8a" rel="category">自転車</a></span>
-</div>
-</div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		<p>SR600支笏洞爺とオホーツク1300の2つを走行する予定で北海道に長期滞在していたが、予めスタート申告していた日時に天候が悪くないようだったので、より柔軟に日程を選べるオホーツク1300を後回しにして、SR600支笏洞爺を申告どおりに出走することにした。</p>
-<p>2日目にパンクが発生した際にリム打ちと思い込んでタイヤを念入りに調査しなかったことがアダとなり、何回もスローパンクを繰り返して予備チューブを使い果たす事態になってしまったが、なんとか56時間41分で完走した。</p>
-	</div>
-</article><article class="list__item post">
-	<figure class="list__thumbnail">
-		<a href="https://www.330k.info/bicycle/touring/20220722-sr600-fuji/">
-			<img src="/bicycle/touring/20220722-sr600-fuji/20220723-155559-0174.jpg" alt="2022年07月22日 SR600 富士" />
-		</a>
-	</figure>
-	<header class="list__header">
-		<h3 class="list__title post__title ">
-			<a href="/bicycle/touring/20220722-sr600-fuji/" rel="bookmark">
-			2022年07月22日 SR600 富士
-			</a>
-		</h3>
-		<div class="list__meta meta">
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
-	<time class="meta__text" datetime="2022-07-26T09:49:42">July 26, 2022</time>
-	<time class="meta__text" datetime="2022-07-28T12:27:42"> (Last Modified: July 28, 2022)</time>
-</div>
-
-<div class="meta__item-categories meta__item">
-	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
-	<span class="meta__text"><a class="meta__link" href="/categories/%e8%87%aa%e8%bb%a2%e8%bb%8a" rel="category">自転車</a></span>
-</div>
-</div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		<p>日本縦断以来、握力が回復するのを待っていたためしばらく長距離を走れていなかったが、ようやく走れそうなところまで回復してきたので、リハビリとしてSR600を走ることに。</p>
-<p>京都と富士の2コースを出走連絡しておき、天候が良さそうな富士を出走した。</p>
-	</div>
-</article><article class="list__item post">
-	<figure class="list__thumbnail">
-		<a href="https://www.330k.info/essay/rwgps-create-route-with-accurate-elevation/">
-			<img src="/essay/rwgps-modify-all-elevations/rwgps_230x0w.png" alt="RWGPSの仕様と、標高の精度が良いルートを作成する方法" />
-		</a>
-	</figure>
-	<header class="list__header">
-		<h3 class="list__title post__title ">
-			<a href="/essay/rwgps-create-route-with-accurate-elevation/" rel="bookmark">
-			RWGPSの仕様と、標高の精度が良いルートを作成する方法
-			</a>
-		</h3>
-		<div class="list__meta meta">
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
-	<time class="meta__text" datetime="2022-06-06T01:13:18">June 06, 2022</time>
-	<time class="meta__text" datetime="2022-07-28T12:51:02"> (Last Modified: July 28, 2022)</time>
-</div>
-
-<div class="meta__item-categories meta__item">
-	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
-	<span class="meta__text"><a class="meta__link" href="/categories/%e9%9b%91%e8%a8%98%e5%b8%b3" rel="category">雑記帳</a></span>
-</div>
-</div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		<p>RWGPS(Ride with GPS)の仕様をソースコードとネットワークを流れるデータから解析し、その結果から現状で最も標高を精度良くルートを作成できるであろう方法を記した。</p>
-	</div>
-</article><article class="list__item post">
-	<figure class="list__thumbnail">
-		<a href="https://www.330k.info/bicycle/touring/20220430-rm429-tokyo-2700km-ride-across-japan/">
-			<img src="/bicycle/touring/20220430-rm429-tokyo-2700km-ride-across-japan/20220508175018.jpg" alt="2022年04月30日 RM429 東京2700 日本縦断(Ride Across Japan)" />
-		</a>
-	</figure>
-	<header class="list__header">
-		<h3 class="list__title post__title ">
-			<a href="/bicycle/touring/20220430-rm429-tokyo-2700km-ride-across-japan/" rel="bookmark">
-			2022年04月30日 RM429 東京2700 日本縦断(Ride Across Japan)
-			</a>
-		</h3>
-		<div class="list__meta meta">
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
-	<time class="meta__text" datetime="2022-05-12T22:15:29">May 12, 2022</time>
-	<time class="meta__text" datetime="2022-07-17T00:50:34"> (Last Modified: July 17, 2022)</time>
-</div>
-
-<div class="meta__item-categories meta__item">
-	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
-	<span class="meta__text"><a class="meta__link" href="/categories/%e8%87%aa%e8%bb%a2%e8%bb%8a" rel="category">自転車</a></span>
-</div>
-</div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		<p>それまでの自身最長距離を大きく更新する2700km。2年前にエントリーしたときは中止されてしまったものの、それからずっと目標にしてきた日本最長のブルベについに出走。</p>
-<p>ツールを自作することを含め、準備を入念に行ってきた成果が出て、想定以上に計画通りに走行でき、203時間47分(8日11時間47分)にて完走。</p>
-	</div>
-</article><article class="list__item post">
-	<figure class="list__thumbnail">
-		<a href="https://www.330k.info/bicycle/touring/20220409-brm409-chiba-400km/">
-			<img src="/bicycle/touring/20220409-brm409-chiba-400km/20220409141009.jpg" alt="2022年04月09日 BRM409 千葉400 ぐるっと房総" />
-		</a>
-	</figure>
-	<header class="list__header">
-		<h3 class="list__title post__title ">
-			<a href="/bicycle/touring/20220409-brm409-chiba-400km/" rel="bookmark">
-			2022年04月09日 BRM409 千葉400 ぐるっと房総
-			</a>
-		</h3>
-		<div class="list__meta meta">
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
-	<time class="meta__text" datetime="2022-04-11T08:41:32">April 11, 2022</time>
-	<time class="meta__text" datetime="2022-04-11T09:54:45"> (Last Modified: April 11, 2022)</time>
-</div>
-
-<div class="meta__item-categories meta__item">
-	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
-	<span class="meta__text"><a class="meta__link" href="/categories/%e8%87%aa%e8%bb%a2%e8%bb%8a" rel="category">自転車</a></span>
-</div>
-</div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		<p>3週連続ブルベ、最後は千葉の400km。</p>
-<p>スタート地点の手賀沼が自宅からアクセスしやすかったのでエントリーしたのだが、少しでも寝ておきたかったので輪行で。</p>
-<p>前半の平坦区間では猛烈な向かい風に耐えたのに、向きを変えた後半は山岳区間な上に風も凪いでしまったので追い風の恩恵は受けられなかった。</p>
-	</div>
-</article><article class="list__item post">
-	<figure class="list__thumbnail">
-		<a href="https://www.330k.info/bicycle/touring/20220402-brm402-chubu-200km/">
-			<img src="/bicycle/touring/20220402-brm402-chubu-200km/20220402143144.jpg" alt="2022年04月02日 BRM402 中部200" />
-		</a>
-	</figure>
-	<header class="list__header">
-		<h3 class="list__title post__title ">
-			<a href="/bicycle/touring/20220402-brm402-chubu-200km/" rel="bookmark">
-			2022年04月02日 BRM402 中部200
-			</a>
-		</h3>
-		<div class="list__meta meta">
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
-	<time class="meta__text" datetime="2022-04-03T19:39:25">April 03, 2022</time>
-	<time class="meta__text" datetime="2022-04-04T09:12:10"> (Last Modified: April 04, 2022)</time>
-</div>
-
-<div class="meta__item-categories meta__item">
-	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
-	<span class="meta__text"><a class="meta__link" href="/categories/%e8%87%aa%e8%bb%a2%e8%bb%8a" rel="category">自転車</a></span>
-</div>
-</div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		<p>先週の広島に続き、いろんな団体のブルベに参加してみよう、ということで、今度はAR中部のブルベに初参加。</p>
-	</div>
-</article>
+		</footer>
+	</article>
 </main>
 
-<div class="pagination">
-	<span class="pagination__item pagination__item--current">1/20</span>
-	<a class="pagination__item pagination__item--next btn" href="/page/2/">»</a>
-</div>
+
+<nav class="post-nav flex">
+	<div class="post-nav__item post-nav__item--prev">
+		<a class="post-nav__link" href="/essay/rwgps-create-route-with-accurate-elevation/" rel="prev"><span class="post-nav__caption">«&thinsp;Previous</span><p class="post-nav__post-title">RWGPSの仕様と、標高の精度が良いルートを作成する方法</p></a>
+	</div>
+</nav>
 
 
 			</div>

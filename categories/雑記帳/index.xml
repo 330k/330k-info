@@ -6,7 +6,18 @@
     <description>Recent content in 雑記帳 on 330k info</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Mon, 06 Jun 2022 01:13:18 +0900</lastBuildDate><atom:link href="https://www.330k.info/categories/%E9%9B%91%E8%A8%98%E5%B8%B3/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 28 Oct 2022 15:20:32 +0900</lastBuildDate><atom:link href="https://www.330k.info/categories/%E9%9B%91%E8%A8%98%E5%B8%B3/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Mathematicaで内部処理を隠蔽する</title>
+      <link>https://www.330k.info/essay/hide-internal-procedure-in-mathematica/</link>
+      <pubDate>Fri, 28 Oct 2022 15:20:32 +0900</pubDate>
+      
+      <guid>https://www.330k.info/essay/hide-internal-procedure-in-mathematica/</guid>
+      <description>&lt;p&gt;Mathematicaのシンボルにはいくつかの属性を設定でき、&lt;code&gt;ReadProtected&lt;/code&gt;属性を付与することで定義を隠蔽することができるが、
+&lt;code&gt;DownValues&lt;/code&gt;や&lt;code&gt;UpValues&lt;/code&gt;を使うことで定義を表示することができる他、&lt;code&gt;Trace&lt;/code&gt;や&lt;code&gt;TracePrint&lt;/code&gt;を使うことで内部処理を追跡することが可能である。&lt;/p&gt;
+&lt;p&gt;そこで、&lt;code&gt;ReadProtected&lt;/code&gt;属性に加えて&lt;code&gt;Locked&lt;/code&gt;属性を付与することで内部処理を隠蔽することができる。&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>RWGPSの仕様と、標高の精度が良いルートを作成する方法</title>
       <link>https://www.330k.info/essay/rwgps-create-route-with-accurate-elevation/</link>

@@ -79,6 +79,34 @@ if (!doNotTrack) {
 		<h1 class="main__title">雑記帳</h1>
 	</header><article class="list__item post">
 	<figure class="list__thumbnail">
+		<a href="https://www.330k.info/essay/implement-of-priority-queue-for-douglas-peucker-simplify-algorithm/">
+			<img src="/images/geometry-1044090.jpg" alt="Douglas-Peucker向けの優先度付きキュー実装の検討" />
+		</a>
+	</figure>
+	<header class="list__header">
+		<h3 class="list__title post__title ">
+			<a href="/essay/implement-of-priority-queue-for-douglas-peucker-simplify-algorithm/" rel="bookmark">
+			Douglas-Peucker向けの優先度付きキュー実装の検討
+			</a>
+		</h3>
+		<div class="list__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
+	<time class="meta__text" datetime="2014-05-29T00:00:00">May 29, 2014</time>
+	<time class="meta__text" datetime="2021-09-14T23:42:11"> (Last Modified: September 14, 2021)</time>
+</div>
+
+<div class="meta__item-categories meta__item">
+	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+	<span class="meta__text"><a class="meta__link" href="/categories/%e9%9b%91%e8%a8%98%e5%b8%b3" rel="category">雑記帳</a></span>
+</div>
+</div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		Nov. 29 2015: JavaScriptで実装した優先度付きキューをGitHubで公開→https://github.com/330k/priorityqueue_js/ 各ヒープのベンチマーク → http://330k.github.io/priorityqueue_js/benchmark.html これにはFibonacci Heapも比較対象に入れてある 折れ線を間引くで書いたように、 Douglas-Peuckerアルゴリズムを改良して指定した点数まで点を削減して折れ線を簡略化する場合、 優先度付きキューを使うことに
+	</div>
+</article><article class="list__item post">
+	<figure class="list__thumbnail">
 		<a href="https://www.330k.info/essay/create-zip-with-alphabetical-order/">
 			<img src="/images/ubuntu-logo32.png" alt="ファイル名順にソートしてzipファイルを作成する" />
 		</a>
@@ -324,34 +352,6 @@ if (!doNotTrack) {
 	<div class="content list__excerpt post__content clearfix">
 		Explicit Runge-Kutta法の公式はいくつか知られているが、高次の公式になるほどButcher配列の項数が増えるため論文に誤植が多くなる。 それに気づかないまま実際に使うと、プログラムは正しく組めているはずなのに思うように精度が上がらないという落とし穴にはまってしまう。 覚書として、以下に代表的と思われる公式のButcher tableauをまとめる。 以下のButcher tableauはMathemati
 	</div>
-</article><article class="list__item post">
-	<figure class="list__thumbnail">
-		<a href="https://www.330k.info/essay/extend-import-and-export-of-mathematica7/">
-			<img src="/images/Mathematica_Logo.png" alt="Mathematica 7でImportおよびExportを拡張する" />
-		</a>
-	</figure>
-	<header class="list__header">
-		<h3 class="list__title post__title ">
-			<a href="/essay/extend-import-and-export-of-mathematica7/" rel="bookmark">
-			Mathematica 7でImportおよびExportを拡張する
-			</a>
-		</h3>
-		<div class="list__meta meta">
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
-	<time class="meta__text" datetime="2009-11-23T00:00:00">November 23, 2009</time>
-	<time class="meta__text" datetime="2022-10-27T02:19:05"> (Last Modified: October 27, 2022)</time>
-</div>
-
-<div class="meta__item-categories meta__item">
-	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
-	<span class="meta__text"><a class="meta__link" href="/categories/%e9%9b%91%e8%a8%98%e5%b8%b3" rel="category">雑記帳</a></span>
-</div>
-</div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		MathematicaではImportやExportを使って様々な形式のファイルを読み書きできるが、 標準で対応していないファイル形式についても自分でローダやライタを作り、 それをImportやExportに対応させる方法がExtending Import &amp; Export (Wolfram Library Archive)において解説されている。 しかしこの文書は2003年のもので以前はExperimental`RegisterConverterという関数で
-	</div>
 </article>
 </main>
 
@@ -389,6 +389,7 @@ if (!doNotTrack) {
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/essay/hide-internal-procedure-in-mathematica/">Mathematicaで内部処理を隠蔽する</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20221008-sr600-karst/">2022年10月08日 SR600 カルスト DNF</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20220910-sr600-kyoto/">2022年09月10日 SR600 京都</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20220818-rm812-okhotsk-1300km/">2022年08月18日 RM812 北海道1300 オホーツク</a></li>
@@ -408,7 +409,6 @@ if (!doNotTrack) {
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20220122-brm122-nihonbash-200km/">2022年01月22日 BRM122 日本橋200 電波塔逆めぐり</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20220108-brm108-kinki-600km/">2022年01月08日 BRM108 近畿600 姫路 しまなみ新春ライド</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/disable-nextcloud-preview-image-generation/">Snap版NextCloudのプレビュー生成を無効化する</a></li>
-			<li class="widget__item"><a class="widget__link" href="/essay/edit-garmin-fit-mannually/">Garmin FITファイルをカンタンに編集する方法</a></li>
 		</ul>
 	</div>
 </div>
@@ -454,7 +454,7 @@ if (!doNotTrack) {
 		<a class="widget-taglist__link widget__link btn" href="/tags/java" title="Java">Java (3)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/javascript" title="Javascript">Javascript (14)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/lxd" title="Lxd">Lxd (1)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/mathematica" title="Mathematica">Mathematica (24)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/mathematica" title="Mathematica">Mathematica (25)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/nextcloud" title="Nextcloud">Nextcloud (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/openvpn" title="Openvpn">Openvpn (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/powerpoint" title="Powerpoint">Powerpoint (1)</a>

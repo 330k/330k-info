@@ -2,22 +2,34 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://www.330k.info/bicycle/touring/20221008-sr600-karst/</loc>
-    <lastmod>2022-10-27T03:12:49+09:00</lastmod>
-  </url><url>
     <loc>https://www.330k.info/</loc>
+    <lastmod>2022-10-28T16:16:26+09:00</lastmod>
+  </url><url>
+    <loc>https://www.330k.info/categories/</loc>
+    <lastmod>2022-10-28T16:16:26+09:00</lastmod>
+  </url><url>
+    <loc>https://www.330k.info/essay/</loc>
+    <lastmod>2022-10-28T16:16:26+09:00</lastmod>
+  </url><url>
+    <loc>https://www.330k.info/tags/mathematica/</loc>
+    <lastmod>2022-10-28T16:16:26+09:00</lastmod>
+  </url><url>
+    <loc>https://www.330k.info/essay/hide-internal-procedure-in-mathematica/</loc>
+    <lastmod>2022-10-28T16:16:26+09:00</lastmod>
+  </url><url>
+    <loc>https://www.330k.info/tags/</loc>
+    <lastmod>2022-10-28T16:16:26+09:00</lastmod>
+  </url><url>
+    <loc>https://www.330k.info/categories/%E9%9B%91%E8%A8%98%E5%B8%B3/</loc>
+    <lastmod>2022-10-28T16:16:26+09:00</lastmod>
+  </url><url>
+    <loc>https://www.330k.info/bicycle/touring/20221008-sr600-karst/</loc>
     <lastmod>2022-10-27T03:12:49+09:00</lastmod>
   </url><url>
     <loc>https://www.330k.info/bicycle/</loc>
     <lastmod>2022-10-27T03:12:49+09:00</lastmod>
   </url><url>
-    <loc>https://www.330k.info/categories/</loc>
-    <lastmod>2022-10-27T03:12:49+09:00</lastmod>
-  </url><url>
     <loc>https://www.330k.info/tags/sr600/</loc>
-    <lastmod>2022-10-27T03:12:49+09:00</lastmod>
-  </url><url>
-    <loc>https://www.330k.info/tags/</loc>
     <lastmod>2022-10-27T03:12:49+09:00</lastmod>
   </url><url>
     <loc>https://www.330k.info/tags/%E3%83%96%E3%83%AB%E3%83%99/</loc>
@@ -65,17 +77,11 @@
     <loc>https://www.330k.info/bicycle/touring/20220722-sr600-fuji/</loc>
     <lastmod>2022-07-28T12:27:42+09:00</lastmod>
   </url><url>
-    <loc>https://www.330k.info/essay/</loc>
-    <lastmod>2022-10-27T03:06:55+09:00</lastmod>
-  </url><url>
     <loc>https://www.330k.info/tags/rwgps/</loc>
     <lastmod>2022-09-22T08:44:32+09:00</lastmod>
   </url><url>
     <loc>https://www.330k.info/essay/rwgps-create-route-with-accurate-elevation/</loc>
     <lastmod>2022-07-28T12:51:02+09:00</lastmod>
-  </url><url>
-    <loc>https://www.330k.info/categories/%E9%9B%91%E8%A8%98%E5%B8%B3/</loc>
-    <lastmod>2022-10-27T03:06:55+09:00</lastmod>
   </url><url>
     <loc>https://www.330k.info/software/gpx-compare/</loc>
     <lastmod>2022-05-31T20:22:12+09:00</lastmod>
@@ -109,9 +115,6 @@
   </url><url>
     <loc>https://www.330k.info/tags/javascript/</loc>
     <lastmod>2022-10-27T02:11:30+09:00</lastmod>
-  </url><url>
-    <loc>https://www.330k.info/tags/mathematica/</loc>
-    <lastmod>2022-10-27T02:34:48+09:00</lastmod>
   </url><url>
     <loc>https://www.330k.info/tags/%E6%95%B0%E5%AD%A6/</loc>
     <lastmod>2022-10-27T02:19:47+09:00</lastmod>

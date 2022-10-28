@@ -6,7 +6,18 @@
     <description>Recent content in Mathematica on 330k info</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Thu, 17 Mar 2022 01:13:49 +0900</lastBuildDate><atom:link href="https://www.330k.info/tags/mathematica/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 28 Oct 2022 15:20:32 +0900</lastBuildDate><atom:link href="https://www.330k.info/tags/mathematica/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Mathematicaで内部処理を隠蔽する</title>
+      <link>https://www.330k.info/essay/hide-internal-procedure-in-mathematica/</link>
+      <pubDate>Fri, 28 Oct 2022 15:20:32 +0900</pubDate>
+      
+      <guid>https://www.330k.info/essay/hide-internal-procedure-in-mathematica/</guid>
+      <description>&lt;p&gt;Mathematicaのシンボルにはいくつかの属性を設定でき、&lt;code&gt;ReadProtected&lt;/code&gt;属性を付与することで定義を隠蔽することができるが、
+&lt;code&gt;DownValues&lt;/code&gt;や&lt;code&gt;UpValues&lt;/code&gt;を使うことで定義を表示することができる他、&lt;code&gt;Trace&lt;/code&gt;や&lt;code&gt;TracePrint&lt;/code&gt;を使うことで内部処理を追跡することが可能である。&lt;/p&gt;
+&lt;p&gt;そこで、&lt;code&gt;ReadProtected&lt;/code&gt;属性に加えて&lt;code&gt;Locked&lt;/code&gt;属性を付与することで内部処理を隠蔽することができる。&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>測地線距離計算式・計算ライブラリの精度評価 </title>
       <link>https://www.330k.info/essay/geodesic_distance_formula_comparison_2/</link>

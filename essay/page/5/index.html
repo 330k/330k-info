@@ -79,6 +79,34 @@ if (!doNotTrack) {
 		<h1 class="main__title">Essays</h1>
 	</header><article class="list__item post">
 	<figure class="list__thumbnail">
+		<a href="https://www.330k.info/essay/letsencrypt-ubuntu-1604/">
+			<img src="/essay/letsencrypt-ubuntu-1604/SupportApache-small.png" alt="Ubuntu 16.04 &#43; Apache 2.4にLet&#39;s Encryptを設定する" />
+		</a>
+	</figure>
+	<header class="list__header">
+		<h3 class="list__title post__title ">
+			<a href="/essay/letsencrypt-ubuntu-1604/" rel="bookmark">
+			Ubuntu 16.04 &#43; Apache 2.4にLet&#39;s Encryptを設定する
+			</a>
+		</h3>
+		<div class="list__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
+	<time class="meta__text" datetime="2018-02-26T02:19:51">February 26, 2018</time>
+	<time class="meta__text" datetime="2022-10-27T03:01:49"> (Last Modified: October 27, 2022)</time>
+</div>
+
+<div class="meta__item-categories meta__item">
+	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+	<span class="meta__text"><a class="meta__link" href="/categories/%e9%9b%91%e8%a8%98%e5%b8%b3" rel="category">雑記帳</a></span>
+</div>
+</div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		海外の格安VPS、AlaphaRacksでHTTPSのHTTPサーバを立てたので、その作業録。 環境 Chinese Year Specialという年間$8のプランを契約。 Ubuntuのバージョンは16.04なのだが、カーネルのバージョンは2.6.32の古め。 そのため、dockerは使えない。 # uname -r 2.6.32-042stab127.2 # cat /etc/lsb-release DISTRIB_ID=Ubuntu DISTRIB_RELEASE=16.04 DISTRIB_CODENAME=xenial DISTRIB_DESCRIPTION=&#34;Ubuntu 16.04 LTS&#34; ApacheのSSLモジュール有効化 SSLモジュールを有効化し、a2ensiteでHTTPSサイトを有効化
+	</div>
+</article><article class="list__item post">
+	<figure class="list__thumbnail">
 		<a href="https://www.330k.info/essay/ubuntu_nvidia_cuda_mathematica_geforce1060/">
 			<img src="/images/ubuntu-logo32.png" alt="GeForce 1060搭載ノートPCにUbuntu 17.10 &#43; NVIDIAドライバ &#43; CUDA &#43; Mathematia 8をインストール" />
 		</a>
@@ -329,34 +357,6 @@ if (!doNotTrack) {
 	<div class="content list__excerpt post__content clearfix">
 		球面上に一様分布するランダムな点を生成したい時、 単純に極座標表示でθとφを一様分布させると、極付近に点が集まってしまう。 data1 = Transpose[{Sin[t] Cos[f], Sin[t] Sin[f], Cos[t]} /. { f -&gt; RandomReal[{0, 2 Pi}, 2000], t -&gt; RandomReal[{0, Pi}, 2000]}]; g1 = ListPointPlot3D[data1, BoxRatios -&gt; {1, 1, 1}] 球面上で一様分布させるには、下記のようにθにArcCosを使う (θの位置の確率をSinθに比例させたい→累積確率分布関数はCos→逆関数はArcCos)。 data2 = Transpose[{Sin[t] Cos[f], Sin[t] Sin[f], Cos[t]} /. { f -&gt; RandomReal[{0, 2 Pi}, 2000], t -&gt; ArcCos[RandomReal[{-1, 1}, 2000]]}]; g2 = ListPointPlot3D[data2, BoxRatios -&gt; {1, 1, 1}] なお、多次元球
 	</div>
-</article><article class="list__item post">
-	<figure class="list__thumbnail">
-		<a href="https://www.330k.info/essay/zabbix_ricoh_printer_template_xml/">
-			<img src="/essay/zabbix_ricoh_printer_template_xml/zabbix_logo_313x82.png" alt="RICOHプリンタ・複合機用のZabbix用テンプレート" />
-		</a>
-	</figure>
-	<header class="list__header">
-		<h3 class="list__title post__title ">
-			<a href="/essay/zabbix_ricoh_printer_template_xml/" rel="bookmark">
-			RICOHプリンタ・複合機用のZabbix用テンプレート
-			</a>
-		</h3>
-		<div class="list__meta meta">
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
-	<time class="meta__text" datetime="2017-07-20T21:12:22">July 20, 2017</time>
-	<time class="meta__text" datetime="2022-03-06T23:14:27"> (Last Modified: March 06, 2022)</time>
-</div>
-
-<div class="meta__item-categories meta__item">
-	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
-	<span class="meta__text"><a class="meta__link" href="/categories/%e9%9b%91%e8%a8%98%e5%b8%b3" rel="category">雑記帳</a></span>
-</div>
-</div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		社内で余っているサーバにZabbixを入れたので、 SNMP v2cでRICOH製のプリンタ・複合機の各種情報を取得するXMLテンプレートをhttps://github.com/coreyramirezgomez/Ricoh-Printers-Zabbix-Template/blob/master/Ricoh%20Printers%20SNMP%20Template.xml を元に作成した。 変更箇所としては以
-	</div>
 </article>
 </main>
 
@@ -394,6 +394,7 @@ if (!doNotTrack) {
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/essay/hide-internal-procedure-in-mathematica/">Mathematicaで内部処理を隠蔽する</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20221008-sr600-karst/">2022年10月08日 SR600 カルスト DNF</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20220910-sr600-kyoto/">2022年09月10日 SR600 京都</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20220818-rm812-okhotsk-1300km/">2022年08月18日 RM812 北海道1300 オホーツク</a></li>
@@ -413,7 +414,6 @@ if (!doNotTrack) {
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20220122-brm122-nihonbash-200km/">2022年01月22日 BRM122 日本橋200 電波塔逆めぐり</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20220108-brm108-kinki-600km/">2022年01月08日 BRM108 近畿600 姫路 しまなみ新春ライド</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/disable-nextcloud-preview-image-generation/">Snap版NextCloudのプレビュー生成を無効化する</a></li>
-			<li class="widget__item"><a class="widget__link" href="/essay/edit-garmin-fit-mannually/">Garmin FITファイルをカンタンに編集する方法</a></li>
 		</ul>
 	</div>
 </div>
@@ -459,7 +459,7 @@ if (!doNotTrack) {
 		<a class="widget-taglist__link widget__link btn" href="/tags/java" title="Java">Java (3)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/javascript" title="Javascript">Javascript (14)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/lxd" title="Lxd">Lxd (1)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/mathematica" title="Mathematica">Mathematica (24)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/mathematica" title="Mathematica">Mathematica (25)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/nextcloud" title="Nextcloud">Nextcloud (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/openvpn" title="Openvpn">Openvpn (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/powerpoint" title="Powerpoint">Powerpoint (1)</a>
