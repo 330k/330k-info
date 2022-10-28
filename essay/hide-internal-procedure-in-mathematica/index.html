@@ -14,7 +14,7 @@ DownValuesやUpValuesを使うことで定義を表示することができる�
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.330k.info/essay/hide-internal-procedure-in-mathematica/" /><meta property="og:image" content="https://www.330k.info/images/Mathematica_Logo.png" /><meta property="article:section" content="essay" />
 <meta property="article:published_time" content="2022-10-28T15:20:32+09:00" />
-<meta property="article:modified_time" content="2022-10-28T16:16:26+09:00" />
+<meta property="article:modified_time" content="2022-10-28T19:25:36+09:00" />
 
 
 	<meta name="twitter:card" content="summary_large_image"/>
@@ -87,7 +87,7 @@ if (!doNotTrack) {
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
 	<time class="meta__text" datetime="2022-10-28T15:20:32">October 28, 2022</time>
-	<time class="meta__text" datetime="2022-10-28T16:16:26"> (Last Modified: October 28, 2022)</time>
+	<time class="meta__text" datetime="2022-10-28T19:25:36"> (Last Modified: October 28, 2022)</time>
 </div>
 
 <div class="meta__item-categories meta__item">
@@ -101,22 +101,22 @@ if (!doNotTrack) {
 <p>そこで、<code>ReadProtected</code>属性に加えて<code>Locked</code>属性を付与することで内部処理を隠蔽することができる。</p>
 <h2 id="通常">通常</h2>
 <p>何も属性を付与しない場合、<code>??</code>や<code>Definition</code>、<code>DownValues</code>、<code>UpValues</code>を使うことで定義を確認できる。</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Mathematica" data-lang="Mathematica"><span style="display:flex;"><span>In[1]:= f[m_] := Sin[m] + 1;
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Mathematica" data-lang="Mathematica"><span style="display:flex;"><span>In[1]:= f[x_] := Sin[x] + 1;
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>In[2]:= Definition[f] // OutputForm
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>Out[2]//OutputForm= f[m_] := Sin[m] + 1
+</span></span><span style="display:flex;"><span>Out[2]//OutputForm= f[x_] := Sin[x] + 1
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>In[3]:= DownValues[f]
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>Out[3]= {HoldPattern[f[m_]] :&gt; Sin[m] + 1}
+</span></span><span style="display:flex;"><span>Out[3]= {HoldPattern[f[x_]] :&gt; Sin[x] + 1}
 </span></span></code></pre></div><p>もちろん、<code>Trace</code>で処理を追うことも可能である。</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Mathematica" data-lang="Mathematica"><span style="display:flex;"><span>In[4]:= Trace[f[2]] // OutputForm
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>Out[4]//OutputForm= {f[2], Sin[2] + 1, 1 + Sin[2]}
 </span></span></code></pre></div><h2 id="readprotectedのみ"><code>ReadProtected</code>のみ</h2>
 <p>属性<code>ReadProtected</code>を付与すると、<code>??</code>や<code>Definition</code>では定義が表示されなくなる。</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Mathematica" data-lang="Mathematica"><span style="display:flex;"><span>In[5]:= g[m_] := Sin[m] + 1;
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Mathematica" data-lang="Mathematica"><span style="display:flex;"><span>In[5]:= g[x_] := Sin[x] + 1;
 </span></span><span style="display:flex;"><span>SetAttributes[g, {ReadProtected}];
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>In[7]:= Definition[g] // OutputForm
@@ -125,32 +125,32 @@ if (!doNotTrack) {
 </span></span></code></pre></div><p>ただし、依然として<code>DownValues</code>では定義を表示可能で、<code>Trace</code>で処理を追跡することも可能である。</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Mathematica" data-lang="Mathematica"><span style="display:flex;"><span>In[8]:= DownValues[g]
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>Out[8]= {HoldPattern[g[m_]] :&gt; Sin[m] + 1}
+</span></span><span style="display:flex;"><span>Out[8]= {HoldPattern[g[x_]] :&gt; Sin[x] + 1}
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>In[9]:= Trace[g[2]] // OutputForm
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>Out[9]//OutputForm= {g[2], Sin[2] + 1, 1 + Sin[2]}
 </span></span></code></pre></div><h2 id="lockedのみ"><code>Locked</code>のみ</h2>
 <p>属性<code>Locked</code>をだけを付与しても、これ以上のシンボルの変更ができなくなるだけで、定義を参照することは通常と変わらない。</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Mathematica" data-lang="Mathematica"><span style="display:flex;"><span>In[10]:= h[m_] := Sin[m] + x;
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Mathematica" data-lang="Mathematica"><span style="display:flex;"><span>In[10]:= h[x_] := Sin[x] + 1;
 </span></span><span style="display:flex;"><span>SetAttributes[h, {Locked}];
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>In[12]:= Definition[h] // OutputForm
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>Out[12]//OutputForm= Attributes[h] = {Locked}
 </span></span><span style="display:flex;"><span> 
-</span></span><span style="display:flex;"><span>h[m_] := Sin[m] + x
+</span></span><span style="display:flex;"><span>h[x_] := Sin[x] + 1
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>In[13]:= DownValues[h]
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>Out[13]= {HoldPattern[h[m_]] :&gt; Sin[m] + x}
+</span></span><span style="display:flex;"><span>Out[13]= {HoldPattern[h[x_]] :&gt; Sin[x] + x}
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>In[14]:= Trace[h[2]] // OutputForm
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>Out[14]//OutputForm= {h[2], Sin[2] + x, x + Sin[2]}
+</span></span><span style="display:flex;"><span>Out[14]//OutputForm= {h[2], Sin[2] + 1, 1 + Sin[2]}
 </span></span></code></pre></div><h2 id="readprotected--locked"><code>ReadProtected</code> + <code>Locked</code></h2>
 <p><code>ReadProtected</code>と<code>Locked</code>の両方を付与した場合に、<code>DownValues</code>や<code>Trace</code>を使っても定義を隠蔽することが可能になる。</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Mathematica" data-lang="Mathematica"><span style="display:flex;"><span>In[15]:= i[m_] := Sin[m] + 1;
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Mathematica" data-lang="Mathematica"><span style="display:flex;"><span>In[15]:= i[x_] := Sin[x] + 1;
 </span></span><span style="display:flex;"><span>SetAttributes[i, {ReadProtected, Locked}];
 </span></span></code></pre></div><p><code>Definition</code>を使っても属性以外は表示されない。</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Mathematica" data-lang="Mathematica"><span style="display:flex;"><span>In[17]:= Definition[i] // OutputForm
@@ -170,9 +170,9 @@ if (!doNotTrack) {
 <p>定義を行う前に大域変数<code>$Pre</code>を設定することで、定義される瞬間にどのような式が評価されようとしているのかを見ることができ、これは回避はできない。</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Mathematica" data-lang="Mathematica"><span style="display:flex;"><span>In[20]:= <span style="">$</span>Pre = Function[a, Print[Hold[a]]; a, {HoldAll}]
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>In[21]:= j[m_] := Cos[m] + 1
+</span></span><span style="display:flex;"><span>In[21]:= j[x_] := Cos[x] + 1
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>Hold[j[m_]:=Cos[m]+1]
+</span></span><span style="display:flex;"><span>Hold[j[x_]:=Cos[m]+1]
 </span></span></code></pre></div><h2 id="結論">結論</h2>
 <ul>
 <li>シンボルに属性<code>ReadProtected</code>と<code>Locked</code>の両方を設定することで、大体の場合の内部処理を隠蔽することが可能。</li>
