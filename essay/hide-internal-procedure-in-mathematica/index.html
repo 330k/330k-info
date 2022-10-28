@@ -14,7 +14,7 @@ DownValuesやUpValuesを使うことで定義を表示することができる�
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.330k.info/essay/hide-internal-procedure-in-mathematica/" /><meta property="og:image" content="https://www.330k.info/images/Mathematica_Logo.png" /><meta property="article:section" content="essay" />
 <meta property="article:published_time" content="2022-10-28T15:20:32+09:00" />
-<meta property="article:modified_time" content="2022-10-28T23:40:25+09:00" />
+<meta property="article:modified_time" content="2022-10-29T00:58:27+09:00" />
 
 
 	<meta name="twitter:card" content="summary_large_image"/>
@@ -87,7 +87,7 @@ if (!doNotTrack) {
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
 	<time class="meta__text" datetime="2022-10-28T15:20:32">October 28, 2022</time>
-	<time class="meta__text" datetime="2022-10-28T23:40:25"> (Last Modified: October 28, 2022)</time>
+	<time class="meta__text" datetime="2022-10-29T00:58:27"> (Last Modified: October 29, 2022)</time>
 </div>
 
 <div class="meta__item-categories meta__item">
@@ -167,16 +167,35 @@ if (!doNotTrack) {
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>Out[19]//OutputForm= {i[2], 1 + Sin[2]}
 </span></span></code></pre></div><h2 id="回避方法">回避方法</h2>
-<p>定義を行う前に大域変数<code>$Pre</code>を設定することで、定義される瞬間にどのような式が評価されようとしているのかを見ることができ、これは回避はできない。</p>
+<p>定義を行う前に大域変数<code>$Pre</code>や<code>$PreRead</code>を設定することで、定義される瞬間にどのような式が評価されようとしているのかを見ることができ、これは回避はできない。</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Mathematica" data-lang="Mathematica"><span style="display:flex;"><span>In[20]:= <span style="">$</span>Pre = Function[a, Print[Hold[a]]; a, {HoldAll}]
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>In[21]:= j[x_] := Cos[x] + 1
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>Hold[j[x_]:=Cos[x]+1]
+</span></span></code></pre></div><h2 id="回避方法の回避方法">回避方法の回避方法</h2>
+<p>定義をファイルから読み込む場合は<code>$Pre</code>や<code>$PreRead</code>を設定していた場合でも隠すことができる。</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Mathematica" data-lang="Mathematica"><span style="display:flex;"><span>In[22]:= Export[FileNameJoin[{<span style="">$</span>TemporaryDirectory, <span style="color:#a31515">&#34;test.m&#34;</span>}], <span style="color:#a31515">&#34;k[x_]:=Sin[x]+x+1;SetAttributes[k,{ReadProtected,Locked}];&#34;</span>, <span style="color:#a31515">&#34;Text&#34;</span>];
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>In[23]:= {<span style="">$</span>Pre, <span style="">$</span>PreRead} = {#, #} &amp;@ Function[a, Print[Hold[a]]; a, {HoldAll}];
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>In[24]:= Import[FileNameJoin[{<span style="">$</span>TemporaryDirectory, <span style="color:#a31515">&#34;test.m&#34;</span>}]]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Hold[RowBox[{Import,[,RowBox[{FileNameJoin,[,RowBox[{{,RowBox[{<span style="">$</span>TemporaryDirectory,,,<span style="color:#a31515">&#34;test.m&#34;</span>}],}}],]}],]}]]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Hold[Import[FileNameJoin[{<span style="">$</span>TemporaryDirectory,test<span style="">.</span>m}]]]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>In[25]:= k[x]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Hold[RowBox[{k,[,x,]}]]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Hold[k[x]]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Out[25]= 1 + x + Sin[x]
 </span></span></code></pre></div><h2 id="結論">結論</h2>
 <ul>
 <li>シンボルに属性<code>ReadProtected</code>と<code>Locked</code>の両方を設定することで、大体の場合の内部処理を隠蔽することが可能。</li>
-<li>ただし、定義前に<code>$Pre</code>を使うことで評価前の式を見ることは可能で、これは回避不可能である。</li>
+<li>定義をファイルから読み込むことで<code>$Pre</code>や<code>$PreRead</code>を使って定義される瞬間も隠蔽可能。</li>
 </ul>
 <h2 id="参考">参考</h2>
 <ul>
