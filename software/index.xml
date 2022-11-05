@@ -82,7 +82,7 @@
       
       <guid>https://www.330k.info/software/cannonball-wind-map/</guid>
       <description>&lt;p&gt;自分用に作成したキャノンボール専用の簡易版Epic Ride Weatherです。&lt;/p&gt;
-&lt;p&gt;OpenWeatherの&lt;a href=&#34;https://openweathermap.org/api&#34;&gt;Weather API&lt;/a&gt;の無料範囲で取得できるデータを使っています。&lt;/p&gt;</description>
+&lt;p&gt;Open-Meteo(&lt;a href=&#34;https://open-meteo.com/&#34;&gt;https://open-meteo.com/&lt;/a&gt;)のデータを表示します。&lt;/p&gt;</description>
     </item>
     
     <item>

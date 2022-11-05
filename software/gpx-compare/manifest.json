@@ -1,0 +1,14 @@
+{
+  "name": "GPXルート沿いコンビニ検索",
+  "short_name": "GPXコンビニ検索",
+  "description": "GPXファイルからルート沿いのコンビニ・道の駅の検索を行うオンラインツール。",
+  "icons": [
+      {
+          "src": "icons/icon_192x192.png",
+          "sizes": "192x192",
+          "type": "image/png"
+      }
+  ],
+  "display": "standalone",
+  "start_url": "gpx_compare.html"
+}

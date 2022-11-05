@@ -1,0 +1,14 @@
+{
+  "name": "キャノンボール天気予報",
+  "short_name": "キャノボ予報",
+  "description": "東京大阪キャノンボール用の風向き・天候予測を表示します",
+  "icons": [
+      {
+          "src": "images/icon_192x192.png",
+          "sizes": "192x192",
+          "type": "image/png"
+      }
+  ],
+  "display": "standalone",
+  "start_url": "fullscreen.html"
+}

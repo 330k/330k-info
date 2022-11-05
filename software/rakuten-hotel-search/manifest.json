@@ -1,0 +1,14 @@
+{
+  "name": "楽天トラベル 簡易ホテル検索ツール (α)",
+  "short_name": "楽天 簡易ホテル検索",
+  "description": "最終チェックイン時刻と洗濯機の有無の一覧を表示する、楽天トラベルAPIを使った簡易ホテル検索ツールです。",
+  "icons": [
+      {
+          "src": "icons/icon_192x192.png",
+          "sizes": "192x192",
+          "type": "image/png"
+      }
+  ],
+  "display": "standalone",
+  "start_url": "rakuten-hotel-search.html"
+}

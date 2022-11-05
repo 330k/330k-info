@@ -9,11 +9,11 @@
 	<meta name="description" content="">
 	<meta property="og:title" content="キャノンボール専用 天候・風向き予測" />
 <meta property="og:description" content="自分用に作成したキャノンボール専用の簡易版Epic Ride Weatherです。
-OpenWeatherのWeather APIの無料範囲で取得できるデータを使っています。" />
+Open-Meteo(https://open-meteo.com/)のデータを表示します。" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.330k.info/software/cannonball-wind-map/" /><meta property="og:image" content="https://www.330k.info/software/cannonball-wind-map/cannonball_ogimage.png" /><meta property="article:section" content="software" />
 <meta property="article:published_time" content="2020-07-11T19:41:44+09:00" />
-<meta property="article:modified_time" content="2022-11-03T01:56:21+09:00" />
+<meta property="article:modified_time" content="2022-11-05T11:10:33+09:00" />
 
 
 	<meta name="twitter:card" content="summary_large_image"/>
@@ -21,7 +21,7 @@ OpenWeatherのWeather APIの無料範囲で取得できるデータを使って�
 
 <meta name="twitter:title" content="キャノンボール専用 天候・風向き予測"/>
 <meta name="twitter:description" content="自分用に作成したキャノンボール専用の簡易版Epic Ride Weatherです。
-OpenWeatherのWeather APIの無料範囲で取得できるデータを使っています。"/>
+Open-Meteo(https://open-meteo.com/)のデータを表示します。"/>
 
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -85,7 +85,7 @@ if (!doNotTrack) {
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
 	<time class="meta__text" datetime="2020-07-11T19:41:44">July 11, 2020</time>
-	<time class="meta__text" datetime="2022-11-03T01:56:21"> (Last Modified: November 03, 2022)</time>
+	<time class="meta__text" datetime="2022-11-05T11:10:33"> (Last Modified: November 05, 2022)</time>
 </div>
 
 <div class="meta__item-categories meta__item">
@@ -95,11 +95,11 @@ if (!doNotTrack) {
 </div>
 		</header><div class="content post__content clearfix">
 			<p>自分用に作成したキャノンボール専用の簡易版Epic Ride Weatherです。</p>
-<p>OpenWeatherの<a href="https://openweathermap.org/api">Weather API</a>の無料範囲で取得できるデータを使っています。</p>
+<p>Open-Meteo(<a href="https://open-meteo.com/">https://open-meteo.com/</a>)のデータを表示します。</p>
 <script defer>
 {
   iframe_id = 'iframe-1';
-  iframe_src = 'https:\/\/script.google.com\/macros\/s\/AKfycbws1d-bTygDPAhiWj4z5GNnMN0NcLaCg4kHG2H-80sKY-NFGH9TQcDG4XrSSK2XDC2P3w\/exec';
+  iframe_src = 'https:\/\/script.google.com\/macros\/s\/AKfycbzLRQ9-wL3RAhZ4xkaZGIJJ5WNVOpjKfybArRYjoNcgfOfqDAoNo-H1Qzcn53kQY45a\/exec';
 
   
   window.addEventListener("message", function(e){
@@ -127,7 +127,7 @@ if (!doNotTrack) {
 }
 </script>
 <iframe
- src="https://script.google.com/macros/s/AKfycbws1d-bTygDPAhiWj4z5GNnMN0NcLaCg4kHG2H-80sKY-NFGH9TQcDG4XrSSK2XDC2P3w/exec"
+ src="https://script.google.com/macros/s/AKfycbzLRQ9-wL3RAhZ4xkaZGIJJ5WNVOpjKfybArRYjoNcgfOfqDAoNo-H1Qzcn53kQY45a/exec"
  width="100%"
  height="800"
  id="iframe-1"
@@ -136,15 +136,16 @@ if (!doNotTrack) {
 >
 </iframe>
 
+<!-- raw HTML omitted -->
 <h2 id="特徴仕様">特徴・仕様</h2>
 <ul>
 <li>スタート時刻を選ぶことで各地点通過時刻に最も近い時刻の予報データを表示します(カーソルキーに対応)。</li>
-<li>取得できる予報データは48時間後までです。目標時間24時間の場合は最大24時間後、18時間の場合は最大30時間後のスタート時刻まで予報を表示できます。</li>
-<li>2時間に1回データを取得しています。</li>
+<li>目標時間が24時間の場合は<strong>6日後の9時スタートまで</strong>予報を表示できます(予報データが作成されるタイミングによって0時前後は少しずれます)。</li>
+<li>また過去のデータも表示できるようになりましたので、スタートした後でも予報を表示することができます。</li>
 <li>地点は伊賀越ルートで風の影響が大きそうな(かつ局地的な地形の影響を受けにくい)平地を選定しました。</li>
-<li>矢印の長さは風速の平方根に比例、矢印の面積が風速と比例します。(長さと風速を比例させると差が大きくなりすぎて見にくかったため)</li>
+<li>矢印の長さは風速の平方根に比例、<strong>矢印の面積が風速と比例</strong>します。(長さと風速を比例させると差が大きくなりすぎて見にくかったため)</li>
 </ul>
-<p>※気象業務法によって予報業務を許可なく行うことができません(参考: <a href="https://www.jma.go.jp/jma/kishou/minkan/q_a_m.html">気象庁 | 気象等の予報業務許可についてよくお寄せいただくご質問</a>)ので、OpenWeatherのデータは一切加工せずに表示しています。</p>
+<p>※気象業務法によって予報業務を許可なく行うことができません(参考: <a href="https://www.jma.go.jp/jma/kishou/minkan/q_a_m.html">気象庁 | 気象等の予報業務許可についてよくお寄せいただくご質問</a>)ので、取得したデータは加工せずに表示しています。</p>
 <hr>
 <p>Mar. 22 2021:</p>
 <p>ばるさんが詳しい使い方紹介ページを作成してくださいました！<!-- raw HTML omitted -->
@@ -156,6 +157,15 @@ if (!doNotTrack) {
 <li><a href="https://www.windy.com/?35.199,138.123,8">Windy.com</a></li>
 <li><a href="https://www.windfinder.com/#8/35.0412/137.9196/">Windfinder</a></li>
 <li><a href="https://openweathermap.org/api/one-call-api">One Call API: weather data for any geographical coordinate - OpenWeatherMap</a></li>
+<li><a href="https://open-meteo.com/">Open-Meteo</a></li>
+</ul>
+<h2 id="著作権ライセンス">著作権・ライセンス</h2>
+<ul>
+<li>予報データはOpen-Meteoから取得しています。<br>
+<a href="https://open-meteo.com/">Weather data by Open-Meteo.com</a></li>
+<li>天気アイコンには<a href="https://api.met.no/weatherapi/weathericon/2.0/documentation">Weathericon</a>を利用しています。<br>
+The weather icons are copyright (c) 2015-2017 Yr and licensed under the MIT License.<br>
+See <a href="https://github.com/YR/weather-symbols/blob/master/LICENSE">https://github.com/YR/weather-symbols/blob/master/LICENSE</a> for more information.</li>
 </ul>
 <h2 id="更新履歴">更新履歴</h2>
 <ul>
@@ -163,6 +173,9 @@ if (!doNotTrack) {
 <li>Feb. 26 2021: 自前のフルスクリーンボタンを実装。PCおよびAndroidスマホで見やすく。</li>
 <li>Mar. 1 2021: iframeの高さを画面高さを超えないよう自動調整。Android、iPhoneからもスクロール不要かつ一覧性を向上。</li>
 <li>Mar. 4 2021: 読み込み高速化。(β)を外す。</li>
+<li>Nov. 5 2022: データ取得元をOpenWeather(<a href="https://openweathermap.org/">https://openweathermap.org/</a>)からOpen-Meteo(<a href="https://open-meteo.com/">https://open-meteo.com/</a>)に変更。<br>
+2日前から1週間後までのデータが取得できるように。<br>
+天気アイコンを変更。</li>
 </ul>
 		</div>
 		<footer class="post__footer">
