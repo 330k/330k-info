@@ -1,7 +1,7 @@
 {
-  "name": "GPXルート沿いコンビニ検索",
-  "short_name": "GPXコンビニ検索",
-  "description": "GPXファイルからルート沿いのコンビニ・道の駅の検索を行うオンラインツール。",
+  "name": "GPXルート差分比較",
+  "short_name": "GPX差分比較",
+  "description": "2つのGPXルートで差異がある点を強調表示するツールです",
   "icons": [
       {
           "src": "icons/icon_192x192.png",
