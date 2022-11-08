@@ -2,25 +2,31 @@
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
 
 <svg
-   xmlns:dc="http://purl.org/dc/elements/1.1/"
-   xmlns:cc="http://creativecommons.org/ns#"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-   xmlns:svg="http://www.w3.org/2000/svg"
-   xmlns="http://www.w3.org/2000/svg"
-   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    width="240"
    height="240"
    viewBox="0 0 63.5 63.500003"
    version="1.1"
    id="svg8"
-   inkscape:version="0.92.5 (2060ec1f9f, 2020-04-08)"
+   inkscape:version="1.1.2 (0a00cf5339, 2022-02-04)"
    sodipodi:docname="icon002.svg"
    inkscape:export-filename="/home/kei/Documents/GitHub/330k-hugo/static/software/gpx-nearby-search/icon002.png"
    inkscape:export-xdpi="96"
-   inkscape:export-ydpi="96">
+   inkscape:export-ydpi="96"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:dc="http://purl.org/dc/elements/1.1/">
   <defs
      id="defs2">
+    <rect
+       x="26.325883"
+       y="158.68271"
+       width="193.83296"
+       height="69.767544"
+       id="rect3893" />
     <clipPath
        clipPathUnits="userSpaceOnUse"
        id="clipPath1480">
@@ -43,8 +49,8 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="1.4142136"
-     inkscape:cx="242.75359"
-     inkscape:cy="53.741793"
+     inkscape:cx="242.89117"
+     inkscape:cy="54.093667"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -53,11 +59,12 @@
      fit-margin-right="0"
      fit-margin-bottom="0"
      units="px"
-     inkscape:window-width="1848"
+     inkscape:window-width="1846"
      inkscape:window-height="1016"
-     inkscape:window-x="72"
+     inkscape:window-x="74"
      inkscape:window-y="27"
-     inkscape:window-maximized="1" />
+     inkscape:window-maximized="1"
+     inkscape:pagecheckerboard="0" />
   <metadata
      id="metadata5">
     <rdf:RDF>
@@ -129,5 +136,25 @@
          id="path4953"
          inkscape:connector-curvature="0" />
     </g>
+    <text
+       xml:space="preserve"
+       transform="matrix(0.26458333,0,0,0.26458333,12.624407,139.30832)"
+       id="text3891"
+       style="font-style:normal;font-weight:normal;font-size:40px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;white-space:pre;shape-inside:url(#rect3893);fill:#000000;fill-opacity:1;stroke:none"><tspan
+         x="26.326172"
+         y="198.87891"
+         id="tspan7713">Nearby
+</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:10.5833px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       x="34.073891"
+       y="201.57527"
+       id="text6077"><tspan
+         sodipodi:role="line"
+         id="tspan6075"
+         style="stroke-width:0.264583"
+         x="34.073891"
+         y="201.57527">Search</tspan></text>
   </g>
 </svg>
