@@ -37,18 +37,6 @@ const searchresult = {
   api_result: []
 };
 
-jQuery(function(){
-  $("#map_canvas").resizable({
-    handles: "w",
-  });
-  
-  const resize = function(e){
-    $("#left_panel").width($(window).width() - $("#map_canvas").width());
-  };
-  $("#map_canvas").resize(resize);
-  $(window).resize(resize);
-});
-
 /**
  * Hubeny測地線距離計算式
  * @param {number} lat1
@@ -462,7 +450,7 @@ async function getHotelList(latitude, longitude){
  */
 function showHotelList(){
   googlemap.hotelmarkers = [];
-  const ele_tbody = document.getElementById("tbody_hotel");
+  const ele_tbody = document.getElementById("result_list");
   ele_tbody.innerHTML = "";
 
   const hasCoinLaundry = (hotel) => hotel.hotelFacilitiesInfo.hotelFacilities.some((e) => /コインランドリー/.test(e.item));
@@ -511,16 +499,17 @@ function showHotelList(){
     const hotel = hotels_displayed[i];
     const hotel_no = hotel.hotelBasicInfo.hotelNo;
     const hotel_row_id = "hotel_" + hotel_no;
-    const ele_tr = document.createElement("tr");
+    const ele_row = document.createElement("div");
     
-    ele_tr.id = hotel_row_id;
-    ele_tr.innerHTML = "<td>" + (i + 1) + "</td>"
-      + "<td><a href='" + hotel.hotelBasicInfo.hotelInformationUrl + "' target='_blank'>" + hotel.hotelBasicInfo.hotelName + "</a></td>"
-      + "<td>" + hotel.hotelDetailInfo.checkinTime + "-" + (hotel.hotelDetailInfo.lastCheckinTime ? hotel.hotelDetailInfo.lastCheckinTime : "") + "</td>"
-      + "<td>" + (hasCoinLaundry(hotel) ? "✓" : "") + "</td>"
+    ele_row.id = hotel_row_id;
+    ele_row.classList.add("hotel_row");
+    ele_row.innerHTML = "<div class='hotel_number'>" + (i + 1) + "</div>"
+      + "<div class='hotel_name'>" + "<a href='" + hotel.hotelBasicInfo.hotelInformationUrl + "' target='_blank'>" + toHalfWidth(hotel.hotelBasicInfo.hotelName) + "</a></div>"
+      + "<div class='hotel_checkin'>" + hotel.hotelDetailInfo.checkinTime + "-" + (hotel.hotelDetailInfo.lastCheckinTime ? hotel.hotelDetailInfo.lastCheckinTime : "") + "</div>"
+      + "<div class='hotel_laundry'>" + (hasCoinLaundry(hotel) ? "✓" : "") + "</div>"
     
     const infowindow = new google.maps.InfoWindow({
-      content: "<a href='" + hotel.hotelBasicInfo.hotelInformationUrl + "' target='_blank'>" + hotel.hotelBasicInfo.hotelName + "</a>"
+      content: "<a href='" + hotel.hotelBasicInfo.hotelInformationUrl + "' target='_blank'>" + toHalfWidth(hotel.hotelBasicInfo.hotelName) + "</a>"
         + "<br><br>チェックイン時間: " + hotel.hotelDetailInfo.checkinTime + "-" + (hotel.hotelDetailInfo.lastCheckinTime ? hotel.hotelDetailInfo.lastCheckinTime : "")
         + "<br>洗濯機: " + (hasCoinLaundry(hotel) ? "あり" : "なし")
         + "<br>最安値: " + (hotel.hotelBasicInfo.hotelMinCharge ? (hotel.hotelBasicInfo.hotelMinCharge + "円") : "情報なし")
@@ -547,7 +536,7 @@ function showHotelList(){
     })(hotel.hotelDetailInfo.lastCheckinTime) : "ffffff");
     const marker = new google.maps.Marker({
       position: {lat: hotel.hotelBasicInfo.latitude, lng: hotel.hotelBasicInfo.longitude},
-      title: hotel.hotelBasicInfo.hotelName,
+      title: toHalfWidth(hotel.hotelBasicInfo.hotelName),
       icon: {
         path: "M41.01.397c22.43 0 40.614 18.021 40.614 40.25 0 22.233-40.614 95.132-40.614 95.132S.397 62.879.397 40.648C.397 18.418 18.58.397 41.01.397z",
         fillColor: '#' + color,
@@ -579,7 +568,7 @@ function showHotelList(){
       }
     });
     marker.addListener("mouseover", (evt) => {
-      ele_tr.classList.add("hotel_selected");
+      ele_row.classList.add("hotel_selected");
       infowindow.open({
         anchor: marker,
         map: googlemap.map,
@@ -587,22 +576,22 @@ function showHotelList(){
       });
     });
     marker.addListener("mouseout", (evt) => {
-      ele_tr.classList.remove("hotel_selected");
+      ele_row.classList.remove("hotel_selected");
       if(!infowindow.clicked){
         infowindow.close();
       }
     });
     
-    ele_tr.addEventListener("mouseover", (evt) => {
-      ele_tr.classList.add("hotel_selected");
+    ele_row.addEventListener("mouseover", (evt) => {
+      ele_row.classList.add("hotel_selected");
       infowindow.open({
         anchor: marker,
         map: googlemap.map,
         shouldFocus: false,
       });
     });
-    ele_tr.addEventListener("mouseout", (evt) => {
-      ele_tr.classList.remove("hotel_selected");
+    ele_row.addEventListener("mouseout", (evt) => {
+      ele_row.classList.remove("hotel_selected");
       if(!infowindow.clicked){
         infowindow.close();
       }
@@ -611,7 +600,7 @@ function showHotelList(){
       infowindow.clicked = false;
     });
     
-    ele_tbody.appendChild(ele_tr);
+    ele_tbody.appendChild(ele_row);
     googlemap.hotelmarkers.push(marker);
   }
 
@@ -656,6 +645,13 @@ function hideLoader(){
 function showLoader(){
   document.getElementById("loader_bg").style.display = "block";
 }
+
+function toHalfWidth(str) {
+  return str.replace(/[Ａ-Ｚａ-ｚ０-９！-～]/g, function(s){
+    return String.fromCharCode(s.charCodeAt(0)-0xFEE0);
+  }).replace(/　/g, " ");
+}
+
 // ドラッグドロップ失敗時にファイルがダウンロードされるのを防止
 window.addEventListener("dragover", function(e){
   e = e || event;
@@ -680,46 +676,85 @@ if (!doNotTrack) {
 <style>
 * { margin: 0; padding: 0}
 #wrapper {
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   overflow: hidden;
+  display: flex;
 }
+
 #map_canvas {
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 75%;
-  height: 100%;
+  flex: 1;
 }
+
 #left_panel {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 25%;
-  height: 100%;
-  overflow-x: hidden;
-  overflow-y: scroll;
+  flex: 0 1 30%;
+  min-width: 300px;
+  max-width: 400px;
   background-color: #fff;
+  display: flex;
+  flex-direction: column;
 }
+#left_panel #search_conditions {
+  flex: 0 0 100px;
+  background: white;
+}
+
 #left_panel fieldset {
   margin: 5px;
   padding: 5px;
+  border-radius: 5px;
 }
-#left_panel table {
-  border-collapse: collapse;
-  width: 100%;
+
+#left_panel #result_panel{
+  flex: 1;
+  overflow-x: hidden;
+  overflow-y: scroll;
 }
-#left_panel table thead {
+
+#result_list_head {
+  display:flex;
   background-color: #eee;
-}
-#left_panel table tbody {
-  
-}
-#left_panel table td {
-  border-width: 1px 0;
-  border-color: gray;
-  border-style: solid;
+  position: sticky;
+  top: 0;
+  left: 0;
+  font-weight: bold;
   text-align: center;
+  line-height: 2em;
+}
+#hotel_list {
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+.hotel_row {
+  width: 100%;
+  height: 2em;
+  display: flex;
+  border-width: 0 0 1px 0;
+  border-style: solid;
+  border-color: #ddd;
+}
+.hotel_number {
+  flex: 0 0 2em;
+  text-align: center;
+  line-height: 2em;
+}
+.hotel_name {
+  flex: 1;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  vertical-align: middle;
+  margin: auto;
+  max-height: 2em;
+}
+.hotel_checkin {
+  flex: 0 0 7em;
+  text-align: center;
+  line-height: 2em;
+}
+.hotel_laundry {
+  flex: 0 0 1em;
+  text-align: center;
+  line-height: 2em;
 }
 
 #loader_bg {
@@ -784,7 +819,8 @@ if (!doNotTrack) {
 <body>
 <div id="wrapper">
 <div id="left_panel">
-<fieldset id="search_conditions">
+<div id="search_conditions">
+ <fieldset>
   <legend>検索条件</legend>
   <div>最終チェックイン時刻: <select id="last_checkin_min">
     <option value="00:00" selected>すべて</option>
@@ -798,36 +834,33 @@ if (!doNotTrack) {
     <option value="22:00">22:00</option>
     <option value="23:00">23:00</option>
     <option value="24:00">24:00</option>
-  </select>〜<select id="last_checkin_max">
-  <option value="18:00">18:00</option>
-  <option value="19:00">19:00</option>
-  <option value="20:00">20:00</option>
-  <option value="21:00">21:00</option>
-  <option value="22:00">22:00</option>
-  <option value="23:00">23:00</option>
-  <option value="24:00">24:00</option>
-  <option value="25:00">25:00</option>
-  <option value="26:00">26:00</option>
-  <option value="27:00">27:00</option>
-  <option value="99:99" selected>すべて</option>
-</select>
+   </select>〜<select id="last_checkin_max">
+    <option value="18:00">18:00</option>
+    <option value="19:00">19:00</option>
+    <option value="20:00">20:00</option>
+    <option value="21:00">21:00</option>
+    <option value="22:00">22:00</option>
+    <option value="23:00">23:00</option>
+    <option value="24:00">24:00</option>
+    <option value="25:00">25:00</option>
+    <option value="26:00">26:00</option>
+    <option value="27:00">27:00</option>
+    <option value="99:99" selected>すべて</option>
+   </select>
   </div>
   <div><label><input type="checkbox" id="show_hotels_without_last_checkin" checked>最終チェックイン時刻の情報がない宿も表示<label></div>
   <div><label><input type="checkbox" id="laundry_exists">洗濯機が有る宿のみ表示<label></div>
   <div><label title="価格情報がない宿は営業していない可能性があります"><input type="checkbox" id="price_info_exists">最低価格情報が有る宿のみ表示<label></div>
   <!--<div><label><input type="checkbox" id="preserve_results">クリック時に以前検索した結果に追記する<label></div>-->
-</fieldset>
-<table id="table_hotels">
-<thead>
-<tr><th style="width: 2em;">No</th><th>ホテル名</th><th style="width: 11em;">チェックイン</th><th style="width: 4em;">洗濯機</th></tr>
-</thead>
-<tbody id="tbody_hotel">
-</tbody>
-</table>
+ </fieldset>
+</div>
+<div id="result_panel">
+<div id="result_list_head" class="hotel_list"><div class="hotel_number">No</div><div class="hotel_name">ホテル名</div><div class="hotel_checkin">チェックイン</div><div class="hotel_laundry">洗</div></div>
+<div id="result_list"></div>
 <div id="message"></div>
 </div>
-<div id="map_canvas"></div>
 </div>
+<div id="map_canvas"></div>
 </div>
 <div id="loader_bg">
 <div id="loader">
