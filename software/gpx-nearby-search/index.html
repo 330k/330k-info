@@ -98,8 +98,9 @@ if (!doNotTrack) {
 <p><a href="/software/gpx-nearby-search/fullscreen.html">スマートフォン/フルスクリーン版はこちら</a></p>
 <script defer>
 {
-  iframe_id = 'iframe-1';
-  iframe_src = 'https:\/\/script.google.com\/macros\/s\/AKfycbxLEASjNnwYJKl8CCKT3N8VkC8qDN-QqS6AujuplTBktZTV2wIcl5rrUsbXaFTQAUj2qA\/exec';
+  const iframe_id = 'iframe-1';
+  const iframe_src = 'https:\/\/script.google.com\/macros\/s\/AKfycbxLEASjNnwYJKl8CCKT3N8VkC8qDN-QqS6AujuplTBktZTV2wIcl5rrUsbXaFTQAUj2qA\/exec';
+  const fullscreen =  1 ;
 
   
   window.addEventListener("message", function(e){
@@ -123,6 +124,27 @@ if (!doNotTrack) {
     if(document.documentElement.clientHeight < document.getElementById(iframe_id).height){
       document.getElementById(iframe_id).height = document.documentElement.clientHeight;
     }
+
+    
+    if((fullscreen) && (document.fullscreenEnabled || document.mozFullScreenEnabled || document.documentElement.webkitRequestFullScreen || document.msFullscreenEnabled)){
+      const iframe_ele = document.getElementById(iframe_id);
+      const requestFullscreen = iframe_ele.requestFullscreen || iframe_ele.mozRequestFullScreen || iframe_ele.webkitRequestFullScreen || iframe_ele.msRequestFullscreen;
+      
+      const div_ele = document.createElement("div");
+      div_ele.style = "position: absolute; right: 0; top: -35px; width: 32px; height: 32px; background: #eee; padding: 5px; border: 1px solid gray; border-radius: 3px; cursor: pointer;";
+      div_ele.addEventListener("click", function(evt){
+        requestFullscreen.call(iframe_ele);
+      });
+      const img_ele = document.createElement("img");
+      img_ele.src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 513.32 513.32' xml:space='preserve'%3E%3Cpath d='M177.523 305.853 42.777 440.6v-98.387H0V513.32h171.107v-42.777H74.859l134.746-134.746z'/%3E%3Cpath d='M470.543 440.6 72.72 42.777h98.387V0H0v171.107h42.777V72.72L440.6 470.543h-98.387v42.777H513.32V342.213h-42.777z'/%3E%3Cpath d='M342.213 0v42.777h100.526L307.992 177.523l29.943 29.944L470.543 74.859v96.248h42.777V0z'/%3E%3C/svg%3E";
+      img_ele.width = 20;
+      img_ele.height = 20;
+      img_ele.style = "display: block;";
+      img_ele.title = "フルスクリーン表示(Escで戻る)";
+
+      div_ele.appendChild(img_ele);
+      iframe_ele.parentElement.appendChild(div_ele);
+    }
   });
 }
 </script>
@@ -136,11 +158,6 @@ if (!doNotTrack) {
  allow="accelerometer *; ambient-light-sensor *; autoplay *; camera *; clipboard-read *; clipboard-write *; encrypted-media *; fullscreen *; geolocation *; gyroscope *; magnetometer *; microphone *; midi *; payment *; picture-in-picture *; screen-wake-lock *; speaker *; sync-xhr *; usb *; web-share *; vibrate *; vr *"
 >
 </iframe>
-
-<div style="position: absolute; right: 0; top: -35px; width: 32px; height: 32px; background: #eee; padding: 5px; border: 1px solid gray; border-radius: 3px; cursor: pointer;" onclick="document.getElementById('iframe-1').requestFullscreen();">
-<img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 513.32 513.32' xml:space='preserve'%3E%3Cpath d='M177.523 305.853 42.777 440.6v-98.387H0V513.32h171.107v-42.777H74.859l134.746-134.746z'/%3E%3Cpath d='M470.543 440.6 72.72 42.777h98.387V0H0v171.107h42.777V72.72L440.6 470.543h-98.387v42.777H513.32V342.213h-42.777z'/%3E%3Cpath d='M342.213 0v42.777h100.526L307.992 177.523l29.943 29.944L470.543 74.859v96.248h42.777V0z'/%3E%3C/svg%3E" width="20" height="20" style="display:block;" title="フルスクリーン(Escで戻る)">
-</div>
-
 </div>
 <h2 id="概要">概要</h2>
 <p>GPXファイルのルート沿いにあるコンビニ・道の駅のリストを、ルート上の距離とルートからの距離とともに出力するツールです。</p>
