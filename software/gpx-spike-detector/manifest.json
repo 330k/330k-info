@@ -1,0 +1,14 @@
+{
+  "name": "GPXヒゲ検出",
+  "short_name": "GPXヒゲ検出",
+  "description": "GPXファイルで意図せず作ってしまった「ヒゲ」を検出します。",
+  "icons": [
+      {
+          "src": "images/icon_192x192.png",
+          "sizes": "192x192",
+          "type": "image/png"
+      }
+  ],
+  "display": "standalone",
+  "start_url": "fullscreen.html"
+}

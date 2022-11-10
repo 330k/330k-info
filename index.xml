@@ -75,7 +75,8 @@
       <pubDate>Sun, 31 Jul 2022 16:13:15 +0900</pubDate>
       
       <guid>https://www.330k.info/software/gpx-spike-detector/</guid>
-      <description>&lt;p&gt;GPXファイルのルートで「ヒゲ」(意図せず細い路地に入ってしまった部分)を検出するツールです。&lt;/p&gt;</description>
+      <description>&lt;p&gt;GPXファイルのルートで「ヒゲ」(意図せず細い路地に入ってしまった部分)を検出するツールです。&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.330k.info/software/gpx-spike-detector/fullscreen.html&#34;&gt;スマートフォン/フルスクリーン版はこちら&lt;/a&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -106,7 +107,7 @@
       <description>&lt;p&gt;複数のGPXファイルの比較をするためのツールです。&lt;/p&gt;
 &lt;p&gt;主に「自分がキューシートを読んで引いたルートを、主催者が参考として提供しているルートを比較して確認したい」
 「参考ルートの更新された場合、更新された部分を確認したい」という要件を想定して作成しました。&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;./gpx_compare.html&#34;&gt;フルスクリーン版はこちら&lt;/a&gt;&lt;/p&gt;</description>
+&lt;p&gt;&lt;a href=&#34;https://www.330k.info/software/gpx-compare/gpx_compare.html&#34;&gt;スマートフォン/フルスクリーン版はこちら&lt;/a&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -377,7 +378,8 @@ Snappy(Snap)を使おうとすると、snapデーモンはホストのルートC
       <pubDate>Fri, 10 Sep 2021 23:56:36 +0900</pubDate>
       
       <guid>https://www.330k.info/software/gpx-nearby-search/</guid>
-      <description>&lt;p&gt;GPXファイルからルート沿いのコンビニ・道の駅の検索を行うオンラインツール。&lt;/p&gt;</description>
+      <description>&lt;p&gt;GPXファイルからルート沿いのコンビニ・道の駅の検索を行うオンラインツール。&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.330k.info/software/gpx-nearby-search/fullscreen.html&#34;&gt;スマートフォン/フルスクリーン版はこちら&lt;/a&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
