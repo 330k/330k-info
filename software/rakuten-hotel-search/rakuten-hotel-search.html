@@ -335,13 +335,13 @@ window.addEventListener("DOMContentLoaded", function(){
       });
       googlemap.hotelmarkers = [];
       showHotelList();
+      
+      showAllHotels(document.getElementById("show_all_hotels").checked);
     });
   });
   
   document.getElementById("show_all_hotels").addEventListener("change", function(evt){
-    const val = document.getElementById("show_all_hotels").checked;
-    
-    showAllHotels(val);
+    showAllHotels(document.getElementById("show_all_hotels").checked);
   });
   
   // GPX読み込み対応
@@ -419,26 +419,35 @@ function showAllHotels(visible){
   
   setTimeout(function(){
     if(visible){
-      for(const info of hotel_data.summary_info){
-        if((info.latitude > 0) && (info.longitude > 0)){
+      if(googlemap.all_hotel_markers.length === 0){
+        for(let i = 0; i < hotel_data.summary_info.length; i++){
+          const hotel = hotel_data.summary_info[i];
+          const color1 = hotelMarkerColor(hotel);
+          const color2 = hasCoinLaundry(hotel) ? "000" : "fff";
           const m = new google.maps.Marker({
             map: googlemap.map,
-            position: { lat: info.latitude, lng: info.longitude },
+            position: { lat: hotel.latitude, lng: hotel.longitude },
             icon: {
-              url: `https://maps.google.com/mapfiles/kml/paddle/red-circle-lv.png`,
-              anchor: new google.maps.Point(5, 5),
-              scaledSize: new google.maps.Size(10, 10)
+              url: `data:image/svg+xml,%3Csvg width='9' height='9' viewBox='0 0 9 9' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='4.5' cy='4.5' r='4' fill='%23${color1}' stroke='%23${color2}' stroke-width='1' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E`,
+              anchor: new google.maps.Point(5, 5)
             },
-            title: info.hotelName
+            title: hotel.hotelName,
+            visible: checkHotelVisibility(hotel)
           });
-          googlemap.all_hotel_markers.push(m);
-          
-        }else{
-          console.error(info);
+          googlemap.all_hotel_markers[i] = m;
         }
+        
+      }else{
+        for(let i = 0; i < hotel_data.summary_info.length; i++){
+          const hotel = hotel_data.summary_info[i];
+          googlemap.all_hotel_markers[i].setVisible(checkHotelVisibility(hotel));
+        }
+        
       }
+      
     }else{
-      googlemap.all_hotel_markers.map(e => e.setMap(null));
+      //googlemap.all_hotel_markers.map(e => e.setMap(null));
+      googlemap.all_hotel_markers.map(e=>e.setVisible(false));
     }
     
     hideLoader();
@@ -463,6 +472,48 @@ async function searchHotels(){
   showHotelList();
 }
 
+
+function hasCoinLaundry(hotel){
+  return hotel.laundry;
+}
+function checkHotelVisibility(hotel){
+  // 最終チェックイン時刻での判定
+  const checkintime = hotel.lastCheckinTime ? hotel.lastCheckinTime : null;
+  let flag = false;
+  
+  if(checkintime){
+    flag = (checkintime >= document.getElementById("last_checkin_min").value) && (checkintime <= document.getElementById("last_checkin_max").value);
+  }else{
+    flag = !!document.getElementById("show_hotels_without_last_checkin").checked;
+  }
+  
+  // 洗濯機有無の判定
+  if(document.getElementById("laundry_exists").checked){
+    flag = flag && hasCoinLaundry(hotel);
+  }
+  
+  return flag;
+}
+function hotelMarkerColor(hotel){
+  return (hotel.lastCheckinTime ? ((hhmm) => {
+    if(hhmm <= "18:00"){
+      return "f00";
+    }else if(hhmm <= "20:00"){
+      return "f70";
+    }else if(hhmm <= "22:00"){
+      return "fb0";
+    }else if(hhmm <= "24:00"){
+      return "9f0";
+    }else if(hhmm <= "26:00"){
+      return "0f9";
+    }else if(hhmm <= "28:00"){
+      return "0f9";
+    }else{
+      return "0ff";
+    }
+  })(hotel.lastCheckinTime) : "ffffff");
+}
+
 /**
  * 検索結果を表示
  */
@@ -471,9 +522,7 @@ function showHotelList(){
   const ele_list = document.getElementById("result_list");
   ele_list.innerHTML = "";
 
-  const hasCoinLaundry = (hotel) => hotel.laundry;
-  
-  // 最終チェックイン時刻が遅い、洗濯機がある順にソート
+  // 最終チェックイン時刻が遅い、洗濯機がある順にソート(最大300件)
   let hotels_displayed = hotel_data.display_info.sort((a,b) => {
     const c1 = a.lastCheckinTime ? a.lastCheckinTime : "";
     const c2 = b.lastCheckinTime ? b.lastCheckinTime : "";
@@ -490,31 +539,12 @@ function showHotelList(){
     }
   }).slice(0, 300);
 
-  // 表示を絞り込み(最終チェックイン時刻)
-  hotels_displayed = hotels_displayed.filter((hotel) => {
-    const checkintime = hotel.lastCheckinTime ? hotel.lastCheckinTime : null;
-
-    if(checkintime){
-      return (checkintime >= document.getElementById("last_checkin_min").value) && (checkintime <= document.getElementById("last_checkin_max").value);
-    }else{
-      return !!document.getElementById("show_hotels_without_last_checkin").checked;
-    }
-  });
-  // 表示を絞り込み(洗濯機)
-  if(document.getElementById("laundry_exists").checked){
-    hotels_displayed = hotels_displayed.filter((hotel) => {
-      return hasCoinLaundry(hotel);
-    });
-  }
-  /*// 絞り込み(価格情報)
-  if(document.getElementById("price_info_exists").checked){
-    hotels_displayed = hotels_displayed.filter((hotel) => {
-      return !!hotel.hotelMinCharge;
-    });
-  }*/
-
   for(i = 0; i < hotels_displayed.length; i++){
     const hotel = hotels_displayed[i];
+    if(!checkHotelVisibility(hotel)){
+      continue;
+    }
+    
     const hotel_no = hotel.hotelNo;
     const hotel_row_id = "hotel_" + hotel_no;
     const ele_row = document.createElement("div");
@@ -527,23 +557,7 @@ function showHotelList(){
       + "<div class='hotel_checkin'>" + hotel.checkinTime + "-" + (hotel.lastCheckinTime ? hotel.lastCheckinTime : "") + "</div>"
       + "<div class='hotel_laundry'>" + (hasCoinLaundry(hotel) ? "✓" : "") + "</div>"
     
-    const color = (hotel.lastCheckinTime ? ((hhmm) => {
-      if(hhmm <= "18:00"){
-        return "f00";
-      }else if(hhmm <= "20:00"){
-        return "f70";
-      }else if(hhmm <= "22:00"){
-        return "fb0";
-      }else if(hhmm <= "24:00"){
-        return "9f0";
-      }else if(hhmm <= "26:00"){
-        return "0f9";
-      }else if(hhmm <= "28:00"){
-        return "0f9";
-      }else{
-        return "0ff";
-      }
-    })(hotel.lastCheckinTime) : "ffffff");
+    const color = hotelMarkerColor(hotel);
     const marker = new google.maps.Marker({
       position: {lat: hotel.latitude, lng: hotel.longitude},
       title: toHalfWidth(hotel.hotelName),
@@ -1077,7 +1091,7 @@ html, body {
 <fieldset>
  <legend>その他機能</legend>
  <div><button onclick="document.getElementById('gpx_file').click();">GPXファイル読み込み</button><input type="file" id="gpx_file" accept=".gpx" /></div>
- <div><label><input type="checkbox" id="show_all_hotels">すべてのホテルの位置を表示</label></div>
+ <div><label><input type="checkbox" id="show_all_hotels">検索条件を満たすすべてのホテルの位置を表示</label></div>
 </fieldset>
 </div>
 <div id="result_panel">
