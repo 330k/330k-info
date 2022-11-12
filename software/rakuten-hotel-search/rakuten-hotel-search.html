@@ -577,7 +577,7 @@ function showHotelList(){
         infowindow.loadstatus = "loading";
         infowindow.setContent("loading...");
         
-        promise_queue.enqueue(function(){
+        promise_queue.unshift(function(){
           return new Promise((resolve, reject) => {
             let hotel = hotel_data.detail_info.get(hotel_no);
             const setHotelInfo = function(infowindow, hotel){
@@ -850,9 +850,8 @@ function PromiseQueue(){
       if(this._state === "STOPPED"){
         this._state = "EXECUTING";
 
-        const func = this._queue[0];
+        const func = this._queue.shift();
         func().finally(() => {
-          this._queue.shift();
           this._state = "STOPPED";
           this._execute();
         });
@@ -863,12 +862,19 @@ function PromiseQueue(){
   };
   
   /**
-   *
+   * キューの末尾に関数を加える
    * @param {Function} func Promiseを返す関数
    */
-  this.enqueue = function(func){
+  this.push = function(func){
     this._queue.push(func);
-    
+    this._execute();
+  };
+  /**
+   * キューの先頭に関数を加える
+   * @param {Function} func Promiseを返す関数
+   */
+  this.unshift = function(func){
+    this._queue.unshift(func);
     this._execute();
   };
   
