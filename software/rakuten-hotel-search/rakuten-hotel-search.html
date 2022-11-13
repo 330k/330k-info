@@ -1090,6 +1090,15 @@ html, body {
     display: none;
   }
 }
+
+  #button_clear_result {
+    display: none;
+  }
+@media (pointer: coarse){
+  #button_clear_result {
+    display: inline-block;
+  }
+}
 </style>
 </head>
 <body>
@@ -1129,7 +1138,10 @@ html, body {
 </fieldset>
 <fieldset>
  <legend>その他機能</legend>
- <div><button onclick="document.getElementById('gpx_file').click();">GPXファイル読み込み</button><input type="file" id="gpx_file" accept=".gpx" /></div>
+ <div>
+  <button onclick="document.getElementById('gpx_file').click();">GPXファイル読み込み</button><input type="file" id="gpx_file" accept=".gpx" />
+  <button id="button_clear_result" onclick="clearResult();">検索結果のクリア</button>
+ </div>
  <div><label><input type="checkbox" id="show_all_hotels">検索条件を満たすすべてのホテルの位置を表示</label></div>
 </fieldset>
 </div>
