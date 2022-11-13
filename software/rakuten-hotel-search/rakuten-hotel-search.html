@@ -521,10 +521,11 @@ function hotelMarkerColor(hotel){
 function showHotelList(){
   googlemap.hotelmarkers = [];
   const ele_list = document.getElementById("result_list");
+  let count = 0;
   ele_list.innerHTML = "";
 
   // 最終チェックイン時刻が遅い、洗濯機がある順にソート(最大300件)
-  let hotels_displayed = hotel_data.display_info.sort((a,b) => {
+  let hotels_displayed = hotel_data.display_info.filter(e => checkHotelVisibility(e)).sort((a,b) => {
     const c1 = a.lastCheckinTime ? a.lastCheckinTime : "";
     const c2 = b.lastCheckinTime ? b.lastCheckinTime : "";
     
@@ -542,9 +543,6 @@ function showHotelList(){
 
   for(i = 0; i < hotels_displayed.length; i++){
     const hotel = hotels_displayed[i];
-    if(!checkHotelVisibility(hotel)){
-      continue;
-    }
     
     const hotel_no = hotel.hotelNo;
     const hotel_row_id = "hotel_" + hotel_no;
@@ -686,9 +684,10 @@ function showHotelList(){
     
     ele_list.appendChild(ele_row);
     googlemap.hotelmarkers.push(marker);
+    
   }
 
-  document.getElementById("message").innerHTML = "";
+  document.getElementById("message").innerHTML = "検索結果: " + hotels_displayed.length + " 件";
 }
 
 /**
@@ -702,6 +701,7 @@ function clearResult(){
   
   hotel_data.display_info = [];
   showHotelList();
+  document.getElementById("message").innerHTML = "";
 }
 
 function hideLoader(){
@@ -993,6 +993,13 @@ html, body {
   text-align: center;
 }
 
+#message {
+  display: none;
+  flex: 0 0 16px;
+  background: #eee;
+  line-height: 16px;
+}
+
 #loader_bg {
   position: fixed;
   top: 0;
@@ -1078,6 +1085,9 @@ html, body {
   }
   .hotel_name {
     max-height: 1em;
+  }
+  #message {
+    display: none;
   }
 }
 </style>
