@@ -6,8 +6,8 @@
 <meta property="og:description" content="最終チェックイン時刻と洗濯機の有無の一覧を表示する、楽天トラベルAPIを使った簡易ホテル検索ツールです。" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://www.330k.info/software/rakuten-hotel-search/rakuten-hotel-search.html" />
-<meta property="og:image" content="https://www.330k.info/apple-touch-icon.png"/>
-<!--<meta name="viewport" content="width=640">-->
+<meta property="og:image" content="https://www.330k.info/apple-touch-icon.png"/><!--<meta name="viewport" content="width=640">-->
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <link rel="favicon" type="image/png"  href="rakuten_travel_logo_32x32.png">
 <link rel="manifest" href="manifest.json">
 <script defer>
@@ -431,8 +431,9 @@ function showAllHotels(visible){
               url: `data:image/svg+xml,%3Csvg width='9' height='9' viewBox='0 0 9 9' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='4.5' cy='4.5' r='4' fill='%23${color1}' stroke='%23${color2}' stroke-width='1' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E`,
               anchor: new google.maps.Point(5, 5)
             },
-            title: hotel.hotelName,
-            visible: checkHotelVisibility(hotel)
+            //title: hotel.hotelName,
+            visible: checkHotelVisibility(hotel),
+            clickable: false
           });
           googlemap.all_hotel_markers[i] = m;
         }
@@ -964,6 +965,7 @@ html, body {
 .hotel_row {
   width: 100%;
   height: 2em;
+  line-height: 2em;
   display: flex;
   border-width: 0 0 1px 0;
   border-style: solid;
@@ -972,7 +974,6 @@ html, body {
 .hotel_number {
   flex: 0 0 2em;
   text-align: center;
-  line-height: 2em;
 }
 .hotel_name {
   flex: 1;
@@ -986,12 +987,10 @@ html, body {
 .hotel_checkin {
   flex: 0 0 7em;
   text-align: center;
-  line-height: 2em;
 }
 .hotel_laundry {
   flex: 0 0 1em;
   text-align: center;
-  line-height: 2em;
 }
 
 #loader_bg {
@@ -1050,6 +1049,25 @@ html, body {
 .dropover {
   background-color: rgba(240, 240, 240, 0.5);
   display: block;
+}
+
+@media screen and (max-width: 640px){
+  #wrapper {
+    flex-direction: column;
+  }
+  #left_panel {
+    flex: 0 0 50%;
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+  }
+  .hotel_row {
+    height: 1em;
+    line-height: 1em;
+  }
+  .hotel_name {
+    max-height: 1em;
+  }
 }
 </style>
 </head>
