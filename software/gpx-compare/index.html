@@ -195,19 +195,19 @@ if (!doNotTrack) {
   meta.setAttribute("href", "manifest.json");
   document.head.appendChild(meta);
   
-  window.addEventListener('appinstalled', (event) => {
+  window.addEventListener("appinstalled", (event) => {
     
     location.href = fullscreen_html;
   });
 
   
-  window.matchMedia('(display-mode: standalone)').addEventListener('change', (evt) => {
-    let displayMode = 'browser';
+  window.matchMedia("(display-mode: standalone)").addEventListener("change", (evt) => {
+    let displayMode = "browser";
     if (evt.matches) {
-      displayMode = 'standalone';
+      displayMode = "standalone";
     }
     
-    console.log('DISPLAY_MODE_CHANGED', displayMode);
+    console.log("DISPLAY_MODE_CHANGED", displayMode);
     if(displayMode === "standalone"){
       location.href = fullscreen_html;
     }
