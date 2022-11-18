@@ -310,13 +310,12 @@ Snappy(Snap)を使おうとすると、snapデーモンはホストのルートC
     </item>
     
     <item>
-      <title>楽天トラベル 簡易ホテル検索(α)</title>
+      <title>楽天トラベル ホテル検索</title>
       <link>https://www.330k.info/software/rakuten-hotel-search/</link>
       <pubDate>Sun, 21 Nov 2021 22:47:20 +0900</pubDate>
       
       <guid>https://www.330k.info/software/rakuten-hotel-search/</guid>
-      <description>&lt;p&gt;最終チェックイン時刻を見やすく表示する、楽天トラベルのホテル検索ツール。&lt;/p&gt;
-&lt;p&gt;まだまだα版です。&lt;/p&gt;</description>
+      <description>&lt;p&gt;地図の範囲内のホテルを最終チェックイン時刻と洗濯機の有無から絞り込んで表示する、楽天トラベルのホテル検索ツール。&lt;/p&gt;</description>
     </item>
     
     <item>
