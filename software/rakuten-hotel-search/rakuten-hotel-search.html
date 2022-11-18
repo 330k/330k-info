@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
 <head>
 <meta charset="utf-8">
@@ -28,9 +29,51 @@ if ("serviceWorker" in navigator) {
 </script>
 <style>
   * { margin: 0; padding: 0; border: none;}
+  html, body { width: 100%; height: 100%; }
+  #wrapper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+  #header {
+    flex: 0 0 24px;
+    line-height: 24px;
+    background-color: #000;
+    color: white;
+    font-weight: bold;
+    box-sizing: border-box;
+    border-color: red;
+    border-width: 0 0 2px 0;
+    border-style: solid;
+    padding: 0 0 0 3px;
+
+    display: flex;
+  }
+  #title{
+    flex: 1;
+  }
+  #page_link{
+    flex: 0 0 32px;
+    text-align: center;
+  }
+  iframe {
+    flex: 1;
+  }
+  a, a:hover, a:visited {
+    text-decoration: none;
+    color: white;
+  }
 </style>
 </head>
 <body>
-<iframe width="100%" height="100%" src="https://330k.github.io/rakuten-hotel-search/rakuten-hotel-search.html" allow="accelerometer *; ambient-light-sensor *; autoplay *; camera *; clipboard-read *; clipboard-write *; encrypted-media *; fullscreen *; geolocation *; gyroscope *; magnetometer *; microphone *; midi *; payment *; picture-in-picture *; screen-wake-lock *; speaker *; sync-xhr *; usb *; web-share *; vibrate *; vr *"></iframe>
+  <div id="wrapper">
+    <div id="header">
+      <div id="title"><a href="https://www.330k.info/">330k.info</a> - 楽天トラベル ホテル検索ツール</div>
+      <div id="page_link"><a href="https://www.330k.info/software/rakuten-hotel-search/">？</a></div>
+    </div>
+    <iframe width="100%" src="https://330k.github.io/rakuten-hotel-search/rakuten-hotel-search.html" allow="accelerometer *; ambient-light-sensor *; autoplay *; camera *; clipboard-read *; clipboard-write *; encrypted-media *; fullscreen *; geolocation *; gyroscope *; magnetometer *; microphone *; midi *; payment *; picture-in-picture *; screen-wake-lock *; speaker *; sync-xhr *; usb *; web-share *; vibrate *; vr *"></iframe>
+  </div>
 </body>
 </html>
