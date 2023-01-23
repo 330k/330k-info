@@ -13,8 +13,7 @@ AccessがなくてもCSVファイルやExcelファイルに対してSQLを実行
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.330k.info/software/hta-sql-tool/" /><meta property="og:image" content="https://www.330k.info/software/hta-sql-tool/htasql001.png" /><meta property="article:section" content="software" />
 <meta property="article:published_time" content="2016-01-13T22:42:14+09:00" />
-<meta property="article:modified_time" content="2021-03-04T20:08:19+09:00" />
-
+<meta property="article:modified_time" content="2023-01-11T02:35:56+09:00" />
 
 	<meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://www.330k.info/software/hta-sql-tool/htasql001.png"/>
@@ -85,7 +84,7 @@ if (!doNotTrack) {
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
 	<time class="meta__text" datetime="2016-01-13T22:42:14">January 13, 2016</time>
-	<time class="meta__text" datetime="2021-03-04T20:08:19"> (Last Modified: March 04, 2021)</time>
+	<time class="meta__text" datetime="2023-01-11T02:35:56"> (Last Modified: January 11, 2023)</time>
 </div>
 
 <div class="meta__item-categories meta__item">
@@ -125,9 +124,11 @@ select intoで直接ファイルに書き出すこともできます。</p>
 </span></span></span><span style="display:flex;"><span><span style="color:#008000">  http://opensource.org/licenses/mit-license.php
 </span></span></span><span style="display:flex;"><span><span style="color:#008000">--&gt;</span>
 </span></span><span style="display:flex;"><span>&lt;title&gt;HTA SQL Tool by 330k&lt;/title&gt;
-</span></span><span style="display:flex;"><span>&lt;HTA:APPLICATION ID=<span style="color:#a31515">&#34;USQLEXE&#34;</span> APPLICATIONNAME=<span style="color:#a31515">&#34;USQLEXE&#34;</span> BORDER=<span style="color:#a31515">&#34;thick&#34;</span> BORDERSTYLE=<span style="color:#a31515">&#34;normal&#34;</span>
+</span></span><span style="display:flex;"><span>&lt;HTA:APPLICATION ID=<span style="color:#a31515">&#34;USQLEXE&#34;</span> APPLICATIONNAME=<span style="color:#a31515">&#34;USQLEXE&#34;</span> BORDER=<span style="color:#a31515">&#34;thick&#34;</span>
+</span></span><span style="display:flex;"><span>BORDERSTYLE=<span style="color:#a31515">&#34;normal&#34;</span>
 </span></span><span style="display:flex;"><span>CAPTION=<span style="color:#a31515">&#34;yes&#34;</span> ICON=<span style="color:#a31515">&#34;C:\WINDOWS\system32\rsnotify.exe&#34;</span> INNERBORDER=<span style="color:#a31515">&#34;no&#34;</span>
-</span></span><span style="display:flex;"><span>MAXIMIZEBUTTON=<span style="color:#a31515">&#34;yes&#34;</span> MINIMIZEBUTTON=<span style="color:#a31515">&#34;yes&#34;</span> SHOWINTASKBAR=<span style="color:#a31515">&#34;yes&#34;</span> SINGLEINSTANCE=<span style="color:#a31515">&#34;no&#34;</span>
+</span></span><span style="display:flex;"><span>MAXIMIZEBUTTON=<span style="color:#a31515">&#34;yes&#34;</span> MINIMIZEBUTTON=<span style="color:#a31515">&#34;yes&#34;</span> SHOWINTASKBAR=<span style="color:#a31515">&#34;yes&#34;</span>
+</span></span><span style="display:flex;"><span>SINGLEINSTANCE=<span style="color:#a31515">&#34;no&#34;</span>
 </span></span><span style="display:flex;"><span>SYSMENU=<span style="color:#a31515">&#34;yes&#34;</span> VERSION=<span style="color:#a31515">&#34;1.0&#34;</span> WINDOWSTATE=<span style="color:#a31515">&#34;normal&#34;</span> SCROLL=<span style="color:#a31515">&#34;no&#34;</span> SCROLLFLAT=<span style="color:#a31515">&#34;no&#34;</span>
 </span></span><span style="display:flex;"><span>SELECTION=<span style="color:#a31515">&#34;yes&#34;</span> CONTEXTMENU=<span style="color:#a31515">&#34;yes&#34;</span> NAVIGABLE=<span style="color:#a31515">&#34;yes&#34;</span> /&gt;
 </span></span><span style="display:flex;"><span>&lt;/head&gt;
@@ -142,224 +143,277 @@ select intoで直接ファイルに書き出すこともできます。</p>
 </span></span><span style="display:flex;"><span><span style="color:#00f">var</span> result_tsv = <span style="color:#a31515">&#39;&#39;</span>;
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>window.onunload = <span style="color:#00f">function</span>(){
-</span></span><span style="display:flex;"><span>    closeADO();
+</span></span><span style="display:flex;"><span>  closeADO();
 </span></span><span style="display:flex;"><span>};
 </span></span><span style="display:flex;"><span>window.onresize = <span style="color:#00f">function</span>(){
-</span></span><span style="display:flex;"><span>    document.all.result.style.height = document.body.clientHeight - document.all.t1.clientHeight - document.all.status.clientHeight; }; window.onload = <span style="color:#00f">function</span>(){
-</span></span><span style="display:flex;"><span>    window.onresize();
-</span></span><span style="display:flex;"><span>    <span style="color:#00f">try</span>{
-</span></span><span style="display:flex;"><span>        document.all.sql.value = shell.RegRead(<span style="color:#a31515">&#34;HKCU\\SQLEXEC\\SQLLOG&#34;</span>);
-</span></span><span style="display:flex;"><span><span style="color:#008000">//        document.all.filename.value = shell.RegRead(&#34;HKCU\\SQLEXEC\\LASTDB&#34;);
-</span></span></span><span style="display:flex;"><span><span style="color:#008000">//        alert(USQLEXE.commandLine);
-</span></span></span><span style="display:flex;"><span><span style="color:#008000"></span>    }<span style="color:#00f">catch</span>( e ){
-</span></span><span style="display:flex;"><span><span style="color:#008000">//    	alert(e.message);
-</span></span></span><span style="display:flex;"><span><span style="color:#008000"></span>    }
+</span></span><span style="display:flex;"><span>  document.all.result.style.top = document.all.top_panel.clientHeight;
+</span></span><span style="display:flex;"><span>  document.all.result.style.height = document.body.clientHeight -
+</span></span><span style="display:flex;"><span>document.all.top_panel.clientHeight - document.all.status.clientHeight;
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>window.onload = <span style="color:#00f">function</span>(){
+</span></span><span style="display:flex;"><span>  window.onresize();
+</span></span><span style="display:flex;"><span>  <span style="color:#00f">try</span>{
+</span></span><span style="display:flex;"><span>    document.all.sql.value = shell.RegRead(<span style="color:#a31515">&#34;HKCU\\SQLEXEC\\SQLLOG&#34;</span>);
+</span></span><span style="display:flex;"><span>    document.all.filename.value = shell.RegRead(<span style="color:#a31515">&#34;HKCU\\SQLEXEC\\LASTDB&#34;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#008000">//    alert(USQLEXE.commandLine);
+</span></span></span><span style="display:flex;"><span><span style="color:#008000">//    alert(shell.RegRead(&#34;HKCU\\SQLEXEC\\SQLLOG&#34;));
+</span></span></span><span style="display:flex;"><span><span style="color:#008000"></span>  }<span style="color:#00f">catch</span>( e ){
+</span></span><span style="display:flex;"><span>    alert(e.message);
+</span></span><span style="display:flex;"><span>  }
 </span></span><span style="display:flex;"><span>};
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#00f">function</span> loadDatabase(){
-</span></span><span style="display:flex;"><span>    <span style="color:#00f">var</span> filepath = document.getElementById(<span style="color:#a31515">&#39;fileselector&#39;</span>).value || document.getElementById(<span style="color:#a31515">&#39;filename&#39;</span>).value;
-</span></span><span style="display:flex;"><span>    <span style="color:#00f">var</span> readonly = document.getElementById(<span style="color:#a31515">&#39;readonly&#39;</span>).value;
-</span></span><span style="display:flex;"><span>    <span style="color:#00f">var</span> hdr = document.getElementById(<span style="color:#a31515">&#39;hdr&#39;</span>).value;
-</span></span><span style="display:flex;"><span>    document.getElementById(<span style="color:#a31515">&#39;filename&#39;</span>).value = filepath;
-</span></span><span style="display:flex;"><span>    document.getElementById(<span style="color:#a31515">&#39;fileselector&#39;</span>).parentNode.innerHTML = document.getElementById(<span style="color:#a31515">&#39;fileselector&#39;</span>).parentNode.innerHTML;
-</span></span><span style="display:flex;"><span>    setTimeout(<span style="color:#00f">function</span>(){
-</span></span><span style="display:flex;"><span>        _loadDatabase(filepath, readonly, hdr);
-</span></span><span style="display:flex;"><span>    }, 10); <span style="color:#008000">// wait for unlock file
-</span></span></span><span style="display:flex;"><span><span style="color:#008000"></span>    <span style="color:#00f">return</span> <span style="color:#00f">false</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#00f">var</span> filepath = document.getElementById(<span style="color:#a31515">&#39;fileselector&#39;</span>).value ||
+</span></span><span style="display:flex;"><span>document.getElementById(<span style="color:#a31515">&#39;filename&#39;</span>).value;
+</span></span><span style="display:flex;"><span>  <span style="color:#00f">var</span> readonly = document.getElementById(<span style="color:#a31515">&#39;readonly&#39;</span>).value;
+</span></span><span style="display:flex;"><span>  <span style="color:#00f">var</span> hdr = document.getElementById(<span style="color:#a31515">&#39;hdr&#39;</span>).value;
+</span></span><span style="display:flex;"><span>  document.getElementById(<span style="color:#a31515">&#39;filename&#39;</span>).value = filepath;
+</span></span><span style="display:flex;"><span>  document.getElementById(<span style="color:#a31515">&#39;fileselector&#39;</span>).parentNode.innerHTML =
+</span></span><span style="display:flex;"><span>document.getElementById(<span style="color:#a31515">&#39;fileselector&#39;</span>).parentNode.innerHTML;
+</span></span><span style="display:flex;"><span>  setTimeout(<span style="color:#00f">function</span>(){
+</span></span><span style="display:flex;"><span>    _loadDatabase(filepath, readonly, hdr);
+</span></span><span style="display:flex;"><span>  }, 10); <span style="color:#008000">// wait for unlock file
+</span></span></span><span style="display:flex;"><span><span style="color:#008000"></span>  <span style="color:#00f">return</span> <span style="color:#00f">false</span>;
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#00f">function</span> _loadDatabase( filepath, readonly, hdr ){
-</span></span><span style="display:flex;"><span>    closeADO();
-</span></span><span style="display:flex;"><span>    ado = <span style="color:#00f">new</span> ActiveXObject(<span style="color:#a31515">&#34;ADODB.Connection&#34;</span>);
-</span></span><span style="display:flex;"><span>    <span style="color:#00f">var</span> connect = [];
+</span></span><span style="display:flex;"><span>  closeADO();
+</span></span><span style="display:flex;"><span>  ado = <span style="color:#00f">new</span> ActiveXObject(<span style="color:#a31515">&#34;ADODB.Connection&#34;</span>);
+</span></span><span style="display:flex;"><span>  <span style="color:#00f">var</span> connect = [];
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#00f">if</span>( filepath.match(<span style="color:#a31515">/\.xls$/i</span>) ){
-</span></span><span style="display:flex;"><span>        connect.push(<span style="color:#a31515">&#39;Driver={Microsoft Excel Driver (*.xls)}; DBQ=&#39;</span> + filepath + <span style="color:#a31515">&#39;;HDR=&#39;</span> + (hdr ? <span style="color:#a31515">&#39;Yes&#39;</span> : <span style="color:#a31515">&#39;No&#39;</span>) + <span style="color:#a31515">&#39;;ReadOnly=&#39;</span> + (readonly ? 1 : 0) + <span style="color:#a31515">&#39;;&#34;&#39;</span>);
-</span></span><span style="display:flex;"><span>        connect.push(<span style="color:#a31515">&#39;Provider=Microsoft.Jet.OLEDB.4.0;Excel 8.0;DATABASE=&#39;</span> + filepath + <span style="color:#a31515">&#39;;HDR=&#39;</span> + (hdr ? <span style="color:#a31515">&#39;Yes&#39;</span> : <span style="color:#a31515">&#39;No&#39;</span>) + <span style="color:#a31515">&#39;;ReadOnly=&#39;</span> + (readonly ? 1 : 0) + <span style="color:#a31515">&#39;;&#34;&#39;</span>);
-</span></span><span style="display:flex;"><span>        connect.push(<span style="color:#a31515">&#39;Provider=Microsoft.ACE.OLEDB.12.0;Data Source=&#39;</span> + filepath + <span style="color:#a31515">&#39;;Extended Properties=&#34;Excel 8.0;HDR=&#39;</span> + (hdr ? <span style="color:#a31515">&#39;Yes&#39;</span> : <span style="color:#a31515">&#39;No&#39;</span>) + <span style="color:#a31515">&#39;;ReadOnly=&#39;</span> + (readonly ? 1 : 0) + <span style="color:#a31515">&#39;;&#34;&#39;</span>);
-</span></span><span style="display:flex;"><span>        connect.push(<span style="color:#a31515">&#39;Provider=MSDASQL.1;Extended Properties=&#34;DBQ=&#39;</span> + filepath + <span style="color:#a31515">&#39;;DefaultDir=C:\;Driver={Microsoft Excel Driver (*.xls)};DriverId=790;&#34;&#39;</span>);
-</span></span><span style="display:flex;"><span>    }<span style="color:#00f">else</span> <span style="color:#00f">if</span>( filepath.match(<span style="color:#a31515">/(\.xlsx|\.xlsm|\.xlsb)$/i</span>) ){
-</span></span><span style="display:flex;"><span>        connect.push(<span style="color:#a31515">&#39;Provider=Microsoft.ACE.OLEDB.12.0; Data Source=&#39;</span> + filepath + <span style="color:#a31515">&#39;; Extended Properties=&#34;Excel 12.0;HDR=&#39;</span> + (hdr ? <span style="color:#a31515">&#39;Yes&#39;</span> :<span style="color:#a31515">&#39;No&#39;</span>) + <span style="color:#a31515">&#39;;ReadOnly=&#39;</span> + (readonly ? 1 : 0) + <span style="color:#a31515">&#39;;&#34;&#39;</span>);
-</span></span><span style="display:flex;"><span>        connect.push(<span style="color:#a31515">&#39;Provider=Microsoft.ACE.OLEDB.12.0; Data Source=&#39;</span> + filepath + <span style="color:#a31515">&#39;; Extended Properties=&#34;Excel 12.0 Xml;HDR=&#39;</span> + (hdr ? <span style="color:#a31515">&#39;Yes&#39;</span> :<span style="color:#a31515">&#39;No&#39;</span>) + <span style="color:#a31515">&#39;;ReadOnly=&#39;</span> + (readonly ? 1 : 0) + <span style="color:#a31515">&#39;;&#34;&#39;</span>);
-</span></span><span style="display:flex;"><span>        connect.push(<span style="color:#a31515">&#39;Provider=Microsoft.ACE.OLEDB.12.0; Data Source=&#39;</span> + filepath + <span style="color:#a31515">&#39;; Extended Properties=&#34;Excel 12.0 Macro;HDR=&#39;</span> + (hdr ? <span style="color:#a31515">&#39;Yes&#39;</span> :<span style="color:#a31515">&#39;No&#39;</span>) + <span style="color:#a31515">&#39;;ReadOnly=&#39;</span> + (readonly ? 1 : 0) + <span style="color:#a31515">&#39;;&#34;&#39;</span>);
-</span></span><span style="display:flex;"><span>        connect.push(<span style="color:#a31515">&#39;Provider=Microsoft.ACE.OLEDB.12.0; Data Source=&#39;</span> + filepath + <span style="color:#a31515">&#39;; Extended Properties=&#34;Excel 12.0;IMEX=1;HDR=&#39;</span> + (hdr ? <span style="color:#a31515">&#39;Yes&#39;</span> :<span style="color:#a31515">&#39;No&#39;</span>) + <span style="color:#a31515">&#39;;ReadOnly=&#39;</span> + (readonly ? 1 : 0) + <span style="color:#a31515">&#39;;&#34;&#39;</span>);
-</span></span><span style="display:flex;"><span>        connect.push(<span style="color:#a31515">&#39;Provider=Microsoft.ACE.OLEDB.12.0; Data Source=&#39;</span> + filepath + <span style="color:#a31515">&#39;; Extended Properties=&#34;Excel 14.0;HDR=&#39;</span> + (hdr ? <span style="color:#a31515">&#39;Yes&#39;</span> :<span style="color:#a31515">&#39;No&#39;</span>) + <span style="color:#a31515">&#39;;ReadOnly=&#39;</span> + (readonly ? 1 : 0) + <span style="color:#a31515">&#39;;&#34;&#39;</span>);
-</span></span><span style="display:flex;"><span>        connect.push(<span style="color:#a31515">&#39;Provider=Microsoft.ACE.OLEDB.12.0; Data Source=&#39;</span> + filepath + <span style="color:#a31515">&#39;; Extended Properties=&#34;Excel 14.0;IMEX=1;HDR=&#39;</span> + (hdr ? <span style="color:#a31515">&#39;Yes&#39;</span> :<span style="color:#a31515">&#39;No&#39;</span>) + <span style="color:#a31515">&#39;;ReadOnly=&#39;</span> + (readonly ? 1 : 0) + <span style="color:#a31515">&#39;;&#34;&#39;</span>);
-</span></span><span style="display:flex;"><span>        connect.push(<span style="color:#a31515">&#39;Driver={Microsoft Excel Driver (*.xls, *.xlsx, *.xlsm, *.xlsb)}; DBQ=&#39;</span> + filepath + <span style="color:#a31515">&#39;;ReadOnly=&#39;</span> + (readonly ? 1 : 0));
-</span></span><span style="display:flex;"><span>    }<span style="color:#00f">else</span> <span style="color:#00f">if</span>( filepath.match(<span style="color:#a31515">/\.csv$/i</span>) ){
-</span></span><span style="display:flex;"><span>        connect.push(<span style="color:#a31515">&#39;Driver={Microsoft Text Driver (*.txt; *.csv)}; DBQ=&#39;</span> + fso.GetParentFolderName(filepath) + <span style="color:#a31515">&#39;;ReadOnly=&#39;</span> + (readonly ? 1 : 0) + <span style="color:#a31515">&#39;;FirstRowHasNames=&#39;</span> + (hdr ? <span style="color:#a31515">&#39;1&#39;</span> : <span style="color:#a31515">&#39;0&#39;</span>) + <span style="color:#a31515">&#39;;MaxScanRows=8;&#39;</span>);
-</span></span><span style="display:flex;"><span>        connect.push(<span style="color:#a31515">&#39;Driver={Microsoft Text Driver (*.txt; *.csv)}; DBQ=&#39;</span> + fso.GetParentFolderName(filepath) + <span style="color:#a31515">&#39;;ReadOnly=&#39;</span> + (readonly ? 1 : 0) + <span style="color:#a31515">&#39;;FirstRowHasNames=&#39;</span> + (hdr ? <span style="color:#a31515">&#39;1&#39;</span> : <span style="color:#a31515">&#39;0&#39;</span>) + <span style="color:#a31515">&#39;;&#39;</span>);
-</span></span><span style="display:flex;"><span>        connect.push(<span style="color:#a31515">&#39;Provider=Microsoft.Jet.OLEDB.4.0;TEXT;DATABASE=&#39;</span> + fso.GetParentFolderName(filepath) + <span style="color:#a31515">&#39;;ReadOnly=&#39;</span> + (readonly ? 1 : 0) + <span style="color:#a31515">&#39;;FirstRowHasNames=&#39;</span> + (hdr ? <span style="color:#a31515">&#39;1&#39;</span> : <span style="color:#a31515">&#39;0&#39;</span>) + <span style="color:#a31515">&#39;;&#39;</span>);
-</span></span><span style="display:flex;"><span>    }<span style="color:#00f">else</span> <span style="color:#00f">if</span>( filepath.match(<span style="color:#a31515">/(\.txt|\.tsv)$/i</span>) ){
-</span></span><span style="display:flex;"><span>        connect.push(<span style="color:#a31515">&#39;Driver={Microsoft Text Driver (*.txt; *.csv)}; DBQ=&#39;</span> + fso.GetParentFolderName(filepath) + <span style="color:#a31515">&#39;;ReadOnly=&#39;</span> + (readonly ? 1 : 0) + <span style="color:#a31515">&#39;;FirstRowHasNames=&#39;</span> + (hdr ? <span style="color:#a31515">&#39;1&#39;</span> : <span style="color:#a31515">&#39;0&#39;</span>) + <span style="color:#a31515">&#39;;Format=TabDelimited&#39;</span> + <span style="color:#a31515">&#39;;MaxScanRows=8;&#39;</span>);
-</span></span><span style="display:flex;"><span>        connect.push(<span style="color:#a31515">&#39;Driver={Microsoft Text Driver (*.txt; *.csv)}; DBQ=&#39;</span> + fso.GetParentFolderName(filepath) + <span style="color:#a31515">&#39;;ReadOnly=&#39;</span> + (readonly ? 1 : 0) + <span style="color:#a31515">&#39;;FirstRowHasNames=&#39;</span> + (hdr ? <span style="color:#a31515">&#39;1&#39;</span> : <span style="color:#a31515">&#39;0&#39;</span>) + <span style="color:#a31515">&#39;;Format=TabDelimited&#39;</span> + <span style="color:#a31515">&#39;;&#39;</span>);
-</span></span><span style="display:flex;"><span>        connect.push(<span style="color:#a31515">&#39;Provider=Microsoft.Jet.OLEDB.4.0;TEXT;DATABASE=&#39;</span> + fso.GetParentFolderName(filepath) + <span style="color:#a31515">&#39;;ReadOnly=&#39;</span> + (readonly ? 1 : 0) + <span style="color:#a31515">&#39;;FirstRowHasNames=&#39;</span> + (hdr ? <span style="color:#a31515">&#39;1&#39;</span> : <span style="color:#a31515">&#39;0&#39;</span>) + <span style="color:#a31515">&#39;;Format=TabDelimited&#39;</span> + <span style="color:#a31515">&#39;;&#39;</span>);
-</span></span><span style="display:flex;"><span>    }<span style="color:#00f">else</span> <span style="color:#00f">if</span>( filepath.match(<span style="color:#a31515">/\.mdb$/i</span>) ){
-</span></span><span style="display:flex;"><span>        connect.push(<span style="color:#a31515">&#39;Provider=Microsoft Office 12.0 Access Database Engine OLE DB Provider;Data Source=&#34;&#39;</span> + filepath + <span style="color:#a31515">&#39;&#34;;&#39;</span>);
-</span></span><span style="display:flex;"><span>        connect.push(<span style="color:#a31515">&#39;Provider=Microsoft.Jet.OLEDB.4.0;Data Source=&#34;&#39;</span> + filepath + <span style="color:#a31515">&#39;&#34;;&#39;</span>);
-</span></span><span style="display:flex;"><span>    }<span style="color:#00f">else</span> <span style="color:#00f">if</span>( filepath.match(<span style="color:#a31515">/(\.html|\.html)$/i</span>) ){
-</span></span><span style="display:flex;"><span>        connect.push(<span style="color:#a31515">&#39;Provider=Microsoft.Jet.OLEDB.4.0;Extended Properties=&#34;HTML Import;DATABASE=&#39;</span> + filepath + <span style="color:#a31515">&#39;&#34;;&#39;</span>);
-</span></span><span style="display:flex;"><span>    }<span style="color:#00f">else</span>{
-</span></span><span style="display:flex;"><span>        alert(<span style="color:#a31515">&#39;Unsupported File!&#39;</span>);
-</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  <span style="color:#00f">if</span>( filepath.match(<span style="color:#a31515">/\.xls$/i</span>) ){
+</span></span><span style="display:flex;"><span>    connect.push(<span style="color:#a31515">&#39;Driver={Microsoft Excel Driver (*.xls)}; DBQ=&#39;</span> + filepath
+</span></span><span style="display:flex;"><span>+ <span style="color:#a31515">&#39;;HDR=&#39;</span> + (hdr ? <span style="color:#a31515">&#39;Yes&#39;</span> : <span style="color:#a31515">&#39;No&#39;</span>) + <span style="color:#a31515">&#39;;ReadOnly=&#39;</span> + (readonly ? 1 : 0) +
+</span></span><span style="display:flex;"><span><span style="color:#a31515">&#39;;&#34;&#39;</span>);
+</span></span><span style="display:flex;"><span>    connect.push(<span style="color:#a31515">&#39;Provider=Microsoft.Jet.OLEDB.4.0;Excel 8.0;DATABASE=&#39;</span> +
+</span></span><span style="display:flex;"><span>filepath + <span style="color:#a31515">&#39;;HDR=&#39;</span> + (hdr ? <span style="color:#a31515">&#39;Yes&#39;</span> : <span style="color:#a31515">&#39;No&#39;</span>) + <span style="color:#a31515">&#39;;ReadOnly=&#39;</span> + (readonly ? 1 :
+</span></span><span style="display:flex;"><span>0) + <span style="color:#a31515">&#39;;&#34;&#39;</span>);
+</span></span><span style="display:flex;"><span>    connect.push(<span style="color:#a31515">&#39;Provider=Microsoft.ACE.OLEDB.12.0;Data Source=&#39;</span> +
+</span></span><span style="display:flex;"><span>filepath + <span style="color:#a31515">&#39;;Extended Properties=&#34;Excel 8.0;HDR=&#39;</span> + (hdr ? <span style="color:#a31515">&#39;Yes&#39;</span> : <span style="color:#a31515">&#39;No&#39;</span>) +
+</span></span><span style="display:flex;"><span><span style="color:#a31515">&#39;;ReadOnly=&#39;</span> + (readonly ? 1 : 0) + <span style="color:#a31515">&#39;;&#34;&#39;</span>);
+</span></span><span style="display:flex;"><span>    connect.push(<span style="color:#a31515">&#39;Provider=MSDASQL.1;Extended Properties=&#34;DBQ=&#39;</span> + filepath
+</span></span><span style="display:flex;"><span>+ <span style="color:#a31515">&#39;;DefaultDir=C:\;Driver={Microsoft Excel Driver (*.xls)};DriverId=790;&#34;&#39;</span>);
+</span></span><span style="display:flex;"><span>  }<span style="color:#00f">else</span> <span style="color:#00f">if</span>( filepath.match(<span style="color:#a31515">/(\.xlsx|\.xlsm|\.xlsb)$/i</span>) ){
+</span></span><span style="display:flex;"><span>    connect.push(<span style="color:#a31515">&#39;Provider=Microsoft.ACE.OLEDB.12.0; Data Source=&#39;</span> +
+</span></span><span style="display:flex;"><span>filepath + <span style="color:#a31515">&#39;; Extended Properties=&#34;Excel 12.0;HDR=&#39;</span> + (hdr ? <span style="color:#a31515">&#39;Yes&#39;</span> :<span style="color:#a31515">&#39;No&#39;</span>) +
+</span></span><span style="display:flex;"><span><span style="color:#a31515">&#39;;ReadOnly=&#39;</span> + (readonly ? 1 : 0) + <span style="color:#a31515">&#39;;&#34;&#39;</span>);
+</span></span><span style="display:flex;"><span>    connect.push(<span style="color:#a31515">&#39;Provider=Microsoft.ACE.OLEDB.12.0; Data Source=&#39;</span> +
+</span></span><span style="display:flex;"><span>filepath + <span style="color:#a31515">&#39;; Extended Properties=&#34;Excel 12.0 Xml;HDR=&#39;</span> + (hdr ? <span style="color:#a31515">&#39;Yes&#39;</span>
+</span></span><span style="display:flex;"><span>:<span style="color:#a31515">&#39;No&#39;</span>) + <span style="color:#a31515">&#39;;ReadOnly=&#39;</span> + (readonly ? 1 : 0) + <span style="color:#a31515">&#39;;&#34;&#39;</span>);
+</span></span><span style="display:flex;"><span>    connect.push(<span style="color:#a31515">&#39;Provider=Microsoft.ACE.OLEDB.12.0; Data Source=&#39;</span> +
+</span></span><span style="display:flex;"><span>filepath + <span style="color:#a31515">&#39;; Extended Properties=&#34;Excel 12.0 Macro;HDR=&#39;</span> + (hdr ? <span style="color:#a31515">&#39;Yes&#39;</span>
+</span></span><span style="display:flex;"><span>:<span style="color:#a31515">&#39;No&#39;</span>) + <span style="color:#a31515">&#39;;ReadOnly=&#39;</span> + (readonly ? 1 : 0) + <span style="color:#a31515">&#39;;&#34;&#39;</span>);
+</span></span><span style="display:flex;"><span>    connect.push(<span style="color:#a31515">&#39;Provider=Microsoft.ACE.OLEDB.12.0; Data Source=&#39;</span> +
+</span></span><span style="display:flex;"><span>filepath + <span style="color:#a31515">&#39;; Extended Properties=&#34;Excel 12.0;IMEX=1;HDR=&#39;</span> + (hdr ? <span style="color:#a31515">&#39;Yes&#39;</span>
+</span></span><span style="display:flex;"><span>:<span style="color:#a31515">&#39;No&#39;</span>) + <span style="color:#a31515">&#39;;ReadOnly=&#39;</span> + (readonly ? 1 : 0) + <span style="color:#a31515">&#39;;&#34;&#39;</span>);
+</span></span><span style="display:flex;"><span>    connect.push(<span style="color:#a31515">&#39;Provider=Microsoft.ACE.OLEDB.12.0; Data Source=&#39;</span> +
+</span></span><span style="display:flex;"><span>filepath + <span style="color:#a31515">&#39;; Extended Properties=&#34;Excel 14.0;HDR=&#39;</span> + (hdr ? <span style="color:#a31515">&#39;Yes&#39;</span> :<span style="color:#a31515">&#39;No&#39;</span>) +
+</span></span><span style="display:flex;"><span><span style="color:#a31515">&#39;;ReadOnly=&#39;</span> + (readonly ? 1 : 0) + <span style="color:#a31515">&#39;;&#34;&#39;</span>);
+</span></span><span style="display:flex;"><span>    connect.push(<span style="color:#a31515">&#39;Provider=Microsoft.ACE.OLEDB.12.0; Data Source=&#39;</span> +
+</span></span><span style="display:flex;"><span>filepath + <span style="color:#a31515">&#39;; Extended Properties=&#34;Excel 14.0;IMEX=1;HDR=&#39;</span> + (hdr ? <span style="color:#a31515">&#39;Yes&#39;</span>
+</span></span><span style="display:flex;"><span>:<span style="color:#a31515">&#39;No&#39;</span>) + <span style="color:#a31515">&#39;;ReadOnly=&#39;</span> + (readonly ? 1 : 0) + <span style="color:#a31515">&#39;;&#34;&#39;</span>);
+</span></span><span style="display:flex;"><span>    connect.push(<span style="color:#a31515">&#39;Driver={Microsoft Excel Driver (*.xls, *.xlsx, *.xlsm,
+</span></span></span><span style="display:flex;"><span><span style="color:#a31515">*.xlsb)}; DBQ=&#39;</span> + filepath + <span style="color:#a31515">&#39;;ReadOnly=&#39;</span> + (readonly ? 1 : 0));
+</span></span><span style="display:flex;"><span>  }<span style="color:#00f">else</span> <span style="color:#00f">if</span>( filepath.match(<span style="color:#a31515">/\.csv$/i</span>) ){
+</span></span><span style="display:flex;"><span>    connect.push(<span style="color:#a31515">&#39;Driver={Microsoft Text Driver (*.txt; *.csv)}; DBQ=&#39;</span> +
+</span></span><span style="display:flex;"><span>fso.GetParentFolderName(filepath) + <span style="color:#a31515">&#39;;ReadOnly=&#39;</span> + (readonly ? 1 : 0) +
+</span></span><span style="display:flex;"><span><span style="color:#a31515">&#39;;FirstRowHasNames=&#39;</span> + (hdr ? <span style="color:#a31515">&#39;1&#39;</span> : <span style="color:#a31515">&#39;0&#39;</span>) + <span style="color:#a31515">&#39;;MaxScanRows=8;&#39;</span>);
+</span></span><span style="display:flex;"><span>    connect.push(<span style="color:#a31515">&#39;Driver={Microsoft Text Driver (*.txt; *.csv)}; DBQ=&#39;</span> +
+</span></span><span style="display:flex;"><span>fso.GetParentFolderName(filepath) + <span style="color:#a31515">&#39;;ReadOnly=&#39;</span> + (readonly ? 1 : 0) +
+</span></span><span style="display:flex;"><span><span style="color:#a31515">&#39;;FirstRowHasNames=&#39;</span> + (hdr ? <span style="color:#a31515">&#39;1&#39;</span> : <span style="color:#a31515">&#39;0&#39;</span>) + <span style="color:#a31515">&#39;;&#39;</span>);
+</span></span><span style="display:flex;"><span>    connect.push(<span style="color:#a31515">&#39;Provider=Microsoft.Jet.OLEDB.4.0;TEXT;DATABASE=&#39;</span> +
+</span></span><span style="display:flex;"><span>fso.GetParentFolderName(filepath) + <span style="color:#a31515">&#39;;ReadOnly=&#39;</span> + (readonly ? 1 : 0) +
+</span></span><span style="display:flex;"><span><span style="color:#a31515">&#39;;FirstRowHasNames=&#39;</span> + (hdr ? <span style="color:#a31515">&#39;1&#39;</span> : <span style="color:#a31515">&#39;0&#39;</span>) + <span style="color:#a31515">&#39;;&#39;</span>);
+</span></span><span style="display:flex;"><span>  }<span style="color:#00f">else</span> <span style="color:#00f">if</span>( filepath.match(<span style="color:#a31515">/(\.txt|\.tsv)$/i</span>) ){
+</span></span><span style="display:flex;"><span>    connect.push(<span style="color:#a31515">&#39;Driver={Microsoft Text Driver (*.txt; *.csv)}; DBQ=&#39;</span> +
+</span></span><span style="display:flex;"><span>fso.GetParentFolderName(filepath) + <span style="color:#a31515">&#39;;ReadOnly=&#39;</span> + (readonly ? 1 : 0) +
+</span></span><span style="display:flex;"><span><span style="color:#a31515">&#39;;FirstRowHasNames=&#39;</span> + (hdr ? <span style="color:#a31515">&#39;1&#39;</span> : <span style="color:#a31515">&#39;0&#39;</span>) + <span style="color:#a31515">&#39;;Format=TabDelimited&#39;</span> +
+</span></span><span style="display:flex;"><span><span style="color:#a31515">&#39;;MaxScanRows=8;&#39;</span>);
+</span></span><span style="display:flex;"><span>    connect.push(<span style="color:#a31515">&#39;Driver={Microsoft Text Driver (*.txt; *.csv)}; DBQ=&#39;</span> +
+</span></span><span style="display:flex;"><span>fso.GetParentFolderName(filepath) + <span style="color:#a31515">&#39;;ReadOnly=&#39;</span> + (readonly ? 1 : 0) +
+</span></span><span style="display:flex;"><span><span style="color:#a31515">&#39;;FirstRowHasNames=&#39;</span> + (hdr ? <span style="color:#a31515">&#39;1&#39;</span> : <span style="color:#a31515">&#39;0&#39;</span>) + <span style="color:#a31515">&#39;;Format=TabDelimited&#39;</span> + <span style="color:#a31515">&#39;;&#39;</span>);
+</span></span><span style="display:flex;"><span>    connect.push(<span style="color:#a31515">&#39;Provider=Microsoft.Jet.OLEDB.4.0;TEXT;DATABASE=&#39;</span> +
+</span></span><span style="display:flex;"><span>fso.GetParentFolderName(filepath) + <span style="color:#a31515">&#39;;ReadOnly=&#39;</span> + (readonly ? 1 : 0) +
+</span></span><span style="display:flex;"><span><span style="color:#a31515">&#39;;FirstRowHasNames=&#39;</span> + (hdr ? <span style="color:#a31515">&#39;1&#39;</span> : <span style="color:#a31515">&#39;0&#39;</span>) + <span style="color:#a31515">&#39;;Format=TabDelimited&#39;</span> + <span style="color:#a31515">&#39;;&#39;</span>);
+</span></span><span style="display:flex;"><span>  }<span style="color:#00f">else</span> <span style="color:#00f">if</span>( filepath.match(<span style="color:#a31515">/\.mdb$/i</span>) ){
+</span></span><span style="display:flex;"><span>    connect.push(<span style="color:#a31515">&#39;Provider=Microsoft Office 12.0 Access Database Engine OLE
+</span></span></span><span style="display:flex;"><span><span style="color:#a31515">DB Provider;Data Source=&#34;&#39;</span> + filepath + <span style="color:#a31515">&#39;&#34;;&#39;</span>);
+</span></span><span style="display:flex;"><span>    connect.push(<span style="color:#a31515">&#39;Provider=Microsoft.Jet.OLEDB.4.0;Data Source=&#34;&#39;</span> +
+</span></span><span style="display:flex;"><span>filepath + <span style="color:#a31515">&#39;&#34;;&#39;</span>);
+</span></span><span style="display:flex;"><span>  }<span style="color:#00f">else</span> <span style="color:#00f">if</span>( filepath.match(<span style="color:#a31515">/(\.html|\.html)$/i</span>) ){
+</span></span><span style="display:flex;"><span>    connect.push(<span style="color:#a31515">&#39;Provider=Microsoft.Jet.OLEDB.4.0;Extended
+</span></span></span><span style="display:flex;"><span><span style="color:#a31515">Properties=&#34;HTML Import;DATABASE=&#39;</span> + filepath + <span style="color:#a31515">&#39;&#34;;&#39;</span>);
+</span></span><span style="display:flex;"><span>  }<span style="color:#00f">else</span>{
+</span></span><span style="display:flex;"><span>    alert(<span style="color:#a31515">&#39;Unsupported File!&#39;</span>);
+</span></span><span style="display:flex;"><span>  }
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    document.all.result.innerHTML = <span style="color:#a31515">&#39;&#39;</span>;
-</span></span><span style="display:flex;"><span>    <span style="color:#00f">for</span>(<span style="color:#00f">var</span> i <span style="color:#00f">in</span> connect){
-</span></span><span style="display:flex;"><span>        document.all.result.innerHTML += <span style="color:#a31515">&#39;Connect String:&lt;br /&gt;&lt;pre&gt;&#39;</span> + connect[i] + <span style="color:#a31515">&#39;&lt;/pre&gt;&#39;</span>;
-</span></span><span style="display:flex;"><span>        <span style="color:#00f">try</span>{
-</span></span><span style="display:flex;"><span>            ado.Open(connect[i]);
-</span></span><span style="display:flex;"><span>            setStatusText(<span style="color:#a31515">&#39;Connected Successfully.&#39;</span>);
-</span></span><span style="display:flex;"><span>            <span style="color:#00f">break</span>;
-</span></span><span style="display:flex;"><span>        }<span style="color:#00f">catch</span>(e){
-</span></span><span style="display:flex;"><span><span style="color:#008000">//            alert(e.message);
-</span></span></span><span style="display:flex;"><span><span style="color:#008000"></span>            document.all.result.innerHTML += <span style="color:#a31515">&#39;Failed:&lt;pre&gt;&#39;</span> + e.message + <span style="color:#a31515">&#39;&lt;/pre&gt;&#39;</span>;
-</span></span><span style="display:flex;"><span>            setStatusText(<span style="color:#a31515">&#39;Connection Failed.&#39;</span>);
-</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>  document.all.result.innerHTML = <span style="color:#a31515">&#39;&#39;</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#00f">for</span>(<span style="color:#00f">var</span> i <span style="color:#00f">in</span> connect){
+</span></span><span style="display:flex;"><span>    document.all.result.innerHTML += <span style="color:#a31515">&#39;Connect String:&lt;br /&gt;&lt;pre&gt;&#39;</span> +
+</span></span><span style="display:flex;"><span>connect[i] + <span style="color:#a31515">&#39;&lt;/pre&gt;&#39;</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#00f">try</span>{
+</span></span><span style="display:flex;"><span>      ado.Open(connect[i]);
+</span></span><span style="display:flex;"><span>      setStatusText(<span style="color:#a31515">&#39;Connected Successfully.&#39;</span>);
+</span></span><span style="display:flex;"><span>      <span style="color:#00f">break</span>;
+</span></span><span style="display:flex;"><span>    }<span style="color:#00f">catch</span>(e){
+</span></span><span style="display:flex;"><span><span style="color:#008000">//      alert(e.message);
+</span></span></span><span style="display:flex;"><span><span style="color:#008000"></span>      document.all.result.innerHTML += <span style="color:#a31515">&#39;Failed:&lt;pre&gt;&#39;</span> + e.message +
+</span></span><span style="display:flex;"><span><span style="color:#a31515">&#39;&lt;/pre&gt;&#39;</span>;
+</span></span><span style="display:flex;"><span>      setStatusText(<span style="color:#a31515">&#39;Connection Failed.&#39;</span>);
 </span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  }
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span><span style="color:#00f">function</span> executeSQL( sql ){
-</span></span><span style="display:flex;"><span>    <span style="color:#00f">try</span>{
-</span></span><span style="display:flex;"><span>        <span style="color:#00f">var</span> times = [<span style="color:#00f">new</span> Date()];
+</span></span><span style="display:flex;"><span>  <span style="color:#00f">try</span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#00f">var</span> times = [<span style="color:#00f">new</span> Date()];
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        setStatusText(<span style="color:#a31515">&#39;&#39;</span>);
+</span></span><span style="display:flex;"><span>    setStatusText(<span style="color:#a31515">&#39;&#39;</span>);
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        <span style="color:#00f">var</span> rs = ado.Execute(sql);
-</span></span><span style="display:flex;"><span>        times.push( <span style="color:#00f">new</span> Date() );
+</span></span><span style="display:flex;"><span>    <span style="color:#00f">var</span> rs = ado.Execute(sql);
+</span></span><span style="display:flex;"><span>    times.push( <span style="color:#00f">new</span> Date() );
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        <span style="color:#00f">var</span> buf2 = createTableFromRecordSet( rs );
-</span></span><span style="display:flex;"><span>        times.push( <span style="color:#00f">new</span> Date() );
+</span></span><span style="display:flex;"><span>    <span style="color:#00f">var</span> buf2 = createTableFromRecordSet( rs );
+</span></span><span style="display:flex;"><span>    times.push( <span style="color:#00f">new</span> Date() );
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        document.all.result.innerHTML = <span style="color:#a31515">&#39;&#39;</span>;
-</span></span><span style="display:flex;"><span>        document.all.result.appendChild( buf2.dom_table );
-</span></span><span style="display:flex;"><span>        window.result_tsv = buf2.tsv;
-</span></span><span style="display:flex;"><span>        times.push( <span style="color:#00f">new</span> Date() );
+</span></span><span style="display:flex;"><span>    document.all.result.innerHTML = <span style="color:#a31515">&#39;&#39;</span>;
+</span></span><span style="display:flex;"><span>    document.all.result.appendChild( buf2.dom_table );
+</span></span><span style="display:flex;"><span>    window.result_tsv = buf2.tsv;
+</span></span><span style="display:flex;"><span>    times.push( <span style="color:#00f">new</span> Date() );
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        setStatusText(<span style="color:#a31515">&#34;Records: &#34;</span> + buf2.count
-</span></span><span style="display:flex;"><span>            + <span style="color:#a31515">&#34;,\tSQL Execution Time: &#34;</span> + (times[1] - times[0])
-</span></span><span style="display:flex;"><span>            + <span style="color:#a31515">&#34;ms,\tTable Construction Time: &#34;</span> + (times[2] - times[1])
-</span></span><span style="display:flex;"><span>            + <span style="color:#a31515">&#34;ms,\tDrawing Time: &#34;</span> + (times[3] - times[2]) + <span style="color:#a31515">&#34;ms&#34;</span>);
-</span></span><span style="display:flex;"><span>        shell.RegWrite(<span style="color:#a31515">&#34;HKCU\\SQLEXEC\\SQLLOG&#34;</span>, sql, <span style="color:#a31515">&#34;REG_SZ&#34;</span>);
-</span></span><span style="display:flex;"><span>        shell.RegWrite(<span style="color:#a31515">&#34;HKCU\\SQLEXEC\\LASTDB&#34;</span>, document.all.filename.value, <span style="color:#a31515">&#34;REG_SZ&#34;</span>)
+</span></span><span style="display:flex;"><span>    setStatusText(<span style="color:#a31515">&#34;Records: &#34;</span> + buf2.count
+</span></span><span style="display:flex;"><span>      + <span style="color:#a31515">&#34;,  SQL Execution Time: &#34;</span> + (times[1] - times[0])
+</span></span><span style="display:flex;"><span>      + <span style="color:#a31515">&#34;ms,  Table Construction Time: &#34;</span> + (times[2] - times[1])
+</span></span><span style="display:flex;"><span>      + <span style="color:#a31515">&#34;ms,  Drawing Time: &#34;</span> + (times[3] - times[2]) + <span style="color:#a31515">&#34;ms&#34;</span>);
+</span></span><span style="display:flex;"><span>    shell.RegWrite(<span style="color:#a31515">&#34;HKCU\\SQLEXEC\\SQLLOG&#34;</span>, sql, <span style="color:#a31515">&#34;REG_SZ&#34;</span>);
+</span></span><span style="display:flex;"><span>    shell.RegWrite(<span style="color:#a31515">&#34;HKCU\\SQLEXEC\\LASTDB&#34;</span>, document.all.filename.value,
+</span></span><span style="display:flex;"><span><span style="color:#a31515">&#34;REG_SZ&#34;</span>)
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    }<span style="color:#00f">catch</span>( e ){
-</span></span><span style="display:flex;"><span>        alert(e.message);
-</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  }<span style="color:#00f">catch</span>( e ){
+</span></span><span style="display:flex;"><span>    alert(e.message);
+</span></span><span style="display:flex;"><span>  }
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span><span style="color:#00f">function</span> getTableStructure(){
-</span></span><span style="display:flex;"><span>    <span style="color:#00f">try</span>{
-</span></span><span style="display:flex;"><span>        <span style="color:#008000">//var rs = ado.OpenSchema(20);
-</span></span></span><span style="display:flex;"><span><span style="color:#008000"></span>        <span style="color:#00f">var</span> rs = ado.OpenSchema(4);
-</span></span><span style="display:flex;"><span>        document.all.result.innerHTML = <span style="color:#a31515">&#39;&#39;</span>;
-</span></span><span style="display:flex;"><span>        document.all.result.appendChild( createTableFromRecordSet( rs ).dom_table );
+</span></span><span style="display:flex;"><span>  <span style="color:#00f">try</span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#008000">//var rs = ado.OpenSchema(20);
+</span></span></span><span style="display:flex;"><span><span style="color:#008000"></span>    <span style="color:#00f">var</span> rs = ado.OpenSchema(4);
+</span></span><span style="display:flex;"><span>    document.all.result.innerHTML = <span style="color:#a31515">&#39;&#39;</span>;
+</span></span><span style="display:flex;"><span>    document.all.result.appendChild( createTableFromRecordSet( rs
+</span></span><span style="display:flex;"><span>).dom_table );
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    }<span style="color:#00f">catch</span>( e ){
-</span></span><span style="display:flex;"><span>        alert(e.message);
-</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  }<span style="color:#00f">catch</span>( e ){
+</span></span><span style="display:flex;"><span>    alert(e.message);
+</span></span><span style="display:flex;"><span>  }
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span><span style="color:#00f">function</span> copyTable(){
-</span></span><span style="display:flex;"><span>    clipboardData.setData(<span style="color:#a31515">&#34;Text&#34;</span>, window.result_tsv); } <span style="color:#00f">function</span> setStatusText( mes ){
-</span></span><span style="display:flex;"><span>    document.all.status.innerHTML = mes;
+</span></span><span style="display:flex;"><span>  clipboardData.setData(<span style="color:#a31515">&#34;Text&#34;</span>, window.result_tsv);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#00f">function</span> setStatusText( mes ){
+</span></span><span style="display:flex;"><span>  document.all.status.innerHTML = mes;
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span><span style="color:#00f">function</span> closeADO(){
-</span></span><span style="display:flex;"><span>    <span style="color:#00f">try</span>{
-</span></span><span style="display:flex;"><span>        ado.Close();
-</span></span><span style="display:flex;"><span>    }<span style="color:#00f">catch</span>( e ){
+</span></span><span style="display:flex;"><span>  <span style="color:#00f">try</span>{
+</span></span><span style="display:flex;"><span>    ado.Close();
+</span></span><span style="display:flex;"><span>  }<span style="color:#00f">catch</span>( e ){
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>    ado = <span style="color:#00f">null</span>;
-</span></span><span style="display:flex;"><span>    setStatusText(<span style="color:#a31515">&#39;Disconnected Successfully.&#39;</span>); 
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  ado = <span style="color:#00f">null</span>;
+</span></span><span style="display:flex;"><span>  setStatusText(<span style="color:#a31515">&#39;Disconnected Successfully.&#39;</span>);
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#00f">function</span> createTableFromRecordSet( rs ){
-</span></span><span style="display:flex;"><span>    <span style="color:#00f">var</span> table = document.createElement(<span style="color:#a31515">&#39;table&#39;</span>);
-</span></span><span style="display:flex;"><span>    <span style="color:#00f">var</span> tbody = document.createElement(<span style="color:#a31515">&#39;tbody&#39;</span>);
-</span></span><span style="display:flex;"><span>    <span style="color:#00f">var</span> row;
-</span></span><span style="display:flex;"><span>    <span style="color:#00f">var</span> cell;
-</span></span><span style="display:flex;"><span>    <span style="color:#00f">var</span> buf_tsv = [];
-</span></span><span style="display:flex;"><span>    <span style="color:#00f">var</span> buf_tsv_row = [];
-</span></span><span style="display:flex;"><span>    <span style="color:#00f">var</span> count = 0;
+</span></span><span style="display:flex;"><span>  <span style="color:#00f">var</span> table = document.createElement(<span style="color:#a31515">&#39;table&#39;</span>);
+</span></span><span style="display:flex;"><span>  <span style="color:#00f">var</span> tbody = document.createElement(<span style="color:#a31515">&#39;tbody&#39;</span>);
+</span></span><span style="display:flex;"><span>  <span style="color:#00f">var</span> row;
+</span></span><span style="display:flex;"><span>  <span style="color:#00f">var</span> cell;
+</span></span><span style="display:flex;"><span>  <span style="color:#00f">var</span> buf_tsv = [];
+</span></span><span style="display:flex;"><span>  <span style="color:#00f">var</span> buf_tsv_row = [];
+</span></span><span style="display:flex;"><span>  <span style="color:#00f">var</span> count = 0;
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#00f">if</span>( !rs.Eof ){
-</span></span><span style="display:flex;"><span>        <span style="color:#00f">var</span> fc = rs.Fields.Count;
+</span></span><span style="display:flex;"><span>  <span style="color:#00f">if</span>( !rs.Eof ){
+</span></span><span style="display:flex;"><span>    <span style="color:#00f">var</span> fc = rs.Fields.Count;
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        row = document.createElement(<span style="color:#a31515">&#39;tr&#39;</span>);
-</span></span><span style="display:flex;"><span>        <span style="color:#00f">for</span>( <span style="color:#00f">var</span> i = 0; i &lt; fc; i++ ){
-</span></span><span style="display:flex;"><span>            cell = document.createElement(<span style="color:#a31515">&#39;th&#39;</span>);
-</span></span><span style="display:flex;"><span>            cell.innerText = rs.Fields(i).name;
-</span></span><span style="display:flex;"><span>            cell.title = rs.Fields(i).Type;
-</span></span><span style="display:flex;"><span>            row.appendChild(cell);
-</span></span><span style="display:flex;"><span>            buf_tsv_row.push( escapeTSV(rs.Fields(i).name) );
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>        tbody.appendChild(row);
-</span></span><span style="display:flex;"><span>        buf_tsv.push( buf_tsv_row.join(<span style="color:#a31515">&#39;\t&#39;</span>) );
-</span></span><span style="display:flex;"><span>        <span style="color:#00f">while</span>( !rs.Eof ){
-</span></span><span style="display:flex;"><span>            row = document.createElement(<span style="color:#a31515">&#39;tr&#39;</span>);
-</span></span><span style="display:flex;"><span>            buf_tsv_row = [];
-</span></span><span style="display:flex;"><span>            <span style="color:#00f">for</span>( <span style="color:#00f">var</span> i = 0; i &lt; fc; i++ ){
-</span></span><span style="display:flex;"><span>                <span style="color:#00f">var</span> v = rs.Fields(i).value;
-</span></span><span style="display:flex;"><span>                cell = document.createElement(<span style="color:#a31515">&#39;td&#39;</span>);
-</span></span><span style="display:flex;"><span>                cell.innerText = v;
-</span></span><span style="display:flex;"><span>                row.appendChild(cell);
-</span></span><span style="display:flex;"><span>                buf_tsv_row.push( escapeTSV(v) );
-</span></span><span style="display:flex;"><span>            }
-</span></span><span style="display:flex;"><span>            tbody.appendChild(row);
-</span></span><span style="display:flex;"><span>            buf_tsv.push( buf_tsv_row.join(<span style="color:#a31515">&#39;\t&#39;</span>) );
-</span></span><span style="display:flex;"><span>            count++;
-</span></span><span style="display:flex;"><span>            rs.MoveNext();
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>        table.appendChild(tbody);
+</span></span><span style="display:flex;"><span>    row = document.createElement(<span style="color:#a31515">&#39;tr&#39;</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#00f">for</span>( <span style="color:#00f">var</span> i = 0; i &lt; fc; i++ ){
+</span></span><span style="display:flex;"><span>      cell = document.createElement(<span style="color:#a31515">&#39;th&#39;</span>);
+</span></span><span style="display:flex;"><span>      cell.innerText = rs.Fields(i).name;
+</span></span><span style="display:flex;"><span>      cell.title = rs.Fields(i).Type;
+</span></span><span style="display:flex;"><span>      row.appendChild(cell);
+</span></span><span style="display:flex;"><span>      buf_tsv_row.push( escapeTSV(rs.Fields(i).name) );
 </span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    tbody.appendChild(row);
+</span></span><span style="display:flex;"><span>    buf_tsv.push( buf_tsv_row.join(<span style="color:#a31515">&#39;\t&#39;</span>) );
+</span></span><span style="display:flex;"><span>    <span style="color:#00f">while</span>( !rs.Eof ){
+</span></span><span style="display:flex;"><span>      row = document.createElement(<span style="color:#a31515">&#39;tr&#39;</span>);
+</span></span><span style="display:flex;"><span>      buf_tsv_row = [];
+</span></span><span style="display:flex;"><span>      <span style="color:#00f">for</span>( <span style="color:#00f">var</span> i = 0; i &lt; fc; i++ ){
+</span></span><span style="display:flex;"><span>        <span style="color:#00f">var</span> v = rs.Fields(i).value;
+</span></span><span style="display:flex;"><span>        cell = document.createElement(<span style="color:#a31515">&#39;td&#39;</span>);
+</span></span><span style="display:flex;"><span>        cell.innerText = v;
+</span></span><span style="display:flex;"><span>        row.appendChild(cell);
+</span></span><span style="display:flex;"><span>        buf_tsv_row.push( escapeTSV(v) );
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>      tbody.appendChild(row);
+</span></span><span style="display:flex;"><span>      buf_tsv.push( buf_tsv_row.join(<span style="color:#a31515">&#39;\t&#39;</span>) );
+</span></span><span style="display:flex;"><span>      count++;
+</span></span><span style="display:flex;"><span>      rs.MoveNext();
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    table.appendChild(tbody);
+</span></span><span style="display:flex;"><span>  }
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#00f">return</span> {<span style="color:#a31515">&#34;count&#34;</span>:count,<span style="color:#a31515">&#34;dom_table&#34;</span>:table,<span style="color:#a31515">&#34;tsv&#34;</span>:buf_tsv.join(<span style="color:#a31515">&#39;\n&#39;</span>)}
+</span></span><span style="display:flex;"><span>  <span style="color:#00f">return</span> {<span style="color:#a31515">&#34;count&#34;</span>:count,<span style="color:#a31515">&#34;dom_table&#34;</span>:table,<span style="color:#a31515">&#34;tsv&#34;</span>:buf_tsv.join(<span style="color:#a31515">&#39;\n&#39;</span>)}
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#00f">function</span> escapeTSV(data){
-</span></span><span style="display:flex;"><span>    <span style="color:#00f">if</span>(<span style="color:#00f">typeof</span> data == <span style="color:#a31515">&#39;string&#39;</span>){
-</span></span><span style="display:flex;"><span>        data = <span style="color:#a31515">&#39;&#34;&#39;</span> + data.replace(<span style="color:#a31515">/&#34;/g</span>,<span style="color:#a31515">&#39;&#34;&#34;&#39;</span>) + <span style="color:#a31515">&#39;&#34;&#39;</span>;
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>    <span style="color:#00f">return</span> data;
+</span></span><span style="display:flex;"><span>  <span style="color:#00f">if</span>(<span style="color:#00f">typeof</span> data === <span style="color:#a31515">&#39;string&#39;</span>){
+</span></span><span style="display:flex;"><span>    data = <span style="color:#a31515">&#39;&#34;&#39;</span> + data.replace(<span style="color:#a31515">/&#34;/g</span>,<span style="color:#a31515">&#39;&#34;&#34;&#39;</span>) + <span style="color:#a31515">&#39;&#34;&#39;</span>;
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  <span style="color:#00f">return</span> data;
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>&lt;/script&gt;
 </span></span><span style="display:flex;"><span>&lt;style type=<span style="color:#a31515">&#34;text/css&#34;</span>&gt;
-</span></span><span style="display:flex;"><span>*    { <span style="color:#00f">margin</span>: 0; <span style="color:#00f">padding</span>: 0; <span style="color:#00f">font-family</span>: <span style="color:#00f">sans-serif</span>; <span style="color:#00f">font-size</span>: 10<span style="color:#2b91af">pt</span>; }
-</span></span><span style="display:flex;"><span><span style="color:#008000">/*table    { table-layout: fixed; }*/</span>
-</span></span><span style="display:flex;"><span><span style="color:#008000">/*td    {}*/</span>
-</span></span><span style="display:flex;"><span>textarea    { <span style="color:#00f">font-family</span>: FixedSys,<span style="color:#00f">monospace</span>; <span style="color:#00f">font-size</span>: 10<span style="color:#2b91af">pt</span>; }
-</span></span><span style="display:flex;"><span>button    { <span style="color:#00f">width</span>: 100<span style="color:#2b91af">px</span>; <span style="color:#00f">font-size</span>: 9<span style="color:#2b91af">pt</span>;}
-</span></span><span style="display:flex;"><span>#result table    { <span style="color:#00f">border-collapse</span>: <span style="color:#00f">collapse</span>; <span style="color:#00f">border</span>: 1<span style="color:#2b91af">px</span> <span style="color:#00f">solid</span> <span style="color:#00f">black</span>; }
-</span></span><span style="display:flex;"><span>#result td,th    { <span style="color:#00f">border</span>: 1<span style="color:#2b91af">px</span> <span style="color:#00f">solid</span> <span style="color:#00f">black</span>; <span style="color:#00f">vertical-align</span>: <span style="color:#00f">bottom</span>; <span style="color:#00f">word-break</span>: keep-all; }
-</span></span><span style="display:flex;"><span>#result th    { <span style="color:#00f">background</span>: rgb(192,192,192); }
+</span></span><span style="display:flex;"><span>*  { <span style="color:#00f">margin</span>: 0; <span style="color:#00f">padding</span>: 0; <span style="color:#00f">font-family</span>: <span style="color:#00f">sans-serif</span>; <span style="color:#00f">font-size</span>: 10<span style="color:#2b91af">pt</span>; }
+</span></span><span style="display:flex;"><span><span style="color:#008000">/*table  { table-layout: fixed; }*/</span>
+</span></span><span style="display:flex;"><span>td   { <span style="color:#00f">vertical-align</span>: <span style="color:#00f">top</span>; }
+</span></span><span style="display:flex;"><span>textarea  { <span style="color:#00f">font-family</span>: FixedSys,<span style="color:#00f">monospace</span>; <span style="color:#00f">font-size</span>: 10<span style="color:#2b91af">pt</span>; }
+</span></span><span style="display:flex;"><span>button  { <span style="color:#00f">width</span>: 10<span style="color:#2b91af">em</span>; <span style="color:#00f">font-size</span>: 9<span style="color:#2b91af">pt</span>;}
+</span></span><span style="display:flex;"><span>#result table  { <span style="color:#00f">border-collapse</span>: <span style="color:#00f">collapse</span>; <span style="color:#00f">border</span>: 1<span style="color:#2b91af">px</span> <span style="color:#00f">solid</span> <span style="color:#00f">black</span>; }
+</span></span><span style="display:flex;"><span>#result td,th  { <span style="color:#00f">border</span>: 1<span style="color:#2b91af">px</span> <span style="color:#00f">solid</span> <span style="color:#00f">black</span>; <span style="color:#00f">vertical-align</span>: <span style="color:#00f">bottom</span>;
+</span></span><span style="display:flex;"><span><span style="color:#00f">word-break</span>: keep-all; }
+</span></span><span style="display:flex;"><span>#result th  { <span style="color:#00f">background</span>: rgb(192,192,192); }
 </span></span><span style="display:flex;"><span>pre { <span style="color:#00f">font-family</span>: <span style="color:#00f">monospace</span>; }
 </span></span><span style="display:flex;"><span>&lt;/style&gt;
 </span></span><span style="display:flex;"><span>&lt;body&gt;
 </span></span><span style="display:flex;"><span>&lt;form id=<span style="color:#a31515">&#34;f1&#34;</span> onsubmit=<span style="color:#a31515">&#34;return false;&#34;</span> action=<span style="color:#a31515">&#34;#&#34;</span>&gt;
-</span></span><span style="display:flex;"><span>&lt;table id=<span style="color:#a31515">&#34;t1&#34;</span> style=<span style="color:#a31515">&#34;width:100%;height:100px;padding:10px;&#34;</span>&gt;
-</span></span><span style="display:flex;"><span>&lt;tr&gt;
-</span></span><span style="display:flex;"><span>    &lt;td&gt;
-</span></span><span style="display:flex;"><span>        Select Database(*.xls, *.xlsx or *.csv) File
-</span></span><span style="display:flex;"><span>        &lt;label for=<span style="color:#a31515">&#34;readonly&#34;</span>&gt;&lt;input type=<span style="color:#a31515">&#34;checkbox&#34;</span> id=<span style="color:#a31515">&#34;readonly&#34;</span> checked=<span style="color:#a31515">&#34;checked&#34;</span> /&gt;Read Only&lt;/label&gt;
-</span></span><span style="display:flex;"><span>        &lt;label for=<span style="color:#a31515">&#34;hdr&#34;</span>&gt;&lt;input type=<span style="color:#a31515">&#34;checkbox&#34;</span> id=<span style="color:#a31515">&#34;hdr&#34;</span> checked=<span style="color:#a31515">&#34;checked&#34;</span> /&gt;Use First Row as Headers&lt;/label&gt;&lt;br /&gt;
-</span></span><span style="display:flex;"><span>        &lt;input type=<span style="color:#a31515">&#34;text&#34;</span> id=<span style="color:#a31515">&#34;filename&#34;</span> style=<span style="color:#a31515">&#34;width:80%;&#34;</span> readonly=<span style="color:#a31515">&#34;readonly&#34;</span> /&gt;&lt;span&gt;&lt;input type=<span style="color:#a31515">&#34;file&#34;</span> id=<span style="color:#a31515">&#34;fileselector&#34;</span> onchange=<span style="color:#a31515">&#34;loadDatabase();&#34;</span> style=<span style="color:#a31515">&#34;width:20%;&#34;</span> /&gt;&lt;/span&gt;
-</span></span><span style="display:flex;"><span>    &lt;/td&gt;
-</span></span><span style="display:flex;"><span>    &lt;td style=<span style="color:#a31515">&#34;width:100px;&#34;</span>&gt;
-</span></span><span style="display:flex;"><span>        &lt;button onclick=<span style="color:#a31515">&#34;loadDatabase();&#34;</span> style=<span style="color:#a31515">&#34;height:50%;&#34;</span>&gt;Reopen&lt;/button&gt;&lt;br /&gt;
-</span></span><span style="display:flex;"><span>        &lt;button onclick=<span style="color:#a31515">&#34;closeADO();&#34;</span> style=<span style="color:#a31515">&#34;height:50%;&#34;</span>&gt;Close&lt;/button&gt;
-</span></span><span style="display:flex;"><span>    &lt;/td&gt;
-</span></span><span style="display:flex;"><span>&lt;/tr&gt;
-</span></span><span style="display:flex;"><span>&lt;tr&gt;
-</span></span><span style="display:flex;"><span>    &lt;td&gt;
-</span></span><span style="display:flex;"><span>        SQL&lt;br /&gt;
-</span></span><span style="display:flex;"><span>        &lt;textarea id=<span style="color:#a31515">&#34;sql&#34;</span> style=<span style="color:#a31515">&#34;width:100%;height:100px;scroll:auto;&#34;</span> wrap=<span style="color:#a31515">&#34;off&#34;</span>&gt;select * from [Sheet1$]&lt;/textarea&gt;
-</span></span><span style="display:flex;"><span>    &lt;/td&gt;
-</span></span><span style="display:flex;"><span>    &lt;td&gt;
-</span></span><span style="display:flex;"><span>        &lt;button onclick=<span style="color:#a31515">&#34;executeSQL(this.form.sql.value);&#34;</span>&gt;Execute SQL&lt;/button&gt;&lt;br /&gt;
-</span></span><span style="display:flex;"><span>        &lt;button onclick=<span style="color:#a31515">&#34;copyTable();&#34;</span>&gt;Copy Table&lt;/button&gt;&lt;br /&gt;
-</span></span><span style="display:flex;"><span>        &lt;button onclick=<span style="color:#a31515">&#34;getTableStructure();&#34;</span>&gt;Meta Information&lt;/button&gt;
-</span></span><span style="display:flex;"><span>    &lt;/td&gt;
-</span></span><span style="display:flex;"><span>&lt;/tr&gt;
-</span></span><span style="display:flex;"><span>&lt;/table&gt;
+</span></span><span style="display:flex;"><span>&lt;div id=<span style="color:#a31515">&#34;top_panel&#34;</span> style=<span style="color:#a31515">&#34;position:absolute;width:100%;&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;div id=<span style="color:#a31515">&#34;database_select&#34;</span> style=<span style="color:#a31515">&#34;width:100%;padding:0
+</span></span></span><span style="display:flex;"><span><span style="color:#a31515">10px;background:#eee;&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;div&gt;Select Database(*.xls, *.xlsx or *.csv) File&lt;/div&gt;
+</span></span><span style="display:flex;"><span>    &lt;label for=<span style="color:#a31515">&#34;readonly&#34;</span>&gt;&lt;input type=<span style="color:#a31515">&#34;checkbox&#34;</span> id=<span style="color:#a31515">&#34;readonly&#34;</span>
+</span></span><span style="display:flex;"><span>checked=<span style="color:#a31515">&#34;checked&#34;</span> /&gt;Read Only&lt;/label&gt;
+</span></span><span style="display:flex;"><span>    &lt;label for=<span style="color:#a31515">&#34;hdr&#34;</span>&gt;&lt;input type=<span style="color:#a31515">&#34;checkbox&#34;</span> id=<span style="color:#a31515">&#34;hdr&#34;</span> checked=<span style="color:#a31515">&#34;checked&#34;</span>
+</span></span><span style="display:flex;"><span>/&gt;Use First Row as Headers&lt;/label&gt;&lt;br /&gt;
+</span></span><span style="display:flex;"><span>    &lt;input type=<span style="color:#a31515">&#34;text&#34;</span> id=<span style="color:#a31515">&#34;filename&#34;</span> style=<span style="color:#a31515">&#34;width:70%;&#34;</span> readonly=<span style="color:#a31515">&#34;readonly&#34;</span>
+</span></span><span style="display:flex;"><span>/&gt;&lt;input type=<span style="color:#a31515">&#34;file&#34;</span> id=<span style="color:#a31515">&#34;fileselector&#34;</span> onchange=<span style="color:#a31515">&#34;loadDatabase();&#34;</span>
+</span></span><span style="display:flex;"><span>style=<span style="color:#a31515">&#34;width:1%;&#34;</span> /&gt;
+</span></span><span style="display:flex;"><span>    &lt;button onclick=<span style="color:#a31515">&#34;loadDatabase();&#34;</span>&gt;Reopen&lt;/button&gt;
+</span></span><span style="display:flex;"><span>    &lt;button onclick=<span style="color:#a31515">&#34;closeADO();&#34;</span>&gt;Close&lt;/button&gt;
+</span></span><span style="display:flex;"><span>  &lt;/div&gt;
+</span></span><span style="display:flex;"><span>  &lt;div id=<span style="color:#a31515">&#34;sql_panel&#34;</span> style=<span style="color:#a31515">&#34;width:100%;padding:0 10px;background:#eee;&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>    SQL&lt;br /&gt;
+</span></span><span style="display:flex;"><span>    &lt;textarea id=<span style="color:#a31515">&#34;sql&#34;</span> style=<span style="color:#a31515">&#34;width:100%;height:10em;scroll:auto;&#34;</span>
+</span></span><span style="display:flex;"><span>wrap=<span style="color:#a31515">&#34;off&#34;</span>&gt;select * from [Sheet1$]&lt;/textarea&gt;
+</span></span><span style="display:flex;"><span>    &lt;button onclick=<span style="color:#a31515">&#34;executeSQL(this.form.sql.value);&#34;</span>&gt;Execute SQL&lt;/button&gt;
+</span></span><span style="display:flex;"><span>    &lt;button onclick=<span style="color:#a31515">&#34;copyTable();&#34;</span>&gt;Copy Table&lt;/button&gt;
+</span></span><span style="display:flex;"><span>    &lt;button onclick=<span style="color:#a31515">&#34;getTableStructure();&#34;</span>&gt;Meta Information&lt;/button&gt;
+</span></span><span style="display:flex;"><span>  &lt;/div&gt;
+</span></span><span style="display:flex;"><span>&lt;/div&gt;
 </span></span><span style="display:flex;"><span>&lt;/form&gt;
-</span></span><span style="display:flex;"><span>&lt;div id=<span style="color:#a31515">&#34;result&#34;</span> style=<span style="color:#a31515">&#34;width:100%;height:500px;overflow:scroll;background:white;padding:10px;border-top:1px solid gray;border-bottom:1px solid threedhighlight;&#34;</span>&gt;&lt;/div&gt; &lt;div id=<span style="color:#a31515">&#34;status&#34;</span> style=<span style="color:#a31515">&#34;width:1980px;height:20px;overflow:hidden;background:buttonface;&#34;</span>&gt;&lt;/div&gt;
+</span></span><span style="display:flex;"><span>&lt;div id=<span style="color:#a31515">&#34;result&#34;</span> style=<span style="color:#a31515">&#34;position: absolute;
+</span></span></span><span style="display:flex;"><span><span style="color:#a31515">width:100%;height:500px;overflow:scroll;background:white;padding:20px;border-top:1px
+</span></span></span><span style="display:flex;"><span><span style="color:#a31515">solid gray;border-bottom:1px solid threedhighlight;&#34;</span>&gt;&lt;/div&gt;
+</span></span><span style="display:flex;"><span>&lt;div id=<span style="color:#a31515">&#34;status&#34;</span> style=<span style="color:#a31515">&#34;position: absolute; bottom: 0; left: 0; width:
+</span></span></span><span style="display:flex;"><span><span style="color:#a31515">100%; height: 2em; padding: 0.5em; overflow: hidden; background:
+</span></span></span><span style="display:flex;"><span><span style="color:#a31515">buttonface;&#34;</span>&gt;&lt;/div&gt;
 </span></span><span style="display:flex;"><span>&lt;/body&gt;
 </span></span><span style="display:flex;"><span>&lt;/html&gt;
 </span></span></code></pre></div><h2 id="動作os">動作OS</h2>
@@ -368,6 +422,7 @@ select intoで直接ファイルに書き出すこともできます。</p>
 <li>Windows Vista</li>
 <li>Windows 7</li>
 <li>Windows 8</li>
+<li>Windows 10</li>
 </ul>
 <p>ExcelファイルやAccessファイルを扱うにはMicrosoft Officeが必要です。</p>
 		</div>
@@ -422,6 +477,7 @@ select intoで直接ファイルに書き出すこともできます。</p>
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/essay/garoon_notification_javascript_customize/">ガルーンで予定の時刻になったらブラウザに通知を表示する</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/hide-internal-procedure-in-mathematica/">Mathematicaで内部処理を隠蔽する</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20221008-sr600-karst/">2022年10月08日 SR600 カルスト DNF</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20220910-sr600-kyoto/">2022年09月10日 SR600 京都</a></li>
@@ -441,7 +497,6 @@ select intoで直接ファイルに書き出すこともできます。</p>
 			<li class="widget__item"><a class="widget__link" href="/essay/rwgps-modify-all-elevations/">RWGPSでルートの標高データを一括で修正する</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20220122-brm122-nihonbash-200km/">2022年01月22日 BRM122 日本橋200 電波塔逆めぐり</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20220108-brm108-kinki-600km/">2022年01月08日 BRM108 近畿600 姫路 しまなみ新春ライド</a></li>
-			<li class="widget__item"><a class="widget__link" href="/essay/disable-nextcloud-preview-image-generation/">Snap版NextCloudのプレビュー生成を無効化する</a></li>
 		</ul>
 	</div>
 </div>
@@ -474,7 +529,7 @@ select intoで直接ファイルに書き出すこともできます。</p>
 		<a class="widget-taglist__link widget__link btn" href="/tags/ffmpeg" title="Ffmpeg">Ffmpeg (2)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/freeradius" title="Freeradius">Freeradius (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/garmin" title="Garmin">Garmin (3)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/garoon" title="Garoon">Garoon (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/garoon" title="Garoon">Garoon (2)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/gas" title="Gas">Gas (2)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/github" title="Github">Github (10)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/gmail" title="Gmail">Gmail (2)</a>
@@ -485,7 +540,7 @@ select intoで直接ファイルに書き出すこともできます。</p>
 		<a class="widget-taglist__link widget__link btn" href="/tags/hugo" title="Hugo">Hugo (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/imagemagick" title="Imagemagick">Imagemagick (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/java" title="Java">Java (3)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/javascript" title="Javascript">Javascript (14)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/javascript" title="Javascript">Javascript (15)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/lxd" title="Lxd">Lxd (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/mathematica" title="Mathematica">Mathematica (25)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/nextcloud" title="Nextcloud">Nextcloud (1)</a>
@@ -545,7 +600,7 @@ select intoで直接ファイルに書き出すこともできます。</p>
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2022 330k info.
+			&copy; 2023 330k info.
 			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
 		</div>
 	</div>

@@ -6,7 +6,25 @@
     <description>Recent content in Tags on 330k info</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Fri, 28 Oct 2022 15:20:32 +0900</lastBuildDate><atom:link href="https://www.330k.info/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 24 Jan 2023 03:10:49 +0900</lastBuildDate><atom:link href="https://www.330k.info/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Garoon</title>
+      <link>https://www.330k.info/tags/garoon/</link>
+      <pubDate>Tue, 24 Jan 2023 03:10:49 +0900</pubDate>
+      
+      <guid>https://www.330k.info/tags/garoon/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>JavaScript</title>
+      <link>https://www.330k.info/tags/javascript/</link>
+      <pubDate>Tue, 24 Jan 2023 03:10:49 +0900</pubDate>
+      
+      <guid>https://www.330k.info/tags/javascript/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>Mathematica</title>
       <link>https://www.330k.info/tags/mathematica/</link>
@@ -121,15 +139,6 @@
       <pubDate>Thu, 31 Mar 2022 22:31:39 +0900</pubDate>
       
       <guid>https://www.330k.info/tags/brm600km/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>JavaScript</title>
-      <link>https://www.330k.info/tags/javascript/</link>
-      <pubDate>Thu, 17 Mar 2022 01:13:49 +0900</pubDate>
-      
-      <guid>https://www.330k.info/tags/javascript/</guid>
       <description></description>
     </item>
     
@@ -274,15 +283,6 @@
       <pubDate>Fri, 12 Feb 2021 13:15:47 +0900</pubDate>
       
       <guid>https://www.330k.info/tags/cybozu/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Garoon</title>
-      <link>https://www.330k.info/tags/garoon/</link>
-      <pubDate>Fri, 12 Feb 2021 13:15:47 +0900</pubDate>
-      
-      <guid>https://www.330k.info/tags/garoon/</guid>
       <description></description>
     </item>
     
