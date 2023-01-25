@@ -8,14 +8,14 @@
     <language>ja-jp</language>
     <lastBuildDate>Tue, 24 Jan 2023 03:10:49 +0900</lastBuildDate><atom:link href="https://www.330k.info/tags/garoon/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>ガルーンで予定の時刻になったらブラウザに通知を表示する</title>
+      <title>ガルーンで予定のリマインダーをブラウザのみで実施する</title>
       <link>https://www.330k.info/essay/garoon_notification_javascript_customize/</link>
       <pubDate>Tue, 24 Jan 2023 03:10:49 +0900</pubDate>
       
       <guid>https://www.330k.info/essay/garoon_notification_javascript_customize/</guid>
-      <description>&lt;p&gt;Cybozuのガルーンは、スマホのKUNAIアプリに予定の通知機能はあるものの、
-PCのブラウザではNotification APIを使った通知機能は実装されていない(2023-01-24時点)。&lt;/p&gt;
-&lt;p&gt;そこで、&lt;a href=&#34;https://jp.cybozu.help/g/ja/admin/system/customize.html&#34;&gt;JavaScript / CSSによるカスタマイズ&lt;/a&gt;機能を使って予定の時刻に迫った時に通知を表示させてみた。&lt;/p&gt;</description>
+      <description>&lt;p&gt;Cybozuのガルーンは、PCのCybozu Desktop2やスマホのKUNAIアプリに予定の通知機能はあるものの、
+ブラウザでのNotification APIを使った通知機能は実装されていない(2023-01-24時点)。&lt;/p&gt;
+&lt;p&gt;そこで、&lt;a href=&#34;https://jp.cybozu.help/g/ja/admin/system/customize.html&#34;&gt;JavaScript / CSSによるカスタマイズ&lt;/a&gt;機能を使って予定の時刻に迫った時に通知を表示させてみた(管理者向け)。&lt;/p&gt;</description>
     </item>
     
     <item>
