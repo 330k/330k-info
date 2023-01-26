@@ -14,7 +14,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.330k.info/essay/garoon_notification_javascript_customize/" /><meta property="og:image" content="https://www.330k.info/essay/sync-garoon-google-calendar/thumb.jpg" /><meta property="article:section" content="essay" />
 <meta property="article:published_time" content="2023-01-24T03:10:49+09:00" />
-<meta property="article:modified_time" content="2023-01-25T16:59:29+09:00" />
+<meta property="article:modified_time" content="2023-01-26T22:20:46+09:00" />
 
 	<meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://www.330k.info/essay/sync-garoon-google-calendar/thumb.jpg"/>
@@ -86,7 +86,7 @@ if (!doNotTrack) {
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
 	<time class="meta__text" datetime="2023-01-24T03:10:49">January 24, 2023</time>
-	<time class="meta__text" datetime="2023-01-25T16:59:29"> (Last Modified: January 25, 2023)</time>
+	<time class="meta__text" datetime="2023-01-26T22:20:46"> (Last Modified: January 26, 2023)</time>
 </div>
 
 <div class="meta__item-categories meta__item">
@@ -101,7 +101,7 @@ if (!doNotTrack) {
 <h2 id="実装">実装</h2>
 <p>使うJavaScriptファイルは以下の内容の1ファイル。適当に拡張子<code>.js</code>をつけて保存する。</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-JavaScript" data-lang="JavaScript"><span style="display:flex;"><span>(<span style="color:#00f">async</span> <span style="color:#00f">function</span> notifyGaroonEvent(){
-</span></span><span style="display:flex;"><span>    <span style="color:#00f">const</span> TIME_FETCH_INTERVAL = 60 * 60 * 1000; <span style="color:#008000">// 予定の再取得をする間隔 (1時間)
+</span></span><span style="display:flex;"><span>    <span style="color:#00f">const</span> TIME_FETCH_INTERVAL = 10 * 60 * 1000; <span style="color:#008000">// 予定の再取得をする間隔 (10分)
 </span></span></span><span style="display:flex;"><span><span style="color:#008000"></span>    <span style="color:#00f">const</span> TIME_NOTIFY_BEFORE = 3 * 60 * 1000; <span style="color:#008000">// 予定の開始時刻の何ミリ秒前に通知するか (3分)
 </span></span></span><span style="display:flex;"><span><span style="color:#008000"></span>    <span style="color:#00f">const</span> TIME_NOTIFY_CLOSE = 30 * 1000; <span style="color:#008000">// 予定の通知を何ミリ秒後に閉じるか (30秒)
 </span></span></span><span style="display:flex;"><span><span style="color:#008000"></span>    <span style="color:#00f">const</span> timers = [];
@@ -161,6 +161,9 @@ if (!doNotTrack) {
 <p>あとは適当に予定を作成すると、その開始時刻の3分前に以下のような通知が出てくるようになる(ChromeとEdgeでは動作を確認したが、Firefoxも動作するはず)。</p>
 <figure><img src="notification_001.png"/>
 </figure>
+
+<p>ただし、ブラウザでガルーンのタブを開きっぱなしにしていないと通知は出ない点は注意。</p>
+<p>また、<code>SetTimeout</code>は正確に指定時刻後に実行されることを保証するわけではないが、だいたいうまく動作している。</p>
 		</div>
 		<footer class="post__footer">
 			
