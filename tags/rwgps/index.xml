@@ -31,7 +31,10 @@
       <pubDate>Tue, 25 Jan 2022 20:58:59 +0900</pubDate>
       
       <guid>https://www.330k.info/software/chrome_rwgps_ele_gsi/</guid>
-      <description>&lt;p&gt;&lt;a href=&#34;https://ridewithgps.com/&#34;&gt;Ride with GPS(RWGPS)&lt;/a&gt;のルート作成時、標高を国土地理院が提供する標高タイルから取得するように切り替えるChrome拡張機能です。&lt;/p&gt;</description>
+      <description>&lt;p&gt;&lt;a href=&#34;https://ridewithgps.com/&#34;&gt;Ride with GPS(RWGPS)&lt;/a&gt;のルート作成時、標高を国土地理院が提供する標高タイルから取得するように切り替えるChrome拡張機能です。&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;Jan. 28 2023: RWGPSの公式に紹介されました！ → &lt;a href=&#34;https://ridewithgps.com/news/7628-&#34;&gt;日本のユーザーが地理空間データを使って標高精度を向上させることが可能に&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;</description>
     </item>
     
   </channel>
