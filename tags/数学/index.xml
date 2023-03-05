@@ -6,7 +6,16 @@
     <description>Recent content in 数学 on 330k info</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Thu, 17 Mar 2022 01:13:49 +0900</lastBuildDate><atom:link href="https://www.330k.info/tags/%E6%95%B0%E5%AD%A6/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 05 Mar 2023 11:53:31 +0900</lastBuildDate><atom:link href="https://www.330k.info/tags/%E6%95%B0%E5%AD%A6/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>(旧)日本測地系から世界測地系への変換式を作ってみる</title>
+      <link>https://www.330k.info/essay/convert-datum-tokyo-to-jgd/</link>
+      <pubDate>Sun, 05 Mar 2023 11:53:31 +0900</pubDate>
+      
+      <guid>https://www.330k.info/essay/convert-datum-tokyo-to-jgd/</guid>
+      <description>&lt;p&gt;旧日本測地系(Tokyo Datum)から世界測地系(JGD2000)への変換に関して、既存の1次近似式の確認と、最新のパラメータファイルを使っての新たな近似式の作成を行ってみた。&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>測地線距離計算式・計算ライブラリの精度評価 </title>
       <link>https://www.330k.info/essay/geodesic_distance_formula_comparison_2/</link>

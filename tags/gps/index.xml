@@ -6,7 +6,16 @@
     <description>Recent content in GPS on 330k info</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Tue, 27 Oct 2009 00:00:00 +0900</lastBuildDate><atom:link href="https://www.330k.info/tags/gps/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 05 Mar 2023 11:53:31 +0900</lastBuildDate><atom:link href="https://www.330k.info/tags/gps/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>(旧)日本測地系から世界測地系への変換式を作ってみる</title>
+      <link>https://www.330k.info/essay/convert-datum-tokyo-to-jgd/</link>
+      <pubDate>Sun, 05 Mar 2023 11:53:31 +0900</pubDate>
+      
+      <guid>https://www.330k.info/essay/convert-datum-tokyo-to-jgd/</guid>
+      <description>&lt;p&gt;旧日本測地系(Tokyo Datum)から世界測地系(JGD2000)への変換に関して、既存の1次近似式の確認と、最新のパラメータファイルを使っての新たな近似式の作成を行ってみた。&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>簡易ハンディGPSによるあしあとデータの時刻情報</title>
       <link>https://www.330k.info/essay/leap-second-in-au-handy-gps-ashiato-data/</link>
