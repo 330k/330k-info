@@ -12,7 +12,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.330k.info/essay/convert-datum-tokyo-to-jgd/" /><meta property="og:image" content="https://www.330k.info/essay/convert-datum-tokyo-to-jgd/thumbnail_001.png" /><meta property="article:section" content="essay" />
 <meta property="article:published_time" content="2023-03-05T11:53:31+09:00" />
-<meta property="article:modified_time" content="2023-03-06T21:56:17+09:00" />
+<meta property="article:modified_time" content="2023-03-07T01:36:16+09:00" />
 
 	<meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://www.330k.info/essay/convert-datum-tokyo-to-jgd/thumbnail_001.png"/>
@@ -82,7 +82,7 @@ if (!doNotTrack) {
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
 	<time class="meta__text" datetime="2023-03-05T11:53:31">March 05, 2023</time>
-	<time class="meta__text" datetime="2023-03-06T21:56:17"> (Last Modified: March 06, 2023)</time>
+	<time class="meta__text" datetime="2023-03-07T01:36:16"> (Last Modified: March 07, 2023)</time>
 </div>
 
 <div class="meta__item-categories meta__item">
@@ -123,7 +123,7 @@ if (!doNotTrack) {
 <p>現在は緯度方向に30秒、経度方向に45秒単位というより細かいメッシュでの座標変換パラメータである<code>TKY2JGD.par</code>が国土地理院から配布されている(<a href="https://www.gsi.go.jp/sokuchikijun/tky2jgd_download.html">TKY2JGD for Windowsダウンロード | 国土地理院</a>)。</p>
 <p>これを使えば、もしかしたら近似式の精度を改善できるかもしれない、ということで1次～3次式でフィッティングしてみた。</p>
 <p>なお、バージョンはWeb版のTKY2JGD Ver.1.3.80が利用する2.1.1を利用した。
-また、宮古島以西、大東諸島、八丈島・青ヶ島は極端にずれているため除外した。</p>
+また、宮古島以西、大東諸島、八丈島、青ヶ島は極端にずれているため除外した。</p>
 <p>同様にMathematicaでフィッティングし、以下の近似式が得られた。</p>
 <ul>
 <li>1次式
@@ -134,19 +134,19 @@ if (!doNotTrack) {
 </li>
 <li>2次式
 <ul>
-<li><code>latW = lat + 0.016477522152087188 - 0.000017789134840406895*lat - 3.7999795449370385*^-7*lat^2 - 0.00018138325650007267*lon - 4.46725604751588*^-7*lat*lon + 7.909460428663596*^-7*lon^2</code></li>
-<li><code>lonW = lon + 0.006184787179550604 - 0.000011557674383667673*lat - 9.74833404431774*^-7*lat^2 - 0.000031734077330480837*lon + 3.258192351492716*^-7*lat*lon - 2.534232516398711*^-7*lon^2</code></li>
+<li><code>latW = lat + 0.016477522152087188 - 0.000017789134840406895*lat - 3.7999795449370385e-7*lat^2 - 0.00018138325650007267*lon - 4.46725604751588e-7*lat*lon + 7.909460428663596e-7*lon^2</code></li>
+<li><code>lonW = lon + 0.006184787179550604 - 0.000011557674383667673*lat - 9.74833404431774e-7*lat^2 - 0.000031734077330480837*lon + 3.258192351492716e-7*lat*lon - 2.534232516398711e-7*lon^2</code></li>
 </ul>
 </li>
 <li>3次式
 <ul>
-<li><code>latW = lat - 0.060900059135008414 + 0.003361617191066646*lat + 1.2795747406005985*^-6*lat^2 + 5.201225639893501*^-8*lat^3 + 0.0006051338742218461*lon - 0.000050694419571524394*lat*lon - 5.023128450118049*^-8*lat^2*lon + 1.8148757567289107*^-6*lon^2 + 1.9557426585832626*^-7*lat*lon^2 - 1.992482916686384*^-8*lon^3</code></li>
-<li><code>lonW = lon - 0.13994168800009116 + 0.0013927217169657682*lat + 0.0000138161256143156*lat^2 - 1.0901155011294384*^-7*lat^3 + 0.002792369979389253*lon - 0.000027625021457358877*lat*lon - 1.6982726079231825*^-8*lat^2*lon - 0.000017166797196903788*lon^2 + 1.0415388590600207*^-7*lat*lon^2 + 3.2095893780347566*^-8*lon^3</code></li>
+<li><code>latW = lat - 0.060900059135008414 + 0.003361617191066646*lat + 1.2795747406005985e-6*lat^2 + 5.201225639893501e-8*lat^3 + 0.0006051338742218461*lon - 0.000050694419571524394*lat*lon - 5.023128450118049e-8*lat^2*lon + 1.8148757567289107e-6*lon^2 + 1.9557426585832626e-7*lat*lon^2 - 1.992482916686384e-8*lon^3</code></li>
+<li><code>lonW = lon - 0.13994168800009116 + 0.0013927217169657682*lat + 0.0000138161256143156*lat^2 - 1.0901155011294384e-7*lat^3 + 0.002792369979389253*lon - 0.000027625021457358877*lat*lon - 1.6982726079231825e-8*lat^2*lon - 0.000017166797196903788*lon^2 + 1.0415388590600207e-7*lat*lon^2 + 3.2095893780347566e-8*lon^3</code></li>
 </ul>
 </li>
 </ul>
 <p>もともとの1次近似式と、新たに作成した上の3式の誤差を比較すると、下表のようになった。</p>
-<p>ここでは誤差を「近似式による変換後の緯度経度と、<code>TKY2JGD</code>による変換後の緯度経度との測地線距離(m)」として計算した。</p>
+<p>ここでは誤差を「<code>TKY2JGD.par</code>で与えられる地点において、近似式による変換後の緯度経度と、TKY2JGDによる変換後の緯度経度との測地線距離(m)」として計算した。</p>
 <table>
 <thead>
 <tr>
