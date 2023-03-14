@@ -17,7 +17,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.330k.info/essay/precision-of-mathematica-geodistance-and-geographical-distance-formula/" /><meta property="og:image" content="https://www.330k.info/essay/precision-of-mathematica-geodistance-and-geographical-distance-formula/hubeny_graph002.png" /><meta property="article:section" content="essay" />
 <meta property="article:published_time" content="2014-06-07T00:00:00+09:00" />
-<meta property="article:modified_time" content="2022-03-20T13:48:17+09:00" />
+<meta property="article:modified_time" content="2023-03-15T01:56:08+09:00" />
 
 	<meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://www.330k.info/essay/precision-of-mathematica-geodistance-and-geographical-distance-formula/hubeny_graph002.png"/>
@@ -92,7 +92,7 @@ if (!doNotTrack) {
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
 	<time class="meta__text" datetime="2014-06-07T00:00:00">June 07, 2014</time>
-	<time class="meta__text" datetime="2022-03-20T13:48:17"> (Last Modified: March 20, 2022)</time>
+	<time class="meta__text" datetime="2023-03-15T01:56:08"> (Last Modified: March 15, 2023)</time>
 </div>
 
 <div class="meta__item-categories meta__item">
@@ -175,7 +175,7 @@ if (!doNotTrack) {
 
 <p>上図は横軸がGeographicLibで計算した正確な距離、縦軸が各計算方法で計算した距離である。</p>
 <p>y = xの直線上にあれば正確ということだが、<code>GeoDistance</code>の<code>Robbin61</code>では1万kmを超えると実際よりも極端に短く計算してしまうようだ。</p>
-<p>またヒュベニの式は実際よりも長く計算することが多く、そのような場合について調べてみると高緯度になるほど誤差が大きくなることが分かった。</p>
+<p>またヒュベニの式は実際よりも長く計算することが多く、そのような場合について調べてみると測地線の緯度変化が一様でない(東京～ロンドンでは測地線が北極付近を通過するように、緯度が上がってから下がる場合など)に誤差が大きくなることが分かった。</p>
 <p>同じ計算結果を誤差についてプロットしたものが下図である。また表は各計算方法の最大誤差である。</p>
 <figure><img src="hubeny_graph002.png"/>
 </figure>
@@ -219,7 +219,7 @@ if (!doNotTrack) {
 <li>Mathematicaの<code>GeoDistance</code>で最も精度が良いのはデフォルトの<code>Vincenty75</code>で、常に11桁程度の精度を持っている。</li>
 <li><code>Robbin61</code>は1万km以内でも2桁程度で、1万kmを超えると実用にならない(誤差95%)。</li>
 <li><code>ExtendedNewtonRaphson</code>は5桁程度の精度。</li>
-<li>高緯度(極付近)が含まれる場合はヒュベニの式は精度が出ない(誤差2000%(!))。</li>
+<li>測地線の緯度変化が一様でない場合はヒュベニの式は精度が出ない(誤差2000%)。</li>
 <li>測量計算サイトの計算式は1万kmまでは10桁程度の精度が出ていたが、1万kmを超えると2桁程度(誤差0.7%)まで一気に落ちる。</li>
 <li>完全球体として計算する、Google EarthやGoogle Mapsの計算は2桁の精度(誤差0.6%)。</li>
 </ul>
