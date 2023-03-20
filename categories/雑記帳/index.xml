@@ -525,7 +525,7 @@ Snappy(Snap)を使おうとすると、snapデーモンはホストのルートC
       <pubDate>Sat, 22 Jul 2017 19:32:46 +0900</pubDate>
       
       <guid>https://www.330k.info/essay/random_distribution_sphere_surface/</guid>
-      <description>球面上に一様分布するランダムな点を生成したい時、 単純に極座標表示でθとφを一様分布させると、極付近に点が集まってしまう。 data1 = Transpose[{Sin[t] Cos[f], Sin[t] Sin[f], Cos[t]} /. { f -&amp;gt; RandomReal[{0, 2 Pi}, 2000], t -&amp;gt; RandomReal[{0, Pi}, 2000]}]; g1 = ListPointPlot3D[data1, BoxRatios -&amp;gt; {1, 1, 1}] 球面上で一様分布させるには、下記のようにθにArcCosを使う (θの位置の確率をSinθに比例させたい→累積確率分布関数はCos→逆関数はArcCos)。 data2 = Transpose[{Sin[t] Cos[f], Sin[t] Sin[f], Cos[t]} /. { f -&amp;gt; RandomReal[{0, 2 Pi}, 2000], t -&amp;gt; ArcCos[RandomReal[{-1, 1}, 2000]]}]; g2 = ListPointPlot3D[data2, BoxRatios -&amp;gt; {1, 1, 1}] なお、多次元球</description>
+      <description>球面上に一様分布するランダムな点を生成したい時、 単純に極座標表示で$\theta$と$\varphi$を一様分布させると、極付近に点が集まってしまう。 data1 = Transpose[{Sin[t] Cos[f], Sin[t] Sin[f], Cos[t]} /. { f -&amp;gt; RandomReal[{0, 2 Pi}, 2000], t -&amp;gt; RandomReal[{0, Pi}, 2000]}]; g1 = ListPointPlot3D[data1, BoxRatios -&amp;gt; {1, 1, 1}] 球面上で一様分布させるには、下記のように$\theta$にArcCosを使う ($\theta$の位置の確率を$\sin\theta$に比例させたい→累積確率分布関数は$\cos$→逆関数は$\a</description>
     </item>
     
     <item>
@@ -969,7 +969,7 @@ ANT+対応の心拍計などは持っていないので、Recon JET単体での�
 &lt;p&gt;基本的な考え方は、&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;折れ線の始点と終点を結ぶ線分と各点の距離を求める。&lt;/li&gt;
-&lt;li&gt;すべての点との距離が許容誤差ε以内に入っていれば始点と終点だけを返して終了。&lt;/li&gt;
+&lt;li&gt;すべての点との距離が許容誤差$\varepsilon$以内に入っていれば始点と終点だけを返して終了。&lt;/li&gt;
 &lt;li&gt;そうでなければ距離が最大の点Pを1つ選択。&lt;/li&gt;
 &lt;li&gt;始点から点Pまでの折れ線と、点Pから終点までの折れ線のそれぞれについてまた1から処理する。&lt;/li&gt;
 &lt;/ol&gt;

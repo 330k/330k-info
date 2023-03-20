@@ -13,7 +13,7 @@
 基本的な考え方は、
 
 折れ線の始点と終点を結ぶ線分と各点の距離を求める。
-すべての点との距離が許容誤差ε以内に入っていれば始点と終点だけを返して終了。
+すべての点との距離が許容誤差$\varepsilon$以内に入っていれば始点と終点だけを返して終了。
 そうでなければ距離が最大の点Pを1つ選択。
 始点から点Pまでの折れ線と、点Pから終点までの折れ線のそれぞれについてまた1から処理する。
 
@@ -22,7 +22,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.330k.info/essay/oresenwomabiku/" /><meta property="og:image" content="https://www.330k.info/essay/oresenwomabiku/douglas-peucker-n-001.png" /><meta property="article:section" content="essay" />
 <meta property="article:published_time" content="2009-10-24T00:00:00+09:00" />
-<meta property="article:modified_time" content="2022-05-27T19:06:11+09:00" />
+<meta property="article:modified_time" content="2023-03-19T02:33:27+09:00" />
 
 	<meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://www.330k.info/essay/oresenwomabiku/douglas-peucker-n-001.png"/>
@@ -33,7 +33,7 @@
 基本的な考え方は、
 
 折れ線の始点と終点を結ぶ線分と各点の距離を求める。
-すべての点との距離が許容誤差ε以内に入っていれば始点と終点だけを返して終了。
+すべての点との距離が許容誤差$\varepsilon$以内に入っていれば始点と終点だけを返して終了。
 そうでなければ距離が最大の点Pを1つ選択。
 始点から点Pまでの折れ線と、点Pから終点までの折れ線のそれぞれについてまた1から処理する。
 
@@ -102,7 +102,7 @@ if (!doNotTrack) {
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
 	<time class="meta__text" datetime="2009-10-24T00:00:00">October 24, 2009</time>
-	<time class="meta__text" datetime="2022-05-27T19:06:11"> (Last Modified: May 27, 2022)</time>
+	<time class="meta__text" datetime="2023-03-19T02:33:27"> (Last Modified: March 19, 2023)</time>
 </div>
 
 <div class="meta__item-categories meta__item">
@@ -116,7 +116,7 @@ if (!doNotTrack) {
 <p>基本的な考え方は、</p>
 <ol>
 <li>折れ線の始点と終点を結ぶ線分と各点の距離を求める。</li>
-<li>すべての点との距離が許容誤差ε以内に入っていれば始点と終点だけを返して終了。</li>
+<li>すべての点との距離が許容誤差$\varepsilon$以内に入っていれば始点と終点だけを返して終了。</li>
 <li>そうでなければ距離が最大の点Pを1つ選択。</li>
 <li>始点から点Pまでの折れ線と、点Pから終点までの折れ線のそれぞれについてまた1から処理する。</li>
 </ol>
@@ -128,7 +128,7 @@ if (!doNotTrack) {
 <p>線分ABに点Pから下ろした垂線の足が点Hだとすると、</p>
 <ul>
 <li>線分ABと直線PHは直交⇔内積が0</li>
-<li>点Hは直線AB上にある⇔実数tに対して<strong>B</strong> = t <strong>H</strong>(B、Hは点Aから見た点B、点Hの位置ベクトル)</li>
+<li>点Hは直線AB上にある⇔実数$t$に対して$\boldsymbol{B} = t \boldsymbol{H}$($\boldsymbol{B}, \boldsymbol{H}$は点Aから見た点B、点Hの位置ベクトル)</li>
 </ul>
 <p>の条件から、Hの座標と実数tの値が求まる。
 Mathematicaを使うと</p>
@@ -148,16 +148,16 @@ Mathematicaを使うと</p>
 </span></span></code></pre></div><p>となる。
 これは2次元の場合だが、一般に</p>
 <ul>
-<li>t == (<strong>A</strong> - <strong>B</strong>).(<strong>A</strong> - <strong>P</strong>) / (<strong>A</strong> - <strong>B</strong>).(<strong>A</strong> - <strong>B</strong>)</li>
-<li><strong>H</strong> == <strong>A</strong> + (<strong>B</strong> - <strong>A</strong>)t</li>
+<li>$t = (\boldsymbol{A}-\boldsymbol{B}) \cdot (\boldsymbol{A}-\boldsymbol{p}) / (\boldsymbol{A}-\boldsymbol{B}) \cdot (\boldsymbol{A}-\boldsymbol{B})$</li>
+<li>$\boldsymbol{H} = \boldsymbol{A} + (\boldsymbol{B}-\boldsymbol{A})t$</li>
 </ul>
 <p>となるので、3次元以上の場合はこれから計算すればよい。</p>
-<p>実数tが0から1までの間にあるとき、垂線の足、点Hは線分AB上にある。</p>
+<p>実数$t$が0から1までの間にあるとき、垂線の足、点Hは線分AB上にある。</p>
 <p>よって線分ABと点Pの距離は</p>
 <ul>
-<li>0&lt;=t&lt;=1ならばHP</li>
-<li>t&lt;0ならばAP</li>
-<li>1&lt;tならばBP</li>
+<li>$0 \leq t \leq 1$ならばHP</li>
+<li>$t&lt;0$ならばAP</li>
+<li>$1&lt;t$ならばBP</li>
 </ul>
 <p>となる。以上を実装すると、</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Mathematica" data-lang="Mathematica"><span style="display:flex;"><span>SegmentPointDistance[{{ax_, ay_}, {bx_, by_}}, {px_, py_}] := Module[
@@ -214,7 +214,7 @@ Mathematicaを使うと</p>
 </tbody>
 </table>
 <h2 id="間引いた後の点の数を指定できるようにするには">間引いた後の点の数を指定できるようにするには</h2>
-<p>さて、Douglas-Peuckerのアルゴリズムは許容誤差εを与えて間引くので、間引いた後の点の数がいくらになるのかは指定できない。
+<p>さて、Douglas-Peuckerのアルゴリズムは許容誤差$\varepsilon$を与えて間引くので、間引いた後の点の数がいくらになるのかは指定できない。
 しかし、GPSログデータの編集・加工ツールとして有名な轍(Wadachi)では、間引いた後の点の数を指定できる。</p>
 <p>これを実現するには、以下のようなアルゴリズムになる。</p>
 <ol>
@@ -475,5 +475,14 @@ Mathematicaを使うと</p>
   gtag('js', new Date());
 
   gtag('config', 'G-L5FSJ397HF');
-</script></body>
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML" async></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [['$','$']]
+    }
+});
+</script>
+</body>
 </html>
