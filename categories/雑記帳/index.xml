@@ -6,7 +6,17 @@
     <description>Recent content in 雑記帳 on 330k info</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Sun, 05 Mar 2023 11:53:31 +0900</lastBuildDate><atom:link href="https://www.330k.info/categories/%E9%9B%91%E8%A8%98%E5%B8%B3/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 22 Mar 2023 00:16:26 +0900</lastBuildDate><atom:link href="https://www.330k.info/categories/%E9%9B%91%E8%A8%98%E5%B8%B3/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>無駄にCPUを消費するデーモンを作る</title>
+      <link>https://www.330k.info/essay/consume-cpu-wastefully/</link>
+      <pubDate>Wed, 22 Mar 2023 00:16:26 +0900</pubDate>
+      
+      <guid>https://www.330k.info/essay/consume-cpu-wastefully/</guid>
+      <description>&lt;p&gt;とある目的でCPU使用率を10%以上に維持する必要が生じたため、その実現方法を考えた結果、
+systemdを使ってCPU使用率に制限をかけつつ無限ループを行う、という方法に行き着いた。&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>(旧)日本測地系から世界測地系への変換式を作ってみる</title>
       <link>https://www.330k.info/essay/convert-datum-tokyo-to-jgd/</link>

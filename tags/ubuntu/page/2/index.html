@@ -78,6 +78,39 @@ if (!doNotTrack) {
 		<h1 class="main__title">Ubuntu</h1>
 	</header><article class="list__item post">
 	<figure class="list__thumbnail">
+		<a href="https://www.330k.info/essay/install-google-backup-sync-on-wine/">
+			<img src="/essay/install-google-backup-sync-on-wine/22-02-41.png" alt="Googleのバックアップと同期をWineでUbuntuにインストールする" />
+		</a>
+	</figure>
+	<header class="list__header">
+		<h3 class="list__title post__title ">
+			<a href="/essay/install-google-backup-sync-on-wine/" rel="bookmark">
+			Googleのバックアップと同期をWineでUbuntuにインストールする
+			</a>
+		</h3>
+		<div class="list__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
+	<time class="meta__text" datetime="2020-01-24T22:13:55">January 24, 2020</time>
+	<time class="meta__text" datetime="2022-02-10T22:11:34"> (Last Modified: February 10, 2022)</time>
+</div>
+
+<div class="meta__item-categories meta__item">
+	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+	<span class="meta__text"><a class="meta__link" href="/categories/%e9%9b%91%e8%a8%98%e5%b8%b3" rel="category">雑記帳</a></span>
+</div>
+</div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		<p>Googleの「バックアップと同期」をUbuntu上で動かしたかったので、頑張ってみた。</p>
+<p>参考)</p>
+<ul>
+<li><a href="https://gist.github.com/davidfraser/96867a8dbfa607ceba9ed363e6c1688b">https://gist.github.com/davidfraser/96867a8dbfa607ceba9ed363e6c1688b</a></li>
+<li><a href="https://appdb.winehq.org/objectManager.php?sClass=version&amp;iId=38353">https://appdb.winehq.org/objectManager.php?sClass=version&amp;iId=38353</a></li>
+</ul>
+	</div>
+</article><article class="list__item post">
+	<figure class="list__thumbnail">
 		<a href="https://www.330k.info/essay/install-wine5-to-ubuntu-18.04/">
 			<img src="/essay/install-wine5-to-ubuntu-18.04/wine5.png" alt="Ubuntu 18.04に最新のWINE(5.0.0)をインストールする" />
 		</a>
@@ -328,40 +361,13 @@ if (!doNotTrack) {
 	<div class="content list__excerpt post__content clearfix">
 		自炊した書籍をzipで作成する際、普通に圧縮すると変な順番で格納されてしまう。 実用上ほとんど問題はないのだが、なんとなくファイル名順に格納したかったので、そのやり方をメモ。 ls -1 ディレクトリ名 | zip -@rjDo0 圧縮ファイル名.zip やっていることは lsに-1オプションをつけてファイル1行ずつでファイル名を出力(デフォルトでは文字コード順) zipに-@オプションをつけ、標準入力にファイル名を渡して圧縮(残りのオプ
 	</div>
-</article><article class="list__item post">
-	<figure class="list__thumbnail">
-		<a href="https://www.330k.info/essay/how-to-make-mathematica8-process-japanese-on-ubuntu-1204-ltf-64bit/">
-			<img src="/images/Mathematica_Logo.png" alt="Mathematica on Ubuntu 12.04 LTSで日本語関連のトラブル" />
-		</a>
-	</figure>
-	<header class="list__header">
-		<h3 class="list__title post__title ">
-			<a href="/essay/how-to-make-mathematica8-process-japanese-on-ubuntu-1204-ltf-64bit/" rel="bookmark">
-			Mathematica on Ubuntu 12.04 LTSで日本語関連のトラブル
-			</a>
-		</h3>
-		<div class="list__meta meta">
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
-	<time class="meta__text" datetime="2012-10-09T00:00:00">October 09, 2012</time>
-	<time class="meta__text" datetime="2022-10-27T02:18:32"> (Last Modified: October 27, 2022)</time>
-</div>
-
-<div class="meta__item-categories meta__item">
-	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
-	<span class="meta__text"><a class="meta__link" href="/categories/%e9%9b%91%e8%a8%98%e5%b8%b3" rel="category">雑記帳</a></span>
-</div>
-</div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		Mathematica 8 Home Edition 日本語版をUbuntu 12.04 LTS 64bit版にインストールしたところ、 ディレクトリ、ファイル名に日本語が含まれるノートブックファイル(.nb)を開けない ディレクトリ、ファイル名に日本語が含まれるとImport/Exportできない、FileNamesで列挙できない ノートブック中に日本語を入力できない $SystemCharacterEncoding、$CharacterEncodingが&quot
-	</div>
 </article>
 </main>
 
 <div class="pagination">
 	<a class="pagination__item pagination__item--prev btn" href="/tags/ubuntu/">«</a>
-	<span class="pagination__item pagination__item--current">2/2</span>
+	<span class="pagination__item pagination__item--current">2/3</span>
+	<a class="pagination__item pagination__item--next btn" href="/tags/ubuntu/page/3/">»</a>
 </div>
 
 
@@ -392,6 +398,7 @@ if (!doNotTrack) {
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/essay/consume-cpu-wastefully/">無駄にCPUを消費するデーモンを作る</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/convert-datum-tokyo-to-jgd/">(旧)日本測地系から世界測地系への変換式を作ってみる</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/garoon_notification_javascript_customize/">ガルーンで予定のリマインダーをブラウザのみで実施する</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/hide-internal-procedure-in-mathematica/">Mathematicaで内部処理を隠蔽する</a></li>
@@ -411,7 +418,6 @@ if (!doNotTrack) {
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20220221-brm224-tokyo-600km/">2022年02月21日 BRM224 東京600 とことん沖縄</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/javascript-layered-cache-api-with-expiration/">JavaScriptのCache APIで有効期限付きの階層キャッシュを実装する</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/rwgps-modify-all-elevations/">RWGPSでルートの標高データを一括で修正する</a></li>
-			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20220122-brm122-nihonbash-200km/">2022年01月22日 BRM122 日本橋200 電波塔逆めぐり</a></li>
 		</ul>
 	</div>
 </div>
@@ -468,7 +474,7 @@ if (!doNotTrack) {
 		<a class="widget-taglist__link widget__link btn" href="/tags/sql" title="SQL">SQL (3)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/sqlserver" title="Sqlserver">Sqlserver (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/sr600" title="Sr600">Sr600 (10)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/ubuntu" title="Ubuntu">Ubuntu (20)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/ubuntu" title="Ubuntu">Ubuntu (21)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/vba" title="Vba">Vba (4)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/vpn" title="VPN">VPN (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/windows" title="Windows">Windows (13)</a>
