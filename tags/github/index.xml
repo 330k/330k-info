@@ -35,8 +35,8 @@
       <pubDate>Sun, 24 Apr 2022 21:22:33 +0900</pubDate>
       
       <guid>https://www.330k.info/software/gpx-tcx-converter/</guid>
-      <description>&lt;p&gt;&lt;code&gt;wpt&lt;/code&gt;要素のあるGPXファイルをFIT/TCXファイルに変換するツールです。&lt;/p&gt;
-&lt;p&gt;Garminのサイコンおよびスマートウォッチ(Edge 830、Fenix 7Sで動作確認済み)にインポートすると、コースポイントのあるコースとして登録されます。&lt;/p&gt;</description>
+      <description>&lt;p&gt;GPXファイルをコースポイントのあるFIT/TCXファイルに変換するツールです。&lt;/p&gt;
+&lt;p&gt;Garminのサイコンおよびスマートウォッチ(Edge 830、Fenix 7Sで動作確認済み)にインポートすると、GPXファイルの&lt;code&gt;wpt&lt;/code&gt;要素(POI)をコースポイントとして含むコースが登録されます。&lt;/p&gt;</description>
     </item>
     
     <item>
