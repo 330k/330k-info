@@ -13,7 +13,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.330k.info/walk/20230401-mt-toridani/" /><meta property="og:image" content="https://www.330k.info/walk/20230401-mt-toridani/20230401-125927-2234.jpg" /><meta property="article:section" content="walk" />
 <meta property="article:published_time" content="2023-04-01T00:22:30+09:00" />
-<meta property="article:modified_time" content="2023-04-24T00:55:14+09:00" />
+<meta property="article:modified_time" content="2023-04-24T08:58:00+09:00" />
 
 	<meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://www.330k.info/walk/20230401-mt-toridani/20230401-125927-2234.jpg"/>
@@ -87,7 +87,7 @@ if (!doNotTrack) {
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
 	<time class="meta__text" datetime="2023-04-01T00:22:30">April 01, 2023</time>
-	<time class="meta__text" datetime="2023-04-24T00:55:14"> (Last Modified: April 24, 2023)</time>
+	<time class="meta__text" datetime="2023-04-24T08:58:00"> (Last Modified: April 24, 2023)</time>
 </div>
 
 <div class="meta__item-categories meta__item">
@@ -98,6 +98,36 @@ if (!doNotTrack) {
 		</header><div class="content post__content clearfix">
 			<p>ここ数年は自転車ばかりになってしまっていたので、以前少しやっていた登山を再開。</p>
 <p>リハビリがてら、御徒町のモンベルの店員さんオススメの酉谷山まで往復してきた。</p>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCir56M7J9LT4-3wDVgG8etGo_HPSMWVBk&callback=initMap" defer></script>
+
+
+
+<div id="mapcanvas-1" style="width: 100%; height:500px; margin:0; padding: 0"></div>
+<script>
+
+const initfuncs = [];
+function initMap(){
+  for(let i = 0; i < initfuncs.length; i++){
+    initfuncs[i]();
+  }
+}
+
+initfuncs.push(function(){
+  var map,
+    ctaLayer;
+  map = new google.maps.Map(document.getElementById("mapcanvas-1"), {
+    center: {lat: 35.6832581, lng: 139.7555827},
+    zoom: 8,
+    options: {
+      gestureHandling: "greedy"
+    }
+  });
+  ctaLayer = new google.maps.KmlLayer({
+    url: 'https:\/\/www.330k.info\/walk\/20230401-mt-toridani\/2023040100.kml'
+  });
+  ctaLayer.setMap(map);
+});
+</script>
 <p>奥多摩エリアは初めてだったが、人が多いことは予想できていたので、1本早い電車に乗る予定で家を出た。</p>
 <p>しかしながら中央線が人身事故で遅れて立川から1本遅い電車に乗ることになったため、大勢の登山客に囲まれながら奥多摩駅へ。</p>
 <p>奥多摩駅ではバスを待つ行列が。</p>
