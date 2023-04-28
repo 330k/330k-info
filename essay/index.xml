@@ -6,7 +6,17 @@
     <description>Recent content in Essays on 330k info</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Wed, 22 Mar 2023 00:16:26 +0900</lastBuildDate><atom:link href="https://www.330k.info/essay/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 28 Apr 2023 10:40:48 +0900</lastBuildDate><atom:link href="https://www.330k.info/essay/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>トラック間引きアルゴリズムの比較</title>
+      <link>https://www.330k.info/essay/comparison_of_track_simplify_algorithms/</link>
+      <pubDate>Fri, 28 Apr 2023 10:40:48 +0900</pubDate>
+      
+      <guid>https://www.330k.info/essay/comparison_of_track_simplify_algorithms/</guid>
+      <description>&lt;p&gt;GPSトラックやルートの間引きにおいて、自作のソフトウェアで採用しているのはRamor-Douglas-Peuckerアルゴリズム。&lt;/p&gt;
+&lt;p&gt;一方、カシミール3Dや轍 wadachi、GPSBabelといった他のソフトウェアは異なるアルゴリズムを採用しており、ルートデータを間引いた際にどのような違いが生じるのか、間引き結果と処理時間を比較した。&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>無駄にCPUを消費するデーモンを作る</title>
       <link>https://www.330k.info/essay/consume-cpu-wastefully/</link>
