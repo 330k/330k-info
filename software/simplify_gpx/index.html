@@ -12,7 +12,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.330k.info/software/simplify_gpx/" /><meta property="og:image" content="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" /><meta property="article:section" content="software" />
 <meta property="article:published_time" content="2016-09-28T00:00:00+09:00" />
-<meta property="article:modified_time" content="2023-04-26T11:32:53+09:00" />
+<meta property="article:modified_time" content="2023-04-29T11:40:47+09:00" />
 
 	<meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"/>
@@ -85,7 +85,7 @@ if (!doNotTrack) {
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
 	<time class="meta__text" datetime="2016-09-28T00:00:00">September 28, 2016</time>
-	<time class="meta__text" datetime="2023-04-26T11:32:53"> (Last Modified: April 26, 2023)</time>
+	<time class="meta__text" datetime="2023-04-29T11:40:47"> (Last Modified: April 29, 2023)</time>
 </div>
 
 <div class="meta__item-categories meta__item">
@@ -179,11 +179,11 @@ GPXファイルに余分な要素があると、処理に時間がかかって�
 </ol>
 <h2 id="注意事項">注意事項</h2>
 <ul>
-<li>Chrome 53、Firefox 49、Edge、IE 11にて動作を確認</li>
-<li>IE8では動作しません</li>
-<li>IE 9, 10は環境が無いため確認できません</li>
-<li>重いGPXファイルを処理しようとすると固まります(WorkerではXMLParserが使えないため)</li>
+<li>Chrome、Firefox、Edgeにて動作を確認しています</li>
+<li>あまりに重いGPXファイルを処理しようとすると固まります<br>
+PCの性能によりますが、20MBを超えるような場合はご注意ください</li>
 <li>複数ファイルを選択した時の並び順はOSやブラウザ、選択時の操作に依存します</li>
+<li>GPX1.0と1.1のファイルを結合した場合、名前空間等を無視して結合しますので完全に正しいGPXファイルにはならない点に注意してください(おそらくほとんどのアプリケーションは無視しますが)</li>
 </ul>
 <p>なお、カシミール3DではGPXファイルをXMLとしてパースして読み込んでいるわけではないようで、
 空要素(<code>&lt;trkpt lat=&quot;***&quot; lon=&quot;***&quot; /&gt;</code>)の形を認識できないため、<code>&lt;trkpt lat=&quot;***&quot; lon=&quot;***&quot;&gt;&lt;/trkpt&gt;</code>の形に修正したものを出力しています。</p>
@@ -212,6 +212,7 @@ GPXファイルに余分な要素があると、処理に時間がかかって�
 <li>Feb. 12 2022: 標高タイルをCache APIを利用してローカルにキャッシュして高速化。</li>
 <li>Apr. 27 2022: ファイルのドラッグアンドドロップに対応。</li>
 <li>Apr. 25 2023: 間引き後の点数の直接数値指定に対応。</li>
+<li>Apr. 29 2023: name要素の値をファイル名から取る機能を追加。</li>
 </ul>
 		</div>
 		<footer class="post__footer">
