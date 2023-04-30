@@ -30,7 +30,7 @@
 	</StyleMap>
 	<Style id="lineStyle11">
 		<LineStyle>
-			<color>ff000000</color>
+			<color>80000000</color>
 			<width>6</width>
 		</LineStyle>
 	</Style>
