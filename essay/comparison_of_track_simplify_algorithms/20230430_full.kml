@@ -119,6 +119,7 @@
 			<name>Original</name>
 			<styleUrl>#lineStyle</styleUrl>
 			<LineString>
+        <gx:drawOrder>0</gx:drawOrder>
 				<tessellate>1</tessellate>
 				<altitudeMode>absolute</altitudeMode>
 				<coordinates>
@@ -130,6 +131,7 @@
 			<name>Douglas-Peucker</name>
 			<styleUrl>#lineStyle2</styleUrl>
 			<LineString>
+        <gx:drawOrder>4</gx:drawOrder>
 				<tessellate>1</tessellate>
 				<altitudeMode>absolute</altitudeMode>
 				<coordinates>
@@ -141,6 +143,7 @@
 			<name>GPSBabel</name>
 			<styleUrl>#lineStyle10</styleUrl>
 			<LineString>
+        <gx:drawOrder>3</gx:drawOrder>
 				<tessellate>1</tessellate>
 				<altitudeMode>absolute</altitudeMode>
 				<coordinates>
@@ -152,6 +155,7 @@
 			<name>Wadachi</name>
 			<styleUrl>#lineStyle1</styleUrl>
 			<LineString>
+        <gx:drawOrder>2</gx:drawOrder>
 				<tessellate>1</tessellate>
 				<altitudeMode>absolute</altitudeMode>
 				<coordinates>
@@ -163,6 +167,7 @@
 			<name>Kashmir3D</name>
 			<styleUrl>#lineStyle7</styleUrl>
 			<LineString>
+        <gx:drawOrder>1</gx:drawOrder>
 				<tessellate>1</tessellate>
 				<altitudeMode>absolute</altitudeMode>
 				<coordinates>
