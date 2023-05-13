@@ -14,7 +14,8 @@
       
       <guid>https://www.330k.info/essay/edit-garmin-fit-mannually/</guid>
       <description>&lt;p&gt;Garminのデバイスで使用されるFITファイルはバイナリなので、直接編集するのは骨が折れる。&lt;/p&gt;
-&lt;p&gt;ここではGarmin FIT SDKに含まれる&lt;a href=&#34;https://developer.garmin.com/fit/fitcsvtool/&#34;&gt;FIT CSV Tool&lt;/a&gt;を使って簡易的に編集する方法を説明する。&lt;/p&gt;</description>
+&lt;p&gt;ここではGarmin FIT SDKに含まれる&lt;a href=&#34;https://developer.garmin.com/fit/fitcsvtool/&#34;&gt;FIT CSV Tool&lt;/a&gt;を使って簡易的に編集する方法を説明する。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;※ ここでいう「カンタンに」「簡易的に」とは「バイナリを直接編集する場合に比べれば」という比喩表現ですのでご注意を&lt;/strong&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
