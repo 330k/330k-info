@@ -6,7 +6,16 @@
     <description>Recent content in RWGPS on 330k info</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Mon, 06 Jun 2022 01:13:18 +0900</lastBuildDate><atom:link href="https://www.330k.info/tags/rwgps/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 18 May 2023 00:14:23 +0900</lastBuildDate><atom:link href="https://www.330k.info/tags/rwgps/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Ride with GPSの距離計算式と精度の評価</title>
+      <link>https://www.330k.info/essay/rwgps-distance-calculation-precision/</link>
+      <pubDate>Thu, 18 May 2023 00:14:23 +0900</pubDate>
+      
+      <guid>https://www.330k.info/essay/rwgps-distance-calculation-precision/</guid>
+      <description>&lt;p&gt;Ride with GPS(RWGPS)が測地線長の計算に使う式と使用しているパラメータを調べ、その誤差評価を行った。&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>Ride with GPSの仕様と、標高の精度が良いルートを作成する方法</title>
       <link>https://www.330k.info/essay/rwgps-create-route-with-accurate-elevation/</link>

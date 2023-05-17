@@ -4,23 +4,21 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>2008年08月18日 相模湖 - 330k info</title>
+	<title>Ride with GPSの距離計算式と精度の評価 - 330k info</title>
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
-	<meta property="og:title" content="2008年08月18日 相模湖" />
-<meta property="og:description" content="大学院の講義の1つにソーラークルーレスボートの製作があり、その実走行試験を相模湖で行うとのことなので自転車で行ってみることにした。
-それ以前は自転車による1日の最長走行距離は36km(東京→横浜)だったのだが、相模湖までは片道65kmと当時の自分にとってはかなりチャレンジング。" />
+	<meta property="og:title" content="Ride with GPSの距離計算式と精度の評価" />
+<meta property="og:description" content="Ride with GPS(RWGPS)が測地線長の計算に使う式と使用しているパラメータを調べ、その誤差評価を行った。" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://www.330k.info/bicycle/touring/20080818-sagamiko/" /><meta property="og:image" content="https://www.330k.info/bicycle/touring/20080818-sagamiko/CA3A0130.jpg" /><meta property="article:section" content="bicycle" />
-<meta property="article:published_time" content="2008-08-18T00:00:00+09:00" />
-<meta property="article:modified_time" content="2020-05-18T11:51:16+09:00" />
+<meta property="og:url" content="https://www.330k.info/essay/rwgps-distance-calculation-precision/" /><meta property="og:image" content="https://www.330k.info/essay/rwgps-modify-all-elevations/rwgps_230x0w.png" /><meta property="article:section" content="essay" />
+<meta property="article:published_time" content="2023-05-18T00:14:23+09:00" />
+<meta property="article:modified_time" content="2023-05-18T04:40:07+09:00" />
 
 	<meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:image" content="https://www.330k.info/bicycle/touring/20080818-sagamiko/CA3A0130.jpg"/>
+<meta name="twitter:image" content="https://www.330k.info/essay/rwgps-modify-all-elevations/rwgps_230x0w.png"/>
 
-<meta name="twitter:title" content="2008年08月18日 相模湖"/>
-<meta name="twitter:description" content="大学院の講義の1つにソーラークルーレスボートの製作があり、その実走行試験を相模湖で行うとのことなので自転車で行ってみることにした。
-それ以前は自転車による1日の最長走行距離は36km(東京→横浜)だったのだが、相模湖までは片道65kmと当時の自分にとってはかなりチャレンジング。"/>
+<meta name="twitter:title" content="Ride with GPSの距離計算式と精度の評価"/>
+<meta name="twitter:description" content="Ride with GPS(RWGPS)が測地線長の計算に使う式と使用しているパラメータを調べ、その誤差評価を行った。"/>
 
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -59,10 +57,10 @@ if (!doNotTrack) {
 		<span class="menu__btn-title" tabindex="-1">Menu</span>
 	</button>
 	<ul class="menu__list">
-		<li class="menu__item menu__item--active">
+		<li class="menu__item">
 			<a class="menu__link" href="/bicycle/">Bicycles</a>
 		</li>
-		<li class="menu__item">
+		<li class="menu__item menu__item--active">
 			<a class="menu__link" href="/essay/">Essays</a>
 		</li>
 		<li class="menu__item">
@@ -82,106 +80,94 @@ if (!doNotTrack) {
 <main class="main" role="main">
 	<article class="post">
 		<header class="post__header">
-			<h1 class="post__title">2008年08月18日 相模湖</h1>
+			<h1 class="post__title">Ride with GPSの距離計算式と精度の評価</h1>
 			<div class="post__meta meta">
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
-	<time class="meta__text" datetime="2008-08-18T00:00:00">August 18, 2008</time>
-	<time class="meta__text" datetime="2020-05-18T11:51:16"> (Last Modified: May 18, 2020)</time>
+	<time class="meta__text" datetime="2023-05-18T00:14:23">May 18, 2023</time>
+	<time class="meta__text" datetime="2023-05-18T04:40:07"> (Last Modified: May 18, 2023)</time>
 </div>
 
 <div class="meta__item-categories meta__item">
 	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
-	<span class="meta__text"><a class="meta__link" href="/categories/%e8%87%aa%e8%bb%a2%e8%bb%8a" rel="category">自転車</a></span>
+	<span class="meta__text"><a class="meta__link" href="/categories/%e9%9b%91%e8%a8%98%e5%b8%b3" rel="category">雑記帳</a></span>
 </div>
 </div>
 		</header><div class="content post__content clearfix">
-			<p>大学院の講義の1つにソーラークルーレスボートの製作があり、その実走行試験を相模湖で行うとのことなので自転車で行ってみることにした。
-それ以前は自転車による1日の最長走行距離は36km(東京→横浜)だったのだが、相模湖までは片道65kmと当時の自分にとってはかなりチャレンジング。</p>
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCir56M7J9LT4-3wDVgG8etGo_HPSMWVBk&callback=initMap" defer></script>
-
-
-
-<div id="mapcanvas-1" style="width: 100%; height:500px; margin:0; padding: 0"></div>
-<script>
-
-const initfuncs = [];
-function initMap(){
-  for(let i = 0; i < initfuncs.length; i++){
-    initfuncs[i]();
-  }
-}
-
-initfuncs.push(function(){
-  var map,
-    ctaLayer;
-  map = new google.maps.Map(document.getElementById("mapcanvas-1"), {
-    center: {lat: 35.6832581, lng: 139.7555827},
-    zoom: 8,
-    options: {
-      gestureHandling: "greedy"
-    }
-  });
-  ctaLayer = new google.maps.KmlLayer({
-    url: 'https:\/\/www.330k.info\/bicycle\/touring\/20080818-sagamiko\/20080818.kml'
-  });
-  ctaLayer.setMap(map);
-});
-</script>
-<p>池袋の自宅を8時30分に出て、春日通り、明治通りと通って新宿まで行き、そこから相模湖までずっと甲州街道(国道20号)を走る。
-途中後輪の空気圧が気になったので八王子の自転車屋で空気を入れなおしてもらったほかは特に問題はなく、52km走って高尾に到着。
-後日知ることになったのだが、実は後輪のチューブに小さい穴があいていた。</p>
-<p>ここから7km先の東京都と神奈川県の境にある大垂水峠まではずっと上り坂。
-高尾の標高は200mないが大垂水峠は392mなので、約200m登る。
-とはいえ、いかんせん初めてのヒルクライムなのでこの高低差がどの程度のものなのか見当がつかない。</p>
-<figure><img src="CA3A0119.jpg"/>
-</figure>
-
-<p>高尾山口をすぎてしばらくしてあたりにラブホテル以外に何も見当たらなくなってきたところで一旦休憩。</p>
-<figure><img src="CA3A0122.jpg"/>
-</figure>
-
-<p>その後一気に大垂水峠まで。 途中で自転車を押しながら歩く若者2人組を抜いたが、初めてのヒルクライムは足をつかずに完走できた。</p>
-<p>あとは相模湖まで一気に下る。</p>
-<figure><img src="CA3A0125.jpg"/>
-</figure>
-
-<p>正午に相模湖駅前に到着。 とりあえず相模湖駅に行って記念撮影。</p>
-<p>その後相模湖畔まで下りてソーラーボートプロジェクトの面々に合流し、正式メンバーじゃないのにいろいろと邪魔する。</p>
-<p><figure><img src="CA3A0130.jpg"/>
-</figure>
-
-<figure><img src="CA3A0143.jpg"/>
-</figure>
-
-<figure><img src="CA3A0162.jpg"/>
-</figure>
-</p>
-<p>往路は結局片道65kmほどを休憩含めて4時間かからずに走れた。</p>
-<p>往路は16時半に出発。
-来る時に下ったところは当然登らないといけないので、最初の6kmほどは上りとなる。
-相模湖駅の標高は212mで、湖面はそれより低い。
-とはいえ登るときの勝手がわかってきたので思ったよりも楽に大垂水峠に到達し(途中でロードレーサーに乗った50代ぐらいのおじさんにあっという間に抜かれたが)、あとは都心部まで基本的にひたすら下る。
-トラックの後ろにひっついて下っていた時に本日の最高速度49.1km/hを記録。</p>
-<p>来る時と同じ行程ではつまらないので、日野バイパスは通らずに帰ろうとしたのだが、途中で立川駅付近や回田町あたりで何回か道に迷う。
-結局五日市街道→青梅街道と通って新宿まで戻った。</p>
-<p>結局20時半に帰宅。
-帰りは迷ったので4時間かかった。
-暗かったので写真はなし。</p>
-<h2 id="走行記録">走行記録</h2>
+			<p>Ride with GPS(RWGPS)が測地線長の計算に使う式と使用しているパラメータを調べ、その誤差評価を行った。</p>
+<p><strong>※以下すべて2023年5月18日時点での情報です</strong></p>
+<h2 id="ride-with-gpsが使用している計算式とパラメータ">Ride with GPSが使用している計算式とパラメータ</h2>
+<p>調査したところ、Ride with GPSはHaversine Formula(<a href="https://ja.wikipedia.org/wiki/%E5%A4%A7%E5%86%86%E8%B7%9D%E9%9B%A2">大円距離 - Wikipedia</a>)を使っていることが判明した。</p>
+<p>これは簡易的な計算式で、<strong>地球を回転楕円体ではなく球として扱うために誤差が生じる</strong>。<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup></p>
+<p>また、Ride with GPSでは地球の半径を$6378100 \mathrm{m}$として計算している。
+GPSで使われるWGS84では</p>
 <ul>
-<li>走行時間 : 5時間49分40秒</li>
-<li>走行距離 : 133.42 km</li>
-<li>平均速度 : 22.8 km/h</li>
-<li>最高速度 : 49.1 km/h</li>
+<li>長半径: $a = 6378137 \mathrm{m}$</li>
+<li>短半径: $b = (1 - f)a = 6356752.31496 \mathrm{m}$</li>
+<li>Arithmetic mean radius: $(2a + b) / 3 = 6371008.77165 \mathrm{m}$</li>
+<li>体積が等しい球の半径: $(a^2b)^{1/3} = 6371000.79025 \mathrm{m}$</li>
 </ul>
+<!-- raw HTML omitted -->
+<p>なので、いずれにも一致しない(GRS80もほぼ同じ値)。<br>
+Ride with GPSが$6378100 \mathrm{m}$を採用した理由は不明である。<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup></p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<h2 id="ride-with-gpsの距離計算の誤差">Ride with GPSの距離計算の誤差</h2>
+<p>ここではRide with GPSを使用してルートを作成した際に、どの程度の誤差が生じうるのか調べる。</p>
+<p>ある緯度経度の地点を出発地点とし、その出発地点から進行方向を決めて$100 \mathrm{m}$進んだ到着地点の緯度経度を正確に(今回はMathematicaを用いて)計算し、
+逆に出発地点と到着地点の緯度経度をRide with GPSの計算式に与えることで、Ride with GPSの計算式の精度評価を行う。</p>
+<p>精度の高い測地線距離計算式を用いれば、この当然計算結果は$100 \mathrm{m}$となる。</p>
+<h3 id="方位による誤差の変化">方位による誤差の変化</h3>
+<p>出発地点の緯度を北緯35度に固定し、方位を0度から359度まで変化させた際のRide with GPS計算式の距離計算結果を調べたところ、下図のようになった。</p>
+<figure><img src="graph035.png"/>
+</figure>
+
+<p><strong>Ride with GPS計算式では東西方向で$-0.11\%$、南北方向で$+0.34 \%$の誤差が生じる</strong>結果となった。</p>
+<h3 id="緯度による誤差の変化">緯度による誤差の変化</h3>
+<p>次に出発点の緯度を0度から北緯89度まで変化させ、Ride with GPSの距離計算式で距離を計算した際の距離の最大値(南北方向)と最小値(東西方向)、およびこの平均を調べたところ、下図となった。</p>
+<figure><img src="graph_lat.png"/>
+</figure>
+
+<p>この結果から、<strong>Ride with GPSの計算式は高緯度になるほど実際よりも小さい値を出す</strong>ことがわかった。</p>
+<p>より細かく見ると、赤道付近ではほぼ常に実際よりも距離を大きく計算し、その誤差は最大で$+0.7\%$近くになる。<br>
+一方で高緯度になると距離は実際よりも小さく計算され、北緯55度以北では常に実際の距離よりも小さく計算されてしまう。<br>
+小さく計算される場合の誤差は$-0.3\%$程度になる。</p>
+<p>また、出発地点に戻ってくる周回ルートを作った場合、方位があらゆる方向にバラついて平均すると上図のMean程度の誤差が生じることが期待される。<br>
+北緯45度で平均的に誤差が$\pm 0 \%$になるが、<strong>日本の緯度帯(北緯30度～北緯45度)では平均的に実際よりも大きく計算されがち</strong>、ということが言える。<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup></p>
+<h2 id="まとめ">まとめ</h2>
+<p>以上の結果から、Ride with GPSの距離計算式についてまとめると以下となる。</p>
+<ul>
+<li>回転楕円体ではなく球として計算する簡易的なHaversine Formulaを使っているため、$-0.3\%$から$+0.7\%$程度の誤差が生じうる。</li>
+<li>日本の緯度帯では東西方向で実際よりも小さく、南北方向で実際よりも距離が大きく計算されるが、平均すると実際の距離よりも大きく計算されていることが多い。</li>
+</ul>
+<p>実際に<a href="/bicycle/touring/20220430-rm429-tokyo-2700km-ride-across-japan/">2022年の日本縦断2700km</a>では主に南北方向への移動が多かったこともあり$+3 \mathrm{km}$ほどのずれが生じたので、注意が必要である。</p>
+<div class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p>参考までに、Garmin ConnectはVincentyの式を使って距離計算をしている。この式は反復計算を含むため計算速度は遅いが、幅広い距離で11桁程度の精度が出せる。<br>
+c.f. <a href="/essay/geodesic_distance_formula_comparison_2/">測地線距離計算式・計算ライブラリの精度評価</a>&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2">
+<p>同様にHaversine Formulaを使うGoogle Maps JavaScript APIではWGS84の長半径である$6378137 \mathrm{m}$を採用している。<br>
+c.f. <a href="https://developers.google.com/maps/documentation/javascript/reference/geometry?hl=ja#spherical.computeDistanceBetween">Geometry Library  |  Maps JavaScript API  |  Google for Developers</a>&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:3">
+<p>出発地点と到着地点が同じでも、往復ルートの場合は特定の方位に集中するため上記の議論に当てはまらないことは留意。&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</div>
 		</div>
 		<footer class="post__footer">
 			
 <div class="post__tags tags clearfix">
 	<svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
 	<ul class="tags__list">
-		<li class="tags__item"><a class="tags__link btn" href="/tags/%E3%83%84%E3%83%BC%E3%83%AA%E3%83%B3%E3%82%B0/" rel="tag">ツーリング</a></li>
+		<li class="tags__item"><a class="tags__link btn" href="/tags/rwgps/" rel="tag">RWGPS</a></li>
 	</ul>
 </div>
 		</footer>
@@ -190,8 +176,8 @@ initfuncs.push(function(){
 
 
 <nav class="post-nav flex">
-	<div class="post-nav__item post-nav__item--next">
-		<a class="post-nav__link" href="/bicycle/touring/20090208-odaiba/" rel="next"><span class="post-nav__caption">Next&thinsp;»</span><p class="post-nav__post-title">2009年02月08日 お台場ポタリング</p></a>
+	<div class="post-nav__item post-nav__item--prev">
+		<a class="post-nav__link" href="/essay/comparison_of_track_simplify_algorithms/" rel="prev"><span class="post-nav__caption">«&thinsp;Previous</span><p class="post-nav__post-title">トラック間引きアルゴリズムの比較</p></a>
 	</div>
 </nav>
 
@@ -363,5 +349,14 @@ initfuncs.push(function(){
   gtag('js', new Date());
 
   gtag('config', 'G-L5FSJ397HF');
-</script></body>
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML" async></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [['$','$']]
+    }
+});
+</script>
+</body>
 </html>

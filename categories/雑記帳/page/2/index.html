@@ -81,6 +81,36 @@ if (!doNotTrack) {
 		<h1 class="main__title">雑記帳</h1>
 	</header><article class="list__item post">
 	<figure class="list__thumbnail">
+		<a href="https://www.330k.info/essay/javascript-layered-cache-api-with-expiration/">
+			<img src="/images/240px-Unofficial_JavaScript_logo.png" alt="JavaScriptのCache APIで有効期限付きの階層キャッシュを実装する" />
+		</a>
+	</figure>
+	<header class="list__header">
+		<h3 class="list__title post__title ">
+			<a href="/essay/javascript-layered-cache-api-with-expiration/" rel="bookmark">
+			JavaScriptのCache APIで有効期限付きの階層キャッシュを実装する
+			</a>
+		</h3>
+		<div class="list__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
+	<time class="meta__text" datetime="2022-02-13T00:02:11">February 13, 2022</time>
+	<time class="meta__text" datetime="2022-11-30T22:38:19"> (Last Modified: November 30, 2022)</time>
+</div>
+
+<div class="meta__item-categories meta__item">
+	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+	<span class="meta__text"><a class="meta__link" href="/categories/%e9%9b%91%e8%a8%98%e5%b8%b3" rel="category">雑記帳</a></span>
+</div>
+</div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		<p><a href="/software/simplify_gpx/">GPXトラックログを間引く・簡略化</a>や<a href="/software/chrome_rwgps_ele_gsi/">RWGPS地理院標高 - Chrome拡張機能
+</a>で国土地理院の標高タイルを利用する機能を付ける際、国土地理院の標高タイルをキャッシュする機能を実装したかった。</p>
+<p>そこで有効期限を付けて、かつメモリとディスクの2階層構造を持つキャッシュを実装してみた。</p>
+	</div>
+</article><article class="list__item post">
+	<figure class="list__thumbnail">
 		<a href="https://www.330k.info/essay/rwgps-modify-all-elevations/">
 			<img src="/essay/rwgps-modify-all-elevations/rwgps_230x0w.png" alt="Ride with GPSでルートの標高データを一括で修正する" />
 		</a>
@@ -341,35 +371,6 @@ if (!doNotTrack) {
 	<div class="content list__excerpt post__content clearfix">
 		<p>OpenVPNのLinuxクライアントを使ってスプリットトンネルのVPN接続をしようとした所、<!-- raw HTML omitted --><code>route-nopull</code>が効かなかったので、別の対処を行った。<!-- raw HTML omitted -->→<code>redirect-gateway def1</code>を削除。</p>
 	</div>
-</article><article class="list__item post">
-	<figure class="list__thumbnail">
-		<a href="https://www.330k.info/essay/change-lxd-host-ip-address/">
-			<img src="/essay/change-lxd-host-ip-address/containers.png" alt="LXDホストのIPアドレスを変更する" />
-		</a>
-	</figure>
-	<header class="list__header">
-		<h3 class="list__title post__title ">
-			<a href="/essay/change-lxd-host-ip-address/" rel="bookmark">
-			LXDホストのIPアドレスを変更する
-			</a>
-		</h3>
-		<div class="list__meta meta">
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
-	<time class="meta__text" datetime="2021-06-16T02:50:08">June 16, 2021</time>
-	<time class="meta__text" datetime="2021-06-18T10:42:49"> (Last Modified: June 18, 2021)</time>
-</div>
-
-<div class="meta__item-categories meta__item">
-	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
-	<span class="meta__text"><a class="meta__link" href="/categories/%e9%9b%91%e8%a8%98%e5%b8%b3" rel="category">雑記帳</a></span>
-</div>
-</div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		<p>LXD(lxc)でネットワークアクセスを有効にしていて、特定のIPアドレスに限っている場合、ホストのIPアドレスを変更した際にlxcコマンドがエラーとなる。</p>
-<p>設定を行う<code>lxc config edit</code>自体が動作しないので対処法に困ったが、何とか見つけることが出来た。</p>
-	</div>
 </article>
 </main>
 
@@ -407,6 +408,7 @@ if (!doNotTrack) {
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/essay/rwgps-distance-calculation-precision/">Ride with GPSの距離計算式と精度の評価</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/comparison_of_track_simplify_algorithms/">トラック間引きアルゴリズムの比較</a></li>
 			<li class="widget__item"><a class="widget__link" href="/walk/20230401-mt-toridani/">2023年04月01日 東日原～酉谷山ピストン</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/consume-cpu-wastefully/">無駄にCPUを消費するデーモンを作る</a></li>
@@ -426,7 +428,6 @@ if (!doNotTrack) {
 			<li class="widget__item"><a class="widget__link" href="/essay/geodesic_distance_formula_comparison_2/">測地線距離計算式・計算ライブラリの精度評価 </a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/snap-with-self-signed-certificate-authority/">自己署名証明書を使う環境下でSnappy(Snap)を使う</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/freeradius-password-and-mac-address-authentication/">無線LANのEAP-PEAP認証で、ユーザ毎のMACアドレス制限も行う</a></li>
-			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20220221-brm224-tokyo-600km/">2022年02月21日 BRM224 東京600 とことん沖縄</a></li>
 		</ul>
 	</div>
 </div>
@@ -480,7 +481,7 @@ if (!doNotTrack) {
 		<a class="widget-taglist__link widget__link btn" href="/tags/powershell" title="Powershell">Powershell (2)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/rm1300km" title="Rm1300km">Rm1300km (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/rm2700km" title="Rm2700km">Rm2700km (1)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/rwgps" title="Rwgps">Rwgps (3)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/rwgps" title="Rwgps">Rwgps (4)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/sql" title="SQL">SQL (3)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/sqlserver" title="Sqlserver">Sqlserver (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/sr600" title="Sr600">Sr600 (10)</a>
