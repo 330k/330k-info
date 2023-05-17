@@ -4,21 +4,21 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>RWGPSの仕様と、標高の精度が良いルートを作成する方法 - 330k info</title>
+	<title>Ride with GPSの仕様と、標高の精度が良いルートを作成する方法 - 330k info</title>
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
-	<meta property="og:title" content="RWGPSの仕様と、標高の精度が良いルートを作成する方法" />
-<meta property="og:description" content="RWGPS(Ride with GPS)の仕様をソースコードとネットワークを流れるデータから解析し、その結果から現状で最も標高を精度良くルートを作成できるであろう方法を記した。" />
+	<meta property="og:title" content="Ride with GPSの仕様と、標高の精度が良いルートを作成する方法" />
+<meta property="og:description" content="Ride with GPS(RWGPS)の仕様をソースコードとネットワークを流れるデータから解析し、その結果から現状で最も標高を精度良くルートを作成できるであろう方法を記した。" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.330k.info/essay/rwgps-create-route-with-accurate-elevation/" /><meta property="og:image" content="https://www.330k.info/essay/rwgps-modify-all-elevations/rwgps_230x0w.png" /><meta property="article:section" content="essay" />
 <meta property="article:published_time" content="2022-06-06T01:13:18+09:00" />
-<meta property="article:modified_time" content="2023-03-20T21:16:48+09:00" />
+<meta property="article:modified_time" content="2023-05-18T00:16:09+09:00" />
 
 	<meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://www.330k.info/essay/rwgps-modify-all-elevations/rwgps_230x0w.png"/>
 
-<meta name="twitter:title" content="RWGPSの仕様と、標高の精度が良いルートを作成する方法"/>
-<meta name="twitter:description" content="RWGPS(Ride with GPS)の仕様をソースコードとネットワークを流れるデータから解析し、その結果から現状で最も標高を精度良くルートを作成できるであろう方法を記した。"/>
+<meta name="twitter:title" content="Ride with GPSの仕様と、標高の精度が良いルートを作成する方法"/>
+<meta name="twitter:description" content="Ride with GPS(RWGPS)の仕様をソースコードとネットワークを流れるデータから解析し、その結果から現状で最も標高を精度良くルートを作成できるであろう方法を記した。"/>
 
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -80,12 +80,12 @@ if (!doNotTrack) {
 <main class="main" role="main">
 	<article class="post">
 		<header class="post__header">
-			<h1 class="post__title">RWGPSの仕様と、標高の精度が良いルートを作成する方法</h1>
+			<h1 class="post__title">Ride with GPSの仕様と、標高の精度が良いルートを作成する方法</h1>
 			<div class="post__meta meta">
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
 	<time class="meta__text" datetime="2022-06-06T01:13:18">June 06, 2022</time>
-	<time class="meta__text" datetime="2023-03-20T21:16:48"> (Last Modified: March 20, 2023)</time>
+	<time class="meta__text" datetime="2023-05-18T00:16:09"> (Last Modified: May 18, 2023)</time>
 </div>
 
 <div class="meta__item-categories meta__item">
@@ -94,7 +94,7 @@ if (!doNotTrack) {
 </div>
 </div>
 		</header><div class="content post__content clearfix">
-			<p>RWGPS(Ride with GPS)の仕様をソースコードとネットワークを流れるデータから解析し、その結果から現状で最も標高を精度良くルートを作成できるであろう方法を記した。</p>
+			<p>Ride with GPS(RWGPS)の仕様をソースコードとネットワークを流れるデータから解析し、その結果から現状で最も標高を精度良くルートを作成できるであろう方法を記した。</p>
 <p><strong>※以下すべて2022年6月6日時点での情報です</strong></p>
 <h2 id="rwgpsの仕様">RWGPSの仕様</h2>
 <p>RWGPSの標高取得、橋トンネル補正に関する動作をネットワークデータとソースコードから調査したところ、以下のような挙動をすることが分かった。</p>
@@ -237,7 +237,7 @@ if (!doNotTrack) {
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20220818-rm812-okhotsk-1300km/">2022年08月18日 RM812 北海道1300 オホーツク</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20220806-sr600-shikotsu-toya/">2022年08月06日 SR600 支笏洞爺</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20220722-sr600-fuji/">2022年07月22日 SR600 富士</a></li>
-			<li class="widget__item"><a class="widget__link" href="/essay/rwgps-create-route-with-accurate-elevation/">RWGPSの仕様と、標高の精度が良いルートを作成する方法</a></li>
+			<li class="widget__item"><a class="widget__link" href="/essay/rwgps-create-route-with-accurate-elevation/">Ride with GPSの仕様と、標高の精度が良いルートを作成する方法</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20220430-rm429-tokyo-2700km-ride-across-japan/">2022年04月30日 RM429 東京2700 日本縦断(Ride Across Japan)</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20220409-brm409-chiba-400km/">2022年04月09日 BRM409 千葉400 ぐるっと房総</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20220402-brm402-chubu-200km/">2022年04月02日 BRM402 中部200</a></li>
