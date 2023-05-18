@@ -12,7 +12,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.330k.info/essay/rwgps-distance-calculation-precision/" /><meta property="og:image" content="https://www.330k.info/essay/rwgps-modify-all-elevations/rwgps_230x0w.png" /><meta property="article:section" content="essay" />
 <meta property="article:published_time" content="2023-05-18T00:14:23+09:00" />
-<meta property="article:modified_time" content="2023-05-18T04:40:07+09:00" />
+<meta property="article:modified_time" content="2023-05-18T12:49:18+09:00" />
 
 	<meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://www.330k.info/essay/rwgps-modify-all-elevations/rwgps_230x0w.png"/>
@@ -85,7 +85,7 @@ if (!doNotTrack) {
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
 	<time class="meta__text" datetime="2023-05-18T00:14:23">May 18, 2023</time>
-	<time class="meta__text" datetime="2023-05-18T04:40:07"> (Last Modified: May 18, 2023)</time>
+	<time class="meta__text" datetime="2023-05-18T12:49:18"> (Last Modified: May 18, 2023)</time>
 </div>
 
 <div class="meta__item-categories meta__item">
@@ -137,14 +137,14 @@ Ride with GPSが$6378100 \mathrm{m}$を採用した理由は不明である。<s
 一方で高緯度になると距離は実際よりも小さく計算され、北緯55度以北では常に実際の距離よりも小さく計算されてしまう。<br>
 小さく計算される場合の誤差は$-0.3\%$程度になる。</p>
 <p>また、出発地点に戻ってくる周回ルートを作った場合、方位があらゆる方向にバラついて平均すると上図のMean程度の誤差が生じることが期待される。<br>
-北緯45度で平均的に誤差が$\pm 0 \%$になるが、<strong>日本の緯度帯(北緯30度～北緯45度)では平均的に実際よりも大きく計算されがち</strong>、ということが言える。<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup></p>
+北緯45度で平均的に誤差が$\pm 0 \%$になるが、<strong>日本の緯度帯(北緯30度～北緯45度)では平均的に実際よりも大きく計算されやすく、ラフに$+0.1\%$程度を見積もっておくとよい</strong>、ということが言える。<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup></p>
 <h2 id="まとめ">まとめ</h2>
 <p>以上の結果から、Ride with GPSの距離計算式についてまとめると以下となる。</p>
 <ul>
 <li>回転楕円体ではなく球として計算する簡易的なHaversine Formulaを使っているため、$-0.3\%$から$+0.7\%$程度の誤差が生じうる。</li>
 <li>日本の緯度帯では東西方向で実際よりも小さく、南北方向で実際よりも距離が大きく計算されるが、平均すると実際の距離よりも大きく計算されていることが多い。</li>
 </ul>
-<p>実際に<a href="/bicycle/touring/20220430-rm429-tokyo-2700km-ride-across-japan/">2022年の日本縦断2700km</a>では主に南北方向への移動が多かったこともあり$+3 \mathrm{km}$ほどのずれが生じたので、注意が必要である。</p>
+<p>実際に<a href="/bicycle/touring/20220430-rm429-tokyo-2700km-ride-across-japan/">2022年の日本縦断2700km</a>では$+3.5 \mathrm{km}$ほどのずれが生じたので、注意が必要である。</p>
 <div class="footnotes" role="doc-endnotes">
 <hr>
 <ol>
@@ -157,7 +157,7 @@ c.f. <a href="/essay/geodesic_distance_formula_comparison_2/">測地線距離計
 c.f. <a href="https://developers.google.com/maps/documentation/javascript/reference/geometry?hl=ja#spherical.computeDistanceBetween">Geometry Library  |  Maps JavaScript API  |  Google for Developers</a>&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:3">
-<p>出発地点と到着地点が同じでも、往復ルートの場合は特定の方位に集中するため上記の議論に当てはまらないことは留意。&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>出発地点と到着地点が同じでも、ルートが円状から直線状に近づくにつれて特定の方位に集中するため上記の議論に当てはまらないことは留意。&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 </ol>
 </div>
