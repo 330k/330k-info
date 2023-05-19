@@ -12,7 +12,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.330k.info/essay/implement-of-priority-queue-for-douglas-peucker-simplify-algorithm/" /><meta property="og:image" content="https://www.330k.info/images/geometry-1044090.jpg" /><meta property="article:section" content="essay" />
 <meta property="article:published_time" content="2014-05-29T00:00:00+09:00" />
-<meta property="article:modified_time" content="2021-09-14T23:42:11+09:00" />
+<meta property="article:modified_time" content="2023-05-20T04:38:06+09:00" />
 
 	<meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://www.330k.info/images/geometry-1044090.jpg"/>
@@ -85,7 +85,7 @@ if (!doNotTrack) {
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
 	<time class="meta__text" datetime="2014-05-29T00:00:00">May 29, 2014</time>
-	<time class="meta__text" datetime="2021-09-14T23:42:11"> (Last Modified: September 14, 2021)</time>
+	<time class="meta__text" datetime="2023-05-20T04:38:06"> (Last Modified: May 20, 2023)</time>
 </div>
 
 <div class="meta__item-categories meta__item">
@@ -107,9 +107,9 @@ Douglas-Peuckerアルゴリズムを改良して指定した点数まで点を�
 優先度付きキューを使うことになる。</p>
 <p>このアルゴリズムでは</p>
 <ol>
-<li>始点と終点を結ぶ線分で最も距離が大きな点P1を選ぶ</li>
-<li>始点と点P1を結ぶ線分で距離最大となる点P2をキューに登録(優先度は点P2と線分の距離)</li>
-<li>点P1と終点を結ぶ線分で距離最大となる点P3をキューに登録(優先度は点P3と線分の距離)</li>
+<li>始点と終点を結ぶ線分で最も距離が大きな点$P_1$を選ぶ</li>
+<li>始点と点$P_1$を結ぶ線分で距離最大となる点$P_2$をキューに登録(優先度は点$P_2$と線分の距離)</li>
+<li>点$P_1$と終点を結ぶ線分で距離最大となる点$P_3$をキューに登録(優先度は点$P_3$と線分の距離)</li>
 <li>キューから距離が最大(=優先度最大)の点を選んで、2に戻る</li>
 </ol>
 <p>という手順となるため、「キューに2つ登録して、1つ取り出す」ということを繰り返すことになる。</p>
@@ -122,11 +122,11 @@ Douglas-Peuckerアルゴリズムを改良して指定した点数まで点を�
 <p>優先度付きキューの実装にはいくつか方法があるが、今回は以下の6種類を試してみた。</p>
 <ol>
 <li>Array.sort(): キューへの追加はArray.push()、キューから取り出すときに必要であればArray.sort()してArray.pop()する。非常に単純で楽チン。結果の検証用。</li>
-<li>Selection: キューへの追加はArray.push()、キューから取り出すときに最大要素を選択。enqueue: O(1), dequeue: O(n2)。</li>
-<li>Insertion: キューへの追加時に挿入ソートを行う。キューから取り出すときはArray.pop()するだけ。enqueue: O(n2), dequeue: O(1)。</li>
-<li>Binary Insertion: キューへの追加時に二分挿入ソートを行う。あとは3と同じ。enqueue: O(n2), dequeue: O(1)。</li>
-<li>Binary Heap: <a href="http://ja.wikipedia.org/wiki/%E4%BA%8C%E5%88%86%E3%83%92%E3%83%BC%E3%83%97">二分ヒープ(wikipedia)</a>での実装。ポインタなしで実装できるので省メモリ。java.util.PriorityQueueはこれらしい。enqueue: O(log(n)), dequeue: O(log(n))。</li>
-<li>Pairing Heap: <a href="http://en.wikipedia.org/wiki/Pairing_heap">ペアリングヒープ(wikipedia: en)</a>での実装。gcc(libstdc++)のpriority_queueはこれらしい。enqueue: O(log(n)), dequeue: O(log(n))。実装には<a href="http://topcoder.g.hatena.ne.jp/spaghetti_source/20120929/1348886107">これ</a>を参考にした。</li>
+<li>Selection: キューへの追加はArray.push()、キューから取り出すときに最大要素を選択。enqueue: $O(1)$, dequeue: $O(n^2)$。</li>
+<li>Insertion: キューへの追加時に挿入ソートを行う。キューから取り出すときはArray.pop()するだけ。enqueue: $O(n^2)$, dequeue: $O(1)$。</li>
+<li>Binary Insertion: キューへの追加時に二分挿入ソートを行う。あとは3と同じ。enqueue: $O(n^2)$, dequeue: $O(1)$。</li>
+<li>Binary Heap: <a href="http://ja.wikipedia.org/wiki/%E4%BA%8C%E5%88%86%E3%83%92%E3%83%BC%E3%83%97">二分ヒープ(wikipedia)</a>での実装。ポインタなしで実装できるので省メモリ。java.util.PriorityQueueはこれらしい。enqueue: $O(\log n)$, dequeue: $O(\log n)$。</li>
+<li>Pairing Heap: <a href="http://en.wikipedia.org/wiki/Pairing_heap">ペアリングヒープ(wikipedia: en)</a>での実装。gcc(libstdc++)のpriority_queueはこれらしい。enqueue: $O(1)$, dequeue: $O(\log n)$。実装には<a href="http://topcoder.g.hatena.ne.jp/spaghetti_source/20120929/1348886107">これ</a>を参考にした。</li>
 </ol>
 <p>いずれもJavaScriptで実装した。</p>
 <h2 id="ベンチマーク結果">ベンチマーク結果</h2>
@@ -886,5 +886,14 @@ Skew HeapやLeftist Heapは特に連続的な操作に対して弱いようだ�
   gtag('js', new Date());
 
   gtag('config', 'G-L5FSJ397HF');
-</script></body>
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML" async></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [['$','$']]
+    }
+});
+</script>
+</body>
 </html>
