@@ -22,7 +22,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.330k.info/essay/oresenwomabiku/" /><meta property="og:image" content="https://www.330k.info/essay/oresenwomabiku/douglas-peucker-n-001.png" /><meta property="article:section" content="essay" />
 <meta property="article:published_time" content="2009-10-24T00:00:00+09:00" />
-<meta property="article:modified_time" content="2023-05-26T03:58:38+09:00" />
+<meta property="article:modified_time" content="2023-05-26T04:02:21+09:00" />
 
 	<meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://www.330k.info/essay/oresenwomabiku/douglas-peucker-n-001.png"/>
@@ -105,7 +105,7 @@ if (!doNotTrack) {
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
 	<time class="meta__text" datetime="2009-10-24T00:00:00">October 24, 2009</time>
-	<time class="meta__text" datetime="2023-05-26T03:58:38"> (Last Modified: May 26, 2023)</time>
+	<time class="meta__text" datetime="2023-05-26T04:02:21"> (Last Modified: May 26, 2023)</time>
 </div>
 
 <div class="meta__item-categories meta__item">
@@ -216,8 +216,8 @@ Mathematicaを使うと</p>
 </tbody>
 </table>
 <h2 id="間引いた後の点の数を指定できるようにするには">間引いた後の点の数を指定できるようにするには</h2>
-<p>さて、Douglas-Peuckerのアルゴリズムは許容誤差$\varepsilon$を与えて間引くので、間引いた後の点の数がいくらになるのかは指定できない。
-しかし、GPSログデータの編集・加工ツールとして有名な轍(Wadachi)では、間引いた後の点の数を指定できる。</p>
+<p>さて、元々のDouglas-Peuckerのアルゴリズムは許容誤差$\varepsilon$を与えて間引くので、間引いた後の点の数がいくらになるのかは指定できない。</p>
+<p>しかし、実際の用途(地図表示時の動作を軽くしたい、GPSデバイスにインポートしたい、etc)では間引き後の点数を指定できたほうが便利である。</p>
 <p>これを実現するには、以下のようなアルゴリズムになる。</p>
 <ol>
 <li>始点と終点を結ぶ線分と各点の距離を求める。</li>
