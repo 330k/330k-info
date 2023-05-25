@@ -25,6 +25,18 @@
 	<link rel="stylesheet" href="/css/style.css">
 	<link rel="stylesheet" href="/css/330k.css">
 	<link rel="shortcut icon" href="/favicon.ico">
+		
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-5655726-3', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
 	<script defer src="/js/330k.js"></script>
 	<link rel="stylesheet" href="/css/syntax.css">
 </head>
@@ -195,7 +207,7 @@
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
 	<time class="meta__text" datetime="2009-10-24T00:00:00">October 24, 2009</time>
-	<time class="meta__text" datetime="2023-03-21T01:32:29"> (Last Modified: March 21, 2023)</time>
+	<time class="meta__text" datetime="2023-05-26T03:40:50"> (Last Modified: May 26, 2023)</time>
 </div>
 
 <div class="meta__item-categories meta__item">
@@ -211,7 +223,7 @@
 <ol>
 <li>折れ線の始点と終点を結ぶ線分と各点の距離を求める。</li>
 <li>すべての点との距離が許容誤差$\varepsilon$以内に入っていれば始点と終点だけを返して終了。</li>
-<li>そうでなければ距離が最大の点Pを1つ選択。</li>
+<li>そうでなければ距離が最大の点Pを選択。</li>
 <li>始点から点Pまでの折れ線と、点Pから終点までの折れ線のそれぞれについてまた1から処理する。</li>
 </ol>
 <p>という再帰的なもの。</p>
