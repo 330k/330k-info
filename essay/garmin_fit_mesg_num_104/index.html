@@ -13,7 +13,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.330k.info/essay/garmin_fit_mesg_num_104/" /><meta property="og:image" content="https://www.330k.info/essay/edit-garmin-fit-mannually/fit-sdk-logo-001.svg" /><meta property="article:section" content="essay" />
 <meta property="article:published_time" content="2023-06-13T23:14:53+09:00" />
-<meta property="article:modified_time" content="2023-06-14T00:46:34+09:00" />
+<meta property="article:modified_time" content="2023-06-14T04:03:31+09:00" />
 
 	<meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://www.330k.info/essay/edit-garmin-fit-mannually/fit-sdk-logo-001.svg"/>
@@ -87,7 +87,7 @@ if (!doNotTrack) {
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
 	<time class="meta__text" datetime="2023-06-13T23:14:53">June 13, 2023</time>
-	<time class="meta__text" datetime="2023-06-14T00:46:34"> (Last Modified: June 14, 2023)</time>
+	<time class="meta__text" datetime="2023-06-14T04:03:31"> (Last Modified: June 14, 2023)</time>
 </div>
 
 <div class="meta__item-categories meta__item">
@@ -99,7 +99,7 @@ if (!doNotTrack) {
 			<p>Edge 830で実際の走行したログのFITファイルを見ると、Garmin FIT SDKでドキュメント化されていないメッセージが結構ある。</p>
 <p>このうち、<code>mesg_num #104</code>のものが何を示しているのかについて特定することに成功した。</p>
 <h2 id="fit-file-viewerの紹介">Fit File Viewerの紹介</h2>
-<p>FITファイルの構造を見れるオンラインツール(<a href="https://www.fitfileviewer.com/">FIT File Viewer</a>)では、
+<p><a href="https://www.fitfileviewer.com/">FIT File Viewer</a>はFITファイルの構造を見れるオンラインツールで、
 設定画面で<code>Hide messages without name ('mesg_num #')</code>を<code>OFF</code>にする(下図)ことで、SDKにない情報を見やすく表示できる。</p>
 <figure><img src="filter_settings.png"/>
 </figure>
@@ -110,7 +110,7 @@ SDKに記述のない<code>mesg_num 104</code>のデータが1843個記録され
 <figure><img src="image001.png"/>
 </figure>
 
-<p><code>field 253</code>の1番目の値<code>972420938</code>をFITタイムスタンプとして解釈すると、<code>2020年10月24日05時55分38秒</code>となり、走行開始した時刻と一致する。</p>
+<p>field definition numberとして使われる番号の253はFITタイムスタンプであることが多く、今回のデータでも<code>field 253</code>の1番目の値<code>972420938</code>をFITタイムスタンプとして解釈すると、<code>2020年10月24日05時55分38秒</code>となり、走行開始した時刻と一致する。</p>
 <p>したがって、<strong>field 253はタイムスタンプである</strong>ことは確定。</p>
 <p>2個目以降のタイムスタンプを見ると、60秒(1分)おきに記録されていることが分かる。</p>
 <h2 id="各フィールドの推察">各フィールドの推察</h2>
@@ -139,24 +139,54 @@ SDKに記述のない<code>mesg_num 104</code>のデータが1843個記録され
 <ul>
 <li>0から100までの間の数値を取っている</li>
 <li>基本的に一定ペースで減少している</li>
-<li>10月24日の22時～24時の時間帯において増加しているが、これはモバイルバッテリーから充電しながら走行していた時間帯と一致する</li>
+<li>10月24日の21時40分～25日0時52分の時間帯において増加しているが、これはモバイルバッテリーから充電しながら走行していた時間帯と一致する</li>
 </ul>
 <p>ことから、<strong>field 2はバッテリー残量をパーセント単位で表示したもの</strong>である。</p>
 <h3 id="field-0">field 0</h3>
 <p>次に、field 2と似た動きをしているのがfield 0である。</p>
 <ul>
 <li>バッテリー残量とかなり強い正の相関がある</li>
+<li>field 2のようにキレイに変化するのではなく、センサから測定した値のようなバラつきがある</li>
 <li>3300から4400程度の値をとる</li>
 </ul>
 <p>となると、<strong>field 0はバッテリーの電圧をmV単位で表示したものである</strong>と推定される。</p>
 <p>FITの仕様では各フィールドに係数(multiplier)を指定できるので、仮にドキュメント化されたとしたら、単位はVで係数が1000、という表記となるだろう。</p>
 <h3 id="field-1">field 1</h3>
 <p>field 1はfield 0の微分値を見ているようなグラフになっていることから、バッテリーの消費電流または消費電力になっていると推測される(充電時は正、放電時は負)。</p>
-<p>Garmin Edge 830のバッテリー容量はスペック表で公開されていないが、互換品を調べるとだいたい900mAh, 3.42Whとなっている。</p>
-<p>充電中(10月24日22時～24時)でfield 1の値が正となっている部分の総和を取ると<code>54716</code>という値になり、概ね1分間隔で記録されていることから、消費電流をmA単位で表していると仮定すると</p>
-<p>$$ 54716_{\mathrm{[mA]}} \times 60_{\mathrm{[s]}} / 3600_{\mathrm{[s/h]}} = 911.933 {}_{\mathrm{[mAh]}}$$</p>
-<p>となり、バッテリーの容量と一致した。</p>
-<p>したがって、<strong>field 1はバッテリーの消費電流をmA単位で表示したもの</strong>であった。</p>
+<p>Garmin Edge 830のバッテリー容量はスペック表で公開されていないが、分解動画を見ると純正バッテリーの容量は1000mAhであった。</p>
+<figure><img src="garmin_battery001.png"
+         alt="YouTube - GPSサイクルコンピューター GARMIN EDGE830 バッテリー交換修理の再生時間17:27より引用・加工"/><figcaption>
+            <p><a href="https://www.youtube.com/watch?v=-v_lYTCv8C8">YouTube - GPSサイクルコンピューター GARMIN EDGE830 バッテリー交換修理</a>の再生時間17:27より引用・加工</p>
+        </figcaption>
+</figure>
+
+<p>バッテリーの残量%の変化と、その間のfield 1の値の総和を調べると、</p>
+<ul>
+<li>10月24日の5時55分から21時40分まで:
+<ul>
+<li>バッテリー残量: 97% → 4%</li>
+<li>field 1の値の総和: -57335</li>
+</ul>
+</li>
+<li>10月24日の21時40分から25日の0時52分まで:
+<ul>
+<li>バッテリー残量: 4% → 94%</li>
+<li>field 1の値の総和: 54716</li>
+</ul>
+</li>
+<li>10月25日の5時46分から17時43分まで:
+<ul>
+<li>バッテリー残量: 100% → 63%</li>
+<li>field 1の値の総和: -23086</li>
+</ul>
+</li>
+</ul>
+<p>概ね1分間隔で記録されていることから、field 1の電流をmA単位で表していると仮定して、それぞれバッテリー容量を計算してみると</p>
+<p>$$ -57335_{\mathrm{[mA]}} \times 60_{\mathrm{[s]}} / 3600_{\mathrm{[s/h]}} / (4\% - 97\%) = 1027.51 {}_{\mathrm{[mAh]}}$$</p>
+<p>$$ 54716_{\mathrm{[mA]}} \times 60_{\mathrm{[s]}} / 3600_{\mathrm{[s/h]}} / (94\% - 7\%) = 1013.26 {}_{\mathrm{[mAh]}}$$</p>
+<p>$$ -23086_{\mathrm{[mA]}} \times 60_{\mathrm{[s]}} / 3600_{\mathrm{[s/h]}} / (63\% - 100\%) = 1039.91 {}_{\mathrm{[mAh]}}$$</p>
+<p>となり、いずれもバッテリーの容量である1000mAhとほぼ一致した。</p>
+<p>したがって、<strong>field 1はバッテリーの消費電流をmA単位で表示したもの</strong>であることが判明した。</p>
 <h3 id="field-3">field 3</h3>
 <p>最後のfield 3は他のフィールドと違った動きをしている。</p>
 <p>上記で電流、電圧がすでに他のフィールドに記録されていることが分かっているので、残るものとして温度が最有力である。</p>
@@ -167,7 +197,7 @@ SDKに記述のない<code>mesg_num 104</code>のデータが1843個記録され
 <p>グラフから特徴を読み取ると、</p>
 <ul>
 <li>field 3の値は外気温より概ね2℃程度高い値を示しつつ、動きはかなり一致している</li>
-<li>充電中(10月24日22時～24時)は外気温との乖離が大きく、10℃程度高くなっている</li>
+<li>充電中(24日の21時40分から25日の0時52分まで)は外気温との乖離が大きく、10℃程度高くなっている</li>
 </ul>
 <p>ことから、やはり<strong>field 3はバッテリーの温度を摂氏温度単位で表示したもの</strong>であった。</p>
 <h2 id="結論">結論</h2>
@@ -178,7 +208,7 @@ SDKに記述のない<code>mesg_num 104</code>のデータが1843個記録され
 <li>field 0: バッテリー電圧(単位はmV)</li>
 <li>field 1: バッテリー消費電流(単位はmA)</li>
 <li>field 2: バッテリー残量(単位は%)</li>
-<li>field 3: バッテリー温度(単位はセルシウス度)</li>
+<li>field 3: バッテリー温度(単位は℃)</li>
 </ul>
 <p>であった。</p>
 		</div>
