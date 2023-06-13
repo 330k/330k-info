@@ -6,7 +6,17 @@
     <description>Recent content on 330k info</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Sat, 27 May 2023 23:15:20 +0900</lastBuildDate><atom:link href="https://www.330k.info/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 13 Jun 2023 23:14:53 +0900</lastBuildDate><atom:link href="https://www.330k.info/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Garmin FITにおけるmesg_num 104が示す内容についての分析結果</title>
+      <link>https://www.330k.info/essay/garmin_fit_mesg_num_104/</link>
+      <pubDate>Tue, 13 Jun 2023 23:14:53 +0900</pubDate>
+      
+      <guid>https://www.330k.info/essay/garmin_fit_mesg_num_104/</guid>
+      <description>&lt;p&gt;Edge 830での走行ログのFITファイルに含まれるメッセージには、Garmin FIT SDKでドキュメント化されていないものが結構ある。&lt;/p&gt;
+&lt;p&gt;このうち、&lt;code&gt;mesg_num #104&lt;/code&gt;のものが何を示しているのかについて特定することに成功した。&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>2023年05月27日 駿河小山-不老山-三国山-山中湖</title>
       <link>https://www.330k.info/walk/20230527-surugaoyama-yamanakako/</link>

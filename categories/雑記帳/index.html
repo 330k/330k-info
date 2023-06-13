@@ -81,6 +81,35 @@ if (!doNotTrack) {
 		<h1 class="main__title">雑記帳</h1>
 	</header><article class="list__item post">
 	<figure class="list__thumbnail">
+		<a href="https://www.330k.info/essay/garmin_fit_mesg_num_104/">
+			<img src="/essay/edit-garmin-fit-mannually/fit-sdk-logo-001.svg" alt="Garmin FITにおけるmesg_num 104が示す内容についての分析結果" />
+		</a>
+	</figure>
+	<header class="list__header">
+		<h3 class="list__title post__title ">
+			<a href="/essay/garmin_fit_mesg_num_104/" rel="bookmark">
+			Garmin FITにおけるmesg_num 104が示す内容についての分析結果
+			</a>
+		</h3>
+		<div class="list__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
+	<time class="meta__text" datetime="2023-06-13T23:14:53">June 13, 2023</time>
+	<time class="meta__text" datetime="2023-06-14T00:23:47"> (Last Modified: June 14, 2023)</time>
+</div>
+
+<div class="meta__item-categories meta__item">
+	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+	<span class="meta__text"><a class="meta__link" href="/categories/%e9%9b%91%e8%a8%98%e5%b8%b3" rel="category">雑記帳</a></span>
+</div>
+</div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		<p>Edge 830での走行ログのFITファイルに含まれるメッセージには、Garmin FIT SDKでドキュメント化されていないものが結構ある。</p>
+<p>このうち、<code>mesg_num #104</code>のものが何を示しているのかについて特定することに成功した。</p>
+	</div>
+</article><article class="list__item post">
+	<figure class="list__thumbnail">
 		<a href="https://www.330k.info/essay/rwgps-distance-calculation-precision/">
 			<img src="/essay/rwgps-modify-all-elevations/rwgps_230x0w.png" alt="Ride with GPSの距離計算式と精度の評価" />
 		</a>
@@ -343,36 +372,6 @@ systemdを使ってCPU使用率に制限をかけつつ無限ループを行う�
 Snappy(Snap)を使おうとすると、snapデーモンはホストのルートCA認証局を利用しないため、
 <code>error: cannot refresh: Post https://api.snapcraft.io/v2/snaps/refresh: x509: certificate signed by unknown authority</code>というエラーを出してしまう。</p>
 	</div>
-</article><article class="list__item post">
-	<figure class="list__thumbnail">
-		<a href="https://www.330k.info/essay/freeradius-password-and-mac-address-authentication/">
-			<img src="/essay/freeradius-password-and-mac-address-authentication/freeradius_logo.svg" alt="無線LANのEAP-PEAP認証で、ユーザ毎のMACアドレス制限も行う" />
-		</a>
-	</figure>
-	<header class="list__header">
-		<h3 class="list__title post__title ">
-			<a href="/essay/freeradius-password-and-mac-address-authentication/" rel="bookmark">
-			無線LANのEAP-PEAP認証で、ユーザ毎のMACアドレス制限も行う
-			</a>
-		</h3>
-		<div class="list__meta meta">
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
-	<time class="meta__text" datetime="2022-03-06T22:29:32">March 06, 2022</time>
-	<time class="meta__text" datetime="2022-03-11T19:39:50"> (Last Modified: March 11, 2022)</time>
-</div>
-
-<div class="meta__item-categories meta__item">
-	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
-	<span class="meta__text"><a class="meta__link" href="/categories/%e9%9b%91%e8%a8%98%e5%b8%b3" rel="category">雑記帳</a></span>
-</div>
-</div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		<p>会社で来客用および従業員の私物用に無線LANを開放(もちろん業務用のネットワークとは完全に分離している)していたら、監査から「悪用されたときに追跡調査ができるようにせよ」と指摘があった。</p>
-<p>共有パスワード(PSK)からユーザ毎の個別パスワード(WPA2 Enterprise + EAP-PEAPなど)に変えるだけでは、ユーザが複数機器で同じパスワードを使いまわしたり、個別パスワードであることを理解せず他の人に教えてしまいかねない。</p>
-<p>よってユーザ毎に個別のMACアドレスに限定するような認証システムをFreeRADIUSを用いて構築した。</p>
-	</div>
 </article>
 </main>
 
@@ -409,6 +408,7 @@ Snappy(Snap)を使おうとすると、snapデーモンはホストのルートC
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/essay/garmin_fit_mesg_num_104/">Garmin FITにおけるmesg_num 104が示す内容についての分析結果</a></li>
 			<li class="widget__item"><a class="widget__link" href="/walk/20230527-surugaoyama-yamanakako/">2023年05月27日 駿河小山-不老山-三国山-山中湖</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/rwgps-distance-calculation-precision/">Ride with GPSの距離計算式と精度の評価</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/comparison_of_track_simplify_algorithms/">トラック間引きアルゴリズムの比較</a></li>
@@ -428,7 +428,6 @@ Snappy(Snap)を使おうとすると、snapデーモンはホストのルートC
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20220402-brm402-chubu-200km/">2022年04月02日 BRM402 中部200</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20220327-brm320-hiroshima-600km/">2022年03月27日 BRM320 広島600 ひろしま島巡り</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/geodesic_distance_formula_comparison_2/">測地線距離計算式・計算ライブラリの精度評価 </a></li>
-			<li class="widget__item"><a class="widget__link" href="/essay/snap-with-self-signed-certificate-authority/">自己署名証明書を使う環境下でSnappy(Snap)を使う</a></li>
 		</ul>
 	</div>
 </div>
@@ -460,8 +459,9 @@ Snappy(Snap)を使おうとすると、snapデーモンはホストのルートC
 		<a class="widget-taglist__link widget__link btn" href="/tags/cybozu" title="Cybozu">Cybozu (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/dotnet" title="Dotnet">Dotnet (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/ffmpeg" title="Ffmpeg">Ffmpeg (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/fit" title="Fit">Fit (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/freeradius" title="Freeradius">Freeradius (1)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/garmin" title="Garmin">Garmin (3)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/garmin" title="Garmin">Garmin (4)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/garoon" title="Garoon">Garoon (2)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/gas" title="Gas">Gas (2)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/github" title="Github">Github (10)</a>
