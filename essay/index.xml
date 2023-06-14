@@ -14,7 +14,7 @@
       
       <guid>https://www.330k.info/essay/garmin_fit_mesg_num_104/</guid>
       <description>&lt;p&gt;Edge 830で実際の走行したログのFITファイルを見ると、Garmin FIT SDKでドキュメント化されていないメッセージが結構ある。&lt;/p&gt;
-&lt;p&gt;このうち、&lt;code&gt;mesg_num #104&lt;/code&gt;のものが何を示しているのかについて特定することに成功した。&lt;/p&gt;</description>
+&lt;p&gt;このうち、&lt;code&gt;mesg_num 104&lt;/code&gt;が何を示しているのかについて特定することに成功した。&lt;/p&gt;</description>
     </item>
     
     <item>
