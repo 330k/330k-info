@@ -4,23 +4,27 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>2022年10月08日 SR600 カルスト DNF - 330k info</title>
+	<title>YAMAP GPX Exporter - 330k info</title>
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
-	<meta property="og:title" content="2022年10月08日 SR600 カルスト DNF" />
-<meta property="og:description" content="SR600カルストに挑戦したが、44回目のブルベ出走で初めてのDNF。
-しかもDNFを決断した後に怪我をしてしまうという情けない結果に。" />
+	<meta property="og:title" content="YAMAP GPX Exporter" />
+<meta property="og:description" content="YAMAPの登山計画をGPXファイルとしてダウンロードするツールです。
+主としてスマホで使うことを想定しており、
+YAMAPの登山計画のURLを入力するとチェックポイントを含むGPXファイルを出力し、これをGarmin Connectにインポートすることで、
+Garminデバイスにルートを入れるまでの一連の操作をスマホで完結させることができます。" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://www.330k.info/bicycle/touring/20221008-sr600-karst/" /><meta property="og:image" content="https://www.330k.info/bicycle/touring/20221008-sr600-karst/20221008-102928-1747.jpg" /><meta property="article:section" content="bicycle" />
-<meta property="article:published_time" content="2022-10-20T22:54:45+09:00" />
-<meta property="article:modified_time" content="2022-10-27T03:12:49+09:00" />
+<meta property="og:url" content="https://www.330k.info/software/yamap-gpx-exporter/" /><meta property="og:image" content="https://www.330k.info/software/yamap-gpx-exporter/icon_512.png" /><meta property="article:section" content="software" />
+<meta property="article:published_time" content="2023-07-25T10:18:18+09:00" />
+<meta property="article:modified_time" content="2023-07-25T10:18:49+09:00" />
 
 	<meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:image" content="https://www.330k.info/bicycle/touring/20221008-sr600-karst/20221008-102928-1747.jpg"/>
+<meta name="twitter:image" content="https://www.330k.info/software/yamap-gpx-exporter/icon_512.png"/>
 
-<meta name="twitter:title" content="2022年10月08日 SR600 カルスト DNF"/>
-<meta name="twitter:description" content="SR600カルストに挑戦したが、44回目のブルベ出走で初めてのDNF。
-しかもDNFを決断した後に怪我をしてしまうという情けない結果に。"/>
+<meta name="twitter:title" content="YAMAP GPX Exporter"/>
+<meta name="twitter:description" content="YAMAPの登山計画をGPXファイルとしてダウンロードするツールです。
+主としてスマホで使うことを想定しており、
+YAMAPの登山計画のURLを入力するとチェックポイントを含むGPXファイルを出力し、これをGarmin Connectにインポートすることで、
+Garminデバイスにルートを入れるまでの一連の操作をスマホで完結させることができます。"/>
 
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -59,13 +63,13 @@ if (!doNotTrack) {
 		<span class="menu__btn-title" tabindex="-1">Menu</span>
 	</button>
 	<ul class="menu__list">
-		<li class="menu__item menu__item--active">
+		<li class="menu__item">
 			<a class="menu__link" href="/bicycle/">Bicycles</a>
 		</li>
 		<li class="menu__item">
 			<a class="menu__link" href="/essay/">Essays</a>
 		</li>
-		<li class="menu__item">
+		<li class="menu__item menu__item--active">
 			<a class="menu__link" href="/software/">Softwares</a>
 		</li>
 		<li class="menu__item">
@@ -82,346 +86,126 @@ if (!doNotTrack) {
 <main class="main" role="main">
 	<article class="post">
 		<header class="post__header">
-			<h1 class="post__title">2022年10月08日 SR600 カルスト DNF</h1>
+			<h1 class="post__title">YAMAP GPX Exporter</h1>
 			<div class="post__meta meta">
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
-	<time class="meta__text" datetime="2022-10-20T22:54:45">October 20, 2022</time>
-	<time class="meta__text" datetime="2022-10-27T03:12:49"> (Last Modified: October 27, 2022)</time>
+	<time class="meta__text" datetime="2023-07-25T10:18:18">July 25, 2023</time>
+	<time class="meta__text" datetime="2023-07-25T10:18:49"> (Last Modified: July 25, 2023)</time>
 </div>
 
 <div class="meta__item-categories meta__item">
 	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
-	<span class="meta__text"><a class="meta__link" href="/categories/%e8%87%aa%e8%bb%a2%e8%bb%8a" rel="category">自転車</a></span>
+	<span class="meta__text"><a class="meta__link" href="/categories/%e3%82%bd%e3%83%95%e3%83%88%e3%82%a6%e3%82%a7%e3%82%a2" rel="category">ソフトウェア</a></span>
 </div>
 </div>
 		</header><div class="content post__content clearfix">
-			<p>SR600カルストに挑戦したが、44回目のブルベ出走で初めてのDNF。</p>
-<p>しかもDNFを決断した後に怪我をしてしまうという情けない結果に。</p>
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCir56M7J9LT4-3wDVgG8etGo_HPSMWVBk&callback=initMap" defer></script>
+			<p>YAMAPの登山計画をGPXファイルとしてダウンロードするツールです。</p>
+<p>主としてスマホで使うことを想定しており、
+YAMAPの登山計画のURLを入力するとチェックポイントを含むGPXファイルを出力し、これをGarmin Connectにインポートすることで、
+Garminデバイスにルートを入れるまでの一連の操作をスマホで完結させることができます。</p>
+<script defer>
+{
+  const iframe_id = 'iframe-1';
+  const iframe_src = 'https:\/\/script.google.com\/macros\/s\/AKfycbzL6htTE8fw3zhF1Q_2XOfRYOP2ga56v1J7NWcWLuNwtkE-oak2h6SQKjqXqaklgOM\/exec';
+  const fullscreen = "";
 
+  
+  window.addEventListener("message", function(e){
+    console.log(e.origin);
+    console.log(e.data);
+    if(e.origin === getOriginFromUrl(iframe_src)){
+      document.getElementById(iframe_id).height = (JSON.parse(e.data)).height;
+    }
+  }, false);
+  function getOriginFromUrl(path){
+    var result = path.replace(/\\/g, '/').match(/(^[^:]+:\/\/[^/]*)/);
+    if(!result){
+      return '';
+    }else{
+      return result[1];
+    }
+  };
 
+  
+  window.addEventListener("DOMContentLoaded", function(e){
+    if(document.documentElement.clientHeight < document.getElementById(iframe_id).height){
+      document.getElementById(iframe_id).height = document.documentElement.clientHeight;
+    }
 
-<div id="mapcanvas-1" style="width: 100%; height:500px; margin:0; padding: 0"></div>
-<script>
+    
+    if((fullscreen) && (document.fullscreenEnabled || document.mozFullScreenEnabled || document.documentElement.webkitRequestFullScreen || document.msFullscreenEnabled)){
+      const iframe_ele = document.getElementById(iframe_id);
+      const requestFullscreen = iframe_ele.requestFullscreen || iframe_ele.mozRequestFullScreen || iframe_ele.webkitRequestFullScreen || iframe_ele.msRequestFullscreen;
+      
+      const div_ele = document.createElement("div");
+      div_ele.style = "position: absolute; right: 0; top: -35px; width: 32px; height: 32px; background: #eee; padding: 5px; border: 1px solid gray; border-radius: 3px; cursor: pointer;";
+      div_ele.addEventListener("click", function(evt){
+        requestFullscreen.call(iframe_ele);
+      });
+      const img_ele = document.createElement("img");
+      img_ele.src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 513.32 513.32' xml:space='preserve'%3E%3Cpath d='M177.523 305.853 42.777 440.6v-98.387H0V513.32h171.107v-42.777H74.859l134.746-134.746z'/%3E%3Cpath d='M470.543 440.6 72.72 42.777h98.387V0H0v171.107h42.777V72.72L440.6 470.543h-98.387v42.777H513.32V342.213h-42.777z'/%3E%3Cpath d='M342.213 0v42.777h100.526L307.992 177.523l29.943 29.944L470.543 74.859v96.248h42.777V0z'/%3E%3C/svg%3E";
+      img_ele.width = 20;
+      img_ele.height = 20;
+      img_ele.style = "display: block;";
+      img_ele.title = "フルスクリーン表示(Escで戻る)";
 
-const initfuncs = [];
-function initMap(){
-  for(let i = 0; i < initfuncs.length; i++){
-    initfuncs[i]();
-  }
-}
-
-initfuncs.push(function(){
-  var map,
-    ctaLayer;
-  map = new google.maps.Map(document.getElementById("mapcanvas-1"), {
-    center: {lat: 35.6832581, lng: 139.7555827},
-    zoom: 8,
-    options: {
-      gestureHandling: "greedy"
+      div_ele.appendChild(img_ele);
+      iframe_ele.parentElement.appendChild(div_ele);
     }
   });
-  ctaLayer = new google.maps.KmlLayer({
-    url: 'https:\/\/www.330k.info\/bicycle\/touring\/20221008-sr600-karst\/2022100801.kml'
-  });
-  ctaLayer.setMap(map);
-});
+}
 </script>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">区間</th>
-<th style="text-align:center">地点</th>
-<th style="text-align:right">距離(km)</th>
-<th style="text-align:center">クローズ時刻</th>
-<th style="text-align:center">到着時刻</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">PC1</td>
-<td style="text-align:center">坊っちゃんカラクリ時計</td>
-<td style="text-align:right">0.0</td>
-<td style="text-align:center">-</td>
-<td style="text-align:center">10/08 04:00</td>
-</tr>
-<tr>
-<td style="text-align:center">PC2</td>
-<td style="text-align:center">黒森峠</td>
-<td style="text-align:right">35.3</td>
-<td style="text-align:center">-</td>
-<td style="text-align:center">10/08 06:15</td>
-</tr>
-<tr>
-<td style="text-align:center">PC3</td>
-<td style="text-align:center">明神山レーダー雨量測量所</td>
-<td style="text-align:right">108.4</td>
-<td style="text-align:center">-</td>
-<td style="text-align:center">10/08 10:35</td>
-</tr>
-<tr>
-<td style="text-align:center">PC4</td>
-<td style="text-align:center">林道中村線看板</td>
-<td style="text-align:right">143.9</td>
-<td style="text-align:center">-</td>
-<td style="text-align:center">10/08 13:15</td>
-</tr>
-<tr>
-<td style="text-align:center">PC5</td>
-<td style="text-align:center">風の里公園</td>
-<td style="text-align:right">153.2</td>
-<td style="text-align:center">-</td>
-<td style="text-align:center">10/08 14:17</td>
-</tr>
-<tr>
-<td style="text-align:center">PC6</td>
-<td style="text-align:center">神在居千枚田展望所</td>
-<td style="text-align:right">183.7</td>
-<td style="text-align:center">-</td>
-<td style="text-align:center">10/08 16:26</td>
-</tr>
-<tr>
-<td style="text-align:center">PC7</td>
-<td style="text-align:center">津賀ダム</td>
-<td style="text-align:right">218.9</td>
-<td style="text-align:center">-</td>
-<td style="text-align:center">10/08 17:45</td>
-</tr>
-<tr>
-<td style="text-align:center">PC8</td>
-<td style="text-align:center">江川崎郵便局</td>
-<td style="text-align:right">255.5</td>
-<td style="text-align:center">-</td>
-<td style="text-align:center">10/08 19:13</td>
-</tr>
-<tr>
-<td style="text-align:center">PC9</td>
-<td style="text-align:center">四万十川橋</td>
-<td style="text-align:right">292.1</td>
-<td style="text-align:center">-</td>
-<td style="text-align:center">10/08 21:00</td>
-</tr>
-<tr>
-<td style="text-align:center">PC10</td>
-<td style="text-align:center">篠山石碑</td>
-<td style="text-align:right">337.7</td>
-<td style="text-align:center">-</td>
-<td style="text-align:center">-</td>
-</tr>
-<tr>
-<td style="text-align:center">PC11</td>
-<td style="text-align:center">北灘郵便局</td>
-<td style="text-align:right">372.0</td>
-<td style="text-align:center">-</td>
-<td style="text-align:center">-</td>
-</tr>
-<tr>
-<td style="text-align:center">PC12</td>
-<td style="text-align:center">だんだん茶屋</td>
-<td style="text-align:right">389.5</td>
-<td style="text-align:center">-</td>
-<td style="text-align:center">-</td>
-</tr>
-<tr>
-<td style="text-align:center">PC13</td>
-<td style="text-align:center">法華津峠</td>
-<td style="text-align:right">429.1</td>
-<td style="text-align:center">-</td>
-<td style="text-align:center">-</td>
-</tr>
-<tr>
-<td style="text-align:center">PC14</td>
-<td style="text-align:center">源氏ヶ駄馬</td>
-<td style="text-align:right">495.2</td>
-<td style="text-align:center">-</td>
-<td style="text-align:center">-</td>
-</tr>
-<tr>
-<td style="text-align:center">PC15</td>
-<td style="text-align:center">天狗高原</td>
-<td style="text-align:right">512.1</td>
-<td style="text-align:center">-</td>
-<td style="text-align:center">-</td>
-</tr>
-<tr>
-<td style="text-align:center">PC16</td>
-<td style="text-align:center">獅子越峠</td>
-<td style="text-align:right">540.6</td>
-<td style="text-align:center">-</td>
-<td style="text-align:center">-</td>
-</tr>
-<tr>
-<td style="text-align:center">PC17</td>
-<td style="text-align:center">真弓トンネル</td>
-<td style="text-align:right">562.1</td>
-<td style="text-align:center">-</td>
-<td style="text-align:center">-</td>
-</tr>
-<tr>
-<td style="text-align:center">PC18</td>
-<td style="text-align:center">坊っちゃんカラクリ時計</td>
-<td style="text-align:right">608.4</td>
-<td style="text-align:center">-</td>
-<td style="text-align:center">-</td>
-</tr>
-</tbody>
-</table>
-<h2 id="1日目-スタート---pc9">1日目 (スタート - PC9)</h2>
-<p>松山市街地のホテルを午前3時30分に出発し、3時45分頃にスタート地点に到着。</p>
-<p>道後温泉の観光をしつつスタート時刻まで待機。</p>
-<p><figure><img src="20221008-034215-1724.jpg"/>
-</figure>
-
-<figure><img src="20221008-035149-1725.jpg"/>
-</figure>
-</p>
-<p>ふぃりっぷさんも午前4時スタートのはずなのだが、姿が見えなかったので先に出発。</p>
-<figure><img src="20221008-035938-1727.jpg"/>
-</figure>
-
-<p>リアライトが2つとも電池切れになってしまったことに気づいたのでコンビニで電池を交換している間にふぃりっぷさんに抜かれたものの、その後ふぃりっぷさんのほか、kotonohaさん、生朗さんと一緒に走行している所に追いついた。</p>
-<p>4人で集団になって最初の黒森峠へ登る。</p>
-<p><figure><img src="20221008-055844-1734.jpg"/>
-</figure>
-
-<figure><img src="20221008-060757-1735.jpg"/>
-</figure>
-</p>
-<p>空も少し明るくなってきた午前6時過ぎにPC2黒森峠に到着。</p>
-<figure><img src="20221008-061550-1736.jpg"/>
-</figure>
-
-<p>仁淀川沿いまで一気に下る。</p>
-<p>補給はないもののトイレは点在していて、途中でトイレ休憩。</p>
-<figure><img src="20221008-074635-1739.jpg"/>
-</figure>
-
-<p>明神山への登りはふぃりっぷさんとkotonohaさんが先行し、生郎さんと私が遅れてついていく形に。</p>
-<figure><img src="20221008-102846-1743.jpg"/>
-</figure>
-
-<p>オフロードバイクが何台か抜いていったのだが、頂上手前のこの道に入っていった。</p>
-<figure><img src="20221008-102928-1747.jpg"/>
-</figure>
-
-<p>勾配がキツイところでは押し歩きしつつ、頂上に到着。</p>
-<figure><img src="20221008-103551-1754.jpg"/>
-</figure>
-
-<p>下っていたら先行しているふぃりっぷさんがパンク修理していた。</p>
-<figure><img src="20221008-105048-1761.jpg"/>
-</figure>
-
-<p>下りきってトイレと自販機で補給しつつふぃりっぷさんを待機。</p>
-<figure><img src="20221008-112357-1762.jpg"/>
-</figure>
-
-<p>その後、数百mコースから外れて、生郎さんセレクトのえちごやカフェへ。</p>
-<figure><img src="20221008-113559-1765.jpg"/>
-</figure>
-
-<p>4人全員でハンバーグを注文。</p>
-<figure><img src="20221008-114403-1768.jpg"/>
-</figure>
-
-<p>酷道として有名な国道439号に入るも、それなりの快走路をぼちぼち登ってPC4に到着。</p>
-<figure><img src="20221008-131531-1771.jpg"/>
-</figure>
-
-<p>風車が見えてみたころ、今度は私がリム打ちで後輪をパンク。</p>
-<figure><img src="20221008-135921-1789.jpg"/>
-</figure>
-
-<p>他の人に先行して待機してもらい、急いでパッチ修理後にPCで合流。</p>
-<p><figure><img src="20221008-141713-1793.jpg"/>
-</figure>
-
-<figure><img src="20221008-141805-1795.jpg"/>
-</figure>
-</p>
-<p>下ってしばらくすると、初めてのコンビニのヤマザキショップ。</p>
-<figure><img src="20221008-151736-1798.jpg"/>
-</figure>
-
-<p>ただ、ここのヤマザキショップは小規模だったので10km先にあるもう1件のヤマザキショップでもう1度休憩。</p>
-<p>他の人が休憩している間に、私はリアのパンク修理が不安だったので急いで予備チューブに交換。</p>
-<p>再出発してゆるく登ってPCに到着。</p>
-<figure><img src="20221008-162623-1803.jpg"/>
-</figure>
-
-<p>その後は下ってほぼ平坦。</p>
-<p>事前の調査では何箇所か工事の可能性があったが、この日はどこも工事していないようだった。</p>
-<figure><img src="20221008-163945-1810.jpg"/>
-</figure>
-
-<p>先頭を回しつつPCのダムに到着。</p>
-<figure><img src="20221008-174508-1813.jpg"/>
-</figure>
-
-<p>四万十川に出た後は快走路。</p>
-<p>途中、生郎さんが夕食候補にしていた焼肉屋があったのだが、電話したところ臨時休業だった。</p>
-<p>PCの江川崎郵便局のあと、道の駅で補給。</p>
-<figure><img src="20221008-191321-1818.jpg"/>
-</figure>
-
-<p>四万十市中心部に入り、PCで証拠写真を撮影。</p>
-<figure><img src="20221008-210004-1823.jpg"/>
-</figure>
-
-<p>その後、生郎さんが探してくれた焼肉屋へ。</p>
-<figure><img src="20221008-212754-1829.jpg"/>
-</figure>
-
-<p>ホテルと2日目の行程がは別々なので、ここでお別れ。</p>
-<h2 id="2日目">2日目</h2>
-<p>6時に宿をスタート。</p>
-<p><figure><img src="20221009-060109-1832.jpg"/>
-</figure>
-
-<figure><img src="20221009-061055-1833.jpg"/>
-</figure>
-</p>
-<p>市街地から離れたところで、今度はフロントがスローパンク。</p>
-<figure><img src="20221009-070043-1834.jpg"/>
-</figure>
-
-<p>丹念に調べたが穴の箇所がわからず、とりあえず空気を入れて再スタートしたところ、少し走ったところで公衆トイレを見つけたので、チューブの穴を特定。</p>
-<figure><img src="20221009-081043-1837.jpg"/>
-</figure>
-
-<p>なんとかパッチで修理して再スタートしたところ、グレーチングにはまって前後ともにパンク。</p>
-<p><figure><img src="20221009-091130-1841.jpg"/>
-</figure>
-
-<figure><img src="20221009-091345-1842.jpg"/>
-</figure>
-</p>
-<p>前輪は1箇所、後輪に3箇所の穴があり、パッチを使い切ってしまったためここでDNFを決断。</p>
-<p>引き返して下り始めたのだが、パンク修理後にブレーキをかけ忘れてしまい、やむを得ずわざと転倒。</p>
-<p>ただ、転倒が下手過ぎて一瞬意識を失っていた。</p>
-<p>意識を取り戻すと顔から出血があるも、手足や胴体は大丈夫だったので電波が届くところまで押し歩いて下っていたところ、すれ違った自動車の方が厚意で乗せてくれたうえ、救急車を呼んで途中まで運んでくださった。</p>
-<p>救急車と落ち合った後、病院で顔は17針縫われ、頚椎に骨折の可能性があるということでネックカラーを装着。</p>
-<figure><img src="20221009-135637-1843.jpg"/>
-</figure>
-
-<p>病院から出た後、自転車が保管されている宿毛警察署に行き、事故現場の検証をした後、反省文を書いて自転車を回収し、警察署近くのホテルに宿泊。</p>
-<figure><img src="20221009-172545-1847.jpg"/>
-</figure>
-
-<p>翌日は、宇和島まで路線バス(輪行袋の自転車も乗せてくれた)、その後特急で松山駅に戻って、コインロッカーに預けておいた荷物を回収してスタートと同じホテルに1泊。</p>
-<p>翌々日に松山空港から飛行機で帰宅。</p>
-<p>頚椎を骨折していると、2日間は飛行機に登場できなかったらしいのだが、ギリギリで48時間経過していたので搭乗できた。</p>
-<p>「怪我をして走行不能になったからDNF」ではなく「走れなくなる前にDNFを決断したのに、撤退戦で大怪我する」という大変情けない結果に。</p>
-<p>いろいろな方に迷惑と心配をかけたので大反省。</p>
+<div style="position: relative;">
+<iframe
+ src="https://script.google.com/macros/s/AKfycbzL6htTE8fw3zhF1Q_2XOfRYOP2ga56v1J7NWcWLuNwtkE-oak2h6SQKjqXqaklgOM/exec"
+ width="100%"
+ height="200"
+ id="iframe-1"
+ style="border: none; margin-bottom: 1em;"
+ allow="accelerometer *; ambient-light-sensor *; autoplay *; camera *; clipboard-read *; clipboard-write *; encrypted-media *; fullscreen *; geolocation *; gyroscope *; magnetometer *; microphone *; midi *; payment *; picture-in-picture *; screen-wake-lock *; speaker *; sync-xhr *; usb *; web-share *; vibrate *; vr *"
+>
+</iframe>
+</div>
+<h2 id="概要使い方">概要・使い方</h2>
+<p>YAMAPとGarmin Connectの両方をスマホにインストールしてください。<br>
+(以下iPhoneでの操作例です)</p>
+<ol>
+<li>YAMAPアプリから登山計画を開き、「共有」からURLをコピーします<br>
+<figure><img src="001.png" width="320"/>
+  </figure>
+</li>
+<li>このツールのURL欄にペーストし、「GPX Export」ボタンを押します<br>
+<figure><img src="002.png" width="320"/>
+  </figure>
+</li>
+<li>ダウンロードしたGPXファイルをGarmin Connectで開きます<br>
+<figure><img src="003.png" width="320"/>
+  </figure>
+</li>
+<li>Garmin Connectでコースを保存し、デバイスに送信します<br>
+<figure><img src="006.png" width="320"/>
+  </figure>
+</li>
+</ol>
+<p>以上の操作で、スマホだけで登山計画をコースとしてGarminデバイスに入れることができます。</p>
+<h2 id="注意点">注意点</h2>
+<ul>
+<li>GPXファイルとしてはコースタイムに基づいた時刻情報を付加しているのですが、Garmin Connect側が対応していません(2023年7月20日時点)。<br>
+目標時間や速度はGarmin Connect側での設定が必要です。</li>
+<li>GPXファイルの中身によって、YAMAPでのチェックポイントがGarmin Connectのコースポイントに変換されない場合があります。</li>
+</ul>
+<h2 id="更新履歴">更新履歴</h2>
+<ul>
+<li>Jul. 25 2023: 公開。</li>
+</ul>
 		</div>
 		<footer class="post__footer">
 			
 <div class="post__tags tags clearfix">
 	<svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
 	<ul class="tags__list">
-		<li class="tags__item"><a class="tags__link btn" href="/tags/%E3%83%96%E3%83%AB%E3%83%99/" rel="tag">ブルベ</a></li>
-		<li class="tags__item"><a class="tags__link btn" href="/tags/sr600/" rel="tag">SR600</a></li>
+		<li class="tags__item"><a class="tags__link btn" href="/tags/gpx/" rel="tag">GPX</a></li>
 	</ul>
 </div>
 		</footer>
@@ -431,7 +215,7 @@ initfuncs.push(function(){
 
 <nav class="post-nav flex">
 	<div class="post-nav__item post-nav__item--prev">
-		<a class="post-nav__link" href="/bicycle/touring/20220910-sr600-kyoto/" rel="prev"><span class="post-nav__caption">«&thinsp;Previous</span><p class="post-nav__post-title">2022年09月10日 SR600 京都</p></a>
+		<a class="post-nav__link" href="/software/chrome_passable_route_gpx_loader/" rel="prev"><span class="post-nav__caption">«&thinsp;Previous</span><p class="post-nav__post-title">通れた道マップ GPX表示拡張 - Chrome拡張機能</p></a>
 	</div>
 </nav>
 

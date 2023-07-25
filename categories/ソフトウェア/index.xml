@@ -6,7 +6,19 @@
     <description>Recent content in ソフトウェア on 330k info</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Tue, 27 Sep 2022 20:00:00 +0900</lastBuildDate><atom:link href="https://www.330k.info/categories/%E3%82%BD%E3%83%95%E3%83%88%E3%82%A6%E3%82%A7%E3%82%A2/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 25 Jul 2023 10:18:18 +0900</lastBuildDate><atom:link href="https://www.330k.info/categories/%E3%82%BD%E3%83%95%E3%83%88%E3%82%A6%E3%82%A7%E3%82%A2/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>YAMAP GPX Exporter</title>
+      <link>https://www.330k.info/software/yamap-gpx-exporter/</link>
+      <pubDate>Tue, 25 Jul 2023 10:18:18 +0900</pubDate>
+      
+      <guid>https://www.330k.info/software/yamap-gpx-exporter/</guid>
+      <description>&lt;p&gt;YAMAPの登山計画をGPXファイルとしてダウンロードするツールです。&lt;/p&gt;
+&lt;p&gt;主としてスマホで使うことを想定しており、
+YAMAPの登山計画のURLを入力するとチェックポイントを含むGPXファイルを出力し、これをGarmin Connectにインポートすることで、
+Garminデバイスにルートを入れるまでの一連の操作をスマホで完結させることができます。&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>通れた道マップ GPX表示拡張 - Chrome拡張機能</title>
       <link>https://www.330k.info/software/chrome_passable_route_gpx_loader/</link>
