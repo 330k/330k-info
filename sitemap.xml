@@ -2,37 +2,40 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://www.330k.info/walk/20230728-kita/</loc>
+    <lastmod>2023-07-30T00:13:14+09:00</lastmod>
+  </url><url>
     <loc>https://www.330k.info/</loc>
-    <lastmod>2023-07-26T03:25:38+09:00</lastmod>
+    <lastmod>2023-07-30T00:13:14+09:00</lastmod>
   </url><url>
     <loc>https://www.330k.info/categories/</loc>
-    <lastmod>2023-07-26T03:25:38+09:00</lastmod>
-  </url><url>
-    <loc>https://www.330k.info/tags/gpx/</loc>
-    <lastmod>2023-07-26T03:25:38+09:00</lastmod>
-  </url><url>
-    <loc>https://www.330k.info/software/</loc>
-    <lastmod>2023-07-26T03:25:38+09:00</lastmod>
+    <lastmod>2023-07-30T00:13:14+09:00</lastmod>
   </url><url>
     <loc>https://www.330k.info/tags/</loc>
-    <lastmod>2023-07-26T03:25:38+09:00</lastmod>
-  </url><url>
-    <loc>https://www.330k.info/software/yamap-gpx-exporter/</loc>
-    <lastmod>2023-07-26T03:25:38+09:00</lastmod>
-  </url><url>
-    <loc>https://www.330k.info/categories/%E3%82%BD%E3%83%95%E3%83%88%E3%82%A6%E3%82%A7%E3%82%A2/</loc>
-    <lastmod>2023-07-26T03:25:38+09:00</lastmod>
-  </url><url>
-    <loc>https://www.330k.info/walk/20230722-mugikusa-futagoike-yoko/</loc>
-    <lastmod>2023-07-24T23:27:56+09:00</lastmod>
+    <lastmod>2023-07-30T00:13:14+09:00</lastmod>
   </url><url>
     <loc>https://www.330k.info/walk/</loc>
-    <lastmod>2023-07-24T23:27:56+09:00</lastmod>
+    <lastmod>2023-07-30T00:13:14+09:00</lastmod>
   </url><url>
     <loc>https://www.330k.info/categories/%E5%BE%92%E6%AD%A9/</loc>
-    <lastmod>2023-07-24T23:27:56+09:00</lastmod>
+    <lastmod>2023-07-30T00:13:14+09:00</lastmod>
   </url><url>
     <loc>https://www.330k.info/tags/%E7%99%BB%E5%B1%B1/</loc>
+    <lastmod>2023-07-30T00:13:14+09:00</lastmod>
+  </url><url>
+    <loc>https://www.330k.info/tags/gpx/</loc>
+    <lastmod>2023-07-26T03:28:22+09:00</lastmod>
+  </url><url>
+    <loc>https://www.330k.info/software/</loc>
+    <lastmod>2023-07-26T03:28:22+09:00</lastmod>
+  </url><url>
+    <loc>https://www.330k.info/software/yamap-gpx-exporter/</loc>
+    <lastmod>2023-07-26T03:28:22+09:00</lastmod>
+  </url><url>
+    <loc>https://www.330k.info/categories/%E3%82%BD%E3%83%95%E3%83%88%E3%82%A6%E3%82%A7%E3%82%A2/</loc>
+    <lastmod>2023-07-26T03:28:22+09:00</lastmod>
+  </url><url>
+    <loc>https://www.330k.info/walk/20230722-mugikusa-futagoike-yoko/</loc>
     <lastmod>2023-07-24T23:27:56+09:00</lastmod>
   </url><url>
     <loc>https://www.330k.info/walk/20230716-kintoki-saijoji/</loc>

@@ -6,14 +6,24 @@
     <description>Recent content on 330k info</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Tue, 25 Jul 2023 10:18:18 +0900</lastBuildDate><atom:link href="https://www.330k.info/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 29 Jul 2023 23:36:48 +0900</lastBuildDate><atom:link href="https://www.330k.info/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>2023年07月28日 北岳</title>
+      <link>https://www.330k.info/walk/20230728-kita/</link>
+      <pubDate>Sat, 29 Jul 2023 23:36:48 +0900</pubDate>
+      
+      <guid>https://www.330k.info/walk/20230728-kita/</guid>
+      <description>&lt;p&gt;南アルプスには行ったことがなかったので、次は北岳を目指してみた。&lt;/p&gt;
+&lt;p&gt;テント泊で行こうか迷ったが、足首の調子が今一つなのと、テント場が混雑していそうだったことから、軽装にして日帰りすることに。&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>YAMAP GPX Exporter</title>
       <link>https://www.330k.info/software/yamap-gpx-exporter/</link>
       <pubDate>Tue, 25 Jul 2023 10:18:18 +0900</pubDate>
       
       <guid>https://www.330k.info/software/yamap-gpx-exporter/</guid>
-      <description>&lt;p&gt;YAMAPの登山計画をGPXファイルとしてダウンロードするツールです。&lt;/p&gt;
+      <description>&lt;p&gt;YAMAPの登山計画コースをGPXファイルとしてダウンロードするツールです。&lt;/p&gt;
 &lt;p&gt;主としてスマホで使うことを想定しており、
 YAMAPの登山計画のURLを入力するとチェックポイントを含むGPXファイルを出力し、これをGarmin Connectにインポートすることで、
 Garminデバイスにルートを入れるまでの一連の操作をスマホで完結させることができます。&lt;/p&gt;</description>
