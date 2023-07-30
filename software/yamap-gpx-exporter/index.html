@@ -133,6 +133,10 @@ Garminデバイスにルートを入れるまでの一連の操作をスマホ�
       document.getElementById(iframe_id).height = document.documentElement.clientHeight;
     }
 
+    document.getElementById(iframe_id).addEventListener("load", function(e){
+      document.getElementById("loader_bg_" + iframe_id).style.display = "none";
+    });
+
     
     if((fullscreen) && (document.fullscreenEnabled || document.mozFullScreenEnabled || document.documentElement.webkitRequestFullScreen || document.msFullscreenEnabled)){
       const iframe_ele = document.getElementById(iframe_id);
@@ -166,6 +170,11 @@ Garminデバイスにルートを入れるまでの一連の操作をスマホ�
  allow="accelerometer *; ambient-light-sensor *; autoplay *; camera *; clipboard-read *; clipboard-write *; encrypted-media *; fullscreen *; geolocation *; gyroscope *; magnetometer *; microphone *; midi *; payment *; picture-in-picture *; screen-wake-lock *; speaker *; sync-xhr *; usb *; web-share *; vibrate *; vr *"
 >
 </iframe>
+<div id="loader_bg_iframe-1" style="position: asolute;top: 0;left: 0;width: 100%;height: 100%;background-color: rgba(1, 1, 1, 0.25);z-index: 9999;">
+ <div id="loader_iframe-1" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); padding: 10px; border-radius: 30px; background: #ddd;">
+  <img src="data:image/svg+xml,%3Csvg width='32' height='32' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' preserveAspectRatio='xMidYMid' class='uil-spin'%3E%3Cpath fill='none' class='bk' d='M0 0h100v100H0z'/%3E%3Cg transform='translate(84 50)'%3E%3Ccircle r='8'%3E%3Canimate attributeName='opacity' from='1' to='.1' begin='0s' dur='1s' repeatCount='indefinite'/%3E%3CanimateTransform attributeName='transform' type='scale' from='1.5' to='1' begin='0s' dur='1s' repeatCount='indefinite'/%3E%3C/circle%3E%3C/g%3E%3Cg transform='rotate(45 -52.355 126.397)'%3E%3Ccircle r='8'%3E%3Canimate attributeName='opacity' from='1' to='.1' begin='0.12s' dur='1s' repeatCount='indefinite'/%3E%3CanimateTransform attributeName='transform' type='scale' from='1.5' to='1' begin='0.12s' dur='1s' repeatCount='indefinite'/%3E%3C/circle%3E%3C/g%3E%3Cg transform='rotate(90 -17 67)'%3E%3Ccircle r='8'%3E%3Canimate attributeName='opacity' from='1' to='.1' begin='0.25s' dur='1s' repeatCount='indefinite'/%3E%3CanimateTransform attributeName='transform' type='scale' from='1.5' to='1' begin='0.25s' dur='1s' repeatCount='indefinite'/%3E%3C/circle%3E%3C/g%3E%3Cg transform='rotate(135 -2.355 42.397)'%3E%3Ccircle r='8'%3E%3Canimate attributeName='opacity' from='1' to='.1' begin='0.37s' dur='1s' repeatCount='indefinite'/%3E%3CanimateTransform attributeName='transform' type='scale' from='1.5' to='1' begin='0.37s' dur='1s' repeatCount='indefinite'/%3E%3C/circle%3E%3C/g%3E%3Cg transform='rotate(180 8 25)'%3E%3Ccircle r='8'%3E%3Canimate attributeName='opacity' from='1' to='.1' begin='0.5s' dur='1s' repeatCount='indefinite'/%3E%3CanimateTransform attributeName='transform' type='scale' from='1.5' to='1' begin='0.5s' dur='1s' repeatCount='indefinite'/%3E%3C/circle%3E%3C/g%3E%3Cg transform='rotate(-135 18.355 7.603)'%3E%3Ccircle r='8'%3E%3Canimate attributeName='opacity' from='1' to='.1' begin='0.62s' dur='1s' repeatCount='indefinite'/%3E%3CanimateTransform attributeName='transform' type='scale' from='1.5' to='1' begin='0.62s' dur='1s' repeatCount='indefinite'/%3E%3C/circle%3E%3C/g%3E%3Cg transform='rotate(-90 33 -17)'%3E%3Ccircle r='8'%3E%3Canimate attributeName='opacity' from='1' to='.1' begin='0.75s' dur='1s' repeatCount='indefinite'/%3E%3CanimateTransform attributeName='transform' type='scale' from='1.5' to='1' begin='0.75s' dur='1s' repeatCount='indefinite'/%3E%3C/circle%3E%3C/g%3E%3Cg transform='rotate(-45 68.355 -76.397)'%3E%3Ccircle r='8'%3E%3Canimate attributeName='opacity' from='1' to='.1' begin='0.87s' dur='1s' repeatCount='indefinite'/%3E%3CanimateTransform attributeName='transform' type='scale' from='1.5' to='1' begin='0.87s' dur='1s' repeatCount='indefinite'/%3E%3C/circle%3E%3C/g%3E%3C/svg%3E" width="128" height="128">
+ </div>
+</div>
 </div>
 <h2 id="概要使い方">概要・使い方</h2>
 <p>YAMAPとGarmin Connectの両方をスマホにインストールしてください。<br>
