@@ -109,21 +109,22 @@ function initMap(){
   }
 }
 
+
 initfuncs.push(function(){
-  var map,
-    ctaLayer;
-  map = new google.maps.Map(document.getElementById("mapcanvas-1"), {
+  const map = new google.maps.Map(document.getElementById("mapcanvas-1"), {
     center: {lat: 35.6832581, lng: 139.7555827},
     zoom: 8,
     options: {
       gestureHandling: "greedy"
     }
   });
-  ctaLayer = new google.maps.KmlLayer({
+  const ctaLayer = new google.maps.KmlLayer({
     url: 'https:\/\/www.330k.info\/bicycle\/touring\/20110504-08-kii-peninsula\/20110504-08.kml'
   });
   ctaLayer.setMap(map);
 });
+
+
 </script>
 <table>
 <thead>

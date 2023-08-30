@@ -112,21 +112,22 @@ function initMap(){
   }
 }
 
+
 initfuncs.push(function(){
-  var map,
-    ctaLayer;
-  map = new google.maps.Map(document.getElementById("mapcanvas-1"), {
+  const map = new google.maps.Map(document.getElementById("mapcanvas-1"), {
     center: {lat: 35.6832581, lng: 139.7555827},
     zoom: 8,
     options: {
       gestureHandling: "greedy"
     }
   });
-  ctaLayer = new google.maps.KmlLayer({
+  const ctaLayer = new google.maps.KmlLayer({
     url: 'https:\/\/www.330k.info\/walk\/20230728-kita\/2023072801.kml'
   });
   ctaLayer.setMap(map);
 });
+
+
 </script>
 <p>甲府駅前のホテルに前日から2泊予約。</p>
 <p>当日、まずは朝4時35分に甲府駅発広河原行きのバスに乗るが、早くも登山客でバス停には長蛇の列。</p>
