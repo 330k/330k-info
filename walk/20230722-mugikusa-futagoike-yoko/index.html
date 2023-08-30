@@ -14,7 +14,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.330k.info/walk/20230722-mugikusa-futagoike-yoko/" /><meta property="og:image" content="https://www.330k.info/walk/20230722-mugikusa-futagoike-yoko/20230722-142954-3373.jpg" /><meta property="article:section" content="walk" />
 <meta property="article:published_time" content="2023-07-23T00:58:41+09:00" />
-<meta property="article:modified_time" content="2023-07-24T23:27:56+09:00" />
+<meta property="article:modified_time" content="2023-08-30T21:45:18+09:00" />
 
 	<meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://www.330k.info/walk/20230722-mugikusa-futagoike-yoko/20230722-142954-3373.jpg"/>
@@ -89,7 +89,7 @@ if (!doNotTrack) {
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
 	<time class="meta__text" datetime="2023-07-23T00:58:41">July 23, 2023</time>
-	<time class="meta__text" datetime="2023-07-24T23:27:56"> (Last Modified: July 24, 2023)</time>
+	<time class="meta__text" datetime="2023-08-30T21:45:18"> (Last Modified: August 30, 2023)</time>
 </div>
 
 <div class="meta__item-categories meta__item">
@@ -116,6 +116,7 @@ function initMap(){
 }
 
 
+
 initfuncs.push(function(){
   const map = new google.maps.Map(document.getElementById("mapcanvas-1"), {
     center: {lat: 35.6832581, lng: 139.7555827},
@@ -124,12 +125,55 @@ initfuncs.push(function(){
       gestureHandling: "greedy"
     }
   });
-  const ctaLayer = new google.maps.KmlLayer({
-    url: 'https:\/\/www.330k.info\/walk\/20230722-mugikusa-futagoike-yoko\/2023072201.kml'
-  });
-  ctaLayer.setMap(map);
-});
+  fetch('2023072201.gpx').then((res) => {
+    return res.text();
+  }).then((text) => {
+    const parser = new DOMParser();
+    const gpx = parser.parseFromString(text, "application/xml");
+    
+    const colors = ["#ff0014", "#00ff78", "#0078ff", "#14fff0", "#ff7814", "#148c00", "#7878ff", "#f078a0", "#963c14", "#1414f0"];
 
+    const trksegs = gpx.querySelectorAll("trkseg");
+    let maxlat = -Number.MAX_VALUE;
+    let minlat = Number.MAX_VALUE;
+    let maxlng = -Number.MAX_VALUE;
+    let minlng = Number.MAX_VALUE;
+    for(let i = 0; i < trksegs.length; i++){
+      const trkseg = trksegs[i];
+      const coords = [];
+      for(const trkpt of trkseg.querySelectorAll("trkpt")){
+        let lat = trkpt.getAttribute("lat") - 0;
+        let lng = trkpt.getAttribute("lon") - 0;
+        coords.push({
+          lat: lat,
+          lng: lng
+        });
+
+        if(maxlat < lat){ maxlat = lat; }
+        if(minlat > lat){ minlat = lat; }
+        if(maxlng < lng){ maxlng = lng; }
+        if(minlng > lng){ minlng = lng; }
+      }
+      
+      const line = new google.maps.Polyline({
+        path: coords,
+        geodesic: true,
+        strokeColor: colors[i % colors.length],
+        strokeOpacity: 1.0,
+        strokeWeight: 4,
+      });
+
+      line.setMap(map);
+    }
+
+    map.fitBounds({
+      east: maxlng,
+      north: maxlat,
+      west: minlng,
+      south: minlat
+    });
+  })
+});
 
 </script>
 <h2 id="1日目">1日目</h2>
