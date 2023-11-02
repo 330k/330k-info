@@ -6,15 +6,14 @@
     <description>Recent content in PowerPoint on 330k info</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Sun, 25 Oct 2009 22:42:27 +0900</lastBuildDate><atom:link href="https://www.330k.info/tags/powerpoint/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 25 Oct 2009 22:42:27 +0900</lastBuildDate>
+    <atom:link href="https://www.330k.info/tags/powerpoint/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>PPTX外部リンク抽出</title>
       <link>https://www.330k.info/software/extract-exlinks-pptx/</link>
       <pubDate>Sun, 25 Oct 2009 22:42:27 +0900</pubDate>
-      
       <guid>https://www.330k.info/software/extract-exlinks-pptx/</guid>
       <description>&lt;p&gt;Javaで書かれた、pptxファイル中から参照されている外部リンクを抽出するソフトウェア。&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

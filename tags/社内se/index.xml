@@ -6,204 +6,163 @@
     <description>Recent content in 社内SE on 330k info</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Wed, 16 Mar 2022 20:28:41 +0900</lastBuildDate><atom:link href="https://www.330k.info/tags/%E7%A4%BE%E5%86%85se/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 16 Mar 2022 20:28:41 +0900</lastBuildDate>
+    <atom:link href="https://www.330k.info/tags/%E7%A4%BE%E5%86%85se/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>自己署名証明書を使う環境下でSnappy(Snap)を使う</title>
       <link>https://www.330k.info/essay/snap-with-self-signed-certificate-authority/</link>
       <pubDate>Wed, 16 Mar 2022 20:28:41 +0900</pubDate>
-      
       <guid>https://www.330k.info/essay/snap-with-self-signed-certificate-authority/</guid>
       <description>&lt;p&gt;SSL/TLS通信に介入して、証明書を書き換えるタイプのセキュリティ製品が導入されているネットワーク下で、
 Snappy(Snap)を使おうとすると、snapデーモンはホストのルートCA認証局を利用しないため、
 &lt;code&gt;error: cannot refresh: Post https://api.snapcraft.io/v2/snaps/refresh: x509: certificate signed by unknown authority&lt;/code&gt;というエラーを出してしまう。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>無線LANのEAP-PEAP認証で、ユーザ毎のMACアドレス制限も行う</title>
       <link>https://www.330k.info/essay/freeradius-password-and-mac-address-authentication/</link>
       <pubDate>Sun, 06 Mar 2022 22:29:32 +0900</pubDate>
-      
       <guid>https://www.330k.info/essay/freeradius-password-and-mac-address-authentication/</guid>
       <description>&lt;p&gt;会社で来客用および従業員の私物用に無線LANを開放(もちろん業務用のネットワークとは完全に分離している)していたら、監査から「悪用されたときに追跡調査ができるようにせよ」と指摘があった。&lt;/p&gt;
 &lt;p&gt;共有パスワード(PSK)からユーザ毎の個別パスワード(WPA2 Enterprise + EAP-PEAPなど)に変えるだけでは、ユーザが複数機器で同じパスワードを使いまわしたり、個別パスワードであることを理解せず他の人に教えてしまいかねない。&lt;/p&gt;
 &lt;p&gt;よってユーザ毎に個別のMACアドレスに限定するような認証システムをFreeRADIUSを用いて構築した。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>VBAで要件(ポリシー)に沿ったランダムパスワードを生成</title>
       <link>https://www.330k.info/essay/generate-secure-password-vba/</link>
       <pubDate>Mon, 12 Jul 2021 19:04:37 +0900</pubDate>
-      
       <guid>https://www.330k.info/essay/generate-secure-password-vba/</guid>
       <description>&lt;p&gt;VBAでのランダムパスワード生成なんて出尽くされていると思ったけれど、意外とスマートな実装がなかったので自分で書いてみた。&lt;/p&gt;
 &lt;p&gt;単純に使用可能な文字種全体からランダムに1文字ずつ選択して連結するだけでは、「英小文字、英大文字、数字を必ず1文字以上含む」などのポリシーに沿っていない文字列が生成されてしまう可能性があるが、
 1回の処理で必ずポリシーに沿った文字列を生成する関数を作成した。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Windows 10の自動音量調整(フェードイン)を無効化する</title>
       <link>https://www.330k.info/essay/disable-volume-auto-adjust-windows-10/</link>
       <pubDate>Mon, 17 May 2021 23:47:45 +0900</pubDate>
-      
       <guid>https://www.330k.info/essay/disable-volume-auto-adjust-windows-10/</guid>
       <description>&lt;p&gt;会社のノートPCをHDMIで外部モニタに映像と音声を出力していると、動画を再生開始しても最初の数秒が無音になってしまった。&lt;/p&gt;
 &lt;p&gt;動画ファイルや動画プレイヤー、モニタ、PCを変えて試したが、いずれも同じ現象が発生したため、Windowsに原因があると推定し、調べてみるとビンゴ。&lt;/p&gt;
 &lt;p&gt;しかし見つかった対処法では解決せず、ステレオミキサーを使う方法で解決した。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Ubuntu 18.04でActive DirectoryへのOpenLDAPプロキシを構築</title>
       <link>https://www.330k.info/essay/openldap-proxy-to-active-directory-ubuntu/</link>
       <pubDate>Sat, 01 Feb 2020 18:10:03 +0900</pubDate>
-      
       <guid>https://www.330k.info/essay/openldap-proxy-to-active-directory-ubuntu/</guid>
       <description>&lt;p&gt;Active Directoryのあるネットワークとは別のネットワークにある機器(具体的には電子黒板)から、LDAPでADユーザ情報を検索したいという要件が。&lt;/p&gt;
 &lt;p&gt;VPNなどの設定もできないので、DMZにOpenLDAPによるLDAP用のプロキシサーバを立ててみた。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>bxSliderで2番目以降の画像が一瞬表示されるのを防止する</title>
       <link>https://www.330k.info/essay/show-only-first-images/</link>
       <pubDate>Fri, 01 Mar 2019 07:01:13 +0900</pubDate>
-      
       <guid>https://www.330k.info/essay/show-only-first-images/</guid>
       <description>もうjQueryも古いと言われているが、会社のウェブサイトでjQueryプラグインのbxSliderが使われている。 Google先生のPageSpeed Insightに注意されたとおり、レンダリングブロックするJavaScriptを後ろ(&amp;lt;/body&amp;gt;直上)に配置したところ、 2枚目以降の画像が一瞬表示されてしまう現象が発生。 これはJSをレンダリングブロックしないように後ろに配置したり、</description>
     </item>
-    
     <item>
       <title>共有PCの実際の使用者を記録する</title>
       <link>https://www.330k.info/essay/logging_shared_pc_user/</link>
       <pubDate>Mon, 02 Oct 2017 23:44:23 +0900</pubDate>
-      
       <guid>https://www.330k.info/essay/logging_shared_pc_user/</guid>
       <description>会社で個々人のPCのセキュリティをガチガチに固めたりしていると、何かと融通がきかない。 そのため、セキュリティ設定緩めの共有PCを1台と共有アカウントを1個用意し、やむを得ない時には利用してもらっている。 そのため、SKYSEAでログは取っているものの、実際に誰が操作しているのか分からない、という問題があった。 それを解決するため、PCに付属のカメラで、ログイン時に正面にいる人の顔を記録することにした。</description>
     </item>
-    
     <item>
       <title>Google Analyticsで動画(Video要素)のイベントを計測</title>
       <link>https://www.330k.info/essay/measure_video_events_with_google_analytics/</link>
       <pubDate>Mon, 02 Oct 2017 23:27:45 +0900</pubDate>
-      
       <guid>https://www.330k.info/essay/measure_video_events_with_google_analytics/</guid>
       <description>会社のウェブサイトに貼ってある動画ファイルが、実際にどれだけ再生されているのか調査するべく、 Google Analyticsのイベントで計測するためのコードを作ってみた。 計測対象は以下のイベント。 再生開始(play) 最後まで再生(ended) 一時停止(pause) 再生再開(resume) シークした(seeked) どこまで再生したか(動画時間の10%, 25%, 50%, 75%, 90%) HTML側 &amp;lt;video id=&amp;#34;movie001&amp;#34; width=&amp;#34;(動画幅)&amp;#3</description>
     </item>
-    
     <item>
       <title>Officeの一時ファイルやThumbs.dbなどをPowerShellで一掃</title>
       <link>https://www.330k.info/essay/delete_temporary_files_with_powershell/</link>
       <pubDate>Wed, 06 Sep 2017 00:57:48 +0900</pubDate>
-      
       <guid>https://www.330k.info/essay/delete_temporary_files_with_powershell/</guid>
       <description>ファイルサーバの空き容量が減ってきたので調べてみたら、 削除されていないOfficeファイルの一時ファイルや、Thumbs.dbが結構あることが分かった。 Thumbs.dbはグループポリシーでネットワークドライブ上では生成しないようにしているはずだが、 ローカルのフォルダをファイルサーバにコピーすると、一緒にくっついてくるらしい。 以下のPowerShellスクリプトをタスクスケジューラに登録して、定期</description>
     </item>
-    
     <item>
       <title>動画ファイルからDVDオーサリング</title>
       <link>https://www.330k.info/essay/author_dvd_from_movie_file_on_windows/</link>
       <pubDate>Thu, 27 Jul 2017 21:21:29 +0900</pubDate>
-      
       <guid>https://www.330k.info/essay/author_dvd_from_movie_file_on_windows/</guid>
       <description>「この動画ファイルをDVDに焼いて。簡単でしょ。」 いやいや、DVD-Video規格に沿った動画ファイルとファイル構造にしないといけないんですけど。 Windows用のオーサリングソフトはフリーでも色々あるが、どれが良いのかよくわからないので、 ffmpeg + dvdauthor + mkisofsでISOファイルを作成するバッチファイルを作成した。 参考サイト : http://d.hatena.ne.jp/hikaen2/20150201/1422773879 前準備 ffmpeg 適当にWindows用バイナリを落としてPATHを設定しておく。</description>
     </item>
-    
     <item>
       <title>RICOHプリンタ・複合機用のZabbix用テンプレート</title>
       <link>https://www.330k.info/essay/zabbix_ricoh_printer_template_xml/</link>
       <pubDate>Thu, 20 Jul 2017 21:12:22 +0900</pubDate>
-      
       <guid>https://www.330k.info/essay/zabbix_ricoh_printer_template_xml/</guid>
       <description>社内で余っているサーバにZabbixを入れたので、 SNMP v2cでRICOH製のプリンタ・複合機の各種情報を取得するXMLテンプレートをhttps://github.com/coreyramirezgomez/Ricoh-Printers-Zabbix-Template/blob/master/Ricoh%20Printers%20SNMP%20Template.xml を元に作成した。 変更箇所としては以</description>
     </item>
-    
     <item>
       <title>英語版Windows PE環境でバックスラッシュを入力</title>
       <link>https://www.330k.info/essay/input_backslach_with_us_keyboard_layout/</link>
       <pubDate>Tue, 06 Jun 2017 06:48:00 +0900</pubDate>
-      
       <guid>https://www.330k.info/essay/input_backslach_with_us_keyboard_layout/</guid>
       <description>会社のPCではHDD暗号化ソフトのSecureDocを使用しているが、先日1台のPCが起動しなくなったため、リカバリーディスクを使っての救出を行った際のメモ。 SecureDocのリカバリーディスクはWindows PEベースなのだが、海外の製品なので当然英語キーボード。 起動しなくなったPCのHDDの中身は運良く復旧できそうだったのだが、 データをネットワーク経由で回収しようとしたところネットワーク設定</description>
     </item>
-    
     <item>
       <title>Xubuntu 16.04 &#43; Snortで簡易IDS構築</title>
       <link>https://www.330k.info/essay/xubuntu1604_snort_base/</link>
       <pubDate>Tue, 06 Jun 2017 06:37:00 +0900</pubDate>
-      
       <guid>https://www.330k.info/essay/xubuntu1604_snort_base/</guid>
       <description>ウイルス等に侵入された後の対策として、IDSやIPS製品の紹介をベンダーから受けたが、正直なところ価格が高かったのと、検知されるメッセージがSnort由来のものが多い気がしたので、自分でSnortを構築して商用製品との差を調べてみることにした。 構築環境 PC : 余っていたノートPC Panasonic LetsNote CF-NX1 OS : Xubuntu 16.04.2 (LetsNoteの有線LANと無線LANのNICを認識できる可能性が高いディストリビューションとして選択) ル</description>
     </item>
-    
     <item>
       <title>Gmail (G Suite)でフリーメールアドレスへの送信を検知</title>
       <link>https://www.330k.info/essay/detect_submittion_to_private_mail_from_gmail/</link>
       <pubDate>Tue, 29 Nov 2016 20:45:00 +0900</pubDate>
-      
       <guid>https://www.330k.info/essay/detect_submittion_to_private_mail_from_gmail/</guid>
       <description>会社ではG Suite(旧Google Apps for Works)を導入しているが、 ある社員が個人のGmailアドレスに会社の情報の入ったメールを送信していた。 幸いPCで操作していたためPCのログ監視ソフト(SKYSEA Client View)で検知し、当該従業員に注意することができた。 ただ、同じことを会社支給のiPhoneでやられた場合に無力だったことに気づいたので、G Suite側でも対策を実施。 設定方法 「管理コンソール</description>
     </item>
-    
     <item>
       <title>EDINETが生成するPDFにフォントを埋め込む</title>
       <link>https://www.330k.info/essay/make_font_embedded_pdf_from_edinet/</link>
       <pubDate>Fri, 11 Nov 2016 23:00:00 +0900</pubDate>
-      
       <guid>https://www.330k.info/essay/make_font_embedded_pdf_from_edinet/</guid>
       <description>EDINETで出力したPDFを会社のプレスリリースで掲載したところ、iPhoneで閲覧できない、という問題が発生した。 PDFファイルを見てみると、日本語フォントが埋め込まれていない(下図)。 そのため、iPhoneなどMS系の日本語フォントがない環境では、日本語部分が真っ白の閲覧できないものになっていた。 ちなみに、Ubuntuでは別の日本語書体で代替表示された。 ご丁寧に印刷も低解像度に限られている(</description>
     </item>
-    
     <item>
       <title>勘定奉行の性能劣化に対処</title>
       <link>https://www.330k.info/essay/performance_degration_of_kanjo_bugyo/</link>
       <pubDate>Sun, 06 Nov 2016 17:22:00 +0900</pubDate>
-      
       <guid>https://www.330k.info/essay/performance_degration_of_kanjo_bugyo/</guid>
       <description>社内では会計システムに勘定奉行(ネットワーク版)を使っているが、 担当者から「勘定奉行で仕訳帳の表示に20秒くらいかかる」と言われたので調査してみた。 その担当者のPC固有の問題かどうかを切り分けるため別のPCから同様の操作を行ってみたところ、同じ症状が発生した。 ということは、サーバ側に問題がありそう。 勘定奉行のクライアントは生のSQL文をサーバに発行する仕組みなので、 Wiresharkでパケットをキ</description>
     </item>
-    
     <item>
       <title>Firefoxをグループポリシーで管理する</title>
       <link>https://www.330k.info/essay/manage_firefox_settings_with_group_policy_without_gpo_for_firefox/</link>
       <pubDate>Tue, 12 Jul 2016 22:07:00 +0900</pubDate>
-      
       <guid>https://www.330k.info/essay/manage_firefox_settings_with_group_policy_without_gpo_for_firefox/</guid>
       <description>公式の情報はこちら : https://www.mozilla.jp/business/faq/tech/setting-management/ 上記公式サイトにあるように、ActiveDirectory環境にあるFirefoxの設定を管理する場合、 クライアント側にアドオン(GPO for Firefox)をインストール サーバ側に管理用テンプレート(ADMファイル)を配置 グループポリシーエディタで設定を編集 という手順が推奨されている。ただ、この方法だと 既存ユーザへの自動設定は不可(ユーザにアドオンをインストールしてもらう必要が</description>
     </item>
-    
     <item>
       <title>仮想的な専用線という言葉にだまされた残念な技術者</title>
       <link>https://www.330k.info/essay/what_l2_forwarding_ssl_vpn_protects/</link>
       <pubDate>Sun, 29 Nov 2015 00:00:00 +0900</pubDate>
-      
       <guid>https://www.330k.info/essay/what_l2_forwarding_ssl_vpn_protects/</guid>
       <description>例によってパワハラを受けた研修先で最初に受けたパワハラが、 リモートアクセスのSSL-VPNに関する技術的な質問をした時のことだった。 研修先の会社ではJuniper社(現PulseSecure社)のSSL-VPN製品を導入しており、 クライアントPC側にはNetwork Connectというソフトウェアをインストールしていた。 これはL2フォワーディング方式のSSL-VPNで、起動するとネットワークアダプ</description>
     </item>
-    
     <item>
       <title>Windows 10を早速テストしてみた</title>
       <link>https://www.330k.info/essay/install-windows-10-to-panasonic-letsnote-cf-n10/</link>
       <pubDate>Tue, 04 Aug 2015 00:00:00 +0900</pubDate>
-      
       <guid>https://www.330k.info/essay/install-windows-10-to-panasonic-letsnote-cf-n10/</guid>
       <description>Windows Insider Programに登録していたので、7/31に「Windows 10がでたよ〜」というメールがGabe Aulからやってきた。 ゆくゆくは更新プログラムが提供されるけど、早く試したい人は「メディア作成ツール」をダウンロードして使うといいよ、 とのことなので、会社で余っていたPCにインストールしてみた。 インストール 機種: Panasonic Let&amp;rsquo;s Note CF-N10(法人向けモデル) Windows 7 32bit版からのアップグレード Office 2010、A</description>
     </item>
-    
     <item>
       <title>会社から外部へのファイル・データ持ち出し対策</title>
       <link>https://www.330k.info/essay/how-to-take-files-out-from-company/</link>
       <pubDate>Sun, 19 Jul 2015 00:00:00 +0900</pubDate>
-      
       <guid>https://www.330k.info/essay/how-to-take-files-out-from-company/</guid>
       <description>ベネッセの子会社での情報漏えい事件では、スマートフォンを使ってデータをPCから取り出していたらしい。 そこで、私の研修先の会社の社内SE部門の人たちは、以下の内部者によるファイルやデータの持ち出し対策を行っていた。 資産管理ソフト(SKYSEA Client View)を導入 USBメモリやスマートフォンを挿しても書き込めないように設定 ネットワーク経由でもSKYSEAにログが残るからわかる SKYSEAの機能で知らない</description>
     </item>
-    
     <item>
       <title>WSUSなしでWindows 10の広告をWindows Updateから非表示にする</title>
       <link>https://www.330k.info/essay/disable_specific_windows_update_without_wsus/</link>
       <pubDate>Wed, 08 Jul 2015 00:00:00 +0900</pubDate>
-      
       <guid>https://www.330k.info/essay/disable_specific_windows_update_without_wsus/</guid>
       <description>先月頃から、Windows 7の通知領域に「Windows 10を入手する」とか「無料アップグレードを予約」とかいう邪魔なMicrosoftの広告が入るようになってきた。 社内SEとしてはユーザに勝手にOSをアップグレードされるわけにはいかないので、消し去りたい。 ネットを探してみると、やはり同様の悩みを持つ人は多いらしく、結論としては、 GWX.exeとGWXUX.exeをタスクマネージャで強制終了する イ</description>
     </item>
-    
   </channel>
 </rss>

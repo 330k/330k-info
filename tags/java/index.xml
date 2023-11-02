@@ -6,36 +6,31 @@
     <description>Recent content in Java on 330k info</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Mon, 03 Feb 2020 00:57:37 +0900</lastBuildDate><atom:link href="https://www.330k.info/tags/java/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 03 Feb 2020 00:57:37 +0900</lastBuildDate>
+    <atom:link href="https://www.330k.info/tags/java/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>将棋倶楽部24をUbuntu &#43; dockerで動かす</title>
       <link>https://www.330k.info/essay/shogi24-on-ubuntu-docker/</link>
       <pubDate>Mon, 03 Feb 2020 00:57:37 +0900</pubDate>
-      
       <guid>https://www.330k.info/essay/shogi24-on-ubuntu-docker/</guid>
       <description>&lt;p&gt;将棋倶楽部24は強者が集まるネット将棋として有名だが、残念なことにJava製である。&lt;/p&gt;
 &lt;p&gt;UbuntuをはじめLinuxではブラウザでJavaプラグインが動作しないようになっているので、ウェブ版は動かない。&lt;/p&gt;
 &lt;p&gt;アプリ版ももうかなり古くなったJava 8(しかもOpenJDKではなくOracle)を要求するので、そのために古いJavaを今の環境に入れたくない。&lt;/p&gt;
 &lt;p&gt;なのでdockerでコンテナにして動くようにしてみた。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>LS-DYNA用の浮動小数点数をフォーマット</title>
       <link>https://www.330k.info/essay/format-floating-number-for-s-dyna-with-java/</link>
       <pubDate>Sat, 25 Aug 2012 08:56:00 +0900</pubDate>
-      
       <guid>https://www.330k.info/essay/format-floating-number-for-s-dyna-with-java/</guid>
       <description>LS-DYNAのキーワードファイルを書きだすプログラムを書いたところ、浮動小数点数を固定文字数(10文字)にフォーマットする所でつまづいた。 具体的には String.formatやDecimalFormatの動作が遅い(String.formatよりはDecimalFormatのほうが速いが) 文字数を10文字に制限することが難しい(絶対値の大小比較を行なって桁数ごとに条件分岐をしても、四捨五入によっ</description>
     </item>
-    
     <item>
       <title>PPTX外部リンク抽出</title>
       <link>https://www.330k.info/software/extract-exlinks-pptx/</link>
       <pubDate>Sun, 25 Oct 2009 22:42:27 +0900</pubDate>
-      
       <guid>https://www.330k.info/software/extract-exlinks-pptx/</guid>
       <description>&lt;p&gt;Javaで書かれた、pptxファイル中から参照されている外部リンクを抽出するソフトウェア。&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

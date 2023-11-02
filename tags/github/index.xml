@@ -6,91 +6,80 @@
     <description>Recent content in GitHub on 330k info</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Sun, 31 Jul 2022 16:13:15 +0900</lastBuildDate><atom:link href="https://www.330k.info/tags/github/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 31 Jul 2022 16:13:15 +0900</lastBuildDate>
+    <atom:link href="https://www.330k.info/tags/github/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>GPXヒゲ検出ツール(α)</title>
       <link>https://www.330k.info/software/gpx-spike-detector/</link>
       <pubDate>Sun, 31 Jul 2022 16:13:15 +0900</pubDate>
-      
       <guid>https://www.330k.info/software/gpx-spike-detector/</guid>
       <description>&lt;p&gt;GPXファイルのルートで「ヒゲ」(意図せず細い路地に入ってしまった部分)を検出するツールです。&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://www.330k.info/software/gpx-spike-detector/fullscreen.html&#34;&gt;スマートフォン/フルスクリーン版はこちら&lt;/a&gt;&lt;/p&gt;</description>
+&lt;p&gt;&lt;a href=&#34;https://www.330k.info/software/gpx-spike-detector/fullscreen.html&#34;&gt;スマートフォン/フルスクリーン版はこちら&lt;/a&gt;&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;</description>
     </item>
-    
     <item>
       <title>GPXルート比較(差分表示)ツール</title>
       <link>https://www.330k.info/software/gpx-compare/</link>
       <pubDate>Tue, 31 May 2022 20:20:33 +0900</pubDate>
-      
       <guid>https://www.330k.info/software/gpx-compare/</guid>
       <description>&lt;p&gt;複数のGPXファイルの比較をするためのツールです。&lt;/p&gt;
 &lt;p&gt;主に「自分がキューシートを読んで引いたルートを、主催者が参考として提供しているルートを比較して確認したい」
 「参考ルートの更新された場合、更新された部分を確認したい」という要件を想定して作成しました。&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://www.330k.info/software/gpx-compare/gpx_compare.html&#34;&gt;スマートフォン/フルスクリーン版はこちら&lt;/a&gt;&lt;/p&gt;</description>
+&lt;p&gt;&lt;a href=&#34;https://www.330k.info/software/gpx-compare/gpx_compare.html&#34;&gt;スマートフォン/フルスクリーン版はこちら&lt;/a&gt;&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;</description>
     </item>
-    
     <item>
       <title>GPX to FIT/TCX Converter</title>
       <link>https://www.330k.info/software/gpx-tcx-converter/</link>
       <pubDate>Sun, 24 Apr 2022 21:22:33 +0900</pubDate>
-      
       <guid>https://www.330k.info/software/gpx-tcx-converter/</guid>
       <description>&lt;p&gt;GPXファイルをコースポイントのあるFIT/TCXファイルに変換するツールです。&lt;/p&gt;
 &lt;p&gt;Garminのサイコンおよびスマートウォッチ(Edge 830、Fenix 7Sで動作確認済み)にインポートすると、GPXファイルの&lt;code&gt;wpt&lt;/code&gt;要素(POI)をコースポイントとして含むコースが登録されます。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>GPXルート沿いコンビニ・道の駅検索</title>
       <link>https://www.330k.info/software/gpx-nearby-search/</link>
       <pubDate>Fri, 10 Sep 2021 23:56:36 +0900</pubDate>
-      
       <guid>https://www.330k.info/software/gpx-nearby-search/</guid>
       <description>&lt;p&gt;GPXファイルからルート沿いのコンビニ・道の駅の検索を行うオンラインツール。&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://www.330k.info/software/gpx-nearby-search/fullscreen.html&#34;&gt;スマートフォン/フルスクリーン版はこちら&lt;/a&gt;&lt;/p&gt;</description>
+&lt;p&gt;&lt;a href=&#34;https://www.330k.info/software/gpx-nearby-search/fullscreen.html&#34;&gt;スマートフォン/フルスクリーン版はこちら&lt;/a&gt;&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;</description>
     </item>
-    
     <item>
       <title>キャノンボール専用 天候・風向き予測</title>
       <link>https://www.330k.info/software/cannonball-wind-map/</link>
       <pubDate>Sat, 11 Jul 2020 19:41:44 +0900</pubDate>
-      
       <guid>https://www.330k.info/software/cannonball-wind-map/</guid>
       <description>&lt;p&gt;自分用に作成したキャノンボール専用の簡易版Epic Ride Weatherです。&lt;/p&gt;
-&lt;p&gt;Open-Meteo(&lt;a href=&#34;https://open-meteo.com/&#34;&gt;https://open-meteo.com/&lt;/a&gt;)のデータを表示します。&lt;/p&gt;</description>
+&lt;p&gt;Open-Meteo(&lt;a href=&#34;https://open-meteo.com/&#34;&gt;https://open-meteo.com/&lt;/a&gt;)のデータを表示します。&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.330k.info/software/cannonball-wind-map/fullscreen.html&#34;&gt;スマートフォン/フルスクリーン版はこちら&lt;/a&gt;&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;</description>
     </item>
-    
     <item>
       <title>Hugo &#43; GitHub Pages &#43; CloudFlareにGoogleサイトから移転</title>
       <link>https://www.330k.info/essay/move_to_github_pages_hugo_from_google_sites/</link>
       <pubDate>Tue, 08 Aug 2017 19:24:04 +0900</pubDate>
-      
       <guid>https://www.330k.info/essay/move_to_github_pages_hugo_from_google_sites/</guid>
       <description>今まで独自ドメインでGoogleサイトを利用してきたが、 「新しいGoogleサイト」の機能が全然ダメ(特にガジェットが使えなくなる)で使い物にならない Google自身が推進している常時SSL化も独自ドメインでは機能しない(正確にはMixed Contentsを修正できない) 無駄に色々と読み込むせいで遅い ということで他のサービスへの移転を決断。 AWSやGCP上に構築することも考えたものの、 大したPVで</description>
     </item>
-    
     <item>
       <title>GPXトラックログを間引く・簡略化</title>
       <link>https://www.330k.info/software/simplify_gpx/</link>
       <pubDate>Wed, 28 Sep 2016 00:00:00 +0900</pubDate>
-      
       <guid>https://www.330k.info/software/simplify_gpx/</guid>
       <description>&lt;p&gt;GPXファイルを一括で結合・分割・間引き・軽量化などを行うオンラインツールです。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Google MapsでGPXルート作成</title>
       <link>https://www.330k.info/software/create_gpx_with_google_maps/</link>
       <pubDate>Sat, 06 Aug 2016 00:00:00 +0900</pubDate>
-      
       <guid>https://www.330k.info/software/create_gpx_with_google_maps/</guid>
       <description>&lt;p&gt;Google Maps API v3を利用してGPXファイルを作成するオンラインツール。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>GeoDistanceとその他の測地線距離算出式の精度</title>
       <link>https://www.330k.info/essay/precision-of-mathematica-geodistance-and-geographical-distance-formula/</link>
       <pubDate>Sat, 07 Jun 2014 00:00:00 +0900</pubDate>
-      
       <guid>https://www.330k.info/essay/precision-of-mathematica-geodistance-and-geographical-distance-formula/</guid>
       <description>&lt;p&gt;Mathematicaには2点の緯度と経度を与えて、その間の測地線距離を返す関数としてGeoDistanceがある。
 しかしながら、&lt;a href=&#34;http://mathematica.stackexchange.com/questions/26526/how-accurate-is-geodistance&#34;&gt;ここ&lt;/a&gt;で書かれているように、その精度には疑問が呈されているようだ。&lt;/p&gt;
@@ -99,15 +88,12 @@
 &lt;strong&gt;&lt;a href=&#34;https://www.330k.info/essay/geodesic_distance_formula_comparison_2/&#34;&gt;続編記事&lt;/a&gt;を投稿&lt;/strong&gt;&lt;/p&gt;
 &lt;hr&gt;</description>
     </item>
-    
     <item>
       <title>Douglas-Peucker向けの優先度付きキュー実装の検討</title>
       <link>https://www.330k.info/essay/implement-of-priority-queue-for-douglas-peucker-simplify-algorithm/</link>
       <pubDate>Thu, 29 May 2014 00:00:00 +0900</pubDate>
-      
       <guid>https://www.330k.info/essay/implement-of-priority-queue-for-douglas-peucker-simplify-algorithm/</guid>
       <description>Nov. 29 2015: JavaScriptで実装した優先度付きキューをGitHubで公開→https://github.com/330k/priorityqueue_js/ 各ヒープのベンチマーク → http://330k.github.io/priorityqueue_js/benchmark.html これにはFibonacci Heapも比較対象に入れてある 折れ線を間引くで書いたように、 Douglas-Peuckerアルゴリズムを改良して指定した点数まで点を削減して折れ線を簡略化する場合、 優先度付きキューを使うことに</description>
     </item>
-    
   </channel>
 </rss>

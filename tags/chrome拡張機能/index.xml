@@ -6,36 +6,31 @@
     <description>Recent content in Chrome拡張機能 on 330k info</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Tue, 27 Sep 2022 20:00:00 +0900</lastBuildDate><atom:link href="https://www.330k.info/tags/chrome%E6%8B%A1%E5%BC%B5%E6%A9%9F%E8%83%BD/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 27 Sep 2022 20:00:00 +0900</lastBuildDate>
+    <atom:link href="https://www.330k.info/tags/chrome%E6%8B%A1%E5%BC%B5%E6%A9%9F%E8%83%BD/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>通れた道マップ GPX表示拡張 - Chrome拡張機能</title>
       <link>https://www.330k.info/software/chrome_passable_route_gpx_loader/</link>
       <pubDate>Tue, 27 Sep 2022 20:00:00 +0900</pubDate>
-      
       <guid>https://www.330k.info/software/chrome_passable_route_gpx_loader/</guid>
       <description>&lt;p&gt;TOYOTAの&lt;a href=&#34;https://www.toyota.co.jp/jpn/auto/passable_route/map/&#34;&gt;通れた道マップ&lt;/a&gt;にGPXファイルの読み込み・表示機能を追加するChrome拡張機能。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>RWGPS地理院標高 - Chrome拡張機能</title>
       <link>https://www.330k.info/software/chrome_rwgps_ele_gsi/</link>
       <pubDate>Tue, 25 Jan 2022 20:58:59 +0900</pubDate>
-      
       <guid>https://www.330k.info/software/chrome_rwgps_ele_gsi/</guid>
       <description>&lt;p&gt;&lt;a href=&#34;https://ridewithgps.com/&#34;&gt;Ride with GPS(RWGPS)&lt;/a&gt;のルート作成時、標高を国土地理院が提供する標高タイルから取得するように切り替えるChrome拡張機能です。&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;Jan. 28 2023: RWGPSの公式に紹介されました！ → &lt;a href=&#34;https://ridewithgps.com/news/7628-&#34;&gt;日本のユーザーが地理空間データを使って標高精度を向上させることが可能に&lt;/a&gt;&lt;/p&gt;
 &lt;hr&gt;</description>
     </item>
-    
     <item>
       <title>Gmailをeml形式で保存するChrome拡張機能</title>
       <link>https://www.330k.info/software/save-as-eml-for-gmail-chrome-extension/</link>
       <pubDate>Sun, 06 Nov 2016 22:34:45 +0900</pubDate>
-      
       <guid>https://www.330k.info/software/save-as-eml-for-gmail-chrome-extension/</guid>
       <description>&lt;p&gt;&lt;strong&gt;Gmailの機能拡充により標準で可能になったため、拡張機能の配布を終了しました&lt;/strong&gt;&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

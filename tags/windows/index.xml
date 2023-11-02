@@ -6,127 +6,102 @@
     <description>Recent content in Windows on 330k info</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Mon, 17 May 2021 23:47:45 +0900</lastBuildDate><atom:link href="https://www.330k.info/tags/windows/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 17 May 2021 23:47:45 +0900</lastBuildDate>
+    <atom:link href="https://www.330k.info/tags/windows/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Windows 10の自動音量調整(フェードイン)を無効化する</title>
       <link>https://www.330k.info/essay/disable-volume-auto-adjust-windows-10/</link>
       <pubDate>Mon, 17 May 2021 23:47:45 +0900</pubDate>
-      
       <guid>https://www.330k.info/essay/disable-volume-auto-adjust-windows-10/</guid>
       <description>&lt;p&gt;会社のノートPCをHDMIで外部モニタに映像と音声を出力していると、動画を再生開始しても最初の数秒が無音になってしまった。&lt;/p&gt;
 &lt;p&gt;動画ファイルや動画プレイヤー、モニタ、PCを変えて試したが、いずれも同じ現象が発生したため、Windowsに原因があると推定し、調べてみるとビンゴ。&lt;/p&gt;
 &lt;p&gt;しかし見つかった対処法では解決せず、ステレオミキサーを使う方法で解決した。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>起動時にWScriptからCScriptへ自動で切り替える(JScript)</title>
       <link>https://www.330k.info/essay/switch-wscript-to-cscript-js/</link>
       <pubDate>Mon, 06 Jul 2020 16:55:30 +0900</pubDate>
-      
       <guid>https://www.330k.info/essay/switch-wscript-to-cscript-js/</guid>
       <description>&lt;p&gt;ExplorerからWSHの&lt;code&gt;.js&lt;/code&gt;ファイルをダブルクリックすると&lt;code&gt;wscript.exe&lt;/code&gt;で起動されるが、&lt;code&gt;cscript.exe&lt;/code&gt;で起動したい場合も多い。&lt;/p&gt;
 &lt;p&gt;そこで&lt;code&gt;wscript&lt;/code&gt;で起動した場合に、引数を含めて&lt;code&gt;cscript&lt;/code&gt;で起動し直すスニペットを作成した。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>ブラウザのテキストボックスにタブを入力する</title>
       <link>https://www.330k.info/essay/input-tabs-in-browsers-textbox/</link>
       <pubDate>Sat, 25 Jan 2020 10:33:56 +0900</pubDate>
-      
       <guid>https://www.330k.info/essay/input-tabs-in-browsers-textbox/</guid>
       <description>&lt;p&gt;ググってもウェブサイト側の解決策が多くヒットするので、クライアント側での対処方法をメモ。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Windows 10でコマンドプロンプトを素早く起動する方法</title>
       <link>https://www.330k.info/essay/start-command-prompt-in-windows-10/</link>
       <pubDate>Tue, 17 Jul 2018 07:03:25 +0900</pubDate>
-      
       <guid>https://www.330k.info/essay/start-command-prompt-in-windows-10/</guid>
-      <description>元ネタ: Windows 10でコマンドプロンプトを素早く起動する方法 私が業務で使うときは以下の手順で起動している。 設定が不必要で、おそらく最速。 管理者権限でコマンドプロンプトを起動する [Windows] + → [A]で管理者権限でPowerShellを起動 UACのダイアログが出たら許可する PowerShell上で「cmd」と入力してEnter。 UACがONのときでもキーストローク数は9ストローク。 コマンドプロンプトを起動しなくても</description>
+      <description>元ネタ: Windows 10でコマンドプロンプトを素早く起動する方法 私が業務で使うときは以下の手順で起動している。 設定が不必要で、おそらく最速。 管理者権限でコマンドプロンプトを起動する [Windows] + [X] → [A]で管理者権限でPowerShellを起動 UACのダイアログが出たら許可する PowerShell上で「cmd」と入力してEnter。 UACがONのときでもキーストローク数は9ストローク。 コマンドプロンプトを起動しなくて</description>
     </item>
-    
     <item>
       <title>動画ファイルからDVDオーサリング</title>
       <link>https://www.330k.info/essay/author_dvd_from_movie_file_on_windows/</link>
       <pubDate>Thu, 27 Jul 2017 21:21:29 +0900</pubDate>
-      
       <guid>https://www.330k.info/essay/author_dvd_from_movie_file_on_windows/</guid>
       <description>「この動画ファイルをDVDに焼いて。簡単でしょ。」 いやいや、DVD-Video規格に沿った動画ファイルとファイル構造にしないといけないんですけど。 Windows用のオーサリングソフトはフリーでも色々あるが、どれが良いのかよくわからないので、 ffmpeg + dvdauthor + mkisofsでISOファイルを作成するバッチファイルを作成した。 参考サイト : http://d.hatena.ne.jp/hikaen2/20150201/1422773879 前準備 ffmpeg 適当にWindows用バイナリを落としてPATHを設定しておく。</description>
     </item>
-    
     <item>
       <title>英語版Windows PE環境でバックスラッシュを入力</title>
       <link>https://www.330k.info/essay/input_backslach_with_us_keyboard_layout/</link>
       <pubDate>Tue, 06 Jun 2017 06:48:00 +0900</pubDate>
-      
       <guid>https://www.330k.info/essay/input_backslach_with_us_keyboard_layout/</guid>
       <description>会社のPCではHDD暗号化ソフトのSecureDocを使用しているが、先日1台のPCが起動しなくなったため、リカバリーディスクを使っての救出を行った際のメモ。 SecureDocのリカバリーディスクはWindows PEベースなのだが、海外の製品なので当然英語キーボード。 起動しなくなったPCのHDDの中身は運良く復旧できそうだったのだが、 データをネットワーク経由で回収しようとしたところネットワーク設定</description>
     </item>
-    
     <item>
       <title>Windows標準機能でZIPファイルの作成</title>
       <link>https://www.330k.info/essay/create_zip_file_with_wsh_jscript/</link>
       <pubDate>Mon, 08 May 2017 22:37:00 +0900</pubDate>
-      
       <guid>https://www.330k.info/essay/create_zip_file_with_wsh_jscript/</guid>
       <description>JScriptで複数のテキストファイルを書き出し、それをZIPでまとめたかったので作成。 VBAやVBScript版を参考に作ってみた。 参考サイト : http://kiq-creator.com/blog/?eid=33 複数のファイルをZIP圧縮する際のコツとしては、CopyHereをするたびに待機すること。 CopyHereは非同期なので、すぐにJS側に制御が返ってくるが、 複数のファイルを一気にCopyHereしようとすると、「読み取りできません」とエラーが出る。 使い</description>
     </item>
-    
     <item>
       <title>HTA SQLツール</title>
       <link>https://www.330k.info/software/hta-sql-tool/</link>
       <pubDate>Wed, 13 Jan 2016 22:42:14 +0900</pubDate>
-      
       <guid>https://www.330k.info/software/hta-sql-tool/</guid>
       <description>&lt;p&gt;今は廃れたHTA(HTML Application)で書いた、汎用SQLツール。
 AccessがなくてもCSVファイルやExcelファイルに対してSQLを実行。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>ffmpegでDVDをMPEGファイルに変換</title>
       <link>https://www.330k.info/essay/convert-dvd-to-mpeg-in-a-batch-file/</link>
       <pubDate>Thu, 17 Dec 2015 20:49:00 +0900</pubDate>
-      
       <guid>https://www.330k.info/essay/convert-dvd-to-mpeg-in-a-batch-file/</guid>
       <description>社内でアシスタントからDVDをPCで再生できるようにしたい、という要望を受けたので、 DVDを入れて起動するだけのバッチファイルを作ってみた。 DVDの中身のVTS_01_1.VOB, VTS_01_2.VOBというファイルをffmpegの-iオプションに指定すれば良いのだが、 パイプ記号「|」を使ってファイル名を連結しなければならない。 ただ、バッチファイル中でパイプ記号が入ると上手く連結できないので、 試</description>
     </item>
-    
     <item>
       <title>Windows 10を早速テストしてみた</title>
       <link>https://www.330k.info/essay/install-windows-10-to-panasonic-letsnote-cf-n10/</link>
       <pubDate>Tue, 04 Aug 2015 00:00:00 +0900</pubDate>
-      
       <guid>https://www.330k.info/essay/install-windows-10-to-panasonic-letsnote-cf-n10/</guid>
       <description>Windows Insider Programに登録していたので、7/31に「Windows 10がでたよ〜」というメールがGabe Aulからやってきた。 ゆくゆくは更新プログラムが提供されるけど、早く試したい人は「メディア作成ツール」をダウンロードして使うといいよ、 とのことなので、会社で余っていたPCにインストールしてみた。 インストール 機種: Panasonic Let&amp;rsquo;s Note CF-N10(法人向けモデル) Windows 7 32bit版からのアップグレード Office 2010、A</description>
     </item>
-    
     <item>
       <title>WSUSなしでWindows 10の広告をWindows Updateから非表示にする</title>
       <link>https://www.330k.info/essay/disable_specific_windows_update_without_wsus/</link>
       <pubDate>Wed, 08 Jul 2015 00:00:00 +0900</pubDate>
-      
       <guid>https://www.330k.info/essay/disable_specific_windows_update_without_wsus/</guid>
       <description>先月頃から、Windows 7の通知領域に「Windows 10を入手する」とか「無料アップグレードを予約」とかいう邪魔なMicrosoftの広告が入るようになってきた。 社内SEとしてはユーザに勝手にOSをアップグレードされるわけにはいかないので、消し去りたい。 ネットを探してみると、やはり同様の悩みを持つ人は多いらしく、結論としては、 GWX.exeとGWXUX.exeをタスクマネージャで強制終了する イ</description>
     </item>
-    
     <item>
       <title>あしあとデータ結合機</title>
       <link>https://www.330k.info/software/ashiato-data/</link>
       <pubDate>Fri, 30 Oct 2009 22:43:03 +0900</pubDate>
-      
       <guid>https://www.330k.info/software/ashiato-data/</guid>
       <description>&lt;p&gt;auの携帯電話の地図ビューアーの簡易ハンディGPS機能で取得したあしあとデータを結合し、GPXおよびKML形式に変換。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Vigla</title>
       <link>https://www.330k.info/software/vigla/</link>
       <pubDate>Sun, 25 Oct 2009 22:42:49 +0900</pubDate>
-      
       <guid>https://www.330k.info/software/vigla/</guid>
       <description>&lt;p&gt;序盤は定石データベースを使用し、中盤を貧弱な評価関数で乗り切り、終盤は完全読みを行う、普通のコンピュータリバーシソフト。&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

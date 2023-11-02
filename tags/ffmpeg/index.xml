@@ -6,24 +6,21 @@
     <description>Recent content in ffmpeg on 330k info</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Thu, 15 Oct 2015 00:00:00 +0900</lastBuildDate><atom:link href="https://www.330k.info/tags/ffmpeg/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 15 Oct 2015 00:00:00 +0900</lastBuildDate>
+    <atom:link href="https://www.330k.info/tags/ffmpeg/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>秘密録音した音声ファイルをYoutubeにバックアップ</title>
       <link>https://www.330k.info/essay/upload_recorded_mp3_files_to_youtube/</link>
       <pubDate>Thu, 15 Oct 2015 00:00:00 +0900</pubDate>
-      
       <guid>https://www.330k.info/essay/upload_recorded_mp3_files_to_youtube/</guid>
       <description>私はパワハラ対策として、毎日ICレコーダーを使って秘密録音を実施している。 ただ、毎日10時間を超える録音時間のため、32kbpsで録音しても1日あたり200MB弱の音声ファイルがHDDに追加されていき、HDDの容量を圧迫していく。 そこで、バックアップを兼ねて動画化してYoutubeにアップロードするようにし、 HDDの空き容量が減ってきたらオリジナルの録音ファイルを消去していくことにした。 ffmpe</description>
     </item>
-    
     <item>
       <title>ffmpeg &#43; Mathematicaで動画ファイルを作成する</title>
       <link>https://www.330k.info/essay/make-a-movie-with-mathematica-and-ffmpeg/</link>
       <pubDate>Fri, 27 Sep 2013 00:04:00 +0900</pubDate>
-      
       <guid>https://www.330k.info/essay/make-a-movie-with-mathematica-and-ffmpeg/</guid>
       <description>MathematicaのExportでAVIなどの動画ファイルを作成することは簡単に可能だが、 いかんせんすべてのフレームの画像を作成してからファイルに書きだすので、フレーム数に比例してメモリの使用量が多くなってしまう。 そのため長いムービーの作成は困難であった。 そこで、ffmpegと併用することでメモリ使用量を抑えつつ、長編の動画ファイルを制作する。 具体的には、 ffmpegで標準入力から読み込ませる</description>
     </item>
-    
   </channel>
 </rss>

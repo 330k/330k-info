@@ -6,63 +6,54 @@
     <description>Recent content in Google on 330k info</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Fri, 12 Feb 2021 13:15:47 +0900</lastBuildDate><atom:link href="https://www.330k.info/tags/google/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 12 Feb 2021 13:15:47 +0900</lastBuildDate>
+    <atom:link href="https://www.330k.info/tags/google/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>ガルーンからGoogleカレンダーに同期する(GAS使用)</title>
       <link>https://www.330k.info/essay/sync-garoon-google-calendar/</link>
       <pubDate>Fri, 12 Feb 2021 13:15:47 +0900</pubDate>
-      
       <guid>https://www.330k.info/essay/sync-garoon-google-calendar/</guid>
       <description>&lt;p&gt;Cybozuのガルーン(Garoon)はよくできたソフトウェアなのだが、他のサービスとの連携、という点では使いにくかった。&lt;/p&gt;
 &lt;p&gt;以前からSOAP APIはあったものの、繰り返し予定が難関で、実際の日にちを都度計算しなければならず、同期ツールの作成を断念していた。&lt;/p&gt;
 &lt;p&gt;だがREST APIが登場し、繰り返し予定が1件ずつ返されるようになってとても処理しやすくなったので、GASで動作するガルーンからGoogleカレンダーへの一方向同期スクリプトを作成した。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>キャノンボール専用 天候・風向き予測</title>
       <link>https://www.330k.info/software/cannonball-wind-map/</link>
       <pubDate>Sat, 11 Jul 2020 19:41:44 +0900</pubDate>
-      
       <guid>https://www.330k.info/software/cannonball-wind-map/</guid>
       <description>&lt;p&gt;自分用に作成したキャノンボール専用の簡易版Epic Ride Weatherです。&lt;/p&gt;
-&lt;p&gt;Open-Meteo(&lt;a href=&#34;https://open-meteo.com/&#34;&gt;https://open-meteo.com/&lt;/a&gt;)のデータを表示します。&lt;/p&gt;</description>
+&lt;p&gt;Open-Meteo(&lt;a href=&#34;https://open-meteo.com/&#34;&gt;https://open-meteo.com/&lt;/a&gt;)のデータを表示します。&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.330k.info/software/cannonball-wind-map/fullscreen.html&#34;&gt;スマートフォン/フルスクリーン版はこちら&lt;/a&gt;&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;</description>
     </item>
-    
     <item>
       <title>Google Analyticsで動画(Video要素)のイベントを計測</title>
       <link>https://www.330k.info/essay/measure_video_events_with_google_analytics/</link>
       <pubDate>Mon, 02 Oct 2017 23:27:45 +0900</pubDate>
-      
       <guid>https://www.330k.info/essay/measure_video_events_with_google_analytics/</guid>
       <description>会社のウェブサイトに貼ってある動画ファイルが、実際にどれだけ再生されているのか調査するべく、 Google Analyticsのイベントで計測するためのコードを作ってみた。 計測対象は以下のイベント。 再生開始(play) 最後まで再生(ended) 一時停止(pause) 再生再開(resume) シークした(seeked) どこまで再生したか(動画時間の10%, 25%, 50%, 75%, 90%) HTML側 &amp;lt;video id=&amp;#34;movie001&amp;#34; width=&amp;#34;(動画幅)&amp;#3</description>
     </item>
-    
     <item>
       <title>Hugo &#43; GitHub Pages &#43; CloudFlareにGoogleサイトから移転</title>
       <link>https://www.330k.info/essay/move_to_github_pages_hugo_from_google_sites/</link>
       <pubDate>Tue, 08 Aug 2017 19:24:04 +0900</pubDate>
-      
       <guid>https://www.330k.info/essay/move_to_github_pages_hugo_from_google_sites/</guid>
       <description>今まで独自ドメインでGoogleサイトを利用してきたが、 「新しいGoogleサイト」の機能が全然ダメ(特にガジェットが使えなくなる)で使い物にならない Google自身が推進している常時SSL化も独自ドメインでは機能しない(正確にはMixed Contentsを修正できない) 無駄に色々と読み込むせいで遅い ということで他のサービスへの移転を決断。 AWSやGCP上に構築することも考えたものの、 大したPVで</description>
     </item>
-    
     <item>
       <title>Google MapsでGPXルート作成</title>
       <link>https://www.330k.info/software/create_gpx_with_google_maps/</link>
       <pubDate>Sat, 06 Aug 2016 00:00:00 +0900</pubDate>
-      
       <guid>https://www.330k.info/software/create_gpx_with_google_maps/</guid>
       <description>&lt;p&gt;Google Maps API v3を利用してGPXファイルを作成するオンラインツール。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Google Sites &#43; Google Analyticsで「サイト上のデータ表示」は要注意</title>
       <link>https://www.330k.info/essay/attention-to-show-data-in-combination-of-google-sites-and-google-analytics/</link>
       <pubDate>Sun, 15 Nov 2009 00:00:00 +0900</pubDate>
-      
       <guid>https://www.330k.info/essay/attention-to-show-data-in-combination-of-google-sites-and-google-analytics/</guid>
       <description>Google SitesではGoogle Analyticsを用いる設定が簡単にできるが、Google Analyticsの「サイト上のデータ表示」を行うと「閉じる」をクリックしても何の反応がない。 画面にレイヤーが重なっていろいろなデータが表示されてしまう状態から抜けられない。 ネットを調べたところ、「閉じる」が見つからないために同じような現象に遭遇している事例は見つかったが、 「閉じる」をクリックしても、 _siteOverlay._close() をアドレ</description>
     </item>
-    
   </channel>
 </rss>

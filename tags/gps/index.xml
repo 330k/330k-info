@@ -6,34 +6,29 @@
     <description>Recent content in GPS on 330k info</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Fri, 28 Apr 2023 10:40:48 +0900</lastBuildDate><atom:link href="https://www.330k.info/tags/gps/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 28 Apr 2023 10:40:48 +0900</lastBuildDate>
+    <atom:link href="https://www.330k.info/tags/gps/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>トラック間引きアルゴリズムの比較</title>
       <link>https://www.330k.info/essay/comparison_of_track_simplify_algorithms/</link>
       <pubDate>Fri, 28 Apr 2023 10:40:48 +0900</pubDate>
-      
       <guid>https://www.330k.info/essay/comparison_of_track_simplify_algorithms/</guid>
       <description>&lt;p&gt;GPSトラックやルートの間引きにおいて、自作のソフトウェアで採用しているのはRamor-Douglas-Peuckerアルゴリズム。&lt;/p&gt;
 &lt;p&gt;一方、カシミール3Dや轍 wadachi、GPSBabelといった他のソフトウェアは異なるアルゴリズムを採用しており、ルートデータを間引いた際にどのような違いが生じるのか、間引き結果と処理時間を比較した。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>(旧)日本測地系から世界測地系への変換式を作ってみる</title>
       <link>https://www.330k.info/essay/convert-datum-tokyo-to-jgd/</link>
       <pubDate>Sun, 05 Mar 2023 11:53:31 +0900</pubDate>
-      
       <guid>https://www.330k.info/essay/convert-datum-tokyo-to-jgd/</guid>
       <description>&lt;p&gt;旧日本測地系(Tokyo Datum)から世界測地系(JGD2000)への変換に関して、既存の1次近似式の確認と、最新のパラメータファイルを使っての新たな近似式の作成を行ってみた。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>簡易ハンディGPSによるあしあとデータの時刻情報</title>
       <link>https://www.330k.info/essay/leap-second-in-au-handy-gps-ashiato-data/</link>
       <pubDate>Tue, 27 Oct 2009 00:00:00 +0900</pubDate>
-      
       <guid>https://www.330k.info/essay/leap-second-in-au-handy-gps-ashiato-data/</guid>
       <description>au携帯電話に入っている地図ビューアーの簡易ハンディGPS機能によって取得したGPSログ(あしあとデータ)は、 本ファイルは、地図ビューアーにより出力されたGPS情報ファイルです。 出力日時:2009/10/27 08:56:46 +0900 +++GPSログ+++ 940669002,139.604988,35.833148 という形式になっており、「+++GPSログ+++」以下の行に時刻、経度、緯度の順番に記録される。 GPSでは時刻を1980年1月6日0時0分0秒(GMT)からの秒数と</description>
     </item>
-    
   </channel>
 </rss>

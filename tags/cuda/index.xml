@@ -6,15 +6,14 @@
     <description>Recent content in CUDA on 330k info</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Thu, 21 Dec 2017 00:00:00 +0900</lastBuildDate><atom:link href="https://www.330k.info/tags/cuda/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 21 Dec 2017 00:00:00 +0900</lastBuildDate>
+    <atom:link href="https://www.330k.info/tags/cuda/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>GeForce 1060搭載ノートPCにUbuntu 17.10 &#43; NVIDIAドライバ &#43; CUDA &#43; Mathematia 8をインストール</title>
       <link>https://www.330k.info/essay/ubuntu_nvidia_cuda_mathematica_geforce1060/</link>
       <pubDate>Thu, 21 Dec 2017 00:00:00 +0900</pubDate>
-      
       <guid>https://www.330k.info/essay/ubuntu_nvidia_cuda_mathematica_geforce1060/</guid>
       <description>MathematicaからCUDAを使いたかったので、GPU搭載のノートPCを購入してセットアップした。 購入PC PC工房のGeForce 1060搭載ノートPC(OSなし) : STYLE-15FX093-i7-RNFR [OS LESS] CPU: Intel Core i7-7700HQ 2.8GHz Memory: 16GB Storage: SSD 240GB + HDD 2TB GPU: NVIDIA GeForce 1060 6GB Ubuntu 17.10 日本語Remixをダウンロード 旧PC(Ubuntu 16.04)で Ubuntu Desktop 日本語 Remixのダウンロードから、ubuntu-ja-17.10-desktop-amd64.isoをダウンロー</description>
     </item>
-    
   </channel>
 </rss>

@@ -6,24 +6,21 @@
     <description>Recent content in BAT on 330k info</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Thu, 27 Jul 2017 21:21:29 +0900</lastBuildDate><atom:link href="https://www.330k.info/tags/bat/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 27 Jul 2017 21:21:29 +0900</lastBuildDate>
+    <atom:link href="https://www.330k.info/tags/bat/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>動画ファイルからDVDオーサリング</title>
       <link>https://www.330k.info/essay/author_dvd_from_movie_file_on_windows/</link>
       <pubDate>Thu, 27 Jul 2017 21:21:29 +0900</pubDate>
-      
       <guid>https://www.330k.info/essay/author_dvd_from_movie_file_on_windows/</guid>
       <description>「この動画ファイルをDVDに焼いて。簡単でしょ。」 いやいや、DVD-Video規格に沿った動画ファイルとファイル構造にしないといけないんですけど。 Windows用のオーサリングソフトはフリーでも色々あるが、どれが良いのかよくわからないので、 ffmpeg + dvdauthor + mkisofsでISOファイルを作成するバッチファイルを作成した。 参考サイト : http://d.hatena.ne.jp/hikaen2/20150201/1422773879 前準備 ffmpeg 適当にWindows用バイナリを落としてPATHを設定しておく。</description>
     </item>
-    
     <item>
       <title>ffmpegでDVDをMPEGファイルに変換</title>
       <link>https://www.330k.info/essay/convert-dvd-to-mpeg-in-a-batch-file/</link>
       <pubDate>Thu, 17 Dec 2015 20:49:00 +0900</pubDate>
-      
       <guid>https://www.330k.info/essay/convert-dvd-to-mpeg-in-a-batch-file/</guid>
       <description>社内でアシスタントからDVDをPCで再生できるようにしたい、という要望を受けたので、 DVDを入れて起動するだけのバッチファイルを作ってみた。 DVDの中身のVTS_01_1.VOB, VTS_01_2.VOBというファイルをffmpegの-iオプションに指定すれば良いのだが、 パイプ記号「|」を使ってファイル名を連結しなければならない。 ただ、バッチファイル中でパイプ記号が入ると上手く連結できないので、 試</description>
     </item>
-    
   </channel>
 </rss>
