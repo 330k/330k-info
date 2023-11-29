@@ -161,16 +161,14 @@ Mathematicaが対応している形式すべてのファイルを読み込むこ
 </span></span></code></pre></div><h2 id="例">例</h2>
 <h3 id="読み込み">読み込み</h3>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Mathematica" data-lang="Mathematica"><span style="display:flex;"><span>img = ImportWithJLink[<span style="color:#a31515">&#34;ExampleData/lena.tif&#34;</span>, <span style="color:#a31515">&#34;TIFF&#34;</span>]
-</span></span></code></pre></div><figure><img src="testfile.png"/>
+</span></span></code></pre></div><figure><img src="testfile.png" decoding="async"/>
 </figure>
-
 <h3 id="書き込み">書き込み</h3>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Mathematica" data-lang="Mathematica"><span style="display:flex;"><span>file = FileNameJoin[{<span style="">$</span>TemporaryDirectory, <span style="color:#a31515">&#34;testfile.png&#34;</span>}];
 </span></span><span style="display:flex;"><span>ExportWithJLink[file, img, <span style="color:#a31515">&#34;PNG&#34;</span>];
 </span></span><span style="display:flex;"><span>Import[file]
-</span></span></code></pre></div><figure><img src="testfile.png"/>
+</span></span></code></pre></div><figure><img src="testfile.png" decoding="async"/>
 </figure>
-
 
 		</div>
 		<footer class="post__footer">

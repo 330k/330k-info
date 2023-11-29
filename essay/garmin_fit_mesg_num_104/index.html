@@ -102,15 +102,13 @@ if (!doNotTrack) {
 <h2 id="fit-file-viewerの紹介">Fit File Viewerの紹介</h2>
 <p><a href="https://www.fitfileviewer.com/">FIT File Viewer</a>はFITファイルの構造を見れるオンラインツールで、
 設定画面で<code>Hide fields without name ('field #')</code>と<code>Hide messages without name ('mesg_num #')</code>を<code>OFF</code>にする(下図)ことで、SDKにない情報を見やすく表示できる。</p>
-<figure><img src="filter_settings.png"/>
+<figure><img src="filter_settings.png" decoding="async"/>
 </figure>
-
 <h2 id="mesg_num-104の概要"><code>mesg_num 104</code>の概要</h2>
 <p>FIT File Viewerを使って<a href="/bicycle/touring/20201024-brm1024-saitama-attack-nihonkai-600km/">BRM1024 埼玉600 アタック日本海</a>の走行ログを見ていたところ、
 SDKに記述のない<code>mesg_num 104</code>のデータが1843個記録されていた。</p>
-<figure><img src="image001.png"/>
+<figure><img src="image001.png" decoding="async"/>
 </figure>
-
 <p>field definition numberとして253が使われるときはFITタイムスタンプであることが多く、今回のデータでも<code>field 253</code>の1番目の値<code>972420938</code>をFITタイムスタンプとして解釈すると、<code>2020年10月24日05時55分38秒</code>となり、走行開始した時刻と一致する。</p>
 <p>したがって、<strong>field 253はタイムスタンプである</strong>ことは確定。</p>
 <p>2個目以降のタイムスタンプを見ると、60秒(1分)おきに記録されていることが分かる。</p>
@@ -119,21 +117,17 @@ SDKに記述のない<code>mesg_num 104</code>のデータが1843個記録され
 <p>いずれも横軸は時刻(2020年10月24日～2020年10月25日)である。</p>
 <ul>
 <li><code>field 0</code>:<br>
-<figure><img src="field001.png"/>
-</figure>
-</li>
+<figure><img src="field001.png" decoding="async"/>
+</figure></li>
 <li><code>field 1</code>:<br>
-<figure><img src="field002.png"/>
-</figure>
-</li>
+<figure><img src="field002.png" decoding="async"/>
+</figure></li>
 <li><code>field 2</code>:<br>
-<figure><img src="field003.png"/>
-</figure>
-</li>
+<figure><img src="field003.png" decoding="async"/>
+</figure></li>
 <li><code>field 3</code>:<br>
-<figure><img src="field004.png"/>
-</figure>
-</li>
+<figure><img src="field004.png" decoding="async"/>
+</figure></li>
 </ul>
 <h3 id="field-2">field 2</h3>
 <p>一番推測がしやすいのが<code>field 2</code>で、</p>
@@ -155,12 +149,11 @@ SDKに記述のない<code>mesg_num 104</code>のデータが1843個記録され
 <h3 id="field-1">field 1</h3>
 <p><code>field 1</code>はfield 0の微分値を見ているようなグラフになっていることから、バッテリーの消費電流または消費電力になっていると推測される(充電時は正、放電時は負)。</p>
 <p>Garmin Edge 830のバッテリー容量はスペック表で公開されていないが、分解動画を見ると純正バッテリーの容量は1000mAhであった。</p>
-<figure><img src="garmin_battery001.png"
+<figure><img src="garmin_battery001.png" decoding="async"
          alt="YouTube - GPSサイクルコンピューター GARMIN EDGE830 バッテリー交換修理の再生時間17:27より引用・加工"/><figcaption>
             <p><a href="https://www.youtube.com/watch?v=-v_lYTCv8C8">YouTube - GPSサイクルコンピューター GARMIN EDGE830 バッテリー交換修理</a>の再生時間17:27より引用・加工</p>
         </figcaption>
 </figure>
-
 <p>バッテリーの残量%の変化と、その間の<code>field 1</code>の値の総和を調べると、</p>
 <ul>
 <li>10月24日の5時55分から21時40分まで:
@@ -192,9 +185,8 @@ SDKに記述のない<code>mesg_num 104</code>のデータが1843個記録され
 <p>最後の<code>field 3</code>は他のフィールドと違った動きをしている。</p>
 <p>上記で電流、電圧がすでに他のフィールドに記録されていることが分かっているので、残るものとして温度が最有力である。</p>
 <p>そこで外気温と重ね合わせたものが下図である。</p>
-<figure><img src="field004_temp.png"/>
+<figure><img src="field004_temp.png" decoding="async"/>
 </figure>
-
 <p>グラフから特徴を読み取ると、</p>
 <ul>
 <li><code>field 3</code>の値は外気温より概ね2℃程度高い値を示しつつ、動きはかなり一致している</li>

@@ -174,16 +174,14 @@ if (!doNotTrack) {
 <p>測量計算サイトの計算式は最も精度が良く、11桁の精度を持っていた。</p>
 <h2 id="ランダムな2点間の距離の精度">ランダムな2点間の距離の精度</h2>
 <p>地球表面上で一様分布となるよう、ランダムに2点を選び、その間の距離の精度を評価した。</p>
-<figure><img src="hubeny_graph001.png"/>
+<figure><img src="hubeny_graph001.png" decoding="async"/>
 </figure>
-
 <p>上図は横軸がGeographicLibで計算した正確な距離、縦軸が各計算方法で計算した距離である。</p>
 <p>y = xの直線上にあれば正確ということだが、<code>GeoDistance</code>の<code>Robbin61</code>では1万kmを超えると実際よりも極端に短く計算してしまうようだ。</p>
 <p>またヒュベニの式は実際よりも長く計算することが多く、そのような場合について調べてみると測地線の緯度変化が一様でない(東京～ロンドンでは測地線が北極付近を通過するように、緯度が上がってから下がる場合など)に誤差が大きくなることが分かった。</p>
 <p>同じ計算結果を誤差についてプロットしたものが下図である。また表は各計算方法の最大誤差である。</p>
-<figure><img src="hubeny_graph002.png"/>
+<figure><img src="hubeny_graph002.png" decoding="async"/>
 </figure>
-
 <table>
 <thead>
 <tr>

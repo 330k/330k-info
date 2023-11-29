@@ -116,22 +116,17 @@ if (!doNotTrack) {
 </span></span></code></pre></div><p>次にwinetricksでIE8、VCランタイム、日本語フォントをインストール。</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>WINEARCH=win32 WINEPREFIX=~/.wine32 winetricks ie8 vcrun2008 cjkfonts winhttp
 </span></span></code></pre></div><p>IE8のインストール画面では適当にクリックして進む。</p>
-<p><figure><img src="21-49-32.png"/>
+<p><figure><img src="21-49-32.png" decoding="async"/>
 </figure>
-
-<figure><img src="21-50-09.png"/>
-</figure>
-</p>
+<figure><img src="21-50-09.png" decoding="async"/>
+</figure></p>
 <p>同様にVC2008ランタイムも適当に進む。</p>
-<p><figure><img src="21-50-34.png"/>
+<p><figure><img src="21-50-34.png" decoding="async"/>
 </figure>
-
-<figure><img src="21-50-38.png"/>
+<figure><img src="21-50-38.png" decoding="async"/>
 </figure>
-
-<figure><img src="21-50-46.png"/>
-</figure>
-</p>
+<figure><img src="21-50-46.png" decoding="async"/>
+</figure></p>
 <p>もしインストールの最中に</p>
 <pre tabindex="0"><code>------------------------------------------------------
 Running /usr/bin/wineserver -w. This will hang until all wine processes in prefix=~/.wine32 terminate
@@ -140,43 +135,35 @@ Running /usr/bin/wineserver -w. This will hang until all wine processes in prefi
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>WINEARCH=win32 WINEPREFIX=~/.wine32 wineserver -k
 </span></span></code></pre></div><p>次にwincfgでライブラリの設定で、wininetとwinhttpを「内蔵版、ネイティブ版」に設定。</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>WINEARCH=win32 WINEPREFIX=~/.wine32 winecfg
-</span></span></code></pre></div><figure><img src="08-55-10.png"/>
+</span></span></code></pre></div><figure><img src="08-55-10.png" decoding="async"/>
 </figure>
-
 <p>Googleバックアップと同期のインストーラをダウンロードしてインストールする。</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>wget https://dl.google.com/drive/gsync_enterprise.msi
 </span></span><span style="display:flex;"><span>WINEARCH=win32 WINEPREFIX=~/.wine32 wine start gsync_enterprise.msi
 </span></span></code></pre></div><p>インストーラが終了したら、いよいよ起動(最後の引数は絶対パス)。</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>WINEARCH=win32 WINEPREFIX=~/.wine32 wine <span style="color:#a31515">&#34;/home/***/.wine32/drive_c/Program Files/Google/Drive/googledrivesync.exe&#34;</span>
-</span></span></code></pre></div><figure><img src="22-02-41.png"/>
+</span></span></code></pre></div><figure><img src="22-02-41.png" decoding="async"/>
 </figure>
-
 <p>下の画面では、「お困りの場合 代わりにブラウザでログイン」をクリックする(画面内にログイン情報を入れても進めない)。</p>
-<figure><img src="22-02-46.png"/>
+<figure><img src="22-02-46.png" decoding="async"/>
 </figure>
-
 <p>そうすると、Ubuntuデスクトップ側のブラウザでリクエストの承認ができるので、「許可」して進める。</p>
-<p><figure><img src="22-02-55.png"/>
+<p><figure><img src="22-02-55.png" decoding="async"/>
 </figure>
-
-<figure><img src="22-03-00.png"/>
+<figure><img src="22-03-00.png" decoding="async"/>
 </figure>
-
-<figure><img src="22-03-04.png"/>
-</figure>
-</p>
+<figure><img src="22-03-04.png" decoding="async"/>
+</figure></p>
 <p>元のバックアップと同期アプリに戻すと、初期設定画面に進むことができるので、Windowsのときと同様に設定。</p>
-<figure><img src="22-03-50.png"/>
+<figure><img src="22-03-50.png" decoding="async"/>
 </figure>
-
 <p>最後に「開始」をクリックすれば完了。</p>
-<figure><img src="22-04-20.png"/>
+<figure><img src="22-04-20.png" decoding="async"/>
 </figure>
-
 <hr>
 <p>Jan. 25 2020 追記:</p>
 <p>起動して一定時間経つとエラーが出るが、今の所対策分からず。</p>
-<figure><img src="18-05-34.png"/>
+<figure><img src="18-05-34.png" decoding="async"/>
 </figure>
 		</div>
 		<footer class="post__footer">

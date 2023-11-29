@@ -101,26 +101,23 @@ if (!doNotTrack) {
 </span></span><span style="display:flex;"><span>     f -&gt; RandomReal[{0, 2 Pi}, 2000],
 </span></span><span style="display:flex;"><span>     t -&gt; RandomReal[{0, Pi}, 2000]}];
 </span></span><span style="display:flex;"><span>g1 = ListPointPlot3D[data1, BoxRatios -&gt; {1, 1, 1}]
-</span></span></code></pre></div><figure><img src="001.png"/>
+</span></span></code></pre></div><figure><img src="001.png" decoding="async"/>
 </figure>
-
 <p>球面上で一様分布させるには、下記のように$\theta$に<code>ArcCos</code>を使う
 ($\theta$の位置の確率を$\sin\theta$に比例させたい→累積確率分布関数は$\cos$→逆関数は$\arccos$)。</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Mathematica" data-lang="Mathematica"><span style="display:flex;"><span>data2 = Transpose[{Sin[t] Cos[f], Sin[t] Sin[f], Cos[t]} /. {
 </span></span><span style="display:flex;"><span>     f -&gt; RandomReal[{0, 2 Pi}, 2000],
 </span></span><span style="display:flex;"><span>     t -&gt; ArcCos[RandomReal[{-1, 1}, 2000]]}];
 </span></span><span style="display:flex;"><span>g2 = ListPointPlot3D[data2, BoxRatios -&gt; {1, 1, 1}]
-</span></span></code></pre></div><figure><img src="002.png"/>
+</span></span></code></pre></div><figure><img src="002.png" decoding="async"/>
 </figure>
-
 <p>なお、多次元球面上の一様分布は<a href="http://qiita.com/mh-northlander/items/a2e643cf62317f129541">球面上に一様分布する乱数の生成</a>にあるように、
 多次元ガウス分布を正規化すると得られる。</p>
 <p>下記は3次元の場合。</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Mathematica" data-lang="Mathematica"><span style="display:flex;"><span>data3 = Normalize /@ RandomReal[NormalDistribution[], {2000, 3}];
 </span></span><span style="display:flex;"><span>g3 = ListPointPlot3D[data3, BoxRatios -&gt; {1, 1, 1}]
-</span></span></code></pre></div><figure><img src="003.png"/>
+</span></span></code></pre></div><figure><img src="003.png" decoding="async"/>
 </figure>
-
 
 		</div>
 		<footer class="post__footer">

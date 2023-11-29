@@ -124,26 +124,22 @@ if (!doNotTrack) {
 <p>DC/DCコンバータの変換ロスや制御用IC・電源ボタンのLEDへの電力供給などを除いて、バッテリ電力の85%をLEDに供給していると仮定すると、LEDの平均消費電力は</p>
 <p>$$ 1.33_\mathrm{[W]} \times 0.85 = 1.13_\mathrm{[W]}$$</p>
 <p>SST-40-Wのスペックシートにある、電流-電圧図から、消費電力が1.13Wになる場所を探すと、電流が0.43A、電圧が2.63V(下図)。</p>
-<figure><img src="rn1500_001.png"/>
+<figure><img src="rn1500_001.png" decoding="async"/>
 </figure>
-
 <p>電流が0.43Aのときにの明るさは、同じくSST-40-Wのスペックシートから読み取って31%(下図)。</p>
-<figure><img src="rn1500_002.png"/>
+<figure><img src="rn1500_002.png" decoding="async"/>
 </figure>
-
 <p>スペックシートのp.3にある、<code>Flux Bin</code>は最も明るい<code>P4</code>から最も暗い<code>N2</code>まで記載されているが、
 p.8にある<code>Ordering Part Numbers</code>にあるのは<code>N3</code>と<code>N4</code>だけ。</p>
 <p>実際に製造されているなかで最も明るいのは<code>N4</code>だと仮定すると、100%(1.5A)のときの明るさは594lmから634lm。</p>
-<figure><img src="rn1500_003.png"/>
+<figure><img src="rn1500_003.png" decoding="async"/>
 </figure>
-
 <p>$$ 594_\mathrm{[lm]} \times 0.31 = 185_\mathrm{[lm]}$$
 $$ 634_\mathrm{[lm]} \times 0.31 = 198_\mathrm{[lm]}$$</p>
 <p>であるから、<strong>30分経過後の明るさは185〜198lm</strong>となる。</p>
 <p>ここまではLEDのスペックシートでの基準とされる環境温度が85℃のときの値で、周囲温度が低ければ明るくなる(下図)。</p>
-<figure><img src="rn1500_004.png"/>
+<figure><img src="rn1500_004.png" decoding="async"/>
 </figure>
-
 <p>点灯中のRN1500に触れてもあまり熱く感じないので、LED基盤の温度を40℃程度まで冷却できていると仮定すると、明るさは+10%程度になる。</p>
 <p>よって<strong>204〜217lm</strong>程度の明るさとなる。</p>
 <h2 id="結論">結論</h2>

@@ -140,12 +140,11 @@ if (!doNotTrack) {
 <li>Googleの地図:
 <ul>
 <li>以前はゼンリンの地図を使用していたが、2019年に航空写真やユーザの移動履歴などから自動生成する地図に切り替えている。</li>
-<li>航空写真の切れ目でずれている箇所がある。<figure><img src="003.png"
+<li>航空写真の切れ目でずれている箇所がある。<figure><img src="003.png" decoding="async"
          alt="航空写真がずれているためルートもずれている例" width="320" height="320"/><figcaption>
             <p>航空写真がずれているためルートもずれている例</p>
         </figcaption>
-</figure>
-</li>
+</figure></li>
 <li>航空写真の撮影や、地図生成アルゴリズムの改良は頻繁に行われているようで、数ヶ月経過すると同じ道路を通るルートでも微妙に緯度経度が異なることがある。</li>
 <li>作成したルートのポイント数はOSM系に比べて増える傾向にある。</li>
 <li>Directions APIはGoogleが把握している通行止め情報をリアルタイムに反映する。<strong>冬期通行止めの道路を通るルートを冬のうちに引こうと思っても引けない</strong>。</li>
@@ -164,18 +163,14 @@ if (!doNotTrack) {
 <h2 id="実例">実例</h2>
 <p>笹子峠の前後でトンネル補正をより正しく行わせる例。</p>
 <ul>
-<li>まずGoogle Mapsを使用してルートを引く。笹子トンネルの上にある登山道でトンネルが切れている判定されてしまう。<figure><img src="002_01.png" width="320" height="320"/>
-</figure>
-</li>
-<li>マップを「OSM」に切り替えて、右上の「Click Action」を「Control Point」に変更。<figure><img src="004.png" width="200" height="200"/>
-</figure>
-</li>
-<li>トンネルの前後2箇所で、Google MapsのルートとOSMの道路が重なる点をクリックしてコントロールポイントを設置する。<figure><img src="002_02.png" width="320" height="320"/>
-</figure>
-</li>
-<li>マップを「OSM」のまま、トンネル区間でルートをドラッグし、OSMを用いた経路に修正すると、橋トンネル補正が正しく行われる。<figure><img src="002_03.png" width="320" height="320"/>
-</figure>
-</li>
+<li>まずGoogle Mapsを使用してルートを引く。笹子トンネルの上にある登山道でトンネルが切れている判定されてしまう。<figure><img src="002_01.png" decoding="async" width="320" height="320"/>
+</figure></li>
+<li>マップを「OSM」に切り替えて、右上の「Click Action」を「Control Point」に変更。<figure><img src="004.png" decoding="async" width="200" height="200"/>
+</figure></li>
+<li>トンネルの前後2箇所で、Google MapsのルートとOSMの道路が重なる点をクリックしてコントロールポイントを設置する。<figure><img src="002_02.png" decoding="async" width="320" height="320"/>
+</figure></li>
+<li>マップを「OSM」のまま、トンネル区間でルートをドラッグし、OSMを用いた経路に修正すると、橋トンネル補正が正しく行われる。<figure><img src="002_03.png" decoding="async" width="320" height="320"/>
+</figure></li>
 </ul>
 		</div>
 		<footer class="post__footer">

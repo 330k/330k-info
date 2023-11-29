@@ -108,13 +108,11 @@ if (!doNotTrack) {
 <p>プロジェクト名はお好みで(以下の例では<code>Garoon GCalendar Sync</code>)。</p>
 <p>またIDEは新IDEを使用した場合で説明する。</p>
 <p>まずはタイムゾーンを設定するため、「プロジェクトの設定」から、『「appsscript.json」マニフェストファイルをエディタで表示する』にチェックを入れる。</p>
-<figure><img src="001.png"/>
+<figure><img src="001.png" decoding="async"/>
 </figure>
-
 <p>エディタで「appsscript.json」を開き、<code>timeZone</code>の値として<code>Asia/Tokyo</code>を設定して保存する。</p>
-<figure><img src="002.png"/>
+<figure><img src="002.png" decoding="async"/>
 </figure>
-
 <p>またスクリプトエンジンとしてV8エンジンを使用するよう、「Chrome V8ランタイムを有効にする」にチェックが入っていることを確認。</p>
 <h3 id="メインスクリプト">メインスクリプト</h3>
 <p>次にスクリプト本体として、以下のコードを入れる。</p>
@@ -275,9 +273,8 @@ repeatIdに関してはまだドキュメントに載っていないので、将
 <p>一度<code>syncGroonSchedule</code>をIDEから実行し、動作することを確認。</p>
 <p>IDEから毎回<code>syncGroonSchedule</code>を実行してもよいが、せっかくなのでトリガーを設定して自動的に同期するようにしておく。</p>
 <p>「トリガー」から「トリガーを追加」とし、以下の画像のように設定する。</p>
-<figure><img src="003.png"/>
+<figure><img src="003.png" decoding="async"/>
 </figure>
-
 <p>Googleカレンダーのほうが意外とすぐに制限に引っかかるので、とりあえず6時間に一度同期するようにしておく。</p>
 <h3 id="googleカレンダーで表示">Googleカレンダーで表示</h3>
 <p>うまく動いていればGoogleカレンダーに新たなカレンダーが加わり、そこにガルーンの予定が見れるはず。</p>

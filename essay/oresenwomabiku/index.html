@@ -207,12 +207,10 @@ Mathematicaを使うと</p>
 </thead>
 <tbody>
 <tr>
-<td><figure><img src="douglas-peucker-001.png"/>
-</figure>
-</td>
-<td><figure><img src="douglas-peucker-002.png"/>
-</figure>
-</td>
+<td><figure><img src="douglas-peucker-001.png" decoding="async"/>
+</figure></td>
+<td><figure><img src="douglas-peucker-002.png" decoding="async"/>
+</figure></td>
 </tr>
 </tbody>
 </table>
@@ -284,9 +282,8 @@ Mathematicaを使うと</p>
 </span></span></code></pre></div><p>アメリカ合衆国のデータを使った例が以下。</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Mathematica" data-lang="Mathematica"><span style="display:flex;"><span>line = CountryData[<span style="color:#a31515">&#34;USA&#34;</span>, <span style="color:#a31515">&#34;Polygon&#34;</span>][[1, 1]];
 </span></span><span style="display:flex;"><span>Graphics[{Polygon[line], Red, Line@LineSimplifyN[line, 50]}]
-</span></span></code></pre></div><figure><img src="douglas-peucker-n-001.png"/>
+</span></span></code></pre></div><figure><img src="douglas-peucker-n-001.png" decoding="async"/>
 </figure>
-
 <p>元は4672点、赤線が50点に削減したもの。</p>
 <hr>
 <p>May 26 2023: 追記:</p>

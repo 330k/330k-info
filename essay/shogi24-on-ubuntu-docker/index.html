@@ -135,19 +135,16 @@ if (!doNotTrack) {
 </span></span></code></pre></div><p>というメッセージが出るので、指示に従って<code>jcontrol</code>を起動する。</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>jcontrol
 </span></span></code></pre></div><p>Javaの設定画面が表示されるので、「Enable Java content in the browser」にチェックを入れて「OK」。</p>
-<figure><img src="2020-02-03%2001-07-52.png"/>
+<figure><img src="2020-02-03%2001-07-52.png" decoding="async"/>
 </figure>
-
 <p>これで将棋倶楽部24が起動できるようになる。</p>
 <p>もう一度起動。</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>javaws 24TokyoDojo.jnlp
 </span></span></code></pre></div><p>最初の起動時だけ、起動を許可するか、ショートカットを作成するかどうかを聞かれるので回答しておく。</p>
-<p><figure><img src="2020-02-03%2001-17-59.png"/>
+<p><figure><img src="2020-02-03%2001-17-59.png" decoding="async"/>
 </figure>
-
-<figure><img src="2020-02-03%2001-18-04.png"/>
-</figure>
-</p>
+<figure><img src="2020-02-03%2001-18-04.png" decoding="async"/>
+</figure></p>
 <p>起動できたら一旦将棋倶楽部24を終了。</p>
 <p>次に起動スクリプトを用意。</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>vi /entrypoint.sh
@@ -172,7 +169,7 @@ CONTAINER IDは<code>docker ps</code>で調べる。</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>xhost local:
 </span></span><span style="display:flex;"><span>docker run -it --rm -e DISPLAY -e QT_X11_NO_MITSHM=1 -e _JAVA_OPTIONS=<span style="color:#a31515">&#34;-Duser.language=ja -Duser.country=JP&#34;</span> <span style="color:#a31515">\
 </span></span></span><span style="display:flex;"><span><span style="color:#a31515"></span>  -v /tmp/.X11-unix:/tmp/.X11-unix (上で付けた名前)
-</span></span></code></pre></div><figure><img src="2020-02-03%2021-15-49.png"/>
+</span></span></code></pre></div><figure><img src="2020-02-03%2021-15-49.png" decoding="async"/>
 </figure>
 		</div>
 		<footer class="post__footer">
