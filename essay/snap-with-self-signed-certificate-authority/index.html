@@ -6,7 +6,9 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>自己署名証明書を使う環境下でSnappy(Snap)を使う - 330k info</title>
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
-	<meta name="description" content="">
+	<meta name="description" content="SSL/TLS通信に介入して、証明書を書き換えるタイプのセキュリティ製品が導入されているネットワーク下で、
+Snappy(Snap)を使おうとすると、snapデーモンはホストのルートCA認証局を利用しないため、
+error: cannot refresh: Post https://api.snapcraft.io/v2/snaps/refresh: x509: certificate signed by unknown authorityというエラーを出してしまう。">
 	<meta property="og:title" content="自己署名証明書を使う環境下でSnappy(Snap)を使う" />
 <meta property="og:description" content="SSL/TLS通信に介入して、証明書を書き換えるタイプのセキュリティ製品が導入されているネットワーク下で、
 Snappy(Snap)を使おうとすると、snapデーモンはホストのルートCA認証局を利用しないため、

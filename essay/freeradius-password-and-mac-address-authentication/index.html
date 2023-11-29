@@ -6,7 +6,9 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>無線LANのEAP-PEAP認証で、ユーザ毎のMACアドレス制限も行う - 330k info</title>
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
-	<meta name="description" content="">
+	<meta name="description" content="会社で来客用および従業員の私物用に無線LANを開放(もちろん業務用のネットワークとは完全に分離している)していたら、監査から「悪用されたときに追跡調査ができるようにせよ」と指摘があった。
+共有パスワード(PSK)からユーザ毎の個別パスワード(WPA2 Enterprise &#43; EAP-PEAPなど)に変えるだけでは、ユーザが複数機器で同じパスワードを使いまわしたり、個別パスワードであることを理解せず他の人に教えてしまいかねない。
+よってユーザ毎に個別のMACアドレスに限定するような認証システムをFreeRADIUSを用いて構築した。">
 	<meta property="og:title" content="無線LANのEAP-PEAP認証で、ユーザ毎のMACアドレス制限も行う" />
 <meta property="og:description" content="会社で来客用および従業員の私物用に無線LANを開放(もちろん業務用のネットワークとは完全に分離している)していたら、監査から「悪用されたときに追跡調査ができるようにせよ」と指摘があった。
 共有パスワード(PSK)からユーザ毎の個別パスワード(WPA2 Enterprise &#43; EAP-PEAPなど)に変えるだけでは、ユーザが複数機器で同じパスワードを使いまわしたり、個別パスワードであることを理解せず他の人に教えてしまいかねない。

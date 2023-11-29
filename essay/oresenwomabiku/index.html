@@ -6,7 +6,17 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>折れ線を間引く(Ramer-Douglas-Peuckerアルゴリズム) - 330k info</title>
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
-	<meta name="description" content="">
+	<meta name="description" content="読み込んだGPSログのデータを間引きたい、と思って調べたところ、
+(Ramer-)Douglas-Peuckerのアルゴリズムというものがあることが分かった。
+基本的な考え方は、
+
+折れ線の始点と終点を結ぶ線分と各点の距離を求める。
+すべての点との距離が許容誤差$\varepsilon$以内に入っていれば始点と終点だけを返して終了。
+そうでなければ距離が最大の点Pを選択。
+始点から点Pまでの折れ線と、点Pから終点までの折れ線のそれぞれについてまた1から処理する。
+
+という再帰的なもの。
+再帰的なものはMathematicaの得意分野なので、MathematicaでRamer-Douglas-Peuckerのアルゴリズムを実装してみた。">
 	<meta property="og:title" content="折れ線を間引く(Ramer-Douglas-Peuckerアルゴリズム)" />
 <meta property="og:description" content="読み込んだGPSログのデータを間引きたい、と思って調べたところ、
 (Ramer-)Douglas-Peuckerのアルゴリズムというものがあることが分かった。

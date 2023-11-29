@@ -6,7 +6,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>Compileで使用するCコンパイラを変更する - 330k info</title>
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
-	<meta name="description" content="">
+	<meta name="description" content="Mathematica 8から、CompileでCコンパイラを使って直接ネイティブコードにコンパイルできるようになった。 使用するCコンパイラは、 Needs[&#34;CCompilerDriver`&#34;]; CCompilerDriver`$CCompiler = { &#34;Name&#34; -&gt; &#34;GCC&#34;, &#34;Compiler&#34; -&gt; CCompilerDriver`GCCCompiler`GCCCompiler, &#34;CompilerInstallation&#34; -&gt; &#34;/usr/bin&#34;, &#34;CompilerName&#34; -&gt; Automatic }; というように、CCompilerDriver`$CCompilerを変更して指定する。 以前からのCompile(&ldquo;WVM&rdquo;)と、各コンパイラの比較のため、ベンチマークを行ってみた。 検証環境は以下の通り。 CPU: Intel Core-i7 3770 (インテル">
 	<meta property="og:title" content="Compileで使用するCコンパイラを変更する" />
 <meta property="og:description" content="Mathematica 8から、CompileでCコンパイラを使って直接ネイティブコードにコンパイルできるようになった。 使用するCコンパイラは、 Needs[&#34;CCompilerDriver`&#34;]; CCompilerDriver`$CCompiler = { &#34;Name&#34; -&gt; &#34;GCC&#34;, &#34;Compiler&#34; -&gt; CCompilerDriver`GCCCompiler`GCCCompiler, &#34;CompilerInstallation&#34; -&gt; &#34;/usr/bin&#34;, &#34;CompilerName&#34; -&gt; Automatic }; というように、CCompilerDriver`$CCompilerを変更して指定する。 以前からのCompile(&ldquo;WVM&rdquo;)と、各コンパイラの比較のため、ベンチマークを行ってみた。 検証環境は以下の通り。 CPU: Intel Core-i7 3770 (インテル" />
 <meta property="og:type" content="article" />

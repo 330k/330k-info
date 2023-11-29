@@ -6,7 +6,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>GPXファイルを読み込む - 330k info</title>
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
-	<meta name="description" content="">
+	<meta name="description" content="MathematicaでGPXファイルを読み込んで解釈する方法のメモ。 対象となるGPXファイルを xml = Import[filepath, &#34;XML&#34;]; でまずXMLとして読み込んでおいて、 trk = Cases[xml, XMLElement[&#34;trk&#34;, _, _], Infinity]; でtrk要素を抜き出し、 trkpt = (ToExpression[{&#34;lat&#34;, &#34;lon&#34;} /. Cases[#1, XMLElement[&#34;trkpt&#34;, attr_, _] :&gt; attr, Infinity]] &amp; ) /@ trk; でそれぞれのtrk要素からtrkpt要素を抜き出して緯度と経度を得る。 Sep. 28 2013追記 Mathematica 8からは標準でGPXをImport可能になった。">
 	<meta property="og:title" content="GPXファイルを読み込む" />
 <meta property="og:description" content="MathematicaでGPXファイルを読み込んで解釈する方法のメモ。 対象となるGPXファイルを xml = Import[filepath, &#34;XML&#34;]; でまずXMLとして読み込んでおいて、 trk = Cases[xml, XMLElement[&#34;trk&#34;, _, _], Infinity]; でtrk要素を抜き出し、 trkpt = (ToExpression[{&#34;lat&#34;, &#34;lon&#34;} /. Cases[#1, XMLElement[&#34;trkpt&#34;, attr_, _] :&gt; attr, Infinity]] &amp; ) /@ trk; でそれぞれのtrk要素からtrkpt要素を抜き出して緯度と経度を得る。 Sep. 28 2013追記 Mathematica 8からは標準でGPXをImport可能になった。" />
 <meta property="og:type" content="article" />

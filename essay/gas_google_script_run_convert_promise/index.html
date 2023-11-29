@@ -6,7 +6,9 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>GASのgoogle.script.runをPromise化する - 330k info</title>
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
-	<meta name="description" content="">
+	<meta name="description" content="GASでクライアント側のJavaScriptから、サーバ側のJavaScriptを呼び出す時、google.script.runを使用する。
+ただこれは非同期処理でありながらPromiseを返さず、独自にwithSuccessHandlerとwithFailureHandlerにコールバックを設定する必要があるので、ちょっと面倒。
+ということで、Promise化するコードを作ってみた(V8エンジン限定)。">
 	<meta property="og:title" content="GASのgoogle.script.runをPromise化する" />
 <meta property="og:description" content="GASでクライアント側のJavaScriptから、サーバ側のJavaScriptを呼び出す時、google.script.runを使用する。
 ただこれは非同期処理でありながらPromiseを返さず、独自にwithSuccessHandlerとwithFailureHandlerにコールバックを設定する必要があるので、ちょっと面倒。
