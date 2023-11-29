@@ -12,7 +12,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.330k.info/essay/rwgps-distance-calculation-precision/" /><meta property="og:image" content="https://www.330k.info/essay/rwgps-modify-all-elevations/rwgps_230x0w.png" /><meta property="article:section" content="essay" />
 <meta property="article:published_time" content="2023-05-18T00:14:23+09:00" />
-<meta property="article:modified_time" content="2023-10-16T09:32:56+09:00" />
+<meta property="article:modified_time" content="2023-11-30T00:51:28+09:00" />
 
 
 	<meta name="twitter:card" content="summary_large_image"/>
@@ -86,7 +86,7 @@ if (!doNotTrack) {
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
 	<time class="meta__text" datetime="2023-05-18T00:14:23">May 18, 2023</time>
-	<time class="meta__text" datetime="2023-10-16T09:32:56"> (Last Modified: October 16, 2023)</time>
+	<time class="meta__text" datetime="2023-11-30T00:51:28"> (Last Modified: November 30, 2023)</time>
 </div>
 
 <div class="meta__item-categories meta__item">
@@ -125,12 +125,12 @@ Ride with GPSが$6378100 \mathrm{m}$を採用した理由は不明である。<s
 <p>精度の高い測地線距離計算式を用いれば、この当然計算結果は$100 \mathrm{m}$となる。</p>
 <h3 id="方位による誤差の変化">方位による誤差の変化</h3>
 <p>出発地点の緯度を北緯35度に固定し、方位を0度から359度まで変化させた際のRide with GPS計算式の距離計算結果を調べたところ、下図のようになった。</p>
-<figure><img src="graph035.png" decoding="async"/>
+<figure><img src="graph035.png" decoding="async" width="854" height="539"/>
 </figure>
 <p><strong>Ride with GPS計算式では東西方向で$-0.11\%$、南北方向で$+0.34 \%$の誤差が生じる</strong>結果となった。</p>
 <h3 id="緯度による誤差の変化">緯度による誤差の変化</h3>
 <p>次に出発点の緯度を0度から北緯89度まで変化させ、Ride with GPSの距離計算式で距離を計算した際の距離の最大値(南北方向)と最小値(東西方向)、およびこの平均を調べたところ、下図となった。</p>
-<figure><img src="graph_lat.png" decoding="async"/>
+<figure><img src="graph_lat.png" decoding="async" width="986" height="543"/>
 </figure>
 <p>この結果から、<strong>Ride with GPSの計算式は高緯度になるほど実際よりも小さい値を出す</strong>ことがわかった。</p>
 <p>より細かく見ると、赤道付近ではほぼ常に実際よりも距離を大きく計算し、その誤差は最大で$+0.7\%$近くになる。<br>

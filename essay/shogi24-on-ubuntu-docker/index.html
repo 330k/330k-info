@@ -15,7 +15,7 @@ UbuntuをはじめLinuxではブラウザでJavaプラグインが動作しな�
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.330k.info/essay/shogi24-on-ubuntu-docker/" /><meta property="og:image" content="https://www.330k.info/essay/shogi24-on-ubuntu-docker/2020-02-03%2001-52-17.png" /><meta property="article:section" content="essay" />
 <meta property="article:published_time" content="2020-02-03T00:57:37+09:00" />
-<meta property="article:modified_time" content="2020-05-18T11:51:56+09:00" />
+<meta property="article:modified_time" content="2023-11-30T00:51:28+09:00" />
 
 
 	<meta name="twitter:card" content="summary_large_image"/>
@@ -92,7 +92,7 @@ if (!doNotTrack) {
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
 	<time class="meta__text" datetime="2020-02-03T00:57:37">February 03, 2020</time>
-	<time class="meta__text" datetime="2020-05-18T11:51:56"> (Last Modified: May 18, 2020)</time>
+	<time class="meta__text" datetime="2023-11-30T00:51:28"> (Last Modified: November 30, 2023)</time>
 </div>
 
 <div class="meta__item-categories meta__item">
@@ -135,15 +135,15 @@ if (!doNotTrack) {
 </span></span></code></pre></div><p>というメッセージが出るので、指示に従って<code>jcontrol</code>を起動する。</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>jcontrol
 </span></span></code></pre></div><p>Javaの設定画面が表示されるので、「Enable Java content in the browser」にチェックを入れて「OK」。</p>
-<figure><img src="2020-02-03%2001-07-52.png" decoding="async"/>
+<figure><img src="2020-02-03%2001-07-52.png" decoding="async" width="579" height="567"/>
 </figure>
 <p>これで将棋倶楽部24が起動できるようになる。</p>
 <p>もう一度起動。</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>javaws 24TokyoDojo.jnlp
 </span></span></code></pre></div><p>最初の起動時だけ、起動を許可するか、ショートカットを作成するかどうかを聞かれるので回答しておく。</p>
-<p><figure><img src="2020-02-03%2001-17-59.png" decoding="async"/>
+<p><figure><img src="2020-02-03%2001-17-59.png" decoding="async" width="510" height="309"/>
 </figure>
-<figure><img src="2020-02-03%2001-18-04.png" decoding="async"/>
+<figure><img src="2020-02-03%2001-18-04.png" decoding="async" width="510" height="208"/>
 </figure></p>
 <p>起動できたら一旦将棋倶楽部24を終了。</p>
 <p>次に起動スクリプトを用意。</p>
@@ -169,7 +169,7 @@ CONTAINER IDは<code>docker ps</code>で調べる。</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>xhost local:
 </span></span><span style="display:flex;"><span>docker run -it --rm -e DISPLAY -e QT_X11_NO_MITSHM=1 -e _JAVA_OPTIONS=<span style="color:#a31515">&#34;-Duser.language=ja -Duser.country=JP&#34;</span> <span style="color:#a31515">\
 </span></span></span><span style="display:flex;"><span><span style="color:#a31515"></span>  -v /tmp/.X11-unix:/tmp/.X11-unix (上で付けた名前)
-</span></span></code></pre></div><figure><img src="2020-02-03%2021-15-49.png" decoding="async"/>
+</span></span></code></pre></div><figure><img src="2020-02-03%2021-15-49.png" decoding="async" width="580" height="610"/>
 </figure>
 		</div>
 		<footer class="post__footer">

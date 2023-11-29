@@ -13,7 +13,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.330k.info/essay/actual_lumen_estimation_of_rn1500/" /><meta property="og:image" content="https://www.330k.info/essay/actual_lumen_estimation_of_rn1500/rn1500_002.png" /><meta property="article:section" content="essay" />
 <meta property="article:published_time" content="2021-12-18T20:00:29+09:00" />
-<meta property="article:modified_time" content="2023-03-26T18:40:21+09:00" />
+<meta property="article:modified_time" content="2023-11-30T00:51:28+09:00" />
 
 
 	<meta name="twitter:card" content="summary_large_image"/>
@@ -88,7 +88,7 @@ if (!doNotTrack) {
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
 	<time class="meta__text" datetime="2021-12-18T20:00:29">December 18, 2021</time>
-	<time class="meta__text" datetime="2023-03-26T18:40:21"> (Last Modified: March 26, 2023)</time>
+	<time class="meta__text" datetime="2023-11-30T00:51:28"> (Last Modified: November 30, 2023)</time>
 </div>
 
 <div class="meta__item-categories meta__item">
@@ -124,21 +124,21 @@ if (!doNotTrack) {
 <p>DC/DCコンバータの変換ロスや制御用IC・電源ボタンのLEDへの電力供給などを除いて、バッテリ電力の85%をLEDに供給していると仮定すると、LEDの平均消費電力は</p>
 <p>$$ 1.33_\mathrm{[W]} \times 0.85 = 1.13_\mathrm{[W]}$$</p>
 <p>SST-40-Wのスペックシートにある、電流-電圧図から、消費電力が1.13Wになる場所を探すと、電流が0.43A、電圧が2.63V(下図)。</p>
-<figure><img src="rn1500_001.png" decoding="async"/>
+<figure><img src="rn1500_001.png" decoding="async" width="658" height="478"/>
 </figure>
 <p>電流が0.43Aのときにの明るさは、同じくSST-40-Wのスペックシートから読み取って31%(下図)。</p>
-<figure><img src="rn1500_002.png" decoding="async"/>
+<figure><img src="rn1500_002.png" decoding="async" width="661" height="476"/>
 </figure>
 <p>スペックシートのp.3にある、<code>Flux Bin</code>は最も明るい<code>P4</code>から最も暗い<code>N2</code>まで記載されているが、
 p.8にある<code>Ordering Part Numbers</code>にあるのは<code>N3</code>と<code>N4</code>だけ。</p>
 <p>実際に製造されているなかで最も明るいのは<code>N4</code>だと仮定すると、100%(1.5A)のときの明るさは594lmから634lm。</p>
-<figure><img src="rn1500_003.png" decoding="async"/>
+<figure><img src="rn1500_003.png" decoding="async" width="1058" height="297"/>
 </figure>
 <p>$$ 594_\mathrm{[lm]} \times 0.31 = 185_\mathrm{[lm]}$$
 $$ 634_\mathrm{[lm]} \times 0.31 = 198_\mathrm{[lm]}$$</p>
 <p>であるから、<strong>30分経過後の明るさは185〜198lm</strong>となる。</p>
 <p>ここまではLEDのスペックシートでの基準とされる環境温度が85℃のときの値で、周囲温度が低ければ明るくなる(下図)。</p>
-<figure><img src="rn1500_004.png" decoding="async"/>
+<figure><img src="rn1500_004.png" decoding="async" width="655" height="469"/>
 </figure>
 <p>点灯中のRN1500に触れてもあまり熱く感じないので、LED基盤の温度を40℃程度まで冷却できていると仮定すると、明るさは+10%程度になる。</p>
 <p>よって<strong>204〜217lm</strong>程度の明るさとなる。</p>

@@ -14,7 +14,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.330k.info/essay/sync-garoon-google-calendar/" /><meta property="og:image" content="https://www.330k.info/essay/sync-garoon-google-calendar/thumb.jpg" /><meta property="article:section" content="essay" />
 <meta property="article:published_time" content="2021-02-12T13:15:47+09:00" />
-<meta property="article:modified_time" content="2021-02-21T20:36:27+09:00" />
+<meta property="article:modified_time" content="2023-11-30T00:51:28+09:00" />
 
 
 	<meta name="twitter:card" content="summary_large_image"/>
@@ -90,7 +90,7 @@ if (!doNotTrack) {
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
 	<time class="meta__text" datetime="2021-02-12T13:15:47">February 12, 2021</time>
-	<time class="meta__text" datetime="2021-02-21T20:36:27"> (Last Modified: February 21, 2021)</time>
+	<time class="meta__text" datetime="2023-11-30T00:51:28"> (Last Modified: November 30, 2023)</time>
 </div>
 
 <div class="meta__item-categories meta__item">
@@ -108,10 +108,10 @@ if (!doNotTrack) {
 <p>プロジェクト名はお好みで(以下の例では<code>Garoon GCalendar Sync</code>)。</p>
 <p>またIDEは新IDEを使用した場合で説明する。</p>
 <p>まずはタイムゾーンを設定するため、「プロジェクトの設定」から、『「appsscript.json」マニフェストファイルをエディタで表示する』にチェックを入れる。</p>
-<figure><img src="001.png" decoding="async"/>
+<figure><img src="001.png" decoding="async" width="860" height="426"/>
 </figure>
 <p>エディタで「appsscript.json」を開き、<code>timeZone</code>の値として<code>Asia/Tokyo</code>を設定して保存する。</p>
-<figure><img src="002.png" decoding="async"/>
+<figure><img src="002.png" decoding="async" width="599" height="169"/>
 </figure>
 <p>またスクリプトエンジンとしてV8エンジンを使用するよう、「Chrome V8ランタイムを有効にする」にチェックが入っていることを確認。</p>
 <h3 id="メインスクリプト">メインスクリプト</h3>
@@ -273,7 +273,7 @@ repeatIdに関してはまだドキュメントに載っていないので、将
 <p>一度<code>syncGroonSchedule</code>をIDEから実行し、動作することを確認。</p>
 <p>IDEから毎回<code>syncGroonSchedule</code>を実行してもよいが、せっかくなのでトリガーを設定して自動的に同期するようにしておく。</p>
 <p>「トリガー」から「トリガーを追加」とし、以下の画像のように設定する。</p>
-<figure><img src="003.png" decoding="async"/>
+<figure><img src="003.png" decoding="async" width="718" height="817"/>
 </figure>
 <p>Googleカレンダーのほうが意外とすぐに制限に引っかかるので、とりあえず6時間に一度同期するようにしておく。</p>
 <h3 id="googleカレンダーで表示">Googleカレンダーで表示</h3>
