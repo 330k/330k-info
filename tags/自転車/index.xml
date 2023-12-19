@@ -6,68 +6,63 @@
     <description>Recent content in 自転車 on 330k info</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Sun, 31 Jul 2022 16:13:15 +0900</lastBuildDate>
+    <lastBuildDate>Wed, 20 Dec 2023 00:22:46 +0900</lastBuildDate>
     <atom:link href="https://www.330k.info/tags/%E8%87%AA%E8%BB%A2%E8%BB%8A/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>速度センサがないときのEdge 830の速度・距離計算挙動</title>
+      <link>https://www.330k.info/essay/edge_830_distance_calculation_behavior/</link>
+      <pubDate>Wed, 20 Dec 2023 00:22:46 +0900</pubDate>
+      <guid>https://www.330k.info/essay/edge_830_distance_calculation_behavior/</guid>
+      <description>&lt;p&gt;Garmin Edgeシリーズは、速度センサがペアリングされていない場合は、GPSから速度と距離を計算する。&lt;/p&gt;&#xA;&lt;p&gt;しかしトンネル通過時などに距離が短くなる現象が過去に発生(&lt;a href=&#34;https://www.330k.info/bicycle/touring/20201024-brm1024-saitama-attack-nihonkai-600km/&#34;&gt;BRM1024 埼玉600 アタック日本海&lt;/a&gt;、&#xA;&lt;a href=&#34;https://www.330k.info/bicycle/touring/20200905-brm905-tokyo-300km/&#34;&gt;BRM905 東京300 ウルトラオレンヂ&lt;/a&gt;)しており、その原因を調査した。&lt;/p&gt;</description>
+    </item>
     <item>
       <title>GPXヒゲ検出ツール(α)</title>
       <link>https://www.330k.info/software/gpx-spike-detector/</link>
       <pubDate>Sun, 31 Jul 2022 16:13:15 +0900</pubDate>
       <guid>https://www.330k.info/software/gpx-spike-detector/</guid>
-      <description>&lt;p&gt;GPXファイルのルートで「ヒゲ」(意図せず細い路地に入ってしまった部分)を検出するツールです。&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://www.330k.info/software/gpx-spike-detector/fullscreen.html&#34;&gt;スマートフォン/フルスクリーン版はこちら&lt;/a&gt;&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;</description>
+      <description>&lt;p&gt;GPXファイルのルートで「ヒゲ」(意図せず細い路地に入ってしまった部分)を検出するツールです。&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://www.330k.info/software/gpx-spike-detector/fullscreen.html&#34;&gt;スマートフォン/フルスクリーン版はこちら&lt;/a&gt;&lt;/p&gt;&#xA;&lt;!-- raw HTML omitted --&gt;</description>
     </item>
     <item>
       <title>GPX to FIT/TCX Converter</title>
       <link>https://www.330k.info/software/gpx-tcx-converter/</link>
       <pubDate>Sun, 24 Apr 2022 21:22:33 +0900</pubDate>
       <guid>https://www.330k.info/software/gpx-tcx-converter/</guid>
-      <description>&lt;p&gt;GPXファイルをコースポイントのあるFIT/TCXファイルに変換するツールです。&lt;/p&gt;
-&lt;p&gt;Garminのサイコンおよびスマートウォッチ(Edge 830、Fenix 7Sで動作確認済み)にインポートすると、GPXファイルの&lt;code&gt;wpt&lt;/code&gt;要素(POI)をコースポイントとして含むコースが登録されます。&lt;/p&gt;</description>
+      <description>&lt;p&gt;GPXファイルをコースポイントのあるFIT/TCXファイルに変換するツールです。&lt;/p&gt;&#xA;&lt;p&gt;Garminのサイコンおよびスマートウォッチ(Edge 830、Fenix 7Sで動作確認済み)にインポートすると、GPXファイルの&lt;code&gt;wpt&lt;/code&gt;要素(POI)をコースポイントとして含むコースが登録されます。&lt;/p&gt;</description>
     </item>
     <item>
       <title>RN1500の実際の明るさをスペックシートから見積もる</title>
       <link>https://www.330k.info/essay/actual_lumen_estimation_of_rn1500/</link>
       <pubDate>Sat, 18 Dec 2021 20:00:29 +0900</pubDate>
       <guid>https://www.330k.info/essay/actual_lumen_estimation_of_rn1500/</guid>
-      <description>&lt;p&gt;自転車用ライトとして一世を風靡したRN1500。&lt;/p&gt;
-&lt;p&gt;スペック上lowモード(300lm)で12.5時間のランタイムがウリなのだが、実際に300lmも出ていないのではないか、という話もあるため、電池とLEDのスペックシートから、明るさを見積もってみた。&lt;/p&gt;</description>
+      <description>&lt;p&gt;自転車用ライトとして一世を風靡したRN1500。&lt;/p&gt;&#xA;&lt;p&gt;スペック上lowモード(300lm)で12.5時間のランタイムがウリなのだが、実際に300lmも出ていないのではないか、という話もあるため、電池とLEDのスペックシートから、明るさを見積もってみた。&lt;/p&gt;</description>
     </item>
     <item>
       <title>Edge 830にGPXやTCXファイルを入れたときの挙動</title>
       <link>https://www.330k.info/essay/edge_830_newfile_import_behavior/</link>
       <pubDate>Wed, 15 Dec 2021 00:56:02 +0900</pubDate>
       <guid>https://www.330k.info/essay/edge_830_newfile_import_behavior/</guid>
-      <description>&lt;p&gt;Garmin Edge 830(や530などの兄弟機)は、PCとUSB接続したときに本体の&lt;code&gt;Garmin/NewFiles&lt;/code&gt;フォルダにFITファイルのほか、GPXファイルやTCXファイルを入れることでルートなどを登録できる。&lt;/p&gt;
-&lt;p&gt;どのようなファイルを入れたときに、どのような挙動をするのか調査した。&lt;/p&gt;</description>
+      <description>&lt;p&gt;Garmin Edge 830(や530などの兄弟機)は、PCとUSB接続したときに本体の&lt;code&gt;Garmin/NewFiles&lt;/code&gt;フォルダにFITファイルのほか、GPXファイルやTCXファイルを入れることでルートなどを登録できる。&lt;/p&gt;&#xA;&lt;p&gt;どのようなファイルを入れたときに、どのような挙動をするのか調査した。&lt;/p&gt;</description>
     </item>
     <item>
       <title>GPXルート沿いコンビニ・道の駅検索</title>
       <link>https://www.330k.info/software/gpx-nearby-search/</link>
       <pubDate>Fri, 10 Sep 2021 23:56:36 +0900</pubDate>
       <guid>https://www.330k.info/software/gpx-nearby-search/</guid>
-      <description>&lt;p&gt;GPXファイルからルート沿いのコンビニ・道の駅の検索を行うオンラインツール。&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://www.330k.info/software/gpx-nearby-search/fullscreen.html&#34;&gt;スマートフォン/フルスクリーン版はこちら&lt;/a&gt;&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;</description>
+      <description>&lt;p&gt;GPXファイルからルート沿いのコンビニ・道の駅の検索を行うオンラインツール。&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://www.330k.info/software/gpx-nearby-search/fullscreen.html&#34;&gt;スマートフォン/フルスクリーン版はこちら&lt;/a&gt;&lt;/p&gt;&#xA;&lt;!-- raw HTML omitted --&gt;</description>
     </item>
     <item>
       <title>キャノンボール専用 天候・風向き予測</title>
       <link>https://www.330k.info/software/cannonball-wind-map/</link>
       <pubDate>Sat, 11 Jul 2020 19:41:44 +0900</pubDate>
       <guid>https://www.330k.info/software/cannonball-wind-map/</guid>
-      <description>&lt;p&gt;自分用に作成したキャノンボール専用の簡易版Epic Ride Weatherです。&lt;/p&gt;
-&lt;p&gt;Open-Meteo(&lt;a href=&#34;https://open-meteo.com/&#34;&gt;https://open-meteo.com/&lt;/a&gt;)のデータを表示します。&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://www.330k.info/software/cannonball-wind-map/fullscreen.html&#34;&gt;スマートフォン/フルスクリーン版はこちら&lt;/a&gt;&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;</description>
+      <description>&lt;p&gt;自分用に作成したキャノンボール専用の簡易版Epic Ride Weatherです。&lt;/p&gt;&#xA;&lt;p&gt;Open-Meteo(&lt;a href=&#34;https://open-meteo.com/&#34;&gt;https://open-meteo.com/&lt;/a&gt;)のデータを表示します。&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://www.330k.info/software/cannonball-wind-map/fullscreen.html&#34;&gt;スマートフォン/フルスクリーン版はこちら&lt;/a&gt;&lt;/p&gt;&#xA;&lt;!-- raw HTML omitted --&gt;</description>
     </item>
     <item>
       <title>Audax Japanのリザルト検索画面で、自分のリザルトをブックマークに保存する</title>
       <link>https://www.330k.info/essay/bookmark-audax-japan-result/</link>
       <pubDate>Sun, 01 Mar 2020 23:12:35 +0900</pubDate>
       <guid>https://www.330k.info/essay/bookmark-audax-japan-result/</guid>
-      <description>&lt;p&gt;オダックスジャパン(Audax Japan)に&lt;a href=&#34;https://www.audax-japan.org/aj-2/org-join/&#34;&gt;会員登録&lt;/a&gt;すると、
-自分が参加したブルベのリザルトをウェブ上で&lt;a href=&#34;https://homologation.audax-japan.org/alluser/bycode/form&#34;&gt;検索&lt;/a&gt;できるようになる。&lt;/p&gt;
-&lt;p&gt;これはこれで非常に便利なのだが、毎回自分の会員番号を入力するのも手間なのも確か。&lt;/p&gt;</description>
+      <description>&lt;p&gt;オダックスジャパン(Audax Japan)に&lt;a href=&#34;https://www.audax-japan.org/aj-2/org-join/&#34;&gt;会員登録&lt;/a&gt;すると、&#xA;自分が参加したブルベのリザルトをウェブ上で&lt;a href=&#34;https://homologation.audax-japan.org/alluser/bycode/form&#34;&gt;検索&lt;/a&gt;できるようになる。&lt;/p&gt;&#xA;&lt;p&gt;これはこれで非常に便利なのだが、毎回自分の会員番号を入力するのも手間なのも確か。&lt;/p&gt;</description>
     </item>
     <item>
       <title>携行品・装備品</title>
@@ -116,9 +111,7 @@
       <link>https://www.330k.info/essay/first-review-of-recon-jet/</link>
       <pubDate>Mon, 26 Oct 2015 00:00:00 +0900</pubDate>
       <guid>https://www.330k.info/essay/first-review-of-recon-jet/</guid>
-      <description>&lt;p&gt;購入したのはかなり早いタイミングだったが、なかなか試すことができなかったRecon JET。&lt;/p&gt;
-&lt;p&gt;やっと自転車で走るときにつけて使い心地はどんなものか試すことが出来た。
-ANT+対応の心拍計などは持っていないので、Recon JET単体でのテスト。&lt;/p&gt;</description>
+      <description>&lt;p&gt;購入したのはかなり早いタイミングだったが、なかなか試すことができなかったRecon JET。&lt;/p&gt;&#xA;&lt;p&gt;やっと自転車で走るときにつけて使い心地はどんなものか試すことが出来た。&#xA;ANT+対応の心拍計などは持っていないので、Recon JET単体でのテスト。&lt;/p&gt;</description>
     </item>
     <item>
       <title>カンチレバーブレーキをミニVブレーキに換装</title>

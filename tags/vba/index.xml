@@ -13,9 +13,7 @@
       <link>https://www.330k.info/essay/generate-secure-password-vba/</link>
       <pubDate>Mon, 12 Jul 2021 19:04:37 +0900</pubDate>
       <guid>https://www.330k.info/essay/generate-secure-password-vba/</guid>
-      <description>&lt;p&gt;VBAでのランダムパスワード生成なんて出尽くされていると思ったけれど、意外とスマートな実装がなかったので自分で書いてみた。&lt;/p&gt;
-&lt;p&gt;単純に使用可能な文字種全体からランダムに1文字ずつ選択して連結するだけでは、「英小文字、英大文字、数字を必ず1文字以上含む」などのポリシーに沿っていない文字列が生成されてしまう可能性があるが、
-1回の処理で必ずポリシーに沿った文字列を生成する関数を作成した。&lt;/p&gt;</description>
+      <description>&lt;p&gt;VBAでのランダムパスワード生成なんて出尽くされていると思ったけれど、意外とスマートな実装がなかったので自分で書いてみた。&lt;/p&gt;&#xA;&lt;p&gt;単純に使用可能な文字種全体からランダムに1文字ずつ選択して連結するだけでは、「英小文字、英大文字、数字を必ず1文字以上含む」などのポリシーに沿っていない文字列が生成されてしまう可能性があるが、&#xA;1回の処理で必ずポリシーに沿った文字列を生成する関数を作成した。&lt;/p&gt;</description>
     </item>
     <item>
       <title>VBAでUUIDを生成</title>
@@ -36,8 +34,7 @@
       <link>https://www.330k.info/software/kcconvert/</link>
       <pubDate>Sun, 25 Oct 2009 22:43:13 +0900</pubDate>
       <guid>https://www.330k.info/software/kcconvert/</guid>
-      <description>&lt;p&gt;VB6およびExcelなどのVBAにおいて日本語の文字コード変換機能を提供するモジュール。
-外部ライブラリを使用せずに変換を行う。&lt;/p&gt;</description>
+      <description>&lt;p&gt;VB6およびExcelなどのVBAにおいて日本語の文字コード変換機能を提供するモジュール。&#xA;外部ライブラリを使用せずに変換を行う。&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

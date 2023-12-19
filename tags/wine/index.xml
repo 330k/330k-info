@@ -13,12 +13,7 @@
       <link>https://www.330k.info/essay/install-google-backup-sync-on-wine/</link>
       <pubDate>Fri, 24 Jan 2020 22:13:55 +0900</pubDate>
       <guid>https://www.330k.info/essay/install-google-backup-sync-on-wine/</guid>
-      <description>&lt;p&gt;Googleの「バックアップと同期」をUbuntu上で動かしたかったので、頑張ってみた。&lt;/p&gt;
-&lt;p&gt;参考)&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://gist.github.com/davidfraser/96867a8dbfa607ceba9ed363e6c1688b&#34;&gt;https://gist.github.com/davidfraser/96867a8dbfa607ceba9ed363e6c1688b&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://appdb.winehq.org/objectManager.php?sClass=version&amp;amp;iId=38353&#34;&gt;https://appdb.winehq.org/objectManager.php?sClass=version&amp;amp;iId=38353&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</description>
+      <description>&lt;p&gt;Googleの「バックアップと同期」をUbuntu上で動かしたかったので、頑張ってみた。&lt;/p&gt;&#xA;&lt;p&gt;参考)&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://gist.github.com/davidfraser/96867a8dbfa607ceba9ed363e6c1688b&#34;&gt;https://gist.github.com/davidfraser/96867a8dbfa607ceba9ed363e6c1688b&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://appdb.winehq.org/objectManager.php?sClass=version&amp;amp;iId=38353&#34;&gt;https://appdb.winehq.org/objectManager.php?sClass=version&amp;amp;iId=38353&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;</description>
     </item>
     <item>
       <title>Ubuntu 18.04に最新のWINE(5.0.0)をインストールする</title>

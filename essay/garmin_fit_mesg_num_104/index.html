@@ -17,10 +17,8 @@
 <meta property="article:modified_time" content="2023-07-18T02:54:00+09:00" />
 
 
-	<meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:image" content="https://www.330k.info/essay/edit-garmin-fit-mannually/fit-sdk-logo-001.svg"/>
-
-<meta name="twitter:title" content="Garmin FITにおけるmesg_num 104が示す内容についての分析結果"/>
+	<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://www.330k.info/essay/edit-garmin-fit-mannually/fit-sdk-logo-001.svg" /><meta name="twitter:title" content="Garmin FITにおけるmesg_num 104が示す内容についての分析結果"/>
 <meta name="twitter:description" content="Edge 830で実際の走行したログのFITファイルを見ると、Garmin FIT SDKでドキュメント化されていないメッセージが結構ある。
 このうち、mesg_num 104が何を示しているのかについて特定することに成功した。"/>
 
@@ -31,7 +29,7 @@
 	<link rel="stylesheet" href="/css/330k.css">
 	<link rel="shortcut icon" href="/favicon.ico">
 		
-<script type="application/javascript">
+<script>
 var doNotTrack = false;
 if (!doNotTrack) {
 	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
@@ -103,12 +101,12 @@ if (!doNotTrack) {
 <h2 id="fit-file-viewerの紹介">Fit File Viewerの紹介</h2>
 <p><a href="https://www.fitfileviewer.com/">FIT File Viewer</a>はFITファイルの構造を見れるオンラインツールで、
 設定画面で<code>Hide fields without name ('field #')</code>と<code>Hide messages without name ('mesg_num #')</code>を<code>OFF</code>にする(下図)ことで、SDKにない情報を見やすく表示できる。</p>
-<figure><img src="filter_settings.png" decoding="async" width="606" height="253"/>
+<figure><img src="filter_settings.webp" decoding="async" width="606" height="253"/>
 </figure>
 <h2 id="mesg_num-104の概要"><code>mesg_num 104</code>の概要</h2>
 <p>FIT File Viewerを使って<a href="/bicycle/touring/20201024-brm1024-saitama-attack-nihonkai-600km/">BRM1024 埼玉600 アタック日本海</a>の走行ログを見ていたところ、
 SDKに記述のない<code>mesg_num 104</code>のデータが1843個記録されていた。</p>
-<figure><img src="image001.png" decoding="async" width="759" height="371"/>
+<figure><img src="image001.webp" decoding="async" width="759" height="371"/>
 </figure>
 <p>field definition numberとして253が使われるときはFITタイムスタンプであることが多く、今回のデータでも<code>field 253</code>の1番目の値<code>972420938</code>をFITタイムスタンプとして解釈すると、<code>2020年10月24日05時55分38秒</code>となり、走行開始した時刻と一致する。</p>
 <p>したがって、<strong>field 253はタイムスタンプである</strong>ことは確定。</p>
@@ -118,16 +116,16 @@ SDKに記述のない<code>mesg_num 104</code>のデータが1843個記録され
 <p>いずれも横軸は時刻(2020年10月24日～2020年10月25日)である。</p>
 <ul>
 <li><code>field 0</code>:<br>
-<figure><img src="field001.png" decoding="async" width="480" height="299"/>
+<figure><img src="field001.webp" decoding="async" width="480" height="299"/>
 </figure></li>
 <li><code>field 1</code>:<br>
-<figure><img src="field002.png" decoding="async" width="480" height="299"/>
+<figure><img src="field002.webp" decoding="async" width="480" height="299"/>
 </figure></li>
 <li><code>field 2</code>:<br>
-<figure><img src="field003.png" decoding="async" width="480" height="303"/>
+<figure><img src="field003.webp" decoding="async" width="480" height="303"/>
 </figure></li>
 <li><code>field 3</code>:<br>
-<figure><img src="field004.png" decoding="async" width="480" height="308"/>
+<figure><img src="field004.webp" decoding="async" width="480" height="308"/>
 </figure></li>
 </ul>
 <h3 id="field-2">field 2</h3>
@@ -150,7 +148,7 @@ SDKに記述のない<code>mesg_num 104</code>のデータが1843個記録され
 <h3 id="field-1">field 1</h3>
 <p><code>field 1</code>はfield 0の微分値を見ているようなグラフになっていることから、バッテリーの消費電流または消費電力になっていると推測される(充電時は正、放電時は負)。</p>
 <p>Garmin Edge 830のバッテリー容量はスペック表で公開されていないが、分解動画を見ると純正バッテリーの容量は1000mAhであった。</p>
-<figure><img src="garmin_battery001.png" decoding="async"
+<figure><img src="garmin_battery001.webp" decoding="async"
          alt="YouTube - GPSサイクルコンピューター GARMIN EDGE830 バッテリー交換修理の再生時間17:27より引用・加工" width="647" height="428"/><figcaption>
             <p><a href="https://www.youtube.com/watch?v=-v_lYTCv8C8">YouTube - GPSサイクルコンピューター GARMIN EDGE830 バッテリー交換修理</a>の再生時間17:27より引用・加工</p>
         </figcaption>
@@ -186,7 +184,7 @@ SDKに記述のない<code>mesg_num 104</code>のデータが1843個記録され
 <p>最後の<code>field 3</code>は他のフィールドと違った動きをしている。</p>
 <p>上記で電流、電圧がすでに他のフィールドに記録されていることが分かっているので、残るものとして温度が最有力である。</p>
 <p>そこで外気温と重ね合わせたものが下図である。</p>
-<figure><img src="field004_temp.png" decoding="async" width="590" height="311"/>
+<figure><img src="field004_temp.webp" decoding="async" width="590" height="311"/>
 </figure>
 <p>グラフから特徴を読み取ると、</p>
 <ul>
@@ -223,6 +221,9 @@ SDKに記述のない<code>mesg_num 104</code>のデータが1843個記録され
 	<div class="post-nav__item post-nav__item--prev">
 		<a class="post-nav__link" href="/essay/rwgps-distance-calculation-precision/" rel="prev"><span class="post-nav__caption">«&thinsp;Previous</span><p class="post-nav__post-title">Ride with GPSの距離計算式と精度の評価</p></a>
 	</div>
+	<div class="post-nav__item post-nav__item--next">
+		<a class="post-nav__link" href="/essay/edge_830_distance_calculation_behavior/" rel="next"><span class="post-nav__caption">Next&thinsp;»</span><p class="post-nav__post-title">速度センサがないときのEdge 830の速度・距離計算挙動</p></a>
+	</div>
 </nav>
 
 
@@ -232,17 +233,17 @@ SDKに記述のない<code>mesg_num 104</code>のデータが1843個記録され
 	
 	<div class="widget__content">
 		<ul class="widget__list">
-			<li class="widget__item"><a class="widget__link" href="/software/create_gpx_with_google_maps/"><img src="/software/create_gpx_with_google_maps/favicon-16x16.png" height="16" width="16" style="vertical-align: middle;" />Google MapsでGPXルート作成</a></li>
-			<li class="widget__item"><a class="widget__link" href="/software/simplify_gpx/"><img src="/software/simplify_gpx/icon_16.png" height="16" width="16" style="vertical-align: middle;" />GPXトラックログを間引く・簡略化</a></li>
-			<li class="widget__item"><a class="widget__link" href="/software/cannonball-wind-map/"><img src="/software/cannonball-wind-map/cannonball_logo.png" height="16" width="16" style="vertical-align: middle;" />キャノンボール専用 天候・風向き予測</a></li>
+			<li class="widget__item"><a class="widget__link" href="/software/create_gpx_with_google_maps/"><img src="/software/create_gpx_with_google_maps/favicon-16x16.webp" height="16" width="16" style="vertical-align: middle;" />Google MapsでGPXルート作成</a></li>
+			<li class="widget__item"><a class="widget__link" href="/software/simplify_gpx/"><img src="/software/simplify_gpx/icon_16.webp" height="16" width="16" style="vertical-align: middle;" />GPXトラックログを間引く・簡略化</a></li>
+			<li class="widget__item"><a class="widget__link" href="/software/cannonball-wind-map/"><img src="/software/cannonball-wind-map/cannonball_logo.webp" height="16" width="16" style="vertical-align: middle;" />キャノンボール専用 天候・風向き予測</a></li>
 			<li class="widget__item"><a class="widget__link" href="/software/gpx-nearby-search/"><img src="/software/gpx-nearby-search/icon002_32.svg" height="16" width="16" style="vertical-align: middle;" />GPXルート沿いコンビニ・道の駅検索</a></li>
-			<li class="widget__item"><a class="widget__link" href="/software/chrome_rwgps_ele_gsi/"><img src="/software/chrome_rwgps_ele_gsi/icon_02_32.png" height="16" width="16" style="vertical-align: middle;" />RWGPS地理院標高 - Chrome拡張機能</a></li>
-			<li class="widget__item"><a class="widget__link" href="/software/chrome_passable_route_gpx_loader/"><img src="/software/chrome_passable_route_gpx_loader/icon_128.png" height="16" width="16" style="vertical-align: middle;" />通れた道マップ GPX表示拡張 - Chrome拡張機能</a></li>
+			<li class="widget__item"><a class="widget__link" href="/software/chrome_rwgps_ele_gsi/"><img src="/software/chrome_rwgps_ele_gsi/icon_02_32.webp" height="16" width="16" style="vertical-align: middle;" />RWGPS地理院標高 - Chrome拡張機能</a></li>
+			<li class="widget__item"><a class="widget__link" href="/software/chrome_passable_route_gpx_loader/"><img src="/software/chrome_passable_route_gpx_loader/icon_128.webp" height="16" width="16" style="vertical-align: middle;" />通れた道マップ GPX表示拡張 - Chrome拡張機能</a></li>
 			<li class="widget__item"><a class="widget__link" href="/software/gpx-tcx-converter/"><img src="/software/gpx-tcx-converter/icon256.svg" height="16" width="16" style="vertical-align: middle;" />GPX to FIT/TCX Converter</a></li>
 			<li class="widget__item"><a class="widget__link" href="/software/gpx-compare/"><img src="/software/gpx-compare/icon240.svg" height="16" width="16" style="vertical-align: middle;" />GPXルート比較(差分表示)ツール</a></li>
 			<li class="widget__item"><a class="widget__link" href="/software/gpx-spike-detector/"><img src="/software/gpx-spike-detector/images/icon002.svg" height="16" width="16" style="vertical-align: middle;" />GPXヒゲ検出ツール(α)</a></li>
-			<li class="widget__item"><a class="widget__link" href="/software/rakuten-hotel-search/"><img src="/software/rakuten-hotel-search/rakuten_travel_logo_32x32.png" height="16" width="16" style="vertical-align: middle;" />楽天トラベル ホテル検索</a></li>
-			<li class="widget__item"><a class="widget__link" href="/software/yamap-gpx-exporter/"><img src="/software/yamap-gpx-exporter/icon_128.png" height="16" width="16" style="vertical-align: middle;" />YAMAP GPX Exporter</a></li>
+			<li class="widget__item"><a class="widget__link" href="/software/rakuten-hotel-search/"><img src="/software/rakuten-hotel-search/rakuten_travel_logo_32x32.webp" height="16" width="16" style="vertical-align: middle;" />楽天トラベル ホテル検索</a></li>
+			<li class="widget__item"><a class="widget__link" href="/software/yamap-gpx-exporter/"><img src="/software/yamap-gpx-exporter/icon_128.webp" height="16" width="16" style="vertical-align: middle;" />YAMAP GPX Exporter</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/introduction/">自転車について</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/equipments/">携行品・装備品</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20201004-osaka-tokyo-cannonball/">2020年10月04日 大阪→東京 キャノンボール 23時間37分</a></li>
@@ -253,6 +254,7 @@ SDKに記述のない<code>mesg_num 104</code>のデータが1843個記録され
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/essay/edge_830_distance_calculation_behavior/">速度センサがないときのEdge 830の速度・距離計算挙動</a></li>
 			<li class="widget__item"><a class="widget__link" href="/walk/20231124-tonomine-yusakaji/">2023年11月24日 小田原-塔ノ峰-湯坂路-元箱根</a></li>
 			<li class="widget__item"><a class="widget__link" href="/walk/20231119-okukuji-nantaisan/">2023年11月19日 奥久慈男体山</a></li>
 			<li class="widget__item"><a class="widget__link" href="/walk/20231027-nikko-nantaisan/">2023年10月27日 日光男体山</a></li>
@@ -272,7 +274,6 @@ SDKに記述のない<code>mesg_num 104</code>のデータが1843個記録され
 			<li class="widget__item"><a class="widget__link" href="/walk/20230401-mt-toridani/">2023年04月01日 東日原-酉谷山ピストン</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/consume-cpu-wastefully/">無駄にCPUを消費するデーモンを作る</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/convert-datum-tokyo-to-jgd/">(旧)日本測地系から世界測地系への変換式を作ってみる</a></li>
-			<li class="widget__item"><a class="widget__link" href="/essay/garoon_notification_javascript_customize/">ガルーンで予定のリマインダーをブラウザのみで実施する</a></li>
 		</ul>
 	</div>
 </div>
@@ -305,7 +306,7 @@ SDKに記述のない<code>mesg_num 104</code>のデータが1843個記録され
 		<a class="widget-taglist__link widget__link btn" href="/tags/dotnet" title="Dotnet">Dotnet (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/ffmpeg" title="Ffmpeg">Ffmpeg (2)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/freeradius" title="Freeradius">Freeradius (1)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/garmin" title="Garmin">Garmin (4)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/garmin" title="Garmin">Garmin (5)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/garoon" title="Garoon">Garoon (2)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/gas" title="Gas">Gas (2)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/github" title="Github">Github (10)</a>
@@ -349,7 +350,7 @@ SDKに記述のない<code>mesg_num 104</code>のデータが1843個記録され
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e7%94%9f%e6%b4%bb" title="生活">生活 (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e7%99%bb%e5%b1%b1" title="登山">登山 (19)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e7%a4%be%e5%86%85se" title="社内se">社内se (21)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%e8%87%aa%e8%bb%a2%e8%bb%8a" title="自転車">自転車 (16)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%e8%87%aa%e8%bb%a2%e8%bb%8a" title="自転車">自転車 (17)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e8%b5%b0%e8%a1%8c%e4%bc%9a" title="走行会">走行会 (2)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e9%9b%91%e5%ad%a6" title="雑学">雑学 (1)</a>
 	</div>

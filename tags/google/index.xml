@@ -13,19 +13,14 @@
       <link>https://www.330k.info/essay/sync-garoon-google-calendar/</link>
       <pubDate>Fri, 12 Feb 2021 13:15:47 +0900</pubDate>
       <guid>https://www.330k.info/essay/sync-garoon-google-calendar/</guid>
-      <description>&lt;p&gt;Cybozuのガルーン(Garoon)はよくできたソフトウェアなのだが、他のサービスとの連携、という点では使いにくかった。&lt;/p&gt;
-&lt;p&gt;以前からSOAP APIはあったものの、繰り返し予定が難関で、実際の日にちを都度計算しなければならず、同期ツールの作成を断念していた。&lt;/p&gt;
-&lt;p&gt;だがREST APIが登場し、繰り返し予定が1件ずつ返されるようになってとても処理しやすくなったので、GASで動作するガルーンからGoogleカレンダーへの一方向同期スクリプトを作成した。&lt;/p&gt;</description>
+      <description>&lt;p&gt;Cybozuのガルーン(Garoon)はよくできたソフトウェアなのだが、他のサービスとの連携、という点では使いにくかった。&lt;/p&gt;&#xA;&lt;p&gt;以前からSOAP APIはあったものの、繰り返し予定が難関で、実際の日にちを都度計算しなければならず、同期ツールの作成を断念していた。&lt;/p&gt;&#xA;&lt;p&gt;だがREST APIが登場し、繰り返し予定が1件ずつ返されるようになってとても処理しやすくなったので、GASで動作するガルーンからGoogleカレンダーへの一方向同期スクリプトを作成した。&lt;/p&gt;</description>
     </item>
     <item>
       <title>キャノンボール専用 天候・風向き予測</title>
       <link>https://www.330k.info/software/cannonball-wind-map/</link>
       <pubDate>Sat, 11 Jul 2020 19:41:44 +0900</pubDate>
       <guid>https://www.330k.info/software/cannonball-wind-map/</guid>
-      <description>&lt;p&gt;自分用に作成したキャノンボール専用の簡易版Epic Ride Weatherです。&lt;/p&gt;
-&lt;p&gt;Open-Meteo(&lt;a href=&#34;https://open-meteo.com/&#34;&gt;https://open-meteo.com/&lt;/a&gt;)のデータを表示します。&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://www.330k.info/software/cannonball-wind-map/fullscreen.html&#34;&gt;スマートフォン/フルスクリーン版はこちら&lt;/a&gt;&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;</description>
+      <description>&lt;p&gt;自分用に作成したキャノンボール専用の簡易版Epic Ride Weatherです。&lt;/p&gt;&#xA;&lt;p&gt;Open-Meteo(&lt;a href=&#34;https://open-meteo.com/&#34;&gt;https://open-meteo.com/&lt;/a&gt;)のデータを表示します。&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://www.330k.info/software/cannonball-wind-map/fullscreen.html&#34;&gt;スマートフォン/フルスクリーン版はこちら&lt;/a&gt;&lt;/p&gt;&#xA;&lt;!-- raw HTML omitted --&gt;</description>
     </item>
     <item>
       <title>Google Analyticsで動画(Video要素)のイベントを計測</title>

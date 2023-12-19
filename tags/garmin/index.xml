@@ -6,41 +6,42 @@
     <description>Recent content in Garmin on 330k info</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Tue, 13 Jun 2023 23:14:53 +0900</lastBuildDate>
+    <lastBuildDate>Wed, 20 Dec 2023 00:22:46 +0900</lastBuildDate>
     <atom:link href="https://www.330k.info/tags/garmin/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>速度センサがないときのEdge 830の速度・距離計算挙動</title>
+      <link>https://www.330k.info/essay/edge_830_distance_calculation_behavior/</link>
+      <pubDate>Wed, 20 Dec 2023 00:22:46 +0900</pubDate>
+      <guid>https://www.330k.info/essay/edge_830_distance_calculation_behavior/</guid>
+      <description>&lt;p&gt;Garmin Edgeシリーズは、速度センサがペアリングされていない場合は、GPSから速度と距離を計算する。&lt;/p&gt;&#xA;&lt;p&gt;しかしトンネル通過時などに距離が短くなる現象が過去に発生(&lt;a href=&#34;https://www.330k.info/bicycle/touring/20201024-brm1024-saitama-attack-nihonkai-600km/&#34;&gt;BRM1024 埼玉600 アタック日本海&lt;/a&gt;、&#xA;&lt;a href=&#34;https://www.330k.info/bicycle/touring/20200905-brm905-tokyo-300km/&#34;&gt;BRM905 東京300 ウルトラオレンヂ&lt;/a&gt;)しており、その原因を調査した。&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Garmin FITにおけるmesg_num 104が示す内容についての分析結果</title>
       <link>https://www.330k.info/essay/garmin_fit_mesg_num_104/</link>
       <pubDate>Tue, 13 Jun 2023 23:14:53 +0900</pubDate>
       <guid>https://www.330k.info/essay/garmin_fit_mesg_num_104/</guid>
-      <description>&lt;p&gt;Edge 830で実際の走行したログのFITファイルを見ると、Garmin FIT SDKでドキュメント化されていないメッセージが結構ある。&lt;/p&gt;
-&lt;p&gt;このうち、&lt;code&gt;mesg_num 104&lt;/code&gt;が何を示しているのかについて特定することに成功した。&lt;/p&gt;</description>
+      <description>&lt;p&gt;Edge 830で実際の走行したログのFITファイルを見ると、Garmin FIT SDKでドキュメント化されていないメッセージが結構ある。&lt;/p&gt;&#xA;&lt;p&gt;このうち、&lt;code&gt;mesg_num 104&lt;/code&gt;が何を示しているのかについて特定することに成功した。&lt;/p&gt;</description>
     </item>
     <item>
       <title>Garmin FITファイルをカンタンに編集する方法</title>
       <link>https://www.330k.info/essay/edit-garmin-fit-mannually/</link>
       <pubDate>Mon, 03 Jan 2022 01:06:28 +0900</pubDate>
       <guid>https://www.330k.info/essay/edit-garmin-fit-mannually/</guid>
-      <description>&lt;p&gt;Garminのデバイスで使用されるFITファイルはバイナリなので、直接編集するのは骨が折れる。&lt;/p&gt;
-&lt;p&gt;ここではGarmin FIT SDKに含まれる&lt;a href=&#34;https://developer.garmin.com/fit/fitcsvtool/&#34;&gt;FIT CSV Tool&lt;/a&gt;を使って簡易的に編集する方法を説明する。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;※ ここでいう「カンタンに」「簡易的に」とは「バイナリを直接編集する場合に比べれば」という比喩表現ですのでご注意を&lt;/strong&gt;&lt;/p&gt;</description>
+      <description>&lt;p&gt;Garminのデバイスで使用されるFITファイルはバイナリなので、直接編集するのは骨が折れる。&lt;/p&gt;&#xA;&lt;p&gt;ここではGarmin FIT SDKに含まれる&lt;a href=&#34;https://developer.garmin.com/fit/fitcsvtool/&#34;&gt;FIT CSV Tool&lt;/a&gt;を使って簡易的に編集する方法を説明する。&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;※ ここでいう「カンタンに」「簡易的に」とは「バイナリを直接編集する場合に比べれば」という比喩表現ですのでご注意を&lt;/strong&gt;&lt;/p&gt;</description>
     </item>
     <item>
       <title>Edge 830にGPXやTCXファイルを入れたときの挙動</title>
       <link>https://www.330k.info/essay/edge_830_newfile_import_behavior/</link>
       <pubDate>Wed, 15 Dec 2021 00:56:02 +0900</pubDate>
       <guid>https://www.330k.info/essay/edge_830_newfile_import_behavior/</guid>
-      <description>&lt;p&gt;Garmin Edge 830(や530などの兄弟機)は、PCとUSB接続したときに本体の&lt;code&gt;Garmin/NewFiles&lt;/code&gt;フォルダにFITファイルのほか、GPXファイルやTCXファイルを入れることでルートなどを登録できる。&lt;/p&gt;
-&lt;p&gt;どのようなファイルを入れたときに、どのような挙動をするのか調査した。&lt;/p&gt;</description>
+      <description>&lt;p&gt;Garmin Edge 830(や530などの兄弟機)は、PCとUSB接続したときに本体の&lt;code&gt;Garmin/NewFiles&lt;/code&gt;フォルダにFITファイルのほか、GPXファイルやTCXファイルを入れることでルートなどを登録できる。&lt;/p&gt;&#xA;&lt;p&gt;どのようなファイルを入れたときに、どのような挙動をするのか調査した。&lt;/p&gt;</description>
     </item>
     <item>
       <title>Garmin Connectでこれまでのすべてのアクティビティを一括ダウンロードする</title>
       <link>https://www.330k.info/essay/download-all-activities-from-garmin-connect/</link>
       <pubDate>Mon, 27 Jul 2020 15:31:50 +0900</pubDate>
       <guid>https://www.330k.info/essay/download-all-activities-from-garmin-connect/</guid>
-      <description>&lt;p&gt;Garmin Connectがサイバー攻撃を受けてダウンした。&lt;/p&gt;
-&lt;p&gt;ランサムウェアにやられたらしい、ということで最悪の場合、これまでの記録が消えてしまう可能性がある。&lt;/p&gt;
-&lt;p&gt;幸いにもとりあえず復旧したようなので、これまでの全アクティビティをローカルにバックアップした。&lt;/p&gt;</description>
+      <description>&lt;p&gt;Garmin Connectがサイバー攻撃を受けてダウンした。&lt;/p&gt;&#xA;&lt;p&gt;ランサムウェアにやられたらしい、ということで最悪の場合、これまでの記録が消えてしまう可能性がある。&lt;/p&gt;&#xA;&lt;p&gt;幸いにもとりあえず復旧したようなので、これまでの全アクティビティをローカルにバックアップした。&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

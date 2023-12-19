@@ -10,15 +10,13 @@
 	<meta property="og:title" content="陽的Runge-Kutta法のButcher tableau" />
 <meta property="og:description" content="Explicit Runge-Kutta法の公式はいくつか知られているが、高次の公式になるほどButcher配列の項数が増えるため論文に誤植が多くなる。 それに気づかないまま実際に使うと、プログラムは正しく組めているはずなのに思うように精度が上がらないという落とし穴にはまってしまう。 覚書として、以下に代表的と思われる公式のButcher tableauをまとめる。 以下のButcher tableauはMathemati" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://www.330k.info/essay/explicit-runge-kutta-butcher-tableau/" /><meta property="og:image" content="https://www.330k.info/images/Mathematica_Logo.png" /><meta property="article:section" content="essay" />
+<meta property="og:url" content="https://www.330k.info/essay/explicit-runge-kutta-butcher-tableau/" /><meta property="og:image" content="https://www.330k.info/images/Mathematica_Logo.webp" /><meta property="article:section" content="essay" />
 <meta property="article:published_time" content="2009-12-05T00:00:00+09:00" />
-<meta property="article:modified_time" content="2022-10-27T02:36:00+09:00" />
+<meta property="article:modified_time" content="2022-10-27T02:36:11+09:00" />
 
 
-	<meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:image" content="https://www.330k.info/images/Mathematica_Logo.png"/>
-
-<meta name="twitter:title" content="陽的Runge-Kutta法のButcher tableau"/>
+	<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://www.330k.info/images/Mathematica_Logo.webp" /><meta name="twitter:title" content="陽的Runge-Kutta法のButcher tableau"/>
 <meta name="twitter:description" content="Explicit Runge-Kutta法の公式はいくつか知られているが、高次の公式になるほどButcher配列の項数が増えるため論文に誤植が多くなる。 それに気づかないまま実際に使うと、プログラムは正しく組めているはずなのに思うように精度が上がらないという落とし穴にはまってしまう。 覚書として、以下に代表的と思われる公式のButcher tableauをまとめる。 以下のButcher tableauはMathemati"/>
 
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
@@ -28,7 +26,7 @@
 	<link rel="stylesheet" href="/css/330k.css">
 	<link rel="shortcut icon" href="/favicon.ico">
 		
-<script type="application/javascript">
+<script>
 var doNotTrack = false;
 if (!doNotTrack) {
 	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
@@ -86,7 +84,7 @@ if (!doNotTrack) {
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
 	<time class="meta__text" datetime="2009-12-05T00:00:00">December 05, 2009</time>
-	<time class="meta__text" datetime="2022-10-27T02:36:00"> (Last Modified: October 27, 2022)</time>
+	<time class="meta__text" datetime="2022-10-27T02:36:11"> (Last Modified: October 27, 2022)</time>
 </div>
 
 <div class="meta__item-categories meta__item">
@@ -106,60 +104,60 @@ if (!doNotTrack) {
 <p>公式の名前や出典に関しては自信がないので、鵜呑みにしないこと。</p>
 <h2 id="1段1次">1段1次</h2>
 <h3 id="euler法">Euler法</h3>
-<figure><img src="ExplicitEuler.png" decoding="async" width="35" height="46"/>
+<figure><img src="ExplicitEuler.webp" decoding="async" width="35" height="46"/>
 </figure>
 <h2 id="2段2次">2段2次</h2>
 <h3 id="修正euler法">修正Euler法</h3>
-<figure><img src="ModifiedEuler.png" decoding="async" width="59" height="73"/>
+<figure><img src="ModifiedEuler.webp" decoding="async" width="59" height="73"/>
 </figure>
 <h3 id="heun法">Heun法</h3>
-<figure><img src="Heun.png" decoding="async" width="59" height="73"/>
+<figure><img src="Heun.webp" decoding="async" width="59" height="73"/>
 </figure>
 <h3 id="ralston法">Ralston法</h3>
 <h2 id="3段3次">3段3次</h2>
 <h3 id="heunの3次法">Heunの3次法</h3>
-<figure><img src="HeunRK3.png" decoding="async" width="91" height="106"/>
+<figure><img src="HeunRK3.webp" decoding="async" width="91" height="106"/>
 </figure>
 <h3 id="kuttaの3次法">Kuttaの3次法</h3>
-<figure><img src="ClassicalRK3.png" decoding="async" width="87" height="100"/>
+<figure><img src="ClassicalRK3.webp" decoding="async" width="87" height="100"/>
 </figure>
 <h3 id="ralstonの3次法">Ralstonの3次法</h3>
 <h2 id="4段4次">4段4次</h2>
 <h3 id="古典的runge-kutta法">古典的Runge-Kutta法</h3>
-<figure><img src="ClassicalRK4.png" decoding="async" width="103" height="127"/>
+<figure><img src="ClassicalRK4.webp" decoding="async" width="103" height="127"/>
 </figure>
 <h2 id="6段5次">6段5次</h2>
 <h3 id="runge-kutta-fehlberg法のうち5次の部分">Runge-Kutta-Fehlberg法のうち5次の部分</h3>
-<figure><img src="RungeKuttaFehlberg.png" decoding="async" width="243" height="187"/>
+<figure><img src="RungeKuttaFehlberg.webp" decoding="async" width="243" height="187"/>
 </figure>
 <h3 id="runge-kutta-nystroemのうち5次の部分">Runge-Kutta-Nystroemのうち5次の部分</h3>
-<figure><img src="Nystroem.png" decoding="async" width="193" height="187"/>
+<figure><img src="Nystroem.webp" decoding="async" width="193" height="187"/>
 </figure>
 <h3 id="butcherによる5次公式を3つ">Butcherによる5次公式を3つ</h3>
-<p><figure><img src="Butcher1.png" decoding="async" width="187" height="187"/>
+<p><figure><img src="Butcher1.webp" decoding="async" width="187" height="187"/>
 </figure>
-<figure><img src="Butcher2.png" decoding="async" width="183" height="187"/>
+<figure><img src="Butcher2.webp" decoding="async" width="183" height="187"/>
 </figure>
-<figure><img src="Butcher3.png" decoding="async" width="195" height="187"/>
+<figure><img src="Butcher3.webp" decoding="async" width="195" height="187"/>
 </figure></p>
 <h2 id="7段6次">7段6次</h2>
 <h3 id="hammudによるもの">Hammudによるもの</h3>
-<figure><img src="Hammud6.png" decoding="async" width="563" height="255"/>
+<figure><img src="Hammud6.webp" decoding="async" width="563" height="255"/>
 </figure>
 <h2 id="9段7次">9段7次</h2>
 <h3 id="shanksによるもの">Shanksによるもの</h3>
-<figure><img src="Shanks7.png" decoding="async" width="377" height="268"/>
+<figure><img src="Shanks7.webp" decoding="async" width="377" height="268"/>
 </figure>
 <h3 id="cooperとvernerによる7次公式">CooperとVernerによる7次公式</h3>
-<figure><img src="CooperVerner7.png" decoding="async" width="1176" height="298"/>
+<figure><img src="CooperVerner7.webp" decoding="async" width="1176" height="298"/>
 </figure>
 <h2 id="11段8次">11段8次</h2>
 <h3 id="cooperとvernerによる8次公式">CooperとVernerによる8次公式</h3>
-<figure><img src="CooperVerner8.png" decoding="async" width="1358" height="352"/>
+<figure><img src="CooperVerner8.webp" decoding="async" width="1358" height="352"/>
 </figure>
 <h2 id="16段9次">16段9次</h2>
 <h3 id="vernerによる埋め込み型公式のうち9次のもの">Vernerによる埋め込み型公式のうち9次のもの</h3>
-<figure><img src="Verner9.png" decoding="async" width="1637" height="523"/>
+<figure><img src="Verner9.webp" decoding="async" width="1637" height="523"/>
 </figure>
 
 		</div>
@@ -192,17 +190,17 @@ if (!doNotTrack) {
 	
 	<div class="widget__content">
 		<ul class="widget__list">
-			<li class="widget__item"><a class="widget__link" href="/software/create_gpx_with_google_maps/"><img src="/software/create_gpx_with_google_maps/favicon-16x16.png" height="16" width="16" style="vertical-align: middle;" />Google MapsでGPXルート作成</a></li>
-			<li class="widget__item"><a class="widget__link" href="/software/simplify_gpx/"><img src="/software/simplify_gpx/icon_16.png" height="16" width="16" style="vertical-align: middle;" />GPXトラックログを間引く・簡略化</a></li>
-			<li class="widget__item"><a class="widget__link" href="/software/cannonball-wind-map/"><img src="/software/cannonball-wind-map/cannonball_logo.png" height="16" width="16" style="vertical-align: middle;" />キャノンボール専用 天候・風向き予測</a></li>
+			<li class="widget__item"><a class="widget__link" href="/software/create_gpx_with_google_maps/"><img src="/software/create_gpx_with_google_maps/favicon-16x16.webp" height="16" width="16" style="vertical-align: middle;" />Google MapsでGPXルート作成</a></li>
+			<li class="widget__item"><a class="widget__link" href="/software/simplify_gpx/"><img src="/software/simplify_gpx/icon_16.webp" height="16" width="16" style="vertical-align: middle;" />GPXトラックログを間引く・簡略化</a></li>
+			<li class="widget__item"><a class="widget__link" href="/software/cannonball-wind-map/"><img src="/software/cannonball-wind-map/cannonball_logo.webp" height="16" width="16" style="vertical-align: middle;" />キャノンボール専用 天候・風向き予測</a></li>
 			<li class="widget__item"><a class="widget__link" href="/software/gpx-nearby-search/"><img src="/software/gpx-nearby-search/icon002_32.svg" height="16" width="16" style="vertical-align: middle;" />GPXルート沿いコンビニ・道の駅検索</a></li>
-			<li class="widget__item"><a class="widget__link" href="/software/chrome_rwgps_ele_gsi/"><img src="/software/chrome_rwgps_ele_gsi/icon_02_32.png" height="16" width="16" style="vertical-align: middle;" />RWGPS地理院標高 - Chrome拡張機能</a></li>
-			<li class="widget__item"><a class="widget__link" href="/software/chrome_passable_route_gpx_loader/"><img src="/software/chrome_passable_route_gpx_loader/icon_128.png" height="16" width="16" style="vertical-align: middle;" />通れた道マップ GPX表示拡張 - Chrome拡張機能</a></li>
+			<li class="widget__item"><a class="widget__link" href="/software/chrome_rwgps_ele_gsi/"><img src="/software/chrome_rwgps_ele_gsi/icon_02_32.webp" height="16" width="16" style="vertical-align: middle;" />RWGPS地理院標高 - Chrome拡張機能</a></li>
+			<li class="widget__item"><a class="widget__link" href="/software/chrome_passable_route_gpx_loader/"><img src="/software/chrome_passable_route_gpx_loader/icon_128.webp" height="16" width="16" style="vertical-align: middle;" />通れた道マップ GPX表示拡張 - Chrome拡張機能</a></li>
 			<li class="widget__item"><a class="widget__link" href="/software/gpx-tcx-converter/"><img src="/software/gpx-tcx-converter/icon256.svg" height="16" width="16" style="vertical-align: middle;" />GPX to FIT/TCX Converter</a></li>
 			<li class="widget__item"><a class="widget__link" href="/software/gpx-compare/"><img src="/software/gpx-compare/icon240.svg" height="16" width="16" style="vertical-align: middle;" />GPXルート比較(差分表示)ツール</a></li>
 			<li class="widget__item"><a class="widget__link" href="/software/gpx-spike-detector/"><img src="/software/gpx-spike-detector/images/icon002.svg" height="16" width="16" style="vertical-align: middle;" />GPXヒゲ検出ツール(α)</a></li>
-			<li class="widget__item"><a class="widget__link" href="/software/rakuten-hotel-search/"><img src="/software/rakuten-hotel-search/rakuten_travel_logo_32x32.png" height="16" width="16" style="vertical-align: middle;" />楽天トラベル ホテル検索</a></li>
-			<li class="widget__item"><a class="widget__link" href="/software/yamap-gpx-exporter/"><img src="/software/yamap-gpx-exporter/icon_128.png" height="16" width="16" style="vertical-align: middle;" />YAMAP GPX Exporter</a></li>
+			<li class="widget__item"><a class="widget__link" href="/software/rakuten-hotel-search/"><img src="/software/rakuten-hotel-search/rakuten_travel_logo_32x32.webp" height="16" width="16" style="vertical-align: middle;" />楽天トラベル ホテル検索</a></li>
+			<li class="widget__item"><a class="widget__link" href="/software/yamap-gpx-exporter/"><img src="/software/yamap-gpx-exporter/icon_128.webp" height="16" width="16" style="vertical-align: middle;" />YAMAP GPX Exporter</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/introduction/">自転車について</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/equipments/">携行品・装備品</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20201004-osaka-tokyo-cannonball/">2020年10月04日 大阪→東京 キャノンボール 23時間37分</a></li>
@@ -213,6 +211,7 @@ if (!doNotTrack) {
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/essay/edge_830_distance_calculation_behavior/">速度センサがないときのEdge 830の速度・距離計算挙動</a></li>
 			<li class="widget__item"><a class="widget__link" href="/walk/20231124-tonomine-yusakaji/">2023年11月24日 小田原-塔ノ峰-湯坂路-元箱根</a></li>
 			<li class="widget__item"><a class="widget__link" href="/walk/20231119-okukuji-nantaisan/">2023年11月19日 奥久慈男体山</a></li>
 			<li class="widget__item"><a class="widget__link" href="/walk/20231027-nikko-nantaisan/">2023年10月27日 日光男体山</a></li>
@@ -232,7 +231,6 @@ if (!doNotTrack) {
 			<li class="widget__item"><a class="widget__link" href="/walk/20230401-mt-toridani/">2023年04月01日 東日原-酉谷山ピストン</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/consume-cpu-wastefully/">無駄にCPUを消費するデーモンを作る</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/convert-datum-tokyo-to-jgd/">(旧)日本測地系から世界測地系への変換式を作ってみる</a></li>
-			<li class="widget__item"><a class="widget__link" href="/essay/garoon_notification_javascript_customize/">ガルーンで予定のリマインダーをブラウザのみで実施する</a></li>
 		</ul>
 	</div>
 </div>
@@ -265,7 +263,7 @@ if (!doNotTrack) {
 		<a class="widget-taglist__link widget__link btn" href="/tags/dotnet" title="Dotnet">Dotnet (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/ffmpeg" title="Ffmpeg">Ffmpeg (2)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/freeradius" title="Freeradius">Freeradius (1)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/garmin" title="Garmin">Garmin (4)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/garmin" title="Garmin">Garmin (5)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/garoon" title="Garoon">Garoon (2)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/gas" title="Gas">Gas (2)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/github" title="Github">Github (10)</a>
@@ -309,7 +307,7 @@ if (!doNotTrack) {
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e7%94%9f%e6%b4%bb" title="生活">生活 (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e7%99%bb%e5%b1%b1" title="登山">登山 (19)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e7%a4%be%e5%86%85se" title="社内se">社内se (21)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%e8%87%aa%e8%bb%a2%e8%bb%8a" title="自転車">自転車 (16)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%e8%87%aa%e8%bb%a2%e8%bb%8a" title="自転車">自転車 (17)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e8%b5%b0%e8%a1%8c%e4%bc%9a" title="走行会">走行会 (2)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e9%9b%91%e5%ad%a6" title="雑学">雑学 (1)</a>
 	</div>

@@ -13,8 +13,7 @@
       <link>https://www.330k.info/software/hta-sql-tool/</link>
       <pubDate>Wed, 13 Jan 2016 22:42:14 +0900</pubDate>
       <guid>https://www.330k.info/software/hta-sql-tool/</guid>
-      <description>&lt;p&gt;今は廃れたHTA(HTML Application)で書いた、汎用SQLツール。
-AccessがなくてもCSVファイルやExcelファイルに対してSQLを実行。&lt;/p&gt;</description>
+      <description>&lt;p&gt;今は廃れたHTA(HTML Application)で書いた、汎用SQLツール。&#xA;AccessがなくてもCSVファイルやExcelファイルに対してSQLを実行。&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

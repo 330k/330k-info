@@ -13,36 +13,28 @@
       <link>https://www.330k.info/essay/hide-internal-procedure-in-mathematica/</link>
       <pubDate>Fri, 28 Oct 2022 15:20:32 +0900</pubDate>
       <guid>https://www.330k.info/essay/hide-internal-procedure-in-mathematica/</guid>
-      <description>&lt;p&gt;Mathematicaのシンボルにはいくつかの属性を設定でき、&lt;code&gt;ReadProtected&lt;/code&gt;属性を付与することで定義を隠蔽することができるが、
-&lt;code&gt;DownValues&lt;/code&gt;や&lt;code&gt;UpValues&lt;/code&gt;を使うことで定義を表示することができる他、&lt;code&gt;Trace&lt;/code&gt;や&lt;code&gt;TracePrint&lt;/code&gt;を使うことで内部処理を追跡することが可能である。&lt;/p&gt;
-&lt;p&gt;そこで、&lt;code&gt;ReadProtected&lt;/code&gt;属性に加えて&lt;code&gt;Locked&lt;/code&gt;属性を付与することで内部処理を隠蔽することができる。&lt;/p&gt;</description>
+      <description>&lt;p&gt;Mathematicaのシンボルにはいくつかの属性を設定でき、&lt;code&gt;ReadProtected&lt;/code&gt;属性を付与することで定義を隠蔽することができるが、&#xA;&lt;code&gt;DownValues&lt;/code&gt;や&lt;code&gt;UpValues&lt;/code&gt;を使うことで定義を表示することができる他、&lt;code&gt;Trace&lt;/code&gt;や&lt;code&gt;TracePrint&lt;/code&gt;を使うことで内部処理を追跡することが可能である。&lt;/p&gt;&#xA;&lt;p&gt;そこで、&lt;code&gt;ReadProtected&lt;/code&gt;属性に加えて&lt;code&gt;Locked&lt;/code&gt;属性を付与することで内部処理を隠蔽することができる。&lt;/p&gt;</description>
     </item>
     <item>
       <title>測地線距離計算式・計算ライブラリの精度評価 </title>
       <link>https://www.330k.info/essay/geodesic_distance_formula_comparison_2/</link>
       <pubDate>Thu, 17 Mar 2022 01:13:49 +0900</pubDate>
       <guid>https://www.330k.info/essay/geodesic_distance_formula_comparison_2/</guid>
-      <description>&lt;p&gt;2地点の緯度経度を与えてその間の距離を求める計算式はいくつかあり、
-&lt;a href=&#34;https://www.330k.info/essay/precision-of-mathematica-geodistance-and-geographical-distance-formula/&#34;&gt;GeoDistanceとその他の測地線距離算出式の精度&lt;/a&gt;
-ではランダムな2点間の距離や、日本での運転経路データを用いて代表的な計算式の精度を評価したが、
-短い距離の計算精度の評価と、対蹠点付近の計算精度の評価が不十分であった。&lt;/p&gt;
-&lt;p&gt;そこで、比較する計算式を追加した上で、GeographicLibのテストデータを用いて計算精度の再評価を行った。&lt;/p&gt;</description>
+      <description>&lt;p&gt;2地点の緯度経度を与えてその間の距離を求める計算式はいくつかあり、&#xA;&lt;a href=&#34;https://www.330k.info/essay/precision-of-mathematica-geodistance-and-geographical-distance-formula/&#34;&gt;GeoDistanceとその他の測地線距離算出式の精度&lt;/a&gt;&#xA;ではランダムな2点間の距離や、日本での運転経路データを用いて代表的な計算式の精度を評価したが、&#xA;短い距離の計算精度の評価と、対蹠点付近の計算精度の評価が不十分であった。&lt;/p&gt;&#xA;&lt;p&gt;そこで、比較する計算式を追加した上で、GeographicLibのテストデータを用いて計算精度の再評価を行った。&lt;/p&gt;</description>
     </item>
     <item>
       <title>Mathematicaプログラムの難読化・隠しメッセージ埋め込み手法の検討</title>
       <link>https://www.330k.info/essay/obfuscate-mathematica-program/</link>
       <pubDate>Mon, 29 Nov 2021 20:39:12 +0900</pubDate>
       <guid>https://www.330k.info/essay/obfuscate-mathematica-program/</guid>
-      <description>&lt;p&gt;Mathematicaのプログラムを難読化し、またそこに隠しメッセージを埋め込む手法をいくつか検討してみた。&lt;/p&gt;
-&lt;p&gt;円周率をモンテカルロ法で求めるプログラムを難読化し、隠しメッセージを埋め込む例をいくつか考えた。&lt;/p&gt;</description>
+      <description>&lt;p&gt;Mathematicaのプログラムを難読化し、またそこに隠しメッセージを埋め込む手法をいくつか検討してみた。&lt;/p&gt;&#xA;&lt;p&gt;円周率をモンテカルロ法で求めるプログラムを難読化し、隠しメッセージを埋め込む例をいくつか考えた。&lt;/p&gt;</description>
     </item>
     <item>
       <title>UbuntuでMathematicaノートブックを関連付ける</title>
       <link>https://www.330k.info/essay/open-mathematica-notebook-in-ubuntu/</link>
       <pubDate>Fri, 07 May 2021 21:01:21 +0900</pubDate>
       <guid>https://www.330k.info/essay/open-mathematica-notebook-in-ubuntu/</guid>
-      <description>&lt;p&gt;Ubuntuのアップデート時にMathematicaノートブックをNautilusから起動できなくなってしまって少し面倒だったので、再度設定を行った。&lt;/p&gt;
-&lt;p&gt;ついでに、すでにMathematicaが起動している時に2つ目のノートブックをNautilusから開いた時、デフォルトでは別プロセスのMathematicaが起動してしまってライセンスが要求されてしまう点にも対処した。&lt;/p&gt;</description>
+      <description>&lt;p&gt;Ubuntuのアップデート時にMathematicaノートブックをNautilusから起動できなくなってしまって少し面倒だったので、再度設定を行った。&lt;/p&gt;&#xA;&lt;p&gt;ついでに、すでにMathematicaが起動している時に2つ目のノートブックをNautilusから開いた時、デフォルトでは別プロセスのMathematicaが起動してしまってライセンスが要求されてしまう点にも対処した。&lt;/p&gt;</description>
     </item>
     <item>
       <title>Mathematicaの特殊・省略記法一覧</title>
@@ -112,12 +104,7 @@
       <link>https://www.330k.info/essay/precision-of-mathematica-geodistance-and-geographical-distance-formula/</link>
       <pubDate>Sat, 07 Jun 2014 00:00:00 +0900</pubDate>
       <guid>https://www.330k.info/essay/precision-of-mathematica-geodistance-and-geographical-distance-formula/</guid>
-      <description>&lt;p&gt;Mathematicaには2点の緯度と経度を与えて、その間の測地線距離を返す関数としてGeoDistanceがある。
-しかしながら、&lt;a href=&#34;http://mathematica.stackexchange.com/questions/26526/how-accurate-is-geodistance&#34;&gt;ここ&lt;/a&gt;で書かれているように、その精度には疑問が呈されているようだ。&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;17 Mar. 2022 追記)
-&lt;strong&gt;&lt;a href=&#34;https://www.330k.info/essay/geodesic_distance_formula_comparison_2/&#34;&gt;続編記事&lt;/a&gt;を投稿&lt;/strong&gt;&lt;/p&gt;
-&lt;hr&gt;</description>
+      <description>&lt;p&gt;Mathematicaには2点の緯度と経度を与えて、その間の測地線距離を返す関数としてGeoDistanceがある。&#xA;しかしながら、&lt;a href=&#34;http://mathematica.stackexchange.com/questions/26526/how-accurate-is-geodistance&#34;&gt;ここ&lt;/a&gt;で書かれているように、その精度には疑問が呈されているようだ。&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;p&gt;17 Mar. 2022 追記)&#xA;&lt;strong&gt;&lt;a href=&#34;https://www.330k.info/essay/geodesic_distance_formula_comparison_2/&#34;&gt;続編記事&lt;/a&gt;を投稿&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;hr&gt;</description>
     </item>
     <item>
       <title>Wolfram CDF Playerでローカルファイルの読み込みと書き込みを行う</title>
@@ -194,17 +181,7 @@
       <link>https://www.330k.info/essay/oresenwomabiku/</link>
       <pubDate>Sat, 24 Oct 2009 00:00:00 +0900</pubDate>
       <guid>https://www.330k.info/essay/oresenwomabiku/</guid>
-      <description>&lt;p&gt;読み込んだGPSログのデータを間引きたい、と思って調べたところ、
-(Ramer-)Douglas-Peuckerのアルゴリズムというものがあることが分かった。&lt;/p&gt;
-&lt;p&gt;基本的な考え方は、&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;折れ線の始点と終点を結ぶ線分と各点の距離を求める。&lt;/li&gt;
-&lt;li&gt;すべての点との距離が許容誤差$\varepsilon$以内に入っていれば始点と終点だけを返して終了。&lt;/li&gt;
-&lt;li&gt;そうでなければ距離が最大の点Pを選択。&lt;/li&gt;
-&lt;li&gt;始点から点Pまでの折れ線と、点Pから終点までの折れ線のそれぞれについてまた1から処理する。&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;という再帰的なもの。&lt;/p&gt;
-&lt;p&gt;再帰的なものはMathematicaの得意分野なので、MathematicaでRamer-Douglas-Peuckerのアルゴリズムを実装してみた。&lt;/p&gt;</description>
+      <description>&lt;p&gt;読み込んだGPSログのデータを間引きたい、と思って調べたところ、&#xA;(Ramer-)Douglas-Peuckerのアルゴリズムというものがあることが分かった。&lt;/p&gt;&#xA;&lt;p&gt;基本的な考え方は、&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;折れ線の始点と終点を結ぶ線分と各点の距離を求める。&lt;/li&gt;&#xA;&lt;li&gt;すべての点との距離が許容誤差$\varepsilon$以内に入っていれば始点と終点だけを返して終了。&lt;/li&gt;&#xA;&lt;li&gt;そうでなければ距離が最大の点Pを選択。&lt;/li&gt;&#xA;&lt;li&gt;始点から点Pまでの折れ線と、点Pから終点までの折れ線のそれぞれについてまた1から処理する。&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;という再帰的なもの。&lt;/p&gt;&#xA;&lt;p&gt;再帰的なものはMathematicaの得意分野なので、MathematicaでRamer-Douglas-Peuckerのアルゴリズムを実装してみた。&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

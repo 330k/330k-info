@@ -13,17 +13,14 @@
       <link>https://www.330k.info/essay/disable-volume-auto-adjust-windows-10/</link>
       <pubDate>Mon, 17 May 2021 23:47:45 +0900</pubDate>
       <guid>https://www.330k.info/essay/disable-volume-auto-adjust-windows-10/</guid>
-      <description>&lt;p&gt;会社のノートPCをHDMIで外部モニタに映像と音声を出力していると、動画を再生開始しても最初の数秒が無音になってしまった。&lt;/p&gt;
-&lt;p&gt;動画ファイルや動画プレイヤー、モニタ、PCを変えて試したが、いずれも同じ現象が発生したため、Windowsに原因があると推定し、調べてみるとビンゴ。&lt;/p&gt;
-&lt;p&gt;しかし見つかった対処法では解決せず、ステレオミキサーを使う方法で解決した。&lt;/p&gt;</description>
+      <description>&lt;p&gt;会社のノートPCをHDMIで外部モニタに映像と音声を出力していると、動画を再生開始しても最初の数秒が無音になってしまった。&lt;/p&gt;&#xA;&lt;p&gt;動画ファイルや動画プレイヤー、モニタ、PCを変えて試したが、いずれも同じ現象が発生したため、Windowsに原因があると推定し、調べてみるとビンゴ。&lt;/p&gt;&#xA;&lt;p&gt;しかし見つかった対処法では解決せず、ステレオミキサーを使う方法で解決した。&lt;/p&gt;</description>
     </item>
     <item>
       <title>起動時にWScriptからCScriptへ自動で切り替える(JScript)</title>
       <link>https://www.330k.info/essay/switch-wscript-to-cscript-js/</link>
       <pubDate>Mon, 06 Jul 2020 16:55:30 +0900</pubDate>
       <guid>https://www.330k.info/essay/switch-wscript-to-cscript-js/</guid>
-      <description>&lt;p&gt;ExplorerからWSHの&lt;code&gt;.js&lt;/code&gt;ファイルをダブルクリックすると&lt;code&gt;wscript.exe&lt;/code&gt;で起動されるが、&lt;code&gt;cscript.exe&lt;/code&gt;で起動したい場合も多い。&lt;/p&gt;
-&lt;p&gt;そこで&lt;code&gt;wscript&lt;/code&gt;で起動した場合に、引数を含めて&lt;code&gt;cscript&lt;/code&gt;で起動し直すスニペットを作成した。&lt;/p&gt;</description>
+      <description>&lt;p&gt;ExplorerからWSHの&lt;code&gt;.js&lt;/code&gt;ファイルをダブルクリックすると&lt;code&gt;wscript.exe&lt;/code&gt;で起動されるが、&lt;code&gt;cscript.exe&lt;/code&gt;で起動したい場合も多い。&lt;/p&gt;&#xA;&lt;p&gt;そこで&lt;code&gt;wscript&lt;/code&gt;で起動した場合に、引数を含めて&lt;code&gt;cscript&lt;/code&gt;で起動し直すスニペットを作成した。&lt;/p&gt;</description>
     </item>
     <item>
       <title>ブラウザのテキストボックスにタブを入力する</title>
@@ -65,8 +62,7 @@
       <link>https://www.330k.info/software/hta-sql-tool/</link>
       <pubDate>Wed, 13 Jan 2016 22:42:14 +0900</pubDate>
       <guid>https://www.330k.info/software/hta-sql-tool/</guid>
-      <description>&lt;p&gt;今は廃れたHTA(HTML Application)で書いた、汎用SQLツール。
-AccessがなくてもCSVファイルやExcelファイルに対してSQLを実行。&lt;/p&gt;</description>
+      <description>&lt;p&gt;今は廃れたHTA(HTML Application)で書いた、汎用SQLツール。&#xA;AccessがなくてもCSVファイルやExcelファイルに対してSQLを実行。&lt;/p&gt;</description>
     </item>
     <item>
       <title>ffmpegでDVDをMPEGファイルに変換</title>

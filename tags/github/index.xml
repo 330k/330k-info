@@ -13,47 +13,35 @@
       <link>https://www.330k.info/software/gpx-spike-detector/</link>
       <pubDate>Sun, 31 Jul 2022 16:13:15 +0900</pubDate>
       <guid>https://www.330k.info/software/gpx-spike-detector/</guid>
-      <description>&lt;p&gt;GPXファイルのルートで「ヒゲ」(意図せず細い路地に入ってしまった部分)を検出するツールです。&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://www.330k.info/software/gpx-spike-detector/fullscreen.html&#34;&gt;スマートフォン/フルスクリーン版はこちら&lt;/a&gt;&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;</description>
+      <description>&lt;p&gt;GPXファイルのルートで「ヒゲ」(意図せず細い路地に入ってしまった部分)を検出するツールです。&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://www.330k.info/software/gpx-spike-detector/fullscreen.html&#34;&gt;スマートフォン/フルスクリーン版はこちら&lt;/a&gt;&lt;/p&gt;&#xA;&lt;!-- raw HTML omitted --&gt;</description>
     </item>
     <item>
       <title>GPXルート比較(差分表示)ツール</title>
       <link>https://www.330k.info/software/gpx-compare/</link>
       <pubDate>Tue, 31 May 2022 20:20:33 +0900</pubDate>
       <guid>https://www.330k.info/software/gpx-compare/</guid>
-      <description>&lt;p&gt;複数のGPXファイルの比較をするためのツールです。&lt;/p&gt;
-&lt;p&gt;主に「自分がキューシートを読んで引いたルートを、主催者が参考として提供しているルートを比較して確認したい」
-「参考ルートの更新された場合、更新された部分を確認したい」という要件を想定して作成しました。&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://www.330k.info/software/gpx-compare/gpx_compare.html&#34;&gt;スマートフォン/フルスクリーン版はこちら&lt;/a&gt;&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;</description>
+      <description>&lt;p&gt;複数のGPXファイルの比較をするためのツールです。&lt;/p&gt;&#xA;&lt;p&gt;主に「自分がキューシートを読んで引いたルートを、主催者が参考として提供しているルートを比較して確認したい」&#xA;「参考ルートの更新された場合、更新された部分を確認したい」という要件を想定して作成しました。&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://www.330k.info/software/gpx-compare/gpx_compare.html&#34;&gt;スマートフォン/フルスクリーン版はこちら&lt;/a&gt;&lt;/p&gt;&#xA;&lt;!-- raw HTML omitted --&gt;</description>
     </item>
     <item>
       <title>GPX to FIT/TCX Converter</title>
       <link>https://www.330k.info/software/gpx-tcx-converter/</link>
       <pubDate>Sun, 24 Apr 2022 21:22:33 +0900</pubDate>
       <guid>https://www.330k.info/software/gpx-tcx-converter/</guid>
-      <description>&lt;p&gt;GPXファイルをコースポイントのあるFIT/TCXファイルに変換するツールです。&lt;/p&gt;
-&lt;p&gt;Garminのサイコンおよびスマートウォッチ(Edge 830、Fenix 7Sで動作確認済み)にインポートすると、GPXファイルの&lt;code&gt;wpt&lt;/code&gt;要素(POI)をコースポイントとして含むコースが登録されます。&lt;/p&gt;</description>
+      <description>&lt;p&gt;GPXファイルをコースポイントのあるFIT/TCXファイルに変換するツールです。&lt;/p&gt;&#xA;&lt;p&gt;Garminのサイコンおよびスマートウォッチ(Edge 830、Fenix 7Sで動作確認済み)にインポートすると、GPXファイルの&lt;code&gt;wpt&lt;/code&gt;要素(POI)をコースポイントとして含むコースが登録されます。&lt;/p&gt;</description>
     </item>
     <item>
       <title>GPXルート沿いコンビニ・道の駅検索</title>
       <link>https://www.330k.info/software/gpx-nearby-search/</link>
       <pubDate>Fri, 10 Sep 2021 23:56:36 +0900</pubDate>
       <guid>https://www.330k.info/software/gpx-nearby-search/</guid>
-      <description>&lt;p&gt;GPXファイルからルート沿いのコンビニ・道の駅の検索を行うオンラインツール。&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://www.330k.info/software/gpx-nearby-search/fullscreen.html&#34;&gt;スマートフォン/フルスクリーン版はこちら&lt;/a&gt;&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;</description>
+      <description>&lt;p&gt;GPXファイルからルート沿いのコンビニ・道の駅の検索を行うオンラインツール。&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://www.330k.info/software/gpx-nearby-search/fullscreen.html&#34;&gt;スマートフォン/フルスクリーン版はこちら&lt;/a&gt;&lt;/p&gt;&#xA;&lt;!-- raw HTML omitted --&gt;</description>
     </item>
     <item>
       <title>キャノンボール専用 天候・風向き予測</title>
       <link>https://www.330k.info/software/cannonball-wind-map/</link>
       <pubDate>Sat, 11 Jul 2020 19:41:44 +0900</pubDate>
       <guid>https://www.330k.info/software/cannonball-wind-map/</guid>
-      <description>&lt;p&gt;自分用に作成したキャノンボール専用の簡易版Epic Ride Weatherです。&lt;/p&gt;
-&lt;p&gt;Open-Meteo(&lt;a href=&#34;https://open-meteo.com/&#34;&gt;https://open-meteo.com/&lt;/a&gt;)のデータを表示します。&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://www.330k.info/software/cannonball-wind-map/fullscreen.html&#34;&gt;スマートフォン/フルスクリーン版はこちら&lt;/a&gt;&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;</description>
+      <description>&lt;p&gt;自分用に作成したキャノンボール専用の簡易版Epic Ride Weatherです。&lt;/p&gt;&#xA;&lt;p&gt;Open-Meteo(&lt;a href=&#34;https://open-meteo.com/&#34;&gt;https://open-meteo.com/&lt;/a&gt;)のデータを表示します。&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://www.330k.info/software/cannonball-wind-map/fullscreen.html&#34;&gt;スマートフォン/フルスクリーン版はこちら&lt;/a&gt;&lt;/p&gt;&#xA;&lt;!-- raw HTML omitted --&gt;</description>
     </item>
     <item>
       <title>Hugo &#43; GitHub Pages &#43; CloudFlareにGoogleサイトから移転</title>
@@ -81,12 +69,7 @@
       <link>https://www.330k.info/essay/precision-of-mathematica-geodistance-and-geographical-distance-formula/</link>
       <pubDate>Sat, 07 Jun 2014 00:00:00 +0900</pubDate>
       <guid>https://www.330k.info/essay/precision-of-mathematica-geodistance-and-geographical-distance-formula/</guid>
-      <description>&lt;p&gt;Mathematicaには2点の緯度と経度を与えて、その間の測地線距離を返す関数としてGeoDistanceがある。
-しかしながら、&lt;a href=&#34;http://mathematica.stackexchange.com/questions/26526/how-accurate-is-geodistance&#34;&gt;ここ&lt;/a&gt;で書かれているように、その精度には疑問が呈されているようだ。&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;17 Mar. 2022 追記)
-&lt;strong&gt;&lt;a href=&#34;https://www.330k.info/essay/geodesic_distance_formula_comparison_2/&#34;&gt;続編記事&lt;/a&gt;を投稿&lt;/strong&gt;&lt;/p&gt;
-&lt;hr&gt;</description>
+      <description>&lt;p&gt;Mathematicaには2点の緯度と経度を与えて、その間の測地線距離を返す関数としてGeoDistanceがある。&#xA;しかしながら、&lt;a href=&#34;http://mathematica.stackexchange.com/questions/26526/how-accurate-is-geodistance&#34;&gt;ここ&lt;/a&gt;で書かれているように、その精度には疑問が呈されているようだ。&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;p&gt;17 Mar. 2022 追記)&#xA;&lt;strong&gt;&lt;a href=&#34;https://www.330k.info/essay/geodesic_distance_formula_comparison_2/&#34;&gt;続編記事&lt;/a&gt;を投稿&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;hr&gt;</description>
     </item>
     <item>
       <title>Douglas-Peucker向けの優先度付きキュー実装の検討</title>

@@ -13,26 +13,21 @@
       <link>https://www.330k.info/essay/consume-cpu-wastefully/</link>
       <pubDate>Wed, 22 Mar 2023 00:16:26 +0900</pubDate>
       <guid>https://www.330k.info/essay/consume-cpu-wastefully/</guid>
-      <description>&lt;p&gt;とある目的でCPU使用率を10%以上に維持する必要が生じたため、その実現方法を考えた結果、
-systemdを使ってCPU使用率に制限をかけつつ無限ループを行う、という方法に行き着いた。&lt;/p&gt;</description>
+      <description>&lt;p&gt;とある目的でCPU使用率を10%以上に維持する必要が生じたため、その実現方法を考えた結果、&#xA;systemdを使ってCPU使用率に制限をかけつつ無限ループを行う、という方法に行き着いた。&lt;/p&gt;</description>
     </item>
     <item>
       <title>自己署名証明書を使う環境下でSnappy(Snap)を使う</title>
       <link>https://www.330k.info/essay/snap-with-self-signed-certificate-authority/</link>
       <pubDate>Wed, 16 Mar 2022 20:28:41 +0900</pubDate>
       <guid>https://www.330k.info/essay/snap-with-self-signed-certificate-authority/</guid>
-      <description>&lt;p&gt;SSL/TLS通信に介入して、証明書を書き換えるタイプのセキュリティ製品が導入されているネットワーク下で、
-Snappy(Snap)を使おうとすると、snapデーモンはホストのルートCA認証局を利用しないため、
-&lt;code&gt;error: cannot refresh: Post https://api.snapcraft.io/v2/snaps/refresh: x509: certificate signed by unknown authority&lt;/code&gt;というエラーを出してしまう。&lt;/p&gt;</description>
+      <description>&lt;p&gt;SSL/TLS通信に介入して、証明書を書き換えるタイプのセキュリティ製品が導入されているネットワーク下で、&#xA;Snappy(Snap)を使おうとすると、snapデーモンはホストのルートCA認証局を利用しないため、&#xA;&lt;code&gt;error: cannot refresh: Post https://api.snapcraft.io/v2/snaps/refresh: x509: certificate signed by unknown authority&lt;/code&gt;というエラーを出してしまう。&lt;/p&gt;</description>
     </item>
     <item>
       <title>Snap版NextCloudのプレビュー生成を無効化する</title>
       <link>https://www.330k.info/essay/disable-nextcloud-preview-image-generation/</link>
       <pubDate>Mon, 03 Jan 2022 19:55:58 +0900</pubDate>
       <guid>https://www.330k.info/essay/disable-nextcloud-preview-image-generation/</guid>
-      <description>&lt;p&gt;Oracle CloudのAlways Freeを使ったインスタンス上にSnap版NextCloudを立ち上げ、iPhoneやAndroidで撮影した写真の自動アップロードを行っていたのだが、
-容量には余裕をもっているつもりが、予想より早く食いつぶしてしまった。&lt;/p&gt;
-&lt;p&gt;プレビュー画像の生成により数GB消費していたことが原因だったので、無効化したときの手順をメモ。&lt;/p&gt;</description>
+      <description>&lt;p&gt;Oracle CloudのAlways Freeを使ったインスタンス上にSnap版NextCloudを立ち上げ、iPhoneやAndroidで撮影した写真の自動アップロードを行っていたのだが、&#xA;容量には余裕をもっているつもりが、予想より早く食いつぶしてしまった。&lt;/p&gt;&#xA;&lt;p&gt;プレビュー画像の生成により数GB消費していたことが原因だったので、無効化したときの手順をメモ。&lt;/p&gt;</description>
     </item>
     <item>
       <title>LinuxのOpenVPNクライアントでスプリットトンネリング</title>
@@ -46,64 +41,49 @@ Snappy(Snap)を使おうとすると、snapデーモンはホストのルートC
       <link>https://www.330k.info/essay/change-lxd-host-ip-address/</link>
       <pubDate>Wed, 16 Jun 2021 02:50:08 +0900</pubDate>
       <guid>https://www.330k.info/essay/change-lxd-host-ip-address/</guid>
-      <description>&lt;p&gt;LXD(lxc)でネットワークアクセスを有効にしていて、特定のIPアドレスに限っている場合、ホストのIPアドレスを変更した際にlxcコマンドがエラーとなる。&lt;/p&gt;
-&lt;p&gt;設定を行う&lt;code&gt;lxc config edit&lt;/code&gt;自体が動作しないので対処法に困ったが、何とか見つけることが出来た。&lt;/p&gt;</description>
+      <description>&lt;p&gt;LXD(lxc)でネットワークアクセスを有効にしていて、特定のIPアドレスに限っている場合、ホストのIPアドレスを変更した際にlxcコマンドがエラーとなる。&lt;/p&gt;&#xA;&lt;p&gt;設定を行う&lt;code&gt;lxc config edit&lt;/code&gt;自体が動作しないので対処法に困ったが、何とか見つけることが出来た。&lt;/p&gt;</description>
     </item>
     <item>
       <title>UbuntuでMathematicaノートブックを関連付ける</title>
       <link>https://www.330k.info/essay/open-mathematica-notebook-in-ubuntu/</link>
       <pubDate>Fri, 07 May 2021 21:01:21 +0900</pubDate>
       <guid>https://www.330k.info/essay/open-mathematica-notebook-in-ubuntu/</guid>
-      <description>&lt;p&gt;Ubuntuのアップデート時にMathematicaノートブックをNautilusから起動できなくなってしまって少し面倒だったので、再度設定を行った。&lt;/p&gt;
-&lt;p&gt;ついでに、すでにMathematicaが起動している時に2つ目のノートブックをNautilusから開いた時、デフォルトでは別プロセスのMathematicaが起動してしまってライセンスが要求されてしまう点にも対処した。&lt;/p&gt;</description>
+      <description>&lt;p&gt;Ubuntuのアップデート時にMathematicaノートブックをNautilusから起動できなくなってしまって少し面倒だったので、再度設定を行った。&lt;/p&gt;&#xA;&lt;p&gt;ついでに、すでにMathematicaが起動している時に2つ目のノートブックをNautilusから開いた時、デフォルトでは別プロセスのMathematicaが起動してしまってライセンスが要求されてしまう点にも対処した。&lt;/p&gt;</description>
     </item>
     <item>
       <title>ウェブサイトの差分を検知してメール通知するシェルスクリプト</title>
       <link>https://www.330k.info/essay/webchecker_shell_script/</link>
       <pubDate>Fri, 28 Feb 2020 20:55:25 +0900</pubDate>
       <guid>https://www.330k.info/essay/webchecker_shell_script/</guid>
-      <description>&lt;p&gt;2020年は数多くのブルベに参加することになったが、各BRMでウェブサイトの更新を監視するのは辛い。&lt;/p&gt;
-&lt;p&gt;無料のウェブサービスもあるが、登録件数が不足したり、どこが変更されたのか分からなかったりしたので、
-変更を検知したら差分箇所をメールで送信するシェルスクリプトを書いてみた。&lt;/p&gt;</description>
+      <description>&lt;p&gt;2020年は数多くのブルベに参加することになったが、各BRMでウェブサイトの更新を監視するのは辛い。&lt;/p&gt;&#xA;&lt;p&gt;無料のウェブサービスもあるが、登録件数が不足したり、どこが変更されたのか分からなかったりしたので、&#xA;変更を検知したら差分箇所をメールで送信するシェルスクリプトを書いてみた。&lt;/p&gt;</description>
     </item>
     <item>
       <title>将棋倶楽部24をUbuntu &#43; dockerで動かす</title>
       <link>https://www.330k.info/essay/shogi24-on-ubuntu-docker/</link>
       <pubDate>Mon, 03 Feb 2020 00:57:37 +0900</pubDate>
       <guid>https://www.330k.info/essay/shogi24-on-ubuntu-docker/</guid>
-      <description>&lt;p&gt;将棋倶楽部24は強者が集まるネット将棋として有名だが、残念なことにJava製である。&lt;/p&gt;
-&lt;p&gt;UbuntuをはじめLinuxではブラウザでJavaプラグインが動作しないようになっているので、ウェブ版は動かない。&lt;/p&gt;
-&lt;p&gt;アプリ版ももうかなり古くなったJava 8(しかもOpenJDKではなくOracle)を要求するので、そのために古いJavaを今の環境に入れたくない。&lt;/p&gt;
-&lt;p&gt;なのでdockerでコンテナにして動くようにしてみた。&lt;/p&gt;</description>
+      <description>&lt;p&gt;将棋倶楽部24は強者が集まるネット将棋として有名だが、残念なことにJava製である。&lt;/p&gt;&#xA;&lt;p&gt;UbuntuをはじめLinuxではブラウザでJavaプラグインが動作しないようになっているので、ウェブ版は動かない。&lt;/p&gt;&#xA;&lt;p&gt;アプリ版ももうかなり古くなったJava 8(しかもOpenJDKではなくOracle)を要求するので、そのために古いJavaを今の環境に入れたくない。&lt;/p&gt;&#xA;&lt;p&gt;なのでdockerでコンテナにして動くようにしてみた。&lt;/p&gt;</description>
     </item>
     <item>
       <title>Ubuntu Server 18.04 &#43; SoftEther VPN &#43; AdGuard Homeで広告ブロック機能付きVPNを構築する</title>
       <link>https://www.330k.info/essay/ubuntu-softether-adguardhome-dns-setting/</link>
       <pubDate>Sun, 02 Feb 2020 21:41:17 +0900</pubDate>
       <guid>https://www.330k.info/essay/ubuntu-softether-adguardhome-dns-setting/</guid>
-      <description>&lt;p&gt;どんなWi-Fiネットワークにいるときも広告をブロックしたいので、自前でAdGuard Home(DNSサーバ)とSoftEther VPN Serverを構築した。&lt;/p&gt;
-&lt;p&gt;しかし、Ubuntuではデフォルトでsystemd-resolvedがDNSサーバとして53/udpをListenしているので、自分で別のDNSコンテンツサーバを立ち上げる際にはこのStub Serverを止める必要がある。&lt;/p&gt;
-&lt;p&gt;さらにサーバ再起動後、VPNクライアントからのDNSリクエストが来た時、きちんとAdGuard Home DNSサーバに転送してくれないので、追加の設定が必要だった。&lt;/p&gt;</description>
+      <description>&lt;p&gt;どんなWi-Fiネットワークにいるときも広告をブロックしたいので、自前でAdGuard Home(DNSサーバ)とSoftEther VPN Serverを構築した。&lt;/p&gt;&#xA;&lt;p&gt;しかし、Ubuntuではデフォルトでsystemd-resolvedがDNSサーバとして53/udpをListenしているので、自分で別のDNSコンテンツサーバを立ち上げる際にはこのStub Serverを止める必要がある。&lt;/p&gt;&#xA;&lt;p&gt;さらにサーバ再起動後、VPNクライアントからのDNSリクエストが来た時、きちんとAdGuard Home DNSサーバに転送してくれないので、追加の設定が必要だった。&lt;/p&gt;</description>
     </item>
     <item>
       <title>Ubuntu 18.04でActive DirectoryへのOpenLDAPプロキシを構築</title>
       <link>https://www.330k.info/essay/openldap-proxy-to-active-directory-ubuntu/</link>
       <pubDate>Sat, 01 Feb 2020 18:10:03 +0900</pubDate>
       <guid>https://www.330k.info/essay/openldap-proxy-to-active-directory-ubuntu/</guid>
-      <description>&lt;p&gt;Active Directoryのあるネットワークとは別のネットワークにある機器(具体的には電子黒板)から、LDAPでADユーザ情報を検索したいという要件が。&lt;/p&gt;
-&lt;p&gt;VPNなどの設定もできないので、DMZにOpenLDAPによるLDAP用のプロキシサーバを立ててみた。&lt;/p&gt;</description>
+      <description>&lt;p&gt;Active Directoryのあるネットワークとは別のネットワークにある機器(具体的には電子黒板)から、LDAPでADユーザ情報を検索したいという要件が。&lt;/p&gt;&#xA;&lt;p&gt;VPNなどの設定もできないので、DMZにOpenLDAPによるLDAP用のプロキシサーバを立ててみた。&lt;/p&gt;</description>
     </item>
     <item>
       <title>Googleのバックアップと同期をWineでUbuntuにインストールする</title>
       <link>https://www.330k.info/essay/install-google-backup-sync-on-wine/</link>
       <pubDate>Fri, 24 Jan 2020 22:13:55 +0900</pubDate>
       <guid>https://www.330k.info/essay/install-google-backup-sync-on-wine/</guid>
-      <description>&lt;p&gt;Googleの「バックアップと同期」をUbuntu上で動かしたかったので、頑張ってみた。&lt;/p&gt;
-&lt;p&gt;参考)&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://gist.github.com/davidfraser/96867a8dbfa607ceba9ed363e6c1688b&#34;&gt;https://gist.github.com/davidfraser/96867a8dbfa607ceba9ed363e6c1688b&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://appdb.winehq.org/objectManager.php?sClass=version&amp;amp;iId=38353&#34;&gt;https://appdb.winehq.org/objectManager.php?sClass=version&amp;amp;iId=38353&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</description>
+      <description>&lt;p&gt;Googleの「バックアップと同期」をUbuntu上で動かしたかったので、頑張ってみた。&lt;/p&gt;&#xA;&lt;p&gt;参考)&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://gist.github.com/davidfraser/96867a8dbfa607ceba9ed363e6c1688b&#34;&gt;https://gist.github.com/davidfraser/96867a8dbfa607ceba9ed363e6c1688b&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://appdb.winehq.org/objectManager.php?sClass=version&amp;amp;iId=38353&#34;&gt;https://appdb.winehq.org/objectManager.php?sClass=version&amp;amp;iId=38353&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;</description>
     </item>
     <item>
       <title>Ubuntu 18.04に最新のWINE(5.0.0)をインストールする</title>

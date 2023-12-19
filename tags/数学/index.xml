@@ -20,19 +20,14 @@
       <link>https://www.330k.info/essay/geodesic_distance_formula_comparison_2/</link>
       <pubDate>Thu, 17 Mar 2022 01:13:49 +0900</pubDate>
       <guid>https://www.330k.info/essay/geodesic_distance_formula_comparison_2/</guid>
-      <description>&lt;p&gt;2地点の緯度経度を与えてその間の距離を求める計算式はいくつかあり、
-&lt;a href=&#34;https://www.330k.info/essay/precision-of-mathematica-geodistance-and-geographical-distance-formula/&#34;&gt;GeoDistanceとその他の測地線距離算出式の精度&lt;/a&gt;
-ではランダムな2点間の距離や、日本での運転経路データを用いて代表的な計算式の精度を評価したが、
-短い距離の計算精度の評価と、対蹠点付近の計算精度の評価が不十分であった。&lt;/p&gt;
-&lt;p&gt;そこで、比較する計算式を追加した上で、GeographicLibのテストデータを用いて計算精度の再評価を行った。&lt;/p&gt;</description>
+      <description>&lt;p&gt;2地点の緯度経度を与えてその間の距離を求める計算式はいくつかあり、&#xA;&lt;a href=&#34;https://www.330k.info/essay/precision-of-mathematica-geodistance-and-geographical-distance-formula/&#34;&gt;GeoDistanceとその他の測地線距離算出式の精度&lt;/a&gt;&#xA;ではランダムな2点間の距離や、日本での運転経路データを用いて代表的な計算式の精度を評価したが、&#xA;短い距離の計算精度の評価と、対蹠点付近の計算精度の評価が不十分であった。&lt;/p&gt;&#xA;&lt;p&gt;そこで、比較する計算式を追加した上で、GeographicLibのテストデータを用いて計算精度の再評価を行った。&lt;/p&gt;</description>
     </item>
     <item>
       <title>逆グーデルマン関数の計算式のJavaScriptにおける精度</title>
       <link>https://www.330k.info/essay/precise_comparison_of_gudermannian_function/</link>
       <pubDate>Tue, 14 Sep 2021 22:48:02 +0900</pubDate>
       <guid>https://www.330k.info/essay/precise_comparison_of_gudermannian_function/</guid>
-      <description>&lt;p&gt;メルカトル図法の投影座標の計算に逆グーデルマン関数を用いる(&lt;a href=&#34;https://ja.wikipedia.org/wiki/%E3%83%A1%E3%83%AB%E3%82%AB%E3%83%88%E3%83%AB%E5%9B%B3%E6%B3%95&#34;&gt;メルカトル図法 - Wikipedia&lt;/a&gt;)が、等価な計算式が複数ある。&lt;/p&gt;
-&lt;p&gt;JavaScriptで計算する際に、どの計算式を用いるのが誤差が少なくなるのか調査した。&lt;/p&gt;</description>
+      <description>&lt;p&gt;メルカトル図法の投影座標の計算に逆グーデルマン関数を用いる(&lt;a href=&#34;https://ja.wikipedia.org/wiki/%E3%83%A1%E3%83%AB%E3%82%AB%E3%83%88%E3%83%AB%E5%9B%B3%E6%B3%95&#34;&gt;メルカトル図法 - Wikipedia&lt;/a&gt;)が、等価な計算式が複数ある。&lt;/p&gt;&#xA;&lt;p&gt;JavaScriptで計算する際に、どの計算式を用いるのが誤差が少なくなるのか調査した。&lt;/p&gt;</description>
     </item>
     <item>
       <title>球面上の一様分布</title>
@@ -46,12 +41,7 @@
       <link>https://www.330k.info/essay/precision-of-mathematica-geodistance-and-geographical-distance-formula/</link>
       <pubDate>Sat, 07 Jun 2014 00:00:00 +0900</pubDate>
       <guid>https://www.330k.info/essay/precision-of-mathematica-geodistance-and-geographical-distance-formula/</guid>
-      <description>&lt;p&gt;Mathematicaには2点の緯度と経度を与えて、その間の測地線距離を返す関数としてGeoDistanceがある。
-しかしながら、&lt;a href=&#34;http://mathematica.stackexchange.com/questions/26526/how-accurate-is-geodistance&#34;&gt;ここ&lt;/a&gt;で書かれているように、その精度には疑問が呈されているようだ。&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;17 Mar. 2022 追記)
-&lt;strong&gt;&lt;a href=&#34;https://www.330k.info/essay/geodesic_distance_formula_comparison_2/&#34;&gt;続編記事&lt;/a&gt;を投稿&lt;/strong&gt;&lt;/p&gt;
-&lt;hr&gt;</description>
+      <description>&lt;p&gt;Mathematicaには2点の緯度と経度を与えて、その間の測地線距離を返す関数としてGeoDistanceがある。&#xA;しかしながら、&lt;a href=&#34;http://mathematica.stackexchange.com/questions/26526/how-accurate-is-geodistance&#34;&gt;ここ&lt;/a&gt;で書かれているように、その精度には疑問が呈されているようだ。&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;p&gt;17 Mar. 2022 追記)&#xA;&lt;strong&gt;&lt;a href=&#34;https://www.330k.info/essay/geodesic_distance_formula_comparison_2/&#34;&gt;続編記事&lt;/a&gt;を投稿&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;hr&gt;</description>
     </item>
     <item>
       <title>友愛数を列挙する</title>
