@@ -2,19 +2,31 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://www.330k.info/walk/20231222-darumayama/</loc>
+    <lastmod>2023-12-23T17:36:32+09:00</lastmod>
+  </url><url>
     <loc>https://www.330k.info/</loc>
-    <lastmod>2023-12-20T00:22:46+09:00</lastmod>
+    <lastmod>2023-12-23T17:36:32+09:00</lastmod>
   </url><url>
     <loc>https://www.330k.info/categories/</loc>
-    <lastmod>2023-12-20T00:22:46+09:00</lastmod>
+    <lastmod>2023-12-23T17:36:32+09:00</lastmod>
+  </url><url>
+    <loc>https://www.330k.info/tags/</loc>
+    <lastmod>2023-12-23T17:36:32+09:00</lastmod>
+  </url><url>
+    <loc>https://www.330k.info/walk/</loc>
+    <lastmod>2023-12-23T17:36:32+09:00</lastmod>
+  </url><url>
+    <loc>https://www.330k.info/categories/%E5%BE%92%E6%AD%A9/</loc>
+    <lastmod>2023-12-23T17:36:32+09:00</lastmod>
+  </url><url>
+    <loc>https://www.330k.info/tags/%E7%99%BB%E5%B1%B1/</loc>
+    <lastmod>2023-12-23T17:36:32+09:00</lastmod>
   </url><url>
     <loc>https://www.330k.info/essay/</loc>
     <lastmod>2023-12-20T00:22:46+09:00</lastmod>
   </url><url>
     <loc>https://www.330k.info/tags/garmin/</loc>
-    <lastmod>2023-12-20T00:22:46+09:00</lastmod>
-  </url><url>
-    <loc>https://www.330k.info/tags/</loc>
     <lastmod>2023-12-20T00:22:46+09:00</lastmod>
   </url><url>
     <loc>https://www.330k.info/tags/%E8%87%AA%E8%BB%A2%E8%BB%8A/</loc>
@@ -27,15 +39,6 @@
     <lastmod>2023-12-20T00:22:46+09:00</lastmod>
   </url><url>
     <loc>https://www.330k.info/walk/20231124-tonomine-yusakaji/</loc>
-    <lastmod>2023-11-27T21:54:17+09:00</lastmod>
-  </url><url>
-    <loc>https://www.330k.info/walk/</loc>
-    <lastmod>2023-11-27T21:54:17+09:00</lastmod>
-  </url><url>
-    <loc>https://www.330k.info/categories/%E5%BE%92%E6%AD%A9/</loc>
-    <lastmod>2023-11-27T21:54:17+09:00</lastmod>
-  </url><url>
-    <loc>https://www.330k.info/tags/%E7%99%BB%E5%B1%B1/</loc>
     <lastmod>2023-11-27T21:54:17+09:00</lastmod>
   </url><url>
     <loc>https://www.330k.info/walk/20231119-okukuji-nantaisan/</loc>
