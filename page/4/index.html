@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="no-js" lang="ja-jp">
 <head>
-	<meta name="generator" content="Hugo 0.121.1">
+	<meta name="generator" content="Hugo 0.121.2">
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -78,6 +78,34 @@ if (!doNotTrack) {
 			
 <main class="main list" role="main">
 	<article class="list__item post">
+	<figure class="list__thumbnail">
+		<a href="https://www.330k.info/essay/rwgps-create-route-with-accurate-elevation/">
+			<img src="/essay/rwgps-modify-all-elevations/rwgps_230x0w.webp" alt="Ride with GPSの仕様と、標高の精度が良いルートを作成する方法" />
+		</a>
+	</figure>
+	<header class="list__header">
+		<h3 class="list__title post__title ">
+			<a href="/essay/rwgps-create-route-with-accurate-elevation/" rel="bookmark">
+			Ride with GPSの仕様と、標高の精度が良いルートを作成する方法
+			</a>
+		</h3>
+		<div class="list__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
+	<time class="meta__text" datetime="2022-06-06T01:13:18">June 06, 2022</time>
+	<time class="meta__text" datetime="2023-05-18T04:28:35"> (Last Modified: May 18, 2023)</time>
+</div>
+
+<div class="meta__item-categories meta__item">
+	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+	<span class="meta__text"><a class="meta__link" href="/categories/%e9%9b%91%e8%a8%98%e5%b8%b3" rel="category">雑記帳</a></span>
+</div>
+</div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		<p>Ride with GPS(RWGPS)の仕様をソースコードとネットワークを流れるデータから解析し、その結果から現状で最も標高を精度良くルートを作成できるであろう方法を記した。</p>
+	</div>
+</article><article class="list__item post">
 	<figure class="list__thumbnail">
 		<a href="https://www.330k.info/bicycle/touring/20220430-rm429-tokyo-2700km-ride-across-japan/">
 			<img src="/bicycle/touring/20220430-rm429-tokyo-2700km-ride-across-japan/20220508175018.jpg" alt="2022年04月30日 RM429 東京2700 日本縦断(Ride Across Japan)" />
@@ -347,34 +375,6 @@ Snappy(Snap)を使おうとすると、snapデーモンはホストのルートC
 </a>で国土地理院の標高タイルを利用する機能を付ける際、国土地理院の標高タイルをキャッシュする機能を実装したかった。</p>
 <p>そこで有効期限を付けて、かつメモリとディスクの2階層構造を持つキャッシュを実装してみた。</p>
 	</div>
-</article><article class="list__item post">
-	<figure class="list__thumbnail">
-		<a href="https://www.330k.info/essay/rwgps-modify-all-elevations/">
-			<img src="/essay/rwgps-modify-all-elevations/rwgps_230x0w.webp" alt="Ride with GPSでルートの標高データを一括で修正する" />
-		</a>
-	</figure>
-	<header class="list__header">
-		<h3 class="list__title post__title ">
-			<a href="/essay/rwgps-modify-all-elevations/" rel="bookmark">
-			Ride with GPSでルートの標高データを一括で修正する
-			</a>
-		</h3>
-		<div class="list__meta meta">
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
-	<time class="meta__text" datetime="2022-02-06T00:29:43">February 06, 2022</time>
-	<time class="meta__text" datetime="2023-05-18T04:28:35"> (Last Modified: May 18, 2023)</time>
-</div>
-
-<div class="meta__item-categories meta__item">
-	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
-	<span class="meta__text"><a class="meta__link" href="/categories/%e9%9b%91%e8%a8%98%e5%b8%b3" rel="category">雑記帳</a></span>
-</div>
-</div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		<p>Ride with GPS(RWGPS)で標高の橋トンネル補正機能が実装される以前に作成したルートや、橋トンネル補正機能のバグによって平坦化されてしまった場合にすべての標高データを修正する方法を説明。</p>
-	</div>
 </article>
 </main>
 
@@ -412,6 +412,7 @@ Snappy(Snap)を使おうとすると、snapデーモンはホストのルートC
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/walk/20240106-yaguradake/">2024年01月06日 大雄山-矢倉岳-駿河小山</a></li>
 			<li class="widget__item"><a class="widget__link" href="/walk/20231227-todogasaki/">2023年12月27日 本州最東端 トドヶ崎</a></li>
 			<li class="widget__item"><a class="widget__link" href="/walk/20231222-darumayama/">2023年12月22日 西伊豆 達磨山-金冠山</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/edge_830_distance_calculation_behavior/">速度センサがないときのEdge 830の距離計算挙動</a></li>
@@ -431,7 +432,6 @@ Snappy(Snap)を使おうとすると、snapデーモンはホストのルートC
 			<li class="widget__item"><a class="widget__link" href="/walk/20230527-surugaoyama-yamanakako/">2023年05月27日 駿河小山-不老山-三国山-山中湖</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/rwgps-distance-calculation-precision/">Ride with GPSの距離計算式と精度の評価</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/comparison_of_track_simplify_algorithms/">トラック間引きアルゴリズムの比較</a></li>
-			<li class="widget__item"><a class="widget__link" href="/walk/20230401-mt-toridani/">2023年04月01日 東日原-酉谷山ピストン</a></li>
 		</ul>
 	</div>
 </div>
@@ -506,7 +506,7 @@ Snappy(Snap)を使おうとすると、snapデーモンはホストのルートC
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%83%ac%e3%83%93%e3%83%a5%e3%83%bc" title="レビュー">レビュー (2)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e6%95%b0%e5%ad%a6" title="数学">数学 (6)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e7%94%9f%e6%b4%bb" title="生活">生活 (1)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%e7%99%bb%e5%b1%b1" title="登山">登山 (21)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%e7%99%bb%e5%b1%b1" title="登山">登山 (22)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e7%a4%be%e5%86%85se" title="社内se">社内se (21)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e8%87%aa%e8%bb%a2%e8%bb%8a" title="自転車">自転車 (17)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e8%b5%b0%e8%a1%8c%e4%bc%9a" title="走行会">走行会 (2)</a>
