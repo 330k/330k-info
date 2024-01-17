@@ -6,8 +6,15 @@
     <description>Recent content in Essays on 330k info</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Wed, 20 Dec 2023 00:22:46 +0900</lastBuildDate>
+    <lastBuildDate>Wed, 17 Jan 2024 12:01:45 +0900</lastBuildDate>
     <atom:link href="https://www.330k.info/essay/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Sansanのメール一括配信におけるドメイン認証設定案内の落とし穴</title>
+      <link>https://www.330k.info/essay/sansan-gmail-guideline/</link>
+      <pubDate>Wed, 17 Jan 2024 12:01:45 +0900</pubDate>
+      <guid>https://www.330k.info/essay/sansan-gmail-guideline/</guid>
+      <description>&lt;p&gt;2023年、GoogleはGmail宛のメールに対して新しいガイドライン(&lt;a href=&#34;https://support.google.com/mail/answer/81126?hl=ja&#34;&gt;メール送信者のガイドライン&lt;/a&gt;)を2024年2月から適用すると発表した。&lt;/p&gt;&#xA;&lt;p&gt;この発表より後の2024年1月11日にSansanからシステム管理者宛に「Googleのガイドライン修正に伴い、(中略) メール一括配信を利用する場合は、必ずドメイン認証の設定をお願いします」という案内メールが届いた。&lt;/p&gt;&#xA;&lt;p&gt;しかし、実態としてはSansanのこの案内はGoogleのガイドラインの内容とは関係がないことに注意が必要である。&lt;/p&gt;</description>
+    </item>
     <item>
       <title>速度センサがないときのEdge 830の距離計算挙動</title>
       <link>https://www.330k.info/essay/edge_830_distance_calculation_behavior/</link>
