@@ -121,10 +121,8 @@ Gmailアドレス（gmail.com）宛にメールが配信できなくなります
 Sansanからのメールに「5000通」という数字がないのは、Sansanの顧客すべてが対象だからである。</p>
 <p>具体的には、1日5000通未満の場合、GoogleのガイドラインではSPFとDKIMのどちらかを設定すれば良いことになっているが、<br>
 Sansanでは<strong>送信数に関係なくSPFとDKIMの両方の設定が必要</strong>となる。</p>
-<blockquote>
-<p>既にドメイン認証を設定済みの場合やメール一括配信を利用する予定がない場合は対応不要です。</p>
-</blockquote>
-<p>という部分も、<strong>Sansanの仕様変更については対応不要であるけれど、Googleのガイドライン変更について対応不要とは言っていない</strong>点に注意が必要である。</p>
+<p>「既にドメイン認証を設定済みの場合やメール一括配信を利用する予定がない場合は対応不要です。」
+という部分も、<strong>Sansanの仕様変更については対応不要であるけれど、Googleのガイドライン変更について対応不要とは言っていない</strong>点に注意が必要である。</p>
 <p>特に、1日5000通以上送信する場合はSPFとDKIMに加えてDMARCもGoogleのガイドラインでは要求されているが、<strong>SansanはDMARCについては文中に何も書いていない</strong>。</p>
 <p>文中のSansanの説明ページ(<a href="https://jp-help.sansan.com/hc/ja/articles/900000291386">メール一括配信の発信元ドメインを設定する</a>)においても
 SPFとDKIMの設定についてだけ記述されていて、DMARCについては一切記載がないのは同様である。</p>
@@ -133,7 +131,7 @@ SPFとDKIMの設定についてだけ記述されていて、DMARCについて�
 <h2 id="まとめ">まとめ</h2>
 <ul>
 <li>Sansanは「gmail.com宛に一括送信するすべての顧客にSPFとDKIMの設定を必須とする」ように仕様を変更しただけ。</li>
-<li>Sansanが要求するのはSPFとDKIMだけなので、1日5000通以上の場合<strong>Sansanの案内に従うだけではGoogleのガイドラインを満たせない</strong>。</li>
+<li>Sansanが要求するのはSPFとDKIMだけなので、<strong>1日5000通以上の場合Sansanの案内に従うだけではGoogleのガイドラインを満たせない</strong>。</li>
 <li><strong>送信数が1日5000通未満であっても、SPFとDKIMの設定は必須</strong>となる。</li>
 </ul>
 <p><strong>「Sansanからの案内に従って設定したから新ガイドラインへの対応は完了した」「1日5000通も送らないから自社は関係ない」と思っていると落とし穴にハマってしまう</strong>。</p>
