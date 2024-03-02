@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<title>Priority Queue Test</title>
+<style>
+table	{ border-collapse: collapse; }
+th,td	{ border: 1px solid black; }
+td	{ text-align: right; }
+</style>
+</head>
+<body>
+<button onclick="startBenchmark()">Start Benchmark</button>
+<button onclick="stopBenchmark()">Stop Benchmark</button>
+<div id="result"></div>
+<script id="worker" type="text/plain">
+// Array sortでソート
+function priorityQueue1(key){
+	this.name = 'Array.sort()';
+	this._data = [];
+	this._key = key;
+	this._sorted = false;
+	
+	this.enqueue = function(d){
+		this._data.push(d);
+		this._sorted = false;
+	};
+	this.dequeue = function(){
+		var key = this._key;
+		if(!this._sorted){
+			this._data.sort(function(a,b){
+				return a[key] - b[key];
+			});
+			this._sorted = true;
+		}
+		return this._data.pop();
+	};
+	this.size = function(){
+		return this._data.length;
+	};
+	
+	return this;
+}
+
+// dequeue時選択
+function priorityQueue2(key){
+	this.name = 'Selection';
+	this._data = [];
+	this._key = key;
+	this._size = 0;
+	
+	this.enqueue = function(d){
+		this._data.push(d);
+		this._size++;
+	};
+	this.dequeue = function(){
+		var data = this._data;
+		var key = this._key;
+		var r = data[0];
+		var c = 0;
+		for(var i = 1; i < this._size; i++){
+			if(data[i][key] > r[key]){
+				r = data[i];
+				c = i;
+			}
+		}
+		data.splice(c, 1);
+		this._size--;
+		
+		return r;
+	};
+	this.size = function(){
+		return this._size;
+	};
+	
+	return this;
+}
+
+// enqueue時単純挿入
+function priorityQueue3(key){
+	this.name = 'Insertion';
+	this._data = [];
+	this._key = key;
+	this._size = 0;
+	
+	this.enqueue = function(d){
+		var data = this._data;
+		var key = this._key;
+		for(var i = 0; i < this._size; i++){
+			if(data[i][key] > d[key]){
+				data.splice(i, 0, d);
+				this._size++;
+				return;
+			}
+		}
+		data.push(d);
+		this._size++;
+	};
+	this.dequeue = function(){
+		this._size--;
+		return this._data.pop();
+	};
+	this.size = function(){
+		return this._size;
+	};
+	
+	return this;
+}
+
+// enqueue時二分探索挿入
+function priorityQueue4(key){
+	this.name = 'Binary Insertion';
+	this._data = [];
+	this._key = key;
+	this._size = 0;
+	
+	this.enqueue = function(d){
+		var data = this._data;
+		var key = this._key;
+		if(this._size){
+			var min = 0;
+			var max = this._size - 1;
+			var i = Math.floor(max / 2);
+			if(d[key] < data[min][key]){
+				data.unshift(d);
+				this._size++;
+				return;
+			}
+			if(data[max][key] < d[key]){
+				data.push(d);
+				this._size++;
+				return;
+			}
+			while(max - min >= 2){
+				if(data[i][key] > d[key]){
+					max = i;
+				}else{
+					min = i;
+				}
+				i = Math.floor((min + max) / 2);
+			}
+			data.splice(max, 0, d);
+			this._size++;
+		}else{
+			data.push(d);
+			this._size++;
+		}
+	};
+	this.dequeue = function(){
+		this._size--;
+		return this._data.pop();
+	};
+	this.size = function(){
+		return this._size;
+	};
+	
+	return this;
+}
+
+// 二分ヒープ
+function priorityQueue5(key){
+	this.name = 'Binary Heap';
+	this._data = [];
+	this._key = key;
+	this._size = 0;
+	
+	this.enqueue = function(d){
+		var data = this._data;
+		var key = this._key;
+		
+		if(this._size){
+			data.push(d);
+			this._size++;
+			var i = this._size - 1;
+			var p = Math.floor((i - 1) * 0.5);	// parent
+			while(p >= 0){
+				if(data[p][key] < data[i][key]){
+					var ret = data[i];
+					data[i] = data[p];
+					data[p] = ret;
+				
+					i = p;
+					p = Math.floor((i - 1) * 0.5);
+				}else{
+					break;
+				}
+			}
+		}else{
+			data.push(d);
+			this._size++;
+		}
+	};
+	this.dequeue = function(){
+		var data = this._data;
+		var key = this._key;
+		var size = this._size;
+		var result = data[0];
+		
+		data[0] = data[size - 1];
+		data.pop();
+		size--;
+		
+		var i = 0;
+		var c1 = 1;	// left child
+		var c2 = 2;	// right child
+		
+		while(c1 < size){
+			if(c2 < size){
+				var p0 = data[i][key];
+				var p1 = data[c1][key];
+				var p2 = data[c2][key];
+			
+				if((p1 < p2) && (p0 < p2)){
+					var ret = data[i];
+					data[i] = data[c2];
+					data[c2] = ret;
+					i = c2;
+				}else if(p0 < p1){
+					var ret = data[i];
+					data[i] = data[c1];
+					data[c1] = ret;
+					i = c1;
+				}else{
+					break;
+				}
+				c1 = i * 2 + 1;
+				c2 = i * 2 + 2;
+			}else{
+				var p0 = data[i][key];
+				var p1 = data[c1][key];
+				
+				if(p0 < p1){
+					var ret = data[i];
+					data[i] = data[c1];
+					data[c1] = ret;
+				}
+				break;
+			}
+		}
+		
+		this._size = size;
+		return result;
+	};
+	this.size = function(){
+		return this._size;
+	};
+	
+	return this;
+}
+
+// Pairingヒープ
+function priorityQueue6(key){
+	this.name = 'Pairing Heap';
+	this._size = 0;
+	this._key = key;
+	this._root = null;
+	
+	this._merge = function (i, j){
+		if(i === null) return j;
+		if(j === null) return i;
+		
+		if(i.nodekey[key] < j.nodekey[key]){
+			var ret = i;
+			i = j;
+			j = ret;
+		}
+		j.next = i.head;
+		i.head = j;
+		
+		return i;
+	};
+	this._mergeList = function (s){
+		var n = null;
+		//var _merge = this._merge;
+		while(s !== null){
+			var a = s;
+			var b = null;
+			s = s.next;
+			a.next = null;
+			if(s !== null){
+				b = s;
+				s = s.next;
+				b.next = null;
+			}
+			a = this._merge(a, b);
+			a.next = n;
+			n = a;
+		}
+		while(n !== null){
+			var j = n;
+			n = n.next;
+			s = this._merge(j, s);
+		}
+		return s;
+	};
+	
+	this.enqueue = function(d){
+		this._root = this._merge(this._root, {
+			nodekey: d,
+			next: null,
+			head: null
+		});
+		this._size++;
+	};
+	this.dequeue = function(){
+		var result = this._root.nodekey;
+		this._root = this._mergeList(this._root.head);
+		this._size--;
+		
+		return result;
+	};
+	this.size = function(){
+		return this._size;
+	};
+	
+	return this;
+}
+
+// d-ary ヒープ
+function priorityQueue7_3(key){
+	return new priorityQueue7(key, 3);
+}
+function priorityQueue7_4(key){
+	return new priorityQueue7(key, 4);
+}
+function priorityQueue7_5(key){
+	return new priorityQueue7(key, 5);
+}
+function priorityQueue7_8(key){
+	return new priorityQueue7(key, 8);
+}
+function priorityQueue7(key, d){
+	this._d = d || 4;
+	this.name = 'd-ary Heap (d=' + this._d + ')';
+	this._data = [];
+	this._key = key;
+	this._size = 0;
+	
+	this.enqueue = function(value){
+		var data = this._data;
+		var key = this._key;
+		var dinv = 1 / this._d;
+		
+		if(this._size){
+			data.push(value);
+			this._size++;
+			var i = this._size - 1;
+			var p = Math.floor((i - 1) * dinv);	// parent
+			while(p >= 0){
+				if(data[p][key] < data[i][key]){
+					var ret = data[i];
+					data[i] = data[p];
+					data[p] = ret;
+				
+					i = p;
+					p = Math.floor((i - 1) * dinv);
+				}else{
+					break;
+				}
+			}
+		}else{
+			data.push(value);
+			this._size++;
+		}
+	};
+	this.dequeue = function(){
+		var data = this._data;
+		var key = this._key;
+		var size = this._size;
+		var d = this._d;
+		var result = data[0];
+		
+		data[0] = data[size - 1];
+		data.pop();
+		size--;
+		
+		var i = 0;
+		var c = 1;	// first child
+		
+		while(c < size){
+			var p0 = data[i][key];
+			var pmax = data[c][key];
+			var cmax = c;
+			
+			//var jmax = Math.min(c + d, size);
+			var jmax = c + d;
+			if(jmax > size){
+				jmax = size;
+			}
+			for(var j = c + 1; j < jmax; j++){
+				var pret = data[j][key];
+				if(pmax < pret){
+					pmax = pret;
+					cmax = j;
+				}
+			}
+			if(p0 < pmax){
+				var ret = data[i];
+				data[i] = data[cmax];
+				data[cmax] = ret;
+			}else{
+				break;
+			}
+			i = cmax;
+			c = i * d + 1;
+		}
+		
+		this._size = size;
+		return result;
+	};
+	this.size = function(){
+		return this._size;
+	};
+	
+	return this;
+}
+
+// Skew ヒープ
+function priorityQueue8(key){
+	this.name = 'Skew Heap';
+	this._root = null;
+	this._key = key;
+	this._size = 0;
+	
+	this._merge = function(i, j){
+		if(i === null) return j;
+		if(j === null) return i;
+		
+		if(i.nodekey[key] < j.nodekey[key]){
+			var ret = i;
+			i = j;
+			j = ret;
+		}
+		i.right = this._merge(i.right, j);
+		ret = i.right;
+		i.right = i.left;
+		i.left = ret;
+		
+		return i;
+	};
+	
+	this.enqueue = function(value){
+		this._root = this._merge(this._root, {
+			nodekey: value,
+			left: null,
+			right: null
+		});
+		this._size++;
+	};
+	this.dequeue = function(){
+		var result = this._root.nodekey;
+		
+		this._root = this._merge(this._root.left, this._root.right);
+		this._size--;
+		
+		return result;
+	};
+	this.size = function(){
+		return this._size;
+	};
+	
+	return this;
+}
+
+// Leftist ヒープ
+function priorityQueue9(key){
+	this.name = 'Leftist Heap';
+	this._root = null;
+	this._key = key;
+	this._size = 0;
+	
+	this._merge = function(i, j){
+		if(i === null) return j;
+		if(j === null) return i;
+		
+		if(i.nodekey[key] < j.nodekey[key]){
+			var ret = i;
+			i = j;
+			j = ret;
+		}
+		i.right = this._merge(i.right, j);
+		if((i.left === null) || (i.left.s < i.right.s)){
+			ret = i.right;
+			i.right = i.left;
+			i.left = ret;
+		}
+		i.s = ((i.right === null) ? 0 : i.right.s) + 1;
+		
+		return i;
+	};
+	
+	this.enqueue = function(value){
+		this._root = this._merge(this._root, {
+			nodekey: value,
+			left: null,
+			right: null,
+			s: 1
+		});
+		this._size++;
+	};
+	this.dequeue = function(){
+		var result = this._root.nodekey;
+		
+		this._root = this._merge(this._root.left, this._root.right);
+		this._size--;
+		
+		return result;
+	};
+	this.size = function(){
+		return this._size;
+	};
+	
+	return this;
+}
+
+
+function timingQueuePerformance(queue, data){
+	var sorted = [];
+	var time = [];
+
+	// 連続追加、削除のテスト
+	time.push((new Date()).getTime());
+	var q = new queue('p');
+	for(var i = 0; i < data.length; i++){
+		q.enqueue(data[i]);
+	}
+	time.push((new Date()).getTime());
+	while(q.size() > 0){
+		sorted.push(q.dequeue().v);
+	}
+	time.push((new Date()).getTime());
+	
+	// Douglas-Peuckerを想定したテスト(2個追加して1個削除の繰り返し)
+	for(var i = 0; i < data.length; i += 2){
+		q.enqueue(data[i]);
+		q.enqueue(data[i + 1]);
+		sorted.push(q.dequeue().v);
+	}
+	while(q.size() > 0){
+		sorted.push(q.dequeue().v);
+	}
+	time.push((new Date()).getTime());
+	
+	//console.log(CybozuLabs.MD5.calc(JSON.stringify(sorted)));	// 結果の確認
+	
+	return {
+		n: data.length,
+		name: q.name,
+		sequential_enqueue: time[1] - time[0],
+		sequential_dequeue: time[2] - time[1],
+		sequential_total: time[2] - time[0],
+		pseudodp: time[3] - time[2]
+	};
+}
+
+importScripts('http://labs.cybozu.co.jp/blog/mitsunari/2007/07/24/js/md5.js');
+onmessage = function(e) {
+	// ダミーデータ生成
+	var data = [];
+	for(var i = 0; i < e.data.n; i++){
+		data.push({p: Math.random(), v: i});
+	}
+	
+	// 測定
+	for(var i = 0; i < e.data.target.length; i++){
+		postMessage(timingQueuePerformance(self[e.data.target[i]], data));
+	}
+};
+</script>
+<script type="text/javascript">
+var worker;
+var result;
+var cols;
+
+function startBenchmark(){
+	if(worker){
+		stopBenchmark();
+	}
+	var bb = new Blob([document.getElementById('worker').text], {type:'text/javascript'});
+	worker = new Worker(window.URL.createObjectURL(bb));
+	result = {};
+	cols = {};
+	
+	worker.onmessage = function(e){
+		var data = e.data;
+		
+		if(typeof result[data.n] === 'undefined'){
+			result[data.n] = {};
+		}
+		result[data.n][data.name] = data;
+		cols[data.name] = null;
+	
+		var buf = [];
+		buf.push('<table>');
+		buf.push('<tr>');
+		buf.push('<tr><th rowspan="2">n</th>');
+		var count = 0;
+		for(var name in cols){
+			count++;
+		}
+		buf.push('<th colspan="' + count + '">Sequential</th>');
+		buf.push('<th colspan="' + count + '">Douglas-Peucker</th>');
+		buf.push('</tr>');
+		for(var name in cols){
+			buf.push('<th>' + name + '</th>');
+		}
+		for(var name in cols){
+			buf.push('<th>' + name + '</th>');
+		}
+		buf.push('</tr>');
+		for(var n in result){
+			buf.push('<tr>');
+			buf.push('<td>' + n + '</td>');
+			for(var name in cols){
+				try{
+					buf.push('<td>' + result[n][name].sequential_total + '</td>');
+				}catch(e){
+					buf.push('<td></td>');
+				}
+			}
+			for(var name in cols){
+				try{
+					buf.push('<td>' + result[n][name].pseudodp + '</td>');
+				}catch(e){
+					buf.push('<td></td>');
+				}
+			}
+			buf.push('</tr>');
+		}
+		buf.push('</table>');
+	
+		document.getElementById('result').innerHTML = buf.join('');
+	};
+	
+	worker.postMessage({n:1000,target:['priorityQueue1','priorityQueue2','priorityQueue3','priorityQueue4','priorityQueue5','priorityQueue6']});
+	worker.postMessage({n:2000,target:['priorityQueue1','priorityQueue2','priorityQueue3','priorityQueue4','priorityQueue5','priorityQueue6']});
+	worker.postMessage({n:5000,target:['priorityQueue1','priorityQueue2','priorityQueue3','priorityQueue4','priorityQueue5','priorityQueue6']});
+	worker.postMessage({n:10000,target:['priorityQueue1','priorityQueue2','priorityQueue3','priorityQueue4','priorityQueue5','priorityQueue6']});
+	worker.postMessage({n:20000,target:['priorityQueue2','priorityQueue3','priorityQueue4','priorityQueue5','priorityQueue6']});
+	worker.postMessage({n:50000,target:['priorityQueue4','priorityQueue5','priorityQueue6']});
+	worker.postMessage({n:100000,target:['priorityQueue4','priorityQueue5','priorityQueue6']});
+	worker.postMessage({n:200000,target:['priorityQueue4','priorityQueue5','priorityQueue6']});
+	worker.postMessage({n:500000,target:['priorityQueue5','priorityQueue6']});
+	worker.postMessage({n:1000000,target:['priorityQueue5','priorityQueue6']});
+	//worker.postMessage({n:2000000,target:['priorityQueue5','priorityQueue6']});
+	
+	worker.postMessage({n:1000000,target:['priorityQueue7_3','priorityQueue7_4','priorityQueue8','priorityQueue9']});
+}
+function stopBenchmark(){
+	if(worker){
+		worker.terminate();
+		worker = (void 0);
+	}
+}
+
+</script>
+</body>
+</html>

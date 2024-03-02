@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>楽天トラベル ホテル検索ツール</title>
+<meta property="og:title" content="楽天トラベル ホテル検索ツール" />
+<meta property="og:description" content="最終チェックイン時刻と洗濯機の有無の一覧を表示する、楽天トラベルAPIを使った簡易ホテル検索ツールです。" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://www.330k.info/software/rakuten-hotel-search/rakuten-hotel-search.html" />
+<meta property="og:image" content="https://www.330k.info/software/rakuten-hotel-search/icons/icon_192x192.png"/>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="application-name" content="楽天トラベル ホテル検索">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<link rel="favicon" type="image/png"  href="rakuten_travel_logo_32x32.png">
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" sizes="512x512" href="icons/icon_512x512.png">
+
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+<script type="application/javascript">
+  var doNotTrack = false;
+  if (!doNotTrack) {
+    window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+    ga('create', 'UA-5655726-3', 'auto');
+    
+    ga('send', 'pageview');
+  }
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-L5FSJ397HF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-L5FSJ397HF');
+</script>
+
+<script>
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", function() {
+    navigator.serviceWorker.register("sw.js").then(function(registration) {
+      //Service Worker(sw.js)が登録できたら特に何もしない。
+    }, function(err) {
+      //Service Worker(sw.js)の登録が失敗した場合はブラウザにログを出す。
+      console.log("ServiceWorker registration failed: ", err);
+    });
+  });
+}
+</script>
+<style>
+  * { margin: 0; padding: 0; border: none;}
+  html, body { width: 100%; height: 100%; font-family: sans-serif; }
+  #wrapper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+  #header {
+    flex: 0 0 24px;
+    line-height: 24px;
+    background-color: #000;
+    color: white;
+    font-weight: bold;
+    box-sizing: border-box;
+    border-color: red;
+    border-width: 0 0 2px 0;
+    border-style: solid;
+    padding: 0 0 0 3px;
+
+    display: flex;
+  }
+  #title{
+    flex: 1;
+  }
+  #page_link{
+    flex: 0 0 32px;
+    text-align: center;
+  }
+  iframe {
+    flex: 1;
+  }
+  a, a:hover, a:visited {
+    text-decoration: none;
+    color: white;
+  }
+</style>
+</head>
+<body>
+  <div id="wrapper">
+    <div id="header">
+      <div id="title"><a href="https://www.330k.info/">330k.info</a> - 楽天トラベル ホテル検索</div>
+      <div id="page_link"><a href="https://www.330k.info/software/rakuten-hotel-search/">？</a></div>
+    </div>
+    <iframe width="100%" src="https://330k.github.io/rakuten-hotel-search/rakuten-hotel-search.html" allow="accelerometer *; ambient-light-sensor *; autoplay *; camera *; clipboard-read *; clipboard-write *; encrypted-media *; fullscreen *; geolocation *; gyroscope *; magnetometer *; microphone *; midi *; payment *; picture-in-picture *; screen-wake-lock *; speaker *; sync-xhr *; usb *; web-share *; vibrate *; vr *"></iframe>
+  </div>
+</body>
+</html>
