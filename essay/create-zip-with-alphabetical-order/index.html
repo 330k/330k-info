@@ -14,7 +14,6 @@
 <meta property="article:published_time" content="2013-12-30T04:36:00+09:00" />
 <meta property="article:modified_time" content="2022-10-27T02:36:11+09:00" />
 
-
 	<meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:image" content="https://www.330k.info/images/ubuntu-logo32.webp" /><meta name="twitter:title" content="ファイル名順にソートしてzipファイルを作成する"/>
 <meta name="twitter:description" content="自炊した書籍をzipで作成する際、普通に圧縮すると変な順番で格納されてしまう。 実用上ほとんど問題はないのだが、なんとなくファイル名順に格納したかったので、そのやり方をメモ。 ls -1 ディレクトリ名 | zip -@rjDo0 圧縮ファイル名.zip やっていることは lsに-1オプションをつけてファイル1行ずつでファイル名を出力(デフォルトでは文字コード順) zipに-@オプションをつけ、標準入力にファイル名を渡して圧縮(残りのオプ"/>
