@@ -166,6 +166,15 @@ Garminデバイスにルートを入れるまでの一連の操作をスマホ�
  </div>
 </div>
 </div>
+
+<script>
+if(location.search.length > 0){
+  const src = "https://script.google.com/macros/s/AKfycbzL6htTE8fw3zhF1Q_2XOfRYOP2ga56v1J7NWcWLuNwtkE-oak2h6SQKjqXqaklgOM/exec";
+  const iframe = document.querySelector(`iframe[src='${src}']`);
+  iframe.src = src + location.search;
+}
+</script>
+
 <h2 id="使い方">使い方</h2>
 <h3 id="スマホアプリの場合">スマホアプリの場合</h3>
 <p>YAMAPとGarmin Connectの両方をスマホにインストールしてください。<br>
