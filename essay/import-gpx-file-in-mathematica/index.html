@@ -18,11 +18,8 @@
 <meta name="twitter:image" content="https://www.330k.info/images/Mathematica_Logo.webp" /><meta name="twitter:title" content="GPXファイルを読み込む"/>
 <meta name="twitter:description" content="MathematicaでGPXファイルを読み込んで解釈する方法のメモ。 対象となるGPXファイルを xml = Import[filepath, &#34;XML&#34;]; でまずXMLとして読み込んでおいて、 trk = Cases[xml, XMLElement[&#34;trk&#34;, _, _], Infinity]; でtrk要素を抜き出し、 trkpt = (ToExpression[{&#34;lat&#34;, &#34;lon&#34;} /. Cases[#1, XMLElement[&#34;trkpt&#34;, attr_, _] :&gt; attr, Infinity]] &amp; ) /@ trk; でそれぞれのtrk要素からtrkpt要素を抜き出して緯度と経度を得る。 Sep. 28 2013追記 Mathematica 8からは標準でGPXをImport可能になった。"/>
 
-	<link rel="dns-prefetch" href="//fonts.googleapis.com">
-	<link rel="dns-prefetch" href="//fonts.gstatic.com">
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+	
+	
 	<link rel="stylesheet" href="/css/style.css">
 	<link rel="stylesheet" href="/css/330k.css">
 	<link rel="shortcut icon" href="/favicon.ico">

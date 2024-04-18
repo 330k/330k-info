@@ -18,11 +18,8 @@
 <meta name="twitter:image" content="https://www.330k.info/essay/random_distribution_sphere_surface/002.webp" /><meta name="twitter:title" content="球面上の一様分布"/>
 <meta name="twitter:description" content="球面上に一様分布するランダムな点を生成したい時、 単純に極座標表示で$\theta$と$\varphi$を一様分布させると、極付近に点が集まってしまう。 data1 = Transpose[{Sin[t] Cos[f], Sin[t] Sin[f], Cos[t]} /. { f -&gt; RandomReal[{0, 2 Pi}, 2000], t -&gt; RandomReal[{0, Pi}, 2000]}]; g1 = ListPointPlot3D[data1, BoxRatios -&gt; {1, 1, 1}] 球面上で一様分布させるには、下記のように$\theta$にArcCosを使う ($\theta$の位置の確率を$\sin\theta$に比例させたい→累積確率分布関数は$\cos$→逆関数は$\a"/>
 
-	<link rel="dns-prefetch" href="//fonts.googleapis.com">
-	<link rel="dns-prefetch" href="//fonts.gstatic.com">
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+	
+	
 	<link rel="stylesheet" href="/css/style.css">
 	<link rel="stylesheet" href="/css/330k.css">
 	<link rel="shortcut icon" href="/favicon.ico">
