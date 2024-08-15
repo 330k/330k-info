@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html class="no-js" lang="ja-jp">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Cloudflareで公開しているホストとAccessのポリシーの対応一覧を作成する - 330k info</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="Cloudflareは非常に便利で、Cloudflare Tunnel, Cloudflare Workers, Cloudflare Pagesなどいろんな方法でホストを公開しつつ、
+Cloudflare Access (Cloudflare Zero Trust Applications)で認証の制御をしたり、といったことが簡単にできる。
+一方で、公開しているホストは全部でどれだけあるのか、ポリシーの当て忘れはないか(当て忘れると一般公開されてしまう)、などがわかりにくい面があった。
+そこでGASとCloudflareのAPIを使って、公開しているホストの一覧と、Accessで設定しているホストとポリシーの一覧を表示させるスクリプトを作ってみた。">
+	<meta property="og:title" content="Cloudflareで公開しているホストとAccessのポリシーの対応一覧を作成する" />
+<meta property="og:description" content="Cloudflareは非常に便利で、Cloudflare Tunnel, Cloudflare Workers, Cloudflare Pagesなどいろんな方法でホストを公開しつつ、
+Cloudflare Access (Cloudflare Zero Trust Applications)で認証の制御をしたり、といったことが簡単にできる。
+一方で、公開しているホストは全部でどれだけあるのか、ポリシーの当て忘れはないか(当て忘れると一般公開されてしまう)、などがわかりにくい面があった。
+そこでGASとCloudflareのAPIを使って、公開しているホストの一覧と、Accessで設定しているホストとポリシーの一覧を表示させるスクリプトを作ってみた。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.330k.info/essay/cloudflare-access-check/" /><meta property="og:image" content="https://www.330k.info/essay/cloudflare-access-check/logo-cloudflare-dark.svg" /><meta property="article:section" content="essay" />
+<meta property="article:published_time" content="2024-08-15T15:46:28+09:00" />
+<meta property="article:modified_time" content="2024-08-15T17:11:09+09:00" />
+
+
+	<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://www.330k.info/essay/cloudflare-access-check/logo-cloudflare-dark.svg" /><meta name="twitter:title" content="Cloudflareで公開しているホストとAccessのポリシーの対応一覧を作成する"/>
+<meta name="twitter:description" content="Cloudflareは非常に便利で、Cloudflare Tunnel, Cloudflare Workers, Cloudflare Pagesなどいろんな方法でホストを公開しつつ、
+Cloudflare Access (Cloudflare Zero Trust Applications)で認証の制御をしたり、といったことが簡単にできる。
+一方で、公開しているホストは全部でどれだけあるのか、ポリシーの当て忘れはないか(当て忘れると一般公開されてしまう)、などがわかりにくい面があった。
+そこでGASとCloudflareのAPIを使って、公開しているホストの一覧と、Accessで設定しているホストとポリシーの一覧を表示させるスクリプトを作ってみた。"/>
+
+	
+	
+	<link rel="stylesheet" href="/css/style.css">
+	<link rel="stylesheet" href="/css/330k.css">
+	<link rel="shortcut icon" href="/favicon.ico">
+	<script defer src="/js/330k.js"></script>
+	<link rel="stylesheet" href="/css/syntax.css">
+</head>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container">
+		<div class="logo">
+			<a class="logo__link" href="/" title="330k info" rel="home">
+				<div class="logo__title">330k info</div>
+				
+			</a>
+		</div>
+		
+<nav class="menu">
+	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+		<span class="menu__btn-title" tabindex="-1">Menu</span>
+	</button>
+	<ul class="menu__list">
+		<li class="menu__item">
+			<a class="menu__link" href="/bicycle/">Bicycles</a>
+		</li>
+		<li class="menu__item menu__item--active">
+			<a class="menu__link" href="/essay/">Essays</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/software/">Softwares</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/walk/">Walks</a>
+		</li>
+	</ul>
+</nav>
+
+	</div>
+</header>
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">Cloudflareで公開しているホストとAccessのポリシーの対応一覧を作成する</h1>
+			<div class="post__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
+	<time class="meta__text" datetime="2024-08-15T15:46:28">August 15, 2024</time>
+	<time class="meta__text" datetime="2024-08-15T17:11:09"> (Last Modified: August 15, 2024)</time>
+</div>
+
+<div class="meta__item-categories meta__item">
+	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+	<span class="meta__text"><a class="meta__link" href="/categories/%e9%9b%91%e8%a8%98%e5%b8%b3" rel="category">雑記帳</a></span>
+</div>
+</div>
+		</header><div class="content post__content clearfix">
+			<p>Cloudflareは非常に便利で、Cloudflare Tunnel, Cloudflare Workers, Cloudflare Pagesなどいろんな方法でホストを公開しつつ、
+Cloudflare Access (Cloudflare Zero Trust Applications)で認証の制御をしたり、といったことが簡単にできる。</p>
+<p>一方で、公開しているホストは全部でどれだけあるのか、ポリシーの当て忘れはないか(当て忘れると一般公開されてしまう)、などがわかりにくい面があった。</p>
+<p>そこでGASとCloudflareのAPIを使って、公開しているホストの一覧と、Accessで設定しているホストとポリシーの一覧を表示させるスクリプトを作ってみた。</p>
+<h2 id="cloudflareのapi-tokenを作成">CloudflareのAPI Tokenを作成</h2>
+<p>まずはCloudflareでAPI Tokenを生成する。</p>
+<p>私は言語設定を英語にしているので、適宜読み替えてほしい。</p>
+<ol>
+<li>Cloudflareにログインし、右上の人物アイコンから「My Profile」をクリック<br>
+<figure><img src="001.webp" decoding="async" width="177" height="141"/>
+</figure></li>
+<li>左側のメニューから「API Token」をクリック<br>
+<figure><img src="002.webp" decoding="async" width="261" height="257"/>
+</figure></li>
+<li>青色の「Create Token」をクリック<br>
+<figure><img src="003.webp" decoding="async" width="1035" height="171"/>
+</figure></li>
+<li>下の方にある「Read all resources」の右の「Use template」をクリック<br>
+<figure><img src="004.webp" decoding="async" width="697" height="927"/>
+</figure></li>
+<li>確認画面が出るので下の方にある「Create Token」をクリック</li>
+<li>表示されるAPI Tokenをコピー <strong>※この文字列は1回しか表示されないので注意</strong></li>
+</ol>
+<p>簡単のためにRead all resourcesを使っているが、関係ないデータの読み取り権限もあるので、きっちりやるなら必要最低限のものに絞ってください。</p>
+<h2 id="スプレッドシートからgoogle-apps-scriptを作成">スプレッドシートからGoogle Apps Scriptを作成</h2>
+<ol>
+<li>Googleドライブのお望みのところでスプレッドシートを作成</li>
+<li>スプレッドシートのメニュー「拡張機能」から「Apps Script」をクリック</li>
+</ol>
+<p>出てきたエディタに以下のコードを入力する。<br>
+先頭の<code>API_TOKEN</code>には先程取得したCloudflareのAPI Tokenを入れる。</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#00f">const</span> API_TOKEN = <span style="color:#a31515">&#34;************************************&#34;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#00f">function</span> onOpen(){
+</span></span><span style="display:flex;"><span>  SpreadsheetApp.getActiveSpreadsheet().addMenu( <span style="color:#a31515">&#34;Cloudflare&#34;</span>, [
+</span></span><span style="display:flex;"><span>    {name:<span style="color:#a31515">&#39;更新&#39;</span>,functionName:<span style="color:#a31515">&#39;exportHostNamesToSheet&#39;</span>},
+</span></span><span style="display:flex;"><span>  ]);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#008000">/**
+</span></span></span><span style="display:flex;"><span><span style="color:#008000"> * 集計したホスト名をスプレッドシートに書き出す
+</span></span></span><span style="display:flex;"><span><span style="color:#008000"> */</span>
+</span></span><span style="display:flex;"><span><span style="color:#00f">function</span> exportHostNamesToSheet(){
+</span></span><span style="display:flex;"><span>  <span style="color:#00f">const</span> data = aggregateHostNames();
+</span></span><span style="display:flex;"><span>  <span style="color:#00f">const</span> hostnames = [...data.keys()].sort((a, b) =&gt; {
+</span></span><span style="display:flex;"><span>    <span style="color:#00f">const</span> a2 = a.split(<span style="color:#a31515">&#34;.&#34;</span>).reverse().join(<span style="color:#a31515">&#34;.&#34;</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#00f">const</span> b2 = b.split(<span style="color:#a31515">&#34;.&#34;</span>).reverse().join(<span style="color:#a31515">&#34;.&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#00f">if</span>(a2 &lt; b2) <span style="color:#00f">return</span> 1;
+</span></span><span style="display:flex;"><span>    <span style="color:#00f">if</span>(b2 &lt; a2) <span style="color:#00f">return</span> -1;
+</span></span><span style="display:flex;"><span>    <span style="color:#00f">return</span> 0;
+</span></span><span style="display:flex;"><span>  });
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#00f">const</span> columns = [<span style="color:#a31515">&#34;hostname&#34;</span>, <span style="color:#a31515">&#34;tunnel_name&#34;</span>, <span style="color:#a31515">&#34;tunnel_service&#34;</span>, <span style="color:#a31515">&#34;worker_name&#34;</span>, <span style="color:#a31515">&#34;page_name&#34;</span>, <span style="color:#a31515">&#34;access_application_name&#34;</span>, <span style="color:#a31515">&#34;access_policies&#34;</span>];
+</span></span><span style="display:flex;"><span>  <span style="color:#00f">const</span> table = [columns];
+</span></span><span style="display:flex;"><span>  <span style="color:#00f">for</span>(<span style="color:#00f">const</span> hostname <span style="color:#00f">of</span> hostnames){
+</span></span><span style="display:flex;"><span>    <span style="color:#00f">const</span> row = [hostname];
+</span></span><span style="display:flex;"><span>    <span style="color:#00f">const</span> v = data.get(hostname);
+</span></span><span style="display:flex;"><span>    <span style="color:#00f">for</span>(<span style="color:#00f">let</span> i = 1; i &lt; columns.length; i++){
+</span></span><span style="display:flex;"><span>      <span style="color:#00f">if</span>(v[columns[i]]){
+</span></span><span style="display:flex;"><span>        row.push(v[columns[i]]);
+</span></span><span style="display:flex;"><span>      }<span style="color:#00f">else</span>{
+</span></span><span style="display:flex;"><span>        row.push(<span style="color:#a31515">&#34;&#34;</span>);
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    table.push(row);
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#00f">const</span> ss = SpreadsheetApp.getActiveSpreadsheet();
+</span></span><span style="display:flex;"><span>  <span style="color:#00f">const</span> sheet = ss.getSheetByName(<span style="color:#a31515">&#34;シート1&#34;</span>);
+</span></span><span style="display:flex;"><span>  sheet.getDataRange().clearContent();
+</span></span><span style="display:flex;"><span>  <span style="color:#00f">const</span> range = sheet.getRange(1, 1, table.length, table[0].length);
+</span></span><span style="display:flex;"><span>  range.setValues(table);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#008000">/**
+</span></span></span><span style="display:flex;"><span><span style="color:#008000"> * Cloudflareの各種設定で使われるホスト名を集計する
+</span></span></span><span style="display:flex;"><span><span style="color:#008000"> */</span>
+</span></span><span style="display:flex;"><span><span style="color:#00f">function</span> aggregateHostNames(){
+</span></span><span style="display:flex;"><span>  <span style="color:#00f">const</span> result = <span style="color:#00f">new</span> Map();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#00f">const</span> account_ids = getCfAccounts(API_TOKEN).map(e =&gt; e.id);
+</span></span><span style="display:flex;"><span>  <span style="color:#00f">for</span>(<span style="color:#00f">const</span> account_id <span style="color:#00f">of</span> account_ids){
+</span></span><span style="display:flex;"><span>    <span style="color:#008000">// Access
+</span></span></span><span style="display:flex;"><span><span style="color:#008000"></span>    <span style="color:#00f">const</span> apps = getCfAccessApplications(API_TOKEN, account_id);
+</span></span><span style="display:flex;"><span>    <span style="color:#00f">for</span>(<span style="color:#00f">const</span> app <span style="color:#00f">of</span> apps){
+</span></span><span style="display:flex;"><span>      <span style="color:#00f">if</span>(app.self_hosted_domains){
+</span></span><span style="display:flex;"><span>        <span style="color:#00f">for</span>(<span style="color:#00f">const</span> dom <span style="color:#00f">of</span> app.self_hosted_domains){
+</span></span><span style="display:flex;"><span>          <span style="color:#00f">const</span> key = dom;
+</span></span><span style="display:flex;"><span>          <span style="color:#00f">if</span>(!result.has(key)){
+</span></span><span style="display:flex;"><span>            result.set(key, {});
+</span></span><span style="display:flex;"><span>          }
+</span></span><span style="display:flex;"><span>          <span style="color:#00f">const</span> obj = result.get(key);
+</span></span><span style="display:flex;"><span>          obj.access_application_name = app.name;
+</span></span><span style="display:flex;"><span>          obj.access_policies = app.policies.map(e =&gt; e.name).join(<span style="color:#a31515">&#34;, &#34;</span>);
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>      }<span style="color:#00f">else</span>{
+</span></span><span style="display:flex;"><span>        <span style="color:#008000">//console.log(app);
+</span></span></span><span style="display:flex;"><span><span style="color:#008000"></span>      }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#008000">// Tunnel
+</span></span></span><span style="display:flex;"><span><span style="color:#008000"></span>    <span style="color:#00f">const</span> tunnels = getCfTunnels(API_TOKEN, account_id).filter(e =&gt; (e.deleted_at === <span style="color:#00f">null</span>));
+</span></span><span style="display:flex;"><span>    <span style="color:#00f">for</span>(<span style="color:#00f">const</span> tunnel <span style="color:#00f">of</span> tunnels){
+</span></span><span style="display:flex;"><span>      <span style="color:#00f">const</span> tunnel_confs = getCfTunnelConfigurations(API_TOKEN, account_id, tunnel.id);
+</span></span><span style="display:flex;"><span>      <span style="color:#00f">for</span>(<span style="color:#00f">const</span> i <span style="color:#00f">of</span> tunnel_confs.config.ingress){
+</span></span><span style="display:flex;"><span>        <span style="color:#00f">const</span> key = i.hostname;
+</span></span><span style="display:flex;"><span>        <span style="color:#00f">if</span>(key){
+</span></span><span style="display:flex;"><span>          <span style="color:#00f">if</span>(!result.has(key)){
+</span></span><span style="display:flex;"><span>            result.set(key, {});
+</span></span><span style="display:flex;"><span>          }
+</span></span><span style="display:flex;"><span>          <span style="color:#00f">const</span> obj = result.get(key);
+</span></span><span style="display:flex;"><span>          obj.tunnel_name = tunnel.name;
+</span></span><span style="display:flex;"><span>          obj.tunnel_service = i.service;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#008000">// Worker
+</span></span></span><span style="display:flex;"><span><span style="color:#008000"></span>    <span style="color:#00f">const</span> workers = getCfWorkerDomains(API_TOKEN, account_id);
+</span></span><span style="display:flex;"><span>    <span style="color:#00f">for</span>(<span style="color:#00f">const</span> worker <span style="color:#00f">of</span> workers){
+</span></span><span style="display:flex;"><span>      <span style="color:#00f">const</span> key = worker.hostname;
+</span></span><span style="display:flex;"><span>      <span style="color:#00f">if</span>(!result.has(key)){
+</span></span><span style="display:flex;"><span>        result.set(key, {});
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>      <span style="color:#00f">const</span> obj = result.get(key);
+</span></span><span style="display:flex;"><span>      obj.worker_name = worker.service;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#008000">// Pages
+</span></span></span><span style="display:flex;"><span><span style="color:#008000"></span>    <span style="color:#00f">const</span> pages = getCfPageProjects(API_TOKEN, account_id);
+</span></span><span style="display:flex;"><span>    <span style="color:#00f">for</span>(<span style="color:#00f">const</span> page <span style="color:#00f">of</span> pages){
+</span></span><span style="display:flex;"><span>      <span style="color:#00f">for</span>(<span style="color:#00f">const</span> dom <span style="color:#00f">of</span> page.domains){
+</span></span><span style="display:flex;"><span>        <span style="color:#00f">const</span> key = dom;
+</span></span><span style="display:flex;"><span>        <span style="color:#00f">if</span>(!result.has(key)){
+</span></span><span style="display:flex;"><span>          result.set(key, {});
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#00f">const</span> obj = result.get(key);
+</span></span><span style="display:flex;"><span>        obj.page_name = page.name;
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#00f">return</span> result;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#008000">/** 
+</span></span></span><span style="display:flex;"><span><span style="color:#008000"> * Cloudflareのアカウント一覧を取得する
+</span></span></span><span style="display:flex;"><span><span style="color:#008000"> * @param {string} token API Token
+</span></span></span><span style="display:flex;"><span><span style="color:#008000"> * @return {[{id:string,name:string,type,string}]}
+</span></span></span><span style="display:flex;"><span><span style="color:#008000"> */</span>
+</span></span><span style="display:flex;"><span><span style="color:#00f">function</span> getCfAccounts(token){
+</span></span><span style="display:flex;"><span>  <span style="color:#00f">const</span> json = JSON.parse(UrlFetchApp.fetch(<span style="color:#a31515">`https://api.cloudflare.com/client/v4/accounts`</span>, {
+</span></span><span style="display:flex;"><span>    <span style="color:#a31515">&#34;headers&#34;</span>: {
+</span></span><span style="display:flex;"><span>      <span style="color:#a31515">&#34;Authorization&#34;</span>: <span style="color:#a31515">`Bearer </span><span style="color:#a31515">${</span>token<span style="color:#a31515">}</span><span style="color:#a31515">`</span>, 
+</span></span><span style="display:flex;"><span>      <span style="color:#a31515">&#34;Content-Type&#34;</span>: <span style="color:#a31515">&#34;application/json&#34;</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  }).getContentText(<span style="color:#a31515">&#34;UTF-8&#34;</span>));
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#00f">return</span> json.result;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#008000">/**
+</span></span></span><span style="display:flex;"><span><span style="color:#008000"> * Cloudflare AccessのApplication一覧を取得する
+</span></span></span><span style="display:flex;"><span><span style="color:#008000"> * @param {string} token API Token
+</span></span></span><span style="display:flex;"><span><span style="color:#008000"> * @param {string} account_id Account ID
+</span></span></span><span style="display:flex;"><span><span style="color:#008000"> * @return {[{id:string,name:string,domain:string,self_hosted_domains:[string],policies:[{name:string}]}]}
+</span></span></span><span style="display:flex;"><span><span style="color:#008000"> */</span>
+</span></span><span style="display:flex;"><span><span style="color:#00f">function</span> getCfAccessApplications(token, account_id){
+</span></span><span style="display:flex;"><span>  <span style="color:#00f">const</span> json = JSON.parse(UrlFetchApp.fetch(<span style="color:#a31515">`https://api.cloudflare.com/client/v4/accounts/</span><span style="color:#a31515">${</span>account_id<span style="color:#a31515">}</span><span style="color:#a31515">/access/apps`</span>, {
+</span></span><span style="display:flex;"><span>    <span style="color:#a31515">&#34;headers&#34;</span>: {
+</span></span><span style="display:flex;"><span>      <span style="color:#a31515">&#34;Authorization&#34;</span>: <span style="color:#a31515">`Bearer </span><span style="color:#a31515">${</span>token<span style="color:#a31515">}</span><span style="color:#a31515">`</span>, 
+</span></span><span style="display:flex;"><span>      <span style="color:#a31515">&#34;Content-Type&#34;</span>: <span style="color:#a31515">&#34;application/json&#34;</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  }).getContentText(<span style="color:#a31515">&#34;UTF-8&#34;</span>));
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#00f">return</span> json.result;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#008000">/**
+</span></span></span><span style="display:flex;"><span><span style="color:#008000"> * Cloudflare Tunnelの一覧を取得する
+</span></span></span><span style="display:flex;"><span><span style="color:#008000"> * @param {string} token API Token
+</span></span></span><span style="display:flex;"><span><span style="color:#008000"> * @param {string} account_id Account ID
+</span></span></span><span style="display:flex;"><span><span style="color:#008000"> * @return {[{id:string,name:string,status:string}]}
+</span></span></span><span style="display:flex;"><span><span style="color:#008000"> */</span>
+</span></span><span style="display:flex;"><span><span style="color:#00f">function</span> getCfTunnels(token, account_id){
+</span></span><span style="display:flex;"><span>  <span style="color:#00f">const</span> json = JSON.parse(UrlFetchApp.fetch(<span style="color:#a31515">`https://api.cloudflare.com/client/v4/accounts/</span><span style="color:#a31515">${</span>account_id<span style="color:#a31515">}</span><span style="color:#a31515">/cfd_tunnel`</span>, {
+</span></span><span style="display:flex;"><span>    <span style="color:#a31515">&#34;headers&#34;</span>: {
+</span></span><span style="display:flex;"><span>      <span style="color:#a31515">&#34;Authorization&#34;</span>: <span style="color:#a31515">`Bearer </span><span style="color:#a31515">${</span>token<span style="color:#a31515">}</span><span style="color:#a31515">`</span>, 
+</span></span><span style="display:flex;"><span>      <span style="color:#a31515">&#34;Content-Type&#34;</span>: <span style="color:#a31515">&#34;application/json&#34;</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  }).getContentText(<span style="color:#a31515">&#34;UTF-8&#34;</span>));
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#00f">return</span> json.result;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#008000">/**
+</span></span></span><span style="display:flex;"><span><span style="color:#008000"> * Cloudflare Tunnelの設定一覧を取得する
+</span></span></span><span style="display:flex;"><span><span style="color:#008000"> * @param {string} token API Token
+</span></span></span><span style="display:flex;"><span><span style="color:#008000"> * @param {string} account_id Account ID
+</span></span></span><span style="display:flex;"><span><span style="color:#008000"> * @param {string} tunnel_id Tunnel ID
+</span></span></span><span style="display:flex;"><span><span style="color:#008000"> * @return {{tunnel_id:string,config:{ingress:[{service:string,hostname:string}]}}}
+</span></span></span><span style="display:flex;"><span><span style="color:#008000"> */</span>
+</span></span><span style="display:flex;"><span><span style="color:#00f">function</span> getCfTunnelConfigurations(token, account_id, tunnel_id){
+</span></span><span style="display:flex;"><span>  <span style="color:#00f">const</span> json = JSON.parse(UrlFetchApp.fetch(<span style="color:#a31515">`https://api.cloudflare.com/client/v4/accounts/</span><span style="color:#a31515">${</span>account_id<span style="color:#a31515">}</span><span style="color:#a31515">/cfd_tunnel/</span><span style="color:#a31515">${</span>tunnel_id<span style="color:#a31515">}</span><span style="color:#a31515">/configurations`</span>, {
+</span></span><span style="display:flex;"><span>    <span style="color:#a31515">&#34;headers&#34;</span>: {
+</span></span><span style="display:flex;"><span>      <span style="color:#a31515">&#34;Authorization&#34;</span>: <span style="color:#a31515">`Bearer </span><span style="color:#a31515">${</span>token<span style="color:#a31515">}</span><span style="color:#a31515">`</span>, 
+</span></span><span style="display:flex;"><span>      <span style="color:#a31515">&#34;Content-Type&#34;</span>: <span style="color:#a31515">&#34;application/json&#34;</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  }).getContentText(<span style="color:#a31515">&#34;UTF-8&#34;</span>));
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#00f">return</span> json.result;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#008000">/**
+</span></span></span><span style="display:flex;"><span><span style="color:#008000"> * Cloudflare Workerのドメイン一覧を取得する
+</span></span></span><span style="display:flex;"><span><span style="color:#008000"> * @param {string} token API Token
+</span></span></span><span style="display:flex;"><span><span style="color:#008000"> * @param {string} account_id Account ID
+</span></span></span><span style="display:flex;"><span><span style="color:#008000"> * @return {[{id:string,service:string,hostname:string}]}
+</span></span></span><span style="display:flex;"><span><span style="color:#008000"> */</span>
+</span></span><span style="display:flex;"><span><span style="color:#00f">function</span> getCfWorkerDomains(token, account_id){
+</span></span><span style="display:flex;"><span>  <span style="color:#00f">const</span> json = JSON.parse(UrlFetchApp.fetch(<span style="color:#a31515">`https://api.cloudflare.com/client/v4/accounts/</span><span style="color:#a31515">${</span>account_id<span style="color:#a31515">}</span><span style="color:#a31515">/workers/domains`</span>, {
+</span></span><span style="display:flex;"><span>    <span style="color:#a31515">&#34;headers&#34;</span>: {
+</span></span><span style="display:flex;"><span>      <span style="color:#a31515">&#34;Authorization&#34;</span>: <span style="color:#a31515">`Bearer </span><span style="color:#a31515">${</span>token<span style="color:#a31515">}</span><span style="color:#a31515">`</span>, 
+</span></span><span style="display:flex;"><span>      <span style="color:#a31515">&#34;Content-Type&#34;</span>: <span style="color:#a31515">&#34;application/json&#34;</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  }).getContentText(<span style="color:#a31515">&#34;UTF-8&#34;</span>));
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#00f">return</span> json.result;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#008000">/**
+</span></span></span><span style="display:flex;"><span><span style="color:#008000"> * Cloudflare Pagesで使うドメイン一覧を取得する
+</span></span></span><span style="display:flex;"><span><span style="color:#008000"> * @param {string} token API Token
+</span></span></span><span style="display:flex;"><span><span style="color:#008000"> * @param {string} account_id Account ID
+</span></span></span><span style="display:flex;"><span><span style="color:#008000"> * @return {[{id:string,name:string,subdomain:string,domains:[string]}]}
+</span></span></span><span style="display:flex;"><span><span style="color:#008000"> */</span>
+</span></span><span style="display:flex;"><span><span style="color:#00f">function</span> getCfPageProjects(token, account_id){
+</span></span><span style="display:flex;"><span>  <span style="color:#00f">const</span> json = JSON.parse(UrlFetchApp.fetch(<span style="color:#a31515">`https://api.cloudflare.com/client/v4/accounts/</span><span style="color:#a31515">${</span>account_id<span style="color:#a31515">}</span><span style="color:#a31515">/pages/projects`</span>, {
+</span></span><span style="display:flex;"><span>    <span style="color:#a31515">&#34;headers&#34;</span>: {
+</span></span><span style="display:flex;"><span>      <span style="color:#a31515">&#34;Authorization&#34;</span>: <span style="color:#a31515">`Bearer </span><span style="color:#a31515">${</span>token<span style="color:#a31515">}</span><span style="color:#a31515">`</span>, 
+</span></span><span style="display:flex;"><span>      <span style="color:#a31515">&#34;Content-Type&#34;</span>: <span style="color:#a31515">&#34;application/json&#34;</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  }).getContentText(<span style="color:#a31515">&#34;UTF-8&#34;</span>));
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#00f">return</span> json.result;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>書き出し先のシート名をデフォルトの<code>シート1</code>から変更した場合は、コード中の<code>ss.getSheetByName(&quot;シート1&quot;);</code>の部分を変更。</p>
+<p>お好みでGASのプロジェクト名を設定し、エディタから<code>exportHostNamesToSheet</code>を実行。</p>
+<p>初回のみプロジェクトに権限を与えるかどうかを尋ねられるので、許可する。</p>
+<h2 id="実行結果">実行結果</h2>
+<p>実行結果(の見た目を少し整えたもの)は以下のような感じ。<br>
+(モザイクをかけていて分かりにくいのはご容赦を)</p>
+<figure><img src="006.webp" decoding="async" width="1109" height="337"/>
+</figure>
+<p>Tunnel、Workers、Pagesなど色んな方法で公開されているホストがA列に並び、G列に最終的に適用されているポリシーが表示される。</p>
+<p>G列が空白のものはAccessでポリシーを設定し忘れていて、誤って全世界に公開してしまっている可能性があるので要注意。</p>
+<p>私自身、Accessで入力したホスト名にtypoがあり、効いていると思っていたポリシーが効いておらず、誤って公開していたことが判明した。</p>
+<h2 id="その他">その他</h2>
+<ul>
+<li>Workersのデフォルトのドメイン名(<code>***.workers.dev</code>)には現時点では非対応(API Documentで見つけられなかった)</li>
+<li>2回目以降、スプレッドシートを開くとメニューに「Cloudflare」が追加されるので、「更新」をクリックすることでスクリプトを実行できる<br>
+<figure><img src="008.webp" decoding="async" width="936" height="91"/>
+</figure></li>
+<li>Cloudflareは進歩が早く、このページの内容やAPIが古くなっている可能性があるので、最新の情報もチェックしてほしい</li>
+</ul>
+		</div>
+		<footer class="post__footer">
+			
+<div class="post__tags tags clearfix">
+	<svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item"><a class="tags__link btn" href="/tags/cloudflare/" rel="tag">Cloudflare</a></li>
+	</ul>
+</div>
+		</footer>
+	</article>
+</main>
+
+
+<nav class="post-nav flex">
+	<div class="post-nav__item post-nav__item--prev">
+		<a class="post-nav__link" href="/essay/sansan-gmail-guideline/" rel="prev"><span class="post-nav__caption">«&thinsp;Previous</span><p class="post-nav__post-title">Sansanのメール一括配信におけるドメイン認証設定案内の落とし穴</p></a>
+	</div>
+</nav>
+
+
+			</div>
+			<aside class="sidebar sidebar--left">
+<div class="widget-fixedpage widget">
+	
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/software/create_gpx_with_google_maps/"><img src="/software/create_gpx_with_google_maps/favicon-16x16.webp" height="16" width="16" alt="icon of Google MapsでGPXルート作成" style="vertical-align: middle;" />Google MapsでGPXルート作成</a></li>
+			<li class="widget__item"><a class="widget__link" href="/software/simplify_gpx/"><img src="/software/simplify_gpx/icon_16.webp" height="16" width="16" alt="icon of GPXトラックログを間引く・簡略化" style="vertical-align: middle;" />GPXトラックログを間引く・簡略化</a></li>
+			<li class="widget__item"><a class="widget__link" href="/software/cannonball-wind-map/"><img src="/software/cannonball-wind-map/cannonball_logo.webp" height="16" width="16" alt="icon of キャノンボール専用 天候・風向き予測" style="vertical-align: middle;" />キャノンボール専用 天候・風向き予測</a></li>
+			<li class="widget__item"><a class="widget__link" href="/software/gpx-nearby-search/"><img src="/software/gpx-nearby-search/icon002_32.svg" height="16" width="16" alt="icon of GPXルート沿いコンビニ・道の駅検索" style="vertical-align: middle;" />GPXルート沿いコンビニ・道の駅検索</a></li>
+			<li class="widget__item"><a class="widget__link" href="/software/chrome_rwgps_ele_gsi/"><img src="/software/chrome_rwgps_ele_gsi/icon_02_32.webp" height="16" width="16" alt="icon of RWGPS地理院標高 - Chrome拡張機能" style="vertical-align: middle;" />RWGPS地理院標高 - Chrome拡張機能</a></li>
+			<li class="widget__item"><a class="widget__link" href="/software/chrome_passable_route_gpx_loader/"><img src="/software/chrome_passable_route_gpx_loader/icon_128.webp" height="16" width="16" alt="icon of 通れた道マップ GPX表示拡張 - Chrome拡張機能" style="vertical-align: middle;" />通れた道マップ GPX表示拡張 - Chrome拡張機能</a></li>
+			<li class="widget__item"><a class="widget__link" href="/software/gpx-tcx-converter/"><img src="/software/gpx-tcx-converter/icon256.svg" height="16" width="16" alt="icon of GPX to FIT/TCX Converter" style="vertical-align: middle;" />GPX to FIT/TCX Converter</a></li>
+			<li class="widget__item"><a class="widget__link" href="/software/gpx-compare/"><img src="/software/gpx-compare/icon240.svg" height="16" width="16" alt="icon of GPXルート比較(差分表示)ツール" style="vertical-align: middle;" />GPXルート比較(差分表示)ツール</a></li>
+			<li class="widget__item"><a class="widget__link" href="/software/gpx-spike-detector/"><img src="/software/gpx-spike-detector/images/icon002.svg" height="16" width="16" alt="icon of GPXヒゲ検出ツール(α)" style="vertical-align: middle;" />GPXヒゲ検出ツール(α)</a></li>
+			<li class="widget__item"><a class="widget__link" href="/software/rakuten-hotel-search/"><img src="/software/rakuten-hotel-search/rakuten_travel_logo_32x32.webp" height="16" width="16" alt="icon of 楽天トラベル ホテル検索" style="vertical-align: middle;" />楽天トラベル ホテル検索</a></li>
+			<li class="widget__item"><a class="widget__link" href="/software/yamap-gpx-exporter/"><img src="/software/yamap-gpx-exporter/icon_128.webp" height="16" width="16" alt="icon of YAMAP GPX Exporter" style="vertical-align: middle;" />YAMAP GPX Exporter</a></li>
+			<li class="widget__item"><a class="widget__link" href="/bicycle/introduction/">自転車について</a></li>
+			<li class="widget__item"><a class="widget__link" href="/bicycle/equipments/">携行品・装備品</a></li>
+			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20201004-osaka-tokyo-cannonball/">2020年10月04日 大阪→東京 キャノンボール 23時間37分</a></li>
+		</ul>
+	</div>
+</div>
+<div class="widget-recent widget">
+	<h4 class="widget__title">Recent Posts</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/essay/cloudflare-access-check/">Cloudflareで公開しているホストとAccessのポリシーの対応一覧を作成する</a></li>
+			<li class="widget__item"><a class="widget__link" href="/walk/20240601-mt-fuji-hillclimb/">2024年06月02日 富士山(富士ヒル観戦)</a></li>
+			<li class="widget__item"><a class="widget__link" href="/walk/20240503-mt-fuji-yoshida-5goume/">2024年05月03日 富士山吉田口五合目</a></li>
+			<li class="widget__item"><a class="widget__link" href="/walk/20240428-hachijo-fuji/">2024年04月28日 八丈富士</a></li>
+			<li class="widget__item"><a class="widget__link" href="/essay/sansan-gmail-guideline/">Sansanのメール一括配信におけるドメイン認証設定案内の落とし穴</a></li>
+			<li class="widget__item"><a class="widget__link" href="/walk/20240106-yaguradake/">2024年01月06日 大雄山-矢倉岳-駿河小山</a></li>
+			<li class="widget__item"><a class="widget__link" href="/walk/20231227-todogasaki/">2023年12月27日 本州最東端 トドヶ崎</a></li>
+			<li class="widget__item"><a class="widget__link" href="/walk/20231222-darumayama/">2023年12月22日 西伊豆 達磨山-金冠山</a></li>
+			<li class="widget__item"><a class="widget__link" href="/essay/edge_830_distance_calculation_behavior/">速度センサがないときのEdge 830の距離計算挙動</a></li>
+			<li class="widget__item"><a class="widget__link" href="/walk/20231124-tonomine-yusakaji/">2023年11月24日 小田原-塔ノ峰-湯坂路-元箱根</a></li>
+			<li class="widget__item"><a class="widget__link" href="/walk/20231119-okukuji-nantaisan/">2023年11月19日 奥久慈男体山</a></li>
+			<li class="widget__item"><a class="widget__link" href="/walk/20231027-nikko-nantaisan/">2023年10月27日 日光男体山</a></li>
+			<li class="widget__item"><a class="widget__link" href="/walk/20231014-kumonokodo-nakahechi-singu-nachi/">2023年10月14日 熊野古道 中辺路(新宮-那智)</a></li>
+			<li class="widget__item"><a class="widget__link" href="/walk/20231006-bukosan/">2023年10月06日 武甲山</a></li>
+			<li class="widget__item"><a class="widget__link" href="/walk/20230916-yokokawa-karuizawa/">2023年09月16日 中山道(横川-軽井沢)</a></li>
+			<li class="widget__item"><a class="widget__link" href="/walk/20230825-kumotori/">2023年08月25日-26日 雲取山テント泊</a></li>
+			<li class="widget__item"><a class="widget__link" href="/walk/20230805-mt-fuji/">2023年08月05日 富士山(プリンスルート - 富士宮ルート)</a></li>
+			<li class="widget__item"><a class="widget__link" href="/walk/20230728-kita/">2023年07月28日 北岳</a></li>
+			<li class="widget__item"><a class="widget__link" href="/walk/20230722-mugikusa-futagoike-yoko/">2023年07月22日-23日 麦草峠-双子池-横岳</a></li>
+			<li class="widget__item"><a class="widget__link" href="/walk/20230716-kintoki-saijoji/">2023年07月16日 金時山-大雄山最乗寺</a></li>
+		</ul>
+	</div>
+</div>
+<div class="widget-categories widget">
+	<h4 class="widget__title">Categories</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/categories/%e3%82%bd%e3%83%95%e3%83%88%e3%82%a6%e3%82%a7%e3%82%a2">ソフトウェア</a></li>
+			<li class="widget__item"><a class="widget__link" href="/categories/%e5%be%92%e6%ad%a9">徒歩</a></li>
+			<li class="widget__item"><a class="widget__link" href="/categories/%e8%87%aa%e8%bb%a2%e8%bb%8a">自転車</a></li>
+			<li class="widget__item"><a class="widget__link" href="/categories/%e9%9b%91%e8%a8%98%e5%b8%b3">雑記帳</a></li>
+		</ul>
+	</div>
+</div>
+<div class="widget-taglist widget">
+	<h4 class="widget__title">Tags</h4>
+	<div class="widget__content">
+		<a class="widget-taglist__link widget__link btn" href="/tags/apache" title="Apache">Apache (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/bash" title="Bash">Bash (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/bat" title="Bat">Bat (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/brm1000km" title="Brm1000km">Brm1000km (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/brm200km" title="Brm200km">Brm200km (7)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/brm300km" title="Brm300km">Brm300km (8)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/brm400km" title="Brm400km">Brm400km (6)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/brm600km" title="Brm600km">Brm600km (9)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/chrome%e6%8b%a1%e5%bc%b5%e6%a9%9f%e8%83%bd" title="Chrome拡張機能">Chrome拡張機能 (3)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/cloudflare" title="Cloudflare">Cloudflare (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/cuda" title="Cuda">Cuda (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/cybozu" title="Cybozu">Cybozu (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/dotnet" title="Dotnet">Dotnet (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/ffmpeg" title="Ffmpeg">Ffmpeg (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/freeradius" title="Freeradius">Freeradius (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/garmin" title="Garmin">Garmin (5)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/garoon" title="Garoon">Garoon (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/gas" title="Gas">Gas (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/github" title="Github">Github (10)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/gmail" title="Gmail">Gmail (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/google" title="Google">Google (6)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/gps" title="Gps">Gps (3)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/gpx" title="Gpx">Gpx (12)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/hta" title="Hta">Hta (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/hugo" title="Hugo">Hugo (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/imagemagick" title="Imagemagick">Imagemagick (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/java" title="Java">Java (3)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/javascript" title="Javascript">Javascript (15)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/lxd" title="Lxd">Lxd (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/mathematica" title="Mathematica">Mathematica (25)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nextcloud" title="Nextcloud">Nextcloud (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/openvpn" title="Openvpn">Openvpn (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/powerpoint" title="Powerpoint">Powerpoint (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/powershell" title="Powershell">Powershell (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/rm1300km" title="Rm1300km">Rm1300km (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/rm2700km" title="Rm2700km">Rm2700km (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/rwgps" title="Rwgps">Rwgps (4)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/sql" title="SQL">SQL (3)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/sqlserver" title="Sqlserver">Sqlserver (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/sr600" title="Sr600">Sr600 (10)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/ubuntu" title="Ubuntu">Ubuntu (21)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/vba" title="Vba">Vba (4)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/vpn" title="VPN">VPN (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/windows" title="Windows">Windows (13)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/wine" title="Wine">Wine (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/wsh" title="Wsh">Wsh (3)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/zabbix" title="Zabbix">Zabbix (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%82%a2%e3%83%ab%e3%82%b4%e3%83%aa%e3%82%ba%e3%83%a0" title="アルゴリズム">アルゴリズム (6)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%82%a6%e3%82%a9%e3%83%bc%e3%82%ad%e3%83%b3%e3%82%b0" title="ウォーキング">ウォーキング (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%82%ad%e3%83%a3%e3%83%8e%e3%83%b3%e3%83%9c%e3%83%bc%e3%83%ab" title="キャノンボール">キャノンボール (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%83%84%e3%83%bc%e3%83%aa%e3%83%b3%e3%82%b0" title="ツーリング">ツーリング (51)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%83%91%e3%83%af%e3%83%8f%e3%83%a9" title="パワハラ">パワハラ (5)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%83%96%e3%83%ab%e3%83%99" title="ブルベ">ブルベ (46)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%83%a9%e3%82%a4%e3%83%88" title="ライト">ライト (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%83%ac%e3%83%93%e3%83%a5%e3%83%bc" title="レビュー">レビュー (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%e6%95%b0%e5%ad%a6" title="数学">数学 (6)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%e7%94%9f%e6%b4%bb" title="生活">生活 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%e7%99%bb%e5%b1%b1" title="登山">登山 (25)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%e7%a4%be%e5%86%85se" title="社内se">社内se (22)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%e8%87%aa%e8%bb%a2%e8%bb%8a" title="自転車">自転車 (17)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%e8%b5%b0%e8%a1%8c%e4%bc%9a" title="走行会">走行会 (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%e9%9b%91%e5%ad%a6" title="雑学">雑学 (1)</a>
+	</div>
+</div>
+<div class="widget-social widget">
+	<h4 class="widget-social__title widget__title">Social</h4>
+	<div class="widget-social__content widget__content">
+		<div class="widget-social__item widget__item">
+			<a class="widget-social__link widget__link btn" title="Twitter" rel="noopener noreferrer" href="https://twitter.com/330k" target="_blank">
+				<svg class="widget-social__link-icon icon icon-twitter" width="24" height="24" viewBox="0 0 384 312"><path d="m384 36.9c-14.1 6.3-29.3 10.5-45.2 12.4 16.3-9.7 28.8-25.2 34.6-43.6-15.2 9-32.1 15.6-50 19.1-14.4-15.2-34.9-24.8-57.5-24.8-43.5 0-78.8 35.3-78.8 78.8 0 6.2.7 12.2 2 17.9-65.5-3.3-123.5-34.6-162.4-82.3-6.7 11.6-10.6 25.2-10.6 39.6 0 27.3 13.9 51.4 35 65.6-12.9-.4-25.1-4-35.7-9.9v1c0 38.2 27.2 70 63.2 77.2-6.6 1.8-13.6 2.8-20.8 2.8-5.1 0-10-.5-14.8-1.4 10 31.3 39.1 54.1 73.6 54.7-27 21.1-60.9 33.7-97.8 33.7-6.4 0-12.6-.4-18.8-1.1 34.9 22.4 76.3 35.4 120.8 35.4 144.9 0 224.1-120 224.1-224.1 0-3.4-.1-6.8-.2-10.2 15.4-11.1 28.7-25 39.3-40.8z"/></svg>
+				<span>Twitter</span>
+			</a>
+		</div>
+	</div>
+</div><div class="widget-search widget">
+	<form class="widget-search__form" role="search" method="get" action="https://google.com/search">
+		<label>
+			<input class="widget-search__field" type="search" placeholder="SEARCH..." value="" name="q" aria-label="SEARCH...">
+		</label>
+		<input class="widget-search__submit" type="submit" value="Search">
+		<input type="hidden" name="sitesearch" value="https://www.330k.info/" />
+	</form>
+</div>
+</aside>
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2024 330k info.
+			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
+		</div>
+	</div>
+</footer>
+	</div>
+<script async defer src="/js/menu.js"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-L5FSJ397HF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-L5FSJ397HF');
+</script>
+<script data-ad-client="ca-pub-1947596544782119" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+</body>
+</html>

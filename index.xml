@@ -4,10 +4,17 @@
     <title>330k info</title>
     <link>https://www.330k.info/</link>
     <description>Recent content on 330k info</description>
-    <generator>Hugo</generator>
+    <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Mon, 03 Jun 2024 20:12:19 +0900</lastBuildDate>
+    <lastBuildDate>Thu, 15 Aug 2024 17:11:09 +0900</lastBuildDate>
     <atom:link href="https://www.330k.info/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Cloudflareで公開しているホストとAccessのポリシーの対応一覧を作成する</title>
+      <link>https://www.330k.info/essay/cloudflare-access-check/</link>
+      <pubDate>Thu, 15 Aug 2024 15:46:28 +0900</pubDate>
+      <guid>https://www.330k.info/essay/cloudflare-access-check/</guid>
+      <description>&lt;p&gt;Cloudflareは非常に便利で、Cloudflare Tunnel, Cloudflare Workers, Cloudflare Pagesなどいろんな方法でホストを公開しつつ、&#xA;Cloudflare Access (Cloudflare Zero Trust Applications)で認証の制御をしたり、といったことが簡単にできる。&lt;/p&gt;&#xA;&lt;p&gt;一方で、公開しているホストは全部でどれだけあるのか、ポリシーの当て忘れはないか(当て忘れると一般公開されてしまう)、などがわかりにくい面があった。&lt;/p&gt;&#xA;&lt;p&gt;そこでGASとCloudflareのAPIを使って、公開しているホストの一覧と、Accessで設定しているホストとポリシーの一覧を表示させるスクリプトを作ってみた。&lt;/p&gt;</description>
+    </item>
     <item>
       <title>2024年06月02日 富士山(富士ヒル観戦)</title>
       <link>https://www.330k.info/walk/20240601-mt-fuji-hillclimb/</link>
