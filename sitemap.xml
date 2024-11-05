@@ -2,22 +2,34 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://www.330k.info/bicycle/touring/20241019-brm1019-shizuoka-200km/</loc>
-    <lastmod>2024-10-21T17:02:17+09:00</lastmod>
+    <loc>https://www.330k.info/walk/20241103-kumanokodo-nakahechi-kumotorigoe/</loc>
+    <lastmod>2024-11-05T21:40:14+09:00</lastmod>
   </url><url>
     <loc>https://www.330k.info/</loc>
+    <lastmod>2024-11-05T21:40:14+09:00</lastmod>
+  </url><url>
+    <loc>https://www.330k.info/categories/</loc>
+    <lastmod>2024-11-05T21:40:14+09:00</lastmod>
+  </url><url>
+    <loc>https://www.330k.info/tags/</loc>
+    <lastmod>2024-11-05T21:40:14+09:00</lastmod>
+  </url><url>
+    <loc>https://www.330k.info/walk/</loc>
+    <lastmod>2024-11-05T21:40:14+09:00</lastmod>
+  </url><url>
+    <loc>https://www.330k.info/categories/%E5%BE%92%E6%AD%A9/</loc>
+    <lastmod>2024-11-05T21:40:14+09:00</lastmod>
+  </url><url>
+    <loc>https://www.330k.info/tags/%E7%99%BB%E5%B1%B1/</loc>
+    <lastmod>2024-11-05T21:40:14+09:00</lastmod>
+  </url><url>
+    <loc>https://www.330k.info/bicycle/touring/20241019-brm1019-shizuoka-200km/</loc>
     <lastmod>2024-10-21T17:02:17+09:00</lastmod>
   </url><url>
     <loc>https://www.330k.info/bicycle/</loc>
     <lastmod>2024-10-21T17:02:17+09:00</lastmod>
   </url><url>
     <loc>https://www.330k.info/tags/brm200km/</loc>
-    <lastmod>2024-10-21T17:02:17+09:00</lastmod>
-  </url><url>
-    <loc>https://www.330k.info/categories/</loc>
-    <lastmod>2024-10-21T17:02:17+09:00</lastmod>
-  </url><url>
-    <loc>https://www.330k.info/tags/</loc>
     <lastmod>2024-10-21T17:02:17+09:00</lastmod>
   </url><url>
     <loc>https://www.330k.info/tags/%E3%83%96%E3%83%AB%E3%83%99/</loc>
@@ -27,15 +39,6 @@
     <lastmod>2024-10-21T17:02:17+09:00</lastmod>
   </url><url>
     <loc>https://www.330k.info/walk/20240914-amigasa-gongen/</loc>
-    <lastmod>2024-09-15T21:39:14+09:00</lastmod>
-  </url><url>
-    <loc>https://www.330k.info/walk/</loc>
-    <lastmod>2024-09-15T21:39:14+09:00</lastmod>
-  </url><url>
-    <loc>https://www.330k.info/categories/%E5%BE%92%E6%AD%A9/</loc>
-    <lastmod>2024-09-15T21:39:14+09:00</lastmod>
-  </url><url>
-    <loc>https://www.330k.info/tags/%E7%99%BB%E5%B1%B1/</loc>
     <lastmod>2024-09-15T21:39:14+09:00</lastmod>
   </url><url>
     <loc>https://www.330k.info/bicycle/touring/20240907-brm907-tokyo-300km/</loc>

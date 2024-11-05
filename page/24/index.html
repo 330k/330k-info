@@ -66,6 +66,44 @@
 <main class="main list" role="main">
 	<article class="list__item post">
 	<figure class="list__thumbnail">
+		<a href="https://www.330k.info/essay/oresenwomabiku/">
+			<img src="/essay/oresenwomabiku/douglas-peucker-n-001.webp" alt="折れ線を間引く(Ramer-Douglas-Peuckerアルゴリズム)" />
+		</a>
+	</figure>
+	<header class="list__header">
+		<h3 class="list__title post__title ">
+			<a href="/essay/oresenwomabiku/" rel="bookmark">
+			折れ線を間引く(Ramer-Douglas-Peuckerアルゴリズム)
+			</a>
+		</h3>
+		<div class="list__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
+	<time class="meta__text" datetime="2009-10-24T00:00:00">October 24, 2009</time>
+	<time class="meta__text" datetime="2023-05-30T02:22:54"> (Last Modified: May 30, 2023)</time>
+</div>
+
+<div class="meta__item-categories meta__item">
+	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+	<span class="meta__text"><a class="meta__link" href="/categories/%e9%9b%91%e8%a8%98%e5%b8%b3" rel="category">雑記帳</a></span>
+</div>
+</div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		<p>読み込んだGPSログのデータを間引きたい、と思って調べたところ、
+(Ramer-)Douglas-Peuckerのアルゴリズムというものがあることが分かった。</p>
+<p>基本的な考え方は、</p>
+<ol>
+<li>折れ線の始点と終点を結ぶ線分と各点の距離を求める。</li>
+<li>すべての点との距離が許容誤差$\varepsilon$以内に入っていれば始点と終点だけを返して終了。</li>
+<li>そうでなければ距離が最大の点Pを選択。</li>
+<li>始点から点Pまでの折れ線と、点Pから終点までの折れ線のそれぞれについてまた1から処理する。</li>
+</ol>
+<p>という再帰的なもの。</p>
+<p>再帰的なものはMathematicaの得意分野なので、MathematicaでRamer-Douglas-Peuckerのアルゴリズムを実装してみた。</p>
+	</div>
+</article><article class="list__item post">
+	<figure class="list__thumbnail">
 		<a href="https://www.330k.info/bicycle/touring/20090918-20-takamorinagano/">
 			<img src="/bicycle/touring/20090918-20-takamorinagano/CIMG3407.jpg" alt="2009年09月18日〜20日 高森(長野)" />
 		</a>
@@ -244,6 +282,7 @@
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/walk/20241103-kumanokodo-nakahechi-kumotorigoe/">2024年11月03日-04日 熊野古道 中辺路 雲取越</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20241019-brm1019-shizuoka-200km/">2024年10月19日 BRM1019 静岡200 北遠</a></li>
 			<li class="widget__item"><a class="widget__link" href="/walk/20240914-amigasa-gongen/">2024年09月14日-15日 編笠山-権現岳 テント泊</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20240907-brm907-tokyo-300km/">2024年09月07日 BRM907 東京300 栃木棚田</a></li>
@@ -263,7 +302,6 @@
 			<li class="widget__item"><a class="widget__link" href="/walk/20231006-bukosan/">2023年10月06日 武甲山</a></li>
 			<li class="widget__item"><a class="widget__link" href="/walk/20230916-yokokawa-karuizawa/">2023年09月16日 中山道(横川-軽井沢)</a></li>
 			<li class="widget__item"><a class="widget__link" href="/walk/20230825-kumotori/">2023年08月25日-26日 雲取山テント泊</a></li>
-			<li class="widget__item"><a class="widget__link" href="/walk/20230805-mt-fuji/">2023年08月05日 富士山(プリンスルート - 富士宮ルート)</a></li>
 		</ul>
 	</div>
 </div>
@@ -338,7 +376,7 @@
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%83%ac%e3%83%93%e3%83%a5%e3%83%bc" title="レビュー">レビュー (2)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e6%95%b0%e5%ad%a6" title="数学">数学 (6)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e7%94%9f%e6%b4%bb" title="生活">生活 (1)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%e7%99%bb%e5%b1%b1" title="登山">登山 (26)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%e7%99%bb%e5%b1%b1" title="登山">登山 (27)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e7%a4%be%e5%86%85se" title="社内se">社内se (22)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e8%87%aa%e8%bb%a2%e8%bb%8a" title="自転車">自転車 (17)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e8%b5%b0%e8%a1%8c%e4%bc%9a" title="走行会">走行会 (2)</a>
