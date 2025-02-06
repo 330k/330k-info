@@ -6,8 +6,15 @@
     <description>Recent content in 雑記帳 on 330k info</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Fri, 16 Aug 2024 01:51:38 +0900</lastBuildDate>
+    <lastBuildDate>Thu, 06 Feb 2025 20:47:30 +0900</lastBuildDate>
     <atom:link href="https://www.330k.info/categories/%E9%9B%91%E8%A8%98%E5%B8%B3/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Kubuntu 24.04.1をUbuntu Serverからインストールする</title>
+      <link>https://www.330k.info/essay/install-kubuntu-desktop-from-server-with-disk-encryption/</link>
+      <pubDate>Thu, 06 Feb 2025 20:08:40 +0900</pubDate>
+      <guid>https://www.330k.info/essay/install-kubuntu-desktop-from-server-with-disk-encryption/</guid>
+      <description>&lt;p&gt;Minisforumの小型PC、MS-01を購入した。&lt;/p&gt;&#xA;&lt;p&gt;付属してきた内蔵M.2 SSDのWindows 11はそのままに、&#xA;USB接続でBUFFALOの外付けの小型SSDにKubuntu 24.04.1をインストールしようとしたところ、トラブルが生じてインストールできなかったので、&#xA;Ubuntu ServerからKubuntuにしたときの作業メモ。&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Cloudflareで公開しているホストとAccessのポリシーの対応一覧を作成する</title>
       <link>https://www.330k.info/essay/cloudflare-access-check/</link>
