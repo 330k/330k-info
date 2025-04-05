@@ -66,6 +66,37 @@
 <main class="main list" role="main">
 	<article class="list__item post">
 	<figure class="list__thumbnail">
+		<a href="https://www.330k.info/essay/cloudflare-access-check/">
+			<img src="/essay/cloudflare-access-check/logo-cloudflare-dark.svg" alt="Cloudflareで公開しているホストとAccessのポリシーの対応一覧を作成する" />
+		</a>
+	</figure>
+	<header class="list__header">
+		<h3 class="list__title post__title ">
+			<a href="/essay/cloudflare-access-check/" rel="bookmark">
+			Cloudflareで公開しているホストとAccessのポリシーの対応一覧を作成する
+			</a>
+		</h3>
+		<div class="list__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
+	<time class="meta__text" datetime="2024-08-15T15:46:28">August 15, 2024</time>
+	<time class="meta__text" datetime="2024-08-16T01:51:38"> (Last Modified: August 16, 2024)</time>
+</div>
+
+<div class="meta__item-categories meta__item">
+	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+	<span class="meta__text"><a class="meta__link" href="/categories/%e9%9b%91%e8%a8%98%e5%b8%b3" rel="category">雑記帳</a></span>
+</div>
+</div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		<p>Cloudflareは非常に便利で、Cloudflare Tunnel, Cloudflare Workers, Cloudflare Pagesなどいろんな方法でホストを公開しつつ、
+Cloudflare Access (Cloudflare Zero Trust Applications)で認証の制御をしたり、といったことが簡単にできる。</p>
+<p>一方で、公開しているホストは全部でどれだけあるのか、ポリシーの当て忘れはないか(当て忘れると一般公開されてしまう)、などがわかりにくい面があった。</p>
+<p>そこでGASとCloudflareのAPIを使って、公開しているホストの一覧と、Accessで設定しているホストとポリシーの一覧を表示させるスクリプトを作ってみた。</p>
+	</div>
+</article><article class="list__item post">
+	<figure class="list__thumbnail">
 		<a href="https://www.330k.info/walk/20240601-mt-fuji-hillclimb/">
 			<img src="/walk/20240601-mt-fuji-hillclimb/20240602-072426-6916.webp" alt="2024年06月02日 富士山(富士ヒル観戦)" />
 		</a>
@@ -318,35 +349,6 @@
 	<div class="content list__excerpt post__content clearfix">
 		<p>雪が降らないところとして、例によってTrailwalkerのルートの一部を歩いてきた。</p>
 	</div>
-</article><article class="list__item post">
-	<figure class="list__thumbnail">
-		<a href="https://www.330k.info/walk/20231119-okukuji-nantaisan/">
-			<img src="/walk/20231119-okukuji-nantaisan/20231119-132321.webp" alt="2023年11月19日 奥久慈男体山" />
-		</a>
-	</figure>
-	<header class="list__header">
-		<h3 class="list__title post__title ">
-			<a href="/walk/20231119-okukuji-nantaisan/" rel="bookmark">
-			2023年11月19日 奥久慈男体山
-			</a>
-		</h3>
-		<div class="list__meta meta">
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
-	<time class="meta__text" datetime="2023-11-20T21:01:16">November 20, 2023</time>
-	<time class="meta__text" datetime="2023-11-27T21:54:17"> (Last Modified: November 27, 2023)</time>
-</div>
-
-<div class="meta__item-categories meta__item">
-	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
-	<span class="meta__text"><a class="meta__link" href="/categories/%e5%be%92%e6%ad%a9" rel="category">徒歩</a></span>
-</div>
-</div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		<p>標高が高い山には雪が積もってもおかしくない季節になってきたので、低山で日帰りで行けるところを探してみたところ、奥久慈の男体山がちょうど良さそうだったので行ってみた。</p>
-<p>袋田の滝も行ったことがなかったので、西金駅を出発して男体山から鍋転山、月居山を経由して袋田の滝に降りて袋田駅まで向かう縦走ルートにしてみた。</p>
-	</div>
 </article>
 </main>
 
@@ -384,6 +386,7 @@
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/essay/third-pirty-registration-on-hsts-preload-list/">第三者によるHSTS Preload Listへの勝手な登録についての考察</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/install-kubuntu-desktop-from-server-with-disk-encryption/">Kubuntu 24.04.1をUbuntu Serverからインストールする</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20250105-brm0105-iwaki-200km/">2025年01月05日 BRM105 いわき200 浜通り海岸線</a></li>
 			<li class="widget__item"><a class="widget__link" href="/bicycle/touring/20241230-brm1230-sakura-200km/">2024年12月30日 BRM1230 さくら200 筑波</a></li>
@@ -403,7 +406,6 @@
 			<li class="widget__item"><a class="widget__link" href="/walk/20231222-darumayama/">2023年12月22日 西伊豆 達磨山-金冠山</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/edge_830_distance_calculation_behavior/">速度センサがないときのEdge 830の距離計算挙動</a></li>
 			<li class="widget__item"><a class="widget__link" href="/walk/20231124-tonomine-yusakaji/">2023年11月24日 小田原-塔ノ峰-湯坂路-元箱根</a></li>
-			<li class="widget__item"><a class="widget__link" href="/walk/20231119-okukuji-nantaisan/">2023年11月19日 奥久慈男体山</a></li>
 		</ul>
 	</div>
 </div>
@@ -480,7 +482,7 @@
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e6%95%b0%e5%ad%a6" title="数学">数学 (6)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e7%94%9f%e6%b4%bb" title="生活">生活 (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e7%99%bb%e5%b1%b1" title="登山">登山 (27)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%e7%a4%be%e5%86%85se" title="社内se">社内se (22)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%e7%a4%be%e5%86%85se" title="社内se">社内se (23)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e8%87%aa%e8%bb%a2%e8%bb%8a" title="自転車">自転車 (17)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e8%b5%b0%e8%a1%8c%e4%bc%9a" title="走行会">走行会 (2)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e9%9b%91%e5%ad%a6" title="雑学">雑学 (1)</a>

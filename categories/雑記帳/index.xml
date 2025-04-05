@@ -6,8 +6,15 @@
     <description>Recent content in 雑記帳 on 330k info</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Sat, 15 Mar 2025 21:54:28 +0900</lastBuildDate>
+    <lastBuildDate>Sat, 05 Apr 2025 18:53:39 +0900</lastBuildDate>
     <atom:link href="https://www.330k.info/categories/%E9%9B%91%E8%A8%98%E5%B8%B3/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>第三者によるHSTS Preload Listへの勝手な登録についての考察</title>
+      <link>https://www.330k.info/essay/third-pirty-registration-on-hsts-preload-list/</link>
+      <pubDate>Sat, 05 Apr 2025 00:39:51 +0900</pubDate>
+      <guid>https://www.330k.info/essay/third-pirty-registration-on-hsts-preload-list/</guid>
+      <description>&lt;p&gt;HSTS(HTTP Strict Transport Security)とは、ウェブサイトへの接続でHTTPSを使用するようブラウザに強制するための仕組みであり、中間者攻撃を防ぐための効果的なセキュリティ対策である。&lt;/p&gt;&#xA;&lt;p&gt;ただし、最初の1回目の接続についてはHTTPで行われる可能性が残るため、初回からHTTPSによる接続を強制するドメインのリストをブラウザに組み込んでしまおう、というのがHSTS Preload Listであり、&#xA;&lt;code&gt;Strict-Transport-Security&lt;/code&gt;ヘッダに&lt;code&gt;preload&lt;/code&gt;を追加する他にいくつかの要件を満たすことで登録を申請できるようになる。&lt;/p&gt;&#xA;&lt;p&gt;この申請時にはドメインの所有権の確認などの手続きが行われないため第三者による勝手な登録が可能であり、これが問題になるのかどうかを考えた。&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Kubuntu 24.04.1をUbuntu Serverからインストールする</title>
       <link>https://www.330k.info/essay/install-kubuntu-desktop-from-server-with-disk-encryption/</link>
