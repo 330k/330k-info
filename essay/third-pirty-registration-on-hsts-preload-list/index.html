@@ -18,7 +18,7 @@ Strict-Transport-Securityヘッダにpreloadを追加する他にいくつかの
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.330k.info/essay/third-pirty-registration-on-hsts-preload-list/" /><meta property="og:image" content="https://www.330k.info/essay/third-pirty-registration-on-hsts-preload-list/thumb256.jpg" /><meta property="article:section" content="essay" />
 <meta property="article:published_time" content="2025-04-05T00:39:51+09:00" />
-<meta property="article:modified_time" content="2025-04-05T18:56:18+09:00" />
+<meta property="article:modified_time" content="2025-04-05T17:51:51+09:00" />
 
 
 	<meta name="twitter:card" content="summary_large_image" />
@@ -80,7 +80,7 @@ Strict-Transport-Securityヘッダにpreloadを追加する他にいくつかの
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
 	<time class="meta__text" datetime="2025-04-05T00:39:51">April 05, 2025</time>
-	<time class="meta__text" datetime="2025-04-05T18:56:18"> (Last Modified: April 05, 2025)</time>
+	<time class="meta__text" datetime="2025-04-05T17:51:51"> (Last Modified: April 05, 2025)</time>
 </div>
 
 <div class="meta__item-categories meta__item">
@@ -137,6 +137,15 @@ Strict-Transport-Securityヘッダにpreloadを追加する他にいくつかの
 <p>ただし、HSTS Preload Listが効果を発揮するのは初回接続時のみであり、ユーザが事前に1回でも<code>https://example.com/</code>や<code>https://www.example.com/</code>にアクセスしていた場合は、
 HTTPのみのサイトや自己署名証明書を使ったHTTPSのサイトは表示できないのは同様であり、
 第三者が勝手にHSTS Preload Listに登録してしまったとしても影響は小さい。</p>
+<p>これはHSTS Preload自体にそこまで効果がない、と言っていることと同じではあるが、<a href="https://hstspreload.org/">HSTS Preload List Submission</a>にも</p>
+<blockquote>
+<p>The benefits provided by HSTS preloading are minimal compared to the benefits provided by HSTS.</p>
+</blockquote>
+<p>と書かれている。それどころか、</p>
+<blockquote>
+<p>While HSTS is recommended, HSTS preloading is not recommended.</p>
+</blockquote>
+<p>と、HSTS Preloadはもはや推奨されていない。<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup></p>
 <p>一方で、後からHSTS対応をやめたいとなった際に、HSTS Preload Listに登録していなければ<code>includeSubDomains</code>を消したり<code>max-age</code>を短くすることでHSTS状態を更新して無効化できるのだが、
 HSTS Preload Listに登録されてしまっている場合は無効化するまでに時間がかかってしまう点が問題となるケースは考えられる。</p>
 <p>しかしこのケースにおいても、正攻法(HTTPS対応する)や回避策(別のドメインを使うなど)による対策はできる他、単純に無効化されるまで待てばよいので、現実的には大きな問題となるとは考えにくい。</p>
@@ -147,11 +156,12 @@ HSTS Preload Listに登録されてしまっている場合は無効化するま
 </blockquote>
 <p>とあり、意訳すると「まずは<code>preload</code>ディレクティブを消した上で、<code>includeSubDomains</code>を消すかと<code>max-age</code>の値を変えるのかはお好みでどうぞ」と言っている。</p>
 <p>したがって、HSTS Preload Listに登録されたくない場合も同様に考えて、単純に<code>Strict-Transport-Security</code>ヘッダに<code>preload</code>を入れないのが最も簡単で確実な対策ではないか、と考えられる。</p>
-<p><code>Strict-Transport-Security</code>ヘッダに<code>preload</code>を指定しておきながら、<code>Strict-Transport-Security</code>ヘッダ以外の要件を満たさないことによって第三者によるHSTS Preload Listへの登録を防ぐよりは、シンプルで良いと考える。</p>
+<p><code>Strict-Transport-Security</code>ヘッダに<code>preload</code>を指定しておきながら、<code>Strict-Transport-Security</code>ヘッダや<code>Strict-Transport-Security</code>ヘッダ以外の要件を満たさないことによって第三者によるHSTS Preload Listへの登録を防ぐよりは、シンプルで良いと考える。</p>
 <h2 id="結論">結論</h2>
 <p>専門家ではない人間が調べた限りではあるが、結論としては以下になるのではないだろうか。</p>
 <ul>
-<li><code>preload</code>を入れていると第三者が勝手にHSTS Preload Listに登録してしまう可能性はある。</li>
+<li>そもそもHSTS Preloadが非推奨となっている。</li>
+<li>ヘッダに<code>preload</code>を入れていると第三者が勝手にHSTS Preload Listに登録してしまう可能性はある。</li>
 <li>勝手にHSTS Preload Listに登録されてしまった場合、HSTS対応をやめる際に時間がかかってしまうが、現実的に大きな問題になることは考えにくい。</li>
 <li>HSTS Preload Listに登録することを目指していないのであれば、<code>preload</code>を入れないほうが良い。</li>
 </ul>
@@ -161,6 +171,14 @@ HSTS Preload Listに登録されてしまっている場合は無効化するま
 <ul>
 <li><a href="https://tex2e.github.io/rfc-translater/html/rfc6797.html">RFC 6797 - HTTP Strict Transport Security (HSTS) 日本語訳</a></li>
 </ul>
+<div class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p>いつの間に非推奨になったのかと思ってWayback Machineで調べたところ、<a href="https://web.archive.org/web/20250123182828/https://hstspreload.org/">2025年1月23日</a>と<a href="https://web.archive.org/web/20250124014841/https://hstspreload.org/">2025年1月24日</a>の間に更新された模様。&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</div>
 		</div>
 		<footer class="post__footer">
 			
