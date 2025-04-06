@@ -160,15 +160,16 @@ HSTS Preload Listに登録されてしまっている場合は無効化するま
 <h2 id="結論">結論</h2>
 <p>専門家ではない人間が調べた限りではあるが、結論としては以下になるのではないだろうか。</p>
 <ul>
-<li>そもそもHSTS Preloadが非推奨となっている。</li>
 <li>ヘッダに<code>preload</code>を入れていると第三者が勝手にHSTS Preload Listに登録してしまう可能性がある。</li>
 <li>勝手にHSTS Preload Listに登録されてしまった場合、HSTS対応をやめる際に時間がかかってしまうが、現実的に大きな問題になることは考えにくい。</li>
 <li>HSTS Preload Listに登録することを目指していないのであれば、<code>preload</code>を入れないほうが良い。</li>
+<li>そもそもHSTS Preloadが非推奨となっている。</li>
 </ul>
 <!-- raw HTML omitted -->
 <!-- raw HTML omitted -->
 <h2 id="その他参考">その他参考</h2>
 <ul>
+<li><a href="https://datatracker.ietf.org/doc/html/rfc6797">RFC 6797 - HTTP Strict Transport Security (HSTS)</a></li>
 <li><a href="https://tex2e.github.io/rfc-translater/html/rfc6797.html">RFC 6797 - HTTP Strict Transport Security (HSTS) 日本語訳</a></li>
 </ul>
 <div class="footnotes" role="doc-endnotes">
