@@ -100,17 +100,20 @@ Strict-Transport-Securityヘッダにpreloadを追加する他にいくつかの
 <li><code>Strict-Transport-Security</code>ヘッダの<code>includeSubDomains</code>ディレクティブが含まれている</li>
 <li><code>Strict-Transport-Security</code>ヘッダの<code>max-age</code>ディレクティブが<code>31536000</code>(1年)以上である</li>
 </ul>
-<p>を満たすようにすれば良いとされているが、実際の<a href="https://hstspreload.org/">HSTS Preload List Submission</a>にいくつかのドメインを入力してみたときの動作とエラーメッセージから推測すると、HSTS Preload Listに登録できるようになるためには、おおよそ以下のような条件を追加で満たす必要があるようだ。</p>
-<p>例として、<code>example.com</code>をHSTS Preload Listに登録するようにSubmission Formに入力した場合、</p>
+<p>を満たすようにすれば良いとされているが、<a href="https://hstspreload.org/">HSTS Preload List Submission</a>の「Submission Requirements」の項には追加の条件が記されていた。</p>
 <ul>
-<li><code>example.com</code>と<code>www.example.com</code>のどちらにもウェブサイトが存在する</li>
-<li><code>http://example.com</code>にアクセスすると<code>Location</code>ヘッダにより<code>https://example.com</code>にリダイレクトされる<br>
-(<code>http://www.example.com</code>や<code>https://www.example.com/</code>にリダイレクトされない)</li>
+<li>証明書が有効であること</li>
+<li>HTTPからHTTPSへは同じホストにリダイレクトすること</li>
+<li>すべてのサブドメインでHTTPS接続できること</li>
+</ul>
+<p>なお、すべてのサブドメインについて調べることはできないので、実際の動作としては<code>example.com</code>から<code>www.example.com</code>にリダイレクトされている場合には追加で<code>www.example.com</code>に対してもチェックする、という動作をしているようだ。</p>
+<p>その他、実際にいくつかのドメインを入力してみたときの動作から、</p>
+<ul>
 <li><code>Strict-Transport-Security</code>ヘッダが2個以上存在しない</li>
 </ul>
-<p>などの条件が必要であることが判明した。</p>
+<p>という条件も必要であることが判明した。</p>
 <h2 id="現状調査">現状調査</h2>
-<p>適当な政府や企業サイトのドメインについて調査したところ、かなり多くのサイトでHSTS Preload Listに登録されていないにもかかわらず<code>preload</code>ディレクティブが指定されていた。
+<p>適当な政府や企業サイトのドメインについて調査したところ、かなり多くのサイトでHSTS Preload Listに登録されていないにもかかわらず、<code>Strict-Transport-Security</code>ヘッダに<code>preload</code>ディレクティブが指定されていた。
 しかしながら</p>
 <ul>
 <li><code>includeSubDomains</code>ディレクティブが指定されていない</li>
@@ -118,9 +121,9 @@ Strict-Transport-Securityヘッダにpreloadを追加する他にいくつかの
 </ul>
 <p>といったHSTSヘッダ自体の要件を満たしていないもののほか、</p>
 <ul>
-<li><code>www.</code>付き、もしくは<code>www.</code>なしのどちらかにしかウェブサイトが存在しない</li>
-<li><code>www.</code>付き、もしくは<code>www.</code>なしのどちらかにしか有効な<code>Strict-Transport-Security</code>ヘッダが存在しない</li>
-<li><code>http://example.com</code>から<code>https://www.example.com</code>にリダイレクトしている</li>
+<li><code>www.</code>なしのアドレスにウェブサイトが存在しない</li>
+<li><code>www.</code>なしのアドレスにアクセスしたときに<code>Strict-Transport-Security</code>ヘッダが存在しない</li>
+<li><code>http://example.com</code>から<code>https://www.example.com</code>にリダイレクトしている(ホスト名が異なる)</li>
 <li><code>Strict-Transport-Security</code>ヘッダが2個以上存在している</li>
 </ul>
 <p>などの理由で、HSTS Preload Submissionでは弾かれるものが多かった。</p>
