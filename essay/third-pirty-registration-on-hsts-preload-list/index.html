@@ -100,18 +100,15 @@ Strict-Transport-Securityヘッダにpreloadを追加する他にいくつかの
 <li><code>Strict-Transport-Security</code>ヘッダの<code>includeSubDomains</code>ディレクティブが含まれている</li>
 <li><code>Strict-Transport-Security</code>ヘッダの<code>max-age</code>ディレクティブが<code>31536000</code>(1年)以上である</li>
 </ul>
-<p>を満たすようにすれば良いとされているが、<a href="https://hstspreload.org/">HSTS Preload List Submission</a>の「Submission Requirements」の項には追加の条件が記されていた。</p>
+<p>を満たすようにすれば良いとされているが、<a href="https://hstspreload.org/">HSTS Preload List Submission</a>の「Submission Requirements」の項には追加で</p>
 <ul>
 <li>証明書が有効であること</li>
 <li>HTTPからHTTPSへは同じホストにリダイレクトすること</li>
 <li>すべてのサブドメインでHTTPS接続できること</li>
 </ul>
+<p>の条件が記されていた。</p>
 <p>なお、すべてのサブドメインについて調べることはできないので、実際の動作としては<code>example.com</code>から<code>www.example.com</code>にリダイレクトされている場合には追加で<code>www.example.com</code>に対してもチェックする、という動作をしているようだ。</p>
-<p>その他、実際にいくつかのドメインを入力してみたときの動作から、</p>
-<ul>
-<li><code>Strict-Transport-Security</code>ヘッダが2個以上存在しない</li>
-</ul>
-<p>という条件も必要であることが判明した。</p>
+<p>その他、実際にいくつかのドメインを入力してみたときの動作から、<code>Strict-Transport-Security</code>ヘッダが2個以上存在しない、という条件も必要であることが判明した。</p>
 <h2 id="現状調査">現状調査</h2>
 <p>適当な政府や企業サイトのドメインについて調査したところ、かなり多くのサイトでHSTS Preload Listに登録されていないにもかかわらず、<code>Strict-Transport-Security</code>ヘッダに<code>preload</code>ディレクティブが指定されていた。
 しかしながら</p>
