@@ -105,9 +105,10 @@ Strict-Transport-Securityヘッダにpreloadを追加する他にいくつかの
 <li>証明書が有効であること</li>
 <li>HTTPからHTTPSへは同じホストにリダイレクトすること</li>
 <li>すべてのサブドメインでHTTPS接続できること</li>
+<li>HTTPSからのリダイレクト時は、リダイレクト元にもHSTSヘッダがあること</li>
 </ul>
-<p>の条件が記されていた。</p>
-<p>なお、すべてのサブドメインについて調べることはできないので、実際の動作としては<code>example.com</code>から<code>www.example.com</code>にリダイレクトされている場合には追加で<code>www.example.com</code>に対してもチェックする、という動作をしているようだ。</p>
+<p>などの条件が記されていた。</p>
+<p>なお、すべてのサブドメインについて調べることはできないので、実際の動作としては<code>www</code>サブドメインを決め打ちでチェックする(<code>www</code>で名前解決できる場合はチェックする)、という動作をしているようだ。</p>
 <p>その他、実際にいくつかのドメインを入力してみたときの動作から、</p>
 <ul>
 <li><code>Strict-Transport-Security</code>ヘッダが2個以上存在しない</li>
