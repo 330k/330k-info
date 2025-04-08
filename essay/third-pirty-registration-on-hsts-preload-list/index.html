@@ -108,7 +108,12 @@ Strict-Transport-Securityヘッダにpreloadを追加する他にいくつかの
 </ul>
 <p>の条件が記されていた。</p>
 <p>なお、すべてのサブドメインについて調べることはできないので、実際の動作としては<code>example.com</code>から<code>www.example.com</code>にリダイレクトされている場合には追加で<code>www.example.com</code>に対してもチェックする、という動作をしているようだ。</p>
-<p>その他、実際にいくつかのドメインを入力してみたときの動作から、<code>Strict-Transport-Security</code>ヘッダが2個以上存在しない、という条件も必要であることが判明した。</p>
+<p>その他、実際にいくつかのドメインを入力してみたときの動作から、</p>
+<ul>
+<li><code>Strict-Transport-Security</code>ヘッダが2個以上存在しない</li>
+<li><code>http://example.com</code>からのリダイレクト回数が3回以内</li>
+</ul>
+<p>という条件も必要であることが判明した。</p>
 <h2 id="現状調査">現状調査</h2>
 <p>適当な政府や企業サイトのドメインについて調査したところ、かなり多くのサイトでHSTS Preload Listに登録されていないにもかかわらず、<code>Strict-Transport-Security</code>ヘッダに<code>preload</code>ディレクティブが指定されていた。
 しかしながら</p>
