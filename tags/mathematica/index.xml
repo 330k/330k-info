@@ -6,8 +6,15 @@
     <description>Recent content in Mathematica on 330k info</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Tue, 30 May 2023 02:22:54 +0900</lastBuildDate>
+    <lastBuildDate>Wed, 21 May 2025 23:42:29 +0900</lastBuildDate>
     <atom:link href="https://www.330k.info/tags/mathematica/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>どこからでもWolfram Engine &#43; JupyterLabにアクセスできる環境を構築する</title>
+      <link>https://www.330k.info/essay/wolfram-jupyterlab-cloudflared/</link>
+      <pubDate>Wed, 21 May 2025 22:26:45 +0900</pubDate>
+      <guid>https://www.330k.info/essay/wolfram-jupyterlab-cloudflared/</guid>
+      <description>&lt;p&gt;無料で使えるWolfram EngineをJupyterLabと組み合わせることでMathematicaっぽいノートブック環境を構築できる。&lt;/p&gt;&#xA;&lt;p&gt;ただ、既存のやり方では環境構築に結構手間がかかるほか、起動時に毎回トークンをブラウザにコピペする必要があった。&lt;/p&gt;&#xA;&lt;p&gt;そこで認証機能はCloudflare Accessに任せることで起動時のトークン入力を省略し、&#xA;またCloudflare Tunnelと組み合わせることでどこからでもアクセスできるようにしつつ、&#xA;docker composeを使ってコンテナに格納してしまうことで可搬性を高めた環境を構築してみた。&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Mathematicaで内部処理を隠蔽する</title>
       <link>https://www.330k.info/essay/hide-internal-procedure-in-mathematica/</link>
