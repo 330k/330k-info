@@ -20,7 +20,7 @@ docker composeを使ってコンテナに格納してしまうことで可搬性
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.330k.info/essay/wolfram-jupyterlab-cloudflared/" /><meta property="og:image" content="https://www.330k.info/images/Mathematica_Logo.webp" /><meta property="article:section" content="essay" />
 <meta property="article:published_time" content="2025-05-21T22:26:45+09:00" />
-<meta property="article:modified_time" content="2025-05-21T23:42:29+09:00" />
+<meta property="article:modified_time" content="2025-05-21T23:43:09+09:00" />
 
 
 	<meta name="twitter:card" content="summary_large_image" />
@@ -83,7 +83,7 @@ docker composeを使ってコンテナに格納してしまうことで可搬性
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
 	<time class="meta__text" datetime="2025-05-21T22:26:45">May 21, 2025</time>
-	<time class="meta__text" datetime="2025-05-21T23:42:29"> (Last Modified: May 21, 2025)</time>
+	<time class="meta__text" datetime="2025-05-21T23:43:09"> (Last Modified: May 21, 2025)</time>
 </div>
 
 <div class="meta__item-categories meta__item">
@@ -105,41 +105,41 @@ docker composeを使ってコンテナに格納してしまうことで可搬性
 <li>Cloudflareのアカウントとドメイン</li>
 </ul>
 <h2 id="cloudflare-tunnelの設定">Cloudflare Tunnelの設定</h2>
-<p>Cloudflareのダッシュボードにログインし、<code>Zero Trust</code>, <code>Network</code>, <code>Tunnels</code>と進んで、<code>+ Create a tunnel</code>からトンネルを作成。</p>
-<figure><img src="cf_t_001.png" decoding="async" width="640"/>
-</figure>
-<p><code>Cloudflared</code>を選択</p>
-<figure><img src="cf_t_002.png" decoding="async" width="640"/>
-</figure>
-<p>トンネル名は適当に入力し、トンネルのトークン文字列(下図の<code>--token</code>以降の文字列)をコピーしておく。</p>
-<figure><img src="cf_t_003.png" decoding="async" width="640"/>
-</figure>
-<p><code>Public Hostname</code>から<code>+ Add a public hostname</code>をクリック。</p>
+<ol>
+<li>Cloudflareのダッシュボードにログインし、<code>Zero Trust</code>, <code>Network</code>, <code>Tunnels</code>と進んで、<code>+ Create a tunnel</code>からトンネルを作成。<br>
+<figure><img src="cf_t_001.webp" decoding="async" width="640"/>
+</figure></li>
+<li><code>Cloudflared</code>を選択<br>
+<figure><img src="cf_t_002.webp" decoding="async" width="640"/>
+</figure></li>
+<li>トンネル名は適当に入力し、トンネルのトークン文字列(下図の<code>--token</code>以降の文字列)をコピーしておく。<br>
+<figure><img src="cf_t_003.webp" decoding="async" width="640"/>
+</figure></li>
+<li><code>Public Hostname</code>から<code>+ Add a public hostname</code>をクリック。<br>
 <figure><img src="cf_t_004.webp" decoding="async" width="640"/>
-</figure>
-<ul>
+</figure></li>
 <li><code>Subdomain</code>にはお好みのホスト名を入力し、<code>Domain</code>はドメインを選択</li>
-<li><code>Service</code>には<code>Type</code>で<code>HTTP</code>、<code>URL</code>には<code>jupyter:8888</code>と入力</li>
-</ul>
+<li><code>Service</code>には<code>Type</code>で<code>HTTP</code>、<code>URL</code>には<code>jupyter:8888</code>と入力<br>
 <figure><img src="cf_t_005.webp" decoding="async" width="640"/>
-</figure>
+</figure></li>
+</ol>
 <p>あとは適当に進めて保存。</p>
 <h2 id="cloudflare-accessの設定">Cloudflare Accessの設定</h2>
 <p>JupyterLab側では認証を行わず、Cloudflare側で認証したいので、Cloudflare Accessを設定する。</p>
-<p><code>Zero Trust</code>, <code>Access</code>, <code>Applications</code>と進んで<code>+ Add an application</code>をクリック。</p>
+<ol>
+<li><code>Zero Trust</code>, <code>Access</code>, <code>Applications</code>と進んで<code>+ Add an application</code>をクリック。<br>
 <figure><img src="cf_a_001.webp" decoding="async" width="640"/>
-</figure>
-<p><code>Self-Hosted</code>を選択。</p>
+</figure></li>
+<li><code>Self-Hosted</code>を選択。<br>
 <figure><img src="cf_a_002.webp" decoding="async" width="640"/>
-</figure>
-<ul>
+</figure></li>
 <li><code>Application Name</code>はお好みの名前を入力</li>
 <li><code>Public hostname</code>には先程トンネルを作成したときにPublic Hostnameに指定したサブドメインとドメインを指定</li>
 <li><code>Access Policies</code>から<code>Select exisiting policies</code>または<code>+ Create new policy</code>から、自分だけアクセスできるようなポリシーを作成・選択<br>
-※Accessの説明は分量が多くなってしまうので割愛(適宜<a href="https://developers.cloudflare.com/cloudflare-one/policies/access/">Access policies · Cloudflare Zero Trust docs</a>などを参照願いたい)</li>
-</ul>
+※Accessの説明は分量が多くなってしまうので割愛(適宜<a href="https://developers.cloudflare.com/cloudflare-one/policies/access/">Access policies · Cloudflare Zero Trust docs</a>などを参照願いたい)<br>
 <figure><img src="cf_a_003.webp" decoding="async" width="640"/>
-</figure>
+</figure></li>
+</ol>
 <h2 id="docker-compose">docker compose</h2>
 <p>Wolfram Engineを有効にしたJupyterLabの入ったDockerイメージのDockerfileを公開してくれている人がいるので、それを利用させていただく。</p>
 <p>ディレクトリとファイルの構造は以下の通りとする。</p>
@@ -191,7 +191,7 @@ docker composeを使ってコンテナに格納してしまうことで可搬性
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ docker compose up -d
 </span></span></code></pre></div><p>ログを見る場合は<code>docker compose logs -f</code>を実行し、起動していそうならブラウザからCloudflare TunnelでPublic Hostnameに指定したアドレスを入力するとJupyterLabにアクセスできるはず。</p>
 <p>うまく行けばカーネルとしてWolfram Languageが選択でき、ノートブックを作成できる。</p>
-<figure><img src="jupyter_001.png" decoding="async" width="1041" height="598"/>
+<figure><img src="jupyter_001.webp" decoding="async" width="1041" height="598"/>
 </figure>
 		</div>
 		<footer class="post__footer">
