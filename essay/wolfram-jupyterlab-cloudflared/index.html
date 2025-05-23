@@ -172,7 +172,7 @@ docker composeを使ってコンテナに格納してしまうことで可搬性
 </span></span><span style="display:flex;"><span>    image: cloudflare/cloudflared:latest
 </span></span><span style="display:flex;"><span>    restart: unless-stopped
 </span></span><span style="display:flex;"><span>    command: tunnel --no-autoupdate run --token ${TUNNEL_TOKEN}
-</span></span></code></pre></div><p><code>volumes</code>のところはホストの好きなディレクトリに変更しても良い。<br>
+</span></span></code></pre></div><p><code>volumes</code>のところはホストの好きなディレクトリに変更しても良い。<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup><br>
 またWolfram EngineやPythonのバージョンを変えたい場合は当該箇所を変更する。</p>
 <p>また、commandの引数は<a href="https://zenn.dev/komiya_atsushi/articles/9fdb558244c22a">Docker を使って JupyterLab を利用するときにトークンなしでアクセスできるようにしたい</a>を参考にさせていただいた。</p>
 <h3 id="env">.env</h3>
@@ -193,6 +193,15 @@ docker composeを使ってコンテナに格納してしまうことで可搬性
 <p>うまく行けばカーネルとしてWolfram Languageが選択でき、ノートブックを作成できる。</p>
 <figure><img src="jupyter_001.webp" decoding="async" width="1041" height="598"/>
 </figure>
+<div class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p>Wolfram Engineのライセンスファイルは<code>$PasswordFile</code>(<code>/home/docker/.WolframEngine/Licensing/mathpass</code>)に書き込まれている。
+ライセンスの期限を<code>$LicenseExpirationDate</code>で確認すると1ヶ月ちょっと先の日付が表示されたので、更新するためには永続化しておく必要があるかもしれない。現在調査中。&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</div>
 		</div>
 		<footer class="post__footer">
 			
