@@ -2,11 +2,26 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://www.330k.info/walk/20250601-mt-fuji-hillclimb/</loc>
+    <lastmod>2025-06-02T21:49:15+09:00</lastmod>
+  </url><url>
     <loc>https://www.330k.info/</loc>
-    <lastmod>2025-05-23T17:59:37+09:00</lastmod>
+    <lastmod>2025-06-02T21:49:15+09:00</lastmod>
   </url><url>
     <loc>https://www.330k.info/categories/</loc>
-    <lastmod>2025-05-23T17:59:37+09:00</lastmod>
+    <lastmod>2025-06-02T21:49:15+09:00</lastmod>
+  </url><url>
+    <loc>https://www.330k.info/tags/</loc>
+    <lastmod>2025-06-02T21:49:15+09:00</lastmod>
+  </url><url>
+    <loc>https://www.330k.info/walk/</loc>
+    <lastmod>2025-06-02T21:49:15+09:00</lastmod>
+  </url><url>
+    <loc>https://www.330k.info/categories/%E5%BE%92%E6%AD%A9/</loc>
+    <lastmod>2025-06-02T21:49:15+09:00</lastmod>
+  </url><url>
+    <loc>https://www.330k.info/tags/%E7%99%BB%E5%B1%B1/</loc>
+    <lastmod>2025-06-02T21:49:15+09:00</lastmod>
   </url><url>
     <loc>https://www.330k.info/tags/cloudflare/</loc>
     <lastmod>2025-05-23T17:59:37+09:00</lastmod>
@@ -17,9 +32,6 @@
     <loc>https://www.330k.info/tags/mathematica/</loc>
     <lastmod>2025-05-23T17:59:37+09:00</lastmod>
   </url><url>
-    <loc>https://www.330k.info/tags/</loc>
-    <lastmod>2025-05-23T17:59:37+09:00</lastmod>
-  </url><url>
     <loc>https://www.330k.info/essay/wolfram-jupyterlab-cloudflared/</loc>
     <lastmod>2025-05-23T17:59:37+09:00</lastmod>
   </url><url>
@@ -27,15 +39,6 @@
     <lastmod>2025-05-23T17:59:37+09:00</lastmod>
   </url><url>
     <loc>https://www.330k.info/walk/20250517-jimba-takao/</loc>
-    <lastmod>2025-05-19T21:50:28+09:00</lastmod>
-  </url><url>
-    <loc>https://www.330k.info/walk/</loc>
-    <lastmod>2025-05-19T21:50:28+09:00</lastmod>
-  </url><url>
-    <loc>https://www.330k.info/categories/%E5%BE%92%E6%AD%A9/</loc>
-    <lastmod>2025-05-19T21:50:28+09:00</lastmod>
-  </url><url>
-    <loc>https://www.330k.info/tags/%E7%99%BB%E5%B1%B1/</loc>
     <lastmod>2025-05-19T21:50:28+09:00</lastmod>
   </url><url>
     <loc>https://www.330k.info/walk/20250429-arafune/</loc>

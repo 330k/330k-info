@@ -6,8 +6,15 @@
     <description>Recent content on 330k info</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Fri, 23 May 2025 17:59:37 +0900</lastBuildDate>
+    <lastBuildDate>Mon, 02 Jun 2025 21:49:15 +0900</lastBuildDate>
     <atom:link href="https://www.330k.info/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>2025年06月01日 富士山(富士ヒル観戦)</title>
+      <link>https://www.330k.info/walk/20250601-mt-fuji-hillclimb/</link>
+      <pubDate>Mon, 02 Jun 2025 21:49:15 +0900</pubDate>
+      <guid>https://www.330k.info/walk/20250601-mt-fuji-hillclimb/</guid>
+      <description>&lt;p&gt;昨年に引き続き、今年も富士ヒルクライムレースの見物・応援に行くため吉田口からスバルライン五合目に登ってきた。&lt;/p&gt;</description>
+    </item>
     <item>
       <title>どこからでもWolfram Engine &#43; JupyterLabにアクセスできる環境を構築する</title>
       <link>https://www.330k.info/essay/wolfram-jupyterlab-cloudflared/</link>

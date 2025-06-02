@@ -66,6 +66,34 @@
 <main class="main list" role="main">
 	<article class="list__item post">
 	<figure class="list__thumbnail">
+		<a href="https://www.330k.info/bicycle/touring/20100318-okunikkou/">
+			<img src="/bicycle/touring/20100318-okunikkou/CIMG3839.jpg" alt="2010年03月18日 奥日光" />
+		</a>
+	</figure>
+	<header class="list__header">
+		<h3 class="list__title post__title ">
+			<a href="/bicycle/touring/20100318-okunikkou/" rel="bookmark">
+			2010年03月18日 奥日光
+			</a>
+		</h3>
+		<div class="list__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
+	<time class="meta__text" datetime="2010-03-18T21:43:17">March 18, 2010</time>
+	<time class="meta__text" datetime="2020-05-18T11:51:56"> (Last Modified: May 18, 2020)</time>
+</div>
+
+<div class="meta__item-categories meta__item">
+	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+	<span class="meta__text"><a class="meta__link" href="/categories/%e8%87%aa%e8%bb%a2%e8%bb%8a" rel="category">自転車</a></span>
+</div>
+</div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		<p>同期の漕艇部OBと2人で卒業旅行替わりにちょっと日帰りでポタリング・・・の予定が吹雪のせいでひどい目に！</p>
+	</div>
+</article><article class="list__item post">
+	<figure class="list__thumbnail">
 		<a href="https://www.330k.info/essay/how-to-optimize-mathematica-programs/">
 			<img src="/images/Mathematica_Logo.webp" alt="Mathematicaにおけるプログラムの高速化手法" />
 		</a>
@@ -318,34 +346,6 @@
 	<div class="content list__excerpt post__content clearfix">
 		MathematicaでGPXファイルを読み込んで解釈する方法のメモ。 対象となるGPXファイルを xml = Import[filepath, &#34;XML&#34;]; でまずXMLとして読み込んでおいて、 trk = Cases[xml, XMLElement[&#34;trk&#34;, _, _], Infinity]; でtrk要素を抜き出し、 trkpt = (ToExpression[{&#34;lat&#34;, &#34;lon&#34;} /. Cases[#1, XMLElement[&#34;trkpt&#34;, attr_, _] :&gt; attr, Infinity]] &amp; ) /@ trk; でそれぞれのtrk要素からtrkpt要素を抜き出して緯度と経度を得る。 Sep. 28 2013追記 Mathematica 8からは標準でGPXをImport可能になった。
 	</div>
-</article><article class="list__item post">
-	<figure class="list__thumbnail">
-		<a href="https://www.330k.info/essay/enumurate-amicable-numbers-with-mathematica/">
-			<img src="/images/Mathematica_Logo.webp" alt="友愛数を列挙する" />
-		</a>
-	</figure>
-	<header class="list__header">
-		<h3 class="list__title post__title ">
-			<a href="/essay/enumurate-amicable-numbers-with-mathematica/" rel="bookmark">
-			友愛数を列挙する
-			</a>
-		</h3>
-		<div class="list__meta meta">
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
-	<time class="meta__text" datetime="2009-10-25T00:00:00">October 25, 2009</time>
-	<time class="meta__text" datetime="2022-10-27T02:36:11"> (Last Modified: October 27, 2022)</time>
-</div>
-
-<div class="meta__item-categories meta__item">
-	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
-	<span class="meta__text"><a class="meta__link" href="/categories/%e9%9b%91%e8%a8%98%e5%b8%b3" rel="category">雑記帳</a></span>
-</div>
-</div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		Mathematicaで友愛数を列挙するプログラム例として以下のようなものが見受けられる。 yakuwa[n_] := DivisorSigma[1, n] - n; Do[If[(yakuwa[yakuwa[k]] == k) &amp;&amp; (yakuwa[k] != k), Print[{k, yakuwa[k]}]], {k, 1, 1000}]; しかし、Doでループを回してPrintで書き出していくのはMathematica的に美しくないと思う。 Mathematicaなら関数型プログラミングとパターンマッチを用いるのが良いと思うので、私なら以下のように書く。 Cases[NestList[DivisorSigma[1, #] - # &amp;, #, 2] &amp; /@ Range[100000], {a_, b_, a_} /; a &lt; b -&gt; {a, b}] 実行速度もこちらの
-	</div>
 </article>
 </main>
 
@@ -383,6 +383,7 @@
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/walk/20250601-mt-fuji-hillclimb/">2025年06月01日 富士山(富士ヒル観戦)</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/wolfram-jupyterlab-cloudflared/">どこからでもWolfram Engine &#43; JupyterLabにアクセスできる環境を構築する</a></li>
 			<li class="widget__item"><a class="widget__link" href="/walk/20250517-jimba-takao/">2025年05月17日 陣馬山-高尾山 &#43; ムササビ観察会</a></li>
 			<li class="widget__item"><a class="widget__link" href="/walk/20250429-arafune/">2025年04月29日 荒船山</a></li>
@@ -402,7 +403,6 @@
 			<li class="widget__item"><a class="widget__link" href="/walk/20240503-mt-fuji-yoshida-5goume/">2024年05月03日 富士山吉田口五合目</a></li>
 			<li class="widget__item"><a class="widget__link" href="/walk/20240428-hachijo-fuji/">2024年04月28日 八丈富士</a></li>
 			<li class="widget__item"><a class="widget__link" href="/essay/sansan-gmail-guideline/">Sansanのメール一括配信におけるドメイン認証設定案内の落とし穴</a></li>
-			<li class="widget__item"><a class="widget__link" href="/walk/20240106-yaguradake/">2024年01月06日 大雄山-矢倉岳-駿河小山</a></li>
 		</ul>
 	</div>
 </div>
@@ -478,7 +478,7 @@
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e3%83%ac%e3%83%93%e3%83%a5%e3%83%bc" title="レビュー">レビュー (2)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e6%95%b0%e5%ad%a6" title="数学">数学 (6)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e7%94%9f%e6%b4%bb" title="生活">生活 (1)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%e7%99%bb%e5%b1%b1" title="登山">登山 (30)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%e7%99%bb%e5%b1%b1" title="登山">登山 (31)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e7%a4%be%e5%86%85se" title="社内se">社内se (23)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e8%87%aa%e8%bb%a2%e8%bb%8a" title="自転車">自転車 (17)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e8%b5%b0%e8%a1%8c%e4%bc%9a" title="走行会">走行会 (2)</a>
