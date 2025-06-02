@@ -158,7 +158,7 @@ docker composeを使ってコンテナに格納してしまうことで可搬性
 </span></span><span style="display:flex;"><span>      context: ./jupyter/
 </span></span><span style="display:flex;"><span>      dockerfile: Dockerfile
 </span></span><span style="display:flex;"><span>      args:
-</span></span><span style="display:flex;"><span>        - BASE_IMAGE=wolframresearch/wolframengine:14.2.0
+</span></span><span style="display:flex;"><span>        - BASE_IMAGE=wolframresearch/wolframengine:14.2.1
 </span></span><span style="display:flex;"><span>        - PYTHON_VERSION=3.12
 </span></span><span style="display:flex;"><span>        - WOLFRAM_ID=${WOLFRAM_ID}
 </span></span><span style="display:flex;"><span>        - WOLFRAM_PASSWORD=${WOLFRAM_PASSWORD}
@@ -176,7 +176,7 @@ docker composeを使ってコンテナに格納してしまうことで可搬性
 またWolfram EngineやPythonのバージョンを変えたい場合は当該箇所を変更する。</p>
 <p>また、commandの引数は<a href="https://zenn.dev/komiya_atsushi/articles/9fdb558244c22a">Docker を使って JupyterLab を利用するときにトークンなしでアクセスできるようにしたい</a>を参考にさせていただいた。</p>
 <h3 id="env">.env</h3>
-<p>機密性の高い情報は<code>.env</code>ファイルに保存しておくこととするため、以下の内容のテキストファイルを作成。</p>
+<p>機密性の高い情報は<code>.env</code>ファイルに保存しておくこととし、以下の内容のテキストファイルを作成する。</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>WOLFRAM_ID=(Wolfram ID)
 </span></span><span style="display:flex;"><span>WOLFRAM_PASSWORD=(Wolfram IDのパスワード)
 </span></span><span style="display:flex;"><span>TUNNEL_TOKEN=(上記で取得したCloudflare Tunnelのトークン文字列)
@@ -197,8 +197,8 @@ docker composeを使ってコンテナに格納してしまうことで可搬性
 <hr>
 <ol>
 <li id="fn:1">
-<p>Wolfram Engineのライセンスファイルは<code>$PasswordFile</code>(<code>/home/docker/.WolframEngine/Licensing/mathpass</code>)に書き込まれている。
-ライセンスの期限を<code>$LicenseExpirationDate</code>で確認すると1ヶ月ちょっと先の日付が表示されたので、更新するためには永続化しておく必要があるかもしれない。現在調査中。&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>Wolfram Engineのライセンス情報は<code>$PasswordFile</code>(<code>/home/docker/.WolframEngine/Licensing/mathpass</code>)に書き込まれている。
+ライセンスの期限を<code>$LicenseExpirationDate</code>で確認すると1ヶ月ちょっと先の日付が表示されたので、このファイルは定期的に更新されるのかもしれない。その場合は永続化しておく必要があると思われるので現在調査中。&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 </ol>
 </div>
