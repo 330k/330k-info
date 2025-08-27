@@ -6,8 +6,15 @@
     <description>Recent content in 雑記帳 on 330k info</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Mon, 14 Jul 2025 22:01:14 +0900</lastBuildDate>
+    <lastBuildDate>Wed, 27 Aug 2025 21:41:31 +0900</lastBuildDate>
     <atom:link href="https://www.330k.info/categories/%E9%9B%91%E8%A8%98%E5%B8%B3/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>PowerShellを埋め込んだバッチファイルをネットワーク上から管理者権限で実行する</title>
+      <link>https://www.330k.info/essay/powershell-embedded-bat-on-unc-path/</link>
+      <pubDate>Wed, 27 Aug 2025 21:05:54 +0900</pubDate>
+      <guid>https://www.330k.info/essay/powershell-embedded-bat-on-unc-path/</guid>
+      <description>&lt;p&gt;会社でちょっとした便利スクリプトを作ったのだが、ユーザにはネットワーク上に置いたものをそのままダブルクリックで実行できるようにしたかった。&lt;/p&gt;&#xA;&lt;p&gt;バッチファイルにPowerShellを埋め込んで1ファイルにした上で管理者権限で起動するものは既存のものが見つかったのだが、&#xA;管理者権限でネットワークの資格情報が引き継がれない場合に管理者権限での起動に失敗してしまうため、自分自身をローカルドライブにコピーしてから起動するようにするスニペットを作成した。&lt;/p&gt;</description>
+    </item>
     <item>
       <title>どこからでもWolfram Engine &#43; JupyterLabにアクセスできる環境を構築する</title>
       <link>https://www.330k.info/essay/wolfram-jupyterlab-cloudflared/</link>

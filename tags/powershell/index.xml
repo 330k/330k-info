@@ -6,8 +6,15 @@
     <description>Recent content in PowerShell on 330k info</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Tue, 13 Jul 2021 23:16:02 +0900</lastBuildDate>
+    <lastBuildDate>Wed, 27 Aug 2025 21:41:31 +0900</lastBuildDate>
     <atom:link href="https://www.330k.info/tags/powershell/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>PowerShellを埋め込んだバッチファイルをネットワーク上から管理者権限で実行する</title>
+      <link>https://www.330k.info/essay/powershell-embedded-bat-on-unc-path/</link>
+      <pubDate>Wed, 27 Aug 2025 21:05:54 +0900</pubDate>
+      <guid>https://www.330k.info/essay/powershell-embedded-bat-on-unc-path/</guid>
+      <description>&lt;p&gt;会社でちょっとした便利スクリプトを作ったのだが、ユーザにはネットワーク上に置いたものをそのままダブルクリックで実行できるようにしたかった。&lt;/p&gt;&#xA;&lt;p&gt;バッチファイルにPowerShellを埋め込んで1ファイルにした上で管理者権限で起動するものは既存のものが見つかったのだが、&#xA;管理者権限でネットワークの資格情報が引き継がれない場合に管理者権限での起動に失敗してしまうため、自分自身をローカルドライブにコピーしてから起動するようにするスニペットを作成した。&lt;/p&gt;</description>
+    </item>
     <item>
       <title>PowerShellのCompare-Object(diff)の罠</title>
       <link>https://www.330k.info/essay/powershell-compare-object-trap/</link>
