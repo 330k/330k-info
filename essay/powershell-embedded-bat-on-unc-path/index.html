@@ -16,7 +16,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.330k.info/essay/powershell-embedded-bat-on-unc-path/" /><meta property="og:image" content="https://www.330k.info/essay/powershell-compare-object-trap/file_type_powershell_icon_130243.webp" /><meta property="article:section" content="essay" />
 <meta property="article:published_time" content="2025-08-27T21:05:54+09:00" />
-<meta property="article:modified_time" content="2025-08-27T21:41:57+09:00" />
+<meta property="article:modified_time" content="2025-08-29T19:23:00+09:00" />
 
 
 	<meta name="twitter:card" content="summary_large_image" />
@@ -77,7 +77,7 @@
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
 	<time class="meta__text" datetime="2025-08-27T21:05:54">August 27, 2025</time>
-	<time class="meta__text" datetime="2025-08-27T21:41:57"> (Last Modified: August 27, 2025)</time>
+	<time class="meta__text" datetime="2025-08-29T19:23:00"> (Last Modified: August 29, 2025)</time>
 </div>
 
 <div class="meta__item-categories meta__item">
@@ -91,42 +91,55 @@
 管理者権限でネットワークの資格情報が引き継がれない場合に管理者権限での起動に失敗してしまうため、自分自身をローカルドライブにコピーしてから起動するようにするスニペットを作成した。</p>
 <p>参考にさせてもらったサイトをもとに、</p>
 <ul>
-<li>管理者権限無しでバッチファイルを起動したときに、ユーザのデスクトップフォルダに自分自身をコピーしてからデスクトップ上のバッチファイルを管理者権限で起動する</li>
-<li>自分自身の11行目以降をPowerShellコードとして実行した後、最後に自分自身を削除する</li>
+<li>管理者権限無しでバッチファイルを起動したときに、一時フォルダ(<code>%TEMP%</code>)に自分自身をコピーしてからバッチファイルを管理者権限で起動する</li>
+<li>自分自身の10行目以降をPowerShellコードとして実行した後、最後に自分自身を削除する</li>
 </ul>
 <p>という動作するコードが以下。</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bat" data-lang="bat"><span style="display:flex;"><span>@<span style="color:#00f">ECHO</span> OFF
-</span></span><span style="display:flex;"><span><span style="color:#00f">cd</span> /d %~dp0
-</span></span><span style="display:flex;"><span>whoami /priv | find <span style="color:#a31515">&#34;SeDebugPrivilege&#34;</span> &gt; nul
-</span></span><span style="display:flex;"><span><span style="color:#00f">if</span> %errorlevel% <span style="color:#00f">neq</span> 0 (
-</span></span><span style="display:flex;"><span> <span style="color:#00f">COPY</span> /Y <span style="color:#a31515">&#34;</span>%~0<span style="color:#a31515">&#34;</span> <span style="color:#a31515">&#34;</span>%USERPROFILE%<span style="color:#a31515">\Desktop\</span>%~nx0<span style="color:#a31515">&#34;</span> &gt; nul
-</span></span><span style="display:flex;"><span> @powershell start-process <span style="color:#a31515">&#34;\&#34;</span>%USERPROFILE%\Desktop\%~nx0\<span style="color:#a31515">&#34;&#34;</span> -verb runas
-</span></span><span style="display:flex;"><span> <span style="color:#00f">exit</span>
-</span></span><span style="display:flex;"><span>)
-</span></span><span style="display:flex;"><span>@powershell -NoProfile -ExecutionPolicy Unrestricted <span style="color:#a31515">&#34;$s=[scriptblock]::create((gc \&#34;</span>%~f0\<span style="color:#a31515">&#34;|?{$_.readcount -gt 10})-join\&#34;</span>`n\<span style="color:#a31515">&#34;);&amp;$s;if(\&#34;</span>%~f0\<span style="color:#a31515">&#34; -ilike \&#34;</span>$env:USERPROFILE\Desktop\*\<span style="color:#a31515">&#34;){rm \&#34;</span>%~f0\<span style="color:#a31515">&#34;}&#34;</span> %*&amp;<span style="color:#00f">goto</span>:eof
-</span></span><span style="display:flex;"><span># この下からPowerShellコードを記述する
-</span></span><span style="display:flex;"><span>Write-Host <span style="color:#a31515">&#34;Hello&#34;</span>
-</span></span><span style="display:flex;"><span><span style="color:#00f">Pause</span>
-</span></span></code></pre></div><p>最初からバッチファイルをデスクトップに置いて実行すると消えてしまうので注意。</p>
-<p>コピー先をデスクトップにしたのはエラーが起きたときに分かりやすかったのが理由だが、TEMPフォルダを使うほうがいいかもしれない。</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bat" data-lang="bat"><span style="display:flex;"><span>@<span style="color:#00f">ECHO</span> OFF
-</span></span><span style="display:flex;"><span><span style="color:#00f">cd</span> /d %~dp0
 </span></span><span style="display:flex;"><span>whoami /priv | find <span style="color:#a31515">&#34;SeDebugPrivilege&#34;</span> &gt; nul
 </span></span><span style="display:flex;"><span><span style="color:#00f">if</span> %errorlevel% <span style="color:#00f">neq</span> 0 (
 </span></span><span style="display:flex;"><span> <span style="color:#00f">COPY</span> /Y <span style="color:#a31515">&#34;</span>%~0<span style="color:#a31515">&#34;</span> <span style="color:#a31515">&#34;</span>%TEMP%<span style="color:#a31515">\</span>%~nx0<span style="color:#a31515">&#34;</span> &gt; nul
 </span></span><span style="display:flex;"><span> powershell start-process <span style="color:#a31515">&#34;\&#34;</span>%TEMP%\%~nx0\<span style="color:#a31515">&#34;&#34;</span> -verb runas
 </span></span><span style="display:flex;"><span> <span style="color:#00f">exit</span>
 </span></span><span style="display:flex;"><span>)
-</span></span><span style="display:flex;"><span>@powershell -NoProfile -ExecutionPolicy Unrestricted <span style="color:#a31515">&#34;$s=[scriptblock]::create((gc \&#34;</span>%~f0\<span style="color:#a31515">&#34;|?{$_.readcount -gt 10})-join\&#34;</span>`n\<span style="color:#a31515">&#34;);&amp;$s;if(\&#34;</span>%~f0\<span style="color:#a31515">&#34; -ilike \&#34;</span>$env:TEMP\*\<span style="color:#a31515">&#34;){rm \&#34;</span>%~f0\<span style="color:#a31515">&#34;}&#34;</span> %*&amp;<span style="color:#00f">goto</span>:eof
+</span></span><span style="display:flex;"><span>@powershell -NoProfile -ExecutionPolicy Unrestricted <span style="color:#a31515">&#34;$s=[scriptblock]::create((gc \&#34;</span>%~f0\<span style="color:#a31515">&#34;|?{$_.readcount -gt 9})-join\&#34;</span>`n\<span style="color:#a31515">&#34;);&amp;$s;if(\&#34;</span>%~f0\<span style="color:#a31515">&#34; -ilike \&#34;</span>$env:TEMP\*\<span style="color:#a31515">&#34;){rm \&#34;</span>%~f0\<span style="color:#a31515">&#34;}&#34;</span> %*&amp;<span style="color:#00f">goto</span>:eof
 </span></span><span style="display:flex;"><span># この下からPowerShellコードを記述する
 </span></span><span style="display:flex;"><span>Write-Host <span style="color:#a31515">&#34;Hello&#34;</span>
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#00f">Pause</span>
-</span></span></code></pre></div><h2 id="参考">参考</h2>
+</span></span></code></pre></div><p>バッチファイルではなく、VBScriptやJScriptを記述可能なwsfファイルにPowerShellスクリプトを埋め込む方法も見つけたので、同様にネットワークと管理者権限での起動に対応してみた。</p>
+<p>コマンドプロンプトのウィンドウや「UNC パスはサポートされません。Windows ディレクトリを既定で使用します。」というメッセージを見せたくない場合にはこっち。</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span>&lt;job&gt;
+</span></span><span style="display:flex;"><span>  &lt;script type=<span style="color:#a31515">&#34;text/jscript&#34;</span>&gt;//<span style="color:#00f">&lt;![CDATA[
+</span></span></span><span style="display:flex;"><span><span style="color:#00f">    var objShell = new ActiveXObject(&#34;WScript.Shell&#34;);
+</span></span></span><span style="display:flex;"><span><span style="color:#00f">    var objFSO = new ActiveXObject(&#34;Scripting.FileSystemObject&#34;);
+</span></span></span><span style="display:flex;"><span><span style="color:#00f">    var target = objFSO.GetSpecialFolder(2) + &#34;\\&#34; + WScript.ScriptName;
+</span></span></span><span style="display:flex;"><span><span style="color:#00f">    if(objShell.Run(&#39;cmd /c &#34;whoami /priv | find &#34;SeDebugPrivilege&#34;&#34;&#39;, 0, true) === 1){
+</span></span></span><span style="display:flex;"><span><span style="color:#00f">      objFSO.CopyFile(WScript.ScriptFullName, target, true);
+</span></span></span><span style="display:flex;"><span><span style="color:#00f">      objShell.Run(&#34;powershell start-process wscript &#39;\\\&#34;&#34; + target + &#34;\\\&#34;&#39; -Verb RunAs&#34;, 0);
+</span></span></span><span style="display:flex;"><span><span style="color:#00f">      WScript.Quit();
+</span></span></span><span style="display:flex;"><span><span style="color:#00f">    }
+</span></span></span><span style="display:flex;"><span><span style="color:#00f">    objShell.Run(&#34;powershell -NoProfile -ExecutionPolicy Unrestricted \&#34;[xml]$x = gc &#39;&#34; + WScript.ScriptFullName + &#34;&#39;; iex $x.job.powershell.&#39;#cdata-section&#39;\&#34;&#34;, 1, true);
+</span></span></span><span style="display:flex;"><span><span style="color:#00f">    if(WScript.ScriptFullName.toLowerCase() === target.toLowerCase()){
+</span></span></span><span style="display:flex;"><span><span style="color:#00f">      objFSO.DeleteFile(WScript.ScriptFullName);
+</span></span></span><span style="display:flex;"><span><span style="color:#00f">    }
+</span></span></span><span style="display:flex;"><span><span style="color:#00f">  //]]&gt;</span>&lt;/script&gt;
+</span></span><span style="display:flex;"><span>  &lt;powershell&gt;<span style="color:#00f">&lt;![CDATA[
+</span></span></span><span style="display:flex;"><span><span style="color:#00f">Write-Host &#34;Hello&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#00f">
+</span></span></span><span style="display:flex;"><span><span style="color:#00f">Pause
+</span></span></span><span style="display:flex;"><span><span style="color:#00f">  ]]&gt;</span>&lt;/powershell&gt;
+</span></span><span style="display:flex;"><span>&lt;/job&gt;
+</span></span></code></pre></div><p>もとのスクリプトではVBScriptだったが、今後廃止するという方向が発表されているのでJScript9Legacyが発表されて少しは延命できそうなJScriptに書き直した。</p>
+<h2 id="参考">参考</h2>
 <ul>
 <li><a href="https://qiita.com/cd01/items/82829ba0ec0f59e1b04d">バッチファイルから PowerShell を呼び出す方法 #batch - Qiita</a></li>
 <li><a href="https://qiita.com/Mitz-TADA/items/0723f49b3770acdd9c94">1ファイルでPowerShellを管理者として実行できるバッチファイル #Windows - Qiita</a></li>
 <li><a href="https://atmarkit.itmedia.co.jp/ait/articles/1502/27/news149.html">管理者権限のあるコマンドプロンプトからマップしたドライブにアクセスする：Tech TIPS - ＠IT</a></li>
+<li><a href="https://www.reddit.com/r/PowerShell/comments/ibbijf/embed_powershell_script_in_a_wsf_file/">Embed PowerShell script in a wsf file : r/PowerShell</a></li>
 </ul>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
 		</div>
 		<footer class="post__footer">
 			
