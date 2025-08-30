@@ -92,11 +92,11 @@
 <p>参考にさせてもらったサイトをもとに、</p>
 <ul>
 <li>管理者権限無しでバッチファイルを起動したときに、一時フォルダ(<code>%TEMP%</code>)に自分自身をコピーしてからバッチファイルを管理者権限で起動する</li>
-<li>自分自身の10行目以降をPowerShellコードとして実行した後、最後に自分自身を削除する</li>
+<li>管理者権限ありで起動したときは、自分自身の10行目以降をPowerShellコードとして実行した後、一時フォルダにある場合は最後に自分自身を削除する</li>
 </ul>
 <p>という動作するコードが以下。</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bat" data-lang="bat"><span style="display:flex;"><span>@<span style="color:#00f">ECHO</span> OFF
-</span></span><span style="display:flex;"><span>whoami /priv | find <span style="color:#a31515">&#34;SeDebugPrivilege&#34;</span> &gt; nul
+</span></span><span style="display:flex;"><span>net session &gt; nul 2&gt;&amp;1
 </span></span><span style="display:flex;"><span><span style="color:#00f">if</span> %errorlevel% <span style="color:#00f">neq</span> 0 (
 </span></span><span style="display:flex;"><span> <span style="color:#00f">COPY</span> /Y <span style="color:#a31515">&#34;</span>%~0<span style="color:#a31515">&#34;</span> <span style="color:#a31515">&#34;</span>%TEMP%<span style="color:#a31515">\</span>%~nx0<span style="color:#a31515">&#34;</span> &gt; nul
 </span></span><span style="display:flex;"><span> powershell start-process <span style="color:#a31515">&#34;\&#34;</span>%TEMP%\%~nx0\<span style="color:#a31515">&#34;&#34;</span> -verb runas
@@ -114,7 +114,7 @@
 </span></span></span><span style="display:flex;"><span><span style="color:#00f">    var objShell = new ActiveXObject(&#34;WScript.Shell&#34;);
 </span></span></span><span style="display:flex;"><span><span style="color:#00f">    var objFSO = new ActiveXObject(&#34;Scripting.FileSystemObject&#34;);
 </span></span></span><span style="display:flex;"><span><span style="color:#00f">    var target = objFSO.GetSpecialFolder(2) + &#34;\\&#34; + WScript.ScriptName;
-</span></span></span><span style="display:flex;"><span><span style="color:#00f">    if(objShell.Run(&#39;cmd /c &#34;whoami /priv | find &#34;SeDebugPrivilege&#34;&#34;&#39;, 0, true) === 1){
+</span></span></span><span style="display:flex;"><span><span style="color:#00f">    if(objShell.Run(&#34;net session&#34;, 0, true) !== 0){
 </span></span></span><span style="display:flex;"><span><span style="color:#00f">      objFSO.CopyFile(WScript.ScriptFullName, target, true);
 </span></span></span><span style="display:flex;"><span><span style="color:#00f">      objShell.Run(&#34;powershell start-process wscript &#39;\\\&#34;&#34; + target + &#34;\\\&#34;&#39; -Verb RunAs&#34;, 0);
 </span></span></span><span style="display:flex;"><span><span style="color:#00f">      WScript.Quit();
@@ -135,6 +135,7 @@
 <ul>
 <li><a href="https://qiita.com/cd01/items/82829ba0ec0f59e1b04d">バッチファイルから PowerShell を呼び出す方法 #batch - Qiita</a></li>
 <li><a href="https://qiita.com/Mitz-TADA/items/0723f49b3770acdd9c94">1ファイルでPowerShellを管理者として実行できるバッチファイル #Windows - Qiita</a></li>
+<li><a href="https://qiita.com/kokosan60/items/a135f0e59e2790db36a3">バッチを自動で管理者権限で実行する方法 #Windows - Qiita</a></li>
 <li><a href="https://atmarkit.itmedia.co.jp/ait/articles/1502/27/news149.html">管理者権限のあるコマンドプロンプトからマップしたドライブにアクセスする：Tech TIPS - ＠IT</a></li>
 <li><a href="https://www.reddit.com/r/PowerShell/comments/ibbijf/embed_powershell_script_in_a_wsf_file/">Embed PowerShell script in a wsf file : r/PowerShell</a></li>
 </ul>
