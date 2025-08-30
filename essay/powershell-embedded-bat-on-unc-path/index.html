@@ -6,11 +6,11 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>PowerShellを埋め込んだバッチファイルをネットワーク上から管理者権限で実行する - 330k info</title>
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
-	<meta name="description" content="会社でちょっとした便利スクリプトを作ったのだが、ユーザにはネットワーク上に置いたものをそのままダブルクリックで実行できるようにしたかった。
+	<meta name="description" content="会社でちょっとしたPowerShellスクリプトを作ったのだが、ユーザにはネットワーク上に置いたものをそのままダブルクリックで実行できるようにしたかった。
 バッチファイルにPowerShellを埋め込んで1ファイルにした上で管理者権限で起動するものは既存のものが見つかったのだが、
 管理者権限でネットワークの資格情報が引き継がれない場合に管理者権限での起動に失敗してしまうため、自分自身をローカルドライブにコピーしてから起動するようにするスニペットを作成した。">
 	<meta property="og:title" content="PowerShellを埋め込んだバッチファイルをネットワーク上から管理者権限で実行する" />
-<meta property="og:description" content="会社でちょっとした便利スクリプトを作ったのだが、ユーザにはネットワーク上に置いたものをそのままダブルクリックで実行できるようにしたかった。
+<meta property="og:description" content="会社でちょっとしたPowerShellスクリプトを作ったのだが、ユーザにはネットワーク上に置いたものをそのままダブルクリックで実行できるようにしたかった。
 バッチファイルにPowerShellを埋め込んで1ファイルにした上で管理者権限で起動するものは既存のものが見つかったのだが、
 管理者権限でネットワークの資格情報が引き継がれない場合に管理者権限での起動に失敗してしまうため、自分自身をローカルドライブにコピーしてから起動するようにするスニペットを作成した。" />
 <meta property="og:type" content="article" />
@@ -21,7 +21,7 @@
 
 	<meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:image" content="https://www.330k.info/essay/powershell-compare-object-trap/file_type_powershell_icon_130243.webp" /><meta name="twitter:title" content="PowerShellを埋め込んだバッチファイルをネットワーク上から管理者権限で実行する"/>
-<meta name="twitter:description" content="会社でちょっとした便利スクリプトを作ったのだが、ユーザにはネットワーク上に置いたものをそのままダブルクリックで実行できるようにしたかった。
+<meta name="twitter:description" content="会社でちょっとしたPowerShellスクリプトを作ったのだが、ユーザにはネットワーク上に置いたものをそのままダブルクリックで実行できるようにしたかった。
 バッチファイルにPowerShellを埋め込んで1ファイルにした上で管理者権限で起動するものは既存のものが見つかったのだが、
 管理者権限でネットワークの資格情報が引き継がれない場合に管理者権限での起動に失敗してしまうため、自分自身をローカルドライブにコピーしてから起動するようにするスニペットを作成した。"/>
 
@@ -86,7 +86,7 @@
 </div>
 </div>
 		</header><div class="content post__content clearfix">
-			<p>会社でちょっとした便利スクリプトを作ったのだが、ユーザにはネットワーク上に置いたものをそのままダブルクリックで実行できるようにしたかった。</p>
+			<p>会社でちょっとしたPowerShellスクリプトを作ったのだが、ユーザにはネットワーク上に置いたものをそのままダブルクリックで実行できるようにしたかった。</p>
 <p>バッチファイルにPowerShellを埋め込んで1ファイルにした上で管理者権限で起動するものは既存のものが見つかったのだが、
 管理者権限でネットワークの資格情報が引き継がれない場合に管理者権限での起動に失敗してしまうため、自分自身をローカルドライブにコピーしてから起動するようにするスニペットを作成した。</p>
 <p>参考にさせてもらったサイトをもとに、</p>
