@@ -161,14 +161,15 @@ HSTS Preload Listに登録されてしまっている場合は無効化するま
 <p>If you want to be removed from the preload list but do not completely want to disable HSTS, it is up to you whether you would like remove the includeSubDomains directive or change the max-age value, as long as you remove the preload directive.</p>
 </blockquote>
 <p>とあり、意訳すると「まずは<code>preload</code>ディレクティブを消した上で、<code>includeSubDomains</code>を消すかと<code>max-age</code>の値を変えるのかはお好みでどうぞ」と言っている。</p>
-<p>したがって、HSTS Preload Listに登録されたくない場合も同様に考えて、単純に<code>Strict-Transport-Security</code>ヘッダに<code>preload</code>を入れないのが最も簡単で確実な対策ではないか、と考えられる。</p>
-<p><code>Strict-Transport-Security</code>ヘッダに<code>preload</code>を指定しておきながら、<code>Strict-Transport-Security</code>ヘッダや<code>Strict-Transport-Security</code>ヘッダ以外の要件を満たさないことによって第三者によるHSTS Preload Listへの登録を防ぐよりは、シンプルで良いと考える。</p>
+<p>したがって、HSTS Preload Listに登録されたくない場合も同様に考えて、単純に<code>Strict-Transport-Security</code>ヘッダに<code>preload</code>を入れないのが最も簡単で確実な対策であると考えられる。</p>
+<p><code>Strict-Transport-Security</code>ヘッダに<code>preload</code>を指定しても、その他の<code>Strict-Transport-Security</code>ヘッダの要件や<code>Strict-Transport-Security</code>ヘッダ以外の要件を満たさないことによって第三者によるHSTS Preload Listへの登録を防ぐことも可能ではあるが、
+プリロードされたくなければ<code>preload</code>を入れないほうがシンプルで良いと考える。</p>
 <h2 id="結論">結論</h2>
 <p>専門家ではない人間が調べた限りではあるが、結論としては以下になるのではないだろうか。</p>
 <ul>
 <li>ヘッダに<code>preload</code>を入れていると第三者が勝手にHSTS Preload Listに登録してしまう可能性がある。</li>
 <li>勝手にHSTS Preload Listに登録されてしまった場合、HSTS対応をやめる際に時間がかかってしまうが、現実的に大きな問題になることは考えにくい。</li>
-<li>HSTS Preload Listに登録することを目指していないのであれば、<code>preload</code>を入れないほうが良い。</li>
+<li>HSTS Preload Listに登録することを目指していないのであれば、<code>preload</code>を入れない。</li>
 <li>そもそもHSTS Preloadが非推奨となっている。</li>
 </ul>
 <!-- raw HTML omitted -->
