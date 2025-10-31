@@ -6,15 +6,8 @@
     <description>Recent content on 330k info</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Sat, 27 Sep 2025 00:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Fri, 31 Oct 2025 18:26:45 +0900</lastBuildDate>
     <atom:link href="https://www.330k.info/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>どこからでもWolfram Engine &#43; JupyterLabにアクセスできる環境を構築する</title>
-      <link>https://www.330k.info/essay/wolfram-jupyterlab-cloudflared/</link>
-      <pubDate>Fri, 31 Oct 2025 18:26:45 +0900</pubDate>
-      <guid>https://www.330k.info/essay/wolfram-jupyterlab-cloudflared/</guid>
-      <description>&lt;p&gt;無料で使えるWolfram EngineをJupyterLabと組み合わせることでMathematicaっぽいノートブック環境を構築できる。&lt;/p&gt;&#xA;&lt;p&gt;ただ、既存のやり方では環境構築に結構手間がかかるほか、起動時に毎回トークンをブラウザにコピペする必要があった。&lt;/p&gt;&#xA;&lt;p&gt;そこで認証機能はCloudflare Accessに任せることで起動時のトークン入力を省略し、&#xA;またCloudflare Tunnelと組み合わせることでどこからでもアクセスできるようにしつつ、&#xA;docker composeを使ってコンテナに格納してしまうことで可搬性を高めた環境を構築してみた。&lt;/p&gt;</description>
-    </item>
     <item>
       <title>PowerShellを埋め込んだバッチファイルをネットワーク上から管理者権限で実行する</title>
       <link>https://www.330k.info/essay/powershell-embedded-bat-on-unc-path/</link>
@@ -35,6 +28,13 @@
       <pubDate>Mon, 02 Jun 2025 21:49:15 +0900</pubDate>
       <guid>https://www.330k.info/walk/20250601-mt-fuji-hillclimb/</guid>
       <description>&lt;p&gt;昨年に引き続き、今年も富士ヒルクライムレースの見物・応援に行くため吉田口からスバルライン五合目に登ってきた。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>どこからでもWolfram Engine &#43; JupyterLabにアクセスできる環境を構築する</title>
+      <link>https://www.330k.info/essay/wolfram-jupyterlab-cloudflared/</link>
+      <pubDate>Wed, 21 May 2025 22:26:45 +0900</pubDate>
+      <guid>https://www.330k.info/essay/wolfram-jupyterlab-cloudflared/</guid>
+      <description>&lt;p&gt;無料で使えるWolfram EngineをJupyterLabと組み合わせることでMathematicaっぽいノートブック環境を構築できる。&lt;/p&gt;&#xA;&lt;p&gt;ただ、既存のやり方では環境構築に結構手間がかかるほか、起動時に毎回トークンをブラウザにコピペする必要があった。&lt;/p&gt;&#xA;&lt;p&gt;そこで認証機能はCloudflare Accessに任せることで起動時のトークン入力を省略し、&#xA;またCloudflare Tunnelと組み合わせることでどこからでもアクセスできるようにしつつ、&#xA;docker composeを使ってコンテナに格納してしまうことで可搬性を高めた環境を構築してみた。&lt;/p&gt;</description>
     </item>
     <item>
       <title>2025年05月17日 陣馬山-高尾山 &#43; ムササビ観察会</title>
