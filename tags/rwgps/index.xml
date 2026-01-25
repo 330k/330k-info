@@ -6,8 +6,15 @@
     <description>Recent content in RWGPS on 330k info</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Mon, 16 Oct 2023 09:32:56 +0900</lastBuildDate>
+    <lastBuildDate>Mon, 26 Jan 2026 04:21:20 +0900</lastBuildDate>
     <atom:link href="https://www.330k.info/tags/rwgps/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Ride with GPSのLive Log機能の使い方</title>
+      <link>https://www.330k.info/essay/recommendation-of-ride-with-gps-live-log/</link>
+      <pubDate>Mon, 26 Jan 2026 02:28:24 +0900</pubDate>
+      <guid>https://www.330k.info/essay/recommendation-of-ride-with-gps-live-log/</guid>
+      <description>&lt;p&gt;キャノンボールやブルベなどのチャレンジ中、見ている人や家族に「いまどこにいるの？」を伝えたいときがあるが、Ride with GPSにもLive Logという課金機能があって現在地と走行予定ルートを共有できる。&lt;/p&gt;&#xA;&lt;p&gt;Google MapsやGarmin LiveTrackと競合する機能なのだが、Ride with GPSならではのメリットもあるのでご紹介。&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Ride with GPSの距離計算式と精度の評価</title>
       <link>https://www.330k.info/essay/rwgps-distance-calculation-precision/</link>
