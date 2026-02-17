@@ -99,14 +99,15 @@
 <h2 id="java実行環境のインストール">Java実行環境のインストール</h2>
 <p><code>FitCSVTool</code>はJava製なので、Javaの実行環境(JRE)をまずはインストールする必要がある。</p>
 <p><a href="https://java.com/ja/download/manual.jsp">全オペレーティング・システム用のJavaのダウンロード</a></p>
-<h2 id="fit-sdkのダウンロード">FIT SDKのダウンロード</h2>
-<p><a href="https://developer.garmin.com/fit/fitcsvtool/editing-files/">FIT CSV Tool | FIT SDK | Garmin Developers</a>から、FIT SDKをダウンロード後、
-ダウンロードしたZIPファイルを適当なツールで展開する。</p>
+<p>バージョンは1.8.0以降ならOK。</p>
+<h2 id="fit-sdk-toolsのダウンロード">FIT SDK Toolsのダウンロード</h2>
+<p><a href="https://developer.garmin.com/fit/get-the-sdk/">Get the SDK | FIT SDK | Garmin Developers</a>の<code>FIT SDK Tools</code>から、
+<a href="https://github.com/garmin/fit-sdk-tools">GitHubのリポジトリ</a> &gt; 画面右にある<code>Releases</code>と進み、<code>FitCSVTool.jar</code>をダウンロードする。</p>
 <h2 id="fit-csv-toolでfitファイルをcsvに変換">FIT CSV ToolでFITファイルをCSVに変換</h2>
-<p>展開後の<code>java/</code>に移動し、変換元のFITファイルもそのフォルダに移動する。</p>
+<p><code>FitCSVTool.jar</code>と変換元のFITファイルを同じフォルダに移動する。</p>
 <p>ターミナル(Windowsの場合はコマンドプロンプト)を開き、以下を実行する。</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>java -jar FitCSVTool.jar -b (変換元FITファイル名) (変換先CSVファイル名)
-</span></span></code></pre></div><p>なお、Windowsなら同じフォルダにある<code>FitToCSV.bat</code>にFITファイルをドラッグアンドドロップしてもOK。</p>
+</span></span></code></pre></div><p>なお、WindowsならGitHubリポジトリの<code>FitCSVTool/FitToCSV.bat</code>を同じフォルダに持ってきて、FITファイルを<code>FitToCSV.bat</code>にドラッグアンドドロップしてもOK。</p>
 <h2 id="csvファイルを編集">CSVファイルを編集</h2>
 <p>Excelなどで作成したCSVファイルを編集する。</p>
 <p><strong>このとき、<code>unknown</code>という文字列を検索し、存在した場合は3列単位で削除(左詰め)する。</strong></p>
