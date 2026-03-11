@@ -6,14 +6,14 @@
     <description>Recent content in Essays on 330k info</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Tue, 10 Mar 2026 08:47:33 +0900</lastBuildDate>
+    <lastBuildDate>Tue, 10 Mar 2026 08:49:00 +0900</lastBuildDate>
     <atom:link href="https://www.330k.info/essay/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>JPCERT/CCが公開したフィッシングURLに対するDNSフィルタリング比較</title>
+      <title>JPCERT/CCが公開したフィッシングURLに対するDNSブロック率比較</title>
       <link>https://www.330k.info/essay/phishing-block-dns-server-benchmark/</link>
       <pubDate>Tue, 10 Mar 2026 07:51:08 +0900</pubDate>
       <guid>https://www.330k.info/essay/phishing-block-dns-server-benchmark/</guid>
-      <description>&lt;p&gt;マルウェアやフィッシングサイトをブロックする機能を持った公開DNSサーバは1.1.1.1 for FamiliesやQuad9などいくつか提供されている。&lt;/p&gt;&#xA;&lt;p&gt;Nexxwaveが各DNSフィルタリングサービスのブロック率を経年的に比較している(&lt;a href=&#34;https://techblog.nexxwave.eu/public-dns-malware-filters-to-be-tested-in-2025/&#34;&gt;Public DNS malware filters to be tested in 2025&lt;/a&gt;)が、&#xA;調査対象ドメインがCERT PolandとURLhausから入手したものであり、欧州のものが多く日本で不正使用されたドメインが調査対象に少ない点が日本で使用する際に問題である。&lt;/p&gt;&#xA;&lt;p&gt;そこで、JPCERT/CCが収集したフィッシングサイトのURL(&lt;a href=&#34;https://github.com/JPCERTCC/phishurl-list&#34;&gt;Phishing URL dataset from JPCERT/CC&lt;/a&gt;)を対象に調査を行った。&lt;/p&gt;</description>
+      <description>&lt;p&gt;マルウェアやフィッシングサイトをブロックする機能を持った公開DNSサーバは1.1.1.1 for FamiliesやQuad9などいくつか提供されている。&lt;/p&gt;&#xA;&lt;p&gt;Nexxwaveが各DNSフィルタリングサービスのブロック率を経年的に比較している(&lt;a href=&#34;https://techblog.nexxwave.eu/public-dns-malware-filters-to-be-tested-in-2025/&#34;&gt;Public DNS malware filters to be tested in 2025&lt;/a&gt;)が、&#xA;調査対象ドメインがCERT PolandとURLhausから入手したものであるため欧州のものが多く、日本で不正使用されたドメインが少ない点が日本で使用する際に問題である。&lt;/p&gt;&#xA;&lt;p&gt;そこで、JPCERT/CCが収集したフィッシングサイトのURL(&lt;a href=&#34;https://github.com/JPCERTCC/phishurl-list&#34;&gt;Phishing URL dataset from JPCERT/CC&lt;/a&gt;)を対象に調査を行った。&lt;/p&gt;</description>
     </item>
     <item>
       <title>無料タイムスタンプサーバー一覧とルート証明書の信頼済みリスト対応状況</title>
