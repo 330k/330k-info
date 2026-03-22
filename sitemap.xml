@@ -2,19 +2,34 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://www.330k.info/bicycle/touring/20260320-brm320-sakura-300km/</loc>
+    <lastmod>2026-03-22T15:04:23+09:00</lastmod>
+  </url><url>
     <loc>https://www.330k.info/</loc>
-    <lastmod>2026-03-12T08:42:40+09:00</lastmod>
+    <lastmod>2026-03-22T15:04:23+09:00</lastmod>
+  </url><url>
+    <loc>https://www.330k.info/bicycle/</loc>
+    <lastmod>2026-03-22T15:04:23+09:00</lastmod>
+  </url><url>
+    <loc>https://www.330k.info/tags/brm300km/</loc>
+    <lastmod>2026-03-22T15:04:23+09:00</lastmod>
   </url><url>
     <loc>https://www.330k.info/categories/</loc>
-    <lastmod>2026-03-12T08:42:40+09:00</lastmod>
+    <lastmod>2026-03-22T15:04:23+09:00</lastmod>
+  </url><url>
+    <loc>https://www.330k.info/tags/</loc>
+    <lastmod>2026-03-22T15:04:23+09:00</lastmod>
+  </url><url>
+    <loc>https://www.330k.info/tags/%E3%83%96%E3%83%AB%E3%83%99/</loc>
+    <lastmod>2026-03-22T15:04:23+09:00</lastmod>
+  </url><url>
+    <loc>https://www.330k.info/categories/%E8%87%AA%E8%BB%A2%E8%BB%8A/</loc>
+    <lastmod>2026-03-22T15:04:23+09:00</lastmod>
   </url><url>
     <loc>https://www.330k.info/essay/</loc>
     <lastmod>2026-03-12T08:42:40+09:00</lastmod>
   </url><url>
     <loc>https://www.330k.info/essay/phishing-block-dns-server-benchmark/</loc>
-    <lastmod>2026-03-12T08:42:40+09:00</lastmod>
-  </url><url>
-    <loc>https://www.330k.info/tags/</loc>
     <lastmod>2026-03-12T08:42:40+09:00</lastmod>
   </url><url>
     <loc>https://www.330k.info/tags/%E3%82%BB%E3%82%AD%E3%83%A5%E3%83%AA%E3%83%86%E3%82%A3/</loc>
@@ -32,19 +47,7 @@
     <loc>https://www.330k.info/bicycle/touring/20260214-brm200-sakura-200/</loc>
     <lastmod>2026-02-16T22:37:28+09:00</lastmod>
   </url><url>
-    <loc>https://www.330k.info/bicycle/</loc>
-    <lastmod>2026-02-16T22:37:28+09:00</lastmod>
-  </url><url>
     <loc>https://www.330k.info/tags/brm200km/</loc>
-    <lastmod>2026-02-16T22:37:28+09:00</lastmod>
-  </url><url>
-    <loc>https://www.330k.info/tags/%E3%83%84%E3%83%BC%E3%83%AA%E3%83%B3%E3%82%B0/</loc>
-    <lastmod>2026-02-16T22:37:28+09:00</lastmod>
-  </url><url>
-    <loc>https://www.330k.info/tags/%E3%83%96%E3%83%AB%E3%83%99/</loc>
-    <lastmod>2026-02-16T22:37:28+09:00</lastmod>
-  </url><url>
-    <loc>https://www.330k.info/categories/%E8%87%AA%E8%BB%A2%E8%BB%8A/</loc>
     <lastmod>2026-02-16T22:37:28+09:00</lastmod>
   </url><url>
     <loc>https://www.330k.info/essay/recommendation-of-ride-with-gps-live-log/</loc>
@@ -57,6 +60,9 @@
     <lastmod>2026-01-25T21:43:31+09:00</lastmod>
   </url><url>
     <loc>https://www.330k.info/bicycle/touring/20251103-minami-alps-cycle-adventure/</loc>
+    <lastmod>2025-11-08T18:19:03+09:00</lastmod>
+  </url><url>
+    <loc>https://www.330k.info/tags/%E3%83%84%E3%83%BC%E3%83%AA%E3%83%B3%E3%82%B0/</loc>
     <lastmod>2025-11-08T18:19:03+09:00</lastmod>
   </url><url>
     <loc>https://www.330k.info/tags/bat/</loc>
@@ -123,9 +129,6 @@
     <lastmod>2024-12-31T19:01:30+09:00</lastmod>
   </url><url>
     <loc>https://www.330k.info/bicycle/touring/20241228-brm1228-sakura-300km/</loc>
-    <lastmod>2024-12-31T19:01:21+09:00</lastmod>
-  </url><url>
-    <loc>https://www.330k.info/tags/brm300km/</loc>
     <lastmod>2024-12-31T19:01:21+09:00</lastmod>
   </url><url>
     <loc>https://www.330k.info/walk/20241217-bikelore14/</loc>
