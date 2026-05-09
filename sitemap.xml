@@ -2,22 +2,34 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://www.330k.info/bicycle/touring/20260502-brm502-sakura-600km/</loc>
-    <lastmod>2026-05-05T02:18:34+09:00</lastmod>
+    <loc>https://www.330k.info/walk/20260506-kumanokodo-kohechi/</loc>
+    <lastmod>2026-05-09T17:46:38+09:00</lastmod>
   </url><url>
     <loc>https://www.330k.info/</loc>
+    <lastmod>2026-05-09T17:46:38+09:00</lastmod>
+  </url><url>
+    <loc>https://www.330k.info/categories/</loc>
+    <lastmod>2026-05-09T17:46:38+09:00</lastmod>
+  </url><url>
+    <loc>https://www.330k.info/tags/</loc>
+    <lastmod>2026-05-09T17:46:38+09:00</lastmod>
+  </url><url>
+    <loc>https://www.330k.info/walk/</loc>
+    <lastmod>2026-05-09T17:46:38+09:00</lastmod>
+  </url><url>
+    <loc>https://www.330k.info/categories/%E5%BE%92%E6%AD%A9/</loc>
+    <lastmod>2026-05-09T17:46:38+09:00</lastmod>
+  </url><url>
+    <loc>https://www.330k.info/tags/%E7%99%BB%E5%B1%B1/</loc>
+    <lastmod>2026-05-09T17:46:38+09:00</lastmod>
+  </url><url>
+    <loc>https://www.330k.info/bicycle/touring/20260502-brm502-sakura-600km/</loc>
     <lastmod>2026-05-05T02:18:34+09:00</lastmod>
   </url><url>
     <loc>https://www.330k.info/bicycle/</loc>
     <lastmod>2026-05-05T02:18:34+09:00</lastmod>
   </url><url>
     <loc>https://www.330k.info/tags/brm600km/</loc>
-    <lastmod>2026-05-05T02:18:34+09:00</lastmod>
-  </url><url>
-    <loc>https://www.330k.info/categories/</loc>
-    <lastmod>2026-05-05T02:18:34+09:00</lastmod>
-  </url><url>
-    <loc>https://www.330k.info/tags/</loc>
     <lastmod>2026-05-05T02:18:34+09:00</lastmod>
   </url><url>
     <loc>https://www.330k.info/tags/%E3%83%96%E3%83%AB%E3%83%99/</loc>
@@ -90,15 +102,6 @@
     <lastmod>2025-08-29T19:23:00+09:00</lastmod>
   </url><url>
     <loc>https://www.330k.info/walk/20250720-tsurugi/</loc>
-    <lastmod>2025-07-25T22:23:24+09:00</lastmod>
-  </url><url>
-    <loc>https://www.330k.info/walk/</loc>
-    <lastmod>2025-07-25T22:23:24+09:00</lastmod>
-  </url><url>
-    <loc>https://www.330k.info/categories/%E5%BE%92%E6%AD%A9/</loc>
-    <lastmod>2025-07-25T22:23:24+09:00</lastmod>
-  </url><url>
-    <loc>https://www.330k.info/tags/%E7%99%BB%E5%B1%B1/</loc>
     <lastmod>2025-07-25T22:23:24+09:00</lastmod>
   </url><url>
     <loc>https://www.330k.info/walk/20250601-mt-fuji-hillclimb/</loc>
