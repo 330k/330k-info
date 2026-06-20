@@ -16,7 +16,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.330k.info/software/gpx-nearby-search/" /><meta property="og:image" content="https://www.330k.info/software/gpx-nearby-search/icon002.webp" /><meta property="article:section" content="software" />
 <meta property="article:published_time" content="2021-09-10T23:56:36+09:00" />
-<meta property="article:modified_time" content="2023-11-03T01:59:32+09:00" />
+<meta property="article:modified_time" content="2026-06-21T01:59:32+09:00" />
 
 
 	<meta name="twitter:card" content="summary_large_image" />
@@ -77,7 +77,7 @@
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
 	<time class="meta__text" datetime="2021-09-10T23:56:36">September 10, 2021</time>
-	<time class="meta__text" datetime="2023-11-03T01:59:32"> (Last Modified: November 03, 2023)</time>
+	<time class="meta__text" datetime="2026-06-21T01:59:32"> (Last Modified: June 21, 2026)</time>
 </div>
 
 <div class="meta__item-categories meta__item">
@@ -167,13 +167,14 @@
 <h2 id="注意事項">注意事項</h2>
 <ul>
 <li>データの精度はソースに依存します。</li>
-<li>セブンイレブン、ローソン、デイリーヤマザキは元データが日本測地系の緯度経度で、簡易変換式を用いて世界測地系に変換していますので、10m程度のずれがあります。</li>
+<li>デイリーヤマザキは元データが日本測地系の緯度経度で、簡易変換式を用いて世界測地系に変換していますので、10m程度のずれがあります。</li>
 <li>法律上、収集した店舗データをクライアント側に渡さないように実装する必要があるため、GASにて実装しています。そのため検索に時間がかかります。</li>
 <li>このツールを使用したことによる結果については一切責任を負いません。</li>
 </ul>
 <h2 id="データソース">データソース</h2>
 <ul>
 <li>セブンイレブン: <a href="https://www.sej.co.jp/">セブンイレブンジャパン公式サイト</a></li>
+<li>ファミリーマート: <a href="https://www.family.co.jp/">ファミリーマート公式ウェブサイト</a></li>
 <li>ローソン: <a href="https://www.lawson.co.jp/">ローソン公式サイト</a></li>
 <li>セイコーマート: <a href="https://www.seicomart.co.jp/">セイコーマート公式サイト</a></li>
 <li>ミニストップ: <a href="https://www.ministop.co.jp/">ミニストップ公式サイト</a></li>
@@ -183,7 +184,7 @@
 <li>道の駅: <a href="https://www.michi-no-eki.jp/">道の駅 公式サイト</a></li>
 </ul>
 <h2 id="データのカバー率">データのカバー率</h2>
-<p>9月18日の公開時点での各コンビニチェーンのデータカバー率は以下の通りです。</p>
+<p>2021年9月18日の公開時点での各コンビニチェーンのデータカバー率は以下の通りです。</p>
 <table>
 <thead>
 <tr>
@@ -259,6 +260,7 @@
 <li>Sep. 21 2021: KMLファイルのエクスポート機能実装。</li>
 <li>Oct. 14 2021: 検索結果の地図表示機能実装。</li>
 <li>Dec. 7 2021: GPXファイル(wpt)のエクスポート機能実装。エクスポート対象の選択機能実装。</li>
+<li>Jun. 21 2026: ファミリーマートの店舗情報を公式サイトから取得するように変更。セブンイレブンとローソンも公式サイトの変更に対応。</li>
 </ul>
 		</div>
 		<footer class="post__footer">
