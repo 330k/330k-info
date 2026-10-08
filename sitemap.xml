@@ -2,22 +2,34 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://www.330k.info/bicycle/touring/20260919-brm919-gunma-1000km/</loc>
-    <lastmod>2026-09-28T22:02:20+09:00</lastmod>
+    <loc>https://www.330k.info/walk/20261005-karasawa/</loc>
+    <lastmod>2026-10-08T16:47:40+09:00</lastmod>
   </url><url>
     <loc>https://www.330k.info/</loc>
+    <lastmod>2026-10-08T16:47:40+09:00</lastmod>
+  </url><url>
+    <loc>https://www.330k.info/categories/</loc>
+    <lastmod>2026-10-08T16:47:40+09:00</lastmod>
+  </url><url>
+    <loc>https://www.330k.info/tags/</loc>
+    <lastmod>2026-10-08T16:47:40+09:00</lastmod>
+  </url><url>
+    <loc>https://www.330k.info/walk/</loc>
+    <lastmod>2026-10-08T16:47:40+09:00</lastmod>
+  </url><url>
+    <loc>https://www.330k.info/categories/%E5%BE%92%E6%AD%A9/</loc>
+    <lastmod>2026-10-08T16:47:40+09:00</lastmod>
+  </url><url>
+    <loc>https://www.330k.info/tags/%E7%99%BB%E5%B1%B1/</loc>
+    <lastmod>2026-10-08T16:47:40+09:00</lastmod>
+  </url><url>
+    <loc>https://www.330k.info/bicycle/touring/20260919-brm919-gunma-1000km/</loc>
     <lastmod>2026-09-28T22:02:20+09:00</lastmod>
   </url><url>
     <loc>https://www.330k.info/bicycle/</loc>
     <lastmod>2026-09-28T22:02:20+09:00</lastmod>
   </url><url>
     <loc>https://www.330k.info/tags/brm1000km/</loc>
-    <lastmod>2026-09-28T22:02:20+09:00</lastmod>
-  </url><url>
-    <loc>https://www.330k.info/categories/</loc>
-    <lastmod>2026-09-28T22:02:20+09:00</lastmod>
-  </url><url>
-    <loc>https://www.330k.info/tags/</loc>
     <lastmod>2026-09-28T22:02:20+09:00</lastmod>
   </url><url>
     <loc>https://www.330k.info/tags/%E3%83%96%E3%83%AB%E3%83%99/</loc>
@@ -27,15 +39,6 @@
     <lastmod>2026-09-28T22:02:20+09:00</lastmod>
   </url><url>
     <loc>https://www.330k.info/walk/20260910-yotei/</loc>
-    <lastmod>2026-09-17T09:14:34+09:00</lastmod>
-  </url><url>
-    <loc>https://www.330k.info/walk/</loc>
-    <lastmod>2026-09-17T09:14:34+09:00</lastmod>
-  </url><url>
-    <loc>https://www.330k.info/categories/%E5%BE%92%E6%AD%A9/</loc>
-    <lastmod>2026-09-17T09:14:34+09:00</lastmod>
-  </url><url>
-    <loc>https://www.330k.info/tags/%E7%99%BB%E5%B1%B1/</loc>
     <lastmod>2026-09-17T09:14:34+09:00</lastmod>
   </url><url>
     <loc>https://www.330k.info/walk/20260814-rishiri-rebun/</loc>
