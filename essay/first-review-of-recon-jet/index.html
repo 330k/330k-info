@@ -102,7 +102,7 @@ ANT+対応の心拍計などは持っていないので、Recon JET単体での�
 <li>測位の精度はm-241と同等以上(下記マップは障害物がほとんどない荒川CRを走行したとき)</li>
 <li>ただし、積算距離の精度は低い(１箇所でも位置がずれると、そのせいで距離が大きく計算される)</li>
 </ul>
-<p>Recon JET(赤線)とm-241(青線)のGPSログ比較。</p>
+<p>Recon JET(緑)とm-241(赤)のGPSログ比較。</p>
 
 
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCir56M7J9LT4-3wDVgG8etGo_HPSMWVBk&callback=initMap&v=3.64&loading=async" defer></script>
@@ -120,6 +120,7 @@ function initMap(){
 }
 
 
+
 initfuncs.push(function(){
   const map = new google.maps.Map(document.getElementById("mapcanvas-1"), {
     center: {lat: 35.6832581, lng: 139.7555827},
@@ -128,27 +129,25 @@ initfuncs.push(function(){
       gestureHandling: "greedy"
     }
   });
-  fetch('2015081602.kml').then((res) => {
+  fetch('2015081602.gpx').then((res) => {
     return res.text();
   }).then((text) => {
     const parser = new DOMParser();
-    const kml = parser.parseFromString(text, "application/xml");
+    const gpx = parser.parseFromString(text, "application/xml");
     
     const colors = ["#ff0014", "#00ff78", "#0078ff", "#14fff0", "#ff7814", "#148c00", "#7878ff", "#f078a0", "#963c14", "#1414f0"];
 
-    const linestrings = kml.querySelectorAll("LineString");
+    const trksegs = gpx.querySelectorAll("trkseg");
     let maxlat = -Number.MAX_VALUE;
     let minlat = Number.MAX_VALUE;
     let maxlng = -Number.MAX_VALUE;
     let minlng = Number.MAX_VALUE;
-    for(let i = 0; i < linestrings.length; i++){
-      const linestring = linestrings[i];
+    for(let i = 0; i < trksegs.length; i++){
+      const trkseg = trksegs[i];
       const coords = [];
-
-      const coordinates = linestring.querySelector("coordinates").textContent.split(/[\s\n]+/).filter(e => /[0-9\.]+,[0-9\.]+/.test(e));
-      for(const c of coordinates){
-        let lat = c.split(',')[1] - 0;
-        let lng = c.split(',')[0] - 0;
+      for(const trkpt of trkseg.querySelectorAll("trkpt")){
+        let lat = trkpt.getAttribute("lat") - 0;
+        let lng = trkpt.getAttribute("lon") - 0;
         coords.push({
           lat: lat,
           lng: lng
@@ -179,7 +178,6 @@ initfuncs.push(function(){
     });
   });
 });
-
 
 </script>
 <h2 id="バッテリー">バッテリー</h2>
