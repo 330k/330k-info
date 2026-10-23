@@ -89,7 +89,7 @@
 			<p>2本目のSR600は、実績のあるA近畿の紀伊山地へ。</p>
 <p>例年12月に冬期通行止めになって出走不可になるので、11月のうちに出走。</p>
 <p>この時期としては異常な暑さにやられ、また野迫川村の通行止め迂回で廃道に突っ込んでしまい本当に途方に暮れかけた。</p>
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCir56M7J9LT4-3wDVgG8etGo_HPSMWVBk&callback=initMap" defer></script>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCir56M7J9LT4-3wDVgG8etGo_HPSMWVBk&callback=initMap&v=3.64&loading=async" defer></script>
 
 
 
@@ -112,10 +112,56 @@ initfuncs.push(function(){
       gestureHandling: "greedy"
     }
   });
-  const ctaLayer = new google.maps.KmlLayer({
-    url: 'https:\/\/www.330k.info\/bicycle\/touring\/20201120-sr600-kii-mountains-world-heritage\/20201120.kml'
+  fetch('20201120.kml').then((res) => {
+    return res.text();
+  }).then((text) => {
+    const parser = new DOMParser();
+    const kml = parser.parseFromString(text, "application/xml");
+    
+    const colors = ["#ff0014", "#00ff78", "#0078ff", "#14fff0", "#ff7814", "#148c00", "#7878ff", "#f078a0", "#963c14", "#1414f0"];
+
+    const linestrings = kml.querySelectorAll("LineString");
+    let maxlat = -Number.MAX_VALUE;
+    let minlat = Number.MAX_VALUE;
+    let maxlng = -Number.MAX_VALUE;
+    let minlng = Number.MAX_VALUE;
+    for(let i = 0; i < linestrings.length; i++){
+      const linestring = linestrings[i];
+      const coords = [];
+
+      const coordinates = linestring.querySelector("coordinates").textContent.split(/[\s\n]+/).filter(e => /[0-9\.]+,[0-9\.]+/.test(e));console.log(coordinates.length);
+      for(const c of coordinates){
+        let lat = c.split(',')[1] - 0;
+        let lng = c.split(',')[0] - 0;
+        coords.push({
+          lat: lat,
+          lng: lng
+        });
+
+        if(maxlat < lat){ maxlat = lat; }
+        if(minlat > lat){ minlat = lat; }
+        if(maxlng < lng){ maxlng = lng; }
+        if(minlng > lng){ minlng = lng; }
+      }console.log(1);
+      
+      const line = new google.maps.Polyline({
+        path: coords,
+        geodesic: true,
+        strokeColor: colors[i % colors.length],
+        strokeOpacity: 1.0,
+        strokeWeight: 4,
+      });console.log(2);
+
+      line.setMap(map);
+    }
+
+    map.fitBounds({
+      east: maxlng,
+      north: maxlat,
+      west: minlng,
+      south: minlat
+    });
   });
-  ctaLayer.setMap(map);
 });
 
 

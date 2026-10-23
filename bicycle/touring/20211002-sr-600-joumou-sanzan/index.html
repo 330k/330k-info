@@ -89,7 +89,7 @@
 			<p>2週連続となるSR600、今度はAJ群馬の上毛三山に挑戦。</p>
 <p>前日の金曜日に台風が近くを通過し、台風一過で3日とも快晴、二度上峠や野反湖では絶景を拝めた。</p>
 <p>雨に降られずにSR600を終えたのは、6回目のSR600で初めて。</p>
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCir56M7J9LT4-3wDVgG8etGo_HPSMWVBk&callback=initMap" defer></script>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCir56M7J9LT4-3wDVgG8etGo_HPSMWVBk&callback=initMap&v=3.64&loading=async" defer></script>
 
 
 
@@ -112,10 +112,56 @@ initfuncs.push(function(){
       gestureHandling: "greedy"
     }
   });
-  const ctaLayer = new google.maps.KmlLayer({
-    url: 'https:\/\/www.330k.info\/bicycle\/touring\/20211002-sr-600-joumou-sanzan\/20211002_01.kml'
+  fetch('20211002_01.kml').then((res) => {
+    return res.text();
+  }).then((text) => {
+    const parser = new DOMParser();
+    const kml = parser.parseFromString(text, "application/xml");
+    
+    const colors = ["#ff0014", "#00ff78", "#0078ff", "#14fff0", "#ff7814", "#148c00", "#7878ff", "#f078a0", "#963c14", "#1414f0"];
+
+    const linestrings = kml.querySelectorAll("LineString");
+    let maxlat = -Number.MAX_VALUE;
+    let minlat = Number.MAX_VALUE;
+    let maxlng = -Number.MAX_VALUE;
+    let minlng = Number.MAX_VALUE;
+    for(let i = 0; i < linestrings.length; i++){
+      const linestring = linestrings[i];
+      const coords = [];
+
+      const coordinates = linestring.querySelector("coordinates").textContent.split(/[\s\n]+/).filter(e => /[0-9\.]+,[0-9\.]+/.test(e));console.log(coordinates.length);
+      for(const c of coordinates){
+        let lat = c.split(',')[1] - 0;
+        let lng = c.split(',')[0] - 0;
+        coords.push({
+          lat: lat,
+          lng: lng
+        });
+
+        if(maxlat < lat){ maxlat = lat; }
+        if(minlat > lat){ minlat = lat; }
+        if(maxlng < lng){ maxlng = lng; }
+        if(minlng > lng){ minlng = lng; }
+      }console.log(1);
+      
+      const line = new google.maps.Polyline({
+        path: coords,
+        geodesic: true,
+        strokeColor: colors[i % colors.length],
+        strokeOpacity: 1.0,
+        strokeWeight: 4,
+      });console.log(2);
+
+      line.setMap(map);
+    }
+
+    map.fitBounds({
+      east: maxlng,
+      north: maxlat,
+      west: minlng,
+      south: minlat
+    });
   });
-  ctaLayer.setMap(map);
 });
 
 
