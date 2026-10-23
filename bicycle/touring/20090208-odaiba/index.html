@@ -129,7 +129,7 @@ initfuncs.push(function(){
       const linestring = linestrings[i];
       const coords = [];
 
-      const coordinates = linestring.querySelector("coordinates").textContent.split(/[\s\n]+/).filter(e => /[0-9\.]+,[0-9\.]+/.test(e));console.log(coordinates.length);
+      const coordinates = linestring.querySelector("coordinates").textContent.split(/[\s\n]+/).filter(e => /[0-9\.]+,[0-9\.]+/.test(e));
       for(const c of coordinates){
         let lat = c.split(',')[1] - 0;
         let lng = c.split(',')[0] - 0;
@@ -142,7 +142,7 @@ initfuncs.push(function(){
         if(minlat > lat){ minlat = lat; }
         if(maxlng < lng){ maxlng = lng; }
         if(minlng > lng){ minlng = lng; }
-      }console.log(1);
+      }
       
       const line = new google.maps.Polyline({
         path: coords,
@@ -150,7 +150,7 @@ initfuncs.push(function(){
         strokeColor: colors[i % colors.length],
         strokeOpacity: 1.0,
         strokeWeight: 4,
-      });console.log(2);
+      });
 
       line.setMap(map);
     }
