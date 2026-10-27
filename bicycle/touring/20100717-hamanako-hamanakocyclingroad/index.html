@@ -113,44 +113,82 @@ initfuncs.push(function(){
   }).then((text) => {
     const parser = new DOMParser();
     const kml = parser.parseFromString(text, "application/xml");
-    
+    let i = 0;
     const colors = ["#ff0014", "#00ff78", "#0078ff", "#14fff0", "#ff7814", "#148c00", "#7878ff", "#f078a0", "#963c14", "#1414f0"];
+    const coords = [];
+    const placemarks = kml.querySelectorAll("Placemark");console.log('20100717.kml');
 
-    const linestrings = kml.querySelectorAll("LineString");
+    for(const p of placemarks){
+      const point = p.querySelector("Point");
+      const linestring = p.querySelector("LineString");
+      const polygon = p.querySelector("Polygon");
+      const track = p.querySelector("Track");
+      let mo = null;
+      
+      if(point){
+        const c = point.querySelector("coordinates").textContent.trim().split(/[\s\n]+/).map(e => e.split(","));
+        
+
+        mo = map.setMap(new google.maps.Polyline({
+          path: [
+            {lat: c[0][1] - 0, lng: c[0][0] - 0},
+            {lat: c[0][1] - 0, lng: c[0][0] - 0}
+          ],
+          strokeColor: colors[i++ % colors.length],
+          strokeOpacity: 1.0,
+          strokeWeight: 4
+        }));
+        mo.setMap(map);
+        coords.push([c[0][1] - 0, c[0][0] - 0]);
+      }
+      if(linestring){
+        const c = linestring.querySelector("coordinates").textContent.trim().split(/[\s\n]+/).map(e => e.split(","));
+        mo = new google.maps.Polyline({
+          path: c.map(e => ({lat: e[1] - 0, lng: e[0] - 0})),
+          geodesic: true,
+          strokeColor: colors[i++ % colors.length],
+          strokeOpacity: 1.0,
+          strokeWeight: 4
+        });
+        mo.setMap(map);
+        coords.push(...c.map(e => [e[1] - 0, e[0] - 0]));
+      }
+      if(polygon){
+        const c = polygon.querySelector("coordinates").textContent.trim().split(/[\s\n]+/).map(e => e.split(","));
+        mo = new google.maps.Polygon({
+          path: c.map(e => ({lat: e[1] - 0, lng: e[0] - 0})),
+          geodesic: true,
+          strokeColor: colors[i++ % colors.length],
+          strokeOpacity: 1.0,
+          strokeWeight: 4
+        });
+        mo.setMap(map);
+        coords.push(...c.map(e => [e[1] - 0, e[0] - 0]));
+      }
+      if(track){
+        const c = [...track.querySelectorAll("coord")].map(e => (e.textContent.split(/[\s\n]+/)));
+        mo = new google.maps.Polyline({
+          path: c.map(e => ({lat: e[1] - 0, lng: e[0] - 0})),
+          geodesic: true,
+          strokeColor: colors[i++ % colors.length],
+          strokeOpacity: 1.0,
+          strokeWeight: 4
+        });
+        mo.setMap(map);
+        coords.push(...c.map(e => [e[1] - 0, e[0] - 0]));
+      }
+    }
+
     let maxlat = -Number.MAX_VALUE;
     let minlat = Number.MAX_VALUE;
     let maxlng = -Number.MAX_VALUE;
     let minlng = Number.MAX_VALUE;
-    for(let i = 0; i < linestrings.length; i++){
-      const linestring = linestrings[i];
-      const coords = [];
-
-      const coordinates = linestring.querySelector("coordinates").textContent.split(/[\s\n]+/).filter(e => /[0-9\.]+,[0-9\.]+/.test(e));
-      for(const c of coordinates){
-        let lat = c.split(',')[1] - 0;
-        let lng = c.split(',')[0] - 0;
-        coords.push({
-          lat: lat,
-          lng: lng
-        });
-
-        if(maxlat < lat){ maxlat = lat; }
-        if(minlat > lat){ minlat = lat; }
-        if(maxlng < lng){ maxlng = lng; }
-        if(minlng > lng){ minlng = lng; }
-      }
-      
-      const line = new google.maps.Polyline({
-        path: coords,
-        geodesic: true,
-        strokeColor: colors[i % colors.length],
-        strokeOpacity: 1.0,
-        strokeWeight: 4,
-      });
-
-      line.setMap(map);
+    for(const c of coords){
+      if(c[0] > maxlat) maxlat = c[0];
+      if(c[0] < minlat) minlat = c[0];
+      if(c[1] > maxlng) maxlng = c[1];
+      if(c[1] < minlng) minlng = c[1];
     }
-
     map.fitBounds({
       east: maxlng,
       north: maxlat,
