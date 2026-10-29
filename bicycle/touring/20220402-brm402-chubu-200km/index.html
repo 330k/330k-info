@@ -110,9 +110,9 @@ initfuncs.push(function(){
     const parser = new DOMParser();
     const kml = parser.parseFromString(text, "application/xml");
     let i = 0;
-    const colors = ["#ff0014", "#00ff78", "#0078ff", "#14fff0", "#ff7814", "#148c00", "#7878ff", "#f078a0", "#963c14", "#1414f0"];
+    const colors = [ '#E53935', '#FB8C00', '#00C853', '#00B8D4', '#2979FF', '#AA00FF', '#F50057', '#AEEA00' ];
     const coords = [];
-    const placemarks = kml.querySelectorAll("Placemark");console.log('2022040201.kml');
+    const placemarks = kml.querySelectorAll("Placemark");
 
     for(const p of placemarks){
       const point = p.querySelector("Point");
@@ -131,7 +131,7 @@ initfuncs.push(function(){
             {lat: c[0][1] - 0, lng: c[0][0] - 0}
           ],
           strokeColor: colors[i++ % colors.length],
-          strokeOpacity: 1.0,
+          strokeOpacity: 0.85,
           strokeWeight: 4
         }));
         mo.setMap(map);

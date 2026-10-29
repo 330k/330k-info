@@ -118,7 +118,7 @@ initfuncs.push(function(){
     const parser = new DOMParser();
     const gpx = parser.parseFromString(text, "application/xml");
     
-    const colors = ["#ff0014", "#00ff78", "#0078ff", "#14fff0", "#ff7814", "#148c00", "#7878ff", "#f078a0", "#963c14", "#1414f0"];
+    const colors = [ '#E53935', '#FB8C00', '#00C853', '#00B8D4', '#2979FF', '#AA00FF', '#F50057', '#AEEA00' ];
 
     const trksegs = gpx.querySelectorAll("trkseg");
     let maxlat = -Number.MAX_VALUE;
@@ -146,7 +146,7 @@ initfuncs.push(function(){
         path: coords,
         geodesic: true,
         strokeColor: colors[i % colors.length],
-        strokeOpacity: 1.0,
+        strokeOpacity: 0.85,
         strokeWeight: 4,
       });
 
